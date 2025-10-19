@@ -18,12 +18,11 @@ type: Secondary Category
 ***
 
 ## 🖥️[[Active Directory Enumeration]]
-## ☁️[[Cloud Enumeration]]
 
 
 ***
 
-
+## ☁️[[Cloud Enumeration]]
 
 
 ***

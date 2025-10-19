@@ -10,7 +10,7 @@ secondary categories:
   - "[[Information Gathering]]"
 type: Tertiary Category
 ---
-# Enumeración de Infraestructura
+# Reconocimiento Pasivo
 
 ***
 
@@ -18,9 +18,8 @@ type: Tertiary Category
 
 -  [[GitHub Dorking]]
 -  [[Google Dorking]]
--  [[Passive Infrastructure Identification]]
-- [[Public IP & ASN Discovery]]
-- [[Domain & Certificate Discovery]]
+- [[Social Engineering Reconnaissance]]
+- [[Passive Subdomain Enumeration]]
 
 
 ***

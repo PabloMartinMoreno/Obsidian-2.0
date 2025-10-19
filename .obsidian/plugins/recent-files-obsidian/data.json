@@ -1,28 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "Service Enumeration",
+      "path": "03 - Tertiary Categories/Service Enumeration.md"
+    },
+    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
       "basename": "GitHub Dorking",
       "path": "04 - Content/Process/GitHub Dorking.md"
     },
     {
-      "basename": "Service Enumeration",
-      "path": "03 - Tertiary Categories/Service Enumeration.md"
-    },
-    {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
       "basename": "Penetration Test",
@@ -195,10 +199,6 @@
     {
       "basename": "OffSec",
       "path": "02 - Secondary Categories/OffSec.md"
-    },
-    {
-      "basename": "Obsidian",
-      "path": "02 - Secondary Categories/Obsidian.md"
     }
   ],
   "omittedPaths": [],
