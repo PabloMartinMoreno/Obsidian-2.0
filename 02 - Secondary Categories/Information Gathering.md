@@ -3,7 +3,7 @@ aliases:
   - Recopilación de información
 tags:
   - secondary_category
-  - "#pentesting/recon"
+  - "#pentesting/recognition"
   - type/moc
 primary categories:
   - "[[Penetration Test]]"

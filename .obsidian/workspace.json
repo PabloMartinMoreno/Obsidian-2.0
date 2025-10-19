@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Linux Post-Exploitation.md",
+                "file": "03 - Tertiary Categories/Web Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Linux Post-Exploitation"
+              "title": "Web Enumeration"
             }
           }
         ],
@@ -118,8 +118,7 @@
               "title": "Etiquetas"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -149,7 +148,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Linux Post-Exploitation.md",
+                "file": "03 - Tertiary Categories/Web Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +233,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Linux Post-Exploitation"
+              "title": "Gráfico de Web Enumeration"
             }
           },
           {
@@ -278,43 +277,44 @@
   },
   "active": "21c47f962b1ac5f4",
   "lastOpenFiles": [
-    "04 - Content/Process/Users & Groups.md",
-    "04 - Content/Process/Linux Post-Exploitation.md",
-    "04 - Content/Process/Operating System & Architecture.md",
-    "04 - Content/Process/Network.md",
-    "04 - Content/Process/File System.md",
-    "04 - Content/Process/Programs.md",
-    "04 - Content/Process/Processes & Services.md",
-    "04 - Content/Process/Security.md",
-    "02 - Secondary Categories/Post-Exploitation.md",
-    "04 - Content/Process/Windows Post-Exploitation.md",
-    "01 - Primary Categories/Penetration Test.md",
     "02 - Secondary Categories/Information Gathering.md",
+    "01 - Primary Categories/Penetration Test.md",
     "03 - Tertiary Categories/Active Directory Enumeration.md",
     "02 - Secondary Categories/Active Directory.md",
-    "05 - Templates/04 - Category/_secondary category.md",
-    "02 - Secondary Categories/Exploitation.md",
     "04 - Content/Process/Active Directory Exploitation.md",
-    "04 - Content/Process/Web Exploitation.md",
-    "04 - Content/Process/Service Exploitation.md",
-    "04 - Content/Process/Client-Side Exploitation.md",
     "03 - Tertiary Categories/Service Enumeration.md",
-    "04 - Content/Process/Cross-Site Request Forgery (CSRF).md",
-    "04 - Content/Process/Cross-Site Scripting (XSS).md",
-    "04 - Content/Process/Directory Traversal.md",
-    "04 - Content/Process/File Upload Vulnerabilities.md",
-    "04 - Content/Process/HTTP Brute Forcing.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "03 - Tertiary Categories/Reverse Engineering.md",
+    "03 - Tertiary Categories/Infrastructure Enumeration.md",
+    "03 - Tertiary Categories/Cloud Enumeration.md",
+    "02 - Secondary Categories/Pre-Exploitation.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
+    "04 - Content/Process/Linux Post-Exploitation.md",
+    "04 - Content/Process/Windows Post-Exploitation.md",
+    "04 - Content/Process/Hashcat.md",
+    "04 - Content/Process/John The Ripper.md",
+    "04 - Content/Process/Processes & Programs.md",
+    "04 - Content/Process/Windows Version Exploits.md",
+    "04 - Content/Process/Windows PrivEsc Payloads.md",
+    "04 - Content/Process/Windows Credential Hunting.md",
+    "04 - Content/Process/Weak Service Permissions.md",
+    "04 - Content/Process/VMDK, VHD and VHDX files.md",
+    "04 - Content/Process/Unquoted Service Paths.md",
+    "04 - Content/Process/Scheduled Task Abuse.md",
+    "04 - Content/Process/Malicious SCF and LNK Files.md",
+    "04 - Content/Process/DLL Hijacking.md",
+    "LXC ",
+    "Writeable /etc",
+    "Writeable ",
+    "Readable /etc",
+    "Readable ",
     "03 - Tertiary Categories",
     "00 - Resources/Pasted image 20251018002239.png",
     "05 - Templates/04 - Category",
     "00 - Resources/Templates/_nivel",
     "00 - Resources/Templates/_ad",
     "00 - Resources/Templates/_infraestructura",
-    "00 - Resources/Templates/_servicios",
-    "00 - Resources/Templates/_fases",
-    "05 - Templates/04 - Type",
     "00 - Resources/Images/Pasted image 20241007163018.png",
-    "Mocs",
     "00 - Resources/Images/vault-structure-01.gif",
     "00 - Resources/Images/vault-structure-04.gif",
     "03 - Content/files/responsive_yt.gif",
@@ -323,7 +323,6 @@
     "03 - Content/files/c2-redirectors.drawio.png",
     "03 - Content/files/Pasted image 20210907124937.png",
     "03 - Content/files/Pasted image 20210907120838.png",
-    "00 - Resources/Recordings/error win-xp.mp3",
     "00 - Resources/Diagrams/Canvas/INICIO.canvas",
     "00 - Recursos/Diagramas/Canvas/Ejemplo.canvas",
     "00 - Recursos/Diagramas/Canvas/Sin título.canvas",

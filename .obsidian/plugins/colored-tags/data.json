@@ -163,7 +163,12 @@
     "ad": 117,
     "ad/enumeration": 1,
     "type/moc": 9,
-    "ad/exploitation": 2
+    "ad/exploitation": 2,
+    "pentesting/linux": 18,
+    "platform": 118,
+    "platform/linux": 1,
+    "platform/windows": 2,
+    "pentesting/recognition": 19
   },
   "_version": 3
 }

@@ -2,10 +2,12 @@
 aliases:
 tags:
   - tertiary_category
-  - "#pentesting/recon"
+  - "#pentesting/recognition"
   - type/moc
 primary categories:
+  - "[[Penetration Test]]"
 secondary categories:
+  - "[[Information Gathering]]"
 type: Tertiary Category
 ---
 # Enumeración Web
