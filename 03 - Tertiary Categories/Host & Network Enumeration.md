@@ -4,7 +4,6 @@ aliases:
 tags:
   - "#pentesting/recognition"
   - type/moc/tertiary_category
-  - service/generic
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

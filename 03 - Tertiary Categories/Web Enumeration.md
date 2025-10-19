@@ -22,7 +22,7 @@ type: Tertiary Category
 -  [[Subdomain & Virtual Host Fuzzing]]
 -  [[Web Server Enumeration]]
 
-## Enumeración de Aplicaciones Webs Comunes
+## Enumeración de Tecnologías Especificas
 
 -  [[ColdFusion Enumeration]]
 -  [[GitLab Enumeration]]
@@ -40,6 +40,11 @@ type: Tertiary Category
 ***
 
 - ### Herramientas
+	- [[BurpSuite]]
+	- [[ffuf]]
+	- [[GoBuster]]
+	- [[RustScan]]
+	- [[FeroxBuster]]
 	- [[EyeWitness]]
 	- [[Git-Dumper]]
 	- [[nikto]]

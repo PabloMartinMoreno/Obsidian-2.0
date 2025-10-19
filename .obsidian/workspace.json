@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Host & Network Enumeration.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Host & Network Enumeration"
+              "title": "Penetration Test"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "03 - Tertiary Categories/Host & Network Enumeration.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Host & Network Enumeration"
+              "title": "Gráfico de Penetration Test"
             }
           },
           {
@@ -279,31 +279,31 @@
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
     "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
-    "03 - Tertiary Categories/Host & Network Enumeration.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "03 - Tertiary Categories/Reverse Engineering.md",
-    "04 - Content/Process/GitHub Dorking.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
     "01 - Primary Categories/Penetration Test.md",
+    "02 - Secondary Categories/Pre-Exploitation.md",
+    "02 - Secondary Categories/Exploitation.md",
+    "02 - Secondary Categories/Lateral Movement.md",
+    "02 - Secondary Categories/Procedures.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
+    "05 - Templates/04 - Category/_secondary category.md",
+    "05 - Templates/04 - Category/_primary category.md",
+    "05 - Templates/04 - Category/_tertiary category.md",
+    "04 - Content/Process/Staging & Listeners.md",
+    "04 - Content/Process/Payload Evasion.md",
+    "04 - Content/Process/Payload Generation.md",
+    "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "03 - Tertiary Categories/Reverse Engineering.md",
     "03 - Tertiary Categories/Cloud Enumeration.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+    "04 - Content/Process/test.md",
+    "04 - Content/Process/GitHub Dorking.md",
     "04 - Content/Process/Active Directory Lateral Movement.md",
     "02 - Secondary Categories/Active Directory.md",
     "04 - Content/Process/Active Directory Exploitation.md",
-    "02 - Secondary Categories/Pre-Exploitation.md",
     "04 - Content/Process/Shells.md",
     "04 - Content/Process/Cross-Compiling Exploit Code.md",
-    "02 - Secondary Categories/Post-Exploitation.md",
-    "02 - Secondary Categories/Procedures.md",
-    "02 - Secondary Categories/Lateral Movement.md",
-    "04 - Content/Process/Tunneling.md",
-    "04 - Content/Process/Pivoting.md",
-    "04 - Content/Process/Windows Lateral Movement.md",
-    "04 - Content/Process/WMI and WinRM.md",
-    "04 - Content/Process/SMB Net-NTLM Relay.md",
-    "04 - Content/Process/PsExec.md",
-    "04 - Content/Process/NTLM Pass-the-Hash.md",
-    "04 - Content/Process/Kerberos Pass-the-Ticket.md",
     "LXC ",
     "Writeable /etc",
     "Writeable ",

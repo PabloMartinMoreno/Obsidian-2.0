@@ -22,22 +22,22 @@ type: Secondary Category
 
 ***
 
-## ☁️[[Cloud Enumeration]]
-
-
-***
-
-## ⚕️[[Reverse Engineering]]
-
-
-***
-
 ## 📩[[Host & Network Enumeration]]
 
 
 ***
 
 ## 🌐[[Web Enumeration]]
+
+
+***
+
+## ☁️[[Cloud Enumeration]]
+
+
+***
+
+## ⚕️[[Reverse Engineering]]
 
 
 ***

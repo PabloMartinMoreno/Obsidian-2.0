@@ -1,40 +1,84 @@
 {
   "recentFiles": [
     {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+      "basename": "Pre-Exploitation",
+      "path": "02 - Secondary Categories/Pre-Exploitation.md"
     },
     {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
+    },
+    {
+      "basename": "Procedures",
+      "path": "02 - Secondary Categories/Procedures.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "_secondary category",
+      "path": "05 - Templates/04 - Category/_secondary category.md"
+    },
+    {
+      "basename": "_primary category",
+      "path": "05 - Templates/04 - Category/_primary category.md"
+    },
+    {
+      "basename": "_tertiary category",
+      "path": "05 - Templates/04 - Category/_tertiary category.md"
+    },
+    {
+      "basename": "Staging & Listeners",
+      "path": "04 - Content/Process/Staging & Listeners.md"
+    },
+    {
+      "basename": "Payload Evasion",
+      "path": "04 - Content/Process/Payload Evasion.md"
+    },
+    {
+      "basename": "Payload Generation",
+      "path": "04 - Content/Process/Payload Generation.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Reverse Engineering",
       "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
     {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/Process/GitHub Dorking.md"
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/Process/GitHub Dorking.md"
     },
     {
       "basename": "Active Directory Lateral Movement",
@@ -49,28 +93,12 @@
       "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
-      "basename": "Pre-Exploitation",
-      "path": "02 - Secondary Categories/Pre-Exploitation.md"
-    },
-    {
       "basename": "Shells",
       "path": "04 - Content/Process/Shells.md"
     },
     {
       "basename": "Cross-Compiling Exploit Code",
       "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Procedures",
-      "path": "02 - Secondary Categories/Procedures.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
     },
     {
       "basename": "Tunneling",
@@ -105,24 +133,8 @@
       "path": "04 - Content/Process/Kerberos Pass-the-Ticket.md"
     },
     {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
       "basename": "JtR Conversions",
       "path": "04 - Content/Process/JtR Conversions.md"
-    },
-    {
-      "basename": "_primary category",
-      "path": "05 - Templates/04 - Category/_primary category.md"
-    },
-    {
-      "basename": "_tertiary category",
-      "path": "05 - Templates/04 - Category/_tertiary category.md"
-    },
-    {
-      "basename": "_secondary category",
-      "path": "05 - Templates/04 - Category/_secondary category.md"
     },
     {
       "basename": "Wireless Security",
@@ -187,18 +199,6 @@
     {
       "basename": "PowerShell",
       "path": "02 - Secondary Categories/PowerShell.md"
-    },
-    {
-      "basename": "Payload Engineering",
-      "path": "02 - Secondary Categories/Payload Engineering.md"
-    },
-    {
-      "basename": "Online Courses",
-      "path": "02 - Secondary Categories/Online Courses.md"
-    },
-    {
-      "basename": "OffSec",
-      "path": "02 - Secondary Categories/OffSec.md"
     }
   ],
   "omittedPaths": [],

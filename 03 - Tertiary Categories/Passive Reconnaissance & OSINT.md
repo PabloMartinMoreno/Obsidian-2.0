@@ -1,6 +1,6 @@
 ---
 aliases:
-  - Enumeración de Infraestructura
+  - Reconocimiento Pasivo
 tags:
   - "#pentesting/recognition"
   - type/moc/tertiary_category
