@@ -19,3 +19,8 @@ type: Secondary Category
 
 
 ***
+
+## [[Active Directory Lateral Movement]]
+
+
+***

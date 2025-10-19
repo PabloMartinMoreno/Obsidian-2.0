@@ -177,7 +177,8 @@
     "type/moc/secondary_category": 2,
     "": 120,
     "type/moc/primary_category": 3,
-    "status": 121
+    "status": 121,
+    "ad/lateral_movement": 3
   },
   "_version": 3
 }

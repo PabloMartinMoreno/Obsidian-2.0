@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Cross-Compiling Exploit Code",
-      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Pre-Exploitation",
@@ -13,8 +33,8 @@
       "path": "04 - Content/Process/Shells.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Cross-Compiling Exploit Code",
+      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
     },
     {
       "basename": "Post-Exploitation",
@@ -27,14 +47,6 @@
     {
       "basename": "Lateral Movement",
       "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
     },
     {
       "basename": "Tunneling",
@@ -69,16 +81,8 @@
       "path": "04 - Content/Process/Kerberos Pass-the-Ticket.md"
     },
     {
-      "basename": "Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
-    },
-    {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
       "basename": "JtR Conversions",
@@ -195,10 +199,6 @@
     {
       "basename": "Hack the Box",
       "path": "02 - Secondary Categories/Hack the Box.md"
-    },
-    {
-      "basename": "Domain Enumeration",
-      "path": "02 - Secondary Categories/Domain Enumeration.md"
     }
   ],
   "omittedPaths": [],
