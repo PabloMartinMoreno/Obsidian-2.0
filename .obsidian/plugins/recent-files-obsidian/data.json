@@ -9,12 +9,24 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Service Enumeration",
+      "path": "03 - Tertiary Categories/Service Enumeration.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Active Directory",
@@ -25,20 +37,8 @@
       "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
-      "basename": "Service Enumeration",
-      "path": "03 - Tertiary Categories/Service Enumeration.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
       "basename": "Infrastructure Enumeration",
       "path": "03 - Tertiary Categories/Infrastructure Enumeration.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Pre-Exploitation",

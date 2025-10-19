@@ -168,7 +168,10 @@
     "platform": 118,
     "platform/linux": 1,
     "platform/windows": 2,
-    "pentesting/recognition": 19
+    "pentesting/recognition": 19,
+    "infrastructure/cloud": 1,
+    "service": 119,
+    "service/generic": 1
   },
   "_version": 3
 }

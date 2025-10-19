@@ -5,6 +5,7 @@ tags:
   - tertiary_category
   - "#pentesting/recognition"
   - type/moc
+  - infrastructure/cloud
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
