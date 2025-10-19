@@ -32,7 +32,7 @@ type: Secondary Category
 
 ***
 
-## 📩[[Service Enumeration]]
+## 📩[[Host & Network Enumeration]]
 
 
 ***

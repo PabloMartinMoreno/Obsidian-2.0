@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Service Enumeration.md",
+                "file": "03 - Tertiary Categories/Host & Network Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Service Enumeration"
+              "title": "Host & Network Enumeration"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "03 - Tertiary Categories/Service Enumeration.md",
+                "file": "03 - Tertiary Categories/Host & Network Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Service Enumeration"
+              "title": "Gráfico de Host & Network Enumeration"
             }
           },
           {
@@ -279,11 +279,11 @@
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
     "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+    "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
     "03 - Tertiary Categories/Reverse Engineering.md",
     "04 - Content/Process/GitHub Dorking.md",
-    "03 - Tertiary Categories/Service Enumeration.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "01 - Primary Categories/Penetration Test.md",
     "03 - Tertiary Categories/Cloud Enumeration.md",
