@@ -4,6 +4,7 @@ aliases:
 tags:
   - "#pentesting/recognition"
   - type/moc/tertiary_category
+  - infrastructure
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
@@ -19,9 +20,17 @@ type: Tertiary Category
 -  [[GitHub Dorking]]
 -  [[Google Dorking]]
 -  [[Passive Infrastructure Identification]]
+- [[Public IP & ASN Discovery]]
+- [[Domain & Certificate Discovery]]
 
 
 ***
 
 - ### Herramientas
+	- [[Shodan]]
+	- [[Censys]]
+	- [[theHarvester]]
+	- [[Subfinder]]
+	- [[Amass]]
+	- [[GH Dork scripts]]
 	- [[CanaryTokens]]

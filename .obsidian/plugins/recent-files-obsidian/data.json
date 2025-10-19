@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Service Enumeration",
+      "path": "03 - Tertiary Categories/Service Enumeration.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Infrastructure Enumeration",
+      "path": "03 - Tertiary Categories/Infrastructure Enumeration.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Active Directory Lateral Movement",
@@ -15,14 +39,6 @@
     {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Pre-Exploitation",
@@ -183,22 +199,6 @@
     {
       "basename": "Obsidian",
       "path": "02 - Secondary Categories/Obsidian.md"
-    },
-    {
-      "basename": "Metasploit",
-      "path": "02 - Secondary Categories/Metasploit.md"
-    },
-    {
-      "basename": "Learning Techniques",
-      "path": "02 - Secondary Categories/Learning Techniques.md"
-    },
-    {
-      "basename": "Kerberoasting",
-      "path": "02 - Secondary Categories/Kerberoasting.md"
-    },
-    {
-      "basename": "Hack the Box",
-      "path": "02 - Secondary Categories/Hack the Box.md"
     }
   ],
   "omittedPaths": [],

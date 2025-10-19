@@ -14,7 +14,7 @@ type: Tertiary Category
 
 ***
 
-## Enumeración Web y Fuzzing
+## Descubrimiento y Fuzzing
 
 -  [[Directory & Page Fuzzing]]
 -  [[Parameter & Value Fuzzing]]

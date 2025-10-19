@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Penetration Test"
+              "title": "Information Gathering"
             }
           }
         ],
@@ -148,7 +148,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -233,7 +233,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Gráfico de Information Gathering"
             }
           },
           {
@@ -277,12 +277,16 @@
   },
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "03 - Tertiary Categories/Service Enumeration.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "03 - Tertiary Categories/Infrastructure Enumeration.md",
+    "03 - Tertiary Categories/Cloud Enumeration.md",
     "04 - Content/Process/Active Directory Lateral Movement.md",
     "02 - Secondary Categories/Active Directory.md",
     "04 - Content/Process/Active Directory Exploitation.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "01 - Primary Categories/Penetration Test.md",
     "02 - Secondary Categories/Pre-Exploitation.md",
     "04 - Content/Process/Shells.md",
     "04 - Content/Process/Cross-Compiling Exploit Code.md",
@@ -299,10 +303,6 @@
     "04 - Content/Process/Kerberos Pass-the-Ticket.md",
     "02 - Secondary Categories/Exploitation.md",
     "04 - Content/Process/JtR Conversions.md",
-    "05 - Templates/04 - Category/_primary category.md",
-    "05 - Templates/04 - Category/_tertiary category.md",
-    "05 - Templates/04 - Category/_secondary category.md",
-    "01 - Primary Categories/Wireless Security.md",
     "LXC ",
     "Writeable /etc",
     "Writeable ",
