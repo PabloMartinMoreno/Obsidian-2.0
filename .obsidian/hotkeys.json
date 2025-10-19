@@ -1,0 +1,83 @@
+{
+  "obsidian-excalidraw-plugin:save": [],
+  "quickadd:choice:2fdde6bf-a8f2-44e4-ab8d-dcba347141ec": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "C"
+    }
+  ],
+  "quickadd:choice:f12d0c35-a407-4325-a491-336373a49836": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "H"
+    }
+  ],
+  "quickadd:choice:256806e0-52da-46ba-b433-57bacb059f18": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "M"
+    }
+  ],
+  "quickadd:choice:bc2664c6-3444-45eb-af9e-b548d8697b60": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "W"
+    }
+  ],
+  "quickadd:choice:bfbe41ab-70b8-4478-8c0c-b535ca523b1f": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "B"
+    }
+  ],
+  "quickadd:choice:ee8c7b93-c45f-447f-bd41-5170ca622de9": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "O"
+    }
+  ],
+  "quickadd:choice:c01a7744-8474-4a47-a0fd-cc185f5e6437": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "A"
+    }
+  ],
+  "omnisearch:show-modal": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "S"
+    }
+  ],
+  "omnisearch:show-modal-infile": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "F"
+    }
+  ],
+  "obsidian-emoji-toolbar:emoji-picker:open-picker": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "."
+    }
+  ]
+}

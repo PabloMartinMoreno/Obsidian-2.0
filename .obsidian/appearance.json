@@ -1,0 +1,22 @@
+{
+  "accentColor": "#7a9abd",
+  "cssTheme": "Obsidianite",
+  "interfaceFontFamily": "Cascadia Code",
+  "textFontFamily": "Cascadia Code",
+  "monospaceFontFamily": "Cascadia Code",
+  "baseFontSize": 16,
+  "enabledCssSnippets": [
+    "center-mermaids",
+    "center-images",
+    "colored-sidebar-items",
+    "cosmos-general-tweaks",
+    "custom-callouts",
+    "cyanvoxels-general-tweaks",
+    "daily-note-themes",
+    "keyboard-keys",
+    "notebook-backgrounds",
+    "supercharged-links-gen",
+    "titulo-link"
+  ],
+  "nativeMenus": false
+}

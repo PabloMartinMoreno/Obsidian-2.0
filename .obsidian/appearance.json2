@@ -1,0 +1,14 @@
+{
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "supercharged-links-gen",
+    "center-images",
+    "custom-callouts",
+    "keyboard-keys",
+    "center-mermaids"
+  ],
+  "theme": "obsidian",
+  "cssTheme": "AnuPpuccin",
+  "nativeMenus": false,
+  "showRibbon": true
+}

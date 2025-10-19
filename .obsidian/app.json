@@ -1,0 +1,15 @@
+{
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "04 - Content/Process",
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "00 - Resources",
+  "userIgnoreFilters": [
+    "00 - Recursos/Plantillas/",
+    "00 - Recursos/Diagramas/Excalidraw/"
+  ],
+  "vimMode": true,
+  "readableLineLength": false,
+  "showLineNumber": false
+}

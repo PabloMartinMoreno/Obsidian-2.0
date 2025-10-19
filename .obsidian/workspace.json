@@ -1,0 +1,332 @@
+{
+  "main": {
+    "id": "6ddc87095e7c2e3e",
+    "type": "split",
+    "children": [
+      {
+        "id": "4371b9f4a570a30b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "21c47f962b1ac5f4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01 - Primary Categories/Penetration Test.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Penetration Test"
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "64ac24f12bdf643c",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9951669ad01a0e4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6577f301ccd64f7e",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {},
+              "icon": "lines-of-text",
+              "title": "Quiet Outline"
+            }
+          },
+          {
+            "id": "0b98bf58f40c240a",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "clock",
+              "title": "Recent Files"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "a9d67168b0f44b84",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "879f46ba4b50a13c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "af77475b0bc9914d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "a6ea2cc2c10b7bb3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          },
+          {
+            "id": "d4b9e89abcf78f81",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 231.51103591918945
+  },
+  "right": {
+    "id": "802be9fb7af15fc2",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ce6d7e8f3c48755",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8ccdd139c4e9aa45",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Vista gráfica"
+            }
+          },
+          {
+            "id": "2b3d8e88aa26b532",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "01 - Primary Categories/Penetration Test.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": false,
+                  "colorGroups": [
+                    {
+                      "query": "tag:#certificacion",
+                      "color": {
+                        "a": 1,
+                        "rgb": 38655
+                      }
+                    },
+                    {
+                      "query": "tag:#concepto  ",
+                      "color": {
+                        "a": 1,
+                        "rgb": 16743680
+                      }
+                    },
+                    {
+                      "query": "tag:#herramienta  ",
+                      "color": {
+                        "a": 1,
+                        "rgb": 65535
+                      }
+                    },
+                    {
+                      "query": "tag:#lenguaje",
+                      "color": {
+                        "a": 1,
+                        "rgb": 65280
+                      }
+                    },
+                    {
+                      "query": "tag:#CTF  ",
+                      "color": {
+                        "a": 1,
+                        "rgb": 13107455
+                      }
+                    },
+                    {
+                      "query": "tag:#MOC  ",
+                      "color": {
+                        "a": 1,
+                        "rgb": 16711680
+                      }
+                    },
+                    {
+                      "query": "path:\"04 - Código\"  ",
+                      "color": {
+                        "a": 1,
+                        "rgb": 16514816
+                      }
+                    },
+                    {
+                      "query": "path:\"07 - Clases\"  ",
+                      "color": {
+                        "a": 1,
+                        "rgb": 16777215
+                      }
+                    }
+                  ],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 0.26662756911209196,
+                  "close": true
+                }
+              },
+              "icon": "lucide-git-fork",
+              "title": "Gráfico de Penetration Test"
+            }
+          },
+          {
+            "id": "6e8195ddaf7eee98",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "03 - Content/Drawbacks of Traditional Note-Taking Systems.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de Drawbacks of Traditional Note-Taking Systems"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 239.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "obsidian-git:Open Git source control": true,
+      "obsidian-excalidraw-plugin:Nuevo Bosquejo": true,
+      "omnisearch:Omnisearch": false,
+      "canvas:Crear nuevo lienzo": true,
+      "audio-recorder:Iniciar/Detener la grabación": true,
+      "switcher:Abrir selector rápido": true,
+      "graph:Abrir vista gráfica": false,
+      "templates:Insertar plantilla": true,
+      "workspaces:Gestionar disposiciones de espacio de trabajo": true,
+      "markdown-importer:Abrir el importador de Markdown": true,
+      "bases:Crear nueva base": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "templater-obsidian:Templater": false,
+      "homepage:Open homepage": false
+    }
+  },
+  "active": "21c47f962b1ac5f4",
+  "lastOpenFiles": [
+    "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Process/Web Exploitation.md",
+    "04 - Content/Process/Service Exploitation.md",
+    "04 - Content/Process/Client-Side Exploitation.md",
+    "04 - Content/Process/Active Directory Exploitation.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "03 - Tertiary Categories/Service Enumeration.md",
+    "04 - Content/Process/Cross-Site Request Forgery (CSRF).md",
+    "04 - Content/Process/Cross-Site Scripting (XSS).md",
+    "04 - Content/Process/Directory Traversal.md",
+    "04 - Content/Process/File Upload Vulnerabilities.md",
+    "04 - Content/Process/HTTP Brute Forcing.md",
+    "04 - Content/Process/Local File Inclusion (LFI).md",
+    "04 - Content/Process/PHP Filters.md",
+    "04 - Content/Process/OS Command Injection.md",
+    "04 - Content/Process/SQL Injection (SQLi).md",
+    "04 - Content/Process/MySQL Read & Write.md",
+    "04 - Content/Process/SQLi Enumeration.md",
+    "04 - Content/Process/SQLi to RCE.md",
+    "04 - Content/Process/XML External Entity (XXE).md",
+    "04 - Content/Process/Union-based SQLi.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "03 - Tertiary Categories/Reverse Engineering.md",
+    "03 - Tertiary Categories/Infrastructure Enumeration.md",
+    "03 - Tertiary Categories",
+    "00 - Resources/Pasted image 20251018002239.png",
+    "05 - Templates/04 - Category",
+    "00 - Resources/Templates/_nivel",
+    "00 - Resources/Templates/_ad",
+    "00 - Resources/Templates/_infraestructura",
+    "00 - Resources/Templates/_servicios",
+    "00 - Resources/Templates/_fases",
+    "05 - Templates/04 - Type",
+    "00 - Resources/Images/Pasted image 20241007163018.png",
+    "Mocs",
+    "00 - Resources/Images/vault-structure-01.gif",
+    "00 - Resources/Images/vault-structure-04.gif",
+    "03 - Content/files/responsive_yt.gif",
+    "00 - Resources/Images/vault-structure-15.gif",
+    "00 - Resources/Images/vault-structure-14.gif",
+    "03 - Content/files/c2-redirectors.drawio.png",
+    "03 - Content/files/Pasted image 20210907124937.png",
+    "03 - Content/files/Pasted image 20210907120838.png",
+    "00 - Resources/Recordings/error win-xp.mp3",
+    "00 - Resources/Diagrams/Canvas/INICIO.canvas",
+    "00 - Recursos/Diagramas/Canvas/Ejemplo.canvas",
+    "00 - Recursos/Diagramas/Canvas/Sin título.canvas",
+    "00 - Recursos/Diagramas/Canvas/Sin título 1.canvas"
+  ]
+}

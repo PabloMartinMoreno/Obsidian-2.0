@@ -1,0 +1,210 @@
+{
+  "recentFiles": [
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "04 - Content/Process/Service Exploitation.md"
+    },
+    {
+      "basename": "Client-Side Exploitation",
+      "path": "04 - Content/Process/Client-Side Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Service Enumeration",
+      "path": "03 - Tertiary Categories/Service Enumeration.md"
+    },
+    {
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Process/Cross-Site Request Forgery (CSRF).md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "Directory Traversal",
+      "path": "04 - Content/Process/Directory Traversal.md"
+    },
+    {
+      "basename": "File Upload Vulnerabilities",
+      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
+    },
+    {
+      "basename": "HTTP Brute Forcing",
+      "path": "04 - Content/Process/HTTP Brute Forcing.md"
+    },
+    {
+      "basename": "Local File Inclusion (LFI)",
+      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
+    },
+    {
+      "basename": "PHP Filters",
+      "path": "04 - Content/Process/PHP Filters.md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/Process/OS Command Injection.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "MySQL Read & Write",
+      "path": "04 - Content/Process/MySQL Read & Write.md"
+    },
+    {
+      "basename": "SQLi Enumeration",
+      "path": "04 - Content/Process/SQLi Enumeration.md"
+    },
+    {
+      "basename": "SQLi to RCE",
+      "path": "04 - Content/Process/SQLi to RCE.md"
+    },
+    {
+      "basename": "XML External Entity (XXE)",
+      "path": "04 - Content/Process/XML External Entity (XXE).md"
+    },
+    {
+      "basename": "Union-based SQLi",
+      "path": "04 - Content/Process/Union-based SQLi.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "Infrastructure Enumeration",
+      "path": "03 - Tertiary Categories/Infrastructure Enumeration.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+    },
+    {
+      "basename": "IIS Exploitation",
+      "path": "04 - Content/Process/IIS Exploitation.md"
+    },
+    {
+      "basename": "WordPress Exploitation",
+      "path": "04 - Content/Process/WordPress Exploitation.md"
+    },
+    {
+      "basename": "sqlmap",
+      "path": "04 - Content/Process/sqlmap.md"
+    },
+    {
+      "basename": "RDP Exploitation (3389)",
+      "path": "04 - Content/Process/RDP Exploitation (3389).md"
+    },
+    {
+      "basename": "SSH Exploitation (22)",
+      "path": "04 - Content/Process/SSH Exploitation (22).md"
+    },
+    {
+      "basename": "Evil Microsoft Office Macro",
+      "path": "04 - Content/Process/Evil Microsoft Office Macro.md"
+    },
+    {
+      "basename": "Evil Windows Library File",
+      "path": "04 - Content/Process/Evil Windows Library File.md"
+    },
+    {
+      "basename": "Silver Tickets",
+      "path": "04 - Content/Process/Silver Tickets.md"
+    },
+    {
+      "basename": "Password Spraying",
+      "path": "04 - Content/Process/Password Spraying.md"
+    },
+    {
+      "basename": "Kerberoasting",
+      "path": "02 - Secondary Categories/Kerberoasting.md"
+    },
+    {
+      "basename": "DCSync",
+      "path": "04 - Content/Process/DCSync.md"
+    },
+    {
+      "basename": "AS-REP Roasting",
+      "path": "04 - Content/Process/AS-REP Roasting.md"
+    },
+    {
+      "basename": "ACL Abuse",
+      "path": "04 - Content/Process/ACL Abuse.md"
+    },
+    {
+      "basename": "Pre-Exploitation",
+      "path": "02 - Secondary Categories/Pre-Exploitation.md"
+    },
+    {
+      "basename": "_primary category",
+      "path": "05 - Templates/04 - Category/_primary category.md"
+    },
+    {
+      "basename": "Credential Harvesting",
+      "path": "02 - Secondary Categories/Credential Harvesting.md"
+    },
+    {
+      "basename": "C2 Tradecraft & Profiles",
+      "path": "02 - Secondary Categories/C2 Tradecraft & Profiles.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "Wireless Security",
+      "path": "01 - Primary Categories/Wireless Security.md"
+    },
+    {
+      "basename": "Web Application Security",
+      "path": "01 - Primary Categories/Web Application Security.md"
+    },
+    {
+      "basename": "Vault Administration",
+      "path": "01 - Primary Categories/Vault Administration.md"
+    },
+    {
+      "basename": "Training",
+      "path": "01 - Primary Categories/Training.md"
+    },
+    {
+      "basename": "Threat Intelligence",
+      "path": "01 - Primary Categories/Threat Intelligence.md"
+    }
+  ],
+  "omittedPaths": [],
+  "omittedTags": [],
+  "updateOn": "file-open",
+  "omitBookmarks": false,
+  "maxLength": null,
+  "openType": "tab"
+}
