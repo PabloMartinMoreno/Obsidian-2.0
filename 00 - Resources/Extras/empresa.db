@@ -1,0 +1,82 @@
+START TRANSACTION;
+CREATE TABLE IF NOT EXISTS empleados (
+    ID INT AUTO_INCREMENT,
+    NOMBRE VARCHAR(255),
+    APELLIDO VARCHAR(255),
+    EMAIL TEXT NOT NULL,
+    POSICION VARCHAR(255),
+    ESPECIALIDAD VARCHAR(255),
+    PRIMARY KEY (ID)
+);
+CREATE TABLE IF NOT EXISTS clientes (
+    ID INT AUTO_INCREMENT,
+    NOMBRE_EMPRESA TEXT,
+    CONTACTO TEXT,
+    EMAIL TEXT NOT NULL,
+    SECTOR VARCHAR(255),
+    PRIMARY KEY (ID)
+);
+CREATE TABLE IF NOT EXISTS proyectos (
+    ID INT AUTO_INCREMENT,
+    NOMBRE_PROYECTO TEXT,
+    ID_CLIENTE INT,
+    FECHA_INICIO DATE,
+    FECHA_FIN DATE,
+    ESTADO VARCHAR(255),
+    DURACION INT,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (ID_CLIENTE) REFERENCES clientes(ID)
+);
+CREATE TABLE IF NOT EXISTS herramientas (
+    ID INT AUTO_INCREMENT,
+    NOMBRE TEXT,
+    TIPO VARCHAR(255),
+    DESCRIPCION TEXT,
+    PRIMARY KEY (ID)
+);
+CREATE TABLE IF NOT EXISTS incidentes (
+    ID INT AUTO_INCREMENT,
+    ID_CLIENTE INT,
+    FECHA DATE,
+    TIPO_INCIDENTE VARCHAR(255),
+    DESCRIPCION TEXT,
+    RESUELTO BOOLEAN,
+    COSTO_RECUPERACION DECIMAL(10, 2),
+    PRIMARY KEY (ID),
+    FOREIGN KEY (ID_CLIENTE) REFERENCES clientes(ID)
+);
+INSERT INTO empleados VALUES (1,'Naruto','Rodriguez','naruto.rodriguez@hixec.com','Ingeniero de Seguridad','Pentesting');
+INSERT INTO empleados VALUES (2,'Sasuke','Gomez','sasuke.gomez@hixec.com','Consultor de Seguridad','Gestión de incidentes');
+INSERT INTO empleados VALUES (3,'Goku','Jose','goku.jose@hixec.com','Analista de Seguridad','Seguridad de aplicaciones');
+INSERT INTO empleados VALUES (4,'Vegeta','Perez','vegeta.perez@hixec.com','Especialista en Ciberseguridad','Criptografía');
+INSERT INTO empleados VALUES (5,'ElPana','Eduardo','lionel.messi@hixec.com','Director de Seguridad','Gestión de riesgos');
+INSERT INTO empleados VALUES (6,'ElBicho','SIU','cristiano.ronaldo@hixec.com','Analista de Malware','Análisis forense digital');
+INSERT INTO empleados VALUES (7,'Elon','Jobs','elon.jobs@hixec.com','Consultor de Seguridad','Cumplimiento de normativas');
+INSERT INTO clientes VALUES (1,'Konoha Tech Solutions','Kakashi Carrasco','kakashi.carrasco@konohatech.com','Tecnología');
+INSERT INTO clientes VALUES (2,'Capsule Corp Innovations','Bulma Maria','bulma.maria@capsulecorp.com','Investigación y Desarrollo');
+INSERT INTO clientes VALUES (3,'Spider Marketing Digital','Pedro Parques','magiaypatadita@spidermktdigital.com','Marketing');
+INSERT INTO clientes VALUES (4,'SayaGym','Gohan Alberto','gohan.fit@sayagym.com','Salud y Bienestar');
+INSERT INTO clientes VALUES (5,'Panza Restaurant','Amadeo Llatres','amado.llatres@panza.com','Alimentación');
+INSERT INTO clientes VALUES (6,'Torneo de Artes Marciales','Mr. Russell','1133@torneomarciales.com','Entrenamiento');
+INSERT INTO clientes VALUES (7,'Kame House Publishing','Laín García','lain.garcia@kamehouse.com','Editorial');
+INSERT INTO proyectos VALUES (1,'Auditoría de Seguridad IT',1,'2023-01-15','2023-02-28','Completo',44);
+INSERT INTO proyectos VALUES (2,'Implementación de Firewall',2,'2023-03-01','2023-03-25','En progreso',24);
+INSERT INTO proyectos VALUES (3,'Formación en Concienciación sobre Phishing',3,'2023-03-10','2023-04-01','Completo',22);
+INSERT INTO proyectos VALUES (4,'Desarrollo de Plan de Respuesta a Incidentes',4,'2023-02-20','2023-03-15','Completo',23);
+INSERT INTO proyectos VALUES (5,'Evaluación de Riesgos de Seguridad',5,'2023-01-25','2023-02-15','En progreso',21);
+INSERT INTO proyectos VALUES (6,'Análisis Forense Digital',6,'2023-03-05','2023-04-10','Completo',36);
+INSERT INTO proyectos VALUES (7,'Consultoría en Cumplimiento de GDPR',7,'2023-02-01','2023-02-28','En progreso',27);
+INSERT INTO herramientas VALUES (1,'Nmap','Análisis de Red','Herramienta de exploración de red y auditoría de seguridad. Permite descubrir dispositivos y servicios en la red.');
+INSERT INTO herramientas VALUES (2,'Wireshark','Análisis de Tráfico','Analizador de protocolos para entender el tráfico de red y diagnosticar problemas.');
+INSERT INTO herramientas VALUES (3,'MetasploitF','Explotación','Framework para desarrollar, probar y ejecutar exploits. Utilizada en pruebas de penetración.');
+INSERT INTO herramientas VALUES (4,'Burp Suite','Seguridad Web','Herramienta integrada para el análisis de seguridad de aplicaciones web. Facilita la prueba de la seguridad de las aplicaciones web.');
+INSERT INTO herramientas VALUES (5,'Hashcat','Seguridad de Contraseñas','Herramienta para partile toda la cara a las contraseñas encriptadas basada en el uso de CPUs y GPUs. Soporta muchos algoritmos de cifrado.');
+INSERT INTO herramientas VALUES (6,'SMBClient','Exploración de Recursos','Herramienta de línea de comandos que permite a los usuarios acceder a recursos compartidos en servidores SMB/CIFS, útil para pruebas de penetración y diagnóstico de problemas de red.');
+INSERT INTO incidentes VALUES (1,1,'2023-03-15','Phishing','Ataque de phishing dirigido a empleados',1,1500);
+INSERT INTO incidentes VALUES (2,2,'2023-02-28','Ransomware','Infección por ransomware en la red corporativa',0,3000);
+INSERT INTO incidentes VALUES (3,3,'2023-03-10','Fuga de Datos','Exposición accidental de datos confidenciales',1,2000);
+INSERT INTO incidentes VALUES (4,4,'2023-01-22','Ataque DDoS','Ataque DDoS que afectó la disponibilidad del sitio web',1,2500);
+INSERT INTO incidentes VALUES (5,5,'2023-03-05','Malware','Detección de malware en estaciones de trabajo',0,1800);
+INSERT INTO incidentes VALUES (6,6,'2023-02-12','Violación de Seguridad','Acceso no autorizado a información sensible',1,2200);
+INSERT INTO incidentes VALUES (7,7,'2023-03-20','Compromiso de Credenciales','Compromiso de credenciales de acceso a través de técnica de spear phishing',0,5000);
+COMMIT;
