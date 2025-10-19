@@ -118,7 +118,8 @@
               "title": "Etiquetas"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -277,12 +278,13 @@
   },
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
-    "03 - Tertiary Categories/Web Enumeration.md",
+    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
     "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "04 - Content/Process/GitHub Dorking.md",
     "03 - Tertiary Categories/Service Enumeration.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
     "01 - Primary Categories/Penetration Test.md",
-    "03 - Tertiary Categories/Infrastructure Enumeration.md",
     "03 - Tertiary Categories/Cloud Enumeration.md",
     "04 - Content/Process/Active Directory Lateral Movement.md",
     "02 - Secondary Categories/Active Directory.md",
@@ -302,7 +304,6 @@
     "04 - Content/Process/NTLM Pass-the-Hash.md",
     "04 - Content/Process/Kerberos Pass-the-Ticket.md",
     "02 - Secondary Categories/Exploitation.md",
-    "04 - Content/Process/JtR Conversions.md",
     "LXC ",
     "Writeable /etc",
     "Writeable ",

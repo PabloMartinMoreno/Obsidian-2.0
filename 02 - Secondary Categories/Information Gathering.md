@@ -12,17 +12,18 @@ type: Secondary Category
 
 ***
 
-## 🖥️[[Active Directory Enumeration]]
+## 🌿[[Passive Reconnaissance & OSINT]]
 
 
 ***
 
+## 🖥️[[Active Directory Enumeration]]
 ## ☁️[[Cloud Enumeration]]
 
 
 ***
 
-## 🏗️[[Infrastructure Enumeration]]
+
 
 
 ***

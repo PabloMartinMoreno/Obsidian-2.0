@@ -5,6 +5,18 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/Process/GitHub Dorking.md"
+    },
+    {
+      "basename": "Service Enumeration",
+      "path": "03 - Tertiary Categories/Service Enumeration.md"
+    },
+    {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
@@ -13,16 +25,8 @@
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "Service Enumeration",
-      "path": "03 - Tertiary Categories/Service Enumeration.md"
-    },
-    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Infrastructure Enumeration",
-      "path": "03 - Tertiary Categories/Infrastructure Enumeration.md"
     },
     {
       "basename": "Cloud Enumeration",
@@ -147,10 +151,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "OSINT",
-      "path": "01 - Primary Categories/OSINT.md"
     },
     {
       "basename": "OS Internals",
