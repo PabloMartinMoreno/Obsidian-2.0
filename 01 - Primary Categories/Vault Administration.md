@@ -1,9 +1,8 @@
 ---
 aliases:
 tags:
-  - primary_category
   - vault_administration
-  - type/moc
+  - type/moc/primary_category
 primary categories:
   - "[[000 - Global Index]]"
 type: Primary Category

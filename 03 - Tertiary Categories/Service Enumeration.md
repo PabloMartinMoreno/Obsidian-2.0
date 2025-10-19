@@ -2,9 +2,8 @@
 aliases:
   - Enumeración de Servicios
 tags:
-  - tertiary_category
   - "#pentesting/recognition"
-  - type/moc
+  - type/moc/tertiary_category
   - service/generic
 primary categories:
   - "[[Penetration Test]]"

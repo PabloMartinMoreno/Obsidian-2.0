@@ -1,9 +1,8 @@
 ---
 aliases:
 tags:
-  - secondary_category
   - "#pentesting/lateral_movement"
-  - type/moc
+  - type/moc/secondary_category
 primary categories:
   - "[[Penetration Test]]"
 type: Secondary Category
@@ -11,8 +10,19 @@ type: Secondary Category
 
 ***
 
-## Subsection 1
+## [[Active Directory Lateral Movement]]
 
-* Add link(s) [[]] to related CONTENT
 
 ***
+
+## [[Windows Lateral Movement]]
+
+
+***
+
+## [[Pivoting]]
+
+
+***
+
+## [[Tunneling]]

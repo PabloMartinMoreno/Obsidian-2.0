@@ -2,10 +2,9 @@
 aliases:
   - Enumeración de Active Directory
 tags:
-  - tertiary_category
   - "#pentesting/recognition"
   - ad/enumeration
-  - type/moc
+  - type/moc/tertiary_category
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

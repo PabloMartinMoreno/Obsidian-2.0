@@ -1,9 +1,9 @@
 ---
 aliases:
 tags:
-  - tertiary_category
   - "#pentesting/recognition"
-  - type/moc
+  - type/moc/tertiary_category
+  - web/enumeration
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

@@ -3,14 +3,17 @@ aliases:
 tags:
   - type/moc/tertiary_category
 primary categories:
+  - "[[Penetration Test]]"
 secondary categories:
+  - "[[Lateral Movement]]"
+  - "[[Active Directory]]"
 type: Tertiary Category
 ---
-# <% tp.file.title %>
+# Active Directory Lateral Movement
 
 ***
 
-## Subsection 1
+## 
 
 
 

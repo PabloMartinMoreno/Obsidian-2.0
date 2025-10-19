@@ -1,9 +1,8 @@
 ---
 aliases:
 tags:
-  - secondary_category
   - "#pentesting/procedures"
-  - type/moc
+  - type/moc/secondary_category
 primary categories:
   - "[[Penetration Test]]"
 type: Secondary Category
@@ -11,8 +10,22 @@ type: Secondary Category
 
 ***
 
-## Subsection 1
+## [[Active Directory Compromise]]
 
-* Add link(s) [[]] to related CONTENT
+
+***
+
+## [[Linux Enumeration & Privilege Escalation]]
+
+
+***
+
+## [[Web Pentesting]]
+
+
+***
+
+## [[Windows Enumeration & Privilege Escalation]]
+
 
 ***

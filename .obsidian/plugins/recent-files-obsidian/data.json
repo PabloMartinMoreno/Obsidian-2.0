@@ -1,204 +1,204 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Service Enumeration",
-      "path": "03 - Tertiary Categories/Service Enumeration.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Infrastructure Enumeration",
-      "path": "03 - Tertiary Categories/Infrastructure Enumeration.md"
+      "basename": "Cross-Compiling Exploit Code",
+      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
     },
     {
       "basename": "Pre-Exploitation",
       "path": "02 - Secondary Categories/Pre-Exploitation.md"
     },
     {
+      "basename": "Shells",
+      "path": "04 - Content/Process/Shells.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Post-Exploitation",
       "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
+      "basename": "Procedures",
+      "path": "02 - Secondary Categories/Procedures.md"
     },
     {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
     },
     {
-      "basename": "Hashcat",
-      "path": "04 - Content/Process/Hashcat.md"
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "John The Ripper",
-      "path": "04 - Content/Process/John The Ripper.md"
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
     },
     {
-      "basename": "Processes & Programs",
-      "path": "04 - Content/Process/Processes & Programs.md"
+      "basename": "Tunneling",
+      "path": "04 - Content/Process/Tunneling.md"
     },
     {
-      "basename": "Windows Version Exploits",
-      "path": "04 - Content/Process/Windows Version Exploits.md"
+      "basename": "Pivoting",
+      "path": "04 - Content/Process/Pivoting.md"
     },
     {
-      "basename": "Windows PrivEsc Payloads",
-      "path": "04 - Content/Process/Windows PrivEsc Payloads.md"
+      "basename": "Windows Lateral Movement",
+      "path": "04 - Content/Process/Windows Lateral Movement.md"
     },
     {
-      "basename": "Windows Credential Hunting",
-      "path": "04 - Content/Process/Windows Credential Hunting.md"
+      "basename": "WMI and WinRM",
+      "path": "04 - Content/Process/WMI and WinRM.md"
     },
     {
-      "basename": "Weak Service Permissions",
-      "path": "04 - Content/Process/Weak Service Permissions.md"
+      "basename": "SMB Net-NTLM Relay",
+      "path": "04 - Content/Process/SMB Net-NTLM Relay.md"
     },
     {
-      "basename": "VMDK, VHD and VHDX files",
-      "path": "04 - Content/Process/VMDK, VHD and VHDX files.md"
+      "basename": "PsExec",
+      "path": "04 - Content/Process/PsExec.md"
     },
     {
-      "basename": "Unquoted Service Paths",
-      "path": "04 - Content/Process/Unquoted Service Paths.md"
+      "basename": "NTLM Pass-the-Hash",
+      "path": "04 - Content/Process/NTLM Pass-the-Hash.md"
     },
     {
-      "basename": "Scheduled Task Abuse",
-      "path": "04 - Content/Process/Scheduled Task Abuse.md"
+      "basename": "Kerberos Pass-the-Ticket",
+      "path": "04 - Content/Process/Kerberos Pass-the-Ticket.md"
     },
     {
-      "basename": "Malicious SCF and LNK Files",
-      "path": "04 - Content/Process/Malicious SCF and LNK Files.md"
+      "basename": "Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
     },
     {
-      "basename": "DLL Hijacking",
-      "path": "04 - Content/Process/DLL Hijacking.md"
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
-      "basename": "AlwaysInstallElevated",
-      "path": "04 - Content/Process/AlwaysInstallElevated.md"
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
-      "basename": "SeTakeOwnershipPrivilege",
-      "path": "04 - Content/Process/SeTakeOwnershipPrivilege.md"
+      "basename": "JtR Conversions",
+      "path": "04 - Content/Process/JtR Conversions.md"
     },
     {
-      "basename": "SeLoadDriverPrivilege",
-      "path": "04 - Content/Process/SeLoadDriverPrivilege.md"
+      "basename": "_primary category",
+      "path": "05 - Templates/04 - Category/_primary category.md"
     },
     {
-      "basename": "SeImpersonate & SeAssignPrimaryToken",
-      "path": "04 - Content/Process/SeImpersonate & SeAssignPrimaryToken.md"
+      "basename": "_tertiary category",
+      "path": "05 - Templates/04 - Category/_tertiary category.md"
     },
     {
-      "basename": "SeDebugPrivilege",
-      "path": "04 - Content/Process/SeDebugPrivilege.md"
+      "basename": "_secondary category",
+      "path": "05 - Templates/04 - Category/_secondary category.md"
     },
     {
-      "basename": "SeBackup & SeRestore",
-      "path": "04 - Content/Process/SeBackup & SeRestore.md"
+      "basename": "Wireless Security",
+      "path": "01 - Primary Categories/Wireless Security.md"
     },
     {
-      "basename": "User Privileges",
-      "path": "04 - Content/Process/User Privileges.md"
+      "basename": "Web Application Security",
+      "path": "01 - Primary Categories/Web Application Security.md"
     },
     {
-      "basename": "NTDS Dumping",
-      "path": "04 - Content/Process/NTDS Dumping.md"
+      "basename": "Vault Administration",
+      "path": "01 - Primary Categories/Vault Administration.md"
     },
     {
-      "basename": "Credential Guard Bypass",
-      "path": "04 - Content/Process/Credential Guard Bypass.md"
+      "basename": "Training",
+      "path": "01 - Primary Categories/Training.md"
     },
     {
-      "basename": "LSASS Memory Dumping",
-      "path": "04 - Content/Process/LSASS Memory Dumping.md"
+      "basename": "Threat Intelligence",
+      "path": "01 - Primary Categories/Threat Intelligence.md"
     },
     {
-      "basename": "SAM & LSA Dumping",
-      "path": "04 - Content/Process/SAM & LSA Dumping.md"
+      "basename": "Social Engineering",
+      "path": "01 - Primary Categories/Social Engineering.md"
     },
     {
-      "basename": "Secret Dumping",
-      "path": "04 - Content/Process/Secret Dumping.md"
+      "basename": "Reporting",
+      "path": "01 - Primary Categories/Reporting.md"
     },
     {
-      "basename": "Server Operators",
-      "path": "04 - Content/Process/Server Operators.md"
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
     },
     {
-      "basename": "Print Operators",
-      "path": "04 - Content/Process/Print Operators.md"
+      "basename": "OSINT",
+      "path": "01 - Primary Categories/OSINT.md"
     },
     {
-      "basename": "Hyper-V Administrators",
-      "path": "04 - Content/Process/Hyper-V Administrators.md"
+      "basename": "OS Internals",
+      "path": "01 - Primary Categories/OS Internals.md"
     },
     {
-      "basename": "Event Log Readers",
-      "path": "04 - Content/Process/Event Log Readers.md"
+      "basename": "Development",
+      "path": "01 - Primary Categories/Development.md"
     },
     {
-      "basename": "DnsAdmins",
-      "path": "04 - Content/Process/DnsAdmins.md"
+      "basename": "Detection Engineering",
+      "path": "01 - Primary Categories/Detection Engineering.md"
     },
     {
-      "basename": "Backup Operators",
-      "path": "04 - Content/Process/Backup Operators.md"
+      "basename": "Cryptography",
+      "path": "01 - Primary Categories/Cryptography.md"
     },
     {
-      "basename": "Users & Groups",
-      "path": "04 - Content/Process/Users & Groups.md"
+      "basename": "Cloud Security",
+      "path": "01 - Primary Categories/Cloud Security.md"
     },
     {
-      "basename": "Linux PrivEsc Payloads",
-      "path": "04 - Content/Process/Linux PrivEsc Payloads.md"
+      "basename": "Artificial Intelligence",
+      "path": "01 - Primary Categories/Artificial Intelligence.md"
     },
     {
-      "basename": "Linux Credential Hunting",
-      "path": "04 - Content/Process/Linux Credential Hunting.md"
+      "basename": "Weaponization",
+      "path": "02 - Secondary Categories/Weaponization.md"
     },
     {
-      "basename": "Wildcard Injection",
-      "path": "04 - Content/Process/Wildcard Injection.md"
+      "basename": "PowerShell",
+      "path": "02 - Secondary Categories/PowerShell.md"
     },
     {
-      "basename": "Tmux Session Hijacking",
-      "path": "04 - Content/Process/Tmux Session Hijacking.md"
+      "basename": "Payload Engineering",
+      "path": "02 - Secondary Categories/Payload Engineering.md"
     },
     {
-      "basename": "SUID & SGID Binaries",
-      "path": "04 - Content/Process/SUID & SGID Binaries.md"
+      "basename": "Online Courses",
+      "path": "02 - Secondary Categories/Online Courses.md"
+    },
+    {
+      "basename": "OffSec",
+      "path": "02 - Secondary Categories/OffSec.md"
+    },
+    {
+      "basename": "Obsidian",
+      "path": "02 - Secondary Categories/Obsidian.md"
+    },
+    {
+      "basename": "Metasploit",
+      "path": "02 - Secondary Categories/Metasploit.md"
+    },
+    {
+      "basename": "Learning Techniques",
+      "path": "02 - Secondary Categories/Learning Techniques.md"
+    },
+    {
+      "basename": "Kerberoasting",
+      "path": "02 - Secondary Categories/Kerberoasting.md"
+    },
+    {
+      "basename": "Hack the Box",
+      "path": "02 - Secondary Categories/Hack the Box.md"
+    },
+    {
+      "basename": "Domain Enumeration",
+      "path": "02 - Secondary Categories/Domain Enumeration.md"
     }
   ],
   "omittedPaths": [],

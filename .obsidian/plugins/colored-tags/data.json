@@ -171,7 +171,13 @@
     "pentesting/recognition": 19,
     "infrastructure/cloud": 1,
     "service": 119,
-    "service/generic": 1
+    "service/generic": 1,
+    "web/enumeration": 1,
+    "type/moc/tertiary_category": 1,
+    "type/moc/secondary_category": 2,
+    "": 120,
+    "type/moc/primary_category": 3,
+    "status": 121
   },
   "_version": 3
 }

@@ -2,9 +2,8 @@
 aliases:
   - Enumeración de Infraestructura
 tags:
-  - tertiary_category
   - "#pentesting/recognition"
-  - type/moc
+  - type/moc/tertiary_category
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

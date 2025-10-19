@@ -2,9 +2,8 @@
 aliases:
   - Ingeniería Inversa
 tags:
-  - tertiary_category
   - "#pentesting/recognition"
-  - type/moc
+  - type/moc/tertiary_category
   - type/technique
 primary categories:
   - "[[Penetration Test]]"
