@@ -1,12 +1,72 @@
 {
   "recentFiles": [
     {
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
+    },
+    {
+      "basename": "Users & Groups",
+      "path": "04 - Content/Process/Users & Groups.md"
+    },
+    {
+      "basename": "Operating System & Architecture",
+      "path": "04 - Content/Process/Operating System & Architecture.md"
+    },
+    {
+      "basename": "Network",
+      "path": "04 - Content/Process/Network.md"
+    },
+    {
+      "basename": "File System",
+      "path": "04 - Content/Process/File System.md"
+    },
+    {
+      "basename": "Programs",
+      "path": "04 - Content/Process/Programs.md"
+    },
+    {
+      "basename": "Processes & Services",
+      "path": "04 - Content/Process/Processes & Services.md"
+    },
+    {
+      "basename": "Security",
+      "path": "04 - Content/Process/Security.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "_secondary category",
+      "path": "05 - Templates/04 - Category/_secondary category.md"
+    },
+    {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
       "basename": "Web Exploitation",
@@ -19,18 +79,6 @@
     {
       "basename": "Client-Side Exploitation",
       "path": "04 - Content/Process/Client-Side Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Service Enumeration",
@@ -151,54 +199,6 @@
     {
       "basename": "DCSync",
       "path": "04 - Content/Process/DCSync.md"
-    },
-    {
-      "basename": "AS-REP Roasting",
-      "path": "04 - Content/Process/AS-REP Roasting.md"
-    },
-    {
-      "basename": "ACL Abuse",
-      "path": "04 - Content/Process/ACL Abuse.md"
-    },
-    {
-      "basename": "Pre-Exploitation",
-      "path": "02 - Secondary Categories/Pre-Exploitation.md"
-    },
-    {
-      "basename": "_primary category",
-      "path": "05 - Templates/04 - Category/_primary category.md"
-    },
-    {
-      "basename": "Credential Harvesting",
-      "path": "02 - Secondary Categories/Credential Harvesting.md"
-    },
-    {
-      "basename": "C2 Tradecraft & Profiles",
-      "path": "02 - Secondary Categories/C2 Tradecraft & Profiles.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Wireless Security",
-      "path": "01 - Primary Categories/Wireless Security.md"
-    },
-    {
-      "basename": "Web Application Security",
-      "path": "01 - Primary Categories/Web Application Security.md"
-    },
-    {
-      "basename": "Vault Administration",
-      "path": "01 - Primary Categories/Vault Administration.md"
-    },
-    {
-      "basename": "Training",
-      "path": "01 - Primary Categories/Training.md"
-    },
-    {
-      "basename": "Threat Intelligence",
-      "path": "01 - Primary Categories/Threat Intelligence.md"
     }
   ],
   "omittedPaths": [],

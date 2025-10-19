@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Linux Post-Exploitation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Penetration Test"
+              "title": "Linux Post-Exploitation"
             }
           }
         ],
@@ -119,7 +119,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Linux Post-Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Gráfico de Linux Post-Exploitation"
             }
           },
           {
@@ -278,32 +278,32 @@
   },
   "active": "21c47f962b1ac5f4",
   "lastOpenFiles": [
+    "04 - Content/Process/Users & Groups.md",
+    "04 - Content/Process/Linux Post-Exploitation.md",
+    "04 - Content/Process/Operating System & Architecture.md",
+    "04 - Content/Process/Network.md",
+    "04 - Content/Process/File System.md",
+    "04 - Content/Process/Programs.md",
+    "04 - Content/Process/Processes & Services.md",
+    "04 - Content/Process/Security.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
+    "04 - Content/Process/Windows Post-Exploitation.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "02 - Secondary Categories/Active Directory.md",
+    "05 - Templates/04 - Category/_secondary category.md",
     "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Process/Active Directory Exploitation.md",
     "04 - Content/Process/Web Exploitation.md",
     "04 - Content/Process/Service Exploitation.md",
     "04 - Content/Process/Client-Side Exploitation.md",
-    "04 - Content/Process/Active Directory Exploitation.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "01 - Primary Categories/Penetration Test.md",
     "03 - Tertiary Categories/Service Enumeration.md",
     "04 - Content/Process/Cross-Site Request Forgery (CSRF).md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/Directory Traversal.md",
     "04 - Content/Process/File Upload Vulnerabilities.md",
     "04 - Content/Process/HTTP Brute Forcing.md",
-    "04 - Content/Process/Local File Inclusion (LFI).md",
-    "04 - Content/Process/PHP Filters.md",
-    "04 - Content/Process/OS Command Injection.md",
-    "04 - Content/Process/SQL Injection (SQLi).md",
-    "04 - Content/Process/MySQL Read & Write.md",
-    "04 - Content/Process/SQLi Enumeration.md",
-    "04 - Content/Process/SQLi to RCE.md",
-    "04 - Content/Process/XML External Entity (XXE).md",
-    "04 - Content/Process/Union-based SQLi.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "03 - Tertiary Categories/Reverse Engineering.md",
-    "03 - Tertiary Categories/Infrastructure Enumeration.md",
     "03 - Tertiary Categories",
     "00 - Resources/Pasted image 20251018002239.png",
     "05 - Templates/04 - Category",
