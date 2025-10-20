@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
+      "basename": "Object Permissions Enumeration (AD)",
+      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Users & Groups Enumeration (AD)",
+      "path": "04 - Content/Users & Groups Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
+    },
+    {
+      "basename": "_cheatsheet",
+      "path": "05 - Templates/04 - Type/_cheatsheet.md"
+    },
+    {
+      "basename": "_command",
+      "path": "05 - Templates/04 - Type/_command.md"
+    },
+    {
+      "basename": "Pivoting Reconnaissance",
+      "path": "04 - Content/Process/Pivoting Reconnaissance.md"
+    },
+    {
+      "basename": "Password Policy Enumeration (AD)",
+      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
     },
     {
       "basename": "Penetration Test",
@@ -23,18 +47,6 @@
     {
       "basename": "_temp",
       "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
-      "basename": "_cheatsheet",
-      "path": "05 - Templates/04 - Type/_cheatsheet.md"
-    },
-    {
-      "basename": "Users & Groups Enumeration (AD)",
-      "path": "04 - Content/Users & Groups Enumeration (AD).md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
       "basename": "_vulnerability",
@@ -63,10 +75,6 @@
     {
       "basename": "_concept",
       "path": "05 - Templates/04 - Type/_concept.md"
-    },
-    {
-      "basename": "_command",
-      "path": "05 - Templates/04 - Type/_command.md"
     },
     {
       "basename": "_tertiary category",
@@ -191,14 +199,6 @@
     {
       "basename": "Msfvenom Encoders",
       "path": "04 - Content/Process/Msfvenom Encoders.md"
-    },
-    {
-      "basename": "Payload Generation",
-      "path": "04 - Content/Process/Payload Generation.md"
-    },
-    {
-      "basename": "Shellter",
-      "path": "04 - Content/Process/Shellter.md"
     }
   ],
   "omittedPaths": [],

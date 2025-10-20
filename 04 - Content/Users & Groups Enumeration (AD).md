@@ -15,6 +15,8 @@ tertiary categories:
   - "[[Active Directory Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[BloodHound & SharpHound]]"
+  - "[[LSASS]]"
 ---
 # Users & Groups Enumeration (AD)
 

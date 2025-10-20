@@ -29,6 +29,7 @@
     "excalidraw-open-md": "checkbox",
     "excalidraw-embed-md": "checkbox",
     "relacionados": "multitext",
-    "tertiary categories": "multitext"
+    "tertiary categories": "multitext",
+    "linked": "multitext"
   }
 }

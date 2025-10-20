@@ -15,6 +15,8 @@ tertiary categories:
   - "[[Active Directory Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Pivoting Reconnaissance]]"
+  - "[[BloodHound & SharpHound]]"
 ---
 # Enumeración de Hosts
 
