@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Penetration Test"
+              "title": "Information Gathering"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Gráfico de Information Gathering"
             }
           },
           {
@@ -278,8 +278,8 @@
   },
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
-    "04 - Content/Process/Credential Cracking.md",
     "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/Credential Cracking.md",
     "02 - Secondary Categories/Procedures.md",
     "04 - Content/Process/Active Directory Compromise.md",
     "04 - Content/Process/Linux Enumeration & Privilege Escalation.md",
