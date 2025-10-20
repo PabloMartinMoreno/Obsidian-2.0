@@ -1,24 +1,172 @@
 {
   "recentFiles": [
     {
-      "basename": "Client-Side Exploitation",
-      "path": "04 - Content/Process/Client-Side Exploitation.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Credential Cracking",
+      "path": "04 - Content/Process/Credential Cracking.md"
+    },
+    {
+      "basename": "Procedures",
+      "path": "02 - Secondary Categories/Procedures.md"
+    },
+    {
+      "basename": "Persistence, Defense Evasion & C2",
+      "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
+    },
+    {
+      "basename": "Command & Control (C2)",
+      "path": "04 - Content/Process/Command & Control (C2).md"
+    },
+    {
+      "basename": "Defense Evasion",
+      "path": "04 - Content/Process/Defense Evasion.md"
+    },
+    {
+      "basename": "Persistence Techniques",
+      "path": "04 - Content/Process/Persistence Techniques.md"
+    },
+    {
+      "basename": "_secondary category",
+      "path": "05 - Templates/04 - Category/_secondary category.md"
+    },
+    {
+      "basename": "_primary category",
+      "path": "05 - Templates/04 - Category/_primary category.md"
+    },
+    {
+      "basename": "_tertiary category",
+      "path": "05 - Templates/04 - Category/_tertiary category.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
+      "basename": "Client-Side Exploitation",
+      "path": "04 - Content/Process/Client-Side Exploitation.md"
     },
     {
-      "basename": "Golden Tickets",
-      "path": "04 - Content/Process/Golden Tickets.md"
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
+    },
+    {
+      "basename": "Tunneling",
+      "path": "04 - Content/Process/Tunneling.md"
+    },
+    {
+      "basename": "Pivoting",
+      "path": "04 - Content/Process/Pivoting.md"
+    },
+    {
+      "basename": "Windows & Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
+    },
+    {
+      "basename": "LLMNR & NBT-NS Poisoning",
+      "path": "04 - Content/Process/LLMNR & NBT-NS Poisoning.md"
+    },
+    {
+      "basename": "Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
+    },
+    {
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+    },
+    {
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
+    },
+    {
+      "basename": "LXC -LXD Group",
+      "path": "04 - Content/Process/LXC -LXD Group.md"
+    },
+    {
+      "basename": "Pre-Exploitation",
+      "path": "02 - Secondary Categories/Pre-Exploitation.md"
+    },
+    {
+      "basename": "Staging & Listeners",
+      "path": "04 - Content/Process/Staging & Listeners.md"
+    },
+    {
+      "basename": "Metasploit multi-handler",
+      "path": "04 - Content/Process/Metasploit multi-handler.md"
+    },
+    {
+      "basename": "Payload Evasion",
+      "path": "04 - Content/Process/Payload Evasion.md"
+    },
+    {
+      "basename": "AMSI Bypasses",
+      "path": "04 - Content/Process/AMSI Bypasses.md"
+    },
+    {
+      "basename": "Templates",
+      "path": "04 - Content/Process/Templates.md"
+    },
+    {
+      "basename": "Msfvenom Encoders",
+      "path": "04 - Content/Process/Msfvenom Encoders.md"
+    },
+    {
+      "basename": "Payload Generation",
+      "path": "04 - Content/Process/Payload Generation.md"
+    },
+    {
+      "basename": "Shellter",
+      "path": "04 - Content/Process/Shellter.md"
+    },
+    {
+      "basename": "MSFVenom",
+      "path": "04 - Content/Process/MSFVenom.md"
+    },
+    {
+      "basename": "MSFConsole",
+      "path": "04 - Content/Process/MSFConsole.md"
     },
     {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "04 - Content/Process/Service Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "impacket",
+      "path": "04 - Content/Process/impacket.md"
+    },
+    {
+      "basename": "ntlmrelayx",
+      "path": "04 - Content/Process/ntlmrelayx.md"
+    },
+    {
+      "basename": "Responder",
+      "path": "04 - Content/Process/Responder.md"
+    },
+    {
+      "basename": "Searchsploit",
+      "path": "04 - Content/Process/Searchsploit.md"
+    },
+    {
+      "basename": "sqlmap",
+      "path": "04 - Content/Process/sqlmap.md"
+    },
+    {
+      "basename": "Golden Tickets",
+      "path": "04 - Content/Process/Golden Tickets.md"
     },
     {
       "basename": "Insecure Deserialization",
@@ -41,164 +189,12 @@
       "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
     },
     {
-      "basename": "Service Exploitation",
-      "path": "04 - Content/Process/Service Exploitation.md"
-    },
-    {
       "basename": "vsftpd 2.3.4",
       "path": "04 - Content/Process/vsftpd 2.3.4.md"
     },
     {
       "basename": "ProFTPD 1.3.3c",
       "path": "04 - Content/Process/ProFTPD 1.3.3c.md"
-    },
-    {
-      "basename": "Log4Shell (JNDI Injection)",
-      "path": "04 - Content/Process/Log4Shell (JNDI Injection).md"
-    },
-    {
-      "basename": "BlueKeep (RDP)",
-      "path": "04 - Content/Process/BlueKeep (RDP).md"
-    },
-    {
-      "basename": "EternalBlue (SMB)",
-      "path": "04 - Content/Process/EternalBlue (SMB).md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Pre-Exploitation",
-      "path": "02 - Secondary Categories/Pre-Exploitation.md"
-    },
-    {
-      "basename": "Payload Generation",
-      "path": "04 - Content/Process/Payload Generation.md"
-    },
-    {
-      "basename": "Payload Evasion",
-      "path": "04 - Content/Process/Payload Evasion.md"
-    },
-    {
-      "basename": "Staging & Listeners",
-      "path": "04 - Content/Process/Staging & Listeners.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "FeroxBuster",
-      "path": "04 - Content/Process/FeroxBuster.md"
-    },
-    {
-      "basename": "RustScan",
-      "path": "04 - Content/Process/RustScan.md"
-    },
-    {
-      "basename": "BurpSuite",
-      "path": "04 - Content/Process/BurpSuite.md"
-    },
-    {
-      "basename": "GoBuster",
-      "path": "04 - Content/Process/GoBuster.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/Process/ffuf.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Wireshark",
-      "path": "04 - Content/Process/Wireshark.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
-      "basename": "Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "Windows Lateral Movement",
-      "path": "04 - Content/Process/Windows Lateral Movement.md"
-    },
-    {
-      "basename": "Procedures",
-      "path": "02 - Secondary Categories/Procedures.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "_secondary category",
-      "path": "05 - Templates/04 - Category/_secondary category.md"
-    },
-    {
-      "basename": "_primary category",
-      "path": "05 - Templates/04 - Category/_primary category.md"
-    },
-    {
-      "basename": "_tertiary category",
-      "path": "05 - Templates/04 - Category/_tertiary category.md"
-    },
-    {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/Process/GitHub Dorking.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Shells",
-      "path": "04 - Content/Process/Shells.md"
-    },
-    {
-      "basename": "Cross-Compiling Exploit Code",
-      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
-    },
-    {
-      "basename": "Tunneling",
-      "path": "04 - Content/Process/Tunneling.md"
-    },
-    {
-      "basename": "Pivoting",
-      "path": "04 - Content/Process/Pivoting.md"
-    },
-    {
-      "basename": "WMI and WinRM",
-      "path": "04 - Content/Process/WMI and WinRM.md"
-    },
-    {
-      "basename": "SMB Net-NTLM Relay",
-      "path": "04 - Content/Process/SMB Net-NTLM Relay.md"
     }
   ],
   "omittedPaths": [],

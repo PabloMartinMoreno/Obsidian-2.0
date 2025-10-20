@@ -1,23 +1,22 @@
 ---
 aliases:
 tags:
-  - "#pentesting/post-exploitation"
   - type/moc/secondary_category
 primary categories:
   - "[[Penetration Test]]"
 type: Secondary Category
 ---
-# Post-Exploitation
+# Credential Cracking
 
 ***
 
-## [[Linux Post-Exploitation]]
-
-
-***
-
-## [[Windows Post-Exploitation]]
+## Subsection 1
 
 
 ***
 
+
+- ### Herramientas 
+	- [[Hashcat]]
+	- [[John The Ripper]]
+		- [[JtR Conversions]]

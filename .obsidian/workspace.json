@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Client-Side Exploitation.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Client-Side Exploitation"
+              "title": "Penetration Test"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Client-Side Exploitation.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Client-Side Exploitation"
+              "title": "Gráfico de Penetration Test"
             }
           },
           {
@@ -278,32 +278,33 @@
   },
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
-    "02 - Secondary Categories/Exploitation.md",
-    "04 - Content/Process/Active Directory Exploitation.md",
-    "04 - Content/Process/Golden Tickets.md",
-    "04 - Content/Process/Web Exploitation.md",
-    "04 - Content/Process/Insecure Deserialization.md",
-    "04 - Content/Process/Server-Side Request Forgery (SSRF).md",
-    "04 - Content/Process/Authentication & Authorization Bypass.md",
-    "04 - Content/Process/BOLA - IDOR.md",
-    "04 - Content/Process/Server-Side Template Injection (SSTI).md",
-    "04 - Content/Process/Service Exploitation.md",
-    "04 - Content/Process/vsftpd 2.3.4.md",
-    "04 - Content/Process/ProFTPD 1.3.3c.md",
-    "04 - Content/Process/Log4Shell (JNDI Injection).md",
-    "04 - Content/Process/BlueKeep (RDP).md",
-    "04 - Content/Process/EternalBlue (SMB).md",
+    "04 - Content/Process/Credential Cracking.md",
     "01 - Primary Categories/Penetration Test.md",
+    "02 - Secondary Categories/Procedures.md",
+    "04 - Content/Process/Active Directory Compromise.md",
+    "04 - Content/Process/Linux Enumeration & Privilege Escalation.md",
+    "04 - Content/Process/Persistence, Defense Evasion & C2.md",
+    "04 - Content/Process/Command & Control (C2).md",
+    "04 - Content/Process/Defense Evasion.md",
+    "04 - Content/Process/Persistence Techniques.md",
+    "05 - Templates/04 - Category/_secondary category.md",
+    "05 - Templates/04 - Category/_primary category.md",
+    "05 - Templates/04 - Category/_tertiary category.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
+    "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Process/Client-Side Exploitation.md",
+    "02 - Secondary Categories/Lateral Movement.md",
+    "04 - Content/Process/Tunneling.md",
+    "04 - Content/Process/Pivoting.md",
+    "04 - Content/Process/Windows & Active Directory Lateral Movement.md",
+    "04 - Content/Process/LLMNR & NBT-NS Poisoning.md",
+    "04 - Content/Process/Active Directory Lateral Movement.md",
+    "04 - Content/Process/Windows Post-Exploitation.md",
+    "04 - Content/Process/Linux Post-Exploitation.md",
+    "04 - Content/Process/LXC -LXD Group.md",
     "02 - Secondary Categories/Pre-Exploitation.md",
-    "04 - Content/Process/Payload Generation.md",
-    "04 - Content/Process/Payload Evasion.md",
     "04 - Content/Process/Staging & Listeners.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Reverse Engineering.md",
-    "03 - Tertiary Categories/Cloud Enumeration.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "04 - Content/Process/FeroxBuster.md",
-    "04 - Content/Process/RustScan.md",
+    "Metasploit multi",
     "LXC ",
     "Writeable /etc",
     "Writeable ",
@@ -314,7 +315,6 @@
     "05 - Templates/04 - Category",
     "00 - Resources/Templates/_nivel",
     "00 - Resources/Templates/_ad",
-    "00 - Resources/Templates/_infraestructura",
     "00 - Resources/Images/Pasted image 20241007163018.png",
     "00 - Resources/Images/vault-structure-01.gif",
     "00 - Resources/Images/vault-structure-04.gif",

@@ -12,12 +12,7 @@ type: Secondary Category
 
 ***
 
-## [[Active Directory Lateral Movement]]
-
-
-***
-
-## [[Windows Lateral Movement]]
+## [[Windows & Active Directory Lateral Movement]]
 
 
 ***

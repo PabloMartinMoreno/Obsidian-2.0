@@ -1,26 +1,21 @@
 ---
 aliases:
+  - Comandos & Control (C2)
 tags:
   - type/moc/tertiary_category
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
-  - "[[Pre-Exploitation]]"
+  - "[[Persistence, Defense Evasion & C2]]"
 type: Tertiary Category
 ---
-# Staging & Listeners
+# Comandos & Control (C2)
 
 ***
 
-## Listeners Simples
+## C2
 
-- Netcat
-- Pwncat
-- Socat
-
-## Framework Handlers
-
-- [[Metasploit multi-handler]]
-
+- [[C2 Frameworks Overview]]
+- [[C2 Infrastructure]]
 
 ***

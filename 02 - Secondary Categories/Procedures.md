@@ -12,22 +12,22 @@ type: Secondary Category
 
 ***
 
-## [[Active Directory Compromise]]
+## [[CheckList - Active Directory Compromise]]
 
 
 ***
 
-## [[Linux Enumeration & Privilege Escalation]]
+## [[CheckList - Linux Enumeration & Privilege Escalation]]
 
 
 ***
 
-## [[Web Pentesting]]
+## [[CheckList - Web Pentesting]]
 
 
 ***
 
-## [[Windows Enumeration & Privilege Escalation]]
+## [[CheckList - Windows Enumeration & Privilege Escalation]]
 
 
 ***

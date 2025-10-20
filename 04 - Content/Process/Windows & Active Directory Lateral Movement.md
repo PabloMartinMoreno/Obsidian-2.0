@@ -9,7 +9,7 @@ secondary categories:
   - "[[Windows]]"
 type: Tertiary Category
 ---
-# Windows Lateral Movement
+# Movimiento Lateral de Windows y AD
 
 ***
 
@@ -17,6 +17,7 @@ type: Tertiary Category
 
 - [[Kerberos Pass-the-Ticket]]
 - [[NTLM Pass-the-Hash]]
+- [[LLMNR & NBT-NS Poisoning]]
 - [[PsExec]]
 - [[SMB Net-NTLM Relay]]
 - [[WMI and WinRM]]

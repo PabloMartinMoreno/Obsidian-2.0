@@ -1,23 +1,26 @@
 ---
 aliases:
 tags:
-  - "#pentesting/post-exploitation"
   - type/moc/secondary_category
 primary categories:
   - "[[Penetration Test]]"
 type: Secondary Category
 ---
-# Post-Exploitation
+# Persistence, Defense Evasion & C2
 
 ***
 
-## [[Linux Post-Exploitation]]
-
-
-***
-
-## [[Windows Post-Exploitation]]
+## [[Persistence Techniques]]
 
 
 ***
 
+## [[Defense Evasion]]
+
+
+***
+
+## [[Command & Control (C2)]]
+
+
+***

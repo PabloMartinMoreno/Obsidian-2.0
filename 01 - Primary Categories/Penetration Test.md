@@ -36,10 +36,17 @@ type: Primary Category
 
 ***
 
-## 🗒️[[Procedures]]
+## 🔵 [[Persistence, Defense Evasion & C2]]
 
 
 ***
 
+## 🧬 [[Credential Cracking]]
 
 
+***
+
+## 🗒️[[Procedures]]
+
+
+***
