@@ -1,24 +1,152 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Client-Side Exploitation",
+      "path": "04 - Content/Process/Client-Side Exploitation.md"
     },
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "Golden Tickets",
+      "path": "04 - Content/Process/Golden Tickets.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Insecure Deserialization",
+      "path": "04 - Content/Process/Insecure Deserialization.md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Process/Authentication & Authorization Bypass.md"
+    },
+    {
+      "basename": "BOLA - IDOR",
+      "path": "04 - Content/Process/BOLA - IDOR.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "04 - Content/Process/Service Exploitation.md"
+    },
+    {
+      "basename": "vsftpd 2.3.4",
+      "path": "04 - Content/Process/vsftpd 2.3.4.md"
+    },
+    {
+      "basename": "ProFTPD 1.3.3c",
+      "path": "04 - Content/Process/ProFTPD 1.3.3c.md"
+    },
+    {
+      "basename": "Log4Shell (JNDI Injection)",
+      "path": "04 - Content/Process/Log4Shell (JNDI Injection).md"
+    },
+    {
+      "basename": "BlueKeep (RDP)",
+      "path": "04 - Content/Process/BlueKeep (RDP).md"
+    },
+    {
+      "basename": "EternalBlue (SMB)",
+      "path": "04 - Content/Process/EternalBlue (SMB).md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Pre-Exploitation",
       "path": "02 - Secondary Categories/Pre-Exploitation.md"
+    },
+    {
+      "basename": "Payload Generation",
+      "path": "04 - Content/Process/Payload Generation.md"
+    },
+    {
+      "basename": "Payload Evasion",
+      "path": "04 - Content/Process/Payload Evasion.md"
+    },
+    {
+      "basename": "Staging & Listeners",
+      "path": "04 - Content/Process/Staging & Listeners.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "FeroxBuster",
+      "path": "04 - Content/Process/FeroxBuster.md"
+    },
+    {
+      "basename": "RustScan",
+      "path": "04 - Content/Process/RustScan.md"
+    },
+    {
+      "basename": "BurpSuite",
+      "path": "04 - Content/Process/BurpSuite.md"
+    },
+    {
+      "basename": "GoBuster",
+      "path": "04 - Content/Process/GoBuster.md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/Process/ffuf.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Wireshark",
+      "path": "04 - Content/Process/Wireshark.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
       "basename": "Lateral Movement",
       "path": "02 - Secondary Categories/Lateral Movement.md"
+    },
+    {
+      "basename": "Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
+    },
+    {
+      "basename": "Windows Lateral Movement",
+      "path": "04 - Content/Process/Windows Lateral Movement.md"
     },
     {
       "basename": "Procedures",
@@ -41,56 +169,12 @@
       "path": "05 - Templates/04 - Category/_tertiary category.md"
     },
     {
-      "basename": "Staging & Listeners",
-      "path": "04 - Content/Process/Staging & Listeners.md"
-    },
-    {
-      "basename": "Payload Evasion",
-      "path": "04 - Content/Process/Payload Evasion.md"
-    },
-    {
-      "basename": "Payload Generation",
-      "path": "04 - Content/Process/Payload Generation.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
       "basename": "GitHub Dorking",
       "path": "04 - Content/Process/GitHub Dorking.md"
     },
     {
-      "basename": "Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
-    },
-    {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
       "basename": "Shells",
@@ -109,96 +193,12 @@
       "path": "04 - Content/Process/Pivoting.md"
     },
     {
-      "basename": "Windows Lateral Movement",
-      "path": "04 - Content/Process/Windows Lateral Movement.md"
-    },
-    {
       "basename": "WMI and WinRM",
       "path": "04 - Content/Process/WMI and WinRM.md"
     },
     {
       "basename": "SMB Net-NTLM Relay",
       "path": "04 - Content/Process/SMB Net-NTLM Relay.md"
-    },
-    {
-      "basename": "PsExec",
-      "path": "04 - Content/Process/PsExec.md"
-    },
-    {
-      "basename": "NTLM Pass-the-Hash",
-      "path": "04 - Content/Process/NTLM Pass-the-Hash.md"
-    },
-    {
-      "basename": "Kerberos Pass-the-Ticket",
-      "path": "04 - Content/Process/Kerberos Pass-the-Ticket.md"
-    },
-    {
-      "basename": "JtR Conversions",
-      "path": "04 - Content/Process/JtR Conversions.md"
-    },
-    {
-      "basename": "Wireless Security",
-      "path": "01 - Primary Categories/Wireless Security.md"
-    },
-    {
-      "basename": "Web Application Security",
-      "path": "01 - Primary Categories/Web Application Security.md"
-    },
-    {
-      "basename": "Vault Administration",
-      "path": "01 - Primary Categories/Vault Administration.md"
-    },
-    {
-      "basename": "Training",
-      "path": "01 - Primary Categories/Training.md"
-    },
-    {
-      "basename": "Threat Intelligence",
-      "path": "01 - Primary Categories/Threat Intelligence.md"
-    },
-    {
-      "basename": "Social Engineering",
-      "path": "01 - Primary Categories/Social Engineering.md"
-    },
-    {
-      "basename": "Reporting",
-      "path": "01 - Primary Categories/Reporting.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "OS Internals",
-      "path": "01 - Primary Categories/OS Internals.md"
-    },
-    {
-      "basename": "Development",
-      "path": "01 - Primary Categories/Development.md"
-    },
-    {
-      "basename": "Detection Engineering",
-      "path": "01 - Primary Categories/Detection Engineering.md"
-    },
-    {
-      "basename": "Cryptography",
-      "path": "01 - Primary Categories/Cryptography.md"
-    },
-    {
-      "basename": "Cloud Security",
-      "path": "01 - Primary Categories/Cloud Security.md"
-    },
-    {
-      "basename": "Artificial Intelligence",
-      "path": "01 - Primary Categories/Artificial Intelligence.md"
-    },
-    {
-      "basename": "Weaponization",
-      "path": "02 - Secondary Categories/Weaponization.md"
-    },
-    {
-      "basename": "PowerShell",
-      "path": "02 - Secondary Categories/PowerShell.md"
     }
   ],
   "omittedPaths": [],

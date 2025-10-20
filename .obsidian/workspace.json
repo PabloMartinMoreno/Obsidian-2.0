@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Client-Side Exploitation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Penetration Test"
+              "title": "Client-Side Exploitation"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Client-Side Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Gráfico de Client-Side Exploitation"
             }
           },
           {
@@ -279,31 +279,31 @@
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
     "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Process/Active Directory Exploitation.md",
+    "04 - Content/Process/Golden Tickets.md",
+    "04 - Content/Process/Web Exploitation.md",
+    "04 - Content/Process/Insecure Deserialization.md",
+    "04 - Content/Process/Server-Side Request Forgery (SSRF).md",
+    "04 - Content/Process/Authentication & Authorization Bypass.md",
+    "04 - Content/Process/BOLA - IDOR.md",
+    "04 - Content/Process/Server-Side Template Injection (SSTI).md",
+    "04 - Content/Process/Service Exploitation.md",
+    "04 - Content/Process/vsftpd 2.3.4.md",
+    "04 - Content/Process/ProFTPD 1.3.3c.md",
+    "04 - Content/Process/Log4Shell (JNDI Injection).md",
+    "04 - Content/Process/BlueKeep (RDP).md",
+    "04 - Content/Process/EternalBlue (SMB).md",
     "01 - Primary Categories/Penetration Test.md",
     "02 - Secondary Categories/Pre-Exploitation.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "02 - Secondary Categories/Lateral Movement.md",
-    "02 - Secondary Categories/Procedures.md",
-    "02 - Secondary Categories/Post-Exploitation.md",
-    "05 - Templates/04 - Category/_secondary category.md",
-    "05 - Templates/04 - Category/_primary category.md",
-    "05 - Templates/04 - Category/_tertiary category.md",
-    "04 - Content/Process/Staging & Listeners.md",
-    "04 - Content/Process/Payload Evasion.md",
     "04 - Content/Process/Payload Generation.md",
-    "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "04 - Content/Process/Payload Evasion.md",
+    "04 - Content/Process/Staging & Listeners.md",
+    "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Reverse Engineering.md",
     "03 - Tertiary Categories/Cloud Enumeration.md",
     "03 - Tertiary Categories/Web Enumeration.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
-    "04 - Content/Process/test.md",
-    "04 - Content/Process/GitHub Dorking.md",
-    "04 - Content/Process/Active Directory Lateral Movement.md",
-    "02 - Secondary Categories/Active Directory.md",
-    "04 - Content/Process/Active Directory Exploitation.md",
-    "04 - Content/Process/Shells.md",
-    "04 - Content/Process/Cross-Compiling Exploit Code.md",
+    "04 - Content/Process/FeroxBuster.md",
+    "04 - Content/Process/RustScan.md",
     "LXC ",
     "Writeable /etc",
     "Writeable ",
