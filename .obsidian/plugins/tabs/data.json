@@ -6,7 +6,7 @@
   "ignoreNotice": false,
   "autorefreshMarkdownView": true,
   "dragAndDrop": false,
-  "doubleClickToEdit": true,
+  "doubleClickToEdit": false,
   "showToolbar": true,
   "tabSize": 4,
   "editorAutoSaveInterval": 5000,

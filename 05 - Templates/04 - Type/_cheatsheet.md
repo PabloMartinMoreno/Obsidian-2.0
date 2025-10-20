@@ -1,18 +1,13 @@
 ---
 aliases:
 tags:
-  - type/tool
+  - type/cheatsheet
 primary categories:
 secondary categories:
 tertiary categories:
-type: Tool
+type: CheatSheet
 linked:
 ---
 # <% tp.file.title %>
 
 ***
-
-## Overview
-
-```ad-tip
-```

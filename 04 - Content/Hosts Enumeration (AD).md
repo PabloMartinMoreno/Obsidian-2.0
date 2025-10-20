@@ -1,15 +1,19 @@
 ---
 aliases:
+  - Enumeración de Hosts (AD)
 tags:
   - type/technique
   - type/cheatsheet
-  - scope/host
+  - pentesting/recognition
+  - ad/enumeration
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
   - "[[Active Directory]]"
   - "[[Information Gathering]]"
-type: Technique
+tertiary categories:
+  - "[[Active Directory Enumeration]]"
+type: CheatSheet
 linked:
 ---
 # Enumeración de Hosts
@@ -23,6 +27,7 @@ tab: Linux
 |--------|-------------|
 | `nxc smb <network-range>`                  | Escanea el rango de red especificado en busca de servicios SMB, ayudando a identificar hosts Windows activos.                                                                      |
 | `sudo responder -I <network-interface> -A` | Captura tráfico LLMNR, NBT-NS y MDNS en la interfaz especificada para identificar hosts de forma pasiva.<br><br>**Nota:** El modo *Analyze* (`-A`) evita el envenenamiento activo. |
+| [[Pivoting Reconnaissance]]                    | Técnicas y herramientas usadas para el reconocimiento interno después de obtener un punto de apoyo en la red. |
 
 tab: Windows
 | Comando | Descripción |
@@ -35,10 +40,6 @@ tab: Windows
 ````
 
 ---
-
-## Pivoting Reconnaissance
-
-Técnicas y herramientas usadas para el reconocimiento interno después de obtener un punto de apoyo en la red.
 
 ### Notas relacionadas
 

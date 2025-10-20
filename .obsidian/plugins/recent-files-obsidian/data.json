@@ -1,28 +1,80 @@
 {
   "recentFiles": [
     {
-      "basename": "Users & Groups Enumeration (AD)",
-      "path": "04 - Content/Process/Users & Groups Enumeration (AD).md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Process/Hosts Enumeration (AD).md"
+      "basename": "Password Policy Enumeration (AD)",
+      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "_command",
-      "path": "05 - Templates/04 - Type/_command.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "_temp",
+      "path": "05 - Templates/04 - Type/_temp.md"
+    },
+    {
+      "basename": "_cheatsheet",
+      "path": "05 - Templates/04 - Type/_cheatsheet.md"
+    },
+    {
+      "basename": "Users & Groups Enumeration (AD)",
+      "path": "04 - Content/Users & Groups Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
+    },
+    {
+      "basename": "_vulnerability",
+      "path": "05 - Templates/04 - Type/_vulnerability.md"
+    },
+    {
+      "basename": "_ttp",
+      "path": "05 - Templates/04 - Type/_ttp.md"
+    },
+    {
+      "basename": "_tool",
+      "path": "05 - Templates/04 - Type/_tool.md"
+    },
+    {
+      "basename": "_technique",
+      "path": "05 - Templates/04 - Type/_technique.md"
+    },
+    {
+      "basename": "_playbook",
+      "path": "05 - Templates/04 - Type/_playbook.md"
+    },
+    {
+      "basename": "_payload",
+      "path": "05 - Templates/04 - Type/_payload.md"
     },
     {
       "basename": "_concept",
       "path": "05 - Templates/04 - Type/_concept.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "_command",
+      "path": "05 - Templates/04 - Type/_command.md"
+    },
+    {
+      "basename": "_tertiary category",
+      "path": "05 - Templates/04 - Category/_tertiary category.md"
+    },
+    {
+      "basename": "LSASS",
+      "path": "04 - Content/Process/LSASS.md"
     },
     {
       "basename": "Host & Network Enumeration",
@@ -31,10 +83,6 @@
     {
       "basename": "Passive Reconnaissance",
       "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Credential Cracking",
@@ -67,10 +115,6 @@
     {
       "basename": "_primary category",
       "path": "05 - Templates/04 - Category/_primary category.md"
-    },
-    {
-      "basename": "_tertiary category",
-      "path": "05 - Templates/04 - Category/_tertiary category.md"
     },
     {
       "basename": "Post-Exploitation",
@@ -155,50 +199,6 @@
     {
       "basename": "Shellter",
       "path": "04 - Content/Process/Shellter.md"
-    },
-    {
-      "basename": "MSFVenom",
-      "path": "04 - Content/Process/MSFVenom.md"
-    },
-    {
-      "basename": "MSFConsole",
-      "path": "04 - Content/Process/MSFConsole.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
-      "basename": "Service Exploitation",
-      "path": "04 - Content/Process/Service Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "impacket",
-      "path": "04 - Content/Process/impacket.md"
-    },
-    {
-      "basename": "ntlmrelayx",
-      "path": "04 - Content/Process/ntlmrelayx.md"
-    },
-    {
-      "basename": "Responder",
-      "path": "04 - Content/Process/Responder.md"
-    },
-    {
-      "basename": "Searchsploit",
-      "path": "04 - Content/Process/Searchsploit.md"
-    },
-    {
-      "basename": "sqlmap",
-      "path": "04 - Content/Process/sqlmap.md"
-    },
-    {
-      "basename": "Golden Tickets",
-      "path": "04 - Content/Process/Golden Tickets.md"
     }
   ],
   "omittedPaths": [],

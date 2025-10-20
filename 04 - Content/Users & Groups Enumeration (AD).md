@@ -1,10 +1,19 @@
 ---
 aliases:
+  - Enumeración de Usuarios y Grupos (AD)
 tags:
   - type/technique
+  - type/cheatsheet
+  - pentesting/recognition
+  - ad/enumeration
 primary categories:
+  - "[[Penetration Test]]"
 secondary categories:
-type: Technique
+  - "[[Information Gathering]]"
+  - "[[Active Directory]]"
+tertiary categories:
+  - "[[Active Directory Enumeration]]"
+type: CheatSheet
 linked:
 ---
 # Users & Groups Enumeration (AD)
@@ -27,22 +36,16 @@ linked:
 ````tabs
 
 tab: Linux
-| Comando | Descripción |
-|--------|-------------|
-| `nxc smb <dc-ip> -u <user> -p <password> --users` (NXC SMB) | (SMB) Recupera la lista de todos los usuarios del dominio. |
-| `awk '$5 ~ /^[a-zA-Z0-9_]+$/ && NF >= 5 { print $5 }' output.txt > users.lst` | Copiar la salida a un archivo y luego extraer los usuarios con este comando `awk`. |
-|  | También muestra el conteo de intentos de contraseña fallidos por usuario. |
-| `nxc smb <dc-ip> -u <user> -p <password> --groups` (NXC SMB) | (SMB) Recupera la lista de todos los grupos del dominio. |
-|  | Incluye el conteo de miembros por grupo. Prestar atención especial a grupos clave como: `Administrators`, `Domain Admins`, `Executives`. |
-| `nxc smb <host> -u <user> -p <password> --loggedon-users` (NXC SMB) | (SMB) Lista los usuarios actualmente logueados en el host especificado (requiere permisos de administrador local). |
-|  | Esto puede ser una oportunidad valiosa para robar credenciales de Domain Admin en memoria o suplantarlas. |
+| Comando                                                                                                                                                                                                                                | Descripción                                                                                                                                                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nxc smb <dc-ip> -u <user> -p <password> --users` (NXC SMB)<br><br>Copiar la salida a un archivo y luego extraer los usuarios con este comando `awk`:<br>`awk '$5 ~ /^[a-zA-Z0-9_]+$/ && NF >= 5 { print $5 }' output.txt > users.lst` | **(SMB)** Recupera la lista de todos los usuarios del dominio.<br><br><br><br>También muestra el conteo de intentos de contraseña fallidos por usuario.                                                                                 |
+|                                                                                                                                                                                                                                        |                                                                                                                                                                                                                                         |
+| <br>`nxc smb <dc-ip> -u <user> -p <password> --groups` (NXC SMB)                                                                                                                                                                       | **(SMB)** Recupera la lista de todos los grupos del dominio.<br><br>Incluye el conteo de miembros por grupo. Prestar atención especial a grupos clave como: `Administrators`, `Domain Admins`, `Executives`.<br><br>                    |
+| <br>`nxc smb <host> -u <user> -p <password> --loggedon-users` (NXC SMB)                                                                                                                                                                | **(SMB)** Lista los usuarios actualmente logueados en el host especificado (requiere permisos de administrador local).<br><br>Esto puede ser una oportunidad valiosa para robar credenciales de Domain Admin en memoria o suplantarlas. |
 tab: Windows
-
-````
-
 | Comando                                                                                                                   | Descripción                                                                                                                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Get-NetDomain`                                                                                                           | (POWERVIEW) Recupera información básica sobre el dominio Active Directory actual.                                                                                                                                                               |
+| `Get-NetDomain`                                                                                                           | **(POWERVIEW)** Recupera información básica sobre el dominio Active Directory actual.                                                                                                                                                           |
 | Toda la información:<br>`Get-NetUser`<br><br>Sólo información crucial:<br>`Get-NetUser \| select cn,pwdlastset,lastlogon` | **(POWERVIEW)** Toda la información: lista todos los usuarios del dominio.<br><br>**(POWERVIEW)** Sólo información crucial: muestra `cn`, `pwdLastSet` y `lastLogon`.                                                                           |
 |                                                                                                                           | **(POWERVIEW)** Toda la información: enumera todos los grupos del dominio.                                                                                                                                                                      |
 | Toda la información:<br>`Get-NetGroup`<br><br>Sólo información crucial:<br>`Get-NetGroup \| select cn`<br><br>            | <br><br>**(POWERVIEW)** Sólo información crucial: lista el `cn` de los grupos.                                                                                                                                                                  |
@@ -50,22 +53,7 @@ tab: Windows
 | <br><br>`Get-NetSession -Verbose -ComputerName <cn>`                                                                      | **(POWERVIEW)** Lista sesiones de usuario activas en un equipo remoto (requiere permisos de admin local).<br><br>Esto podría ser una valiosa oportunidad para robar las credenciales de administrador del dominio de la memoria o suplantarlas. |
 | Todos los usuarios:<br>`net user /domain`  <br><br>Usuario especifico:<br>`net user <user> /domain`                       | <br><br>**(CMD)** Lists all domain users or detailed info for a specific user.                                                                                                                                                                  |
 | Todos los grupos:  <br>`net group /domain`  <br><br>Grupo especifico:  <br>`net group <group> /domain`                    | <br><br>**(CMD)** Lists all domain groups or members of a specified group.                                                                                                                                                                      |
-
----
-
-## Nota previa
-
-Este paso asume que ya completaste la enumeración de hosts y conocés el dominio y el Domain Controller (Controlador de Dominio).
-
----
-
-## Con acceso
-
-| Comando | Descripción |
-|--------|-------------|
-| `nxc smb <dc-ip> -u <user> -p <password> --users` (NXC SMB) | (SMB) Recupera la lista de todos los usuarios del dominio. También muestra el conteo de intentos de contraseña erróneos por cada usuario. Para extraer usuarios del output: `awk '$5 ~ /^[a-zA-Z0-9_]+$/ && NF >= 5 { print $5 }' output.txt > users.lst` |
-| `nxc smb <dc-ip> -u <user> -p <password> --groups` (NXC SMB) | (SMB) Recupera la lista de todos los grupos del dominio. Incluye el recuento de miembros por grupo. Prestar atención a grupos clave como Administrators, Domain Admins y Executives. |
-| `nxc smb <host> -u <user> -p <password> --loggedon-users` (NXC SMB) | (SMB) Lista los usuarios actualmente logueados en el host especificado (requiere permisos de administrador local). Oportunidad valiosa para robar credenciales de Domain Admin en memoria o para suplantación. |
+````
 
 ---
 
@@ -77,10 +65,10 @@ Este paso asume que ya completaste la enumeración de hosts y conocés el domini
 
 ---
 
-## Artículos relacionados
+## Notas relacionadas
 
-- BloodHound & SharpHound: Enumerar toda la red AD y mapear relaciones.  
-- LSASS Memory Dumping: Para el robo de credenciales de usuarios logueados si tenemos permisos de administrador local.
+- [[BloodHound & SharpHound]]: Enumerar toda la red AD y mapear relaciones.  
+- [[LSASS]] Memory Dumping: Para el robo de credenciales de usuarios logueados si tenemos permisos de administrador local.
+
 
 ---
-```
