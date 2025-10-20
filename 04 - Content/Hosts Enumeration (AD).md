@@ -35,9 +35,9 @@ tab: Windows
 | Comando | Descripción |
 |--------|-------------|
 | `BloodHound & SharpHound` | BloodHound puede usarse para enumerar toda la red AD y visualizar las relaciones. |
-| `Get-NetComputer` (GET-NETCOMPUTER) | Comando de PowerView para obtener información sobre los equipos del dominio. |
+| `Get-NetComputer`         | Comando de PowerView para obtener información sobre los equipos del dominio. |
 | ``Get-NetComputer \| select cn,operatingsystem,dnshostname`` | Comando de PowerView para listar equipos del dominio y filtrar solo la información crucial (nombre común, sistema operativo y nombre DNS). |
-| `nslookup <dnshostname>` (NSLOOKUP) | Resuelve un nombre de host a una dirección IP mediante DNS. |
+| `nslookup <dnshostname>`  | Resuelve un nombre de host a una dirección IP mediante DNS. |
 
 ````
 

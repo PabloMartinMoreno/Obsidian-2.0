@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
     },
     {
+      "basename": "Password Policy Enumeration (AD)",
+      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
+    },
+    {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
@@ -27,10 +31,6 @@
     {
       "basename": "Pivoting Reconnaissance",
       "path": "04 - Content/Process/Pivoting Reconnaissance.md"
-    },
-    {
-      "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
     },
     {
       "basename": "Penetration Test",
