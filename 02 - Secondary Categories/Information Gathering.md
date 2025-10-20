@@ -12,12 +12,12 @@ type: Secondary Category
 
 ***
 
-## 🌿[[Passive Reconnaissance & OSINT]]
+## 🌿[[Passive Reconnaissance]]
 
 
 ***
 
-## 🖥️[[Active Directory Enumeration]]
+## 🌐[[Web Enumeration]]
 
 
 ***
@@ -27,7 +27,7 @@ type: Secondary Category
 
 ***
 
-## 🌐[[Web Enumeration]]
+## 🖥️[[Active Directory Enumeration]]
 
 
 ***

@@ -178,7 +178,10 @@
     "": 120,
     "type/moc/primary_category": 3,
     "status": 121,
-    "ad/lateral_movement": 3
+    "ad/lateral_movement": 3,
+    "type/cheatsheet": 10,
+    "scope": 122,
+    "scope/host": 1
   },
   "_version": 3
 }

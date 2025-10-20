@@ -1,8 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "Users & Groups Enumeration (AD)",
+      "path": "04 - Content/Process/Users & Groups Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Process/Hosts Enumeration (AD).md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "_command",
+      "path": "05 - Templates/04 - Type/_command.md"
+    },
+    {
+      "basename": "_concept",
+      "path": "05 - Templates/04 - Type/_concept.md"
+    },
+    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Passive Reconnaissance",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
     },
     {
       "basename": "Penetration Test",
@@ -171,34 +199,6 @@
     {
       "basename": "Golden Tickets",
       "path": "04 - Content/Process/Golden Tickets.md"
-    },
-    {
-      "basename": "Insecure Deserialization",
-      "path": "04 - Content/Process/Insecure Deserialization.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Process/Authentication & Authorization Bypass.md"
-    },
-    {
-      "basename": "BOLA - IDOR",
-      "path": "04 - Content/Process/BOLA - IDOR.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "vsftpd 2.3.4",
-      "path": "04 - Content/Process/vsftpd 2.3.4.md"
-    },
-    {
-      "basename": "ProFTPD 1.3.3c",
-      "path": "04 - Content/Process/ProFTPD 1.3.3c.md"
     }
   ],
   "omittedPaths": [],

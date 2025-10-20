@@ -31,4 +31,3 @@ type: Tertiary Category
 	- [[Subfinder]]
 	- [[Amass]]
 	- [[GH Dork scripts]]
-	- [[CanaryTokens]]

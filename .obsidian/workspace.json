@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Secondary Categories/Information Gathering.md",
+                "file": "04 - Content/Process/Users & Groups Enumeration (AD).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Information Gathering"
+              "title": "Users & Groups Enumeration (AD)"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "02 - Secondary Categories/Information Gathering.md",
+                "file": "04 - Content/Process/Users & Groups Enumeration (AD).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Information Gathering"
+              "title": "Gráfico de Users & Groups Enumeration (AD)"
             }
           },
           {
@@ -278,6 +278,14 @@
   },
   "active": "46ad6f3b4b901ca4",
   "lastOpenFiles": [
+    "04 - Content/Process/Hosts Enumeration (AD).md",
+    "04 - Content/Process/Users & Groups Enumeration (AD).md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "05 - Templates/04 - Type/_command.md",
+    "05 - Templates/04 - Type/_concept.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "03 - Tertiary Categories/Passive Reconnaissance.md",
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Credential Cracking.md",
     "02 - Secondary Categories/Procedures.md",
@@ -296,14 +304,6 @@
     "02 - Secondary Categories/Lateral Movement.md",
     "04 - Content/Process/Tunneling.md",
     "04 - Content/Process/Pivoting.md",
-    "04 - Content/Process/Windows & Active Directory Lateral Movement.md",
-    "04 - Content/Process/LLMNR & NBT-NS Poisoning.md",
-    "04 - Content/Process/Active Directory Lateral Movement.md",
-    "04 - Content/Process/Windows Post-Exploitation.md",
-    "04 - Content/Process/Linux Post-Exploitation.md",
-    "04 - Content/Process/LXC -LXD Group.md",
-    "02 - Secondary Categories/Pre-Exploitation.md",
-    "04 - Content/Process/Staging & Listeners.md",
     "Metasploit multi",
     "LXC ",
     "Writeable /etc",
