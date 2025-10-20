@@ -5,16 +5,16 @@
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Pre-Exploitation",
       "path": "02 - Secondary Categories/Pre-Exploitation.md"
     },
     {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Lateral Movement",
