@@ -1,16 +1,40 @@
 {
   "recentFiles": [
     {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
       "basename": "Passive Reconnaissance",
       "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
+    },
+    {
+      "basename": "CanaryTokens",
+      "path": "04 - Content/Process/CanaryTokens.md"
+    },
+    {
+      "basename": "CanaryToken 1",
+      "path": "00 - Resources/Images/CanaryToken 1.png"
+    },
+    {
+      "basename": "Pasted image 20250912145615",
+      "path": "00 - Resources/Images/Pasted image 20250912145615.png"
+    },
+    {
+      "basename": "CanaryToken 2",
+      "path": "00 - Resources/Images/CanaryToken 2.png"
     },
     {
       "basename": "Passive Infrastructure Identification",
       "path": "04 - Content/Process/Passive Infrastructure Identification.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Object Permissions Enumeration (AD)",
+      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
       "basename": "Passive Subdomain Enumeration",
@@ -25,16 +49,8 @@
       "path": "04 - Content/Process/Google Dorking.md"
     },
     {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
       "basename": "Security Controls Enumeration (AD)",
       "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
-    },
-    {
-      "basename": "Object Permissions Enumeration (AD)",
-      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
     },
     {
       "basename": "Password Policy Enumeration (AD)",
@@ -183,22 +199,6 @@
     {
       "basename": "Pivoting",
       "path": "04 - Content/Process/Pivoting.md"
-    },
-    {
-      "basename": "Windows & Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "LLMNR & NBT-NS Poisoning",
-      "path": "04 - Content/Process/LLMNR & NBT-NS Poisoning.md"
-    },
-    {
-      "basename": "Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
     }
   ],
   "omittedPaths": [],

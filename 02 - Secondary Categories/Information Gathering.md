@@ -12,7 +12,7 @@ type: Secondary Category
 
 ***
 
-## 🌿[[Passive Reconnaissance]]
+## 🖥️[[Active Directory Enumeration]]
 
 
 ***
@@ -27,7 +27,7 @@ type: Secondary Category
 
 ***
 
-## 🖥️[[Active Directory Enumeration]]
+## 🌿[[Passive Reconnaissance]]
 
 
 ***
