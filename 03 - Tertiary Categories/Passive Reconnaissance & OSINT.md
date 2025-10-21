@@ -2,7 +2,7 @@
 aliases:
   - Reconocimiento Pasivo
 tags:
-  - "#pentesting/recognition"
+  - "#pentesting/reconnaissance/passive"
   - type/moc/tertiary_category
 primary categories:
   - "[[Penetration Test]]"

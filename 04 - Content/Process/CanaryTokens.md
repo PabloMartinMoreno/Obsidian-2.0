@@ -2,14 +2,14 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/recon/passive
-  - tools/recon/passive
+  - pentesting/reconnaissance/passive
+  - tools/reconnaissance/passive
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
-  - "[[Passive Reconnaissance]]"
+  - "[[Passive Reconnaissance & OSINT]]"
 type: CheatSheet
 linked:
 ---

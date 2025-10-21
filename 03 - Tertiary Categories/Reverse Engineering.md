@@ -2,7 +2,7 @@
 aliases:
   - Ingeniería Inversa
 tags:
-  - "#pentesting/recognition"
+  - "#pentesting/reconnaissance/reverse"
   - type/moc/tertiary_category
 primary categories:
   - "[[Penetration Test]]"

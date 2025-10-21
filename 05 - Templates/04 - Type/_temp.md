@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/recon/web
+  - pentesting/reconnaissance/web
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

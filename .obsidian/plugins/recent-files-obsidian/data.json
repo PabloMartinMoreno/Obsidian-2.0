@@ -1,76 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "ColdFusion Enumeration",
-      "path": "04 - Content/Process/ColdFusion Enumeration.md"
+      "basename": "Example Hack The Box Retired Machine",
+      "path": "04 - Content/Example Hack The Box Retired Machine.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "_temp",
-      "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+      "basename": "_dockerlabs",
+      "path": "05 - Templates/04 - Writeup/_dockerlabs.md"
     },
     {
       "basename": "Cloud Enumeration",
       "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
-      "basename": "Passive Reconnaissance",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "CanaryTokens",
       "path": "04 - Content/Process/CanaryTokens.md"
     },
     {
-      "basename": "CanaryToken 1",
-      "path": "00 - Resources/Images/CanaryToken 1.png"
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
-      "basename": "Pasted image 20250912145615",
-      "path": "00 - Resources/Images/Pasted image 20250912145615.png"
-    },
-    {
-      "basename": "CanaryToken 2",
-      "path": "00 - Resources/Images/CanaryToken 2.png"
-    },
-    {
-      "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Process/Passive Infrastructure Identification.md"
-    },
-    {
-      "basename": "Object Permissions Enumeration (AD)",
-      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
+      "basename": "IIS Enumeration",
+      "path": "04 - Content/Process/IIS Enumeration.md"
     },
     {
-      "basename": "Social Engineering Reconnaissance",
-      "path": "04 - Content/Process/Social Engineering Reconnaissance.md"
+      "basename": "GitLab Enumeration",
+      "path": "04 - Content/Process/GitLab Enumeration.md"
     },
     {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Process/Google Dorking.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/Process/BloodHound & SharpHound.md"
     },
     {
       "basename": "Security Controls Enumeration (AD)",
       "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "Object Permissions Enumeration (AD)",
+      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
     },
     {
       "basename": "Password Policy Enumeration (AD)",
@@ -85,20 +73,60 @@
       "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
+      "basename": "Social Engineering Reconnaissance",
+      "path": "04 - Content/Process/Social Engineering Reconnaissance.md"
+    },
+    {
+      "basename": "Passive Infrastructure Identification",
+      "path": "04 - Content/Process/Passive Infrastructure Identification.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Process/Google Dorking.md"
+    },
+    {
       "basename": "GitHub Dorking",
       "path": "04 - Content/Process/GitHub Dorking.md"
+    },
+    {
+      "basename": "Drupal Enumeration",
+      "path": "04 - Content/Process/Drupal Enumeration.md"
+    },
+    {
+      "basename": "ColdFusion Enumeration",
+      "path": "04 - Content/Process/ColdFusion Enumeration.md"
+    },
+    {
+      "basename": "Web Server Enumeration",
+      "path": "04 - Content/Process/Web Server Enumeration.md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "_temp",
+      "path": "05 - Templates/04 - Type/_temp.md"
     },
     {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/Process/BloodHound & SharpHound.md"
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Process/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "CanaryToken 1",
+      "path": "00 - Resources/Images/CanaryToken 1.png"
+    },
+    {
+      "basename": "Pasted image 20250912145615",
+      "path": "00 - Resources/Images/Pasted image 20250912145615.png"
+    },
+    {
+      "basename": "CanaryToken 2",
+      "path": "00 - Resources/Images/CanaryToken 2.png"
     },
     {
       "basename": "Active Directory",
@@ -171,34 +199,6 @@
     {
       "basename": "Command & Control (C2)",
       "path": "04 - Content/Process/Command & Control (C2).md"
-    },
-    {
-      "basename": "Defense Evasion",
-      "path": "04 - Content/Process/Defense Evasion.md"
-    },
-    {
-      "basename": "Persistence Techniques",
-      "path": "04 - Content/Process/Persistence Techniques.md"
-    },
-    {
-      "basename": "_secondary category",
-      "path": "05 - Templates/04 - Category/_secondary category.md"
-    },
-    {
-      "basename": "_primary category",
-      "path": "05 - Templates/04 - Category/_primary category.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Client-Side Exploitation",
-      "path": "04 - Content/Process/Client-Side Exploitation.md"
     }
   ],
   "omittedPaths": [],

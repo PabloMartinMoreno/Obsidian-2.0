@@ -1,9 +1,8 @@
 ---
 aliases:
 tags:
-  - "#pentesting/recognition"
+  - "#pentesting/reconnaissance/web"
   - type/moc/tertiary_category
-  - web/enumeration
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
@@ -25,6 +24,7 @@ type: Tertiary Category
 ## Enumeración de Tecnologías Especificas
 
 -  [[ColdFusion Enumeration]]
+- [[Drupal Enumeration]]
 -  [[GitLab Enumeration]]
 -  [[IIS Enumeration]]
 -  [[Jenkins Enumeration]]

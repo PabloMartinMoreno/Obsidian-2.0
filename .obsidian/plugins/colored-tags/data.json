@@ -191,7 +191,17 @@
     "pentesting/recon/ad": 2,
     "tools/recon": 2,
     "tools/recon/passive": 1,
-    "pentesting/recon/web": 3
+    "pentesting/recon/web": 3,
+    "pentesting/recognition/passive": 1,
+    "pentesting/reconnaissance": 21,
+    "pentesting/reconnaissance/web": 1,
+    "pentesting/reconnaissance/ad": 2,
+    "pentesting/reconnaissance/passive": 3,
+    "pentesting/reconnaissance/cloud": 4,
+    "pentesting/reconnaissance/services": 5,
+    "pentesting/reconnaissance/reverse": 6,
+    "tools/reconnaissance": 3,
+    "tools/reconnaissance/passive": 1
   },
   "_version": 3
 }

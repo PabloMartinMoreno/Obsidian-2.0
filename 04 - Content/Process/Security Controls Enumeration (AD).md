@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - "#pentesting/recon/ad"
+  - "#pentesting/reconnaissance/ad"
   - ad/enumeration
 primary categories:
   - "[[Penetration Test]]"
@@ -10,7 +10,7 @@ secondary categories:
   - "[[Information Gathering]]"
   - "[[Active Directory]]"
 tertiary categories:
-  - "[[Passive Reconnaissance]]"
+  - "[[Passive Reconnaissance & OSINT]]"
 type: CheatSheet
 linked:
 ---

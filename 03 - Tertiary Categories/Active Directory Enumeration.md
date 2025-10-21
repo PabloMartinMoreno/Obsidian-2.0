@@ -2,7 +2,7 @@
 aliases:
   - Enumeración de Active Directory
 tags:
-  - "#pentesting/recon/ad"
+  - "#pentesting/reconnaissance/ad"
   - ad/enumeration
   - type/moc/tertiary_category
 primary categories:
