@@ -3,15 +3,13 @@ aliases:
 tags:
   - type/technique
   - type/cheatsheet
-  - pentesting/recognition
-  - ad/enumeration
+  - pentesting/recon/passive
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
   - "[[Information Gathering]]"
-  - "[[Active Directory]]"
 tertiary categories:
-  - "[[Active Directory Enumeration]]"
+  - "[[Passive Reconnaissance]]"
 type: CheatSheet
 linked:
 ---

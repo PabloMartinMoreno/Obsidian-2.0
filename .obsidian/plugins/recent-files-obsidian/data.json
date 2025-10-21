@@ -1,8 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/Process/GitHub Dorking.md"
+    },
+    {
+      "basename": "_temp",
+      "path": "05 - Templates/04 - Type/_temp.md"
     },
     {
       "basename": "Passive Reconnaissance",
@@ -13,8 +17,8 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Active Directory Enumeration",
@@ -27,6 +31,14 @@
     {
       "basename": "Security Controls Enumeration (AD)",
       "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Hosts Enumeration (AD)",
@@ -59,10 +71,6 @@
     {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "_temp",
-      "path": "05 - Templates/04 - Type/_temp.md"
     },
     {
       "basename": "_vulnerability",
@@ -99,10 +107,6 @@
     {
       "basename": "LSASS",
       "path": "04 - Content/Process/LSASS.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Credential Cracking",
@@ -195,10 +199,6 @@
     {
       "basename": "Metasploit multi-handler",
       "path": "04 - Content/Process/Metasploit multi-handler.md"
-    },
-    {
-      "basename": "Payload Evasion",
-      "path": "04 - Content/Process/Payload Evasion.md"
     }
   ],
   "omittedPaths": [],

@@ -185,7 +185,9 @@
     "asda": 123,
     "tools": 124,
     "tools/ad": 1,
-    "tools/ad/enumeration": 1
+    "tools/ad/enumeration": 1,
+    "pentesting/passive-recon": 20,
+    "pentesting/recon/passive": 1
   },
   "_version": 3
 }
