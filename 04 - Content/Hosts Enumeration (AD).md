@@ -2,9 +2,8 @@
 aliases:
   - Enumeración de Hosts (AD)
 tags:
-  - type/technique
   - type/cheatsheet
-  - pentesting/recognition
+  - "#pentesting/recon/ad"
   - ad/enumeration
 primary categories:
   - "[[Penetration Test]]"
@@ -20,6 +19,8 @@ linked:
   - "[[Nmap]]"
 ---
 # Enumeración de Hosts
+
+***
 
 ## Cheatsheet
 

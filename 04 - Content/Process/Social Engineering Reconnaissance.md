@@ -2,18 +2,20 @@
 aliases:
 tags:
   - type/cheatsheet
-  - "#pentesting/recon/ad"
-  - ad/enumeration
+  - pentesting/recon/passive
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
   - "[[Information Gathering]]"
-  - "[[Active Directory]]"
 tertiary categories:
   - "[[Passive Reconnaissance]]"
 type: CheatSheet
 linked:
 ---
-#estado/incompleto
+# Social Engineering Reconnaissance
 
 ***
+
+## CheatSheet
+
+#estado/incompleto 

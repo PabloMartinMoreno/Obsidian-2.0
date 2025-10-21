@@ -1,48 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/Process/GitHub Dorking.md"
-    },
-    {
-      "basename": "_temp",
-      "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
       "basename": "Passive Reconnaissance",
       "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
+    },
+    {
+      "basename": "Passive Infrastructure Identification",
+      "path": "04 - Content/Process/Passive Infrastructure Identification.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Social Engineering Reconnaissance",
+      "path": "04 - Content/Process/Social Engineering Reconnaissance.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Process/Google Dorking.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/Process/BloodHound & SharpHound.md"
-    },
-    {
       "basename": "Security Controls Enumeration (AD)",
       "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
       "basename": "Object Permissions Enumeration (AD)",
@@ -57,6 +45,42 @@
       "path": "04 - Content/Users & Groups Enumeration (AD).md"
     },
     {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/Process/GitHub Dorking.md"
+    },
+    {
+      "basename": "_temp",
+      "path": "05 - Templates/04 - Type/_temp.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/Process/BloodHound & SharpHound.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
       "basename": "_cheatsheet",
       "path": "05 - Templates/04 - Type/_cheatsheet.md"
     },
@@ -67,10 +91,6 @@
     {
       "basename": "Pivoting Reconnaissance",
       "path": "04 - Content/Process/Pivoting Reconnaissance.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
     },
     {
       "basename": "_vulnerability",
@@ -179,26 +199,6 @@
     {
       "basename": "Windows Post-Exploitation",
       "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "LXC -LXD Group",
-      "path": "04 - Content/Process/LXC -LXD Group.md"
-    },
-    {
-      "basename": "Pre-Exploitation",
-      "path": "02 - Secondary Categories/Pre-Exploitation.md"
-    },
-    {
-      "basename": "Staging & Listeners",
-      "path": "04 - Content/Process/Staging & Listeners.md"
-    },
-    {
-      "basename": "Metasploit multi-handler",
-      "path": "04 - Content/Process/Metasploit multi-handler.md"
     }
   ],
   "omittedPaths": [],

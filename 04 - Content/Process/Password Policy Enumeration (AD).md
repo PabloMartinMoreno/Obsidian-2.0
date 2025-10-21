@@ -2,9 +2,8 @@
 aliases:
   - Enumeración de políticas de contraseñas (AD)
 tags:
-  - type/technique
   - type/cheatsheet
-  - pentesting/recognition
+  - "#pentesting/recon/ad"
   - ad/enumeration
 primary categories:
   - "[[Penetration Test]]"

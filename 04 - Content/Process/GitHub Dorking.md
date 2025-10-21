@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/technique
   - type/cheatsheet
   - pentesting/recon/passive
 primary categories:

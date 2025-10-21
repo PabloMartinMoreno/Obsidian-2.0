@@ -18,9 +18,16 @@ type: Tertiary Category
 
 -  [[GitHub Dorking]]
 -  [[Google Dorking]]
+- [[Passive Infrastructure Identification]]
 - [[Social Engineering Reconnaissance]]
 - [[Passive Subdomain Enumeration]]
 
+Otros posibles:
+- Certificate Transparency / crt.sh (subdomain discovery)
+- WHOIS / domain records
+- Passive DNS
+- Archive.org / Wayback (site history)
+- Monitoring paste sites and public forums
 
 ***
 

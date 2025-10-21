@@ -1,9 +1,9 @@
 ---
 aliases:
 tags:
-  - type/technique
   - type/cheatsheet
   - tools/ad/enumeration
+  - pentesting/recon/ad
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

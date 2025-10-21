@@ -187,7 +187,8 @@
     "tools/ad": 1,
     "tools/ad/enumeration": 1,
     "pentesting/passive-recon": 20,
-    "pentesting/recon/passive": 1
+    "pentesting/recon/passive": 1,
+    "pentesting/recon/ad": 2
   },
   "_version": 3
 }

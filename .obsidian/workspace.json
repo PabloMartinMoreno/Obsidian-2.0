@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "e2c0e721a19f69e9",
+        "id": "c4fad9fc4f5073a7",
         "type": "tabs",
         "children": [
           {
-            "id": "dd821de584434ec8",
+            "id": "146970f096ba17e1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/GitHub Dorking.md",
+                "file": "03 - Tertiary Categories/Passive Reconnaissance.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "GitHub Dorking"
+              "title": "Passive Reconnaissance"
             }
           }
         ],
@@ -69,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:type/technique",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -112,14 +112,13 @@
                 "sortOrder": "frequency",
                 "useHierarchy": true,
                 "showSearch": true,
-                "searchQuery": ""
+                "searchQuery": "ad"
               },
               "icon": "lucide-tags",
               "title": "Etiquetas"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -149,7 +148,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/GitHub Dorking.md",
+                "file": "03 - Tertiary Categories/Passive Reconnaissance.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +233,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de GitHub Dorking"
+              "title": "Gráfico de Passive Reconnaissance"
             }
           },
           {
@@ -276,34 +275,34 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "dd821de584434ec8",
+  "active": "146970f096ba17e1",
   "lastOpenFiles": [
-    "05 - Templates/04 - Type/_temp.md",
-    "04 - Content/Process/GitHub Dorking.md",
+    "04 - Content/Process/Passive Infrastructure Identification.md",
     "03 - Tertiary Categories/Passive Reconnaissance.md",
     "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "04 - Content/Process/Passive Subdomain Enumeration.md",
+    "04 - Content/Process/Social Engineering Reconnaissance.md",
+    "04 - Content/Process/Google Dorking.md",
     "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "04 - Content/Process/BloodHound & SharpHound.md",
     "04 - Content/Process/Security Controls Enumeration (AD).md",
-    "01 - Primary Categories/Penetration Test.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "04 - Content/Hosts Enumeration (AD).md",
     "04 - Content/Process/Object Permissions Enumeration (AD).md",
     "04 - Content/Process/Password Policy Enumeration (AD).md",
     "04 - Content/Users & Groups Enumeration (AD).md",
+    "04 - Content/Hosts Enumeration (AD).md",
+    "04 - Content/Process/GitHub Dorking.md",
+    "05 - Templates/04 - Type/_temp.md",
+    "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/BloodHound & SharpHound.md",
+    "02 - Secondary Categories/Active Directory.md",
+    "04 - Content/Process/Active Directory Exploitation.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
     "05 - Templates/04 - Type/_cheatsheet.md",
     "05 - Templates/04 - Type/_command.md",
     "04 - Content/Process/Pivoting Reconnaissance.md",
-    "02 - Secondary Categories/Active Directory.md",
     "05 - Templates/Steal or Forge Kerberos Tickets - Kerberoasting (T1558.003).md",
     "05 - Templates/04 - Type/_vulnerability.md",
     "05 - Templates/04 - Type/_ttp.md",
-    "05 - Templates/04 - Type/_tool.md",
-    "05 - Templates/04 - Type/_technique.md",
-    "05 - Templates/04 - Type/_playbook.md",
-    "05 - Templates/04 - Type/_payload.md",
-    "05 - Templates/04 - Type/_concept.md",
     "Metasploit multi",
     "LXC ",
     "Writeable /etc",
