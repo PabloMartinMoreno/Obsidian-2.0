@@ -31,7 +31,7 @@ linked:
 Los entornos Splunk a menudo almacenan datos sensibles, lo que los convierte en objetivos valiosos. Se encuentran con frecuencia en redes corporativas durante pruebas de penetración internas y, aunque con menos frecuencia, expuestos externamente.
 
 Splunk tiene pocas vulnerabilidades conocidas, destacando:
-- [ CVW-2018-11409](https://nvd.nist.gov/vuln/detail/cve-2018-11409) (divulgación de información)
+- [ CVE-2018-11409](https://nvd.nist.gov/vuln/detail/cve-2018-11409) (divulgación de información)
 - [CVE-2011-4642](https://nvd.nist.gov/vuln/detail/CVE-2011-4642) (RCE autenticado en versiones desactualizadas) TODO: Esto debería estar en la nota de ataque en su lugar
 
 *Lo que se busca al enumerar es una autenticación débil o nula.* Si se obtiene acceso de administrador se puede desplegar aplicaciones personalizadas, comprometiendo potencialmente el servidor y la red.

@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Splunk Enumeration",
-      "path": "04 - Content/Process/Splunk Enumeration.md"
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Process/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Process/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Tomcat Enumeration",
+      "path": "04 - Content/Process/Tomcat Enumeration.md"
+    },
+    {
+      "basename": "Splunk Enumeration",
+      "path": "04 - Content/Process/Splunk Enumeration.md"
+    },
+    {
+      "basename": "WordPress Enumeration",
+      "path": "04 - Content/Process/WordPress Enumeration.md"
     },
     {
       "basename": "PRTG Network Monitor Enumeration",
@@ -43,10 +63,6 @@
     {
       "basename": "ColdFusion Enumeration",
       "path": "04 - Content/Process/ColdFusion Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
@@ -141,10 +157,6 @@
       "path": "05 - Templates/04 - Type/_temp.md"
     },
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Process/Directory & Page Fuzzing.md"
-    },
-    {
       "basename": "CanaryToken 1",
       "path": "00 - Resources/Images/CanaryToken 1.png"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "_tool",
       "path": "05 - Templates/04 - Type/_tool.md"
-    },
-    {
-      "basename": "_technique",
-      "path": "05 - Templates/04 - Type/_technique.md"
-    },
-    {
-      "basename": "_playbook",
-      "path": "05 - Templates/04 - Type/_playbook.md"
-    },
-    {
-      "basename": "_payload",
-      "path": "05 - Templates/04 - Type/_payload.md"
     }
   ],
   "omittedPaths": [],
