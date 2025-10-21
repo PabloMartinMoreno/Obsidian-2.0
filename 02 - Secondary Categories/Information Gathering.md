@@ -17,17 +17,17 @@ type: Secondary Category
 
 ***
 
+## 🌿[[Passive Reconnaissance]]
+
+
+***
+
 ## 🌐[[Web Enumeration]]
 
 
 ***
 
 ## 📩[[Host & Network Enumeration]]
-
-
-***
-
-## 🌿[[Passive Reconnaissance]]
 
 
 ***

@@ -190,7 +190,8 @@
     "pentesting/recon/passive": 1,
     "pentesting/recon/ad": 2,
     "tools/recon": 2,
-    "tools/recon/passive": 1
+    "tools/recon/passive": 1,
+    "pentesting/recon/web": 3
   },
   "_version": 3
 }

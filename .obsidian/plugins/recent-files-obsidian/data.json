@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "ColdFusion Enumeration",
+      "path": "04 - Content/Process/ColdFusion Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "_temp",
+      "path": "05 - Templates/04 - Type/_temp.md"
+    },
+    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Passive Reconnaissance",
@@ -69,10 +89,6 @@
       "path": "04 - Content/Process/GitHub Dorking.md"
     },
     {
-      "basename": "_temp",
-      "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
@@ -91,10 +107,6 @@
     {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "_cheatsheet",
@@ -187,18 +199,6 @@
     {
       "basename": "Client-Side Exploitation",
       "path": "04 - Content/Process/Client-Side Exploitation.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
-      "basename": "Tunneling",
-      "path": "04 - Content/Process/Tunneling.md"
-    },
-    {
-      "basename": "Pivoting",
-      "path": "04 - Content/Process/Pivoting.md"
     }
   ],
   "omittedPaths": [],

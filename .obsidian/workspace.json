@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Secondary Categories/Information Gathering.md",
+                "file": "04 - Content/Process/ColdFusion Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Information Gathering"
+              "title": "ColdFusion Enumeration"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "02 - Secondary Categories/Information Gathering.md",
+                "file": "04 - Content/Process/ColdFusion Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Information Gathering"
+              "title": "Gráfico de ColdFusion Enumeration"
             }
           },
           {
@@ -278,13 +278,18 @@
   },
   "active": "146970f096ba17e1",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Process/ColdFusion Enumeration.md",
+    "05 - Templates/04 - Type/_temp.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Reverse Engineering.md",
+    "03 - Tertiary Categories/Cloud Enumeration.md",
     "03 - Tertiary Categories/Passive Reconnaissance.md",
     "04 - Content/Process/CanaryTokens.md",
     "00 - Resources/Images/CanaryToken 1.png",
     "00 - Resources/Images/Pasted image 20250912145615.png",
     "00 - Resources/Images/CanaryToken 2.png",
     "04 - Content/Process/Passive Infrastructure Identification.md",
-    "02 - Secondary Categories/Information Gathering.md",
     "04 - Content/Process/Object Permissions Enumeration (AD).md",
     "03 - Tertiary Categories/Active Directory Enumeration.md",
     "04 - Content/Process/Passive Subdomain Enumeration.md",
@@ -295,17 +300,13 @@
     "04 - Content/Users & Groups Enumeration (AD).md",
     "04 - Content/Hosts Enumeration (AD).md",
     "04 - Content/Process/GitHub Dorking.md",
-    "05 - Templates/04 - Type/_temp.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/BloodHound & SharpHound.md",
     "02 - Secondary Categories/Active Directory.md",
     "04 - Content/Process/Active Directory Exploitation.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
     "05 - Templates/04 - Type/_cheatsheet.md",
     "05 - Templates/04 - Type/_command.md",
-    "04 - Content/Process/Pivoting Reconnaissance.md",
-    "05 - Templates/Steal or Forge Kerberos Tickets - Kerberoasting (T1558.003).md",
     "Metasploit multi",
     "LXC ",
     "Writeable /etc",
