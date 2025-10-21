@@ -18,7 +18,7 @@ linked:
 
 ## CheatSheet
 
-| Acción                                                              | Descripción                                                                           |
+| **Acción**                                                          | **Descripción**                                                                       |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `sudo nmap -p 80,8080,443 -sV --open <target>`                      | Empezá verificando si el servidor web es **Microsoft IIS** y, de ser así, su versión. |
 | Verificar si es vulnerable:<br>`shortscan --isvuln http://<target>` | Comprueba si la versión de IIS es vulnerable a la enumeración por tilde.              |

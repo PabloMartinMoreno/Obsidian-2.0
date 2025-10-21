@@ -19,7 +19,7 @@ linked:
 
 ## CheatSheet
 
-| Operador                       | Descripción                                                              |
+| **Operador**                   | **Descripción**                                                          |
 | ------------------------------ | ------------------------------------------------------------------------ |
 | https://canarytokens.com/nest/ | URL del sitio web de CanaryTokens.                                       |
 | `Web Bug`                      | Para recibir una alerta cuando el objetivo abre una URL en su navegador. |

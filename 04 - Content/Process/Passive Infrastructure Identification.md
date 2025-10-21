@@ -17,7 +17,7 @@ linked:
 ***
 ## CheatSheet
 
-| Acción                           | Descripción                                                                                                 |
+| **Acción**                       | **Descripción**                                                                                             |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | https://searchdns.netcraft.com/  | Obtener información de dominio a partir de un dominio mediante Netcraft.                                    |
 | https://sitereport.netcraft.com/ | Obtener información del servidor y del hosting de un dominio mediante Netcraft.                             |

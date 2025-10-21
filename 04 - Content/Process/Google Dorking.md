@@ -18,7 +18,7 @@ linked:
 
 ## Cheatsheet
 
-| Operador               | Descripción                                                                                                                                                  |
+| **Operador**           | **Descripción**                                                                                                                                              |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `site:<target-domain>` | Restringe los resultados de búsqueda a un dominio específico.                                                                                                |
 | `intext:<string>`      | Restringe los resultados a páginas que contengan el texto especificado en cualquier parte del cuerpo.                                                        |

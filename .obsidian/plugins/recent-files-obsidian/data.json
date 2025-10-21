@@ -1,36 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Users & Groups Enumeration (AD)",
-      "path": "04 - Content/Users & Groups Enumeration (AD).md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "osTicket Enumeration",
-      "path": "04 - Content/Process/osTicket Enumeration.md"
+      "basename": "Splunk Enumeration",
+      "path": "04 - Content/Process/Splunk Enumeration.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "PRTG Network Monitor Enumeration",
+      "path": "04 - Content/Process/PRTG Network Monitor Enumeration.md"
+    },
+    {
+      "basename": "osTicket Enumeration",
+      "path": "04 - Content/Process/osTicket Enumeration.md"
     },
     {
       "basename": "Magento Enumeration",
@@ -45,52 +29,36 @@
       "path": "04 - Content/Process/Jenkins Enumeration.md"
     },
     {
-      "basename": "Jenkins 1",
-      "path": "00 - Resources/Images/Jenkins 1.png"
-    },
-    {
       "basename": "IIS Enumeration",
       "path": "04 - Content/Process/IIS Enumeration.md"
-    },
-    {
-      "basename": "Example Hack The Box Retired Machine",
-      "path": "04 - Content/Example Hack The Box Retired Machine.md"
-    },
-    {
-      "basename": "_dockerlabs",
-      "path": "05 - Templates/04 - Writeup/_dockerlabs.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "CanaryTokens",
-      "path": "04 - Content/Process/CanaryTokens.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
       "basename": "GitLab Enumeration",
       "path": "04 - Content/Process/GitLab Enumeration.md"
     },
     {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+      "basename": "Drupal Enumeration",
+      "path": "04 - Content/Process/Drupal Enumeration.md"
     },
     {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/Process/BloodHound & SharpHound.md"
+      "basename": "ColdFusion Enumeration",
+      "path": "04 - Content/Process/ColdFusion Enumeration.md"
     },
     {
-      "basename": "Security Controls Enumeration (AD)",
-      "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Object Permissions Enumeration (AD)",
-      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "CanaryTokens",
+      "path": "04 - Content/Process/CanaryTokens.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
     },
     {
       "basename": "Social Engineering Reconnaissance",
@@ -109,12 +77,56 @@
       "path": "04 - Content/Process/GitHub Dorking.md"
     },
     {
-      "basename": "Drupal Enumeration",
-      "path": "04 - Content/Process/Drupal Enumeration.md"
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "ColdFusion Enumeration",
-      "path": "04 - Content/Process/ColdFusion Enumeration.md"
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/Process/BloodHound & SharpHound.md"
+    },
+    {
+      "basename": "Security Controls Enumeration (AD)",
+      "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "Object Permissions Enumeration (AD)",
+      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
+    },
+    {
+      "basename": "Password Policy Enumeration (AD)",
+      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
+    },
+    {
+      "basename": "Users & Groups Enumeration (AD)",
+      "path": "04 - Content/Users & Groups Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Jenkins 1",
+      "path": "00 - Resources/Images/Jenkins 1.png"
+    },
+    {
+      "basename": "Example Hack The Box Retired Machine",
+      "path": "04 - Content/Example Hack The Box Retired Machine.md"
+    },
+    {
+      "basename": "_dockerlabs",
+      "path": "05 - Templates/04 - Writeup/_dockerlabs.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
     {
       "basename": "Web Server Enumeration",
@@ -131,10 +143,6 @@
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Process/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
     },
     {
       "basename": "CanaryToken 1",
@@ -191,14 +199,6 @@
     {
       "basename": "_payload",
       "path": "05 - Templates/04 - Type/_payload.md"
-    },
-    {
-      "basename": "_concept",
-      "path": "05 - Templates/04 - Type/_concept.md"
-    },
-    {
-      "basename": "_tertiary category",
-      "path": "05 - Templates/04 - Category/_tertiary category.md"
     }
   ],
   "omittedPaths": [],

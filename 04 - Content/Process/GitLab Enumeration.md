@@ -18,7 +18,7 @@ linked:
 
 ## CheatSheet
 
-| Acción                       | Descripción                                                                                                                                                                                                                  |
+| **Acción**                   | **Descripción**                                                                                                                                                                                                              |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/help`                      | Se puede confirmar el uso de GitLab visitando su URL; la página de login muestra el logo de GitLab. Para determinar la versión, iniciá sesión y visitá `/help`, donde se muestra el número de versión.                       |
 | Intentá registrar una cuenta | Verificá si la registración de cuentas está habilitada. Una cuenta recién creada puede tener acceso a proyectos públicos. Idealmente, el registro *no* requiere un correo corporativo.                                       |

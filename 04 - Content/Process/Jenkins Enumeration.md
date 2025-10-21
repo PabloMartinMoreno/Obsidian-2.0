@@ -18,8 +18,8 @@ linked:
 
 ## CheatSheet
 
-| Acción                               | Descripción                                                                                                                                                                                                                          |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Acción**         | **Descripción**                                                                                                                                                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ![[Jenkins 1.png]] | Una instalación de Jenkins es fácilmente reconocible por su característica página de login. Sin embargo, la versión exacta solo puede identificarse desde el panel (dashboard) **después** de autenticarse con credenciales válidas. |
 | ![[Jenkins 2.png]] | <br><br>Una vez iniciada la sesión, verificá el método de autenticación que esté en uso.                                                                                                                                             |
 
