@@ -1,6 +1,58 @@
 {
   "recentFiles": [
     {
+      "basename": "Password Policy Enumeration (AD)",
+      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Users & Groups Enumeration (AD)",
+      "path": "04 - Content/Users & Groups Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "osTicket Enumeration",
+      "path": "04 - Content/Process/osTicket Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Magento Enumeration",
+      "path": "04 - Content/Process/Magento Enumeration.md"
+    },
+    {
+      "basename": "Joomla Enumeration",
+      "path": "04 - Content/Process/Joomla Enumeration.md"
+    },
+    {
+      "basename": "Jenkins Enumeration",
+      "path": "04 - Content/Process/Jenkins Enumeration.md"
+    },
+    {
+      "basename": "Jenkins 1",
+      "path": "00 - Resources/Images/Jenkins 1.png"
+    },
+    {
+      "basename": "IIS Enumeration",
+      "path": "04 - Content/Process/IIS Enumeration.md"
+    },
+    {
       "basename": "Example Hack The Box Retired Machine",
       "path": "04 - Content/Example Hack The Box Retired Machine.md"
     },
@@ -13,10 +65,6 @@
       "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
       "basename": "CanaryTokens",
       "path": "04 - Content/Process/CanaryTokens.md"
     },
@@ -25,24 +73,8 @@
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "IIS Enumeration",
-      "path": "04 - Content/Process/IIS Enumeration.md"
-    },
-    {
       "basename": "GitLab Enumeration",
       "path": "04 - Content/Process/GitLab Enumeration.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Reverse Engineering",
@@ -59,18 +91,6 @@
     {
       "basename": "Object Permissions Enumeration (AD)",
       "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
-    },
-    {
-      "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
-    },
-    {
-      "basename": "Users & Groups Enumeration (AD)",
-      "path": "04 - Content/Users & Groups Enumeration (AD).md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
       "basename": "Social Engineering Reconnaissance",
@@ -179,26 +199,6 @@
     {
       "basename": "_tertiary category",
       "path": "05 - Templates/04 - Category/_tertiary category.md"
-    },
-    {
-      "basename": "LSASS",
-      "path": "04 - Content/Process/LSASS.md"
-    },
-    {
-      "basename": "Credential Cracking",
-      "path": "04 - Content/Process/Credential Cracking.md"
-    },
-    {
-      "basename": "Procedures",
-      "path": "02 - Secondary Categories/Procedures.md"
-    },
-    {
-      "basename": "Persistence, Defense Evasion & C2",
-      "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
-    },
-    {
-      "basename": "Command & Control (C2)",
-      "path": "04 - Content/Process/Command & Control (C2).md"
     }
   ],
   "omittedPaths": [],

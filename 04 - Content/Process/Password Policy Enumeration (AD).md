@@ -24,7 +24,7 @@ linked: "[[Password Spraying]]"
 ````tabs
 tab: Authenticated
 
-| Comando                                                     | Descripción                                                                                                              |
+| **Comando**                                                     | **Descripción**                                                                                                              |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `nxc smb <dc> -u <user> -p <password> --pass-pol`           | **(Linux)** Recupera la política de contraseñas desde un Domain Controller usando SMB vía NetExec.                       |
 | `Get-DomainPolicy`                                          | **(PowerView)** Recupera la política de contraseñas y la política de Kerberos a nivel de dominio desde Active Directory. |
@@ -32,7 +32,7 @@ tab: Authenticated
 
 tab: SMB NULL Session
 
-| Comando                                                               | Descripción                                                                                                                                                                                                                                                                                       |
+| **Comando**                                                               | **Descripción**                                                                                                                                                                                                                                                                                       |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `nxc smb <dc> -pass-pol`                                              | **(Linux)** Recupera la política de contraseñas del dominio vía sesión NULL de SMB, si está permitida, usando NetExec.                                                                                                                                                                            |
 | `rpcclient -U "" -N <dc>`<br><br>`querydominfo`<br><br>`getdompwinfo` | <br><br> **(Linux)** Utiliza la sesión SMB NULL, si está habilitada, para consultar la información sobre el dominio y la política de contraseñas a través de rpcclient. |
@@ -40,7 +40,7 @@ tab: SMB NULL Session
 
 tab: LDAP Anonymous Bind
 
-| Comando                                                                                                                                                                                                                     | Descripción                                                                                                                                                                                            |
+| **Comando**                                                                                                                                                                                                                     | **Descripción**                                                                                                                                                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `ldapsearch -H ldap://<dc> -x -b "<domain-dn>" -s sub "*" \| grep -m 1 -B 10 pwdHistoryLength`<br><br>La estructura del Distinguished Name (DN) del dominio sigue ese formato.<br>`Domain: BRM.COM → DN: DC=BRM,DC=COM`<br> | <br><br>**(Linux)** Recupera la política de contraseñas del controlador de dominio usando un bind LDAP anónimo, si está permitido; filtra para mostrar la configuración `pwdHistoryLength` y contexto. |
 
