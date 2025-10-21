@@ -9,7 +9,7 @@
     "00 - Recursos/Plantillas/",
     "00 - Recursos/Diagramas/Excalidraw/"
   ],
-  "vimMode": true,
+  "vimMode": false,
   "readableLineLength": false,
   "showLineNumber": false
 }

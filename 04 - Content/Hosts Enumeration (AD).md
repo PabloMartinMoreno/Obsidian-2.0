@@ -17,6 +17,7 @@ type: CheatSheet
 linked:
   - "[[Pivoting Reconnaissance]]"
   - "[[BloodHound & SharpHound]]"
+  - "[[Nmap]]"
 ---
 # Enumeración de Hosts
 

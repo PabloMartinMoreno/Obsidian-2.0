@@ -14,6 +14,8 @@ tertiary categories:
   - "[[Active Directory Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[BloodHound & SharpHound]]"
+  - "[[ACL Abuse]]"
 ---
 # Object Permissions Enumeration (AD)
 
@@ -21,25 +23,19 @@ linked:
 
 ## Cheatsheet
 
-| Comando                                                                                                                                                 | Descripción                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Find-LocalAdminAccess`                                                                                                                                 | **(FIND-LOCALADMINACCESS)** Busca equipos donde un usuario especificado tiene derechos de administrador local dentro del dominio. <br> |
-| `$sid = Convert-NameToSid <user>` (POWERVIEW)                                                                                                           | Convierte un nombre de usuario a su SID (identificador de seguridad) para uso en búsquedas basadas en SID.<br>                         |
-| `Get-DomainObjectACL -ResolveGUIDs -Identity * \| ? {$_.SecurityIdentifier -eq $sid}`                                                                   | **(POWERVIEW)** Encuentra objetos de AD donde el usuario especificado (convertido a SID) tiene permisos explícitos en las ACLs.        |
-| `Find-DomainShare` <br><br>`Add `-CheckShareAccess` for only readable shares`<br><br>A continuación, se puede:<br>``dir \\<dns-hostname>\<share-name>`` | <br><br>Enumera los shares del dominio; puede filtrar por accesibilidad. <br>                                                          |
-
----
-
-## Nota
-
-La mayoría de estos comandos forman parte de **PowerView**.
+| Comando                                                                                                                                               | Descripción                                                                                                                            |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Find-LocalAdminAccess`                                                                                                                               | **(FIND-LOCALADMINACCESS)** Busca equipos donde un usuario especificado tiene derechos de administrador local dentro del dominio. <br> |
+| `$sid = Convert-NameToSid <user>` (POWERVIEW)                                                                                                         | Convierte un nombre de usuario a su SID (identificador de seguridad) para uso en búsquedas basadas en SID.<br>                         |
+| `Get-DomainObjectACL -ResolveGUIDs -Identity * \| ? {$_.SecurityIdentifier -eq $sid}`                                                                 | **(POWERVIEW)** Encuentra objetos de AD donde el usuario especificado (convertido a SID) tiene permisos explícitos en las ACLs.        |
+| `Find-DomainShare` <br><br>`Add `-CheckShareAccess` for only readable shares`<br><br>A continuación, se puede:<br>`dir \\<dns-hostname>\<share-name>` | <br><br>**(FIND-DOMAINSHARE)** Enumera los shares del dominio; puede filtrar por accesibilidad. <br>                                   |
 
 ---
 
 ## Artículos relacionados
 
-- BloodHound & SharpHound: Enumerar toda la red AD y mapear relaciones, incluyendo ACLs.  
-- ACL Abuse: Abusar de ACLs existentes sobre objetos clave para escalar privilegios.
+- [[BloodHound & SharpHound]]: Enumerar toda la red AD y mapear relaciones, incluyendo ACLs.  
+- [[ACL Abuse]]: Abusar de ACLs existentes sobre objetos clave para escalar privilegios.
 
 ---
 

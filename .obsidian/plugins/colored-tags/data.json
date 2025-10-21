@@ -181,7 +181,11 @@
     "ad/lateral_movement": 3,
     "type/cheatsheet": 10,
     "scope": 122,
-    "scope/host": 1
+    "scope/host": 1,
+    "asda": 123,
+    "tools": 124,
+    "tools/ad": 1,
+    "tools/ad/enumeration": 1
   },
   "_version": 3
 }

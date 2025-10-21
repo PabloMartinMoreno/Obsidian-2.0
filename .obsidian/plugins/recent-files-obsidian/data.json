@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Passive Reconnaissance",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/Process/BloodHound & SharpHound.md"
+    },
+    {
+      "basename": "Security Controls Enumeration (AD)",
+      "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
+    },
+    {
       "basename": "Object Permissions Enumeration (AD)",
       "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
     },
@@ -9,16 +37,8 @@
       "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
     },
     {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
       "basename": "Users & Groups Enumeration (AD)",
       "path": "04 - Content/Users & Groups Enumeration (AD).md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
       "basename": "_cheatsheet",
@@ -35,10 +55,6 @@
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Active Directory",
@@ -87,10 +103,6 @@
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
     },
     {
       "basename": "Credential Cracking",
@@ -187,18 +199,6 @@
     {
       "basename": "Payload Evasion",
       "path": "04 - Content/Process/Payload Evasion.md"
-    },
-    {
-      "basename": "AMSI Bypasses",
-      "path": "04 - Content/Process/AMSI Bypasses.md"
-    },
-    {
-      "basename": "Templates",
-      "path": "04 - Content/Process/Templates.md"
-    },
-    {
-      "basename": "Msfvenom Encoders",
-      "path": "04 - Content/Process/Msfvenom Encoders.md"
     }
   ],
   "omittedPaths": [],
