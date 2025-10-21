@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Passive Reconnaissance",
       "path": "03 - Tertiary Categories/Passive Reconnaissance.md"
     },
@@ -51,10 +55,6 @@
     {
       "basename": "Pivoting Reconnaissance",
       "path": "04 - Content/Process/Pivoting Reconnaissance.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Active Directory",
