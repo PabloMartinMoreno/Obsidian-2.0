@@ -1,20 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Process/Parameter & Value Fuzzing.md"
-    },
-    {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Web Server Enumeration",
+      "path": "04 - Content/Process/Web Server Enumeration.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Process/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Process/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Process/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "Tomcat Enumeration",
@@ -71,10 +83,6 @@
     {
       "basename": "CanaryTokens",
       "path": "04 - Content/Process/CanaryTokens.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
     },
     {
       "basename": "Social Engineering Reconnaissance",
@@ -145,10 +153,6 @@
       "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
     {
-      "basename": "Web Server Enumeration",
-      "path": "04 - Content/Process/Web Server Enumeration.md"
-    },
-    {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "_ttp",
       "path": "05 - Templates/04 - Type/_ttp.md"
-    },
-    {
-      "basename": "_tool",
-      "path": "05 - Templates/04 - Type/_tool.md"
     }
   ],
   "omittedPaths": [],

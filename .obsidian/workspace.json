@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Parameter & Value Fuzzing.md",
+                "file": "03 - Tertiary Categories/Web Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Parameter & Value Fuzzing"
+              "title": "Web Enumeration"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Parameter & Value Fuzzing.md",
+                "file": "03 - Tertiary Categories/Web Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Parameter & Value Fuzzing"
+              "title": "Gráfico de Web Enumeration"
             }
           },
           {
@@ -278,9 +278,13 @@
   },
   "active": "924adf69b7dcb430",
   "lastOpenFiles": [
+    "04 - Content/Process/Web Server Enumeration.md",
     "03 - Tertiary Categories/Web Enumeration.md",
-    "04 - Content/Process/Directory & Page Fuzzing.md",
+    "04 - Content/Process/Subdomain & Virtual Host Fuzzing.md",
     "02 - Secondary Categories/Information Gathering.md",
+    "04 - Content/Process/Directory & Page Fuzzing.md",
+    "04 - Content/Process/Passive Subdomain Enumeration.md",
+    "04 - Content/Process/Parameter & Value Fuzzing.md",
     "04 - Content/Process/Tomcat Enumeration.md",
     "04 - Content/Process/Splunk Enumeration.md",
     "04 - Content/Process/WordPress Enumeration.md",
@@ -295,15 +299,11 @@
     "04 - Content/Process/ColdFusion Enumeration.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
     "04 - Content/Process/CanaryTokens.md",
-    "04 - Content/Process/Passive Subdomain Enumeration.md",
     "04 - Content/Process/Social Engineering Reconnaissance.md",
     "04 - Content/Process/Passive Infrastructure Identification.md",
     "04 - Content/Process/Google Dorking.md",
     "04 - Content/Process/GitHub Dorking.md",
     "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "04 - Content/Process/BloodHound & SharpHound.md",
-    "04 - Content/Process/Security Controls Enumeration (AD).md",
-    "04 - Content/Process/Object Permissions Enumeration (AD).md",
     "00 - Resources/Pasted image 20251021141158.png",
     "00 - Resources/Images/Jenkins 1.png",
     "00 - Resources/Images/Jenkins 2.png",
