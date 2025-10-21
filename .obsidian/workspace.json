@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Web Enumeration.md",
+                "file": "04 - Content/Process/Web Server Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Enumeration"
+              "title": "Web Server Enumeration"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "03 - Tertiary Categories/Web Enumeration.md",
+                "file": "04 - Content/Process/Web Server Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Web Enumeration"
+              "title": "Gráfico de Web Server Enumeration"
             }
           },
           {
@@ -278,8 +278,8 @@
   },
   "active": "924adf69b7dcb430",
   "lastOpenFiles": [
-    "04 - Content/Process/Web Server Enumeration.md",
     "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Process/Web Server Enumeration.md",
     "04 - Content/Process/Subdomain & Virtual Host Fuzzing.md",
     "02 - Secondary Categories/Information Gathering.md",
     "04 - Content/Process/Directory & Page Fuzzing.md",

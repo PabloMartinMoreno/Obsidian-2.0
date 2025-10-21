@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
       "basename": "Web Server Enumeration",
       "path": "04 - Content/Process/Web Server Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Subdomain & Virtual Host Fuzzing",
