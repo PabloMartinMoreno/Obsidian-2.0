@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "SSH Enumeration (22)",
-      "path": "04 - Content/Process/SSH Enumeration (22).md"
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/Process/DNS Enumeration (53).md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Common SMTP Commands",
+      "path": "04 - Content/Process/Common SMTP Commands.md"
+    },
+    {
+      "basename": "SMTP Enumeration (25,465,587)",
+      "path": "04 - Content/Process/SMTP Enumeration (25,465,587).md"
+    },
+    {
+      "basename": "SSH Enumeration (22)",
+      "path": "04 - Content/Process/SSH Enumeration (22).md"
     },
     {
       "basename": "FTP Enumeration (21)",
@@ -187,18 +199,6 @@
     {
       "basename": "CanaryToken 1",
       "path": "00 - Resources/Images/CanaryToken 1.png"
-    },
-    {
-      "basename": "Pasted image 20250912145615",
-      "path": "00 - Resources/Images/Pasted image 20250912145615.png"
-    },
-    {
-      "basename": "CanaryToken 2",
-      "path": "00 - Resources/Images/CanaryToken 2.png"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
     }
   ],
   "omittedPaths": [],

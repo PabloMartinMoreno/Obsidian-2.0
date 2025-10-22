@@ -18,7 +18,7 @@ linked:
 
 ## CheatSheet
 
-| Acción                                                                        | Descripción                                                                                                                    |
+| **Acción**                                                                    | **Descripción**                                                                                                                |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | `ssh-audit <target>`                                                          | Realiza una auditoría de seguridad del servicio SSH en el objetivo, detectando vulnerabilidades y configuraciones incorrectas. |
 | `ssh <user>@<target>`                                                         | Inicia sesión en el servidor SSH usando el cliente SSH.                                                                        |
@@ -32,13 +32,14 @@ linked:
 
 - [[SSH Exploitation (22)]]: Para la explotación de SSH. 
 
+---
+
 ## Overview
 
-**Secure Shell (SSH)** permite establecer una conexión de shell cifrada entre dos equipos a través de una red insegura.  
+**Secure Shell (SSH) permite establecer una conexión de shell cifrada entre dos equipos a través de una red insegura.**.
 Se utiliza para ejecutar comandos, transferir archivos y habilitar **port forwarding**.
 
 El servicio SSH puede configurarse para permitir o denegar el acceso root, así como habilitar o deshabilitar túneles y reenvío de puertos.  
-SSH está disponible en todos los sistemas operativos principales.
 
 ---
 
@@ -56,34 +57,25 @@ SSH está disponible en todos los sistemas operativos principales.
 
 1. **Password Authentication:**  
     Requiere cuenta local en el servidor y contraseña válida.
-    
 2. **Public-Key Authentication:**  
     El cliente usa su clave privada, el servidor valida con la clave pública.
-    
 3. **Host-Based Authentication:**  
     Autenticación basada en el host cliente (útil para automatización).
-    
 4. **Keyboard-Interactive Authentication:**  
     Método usado para MFA o desafíos interactivos.
-    
 5. **Challenge-Response Authentication:**  
     Usa desafíos dinámicos para evitar ataques de fuerza bruta o replay.
-    
 6. **GSSAPI Authentication:**  
     Permite autenticación mediante Kerberos u otros mecanismos SSO.
-    
 
 ---
 
-## Consejo
+## Consejos
 
 Durante la enumeración:
 
 - Comprobar si el banner de SSH revela la versión (`nmap -sV -p22 <target>`).
-- Si se vem versiones antiguas (por ejemplo `OpenSSH 4.x` o `5.x`), pueden existir vulnerabilidades conocidas.
-- Buscá configuraciones débiles como `PermitRootLogin yes` o `PasswordAuthentication yes`.
-    
+- Si se ven versiones antiguas (por ejemplo `OpenSSH 4.x` o `5.x`), pueden existir vulnerabilidades conocidas.
+- Buscar configuraciones débiles como `PermitRootLogin yes` o `PasswordAuthentication yes`.
 
 ---
-
-¿Querés que te haga también la parte de **SSH Exploitation (22)** para complementar este módulo? Puedo incluir ataques de fuerza bruta, abuso de claves y pivoteo con SSH.

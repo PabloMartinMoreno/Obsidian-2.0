@@ -1,28 +1,35 @@
 {
-  "collapse-filter": false,
+  "collapse-filter": true,
   "search": "-path:\"00 - Recursos/Plantillas\"  ",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
-      "query": "tag:#🥇Primary_Category  ",
+      "query": "tag:#type/moc/primary_category  ",
       "color": {
         "a": 1,
         "rgb": 16711680
       }
     },
     {
-      "query": "tag:#🥈Secondary_Category  ",
+      "query": "tag:#type/moc/secondary_category  ",
       "color": {
         "a": 1,
         "rgb": 6210815
       }
+    },
+    {
+      "query": "tag:#type/moc/tertiary_category  ",
+      "color": {
+        "a": 1,
+        "rgb": 3735485
+      }
     }
   ],
-  "collapse-display": false,
+  "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": -0.5,
   "nodeSizeMultiplier": 1,
@@ -32,6 +39,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.4014768625231911,
-  "close": false
+  "scale": 0.19862480832792817,
+  "close": true
 }
