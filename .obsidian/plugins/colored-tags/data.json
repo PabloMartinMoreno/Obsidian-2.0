@@ -201,7 +201,9 @@
     "pentesting/reconnaissance/services": 5,
     "pentesting/reconnaissance/reverse": 6,
     "tools/reconnaissance": 3,
-    "tools/reconnaissance/passive": 1
+    "tools/reconnaissance/passive": 1,
+    "tools/reconnaissance/web": 2,
+    "tools/web": 4
   },
   "_version": 3
 }

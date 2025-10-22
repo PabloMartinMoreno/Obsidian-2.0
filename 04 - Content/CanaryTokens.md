@@ -3,7 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
   - pentesting/reconnaissance/passive
-  - tools/reconnaissance/passive
+  - tools/reconnaissance
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

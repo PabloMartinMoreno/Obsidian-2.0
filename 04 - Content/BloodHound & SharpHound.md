@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - tools/ad/enumeration
+  - tools/ad
   - pentesting/reconnaissance/ad
 primary categories:
   - "[[Penetration Test]]"

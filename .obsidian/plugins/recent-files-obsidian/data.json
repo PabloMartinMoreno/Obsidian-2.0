@@ -1,80 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Server Enumeration",
-      "path": "04 - Content/Process/Web Server Enumeration.md"
+      "basename": "FTP Enumeration (21)",
+      "path": "04 - Content/Process/FTP Enumeration (21).md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "_temp",
+      "path": "05 - Templates/04 - Type/_temp.md"
     },
     {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Process/Subdomain & Virtual Host Fuzzing.md"
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Process/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Process/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Process/Parameter & Value Fuzzing.md"
-    },
-    {
-      "basename": "Tomcat Enumeration",
-      "path": "04 - Content/Process/Tomcat Enumeration.md"
-    },
-    {
-      "basename": "Splunk Enumeration",
-      "path": "04 - Content/Process/Splunk Enumeration.md"
-    },
-    {
-      "basename": "WordPress Enumeration",
-      "path": "04 - Content/Process/WordPress Enumeration.md"
-    },
-    {
-      "basename": "PRTG Network Monitor Enumeration",
-      "path": "04 - Content/Process/PRTG Network Monitor Enumeration.md"
-    },
-    {
-      "basename": "osTicket Enumeration",
-      "path": "04 - Content/Process/osTicket Enumeration.md"
-    },
-    {
-      "basename": "Magento Enumeration",
-      "path": "04 - Content/Process/Magento Enumeration.md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Joomla Enumeration",
-      "path": "04 - Content/Process/Joomla Enumeration.md"
-    },
-    {
-      "basename": "Jenkins Enumeration",
-      "path": "04 - Content/Process/Jenkins Enumeration.md"
-    },
-    {
-      "basename": "IIS Enumeration",
-      "path": "04 - Content/Process/IIS Enumeration.md"
-    },
-    {
-      "basename": "GitLab Enumeration",
-      "path": "04 - Content/Process/GitLab Enumeration.md"
-    },
-    {
-      "basename": "Drupal Enumeration",
-      "path": "04 - Content/Process/Drupal Enumeration.md"
-    },
-    {
-      "basename": "ColdFusion Enumeration",
-      "path": "04 - Content/Process/ColdFusion Enumeration.md"
+      "path": "04 - Content/Joomla Enumeration.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
@@ -82,43 +30,47 @@
     },
     {
       "basename": "CanaryTokens",
-      "path": "04 - Content/Process/CanaryTokens.md"
+      "path": "04 - Content/CanaryTokens.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
     },
     {
       "basename": "Social Engineering Reconnaissance",
-      "path": "04 - Content/Process/Social Engineering Reconnaissance.md"
+      "path": "04 - Content/Social Engineering Reconnaissance.md"
     },
     {
       "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Process/Passive Infrastructure Identification.md"
+      "path": "04 - Content/Passive Infrastructure Identification.md"
     },
     {
       "basename": "Google Dorking",
-      "path": "04 - Content/Process/Google Dorking.md"
+      "path": "04 - Content/Google Dorking.md"
     },
     {
       "basename": "GitHub Dorking",
-      "path": "04 - Content/Process/GitHub Dorking.md"
+      "path": "04 - Content/GitHub Dorking.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/BloodHound & SharpHound.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/Process/BloodHound & SharpHound.md"
-    },
-    {
       "basename": "Security Controls Enumeration (AD)",
-      "path": "04 - Content/Process/Security Controls Enumeration (AD).md"
+      "path": "04 - Content/Security Controls Enumeration (AD).md"
     },
     {
       "basename": "Object Permissions Enumeration (AD)",
-      "path": "04 - Content/Process/Object Permissions Enumeration (AD).md"
+      "path": "04 - Content/Object Permissions Enumeration (AD).md"
     },
     {
       "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Process/Password Policy Enumeration (AD).md"
+      "path": "04 - Content/Password Policy Enumeration (AD).md"
     },
     {
       "basename": "Users & Groups Enumeration (AD)",
@@ -129,8 +81,80 @@
       "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
+      "basename": "EyeWitness",
+      "path": "04 - Content/EyeWitness.md"
+    },
+    {
+      "basename": "Git-Dumper",
+      "path": "04 - Content/Git-Dumper.md"
+    },
+    {
+      "basename": "WordPress Enumeration",
+      "path": "04 - Content/WordPress Enumeration.md"
+    },
+    {
+      "basename": "Tomcat Enumeration",
+      "path": "04 - Content/Tomcat Enumeration.md"
+    },
+    {
+      "basename": "Splunk Enumeration",
+      "path": "04 - Content/Splunk Enumeration.md"
+    },
+    {
+      "basename": "PRTG Network Monitor Enumeration",
+      "path": "04 - Content/PRTG Network Monitor Enumeration.md"
+    },
+    {
+      "basename": "osTicket Enumeration",
+      "path": "04 - Content/osTicket Enumeration.md"
+    },
+    {
+      "basename": "Magento Enumeration",
+      "path": "04 - Content/Magento Enumeration.md"
+    },
+    {
+      "basename": "Jenkins Enumeration",
+      "path": "04 - Content/Jenkins Enumeration.md"
+    },
+    {
+      "basename": "IIS Enumeration",
+      "path": "04 - Content/IIS Enumeration.md"
+    },
+    {
+      "basename": "GitLab Enumeration",
+      "path": "04 - Content/GitLab Enumeration.md"
+    },
+    {
+      "basename": "Drupal Enumeration",
+      "path": "04 - Content/Drupal Enumeration.md"
+    },
+    {
+      "basename": "ColdFusion Enumeration",
+      "path": "04 - Content/ColdFusion Enumeration.md"
+    },
+    {
+      "basename": "Web Server Enumeration",
+      "path": "04 - Content/Web Server Enumeration.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "GetUserSPNs.py",
+      "path": "04 - Content/GetUserSPNs.py.md"
     },
     {
       "basename": "Jenkins 1",
@@ -151,14 +175,6 @@
     {
       "basename": "Reverse Engineering",
       "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "_temp",
-      "path": "05 - Templates/04 - Type/_temp.md"
     },
     {
       "basename": "CanaryToken 1",
@@ -183,22 +199,6 @@
     {
       "basename": "_cheatsheet",
       "path": "05 - Templates/04 - Type/_cheatsheet.md"
-    },
-    {
-      "basename": "_command",
-      "path": "05 - Templates/04 - Type/_command.md"
-    },
-    {
-      "basename": "Pivoting Reconnaissance",
-      "path": "04 - Content/Process/Pivoting Reconnaissance.md"
-    },
-    {
-      "basename": "_vulnerability",
-      "path": "05 - Templates/04 - Type/_vulnerability.md"
-    },
-    {
-      "basename": "_ttp",
-      "path": "05 - Templates/04 - Type/_ttp.md"
     }
   ],
   "omittedPaths": [],
