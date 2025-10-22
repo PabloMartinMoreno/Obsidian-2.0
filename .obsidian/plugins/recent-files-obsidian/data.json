@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/FTP Enumeration (21).md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "_temp",
       "path": "05 - Templates/04 - Type/_temp.md"
     },
@@ -143,10 +147,6 @@
     {
       "basename": "Subdomain & Virtual Host Fuzzing",
       "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Directory & Page Fuzzing",

@@ -278,8 +278,9 @@
   },
   "active": "924adf69b7dcb430",
   "lastOpenFiles": [
-    "05 - Templates/04 - Type/_temp.md",
+    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/FTP Enumeration (21).md",
+    "05 - Templates/04 - Type/_temp.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Web Enumeration.md",
@@ -303,7 +304,6 @@
     "04 - Content/Git-Dumper.md",
     "04 - Content/WordPress Enumeration.md",
     "04 - Content/Tomcat Enumeration.md",
-    "04 - Content/Splunk Enumeration.md",
     "00 - Resources/Pasted image 20251021141158.png",
     "00 - Resources/Images/Jenkins 1.png",
     "00 - Resources/Images/Jenkins 2.png",
