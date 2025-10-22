@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/FTP Enumeration (21).md",
+                "file": "04 - Content/Process/SSH Enumeration (22).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "FTP Enumeration (21)"
+              "title": "SSH Enumeration (22)"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/FTP Enumeration (21).md",
+                "file": "04 - Content/Process/SSH Enumeration (22).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de FTP Enumeration (21)"
+              "title": "Gráfico de SSH Enumeration (22)"
             }
           },
           {
@@ -278,10 +278,12 @@
   },
   "active": "924adf69b7dcb430",
   "lastOpenFiles": [
-    "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Process/FTP Enumeration (21).md",
-    "05 - Templates/04 - Type/_temp.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "04 - Content/FTP Enumeration (21).md",
+    "04 - Content/Process/SSH Enumeration (22).md",
+    "04 - Content/Process/Creds.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "05 - Templates/04 - Type/_temp.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Joomla Enumeration.md",
@@ -302,8 +304,6 @@
     "04 - Content/Parameter & Value Fuzzing.md",
     "04 - Content/EyeWitness.md",
     "04 - Content/Git-Dumper.md",
-    "04 - Content/WordPress Enumeration.md",
-    "04 - Content/Tomcat Enumeration.md",
     "00 - Resources/Pasted image 20251021141158.png",
     "00 - Resources/Images/Jenkins 1.png",
     "00 - Resources/Images/Jenkins 2.png",

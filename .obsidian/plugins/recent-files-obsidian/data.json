@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "SSH Enumeration (22)",
+      "path": "04 - Content/Process/SSH Enumeration (22).md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
       "basename": "FTP Enumeration (21)",
-      "path": "04 - Content/Process/FTP Enumeration (21).md"
+      "path": "04 - Content/FTP Enumeration (21).md"
+    },
+    {
+      "basename": "Creds",
+      "path": "04 - Content/Process/Creds.md"
     },
     {
       "basename": "Penetration Test",
@@ -11,10 +23,6 @@
     {
       "basename": "_temp",
       "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Information Gathering",
@@ -191,14 +199,6 @@
     {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "_cheatsheet",
-      "path": "05 - Templates/04 - Type/_cheatsheet.md"
     }
   ],
   "omittedPaths": [],
