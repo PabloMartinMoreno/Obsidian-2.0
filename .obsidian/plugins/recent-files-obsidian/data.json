@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Rsync Enumeration (873)",
-      "path": "04 - Content/Process/Rsync Enumeration (873).md"
+      "basename": "SQL Commands",
+      "path": "04 - Content/Process/SQL Commands.md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "MySQL Enumeration (3306)",
+      "path": "04 - Content/Process/MySQL Enumeration (3306).md"
+    },
+    {
+      "basename": "SQL*Plus Commands",
+      "path": "04 - Content/Process/SQL*Plus Commands.md"
+    },
+    {
+      "basename": "Oracle TNS Enumeration (1521)",
+      "path": "04 - Content/Process/Oracle TNS Enumeration (1521).md"
+    },
+    {
+      "basename": "T-SQL Commands",
+      "path": "04 - Content/Process/T-SQL Commands.md"
+    },
+    {
+      "basename": "MSSQL Enumeration (1433, 1434, 2433)",
+      "path": "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md"
+    },
+    {
+      "basename": "Rsync Enumeration (873)",
+      "path": "04 - Content/Process/Rsync Enumeration (873).md"
     },
     {
       "basename": "IPMI Enumeration (623)",
@@ -175,30 +199,6 @@
     {
       "basename": "Parameter & Value Fuzzing",
       "path": "04 - Content/Parameter & Value Fuzzing.md"
-    },
-    {
-      "basename": "EyeWitness",
-      "path": "04 - Content/EyeWitness.md"
-    },
-    {
-      "basename": "Git-Dumper",
-      "path": "04 - Content/Git-Dumper.md"
-    },
-    {
-      "basename": "WordPress Enumeration",
-      "path": "04 - Content/WordPress Enumeration.md"
-    },
-    {
-      "basename": "Tomcat Enumeration",
-      "path": "04 - Content/Tomcat Enumeration.md"
-    },
-    {
-      "basename": "Splunk Enumeration",
-      "path": "04 - Content/Splunk Enumeration.md"
-    },
-    {
-      "basename": "PRTG Network Monitor Enumeration",
-      "path": "04 - Content/PRTG Network Monitor Enumeration.md"
     }
   ],
   "omittedPaths": [],
