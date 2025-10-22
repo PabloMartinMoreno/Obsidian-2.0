@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "POP3 Enumeration (110, 995)",
-      "path": "04 - Content/Process/POP3 Enumeration (110, 995).md"
+      "basename": "NFS Enumeration (111, 2049)",
+      "path": "04 - Content/Process/NFS Enumeration (111, 2049).md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "POP3 Enumeration (110, 995)",
+      "path": "04 - Content/POP3 Enumeration (110, 995).md"
+    },
+    {
+      "basename": "Common POP3 Commands",
+      "path": "04 - Content/Process/Common POP3 Commands.md"
     },
     {
       "basename": "Kerberos Enumeration (88)",
@@ -191,14 +199,6 @@
     {
       "basename": "GetUserSPNs.py",
       "path": "04 - Content/GetUserSPNs.py.md"
-    },
-    {
-      "basename": "Jenkins 1",
-      "path": "00 - Resources/Images/Jenkins 1.png"
-    },
-    {
-      "basename": "Example Hack The Box Retired Machine",
-      "path": "04 - Content/Example Hack The Box Retired Machine.md"
     }
   ],
   "omittedPaths": [],
