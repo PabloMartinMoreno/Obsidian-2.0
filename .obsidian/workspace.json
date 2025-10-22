@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/RpcClient.md",
+                "file": "04 - Content/Process/Rsync Enumeration (873).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "RpcClient"
+              "title": "Rsync Enumeration (873)"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/RpcClient.md",
+                "file": "04 - Content/Process/Rsync Enumeration (873).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -199,7 +199,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de RpcClient"
+              "title": "Gráfico de Rsync Enumeration (873)"
             }
           },
           {
@@ -244,7 +244,15 @@
   "active": "53b08d4c0f4a348d",
   "lastOpenFiles": [
     "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "04 - Content/Process/IPMI Enumeration (623).md",
+    "04 - Content/Process/LDAP Enumeration (389, 636, 3268, 3269).md",
     "04 - Content/Interacting from Windows.md",
+    "04 - Content/RpcClient.md",
+    "04 - Content/Spidering SMB Shares.md",
+    "04 - Content/IMAP Enumeration (143, 993).md",
+    "04 - Content/Common IMAP Commands.md",
+    "04 - Content/SNMP Enumeration (161,162,10161,10162).md",
+    "00 - Resources/Pasted image 20251022171553.png",
     "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Social Engineering Reconnaissance.md",
@@ -262,14 +270,7 @@
     "04 - Content/SSH Enumeration (22).md",
     "04 - Content/SMTP Enumeration (25,465,587).md",
     "04 - Content/DNS Enumeration (53).md",
-    "04 - Content/TFTP Enumeration (69).md",
     "00 - Resources/Pasted image 20251022140815.png",
-    "04 - Content/Process/Creds.md",
-    "05 - Templates/04 - Type/_temp.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "04 - Content/Joomla Enumeration.md",
-    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
-    "04 - Content/CanaryTokens.md",
     "00 - Resources/Pasted image 20251021141158.png",
     "00 - Resources/Images/Jenkins 1.png",
     "00 - Resources/Images/Jenkins 2.png",
@@ -288,7 +289,6 @@
     "00 - Resources/Templates/_nivel",
     "00 - Resources/Templates/_ad",
     "00 - Resources/Images/Pasted image 20241007163018.png",
-    "00 - Resources/Images/vault-structure-01.gif",
     "00 - Resources/Diagrams/Canvas/INICIO.canvas",
     "00 - Recursos/Diagramas/Canvas/Ejemplo.canvas",
     "00 - Recursos/Diagramas/Canvas/Sin título.canvas",

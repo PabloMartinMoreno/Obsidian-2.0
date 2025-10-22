@@ -1,16 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "RpcClient",
-      "path": "04 - Content/Process/RpcClient.md"
+      "basename": "Rsync Enumeration (873)",
+      "path": "04 - Content/Process/Rsync Enumeration (873).md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
+      "basename": "IPMI Enumeration (623)",
+      "path": "04 - Content/Process/IPMI Enumeration (623).md"
+    },
+    {
+      "basename": "LDAP Enumeration (389, 636, 3268, 3269)",
+      "path": "04 - Content/Process/LDAP Enumeration (389, 636, 3268, 3269).md"
+    },
+    {
       "basename": "Interacting from Windows",
       "path": "04 - Content/Interacting from Windows.md"
+    },
+    {
+      "basename": "RpcClient",
+      "path": "04 - Content/RpcClient.md"
+    },
+    {
+      "basename": "Spidering SMB Shares",
+      "path": "04 - Content/Spidering SMB Shares.md"
+    },
+    {
+      "basename": "IMAP Enumeration (143, 993)",
+      "path": "04 - Content/IMAP Enumeration (143, 993).md"
+    },
+    {
+      "basename": "Common IMAP Commands",
+      "path": "04 - Content/Common IMAP Commands.md"
+    },
+    {
+      "basename": "SNMP Enumeration (161,162,10161,10162)",
+      "path": "04 - Content/SNMP Enumeration (161,162,10161,10162).md"
     },
     {
       "basename": "Information Gathering",
@@ -171,34 +199,6 @@
     {
       "basename": "PRTG Network Monitor Enumeration",
       "path": "04 - Content/PRTG Network Monitor Enumeration.md"
-    },
-    {
-      "basename": "osTicket Enumeration",
-      "path": "04 - Content/osTicket Enumeration.md"
-    },
-    {
-      "basename": "Magento Enumeration",
-      "path": "04 - Content/Magento Enumeration.md"
-    },
-    {
-      "basename": "Jenkins Enumeration",
-      "path": "04 - Content/Jenkins Enumeration.md"
-    },
-    {
-      "basename": "GitLab Enumeration",
-      "path": "04 - Content/GitLab Enumeration.md"
-    },
-    {
-      "basename": "Drupal Enumeration",
-      "path": "04 - Content/Drupal Enumeration.md"
-    },
-    {
-      "basename": "ColdFusion Enumeration",
-      "path": "04 - Content/ColdFusion Enumeration.md"
-    },
-    {
-      "basename": "Web Server Enumeration",
-      "path": "04 - Content/Web Server Enumeration.md"
     }
   ],
   "omittedPaths": [],
