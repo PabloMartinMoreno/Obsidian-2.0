@@ -18,4 +18,4 @@ linked:
 
 ## CheatSheet
 
-#estado/incompleto 
+#porhacer 

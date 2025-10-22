@@ -203,7 +203,8 @@
     "tools/reconnaissance": 3,
     "tools/reconnaissance/passive": 1,
     "tools/reconnaissance/web": 2,
-    "tools/web": 4
+    "tools/web": 4,
+    "porhacer": 125
   },
   "_version": 3
 }

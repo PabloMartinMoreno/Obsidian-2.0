@@ -1,16 +1,56 @@
 {
   "recentFiles": [
     {
-      "basename": "NFS Enumeration (111, 2049)",
-      "path": "04 - Content/Process/NFS Enumeration (111, 2049).md"
+      "basename": "RpcClient",
+      "path": "04 - Content/Process/RpcClient.md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
+      "basename": "Interacting from Windows",
+      "path": "04 - Content/Interacting from Windows.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Social Engineering Reconnaissance",
+      "path": "04 - Content/Social Engineering Reconnaissance.md"
+    },
+    {
+      "basename": "Security Controls Enumeration (AD)",
+      "path": "04 - Content/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "IIS Enumeration",
+      "path": "04 - Content/IIS Enumeration.md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/GitHub Dorking.md"
+    },
+    {
+      "basename": "SMB Enumeration (139, 445)",
+      "path": "04 - Content/SMB Enumeration (139, 445).md"
+    },
+    {
+      "basename": "NFS Enumeration (111, 2049)",
+      "path": "04 - Content/NFS Enumeration (111, 2049).md"
+    },
+    {
       "basename": "POP3 Enumeration (110, 995)",
       "path": "04 - Content/POP3 Enumeration (110, 995).md"
+    },
+    {
+      "basename": "Common SMTP Commands",
+      "path": "04 - Content/Common SMTP Commands.md"
     },
     {
       "basename": "Common POP3 Commands",
@@ -37,10 +77,6 @@
       "path": "04 - Content/SMTP Enumeration (25,465,587).md"
     },
     {
-      "basename": "Common SMTP Commands",
-      "path": "04 - Content/Common SMTP Commands.md"
-    },
-    {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
     },
@@ -53,16 +89,8 @@
       "path": "04 - Content/Process/Creds.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
       "basename": "_temp",
       "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Web Enumeration",
@@ -85,10 +113,6 @@
       "path": "04 - Content/Passive Subdomain Enumeration.md"
     },
     {
-      "basename": "Social Engineering Reconnaissance",
-      "path": "04 - Content/Social Engineering Reconnaissance.md"
-    },
-    {
       "basename": "Passive Infrastructure Identification",
       "path": "04 - Content/Passive Infrastructure Identification.md"
     },
@@ -97,20 +121,12 @@
       "path": "04 - Content/Google Dorking.md"
     },
     {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/GitHub Dorking.md"
-    },
-    {
       "basename": "BloodHound & SharpHound",
       "path": "04 - Content/BloodHound & SharpHound.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Security Controls Enumeration (AD)",
-      "path": "04 - Content/Security Controls Enumeration (AD).md"
     },
     {
       "basename": "Object Permissions Enumeration (AD)",
@@ -169,10 +185,6 @@
       "path": "04 - Content/Jenkins Enumeration.md"
     },
     {
-      "basename": "IIS Enumeration",
-      "path": "04 - Content/IIS Enumeration.md"
-    },
-    {
       "basename": "GitLab Enumeration",
       "path": "04 - Content/GitLab Enumeration.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Web Server Enumeration",
       "path": "04 - Content/Web Server Enumeration.md"
-    },
-    {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "GetUserSPNs.py",
-      "path": "04 - Content/GetUserSPNs.py.md"
     }
   ],
   "omittedPaths": [],

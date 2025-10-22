@@ -26,7 +26,7 @@ linked:
 
 **Artículos relacionados:**
 
-- IIS Exploitation: #estado/incompleto 
+- IIS Exploitation: #porhacer 
 
 ## Descripción general
 

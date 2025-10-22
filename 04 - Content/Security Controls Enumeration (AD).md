@@ -14,6 +14,6 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-#estado/incompleto
+#porhacer 
 
 ***
