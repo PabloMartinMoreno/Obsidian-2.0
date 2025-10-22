@@ -1,28 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/Process/DNS Enumeration (53).md"
+      "basename": "POP3 Enumeration (110, 995)",
+      "path": "04 - Content/Process/POP3 Enumeration (110, 995).md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
-      "basename": "Common SMTP Commands",
-      "path": "04 - Content/Process/Common SMTP Commands.md"
+      "basename": "Kerberos Enumeration (88)",
+      "path": "04 - Content/Process/Kerberos Enumeration (88).md"
     },
     {
-      "basename": "SMTP Enumeration (25,465,587)",
-      "path": "04 - Content/Process/SMTP Enumeration (25,465,587).md"
-    },
-    {
-      "basename": "SSH Enumeration (22)",
-      "path": "04 - Content/Process/SSH Enumeration (22).md"
+      "basename": "Finger Enumeration (79)",
+      "path": "04 - Content/Finger Enumeration (79).md"
     },
     {
       "basename": "FTP Enumeration (21)",
       "path": "04 - Content/FTP Enumeration (21).md"
+    },
+    {
+      "basename": "SSH Enumeration (22)",
+      "path": "04 - Content/SSH Enumeration (22).md"
+    },
+    {
+      "basename": "SMTP Enumeration (25,465,587)",
+      "path": "04 - Content/SMTP Enumeration (25,465,587).md"
+    },
+    {
+      "basename": "Common SMTP Commands",
+      "path": "04 - Content/Common SMTP Commands.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "TFTP Enumeration (69)",
+      "path": "04 - Content/TFTP Enumeration (69).md"
     },
     {
       "basename": "Creds",
@@ -183,22 +199,6 @@
     {
       "basename": "Example Hack The Box Retired Machine",
       "path": "04 - Content/Example Hack The Box Retired Machine.md"
-    },
-    {
-      "basename": "_dockerlabs",
-      "path": "05 - Templates/04 - Writeup/_dockerlabs.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "CanaryToken 1",
-      "path": "00 - Resources/Images/CanaryToken 1.png"
     }
   ],
   "omittedPaths": [],

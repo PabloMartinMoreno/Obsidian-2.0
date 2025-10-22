@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/DNS Enumeration (53).md",
+                "file": "04 - Content/Process/POP3 Enumeration (110, 995).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "DNS Enumeration (53)"
+              "title": "POP3 Enumeration (110, 995)"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/DNS Enumeration (53).md",
+                "file": "04 - Content/Process/POP3 Enumeration (110, 995).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -234,7 +234,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de DNS Enumeration (53)"
+              "title": "Gráfico de POP3 Enumeration (110, 995)"
             }
           },
           {
@@ -279,11 +279,15 @@
   "active": "924adf69b7dcb430",
   "lastOpenFiles": [
     "03 - Tertiary Categories/Host & Network Enumeration.md",
-    "04 - Content/Process/Common SMTP Commands.md",
-    "04 - Content/Process/SMTP Enumeration (25,465,587).md",
-    "00 - Resources/Pasted image 20251022140815.png",
-    "04 - Content/Process/SSH Enumeration (22).md",
+    "04 - Content/Process/Kerberos Enumeration (88).md",
+    "04 - Content/Finger Enumeration (79).md",
     "04 - Content/FTP Enumeration (21).md",
+    "04 - Content/SSH Enumeration (22).md",
+    "04 - Content/SMTP Enumeration (25,465,587).md",
+    "04 - Content/Common SMTP Commands.md",
+    "04 - Content/DNS Enumeration (53).md",
+    "04 - Content/TFTP Enumeration (69).md",
+    "00 - Resources/Pasted image 20251022140815.png",
     "04 - Content/Process/Creds.md",
     "01 - Primary Categories/Penetration Test.md",
     "05 - Templates/04 - Type/_temp.md",
@@ -301,10 +305,6 @@
     "03 - Tertiary Categories/Active Directory Enumeration.md",
     "04 - Content/Security Controls Enumeration (AD).md",
     "04 - Content/Object Permissions Enumeration (AD).md",
-    "04 - Content/Password Policy Enumeration (AD).md",
-    "04 - Content/Users & Groups Enumeration (AD).md",
-    "04 - Content/Hosts Enumeration (AD).md",
-    "04 - Content/Parameter & Value Fuzzing.md",
     "00 - Resources/Pasted image 20251021141158.png",
     "00 - Resources/Images/Jenkins 1.png",
     "00 - Resources/Images/Jenkins 2.png",
