@@ -1,16 +1,68 @@
 {
   "recentFiles": [
     {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/BloodHound & SharpHound.md"
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Pre-Exploitation",
+      "path": "02 - Secondary Categories/Pre-Exploitation.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "CanaryTokens",
+      "path": "04 - Content/CanaryTokens.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Passive Infrastructure Identification",
+      "path": "04 - Content/Passive Infrastructure Identification.md"
+    },
+    {
+      "basename": "Social Engineering Reconnaissance",
+      "path": "04 - Content/Social Engineering Reconnaissance.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Google Dorking.md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/GitHub Dorking.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/BloodHound & SharpHound.md"
     },
     {
       "basename": "Security Controls Enumeration (AD)",
@@ -97,20 +149,8 @@
       "path": "04 - Content/SNMP Enumeration (161,162,10161,10162).md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Social Engineering Reconnaissance",
-      "path": "04 - Content/Social Engineering Reconnaissance.md"
-    },
-    {
       "basename": "IIS Enumeration",
       "path": "04 - Content/IIS Enumeration.md"
-    },
-    {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/GitHub Dorking.md"
     },
     {
       "basename": "SMB Enumeration (139, 445)",
@@ -159,46 +199,6 @@
     {
       "basename": "TFTP Enumeration (69)",
       "path": "04 - Content/TFTP Enumeration (69).md"
-    },
-    {
-      "basename": "Creds",
-      "path": "04 - Content/Process/Creds.md"
-    },
-    {
-      "basename": "_temp",
-      "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Joomla Enumeration",
-      "path": "04 - Content/Joomla Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "CanaryTokens",
-      "path": "04 - Content/CanaryTokens.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Passive Infrastructure Identification.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Google Dorking.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
     }
   ],
   "omittedPaths": [],

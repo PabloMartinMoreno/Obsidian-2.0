@@ -2,8 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/passive
-  - tools/reconnaissance
+  - tools/passive-recon/canarytokens
+  - technique/passive-recon
+  - asset/honeypot
+  - meta/alerting
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

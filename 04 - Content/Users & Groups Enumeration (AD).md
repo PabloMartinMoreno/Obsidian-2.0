@@ -3,8 +3,8 @@ aliases:
   - Enumeración de Usuarios y Grupos (AD)
 tags:
   - type/cheatsheet
-  - "#pentesting/reconnaissance/ad"
-  - ad/enumeration
+  - asset/active-directory
+  - technique/recon
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

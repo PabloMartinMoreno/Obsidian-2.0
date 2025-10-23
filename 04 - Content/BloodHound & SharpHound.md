@@ -2,8 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
-  - tools/ad
-  - pentesting/reconnaissance/ad
+  - tool/ad/bloodhound
+  - tool/ad/sharphound
+  - technique/recon
+  - asset/active-directory
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

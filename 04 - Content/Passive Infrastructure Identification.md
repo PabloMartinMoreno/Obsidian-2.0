@@ -2,7 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/passive
+  - technique/passive-recon
+  - asset/infrastructure
+  - meta/reference
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

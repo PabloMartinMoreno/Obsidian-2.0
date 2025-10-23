@@ -2,9 +2,9 @@
 aliases:
   - Enumeración de Active Directory
 tags:
-  - "#pentesting/reconnaissance/ad"
-  - ad/enumeration
   - type/moc/tertiary_category
+  - asset/active-directory
+  - technique/recon
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
