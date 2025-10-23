@@ -2,6 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/tomcat
+  - protocol/http
+  - tool/curl
+  - meta/manager-app
+  - meta/credentials
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

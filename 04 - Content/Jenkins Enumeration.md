@@ -2,6 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/jenkins
+  - asset/web-app
+  - protocol/http
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

@@ -3,6 +3,12 @@ aliases:
 tags:
   - type/cheatsheet
   - asset/web-server
+  - service/iis
+  - protocol/http
+  - protocol/smb
+  - tool/nmap
+  - tool/shortscan
+  - meta/headers
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

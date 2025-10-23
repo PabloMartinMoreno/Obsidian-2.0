@@ -2,6 +2,12 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/wordpress
+  - protocol/http
+  - tool/wpscan
+  - tool/ffuf
+  - meta/plugins
+  - meta/themes
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

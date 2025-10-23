@@ -2,6 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/joomla
+  - protocol/http
+  - tool/curl
+  - tool/droopescan
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

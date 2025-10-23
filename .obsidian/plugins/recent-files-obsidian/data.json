@@ -1,12 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "IIS Enumeration",
-      "path": "04 - Content/IIS Enumeration.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "WordPress Enumeration",
+      "path": "04 - Content/WordPress Enumeration.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Tomcat Enumeration",
+      "path": "04 - Content/Tomcat Enumeration.md"
+    },
+    {
+      "basename": "Splunk Enumeration",
+      "path": "04 - Content/Splunk Enumeration.md"
+    },
+    {
+      "basename": "PRTG Network Monitor Enumeration",
+      "path": "04 - Content/PRTG Network Monitor Enumeration.md"
+    },
+    {
+      "basename": "osTicket Enumeration",
+      "path": "04 - Content/osTicket Enumeration.md"
+    },
+    {
+      "basename": "Magento Enumeration",
+      "path": "04 - Content/Magento Enumeration.md"
+    },
+    {
+      "basename": "Joomla Enumeration",
+      "path": "04 - Content/Joomla Enumeration.md"
+    },
+    {
+      "basename": "Jenkins Enumeration",
+      "path": "04 - Content/Jenkins Enumeration.md"
+    },
+    {
+      "basename": "IIS Enumeration",
+      "path": "04 - Content/IIS Enumeration.md"
     },
     {
       "basename": "GitLab Enumeration",
@@ -101,10 +137,6 @@
       "path": "04 - Content/Process/tags.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
       "basename": "Procedures",
       "path": "02 - Secondary Categories/Procedures.md"
     },
@@ -117,16 +149,8 @@
       "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
-      "basename": "WordPress Enumeration",
-      "path": "04 - Content/WordPress Enumeration.md"
-    },
-    {
       "basename": "_temp",
       "path": "05 - Templates/04 - Type/_temp.md"
-    },
-    {
-      "basename": "Tomcat Enumeration",
-      "path": "04 - Content/Tomcat Enumeration.md"
     },
     {
       "basename": "TFTP Enumeration (69)",
@@ -147,10 +171,6 @@
     {
       "basename": "SQL Commands",
       "path": "04 - Content/Process/SQL Commands.md"
-    },
-    {
-      "basename": "Splunk Enumeration",
-      "path": "04 - Content/Splunk Enumeration.md"
     },
     {
       "basename": "Spidering SMB Shares",
@@ -177,28 +197,8 @@
       "path": "04 - Content/RpcClient.md"
     },
     {
-      "basename": "PRTG Network Monitor Enumeration",
-      "path": "04 - Content/PRTG Network Monitor Enumeration.md"
-    },
-    {
       "basename": "POP3 Enumeration (110, 995)",
       "path": "04 - Content/POP3 Enumeration (110, 995).md"
-    },
-    {
-      "basename": "osTicket Enumeration",
-      "path": "04 - Content/osTicket Enumeration.md"
-    },
-    {
-      "basename": "Oracle TNS Enumeration (1521)",
-      "path": "04 - Content/Process/Oracle TNS Enumeration (1521).md"
-    },
-    {
-      "basename": "NFS Enumeration (111, 2049)",
-      "path": "04 - Content/NFS Enumeration (111, 2049).md"
-    },
-    {
-      "basename": "MySQL Enumeration (3306)",
-      "path": "04 - Content/Process/MySQL Enumeration (3306).md"
     }
   ],
   "omittedPaths": [],

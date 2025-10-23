@@ -2,6 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/prtg
+  - protocol/http
+  - tool/curl
+  - tool/nmap
+  - tool/prtgadmin
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

@@ -2,6 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/osticket
+  - protocol/http
+  - tool/curl
+  - meta/known-paths
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

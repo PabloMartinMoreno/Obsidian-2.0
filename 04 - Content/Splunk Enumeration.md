@@ -2,6 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/splunk
+  - protocol/http
+  - tool/splunk-sdk
+  - meta/credentials
+  - meta/management-ports
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

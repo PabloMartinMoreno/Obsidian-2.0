@@ -2,6 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/magento
+  - protocol/http
+  - tool/curl
+  - tool/php
+  - meta/extensions
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
