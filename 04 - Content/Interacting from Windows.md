@@ -7,6 +7,8 @@ tags:
   - tool/powershell
   - tool/net
   - tool/dir
+  - meta/impersonation
+  - meta/ps-remoting
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

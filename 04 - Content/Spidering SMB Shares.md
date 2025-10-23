@@ -2,6 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/smb
+  - tool/netexec
+  - meta/automation
+  - meta/search-patterns
+  - meta/exfiltration
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

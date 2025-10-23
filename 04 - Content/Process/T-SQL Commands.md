@@ -2,6 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/mssql
+  - meta/commands
+  - meta/examples
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

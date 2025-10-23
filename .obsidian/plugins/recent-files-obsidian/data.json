@@ -1,12 +1,56 @@
 {
   "recentFiles": [
     {
-      "basename": "Interacting from Windows",
-      "path": "04 - Content/Interacting from Windows.md"
+      "basename": "Oracle TNS Enumeration (1521)",
+      "path": "04 - Content/Process/Oracle TNS Enumeration (1521).md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "T-SQL Commands",
+      "path": "04 - Content/Process/T-SQL Commands.md"
+    },
+    {
+      "basename": "SNMP Enumeration (161,162,10161,10162)",
+      "path": "04 - Content/SNMP Enumeration (161,162,10161,10162).md"
+    },
+    {
+      "basename": "MSSQL Enumeration (1433, 1434, 2433)",
+      "path": "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md"
+    },
+    {
+      "basename": "Rsync Enumeration (873)",
+      "path": "04 - Content/Process/Rsync Enumeration (873).md"
+    },
+    {
+      "basename": "IPMI Enumeration (623)",
+      "path": "04 - Content/Process/IPMI Enumeration (623).md"
+    },
+    {
+      "basename": "LDAP Enumeration (389, 636, 3268, 3269)",
+      "path": "04 - Content/Process/LDAP Enumeration (389, 636, 3268, 3269).md"
+    },
+    {
+      "basename": "Common IMAP Commands",
+      "path": "04 - Content/Common IMAP Commands.md"
+    },
+    {
+      "basename": "IMAP Enumeration (143, 993)",
+      "path": "04 - Content/IMAP Enumeration (143, 993).md"
+    },
+    {
+      "basename": "Spidering SMB Shares",
+      "path": "04 - Content/Spidering SMB Shares.md"
+    },
+    {
+      "basename": "RpcClient",
+      "path": "04 - Content/RpcClient.md"
+    },
+    {
+      "basename": "Interacting from Windows",
+      "path": "04 - Content/Interacting from Windows.md"
     },
     {
       "basename": "SMB Enumeration (139, 445)",
@@ -155,50 +199,6 @@
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "CanaryTokens",
-      "path": "04 - Content/CanaryTokens.md"
-    },
-    {
-      "basename": "Social Engineering Reconnaissance",
-      "path": "04 - Content/Social Engineering Reconnaissance.md"
-    },
-    {
-      "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Passive Infrastructure Identification.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Google Dorking.md"
-    },
-    {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/GitHub Dorking.md"
-    },
-    {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/BloodHound & SharpHound.md"
-    },
-    {
-      "basename": "Security Controls Enumeration (AD)",
-      "path": "04 - Content/Security Controls Enumeration (AD).md"
-    },
-    {
-      "basename": "Object Permissions Enumeration (AD)",
-      "path": "04 - Content/Object Permissions Enumeration (AD).md"
-    },
-    {
-      "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Password Policy Enumeration (AD).md"
-    },
-    {
-      "basename": "Users & Groups Enumeration (AD)",
-      "path": "04 - Content/Users & Groups Enumeration (AD).md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
     }
   ],
   "omittedPaths": [],
