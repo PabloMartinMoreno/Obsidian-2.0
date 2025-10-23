@@ -1,204 +1,204 @@
 {
   "recentFiles": [
     {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
+      "basename": "Shells",
+      "path": "04 - Content/Process/Shells.md"
     },
     {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
+      "basename": "Cross-Compiling Exploit Code",
+      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
     },
     {
-      "basename": "Pre-Exploitation",
-      "path": "02 - Secondary Categories/Pre-Exploitation.md"
+      "basename": "Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Weaponization",
+      "path": "02 - Secondary Categories/Weaponization.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "PowerShell",
+      "path": "02 - Secondary Categories/PowerShell.md"
     },
     {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+      "basename": "Payload Engineering",
+      "path": "02 - Secondary Categories/Payload Engineering.md"
     },
     {
-      "basename": "CanaryTokens",
-      "path": "04 - Content/CanaryTokens.md"
+      "basename": "Online Courses",
+      "path": "02 - Secondary Categories/Online Courses.md"
     },
     {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
+      "basename": "OffSec",
+      "path": "02 - Secondary Categories/OffSec.md"
     },
     {
-      "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Passive Infrastructure Identification.md"
+      "basename": "Obsidian",
+      "path": "02 - Secondary Categories/Obsidian.md"
     },
     {
-      "basename": "Social Engineering Reconnaissance",
-      "path": "04 - Content/Social Engineering Reconnaissance.md"
+      "basename": "Metasploit",
+      "path": "02 - Secondary Categories/Metasploit.md"
     },
     {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Google Dorking.md"
+      "basename": "Learning Techniques",
+      "path": "02 - Secondary Categories/Learning Techniques.md"
     },
     {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/GitHub Dorking.md"
+      "basename": "Kerberoasting",
+      "path": "02 - Secondary Categories/Kerberoasting.md"
+    },
+    {
+      "basename": "Hack the Box",
+      "path": "02 - Secondary Categories/Hack the Box.md"
+    },
+    {
+      "basename": "Domain Enumeration",
+      "path": "02 - Secondary Categories/Domain Enumeration.md"
+    },
+    {
+      "basename": "Credential Harvesting",
+      "path": "02 - Secondary Categories/Credential Harvesting.md"
+    },
+    {
+      "basename": "C2 Tradecraft & Profiles",
+      "path": "02 - Secondary Categories/C2 Tradecraft & Profiles.md"
+    },
+    {
+      "basename": "Wireless Security",
+      "path": "01 - Primary Categories/Wireless Security.md"
+    },
+    {
+      "basename": "Web Application Security",
+      "path": "01 - Primary Categories/Web Application Security.md"
+    },
+    {
+      "basename": "Vault Administration",
+      "path": "01 - Primary Categories/Vault Administration.md"
+    },
+    {
+      "basename": "Training",
+      "path": "01 - Primary Categories/Training.md"
+    },
+    {
+      "basename": "Threat Intelligence",
+      "path": "01 - Primary Categories/Threat Intelligence.md"
+    },
+    {
+      "basename": "Social Engineering",
+      "path": "01 - Primary Categories/Social Engineering.md"
+    },
+    {
+      "basename": "Reporting",
+      "path": "01 - Primary Categories/Reporting.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "OS Internals",
+      "path": "01 - Primary Categories/OS Internals.md"
+    },
+    {
+      "basename": "Development",
+      "path": "01 - Primary Categories/Development.md"
+    },
+    {
+      "basename": "Detection Engineering",
+      "path": "01 - Primary Categories/Detection Engineering.md"
+    },
+    {
+      "basename": "Cryptography",
+      "path": "01 - Primary Categories/Cryptography.md"
+    },
+    {
+      "basename": "Cloud Security",
+      "path": "01 - Primary Categories/Cloud Security.md"
+    },
+    {
+      "basename": "Artificial Intelligence",
+      "path": "01 - Primary Categories/Artificial Intelligence.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/BloodHound & SharpHound.md"
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
     },
     {
-      "basename": "Security Controls Enumeration (AD)",
-      "path": "04 - Content/Security Controls Enumeration (AD).md"
+      "basename": "_tertiary category",
+      "path": "05 - Templates/04 - Category/_tertiary category.md"
     },
     {
-      "basename": "Object Permissions Enumeration (AD)",
-      "path": "04 - Content/Object Permissions Enumeration (AD).md"
+      "basename": "_secondary category",
+      "path": "05 - Templates/04 - Category/_secondary category.md"
     },
     {
-      "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Password Policy Enumeration (AD).md"
+      "basename": "_primary category",
+      "path": "05 - Templates/04 - Category/_primary category.md"
     },
     {
-      "basename": "Users & Groups Enumeration (AD)",
-      "path": "04 - Content/Users & Groups Enumeration (AD).md"
+      "basename": "Procedures",
+      "path": "02 - Secondary Categories/Procedures.md"
     },
     {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
+      "basename": "CheckList - Active Directory Compromise",
+      "path": "04 - Content/Process/CheckList - Active Directory Compromise.md"
     },
     {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+      "basename": "Credential Cracking",
+      "path": "04 - Content/Process/Credential Cracking.md"
     },
     {
-      "basename": "SQL Commands",
-      "path": "04 - Content/Process/SQL Commands.md"
+      "basename": "Persistence, Defense Evasion & C2",
+      "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
     },
     {
-      "basename": "MySQL Enumeration (3306)",
-      "path": "04 - Content/Process/MySQL Enumeration (3306).md"
+      "basename": "Command & Control (C2)",
+      "path": "04 - Content/Process/Command & Control (C2).md"
     },
     {
-      "basename": "SQL*Plus Commands",
-      "path": "04 - Content/Process/SQL*Plus Commands.md"
+      "basename": "Defense Evasion",
+      "path": "04 - Content/Process/Defense Evasion.md"
     },
     {
-      "basename": "Oracle TNS Enumeration (1521)",
-      "path": "04 - Content/Process/Oracle TNS Enumeration (1521).md"
+      "basename": "Persistence Techniques",
+      "path": "04 - Content/Process/Persistence Techniques.md"
     },
     {
-      "basename": "T-SQL Commands",
-      "path": "04 - Content/Process/T-SQL Commands.md"
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
     },
     {
-      "basename": "MSSQL Enumeration (1433, 1434, 2433)",
-      "path": "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md"
+      "basename": "Tunneling",
+      "path": "04 - Content/Process/Tunneling.md"
     },
     {
-      "basename": "Rsync Enumeration (873)",
-      "path": "04 - Content/Process/Rsync Enumeration (873).md"
+      "basename": "Pivoting",
+      "path": "04 - Content/Process/Pivoting.md"
     },
     {
-      "basename": "IPMI Enumeration (623)",
-      "path": "04 - Content/Process/IPMI Enumeration (623).md"
+      "basename": "Windows & Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
     },
     {
-      "basename": "LDAP Enumeration (389, 636, 3268, 3269)",
-      "path": "04 - Content/Process/LDAP Enumeration (389, 636, 3268, 3269).md"
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
-      "basename": "Interacting from Windows",
-      "path": "04 - Content/Interacting from Windows.md"
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
     },
     {
-      "basename": "RpcClient",
-      "path": "04 - Content/RpcClient.md"
-    },
-    {
-      "basename": "Spidering SMB Shares",
-      "path": "04 - Content/Spidering SMB Shares.md"
-    },
-    {
-      "basename": "IMAP Enumeration (143, 993)",
-      "path": "04 - Content/IMAP Enumeration (143, 993).md"
-    },
-    {
-      "basename": "Common IMAP Commands",
-      "path": "04 - Content/Common IMAP Commands.md"
-    },
-    {
-      "basename": "SNMP Enumeration (161,162,10161,10162)",
-      "path": "04 - Content/SNMP Enumeration (161,162,10161,10162).md"
-    },
-    {
-      "basename": "IIS Enumeration",
-      "path": "04 - Content/IIS Enumeration.md"
-    },
-    {
-      "basename": "SMB Enumeration (139, 445)",
-      "path": "04 - Content/SMB Enumeration (139, 445).md"
-    },
-    {
-      "basename": "NFS Enumeration (111, 2049)",
-      "path": "04 - Content/NFS Enumeration (111, 2049).md"
-    },
-    {
-      "basename": "POP3 Enumeration (110, 995)",
-      "path": "04 - Content/POP3 Enumeration (110, 995).md"
-    },
-    {
-      "basename": "Common SMTP Commands",
-      "path": "04 - Content/Common SMTP Commands.md"
-    },
-    {
-      "basename": "Common POP3 Commands",
-      "path": "04 - Content/Process/Common POP3 Commands.md"
-    },
-    {
-      "basename": "Kerberos Enumeration (88)",
-      "path": "04 - Content/Process/Kerberos Enumeration (88).md"
-    },
-    {
-      "basename": "Finger Enumeration (79)",
-      "path": "04 - Content/Finger Enumeration (79).md"
-    },
-    {
-      "basename": "FTP Enumeration (21)",
-      "path": "04 - Content/FTP Enumeration (21).md"
-    },
-    {
-      "basename": "SSH Enumeration (22)",
-      "path": "04 - Content/SSH Enumeration (22).md"
-    },
-    {
-      "basename": "SMTP Enumeration (25,465,587)",
-      "path": "04 - Content/SMTP Enumeration (25,465,587).md"
-    },
-    {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
-      "basename": "TFTP Enumeration (69)",
-      "path": "04 - Content/TFTP Enumeration (69).md"
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     }
   ],
   "omittedPaths": [],

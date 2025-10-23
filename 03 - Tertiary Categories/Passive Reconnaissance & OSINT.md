@@ -2,7 +2,7 @@
 aliases:
   - Reconocimiento Pasivo
 tags:
-  - type/moc/tertiary_category
+  - type/moc/tertiary
   - technique/passive-recon
   - tactic/reconnaissance
 primary categories:

@@ -1,9 +1,7 @@
 ---
 aliases:
 tags:
-  - type/moc/tertiary_category
-  - pentesting/lateral_movement
-  - ad/lateral_movement
+  - type/moc/tertiary
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

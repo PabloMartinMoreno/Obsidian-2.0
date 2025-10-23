@@ -2,7 +2,7 @@
 aliases:
   - Técnicas de Persistencia
 tags:
-  - type/moc/tertiary_category
+  - type/moc/tertiary
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

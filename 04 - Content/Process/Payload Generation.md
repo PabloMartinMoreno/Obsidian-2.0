@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - type/moc/tertiary_category
+  - type/moc/tertiary
 primary categories:
 secondary categories:
 type: Tertiary Category

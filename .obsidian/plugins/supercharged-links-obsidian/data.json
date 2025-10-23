@@ -14,7 +14,7 @@
     {
       "type": "tag",
       "name": "",
-      "value": "primary_category",
+      "value": "primary",
       "matchCaseSensitive": false,
       "match": "exact",
       "uid": "8068-b85b",
@@ -26,7 +26,7 @@
     {
       "type": "tag",
       "name": "",
-      "value": "secondary_category",
+      "value": "secondary",
       "matchCaseSensitive": false,
       "match": "exact",
       "uid": "bb6d-e482",
@@ -38,7 +38,7 @@
     {
       "type": "tag",
       "name": "",
-      "value": "tertiary_category",
+      "value": "tertiary",
       "matchCaseSensitive": false,
       "match": "exact",
       "uid": "c2c6-d006",

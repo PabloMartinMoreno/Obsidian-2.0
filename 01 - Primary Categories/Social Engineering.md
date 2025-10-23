@@ -2,7 +2,7 @@
 aliases:
 tags:
   - social_engineering
-  - type/moc/primary_category
+  - type/moc/primary
 primary categories:
   - "[[000 - Global Index]]"
 type: Primary Category

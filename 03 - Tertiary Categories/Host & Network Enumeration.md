@@ -2,8 +2,7 @@
 aliases:
   - Enumeración de Hosts y Redes
 tags:
-  - "#pentesting/reconnaissance/services"
-  - type/moc/tertiary_category
+  - type/moc/tertiary
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

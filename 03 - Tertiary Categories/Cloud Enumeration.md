@@ -2,8 +2,7 @@
 aliases:
   - Enumeración de la Nube
 tags:
-  - "#pentesting/reconnaissance/cloud"
-  - type/moc/tertiary_category
+  - type/moc/tertiary
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

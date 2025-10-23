@@ -2,7 +2,7 @@
 aliases:
   - Payload Development
 tags:
-  - type/moc/secondary_category
+  - type/moc/secondary
 primary categories:
 type: Secondary Category
 ---

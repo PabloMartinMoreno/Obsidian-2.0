@@ -2,7 +2,7 @@
 aliases:
   - Enumeración de Active Directory
 tags:
-  - type/moc/tertiary_category
+  - type/moc/tertiary
   - asset/active-directory
   - technique/recon
 primary categories:

@@ -233,7 +233,8 @@
     "asset/honeypot": 8,
     "meta/alerting": 3,
     "type/moc/secondary": 4,
-    "type/moc/primary": 5
+    "type/moc/primary": 5,
+    "type/moc/tertiary": 6
   },
   "_version": 3
 }

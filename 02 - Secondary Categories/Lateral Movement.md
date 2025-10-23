@@ -2,7 +2,6 @@
 aliases:
   - Movimiento Lateral
 tags:
-  - "#pentesting/lateral_movement"
   - type/moc/secondary
 primary categories:
   - "[[Penetration Test]]"

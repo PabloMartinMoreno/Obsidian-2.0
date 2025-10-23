@@ -2,7 +2,7 @@
 aliases:
   - Comandos & Control (C2)
 tags:
-  - type/moc/tertiary_category
+  - type/moc/tertiary
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

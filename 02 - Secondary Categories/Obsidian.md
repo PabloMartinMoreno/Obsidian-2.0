@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - type/moc/secondary_category
+  - type/moc/secondary
 primary categories:
   - "[[000 - Global Index]]"
   - "[[Vault Administration]]"
