@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Secondary Categories/Information Gathering.md",
+                "file": "04 - Content/Process/Active Directory Exploitation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Information Gathering"
+              "title": "Active Directory Exploitation"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "02 - Secondary Categories/Information Gathering.md",
+                "file": "04 - Content/Process/Active Directory Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Information Gathering"
+              "title": "Gráfico de Active Directory Exploitation"
             }
           },
           {
@@ -245,6 +245,24 @@
   },
   "active": "bdfd65ad50c2953a",
   "lastOpenFiles": [
+    "05 - Templates/04 - Type/_temp.md",
+    "04 - Content/Process/Active Directory Exploitation.md",
+    "02 - Secondary Categories/Exploitation.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "02 - Secondary Categories/Pre-Exploitation.md",
+    "04 - Content/Process/Searchsploit.md",
+    "04 - Content/Process/Shellter.md",
+    "04 - Content/Process/Payload Generation.md",
+    "04 - Content/Process/Web Shells.md",
+    "04 - Content/Process/Reverse Shells.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "04 - Content/Process/Staging & Listeners.md",
+    "04 - Content/Process/Payload Evasion.md",
+    "03 - Tertiary Categories/Reverse Engineering.md",
+    "04 - Content/Process/JavaScript Deobfuscation.md",
+    "05 - Templates/04 - Type/_cheatsheet.md",
+    "05 - Templates/04 - Type/_tool.md",
+    "03 - Tertiary Categories/Cloud Enumeration.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
     "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md",
     "04 - Content/T-SQL Commands.md",
@@ -253,24 +271,6 @@
     "04 - Content/MySQL Enumeration (3306).md",
     "04 - Content/SQL Commands.md",
     "04 - Content/RDP Enumeration (3389).md",
-    "04 - Content/Creds.md",
-    "04 - Content/Nmap.md",
-    "04 - Content/TcpDump.md",
-    "04 - Content/Windows LOTL Port Scanning.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "03 - Tertiary Categories/Cloud Enumeration.md",
-    "04 - Content/Process/Wireshark.md",
-    "04 - Content/Rsync Enumeration (873).md",
-    "04 - Content/IPMI Enumeration (623).md",
-    "04 - Content/LDAP Enumeration (389, 636, 3268, 3269).md",
-    "04 - Content/SNMP Enumeration (161,162,10161,10162).md",
-    "04 - Content/Common IMAP Commands.md",
-    "04 - Content/IMAP Enumeration (143, 993).md",
-    "04 - Content/Spidering SMB Shares.md",
-    "04 - Content/RpcClient.md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",

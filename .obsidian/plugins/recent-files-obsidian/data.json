@@ -1,8 +1,76 @@
 {
   "recentFiles": [
     {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "_temp",
+      "path": "05 - Templates/04 - Type/_temp.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Pre-Exploitation",
+      "path": "02 - Secondary Categories/Pre-Exploitation.md"
+    },
+    {
+      "basename": "Searchsploit",
+      "path": "04 - Content/Process/Searchsploit.md"
+    },
+    {
+      "basename": "Shellter",
+      "path": "04 - Content/Process/Shellter.md"
+    },
+    {
+      "basename": "Payload Generation",
+      "path": "04 - Content/Process/Payload Generation.md"
+    },
+    {
+      "basename": "Web Shells",
+      "path": "04 - Content/Process/Web Shells.md"
+    },
+    {
+      "basename": "Reverse Shells",
+      "path": "04 - Content/Process/Reverse Shells.md"
+    },
+    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Staging & Listeners",
+      "path": "04 - Content/Process/Staging & Listeners.md"
+    },
+    {
+      "basename": "Payload Evasion",
+      "path": "04 - Content/Process/Payload Evasion.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "JavaScript Deobfuscation",
+      "path": "04 - Content/Process/JavaScript Deobfuscation.md"
+    },
+    {
+      "basename": "_cheatsheet",
+      "path": "05 - Templates/04 - Type/_cheatsheet.md"
+    },
+    {
+      "basename": "_tool",
+      "path": "05 - Templates/04 - Type/_tool.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Host & Network Enumeration",
@@ -63,10 +131,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Wireshark",
@@ -135,70 +199,6 @@
     {
       "basename": "TFTP Enumeration (69)",
       "path": "04 - Content/TFTP Enumeration (69).md"
-    },
-    {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
-      "basename": "Common SMTP Commands",
-      "path": "04 - Content/Common SMTP Commands.md"
-    },
-    {
-      "basename": "SMTP Enumeration (25,465,587)",
-      "path": "04 - Content/SMTP Enumeration (25,465,587).md"
-    },
-    {
-      "basename": "SSH Enumeration (22)",
-      "path": "04 - Content/SSH Enumeration (22).md"
-    },
-    {
-      "basename": "FTP Enumeration (21)",
-      "path": "04 - Content/FTP Enumeration (21).md"
-    },
-    {
-      "basename": "EyeWitness",
-      "path": "04 - Content/EyeWitness.md"
-    },
-    {
-      "basename": "Git-Dumper",
-      "path": "04 - Content/Git-Dumper.md"
-    },
-    {
-      "basename": "nikto",
-      "path": "04 - Content/Process/nikto.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "WordPress Enumeration",
-      "path": "04 - Content/WordPress Enumeration.md"
-    },
-    {
-      "basename": "Tomcat Enumeration",
-      "path": "04 - Content/Tomcat Enumeration.md"
-    },
-    {
-      "basename": "Splunk Enumeration",
-      "path": "04 - Content/Splunk Enumeration.md"
-    },
-    {
-      "basename": "PRTG Network Monitor Enumeration",
-      "path": "04 - Content/PRTG Network Monitor Enumeration.md"
-    },
-    {
-      "basename": "osTicket Enumeration",
-      "path": "04 - Content/osTicket Enumeration.md"
-    },
-    {
-      "basename": "Magento Enumeration",
-      "path": "04 - Content/Magento Enumeration.md"
-    },
-    {
-      "basename": "Joomla Enumeration",
-      "path": "04 - Content/Joomla Enumeration.md"
     }
   ],
   "omittedPaths": [],

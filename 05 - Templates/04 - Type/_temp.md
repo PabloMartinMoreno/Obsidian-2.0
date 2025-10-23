@@ -5,9 +5,9 @@ tags:
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
-  - "[[Information Gathering]]"
+  - "[[Exploitation]]"
 tertiary categories:
-  - "[[Host & Network Enumeration]]"
+  - "[[Active Directory Exploitation]]"
 type: CheatSheet
 linked:
 ---

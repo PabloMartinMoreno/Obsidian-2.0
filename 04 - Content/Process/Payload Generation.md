@@ -17,13 +17,7 @@ type: Tertiary Category
 
 ## Web Shells
 
-- [[PHP Shell]]
-- [[ASP Shell]]
-- [[JSP Shell]]
-- [[common one-liners]]
-
-## Exploit Code Handling
-
-
+- [[Web Shells]]
+- [[Common One-Liners]]
 
 ***
