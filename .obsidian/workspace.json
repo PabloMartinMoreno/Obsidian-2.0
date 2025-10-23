@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Oracle TNS Enumeration (1521).md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Oracle TNS Enumeration (1521)"
+              "title": "Information Gathering"
             }
           }
         ],
@@ -121,7 +121,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Oracle TNS Enumeration (1521).md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Oracle TNS Enumeration (1521)"
+              "title": "Gráfico de Information Gathering"
             }
           },
           {
@@ -245,32 +245,32 @@
   },
   "active": "bdfd65ad50c2953a",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
-    "04 - Content/Process/T-SQL Commands.md",
-    "04 - Content/SNMP Enumeration (161,162,10161,10162).md",
+    "03 - Tertiary Categories/Cloud Enumeration.md",
+    "04 - Content/Process/Windows LOTL Port Scanning.md",
+    "04 - Content/Process/TcpDump.md",
+    "04 - Content/Process/Nmap.md",
+    "04 - Content/Process/Creds.md",
+    "04 - Content/Process/RDP Enumeration (3389).md",
+    "04 - Content/Process/SQL Commands.md",
+    "04 - Content/Process/MySQL Enumeration (3306).md",
+    "04 - Content/Process/SQL*Plus Commands.md",
+    "04 - Content/Process/Oracle TNS Enumeration (1521).md",
+    "04 - Content/Process/Wireshark.md",
+    "04 - Content/T-SQL Commands.md",
     "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md",
-    "04 - Content/Process/Rsync Enumeration (873).md",
-    "04 - Content/Process/IPMI Enumeration (623).md",
-    "04 - Content/Process/LDAP Enumeration (389, 636, 3268, 3269).md",
+    "04 - Content/Rsync Enumeration (873).md",
+    "04 - Content/IPMI Enumeration (623).md",
+    "04 - Content/LDAP Enumeration (389, 636, 3268, 3269).md",
+    "04 - Content/SNMP Enumeration (161,162,10161,10162).md",
     "04 - Content/Common IMAP Commands.md",
     "04 - Content/IMAP Enumeration (143, 993).md",
     "04 - Content/Spidering SMB Shares.md",
     "04 - Content/RpcClient.md",
-    "04 - Content/Interacting from Windows.md",
-    "04 - Content/SMB Enumeration (139, 445).md",
-    "04 - Content/NFS Enumeration (111, 2049).md",
-    "04 - Content/Process/Common POP3 Commands.md",
-    "04 - Content/POP3 Enumeration (110, 995).md",
-    "04 - Content/Process/Kerberos Enumeration (88).md",
-    "04 - Content/Finger Enumeration (79).md",
-    "04 - Content/TFTP Enumeration (69).md",
-    "04 - Content/DNS Enumeration (53).md",
-    "04 - Content/Common SMTP Commands.md",
-    "04 - Content/SMTP Enumeration (25,465,587).md",
-    "04 - Content/SSH Enumeration (22).md",
-    "04 - Content/FTP Enumeration (21).md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",

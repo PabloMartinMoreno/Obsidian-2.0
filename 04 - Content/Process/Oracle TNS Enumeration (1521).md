@@ -2,6 +2,17 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/oracle
+  - service/tns
+  - protocol/tcp
+  - port/1521
+  - tool/nmap
+  - tool/odat
+  - tool/sqlplus
+  - meta/tns-listener
+  - meta/service-names
+  - meta/credentials
+  - technique/recon/active
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

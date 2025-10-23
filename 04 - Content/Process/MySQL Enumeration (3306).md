@@ -2,6 +2,15 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/mysql
+  - protocol/mysql
+  - port/3306
+  - tool/mysql
+  - tool/nmap
+  - meta/db-users
+  - meta/credentials
+  - meta/schemas
+  - technique/credential-access
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

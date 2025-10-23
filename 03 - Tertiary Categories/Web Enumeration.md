@@ -4,7 +4,6 @@ tags:
   - type/moc/tertiary
   - technique/recon/active
   - asset/web-app
-  - category/web-enumeration
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

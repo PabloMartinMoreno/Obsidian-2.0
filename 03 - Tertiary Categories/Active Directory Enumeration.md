@@ -5,7 +5,6 @@ tags:
   - type/moc/tertiary
   - asset/active-directory
   - technique/recon/active
-  - category/ad
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

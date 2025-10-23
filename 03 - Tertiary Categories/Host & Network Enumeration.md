@@ -3,7 +3,6 @@ aliases:
   - Enumeración de Hosts y Redes
 tags:
   - type/moc/tertiary
-  - category/host-network-enumeration
   - technique/recon/active
   - asset/network
   - meta/index
@@ -57,4 +56,5 @@ type: Tertiary Category
 	- [[Nmap]]
 	- [[TcpDump]]
 	- [[Wireshark]]
+	- [[Windows LOTL Port Scanning]]
 
