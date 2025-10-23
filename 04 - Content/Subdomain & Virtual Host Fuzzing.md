@@ -2,7 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/web
+  - technique/recon/active
+  - asset/dns
+  - tool/curl
+  - tool/ffuf
+  - meta/virtual-hosts
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

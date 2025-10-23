@@ -4,7 +4,7 @@ tags:
   - type/cheatsheet
   - tool/bloodhound
   - tool/sharphound
-  - technique/recon
+  - technique/recon/active
   - asset/active-directory
 primary categories:
   - "[[Penetration Test]]"

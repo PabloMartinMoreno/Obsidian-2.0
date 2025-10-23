@@ -3,8 +3,7 @@ aliases:
   - Reconocimiento Pasivo
 tags:
   - type/moc/tertiary
-  - technique/passive-recon
-  - tactic/reconnaissance
+  - technique/recon/passive
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

@@ -3,7 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
   - tool/canarytokens
-  - technique/passive-recon
+  - technique/recon/passive
   - asset/honeypot
   - meta/alerting
 primary categories:

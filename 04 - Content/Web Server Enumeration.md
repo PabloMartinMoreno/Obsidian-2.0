@@ -2,7 +2,13 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/web
+  - technique/recon/active
+  - asset/web-server
+  - service/apache
+  - tool/whatweb
+  - tool/wappalyzer
+  - tool/wafw00f
+  - meta/headers
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

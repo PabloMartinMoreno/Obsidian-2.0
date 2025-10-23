@@ -2,7 +2,6 @@
 aliases:
   - Procedimientos
 tags:
-  - "#pentesting/procedures"
   - type/moc/secondary
 primary categories:
   - "[[Penetration Test]]"

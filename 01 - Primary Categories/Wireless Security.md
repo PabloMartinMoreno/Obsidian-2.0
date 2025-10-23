@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - wireless_security
   - type/moc/primary
 primary categories:
   - "[[000 - Global Index]]"

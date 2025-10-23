@@ -2,6 +2,8 @@
 aliases:
 tags:
   - type/moc/tertiary
+  - technique/recon/active
+  - asset/web-app
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

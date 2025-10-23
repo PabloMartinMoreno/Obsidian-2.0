@@ -3,7 +3,6 @@ aliases:
   - Enumeración Rsync (873)
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/services
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

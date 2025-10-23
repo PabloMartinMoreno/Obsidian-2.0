@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - technique/passive-recon
+  - technique/recon/passive
   - asset/personnel
   - asset/organization
   - meta/osint

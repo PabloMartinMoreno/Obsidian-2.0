@@ -2,9 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
-  - technique/passive-recon
+  - technique/recon/passive
   - asset/domain
   - meta/reference
+  - tool/whois
+  - tool/curl
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

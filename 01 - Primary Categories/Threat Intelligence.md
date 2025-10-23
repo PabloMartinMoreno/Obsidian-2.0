@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - threat_intelligence
   - type/moc/primary
 primary categories:
   - "[[000 - Global Index]]"

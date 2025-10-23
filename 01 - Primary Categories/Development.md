@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - development
   - type/moc/primary
 primary categories:
   - "[[000 - Global Index]]"

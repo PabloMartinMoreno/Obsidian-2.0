@@ -2,7 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/web
+  - asset/web-app
+  - service/gitlab
+  - protocol/http
+  - meta/credentials
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

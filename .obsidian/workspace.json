@@ -4,22 +4,37 @@
     "type": "split",
     "children": [
       {
-        "id": "fc6505a705d754ae",
+        "id": "52b33a9d421b3f6e",
         "type": "tabs",
         "children": [
           {
-            "id": "cbb35dca5964c6b4",
+            "id": "63c9203583ed31c8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/GetUserSPNs.py.md",
+                "file": "04 - Content/IIS Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "GetUserSPNs.py"
+              "title": "IIS Enumeration"
+            }
+          },
+          {
+            "id": "123c1dfc368ab36e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "04 - Content/Process/tags.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "tags"
             }
           }
         ],
@@ -71,7 +86,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#tool",
+                "query": "tag:#pentesting",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,7 +135,8 @@
               "title": "Etiquetas"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -150,7 +166,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/GetUserSPNs.py.md",
+                "file": "04 - Content/IIS Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -164,21 +180,21 @@
                   "collapse-color-groups": false,
                   "colorGroups": [
                     {
-                      "query": "tag:#type/moc/primary_category  ",
+                      "query": "tag:#type/moc/primary ",
                       "color": {
                         "a": 1,
                         "rgb": 16711680
                       }
                     },
                     {
-                      "query": "tag:#type/moc/secondary_category  ",
+                      "query": "tag:#type/moc/secondary",
                       "color": {
                         "a": 1,
                         "rgb": 4652024
                       }
                     },
                     {
-                      "query": "tag:#type/moc/tertiary_category  ",
+                      "query": "tag:#type/moc/tertiary",
                       "color": {
                         "a": 1,
                         "rgb": 2752400
@@ -195,12 +211,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.47555979864626524,
+                  "scale": 0.7105781869527489,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de GetUserSPNs.py"
+              "title": "Gráfico de IIS Enumeration"
             }
           },
           {
@@ -242,34 +258,34 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "cbb35dca5964c6b4",
+  "active": "63c9203583ed31c8",
   "lastOpenFiles": [
-    "04 - Content/CanaryTokens.md",
-    "04 - Content/BloodHound & SharpHound.md",
-    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
-    "04 - Content/Passive Infrastructure Identification.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/GitLab Enumeration.md",
+    "04 - Content/Drupal Enumeration.md",
+    "04 - Content/ColdFusion Enumeration.md",
+    "04 - Content/Web Server Enumeration.md",
+    "04 - Content/Subdomain & Virtual Host Fuzzing.md",
     "04 - Content/Passive Subdomain Enumeration.md",
+    "04 - Content/Parameter & Value Fuzzing.md",
+    "04 - Content/Directory & Page Fuzzing.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "04 - Content/CanaryTokens.md",
     "04 - Content/Social Engineering Reconnaissance.md",
-    "04 - Content/EyeWitness.md",
+    "04 - Content/Passive Infrastructure Identification.md",
     "04 - Content/Google Dorking.md",
     "04 - Content/GitHub Dorking.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "04 - Content/BloodHound & SharpHound.md",
     "04 - Content/Security Controls Enumeration (AD).md",
     "04 - Content/Object Permissions Enumeration (AD).md",
     "04 - Content/Password Policy Enumeration (AD).md",
     "04 - Content/Users & Groups Enumeration (AD).md",
     "04 - Content/Hosts Enumeration (AD).md",
+    "04 - Content/Process/tags.md",
     "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Process/Shells.md",
-    "04 - Content/Process/Cross-Compiling Exploit Code.md",
-    "04 - Content/Process/Active Directory Lateral Movement.md",
-    "02 - Secondary Categories/Weaponization.md",
-    "02 - Secondary Categories/PowerShell.md",
-    "02 - Secondary Categories/Payload Engineering.md",
-    "02 - Secondary Categories/Online Courses.md",
-    "02 - Secondary Categories/OffSec.md",
-    "02 - Secondary Categories/Obsidian.md",
+    "02 - Secondary Categories/Procedures.md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",

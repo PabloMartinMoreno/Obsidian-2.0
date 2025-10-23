@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - technique/passive-recon
+  - technique/recon/passive
   - asset/domain
   - asset/web-app
   - meta/osint

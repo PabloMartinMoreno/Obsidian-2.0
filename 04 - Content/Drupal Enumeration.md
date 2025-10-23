@@ -2,7 +2,12 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/web
+  - asset/web-app
+  - service/drupal
+  - protocol/http
+  - tool/droopescan
+  - tool/curl
+  - meta/modules
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

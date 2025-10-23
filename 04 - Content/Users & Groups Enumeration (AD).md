@@ -4,7 +4,7 @@ aliases:
 tags:
   - type/cheatsheet
   - asset/active-directory
-  - technique/recon
+  - technique/recon/active
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

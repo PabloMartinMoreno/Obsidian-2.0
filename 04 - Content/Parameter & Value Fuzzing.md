@@ -2,7 +2,13 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/web
+  - technique/recon/active
+  - asset/web-app
+  - protocol/http
+  - tool/ffuf
+  - tool/curl
+  - meta/wordlists
+  - meta/poc
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

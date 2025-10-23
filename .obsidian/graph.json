@@ -5,24 +5,24 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
+  "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "tag:#type/moc/primary_category  ",
+      "query": "tag:#type/moc/primary",
       "color": {
         "a": 1,
         "rgb": 16711680
       }
     },
     {
-      "query": "tag:#type/moc/secondary_category  ",
+      "query": "tag:#type/moc/secondary",
       "color": {
         "a": 1,
         "rgb": 6210815
       }
     },
     {
-      "query": "tag:#type/moc/tertiary_category  ",
+      "query": "tag:#type/moc/tertiary",
       "color": {
         "a": 1,
         "rgb": 3735485

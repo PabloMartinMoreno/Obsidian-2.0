@@ -2,10 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
-  - technique/passive-recon
+  - technique/recon/passive
   - asset/repository
   - meta/osint
-  - tool/passive-recon/github
+  - tool/github
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

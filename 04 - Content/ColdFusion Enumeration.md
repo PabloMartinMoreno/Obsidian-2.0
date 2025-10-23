@@ -2,7 +2,14 @@
 aliases:
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/web
+  - asset/web-app
+  - service/coldfusion
+  - protocol/http
+  - tool/coldfusion-scanner
+  - meta/known-issues
+  - tool/ffuf
+  - tool/nmap
+  - tool/curl
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

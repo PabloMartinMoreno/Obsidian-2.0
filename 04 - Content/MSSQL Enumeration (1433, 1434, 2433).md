@@ -3,7 +3,6 @@ aliases:
   - Enumeración MSSQL (1433, 1434, 2433)
 tags:
   - type/cheatsheet
-  - pentesting/reconnaissance/services
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
