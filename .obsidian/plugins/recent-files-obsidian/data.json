@@ -1,6 +1,74 @@
 {
   "recentFiles": [
     {
+      "basename": "GetUserSPNs.py",
+      "path": "04 - Content/GetUserSPNs.py.md"
+    },
+    {
+      "basename": "CanaryTokens",
+      "path": "04 - Content/CanaryTokens.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/BloodHound & SharpHound.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Passive Infrastructure Identification",
+      "path": "04 - Content/Passive Infrastructure Identification.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Social Engineering Reconnaissance",
+      "path": "04 - Content/Social Engineering Reconnaissance.md"
+    },
+    {
+      "basename": "EyeWitness",
+      "path": "04 - Content/EyeWitness.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Google Dorking.md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/GitHub Dorking.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Security Controls Enumeration (AD)",
+      "path": "04 - Content/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "Object Permissions Enumeration (AD)",
+      "path": "04 - Content/Object Permissions Enumeration (AD).md"
+    },
+    {
+      "basename": "Password Policy Enumeration (AD)",
+      "path": "04 - Content/Password Policy Enumeration (AD).md"
+    },
+    {
+      "basename": "Users & Groups Enumeration (AD)",
+      "path": "04 - Content/Users & Groups Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
@@ -125,80 +193,12 @@
       "path": "01 - Primary Categories/Artificial Intelligence.md"
     },
     {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
     },
     {
       "basename": "_tertiary category",
       "path": "05 - Templates/04 - Category/_tertiary category.md"
-    },
-    {
-      "basename": "_secondary category",
-      "path": "05 - Templates/04 - Category/_secondary category.md"
-    },
-    {
-      "basename": "_primary category",
-      "path": "05 - Templates/04 - Category/_primary category.md"
-    },
-    {
-      "basename": "Procedures",
-      "path": "02 - Secondary Categories/Procedures.md"
-    },
-    {
-      "basename": "CheckList - Active Directory Compromise",
-      "path": "04 - Content/Process/CheckList - Active Directory Compromise.md"
-    },
-    {
-      "basename": "Credential Cracking",
-      "path": "04 - Content/Process/Credential Cracking.md"
-    },
-    {
-      "basename": "Persistence, Defense Evasion & C2",
-      "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
-    },
-    {
-      "basename": "Command & Control (C2)",
-      "path": "04 - Content/Process/Command & Control (C2).md"
-    },
-    {
-      "basename": "Defense Evasion",
-      "path": "04 - Content/Process/Defense Evasion.md"
-    },
-    {
-      "basename": "Persistence Techniques",
-      "path": "04 - Content/Process/Persistence Techniques.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
-      "basename": "Tunneling",
-      "path": "04 - Content/Process/Tunneling.md"
-    },
-    {
-      "basename": "Pivoting",
-      "path": "04 - Content/Process/Pivoting.md"
-    },
-    {
-      "basename": "Windows & Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     }
   ],
   "omittedPaths": [],

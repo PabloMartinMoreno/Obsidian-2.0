@@ -2,8 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - tool/ad/bloodhound
-  - tool/ad/sharphound
+  - tool/bloodhound
+  - tool/sharphound
   - technique/recon
   - asset/active-directory
 primary categories:

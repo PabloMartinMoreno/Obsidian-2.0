@@ -234,7 +234,17 @@
     "meta/alerting": 3,
     "type/moc/secondary": 4,
     "type/moc/primary": 5,
-    "type/moc/tertiary": 6
+    "type/moc/tertiary": 6,
+    "tool/passive-recon": 8,
+    "tool/passive-recon/github": 1,
+    "tool/passive-recon/amass": 2,
+    "tool/passive-recon/subfinder": 3,
+    "tool/passive-recon/canarytokens": 4,
+    "tool/passive-recon/shodan": 5,
+    "tool/passive-recon/censys": 6,
+    "tool/bloodhound": 9,
+    "tool/sharphound": 10,
+    "tool/canarytokens": 11
   },
   "_version": 3
 }

@@ -5,6 +5,7 @@ tags:
   - technique/passive-recon
   - asset/repository
   - meta/osint
+  - tool/passive-recon/github
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

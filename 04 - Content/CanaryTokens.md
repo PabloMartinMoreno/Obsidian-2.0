@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - tools/passive-recon/canarytokens
+  - tool/canarytokens
   - technique/passive-recon
   - asset/honeypot
   - meta/alerting

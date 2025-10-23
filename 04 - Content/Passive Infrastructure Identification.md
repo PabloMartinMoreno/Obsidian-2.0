@@ -13,6 +13,7 @@ tertiary categories:
   - "[[Passive Reconnaissance & OSINT]]"
 type: CheatSheet
 linked:
+  - "[[CanaryTokens]]"
 ---
 # Passive Infrastructure Identification
 
