@@ -2,6 +2,16 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/kerberos
+  - protocol/kerberos
+  - technique/recon/active
+  - port/88
+  - tool/nmap
+  - tool/kerberos-tools
+  - tool/kerberoast
+  - meta/realm
+  - meta/principal-enum
+  - cred/kerberos-tickets
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

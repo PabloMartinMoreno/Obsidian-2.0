@@ -2,6 +2,16 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
+  - service/pop3
+  - protocol/pop3
+  - port/110
+  - port/995
+  - tool/telnet
+  - tool/openssl-s_client
+  - tool/nmap
+  - meta/commands
+  - meta/auth-methods
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

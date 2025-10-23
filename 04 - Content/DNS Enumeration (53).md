@@ -2,6 +2,16 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/dns
+  - protocol/dns
+  - port/53
+  - tool/nmap
+  - tool/dnsrecon
+  - tool/nslookup
+  - tool/host
+  - meta/zone-transfer
+  - meta/records
+  - technique/recon/active
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

@@ -2,6 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
+  - protocol/smtp
+  - meta/commands
+  - meta/examples
+  - tool/telnet
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

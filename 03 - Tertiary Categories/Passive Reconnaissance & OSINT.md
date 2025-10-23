@@ -4,6 +4,7 @@ aliases:
 tags:
   - type/moc/tertiary
   - technique/recon/passive
+  - category/passive-osint
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

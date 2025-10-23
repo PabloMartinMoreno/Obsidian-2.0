@@ -3,6 +3,11 @@ aliases:
   - Enumeración de Hosts y Redes
 tags:
   - type/moc/tertiary
+  - category/host-network-enumeration
+  - technique/recon/active
+  - asset/network
+  - meta/index
+  - meta/checklist
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

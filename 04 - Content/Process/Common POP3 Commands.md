@@ -2,6 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
+  - protocol/pop3
+  - meta/commands
+  - tool/telnet
+  - tool/openssl-s_client
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

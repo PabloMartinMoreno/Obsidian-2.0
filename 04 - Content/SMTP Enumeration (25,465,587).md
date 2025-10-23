@@ -2,6 +2,18 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
+  - service/smtp
+  - protocol/smtp
+  - port/25
+  - port/465
+  - port/587
+  - tool/nmap
+  - tool/telnet
+  - tool/swaks
+  - tool/smtp-user-enum
+  - meta/open-relay
+  - meta/vhost-headers
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

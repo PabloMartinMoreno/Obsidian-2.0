@@ -2,6 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/smb
+  - env/windows
+  - tool/powershell
+  - tool/net
+  - tool/dir
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

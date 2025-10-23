@@ -2,6 +2,14 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
+  - service/tftp
+  - protocol/tftp
+  - port/69
+  - tool/tftp
+  - tool/nmap
+  - meta/anonymous
+  - meta/downloadable-files
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

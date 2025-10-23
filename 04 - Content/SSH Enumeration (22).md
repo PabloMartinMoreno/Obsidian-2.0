@@ -2,6 +2,15 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
+  - service/ssh
+  - protocol/ssh
+  - port/22
+  - tool/ssh
+  - tool/nmap
+  - tool/ssh-audit
+  - meta/keys
+  - meta/ciphers
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

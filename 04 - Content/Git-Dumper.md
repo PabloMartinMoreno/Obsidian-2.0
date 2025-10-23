@@ -2,6 +2,12 @@
 aliases:
 tags:
   - type/cheatsheet
+  - asset/source-code
+  - tool/git-dumper
+  - protocol/http
+  - protocol/git
+  - meta/poc
+  - technique/recon/active
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:

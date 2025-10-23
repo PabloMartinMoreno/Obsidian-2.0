@@ -2,6 +2,11 @@
 aliases:
 tags:
   - type/cheatsheet
+  - meta/screenshots
+  - tool/eyewitness
+  - asset/web-app
+  - protocol/http
+  - technique/recon/active
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
