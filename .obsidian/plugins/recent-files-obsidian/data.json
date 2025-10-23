@@ -5,6 +5,54 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "MSSQL Enumeration (1433, 1434, 2433)",
+      "path": "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md"
+    },
+    {
+      "basename": "T-SQL Commands",
+      "path": "04 - Content/T-SQL Commands.md"
+    },
+    {
+      "basename": "Oracle TNS Enumeration (1521)",
+      "path": "04 - Content/Oracle TNS Enumeration (1521).md"
+    },
+    {
+      "basename": "SQL*Plus Commands",
+      "path": "04 - Content/SQL*Plus Commands.md"
+    },
+    {
+      "basename": "MySQL Enumeration (3306)",
+      "path": "04 - Content/MySQL Enumeration (3306).md"
+    },
+    {
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
+    },
+    {
+      "basename": "RDP Enumeration (3389)",
+      "path": "04 - Content/RDP Enumeration (3389).md"
+    },
+    {
+      "basename": "Creds",
+      "path": "04 - Content/Creds.md"
+    },
+    {
+      "basename": "Nmap",
+      "path": "04 - Content/Nmap.md"
+    },
+    {
+      "basename": "TcpDump",
+      "path": "04 - Content/TcpDump.md"
+    },
+    {
+      "basename": "Windows LOTL Port Scanning",
+      "path": "04 - Content/Windows LOTL Port Scanning.md"
+    },
+    {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
@@ -17,60 +65,12 @@
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
       "basename": "Cloud Enumeration",
       "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
-      "basename": "Windows LOTL Port Scanning",
-      "path": "04 - Content/Process/Windows LOTL Port Scanning.md"
-    },
-    {
-      "basename": "TcpDump",
-      "path": "04 - Content/Process/TcpDump.md"
-    },
-    {
-      "basename": "Nmap",
-      "path": "04 - Content/Process/Nmap.md"
-    },
-    {
-      "basename": "Creds",
-      "path": "04 - Content/Process/Creds.md"
-    },
-    {
-      "basename": "RDP Enumeration (3389)",
-      "path": "04 - Content/Process/RDP Enumeration (3389).md"
-    },
-    {
-      "basename": "SQL Commands",
-      "path": "04 - Content/Process/SQL Commands.md"
-    },
-    {
-      "basename": "MySQL Enumeration (3306)",
-      "path": "04 - Content/Process/MySQL Enumeration (3306).md"
-    },
-    {
-      "basename": "SQL*Plus Commands",
-      "path": "04 - Content/Process/SQL*Plus Commands.md"
-    },
-    {
-      "basename": "Oracle TNS Enumeration (1521)",
-      "path": "04 - Content/Process/Oracle TNS Enumeration (1521).md"
-    },
-    {
       "basename": "Wireshark",
       "path": "04 - Content/Process/Wireshark.md"
-    },
-    {
-      "basename": "T-SQL Commands",
-      "path": "04 - Content/T-SQL Commands.md"
-    },
-    {
-      "basename": "MSSQL Enumeration (1433, 1434, 2433)",
-      "path": "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md"
     },
     {
       "basename": "Rsync Enumeration (873)",

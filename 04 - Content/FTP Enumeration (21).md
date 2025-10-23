@@ -48,7 +48,7 @@ El servicio FTP puede permitir acceso **anónimo**, con permisos de solo lectura
 - `ftp:ftp`
 - `guest:guest`
 
-Comprobar las herramientas de [[creds]] para otros pares por defecto.
+Comprobar las herramientas de [[Creds]] para otros pares por defecto.
 
 Los puertos predeterminados para FTP son el puerto TCP **21** para los comandos de control y el puerto TCP **20** para la transferencia de datos.
 
