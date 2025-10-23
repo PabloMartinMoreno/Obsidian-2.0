@@ -12,6 +12,7 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-# SQL Commands
+# Comandos SQL
 
 ***
+

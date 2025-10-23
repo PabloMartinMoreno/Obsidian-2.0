@@ -48,21 +48,12 @@ tab: LDAP Anonymous Bind
 
 ---
 
-Notas:
-
+**Notas**:
 - Ambas técnicas (SMB NULL y LDAP anónimo) sólo funcionan si el controlador de dominio permite binds/accs anónimos — cada vez menos común en entornos actualizados.
-    
 - Ejecutá estos comandos desde una máquina con visibilidad al DC y respetá las políticas y permisos aplicables.
 
 
 ---
-
-## Artículos relacionados
-
-- [[Password Spraying]]: Es crucial conocer la política de contraseñas antes de realizar ataques de password spraying.
-
----
-
 ## Overview
 
 Enumerar la política de contraseñas de Active Directory es un paso clave para entender la configuración de seguridad de un dominio y planificar estrategias de ataque como el password spraying.  
@@ -73,3 +64,12 @@ Si se dispone de credenciales de usuario del dominio, obtener la política de co
 Las sesiones NULL de SMB permiten a atacantes no autenticados acceder a información sensible del dominio —incluyendo listas de usuarios, grupos, cuentas de equipo y la política de contraseñas— cuando el controlador de dominio mantiene configuraciones inseguras. Estas configuraciones suelen ser resultado de Controladores de Dominio antiguos actualizados sin endurecer adecuadamente las opciones de seguridad.  
 
 Los binds LDAP anónimos ofrecen un acceso similar a datos del dominio usando el protocolo LDAP. Aunque las versiones más recientes de Windows Server restringen el acceso LDAP anónimo, muchos entornos todavía lo permiten, posibilitando la extracción de detalles de la política de contraseñas sin autenticación.
+
+***
+
+## Artículos relacionados
+
+- [[Password Spraying]]: Es crucial conocer la política de contraseñas antes de realizar ataques de password spraying.
+
+---
+

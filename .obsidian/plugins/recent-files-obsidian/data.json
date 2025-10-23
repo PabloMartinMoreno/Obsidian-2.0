@@ -1,12 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL Commands",
-      "path": "04 - Content/Process/SQL Commands.md"
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/BloodHound & SharpHound.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Security Controls Enumeration (AD)",
+      "path": "04 - Content/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "Object Permissions Enumeration (AD)",
+      "path": "04 - Content/Object Permissions Enumeration (AD).md"
+    },
+    {
+      "basename": "Password Policy Enumeration (AD)",
+      "path": "04 - Content/Password Policy Enumeration (AD).md"
+    },
+    {
+      "basename": "Users & Groups Enumeration (AD)",
+      "path": "04 - Content/Users & Groups Enumeration (AD).md"
+    },
+    {
+      "basename": "Hosts Enumeration (AD)",
+      "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "SQL Commands",
+      "path": "04 - Content/Process/SQL Commands.md"
     },
     {
       "basename": "MySQL Enumeration (3306)",
@@ -65,20 +97,12 @@
       "path": "04 - Content/SNMP Enumeration (161,162,10161,10162).md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Social Engineering Reconnaissance",
       "path": "04 - Content/Social Engineering Reconnaissance.md"
-    },
-    {
-      "basename": "Security Controls Enumeration (AD)",
-      "path": "04 - Content/Security Controls Enumeration (AD).md"
     },
     {
       "basename": "IIS Enumeration",
@@ -171,30 +195,6 @@
     {
       "basename": "Google Dorking",
       "path": "04 - Content/Google Dorking.md"
-    },
-    {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/BloodHound & SharpHound.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Object Permissions Enumeration (AD)",
-      "path": "04 - Content/Object Permissions Enumeration (AD).md"
-    },
-    {
-      "basename": "Password Policy Enumeration (AD)",
-      "path": "04 - Content/Password Policy Enumeration (AD).md"
-    },
-    {
-      "basename": "Users & Groups Enumeration (AD)",
-      "path": "04 - Content/Users & Groups Enumeration (AD).md"
-    },
-    {
-      "basename": "Hosts Enumeration (AD)",
-      "path": "04 - Content/Hosts Enumeration (AD).md"
     },
     {
       "basename": "Parameter & Value Fuzzing",

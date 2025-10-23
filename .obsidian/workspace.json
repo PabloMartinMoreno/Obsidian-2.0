@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/SQL Commands.md",
+                "file": "04 - Content/BloodHound & SharpHound.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Commands"
+              "title": "BloodHound & SharpHound"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/SQL Commands.md",
+                "file": "04 - Content/BloodHound & SharpHound.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -199,7 +199,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de SQL Commands"
+              "title": "Gráfico de BloodHound & SharpHound"
             }
           },
           {
@@ -243,7 +243,15 @@
   },
   "active": "53b08d4c0f4a348d",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "04 - Content/Security Controls Enumeration (AD).md",
+    "04 - Content/Object Permissions Enumeration (AD).md",
+    "04 - Content/Password Policy Enumeration (AD).md",
+    "04 - Content/Users & Groups Enumeration (AD).md",
+    "04 - Content/Hosts Enumeration (AD).md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "04 - Content/Process/SQL Commands.md",
     "04 - Content/Process/MySQL Enumeration (3306).md",
     "04 - Content/Process/SQL*Plus Commands.md",
     "04 - Content/Process/Oracle TNS Enumeration (1521).md",
@@ -260,17 +268,9 @@
     "04 - Content/Common IMAP Commands.md",
     "04 - Content/SNMP Enumeration (161,162,10161,10162).md",
     "00 - Resources/Pasted image 20251022171553.png",
-    "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Social Engineering Reconnaissance.md",
-    "04 - Content/Security Controls Enumeration (AD).md",
     "04 - Content/IIS Enumeration.md",
-    "04 - Content/GitHub Dorking.md",
-    "04 - Content/SMB Enumeration (139, 445).md",
-    "04 - Content/NFS Enumeration (111, 2049).md",
-    "04 - Content/POP3 Enumeration (110, 995).md",
-    "04 - Content/Common SMTP Commands.md",
-    "04 - Content/Process/Common POP3 Commands.md",
     "00 - Resources/Pasted image 20251022140815.png",
     "00 - Resources/Pasted image 20251021141158.png",
     "00 - Resources/Images/Jenkins 1.png",

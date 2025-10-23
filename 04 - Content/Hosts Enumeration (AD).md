@@ -45,15 +45,6 @@ tab: Windows
 
 ---
 
-### Notas relacionadas
-
-- **[[Pivoting Reconnaissance]]:** Para técnicas adicionales para descubrir hosts activos en una red.  
-- **[[BloodHound & SharpHound]]:** Enumeran toda la red AD y mapean las relaciones.  
-- **[[Nmap]]:** Asegúrate de realizar una enumeración de servicios exhaustiva en cualquier host descubierto.
-
-
----
-
 ## Overview
 
 Una de las primeras etapas de la enumeración en Active Directory es **identificar los hosts activos en la red**.  
@@ -61,3 +52,14 @@ Este paso es esencial porque revela qué sistemas están activos y accesibles, f
 
 Desde un **host Linux externo**, a menudo sin autenticación, esto se puede hacer sondeando la red en busca de sistemas que respondan.  
 Desde un **host Windows unido al dominio**, los hosts activos se pueden descubrir más fácilmente usando herramientas integradas o utilidades con conocimiento de dominio como **PowerView** o **BloodHound**, que aprovechan el acceso existente dentro del dominio.
+
+***
+
+## Notas relacionadas
+
+- **[[Pivoting Reconnaissance]]:** Para técnicas adicionales para descubrir hosts activos en una red.  
+- **[[BloodHound & SharpHound]]:** Enumeran toda la red AD y mapean las relaciones.  
+- **[[Nmap]]:** Asegúrate de realizar una enumeración de servicios exhaustiva en cualquier host descubierto.
+
+
+---

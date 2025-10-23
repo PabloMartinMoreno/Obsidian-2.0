@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Enumeración de Permisos de Objetos (AD)
 tags:
   - type/cheatsheet
   - "#pentesting/reconnaissance/ad"
@@ -16,7 +17,7 @@ linked:
   - "[[BloodHound & SharpHound]]"
   - "[[ACL Abuse]]"
 ---
-# Object Permissions Enumeration (AD)
+# Enumeración de Permisos de Objetos
 
 ***
 
@@ -27,17 +28,7 @@ linked:
 | `Find-LocalAdminAccess`                                                                                                                                   | **(FIND-LOCALADMINACCESS)** Busca equipos donde un usuario especificado tiene derechos de administrador local dentro del dominio. <br><br>                                                                                              |
 | `$sid = Convert-NameToSid <user>` <br><br>`Get-DomainObjectACL -ResolveGUIDs -Identity * \| ? {$_.SecurityIdentifier -eq $sid}`<br><br>                   | <br>**(POWERVIEW)** Busca objetos AD en los que el usuario especificado (convertido a SID) tiene permisos explícitos establecidos en sus ACL.<br><br>                                                                                   |
 | <br>`Find-DomainShare` <br><br>`Add `-CheckShareAccess` for only readable shares`<br><br>A continuación, se puede:<br>`dir \\<dns-hostname>\<share-name>` | <br>**(POWERVIEW)** Encuentra objetos de AD donde el usuario especificado (convertido a SID) tiene permisos explícitos en las ACLs.<br><br>**(FIND-DOMAINSHARE)** Enumera los shares del dominio; puede filtrar por accesibilidad. <br> |
-
----
-
-## PowerView
-
-La mayoría de estos comandos son de [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
-
-## Artículos relacionados
-
-- [[BloodHound & SharpHound]]: Enumerar toda la red AD y mapear relaciones, incluyendo ACLs.  
-- [[ACL Abuse]]: Abusar de ACLs existentes sobre objetos clave para escalar privilegios.
+**Nota:** La mayoría de estos comandos son de [PowerView](https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1)
 
 ---
 
@@ -52,3 +43,12 @@ Consultar las ACLs de objetos en Active Directory permite descubrir qué usuario
 Enumerar los shares del dominio revela dónde pueden estar almacenados archivos valiosos y qué recursos son accesibles. Filtrar por shares legibles ayuda a acotar objetivos viables, sobre todo en entornos donde pueden quedar expuestos datos sensibles o scripts.
 
 Combinadas, estas técnicas forman la base para una enumeración efectiva de AD y estrategias de escalada de privilegios durante evaluaciones internas.
+
+***
+
+## Artículos relacionados
+
+- [[BloodHound & SharpHound]]: Enumerar toda la red AD y mapear relaciones, incluyendo ACLs. 
+- [[ACL Abuse]]: Abusar de ACLs existentes sobre objetos clave para escalar privilegios.
+
+---
