@@ -35,11 +35,6 @@ type: Primary Category
 
 ***
 
-## 🔵 [[Persistence, Defense Evasion & C2]]
-
-
-***
-
 ## 🧬 [[Credential Cracking]]
 
 

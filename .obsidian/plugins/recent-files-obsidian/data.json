@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Credential Cracking",
+      "path": "04 - Content/Process/Credential Cracking.md"
+    },
+    {
+      "basename": "Persistence, Defense Evasion & C2",
+      "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
+    },
+    {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
@@ -11,10 +23,6 @@
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Pre-Exploitation",
@@ -191,14 +199,6 @@
     {
       "basename": "Kerberos Enumeration (88)",
       "path": "04 - Content/Process/Kerberos Enumeration (88).md"
-    },
-    {
-      "basename": "Finger Enumeration (79)",
-      "path": "04 - Content/Finger Enumeration (79).md"
-    },
-    {
-      "basename": "TFTP Enumeration (69)",
-      "path": "04 - Content/TFTP Enumeration (69).md"
     }
   ],
   "omittedPaths": [],

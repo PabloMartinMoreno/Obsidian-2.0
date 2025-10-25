@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "b2bd0d08401412e8",
+        "id": "f5fd1027531bff6b",
         "type": "tabs",
         "children": [
           {
-            "id": "bdfd65ad50c2953a",
+            "id": "62e0a1b7d21ef880",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Active Directory Exploitation.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Active Directory Exploitation"
+              "title": "Penetration Test"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Active Directory Exploitation.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Active Directory Exploitation"
+              "title": "Gráfico de Penetration Test"
             }
           },
           {
@@ -243,12 +243,14 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "bdfd65ad50c2953a",
+  "active": "62e0a1b7d21ef880",
   "lastOpenFiles": [
-    "05 - Templates/04 - Type/_temp.md",
-    "04 - Content/Process/Active Directory Exploitation.md",
-    "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Process/Credential Cracking.md",
     "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/Persistence, Defense Evasion & C2.md",
+    "04 - Content/Process/Active Directory Exploitation.md",
+    "05 - Templates/04 - Type/_temp.md",
+    "02 - Secondary Categories/Exploitation.md",
     "02 - Secondary Categories/Pre-Exploitation.md",
     "04 - Content/Process/Searchsploit.md",
     "04 - Content/Process/Shellter.md",
@@ -269,8 +271,6 @@
     "04 - Content/Oracle TNS Enumeration (1521).md",
     "04 - Content/SQL*Plus Commands.md",
     "04 - Content/MySQL Enumeration (3306).md",
-    "04 - Content/SQL Commands.md",
-    "04 - Content/RDP Enumeration (3389).md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",
