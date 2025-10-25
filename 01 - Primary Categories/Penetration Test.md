@@ -36,7 +36,7 @@ type: Primary Category
 
 ***
 
-## 🧬 [[Credential Cracking]]
+# ⚙️[[Operational Tasks]]
 
 
 ***

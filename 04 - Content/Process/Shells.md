@@ -5,7 +5,7 @@ tags:
 primary categories:
   - "[[Penetration Test]]"
 secondary categories:
-  - "[[Pre-Exploitation]]"
+  - "[[Operational Tasks]]"
 type: Tertiary Category
 ---
 # Shells

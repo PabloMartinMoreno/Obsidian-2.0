@@ -6,17 +6,22 @@ primary categories:
   - "[[Penetration Test]]"
 type: Secondary Category
 ---
-# Credential Cracking
+# Operational Tasks
 
 ***
 
-## Subsection 1
+## [[File Transfers]]
 
 
 ***
 
+## [[Shells]]
 
-- ### Herramientas 
-	- [[Hashcat]]
-	- [[John The Ripper]]
-		- [[JtR Conversions]]
+
+***
+
+[[hash]]
+
+
+
+#porhacer Pivoting / túneles / port-forwarding
