@@ -20,8 +20,9 @@ type: Secondary Category
 
 ***
 
-[[hash]]
+## [[Credentials Cracking]]
 
 
+***
 
-#porhacer Pivoting / túneles / port-forwarding
+## 🗒️ [[Procedures]]

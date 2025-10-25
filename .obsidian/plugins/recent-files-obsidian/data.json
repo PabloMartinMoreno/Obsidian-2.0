@@ -1,8 +1,40 @@
 {
   "recentFiles": [
     {
+      "basename": "Creds",
+      "path": "04 - Content/Creds.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Operational Tasks",
       "path": "04 - Content/Process/Operational Tasks.md"
+    },
+    {
+      "basename": "File Transfers",
+      "path": "04 - Content/Process/File Transfers.md"
+    },
+    {
+      "basename": "Shells",
+      "path": "04 - Content/Process/Shells.md"
+    },
+    {
+      "basename": "Credentials Cracking",
+      "path": "04 - Content/Process/Credentials Cracking.md"
+    },
+    {
+      "basename": "Procedures",
+      "path": "04 - Content/Process/Procedures.md"
+    },
+    {
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
+    },
+    {
+      "basename": "Web Server Enumeration",
+      "path": "04 - Content/Web Server Enumeration.md"
     },
     {
       "basename": "Persistence Techniques",
@@ -11,18 +43,6 @@
     {
       "basename": "Persistence, Defense Evasion & C2",
       "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Pre-Exploitation",
-      "path": "02 - Secondary Categories/Pre-Exploitation.md"
-    },
-    {
-      "basename": "Shells",
-      "path": "04 - Content/Process/Shells.md"
     },
     {
       "basename": "Cross-Compiling Exploit Code",
@@ -49,10 +69,6 @@
       "path": "04 - Content/Process/Active Directory Lateral Movement.md"
     },
     {
-      "basename": "File Transfers",
-      "path": "04 - Content/Process/File Transfers.md"
-    },
-    {
       "basename": "Credential Harvesting",
       "path": "02 - Secondary Categories/Credential Harvesting.md"
     },
@@ -69,16 +85,8 @@
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
-      "basename": "Creds",
-      "path": "04 - Content/Creds.md"
-    },
-    {
       "basename": "Pivoting",
       "path": "04 - Content/Process/Pivoting.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
     },
     {
       "basename": "Tunneling",
@@ -191,14 +199,6 @@
     {
       "basename": "Rsync Enumeration (873)",
       "path": "04 - Content/Rsync Enumeration (873).md"
-    },
-    {
-      "basename": "IPMI Enumeration (623)",
-      "path": "04 - Content/IPMI Enumeration (623).md"
-    },
-    {
-      "basename": "LDAP Enumeration (389, 636, 3268, 3269)",
-      "path": "04 - Content/LDAP Enumeration (389, 636, 3268, 3269).md"
     }
   ],
   "omittedPaths": [],

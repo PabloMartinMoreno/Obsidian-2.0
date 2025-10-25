@@ -15,11 +15,6 @@ type: Primary Category
 
 ***
 
-## 🟡[[Pre-Exploitation]]
-
-
-***
-
 ## 🔴[[Exploitation]]
 
 
@@ -33,7 +28,6 @@ type: Primary Category
 ## 🟤[[Lateral Movement]]
 
 
-
 ***
 
 # ⚙️[[Operational Tasks]]
@@ -41,7 +35,4 @@ type: Primary Category
 
 ***
 
-## 🗒️[[Procedures]]
 
-
-***

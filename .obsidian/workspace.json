@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Operational Tasks.md",
+                "file": "04 - Content/Creds.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Operational Tasks"
+              "title": "Creds"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Operational Tasks.md",
+                "file": "04 - Content/Creds.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Operational Tasks"
+              "title": "Gráfico de Creds"
             }
           },
           {
@@ -245,32 +245,32 @@
   },
   "active": "e5767e6f8106cda2",
   "lastOpenFiles": [
+    "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/Operational Tasks.md",
+    "04 - Content/Process/File Transfers.md",
+    "04 - Content/Process/Shells.md",
+    "04 - Content/Process/Credentials Cracking.md",
+    "04 - Content/Process/Procedures.md",
+    "02 - Secondary Categories/Procedures.md",
+    "02 - Secondary Categories/Pre-Exploitation.md",
+    "02 - Secondary Categories/Lateral Movement.md",
+    "04 - Content/Web Server Enumeration.md",
     "04 - Content/Process/Persistence Techniques.md",
     "04 - Content/Process/Persistence, Defense Evasion & C2.md",
-    "04 - Content/Process/Operational Tasks.md",
-    "01 - Primary Categories/Penetration Test.md",
-    "02 - Secondary Categories/Pre-Exploitation.md",
-    "04 - Content/Process/Shells.md",
     "04 - Content/Process/Cross-Compiling Exploit Code.md",
     "04 - Content/Process/Command & Control (C2).md",
     "04 - Content/Process/Client-Side Exploitation.md",
     "02 - Secondary Categories/Exploitation.md",
     "04 - Content/Process/Active Directory Exploitation.md",
     "04 - Content/Process/Active Directory Lateral Movement.md",
-    "04 - Content/Process/File Transfers.md",
     "02 - Secondary Categories/Credential Harvesting.md",
     "02 - Secondary Categories/C2 Tradecraft & Profiles.md",
     "02 - Secondary Categories/Domain Enumeration.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
     "04 - Content/Creds.md",
     "04 - Content/Process/Pivoting.md",
-    "02 - Secondary Categories/Lateral Movement.md",
     "04 - Content/Process/Tunneling.md",
     "04 - Content/Process/Shell.md",
-    "04 - Content/Process/Credential Cracking.md",
-    "04 - Content/Process/Payloads.md",
-    "04 - Content/Process/Payload Evasion.md",
-    "04 - Content/Process/Staging & Listeners.md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",

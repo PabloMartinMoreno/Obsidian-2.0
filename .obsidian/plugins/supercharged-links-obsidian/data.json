@@ -46,6 +46,18 @@
       "selectAppend": true,
       "selectPrepend": true,
       "selectBackground": true
+    },
+    {
+      "type": "tag",
+      "name": "",
+      "value": "porhacer",
+      "matchCaseSensitive": false,
+      "match": "exact",
+      "uid": "1abd-d94f",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
     }
   ]
 }
