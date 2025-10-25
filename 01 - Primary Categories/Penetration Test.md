@@ -33,10 +33,6 @@ type: Primary Category
 ## 🟤[[Lateral Movement]]
 
 
-***
-
-## 🔵 [[Persistence, Defense Evasion & C2]]
-
 
 ***
 

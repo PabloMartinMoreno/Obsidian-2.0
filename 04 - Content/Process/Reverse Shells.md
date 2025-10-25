@@ -7,7 +7,7 @@ primary categories:
 secondary categories:
   - "[[Pre-Exploitation|Pre-Explotación]]"
 tertiary categories:
-  - "[[Payload Generation]]"
+  - "[[Payloads]]"
 type: CheatSheet
 linked:
 ---

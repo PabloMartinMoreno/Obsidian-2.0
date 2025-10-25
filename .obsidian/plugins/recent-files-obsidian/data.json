@@ -1,16 +1,60 @@
 {
   "recentFiles": [
     {
+      "basename": "Shells",
+      "path": "04 - Content/Process/Shells.md"
+    },
+    {
+      "basename": "Pre-Exploitation",
+      "path": "02 - Secondary Categories/Pre-Exploitation.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "Credential Cracking",
-      "path": "04 - Content/Process/Credential Cracking.md"
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Wireshark",
+      "path": "04 - Content/Process/Wireshark.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Security Controls Enumeration (AD)",
+      "path": "04 - Content/Security Controls Enumeration (AD).md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
       "basename": "Persistence, Defense Evasion & C2",
       "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
+    },
+    {
+      "basename": "Credential Cracking",
+      "path": "04 - Content/Process/Credential Cracking.md"
     },
     {
       "basename": "Active Directory Exploitation",
@@ -25,10 +69,6 @@
       "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
-      "basename": "Pre-Exploitation",
-      "path": "02 - Secondary Categories/Pre-Exploitation.md"
-    },
-    {
       "basename": "Searchsploit",
       "path": "04 - Content/Process/Searchsploit.md"
     },
@@ -37,32 +77,12 @@
       "path": "04 - Content/Process/Shellter.md"
     },
     {
-      "basename": "Payload Generation",
-      "path": "04 - Content/Process/Payload Generation.md"
-    },
-    {
       "basename": "Web Shells",
       "path": "04 - Content/Process/Web Shells.md"
     },
     {
       "basename": "Reverse Shells",
       "path": "04 - Content/Process/Reverse Shells.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Staging & Listeners",
-      "path": "04 - Content/Process/Staging & Listeners.md"
-    },
-    {
-      "basename": "Payload Evasion",
-      "path": "04 - Content/Process/Payload Evasion.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
     {
       "basename": "JavaScript Deobfuscation",
@@ -75,14 +95,6 @@
     {
       "basename": "_tool",
       "path": "05 - Templates/04 - Type/_tool.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "MSSQL Enumeration (1433, 1434, 2433)",
@@ -127,22 +139,6 @@
     {
       "basename": "Windows LOTL Port Scanning",
       "path": "04 - Content/Windows LOTL Port Scanning.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Wireshark",
-      "path": "04 - Content/Process/Wireshark.md"
     },
     {
       "basename": "Rsync Enumeration (873)",
@@ -191,14 +187,6 @@
     {
       "basename": "Common POP3 Commands",
       "path": "04 - Content/Process/Common POP3 Commands.md"
-    },
-    {
-      "basename": "POP3 Enumeration (110, 995)",
-      "path": "04 - Content/POP3 Enumeration (110, 995).md"
-    },
-    {
-      "basename": "Kerberos Enumeration (88)",
-      "path": "04 - Content/Process/Kerberos Enumeration (88).md"
     }
   ],
   "omittedPaths": [],

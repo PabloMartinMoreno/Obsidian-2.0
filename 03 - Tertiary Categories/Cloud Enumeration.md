@@ -16,10 +16,6 @@ type: Tertiary Category
 ## Enumeración
 
 -  [[AWS Enumeration]]
--  [[Azure Enumeration]]
--  [[GCP Enumeration]]
-- [[Cloud APIs & Misconfigurations]]
-- [[Serverless / PaaS discovery]]
 
 
 ***
