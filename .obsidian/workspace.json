@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Penetration Test"
+              "title": "Information Gathering"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "02 - Secondary Categories/Information Gathering.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -196,12 +196,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.3635814889171232,
+                  "scale": 0.2811780720442244,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Gráfico de Information Gathering"
             }
           },
           {
@@ -245,8 +245,10 @@
   },
   "active": "e5767e6f8106cda2",
   "lastOpenFiles": [
-    "04 - Content/Creds.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Creds.md",
     "04 - Content/Process/Operational Tasks.md",
     "04 - Content/Process/File Transfers.md",
     "04 - Content/Process/Shells.md",
@@ -269,8 +271,6 @@
     "02 - Secondary Categories/Domain Enumeration.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
     "04 - Content/Process/Pivoting.md",
-    "04 - Content/Process/Tunneling.md",
-    "04 - Content/Process/Shell.md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",

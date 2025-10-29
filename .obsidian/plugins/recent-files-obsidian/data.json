@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
@@ -93,10 +101,6 @@
       "path": "04 - Content/Process/Tunneling.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
       "basename": "Reverse Engineering",
       "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
@@ -111,10 +115,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
       "basename": "Security Controls Enumeration (AD)",
