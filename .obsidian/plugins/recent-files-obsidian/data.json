@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "Public Vulnerabilities",
+      "path": "04 - Content/Process/Public Vulnerabilities.md"
+    },
+    {
       "basename": "Introduction to Web Applications",
       "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "Common Web Vulnerabilities",
+      "path": "04 - Content/Process/Common Web Vulnerabilities.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Process/Cross-Site Request Forgery (CSRF).md"
+    },
+    {
+      "basename": "HTML Injection",
+      "path": "04 - Content/Process/HTML Injection.md"
+    },
+    {
+      "basename": "Sensitive Data Exposure",
+      "path": "04 - Content/Process/Sensitive Data Exposure.md"
     },
     {
       "basename": "Front End vs. Back End",
@@ -175,30 +199,6 @@
     {
       "basename": "MSSQL Enumeration (1433, 1434, 2433)",
       "path": "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md"
-    },
-    {
-      "basename": "T-SQL Commands",
-      "path": "04 - Content/T-SQL Commands.md"
-    },
-    {
-      "basename": "Oracle TNS Enumeration (1521)",
-      "path": "04 - Content/Oracle TNS Enumeration (1521).md"
-    },
-    {
-      "basename": "SQL*Plus Commands",
-      "path": "04 - Content/SQL*Plus Commands.md"
-    },
-    {
-      "basename": "MySQL Enumeration (3306)",
-      "path": "04 - Content/MySQL Enumeration (3306).md"
-    },
-    {
-      "basename": "SQL Commands",
-      "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "RDP Enumeration (3389)",
-      "path": "04 - Content/RDP Enumeration (3389).md"
     }
   ],
   "omittedPaths": [],
