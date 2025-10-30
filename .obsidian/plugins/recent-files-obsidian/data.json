@@ -1,16 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "Front End vs. Back End",
+      "path": "04 - Content/Process/Front End vs. Back End.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
+    },
+    {
+      "basename": "JavaScript Deobfuscation",
+      "path": "04 - Content/Process/JavaScript Deobfuscation.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Creds",
@@ -145,10 +165,6 @@
       "path": "04 - Content/Process/Reverse Shells.md"
     },
     {
-      "basename": "JavaScript Deobfuscation",
-      "path": "04 - Content/Process/JavaScript Deobfuscation.md"
-    },
-    {
       "basename": "_cheatsheet",
       "path": "05 - Templates/04 - Type/_cheatsheet.md"
     },
@@ -183,22 +199,6 @@
     {
       "basename": "RDP Enumeration (3389)",
       "path": "04 - Content/RDP Enumeration (3389).md"
-    },
-    {
-      "basename": "Nmap",
-      "path": "04 - Content/Nmap.md"
-    },
-    {
-      "basename": "TcpDump",
-      "path": "04 - Content/TcpDump.md"
-    },
-    {
-      "basename": "Windows LOTL Port Scanning",
-      "path": "04 - Content/Windows LOTL Port Scanning.md"
-    },
-    {
-      "basename": "Rsync Enumeration (873)",
-      "path": "04 - Content/Rsync Enumeration (873).md"
     }
   ],
   "omittedPaths": [],
