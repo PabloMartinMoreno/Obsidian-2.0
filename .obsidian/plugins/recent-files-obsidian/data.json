@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/Public Vulnerabilities.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Introduction to Web Applications",
       "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
@@ -43,10 +47,6 @@
     {
       "basename": "JavaScript Deobfuscation",
       "path": "04 - Content/Process/JavaScript Deobfuscation.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Information Gathering",

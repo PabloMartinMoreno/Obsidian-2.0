@@ -245,8 +245,9 @@
   },
   "active": "8f5ec1ed74298982",
   "lastOpenFiles": [
-    "04 - Content/Process/Introduction to Web Applications.md",
+    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Public Vulnerabilities.md",
+    "04 - Content/Process/Introduction to Web Applications.md",
     "04 - Content/Process/Common Web Vulnerabilities.md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/Cross-Site Request Forgery (CSRF).md",
@@ -256,7 +257,6 @@
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Web Requests.md",
     "04 - Content/Process/JavaScript Deobfuscation.md",
-    "01 - Primary Categories/Penetration Test.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Active Directory Enumeration.md",
     "04 - Content/Creds.md",
