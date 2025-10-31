@@ -483,7 +483,8 @@
     "meta/pcap": 63,
     "meta/filters": 64,
     "tool/wireshark": 81,
-    "meta/protocol-analysis": 65
+    "meta/protocol-analysis": 65,
+    "socks4": 135
   },
   "_version": 3
 }

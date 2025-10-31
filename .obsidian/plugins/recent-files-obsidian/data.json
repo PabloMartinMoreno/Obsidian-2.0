@@ -1,36 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
+      "basename": "Cheklist para el Examen CBBH",
+      "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
     },
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
     {
-      "basename": "Public Vulnerabilities",
-      "path": "04 - Content/Process/Public Vulnerabilities.md"
+      "basename": "Using Web Proxies",
+      "path": "04 - Content/Process/Using Web Proxies.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "Introduction to Web Applications",
       "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
     {
-      "basename": "Common Web Vulnerabilities",
-      "path": "04 - Content/Process/Common Web Vulnerabilities.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Process/Cross-Site Request Forgery (CSRF).md"
+      "basename": "Public Vulnerabilities",
+      "path": "04 - Content/Process/Public Vulnerabilities.md"
     },
     {
       "basename": "HTML Injection",
@@ -43,6 +39,22 @@
     {
       "basename": "Front End vs. Back End",
       "path": "04 - Content/Process/Front End vs. Back End.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Common Web Vulnerabilities",
+      "path": "04 - Content/Process/Common Web Vulnerabilities.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Process/Cross-Site Request Forgery (CSRF).md"
     },
     {
       "basename": "JavaScript Deobfuscation",
@@ -187,18 +199,6 @@
     {
       "basename": "Reverse Shells",
       "path": "04 - Content/Process/Reverse Shells.md"
-    },
-    {
-      "basename": "_cheatsheet",
-      "path": "05 - Templates/04 - Type/_cheatsheet.md"
-    },
-    {
-      "basename": "_tool",
-      "path": "05 - Templates/04 - Type/_tool.md"
-    },
-    {
-      "basename": "MSSQL Enumeration (1433, 1434, 2433)",
-      "path": "04 - Content/MSSQL Enumeration (1433, 1434, 2433).md"
     }
   ],
   "omittedPaths": [],
