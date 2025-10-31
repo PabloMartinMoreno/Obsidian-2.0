@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Public Vulnerabilities",
-      "path": "04 - Content/Process/Public Vulnerabilities.md"
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Public Vulnerabilities",
+      "path": "04 - Content/Process/Public Vulnerabilities.md"
     },
     {
       "basename": "Introduction to Web Applications",
@@ -35,14 +43,6 @@
     {
       "basename": "Front End vs. Back End",
       "path": "04 - Content/Process/Front End vs. Back End.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "JavaScript Deobfuscation",

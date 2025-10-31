@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "3756cc2e0df1cfd7",
+        "id": "19862d17cc4c7237",
         "type": "tabs",
         "children": [
           {
-            "id": "8f5ec1ed74298982",
+            "id": "510ace467e802f00",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Public Vulnerabilities.md",
+                "file": "04 - Content/Process/Web Requests.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Public Vulnerabilities"
+              "title": "Web Requests"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Public Vulnerabilities.md",
+                "file": "04 - Content/Process/Web Requests.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Public Vulnerabilities"
+              "title": "Gráfico de Web Requests"
             }
           },
           {
@@ -243,8 +243,9 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "8f5ec1ed74298982",
+  "active": "510ace467e802f00",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES.md",
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Public Vulnerabilities.md",
     "04 - Content/Process/Introduction to Web Applications.md",
@@ -254,7 +255,6 @@
     "04 - Content/Process/HTML Injection.md",
     "04 - Content/Process/Sensitive Data Exposure.md",
     "04 - Content/Process/Front End vs. Back End.md",
-    "04 - Content/Process/CWES.md",
     "04 - Content/Process/Web Requests.md",
     "04 - Content/Process/JavaScript Deobfuscation.md",
     "02 - Secondary Categories/Information Gathering.md",
