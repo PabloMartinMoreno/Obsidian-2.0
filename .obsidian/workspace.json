@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Information Gathering - Web Edition.md",
+                "file": "04 - Content/Process/Virtual Hosts.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Information Gathering - Web Edition"
+              "title": "Virtual Hosts"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Information Gathering - Web Edition.md",
+                "file": "04 - Content/Process/Virtual Hosts.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Information Gathering - Web Edition"
+              "title": "Gráfico de Virtual Hosts"
             }
           },
           {
@@ -245,10 +245,16 @@
   },
   "active": "510ace467e802f00",
   "lastOpenFiles": [
+    "04 - Content/Process/Information Gathering - Web Edition.md",
+    "04 - Content/Process/Virtual Hosts.md",
+    "04 - Content/Process/Transferencias de Zona DNS.md",
+    "04 - Content/Process/Subdomain Bruteforcing.md",
+    "04 - Content/Process/Digging DNS — Explorando DNS.md",
+    "02 - Secondary Categories/Active Directory.md",
+    "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Cheklist para el Examen CBBH.md",
     "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Using Web Proxies.md",
     "04 - Content/Process/Web Requests.md",
     "04 - Content/Process/Introduction to Web Applications.md",
@@ -265,12 +271,6 @@
     "04 - Content/Creds.md",
     "04 - Content/Process/Operational Tasks.md",
     "04 - Content/Process/File Transfers.md",
-    "04 - Content/Process/Shells.md",
-    "04 - Content/Process/Credentials Cracking.md",
-    "04 - Content/Process/Procedures.md",
-    "02 - Secondary Categories/Procedures.md",
-    "02 - Secondary Categories/Pre-Exploitation.md",
-    "02 - Secondary Categories/Lateral Movement.md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",
