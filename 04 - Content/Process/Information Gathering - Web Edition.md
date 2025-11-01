@@ -17,30 +17,41 @@
 
 ## [[Virtual Hosts]]
 
+## [[Certificate Transparency Logs]]
+
 
 ---
 
 # Fingerprinting
+
+## [[Fingerprinting]]
 
 
 ***
 
 # Crawling
 
+##
+
 
 ***
 
 # Search Engine Discovery
+
+##
 
 
 ***
 
 # Web Archives
 
+##
 
 ***
 
 # Automating Recon
+
+##
 
 
 ***

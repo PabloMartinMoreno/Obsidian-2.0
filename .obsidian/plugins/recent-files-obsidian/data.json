@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Virtual Hosts",
-      "path": "04 - Content/Process/Virtual Hosts.md"
-    },
-    {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Certificate Transparency Logs",
+      "path": "04 - Content/Process/Certificate Transparency Logs.md"
+    },
+    {
+      "basename": "Virtual Hosts",
+      "path": "04 - Content/Process/Virtual Hosts.md"
     },
     {
       "basename": "Transferencias de Zona DNS",
@@ -195,10 +199,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Security Controls Enumeration (AD)",
-      "path": "04 - Content/Security Controls Enumeration (AD).md"
     }
   ],
   "omittedPaths": [],
