@@ -40,27 +40,22 @@ En este caso, `example1.com`, `example2.org` y `another-example.net` son dominio
 
 ## Búsqueda de VHosts por parte del servidor
 
+![[Pasted image 20251101152905.png]]
+
 Proceso simplificado de cómo el servidor determina qué contenido servir según el header `Host`:
 
 1. El navegador solicita un sitio (ej.: `www.inlanefreight.com`) y envía una petición HTTP al servidor de la IP asociada.
-    
 2. El header `Host` incluye el nombre de dominio, actuando como etiqueta que indica al servidor qué sitio se solicita.
-    
 3. El servidor consulta su configuración de virtual hosts para encontrar la entrada que coincida con ese dominio.
-    
 4. Al identificar el VHost correcto, el servidor recupera los archivos desde el `DocumentRoot` correspondiente y envía la respuesta HTTP.
-    
 
 En esencia, el header `Host` funciona como un conmutador que permite al servidor decidir dinámicamente qué sitio servir.
 
 ## Tipos de Virtual Hosting
 
 - **Name-Based Virtual Hosting:** Depende del header `Host` para distinguir sitios. Es el más común porque no requiere múltiples IPs. Es flexible y económico, aunque presenta limitaciones con ciertos protocolos (p. ej. SSL/TLS sin SNI en implementaciones antiguas).
-    
 - **IP-Based Virtual Hosting:** Cada sitio tiene una IP única; el servidor decide según la IP destino. No depende del header `Host`, funciona con cualquier protocolo y ofrece mayor aislamiento, pero requiere múltiples IPs.
-    
 - **Port-Based Virtual Hosting:** Sitios distintos en el mismo IP usan puertos diferentes (p. ej. puerto 80 y 8080). Útil cuando las IP son limitadas, pero menos amigable para usuarios (requiere especificar puerto en la URL).
-    
 
 ## Herramientas para descubrir Virtual Hosts
 
@@ -77,40 +72,27 @@ El análisis manual de headers HTTP y búsquedas inversas puede funcionar, pero 
 `Gobuster` es muy usado para fuerza bruta de directorios y también funciona bien para descubrir virtual hosts. Envía peticiones HTTP con distintos headers `Host` al IP objetivo y analiza las respuestas para identificar VHosts válidos.
 
 Preparativos:
-
 - **Identificar objetivo:** obtener la IP del servidor (por DNS u otras técnicas).
-    
 - **Preparar wordlist:** usar SecLists u otra lista personalizada basada en la industria o convenciones del objetivo.
-    
 
 Comando típico de Gobuster para VHost fuzzing:
-
 ```bash
 gobuster vhost -u http://<target_IP_address> -w <wordlist_file> --append-domain
 ```
-
 - `-u` especifica la URL objetivo (reemplazar `<target_IP_address>` por la IP real).
-    
 - `-w` indica la ruta a la wordlist.
-    
 - `--append-domain` añade el dominio base a cada palabra de la lista al generar los VHosts.
-    
 
 Nota: en versiones recientes de Gobuster `--append-domain` es requerido para concatenar correctamente el dominio base; en versiones antiguas ese comportamiento podía ser diferente.
 
 Parámetros útiles:
-
 - `-t` aumentar threads para escaneo más rápido.
-    
 - `-k` ignorar errores de certificado SSL/TLS.
-    
 - `-o` guardar la salida en un archivo.
-    
 
 Ejemplo real:
-
 ```bash
-vsoci3tyv@htb[/htb]$ gobuster vhost -u http://inlanefreight.htb:81 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain
+gobuster vhost -u http://inlanefreight.htb:81 -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -136,5 +118,3 @@ Finished
 **Precaución:** la discovery de VHosts puede generar mucho tráfico y ser detectada por IDS/WAF. Pedí autorización antes de escanear objetivos.
 
 ---
-
-¿Querés que lo convierta a formato para Obsidian (con enlaces internos y plantillas) o que te arme un mini-playbook para descubrir VHosts paso a paso usando `gobuster`, `ffuf` y `puredns`?
