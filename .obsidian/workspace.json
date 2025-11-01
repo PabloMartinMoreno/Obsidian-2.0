@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Cheklist para el Examen CBBH.md",
+                "file": "04 - Content/Process/Information Gathering - Web Edition.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Cheklist para el Examen CBBH"
+              "title": "Information Gathering - Web Edition"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Cheklist para el Examen CBBH.md",
+                "file": "04 - Content/Process/Information Gathering - Web Edition.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Cheklist para el Examen CBBH"
+              "title": "Gráfico de Information Gathering - Web Edition"
             }
           },
           {
@@ -245,9 +245,9 @@
   },
   "active": "510ace467e802f00",
   "lastOpenFiles": [
-    "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Process/Cheklist para el Examen CBBH.md",
     "04 - Content/Process/CWES.md",
+    "04 - Content/Process/Cheklist para el Examen CBBH.md",
+    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Using Web Proxies.md",
     "04 - Content/Process/Web Requests.md",
