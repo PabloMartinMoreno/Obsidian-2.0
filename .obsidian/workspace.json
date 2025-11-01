@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Information Gathering - Web Edition.md",
+                "file": "04 - Content/Process/Creepy Crawlies.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Information Gathering - Web Edition"
+              "title": "Creepy Crawlies"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Information Gathering - Web Edition.md",
+                "file": "04 - Content/Process/Creepy Crawlies.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Information Gathering - Web Edition"
+              "title": "Gráfico de Creepy Crawlies"
             }
           },
           {
@@ -245,8 +245,13 @@
   },
   "active": "510ace467e802f00",
   "lastOpenFiles": [
-    "04 - Content/Process/Certificate Transparency Logs.md",
     "04 - Content/Process/Information Gathering - Web Edition.md",
+    "04 - Content/Process/Creepy Crawlies.md",
+    "04 - Content/Process/Well-Known URIs.md",
+    "04 - Content/Process/robots.txt.md",
+    "04 - Content/Process/Crawling.md",
+    "04 - Content/Process/Fingerprinting.md",
+    "04 - Content/Process/Certificate Transparency Logs.md",
     "04 - Content/Process/Virtual Hosts.md",
     "00 - Resources/Pasted image 20251101152905.png",
     "04 - Content/Process/Transferencias de Zona DNS.md",
@@ -267,11 +272,6 @@
     "04 - Content/Process/Common Web Vulnerabilities.md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/Cross-Site Request Forgery (CSRF).md",
-    "04 - Content/Process/JavaScript Deobfuscation.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
-    "04 - Content/Creds.md",
-    "04 - Content/Process/Operational Tasks.md",
     "04 - Content/Process/Sin título.base",
     "00 - Resources/Pasted image 20251022172710.png",
     "00 - Resources/Pasted image 20251022171553.png",

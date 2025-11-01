@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "Creepy Crawlies",
+      "path": "04 - Content/Process/Creepy Crawlies.md"
+    },
+    {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Well-Known URIs",
+      "path": "04 - Content/Process/Well-Known URIs.md"
+    },
+    {
+      "basename": "robots.txt",
+      "path": "04 - Content/Process/robots.txt.md"
+    },
+    {
+      "basename": "Crawling",
+      "path": "04 - Content/Process/Crawling.md"
+    },
+    {
+      "basename": "Fingerprinting",
+      "path": "04 - Content/Process/Fingerprinting.md"
     },
     {
       "basename": "Certificate Transparency Logs",
@@ -179,26 +199,6 @@
     {
       "basename": "Pivoting",
       "path": "04 - Content/Process/Pivoting.md"
-    },
-    {
-      "basename": "Tunneling",
-      "path": "04 - Content/Process/Tunneling.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Wireshark",
-      "path": "04 - Content/Process/Wireshark.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     }
   ],
   "omittedPaths": [],
