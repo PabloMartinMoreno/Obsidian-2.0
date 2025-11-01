@@ -245,8 +245,9 @@
   },
   "active": "510ace467e802f00",
   "lastOpenFiles": [
-    "04 - Content/Process/CWES.md",
+    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Cheklist para el Examen CBBH.md",
+    "04 - Content/Process/CWES.md",
     "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Using Web Proxies.md",
     "04 - Content/Process/Web Requests.md",
@@ -255,7 +256,6 @@
     "04 - Content/Process/HTML Injection.md",
     "04 - Content/Process/Sensitive Data Exposure.md",
     "04 - Content/Process/Front End vs. Back End.md",
-    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Common Web Vulnerabilities.md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/Cross-Site Request Forgery (CSRF).md",

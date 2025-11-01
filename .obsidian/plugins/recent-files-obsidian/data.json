@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
     },
@@ -39,10 +43,6 @@
     {
       "basename": "Front End vs. Back End",
       "path": "04 - Content/Process/Front End vs. Back End.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Common Web Vulnerabilities",
