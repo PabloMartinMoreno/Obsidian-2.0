@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Creepy Crawlies",
       "path": "04 - Content/Process/Creepy Crawlies.md"
     },
@@ -59,10 +63,6 @@
     {
       "basename": "Cheklist para el Examen CBBH",
       "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Using Web Proxies",
