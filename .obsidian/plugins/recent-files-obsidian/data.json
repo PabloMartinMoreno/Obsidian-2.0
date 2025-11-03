@@ -1,12 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Automating Recon",
-      "path": "04 - Content/Process/Automating Recon.md"
+      "basename": "Creepy Crawlies",
+      "path": "04 - Content/Process/Creepy Crawlies.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Crawling",
+      "path": "04 - Content/Process/Crawling.md"
+    },
+    {
+      "basename": "whois",
+      "path": "04 - Content/Process/whois.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
+      "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/Process/ffuf.md"
+    },
+    {
+      "basename": "Utilising WHOIS",
+      "path": "04 - Content/Process/Utilising WHOIS.md"
+    },
+    {
+      "basename": "Well-Known URIs",
+      "path": "04 - Content/Process/Well-Known URIs.md"
+    },
+    {
+      "basename": "Automating Recon",
+      "path": "04 - Content/Process/Automating Recon.md"
     },
     {
       "basename": "Web Archives",
@@ -15,18 +51,6 @@
     {
       "basename": "Search Engine Discovery",
       "path": "04 - Content/Process/Search Engine Discovery.md"
-    },
-    {
-      "basename": "Creepy Crawlies",
-      "path": "04 - Content/Process/Creepy Crawlies.md"
-    },
-    {
-      "basename": "Crawling",
-      "path": "04 - Content/Process/Crawling.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Using Web Proxies",
@@ -39,10 +63,6 @@
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Well-Known URIs",
-      "path": "04 - Content/Process/Well-Known URIs.md"
     },
     {
       "basename": "robots.txt",
@@ -75,10 +95,6 @@
     {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
-      "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
     },
     {
       "basename": "Cheklist para el Examen CBBH",
@@ -183,22 +199,6 @@
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "Credential Harvesting",
-      "path": "02 - Secondary Categories/Credential Harvesting.md"
-    },
-    {
-      "basename": "C2 Tradecraft & Profiles",
-      "path": "02 - Secondary Categories/C2 Tradecraft & Profiles.md"
     }
   ],
   "omittedPaths": [],
