@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Curl",
+      "path": "04 - Content/Process/Curl.md"
+    },
+    {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Procedures",
       "path": "04 - Content/Process/Procedures.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
     }
   ],
   "omittedPaths": [],
