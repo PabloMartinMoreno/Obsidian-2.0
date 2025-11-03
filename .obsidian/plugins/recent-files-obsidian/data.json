@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Creepy Crawlies",
-      "path": "04 - Content/Process/Creepy Crawlies.md"
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "Front End vs. Back End",
+      "path": "04 - Content/Process/Front End vs. Back End.md"
+    },
+    {
+      "basename": "Using Web Proxies",
+      "path": "04 - Content/Process/Using Web Proxies.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Introduction",
+      "path": "04 - Content/Process/Introduction.md"
+    },
+    {
+      "basename": "Creepy Crawlies",
+      "path": "04 - Content/Process/Creepy Crawlies.md"
     },
     {
       "basename": "Crawling",
@@ -15,10 +39,6 @@
     {
       "basename": "whois",
       "path": "04 - Content/Process/whois.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
@@ -51,14 +71,6 @@
     {
       "basename": "Search Engine Discovery",
       "path": "04 - Content/Process/Search Engine Discovery.md"
-    },
-    {
-      "basename": "Using Web Proxies",
-      "path": "04 - Content/Process/Using Web Proxies.md"
-    },
-    {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
     {
       "basename": "Penetration Test",
@@ -101,10 +113,6 @@
       "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
     },
     {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
       "basename": "Public Vulnerabilities",
       "path": "04 - Content/Process/Public Vulnerabilities.md"
     },
@@ -115,10 +123,6 @@
     {
       "basename": "Sensitive Data Exposure",
       "path": "04 - Content/Process/Sensitive Data Exposure.md"
-    },
-    {
-      "basename": "Front End vs. Back End",
-      "path": "04 - Content/Process/Front End vs. Back End.md"
     },
     {
       "basename": "Common Web Vulnerabilities",
@@ -195,10 +199,6 @@
     {
       "basename": "Client-Side Exploitation",
       "path": "04 - Content/Process/Client-Side Exploitation.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     }
   ],
   "omittedPaths": [],
