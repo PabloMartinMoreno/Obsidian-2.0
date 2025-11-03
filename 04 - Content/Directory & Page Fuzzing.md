@@ -19,14 +19,14 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-# Directory & Page Fuzzing
+# Fuzzing de Paginas y Directorios
 
 ***
 
 ## Cheatsheet
 
-
-tab: Ffuf
+~~~tabs
+---tab Ffuf
 
 | **Acción**                                                                                                    | **Descripción**                                                                                                                                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -36,7 +36,7 @@ tab: Ffuf
 | `ffuf -c -w <wordlist> -u http://<ip>:<port>/FUZZ -e <dot-extension>`                                         | Sólo extensión, sin recursión                                                                                                                                                                                                                                               |
 | <br>`ffuf -c -w <wordlist> -u http://<ip>:<port>/FUZZ -recursion -recursion-depth <depth> -e <dot-extension>` | Hace fuzzing recursivo tanto de directorios web como de archivos. Si se encuentra un directorio, la búsqueda continúa dentro de esa rama. Esto es más ruidoso y consume más tiempo, pero es automatizado. PENDIENTE: Avisar que esto es un último recurso (un 'hail mary'). |
 
-tab: GoBuster
+---tab GoBuster
 
 | **Acción**                                                                    | **Descripción**                                                                                                                                                                                                                              |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,16 +46,16 @@ tab: GoBuster
 | `gobuster dir -u http://<ip>:<port>/FUZZ -w <wordlist> -x <single-extension>` | Fuzzing limitado a una sola extensión (sin búsqueda recursiva automática). Útil para reducir ruido.                                                                                                                                          |
 | **(Nota)**                                                                    | Gobuster no implementa recursión automática avanzada como feroxbuster; para fuzzing recursivo se recomienda usar feroxbuster o encadenar ejecuciones de gobuster con scripts. Recursividad es ruidosa y debe reservarse como último recurso. |
 
-tab: FeroxBuster
+---tab FeroxBuster
 
-|**Acción**|**Descripción**|
-|---|---|
-|`feroxbuster -u http://<ip>:<port>/ -w <wordlist>` (feroxbuster)|Fuzzing básico de directorios y archivos; detecta automáticamente respuestas válidas.|
-|`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -x php,html,js` (feroxbuster)|Fuzzing incluyendo extensiones específicas; `-x` define las extensiones separadas por comas.|
-|`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -r` (feroxbuster)|Fuzzing recursivo: sigue los directorios encontrados hasta la profundidad predeterminada (máx. 4 niveles si no se modifica).|
-|`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -d <depth>` (feroxbuster)|Control de profundidad de recursión; útil para limitar ruido o mejorar cobertura progresiva.|
-|`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -x <ext> -d <depth> -r` (feroxbuster)|Fuzzing recursivo combinado con extensiones; explora directorios y archivos dentro de los subdirectorios descubiertos.|
-|`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -s 403,404` (feroxbuster)|Excluye códigos HTTP especificados; evita resultados irrelevantes o falsos positivos.|
+| **Acción**                                                                | **Descripción**                                                                                                              |
+| ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `feroxbuster -u http://<ip>:<port>/ -w <wordlist>`                        | Fuzzing básico de directorios y archivos; detecta automáticamente respuestas válidas.                                        |
+| `feroxbuster -u http://<ip>:<port>/ -w <wordlist> -x php,html,js`         | Fuzzing incluyendo extensiones específicas; `-x` define las extensiones separadas por comas.                                 |
+| `feroxbuster -u http://<ip>:<port>/ -w <wordlist> -r`                     | Fuzzing recursivo: sigue los directorios encontrados hasta la profundidad predeterminada (máx. 4 niveles si no se modifica). |
+| `feroxbuster -u http://<ip>:<port>/ -w <wordlist> -d <depth>`             | Control de profundidad de recursión; útil para limitar ruido o mejorar cobertura progresiva.                                 |
+| `feroxbuster -u http://<ip>:<port>/ -w <wordlist> -x <ext> -d <depth> -r` | Fuzzing recursivo combinado con extensiones; explora directorios y archivos dentro de los subdirectorios descubiertos.       |
+| `feroxbuster -u http://<ip>:<port>/ -w <wordlist> -s 403,404`             | Excluye códigos HTTP especificados; evita resultados irrelevantes o falsos positivos.                                        |
 
 tab: Wordlists
 
@@ -65,8 +65,7 @@ tab: Wordlists
 | • `/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt` (para nombres de archivo) |
 | • `/usr/share/wordlists/seclists/Discovery/Web-Content/web-extensions.txt` (para extensiones)                   |
 | • `/usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt` (para extensiones) |
-
-````
+~~~
 
 ```ad-important
 Mirar siempre estas paginas: 
@@ -78,7 +77,7 @@ Mirar siempre estas paginas:
 
 ---
 
-### Resumen
+## Overview
 
 **El fuzzing web ayuda a descubrir directorios y archivos ocultos en un servidor probando nombres comunes de una wordlist.**
 
