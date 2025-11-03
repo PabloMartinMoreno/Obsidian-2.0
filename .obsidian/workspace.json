@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Web Archives.md",
+                "file": "04 - Content/Process/Automating Recon.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Archives"
+              "title": "Automating Recon"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Web Archives.md",
+                "file": "04 - Content/Process/Automating Recon.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Web Archives"
+              "title": "Gráfico de Automating Recon"
             }
           },
           {
@@ -246,8 +246,8 @@
   "active": "510ace467e802f00",
   "lastOpenFiles": [
     "04 - Content/Process/Information Gathering - Web Edition.md",
-    "04 - Content/Process/Automating Recon.md",
     "04 - Content/Process/Web Archives.md",
+    "04 - Content/Process/Automating Recon.md",
     "00 - Resources/Pasted image 20251103123601.png",
     "04 - Content/Process/Search Engine Discovery.md",
     "04 - Content/Process/Creepy Crawlies.md",
