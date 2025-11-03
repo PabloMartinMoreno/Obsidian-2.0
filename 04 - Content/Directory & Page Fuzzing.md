@@ -23,12 +23,12 @@ linked:
 ***
 
 ## Cheatsheet
-````tabs 
+
+````tabs
 tab: Comandos
 
 | **Acción**                                                                                                                         | **Descripción**                                                                                                                                                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Revisar estas páginas:**<br>robots.txt <br>sitemap.xml <br>.git                                                                  | PENDIENTE: quizás esto debería estar en otro artículo, o solo en mi página de metodología                                                                                                                                                                                   |
 | <br>`ffuf -c -w <wordlist> -u http://<target-ip-or-domain>:<port>/FUZZ`                                                            | Hace fuzzing de directorios web usando una única wordlist. Si no se especifica un término iterador, FUZZ se asume por defecto.                                                                                                                                              |
 | <br>`ffuf -c -w <ext-wordlist> -u http://<target-ip-or-domain>:<port>/indexFUZZ`                                                   | Hace fuzzing de archivos index en un directorio web usando una wordlist de extensiones de archivo. Las extensiones aceptadas deben conocerse antes de empezar.                                                                                                              |
 | `ffuf -c -w <filename-wordlist> -u http://<target-ip-or-domain>:<port>/FUZZ<extension>`                                            | Una vez identificada la extensión, hace fuzzing de archivos con esa extensión específica.                                                                                                                                                                                   |
@@ -47,6 +47,11 @@ tab: Wordlists
 | • `/usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt` (para extensiones) |
 
 ````
+
+
+robots.txt 
+sitemap.xml 
+.git
 
 ---
 

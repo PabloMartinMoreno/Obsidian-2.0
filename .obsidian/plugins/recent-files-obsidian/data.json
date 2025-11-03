@@ -1,12 +1,44 @@
 {
   "recentFiles": [
     {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Web Server Enumeration",
+      "path": "04 - Content/Web Server Enumeration.md"
+    },
+    {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
     },
     {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "Introduction to Web Applications",
@@ -41,10 +73,6 @@
       "path": "04 - Content/Process/whois.md"
     },
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
       "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
       "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
     },
@@ -71,10 +99,6 @@
     {
       "basename": "Search Engine Discovery",
       "path": "04 - Content/Process/Search Engine Discovery.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "robots.txt",
@@ -141,10 +165,6 @@
       "path": "04 - Content/Process/JavaScript Deobfuscation.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
@@ -177,28 +197,8 @@
       "path": "02 - Secondary Categories/Lateral Movement.md"
     },
     {
-      "basename": "Web Server Enumeration",
-      "path": "04 - Content/Web Server Enumeration.md"
-    },
-    {
       "basename": "Persistence Techniques",
       "path": "04 - Content/Process/Persistence Techniques.md"
-    },
-    {
-      "basename": "Persistence, Defense Evasion & C2",
-      "path": "04 - Content/Process/Persistence, Defense Evasion & C2.md"
-    },
-    {
-      "basename": "Cross-Compiling Exploit Code",
-      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
-    },
-    {
-      "basename": "Command & Control (C2)",
-      "path": "04 - Content/Process/Command & Control (C2).md"
-    },
-    {
-      "basename": "Client-Side Exploitation",
-      "path": "04 - Content/Process/Client-Side Exploitation.md"
     }
   ],
   "omittedPaths": [],
