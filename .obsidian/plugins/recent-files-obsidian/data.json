@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Web Archives",
+      "path": "04 - Content/Process/Web Archives.md"
+    },
+    {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Automating Recon",
+      "path": "04 - Content/Process/Automating Recon.md"
+    },
+    {
+      "basename": "Search Engine Discovery",
+      "path": "04 - Content/Process/Search Engine Discovery.md"
     },
     {
       "basename": "Creepy Crawlies",
@@ -187,18 +199,6 @@
     {
       "basename": "C2 Tradecraft & Profiles",
       "path": "02 - Secondary Categories/C2 Tradecraft & Profiles.md"
-    },
-    {
-      "basename": "Domain Enumeration",
-      "path": "02 - Secondary Categories/Domain Enumeration.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Pivoting",
-      "path": "04 - Content/Process/Pivoting.md"
     }
   ],
   "omittedPaths": [],
