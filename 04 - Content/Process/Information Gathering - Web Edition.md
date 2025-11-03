@@ -26,18 +26,18 @@
 
 ## [[Fingerprinting]]
 
-## [[robots.txt]]
-
-## [[Well-Known URIs]]
-
-## [[Creepy Crawlies]]
-
 
 ***
 
 # Crawling
 
 ## [[Crawling]]
+
+## [[robots.txt]]
+
+## [[Well-Known URIs]]
+
+## [[Creepy Crawlies]]
 
 
 ***

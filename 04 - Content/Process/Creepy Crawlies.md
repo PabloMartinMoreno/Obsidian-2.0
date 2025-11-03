@@ -1,6 +1,6 @@
 # Herramientas de crawling
 
-Web crawling es vasto e intrincado, pero no tenés que emprender este viaje solo. Hay una gran cantidad de herramientas de crawling disponibles, cada una con sus fortalezas y especialidades. Estas herramientas automatizan el proceso de rastreo, haciéndolo más rápido y eficiente, y permitiéndote concentrarte en el análisis de los datos extraídos.
+Son herramientas que automatizan el proceso de rastreo, haciéndolo más rápido y eficiente, y permitiéndote concentrarte en el análisis de los datos extraídos.
 
 ## Crawlers web populares
 
@@ -81,23 +81,14 @@ Después de ejecutar `ReconSpider.py`, los datos se guardarán en un archivo JSO
 ## Significado de cada clave en el JSON
 
 - **emails:** Lista de direcciones de correo encontradas en el dominio.
-    
 - **links:** URLs de enlaces hallados dentro del dominio.
-    
 - **external_files:** URLs de archivos externos (por ejemplo, PDFs).
-    
 - **js_files:** URLs de archivos JavaScript usados por el sitio.
-    
 - **form_fields:** Campos de formularios detectados (vacío en este ejemplo).
-    
 - **images:** URLs de imágenes encontradas.
-    
 - **videos:** URLs de videos (vacío en este ejemplo).
-    
 - **audio:** URLs de archivos de audio (vacío en este ejemplo).
-    
 - **comments:** Comentarios HTML encontrados en el código fuente.
-    
 
 ## Conclusión
 

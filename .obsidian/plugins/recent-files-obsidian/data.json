@@ -1,16 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
     {
       "basename": "Creepy Crawlies",
       "path": "04 - Content/Process/Creepy Crawlies.md"
     },
     {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+      "basename": "Crawling",
+      "path": "04 - Content/Process/Crawling.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Using Web Proxies",
+      "path": "04 - Content/Process/Using Web Proxies.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Well-Known URIs",
@@ -19,10 +35,6 @@
     {
       "basename": "robots.txt",
       "path": "04 - Content/Process/robots.txt.md"
-    },
-    {
-      "basename": "Crawling",
-      "path": "04 - Content/Process/Crawling.md"
     },
     {
       "basename": "Fingerprinting",
@@ -57,24 +69,12 @@
       "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
     },
     {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
       "basename": "Cheklist para el Examen CBBH",
       "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
     },
     {
-      "basename": "Using Web Proxies",
-      "path": "04 - Content/Process/Using Web Proxies.md"
-    },
-    {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
     {
       "basename": "Public Vulnerabilities",
