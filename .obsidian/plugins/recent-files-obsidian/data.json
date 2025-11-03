@@ -1,20 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Web Server Enumeration",
-      "path": "04 - Content/Web Server Enumeration.md"
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Using Web Proxies",
+      "path": "04 - Content/Process/Using Web Proxies.md"
+    },
+    {
+      "basename": "Nikto",
+      "path": "04 - Content/Process/Nikto.md"
+    },
+    {
+      "basename": "Ffuf",
+      "path": "04 - Content/Process/Ffuf.md"
     },
     {
       "basename": "Information Gathering",
@@ -25,8 +37,12 @@
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
+      "basename": "Web Server Enumeration",
+      "path": "04 - Content/Web Server Enumeration.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
     {
       "basename": "Subdomain & Virtual Host Fuzzing",
@@ -41,16 +57,8 @@
       "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
       "basename": "Front End vs. Back End",
       "path": "04 - Content/Process/Front End vs. Back End.md"
-    },
-    {
-      "basename": "Using Web Proxies",
-      "path": "04 - Content/Process/Using Web Proxies.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
@@ -75,10 +83,6 @@
     {
       "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
       "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/Process/ffuf.md"
     },
     {
       "basename": "Utilising WHOIS",
@@ -195,10 +199,6 @@
     {
       "basename": "Lateral Movement",
       "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
-      "basename": "Persistence Techniques",
-      "path": "04 - Content/Process/Persistence Techniques.md"
     }
   ],
   "omittedPaths": [],

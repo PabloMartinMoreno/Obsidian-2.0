@@ -1,8 +1,22 @@
+---
+aliases:
+tags:
+  - type/moc/tertiary
+primary categories:
+secondary categories:
+type: Tertiary Category
+---
+# Web Requests
+
+***
+
 ## Cheatsheet
+
+````tabs
+tab: Web
 
 | **Comando**                                                                                                      | **Descripción**                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `curl -h`                                                                                                        | Muestra el menú de ayuda de cURL                                     |
 | `curl inlanefreight.com`                                                                                         | Realiza una solicitud GET básica                                     |
 | `curl -s -O inlanefreight.com/index.html`                                                                        | Descarga un archivo                                                  |
 | `curl -k https://inlanefreight.com`                                                                              | Omite la validación del certificado HTTPS (SSL)                      |
@@ -18,7 +32,7 @@
 | `curl -b 'PHPSESSID=c1nsa6op7vtk7kdis7bcnbadf1' http://<SERVER_IP>:<PORT>/`                                      | Envía cookies en la solicitud                                        |
 | `curl -X POST -d '{"search":"london"}' -H 'Content-Type: application/json' http://<SERVER_IP>:<PORT>/search.php` | Envía una solicitud POST con datos en formato JSON                   |
 
-### APIs
+tab: APIs
 
 | **Comando**                                                                                                                                             | **Descripción**                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
@@ -28,11 +42,9 @@
 | `curl -X PUT http://<SERVER_IP>:<PORT>/api.php/city/london -d '{"city_name":"New_HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'` | Actualizar (modificar) una entrada            |
 | `curl -X DELETE http://<SERVER_IP>:<PORT>/api.php/city/New_HTB_City`                                                                                    | Eliminar una entrada                          |
 
-***
+tab: Acrónimos
 
-## Acrónimos y significados de `curl`
-
-| Opción | Significado / Acrónimo   | Qué hace                                               |
+| **Opción** | **Significado / Acrónimo**   | **Qué hace **                                              |
 | ------ | ------------------------ | ------------------------------------------------------ |
 | `-A`   | **Agent**                | Define el *User-Agent* (identifica el cliente).        |
 | `-b`   | **Biscuit (cookie)**     | Envia cookies desde un archivo o string.               |
@@ -52,5 +64,34 @@
 | `-x`   | **Proxy**                | Define un servidor proxy.                              |
 | `-X`   | **Request (method)**     | Especifica el método HTTP (GET, POST, PUT, etc).       |
 
----
+````
 
+***
+
+## Overview
+
+Una **web request** (petición web) es el mensaje que un cliente —por ejemplo un navegador o una herramienta— envía a un servidor web para pedirle algo: una página HTML, un recurso (imagen, JSON, etc.) o ejecutar una acción. 
+
+**Componentes principales de una web request:**
+- Método (HTTP): `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, etc.
+- URL: dominio + ruta + parámetros de consulta (`/login?user=ana`).
+- Cabeceras (headers): `Host`, `User-Agent`, `Cookie`, `Accept`, `Referer`, `Authorization`, etc.    
+- Cuerpo (body): datos enviados en `POST/PUT` (form-data, JSON, XML, etc.).
+- Parámetros: query params, route params, y body params.
+- Protocolo/seguridad: `HTTP` vs `HTTPS` (TLS).
+- Respuesta: código de estado (200, 404, 500…), headers de respuesta y cuerpo.
+
+**Qué se hace con las web requests en hacking ético:**
+- Interceptar: ver peticiones y respuestas en tránsito (p. ej. con Burp Proxy).
+- Modificar/Replay: cambiar parámetros, headers o cuerpos y re-enviar para probar validaciones.
+- Fuzzing: enviar inputs aleatorios o malformados para encontrar errores.
+- Automatizar: usar scripts o herramientas para enumerar endpoints, parámetros o probar cargas útiles.
+- Análisis de lógica: entender cómo el servidor procesa la request para encontrar autorización débil, falta de validación, etc.    
+
+**Vectores y fallos comunes relacionados con peticiones web:**
+- Inyección (SQL, NoSQL, OS, command).
+- Cross-Site Scripting (XSS) vía parámetros o cuerpo.
+- Cross-Site Request Forgery (CSRF) por peticiones sin token.
+- Server-Side Request Forgery (SSRF) si la app hace requests a URLs controladas por el usuario.
+- Insecure Direct Object Access (IDOR) por parámetros manipulables (`/file?id=123`).
+- Headers inseguros o exposición de cookies sin `HttpOnly`/`Secure`.

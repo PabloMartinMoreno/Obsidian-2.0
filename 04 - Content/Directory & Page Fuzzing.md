@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Fuzzing de Paginas y Directorios
 tags:
   - type/cheatsheet
   - technique/recon/active
@@ -48,10 +49,13 @@ tab: Wordlists
 
 ````
 
+```ad-important
+Mirar siempre estas paginas: 
+- `robots.txt`
+- `sitemap.xml`
+- `.git`
+```
 
-robots.txt 
-sitemap.xml 
-.git
 
 ---
 
