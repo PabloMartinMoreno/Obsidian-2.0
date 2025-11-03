@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Enumeración Web
 tags:
   - type/moc/tertiary
   - technique/recon/active
@@ -20,7 +21,7 @@ type: Tertiary Category
 - [[Parameter & Value Fuzzing]]
 - [[Passive Subdomain Enumeration]]
 - [[Subdomain & Virtual Host Fuzzing]]
-- [[Web Server Enumeration]]
+- [[Web Technology Fingerprinting]]
 
 ## Enumeración de Tecnologías Especificas
 
@@ -41,6 +42,7 @@ type: Tertiary Category
 ***
 
 - ### Herramientas
+	- [[Curl]]
 	- [[BurpSuite]]
 	- [[Ffuf]]
 	- [[GoBuster]]

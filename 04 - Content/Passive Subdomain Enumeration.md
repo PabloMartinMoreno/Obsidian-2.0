@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Enumeración Pasiva de Subdominios
 tags:
   - type/cheatsheet
   - technique/recon/passive
@@ -16,7 +17,7 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-# Passive Subdomain Enumeration
+# Enumeración Pasiva de Sub-dominios
 
 ***
 

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Curl.md",
+                "file": "04 - Content/Directory & Page Fuzzing.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Curl"
+              "title": "Directory & Page Fuzzing"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Curl.md",
+                "file": "04 - Content/Directory & Page Fuzzing.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Curl"
+              "title": "Gráfico de Directory & Page Fuzzing"
             }
           },
           {
@@ -245,21 +245,23 @@
   },
   "active": "510ace467e802f00",
   "lastOpenFiles": [
-    "04 - Content/Process/Web Requests.md",
-    "04 - Content/Process/Curl.md",
     "03 - Tertiary Categories/Web Enumeration.md",
-    "04 - Content/Directory & Page Fuzzing.md",
+    "04 - Content/Process/Web Requests.md",
     "04 - Content/Process/CWES.md",
+    "04 - Content/Process/[[DNS Enumeration (53).md",
+    "04 - Content/Directory & Page Fuzzing.md",
+    "04 - Content/Web Technology Fingerprinting.md",
+    "04 - Content/Parameter & Value Fuzzing.md",
+    "04 - Content/Subdomain & Virtual Host Fuzzing.md",
+    "04 - Content/DNS Enumeration (53).md",
+    "04 - Content/Passive Subdomain Enumeration.md",
+    "04 - Content/Process/Curl.md",
     "04 - Content/Process/Using Web Proxies.md",
     "04 - Content/Process/Nikto.md",
     "04 - Content/Process/Ffuf.md",
     "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Web Server Enumeration.md",
     "04 - Content/Process/Introduction to Web Applications.md",
-    "04 - Content/Subdomain & Virtual Host Fuzzing.md",
-    "04 - Content/Passive Subdomain Enumeration.md",
-    "04 - Content/Parameter & Value Fuzzing.md",
     "04 - Content/Process/Front End vs. Back End.md",
     "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Introduction.md",
@@ -269,8 +271,6 @@
     "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md",
     "04 - Content/Process/Utilising WHOIS.md",
     "04 - Content/Process/Well-Known URIs.md",
-    "04 - Content/Process/Automating Recon.md",
-    "04 - Content/Process/Web Archives.md",
     "00 - Resources/Pasted image 20251103123601.png",
     "00 - Resources/Pasted image 20251101152905.png",
     "04 - Content/Process/Sin título.base",

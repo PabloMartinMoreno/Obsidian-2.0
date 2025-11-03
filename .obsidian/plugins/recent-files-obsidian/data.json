@@ -1,24 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "Curl",
-      "path": "04 - Content/Process/Curl.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Web Technology Fingerprinting",
+      "path": "04 - Content/Web Technology Fingerprinting.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Curl",
+      "path": "04 - Content/Process/Curl.md"
     },
     {
       "basename": "Using Web Proxies",
@@ -41,24 +61,8 @@
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "Web Server Enumeration",
-      "path": "04 - Content/Web Server Enumeration.md"
-    },
-    {
       "basename": "Introduction to Web Applications",
       "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "Front End vs. Back End",
@@ -191,14 +195,6 @@
     {
       "basename": "Shells",
       "path": "04 - Content/Process/Shells.md"
-    },
-    {
-      "basename": "Credentials Cracking",
-      "path": "04 - Content/Process/Credentials Cracking.md"
-    },
-    {
-      "basename": "Procedures",
-      "path": "04 - Content/Process/Procedures.md"
     }
   ],
   "omittedPaths": [],

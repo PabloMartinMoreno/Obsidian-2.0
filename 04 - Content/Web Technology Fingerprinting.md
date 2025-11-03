@@ -18,7 +18,7 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-# Web Server Enumeration
+# Detección de Tecnologías Web
 
 ***
 
@@ -33,7 +33,7 @@ linked:
 ## Overview
 
 - **WhatWeb:** Una herramienta de línea de comandos que ayuda a identificar las tecnologías que utiliza un sitio web, proporcionando información detallada sobre los _frameworks_, CMS, software de servidor y más del sitio. Es una buena forma de obtener información sobre la infraestructura subyacente de un sitio web.
-    
+
 - **Wappalyzer:** Una extensión de navegador y herramienta en línea que descubre las tecnologías detrás de un sitio web analizando el _front-end_. Detecta CMS populares, plataformas de comercio electrónico, _frameworks_ de JavaScript y otras tecnologías web.
-    
+
 - **WAFW00F:** Una herramienta para la identificación (_fingerprinting_) de Cortafuegos de Aplicaciones Web (WAFs). Ayuda a determinar si un sitio web está protegido por un WAF.

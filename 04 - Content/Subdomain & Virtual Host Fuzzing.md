@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Fuzzing de Subdominios y Hosts Virtuales
 tags:
   - type/cheatsheet
   - technique/recon/active
@@ -17,7 +18,7 @@ type: CheatSheet
 linked:
   - "[[DNS Enumeration (53)]]"
 ---
-# Subdomain & Virtual Host Fuzzing
+# Fuzzing de Subdominios y Hosts Virtuales
 
 ***
 
@@ -45,7 +46,7 @@ tab: **Wordlists**
 
 ## Notas Relacionadas
 
-- [[[[DNS Enumeration (53)]]: Para una enumeración DNS más profunda.
+- [[DNS Enumeration (53)]]: Para una enumeración DNS más profunda.
 
 ## Overview
 

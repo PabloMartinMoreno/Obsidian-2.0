@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Fuzzing de Parámetros y Valores
 tags:
   - type/cheatsheet
   - technique/recon/active
@@ -18,7 +19,7 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-# Parameter & Value Fuzzing
+# Fuzzing de Parámetros y Valores
 
 ***
 
