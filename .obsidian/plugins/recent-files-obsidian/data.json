@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Curl",
+      "path": "04 - Content/Process/Curl.md"
+    },
+    {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "Passive Subdomain Enumeration",
       "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Curl",
-      "path": "04 - Content/Process/Curl.md"
     },
     {
       "basename": "Using Web Proxies",

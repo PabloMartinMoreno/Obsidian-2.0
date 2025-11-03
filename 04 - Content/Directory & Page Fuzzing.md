@@ -25,8 +25,11 @@ linked:
 
 ## Cheatsheet
 
-~~~tabs
----tab Ffuf
+````tabs
+tab: curl
+![[Curl#Web]]
+
+tab: Ffuf
 
 | **Acción**                                                                                                    | **Descripción**                                                                                                                                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -36,7 +39,7 @@ linked:
 | `ffuf -c -w <wordlist> -u http://<ip>:<port>/FUZZ -e <dot-extension>`                                         | Sólo extensión, sin recursión                                                                                                                                                                                                                                               |
 | <br>`ffuf -c -w <wordlist> -u http://<ip>:<port>/FUZZ -recursion -recursion-depth <depth> -e <dot-extension>` | Hace fuzzing recursivo tanto de directorios web como de archivos. Si se encuentra un directorio, la búsqueda continúa dentro de esa rama. Esto es más ruidoso y consume más tiempo, pero es automatizado. PENDIENTE: Avisar que esto es un último recurso (un 'hail mary'). |
 
----tab GoBuster
+tab: GoBuster
 
 | **Acción**                                                                    | **Descripción**                                                                                                                                                                                                                              |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,7 +49,7 @@ linked:
 | `gobuster dir -u http://<ip>:<port>/FUZZ -w <wordlist> -x <single-extension>` | Fuzzing limitado a una sola extensión (sin búsqueda recursiva automática). Útil para reducir ruido.                                                                                                                                          |
 | **(Nota)**                                                                    | Gobuster no implementa recursión automática avanzada como feroxbuster; para fuzzing recursivo se recomienda usar feroxbuster o encadenar ejecuciones de gobuster con scripts. Recursividad es ruidosa y debe reservarse como último recurso. |
 
----tab FeroxBuster
+tab: FeroxBuster
 
 | **Acción**                                                                | **Descripción**                                                                                                              |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -65,7 +68,8 @@ tab: Wordlists
 | • `/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt` (para nombres de archivo) |
 | • `/usr/share/wordlists/seclists/Discovery/Web-Content/web-extensions.txt` (para extensiones)                   |
 | • `/usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt` (para extensiones) |
-~~~
+
+````
 
 ```ad-important
 Mirar siempre estas paginas: 
