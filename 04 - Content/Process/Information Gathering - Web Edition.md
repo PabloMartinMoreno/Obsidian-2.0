@@ -7,7 +7,7 @@
 ***
 
 # WHOIS
-## [[whois]] 
+## [[Whois]] 
 
 ## [[Utilising WHOIS]]
 

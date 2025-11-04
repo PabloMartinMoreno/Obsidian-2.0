@@ -9,24 +9,60 @@
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "GoBuster",
-      "path": "04 - Content/Process/GoBuster.md"
+      "basename": "Whois",
+      "path": "04 - Content/Process/Whois.md"
     },
     {
       "basename": "Ffuf",
       "path": "04 - Content/Process/Ffuf.md"
     },
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
       "basename": "Curl",
       "path": "04 - Content/Process/Curl.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Utilising WHOIS",
+      "path": "04 - Content/Process/Utilising WHOIS.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
+    },
+    {
+      "basename": "_command",
+      "path": "05 - Templates/04 - Type/_command.md"
+    },
+    {
+      "basename": "_cheatsheet",
+      "path": "05 - Templates/04 - Type/_cheatsheet.md"
+    },
+    {
+      "basename": "_concept",
+      "path": "05 - Templates/04 - Type/_concept.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
+      "basename": "GoBuster",
+      "path": "04 - Content/Process/GoBuster.md"
     },
     {
       "basename": "FeroxBuster",
@@ -41,10 +77,6 @@
       "path": "05 - Templates/04 - Type/_precode.md"
     },
     {
-      "basename": "_command",
-      "path": "05 - Templates/04 - Type/_command.md"
-    },
-    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
@@ -55,14 +87,6 @@
     {
       "basename": "Subdomain & Virtual Host Fuzzing",
       "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "DNS Enumeration (53)",
@@ -81,16 +105,8 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
       "basename": "Front End vs. Back End",
       "path": "04 - Content/Process/Front End vs. Back End.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
     {
       "basename": "Introduction",
@@ -105,16 +121,8 @@
       "path": "04 - Content/Process/Crawling.md"
     },
     {
-      "basename": "whois",
-      "path": "04 - Content/Process/whois.md"
-    },
-    {
       "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
       "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
-    },
-    {
-      "basename": "Utilising WHOIS",
-      "path": "04 - Content/Process/Utilising WHOIS.md"
     },
     {
       "basename": "Well-Known URIs",
@@ -191,14 +199,6 @@
     {
       "basename": "Cross-Site Request Forgery (CSRF)",
       "path": "04 - Content/Process/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
-      "basename": "JavaScript Deobfuscation",
-      "path": "04 - Content/Process/JavaScript Deobfuscation.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     }
   ],
   "omittedPaths": [],

@@ -12,17 +12,10 @@ linked:
 
 ***
 
+## Cheatsheet
+
+
 ## Overview
 
-```ad-tip
 
-```
-
-
-## Syntax
-
-```powershell
-
-```
-
-## Examples & Use Cases
+## Notas Relacionadas
