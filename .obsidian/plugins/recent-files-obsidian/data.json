@@ -1,28 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Fuff",
-      "path": "04 - Content/Process/Fuff.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Wordlists",
+      "path": "04 - Content/Process/Wordlists.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "Wordlists",
-      "path": "04 - Content/Process/Wordlists.md"
+      "basename": "Fuff",
+      "path": "04 - Content/Process/Fuff.md"
+    },
+    {
+      "basename": "FeroxBuster",
+      "path": "04 - Content/Process/FeroxBuster.md"
     },
     {
       "basename": "GoBuster",
       "path": "04 - Content/Process/GoBuster.md"
     },
     {
-      "basename": "FeroxBuster",
-      "path": "04 - Content/Process/FeroxBuster.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Web Enumeration",

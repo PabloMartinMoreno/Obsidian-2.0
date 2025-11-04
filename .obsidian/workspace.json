@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Fuff.md",
+                "file": "04 - Content/Process/Wordlists.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Fuff"
+              "title": "Wordlists"
             }
           }
         ],
@@ -151,7 +151,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Fuff.md",
+                "file": "04 - Content/Process/Wordlists.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -201,7 +201,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Fuff"
+              "title": "Gráfico de Wordlists"
             }
           },
           {
@@ -210,12 +210,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "03 - Content/Drawbacks of Traditional Note-Taking Systems.md",
+                "file": "04 - Content/Process/Wordlists.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Enlaces salientes de Drawbacks of Traditional Note-Taking Systems"
+              "title": "Enlaces salientes de Wordlists"
             }
           },
           {
@@ -233,7 +233,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 239.5
+    "width": 257.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -250,17 +250,18 @@
       "bases:Crear nueva base": false,
       "command-palette:Abrir paleta de comandos": false,
       "templater-obsidian:Templater": false,
-      "homepage:Open homepage": false
+      "homepage:Open homepage": false,
+      "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
   "active": "609cac16a8c56d2a",
   "lastOpenFiles": [
-    "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Process/Fuff.md",
     "04 - Content/Directory & Page Fuzzing.md",
+    "04 - Content/Process/Fuff.md",
     "04 - Content/Process/Wordlists.md",
-    "04 - Content/Process/GoBuster.md",
     "04 - Content/Process/FeroxBuster.md",
+    "04 - Content/Process/GoBuster.md",
+    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Ffuf.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Process/Curl.md",
