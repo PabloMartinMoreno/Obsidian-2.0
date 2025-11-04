@@ -1,7 +1,7 @@
 
 ***
-[[Curl]]
 
+[[Curl]]
 ## Overview
 
 Una **web request** (petición web) es el mensaje que un cliente —por ejemplo un navegador o una herramienta— envía a un servidor web para pedirle algo: una página HTML, un recurso (imagen, JSON, etc.) o ejecutar una acción. En hacking ético entender y manipular esas peticiones es fundamental para descubrir fallos, validar controles y demostrar vectores de ataque de forma segura y responsable.
