@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Fuff",
+      "path": "04 - Content/Process/Fuff.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
@@ -9,12 +13,20 @@
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "Wordlists",
+      "path": "04 - Content/Process/Wordlists.md"
     },
     {
-      "basename": "Fuff",
-      "path": "04 - Content/Process/Fuff.md"
+      "basename": "GoBuster",
+      "path": "04 - Content/Process/GoBuster.md"
+    },
+    {
+      "basename": "FeroxBuster",
+      "path": "04 - Content/Process/FeroxBuster.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Curl",
@@ -55,10 +67,6 @@
     {
       "basename": "Nikto",
       "path": "04 - Content/Process/Nikto.md"
-    },
-    {
-      "basename": "Ffuf",
-      "path": "04 - Content/Process/Ffuf.md"
     },
     {
       "basename": "Information Gathering",
@@ -191,14 +199,6 @@
     {
       "basename": "Operational Tasks",
       "path": "04 - Content/Process/Operational Tasks.md"
-    },
-    {
-      "basename": "File Transfers",
-      "path": "04 - Content/Process/File Transfers.md"
-    },
-    {
-      "basename": "Shells",
-      "path": "04 - Content/Process/Shells.md"
     }
   ],
   "omittedPaths": [],
