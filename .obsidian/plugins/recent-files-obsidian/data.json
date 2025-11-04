@@ -1,16 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Wordlists",
-      "path": "04 - Content/Process/Wordlists.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Web Technology Fingerprinting",
+      "path": "04 - Content/Web Technology Fingerprinting.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "Fuff",
-      "path": "04 - Content/Process/Fuff.md"
+      "basename": "Wordlists",
+      "path": "04 - Content/Process/Wordlists.md"
     },
     {
       "basename": "FeroxBuster",
@@ -21,12 +41,8 @@
       "path": "04 - Content/Process/GoBuster.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "Fuff",
+      "path": "04 - Content/Process/Fuff.md"
     },
     {
       "basename": "Curl",
@@ -41,24 +57,8 @@
       "path": "04 - Content/Process/CWES.md"
     },
     {
-      "basename": "Web Technology Fingerprinting",
-      "path": "04 - Content/Web Technology Fingerprinting.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
-    },
-    {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
     },
     {
       "basename": "Using Web Proxies",

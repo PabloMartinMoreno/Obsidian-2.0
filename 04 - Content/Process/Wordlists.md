@@ -12,12 +12,12 @@ linked:
 
 ***
 
-## Fuzzing de Directorios
+## Cheatsheet
 
-| **Wordlists para usar:**                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------- |
-| <pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt`</code></pre> (para nombres de archivo)  |
-| <pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt`</code></pre> (para nombres de archivo) |
-| <pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/web-extensions.txt`</code></pre> (para extensiones)                   |
-| <pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt`</code></pre> (para extensiones) |
+### Wordlists de Paginas y Directorios
+
+| **Wordlists para usar:**                                                                                                                                                                                                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <br>Para nombres de archivo:<br><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt`</code></pre><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt`</code></pre> |
+| <br>Para extensiones:<br><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/web-extensions.txt`</code></pre><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt`</code></pre>           |
 ^wordlists-fuzzing

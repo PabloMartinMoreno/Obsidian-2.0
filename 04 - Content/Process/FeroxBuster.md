@@ -14,6 +14,8 @@ linked:
 
 ## Cheatsheet
 
+### Fuzzing de Paginas y Directorios
+
 | **Acción**                                                                                        | **Descripción**                                                                                                                  |
 | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | <pre><code>`feroxbuster -u http://<ip>:<port>/ -w <wordlist>`</code></pre>                        | <br>Fuzzing básico de directorios y archivos; detecta automáticamente respuestas válidas.                                        |
