@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/CWES.md",
+                "file": "04 - Content/Process/Web Requests.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "CWES"
+              "title": "Web Requests"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/CWES.md",
+                "file": "04 - Content/Process/Web Requests.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de CWES"
+              "title": "Gráfico de Web Requests"
             }
           },
           {
@@ -265,6 +265,7 @@
   },
   "active": "609cac16a8c56d2a",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
@@ -290,7 +291,6 @@
     "04 - Content/Drupal Enumeration.md",
     "04 - Content/ColdFusion Enumeration.md",
     "04 - Content/Web Technology Fingerprinting.md",
-    "05 - Templates/04 - Type/_command.md",
     "00 - Resources/Pasted image 20251103123601.png",
     "00 - Resources/Pasted image 20251101152905.png",
     "04 - Content/Process/Sin título.base",
