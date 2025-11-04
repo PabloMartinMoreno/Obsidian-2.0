@@ -18,7 +18,7 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Fuff]]"
+  - "[[Ffuf]]"
   - "[[GoBuster]]"
   - "[[FeroxBuster]]"
   - "[[Wordlists]]"

@@ -1,8 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
       "basename": "Parameter & Value Fuzzing",
       "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
+      "basename": "GoBuster",
+      "path": "04 - Content/Process/GoBuster.md"
+    },
+    {
+      "basename": "Ffuf",
+      "path": "04 - Content/Process/Ffuf.md"
+    },
+    {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "Curl",
+      "path": "04 - Content/Process/Curl.md"
+    },
+    {
+      "basename": "FeroxBuster",
+      "path": "04 - Content/Process/FeroxBuster.md"
     },
     {
       "basename": "Wordlists",
@@ -11,26 +39,6 @@
     {
       "basename": "_precode",
       "path": "05 - Templates/04 - Type/_precode.md"
-    },
-    {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "FeroxBuster",
-      "path": "04 - Content/Process/FeroxBuster.md"
-    },
-    {
-      "basename": "GoBuster",
-      "path": "04 - Content/Process/GoBuster.md"
-    },
-    {
-      "basename": "Fuff",
-      "path": "04 - Content/Process/Fuff.md"
     },
     {
       "basename": "_command",
@@ -47,14 +55,6 @@
     {
       "basename": "Subdomain & Virtual Host Fuzzing",
       "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Curl",
-      "path": "04 - Content/Process/Curl.md"
     },
     {
       "basename": "Web Requests",

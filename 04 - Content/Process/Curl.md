@@ -1,11 +1,11 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/command
 primary categories:
 secondary categories:
 tertiary categories:
-type: CheatSheet
+type: Command
 linked:
 ---
 # Curl
@@ -13,6 +13,8 @@ linked:
 ***
 
 ## Cheatsheet
+
+### Uso general
 
 ````tabs
 tab: Web
@@ -67,8 +69,16 @@ tab: Acrónimos
 | `-X`   | **Request (method)**     | Especifica el método HTTP (GET, POST, PUT, etc).       |
 
 ````
+^curl-general
 
-^f5d7c2
+### Fuzzing Parámetros y Valores 
+
+| **Acción**                                                                                                                               | **Descripción**                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| <pre><code>`curl -s http://<rhost>:<rport>/admin.php \| wc -c`</code></pre>                                                              | **(GET)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos.  |
+| <pre><code>`curl -s http://<rhost>:<rport>/admin.php -X POST -H "Content-Type: application/x-www-form-urlencoded" \| wc -c`</code></pre> | **(POST)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos. |
+^curl-fuzzing-parametros
+
 
 ## Overview
 
