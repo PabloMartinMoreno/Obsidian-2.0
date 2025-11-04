@@ -1,28 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "Whois",
-      "path": "04 - Content/Process/Whois.md"
     },
     {
       "basename": "Ffuf",
       "path": "04 - Content/Process/Ffuf.md"
     },
     {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
       "basename": "Curl",
       "path": "04 - Content/Process/Curl.md"
+    },
+    {
+      "basename": "Whois",
+      "path": "04 - Content/Process/Whois.md"
     },
     {
       "basename": "CWES",
@@ -55,10 +59,6 @@
     {
       "basename": "_concept",
       "path": "05 - Templates/04 - Type/_concept.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "GoBuster",

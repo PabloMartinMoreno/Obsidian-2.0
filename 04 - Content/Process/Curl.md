@@ -79,6 +79,15 @@ tab: Acrónimos
 | <pre><code>`curl -s http://<rhost>:<rport>/admin.php -X POST -H "Content-Type: application/x-www-form-urlencoded" \| wc -c`</code></pre> | **(POST)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos. |
 ^curl-fuzzing-parametros
 
+### Enumeración de Sub-Dominios
+
+| **Acción**                                                                                                                                                                                                            | **Descripción**                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| <pre><code>`curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq .`</code></pre>                                                                                                                           | <br>Obtiene los registros de transparencia de certificados para un dominio desde Crt.sh.  |
+| <pre><code>`curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq . \| grep name \| cut -d":" -f2 \| grep -v "CN=" \| cut -d'"' -f2 \| awk '{gsub(/\\n/,"\n");}1;' \| sort -u > subdomain.lst`</code></pre> | <br>Extrae subdominios únicos de los registros de Crt.sh y los guarda en `subdomain.lst`. |
+^curl-enum-subdominios
+
+
 
 ## Overview
 

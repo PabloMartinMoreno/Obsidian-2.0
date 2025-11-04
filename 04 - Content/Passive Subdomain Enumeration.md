@@ -17,6 +17,7 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[Whois]]"
+  - "[[Curl]]"
 ---
 # Enumeración Pasiva de Sub-dominios
 
@@ -25,9 +26,11 @@ linked:
 ## Cheatsheet
 
 ````tabs
-tab: whois
-![[Whois#^whois-recon-subdomains]]
+tab: Whois
+![[Whois#^whois-enum-subdominios]]
 
+tab: Curl
+![[Curl#^curl-enum-subdominios]]
 
 tab: Paginas
 

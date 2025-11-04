@@ -31,7 +31,7 @@ linked:
 
 ````tabs
 tab: Ffuf
-![[Fuff#^ffuf-fuzzing-directorios]]
+![[Fuff#^ffuf-]]
 
 tab: GoBuster
 ![[GoBuster#^gobuster-fuzzing-directorios]]
