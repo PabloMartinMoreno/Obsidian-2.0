@@ -1,36 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Web Technology Fingerprinting",
-      "path": "04 - Content/Web Technology Fingerprinting.md"
-    },
-    {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
       "basename": "Parameter & Value Fuzzing",
       "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
+      "basename": "Wordlists",
+      "path": "04 - Content/Process/Wordlists.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "05 - Templates/04 - Type/_precode.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "Wordlists",
-      "path": "04 - Content/Process/Wordlists.md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "FeroxBuster",
@@ -43,6 +31,26 @@
     {
       "basename": "Fuff",
       "path": "04 - Content/Process/Fuff.md"
+    },
+    {
+      "basename": "_command",
+      "path": "05 - Templates/04 - Type/_command.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Web Technology Fingerprinting",
+      "path": "04 - Content/Web Technology Fingerprinting.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
     },
     {
       "basename": "Curl",
@@ -191,14 +199,6 @@
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Creds",
-      "path": "04 - Content/Creds.md"
-    },
-    {
-      "basename": "Operational Tasks",
-      "path": "04 - Content/Process/Operational Tasks.md"
     }
   ],
   "omittedPaths": [],

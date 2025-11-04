@@ -1,11 +1,11 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/command
 primary categories:
 secondary categories:
 tertiary categories:
-type: CheatSheet
+type: Command
 linked:
 ---
 # Fuff
@@ -23,4 +23,4 @@ linked:
 | <pre><code>`ffuf -c -w <filename-wordlist> -u http://<ip>:<port>/FUZZ<extension>`</code></pre>                                    | <br>Una vez identificada la extensión, hace fuzzing de archivos con esa extensión específica.                                                                                                                 |
 | <pre><code>`ffuf -c -w <wordlist> -u http://<ip>:<port>/FUZZ -e <dot-extension>`</code></pre>                                     | <br><br>Sólo extensión, sin recursión                                                                                                                                                                         |
 | <pre><code>`ffuf -c -w <wordlist> -u http://<ip>:<port>/FUZZ -recursion -recursion-depth <depth> -e <dot-extension>`</code></pre> | <br>Hace fuzzing recursivo tanto de directorios web como de archivos. Si se encuentra un directorio, la búsqueda continúa dentro de esa rama. Esto es más ruidoso y consume más tiempo, pero es automatizado. |
-^ffuf
+^ffuf-fuzzing-directorios

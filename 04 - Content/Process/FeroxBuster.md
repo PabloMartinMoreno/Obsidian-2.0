@@ -1,11 +1,11 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/command
 primary categories:
 secondary categories:
 tertiary categories:
-type: CheatSheet
+type: Command
 linked:
 ---
 # FeroxBuster
@@ -24,4 +24,4 @@ linked:
 | <pre><code>`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -d <depth>`</code></pre>             | <br>Control de profundidad de recursión; útil para limitar ruido o mejorar cobertura progresiva.                                 |
 | <pre><code>`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -x <ext> -d <depth> -r`</code></pre> | <br>Fuzzing recursivo combinado con extensiones; explora directorios y archivos dentro de los subdirectorios descubiertos.       |
 | <pre><code>`feroxbuster -u http://<ip>:<port>/ -w <wordlist> -s 403,404`</code></pre>             | <br>Excluye códigos HTTP especificados; evita resultados irrelevantes o falsos positivos.                                        |
-^feroxbuster
+^feroxbuster-fuzzing-directorios

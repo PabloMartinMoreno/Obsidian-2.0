@@ -31,17 +31,16 @@ linked:
 
 ````tabs
 tab: Ffuf
-![[Fuff#^ffuf]]
-
+![[Fuff#^ffuf-fuzzing-directorios]]
 
 tab: GoBuster
-![[GoBuster#^gobuster]]
+![[GoBuster#^gobuster-fuzzing-directorios]]
 
 tab: FeroxBuster
-![[FeroxBuster#^feroxbuster]]
+![[FeroxBuster#^feroxbuster-fuzzing-directorios]]
 
 tab: Wordlists
-![[Wordlists#^wordlists-fuzzing]]
+![[Wordlists#^wordlists-fuzzing-directorios]]
 
 ````
 
@@ -62,3 +61,4 @@ Mirar siempre estas paginas:
 Usando herramientas como ffuf, puede identificar recursos accesibles pero ocultos, incluyendo archivos con extensiones específicas o archivos index.
 
 La recursión permite una exploración más profunda dentro de los directorios descubiertos para revelar más contenido oculto.
+
