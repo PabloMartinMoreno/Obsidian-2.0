@@ -30,16 +30,16 @@ linked:
 ## Cheatsheet
 
 ````tabs
-tab: Ffuf
-![[Fuff#^ffuf-]]
+tab: **Ffuf**
+![[Ffuf#^ffuf-fuzzing-directorios]]
 
-tab: GoBuster
+tab: **GoBuster**
 ![[GoBuster#^gobuster-fuzzing-directorios]]
 
-tab: FeroxBuster
+tab: **FeroxBuster**
 ![[FeroxBuster#^feroxbuster-fuzzing-directorios]]
 
-tab: Wordlists
+tab: **Wordlists**
 ![[Wordlists#^wordlists-fuzzing-directorios]]
 
 ````

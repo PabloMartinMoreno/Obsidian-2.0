@@ -58,6 +58,42 @@
       "selectAppend": true,
       "selectPrepend": true,
       "selectBackground": true
+    },
+    {
+      "type": "tag",
+      "name": "",
+      "value": "type/command",
+      "matchCaseSensitive": false,
+      "match": "exact",
+      "uid": "d998-7050",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    },
+    {
+      "type": "tag",
+      "name": "",
+      "value": "type/cheatsheet",
+      "matchCaseSensitive": false,
+      "match": "exact",
+      "uid": "cd53-16f6",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    },
+    {
+      "type": "tag",
+      "name": "",
+      "value": "type/sub-command",
+      "matchCaseSensitive": false,
+      "match": "exact",
+      "uid": "5341-f140",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
     }
   ]
 }

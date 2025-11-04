@@ -3,18 +3,22 @@ aliases:
 tags:
   - type/command
 primary categories:
+  - "[[Penetration Test]]"
 secondary categories:
+  - "[[Information Gathering]]"
 tertiary categories:
+  - "[[Web Enumeration]]"
 type: Command
 linked:
+  - "[[Curl - Fuzzing Parámetros y Valores]]"
+  - "[[Curl - Enumeración Pasiva de Sub-Dominios]]"
+  - "[[Curl - Enumeración de Sub-Dominios y V.Host]]"
 ---
 # Curl
 
 ***
 
 ## Cheatsheet
-
-### Uso general
 
 ````tabs
 tab: Web
@@ -71,23 +75,7 @@ tab: Acrónimos
 ````
 ^curl-general
 
-### Fuzzing Parámetros y Valores 
-
-| **Acción**                                                                                                                               | **Descripción**                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| <pre><code>`curl -s http://<rhost>:<rport>/admin.php \| wc -c`</code></pre>                                                              | **(GET)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos.  |
-| <pre><code>`curl -s http://<rhost>:<rport>/admin.php -X POST -H "Content-Type: application/x-www-form-urlencoded" \| wc -c`</code></pre> | **(POST)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos. |
-^curl-fuzzing-parametros
-
-### Enumeración de Sub-Dominios
-
-| **Acción**                                                                                                                                                                                                            | **Descripción**                                                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| <pre><code>`curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq .`</code></pre>                                                                                                                           | <br>Obtiene los registros de transparencia de certificados para un dominio desde Crt.sh.  |
-| <pre><code>`curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq . \| grep name \| cut -d":" -f2 \| grep -v "CN=" \| cut -d'"' -f2 \| awk '{gsub(/\\n/,"\n");}1;' \| sort -u > subdomain.lst`</code></pre> | <br>Extrae subdominios únicos de los registros de Crt.sh y los guarda en `subdomain.lst`. |
-^curl-enum-subdominios
-
-
+***
 
 ## Overview
 

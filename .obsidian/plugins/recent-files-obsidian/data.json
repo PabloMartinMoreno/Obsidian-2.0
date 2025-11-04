@@ -1,16 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "Ffuf",
-      "path": "04 - Content/Process/Ffuf.md"
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Ffuf",
+      "path": "04 - Content/Ffuf.md"
+    },
+    {
+      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
+      "path": "04 - Content/Curl - Enumeración de Sub-Dominios y V.Host.md"
+    },
+    {
+      "basename": "Curl",
+      "path": "04 - Content/Curl.md"
+    },
+    {
+      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
+      "path": "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md"
+    },
+    {
+      "basename": "Curl - Fuzzing Parámetros y Valores",
+      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
+    },
+    {
+      "basename": "_sub-command",
+      "path": "05 - Templates/04 - Type/_sub-command.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
     },
     {
       "basename": "Passive Subdomain Enumeration",
@@ -21,16 +53,84 @@
       "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
-      "basename": "Curl",
-      "path": "04 - Content/Process/Curl.md"
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "Splunk Enumeration",
+      "path": "04 - Content/Splunk Enumeration.md"
+    },
+    {
+      "basename": "PRTG Network Monitor Enumeration",
+      "path": "04 - Content/PRTG Network Monitor Enumeration.md"
+    },
+    {
+      "basename": "osTicket Enumeration",
+      "path": "04 - Content/osTicket Enumeration.md"
+    },
+    {
+      "basename": "Magento Enumeration",
+      "path": "04 - Content/Magento Enumeration.md"
+    },
+    {
+      "basename": "Joomla Enumeration",
+      "path": "04 - Content/Joomla Enumeration.md"
+    },
+    {
+      "basename": "Jenkins Enumeration",
+      "path": "04 - Content/Jenkins Enumeration.md"
+    },
+    {
+      "basename": "IIS Enumeration",
+      "path": "04 - Content/IIS Enumeration.md"
+    },
+    {
+      "basename": "GitLab Enumeration",
+      "path": "04 - Content/GitLab Enumeration.md"
+    },
+    {
+      "basename": "Drupal Enumeration",
+      "path": "04 - Content/Drupal Enumeration.md"
+    },
+    {
+      "basename": "ColdFusion Enumeration",
+      "path": "04 - Content/ColdFusion Enumeration.md"
+    },
+    {
+      "basename": "Web Technology Fingerprinting",
+      "path": "04 - Content/Web Technology Fingerprinting.md"
+    },
+    {
+      "basename": "_command",
+      "path": "05 - Templates/04 - Type/_command.md"
+    },
+    {
+      "basename": "_cheatsheet",
+      "path": "05 - Templates/04 - Type/_cheatsheet.md"
+    },
+    {
+      "basename": "Wordlists",
+      "path": "04 - Content/Process/Wordlists.md"
+    },
+    {
+      "basename": "GoBuster",
+      "path": "04 - Content/Process/GoBuster.md"
+    },
+    {
+      "basename": "BurpSuite",
+      "path": "04 - Content/Process/BurpSuite.md"
+    },
+    {
+      "basename": "FeroxBuster",
+      "path": "04 - Content/Process/FeroxBuster.md"
+    },
+    {
+      "basename": "Bash",
+      "path": "04 - Content/Process/Bash.md"
     },
     {
       "basename": "Whois",
       "path": "04 - Content/Process/Whois.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
@@ -49,28 +149,8 @@
       "path": "04 - Content/Process/Web Requests.md"
     },
     {
-      "basename": "_command",
-      "path": "05 - Templates/04 - Type/_command.md"
-    },
-    {
-      "basename": "_cheatsheet",
-      "path": "05 - Templates/04 - Type/_cheatsheet.md"
-    },
-    {
       "basename": "_concept",
       "path": "05 - Templates/04 - Type/_concept.md"
-    },
-    {
-      "basename": "GoBuster",
-      "path": "04 - Content/Process/GoBuster.md"
-    },
-    {
-      "basename": "FeroxBuster",
-      "path": "04 - Content/Process/FeroxBuster.md"
-    },
-    {
-      "basename": "Wordlists",
-      "path": "04 - Content/Process/Wordlists.md"
     },
     {
       "basename": "_precode",
@@ -79,14 +159,6 @@
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Web Technology Fingerprinting",
-      "path": "04 - Content/Web Technology Fingerprinting.md"
-    },
-    {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
     },
     {
       "basename": "DNS Enumeration (53)",
@@ -99,10 +171,6 @@
     {
       "basename": "Nikto",
       "path": "04 - Content/Process/Nikto.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Front End vs. Back End",
@@ -131,74 +199,6 @@
     {
       "basename": "Automating Recon",
       "path": "04 - Content/Process/Automating Recon.md"
-    },
-    {
-      "basename": "Web Archives",
-      "path": "04 - Content/Process/Web Archives.md"
-    },
-    {
-      "basename": "Search Engine Discovery",
-      "path": "04 - Content/Process/Search Engine Discovery.md"
-    },
-    {
-      "basename": "robots.txt",
-      "path": "04 - Content/Process/robots.txt.md"
-    },
-    {
-      "basename": "Fingerprinting",
-      "path": "04 - Content/Process/Fingerprinting.md"
-    },
-    {
-      "basename": "Certificate Transparency Logs",
-      "path": "04 - Content/Process/Certificate Transparency Logs.md"
-    },
-    {
-      "basename": "Virtual Hosts",
-      "path": "04 - Content/Process/Virtual Hosts.md"
-    },
-    {
-      "basename": "Transferencias de Zona DNS",
-      "path": "04 - Content/Process/Transferencias de Zona DNS.md"
-    },
-    {
-      "basename": "Subdomain Bruteforcing",
-      "path": "04 - Content/Process/Subdomain Bruteforcing.md"
-    },
-    {
-      "basename": "Digging DNS — Explorando DNS",
-      "path": "04 - Content/Process/Digging DNS — Explorando DNS.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Cheklist para el Examen CBBH",
-      "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
-    },
-    {
-      "basename": "Public Vulnerabilities",
-      "path": "04 - Content/Process/Public Vulnerabilities.md"
-    },
-    {
-      "basename": "HTML Injection",
-      "path": "04 - Content/Process/HTML Injection.md"
-    },
-    {
-      "basename": "Sensitive Data Exposure",
-      "path": "04 - Content/Process/Sensitive Data Exposure.md"
-    },
-    {
-      "basename": "Common Web Vulnerabilities",
-      "path": "04 - Content/Process/Common Web Vulnerabilities.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Process/Cross-Site Request Forgery (CSRF).md"
     }
   ],
   "omittedPaths": [],

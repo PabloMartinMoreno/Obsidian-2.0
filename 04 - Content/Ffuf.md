@@ -32,3 +32,11 @@ linked:
 | <pre><code>`ffuf -c -w <wordlist> -u http://<rhost>:<rport>/admin.php?FUZZ=<appropriate-key> -fs <char-count>`</code></pre>                                                                             | **(GET)** Parámetros de distorsión utilizando el recuento de caracteres desde la línea de base para filtrar los resultados incorrectos. |
 | <pre><code>`ffuf -c -w <parameter-wordlist> -u http://<rhost>:<rport>/admin.php -X POST -d 'FUZZ=<appropriate-key>' -H 'Content-Type: application/x-www-form-urlencoded' -fs <char-count>`</code></pre> | **(POST)** Parámetros difusos que utilizan el recuento de caracteres de la línea de base para filtrar los resultados erróneos.          |
 ^ffuf-fuzzing-parametros
+
+### Enumeración de Sub-Dominios y V.Host
+
+| **Acción**                                                                                                                               | **Descripción**                                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| <pre><code>`ffuf -c -w <wordlist> -u http://<target-ip-or-domain>:<port>/ -H 'Host: FUZZ.<target-domain>' -fs <char-count>`</code></pre> | <br>Realiza fuzzing de hosts virtuales, filtrando según el recuento de caracteres. Tras encontrar un V-Host válido, añádelo a `/etc/hosts`. |
+| <pre><code>`ffuf -c -w <wordlist> -u http://FUZZ.<target-domain>/`</code></pre>                                                          | <br>Realiza fuzzing de subdominios DNS (solo funciona en sitios web públicos). Evita usar direcciones IP, usa dominios DNS reales.          |
+^ffuf-enum-subdominios-vhost

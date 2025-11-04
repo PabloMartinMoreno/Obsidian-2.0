@@ -17,6 +17,9 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[DNS Enumeration (53)]]"
+  - "[[Curl]]"
+  - "[[Ffuf]]"
+  - "[[Wordlists]]"
 ---
 # Fuzzing de Subdominios y Hosts Virtuales
 
@@ -25,28 +28,19 @@ linked:
 ## Cheatsheet
 
 ````tabs
-tab: **Comandos**
+tab: **Curl**
+![[Curl - Enumeración de Sub-Dominios y V.Host#^curl-enum-subdominios-vhost]]
 
-| **Acción**                                                                                                       | **Descripción**                                                                                                                               |
-| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `curl -s -H "Host: nonexistant.<target-domain>" <target-ip>:<port> \| wc -c`                                     | Determina el recuento de caracteres de una página "sin host" para filtrar resultados erróneos durante el fuzzing de V-Host (hosts virtuales). |
-| `ffuf -c -w <wordlist> -u http://<target-ip-or-domain>:<port>/ -H 'Host: FUZZ.<target-domain>' -fs <char-count>` | Realiza fuzzing de hosts virtuales, filtrando según el recuento de caracteres. Tras encontrar un V-Host válido, añádelo a `/etc/hosts`.       |
-| `ffuf -c -w <wordlist> -u http://FUZZ.<target-domain>/`                                                          | Realiza fuzzing de subdominios DNS (solo funciona en sitios web públicos). Evita usar direcciones IP, usa dominios DNS reales.                |
-
+tab: **Ffuf**
+![[Ffuf#^ffuf-enum-subdominios-vhost]]
 
 tab: **Wordlists**
-
-| **Wordlists a usar**:                                                 |
-| --------------------------------------------------------------------- |
-| • `/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt` |
-| • `/usr/share/seclists/Discovery/DNS/namelist.txt`                    |
+![[Wordlists#^wordlists-subdominios-vhost]]
 
 
 ````
 
-## Notas Relacionadas
-
-- [[DNS Enumeration (53)]]: Para una enumeración DNS más profunda.
+***
 
 ## Overview
 
@@ -55,3 +49,10 @@ tab: **Wordlists**
 El recuento de caracteres de una página de subdominio o host virtual inexistente es útil para filtrar resultados no válidos.
 
 Estos métodos son particularmente útiles para revelar otras partes de una infraestructura web, como dominios ocultos o servicios que se ejecutan en el mismo servidor.
+
+
+***
+
+## Notas Relacionadas
+
+- [[DNS Enumeration (53)]]: Para una enumeración DNS más profunda.

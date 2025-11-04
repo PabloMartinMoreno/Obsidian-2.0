@@ -18,6 +18,7 @@ type: CheatSheet
 linked:
   - "[[Whois]]"
   - "[[Curl]]"
+  - "[[Bash]]"
 ---
 # Enumeración Pasiva de Sub-dominios
 
@@ -26,13 +27,16 @@ linked:
 ## Cheatsheet
 
 ````tabs
-tab: Whois
-![[Whois#^whois-enum-subdominios]]
+tab: **Whois**
+![[Whois#^whois-enum-pasiva-subdominios]]
 
-tab: Curl
-![[Curl#^curl-enum-subdominios]]
+tab: **Curl**
+![[Curl - Enumeración Pasiva de Sub-Dominios#^curl-enum-pasiva-subdominios]]
 
-tab: Paginas
+tab: **Bash**
+![[Bash#^bash-enum-pasiva-subdominios]]
+
+tab: **Paginas**
 
 | **Web**                                  | **Descripción**                                                                                         |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -41,16 +45,6 @@ tab: Paginas
 | https://www.virustotal.com/gui/domain/   | Ver el historial de DNS e información relacionada que podría revelar subdominios.                       |
 
 ````
-
-
-| **Acción**                                                                                                                                                                                    | **Descripción**                                                                                   |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `whois <target-FQDN>` o `whois <target-ip>`<br>                                                                                                                                               | Realiza una búsqueda WHOIS para obtener los detalles de registro y contacto del dominio objetivo. |
-| `whois -h <whois-server> ...`                                                                                                                                                                 | Realiza una búsqueda WHOIS utilizando un servidor WHOIS específico.                               |
-| `curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq .`                                                                                                                           | Obtiene los registros de transparencia de certificados para un dominio desde Crt.sh.              |
-| `curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq . \| grep name \| cut -d":" -f2 \| grep -v "CN=" \| cut -d'"' -f2 \| awk '{gsub(/\\n/,"\n");}1;' \| sort -u > subdomain.lst` | Extrae subdominios únicos de los registros de Crt.sh y los guarda en `subdomain.lst`.             |
-| `for i in $(cat subdomain.lst); do host $i \| grep "has address" \| grep <target-domain> \| cut -d" " -f4 >> ip-addresses.txt; done`                                                          | Resuelve las direcciones IP de los subdominios descubiertos y las guarda en `ip-addresses.txt`.   |
-| `for i in $(cat ip-addresses.txt); do shodan host $i; done`                                                                                                                                   | Escanea cada dirección IP resuelta usando Shodan en busca de puertos abiertos o vulnerabilidades. |
 
 
 ***

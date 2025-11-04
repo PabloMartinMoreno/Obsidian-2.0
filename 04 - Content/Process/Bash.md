@@ -1,0 +1,31 @@
+---
+aliases:
+tags:
+  - type/command
+primary categories:
+secondary categories:
+tertiary categories:
+type: Command
+linked:
+---
+# Bash
+
+***
+
+## Cheatsheet
+
+### Enumeración Pasiva de Sub-Dominios
+
+| <pre><code>`for i in $(cat subdomain.lst); do host $i \| grep "has address" \| grep <target-domain> \| cut -d" " -f4 >> ip-addresses.txt; done`</code></pre> | <br>Resuelve las direcciones IP de los subdominios descubiertos y las guarda en `ip-addresses.txt`.   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| <pre><code>`for i in $(cat ip-addresses.txt); do shodan host $i; done`</code></pre>                                                                          | <br>Escanea cada dirección IP resuelta usando Shodan en busca de puertos abiertos o vulnerabilidades. |
+^bash-enum-pasiva-subdominios
+
+
+***
+
+
+## Overview
+
+
+## Notas Relacionadas

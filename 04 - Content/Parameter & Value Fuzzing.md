@@ -31,7 +31,7 @@ linked:
 
 ````tabs
 tab: **Curl**
-![[Curl#^curl-fuzzing-parametros]]
+![[Curl - Fuzzing Parámetros y Valores#^curl-fuzzing-parametros]]
 
 tab: **Ffuf**
 ![[Ffuf#^ffuf-fuzzing-parametros]]

@@ -14,14 +14,14 @@ linked:
 
 ## Cheatsheet
 
-### Wordlists de Paginas y Directorios
+### Paginas y Directorios
 
 | <br>**Para nombres de archivo:**<br><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-small.txt`</code></pre><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt`</code></pre> |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <br>**Para extensiones:**<br><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/web-extensions.txt`</code></pre><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-extensions-lowercase.txt`</code></pre>           |
 ^wordlists-fuzzing-directorios
 
-### Wordlists de Parametros y Valores
+### Parametros y Valores
 
 | <br>**Para parámetros:**<br><pre><code>`/usr/share/wordlists/seclists/Discovery/Web-Content/burp-parameter-names.txt`</code></pre>                                                                                                                                   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -30,3 +30,8 @@ linked:
 | <br>**Para secuencia de valores:**<br><pre><code>`for i in $(seq 1 1000); do echo $i >> ids.txt; done`</code></pre>                                                                                                                                                  |
 ^wordlists-fuzzing-parametros
 
+### Sub-Dominios y V.Host
+
+| <br>**Para sub-dominios y v.host:**<br><pre><code>`/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt`</code></pre><pre><code>`/usr/share/seclists/Discovery/DNS/namelist.txt`</code></pre> |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+^wordlists-subdominios-vhost
