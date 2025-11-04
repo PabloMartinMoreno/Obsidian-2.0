@@ -68,6 +68,8 @@ tab: Acrónimos
 
 ````
 
+^f5d7c2
+
 ## Overview
 
 `curl` es una herramienta de línea de comandos para transferir datos con URL sintaxis, soporta muchos protocolos (HTTP, HTTPS, FTP, SFTP, SMB, etc.) y se usa para hacer peticiones, probar APIs y descargar/subir archivos.

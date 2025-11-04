@@ -18,6 +18,7 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Fuff]]"
 ---
 # Fuzzing de Paginas y Directorios
 
@@ -26,9 +27,6 @@ linked:
 ## Cheatsheet
 
 ````tabs
-tab: curl
-![[Curl#Web]]
-
 tab: Ffuf
 
 | **Acción**                                                                                                    | **Descripción**                                                                                                                                                                                                                                                             |
