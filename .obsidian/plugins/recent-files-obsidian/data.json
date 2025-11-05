@@ -5,6 +5,10 @@
       "path": "04 - Content/Curl.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
     },
@@ -155,10 +159,6 @@
     {
       "basename": "_precode",
       "path": "05 - Templates/04 - Type/_precode.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "DNS Enumeration (53)",
