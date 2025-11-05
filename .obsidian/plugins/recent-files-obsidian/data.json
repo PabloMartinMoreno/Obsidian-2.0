@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "HTML Injection",
+      "path": "04 - Content/Process/HTML Injection.md"
+    },
+    {
       "basename": "Curl",
       "path": "04 - Content/Curl.md"
     },
@@ -11,10 +23,6 @@
     {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Web Enumeration",
@@ -149,10 +157,6 @@
       "path": "04 - Content/Process/Utilising WHOIS.md"
     },
     {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
       "basename": "_concept",
       "path": "05 - Templates/04 - Type/_concept.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Well-Known URIs",
       "path": "04 - Content/Process/Well-Known URIs.md"
-    },
-    {
-      "basename": "Automating Recon",
-      "path": "04 - Content/Process/Automating Recon.md"
     }
   ],
   "omittedPaths": [],

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Curl.md",
+                "file": "04 - Content/Process/CWES.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Curl"
+              "title": "CWES"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Curl.md",
+                "file": "04 - Content/Process/CWES.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Curl"
+              "title": "Gráfico de CWES"
             }
           },
           {
@@ -265,10 +265,12 @@
   },
   "active": "609cac16a8c56d2a",
   "lastOpenFiles": [
-    "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Curl.md",
-    "04 - Content/Process/Web Requests.md",
+    "04 - Content/Process/Introduction to Web Applications.md",
+    "04 - Content/Process/HTML Injection.md",
     "04 - Content/Process/CWES.md",
+    "04 - Content/Curl.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/Web Requests.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
@@ -289,8 +291,6 @@
     "04 - Content/Joomla Enumeration.md",
     "04 - Content/Jenkins Enumeration.md",
     "04 - Content/IIS Enumeration.md",
-    "04 - Content/GitLab Enumeration.md",
-    "04 - Content/Drupal Enumeration.md",
     "00 - Resources/Pasted image 20251103123601.png",
     "00 - Resources/Pasted image 20251101152905.png",
     "04 - Content/Process/Sin título.base",
