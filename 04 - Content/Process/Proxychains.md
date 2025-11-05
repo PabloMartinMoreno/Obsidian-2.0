@@ -1,4 +1,16 @@
+---
+aliases:
+tags:
+  - type/command
+primary categories:
+secondary categories:
+tertiary categories:
+type: Command
+linked:
+---
 # Proxychains
+
+***
 
 Para utilizar `proxychains`, primero hay que editar `/etc/proxychains.conf`, comentar la última línea y añadir la siguiente línea al final:
 ```bash

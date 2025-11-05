@@ -10,7 +10,7 @@
 
 ***
 
-## [[Using Web Proxies]]
+## [[Proxychains]]
 
 
 ***

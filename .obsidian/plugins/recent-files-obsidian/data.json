@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Proxychains",
+      "path": "04 - Content/Process/Proxychains.md"
+    },
+    {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "URL Encode - Characters",
@@ -21,20 +33,12 @@
       "path": "04 - Content/Curl.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
@@ -171,10 +175,6 @@
     {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
-      "basename": "Using Web Proxies",
-      "path": "04 - Content/Process/Using Web Proxies.md"
     },
     {
       "basename": "Nikto",
