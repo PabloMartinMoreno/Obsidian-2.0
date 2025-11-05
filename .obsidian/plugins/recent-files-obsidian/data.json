@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/CWES.md"
     },
     {
+      "basename": "URL Encode - Characters",
+      "path": "04 - Content/Process/URL Encode - Characters.md"
+    },
+    {
       "basename": "Introduction to Web Applications",
       "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
       "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
-    },
-    {
-      "basename": "Well-Known URIs",
-      "path": "04 - Content/Process/Well-Known URIs.md"
     }
   ],
   "omittedPaths": [],
