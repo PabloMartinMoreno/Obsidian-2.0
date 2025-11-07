@@ -28,6 +28,10 @@ type: Tertiary Category
 * [[Parameter & Value Fuzzing]]
 * [[Web Technology Fingerprinting]]
 
+## Crawling y Mapeo
+
+- [[Wordlists]]
+
 ## Enumeración de Tecnologías Especificas
 
 - [[ColdFusion Enumeration]]

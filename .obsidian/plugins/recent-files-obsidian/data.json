@@ -5,6 +5,18 @@
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
@@ -23,14 +35,6 @@
     {
       "basename": "Finger Enumeration (79)",
       "path": "04 - Content/Finger Enumeration (79).md"
-    },
-    {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
     },
     {
       "basename": "Penetration Test",
@@ -107,10 +111,6 @@
     {
       "basename": "_sub-command",
       "path": "05 - Templates/04 - Type/_sub-command.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
     },
     {
       "basename": "Parameter & Value Fuzzing",
