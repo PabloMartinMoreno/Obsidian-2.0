@@ -19,7 +19,7 @@ linked:
   - "[[DNS Enumeration (53)]]"
   - "[[Curl]]"
   - "[[Ffuf]]"
-  - "[[Wordlists]]"
+  - "[[Seclists]]"
 ---
 # Fuzzing de Subdominios y Hosts Virtuales
 

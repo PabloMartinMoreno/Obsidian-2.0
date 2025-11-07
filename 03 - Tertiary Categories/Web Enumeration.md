@@ -15,22 +15,32 @@ type: Tertiary Category
 
 ***
 
+## Enumeración Web General
 
-## Enumeración de Infraestructura / DNS y Subdominios
+### Enumeración Pasiva
 
 * [[Passive Subdomain Enumeration]]
+
+### DNS y Sub-Dominios
+
 * [[DNS Enumeration (53)| DNS Enumeration]]
 * [[Subdomain & Virtual Host Fuzzing]]
 
-## Descubrimiento y Fuzzing
+### Descubrimiento y Fuzzing
 
 * [[Directory & Page Fuzzing]]
 * [[Parameter & Value Fuzzing]]
+
+### Fingerprinting
+
 * [[Web Technology Fingerprinting]]
 
-## Crawling y Mapeo
+### Crawling y Mapeo
 
-- [[Wordlists]]
+- [[Seclists]]
+- Content Discovery → (robots,sitemap)
+
+***
 
 ## Enumeración de Tecnologías Especificas
 
@@ -47,16 +57,19 @@ type: Tertiary Category
 - [[Tomcat Enumeration]]
 - [[WordPress Enumeration]]
 
-
 ***
 
-- ### Herramientas
-	- [[Curl]]
-	- [[BurpSuite]]
-	- [[Ffuf]]
-	- [[GoBuster]]
-	- [[RustScan]]
-	- [[FeroxBuster]]
-	- [[EyeWitness]]
-	- [[Git-Dumper]]
-	- [[Nikto]]
+## Herramientas
+
+- [[Curl]]
+- [[BurpSuite]]
+- [[Dig]]
+- [[DnsEnum]]
+- [[Ffuf]]
+- [[GoBuster]]
+- [[RustScan]]
+- [[FeroxBuster]]
+- [[EyeWitness]]
+- [[Git-Dumper]]
+- [[Nikto]]
+- [[Whois]]

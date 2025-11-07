@@ -27,6 +27,5 @@ type: Tertiary Category
 
 ***
 
-
-- ### Herramientas
-	-  [[BloodHound & SharpHound]]
+## Herramientas
+-  [[BloodHound & SharpHound]]

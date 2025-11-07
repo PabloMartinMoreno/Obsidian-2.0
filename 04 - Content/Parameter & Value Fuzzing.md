@@ -21,7 +21,7 @@ linked:
   - "[[Curl]]"
   - "[[Ffuf]]"
   - "[[GoBuster]]"
-  - "[[Wordlists]]"
+  - "[[Seclists]]"
 ---
 # Fuzzing de Parámetros y Valores
 

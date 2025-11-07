@@ -21,7 +21,7 @@ linked:
   - "[[Ffuf]]"
   - "[[GoBuster]]"
   - "[[FeroxBuster]]"
-  - "[[Wordlists]]"
+  - "[[Seclists]]"
 ---
 # Fuzzing de Paginas y Directorios
 
