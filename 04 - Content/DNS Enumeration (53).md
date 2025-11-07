@@ -37,6 +37,29 @@ linked:
 - Según RFC 8482, las consultas `ANY` pueden estar deprecated; por eso conviene pedir tipos de registro específicos.
 - AXFR se refiere a Asynchronous Full Transfer Zone (transferencia completa de zona).
 
+## Enumeración DNS
+
+| Comando                            | Descripción                                                    |
+| ---------------------------------- | -------------------------------------------------------------- |
+| `nslookup $TARGET`                 | Identifica el registro **A** del dominio objetivo.             |
+| `nslookup -query=A $TARGET`        | Identifica el registro **A** del dominio objetivo.             |
+| `dig $TARGET @<nameserver/IP>`     | Identifica el registro **A** del dominio objetivo.             |
+| `dig a $TARGET @<nameserver/IP>`   | Identifica el registro **A** del dominio objetivo.             |
+| `nslookup -query=PTR <IP>`         | Identifica el registro **PTR** de la dirección IP objetivo.    |
+| `dig -x <IP> @<nameserver/IP>`     | Identifica el registro **PTR** de la dirección IP objetivo.    |
+| `nslookup -query=ANY $TARGET`      | Identifica **todos los registros (ANY)** del dominio objetivo. |
+| `dig any $TARGET @<nameserver/IP>` | Identifica **todos los registros (ANY)** del dominio objetivo. |
+| `nslookup -query=TXT $TARGET`      | Identifica los registros **TXT** del dominio objetivo.         |
+| `dig txt $TARGET @<nameserver/IP>` | Identifica los registros **TXT** del dominio objetivo.         |
+| `nslookup -query=MX $TARGET`       | Identifica los registros **MX** del dominio objetivo.          |
+| `dig mx $TARGET @<nameserver/IP>`  | Identifica los registros **MX** del dominio objetivo.          |
+
+dig inlanefreight.com
+dig +short inlanefreight.com
+dig -x 134.209.24.248
+dig MX facebook.com
+
+
 ---
 
 ## Overview
@@ -48,6 +71,7 @@ El tráfico DNS suele viajar sin cifrar, por lo que es susceptible a interceptac
 Si un servidor DNS está mal configurado y permite transferencias de zona anónimas (AXFR), esto puede exponer una copia completa de los registros DNS del dominio: subdominios, estructura interna y otros detalles sensibles.
 
 **Puertos por defecto:** TCP/UDP `53`.
+
 
 ---
 

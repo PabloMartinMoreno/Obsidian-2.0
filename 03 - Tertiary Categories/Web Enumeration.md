@@ -15,14 +15,18 @@ type: Tertiary Category
 
 ***
 
+
+## Enumeración de Infraestructura / DNS y Subdominios
+
+* [[Passive Subdomain Enumeration]]
+* [[DNS Enumeration (53)| DNS Enumeration]]
+* [[Subdomain & Virtual Host Fuzzing]]
+
 ## Descubrimiento y Fuzzing
 
-- [[Directory & Page Fuzzing]]
-- [[Parameter & Value Fuzzing]]
-- [[Passive Subdomain Enumeration]]
-- [[Subdomain & Virtual Host Fuzzing]]
-- [[]]
-- [[Web Technology Fingerprinting]]
+* [[Directory & Page Fuzzing]]
+* [[Parameter & Value Fuzzing]]
+* [[Web Technology Fingerprinting]]
 
 ## Enumeración de Tecnologías Especificas
 
