@@ -21,6 +21,7 @@ type: Tertiary Category
 - [[Parameter & Value Fuzzing]]
 - [[Passive Subdomain Enumeration]]
 - [[Subdomain & Virtual Host Fuzzing]]
+- [[]]
 - [[Web Technology Fingerprinting]]
 
 ## Enumeración de Tecnologías Especificas

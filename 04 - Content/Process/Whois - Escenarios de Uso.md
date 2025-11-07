@@ -1,7 +1,5 @@
 
-# Utilizando WHOIS
-
-Consideremos tres escenarios para ilustrar el valor de los datos WHOIS.
+# Escenarios de Uso
 
 ## Escenario 1: Investigación de phishing
 
@@ -11,11 +9,8 @@ Un analista de seguridad investiga el correo y comienza realizando una consulta 
 El registro WHOIS revela lo siguiente:
 
 - **Fecha de registro:** el dominio fue registrado hace apenas unos días.
-    
 - **Registrante:** la información del registrante está oculta detrás de un servicio de privacidad.
-    
 - **Servidores de nombres:** los servidores de nombres están asociados a un proveedor de hosting “bulletproof” conocido, frecuentemente utilizado para actividades maliciosas.
-    
 
 Esta combinación de factores levanta importantes banderas rojas para el analista. La fecha de registro reciente, la información del registrante oculta y el hosting sospechoso sugieren fuertemente una campaña de phishing.  
 El analista alerta de inmediato al departamento de TI de la empresa para que bloquee el dominio y advierte a los empleados sobre la estafa.
@@ -53,65 +48,3 @@ Al analizar los registros WHOIS, los analistas descubren los siguientes patrones
 
 Estos hallazgos permiten a los analistas crear un perfil detallado de las tácticas, técnicas y procedimientos (TTP) del grupo.  
 El informe incluye indicadores de compromiso (IOC) basados en los datos WHOIS, que otras organizaciones pueden usar para detectar y bloquear futuros ataques.
-
-# Uso de WHOIS
-
-La forma más sencilla de acceder a los datos WHOIS es mediante la herramienta de línea de comandos `whois`.  
-Por ejemplo, ejecutemos una búsqueda WHOIS sobre _facebook.com_:
-
-```
-vsoci3tyv@htb[/htb]$ whois facebook.com
-```
-
-El resultado revela información clave sobre el dominio:
-
-```
-Domain Name: FACEBOOK.COM
-Registrar WHOIS Server: whois.registrarsafe.com
-Registrar URL: http://www.registrarsafe.com
-Updated Date: 2024-04-24T19:06:12Z
-Creation Date: 1997-03-29T05:00:00Z
-Registry Expiry Date: 2033-03-30T04:00:00Z
-Registrar: RegistrarSafe, LLC
-Name Server: A.NS.FACEBOOK.COM
-Name Server: B.NS.FACEBOOK.COM
-Name Server: C.NS.FACEBOOK.COM
-Name Server: D.NS.FACEBOOK.COM
-Registrant Organization: Meta Platforms, Inc.
-```
-
-El análisis del resultado muestra varios puntos relevantes:
-
-### Registro del dominio
-
-- **Registrador:** RegistrarSafe, LLC
-- **Fecha de creación:** 1997-03-29
-- **Fecha de expiración:** 2033-03-30
-
-Esto indica que el dominio fue registrado hace mucho tiempo y está bajo un registrador confiable, lo cual sugiere legitimidad y estabilidad.
-
-### Propietario del dominio
-
-- **Organización:** Meta Platforms, Inc.
-- **Contacto:** Domain Admin
-
-Esta información confirma que el dominio pertenece a Meta Platforms, Inc., empresa matriz de Facebook.
-
-### Estado del dominio
-
-El dominio está protegido contra eliminación, transferencia o actualización no autorizada tanto del lado del cliente como del servidor.  
-Esto demuestra un fuerte enfoque en la seguridad y el control del dominio.
-
-### Servidores de nombres
-
-- A.NS.FACEBOOK.COM
-- B.NS.FACEBOOK.COM
-- C.NS.FACEBOOK.COM
-- D.NS.FACEBOOK.COM
-
-Todos los servidores de nombres pertenecen al propio dominio _facebook.com_, lo que indica que Meta gestiona directamente su infraestructura DNS, una práctica común en grandes organizaciones.
-
-En conjunto, el registro WHOIS de _facebook.com_ coincide con lo esperado para un dominio legítimo, seguro y perteneciente a una empresa consolidada como Meta Platforms, Inc.
-
-Aunque el registro WHOIS ofrece información de contacto útil para temas relacionados con el dominio, no necesariamente ayuda a identificar empleados o vulnerabilidades específicas.  
-Por eso, se recomienda combinar los datos WHOIS con otras técnicas de reconocimiento para obtener una comprensión completa del panorama digital del objetivo.

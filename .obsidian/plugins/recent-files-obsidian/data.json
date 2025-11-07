@@ -1,28 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "Whois",
-      "path": "04 - Content/Process/Whois.md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+      "basename": "Web Technology Fingerprinting",
+      "path": "04 - Content/Web Technology Fingerprinting.md"
     },
     {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
     },
     {
-      "basename": "Proxychains",
-      "path": "04 - Content/Process/Proxychains.md"
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Digging DNS — Explorando DNS",
+      "path": "04 - Content/Process/Digging DNS — Explorando DNS.md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "DNS",
+      "path": "04 - Content/Process/DNS.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Whois - Escenarios de Uso",
+      "path": "04 - Content/Process/Whois - Escenarios de Uso.md"
+    },
+    {
+      "basename": "Whois",
+      "path": "04 - Content/Process/Whois.md"
+    },
+    {
+      "basename": "Proxychains",
+      "path": "04 - Content/Process/Proxychains.md"
     },
     {
       "basename": "URL Encode - Characters",
@@ -43,10 +67,6 @@
     {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
@@ -71,10 +91,6 @@
     {
       "basename": "_sub-command",
       "path": "05 - Templates/04 - Type/_sub-command.md"
-    },
-    {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
     },
     {
       "basename": "Passive Subdomain Enumeration",
@@ -129,10 +145,6 @@
       "path": "04 - Content/ColdFusion Enumeration.md"
     },
     {
-      "basename": "Web Technology Fingerprinting",
-      "path": "04 - Content/Web Technology Fingerprinting.md"
-    },
-    {
       "basename": "_command",
       "path": "05 - Templates/04 - Type/_command.md"
     },
@@ -161,10 +173,6 @@
       "path": "04 - Content/Process/Bash.md"
     },
     {
-      "basename": "Utilising WHOIS",
-      "path": "04 - Content/Process/Utilising WHOIS.md"
-    },
-    {
       "basename": "_concept",
       "path": "05 - Templates/04 - Type/_concept.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "Creepy Crawlies",
       "path": "04 - Content/Process/Creepy Crawlies.md"
-    },
-    {
-      "basename": "Crawling",
-      "path": "04 - Content/Process/Crawling.md"
-    },
-    {
-      "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
-      "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
     }
   ],
   "omittedPaths": [],

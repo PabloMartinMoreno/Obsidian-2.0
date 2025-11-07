@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: Command
 linked:
+  - "[[Whois - Escenarios de Uso]]"
 ---
 # Whois
 
@@ -33,3 +34,9 @@ También proporciona detalles sobre bloques de direcciones IP, sistemas autónom
 - **Descubrimiento de infraestructura de red:** detalles técnicos como servidores de nombres y direcciones IP ofrecen pistas sobre la infraestructura de la organización, lo que ayuda a localizar puntos de entrada o configuraciones erróneas.
 
 - **Análisis histórico:** acceder a registros WHOIS históricos mediante servicios especializados permite ver cambios en la propiedad, contactos o detalles técnicos a lo largo del tiempo, útil para rastrear la evolución de la presencia digital del objetivo.
+
+
+```ad-attention
+Los datos de WHOIS pueden ser inexactos o oscurecidos intencionalmente, por lo que siempre es prudente verificar la información de múltiples fuentes. Los servicios de privacidad también pueden enmascarar al verdadero propietario de un dominio, lo que hace más difícil obtener información precisa a través de WHOIS.
+```
+

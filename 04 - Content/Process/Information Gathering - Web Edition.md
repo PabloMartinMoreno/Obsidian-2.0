@@ -9,12 +9,15 @@
 # WHOIS
 ## [[Whois]] 
 
-## [[Utilising WHOIS]]
+## [[Whois - Escenarios de Uso]]
 
 
 ***
 
 # DNS & Subdomains
+
+## [[DNS]]
+
 ## [[Digging DNS — Explorando DNS]]
 
 ## [[Subdomain Bruteforcing]]
