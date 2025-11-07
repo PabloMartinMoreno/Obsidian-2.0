@@ -265,10 +265,10 @@
   },
   "active": "609cac16a8c56d2a",
   "lastOpenFiles": [
-    "04 - Content/Process/CWES.md",
     "01 - Primary Categories/Penetration Test.md",
-    "02 - Secondary Categories/Information Gathering.md",
     "04 - Content/Process/Proxychains.md",
+    "04 - Content/Process/CWES.md",
+    "02 - Secondary Categories/Information Gathering.md",
     "04 - Content/Process/URL Encode - Characters.md",
     "04 - Content/Process/Introduction to Web Applications.md",
     "04 - Content/Process/HTML Injection.md",

@@ -5,12 +5,12 @@
       "path": "04 - Content/Process/Proxychains.md"
     },
     {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Information Gathering",
