@@ -5,16 +5,16 @@
       "path": "04 - Content/Process/Dig.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Operational Tasks",
