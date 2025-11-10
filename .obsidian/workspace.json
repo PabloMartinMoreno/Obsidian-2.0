@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/DNS Enumeration (53).md",
+                "file": "04 - Content/Process/dig.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "DNS Enumeration (53)"
+              "title": "dig"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/DNS Enumeration (53).md",
+                "file": "04 - Content/Process/dig.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de DNS Enumeration (53)"
+              "title": "Gráfico de dig"
             }
           },
           {
@@ -265,14 +265,18 @@
   },
   "active": "562a05457c774187",
   "lastOpenFiles": [
-    "04 - Content/Process/dnsenum.md",
+    "04 - Content/Process/Transferencias de Zona DNS.md",
     "04 - Content/DNS Enumeration (53).md",
+    "04 - Content/Process/Information Gathering - Web Edition.md",
+    "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md",
+    "04 - Content/Process/CWES.md",
+    "04 - Content/Process/Comparación Comandos de Enumeración DNS.md",
     "04 - Content/Process/host.md",
-    "04 - Content/nmap.md",
+    "04 - Content/Process/dnsenum.md",
     "04 - Content/Process/dnsrecon.md",
-    "04 - Content/Process/nslookup.md",
     "04 - Content/Process/dig.md",
-    "04 - Content/Process/whois vs dig vs dnsrecon vs nslookup.md",
+    "04 - Content/nmap.md",
+    "04 - Content/Process/nslookup.md",
     "04 - Content/Curl.md",
     "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md",
     "04 - Content/Curl - Fuzzing Parámetros y Valores.md",
@@ -287,10 +291,6 @@
     "04 - Content/Subdomain & Virtual Host Fuzzing.md",
     "04 - Content/Ffuf.md",
     "04 - Content/Passive Subdomain Enumeration.md",
-    "04 - Content/Process/Bash.md",
-    "04 - Content/Curl - Enumeración de Sub-Dominios y V.Host.md",
-    "04 - Content/Process/objetivos.md",
-    "01 - Primary Categories/Penetration Test.md",
     "00 - Resources/Pasted image 20251103123601.png",
     "00 - Resources/Pasted image 20251101152905.png",
     "04 - Content/Process/Sin título.base",

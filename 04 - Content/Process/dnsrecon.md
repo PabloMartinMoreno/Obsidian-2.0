@@ -14,7 +14,7 @@ linked:
 
 ## Cheatsheet
 
-| **Acción**                                                                                                               | **Descripción**                    |
+| **Comando**                                                                                                              | **Descripción**                    |
 | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
 | <pre><code>`dnsrecon -d <domain>`</code></pre>                                                                           | <br>Enumeración general            |
 | <pre><code>`dnsrecon -d <domain> -D /usr/share/wordlists/seclists/Discovery/DNS/fierce-hostlist.txt -t brt`</code></pre> | <br><br>Brute-force (más profundo) |

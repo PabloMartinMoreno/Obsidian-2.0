@@ -14,7 +14,7 @@ linked:
 
 ## Cheatsheet
 
-| **Acción**                                                                     | **Descripción**                                                           |
+| **Comando**                                                                    | **Descripción**                                                           |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
 | <pre><code>`host <domain> <optional-nameserver>`</code></pre>                  | <br>Recupera todos los tipos de registros<br>                             |
 | <pre><code>`host -t <record-type> <domain> <optional-nameserver>`</code></pre> | <br>Consulta un tipo de registro específico (por ejemplo, A, TXT, NS, MX) |

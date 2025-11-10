@@ -14,7 +14,7 @@ linked:
 <pre><code>``</code></pre>
 ## Cheatsheet
 
-| Comando                                                    | Descripción                                                        |
+| **Comando**                                                | **Descripción**                                                    |
 | ---------------------------------------------------------- | ------------------------------------------------------------------ |
 | <pre><code>`dig $TARGET @<nameserver/IP>`</code></pre>     | <br>Identifica el registro **A** del dominio objetivo.             |
 | <pre><code>`dig a $TARGET @<nameserver/IP>`</code></pre>   | <br>Identifica el registro **A** del dominio objetivo.             |
@@ -23,6 +23,11 @@ linked:
 | <pre><code>`dig txt $TARGET @<nameserver/IP>`</code></pre> | <br>Identifica los registros **TXT** del dominio objetivo.         |
 | <pre><code>`dig mx $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica los registros **MX** del dominio objetivo.          |
 ^dig-enum-pasiva
+
+dig inlanefreight.com
+dig +short inlanefreight.com
+dig -x 134.209.24.248
+dig MX facebook.com
 
 ***
 

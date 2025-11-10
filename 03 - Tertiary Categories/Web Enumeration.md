@@ -76,4 +76,4 @@ type: Tertiary Category
 
 ### Comparaciones
 
-- [[whois vs dig vs dnsrecon vs nslookup]]
+- [[Comparación Comandos de Enumeración DNS]]

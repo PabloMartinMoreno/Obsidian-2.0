@@ -1,36 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "dig",
+      "path": "04 - Content/Process/dig.md"
+    },
+    {
+      "basename": "Transferencias de Zona DNS",
+      "path": "04 - Content/Process/Transferencias de Zona DNS.md"
+    },
+    {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
-      "basename": "dnsenum",
-      "path": "04 - Content/Process/dnsenum.md"
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
+      "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Comparación Comandos de Enumeración DNS",
+      "path": "04 - Content/Process/Comparación Comandos de Enumeración DNS.md"
     },
     {
       "basename": "host",
       "path": "04 - Content/Process/host.md"
     },
     {
-      "basename": "nmap",
-      "path": "04 - Content/nmap.md"
+      "basename": "dnsenum",
+      "path": "04 - Content/Process/dnsenum.md"
     },
     {
       "basename": "dnsrecon",
       "path": "04 - Content/Process/dnsrecon.md"
     },
     {
+      "basename": "nmap",
+      "path": "04 - Content/nmap.md"
+    },
+    {
       "basename": "nslookup",
       "path": "04 - Content/Process/nslookup.md"
-    },
-    {
-      "basename": "dig",
-      "path": "04 - Content/Process/dig.md"
-    },
-    {
-      "basename": "whois vs dig vs dnsrecon vs nslookup",
-      "path": "04 - Content/Process/whois vs dig vs dnsrecon vs nslookup.md"
     },
     {
       "basename": "Curl",
@@ -183,22 +199,6 @@
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Seclists",
-      "path": "04 - Content/Process/Seclists.md"
-    },
-    {
-      "basename": "Finger Enumeration (79)",
-      "path": "04 - Content/Finger Enumeration (79).md"
     }
   ],
   "omittedPaths": [],

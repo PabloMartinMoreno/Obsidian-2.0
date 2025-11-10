@@ -25,6 +25,7 @@ linked:
   - "[[dnsrecon]]"
   - "[[host]]"
   - "[[dnsenum]]"
+  - "[[Comparación Comandos de Enumeración DNS]]"
 ---
 # DNS Enumeration (53)
 
@@ -39,12 +40,6 @@ tab: **dig**
 tab: **dnsenum**
 ![[dnsenum#^dnsenum-enum]]
 
-tab: **nslookup**
-![[nslookup#^nslookup-enum]]
-
-tab: **dnsrecon**
-![[dnsrecon#^dnsrecon-enum]]
-
 tab: **host**
 ![[host#^host-enum]]
 ````
@@ -52,11 +47,6 @@ tab: **host**
 **Notas importantes:**
 - Según RFC 8482, las consultas `ANY` pueden estar deprecated; por eso conviene pedir tipos de registro específicos.
 - AXFR se refiere a Asynchronous Full Transfer Zone (transferencia completa de zona).
-
-dig inlanefreight.com
-dig +short inlanefreight.com
-dig -x 134.209.24.248
-dig MX facebook.com
 
 
 ---
