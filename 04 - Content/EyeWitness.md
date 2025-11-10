@@ -33,4 +33,4 @@ linked:
 
 [EyeWitness](https://github.com/RedSiege/EyeWitness) es una herramienta diseñada para automatizar el proceso de tomar capturas de pantalla de sitios web, recolectar información de las cabeceras del servidor e identificar credenciales por defecto cuando sea aplicable.
 
-Esta herramienta es particularmente útil al manejar grandes listas de objetivos, como después de un escaneo con [[Nmap]] o al trabajar con grandes volúmenes de datos de dominios. El informe HTML generado, que incluye las capturas de pantalla, proporciona una representación visual de los objetivos, facilitando la identificación de servicios interesantes, configuraciones incorrectas o vulnerabilidades que merezcan una investigación más profunda.
+Esta herramienta es particularmente útil al manejar grandes listas de objetivos, como después de un escaneo con [[nmap]] o al trabajar con grandes volúmenes de datos de dominios. El informe HTML generado, que incluye las capturas de pantalla, proporciona una representación visual de los objetivos, facilitando la identificación de servicios interesantes, configuraciones incorrectas o vulnerabilidades que merezcan una investigación más profunda.

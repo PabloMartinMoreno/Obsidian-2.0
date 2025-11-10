@@ -16,7 +16,7 @@ type: CheatSheet
 linked:
   - "[[Pivoting Reconnaissance]]"
   - "[[BloodHound & SharpHound]]"
-  - "[[Nmap]]"
+  - "[[nmap]]"
 ---
 # Enumeración de Hosts
 
@@ -59,7 +59,7 @@ Desde un **host Windows unido al dominio**, los hosts activos se pueden descubri
 
 - **[[Pivoting Reconnaissance]]:** Para técnicas adicionales para descubrir hosts activos en una red.  
 - **[[BloodHound & SharpHound]]:** Enumeran toda la red AD y mapean las relaciones.  
-- **[[Nmap]]:** Asegúrate de realizar una enumeración de servicios exhaustiva en cualquier host descubierto.
+- **[[nmap]]:** Asegúrate de realizar una enumeración de servicios exhaustiva en cualquier host descubierto.
 
 
 ---

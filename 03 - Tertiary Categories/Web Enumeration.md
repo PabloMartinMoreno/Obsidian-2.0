@@ -63,8 +63,8 @@ type: Tertiary Category
 
 - [[Curl]]
 - [[BurpSuite]]
-- [[Dig]]
-- [[DnsEnum]]
+- [[dig]]
+- [[dnsenum]]
 - [[Ffuf]]
 - [[GoBuster]]
 - [[RustScan]]

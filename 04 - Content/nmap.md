@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/command
   - meta/scripts
   - meta/scan-profiles
   - technique/recon/active
@@ -12,7 +12,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: CheatSheet
+type: Command
 linked:
 ---
 # Nmap

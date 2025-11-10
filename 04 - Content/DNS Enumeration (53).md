@@ -20,8 +20,11 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Dig]]"
+  - "[[dig]]"
   - "[[nslookup]]"
+  - "[[dnsrecon]]"
+  - "[[host]]"
+  - "[[dnsenum]]"
 ---
 # DNS Enumeration (53)
 
@@ -31,41 +34,24 @@ linked:
 
 ````tabs
 tab: **dig**
-![[Dig#^dig-enum-pasiva]]
+![[dig#^dig-enum-pasiva]]
+
+tab: **dnsenum**
+![[dnsenum#^dnsenum-enum]]
 
 tab: **nslookup**
+![[nslookup#^nslookup-enum]]
 
 tab: **dnsrecon**
+![[dnsrecon#^dnsrecon-enum]]
 
 tab: **host**
+![[host#^host-enum]]
 ````
 
-| **Acción**                                                                                                                                                                                                                                                                                                                                                                                                        | **Descripción**                                                                                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <br><br>`sudo nmap -p53 -sV -sC -T4 -v <target-ip>`                                                                                                                                                                                                                                                                                                                                                               | Escanea el objetivo buscando servicios DNS y proporciona información de versión y scripts.                                                                                                                                                        |
-| <br>**Enumeración general:** <br>`dnsrecon -d <domain>`<br><br>**Brute-force (más profundo):** <br>`dnsrecon -d <domain> -D /usr/share/wordlists/seclists/Discovery/DNS/fierce-hostlist.txt -t brt`<br><br>**Usando nameserver personalizado:** <br>`dnsrecon ... -n <nameserver>`                                                                                                                                | <br><br>Realiza enumeración DNS automatizada y avanzada usando [DNSRecon](https://github.com/darkoperator/dnsrecon).                                                                                                                              |
-| <br><br>**Recupera todos los tipos de registros:**<br>`host <domain> <optional-nameserver>`<br><br>**Consulta un tipo de registro específico (por ejemplo, A, TXT, NS, MX):**<br>`host -t <record-type> <domain> <optional-nameserver>`<br><br>**Intenta una transferencia de zona:**<br>`host -l <domain> <nameserver>`<br><br>**Resultados más fáciles de entender para los humanos:**<br>`host -v ...`<br><br> | <br><br>Utiliza el comando host, una herramienta nativa de Linux, para consultar registros DNS, incluidos tipos de registros específicos, e intentar transferencias de zona.                                                                      |
-| <br><br><br>**Recupera todos los tipos de registros:**<br>`nslookup <domain> <optional-nameserver>`<br><br>**Consulta un tipo de registro específico (por ejemplo, A, TXT, NS, MX):**<br>`nslookup -type=<record-type> <domain> <optional-nameserver>`<br><br>**Intenta una transferencia de zona: **<br>`nslookup -type=AXFR <domain> <optional-nameserver>`                                                     | Utiliza nslookup, una herramienta nativa de Windows, para consultar registros DNS de forma interactiva o directamente desde la línea de comandos. También puede intentar transferencias de zona, aunque la mayoría de los servidores lo bloquean. |
 **Notas importantes:**
 - Según RFC 8482, las consultas `ANY` pueden estar deprecated; por eso conviene pedir tipos de registro específicos.
 - AXFR se refiere a Asynchronous Full Transfer Zone (transferencia completa de zona).
-
-## Enumeración DNS
-
-| Comando                            | Descripción                                                    |
-| ---------------------------------- | -------------------------------------------------------------- |
-| `nslookup $TARGET`                 | Identifica el registro **A** del dominio objetivo.             |
-| `nslookup -query=A $TARGET`        | Identifica el registro **A** del dominio objetivo.             |
-| `dig $TARGET @<nameserver/IP>`     | Identifica el registro **A** del dominio objetivo.             |
-| `dig a $TARGET @<nameserver/IP>`   | Identifica el registro **A** del dominio objetivo.             |
-| `nslookup -query=PTR <IP>`         | Identifica el registro **PTR** de la dirección IP objetivo.    |
-| `dig -x <IP> @<nameserver/IP>`     | Identifica el registro **PTR** de la dirección IP objetivo.    |
-| `nslookup -query=ANY $TARGET`      | Identifica **todos los registros (ANY)** del dominio objetivo. |
-| `dig any $TARGET @<nameserver/IP>` | Identifica **todos los registros (ANY)** del dominio objetivo. |
-| `nslookup -query=TXT $TARGET`      | Identifica los registros **TXT** del dominio objetivo.         |
-| `dig txt $TARGET @<nameserver/IP>` | Identifica los registros **TXT** del dominio objetivo.         |
-| `nslookup -query=MX $TARGET`       | Identifica los registros **MX** del dominio objetivo.          |
-| `dig mx $TARGET @<nameserver/IP>`  | Identifica los registros **MX** del dominio objetivo.          |
 
 dig inlanefreight.com
 dig +short inlanefreight.com
