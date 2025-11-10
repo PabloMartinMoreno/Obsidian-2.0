@@ -12,9 +12,9 @@ linked:
 
 ## Cheatsheet
 
-| **Acción**                                                                                                                                                                                                            | **Descripción**                                                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| <pre><code>`curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq .`</code></pre>                                                                                                                           | <br>Obtiene los registros de transparencia de certificados para un dominio desde Crt.sh.  |
-| <pre><code>`curl -s https://crt.sh/\?q\=<target-domain>\&output\=json \| jq . \| grep name \| cut -d":" -f2 \| grep -v "CN=" \| cut -d'"' -f2 \| awk '{gsub(/\\n/,"\n");}1;' \| sort -u > subdomain.lst`</code></pre> | <br>Extrae subdominios únicos de los registros de Crt.sh y los guarda en `subdomain.lst`. |
+| **Acción**                                                                                                                                                                                                     | **Descripción**                                                                           |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| <pre><code>`curl -s https://crt.sh/\?q\=<target>\&output\=json \| jq .`</code></pre>                                                                                                                           | <br>Obtiene los registros de transparencia de certificados para un dominio desde Crt.sh.  |
+| <pre><code>`curl -s https://crt.sh/\?q\=<target>\&output\=json \| jq . \| grep name \| cut -d":" -f2 \| grep -v "CN=" \| cut -d'"' -f2 \| awk '{gsub(/\\n/,"\n");}1;' \| sort -u > subdomain.lst`</code></pre> | <br>Extrae subdominios únicos de los registros de Crt.sh y los guarda en `subdomain.lst`. |
 ^curl-enum-pasiva-subdominios
 

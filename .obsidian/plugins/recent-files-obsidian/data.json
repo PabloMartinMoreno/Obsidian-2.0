@@ -1,16 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "Curl - Fuzzing Parámetros y Valores",
-      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Web Technology Fingerprinting",
+      "path": "04 - Content/Web Technology Fingerprinting.md"
+    },
+    {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "FeroxBuster",
+      "path": "04 - Content/Process/FeroxBuster.md"
+    },
+    {
+      "basename": "GoBuster",
+      "path": "04 - Content/Process/GoBuster.md"
+    },
+    {
+      "basename": "Subdomain & Virtual Host Fuzzing",
+      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
+    },
+    {
+      "basename": "Ffuf",
+      "path": "04 - Content/Ffuf.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Bash",
+      "path": "04 - Content/Process/Bash.md"
     },
     {
       "basename": "Curl",
       "path": "04 - Content/Curl.md"
     },
     {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
+      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
+      "path": "04 - Content/Curl - Enumeración de Sub-Dominios y V.Host.md"
+    },
+    {
+      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
+      "path": "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md"
+    },
+    {
+      "basename": "Curl - Fuzzing Parámetros y Valores",
+      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
     },
     {
       "basename": "Whois",
@@ -21,28 +69,8 @@
       "path": "04 - Content/Process/objetivos.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
       "basename": "Dig",
       "path": "04 - Content/Process/Dig.md"
-    },
-    {
-      "basename": "Ffuf",
-      "path": "04 - Content/Ffuf.md"
-    },
-    {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
       "basename": "Penetration Test",
@@ -141,14 +169,6 @@
       "path": "04 - Content/Process/Seclists.md"
     },
     {
-      "basename": "Subdomain & Virtual Host Fuzzing",
-      "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Web Technology Fingerprinting",
-      "path": "04 - Content/Web Technology Fingerprinting.md"
-    },
-    {
       "basename": "Finger Enumeration (79)",
       "path": "04 - Content/Finger Enumeration (79).md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "URL Encode - Characters",
       "path": "04 - Content/Process/URL Encode - Characters.md"
-    },
-    {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
-      "basename": "HTML Injection",
-      "path": "04 - Content/Process/HTML Injection.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
-      "path": "04 - Content/Curl - Enumeración de Sub-Dominios y V.Host.md"
-    },
-    {
-      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
-      "path": "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md"
     }
   ],
   "omittedPaths": [],
