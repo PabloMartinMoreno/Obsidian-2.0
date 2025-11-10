@@ -18,8 +18,8 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Ffuf]]"
-  - "[[GoBuster]]"
+  - "[[ffuf]]"
+  - "[[gobuster]]"
   - "[[FeroxBuster]]"
   - "[[Seclists]]"
 ---

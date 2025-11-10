@@ -18,9 +18,9 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Curl]]"
-  - "[[Ffuf]]"
-  - "[[GoBuster]]"
+  - "[[curl]]"
+  - "[[ffuf]]"
+  - "[[gobuster]]"
   - "[[Seclists]]"
 ---
 # Fuzzing de Parámetros y Valores
@@ -49,6 +49,6 @@ tab: **Wordlists**
 
 **El fuzzing de parámetros se utiliza para identificar vulnerabilidades en aplicaciones web mediante la manipulación de parámetros de entrada en URL (GET) o cuerpos de solicitud (POST).**
 
-Mediante el uso de herramientas como [[Ffuf]] para automatizar el fuzzing con listas de palabras personalizadas, se pueden identificar parámetros inesperados u ocultos, rutas de archivos u otros problemas de la aplicación.
+Mediante el uso de herramientas como [[ffuf]] para automatizar el fuzzing con listas de palabras personalizadas, se pueden identificar parámetros inesperados u ocultos, rutas de archivos u otros problemas de la aplicación.
 
 **Es fundamental establecer primero la respuesta de referencia con parámetros no válidos conocidos para filtrar los resultados irrelevantes.**

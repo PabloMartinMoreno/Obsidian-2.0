@@ -7,6 +7,8 @@ Una **transferencia de zona DNS** es, esencialmente, una copia completa de todos
 Este proceso es esencial para mantener la **consistencia y redundancia** entre servidores DNS.  
 Sin embargo, si no está bien asegurado, una parte no autorizada puede descargar todo el archivo de zona, revelando una lista completa de **subdominios, direcciones IP** y otros datos sensibles.
 
+![[Pasted image 20251110153037.png]]
+
 ### Etapas del proceso
 
 1. **Solicitud de transferencia de zona (AXFR):**  

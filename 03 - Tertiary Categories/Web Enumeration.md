@@ -21,15 +21,15 @@ type: Tertiary Category
 
 * [[Passive Subdomain Enumeration]]
 
-### DNS y Sub-Dominios
+### DNS
 
 * [[DNS Enumeration (53)| DNS Enumeration]]
-* [[Subdomain & Virtual Host Fuzzing]]
 
 ### Descubrimiento y Fuzzing
 
 * [[Directory & Page Fuzzing]]
 * [[Parameter & Value Fuzzing]]
+* [[Fuzzing Subdomain & Virtual Host]]
 
 ### Fingerprinting
 
@@ -38,7 +38,9 @@ type: Tertiary Category
 ### Crawling y Mapeo
 
 - [[Seclists]]
-- Content Discovery → (robots,sitemap)
+- [[Crawling]]
+- [[robots.txt]]
+- [[Well-Known URIs]]
 
 ***
 
@@ -61,12 +63,12 @@ type: Tertiary Category
 
 ## Herramientas
 
-- [[Curl]]
+- [[curl]]
 - [[BurpSuite]]
 - [[dig]]
 - [[dnsenum]]
-- [[Ffuf]]
-- [[GoBuster]]
+- [[ffuf]]
+- [[gobuster]]
 - [[RustScan]]
 - [[FeroxBuster]]
 - [[EyeWitness]]

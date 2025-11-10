@@ -17,7 +17,7 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[Whois]]"
-  - "[[Curl]]"
+  - "[[curl]]"
   - "[[Bash]]"
 ---
 # Enumeración Pasiva de Sub-dominios

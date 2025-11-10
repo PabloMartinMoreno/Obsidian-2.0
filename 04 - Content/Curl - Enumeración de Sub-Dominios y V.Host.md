@@ -4,7 +4,7 @@ tags:
   - type/sub-command
 type: Sub-Command
 linked:
-  - "[[Curl]]"
+  - "[[curl]]"
 ---
 # Curl - Enumeración de Sub-Dominios y V.Host
 

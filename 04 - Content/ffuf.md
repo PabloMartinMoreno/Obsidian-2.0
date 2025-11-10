@@ -35,8 +35,8 @@ linked:
 
 ### Enumeración de Sub-Dominios y V.Host
 
-| **Acción**                                                                                                           | **Descripción**                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| <pre><code>`ffuf -c -w <wordlist> -u http://<target>:<port>/ -H 'Host: FUZZ.<domain>' -fs <char-count>`</code></pre> | <br>Realiza fuzzing de hosts virtuales, filtrando según el recuento de caracteres. Tras encontrar un V-Host válido, añádelo a `/etc/hosts`. |
-| <pre><code>`ffuf -c -w <wordlist> -u http://FUZZ.<domain>/`</code></pre>                                             | <br>Realiza fuzzing de subdominios DNS (solo funciona en sitios web públicos). Evita usar direcciones IP, usa dominios DNS reales.          |
-^ffuf-enum-subdominios-vhost
+| **Acción**                                                                                                       | **Descripción**                                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| <pre><code>`ffuf -c -w <wordlist> -u http://<IP>:<port>/ -H 'Host: FUZZ.<domain>' -fs <char-count>`</code></pre> | <br>Realiza fuzzing de hosts virtuales, filtrando según el recuento de caracteres. Tras encontrar un V-Host válido, añádelo a `/etc/hosts`. |
+| <pre><code>`ffuf -c -w <wordlist> -u http://FUZZ.<domain>/`</code></pre>                                         | <br>Realiza fuzzing de subdominios DNS (solo funciona en sitios web públicos). Evita usar direcciones IP, usa dominios DNS reales.          |
+^ffuf-enum-vhost

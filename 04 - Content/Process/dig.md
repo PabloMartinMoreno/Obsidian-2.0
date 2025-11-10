@@ -14,20 +14,22 @@ linked:
 <pre><code>``</code></pre>
 ## Cheatsheet
 
-| **Comando**                                                | **Descripción**                                                    |
-| ---------------------------------------------------------- | ------------------------------------------------------------------ |
-| <pre><code>`dig $TARGET @<nameserver/IP>`</code></pre>     | <br>Identifica el registro **A** del dominio objetivo.             |
-| <pre><code>`dig a $TARGET @<nameserver/IP>`</code></pre>   | <br>Identifica el registro **A** del dominio objetivo.             |
-| <pre><code>`dig -x <IP> @<nameserver/IP>`</code></pre>     | <br>Identifica el registro **PTR** de la dirección IP objetivo.    |
-| <pre><code>`dig any $TARGET @<nameserver/IP>`</code></pre> | <br>Identifica **todos los registros (ANY)** del dominio objetivo. |
-| <pre><code>`dig txt $TARGET @<nameserver/IP>`</code></pre> | <br>Identifica los registros **TXT** del dominio objetivo.         |
-| <pre><code>`dig mx $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica los registros **MX** del dominio objetivo.          |
+| **Comando**                                                 | **Descripción**                                                    |
+| ----------------------------------------------------------- | ------------------------------------------------------------------ |
+| <pre><code>`dig $TARGET @<nameserver/IP>`</code></pre>      | <br>Identifica el registro **A** del dominio objetivo.             |
+| <pre><code>`dig a $TARGET @<nameserver/IP>`</code></pre>    | <br>Identifica el registro **A** del dominio objetivo.             |
+| <pre><code>`dig -x <IP> @<nameserver/IP>`</code></pre>      | <br>Identifica el registro **PTR** de la dirección IP objetivo.    |
+| <pre><code>`dig any $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica **todos los registros (ANY)** del dominio objetivo. |
+| <pre><code>`dig txt $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica los registros **TXT** del dominio objetivo.         |
+| <pre><code>`dig mx $TARGET @<nameserver/IP>`</code></pre>   | <br>Identifica los registros **MX** del dominio objetivo.          |
+| <pre><code>`dig axfr $TARGET @<nameserver/IP>`</code></pre> | <br>Copia completa de todos los registros DNS.                     |
 ^dig-enum-pasiva
 
 dig inlanefreight.com
 dig +short inlanefreight.com
 dig -x 134.209.24.248
 dig MX facebook.com
+dig axfr inlanefreight.htb @10.129.156.95
 
 ***
 

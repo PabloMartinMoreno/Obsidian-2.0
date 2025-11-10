@@ -4,7 +4,7 @@ tags:
   - type/sub-command
 type: Sub-Command
 linked:
-  - "[[Curl]]"
+  - "[[curl]]"
 ---
 # Curl - Fuzzing Parámetros y Valores
 

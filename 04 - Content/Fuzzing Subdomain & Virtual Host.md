@@ -17,9 +17,10 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[DNS Enumeration (53)]]"
-  - "[[Curl]]"
-  - "[[Ffuf]]"
+  - "[[curl]]"
+  - "[[ffuf]]"
   - "[[Seclists]]"
+  - "[[gobuster]]"
 ---
 # Fuzzing de Subdominios y Hosts Virtuales
 
@@ -32,10 +33,13 @@ tab: **Curl**
 ![[Curl - Enumeración de Sub-Dominios y V.Host#^curl-enum-subdominios-vhost]]
 
 tab: **Ffuf**
-![[Ffuf#^ffuf-enum-subdominios-vhost]]
+![[Ffuf#^ffuf-enum-vhost]]
+
+tab: **GoBuster**
+![[gobuster#^gobuster-enum-vhost]]
 
 tab: **Wordlists**
-![[Wordlists#^wordlists-subdominios-vhost]]
+![[Seclists#^wordlists-subdominios-vhost]]
 
 
 ````
