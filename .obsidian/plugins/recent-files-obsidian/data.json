@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Dig",
-      "path": "04 - Content/Process/Dig.md"
+      "basename": "Curl - Fuzzing Parámetros y Valores",
+      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Curl",
+      "path": "04 - Content/Curl.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Whois",
+      "path": "04 - Content/Process/Whois.md"
+    },
+    {
+      "basename": "objetivos",
+      "path": "04 - Content/Process/objetivos.md"
     },
     {
       "basename": "Web Enumeration",
@@ -15,6 +27,26 @@
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Dig",
+      "path": "04 - Content/Process/Dig.md"
+    },
+    {
+      "basename": "Ffuf",
+      "path": "04 - Content/Ffuf.md"
+    },
+    {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Operational Tasks",
@@ -85,10 +117,6 @@
       "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
       "basename": "Reverse Engineering",
       "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
@@ -115,14 +143,6 @@
     {
       "basename": "Subdomain & Virtual Host Fuzzing",
       "path": "04 - Content/Subdomain & Virtual Host Fuzzing.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
       "basename": "Web Technology Fingerprinting",
@@ -153,10 +173,6 @@
       "path": "04 - Content/Process/Whois - Escenarios de Uso.md"
     },
     {
-      "basename": "Whois",
-      "path": "04 - Content/Process/Whois.md"
-    },
-    {
       "basename": "Proxychains",
       "path": "04 - Content/Process/Proxychains.md"
     },
@@ -173,16 +189,8 @@
       "path": "04 - Content/Process/HTML Injection.md"
     },
     {
-      "basename": "Curl",
-      "path": "04 - Content/Curl.md"
-    },
-    {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Ffuf",
-      "path": "04 - Content/Ffuf.md"
     },
     {
       "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
@@ -191,14 +199,6 @@
     {
       "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
       "path": "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md"
-    },
-    {
-      "basename": "Curl - Fuzzing Parámetros y Valores",
-      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
-    },
-    {
-      "basename": "_sub-command",
-      "path": "05 - Templates/04 - Type/_sub-command.md"
     }
   ],
   "omittedPaths": [],

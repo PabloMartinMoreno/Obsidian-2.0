@@ -44,11 +44,11 @@ tab: APIs
 
 | **Comando**                                                                                                                                             | **Descripción**                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `curl http://<SERVER_IP>:<PORT>/api.php/city/london`                                                                                                    | Leer una entrada                              |
-| `curl -s http://<SERVER_IP>:<PORT>/api.php/city/ \| jq`                                                                                                 | Leer todas las entradas (formateado con `jq`) |
-| `curl -X POST http://<SERVER_IP>:<PORT>/api.php/city/ -d '{"city_name":"HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'`          | Crear (agregar) una entrada                   |
-| `curl -X PUT http://<SERVER_IP>:<PORT>/api.php/city/london -d '{"city_name":"New_HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'` | Actualizar (modificar) una entrada            |
-| `curl -X DELETE http://<SERVER_IP>:<PORT>/api.php/city/New_HTB_City`                                                                                    | Eliminar una entrada                          |
+| `curl http://<IP>:<PORT>/api.php/city/london`                                                                                                    | Leer una entrada                              |
+| `curl -s http://<IP>:<PORT>/api.php/city/ \| jq`                                                                                                 | Leer todas las entradas (formateado con `jq`) |
+| `curl -X POST http://<IP>:<PORT>/api.php/city/ -d '{"city_name":"HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'`          | Crear (agregar) una entrada                   |
+| `curl -X PUT http://<IP>:<PORT>/api.php/city/london -d '{"city_name":"New_HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'` | Actualizar (modificar) una entrada            |
+| `curl -X DELETE http://<IP>:<PORT>/api.php/city/New_HTB_City`                                                                                    | Eliminar una entrada                          |
 
 tab: Acrónimos
 

@@ -12,8 +12,8 @@ linked:
 
 ## Cheatsheet
 
-| **Acción**                                                                                                                               | **Descripción**                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| <pre><code>`curl -s http://<rhost>:<rport>/admin.php \| wc -c`</code></pre>                                                              | **(GET)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos.  |
-| <pre><code>`curl -s http://<rhost>:<rport>/admin.php -X POST -H "Content-Type: application/x-www-form-urlencoded" \| wc -c`</code></pre> | **(POST)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos. |
+| **Acción**                                                                                                                            | **Descripción**                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| <pre><code>`curl -s http://<IP>:<rport>/admin.php \| wc -c`</code></pre>                                                              | **(GET)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos.  |
+| <pre><code>`curl -s http://<IP>:<rport>/admin.php -X POST -H "Content-Type: application/x-www-form-urlencoded" \| wc -c`</code></pre> | **(POST)** Obtiene la respuesta de referencia para filtrar los resultados incorrectos. |
 ^curl-fuzzing-parametros

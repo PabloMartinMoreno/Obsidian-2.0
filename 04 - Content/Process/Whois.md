@@ -15,10 +15,10 @@ linked:
 
 ## Cheatsheet
 
-| **Acción**                                                                                   | **Descripción**                                                                                       |
-| -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| <pre><code>`whois <target-FQDN>`</code></pre><pre><code>`whois <target-ip>`</code></pre><br> | <br>Realiza una búsqueda WHOIS para obtener los detalles de registro y contacto del dominio objetivo. |
-| <pre><code>`whois -h <whois-server> …`</code></pre>                                          | <br>Realiza una búsqueda WHOIS utilizando un servidor WHOIS específico.                               |
+| **Acción**                                                                       | **Descripción**                                                                                       |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| <pre><code>`whois <domain>`</code></pre><pre><code>`whois <IP>`</code></pre><br> | <br>Realiza una búsqueda WHOIS para obtener los detalles de registro y contacto del dominio objetivo. |
+| <pre><code>`whois -h <whois-server> <domain>`</code></pre>                       | <br>Realiza una búsqueda WHOIS utilizando un servidor WHOIS específico.                               |
 ^whois-enum-pasiva-subdominios
 
 ***
