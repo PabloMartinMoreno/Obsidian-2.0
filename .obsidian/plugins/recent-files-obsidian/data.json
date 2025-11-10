@@ -1,20 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
     },
     {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Google Dorking.md"
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Google Dorking.md"
     },
     {
       "basename": "Parameter & Value Fuzzing",
@@ -41,20 +49,12 @@
       "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
     },
     {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
-    },
-    {
       "basename": "gobuster",
       "path": "04 - Content/Process/gobuster.md"
     },
     {
       "basename": "curl",
       "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
       "basename": "robots.txt",
