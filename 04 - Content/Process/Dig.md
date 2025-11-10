@@ -22,7 +22,7 @@ linked:
 | <pre><code>`dig any $TARGET @<nameserver/IP>`</code></pre> | <br>Identifica **todos los registros (ANY)** del dominio objetivo. |
 | <pre><code>`dig txt $TARGET @<nameserver/IP>`</code></pre> | <br>Identifica los registros **TXT** del dominio objetivo.         |
 | <pre><code>`dig mx $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica los registros **MX** del dominio objetivo.          |
-
+^dig-enum-pasiva
 
 ***
 

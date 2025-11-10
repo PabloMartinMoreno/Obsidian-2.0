@@ -20,12 +20,25 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Dig]]"
+  - "[[nslookup]]"
 ---
 # DNS Enumeration (53)
 
 ***
 
 ## Cheatsheet
+
+````tabs
+tab: **dig**
+![[Dig#^dig-enum-pasiva]]
+
+tab: **nslookup**
+
+tab: **dnsrecon**
+
+tab: **host**
+````
 
 | **Acción**                                                                                                                                                                                                                                                                                                                                                                                                        | **Descripción**                                                                                                                                                                                                                                   |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -64,18 +77,33 @@ dig MX facebook.com
 
 ## Overview
 
-**El *Domain Name System (DNS)* es un sistema descentralizado que traduce nombres de dominio a direcciones IP, permitiendo acceder a sitios mediante direcciones legibles por humanos en lugar de números.**
+El *Domain Name System (DNS)* **es un sistema descentralizado que traduce nombres de dominio a direcciones IP**, permitiendo acceder a sitios mediante direcciones legibles por humanos en lugar de números.
 
-El tráfico DNS suele viajar sin cifrar, por lo que es susceptible a interceptación por ISPs o dispositivos locales. Alternativas cifradas son DNS over TLS (DoT), DNS over HTTPS (DoH) y DNSCrypt.
-
-Si un servidor DNS está mal configurado y permite transferencias de zona anónimas (AXFR), esto puede exponer una copia completa de los registros DNS del dominio: subdominios, estructura interna y otros detalles sensibles.
+**El DNS no solo traduce nombres a IPs. Su verdadero propósito es almacenar y distribuir información sobre un dominio.**
+Un dominio no solo necesita saber a qué IP apuntar (para la web), sino también:
+- a dónde enviar correos,
+- cómo validar identidades,
+- qué servidores son los oficiales,
+- qué servicios existen asociados,
+- e incluso datos de verificación o seguridad.
+Por eso el DNS tiene diferentes tipos de registros, no solo el de tipo A (IP).
 
 **Puertos por defecto:** TCP/UDP `53`.
 
+### Toda esta información puede revelar
 
----
+- Infraestructura interna.
+- Subdominios (pistas de hosts internos o paneles de administración).
+- Servidores de correo y tecnología usada.
+- Correos o contactos técnicos reales.
+- Configuraciones débiles (por ejemplo, si el AXFR está abierto).
+- Validaciones de seguridad (SPF, DKIM, DMARC en TXT).
 
-## Tipos de registros DNS
+```ad-attention
+El tráfico DNS suele viajar sin cifrar, por lo que es susceptible a interceptación por ISPs o dispositivos locales. Alternativas cifradas son DNS over TLS (DoT), DNS over HTTPS (DoH) y DNSCrypt.
+```
+
+### Tipos de registros DNS
 
 |Registro DNS|Descripción|Ejemplo|
 |---|--:|---|

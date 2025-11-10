@@ -73,3 +73,7 @@ type: Tertiary Category
 - [[Git-Dumper]]
 - [[Nikto]]
 - [[Whois]]
+
+### Comparaciones
+
+- [[whois vs dig vs dnsrecon vs nslookup]]
