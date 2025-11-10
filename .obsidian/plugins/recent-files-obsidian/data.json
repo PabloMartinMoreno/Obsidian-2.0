@@ -1,8 +1,40 @@
 {
   "recentFiles": [
     {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Google Dorking.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "ReconSpider.py",
+      "path": "04 - Content/Process/ReconSpider.py.md"
+    },
+    {
+      "basename": "Creepy Crawlies",
+      "path": "04 - Content/Process/Creepy Crawlies.md"
     },
     {
       "basename": "Fuzzing Subdomain & Virtual Host",
@@ -33,14 +65,6 @@
       "path": "04 - Content/Process/Crawling.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Creepy Crawlies",
-      "path": "04 - Content/Process/Creepy Crawlies.md"
-    },
-    {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
@@ -49,24 +73,12 @@
       "path": "04 - Content/Process/CWES.md"
     },
     {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
       "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
       "path": "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md"
     },
     {
       "basename": "Curl - Fuzzing Parámetros y Valores",
       "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
-    },
-    {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
       "basename": "Virtual Hosts",
@@ -187,18 +199,6 @@
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Client-Side Exploitation",
-      "path": "04 - Content/Process/Client-Side Exploitation.md"
-    },
-    {
-      "basename": "Service Exploitation",
-      "path": "04 - Content/Process/Service Exploitation.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
     }
   ],
   "omittedPaths": [],
