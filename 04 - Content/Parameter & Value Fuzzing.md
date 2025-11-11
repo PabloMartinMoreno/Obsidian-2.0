@@ -40,7 +40,7 @@ tab: **Gobuster**
 ![[GoBuster#^gobuster-fuzzing-parametros]]
 
 tab: **Wordlists**
-![[Wordlists#^wordlists-fuzzing-parametros]]
+![[Seclists#^wordlists-fuzzing-parametros]]
 
 ````
 

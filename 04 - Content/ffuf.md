@@ -40,3 +40,11 @@ linked:
 | <pre><code>`ffuf -c -w <wordlist> -u http://<IP>:<port>/ -H 'Host: FUZZ.<domain>' -fs <char-count>`</code></pre> | <br>Realiza fuzzing de hosts virtuales, filtrando según el recuento de caracteres. Tras encontrar un V-Host válido, añádelo a `/etc/hosts`. |
 | <pre><code>`ffuf -c -w <wordlist> -u http://FUZZ.<domain>/`</code></pre>                                         | <br>Realiza fuzzing de subdominios DNS (solo funciona en sitios web públicos). Evita usar direcciones IP, usa dominios DNS reales.          |
 ^ffuf-enum-vhost
+
+## HTB
+
+`ffuf` por post.
+```bash
+ffuf -u 'http://83.136.255.106:30166/post.php' -X POST -d 'y=FUZZ' -H 'Content-Type: application/x-www-form-urlencoded' -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -t 100
+```
+

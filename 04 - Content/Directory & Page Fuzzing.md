@@ -40,7 +40,7 @@ tab: **FeroxBuster**
 ![[FeroxBuster#^feroxbuster-fuzzing-directorios]]
 
 tab: **Wordlists**
-![[Wordlists#^wordlists-fuzzing-directorios]]
+![[Seclists#^wordlists-fuzzing-directorios]]]
 
 ````
 

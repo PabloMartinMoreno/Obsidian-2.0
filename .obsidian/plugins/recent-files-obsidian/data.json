@@ -1,16 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Fuzzing Subdomain & Virtual Host",
+      "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
+    },
+    {
+      "basename": "Directory & Page Fuzzing",
+      "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
       "basename": "Information Gathering",
@@ -21,10 +37,6 @@
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
-    },
-    {
       "basename": "Passive Reconnaissance & OSINT",
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
@@ -33,24 +45,12 @@
       "path": "04 - Content/Google Dorking.md"
     },
     {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
       "basename": "ReconSpider.py",
       "path": "04 - Content/Process/ReconSpider.py.md"
     },
     {
       "basename": "Creepy Crawlies",
       "path": "04 - Content/Process/Creepy Crawlies.md"
-    },
-    {
-      "basename": "Fuzzing Subdomain & Virtual Host",
-      "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
     },
     {
       "basename": "gobuster",
