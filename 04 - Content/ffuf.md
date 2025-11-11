@@ -41,7 +41,7 @@ linked:
 | <pre><code>`ffuf -c -w <wordlist> -u http://FUZZ.<domain>/`</code></pre>                                         | <br>Realiza fuzzing de subdominios DNS (solo funciona en sitios web públicos). Evita usar direcciones IP, usa dominios DNS reales.          |
 ^ffuf-enum-vhost
 
-## HTB
+### POST
 
 `ffuf` por post.
 ```bash

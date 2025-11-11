@@ -1,28 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Seclists",
-      "path": "04 - Content/Process/Seclists.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
+      "basename": "gobuster",
+      "path": "04 - Content/Process/gobuster.md"
     },
     {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Seclists",
+      "path": "04 - Content/Process/Seclists.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "Passive Subdomain Enumeration",
@@ -35,10 +43,6 @@
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
@@ -55,10 +59,6 @@
     {
       "basename": "Creepy Crawlies",
       "path": "04 - Content/Process/Creepy Crawlies.md"
-    },
-    {
-      "basename": "gobuster",
-      "path": "04 - Content/Process/gobuster.md"
     },
     {
       "basename": "curl",

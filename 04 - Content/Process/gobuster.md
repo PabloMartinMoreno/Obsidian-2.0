@@ -39,3 +39,9 @@ linked:
 | ----------------------------------------------------------------------------------------- | ---------------------- |
 | <pre><code>`gobuster vhost -w <wordlist> -u <domain> --append-domain -t 200`</code></pre> | <br>Busqueda de vhosts |
 ^gobuster-enum-vhost
+
+### DNS
+
+```bash
+gobuster dns --domain inlanefreight.com -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt --no-error
+```
