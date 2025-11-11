@@ -1,14 +1,6 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
-    },
-    {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
@@ -17,8 +9,20 @@
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
@@ -27,10 +31,6 @@
     {
       "basename": "Google Dorking",
       "path": "04 - Content/Google Dorking.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
     },
     {
       "basename": "DNS Enumeration (53)",
