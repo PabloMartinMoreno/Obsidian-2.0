@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "ffuf",
       "path": "04 - Content/ffuf.md"
     },
@@ -143,10 +147,6 @@
     {
       "basename": "objetivos",
       "path": "04 - Content/Process/objetivos.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Operational Tasks",
