@@ -36,10 +36,10 @@ linked:
 
 ***
 
-### Sub-Dominios y V.Host
+### Sub-Dominios, VHost y DNS
 
-| <br>**Para sub-dominios y v.host:**<br><pre><code>`/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt`</code></pre><pre><code>`/usr/share/seclists/Discovery/DNS/namelist.txt`</code></pre> |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <br>**Para sub-dominios, v.host y DNS:**<br><pre><code>`/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt`</code></pre><pre><code>`/usr/share/seclists/Discovery/DNS/namelist.txt`</code></pre><pre><code>`/usr/share/wordlists/seclists/Discovery/DNS/dns-Jhaddix.txt`</code></pre> |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 ^wordlists-subdominios-vhost
 
 

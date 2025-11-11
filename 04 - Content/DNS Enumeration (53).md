@@ -26,6 +26,7 @@ linked:
   - "[[host]]"
   - "[[dnsenum]]"
   - "[[Comparación Comandos de Enumeración DNS]]"
+  - "[[Seclists]]"
 ---
 # DNS Enumeration (53)
 

@@ -1,32 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
-    },
-    {
-      "basename": "Parameter & Value Fuzzing",
-      "path": "04 - Content/Parameter & Value Fuzzing.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Passive Subdomain Enumeration",
-      "path": "04 - Content/Passive Subdomain Enumeration.md"
+      "basename": "Seclists",
+      "path": "04 - Content/Process/Seclists.md"
     },
     {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
-      "basename": "Fuzzing Subdomain & Virtual Host",
-      "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
+    },
+    {
+      "basename": "Parameter & Value Fuzzing",
+      "path": "04 - Content/Parameter & Value Fuzzing.md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
+    },
+    {
+      "basename": "Passive Subdomain Enumeration",
+      "path": "04 - Content/Passive Subdomain Enumeration.md"
+    },
+    {
+      "basename": "Fuzzing Subdomain & Virtual Host",
+      "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
     },
     {
       "basename": "Information Gathering",
@@ -195,10 +199,6 @@
     {
       "basename": "Linux Post-Exploitation",
       "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     }
   ],
   "omittedPaths": [],

@@ -11,10 +11,15 @@
             "id": "5727d4b5f27cb94c",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "type": "markdown",
+              "state": {
+                "file": "04 - Content/Process/Seclists.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Seclists"
             }
           }
         ],
@@ -136,6 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "04 - Content/Process/Seclists.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -206,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "title": "Gráfico de Seclists"
             }
           },
           {
@@ -259,13 +265,13 @@
   },
   "active": "5727d4b5f27cb94c",
   "lastOpenFiles": [
-    "04 - Content/ffuf.md",
-    "04 - Content/Parameter & Value Fuzzing.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "04 - Content/Passive Subdomain Enumeration.md",
     "04 - Content/DNS Enumeration (53).md",
-    "04 - Content/Fuzzing Subdomain & Virtual Host.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Directory & Page Fuzzing.md",
+    "04 - Content/Parameter & Value Fuzzing.md",
+    "04 - Content/ffuf.md",
+    "04 - Content/Passive Subdomain Enumeration.md",
+    "04 - Content/Fuzzing Subdomain & Virtual Host.md",
     "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
