@@ -1,20 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
     },
     {
-      "basename": "Filtrado de salida de fuzzing",
-      "path": "04 - Content/Process/Filtrado de salida de fuzzing.md"
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
     {
       "basename": "Web Fuzzing",
       "path": "04 - Content/Process/Web Fuzzing.md"
     },
     {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
+      "basename": "API Fuzzing",
+      "path": "04 - Content/Process/API Fuzzing.md"
+    },
+    {
+      "basename": "api_fuzzer",
+      "path": "04 - Content/Process/api_fuzzer.md"
+    },
+    {
+      "basename": "Filtrado de salida de fuzzing",
+      "path": "04 - Content/Process/Filtrado de salida de fuzzing.md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
     },
     {
       "basename": "Web Enumeration",
@@ -91,10 +103,6 @@
     {
       "basename": "Crawling",
       "path": "04 - Content/Process/Crawling.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
     {
       "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
@@ -191,14 +199,6 @@
     {
       "basename": "Lateral Movement",
       "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
-      "basename": "Tunneling",
-      "path": "04 - Content/Process/Tunneling.md"
-    },
-    {
-      "basename": "Pivoting",
-      "path": "04 - Content/Process/Pivoting.md"
     }
   ],
   "omittedPaths": [],
