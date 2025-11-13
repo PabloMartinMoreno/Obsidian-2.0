@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/CWES.md",
+                "file": "04 - Content/ffuf.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "CWES"
+              "title": "ffuf"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/CWES.md",
+                "file": "04 - Content/ffuf.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de CWES"
+              "title": "Gráfico de ffuf"
             }
           },
           {
@@ -265,8 +265,8 @@
   },
   "active": "cab25dad22da0dfe",
   "lastOpenFiles": [
-    "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/CWES.md",
+    "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Web Fuzzing.md",
     "04 - Content/Process/API Fuzzing.md",
     "04 - Content/Process/api_fuzzer.md",

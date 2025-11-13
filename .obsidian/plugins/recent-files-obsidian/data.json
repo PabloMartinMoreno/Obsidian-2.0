@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
+    },
+    {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
     },
@@ -23,10 +27,6 @@
     {
       "basename": "Filtrado de salida de fuzzing",
       "path": "04 - Content/Process/Filtrado de salida de fuzzing.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
     },
     {
       "basename": "Web Enumeration",
