@@ -36,9 +36,21 @@
               "icon": "lucide-file",
               "title": "Penetration Test"
             }
+          },
+          {
+            "id": "cdb2bfac5737b57c",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.3"
+              },
+              "icon": "lucide-book-up",
+              "title": "Registro de cambios 1.10.3"
+            }
           }
         ],
-        "currentTab": 1,
+        "currentTab": 2,
         "stacked": true
       }
     ],
@@ -157,7 +169,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -228,7 +239,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -279,8 +290,9 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "5e7d4874d80ba3b8",
+  "active": "cdb2bfac5737b57c",
   "lastOpenFiles": [
+    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/ffuf.md",
     "04 - Content/Directory & Page Fuzzing.md",
     "04 - Content/Process/gobuster.md",
@@ -291,7 +303,6 @@
     "04 - Content/Passive Subdomain Enumeration.md",
     "04 - Content/Fuzzing Subdomain & Virtual Host.md",
     "02 - Secondary Categories/Information Gathering.md",
-    "01 - Primary Categories/Penetration Test.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
     "04 - Content/Google Dorking.md",
     "04 - Content/Process/ReconSpider.py.md",
