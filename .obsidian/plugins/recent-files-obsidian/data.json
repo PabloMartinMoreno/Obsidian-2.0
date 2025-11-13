@@ -1,12 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
       "basename": "ffuf",
       "path": "04 - Content/ffuf.md"
+    },
+    {
+      "basename": "Filtrado de salida de fuzzing",
+      "path": "04 - Content/Process/Filtrado de salida de fuzzing.md"
+    },
+    {
+      "basename": "Web Fuzzing",
+      "path": "04 - Content/Process/Web Fuzzing.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Passive Infrastructure Identification",
+      "path": "04 - Content/Passive Infrastructure Identification.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Google Dorking.md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/GitHub Dorking.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
@@ -15,10 +51,6 @@
     {
       "basename": "gobuster",
       "path": "04 - Content/Process/gobuster.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "DNS Enumeration (53)",
@@ -39,18 +71,6 @@
     {
       "basename": "Fuzzing Subdomain & Virtual Host",
       "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Google Dorking.md"
     },
     {
       "basename": "ReconSpider.py",
@@ -75,10 +95,6 @@
     {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
@@ -183,22 +199,6 @@
     {
       "basename": "Pivoting",
       "path": "04 - Content/Process/Pivoting.md"
-    },
-    {
-      "basename": "Windows & Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     }
   ],
   "omittedPaths": [],

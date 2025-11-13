@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Identificación Pasiva de Infraestructura
 tags:
   - type/cheatsheet
   - technique/recon/passive
@@ -15,7 +16,7 @@ type: CheatSheet
 linked:
   - "[[CanaryTokens]]"
 ---
-# Passive Infrastructure Identification
+# Identificación Pasiva de Infraestructura
 
 ***
 ## CheatSheet

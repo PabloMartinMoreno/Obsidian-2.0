@@ -20,6 +20,7 @@ type: Tertiary Category
 ### Enumeración Pasiva
 
 * [[Passive Subdomain Enumeration]]
+- [[Google Dorking]]
 
 ### DNS
 
