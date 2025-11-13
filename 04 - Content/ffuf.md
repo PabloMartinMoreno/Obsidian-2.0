@@ -48,3 +48,7 @@ linked:
 ffuf -u 'http://83.136.255.106:30166/post.php' -X POST -d 'y=FUZZ' -H 'Content-Type: application/x-www-form-urlencoded' -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -t 100
 ```
 
+### GET
+```bash
+ffuf -u 'http://83.136.255.106:35676/FUZZ' -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -ic --recursion -e .tar.gz
+```
