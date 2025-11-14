@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
       "basename": "ffuf",
       "path": "04 - Content/ffuf.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "CWES",
