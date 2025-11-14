@@ -15,7 +15,7 @@ linked:
 
 ***
 
-## Overviewt
+## Overview
 
 ****La deofuscación de JavaScript**** es el proceso de revertir las técnicas de ofuscación aplicadas al código JavaScript, haciéndolo más legible y comprensible.
 

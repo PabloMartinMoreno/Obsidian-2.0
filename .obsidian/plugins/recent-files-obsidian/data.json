@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "JavaScript Deobfuscation",
+      "path": "04 - Content/Process/JavaScript Deobfuscation.md"
+    },
+    {
       "basename": "ffuf",
       "path": "04 - Content/ffuf.md"
     },
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
@@ -195,10 +199,6 @@
     {
       "basename": "File Transfers",
       "path": "04 - Content/Process/File Transfers.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
     }
   ],
   "omittedPaths": [],
