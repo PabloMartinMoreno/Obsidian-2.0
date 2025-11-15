@@ -25,7 +25,7 @@
 
 ***
 
-## [[JavaScript Deobfuscation]]
+## [[JavaScript Deobfuscation moc]]
 
 
 ***

@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "Code Obfuscation",
+      "path": "04 - Content/Process/Code Obfuscation.md"
+    },
+    {
+      "basename": "JavaScript Deobfuscation moc",
+      "path": "04 - Content/Process/JavaScript Deobfuscation moc.md"
+    },
+    {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
     },
     {
       "basename": "Penetration Test",
@@ -47,10 +67,6 @@
     {
       "basename": "Passive Infrastructure Identification",
       "path": "04 - Content/Passive Infrastructure Identification.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Google Dorking",
@@ -183,22 +199,6 @@
     {
       "basename": "Operational Tasks",
       "path": "04 - Content/Process/Operational Tasks.md"
-    },
-    {
-      "basename": "Procedures",
-      "path": "04 - Content/Process/Procedures.md"
-    },
-    {
-      "basename": "Credentials Cracking",
-      "path": "04 - Content/Process/Credentials Cracking.md"
-    },
-    {
-      "basename": "Shells",
-      "path": "04 - Content/Process/Shells.md"
-    },
-    {
-      "basename": "File Transfers",
-      "path": "04 - Content/Process/File Transfers.md"
     }
   ],
   "omittedPaths": [],
