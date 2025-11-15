@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Code Obfuscation",
-      "path": "04 - Content/Process/Code Obfuscation.md"
-    },
-    {
       "basename": "JavaScript Deobfuscation moc",
       "path": "04 - Content/Process/JavaScript Deobfuscation moc.md"
+    },
+    {
+      "basename": "Deobfuscation",
+      "path": "04 - Content/Process/Deobfuscation.md"
+    },
+    {
+      "basename": "Advance Obfuscation",
+      "path": "04 - Content/Process/Advance Obfuscation.md"
+    },
+    {
+      "basename": "Basic Obfuscation",
+      "path": "04 - Content/Process/Basic Obfuscation.md"
+    },
+    {
+      "basename": "Code Obfuscation",
+      "path": "04 - Content/Process/Code Obfuscation.md"
     },
     {
       "basename": "CWES",
@@ -187,18 +199,6 @@
     {
       "basename": "Bash",
       "path": "04 - Content/Process/Bash.md"
-    },
-    {
-      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
-      "path": "04 - Content/Curl - Enumeración de Sub-Dominios y V.Host.md"
-    },
-    {
-      "basename": "objetivos",
-      "path": "04 - Content/Process/objetivos.md"
-    },
-    {
-      "basename": "Operational Tasks",
-      "path": "04 - Content/Process/Operational Tasks.md"
     }
   ],
   "omittedPaths": [],
