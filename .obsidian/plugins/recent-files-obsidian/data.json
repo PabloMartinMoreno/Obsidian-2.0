@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "Cross-Site Scripting (XSS) moc",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
       "basename": "JavaScript Deobfuscation moc",
       "path": "04 - Content/Process/JavaScript Deobfuscation moc.md"
     },
     {
-      "basename": "deobfuscacion simple",
-      "path": "04 - Content/Process/deobfuscacion simple.md"
+      "basename": "deobfuscation simple",
+      "path": "04 - Content/Process/deobfuscation simple.md"
     },
     {
       "basename": "Detectar tipo de codificacion",
@@ -27,10 +39,6 @@
     {
       "basename": "Code Obfuscation",
       "path": "04 - Content/Process/Code Obfuscation.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Information Gathering",
@@ -191,14 +199,6 @@
     {
       "basename": "nslookup",
       "path": "04 - Content/Process/nslookup.md"
-    },
-    {
-      "basename": "Whois",
-      "path": "04 - Content/Process/Whois.md"
-    },
-    {
-      "basename": "Web Technology Fingerprinting",
-      "path": "04 - Content/Web Technology Fingerprinting.md"
     }
   ],
   "omittedPaths": [],

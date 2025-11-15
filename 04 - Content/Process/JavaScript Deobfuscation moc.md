@@ -5,7 +5,7 @@
 [[Advance Obfuscation]]
 [[Deobfuscation]]
 
-## Deobfuscation Examples
+## Herramientas
 
-[[deobfuscacion simple]]
+[[deobfuscation simple]]
 [[Detectar tipo de codificacion]]
