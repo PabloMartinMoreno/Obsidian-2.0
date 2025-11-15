@@ -5,6 +5,14 @@
       "path": "04 - Content/Process/JavaScript Deobfuscation moc.md"
     },
     {
+      "basename": "deobfuscacion simple",
+      "path": "04 - Content/Process/deobfuscacion simple.md"
+    },
+    {
+      "basename": "Detectar tipo de codificacion",
+      "path": "04 - Content/Process/Detectar tipo de codificacion.md"
+    },
+    {
       "basename": "Deobfuscation",
       "path": "04 - Content/Process/Deobfuscation.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "Web Technology Fingerprinting",
       "path": "04 - Content/Web Technology Fingerprinting.md"
-    },
-    {
-      "basename": "FeroxBuster",
-      "path": "04 - Content/Process/FeroxBuster.md"
-    },
-    {
-      "basename": "Bash",
-      "path": "04 - Content/Process/Bash.md"
     }
   ],
   "omittedPaths": [],
