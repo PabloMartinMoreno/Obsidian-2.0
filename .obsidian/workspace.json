@@ -265,10 +265,10 @@
   },
   "active": "cab25dad22da0dfe",
   "lastOpenFiles": [
-    "04 - Content/Process/JavaScript Deobfuscation.md",
-    "04 - Content/Process/CWES.md",
-    "04 - Content/ffuf.md",
     "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/CWES.md",
+    "04 - Content/Process/JavaScript Deobfuscation.md",
+    "04 - Content/ffuf.md",
     "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Web Fuzzing.md",
     "04 - Content/Process/API Fuzzing.md",
