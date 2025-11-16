@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Stored XSS",
+      "path": "04 - Content/Process/Stored XSS.md"
+    },
+    {
+      "basename": "XSS alert 1 vs window.origin",
+      "path": "04 - Content/Process/XSS alert 1 vs window.origin.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "xss introduction",
+      "path": "04 - Content/Process/xss introduction.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "CWES",
@@ -187,18 +199,6 @@
     {
       "basename": "dnsenum",
       "path": "04 - Content/Process/dnsenum.md"
-    },
-    {
-      "basename": "dnsrecon",
-      "path": "04 - Content/Process/dnsrecon.md"
-    },
-    {
-      "basename": "nmap",
-      "path": "04 - Content/nmap.md"
-    },
-    {
-      "basename": "nslookup",
-      "path": "04 - Content/Process/nslookup.md"
     }
   ],
   "omittedPaths": [],

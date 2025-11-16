@@ -1,0 +1,2 @@
+[[xss introduction]]
+[[Stored XSS]]
