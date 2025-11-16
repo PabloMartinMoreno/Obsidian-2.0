@@ -1,2 +1,4 @@
 [[xss introduction]]
 [[Stored XSS]]
+[[Reflected XSS]]
+[[DOM XSS]]

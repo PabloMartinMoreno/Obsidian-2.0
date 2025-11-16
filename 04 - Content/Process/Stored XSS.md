@@ -54,5 +54,13 @@ Para verificar si el payload es persistente y está almacenado en el back-end, p
 
 ---
 
+```js
+<script>alert(1)</script>
+<script>alert(window.origin)</script>
+<script>alert(document.cookie)</script>
+<script>print()</script>
+<plaintext>
+```
+
 
 [[XSS alert 1 vs window.origin]]

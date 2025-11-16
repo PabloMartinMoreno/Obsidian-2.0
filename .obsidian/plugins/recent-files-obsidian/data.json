@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "DOM XSS",
+      "path": "04 - Content/Process/DOM XSS.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS) moc",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "Reflected XSS",
+      "path": "04 - Content/Process/Reflected XSS.md"
+    },
+    {
       "basename": "Stored XSS",
       "path": "04 - Content/Process/Stored XSS.md"
     },
     {
       "basename": "XSS alert 1 vs window.origin",
       "path": "04 - Content/Process/XSS alert 1 vs window.origin.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS) moc",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
     },
     {
       "basename": "xss introduction",
@@ -191,14 +199,6 @@
     {
       "basename": "Comparación Comandos de Enumeración DNS",
       "path": "04 - Content/Process/Comparación Comandos de Enumeración DNS.md"
-    },
-    {
-      "basename": "host",
-      "path": "04 - Content/Process/host.md"
-    },
-    {
-      "basename": "dnsenum",
-      "path": "04 - Content/Process/dnsenum.md"
     }
   ],
   "omittedPaths": [],
