@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
     },
@@ -51,10 +55,6 @@
     {
       "basename": "Cloud Enumeration",
       "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "JavaScript Deobfuscation",
