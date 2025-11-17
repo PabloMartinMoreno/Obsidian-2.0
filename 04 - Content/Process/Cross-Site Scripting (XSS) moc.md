@@ -5,4 +5,5 @@
 [[XSS Discovery]]
 [[Defacement]]
 [[Phishing XSS]]
+[[Session Hijacking XSS]]
 

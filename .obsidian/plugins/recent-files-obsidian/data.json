@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Phishing XSS",
-      "path": "04 - Content/Process/Phishing XSS.md"
+      "basename": "Session Hijacking XSS",
+      "path": "04 - Content/Process/Session Hijacking XSS.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "Phishing XSS",
+      "path": "04 - Content/Process/Phishing XSS.md"
     },
     {
       "basename": "Defacement",
@@ -195,10 +199,6 @@
     {
       "basename": "Virtual Hosts",
       "path": "04 - Content/Process/Virtual Hosts.md"
-    },
-    {
-      "basename": "dig",
-      "path": "04 - Content/Process/dig.md"
     }
   ],
   "omittedPaths": [],
