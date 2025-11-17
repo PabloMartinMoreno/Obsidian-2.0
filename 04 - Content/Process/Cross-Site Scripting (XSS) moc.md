@@ -6,4 +6,4 @@
 [[Defacement]]
 [[Phishing XSS]]
 [[Session Hijacking XSS]]
-
+[[XSS Prevention]]

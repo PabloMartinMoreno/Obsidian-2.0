@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Session Hijacking XSS.md",
+                "file": "04 - Content/Process/XSS Prevention.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Session Hijacking XSS"
+              "title": "XSS Prevention"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Session Hijacking XSS.md",
+                "file": "04 - Content/Process/XSS Prevention.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Session Hijacking XSS"
+              "title": "Gráfico de XSS Prevention"
             }
           },
           {
@@ -266,7 +266,9 @@
   "active": "cab25dad22da0dfe",
   "lastOpenFiles": [
     "04 - Content/Process/Cross-Site Scripting (XSS) moc.md",
+    "04 - Content/Process/XSS Prevention.md",
     "04 - Content/Process/Session Hijacking XSS.md",
+    "00 - Resources/Pasted image 20251117145604.png",
     "04 - Content/Process/Phishing XSS.md",
     "00 - Resources/Pasted image 20251117140442.png",
     "00 - Resources/Pasted image 20251117140145.png",
@@ -293,14 +295,12 @@
     "00 - Resources/Pasted image 20251115122405.png",
     "00 - Resources/Pasted image 20251115122357.png",
     "04 - Content/Process/Basic Obfuscation.md",
-    "00 - Resources/Pasted image 20251115122011.png",
     "04 - Content/Process/Code Obfuscation.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Reverse Engineering.md",
     "03 - Tertiary Categories/Cloud Enumeration.md",
     "04 - Content/Process/JavaScript Deobfuscation.md",
     "04 - Content/ffuf.md",
-    "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Sin título.base",
     "Metasploit multi",
     "LXC ",

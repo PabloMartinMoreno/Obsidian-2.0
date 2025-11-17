@@ -23,7 +23,7 @@ Una vulnerabilidad Blind XSS ocurre cuando el payload se ejecuta en una página 
 Vamos a analizar la aplicación ubicada en **/hijacking**.
 Vemos un formulario de registro con varios campos, así que enviemos datos de prueba:
 
-*(Imagen del formulario de registro)*
+![[Pasted image 20251117145604.png]]
 
 Después de enviarlo, el sitio muestra:
 
@@ -181,4 +181,3 @@ Y obtenemos acceso como el administrador:
 
 ---
 
-Si querés, puedo traducir también la última parte del módulo o ayudarte a hacer un resumen corto de todo el tema.

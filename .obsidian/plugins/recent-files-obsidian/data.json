@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Session Hijacking XSS",
-      "path": "04 - Content/Process/Session Hijacking XSS.md"
+      "basename": "XSS Prevention",
+      "path": "04 - Content/Process/XSS Prevention.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "Session Hijacking XSS",
+      "path": "04 - Content/Process/Session Hijacking XSS.md"
     },
     {
       "basename": "Phishing XSS",
@@ -195,10 +199,6 @@
     {
       "basename": "Curl - Fuzzing Parámetros y Valores",
       "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
-    },
-    {
-      "basename": "Virtual Hosts",
-      "path": "04 - Content/Process/Virtual Hosts.md"
     }
   ],
   "omittedPaths": [],
