@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "XSS Discovery",
-      "path": "04 - Content/Process/XSS Discovery.md"
+      "basename": "Phishing XSS",
+      "path": "04 - Content/Process/Phishing XSS.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "Defacement",
+      "path": "04 - Content/Process/Defacement.md"
+    },
+    {
+      "basename": "XSS Discovery",
+      "path": "04 - Content/Process/XSS Discovery.md"
     },
     {
       "basename": "DOM XSS",
@@ -191,14 +199,6 @@
     {
       "basename": "dig",
       "path": "04 - Content/Process/dig.md"
-    },
-    {
-      "basename": "Transferencias de Zona DNS",
-      "path": "04 - Content/Process/Transferencias de Zona DNS.md"
-    },
-    {
-      "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
-      "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
     }
   ],
   "omittedPaths": [],
