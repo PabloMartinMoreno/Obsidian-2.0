@@ -2,3 +2,4 @@
 [[Stored XSS]]
 [[Reflected XSS]]
 [[DOM XSS]]
+[[XSS Discovery]]

@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "DOM XSS",
-      "path": "04 - Content/Process/DOM XSS.md"
+      "basename": "XSS Discovery",
+      "path": "04 - Content/Process/XSS Discovery.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
     },
     {
-      "basename": "Reflected XSS",
-      "path": "04 - Content/Process/Reflected XSS.md"
+      "basename": "DOM XSS",
+      "path": "04 - Content/Process/DOM XSS.md"
     },
     {
       "basename": "Stored XSS",
       "path": "04 - Content/Process/Stored XSS.md"
+    },
+    {
+      "basename": "Reflected XSS",
+      "path": "04 - Content/Process/Reflected XSS.md"
     },
     {
       "basename": "XSS alert 1 vs window.origin",
@@ -195,10 +199,6 @@
     {
       "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
       "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
-    },
-    {
-      "basename": "Comparación Comandos de Enumeración DNS",
-      "path": "04 - Content/Process/Comparación Comandos de Enumeración DNS.md"
     }
   ],
   "omittedPaths": [],
