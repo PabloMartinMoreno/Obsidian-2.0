@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Blockchain",
+      "path": "04 - Content/Process/Blockchain.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
       "path": "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md"
-    },
-    {
-      "basename": "Curl - Fuzzing Parámetros y Valores",
-      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
     }
   ],
   "omittedPaths": [],
