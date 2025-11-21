@@ -24,3 +24,15 @@ Payload:
 * El payload accede al árbol DOM y recupera `document.cookie`; cuando el navegador procesa la entrada se considera un nuevo DOM y el JavaScript se ejecuta, mostrando la cookie en un popup.
 * Un atacante puede usar esto para robar sesiones (enviar la cookie a sí mismo) y luego intentar autenticarse como la víctima.
 * El mismo principio permite realizar otros tipos de ataques contra usuarios de la aplicación.
+
+
+
+
+
+
+
+
+```js
+<script>alert(window.origin)</script>
+
+```

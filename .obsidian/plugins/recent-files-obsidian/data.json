@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Session Hijacking XSS",
-      "path": "04 - Content/Process/Session Hijacking XSS.md"
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Stored XSS",
+      "path": "04 - Content/Process/Stored XSS.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Session Hijacking XSS",
+      "path": "04 - Content/Process/Session Hijacking XSS.md"
     },
     {
       "basename": "XSS Prevention",
@@ -15,14 +31,6 @@
     {
       "basename": "xss introduction",
       "path": "04 - Content/Process/xss introduction.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Blockchain",
@@ -45,20 +53,12 @@
       "path": "04 - Content/Process/DOM XSS.md"
     },
     {
-      "basename": "Stored XSS",
-      "path": "04 - Content/Process/Stored XSS.md"
-    },
-    {
       "basename": "Reflected XSS",
       "path": "04 - Content/Process/Reflected XSS.md"
     },
     {
       "basename": "XSS alert 1 vs window.origin",
       "path": "04 - Content/Process/XSS alert 1 vs window.origin.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "JavaScript Deobfuscation moc",
