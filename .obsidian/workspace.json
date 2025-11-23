@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Penetration Test"
+              "title": "Cross-Site Scripting (XSS)"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Gráfico de Cross-Site Scripting (XSS)"
             }
           },
           {
@@ -265,8 +265,8 @@
   },
   "active": "01a905d247538f27",
   "lastOpenFiles": [
-    "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/Stored XSS.md",
     "04 - Content/Process/Cross-Site Scripting (XSS) moc.md",
     "04 - Content/Process/CWES.md",
