@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "XSS PortSwigger",
+      "path": "04 - Content/Process/XSS PortSwigger.md"
+    },
+    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "curl",
       "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "robots.txt",
-      "path": "04 - Content/Process/robots.txt.md"
     }
   ],
   "omittedPaths": [],

