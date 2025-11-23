@@ -5,8 +5,20 @@
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Stored XSS",
@@ -87,10 +99,6 @@
     {
       "basename": "Code Obfuscation",
       "path": "04 - Content/Process/Code Obfuscation.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Reverse Engineering",
@@ -191,14 +199,6 @@
     {
       "basename": "robots.txt",
       "path": "04 - Content/Process/robots.txt.md"
-    },
-    {
-      "basename": "Crawling",
-      "path": "04 - Content/Process/Crawling.md"
-    },
-    {
-      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
-      "path": "04 - Content/Curl - Enumeración Pasiva de Sub-Dominios.md"
     }
   ],
   "omittedPaths": [],
