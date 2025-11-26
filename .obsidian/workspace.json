@@ -21,8 +21,21 @@
               "icon": "lucide-file",
               "title": "Cross-Site Scripting (XSS)"
             }
+          },
+          {
+            "id": "79b590ac1fd42666",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "Registro de cambios 1.10.6"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -141,7 +154,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +224,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Cross-Site Scripting (XSS)"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -263,11 +275,11 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "01a905d247538f27",
+  "active": "79b590ac1fd42666",
   "lastOpenFiles": [
-    "04 - Content/Process/XSS PortSwigger.md",
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
+    "04 - Content/Process/XSS PortSwigger.md",
     "04 - Content/Process/Web Exploitation.md",
     "02 - Secondary Categories/Exploitation.md",
     "02 - Secondary Categories/Information Gathering.md",

@@ -1,16 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "XSS PortSwigger",
       "path": "04 - Content/Process/XSS PortSwigger.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Web Exploitation",
