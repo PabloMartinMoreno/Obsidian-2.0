@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+      "basename": "Subverting Query Logic",
+      "path": "04 - Content/Process/Subverting Query Logic.md"
+    },
+    {
+      "basename": "SQL Injection Fundamentals",
+      "path": "04 - Content/Process/SQL Injection Fundamentals.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "XSS PortSwigger",
@@ -31,10 +43,6 @@
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Session Hijacking XSS",
@@ -191,14 +199,6 @@
     {
       "basename": "ReconSpider.py",
       "path": "04 - Content/Process/ReconSpider.py.md"
-    },
-    {
-      "basename": "Creepy Crawlies",
-      "path": "04 - Content/Process/Creepy Crawlies.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
     }
   ],
   "omittedPaths": [],
