@@ -1,12 +1,8 @@
 {
   "recentFiles": [
     {
-      "basename": "Subverting Query Logic",
-      "path": "04 - Content/Process/Subverting Query Logic.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "Union Clause",
+      "path": "04 - Content/Process/Union Clause.md"
     },
     {
       "basename": "SQL Injection Fundamentals",
@@ -15,6 +11,14 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Subverting Query Logic",
+      "path": "04 - Content/Process/Subverting Query Logic.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
@@ -195,10 +199,6 @@
     {
       "basename": "Fuzzing Subdomain & Virtual Host",
       "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
-    },
-    {
-      "basename": "ReconSpider.py",
-      "path": "04 - Content/Process/ReconSpider.py.md"
     }
   ],
   "omittedPaths": [],
