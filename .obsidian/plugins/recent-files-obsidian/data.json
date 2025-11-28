@@ -5,16 +5,16 @@
       "path": "04 - Content/Process/Subverting Query Logic.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "SQL Injection Fundamentals",
       "path": "04 - Content/Process/SQL Injection Fundamentals.md"
     },
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
