@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Union Clause",
-      "path": "04 - Content/Process/Union Clause.md"
+      "basename": "SQLI Reading Files",
+      "path": "04 - Content/Process/SQLI Reading Files.md"
     },
     {
       "basename": "SQL Injection Fundamentals",
       "path": "04 - Content/Process/SQL Injection Fundamentals.md"
+    },
+    {
+      "basename": "Union Clause",
+      "path": "04 - Content/Process/Union Clause.md"
     },
     {
       "basename": "CWES",
@@ -195,10 +199,6 @@
     {
       "basename": "Passive Subdomain Enumeration",
       "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Fuzzing Subdomain & Virtual Host",
-      "path": "04 - Content/Fuzzing Subdomain & Virtual Host.md"
     }
   ],
   "omittedPaths": [],

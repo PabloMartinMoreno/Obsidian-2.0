@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Union Clause.md",
+                "file": "04 - Content/Process/SQLI Reading Files.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Union Clause"
+              "title": "SQLI Reading Files"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Union Clause.md",
+                "file": "04 - Content/Process/SQLI Reading Files.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Union Clause"
+              "title": "Gráfico de SQLI Reading Files"
             }
           },
           {
@@ -266,6 +266,7 @@
   "active": "7fa33b45397ec1c2",
   "lastOpenFiles": [
     "04 - Content/Process/SQL Injection Fundamentals.md",
+    "04 - Content/Process/SQLI Reading Files.md",
     "04 - Content/Process/Union Clause.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Subverting Query Logic.md",
@@ -300,7 +301,6 @@
     "04 - Content/Process/JavaScript Deobfuscation moc.md",
     "04 - Content/Process/deobfuscation simple.md",
     "04 - Content/Process/Detectar tipo de codificacion.md",
-    "04 - Content/Process/Deobfuscation.md",
     "04 - Content/Process/Sin título.base",
     "Metasploit multi",
     "LXC ",
