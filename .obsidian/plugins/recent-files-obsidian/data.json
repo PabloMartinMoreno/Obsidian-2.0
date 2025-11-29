@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/SQLI Reading Files.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "SQL Injection Fundamentals",
       "path": "04 - Content/Process/SQL Injection Fundamentals.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "Subverting Query Logic",
       "path": "04 - Content/Process/Subverting Query Logic.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
