@@ -21,8 +21,19 @@
               "icon": "lucide-file",
               "title": "SQLI Reading Files"
             }
+          },
+          {
+            "id": "e91b5dcba73f566c",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nueva pestaña"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -141,7 +152,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/SQLI Reading Files.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +222,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de SQLI Reading Files"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -263,7 +273,7 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "7fa33b45397ec1c2",
+  "active": "e91b5dcba73f566c",
   "lastOpenFiles": [
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/SQLI Reading Files.md",
