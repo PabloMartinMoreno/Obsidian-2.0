@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
       "basename": "SQLI Reading Files",
       "path": "04 - Content/Process/SQLI Reading Files.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "SQL Injection Fundamentals",
