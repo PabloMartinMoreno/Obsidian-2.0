@@ -1,44 +1,64 @@
 {
   "recentFiles": [
     {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Privileged Groups",
-      "path": "04 - Content/Process/Privileged Groups.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
+    },
+    {
+      "basename": "AD - Security Controls Enumeration",
+      "path": "04 - Content/AD - Security Controls Enumeration.md"
+    },
+    {
+      "basename": "AD - Object Permissions Enumeration",
+      "path": "04 - Content/AD - Object Permissions Enumeration.md"
+    },
+    {
+      "basename": "AD - Password Policy Enumeration",
+      "path": "04 - Content/AD - Password Policy Enumeration.md"
+    },
+    {
+      "basename": "AD - Users & Groups Enumeration",
+      "path": "04 - Content/AD - Users & Groups Enumeration.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD - Hosts Enumeration.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Resource Development",
@@ -171,14 +191,6 @@
     {
       "basename": "deobfuscation simple",
       "path": "04 - Content/Process/deobfuscation simple.md"
-    },
-    {
-      "basename": "Detectar tipo de codificacion",
-      "path": "04 - Content/Process/Detectar tipo de codificacion.md"
-    },
-    {
-      "basename": "Deobfuscation",
-      "path": "04 - Content/Process/Deobfuscation.md"
     }
   ],
   "omittedPaths": [],

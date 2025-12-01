@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Linux Post-Exploitation.md",
+                "file": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Linux Post-Exploitation"
+              "title": "Passive Reconnaissance & OSINT"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Linux Post-Exploitation.md",
+                "file": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Linux Post-Exploitation"
+              "title": "Gráfico de Passive Reconnaissance & OSINT"
             }
           },
           {
@@ -265,32 +265,32 @@
   },
   "active": "7fa33b45397ec1c2",
   "lastOpenFiles": [
-    "02 - Secondary Categories/Post-Exploitation.md",
-    "04 - Content/Process/Windows Post-Exploitation.md",
-    "04 - Content/Process/Linux Post-Exploitation.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
     "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Process/NTDS Dumping.md",
-    "04 - Content/Process/LSASS Memory Dumping.md",
-    "04 - Content/Process/SAM & LSA Dumping.md",
-    "04 - Content/Process/Event Log Readers.md",
-    "04 - Content/Process/Print Operators.md",
-    "04 - Content/Process/Hyper-V Administrators.md",
-    "04 - Content/Process/Server Operators.md",
-    "04 - Content/Process/Backup Operators.md",
-    "04 - Content/Process/DnsAdmins.md",
-    "04 - Content/Process/SeTakeOwnershipPrivilege.md",
-    "04 - Content/Process/SeLoadDriverPrivilege.md",
-    "04 - Content/Process/SeBackup & SeRestore.md",
-    "04 - Content/Process/SeDebugPrivilege.md",
-    "04 - Content/Process/SeImpersonate & SeAssignPrimaryToken.md",
-    "04 - Content/Process/DLL Hijacking.md",
-    "04 - Content/Process/Scheduled Task Abuse.md",
-    "04 - Content/Process/AlwaysInstallElevated.md",
-    "04 - Content/Process/Unquoted Service Paths.md",
-    "04 - Content/Process/Weak Service Permissions.md",
-    "04 - Content/Process/Windows Credential Hunting.md",
-    "04 - Content/Process/Security.md",
-    "04 - Content/Process/Processes & Programs.md",
+    "04 - Content/Process/Windows Post-Exploitation.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
+    "04 - Content/Process/Linux Post-Exploitation.md",
+    "04 - Content/Process/Processes & Services.md",
+    "04 - Content/Process/Programs.md",
+    "04 - Content/Process/File System.md",
+    "04 - Content/Process/Network.md",
+    "04 - Content/Process/Operating System & Architecture.md",
+    "04 - Content/Process/Linux PrivEsc Payloads.md",
+    "04 - Content/Process/Linux Credential Hunting.md",
+    "04 - Content/Process/Wildcard Injection.md",
+    "04 - Content/Process/Tmux Session Hijacking.md",
+    "04 - Content/Process/SUID & SGID Binaries.md",
+    "04 - Content/Process/Vulnerable Sudo Versions.md",
+    "04 - Content/Process/LD_PRELOAD & LD_LIBRARY_PATH.md",
+    "04 - Content/Process/Sudo Abuse.md",
+    "04 - Content/Process/Shared Object Hijacking.md",
+    "04 - Content/Process/Python Library Hijacking.md",
+    "04 - Content/Process/PwnKit.md",
+    "04 - Content/Process/Shadow Group.md",
+    "04 - Content/Process/LXC -LXD Group.md",
+    "04 - Content/Process/Docker Group.md",
+    "04 - Content/Process/Disk Group.md",
     "00 - Resources/Pasted image 20251126135617.png",
     "00 - Resources/Pasted image 20251126135612.png",
     "00 - Resources/Pasted image 20251126135557.png",
