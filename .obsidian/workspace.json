@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Web Exploitation.md",
+                "file": "04 - Content/Directory & Page Fuzzing.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Exploitation"
+              "title": "Directory & Page Fuzzing"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Web Exploitation.md",
+                "file": "04 - Content/Directory & Page Fuzzing.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Web Exploitation"
+              "title": "Gráfico de Directory & Page Fuzzing"
             }
           },
           {
@@ -265,10 +265,18 @@
   },
   "active": "7fa33b45397ec1c2",
   "lastOpenFiles": [
-    "02 - Secondary Categories/Exploitation.md",
-    "01 - Primary Categories/Penetration Test.md",
-    "02 - Secondary Categories/Information Gathering.md",
+    "04 - Content/ffuf.md",
+    "04 - Content/Directory & Page Fuzzing.md",
     "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Process/FeroxBuster.md",
+    "04 - Content/Process/gobuster.md",
+    "04 - Content/DNS Enumeration (53).md",
+    "04 - Content/Google Dorking.md",
+    "04 - Content/Passive Subdomain Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Process/Web Exploitation.md",
     "04 - Content/Process/SQLI Reading Files.md",
     "04 - Content/Process/SQL Injection Fundamentals.md",
     "04 - Content/Process/Union Clause.md",
@@ -283,7 +291,6 @@
     "00 - Resources/Pasted image 20251126135330.png",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/XSS PortSwigger.md",
-    "04 - Content/Process/Web Exploitation.md",
     "04 - Content/Process/Stored XSS.md",
     "04 - Content/Process/Cross-Site Scripting (XSS) moc.md",
     "04 - Content/Process/Session Hijacking XSS.md",
@@ -294,13 +301,6 @@
     "04 - Content/Process/Phishing XSS.md",
     "00 - Resources/Pasted image 20251117140442.png",
     "00 - Resources/Pasted image 20251117140145.png",
-    "04 - Content/Process/Defacement.md",
-    "04 - Content/Process/XSS Discovery.md",
-    "04 - Content/Process/DOM XSS.md",
-    "04 - Content/Process/Reflected XSS.md",
-    "04 - Content/Process/XSS alert 1 vs window.origin.md",
-    "04 - Content/Process/JavaScript Deobfuscation moc.md",
-    "04 - Content/Process/deobfuscation simple.md",
     "04 - Content/Process/Sin título.base",
     "Metasploit multi",
     "LXC ",
