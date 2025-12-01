@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
-      "basename": "Privileged Groups",
-      "path": "04 - Content/Process/Privileged Groups.md"
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     },
     {
       "basename": "Post-Exploitation",
       "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Privileged Groups",
+      "path": "04 - Content/Process/Privileged Groups.md"
     },
     {
       "basename": "Exploitation",
@@ -35,10 +39,6 @@
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     },
     {
       "basename": "Resource Development",

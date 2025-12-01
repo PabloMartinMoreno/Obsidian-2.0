@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Windows Post-Exploitation.md",
+                "file": "04 - Content/Process/Linux Post-Exploitation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Windows Post-Exploitation"
+              "title": "Linux Post-Exploitation"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Windows Post-Exploitation.md",
+                "file": "04 - Content/Process/Linux Post-Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Windows Post-Exploitation"
+              "title": "Gráfico de Linux Post-Exploitation"
             }
           },
           {
@@ -265,8 +265,11 @@
   },
   "active": "7fa33b45397ec1c2",
   "lastOpenFiles": [
-    "04 - Content/Process/NTDS Dumping.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
     "04 - Content/Process/Windows Post-Exploitation.md",
+    "04 - Content/Process/Linux Post-Exploitation.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/NTDS Dumping.md",
     "04 - Content/Process/LSASS Memory Dumping.md",
     "04 - Content/Process/SAM & LSA Dumping.md",
     "04 - Content/Process/Event Log Readers.md",
@@ -288,9 +291,6 @@
     "04 - Content/Process/Windows Credential Hunting.md",
     "04 - Content/Process/Security.md",
     "04 - Content/Process/Processes & Programs.md",
-    "04 - Content/Process/Network.md",
-    "04 - Content/Process/Users & Groups.md",
-    "04 - Content/Process/Windows Version Exploits.md",
     "00 - Resources/Pasted image 20251126135617.png",
     "00 - Resources/Pasted image 20251126135612.png",
     "00 - Resources/Pasted image 20251126135557.png",
