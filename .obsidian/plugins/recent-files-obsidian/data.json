@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "SQLI Reading Files",
-      "path": "04 - Content/Process/SQLI Reading Files.md"
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "SQLI Reading Files",
+      "path": "04 - Content/Process/SQLI Reading Files.md"
     },
     {
       "basename": "SQL Injection Fundamentals",
@@ -31,18 +47,6 @@
     {
       "basename": "XSS PortSwigger",
       "path": "04 - Content/Process/XSS PortSwigger.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Stored XSS",
@@ -155,10 +159,6 @@
     {
       "basename": "Filtrado de salida de fuzzing",
       "path": "04 - Content/Process/Filtrado de salida de fuzzing.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
