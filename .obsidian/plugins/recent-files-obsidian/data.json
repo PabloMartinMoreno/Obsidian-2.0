@@ -1,8 +1,60 @@
 {
   "recentFiles": [
     {
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+    },
+    {
+      "basename": "Network",
+      "path": "04 - Content/Process/Network.md"
+    },
+    {
+      "basename": "Users & Groups",
+      "path": "04 - Content/Process/Users & Groups.md"
+    },
+    {
+      "basename": "DnsAdmins",
+      "path": "04 - Content/Process/DnsAdmins.md"
+    },
+    {
+      "basename": "Backup Operators",
+      "path": "04 - Content/Process/Backup Operators.md"
+    },
+    {
+      "basename": "Privileged Groups",
+      "path": "04 - Content/Process/Privileged Groups.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Resource Development",
+      "path": "04 - Content/Process/Resource Development.md"
+    },
+    {
+      "basename": "Operational Tasks",
+      "path": "04 - Content/Process/Operational Tasks.md"
+    },
+    {
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
+    },
+    {
+      "basename": "Tunneling",
+      "path": "04 - Content/Process/Tunneling.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Information Gathering",
@@ -39,10 +91,6 @@
     {
       "basename": "Passive Subdomain Enumeration",
       "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Web Exploitation",
@@ -151,54 +199,6 @@
     {
       "basename": "Code Obfuscation",
       "path": "04 - Content/Process/Code Obfuscation.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "JavaScript Deobfuscation",
-      "path": "04 - Content/Process/JavaScript Deobfuscation.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
-    },
-    {
-      "basename": "Web Fuzzing",
-      "path": "04 - Content/Process/Web Fuzzing.md"
-    },
-    {
-      "basename": "API Fuzzing",
-      "path": "04 - Content/Process/API Fuzzing.md"
-    },
-    {
-      "basename": "api_fuzzer",
-      "path": "04 - Content/Process/api_fuzzer.md"
-    },
-    {
-      "basename": "Filtrado de salida de fuzzing",
-      "path": "04 - Content/Process/Filtrado de salida de fuzzing.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Passive Infrastructure Identification.md"
-    },
-    {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/GitHub Dorking.md"
-    },
-    {
-      "basename": "Seclists",
-      "path": "04 - Content/Process/Seclists.md"
     }
   ],
   "omittedPaths": [],

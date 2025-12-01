@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Windows Post-Exploitation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Penetration Test"
+              "title": "Windows Post-Exploitation"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Penetration Test.md",
+                "file": "04 - Content/Process/Windows Post-Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Penetration Test"
+              "title": "Gráfico de Windows Post-Exploitation"
             }
           },
           {
@@ -265,6 +265,20 @@
   },
   "active": "7fa33b45397ec1c2",
   "lastOpenFiles": [
+    "04 - Content/Process/Network.md",
+    "04 - Content/Process/Windows Post-Exploitation.md",
+    "04 - Content/Process/Users & Groups.md",
+    "04 - Content/Process/DnsAdmins.md",
+    "04 - Content/Process/Backup Operators.md",
+    "04 - Content/Process/Privileged Groups.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
+    "04 - Content/Process/Linux Post-Exploitation.md",
+    "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/Resource Development.md",
+    "04 - Content/Process/Operational Tasks.md",
+    "02 - Secondary Categories/Lateral Movement.md",
+    "04 - Content/Process/Tunneling.md",
+    "02 - Secondary Categories/Exploitation.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Directory & Page Fuzzing.md",
@@ -274,14 +288,9 @@
     "04 - Content/DNS Enumeration (53).md",
     "04 - Content/Google Dorking.md",
     "04 - Content/Passive Subdomain Enumeration.md",
-    "01 - Primary Categories/Penetration Test.md",
-    "02 - Secondary Categories/Exploitation.md",
     "04 - Content/Process/Web Exploitation.md",
     "04 - Content/Process/SQLI Reading Files.md",
     "04 - Content/Process/SQL Injection Fundamentals.md",
-    "04 - Content/Process/Union Clause.md",
-    "04 - Content/Process/CWES.md",
-    "04 - Content/Process/Subverting Query Logic.md",
     "00 - Resources/Pasted image 20251126135617.png",
     "00 - Resources/Pasted image 20251126135612.png",
     "00 - Resources/Pasted image 20251126135557.png",
@@ -289,16 +298,7 @@
     "00 - Resources/Pasted image 20251126135506.png",
     "00 - Resources/Pasted image 20251126135454.png",
     "00 - Resources/Pasted image 20251126135330.png",
-    "04 - Content/Process/Cross-Site Scripting (XSS).md",
-    "04 - Content/Process/XSS PortSwigger.md",
-    "04 - Content/Process/Stored XSS.md",
-    "04 - Content/Process/Cross-Site Scripting (XSS) moc.md",
-    "04 - Content/Process/Session Hijacking XSS.md",
-    "04 - Content/Process/XSS Prevention.md",
-    "04 - Content/Process/xss introduction.md",
-    "04 - Content/Process/Blockchain.md",
     "00 - Resources/Pasted image 20251117145604.png",
-    "04 - Content/Process/Phishing XSS.md",
     "00 - Resources/Pasted image 20251117140442.png",
     "00 - Resources/Pasted image 20251117140145.png",
     "04 - Content/Process/Sin título.base",

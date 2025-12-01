@@ -15,6 +15,11 @@ type: Primary Category
 
 ***
 
+## 🔨 [[Resource Development]]
+
+
+***
+
 ## 🔴[[Exploitation]]
 
 
