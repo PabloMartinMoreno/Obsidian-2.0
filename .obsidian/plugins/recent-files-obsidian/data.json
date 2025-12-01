@@ -5,22 +5,6 @@
       "path": "04 - Content/Process/Windows Post-Exploitation.md"
     },
     {
-      "basename": "Network",
-      "path": "04 - Content/Process/Network.md"
-    },
-    {
-      "basename": "Users & Groups",
-      "path": "04 - Content/Process/Users & Groups.md"
-    },
-    {
-      "basename": "DnsAdmins",
-      "path": "04 - Content/Process/DnsAdmins.md"
-    },
-    {
-      "basename": "Backup Operators",
-      "path": "04 - Content/Process/Backup Operators.md"
-    },
-    {
       "basename": "Privileged Groups",
       "path": "04 - Content/Process/Privileged Groups.md"
     },
@@ -29,12 +13,32 @@
       "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     },
     {
       "basename": "Resource Development",
@@ -51,18 +55,6 @@
     {
       "basename": "Tunneling",
       "path": "04 - Content/Process/Tunneling.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Directory & Page Fuzzing",
@@ -187,18 +179,6 @@
     {
       "basename": "Deobfuscation",
       "path": "04 - Content/Process/Deobfuscation.md"
-    },
-    {
-      "basename": "Advance Obfuscation",
-      "path": "04 - Content/Process/Advance Obfuscation.md"
-    },
-    {
-      "basename": "Basic Obfuscation",
-      "path": "04 - Content/Process/Basic Obfuscation.md"
-    },
-    {
-      "basename": "Code Obfuscation",
-      "path": "04 - Content/Process/Code Obfuscation.md"
     }
   ],
   "omittedPaths": [],
