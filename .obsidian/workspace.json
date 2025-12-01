@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Directory & Page Fuzzing.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Directory & Page Fuzzing"
+              "title": "Penetration Test"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Directory & Page Fuzzing.md",
+                "file": "01 - Primary Categories/Penetration Test.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Directory & Page Fuzzing"
+              "title": "Gráfico de Penetration Test"
             }
           },
           {
@@ -265,15 +265,15 @@
   },
   "active": "7fa33b45397ec1c2",
   "lastOpenFiles": [
-    "04 - Content/ffuf.md",
-    "04 - Content/Directory & Page Fuzzing.md",
+    "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Directory & Page Fuzzing.md",
+    "04 - Content/ffuf.md",
     "04 - Content/Process/FeroxBuster.md",
     "04 - Content/Process/gobuster.md",
     "04 - Content/DNS Enumeration (53).md",
     "04 - Content/Google Dorking.md",
     "04 - Content/Passive Subdomain Enumeration.md",
-    "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
     "02 - Secondary Categories/Exploitation.md",
     "04 - Content/Process/Web Exploitation.md",

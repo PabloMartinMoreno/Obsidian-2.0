@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
       "basename": "Directory & Page Fuzzing",
       "path": "04 - Content/Directory & Page Fuzzing.md"
     },
     {
       "basename": "ffuf",
       "path": "04 - Content/ffuf.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "FeroxBuster",
@@ -31,14 +39,6 @@
     {
       "basename": "Passive Subdomain Enumeration",
       "path": "04 - Content/Passive Subdomain Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Exploitation",
