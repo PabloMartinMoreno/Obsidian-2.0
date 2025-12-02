@@ -5,6 +5,10 @@
       "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
+      "basename": "Resource Development",
+      "path": "04 - Content/Process/Resource Development.md"
+    },
+    {
       "basename": "Lateral Movement",
       "path": "02 - Secondary Categories/Lateral Movement.md"
     },
@@ -51,10 +55,6 @@
     {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Resource Development",
-      "path": "04 - Content/Process/Resource Development.md"
     },
     {
       "basename": "Information Gathering",
