@@ -15,7 +15,7 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Web Technology Fingerprinting]]"
+  - "[[Fingerprinting Web Technologies]]"
 ---
 # Tomcat Enumeration
 
@@ -26,7 +26,7 @@ linked:
 | **Action**                                               | **Description**                                                                                                                                           |
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `curl -s http://<tomcat-root>:8080/docs/ \| grep Tomcat` | **(CURL, GREP)** Se revela la versión de Tomcat. La versión también puede identificarse frecuentemente a partir del encabezado de respuesta del servidor. |
-| [[Web Technology Fingerprinting]]                               | Herramientas como Wappalyzer y WhatWeb pueden tener dificultades para identificar Tomcat de forma efectiva.                                               |
+| [[Fingerprinting Web Technologies]]                               | Herramientas como Wappalyzer y WhatWeb pueden tener dificultades para identificar Tomcat de forma efectiva.                                               |
 | Check `/docs` directory                                  | Acceder directamente al directorio `/docs` para confirmar la versión de Tomcat.                                                                           |
 
 ## Overview

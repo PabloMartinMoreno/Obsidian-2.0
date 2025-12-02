@@ -20,7 +20,7 @@ type: CheatSheet
 linked:
   - "[[ffuf]]"
   - "[[gobuster]]"
-  - "[[FeroxBuster]]"
+  - "[[feroxbuster]]"
   - "[[Seclists]]"
 ---
 # Fuzzing de Paginas y Directorios

@@ -1,6 +1,90 @@
 {
   "recentFiles": [
     {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Interacting with SMB from Windows",
+      "path": "04 - Content/Interacting with SMB from Windows.md"
+    },
+    {
+      "basename": "Windows LOTL Port Scanning",
+      "path": "04 - Content/Windows LOTL Port Scanning.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "rustscan",
+      "path": "04 - Content/Process/rustscan.md"
+    },
+    {
+      "basename": "git-dumper",
+      "path": "04 - Content/git-dumper.md"
+    },
+    {
+      "basename": "nikto",
+      "path": "04 - Content/Process/nikto.md"
+    },
+    {
+      "basename": "feroxbuster",
+      "path": "04 - Content/Process/feroxbuster.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
+    },
+    {
+      "basename": "robots.txt",
+      "path": "04 - Content/Process/robots.txt.md"
+    },
+    {
+      "basename": "Well-Known URIs",
+      "path": "04 - Content/Process/Well-Known URIs.md"
+    },
+    {
+      "basename": "Fingerprinting Web Technologies",
+      "path": "04 - Content/Fingerprinting Web Technologies.md"
+    },
+    {
+      "basename": "Crawling",
+      "path": "04 - Content/Process/Crawling.md"
+    },
+    {
+      "basename": "Fuzzing Subdomains & Virtual Hosts",
+      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
+    },
+    {
+      "basename": "Fuzzing Parameters & Values",
+      "path": "04 - Content/Fuzzing Parameters & Values.md"
+    },
+    {
+      "basename": "Fuzzing Directories & Pages",
+      "path": "04 - Content/Fuzzing Directories & Pages.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+    },
+    {
       "basename": "Linux Post-Exploitation",
       "path": "04 - Content/Process/Linux Post-Exploitation.md"
     },
@@ -33,22 +117,6 @@
       "path": "04 - Content/Process/Linux - System & Kernel Enumeration.md"
     },
     {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
       "basename": "Subdomains Passive Enumeration",
       "path": "04 - Content/Subdomains Passive Enumeration.md"
     },
@@ -73,10 +141,6 @@
       "path": "04 - Content/Google Dorking.md"
     },
     {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
       "basename": "AD - Security Controls Enumeration",
       "path": "04 - Content/AD - Security Controls Enumeration.md"
     },
@@ -95,10 +159,6 @@
     {
       "basename": "AD - Hosts Enumeration",
       "path": "04 - Content/AD - Hosts Enumeration.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Active Directory Exploitation",
@@ -121,16 +181,8 @@
       "path": "04 - Content/Process/Tunneling.md"
     },
     {
-      "basename": "Directory & Page Fuzzing",
-      "path": "04 - Content/Directory & Page Fuzzing.md"
-    },
-    {
       "basename": "ffuf",
       "path": "04 - Content/ffuf.md"
-    },
-    {
-      "basename": "FeroxBuster",
-      "path": "04 - Content/Process/FeroxBuster.md"
     },
     {
       "basename": "gobuster",
@@ -143,62 +195,6 @@
     {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
-      "basename": "SQLI Reading Files",
-      "path": "04 - Content/Process/SQLI Reading Files.md"
-    },
-    {
-      "basename": "SQL Injection Fundamentals",
-      "path": "04 - Content/Process/SQL Injection Fundamentals.md"
-    },
-    {
-      "basename": "Union Clause",
-      "path": "04 - Content/Process/Union Clause.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Subverting Query Logic",
-      "path": "04 - Content/Process/Subverting Query Logic.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "XSS PortSwigger",
-      "path": "04 - Content/Process/XSS PortSwigger.md"
-    },
-    {
-      "basename": "Stored XSS",
-      "path": "04 - Content/Process/Stored XSS.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS) moc",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
-    },
-    {
-      "basename": "Session Hijacking XSS",
-      "path": "04 - Content/Process/Session Hijacking XSS.md"
-    },
-    {
-      "basename": "XSS Prevention",
-      "path": "04 - Content/Process/XSS Prevention.md"
-    },
-    {
-      "basename": "xss introduction",
-      "path": "04 - Content/Process/xss introduction.md"
-    },
-    {
-      "basename": "Blockchain",
-      "path": "04 - Content/Process/Blockchain.md"
-    },
-    {
-      "basename": "Phishing XSS",
-      "path": "04 - Content/Process/Phishing XSS.md"
     }
   ],
   "omittedPaths": [],

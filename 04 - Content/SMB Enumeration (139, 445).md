@@ -23,7 +23,7 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[Spidering SMB Shares]]"
-  - "[[Interacting from Windows]]"
+  - "[[04 - Content/Interacting with SMB from Windows]]"
   - "[[RpcClient]]"
 ---
 # Enumeración SMB (139, 445)
@@ -59,7 +59,7 @@ linked:
 ## Artículos Relacionados
 
 - [[Spidering SMB Shares]]: Uso de **NetExec** para buscar archivos en recursos compartidos.
-- [[Interacting from Windows]]: Uso de **PowerShell** y **CMD** para interactuar con recursos SMB.
+- [[04 - Content/Interacting with SMB from Windows]]: Uso de **PowerShell** y **CMD** para interactuar con recursos SMB.
 - [[RpcClient]]: Uso de la herramienta CLI **RpcClient** para enumeración.
 
 ---
