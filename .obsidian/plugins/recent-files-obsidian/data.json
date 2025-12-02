@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+      "basename": "Common Exploitation Tools",
+      "path": "04 - Content/Process/Common Exploitation Tools.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Client-Side Exploitation",
+      "path": "04 - Content/Process/Client-Side Exploitation.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Clickjacking",
+      "path": "04 - Content/Process/Clickjacking.md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "04 - Content/Process/Service Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
       "basename": "Penetration Test",
@@ -15,6 +35,42 @@
     {
       "basename": "Resource Development",
       "path": "04 - Content/Process/Resource Development.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Windows Post-Exploitation",
+      "path": "04 - Content/Process/Windows Post-Exploitation.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
     {
       "basename": "Social Engineering Assets",
@@ -73,40 +129,8 @@
       "path": "04 - Content/Process/NTLM Pass-the-Hash.md"
     },
     {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
       "basename": "Linux Post-Exploitation",
       "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Common Exploitation Tools",
-      "path": "04 - Content/Process/Common Exploitation Tools.md"
     },
     {
       "basename": "searchsploit",
@@ -117,32 +141,12 @@
       "path": "04 - Content/Process/responder.md"
     },
     {
-      "basename": "Client-Side Exploitation",
-      "path": "04 - Content/Process/Client-Side Exploitation.md"
-    },
-    {
       "basename": "Impacket Toolkit",
       "path": "04 - Content/Process/Impacket Toolkit.md"
     },
     {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Service Exploitation",
-      "path": "04 - Content/Process/Service Exploitation.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
       "basename": "Abusing PHP Filters",
       "path": "04 - Content/Process/Abusing PHP Filters.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
     },
     {
       "basename": "Creds",
@@ -195,10 +199,6 @@
     {
       "basename": "Fuzzing Subdomains & Virtual Hosts",
       "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
-    },
-    {
-      "basename": "Fuzzing Parameters & Values",
-      "path": "04 - Content/Fuzzing Parameters & Values.md"
     }
   ],
   "omittedPaths": [],

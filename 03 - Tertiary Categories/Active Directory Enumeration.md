@@ -19,26 +19,34 @@ type: Tertiary Category
 ## 🗺 Domain & Network Discovery
   Identificación de hosts, topología y características generales del dominio.
 
-   - [[AD - Hosts Enumeration]] (Descubrimiento de máquinas unidas al dominio.)
-   - [[AD - Network Layout]] (Mapeo de la estructura de red y subredes.)
-   - [[AD - Domain & Forest Trusts]] (Identificación de relaciones de confianza entre dominios y bosques.)
+- [[AD - Hosts Enumeration]] (Descubrimiento de máquinas unidas al dominio.)
+- [[AD - Network Layout]] (Mapeo de la estructura de red y subredes.)
+- [[AD - Domain & Forest Trusts]] (Identificación de relaciones de confianza entre dominios y bosques.)
+- [[AD - DNS & SRV Records]] (Enumeración de registros DNS específicos de AD como _ldap y _kerberos.)
 
-  ## 🆔 User & Group Intelligence
+
+## 🆔 User & Group Intelligence
   Recopilación de información sobre identidades y sus asociaciones.
 
-   - [[AD - Users & Groups Enumeration]] (Obtención de listas de usuarios, grupos y sus atributos.)
-   - [[AD - Password Policy Enumeration]] (Descubrimiento de la política de contraseñas del dominio.)
+- [[AD - Users & Groups Enumeration]] (Obtención de listas de usuarios, grupos y sus atributos.)
+- [[AD - Password Policy Enumeration]] (Descubrimiento de la política de contraseñas del dominio.)
+- [[AD - LAPS Enumeration]] (Verificar si LAPS está implementado y quién puede leer las contraseñas de administrador local.)
 
-  ## 🔎 Object & Security Auditing
+
+## 🔎 Object & Security Auditing
   Inspección detallada de objetos del directorio y controles de seguridad.
 
-   - [[AD - Object Permissions Enumeration]] (Auditoría de ACLs en objetos AD para identificar configuraciones inseguras.)
-   - [[AD - Security Controls Enumeration]] (Identificación de configuraciones de seguridad, como GPOs o políticas de auditoría.)
+- [[AD - Object Permissions Enumeration]] (Auditoría de ACLs en objetos AD para identificar configuraciones inseguras.)
+- [[AD - Security Controls Enumeration]] (Identificación de configuraciones de seguridad, como GPOs o políticas de auditoría.)
+- [[AD - Certificate Services (AD CS) Enumeration]] (Enumeración de plantillas de certificados vulnerables - CRÍTICO hoy en día.)
+- [[AD - Delegation Enumeration]] (Identificación de computadoras/usuarios con delegación incondicional o restringida.)
+- [[AD - GPO & SYSVOL Enumeration]] (Búsqueda específica de contraseñas en scripts o preferencias de grupo en SYSVOL.)
 
-  ## 🛠 Specialized Tools
+
+## 🛠 Specialized Tools
   Herramientas que automatizan y visualizan la enumeración de Active Directory.
 
-   - [[BloodHound & SharpHound]] (Recolección y visualización de rutas de ataque en AD.)
-
+- [[BloodHound & SharpHound]] (Recolección y visualización de rutas de ataque en AD.)
+- [[PingCastle]] (Herramienta de auditoría de salud y seguridad de AD, excelente para encontrar fallos estructurales.)
 
 ***
