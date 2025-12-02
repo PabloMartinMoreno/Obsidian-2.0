@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "Common Exploitation Tools",
-      "path": "04 - Content/Process/Common Exploitation Tools.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Lateral Movement",
+      "path": "02 - Secondary Categories/Lateral Movement.md"
+    },
+    {
+      "basename": "Windows & Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     },
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Common Exploitation Tools",
+      "path": "04 - Content/Process/Common Exploitation Tools.md"
+    },
+    {
+      "basename": "hashcat",
+      "path": "04 - Content/Process/hashcat.md"
     },
     {
       "basename": "Client-Side Exploitation",
@@ -27,10 +51,6 @@
     {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Resource Development",
@@ -63,10 +83,6 @@
     {
       "basename": "Windows Post-Exploitation",
       "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
       "basename": "Reverse Engineering",
@@ -109,10 +125,6 @@
       "path": "04 - Content/Process/File Transfers.md"
     },
     {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
       "basename": "Tunneling",
       "path": "04 - Content/Process/Tunneling.md"
     },
@@ -121,16 +133,8 @@
       "path": "04 - Content/Process/Pivoting.md"
     },
     {
-      "basename": "Windows & Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
-    },
-    {
       "basename": "NTLM Pass-the-Hash",
       "path": "04 - Content/Process/NTLM Pass-the-Hash.md"
-    },
-    {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     },
     {
       "basename": "searchsploit",
@@ -195,10 +199,6 @@
     {
       "basename": "Crawling",
       "path": "04 - Content/Process/Crawling.md"
-    },
-    {
-      "basename": "Fuzzing Subdomains & Virtual Hosts",
-      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
     }
   ],
   "omittedPaths": [],
