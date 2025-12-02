@@ -38,7 +38,7 @@ linked:
 
 ## Articulos Relacionados
 
-- [[SSH Exploitation (22)]]: Para la explotación de SSH. 
+- [[SSH (22) Exploitation Techniques]]: Para la explotación de SSH. 
 
 ---
 

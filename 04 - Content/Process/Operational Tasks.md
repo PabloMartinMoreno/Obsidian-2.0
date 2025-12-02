@@ -25,4 +25,4 @@ type: Secondary Category
 
 ***
 
-## 🗒️ [[Procedures]]
+## 🗒️ [[Procedures & Methodologies]]

@@ -82,5 +82,4 @@ type: Tertiary Category
 ### Wordlists
   - [[ Seclists]] (Colección de listas para fuzzing de usuarios, contraseñas y directorios.)
 
-
 ***

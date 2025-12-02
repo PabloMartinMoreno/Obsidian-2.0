@@ -9,9 +9,26 @@ type: Secondary Category
 
 ***
 
-## 
+## 🛠 [[Payload & Malware Engineering]]
+  (Creación, compilación y modificación de código malicioso.)
 
-msfvenom, compiladores, obfuscation
+
+***
+
+  ## 👻 [[Evasion & Obfuscation]]
+  (Técnicas para ocultar payloads y herramientas de las defensas.)
+
+
+***
+
+  ## 📡 [[C2 Infrastructure]]
+  (Configuración de la infraestructura de Comando y Control.)
+
+
+***
+
+  ## 🎣 [[Social Engineering Assets]]
+  (Preparación de recursos para ataques de ingeniería social.)
 
 
 ***
