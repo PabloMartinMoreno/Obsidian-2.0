@@ -1,8 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQL Injection Fundamentals",
+      "path": "04 - Content/Process/SQL Injection Fundamentals.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS) moc",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
+    },
+    {
+      "basename": "gobuster",
+      "path": "04 - Content/Process/gobuster.md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Resource Development",
@@ -23,10 +51,6 @@
     {
       "basename": "Linux Post-Exploitation",
       "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Common Exploitation Tools",
@@ -175,30 +199,6 @@
     {
       "basename": "nikto",
       "path": "04 - Content/Process/nikto.md"
-    },
-    {
-      "basename": "feroxbuster",
-      "path": "04 - Content/Process/feroxbuster.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "robots.txt",
-      "path": "04 - Content/Process/robots.txt.md"
-    },
-    {
-      "basename": "Well-Known URIs",
-      "path": "04 - Content/Process/Well-Known URIs.md"
-    },
-    {
-      "basename": "Fingerprinting Web Technologies",
-      "path": "04 - Content/Fingerprinting Web Technologies.md"
-    },
-    {
-      "basename": "Crawling",
-      "path": "04 - Content/Process/Crawling.md"
     }
   ],
   "omittedPaths": [],

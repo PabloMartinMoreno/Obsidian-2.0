@@ -16,6 +16,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[SQL Injection (SQLi)]]"
 ---
 # Comandos SQL
 
@@ -23,51 +24,51 @@ linked:
 
 ## Cheatsheet
 
-### Enumeration
+### Conexión y Gestión de Bases de Datos
 
-|Acción|Descripción|
+|**Comando**|**Descripción**|
 |---|---|
-|`SHOW databases;`|Muestra todas las bases de datos.|
-|`USE <database>;`|Selecciona una de las bases de datos existentes.|
-|`SHOW TABLES;`|Muestra todas las tablas disponibles en la base de datos seleccionada.|
-|`DESCRIBE <table>;`|Muestra todas las columnas y su tipo en la tabla seleccionada.|
-|`SHOW COLUMNS FROM <table>;`|Muestra todas las columnas de la tabla seleccionada.|
+|`mysql -u root -h docker.hackthebox.eu -P 3306 -p`|Login a la base de datos remota.|
+|`SHOW DATABASES;`|Listar bases de datos disponibles.|
+|`USE users;`|Cambiar a la base de datos `users`.|
 
-### SELECT Statement
+### Definición de Datos (DDL) - Tablas
 
-|Comando|Descripción|
+|**Comando**|**Descripción**|
 |---|---|
-|`SELECT * FROM <table>;`|Muestra todas las columnas de la tabla indicada.|
-|`SELECT <column_X>, <column_Y> FROM <table>;`|Muestra algunas columnas específicas de la tabla indicada.|
-|`SELECT * FROM <table> WHERE <column> = "<string>";`|Busca la cadena necesaria en la tabla indicada (filtra por condición).|
+|`SHOW TABLES;`|Listar tablas en la DB actual.|
+|`DESCRIBE logins;`|Ver columnas y propiedades de una tabla.|
+|`CREATE TABLE logins (id INT, ...);`|Crear una tabla nueva.|
+|`DROP TABLE logins;`|Eliminar una tabla.|
+|`ALTER TABLE logins ADD newCol INT;`|Agregar una columna nueva.|
+|`ALTER TABLE logins RENAME COLUMN old TO new;`|Renombrar una columna.|
+|`ALTER TABLE logins MODIFY col DATE;`|Cambiar el tipo de dato de una columna.|
+|`ALTER TABLE logins DROP col;`|Eliminar una columna.|
 
-### INSERT Statement
+### Manipulación de Datos (DML/DQL) - Consultas
 
-|Comando|Descripción|
+|**Comando**|**Descripción**|
 |---|---|
-|`INSERT INTO <table> VALUES (<column_value_1>, <column_value_2>);`|Inserta valores en una tabla. Las columnas se asumen por orden.|
-|`INSERT INTO <table>(<column_X>, <column_Y>) VALUES (<value_X>, <value_Y>);`|Inserta valores para columnas específicas en una tabla. El resto de columnas quedan vacías o con su valor por defecto.|
+|`SELECT * FROM table_name;`|Mostrar todas las columnas.|
+|`SELECT col1, col2 FROM table;`|Mostrar columnas específicas.|
+|`INSERT INTO table VALUES (val1,..);`|Insertar valores.|
+|`UPDATE table SET col1=val1 WHERE <cond>;`|Actualizar valores existentes.|
+|`SELECT * FROM table ORDER BY col1;`|Ordenar resultados.|
+|`SELECT * FROM table ORDER BY col1 DESC;`|Ordenar descendente.|
+|`SELECT * FROM table LIMIT 1, 2;`|Mostrar 2 resultados saltando el primero (offset 1).|
+|`SELECT * FROM table WHERE name LIKE 'adm%';`|Buscar por patrón (wildcard).|
 
-### UPDATE Statement
+### Precedencia de Operadores
 
-|Comando|Descripción|
-|---|---|
-|`UPDATE <table> SET <column_X>=<value_X>, <column_Y>=<value_Y>, ... WHERE <condition>;`|Actualiza un registro específico en la tabla según una condición.|
+```
+División `/`, Multiplicación `*`, Módulo `%`
+Suma `+`, Resta `-`
+Comparación `=`, `>`, `<`, `!=`, `LIKE`
+NOT `!`
+AND `&&`
+OR `||`
+```
 
-### Table Manipulation
+---
 
-|Comando|Descripción|
-|---|---|
-|`DROP <table>;`|Elimina una tabla de la base de datos.|
-|`ALTER TABLE <table> ADD <new-column> <data-type>;`|Agrega una columna a una tabla.|
-|`ALTER TABLE <table> RENAME <new-column> <data-type>;`|Cambia el nombre de una columna de la tabla.|
 
-### Results
-
-|Comando|Descripción|
-|---|---|
-|`<query> ORDER BY <column> <ASC/DESC>`|Ordena el resultado de una consulta por la columna indicada. Si no se especifica, ordena en orden ascendente.|
-|`<query> ORDER BY <column_X> <ASC/DESC>, <column_Y> <ASC/DESC>`|Ordena el resultado por múltiples columnas. El orden importa: la primera columna tiene prioridad.|
-|`<query> LIMIT <number-of-records>`|Limita el resultado de la consulta a un número de registros.|
-|`<query> LIMIT <offset> <number-of-records>`|Limita el resultado a un número de registros empezando desde un índice dado.|
-|`<query> WHERE <column> LIKE 'admin%';`|Usado con `WHERE`. `LIKE` hace coincidencia por patrón: `%` es comodín para cualquier cantidad de caracteres, `_` para un solo carácter.|
