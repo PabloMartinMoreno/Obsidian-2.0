@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
@@ -23,10 +27,6 @@
     {
       "basename": "gobuster",
       "path": "04 - Content/Process/gobuster.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Exploitation",

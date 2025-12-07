@@ -141,7 +141,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/SQL Injection (SQLi).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +211,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de SQL Injection (SQLi)"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -263,15 +262,15 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "7fa33b45397ec1c2",
+  "active": "2b3d8e88aa26b532",
   "lastOpenFiles": [
+    "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/SQL Injection (SQLi).md",
     "04 - Content/Process/SQL Injection Fundamentals.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Cross-Site Scripting (XSS) moc.md",
-    "04 - Content/Process/SQL Injection (SQLi).md",
     "04 - Content/SQL Commands.md",
     "04 - Content/Process/gobuster.md",
-    "01 - Primary Categories/Penetration Test.md",
     "02 - Secondary Categories/Exploitation.md",
     "04 - Content/Process/Resource Development.md",
     "02 - Secondary Categories/Lateral Movement.md",
