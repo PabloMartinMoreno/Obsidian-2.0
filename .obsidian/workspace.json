@@ -141,6 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "04 - Content/Process/SQL Injection (SQLi).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -211,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "title": "Gráfico de SQL Injection (SQLi)"
             }
           },
           {
