@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "XML External Entity (XXE)",
+      "path": "04 - Content/Process/XML External Entity (XXE).md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Web Enumeration",
@@ -15,10 +27,6 @@
     {
       "basename": "Fuzzing Directories & Pages",
       "path": "04 - Content/Fuzzing Directories & Pages.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
@@ -191,14 +199,6 @@
     {
       "basename": "Windows LOTL Port Scanning",
       "path": "04 - Content/Windows LOTL Port Scanning.md"
-    },
-    {
-      "basename": "rustscan",
-      "path": "04 - Content/Process/rustscan.md"
-    },
-    {
-      "basename": "git-dumper",
-      "path": "04 - Content/git-dumper.md"
     }
   ],
   "omittedPaths": [],
