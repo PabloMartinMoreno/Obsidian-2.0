@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/HTML Injection.md",
+                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "HTML Injection"
+              "title": "Cross-Site Scripting (XSS)"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/HTML Injection.md",
+                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de HTML Injection"
+              "title": "Gráfico de Cross-Site Scripting (XSS)"
             }
           },
           {
@@ -265,8 +265,8 @@
   },
   "active": "cbfb37eda7c58fd5",
   "lastOpenFiles": [
-    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/HTML Injection.md",
+    "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Introduction to Web Applications.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Web Requests.md",

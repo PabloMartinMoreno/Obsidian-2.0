@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
       "basename": "HTML Injection",
       "path": "04 - Content/Process/HTML Injection.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "Information Gathering",
