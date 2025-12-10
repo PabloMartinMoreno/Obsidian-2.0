@@ -78,7 +78,7 @@ El script malicioso **se guarda** permanentemente en el servidor (Base de datos,
 1. El servidor guarda el comentario.
 2. Cuando otros usuarios (o el administrador) cargan el post, el servidor sirve el comentario con el script.
 3. El script se ejecuta automáticamente sin que el usuario haga nada extraño.
-    
+
 
 ---
 
