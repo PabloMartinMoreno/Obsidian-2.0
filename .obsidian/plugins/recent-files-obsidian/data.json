@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/HTML Injection.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Introduction to Web Applications",
       "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
