@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+      "basename": "HTML Injection",
+      "path": "04 - Content/Process/HTML Injection.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "Information Gathering",
@@ -35,10 +51,6 @@
     {
       "basename": "SQL Injection Fundamentals",
       "path": "04 - Content/Process/SQL Injection Fundamentals.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS) moc",
@@ -187,18 +199,6 @@
     {
       "basename": "Abusing PHP Filters",
       "path": "04 - Content/Process/Abusing PHP Filters.md"
-    },
-    {
-      "basename": "Creds",
-      "path": "04 - Content/Creds.md"
-    },
-    {
-      "basename": "Interacting with SMB from Windows",
-      "path": "04 - Content/Interacting with SMB from Windows.md"
-    },
-    {
-      "basename": "Windows LOTL Port Scanning",
-      "path": "04 - Content/Windows LOTL Port Scanning.md"
     }
   ],
   "omittedPaths": [],
