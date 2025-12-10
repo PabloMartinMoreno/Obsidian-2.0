@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Fuzzing Directories & Pages",
+      "path": "04 - Content/Fuzzing Directories & Pages.md"
     },
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQL Injection Fundamentals",
@@ -81,20 +97,8 @@
       "path": "04 - Content/Process/Active Directory Exploitation.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
       "basename": "Cloud Enumeration",
       "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
@@ -195,10 +199,6 @@
     {
       "basename": "git-dumper",
       "path": "04 - Content/git-dumper.md"
-    },
-    {
-      "basename": "nikto",
-      "path": "04 - Content/Process/nikto.md"
     }
   ],
   "omittedPaths": [],
