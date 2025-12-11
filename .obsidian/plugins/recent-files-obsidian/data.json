@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
+      "basename": "XML External Entity (XXE)",
+      "path": "04 - Content/Process/XML External Entity (XXE).md"
+    },
+    {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
     },
@@ -27,10 +31,6 @@
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "XML External Entity (XXE)",
-      "path": "04 - Content/Process/XML External Entity (XXE).md"
     },
     {
       "basename": "Host & Network Enumeration",
