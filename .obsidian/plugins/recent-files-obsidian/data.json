@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
+    },
+    {
       "basename": "Subdomains Passive Enumeration",
       "path": "04 - Content/Subdomains Passive Enumeration.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Pivoting",
       "path": "04 - Content/Process/Pivoting.md"
-    },
-    {
-      "basename": "NTLM Pass-the-Hash",
-      "path": "04 - Content/Process/NTLM Pass-the-Hash.md"
     }
   ],
   "omittedPaths": [],
