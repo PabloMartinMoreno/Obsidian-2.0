@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Fuzzing Subdomains & Virtual Hosts",
-      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
+      "basename": "Subdomains Passive Enumeration",
+      "path": "04 - Content/Subdomains Passive Enumeration.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Well-Known URIs",
+      "path": "04 - Content/Process/Well-Known URIs.md"
+    },
+    {
+      "basename": "Fuzzing Parameters & Values",
+      "path": "04 - Content/Fuzzing Parameters & Values.md"
+    },
+    {
+      "basename": "Fuzzing Subdomains & Virtual Hosts",
+      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
     },
     {
       "basename": "Fuzzing Directories & Pages",
@@ -187,18 +199,6 @@
     {
       "basename": "NTLM Pass-the-Hash",
       "path": "04 - Content/Process/NTLM Pass-the-Hash.md"
-    },
-    {
-      "basename": "searchsploit",
-      "path": "04 - Content/Process/searchsploit.md"
-    },
-    {
-      "basename": "responder",
-      "path": "04 - Content/Process/responder.md"
-    },
-    {
-      "basename": "Impacket Toolkit",
-      "path": "04 - Content/Process/Impacket Toolkit.md"
     }
   ],
   "omittedPaths": [],
