@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "examen",
+      "path": "04 - Content/Process/examen.md"
+    },
+    {
       "basename": "curl",
       "path": "04 - Content/curl.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Tunneling",
       "path": "04 - Content/Process/Tunneling.md"
-    },
-    {
-      "basename": "Pivoting",
-      "path": "04 - Content/Process/Pivoting.md"
     }
   ],
   "omittedPaths": [],
