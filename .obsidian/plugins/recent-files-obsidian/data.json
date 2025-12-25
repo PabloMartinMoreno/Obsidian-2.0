@@ -1,24 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "examen",
-      "path": "04 - Content/Process/examen.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
-    },
-    {
       "basename": "Subdomains Passive Enumeration",
       "path": "04 - Content/Subdomains Passive Enumeration.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Process/HTTP.md"
+    },
+    {
+      "basename": "Códigos de Estado HTTP",
+      "path": "04 - Content/Process/Códigos de Estado HTTP.md"
+    },
+    {
+      "basename": "Cookies y Sesiones",
+      "path": "04 - Content/Process/Cookies y Sesiones.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "examen",
+      "path": "04 - Content/Process/examen.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
     },
     {
       "basename": "Well-Known URIs",
@@ -35,10 +51,6 @@
     {
       "basename": "Fuzzing Directories & Pages",
       "path": "04 - Content/Fuzzing Directories & Pages.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
@@ -187,18 +199,6 @@
     {
       "basename": "Credentials Cracking",
       "path": "04 - Content/Process/Credentials Cracking.md"
-    },
-    {
-      "basename": "Shells",
-      "path": "04 - Content/Process/Shells.md"
-    },
-    {
-      "basename": "File Transfers",
-      "path": "04 - Content/Process/File Transfers.md"
-    },
-    {
-      "basename": "Tunneling",
-      "path": "04 - Content/Process/Tunneling.md"
     }
   ],
   "omittedPaths": [],
