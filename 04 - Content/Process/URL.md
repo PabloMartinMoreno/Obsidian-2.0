@@ -57,3 +57,9 @@ Las URLs solo pueden contener ciertos caracteres (letras, números y algunos sí
 
 
 ---
+
+**Notas relacionadas:**
+
+- [[DNS: El listín telefónico de Internet]]
+- [[HTTP]]
+- [[Dominios y TLDs]]

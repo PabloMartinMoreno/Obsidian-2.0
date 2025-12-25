@@ -1,24 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
+      "basename": "HTTPS",
+      "path": "04 - Content/Process/HTTPS.md"
+    },
+    {
+      "basename": "Criptografía Simétrica vs. Asimétrica",
+      "path": "04 - Content/Process/Criptografía Simétrica vs. Asimétrica.md"
     },
     {
       "basename": "HTTP",
       "path": "04 - Content/Process/HTTP.md"
     },
     {
-      "basename": "Curl - Fuzzing Parámetros y Valores",
-      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
+      "basename": "http-flow",
+      "path": "04 - Content/Process/http-flow.md"
     },
     {
       "basename": "URL",
       "path": "04 - Content/Process/URL.md"
     },
     {
-      "basename": "Flujo de Comunicación HTTP",
-      "path": "04 - Content/Process/Flujo de Comunicación HTTP.md"
+      "basename": "Certificados SSL-TLS",
+      "path": "04 - Content/Process/Certificados SSL-TLS.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
+    },
+    {
+      "basename": "Curl - Fuzzing Parámetros y Valores",
+      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
     },
     {
       "basename": "Web Requests",
@@ -187,18 +199,6 @@
     {
       "basename": "Reverse Engineering",
       "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Social Engineering Assets",
-      "path": "04 - Content/Process/Social Engineering Assets.md"
-    },
-    {
-      "basename": "C2 Infrastructure",
-      "path": "04 - Content/Process/C2 Infrastructure.md"
-    },
-    {
-      "basename": "Evasion & Obfuscation",
-      "path": "04 - Content/Process/Evasion & Obfuscation.md"
     }
   ],
   "omittedPaths": [],

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Flujo HTTP
 tags:
   - type/concept
 primary categories:
@@ -72,6 +73,14 @@ El navegador recibe la respuesta y comienza a procesarla:
 
 ---
 
-> [!HELP] ¿Sabías que?
+> [!HELP] INFO
 > 
 > Un solo sitio web moderno puede disparar entre 50 y 100 flujos HTTP individuales para cargar todos los scripts, anuncios, imágenes y fuentes que contiene.
+
+___
+
+**Notas relacionadas:**
+
+- [[HTTP]]
+- [[Códigos de Estado HTTP]]
+- [[DNS: El listín telefónico de Internet]]

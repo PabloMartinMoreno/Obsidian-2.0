@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/curl.md",
+                "file": "04 - Content/Process/HTTPS.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "curl"
+              "title": "HTTPS"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/curl.md",
+                "file": "04 - Content/Process/HTTPS.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de curl"
+              "title": "Gráfico de HTTPS"
             }
           },
           {
@@ -265,11 +265,16 @@
   },
   "active": "937135ba84f67790",
   "lastOpenFiles": [
+    "04 - Content/Process/Criptografía Simétrica vs. Asimétrica.md",
+    "04 - Content/Process/HTTPS.md",
     "04 - Content/Process/HTTP.md",
+    "04 - Content/Process/http-flow.md",
+    "04 - Content/Process/URL.md",
+    "04 - Content/Process/Certificados SSL-TLS.md",
+    "Certificados SSL/TLS.md",
+    "Certificados SSL",
     "04 - Content/curl.md",
     "04 - Content/Curl - Fuzzing Parámetros y Valores.md",
-    "04 - Content/Process/URL.md",
-    "04 - Content/Process/Flujo de Comunicación HTTP.md",
     "00 - Resources/Pasted image 20251225153503.png",
     "00 - Resources/Pasted image 20251225152753.png",
     "04 - Content/Process/Web Requests.md",
@@ -289,10 +294,6 @@
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/XML External Entity (XXE).md",
     "04 - Content/Process/HTML Injection.md",
-    "04 - Content/Process/Introduction to Web Applications.md",
-    "03 - Tertiary Categories/Host & Network Enumeration.md",
-    "04 - Content/Process/SQL Injection (SQLi).md",
-    "04 - Content/Process/SQL Injection Fundamentals.md",
     "00 - Resources/Pasted image 20251126135617.png",
     "00 - Resources/Pasted image 20251126135612.png",
     "00 - Resources/Pasted image 20251126135557.png",
@@ -310,7 +311,6 @@
     "Readable ",
     "03 - Tertiary Categories",
     "05 - Templates/04 - Category",
-    "00 - Resources/Templates/_nivel",
     "00 - Resources/Diagrams/Canvas/INICIO.canvas",
     "00 - Recursos/Diagramas/Canvas/Ejemplo.canvas",
     "00 - Recursos/Diagramas/Canvas/Sin título.canvas",
