@@ -15,6 +15,7 @@ linked:
   - "[[curl]]"
   - "[[HTTPS]]"
   - "[[Protocolos de Red]]"
+  - "[[HTTP Headers]]"
 ---
 # HTTP: Hypertext Transfer Protocol
 

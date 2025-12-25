@@ -1,20 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "HTTPS",
-      "path": "04 - Content/Process/HTTPS.md"
-    },
-    {
-      "basename": "Criptografía Simétrica vs. Asimétrica",
-      "path": "04 - Content/Process/Criptografía Simétrica vs. Asimétrica.md"
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
     },
     {
       "basename": "HTTP",
       "path": "04 - Content/Process/HTTP.md"
     },
     {
+      "basename": "HTTPS",
+      "path": "04 - Content/Process/HTTPS.md"
+    },
+    {
+      "basename": "HTTP Headers",
+      "path": "04 - Content/Process/HTTP Headers.md"
+    },
+    {
       "basename": "http-flow",
       "path": "04 - Content/Process/http-flow.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Criptografía Simétrica vs. Asimétrica",
+      "path": "04 - Content/Process/Criptografía Simétrica vs. Asimétrica.md"
     },
     {
       "basename": "URL",
@@ -23,10 +35,6 @@
     {
       "basename": "Certificados SSL-TLS",
       "path": "04 - Content/Process/Certificados SSL-TLS.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
     },
     {
       "basename": "Curl - Fuzzing Parámetros y Valores",
@@ -51,10 +59,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Códigos de Estado HTTP",
@@ -195,10 +199,6 @@
     {
       "basename": "Windows Post-Exploitation",
       "path": "04 - Content/Process/Windows Post-Exploitation.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
     }
   ],
   "omittedPaths": [],

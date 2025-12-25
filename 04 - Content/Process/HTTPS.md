@@ -11,6 +11,12 @@ linked:
   - "[[HTTP]]"
   - "[[http-flow]]"
   - "[[Criptografía Simétrica vs. Asimétrica]]"
+  - "[[curl]]"
+  - "[[URL]]"
+  - "[[Códigos de Estado HTTP]]"
+  - "[[Cookies y Sesiones]]"
+  - "[[Protocolos de Red]]"
+  - "[[HTTP Headers]]"
 ---
 # HTTPS: Hypertext Transfer Protocol Secure
 
