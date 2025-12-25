@@ -7,7 +7,7 @@
 ***
 
 # WHOIS
-## [[Whois]] 
+## [[whois]] 
 
 ## [[Whois - Escenarios de Uso]]
 

@@ -10,6 +10,9 @@ type: Concept
 linked:
   - "[[Códigos de Estado HTTP]]"
   - "[[Cookies y Sesiones]]"
+  - "[[Flujo de Comunicación HTTP]]"
+  - "[[URL]]"
+  - "[[curl]]"
 ---
 # HTTP: Hypertext Transfer Protocol
 

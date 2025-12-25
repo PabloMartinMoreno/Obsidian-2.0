@@ -1,8 +1,40 @@
 {
   "recentFiles": [
     {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Process/HTTP.md"
+    },
+    {
+      "basename": "Curl - Fuzzing Parámetros y Valores",
+      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
+    },
+    {
+      "basename": "URL",
+      "path": "04 - Content/Process/URL.md"
+    },
+    {
+      "basename": "Flujo de Comunicación HTTP",
+      "path": "04 - Content/Process/Flujo de Comunicación HTTP.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
       "basename": "Subdomains Passive Enumeration",
       "path": "04 - Content/Subdomains Passive Enumeration.md"
+    },
+    {
+      "basename": "whois",
+      "path": "04 - Content/Process/whois.md"
     },
     {
       "basename": "Web Enumeration",
@@ -11,10 +43,6 @@
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Process/HTTP.md"
     },
     {
       "basename": "Códigos de Estado HTTP",
@@ -31,10 +59,6 @@
     {
       "basename": "examen",
       "path": "04 - Content/Process/examen.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
     },
     {
       "basename": "Well-Known URIs",
@@ -67,14 +91,6 @@
     {
       "basename": "Introduction to Web Applications",
       "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "Host & Network Enumeration",
@@ -183,22 +199,6 @@
     {
       "basename": "Evasion & Obfuscation",
       "path": "04 - Content/Process/Evasion & Obfuscation.md"
-    },
-    {
-      "basename": "Payload & Malware Engineering",
-      "path": "04 - Content/Process/Payload & Malware Engineering.md"
-    },
-    {
-      "basename": "Operational Tasks",
-      "path": "04 - Content/Process/Operational Tasks.md"
-    },
-    {
-      "basename": "Procedures & Methodologies",
-      "path": "04 - Content/Process/Procedures & Methodologies.md"
-    },
-    {
-      "basename": "Credentials Cracking",
-      "path": "04 - Content/Process/Credentials Cracking.md"
     }
   ],
   "omittedPaths": [],

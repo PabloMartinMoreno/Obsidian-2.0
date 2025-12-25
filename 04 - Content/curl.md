@@ -13,6 +13,7 @@ linked:
   - "[[Curl - Fuzzing Parámetros y Valores]]"
   - "[[Curl - Enumeración Pasiva de Sub-Dominios]]"
   - "[[Curl - Enumeración de Sub-Dominios y V.Host]]"
+  - "[[HTTP]]"
 ---
 # Curl
 

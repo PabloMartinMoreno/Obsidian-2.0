@@ -16,7 +16,7 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Whois]]"
+  - "[[whois]]"
   - "[[curl]]"
   - "[[Bash]]"
 ---
