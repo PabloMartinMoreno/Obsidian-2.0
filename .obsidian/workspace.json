@@ -21,8 +21,19 @@
               "icon": "lucide-file",
               "title": "examen"
             }
+          },
+          {
+            "id": "1e6a3702b3f92b5c",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nueva pestaña"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -141,7 +152,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/examen.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +222,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de examen"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -263,11 +273,11 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "e347a2972da1ba2b",
+  "active": "1e6a3702b3f92b5c",
   "lastOpenFiles": [
-    "04 - Content/curl.md",
-    "04 - Content/Process/examen.md",
     "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/examen.md",
+    "04 - Content/curl.md",
     "04 - Content/Subdomains Passive Enumeration.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Process/Well-Known URIs.md",
