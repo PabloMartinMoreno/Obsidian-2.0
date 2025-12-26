@@ -1,5 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+type: Concept
+linked:
+  - "[[whois]]"
+---
 
-# Escenarios de Uso
+# whois - Escenarios de Uso
+
+___
 
 ## Escenario 1: Investigación de phishing
 
@@ -36,15 +46,10 @@ Una firma de ciberseguridad rastrea las actividades de un grupo de actores de am
 Los analistas recopilan datos WHOIS de múltiples dominios asociados con las campañas previas del grupo para elaborar un informe integral de inteligencia de amenazas.
 
 Al analizar los registros WHOIS, los analistas descubren los siguientes patrones:
-
 - **Fechas de registro:** los dominios se registraron en grupos, a menudo poco antes de los ataques principales.
-    
 - **Registrantes:** los registrantes utilizan varios alias e identidades falsas.
-    
 - **Servidores de nombres:** los dominios comparten con frecuencia los mismos servidores de nombres, lo que sugiere una infraestructura común.
-    
 - **Historial de bajas:** muchos dominios fueron dados de baja tras los ataques, lo que indica intervenciones previas de las fuerzas de seguridad o de equipos de respuesta.
-    
 
 Estos hallazgos permiten a los analistas crear un perfil detallado de las tácticas, técnicas y procedimientos (TTP) del grupo.  
 El informe incluye indicadores de compromiso (IOC) basados en los datos WHOIS, que otras organizaciones pueden usar para detectar y bloquear futuros ataques.

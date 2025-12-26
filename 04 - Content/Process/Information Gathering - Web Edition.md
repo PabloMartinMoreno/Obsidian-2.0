@@ -2,14 +2,14 @@
 
 # Introduction 
 
-## [[Introduction]]
+## [[Information Gathering - Web Edition - Introduction]]
 
 ***
 
 # WHOIS
 ## [[whois]] 
 
-## [[Whois - Escenarios de Uso]]
+## [[whois - Escenarios de Uso]]
 
 
 ***

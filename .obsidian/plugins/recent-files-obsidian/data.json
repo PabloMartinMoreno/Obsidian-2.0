@@ -2,7 +2,19 @@
   "recentFiles": [
     {
       "basename": "whois",
-      "path": "04 - Content/Process/whois.md"
+      "path": "04 - Content/whois.md"
+    },
+    {
+      "basename": "whois - Escenarios de Uso",
+      "path": "04 - Content/whois - Escenarios de Uso.md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition - Introduction",
+      "path": "04 - Content/Process/Information Gathering - Web Edition - Introduction.md"
     },
     {
       "basename": "nmap",
@@ -19,14 +31,6 @@
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
-    },
-    {
-      "basename": "Introduction",
-      "path": "04 - Content/Process/Introduction.md"
     },
     {
       "basename": "CWES",
@@ -195,10 +199,6 @@
     {
       "basename": "Service Exploitation",
       "path": "04 - Content/Process/Service Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
     }
   ],
   "omittedPaths": [],

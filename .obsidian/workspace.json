@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/whois.md",
+                "file": "04 - Content/whois.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/whois.md",
+                "file": "04 - Content/whois.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -265,13 +265,14 @@
   },
   "active": "00f8eb7d0c1e12e8",
   "lastOpenFiles": [
+    "04 - Content/whois - Escenarios de Uso.md",
+    "04 - Content/whois.md",
+    "04 - Content/Process/Information Gathering - Web Edition.md",
+    "04 - Content/Process/Information Gathering - Web Edition - Introduction.md",
     "04 - Content/nmap.md",
-    "04 - Content/Process/whois.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
-    "04 - Content/Process/Information Gathering - Web Edition.md",
-    "04 - Content/Process/Introduction.md",
     "00 - Resources/Pasted image 20251226153038.png",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Introduction to Web Applications.md",
@@ -294,7 +295,6 @@
     "04 - Content/Process/Códigos de Estado HTTP.md",
     "04 - Content/Process/Cookies y Sesiones.md",
     "04 - Content/Process/examen.md",
-    "04 - Content/Process/Well-Known URIs.md",
     "00 - Resources/Pasted image 20251126135617.png",
     "00 - Resources/Pasted image 20251126135612.png",
     "00 - Resources/Pasted image 20251126135557.png",

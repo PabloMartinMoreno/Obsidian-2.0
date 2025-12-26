@@ -14,7 +14,7 @@ tertiary categories:
   - "[[Passive Reconnaissance & OSINT]]"
 type: Command
 linked:
-  - "[[Whois - Escenarios de Uso]]"
+  - "[[whois - Escenarios de Uso]]"
 ---
 # Whois
 
@@ -32,7 +32,8 @@ linked:
 
 ## Overview
 
-**Es un protocolo de consulta y respuesta ampliamente utilizado diseñado para acceder a bases de datos que almacenan información sobre recursos de Internet registrados.** 
+
+Es un protocolo de red utilizado para consultar bases de datos que almacenan información sobre los responsables de un recurso de internet, como un **nombre de dominio** o una **dirección IP**. **En términos sencillos, es el "directorio telefónico" de internet que permite saber quién es el dueño de una web y cómo contactarlo.**
 
 También proporciona detalles sobre bloques de direcciones IP, sistemas autónomos y la huella digital de la organización objetivo:
 
@@ -47,3 +48,11 @@ También proporciona detalles sobre bloques de direcciones IP, sistemas autónom
 Los datos de WHOIS pueden ser inexactos o oscurecidos intencionalmente, por lo que siempre es prudente verificar la información de múltiples fuentes. Los servicios de privacidad también pueden enmascarar al verdadero propietario de un dominio, lo que hace más difícil obtener información precisa a través de WHOIS.
 ```
 
+```ad-important 
+El protocolo WHOIS es muy antiguo (data de los años 80) y tiene limitaciones técnicas (no soporta bien caracteres internacionales, por ejemplo). Por ello, está siendo reemplazado gradualmente por **RDAP** (_Registration Data Access Protocol_). 
+
+**RDAP** es más seguro, permite búsquedas más estructuradas y facilita que los registradores controlen quién puede ver qué datos (acceso diferenciado).
+```
+
+
+---
