@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/curl.md",
+                "file": "04 - Content/Process/whois.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "curl"
+              "title": "whois"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/curl.md",
+                "file": "04 - Content/Process/whois.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de curl"
+              "title": "Gráfico de whois"
             }
           },
           {
@@ -265,11 +265,20 @@
   },
   "active": "00f8eb7d0c1e12e8",
   "lastOpenFiles": [
-    "04 - Content/Process/HTTP.md",
+    "04 - Content/nmap.md",
+    "04 - Content/Process/whois.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Penetration Test.md",
+    "04 - Content/Process/Information Gathering - Web Edition.md",
+    "04 - Content/Process/Introduction.md",
+    "00 - Resources/Pasted image 20251226153038.png",
+    "04 - Content/Process/CWES.md",
+    "04 - Content/Process/Introduction to Web Applications.md",
+    "04 - Content/curl.md",
+    "04 - Content/Process/HTTP.md",
     "04 - Content/Process/HTTPS.md",
     "04 - Content/Process/Métodos HTTP.md",
-    "04 - Content/curl.md",
     "04 - Content/Process/HTTP Headers.md",
     "04 - Content/Process/http-flow.md",
     "04 - Content/Process/Criptografía Simétrica vs. Asimétrica.md",
@@ -281,19 +290,11 @@
     "00 - Resources/Pasted image 20251225153503.png",
     "00 - Resources/Pasted image 20251225152753.png",
     "04 - Content/Process/Web Requests.md",
-    "04 - Content/Process/CWES.md",
     "04 - Content/Subdomains Passive Enumeration.md",
-    "04 - Content/Process/whois.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Process/Códigos de Estado HTTP.md",
     "04 - Content/Process/Cookies y Sesiones.md",
-    "02 - Secondary Categories/Information Gathering.md",
     "04 - Content/Process/examen.md",
     "04 - Content/Process/Well-Known URIs.md",
-    "04 - Content/Fuzzing Parameters & Values.md",
-    "04 - Content/Fuzzing Subdomains & Virtual Hosts.md",
-    "04 - Content/Fuzzing Directories & Pages.md",
-    "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "00 - Resources/Pasted image 20251126135617.png",
     "00 - Resources/Pasted image 20251126135612.png",
     "00 - Resources/Pasted image 20251126135557.png",
@@ -301,7 +302,6 @@
     "00 - Resources/Pasted image 20251126135506.png",
     "00 - Resources/Pasted image 20251126135454.png",
     "00 - Resources/Pasted image 20251126135330.png",
-    "00 - Resources/Pasted image 20251117145604.png",
     "04 - Content/Process/Sin título.base",
     "Metasploit multi",
     "LXC ",

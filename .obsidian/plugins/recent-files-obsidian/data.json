@@ -1,16 +1,48 @@
 {
   "recentFiles": [
     {
+      "basename": "whois",
+      "path": "04 - Content/Process/whois.md"
+    },
+    {
+      "basename": "nmap",
+      "path": "04 - Content/nmap.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Introduction",
+      "path": "04 - Content/Process/Introduction.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
       "basename": "curl",
       "path": "04 - Content/curl.md"
     },
     {
       "basename": "HTTP",
       "path": "04 - Content/Process/HTTP.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "HTTPS",
@@ -49,20 +81,8 @@
       "path": "04 - Content/Process/Web Requests.md"
     },
     {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
       "basename": "Subdomains Passive Enumeration",
       "path": "04 - Content/Subdomains Passive Enumeration.md"
-    },
-    {
-      "basename": "whois",
-      "path": "04 - Content/Process/whois.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Códigos de Estado HTTP",
@@ -71,10 +91,6 @@
     {
       "basename": "Cookies y Sesiones",
       "path": "04 - Content/Process/Cookies y Sesiones.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "examen",
@@ -107,10 +123,6 @@
     {
       "basename": "HTML Injection",
       "path": "04 - Content/Process/HTML Injection.md"
-    },
-    {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
     },
     {
       "basename": "Host & Network Enumeration",
@@ -187,18 +199,6 @@
     {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     }
   ],
   "omittedPaths": [],

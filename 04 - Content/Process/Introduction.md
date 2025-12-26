@@ -4,6 +4,8 @@ La recopilación de información web (Web Reconnaissance) es la base de una eval
 
 Flujograma del proceso de pruebas de penetración: Pre-compromiso, Recolección de información, Evaluación de vulnerabilidades, Explotación, Post-explotación, Movimiento lateral, Prueba de concepto y Post-compromiso.
 
+![[Pasted image 20251226153038.png]]
+
 ## Objetivos principales de la recolección web
 
 - **Identificar activos:** descubrir todos los componentes accesibles públicamente del objetivo (páginas web, subdominios, direcciones IP, tecnologías usadas). Esto da una visión completa de la presencia online del objetivo.

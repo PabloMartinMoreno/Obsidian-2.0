@@ -2,9 +2,16 @@
 aliases:
 tags:
   - type/command
+  - technique/recon/passive
+  - asset/infrastructure
+  - tool/whois
+  - meta/osint
 primary categories:
+  - "[[Penetration Test]]"
 secondary categories:
+  - "[[Information Gathering]]"
 tertiary categories:
+  - "[[Passive Reconnaissance & OSINT]]"
 type: Command
 linked:
   - "[[Whois - Escenarios de Uso]]"
