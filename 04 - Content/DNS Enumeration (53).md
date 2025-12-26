@@ -36,7 +36,7 @@ linked:
 
 ````tabs
 tab: **dig**
-![[dig#^dig-enum-pasiva]]
+![[dig#^dig-enum]]
 
 tab: **dnsenum**
 ![[dnsenum#^dnsenum-enum]]

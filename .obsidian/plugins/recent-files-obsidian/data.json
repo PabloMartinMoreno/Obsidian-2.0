@@ -1,20 +1,76 @@
 {
   "recentFiles": [
     {
-      "basename": "DNS",
-      "path": "04 - Content/Process/DNS.md"
-    },
-    {
-      "basename": "DNS - CWES",
-      "path": "04 - Content/Process/DNS - CWES.md"
+      "basename": "dig",
+      "path": "04 - Content/Process/dig.md"
     },
     {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
+      "basename": "Certificate Transparency Logs",
+      "path": "04 - Content/Process/Certificate Transparency Logs.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Passive Infrastructure Identification",
+      "path": "04 - Content/Passive Infrastructure Identification.md"
+    },
+    {
+      "basename": "Subdomains Passive Enumeration",
+      "path": "04 - Content/Subdomains Passive Enumeration.md"
+    },
+    {
+      "basename": "GitHub Dorking",
+      "path": "04 - Content/GitHub Dorking.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Google Dorking.md"
+    },
+    {
+      "basename": "CanaryTokens",
+      "path": "04 - Content/CanaryTokens.md"
+    },
+    {
+      "basename": "Social Engineering Intelligence",
+      "path": "04 - Content/Social Engineering Intelligence.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "DNS - Herramientas",
+      "path": "04 - Content/DNS - Herramientas.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "DNS",
+      "path": "04 - Content/DNS.md"
+    },
+    {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Digging DNS — Explorando DNS",
+      "path": "04 - Content/Process/Digging DNS — Explorando DNS.md"
+    },
+    {
+      "basename": "DNS - CWES",
+      "path": "04 - Content/Process/DNS - CWES.md"
     },
     {
       "basename": "CWES",
@@ -39,10 +95,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Penetration Test",
@@ -97,10 +149,6 @@
       "path": "04 - Content/Process/Web Requests.md"
     },
     {
-      "basename": "Subdomains Passive Enumeration",
-      "path": "04 - Content/Subdomains Passive Enumeration.md"
-    },
-    {
       "basename": "Códigos de Estado HTTP",
       "path": "04 - Content/Process/Códigos de Estado HTTP.md"
     },
@@ -141,10 +189,6 @@
       "path": "04 - Content/Process/HTML Injection.md"
     },
     {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
@@ -155,50 +199,6 @@
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
-    },
-    {
-      "basename": "SQL Commands",
-      "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "gobuster",
-      "path": "04 - Content/Process/gobuster.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Resource Development",
-      "path": "04 - Content/Process/Resource Development.md"
-    },
-    {
-      "basename": "Lateral Movement",
-      "path": "02 - Secondary Categories/Lateral Movement.md"
-    },
-    {
-      "basename": "Windows & Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Windows & Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "Common Exploitation Tools",
-      "path": "04 - Content/Process/Common Exploitation Tools.md"
-    },
-    {
-      "basename": "hashcat",
-      "path": "04 - Content/Process/hashcat.md"
-    },
-    {
-      "basename": "Client-Side Exploitation",
-      "path": "04 - Content/Process/Client-Side Exploitation.md"
     }
   ],
   "omittedPaths": [],

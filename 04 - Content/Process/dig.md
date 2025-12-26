@@ -1,17 +1,29 @@
 ---
 aliases:
+  - Domain Information Groper
 tags:
   - type/command
+  - technique/recon/active
+  - asset/infrastructure
+  - tool/dig
+  - protocol/dns
+  - port/53
 primary categories:
+  - "[[Penetration Test]]"
 secondary categories:
+  - "[[Information Gathering]]"
 tertiary categories:
+  - "[[Host & Network Enumeration]]"
 type: Command
 linked:
+  - "[[DNS Enumeration (53)]]"
+  - "[[DNS]]"
+  - "[[DNS - Herramientas]]"
 ---
-# Dig
+# Dig - Domain Information Groper
 
 ***
-<pre><code>``</code></pre>
+
 ## Cheatsheet
 
 | **Comando**                                                 | **Descripción**                                                    |
@@ -23,13 +35,21 @@ linked:
 | <pre><code>`dig txt $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica los registros **TXT** del dominio objetivo.         |
 | <pre><code>`dig mx $TARGET @<nameserver/IP>`</code></pre>   | <br>Identifica los registros **MX** del dominio objetivo.          |
 | <pre><code>`dig axfr $TARGET @<nameserver/IP>`</code></pre> | <br>Copia completa de todos los registros DNS.                     |
-^dig-enum-pasiva
+^dig-enum
 
-dig inlanefreight.com
-dig +short inlanefreight.com
-dig -x 134.209.24.248
-dig MX facebook.com
-dig axfr inlanefreight.htb @10.129.156.95
+
+| **Objetivo**                         | **Comando dig**                         | **Tipo / Flag** |
+| ------------------------------------ | --------------------------------------- | --------------- |
+| **Transferencia de Zona**            | `dig axfr @ns1.dominio.com dominio.com` | **AXFR**        |
+| **Consultar Todos los Registros**    | `dig dominio.com ANY`                   | **ANY**         |
+| **Consulta Básica**                  | `dig dominio.com`                       | **A**           |
+| **Respuesta Corta (Solo la IP)**     | `dig dominio.com +short`                | **+short**      |
+| **Consultar Servidor Específico**    | `dig @8.8.8.8 dominio.com`              | **@server**     |
+| **Buscar Servidores de Correo**      | `dig dominio.com MX`                    | **MX**          |
+| **Buscar Nameservers**               | `dig dominio.com NS`                    | **NS**          |
+| **Rastreo Completo (Traza)**         | `dig dominio.com +trace`                | **+trace**      |
+| **Resolución Inversa (IP a Nombre)** | `dig -x 8.8.8.8`                        | **-x**          |
+| **Verificar Registros de Seguridad** | `dig dominio.com TXT`                   | **TXT**         |
 
 ***
 
