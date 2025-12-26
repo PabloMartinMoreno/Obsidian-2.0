@@ -16,6 +16,7 @@ linked:
   - "[[HTTPS]]"
   - "[[Protocolos de Red]]"
   - "[[HTTP Headers]]"
+  - "[[Métodos HTTP]]"
 ---
 # HTTP: Hypertext Transfer Protocol
 

@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
-    },
-    {
       "basename": "HTTP",
       "path": "04 - Content/Process/HTTP.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "HTTPS",
       "path": "04 - Content/Process/HTTPS.md"
+    },
+    {
+      "basename": "Métodos HTTP",
+      "path": "04 - Content/Process/Métodos HTTP.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
     },
     {
       "basename": "HTTP Headers",
@@ -19,10 +27,6 @@
     {
       "basename": "http-flow",
       "path": "04 - Content/Process/http-flow.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Criptografía Simétrica vs. Asimétrica",
@@ -195,10 +199,6 @@
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Windows Post-Exploitation",
-      "path": "04 - Content/Process/Windows Post-Exploitation.md"
     }
   ],
   "omittedPaths": [],

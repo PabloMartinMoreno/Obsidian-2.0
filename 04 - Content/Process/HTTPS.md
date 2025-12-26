@@ -17,6 +17,7 @@ linked:
   - "[[Cookies y Sesiones]]"
   - "[[Protocolos de Red]]"
   - "[[HTTP Headers]]"
+  - "[[Métodos HTTP]]"
 ---
 # HTTPS: Hypertext Transfer Protocol Secure
 
