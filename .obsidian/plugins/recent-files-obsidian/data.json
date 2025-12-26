@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
+    },
+    {
       "basename": "HTTP",
       "path": "04 - Content/Process/HTTP.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "Métodos HTTP",
       "path": "04 - Content/Process/Métodos HTTP.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
     },
     {
       "basename": "HTTP Headers",
