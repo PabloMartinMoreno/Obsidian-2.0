@@ -1,16 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "DNS",
+      "path": "04 - Content/Process/DNS.md"
+    },
+    {
+      "basename": "DNS - CWES",
+      "path": "04 - Content/Process/DNS - CWES.md"
+    },
+    {
+      "basename": "DNS Enumeration (53)",
+      "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
       "basename": "whois",
       "path": "04 - Content/whois.md"
     },
     {
       "basename": "whois - Escenarios de Uso",
       "path": "04 - Content/whois - Escenarios de Uso.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
     {
       "basename": "Information Gathering - Web Edition - Introduction",
@@ -31,10 +47,6 @@
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "Introduction to Web Applications",
@@ -187,18 +199,6 @@
     {
       "basename": "Client-Side Exploitation",
       "path": "04 - Content/Process/Client-Side Exploitation.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
-      "basename": "Clickjacking",
-      "path": "04 - Content/Process/Clickjacking.md"
-    },
-    {
-      "basename": "Service Exploitation",
-      "path": "04 - Content/Process/Service Exploitation.md"
     }
   ],
   "omittedPaths": [],

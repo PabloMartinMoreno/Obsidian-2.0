@@ -24,7 +24,7 @@ ___
 
 Antes de que HTTP pueda actuar, el navegador debe traducir el nombre de dominio (ej. `google.com`) en una dirección IP.
 
-- El navegador consulta a un servidor [[DNS]] para obtener la dirección numérica del servidor.
+- El navegador consulta a un servidor [[DNS - CWES]] para obtener la dirección numérica del servidor.
 
 ### Establecimiento de la Conexión (Handshake)
 
