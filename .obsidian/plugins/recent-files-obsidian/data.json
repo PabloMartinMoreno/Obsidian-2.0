@@ -1,24 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "dnsenum",
-      "path": "04 - Content/dnsenum.md"
-    },
-    {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
-      "basename": "dnsrecon",
-      "path": "04 - Content/Process/dnsrecon.md"
+      "basename": "host",
+      "path": "04 - Content/Process/host.md"
+    },
+    {
+      "basename": "dig",
+      "path": "04 - Content/dig.md"
+    },
+    {
+      "basename": "dnsenum",
+      "path": "04 - Content/dnsenum.md"
     },
     {
       "basename": "nslookup",
       "path": "04 - Content/Process/nslookup.md"
     },
     {
-      "basename": "dig",
-      "path": "04 - Content/Process/dig.md"
+      "basename": "Subdominio",
+      "path": "04 - Content/Subdominio.md"
+    },
+    {
+      "basename": "dnsrecon",
+      "path": "04 - Content/Process/dnsrecon.md"
     },
     {
       "basename": "Host & Network Enumeration",
@@ -35,10 +43,6 @@
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Subdominio",
-      "path": "04 - Content/Subdominio.md"
     },
     {
       "basename": "DNS",
@@ -195,10 +199,6 @@
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "XML External Entity (XXE)",
-      "path": "04 - Content/Process/XML External Entity (XXE).md"
     }
   ],
   "omittedPaths": [],

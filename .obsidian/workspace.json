@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/dnsenum.md",
+                "file": "04 - Content/DNS Enumeration (53).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "dnsenum"
+              "title": "DNS Enumeration (53)"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/dnsenum.md",
+                "file": "04 - Content/DNS Enumeration (53).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de dnsenum"
+              "title": "Gráfico de DNS Enumeration (53)"
             }
           },
           {
@@ -265,16 +265,17 @@
   },
   "active": "00f8eb7d0c1e12e8",
   "lastOpenFiles": [
+    "04 - Content/Process/host.md",
     "04 - Content/DNS Enumeration (53).md",
-    "04 - Content/Process/dnsrecon.md",
-    "04 - Content/Process/nslookup.md",
-    "04 - Content/Process/dig.md",
+    "04 - Content/dig.md",
     "04 - Content/dnsenum.md",
+    "04 - Content/Process/nslookup.md",
+    "04 - Content/Subdominio.md",
+    "04 - Content/Process/dnsrecon.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Fuzzing Subdomains & Virtual Hosts.md",
     "02 - Secondary Categories/Information Gathering.md",
-    "04 - Content/Subdominio.md",
     "04 - Content/DNS.md",
     "01 - Primary Categories/Penetration Test.md",
     "04 - Content/Process/Certificate Transparency Logs.md",
@@ -290,7 +291,6 @@
     "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/Digging DNS — Explorando DNS.md",
     "04 - Content/Process/DNS - CWES.md",
-    "04 - Content/Process/CWES.md",
     "00 - Resources/Pasted image 20251226153038.png",
     "Certificados SSL",
     "00 - Resources/Pasted image 20251225153503.png",

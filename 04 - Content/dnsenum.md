@@ -25,20 +25,18 @@ linked:
 
 ## Cheatsheet
 
-| **Comando**                                                                                              | **Descripción**                                                       |
-| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| <pre><code>`dnsenum example.com`</code></pre>                                                            | <br>Enumeración básica con brute force usando la wordlist por defecto |
-| <pre><code>`dnsenum --dnsserver 8.8.8.8 --threads 10 --file subdomain-list.txt example.com`</code></pre> | <br>Con una wordlist personalizada y guarda los resultados            |
-| <pre><code>`dnsenum --axfr --rev example.com`</code></pre>                                               | <br>Intenta AXFR explícitamente y hace reverse lookups                |
+| **Comando**                                                                                              | **Situación / Objetivo**                                                                                                            |
+| -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| <pre><code>`dnsenum dominio.com`</code></pre>                                                            | <br>**Reconocimiento inicial:** Lanza todo lo básico: intenta transferencia de zona (AXFR) y prueba la lista default.               |
+| <pre><code>`dnsenum --noreverse -f seclists.txt dominio.com`</code></pre>                                | <br>**Escaneo estándar:** Usa una wordlist real (SecLists) y salta el reverse lookup para no perder tiempo.                         |
+| <pre><code>dnsenum --enum -o reporte.xml dominio.com</code></pre>                                        | <br>**Atajo completo:** hace scraping, fuerza bruta, AXFR y reverse lookup.                                                         |
+| <pre><code>`dnsenum --dnsserver 8.8.8.8 --threads 10 --file subdomain-list.txt dominio.com`</code></pre> | <br>**Uso personalizado:** define servidor DNS, aumenta hilos y usa wordlist propia.                                                |
+| <pre><code>`dnsenum --axfr --rev dominio.com`</code></pre>                                               | <br>Intenta AXFR explícitamente y hace reverse lookups.                                                                             |
+| <pre><code>`dnsenum --dnsserver 1.1.1.1 -f wordlist.txt dominio.com`</code></pre>                        | <br>**Evasión de filtros:** Fuerza la resolución por Cloudflare/Google para evitar bloqueos o lentitud del DNS local.               |
+| <pre><code>`dnsenum -r -f wordlist.txt dominio.com`</code></pre>                                         | <br>**Enumeración profunda (Recursiva):** Si encuentra `dev.example.com`, busca subdominios dentro de ese también.                  |
+| <pre><code>`dnsenum --private -f wordlist.txt dominio.com`</code></pre>                                  | <br>**Auditoría interna:** Muestra y guarda las IPs privadas detectadas (192.168.x.x, 10.x.x.x) para reportar fugas de información. |
+| <pre><code>`dnsenum --subfile validos.txt -f wordlist.txt dominio.com`</code></pre>                      | <br>**Pipeline:** Genera un archivo limpio solo con los subdominios válidos para pasárselo a herramientas como `httpx` o `nmap`.    |
 ^dnsenum-enum
-
-| **Comando**                                                                                                                           | **Descripción**                                                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <pre><code>dnsenum target.com</code></pre>                                                                                            | **Check Rápido de AXFR**<br>Ejecución por defecto. Lo usas _solo_ para ver si los Nameservers permiten Transferencia de Zona (Zone Transfer) y obtener los registros básicos (A, NS, MX).                      |
-| <pre><code>dnsenum --noreverse -f /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt target.com</code></pre> | **Fuerza Bruta Estándar (Eficiente)**<br>El comando de batalla. Usa una wordlist decente (Seclists) y desactiva el _reverse lookup_ (`--noreverse`) para que no tarde una eternidad resolviendo PTRs inútiles. |
-| <pre><code>dnsenum --threads 50 -f wordlist.txt target.com</code></pre>                                                               | **Modo Turbo (CTF/HTB)**<br>Sube los hilos a 50 (o más). Úsalo en entornos controlados donde no te importa el ruido y quieres resultados ya.                                                                   |
-| <pre><code>dnsenum --dnsserver 1.1.1.1 -f wordlist.txt target.com</code></pre>                                                        | **Bypass de Filtros DNS**<br>Si el DNS de tu red local bloquea peticiones o va lento, fuerza la resolución a través de Cloudflare (1.1.1.1) o Google (8.8.8.8).                                                |
-| <pre><code>dnsenum --enum -o output.xml target.com</code></pre>                                                                       | **Auditoría con Evidencia**<br>Guarda todo en XML. Vital si necesitas reportar o si vas a parsear las IPs encontradas luego con `nmap` o `masscan`.                                                            |
 
 
 ```ad-tip
