@@ -46,22 +46,7 @@ linked:
 
 ## Overview
 
-Permite preguntar a un servidor DNS: _"¿cuál es la dirección IP de este dominio?"_ o _"¿Quién gestiona el correo de esta empresa?"_.
-
-Envía una **consulta DNS** (query) a un **servidor de nombres** para resolver un dominio.
-Ejemplo básico:
-```bash
-dig example.com
-```
-
-**Por defecto usa el DNS configurado en mi sistema** (por ejemplo, 8.8.8.8 de Google o el DNS de mi ISP) y devuelve los registros A (dirección IPv4) del dominio.
-
-También se puede especificar un servidor DNS concreto:
-```bash
-dig @8.8.8.8 example.com
-```
-
-Ahí se le está pidiendo explícitamente a Google que resuelva `example.com`.
+Es una herramienta de diagnóstico que funciona como un "interrogador" de servidores. O sea, para realizar consultas a los servidores de nombres [[DNS]].
 
 ### Tipos de información que se puede obtener
 
@@ -78,14 +63,9 @@ dig +trace example.com
 
 Esto muestra todos los saltos desde los **root servers** hasta los **autoritativos**.
 
-
-***
-
-## ¿Por qué usar `dig` en lugar de [[nslookup]]?
-
-- **Precisión:** `dig` utiliza las bibliotecas de resolución de nombres de BIND (el estándar de internet), por lo que es más fiel a cómo se comporta el tráfico real.
-- **Flexibilidad:** Permite ver todo el proceso de "recursión" (cómo se llega desde los servidores raíz hasta el dominio final) usando `+trace`.
-- **Detalle:** Proporciona información técnica sobre el TTL (Time To Live) y las cabeceras de respuesta que otras herramientas ocultan.
+```ad-info
+Es el sucesor moderno de herramientas más antiguas como `nslookup` y es la opción preferida por administradores de red y desarrolladores para diagnosticar problemas de resolución de nombres.
+```
 
 
 ___

@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "dig",
+      "path": "04 - Content/Process/dig.md"
+    },
+    {
+      "basename": "DNS",
+      "path": "04 - Content/DNS.md"
     },
     {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
-      "basename": "dig",
-      "path": "04 - Content/Process/dig.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "dnsenum",
@@ -63,10 +67,6 @@
     {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "DNS",
-      "path": "04 - Content/DNS.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
