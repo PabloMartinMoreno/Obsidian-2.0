@@ -487,7 +487,9 @@
     "socks4": 135,
     "todo": 136,
     "type/sub-command": 11,
-    "tool/dig": 82
+    "tool/dig": 82,
+    "tool/dnsenum": 83,
+    "meta/brute-force": 66
   },
   "_version": 3
 }

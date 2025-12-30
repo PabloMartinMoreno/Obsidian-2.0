@@ -27,18 +27,18 @@ linked:
 
 ## Cheatsheet
 
-| **Comando dig**                                                 | **Objetivo**                         |
-| --------------------------------------------------------------- | ------------------------------------ |
-| <pre><code>`dig dominio.com`</code></pre>                       | **Consulta Básica**                  |
-| <pre><code>`dig dominio.com +short`</code></pre>                | **Respuesta Corta (Solo la IP)**     |
-| <pre><code>`dig @8.8.8.8 dominio.com`</code></pre>              | **Consultar Servidor Específico**    |
-| <pre><code>`dig dominio.com MX`</code></pre>                    | **Buscar Servidores de Correo**      |
-| <pre><code>`dig dominio.com NS`</code></pre>                    | **Buscar Nameservers**               |
-| <pre><code>`dig dominio.com +trace`</code></pre>                | **Rastreo Completo (Traza)**         |
-| <pre><code>`dig -x 8.8.8.8`</code></pre>                        | **Resolución Inversa (IP a Nombre)** |
-| <pre><code>`dig dominio.com TXT`</code></pre>                   | **Verificar Registros de Seguridad** |
-| <pre><code>`dig axfr @ns1.dominio.com dominio.com`</code></pre> | **Transferencia de Zona**            |
-| <pre><code>`dig dominio.com ANY`</code></pre>                   | **Consultar Todos los Registros**    |
+| **Objetivo**                         | **Comando dig**                                                 |
+| ------------------------------------ | --------------------------------------------------------------- |
+| **Consulta Básica**                  | <pre><code>`dig dominio.com`</code></pre>                       |
+| **Respuesta Corta (Solo la IP)**     | <pre><code>`dig dominio.com +short`</code></pre>                |
+| **Consultar Servidor Específico**    | <pre><code>`dig @8.8.8.8 dominio.com`</code></pre>              |
+| **Buscar Servidores de Correo**      | <pre><code>`dig dominio.com MX`</code></pre>                    |
+| **Buscar Nameservers**               | <pre><code>`dig dominio.com NS`</code></pre>                    |
+| **Rastreo Completo (Traza)**         | <pre><code>`dig dominio.com +trace`</code></pre>                |
+| **Resolución Inversa (IP a Nombre)** | <pre><code>`dig -x 8.8.8.8`</code></pre>                        |
+| **Verificar Registros de Seguridad** | <pre><code>`dig dominio.com TXT`</code></pre>                   |
+| **Transferencia de Zona**            | <pre><code>`dig axfr @ns1.dominio.com dominio.com`</code></pre> |
+| **Consultar Todos los Registros**    | <pre><code>`dig dominio.com ANY`</code></pre>                   |
 ^dig-enum
 
 

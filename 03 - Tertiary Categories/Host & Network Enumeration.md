@@ -21,7 +21,6 @@ type: Tertiary Category
  Identificación de hosts activos, puertos abiertos y servicios básicos en la red.
 
 - [[nmap]] (Herramienta principal para escaneo de puertos y descubrimiento de servicios.)
-- [[dig]]
 - [[Windows LOTL Port Scanning]] (Técnicas de escaneo de puertos utilizando herramientas nativas de Windows.)
 - [[Masscan]] (Escaneo de puertos ultra-rápido para grandes rangos de IP.)
 - [[NetBIOS Enumeration (137, 138, 139)]] (Descubrimiento de nombres de equipos, grupos de trabajo y adaptadores de red.)
@@ -78,6 +77,7 @@ type: Tertiary Category
   ### Infrastructure & Other Services
 - [[DNS Enumeration (53)]]
 	- [[dig]]
+	- [[dnsenum]]
 - [[SNMP Enumeration (161,162,10161,10162)]]
 - [[IPMI Enumeration (623)]]
 - [[Finger Enumeration (79)]]

@@ -1,28 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "dig",
-      "path": "04 - Content/Process/dig.md"
-    },
-    {
-      "basename": "DNS",
-      "path": "04 - Content/DNS.md"
+      "basename": "dnsenum",
+      "path": "04 - Content/dnsenum.md"
     },
     {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "dnsrecon",
+      "path": "04 - Content/Process/dnsrecon.md"
     },
     {
-      "basename": "dnsenum",
-      "path": "04 - Content/Process/dnsenum.md"
+      "basename": "nslookup",
+      "path": "04 - Content/Process/nslookup.md"
+    },
+    {
+      "basename": "dig",
+      "path": "04 - Content/Process/dig.md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Fuzzing Subdomains & Virtual Hosts",
+      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Subdominio",
+      "path": "04 - Content/Subdominio.md"
+    },
+    {
+      "basename": "DNS",
+      "path": "04 - Content/DNS.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Certificate Transparency Logs",
@@ -55,10 +79,6 @@
     {
       "basename": "Social Engineering Intelligence",
       "path": "04 - Content/Social Engineering Intelligence.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "DNS - Herramientas",
@@ -99,10 +119,6 @@
     {
       "basename": "nmap",
       "path": "04 - Content/nmap.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Introduction to Web Applications",
@@ -173,10 +189,6 @@
       "path": "04 - Content/Fuzzing Parameters & Values.md"
     },
     {
-      "basename": "Fuzzing Subdomains & Virtual Hosts",
-      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
-    },
-    {
       "basename": "Fuzzing Directories & Pages",
       "path": "04 - Content/Fuzzing Directories & Pages.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "XML External Entity (XXE)",
       "path": "04 - Content/Process/XML External Entity (XXE).md"
-    },
-    {
-      "basename": "HTML Injection",
-      "path": "04 - Content/Process/HTML Injection.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "SQL Injection Fundamentals",
-      "path": "04 - Content/Process/SQL Injection Fundamentals.md"
     }
   ],
   "omittedPaths": [],
