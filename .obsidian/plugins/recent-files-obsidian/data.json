@@ -5,16 +5,16 @@
       "path": "04 - Content/DNS Enumeration (53).md"
     },
     {
+      "basename": "dnsenum",
+      "path": "04 - Content/dnsenum.md"
+    },
+    {
       "basename": "host",
       "path": "04 - Content/Process/host.md"
     },
     {
       "basename": "dig",
       "path": "04 - Content/dig.md"
-    },
-    {
-      "basename": "dnsenum",
-      "path": "04 - Content/dnsenum.md"
     },
     {
       "basename": "nslookup",

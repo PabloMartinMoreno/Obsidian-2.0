@@ -265,10 +265,10 @@
   },
   "active": "00f8eb7d0c1e12e8",
   "lastOpenFiles": [
-    "04 - Content/Process/host.md",
-    "04 - Content/DNS Enumeration (53).md",
-    "04 - Content/dig.md",
     "04 - Content/dnsenum.md",
+    "04 - Content/DNS Enumeration (53).md",
+    "04 - Content/Process/host.md",
+    "04 - Content/dig.md",
     "04 - Content/Process/nslookup.md",
     "04 - Content/Subdominio.md",
     "04 - Content/Process/dnsrecon.md",
