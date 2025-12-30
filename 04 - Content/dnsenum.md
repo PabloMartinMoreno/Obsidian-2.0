@@ -25,7 +25,6 @@ linked:
 
 ## Cheatsheet
 
-
 | **Comando**                                                                                              | **Descripción**                                                       |
 | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | <pre><code>`dnsenum example.com`</code></pre>                                                            | <br>Enumeración básica con brute force usando la wordlist por defecto |
@@ -33,6 +32,18 @@ linked:
 | <pre><code>`dnsenum --axfr --rev example.com`</code></pre>                                               | <br>Intenta AXFR explícitamente y hace reverse lookups                |
 ^dnsenum-enum
 
+| **Comando**                                                                                                                           | **Descripción**                                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <pre><code>dnsenum target.com</code></pre>                                                                                            | **Check Rápido de AXFR**<br>Ejecución por defecto. Lo usas _solo_ para ver si los Nameservers permiten Transferencia de Zona (Zone Transfer) y obtener los registros básicos (A, NS, MX).                      |
+| <pre><code>dnsenum --noreverse -f /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt target.com</code></pre> | **Fuerza Bruta Estándar (Eficiente)**<br>El comando de batalla. Usa una wordlist decente (Seclists) y desactiva el _reverse lookup_ (`--noreverse`) para que no tarde una eternidad resolviendo PTRs inútiles. |
+| <pre><code>dnsenum --threads 50 -f wordlist.txt target.com</code></pre>                                                               | **Modo Turbo (CTF/HTB)**<br>Sube los hilos a 50 (o más). Úsalo en entornos controlados donde no te importa el ruido y quieres resultados ya.                                                                   |
+| <pre><code>dnsenum --dnsserver 1.1.1.1 -f wordlist.txt target.com</code></pre>                                                        | **Bypass de Filtros DNS**<br>Si el DNS de tu red local bloquea peticiones o va lento, fuerza la resolución a través de Cloudflare (1.1.1.1) o Google (8.8.8.8).                                                |
+| <pre><code>dnsenum --enum -o output.xml target.com</code></pre>                                                                       | **Auditoría con Evidencia**<br>Guarda todo en XML. Vital si necesitas reportar o si vas a parsear las IPs encontradas luego con `nmap` o `masscan`.                                                            |
+
+
+```ad-tip
+**AXFR:** La herramienta intenta automáticamente una **Transferencia de Zona (AXFR)** en todos los Nameservers (NS) que encuentre. Si tiene éxito, obtendrá todos los subdominios sin necesidad de fuerza bruta.
+```
 
 ***
 
