@@ -77,6 +77,7 @@ type: Tertiary Category
 
   ### Infrastructure & Other Services
 - [[DNS Enumeration (53)]]
+	- [[dig]]
 - [[SNMP Enumeration (161,162,10161,10162)]]
 - [[IPMI Enumeration (623)]]
 - [[Finger Enumeration (79)]]

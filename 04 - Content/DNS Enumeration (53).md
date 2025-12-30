@@ -45,9 +45,10 @@ tab: **host**
 ![[host#^host-enum]]
 ````
 
-**Notas importantes:**
+```ad-important
 - Según RFC 8482, las consultas `ANY` pueden estar deprecated; por eso conviene pedir tipos de registro específicos.
 - AXFR se refiere a Asynchronous Full Transfer Zone (transferencia completa de zona).
+```
 
 
 ---

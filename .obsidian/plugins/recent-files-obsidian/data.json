@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "dig",
-      "path": "04 - Content/Process/dig.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "DNS Enumeration (53)",
       "path": "04 - Content/DNS Enumeration (53).md"
+    },
+    {
+      "basename": "dig",
+      "path": "04 - Content/Process/dig.md"
+    },
+    {
+      "basename": "dnsenum",
+      "path": "04 - Content/Process/dnsenum.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Certificate Transparency Logs",
@@ -53,10 +65,6 @@
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
       "basename": "DNS",
       "path": "04 - Content/DNS.md"
     },
@@ -95,10 +103,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Introduction to Web Applications",
@@ -195,10 +199,6 @@
     {
       "basename": "SQL Injection Fundamentals",
       "path": "04 - Content/Process/SQL Injection Fundamentals.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS) moc",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
     }
   ],
   "omittedPaths": [],

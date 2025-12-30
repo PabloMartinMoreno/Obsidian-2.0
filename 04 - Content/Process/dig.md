@@ -19,6 +19,7 @@ linked:
   - "[[DNS Enumeration (53)]]"
   - "[[DNS]]"
   - "[[DNS - Herramientas]]"
+  - "[[nslookup]]"
 ---
 # Dig - Domain Information Groper
 
@@ -26,35 +27,26 @@ linked:
 
 ## Cheatsheet
 
-| **Comando**                                                 | **Descripción**                                                    |
-| ----------------------------------------------------------- | ------------------------------------------------------------------ |
-| <pre><code>`dig $TARGET @<nameserver/IP>`</code></pre>      | <br>Identifica el registro **A** del dominio objetivo.             |
-| <pre><code>`dig a $TARGET @<nameserver/IP>`</code></pre>    | <br>Identifica el registro **A** del dominio objetivo.             |
-| <pre><code>`dig -x <IP> @<nameserver/IP>`</code></pre>      | <br>Identifica el registro **PTR** de la dirección IP objetivo.    |
-| <pre><code>`dig any $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica **todos los registros (ANY)** del dominio objetivo. |
-| <pre><code>`dig txt $TARGET @<nameserver/IP>`</code></pre>  | <br>Identifica los registros **TXT** del dominio objetivo.         |
-| <pre><code>`dig mx $TARGET @<nameserver/IP>`</code></pre>   | <br>Identifica los registros **MX** del dominio objetivo.          |
-| <pre><code>`dig axfr $TARGET @<nameserver/IP>`</code></pre> | <br>Copia completa de todos los registros DNS.                     |
+| **Comando dig**                                                 | **Objetivo**                         |
+| --------------------------------------------------------------- | ------------------------------------ |
+| <pre><code>`dig dominio.com`</code></pre>                       | **Consulta Básica**                  |
+| <pre><code>`dig dominio.com +short`</code></pre>                | **Respuesta Corta (Solo la IP)**     |
+| <pre><code>`dig @8.8.8.8 dominio.com`</code></pre>              | **Consultar Servidor Específico**    |
+| <pre><code>`dig dominio.com MX`</code></pre>                    | **Buscar Servidores de Correo**      |
+| <pre><code>`dig dominio.com NS`</code></pre>                    | **Buscar Nameservers**               |
+| <pre><code>`dig dominio.com +trace`</code></pre>                | **Rastreo Completo (Traza)**         |
+| <pre><code>`dig -x 8.8.8.8`</code></pre>                        | **Resolución Inversa (IP a Nombre)** |
+| <pre><code>`dig dominio.com TXT`</code></pre>                   | **Verificar Registros de Seguridad** |
+| <pre><code>`dig axfr @ns1.dominio.com dominio.com`</code></pre> | **Transferencia de Zona**            |
+| <pre><code>`dig dominio.com ANY`</code></pre>                   | **Consultar Todos los Registros**    |
 ^dig-enum
 
-
-| **Objetivo**                         | **Comando dig**                         | **Tipo / Flag** |
-| ------------------------------------ | --------------------------------------- | --------------- |
-| **Transferencia de Zona**            | `dig axfr @ns1.dominio.com dominio.com` | **AXFR**        |
-| **Consultar Todos los Registros**    | `dig dominio.com ANY`                   | **ANY**         |
-| **Consulta Básica**                  | `dig dominio.com`                       | **A**           |
-| **Respuesta Corta (Solo la IP)**     | `dig dominio.com +short`                | **+short**      |
-| **Consultar Servidor Específico**    | `dig @8.8.8.8 dominio.com`              | **@server**     |
-| **Buscar Servidores de Correo**      | `dig dominio.com MX`                    | **MX**          |
-| **Buscar Nameservers**               | `dig dominio.com NS`                    | **NS**          |
-| **Rastreo Completo (Traza)**         | `dig dominio.com +trace`                | **+trace**      |
-| **Resolución Inversa (IP a Nombre)** | `dig -x 8.8.8.8`                        | **-x**          |
-| **Verificar Registros de Seguridad** | `dig dominio.com TXT`                   | **TXT**         |
 
 ***
 
 ## Overview
 
+Permite preguntar a un servidor DNS: _"¿cuál es la dirección IP de este dominio?"_ o _"¿Quién gestiona el correo de esta empresa?"_.
 
 Envía una **consulta DNS** (query) a un **servidor de nombres** para resolver un dominio.
 Ejemplo básico:
@@ -89,4 +81,11 @@ Esto muestra todos los saltos desde los **root servers** hasta los **autoritativ
 
 ***
 
-## Notas Relacionadas
+## ¿Por qué usar `dig` en lugar de [[nslookup]]?
+
+- **Precisión:** `dig` utiliza las bibliotecas de resolución de nombres de BIND (el estándar de internet), por lo que es más fiel a cómo se comporta el tráfico real.
+- **Flexibilidad:** Permite ver todo el proceso de "recursión" (cómo se llega desde los servidores raíz hasta el dominio final) usando `+trace`.
+- **Detalle:** Proporciona información técnica sobre el TTL (Time To Live) y las cabeceras de respuesta que otras herramientas ocultan.
+
+
+___
