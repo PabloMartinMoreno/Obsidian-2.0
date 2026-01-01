@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "Subdominio vs Virtual Host",
+      "path": "04 - Content/Subdominio vs Virtual Host.md"
+    },
+    {
       "basename": "Virtual Hosts",
-      "path": "Virtual Hosts.md"
+      "path": "04 - Content/Virtual Hosts.md"
+    },
+    {
+      "basename": "Virtual Hosts",
+      "path": "04 - Content/Process/Virtual Hosts.md"
     },
     {
       "basename": "Subdominios",
@@ -191,14 +199,6 @@
     {
       "basename": "Social Engineering Intelligence",
       "path": "04 - Content/Social Engineering Intelligence.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     }
   ],
   "omittedPaths": [],

@@ -26,7 +26,7 @@
 
 ## [[Transferencias de Zona DNS]]
 
-## [[Virtual Hosts]]
+## [[04 - Content/Virtual Hosts]]
 
 ## [[Certificate Transparency Logs]]
 

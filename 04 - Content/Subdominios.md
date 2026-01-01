@@ -5,7 +5,11 @@ tags:
 type: Concept
 linked:
 ---
-# ### El Subdominio (Capa de DNS)
+# Subdominios
+
+___
+
+## El Subdominio (Capa de DNS)
 
 Un subdominio es una subdivisión jerárquica del dominio principal. Su función es puramente organizativa y de resolución de nombres.
 
