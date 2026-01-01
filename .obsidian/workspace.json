@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Subdominio vs Virtual Host.md",
+                "file": "04 - Content/DNS (53) - Enumeración.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Subdominio vs Virtual Host"
+              "title": "DNS (53) - Enumeración"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Subdominio vs Virtual Host.md",
+                "file": "04 - Content/DNS (53) - Enumeración.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Subdominio vs Virtual Host"
+              "title": "Gráfico de DNS (53) - Enumeración"
             }
           },
           {
@@ -266,9 +266,9 @@
   "active": "00f8eb7d0c1e12e8",
   "lastOpenFiles": [
     "04 - Content/Virtual Hosts.md",
-    "04 - Content/Process/Virtual Hosts.md",
-    "04 - Content/Subdominio vs Virtual Host.md",
     "04 - Content/Subdominios.md",
+    "04 - Content/Subdominio vs Virtual Host.md",
+    "04 - Content/Process/Virtual Hosts.md",
     "04 - Content/dig.md",
     "SCADA/ICS - Enumeración.md",
     "04 - Content/DNS (53) - Enumeración.md",

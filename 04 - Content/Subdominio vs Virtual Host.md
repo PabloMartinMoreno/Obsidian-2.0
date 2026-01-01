@@ -5,15 +5,15 @@ tags:
 type: Concept
 linked:
   - "[[Subdominios]]"
-  - "[[04 - Content/Virtual Hosts]]"
+  - "[[04 - Content/Virtual Hosts|Virtual Hosts]]"
 ---
 # Subdominio vs Virtual Host
 
 ***
 
-![[04 - Content/Virtual Hosts#El Virtual Host (Capa de Servidor)]]
+![[04 - Content/Virtual Hosts#El Virtual Host (Capa de aplicación / HTTP)]]
 
-![[Subdominios#El Subdominio (Capa de DNS)]]
+![[Subdominios#El Subdominio (Capa de red / DNS)]]
 
 ## Diferencias Clave
 
@@ -29,10 +29,10 @@ linked:
 ## ¿Cómo interactúan en la vida real?
 
 1. **Uno escribe** `dev.ejemplo.com` en el navegador.
-2. **DNS:** Resuelve que `dev.ejemplo.com` está en la IP `1.2.3.4`.8
+2. **DNS:** Resuelve que `dev.ejemplo.com` está en la IP `1.2.3.4`
 3. **Conexión:** El navegador contacta a `1.2.3.4` y le envía una petición que dice: _"**Hola, vengo a ver el sitio"
-4. **Virtual Host:** El servidor recibe la petición, lee el encabezado `Host: dev.ejemplo.com` y busca en su configuración.9 Si encuentra un Virtual Host con ese nombre, te sirve la web de desarrollo.10 Si no, te sirve la web por defecto (la principal).11
-    
+4. **Virtual Host:** El servidor recibe la petición, lee el encabezado `Host: dev.ejemplo.com` y busca en su configuración. Si encuentra un Virtual Host con ese nombre, le sirve la web de desarrollo. Si no, le sirve la web por defecto (la principal).
+
 
 ---
 
