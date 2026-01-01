@@ -263,7 +263,7 @@
     },
     {
       "id": "a6b978bf-72cb-46cb-8eea-7ca666b06576",
-      "name": "Create template",
+      "name": "Create template type",
       "type": "Multi",
       "command": true,
       "choices": [
@@ -329,6 +329,34 @@
           "type": "Template",
           "command": true,
           "templatePath": "05 - Templates/Type/_sub-command.md",
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
+          "folder": {
+            "enabled": true,
+            "folders": [],
+            "chooseWhenCreatingNote": false,
+            "createInSameFolderAsActiveFile": false,
+            "chooseFromSubfolders": false
+          },
+          "appendLink": false,
+          "openFile": true,
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
+          "fileExistsMode": "Increment the file name",
+          "setFileExistsBehavior": false
+        },
+        {
+          "id": "c4e8b53a-4595-4278-9b3f-58b86aec20c0",
+          "name": "Cheatsheet",
+          "type": "Template",
+          "command": true,
+          "templatePath": "05 - Templates/Type/_cheatsheet.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""

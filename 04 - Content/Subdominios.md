@@ -7,24 +7,6 @@ linked:
 ---
 # Subdominios 
 
-## 1. Anatomía de un dominio
-
-Un nombre de dominio completo se lee técnicamente de **derecha a izquierda**, donde cada parte separada por un punto representa un nivel de jerarquía:
-
-- **TLD (Top-Level Domain):** El nivel superior, como `.com`, `.org` o `.edu`.
-- **SLD (Second-Level Domain):** Es el nombre principal que registras, por ejemplo, `google` o `tuempresa`.
-- **Subdominio:** Cualquier palabra que se anteponga al dominio principal.
-
-**Ejemplo:** En la URL `soporte.tienda.ejemplo.com`
-- `.com` es el TLD.
-- `ejemplo` es el dominio principal (SLD).
-- `tienda` es un subdominio de `ejemplo`.
-- `soporte` es un subdominio de `tienda`.
-
----
-
-## 2. ¿Para qué se utilizan?
-
 Los subdominios son herramientas versátiles para organizar la arquitectura de un sitio sin necesidad de comprar dominios nuevos. Sus usos principales son:
 
 - **Segmentación de servicios:** Separar funciones críticas. Ejemplo: `blog.tusitio.com`, `tienda.tusitio.com`.
@@ -34,7 +16,7 @@ Los subdominios son herramientas versátiles para organizar la arquitectura de u
 
 ---
 
-## 3. Configuración técnica (Registros DNS)
+## Configuración técnica (Registros DNS)
 
 Para que un subdominio funcione, debe ser definido en la zona DNS del dominio principal. Existen dos formas comunes de hacerlo:
 
@@ -43,7 +25,7 @@ Para que un subdominio funcione, debe ser definido en la zona DNS del dominio pr
 
 ---
 
-## 4. Diferencia entre Subdominio y Subdirectorio
+## Diferencia entre Subdominio y Subdirectorio
 
 Es común confundirlos, pero tienen impactos distintos en el SEO y la administración:
 

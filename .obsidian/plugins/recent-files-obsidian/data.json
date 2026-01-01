@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Subdominios",
+      "path": "04 - Content/Subdominios.md"
+    },
+    {
       "basename": "Virtual Hosts",
       "path": "Virtual Hosts.md"
     },
@@ -23,10 +27,6 @@
     {
       "basename": "Penetration Test",
       "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Subdominios",
-      "path": "04 - Content/Subdominios.md"
     },
     {
       "basename": "DNS",

@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Virtual Hosts.md",
+                "file": "04 - Content/Subdominios.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Virtual Hosts"
+              "title": "Subdominios"
             }
           }
         ],
@@ -157,7 +157,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Virtual Hosts.md",
+                "file": "04 - Content/Subdominios.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -228,7 +228,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Virtual Hosts"
+              "title": "Gráfico de Subdominios"
             }
           },
           {
@@ -281,8 +281,8 @@
   },
   "active": "2585285d1b3f389a",
   "lastOpenFiles": [
-    "04 - Content/dig.md",
     "Virtual Hosts.md",
+    "04 - Content/dig.md",
     "SCADA/ICS - Enumeración.md",
     "04 - Content/DNS (53) - Enumeración.md",
     "04 - Content/dnsenum.md",
