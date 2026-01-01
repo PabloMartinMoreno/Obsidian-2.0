@@ -2,7 +2,7 @@
   "choices": [
     {
       "id": "bc2664c6-3444-45eb-af9e-b548d8697b60",
-      "name": "Crear writeup",
+      "name": "Create writeup",
       "type": "Multi",
       "command": true,
       "choices": [
@@ -260,11 +260,104 @@
         }
       ],
       "collapsed": false
+    },
+    {
+      "id": "a6b978bf-72cb-46cb-8eea-7ca666b06576",
+      "name": "Create template",
+      "type": "Multi",
+      "command": true,
+      "choices": [
+        {
+          "id": "5456ffae-49bb-4e1d-8b20-6df734b4416c",
+          "name": "Concept",
+          "type": "Template",
+          "command": true,
+          "templatePath": "05 - Templates/Type/_concept.md",
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
+          "folder": {
+            "enabled": true,
+            "folders": [],
+            "chooseWhenCreatingNote": false,
+            "createInSameFolderAsActiveFile": false,
+            "chooseFromSubfolders": false
+          },
+          "appendLink": false,
+          "openFile": true,
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
+          "fileExistsMode": "Increment the file name",
+          "setFileExistsBehavior": false
+        },
+        {
+          "id": "c5a910b4-f766-4a43-b40e-e77da0adb28c",
+          "name": "Command",
+          "type": "Template",
+          "command": true,
+          "templatePath": "05 - Templates/Type/_command.md",
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
+          "folder": {
+            "enabled": true,
+            "folders": [],
+            "chooseWhenCreatingNote": false,
+            "createInSameFolderAsActiveFile": false,
+            "chooseFromSubfolders": false
+          },
+          "appendLink": false,
+          "openFile": true,
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
+          "fileExistsMode": "Increment the file name",
+          "setFileExistsBehavior": false
+        },
+        {
+          "id": "38332391-a335-4957-aa36-eb2b866a38ed",
+          "name": "Sub-Command",
+          "type": "Template",
+          "command": true,
+          "templatePath": "05 - Templates/Type/_sub-command.md",
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
+          "folder": {
+            "enabled": true,
+            "folders": [],
+            "chooseWhenCreatingNote": false,
+            "createInSameFolderAsActiveFile": false,
+            "chooseFromSubfolders": false
+          },
+          "appendLink": false,
+          "openFile": true,
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
+          "fileExistsMode": "Increment the file name",
+          "setFileExistsBehavior": false
+        }
+      ],
+      "collapsed": false
     }
   ],
   "inputPrompt": "single-line",
   "devMode": false,
-  "templateFolderPath": "00 - Recursos/Plantillas",
+  "templateFolderPath": "05 - Templates",
   "announceUpdates": false,
   "version": "2.4.0",
   "globalVariables": {},

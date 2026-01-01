@@ -95,5 +95,13 @@
       ],
       "key": "Backspace"
     }
+  ],
+  "quickadd:choice:a6b978bf-72cb-46cb-8eea-7ca666b06576": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "T"
+    }
   ]
 }

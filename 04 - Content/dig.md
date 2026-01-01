@@ -35,7 +35,7 @@ linked:
 | <pre><code>dig example.com NS +short</code></pre>                                             | <br>Obtiene los **Nameservers**. Vital para saber a quién atacar luego (ej: intentar AXFR).                    |
 | <pre><code>dig example.com TXT</code></pre>                                                   | <br>Busca registros de texto. Fundamental en OSINT para ver SPF, DMARC o validaciones de dominio.              |
 | <pre><code>dig @8.8.8.8 example.com</code></pre>                                              | <br>Realiza la consulta preguntándole a un servidor específico (Google) en vez de al local.                    |
-| <pre><code>dig axfr @https://www.google.com/search?q=ns1.example.com example.com</code></pre> | <br>**Transferencia de Zona**. Intenta descargar _toda_ la base de datos del dominio (vulnerabilidad crítica). |
+| <pre><code>dig axfr inlanefreight.htb @10.129.187.216</code></pre>                            | <br>**Transferencia de Zona**. Solicita la base de datos completa del dominio al servidor específico.          |
 | <pre><code>dig -x 192.168.1.10</code></pre>                                                   | <br>**Reverse Lookup**. Averigua qué dominio (PTR) corresponde a esa dirección IP.                             |
 | <pre><code>dig +trace example.com</code></pre>                                                | <br>Traza el camino completo de la resolución DNS desde la raíz hasta el dominio (para debugging).             |
 | <pre><code>dig example.com ANY +noall +answer</code></pre>                                    | <br>Intenta pedir "todo" lo que tenga (ANY) y formatea la salida limpia mostrando solo la respuesta.           |

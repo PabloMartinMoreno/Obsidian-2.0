@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Virtual Hosts",
+      "path": "Virtual Hosts.md"
+    },
+    {
       "basename": "dig",
       "path": "04 - Content/dig.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "VPN - Enumeración",
       "path": "04 - Content/Process/VPN - Enumeración.md"
-    },
-    {
-      "basename": "ICS - Enumeración",
-      "path": "SCADA/ICS - Enumeración.md"
     },
     {
       "basename": "Finger (79) - Enumeración",
@@ -134,11 +134,11 @@
     },
     {
       "basename": "_concept",
-      "path": "05 - Templates/04 - Type/_concept.md"
+      "path": "05 - Templates/Type/_concept.md"
     },
     {
       "basename": "_command",
-      "path": "05 - Templates/04 - Type/_command.md"
+      "path": "05 - Templates/Type/_command.md"
     },
     {
       "basename": "host",
