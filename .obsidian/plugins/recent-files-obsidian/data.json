@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "DNS (53) - Enumeración",
-      "path": "04 - Content/DNS (53) - Enumeración.md"
-    },
-    {
-      "basename": "Virtual Hosts",
-      "path": "04 - Content/Virtual Hosts.md"
-    },
-    {
-      "basename": "Subdominios",
-      "path": "04 - Content/Subdominios.md"
-    },
-    {
       "basename": "Subdominio vs Virtual Host",
       "path": "04 - Content/Subdominio vs Virtual Host.md"
+    },
+    {
+      "basename": "Subdominio",
+      "path": "04 - Content/Subdominio.md"
+    },
+    {
+      "basename": "Virtual Host",
+      "path": "04 - Content/Virtual Host.md"
+    },
+    {
+      "basename": "Reconociendo un Subdominio de un Virtual Host",
+      "path": "Reconociendo un Subdominio de un Virtual Host.md"
+    },
+    {
+      "basename": "DNS (53) - Enumeración",
+      "path": "04 - Content/DNS (53) - Enumeración.md"
     },
     {
       "basename": "Virtual Hosts",
@@ -195,10 +199,6 @@
     {
       "basename": "CanaryTokens",
       "path": "04 - Content/CanaryTokens.md"
-    },
-    {
-      "basename": "Social Engineering Intelligence",
-      "path": "04 - Content/Social Engineering Intelligence.md"
     }
   ],
   "omittedPaths": [],

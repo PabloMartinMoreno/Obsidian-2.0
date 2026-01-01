@@ -26,7 +26,7 @@ linked:
   - "[[nslookup]]"
   - "[[DNS]]"
   - "[[Seclists]]"
-  - "[[Subdominios]]"
+  - "[[Subdominio]]"
   - "[[Transferencia de Zona DNS]]"
 ---
 # DNS Enumeration (53)

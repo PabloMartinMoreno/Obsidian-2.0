@@ -4,25 +4,52 @@ tags:
   - type/concept
 type: Concept
 linked:
-  - "[[Subdominios]]"
-  - "[[04 - Content/Virtual Hosts|Virtual Hosts]]"
+  - "[[Subdominio]]"
+  - "[[Virtual Host|Virtual Host]]"
+  - "[[Reconociendo un Subdominio de un Virtual Host]]"
 ---
 # Subdominio vs Virtual Host
 
-***
+___
 
-![[04 - Content/Virtual Hosts#El Virtual Host (Capa de aplicación / HTTP)]]
+![[Subdominio#El Subdominio (Capa de red / DNS)]]
 
-![[Subdominios#El Subdominio (Capa de red / DNS)]]
+![[Virtual Host#El Virtual Host (Capa de aplicación / HTTP)]]
+
 
 ## Diferencias Clave
 
-|**Característica**|**Subdominio**|**Virtual Host**|
+Para entender la diferencia, tengo que separar el **"¿A dónde voy?"** (Subdominio) del **"¿Qué me entregan?"** (Virtual Host).
+
+### Diferencia de Capa y Ubicación
+
+- **Subdominio:** Es un objeto de la **Capa de Red**. Vive en los servidores DNS. Es simplemente una entrada en una tabla que dice: `nombre -> IP`.
+- **Virtual Host:** Es un objeto de la **Capa de Aplicación**. Vive dentro de la memoria y los archivos de configuración del servidor web (Nginx/Apache). Es un bloque de código que dice: `si el texto recibido es "nombre" -> busca en la carpeta X`.
+
+### Diferencia de Función (El "Qué hace")
+
+- **El Subdominio es un Direccionador:** Su única función es que mi paquete de datos sepa a qué dirección IP del mundo debe viajar. Una vez que el paquete llega a la puerta del servidor, el trabajo del subdominio termina.
+- **El Virtual Host es un Clasificador:** Su función empieza cuando el paquete ya llegó al servidor. El servidor abre el paquete, lee el nombre que escribí en la URL y decide qué carpeta de su disco duro abrir.
+
+### Diferencia de Dependencia
+
+Esta es la parte más importante para entender que **no son lo mismo**:
+
+- **Independencia del Subdominio:** Puedo crear un subdominio `correo.miweb.com` que apunte a una IP, pero esa IP puede ser un servidor de base de datos o de correo, no necesariamente un servidor web. El subdominio existe aunque no haya ninguna web detrás.
+- **Independencia del Virtual Host:** Puedo configurar un Virtual Host llamado `secreto.local` en mi servidor. Este Virtual Host no necesita existir en ningún DNS del mundo. Si yo fuerzo a mi navegador a enviar ese nombre (editando mi `/etc/hosts` o usando `curl`), el servidor me entregará el contenido porque la regla existe internamente.
+
+La distinción real no está en el nombre (que puede ser el mismo, ej. `dev.ejemplo.htb`), sino en **quién procesa la información** y **en qué momento de la conexión** ocurre.
+
+___
+
+## Cuadro comparativo 
+
+|**Punto de Diferencia**|**Subdominio**|**Virtual Host**|
 |---|---|---|
-|**Nivel**|DNS (Red)|Software (Aplicación)|
-|**Propósito**|Direccionar tráfico a una IP.|Separar contenido dentro de la IP.|
-|**Dependencia**|Puede existir sin un servidor web (ej. apuntando a un servidor de correo).|Necesita que el tráfico llegue al servidor para actuar.|
-|**Relación**|El "Nombre" de la carpeta.|La "Puerta" lógica que abre la carpeta.|
+|**¿Qué es técnicamente?**|Un registro de texto en una zona DNS.|Un bloque de configuración en un archivo `.conf`.|
+|**¿Quién lo procesa?**|Los servidores DNS de Internet.|El proceso `nginx`, `httpd` o `apache2`.|
+|**Su responsabilidad es:**|Traducir un nombre en una IP.|Traducir un nombre en una ruta de archivos.|
+|**Si falla o no existe:**|Mi computadora dice: "No se pudo encontrar la dirección".|El servidor me muestra su página por defecto (la de bienvenida).|
 
 ---
 

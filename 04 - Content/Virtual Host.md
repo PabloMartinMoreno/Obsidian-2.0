@@ -4,8 +4,9 @@ tags:
   - type/concept
 type: Concept
 linked:
-  - "[[Subdominios]]"
+  - "[[Subdominio]]"
   - "[[Subdominio vs Virtual Host]]"
+  - "[[Reconociendo un Subdominio de un Virtual Host]]"
 ---
 # Virtual Hosts
 
@@ -15,21 +16,13 @@ linked:
 
 El Virtual Host es la instrucción dentro de tu software (Apache, Nginx) que decide qué archivos mostrar cuando alguien llega preguntando por un nombre específico. Se refiere a la práctica de alojar **múltiples sitios web o aplicaciones en un solo servidor físico**.
 - **Ejemplo:** Una carpeta en `/var/www/tienda/` que solo se activa si el visitante pide `tienda.midominio.com`.
-- **Dónde se configura:** En archivos de texto dentro del servidor (ej. `/etc/nginx/sites-available/`).
 - **Misión:** Decirle al servidor: _"Si el navegador me pide este nombre exacto, muéstrale esta carpeta y no la principal"_.
 
-Un Virtual Host es una **directiva lógica** dentro de la configuración de un servicio (Nginx, Apache, IIS). Permite que un solo proceso escuchando en un socket (`IP:Puerto`) sirva contenidos distintos basándose en el protocolo HTTP.
-- **Protocolo:** HTTP/1.1 o superior (TCP/80 o 443).
-- **Mecánica:** Cuando el navegador ya tiene la IP, establece una conexión TCP. Una vez establecida, envía una petición HTTP que se ve así:
-```http
-GET /index.html HTTP/1.1
-Host: dev.ejemplo.com
-User-Agent: Mozilla/5.0...
-```
-- **Procesamiento en el Servidor:** El servidor web (Nginx/Apache) recibe este texto plano. Lee la línea `Host: dev.ejemplo.com` y la compara con sus archivos de configuración:
-    - **Nginx:** Busca el bloque `server { server_name dev.ejemplo.com; ... }`.
-    - **Apache:** Busca el bloque `<VirtualHost *:80> ServerName dev.ejemplo.com ... </VirtualHost>`.
-- **Resultado:** Si hay coincidencia, el servidor entrega los archivos de la ruta definida en `root` o `DocumentRoot`.
+Es una **directiva de filtrado**. Es una instrucción dentro del software del servidor (Nginx/Apache) que decide qué archivos entregar basándose en el texto que recibe en la cabecera `Host`.
+- **Dónde reside:** En archivos como `/etc/nginx/sites-available/` o `/etc/apache2/sites-enabled/`.
+- **Qué hace:** Una vez que ya estoy conectado a la IP `10.10.10.5`, mi navegador envía un paquete de texto (HTTP) que dice: `Host: api.objetivo.com`. El servidor web lee ese texto y busca en su configuración si tiene una carpeta asignada a ese nombre exacto.
+- **Protocolo:** TCP 80 / 443.
+- **Me doy cuenta de que existe porque:** Al enviar una petición a la IP y cambiar manualmente el valor de la cabecera `Host`, el servidor me responde con contenido distinto.
 
 ___
 
