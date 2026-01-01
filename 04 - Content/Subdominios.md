@@ -5,14 +5,13 @@ tags:
 type: Concept
 linked:
 ---
-# Subdominios 
+# ### El Subdominio (Capa de DNS)
 
-Los subdominios son herramientas versátiles para organizar la arquitectura de un sitio sin necesidad de comprar dominios nuevos. Sus usos principales son:
+Un subdominio es una subdivisión jerárquica del dominio principal. Su función es puramente organizativa y de resolución de nombres.
 
-- **Segmentación de servicios:** Separar funciones críticas. Ejemplo: `blog.tusitio.com`, `tienda.tusitio.com`.
-- **Entornos de desarrollo:** Probar cambios antes de subirlos a producción. Ejemplo: `dev.tusitio.com` o `staging.tusitio.com`.
-- **Geolocalización:** Ofrecer contenido en diferentes idiomas o regiones. Ejemplo: `es.wikipedia.org` (Español) vs `en.wikipedia.org` (Inglés).
-- **Plataformas de usuarios:** Sitios como WordPress o Tumblr permiten que cada usuario tenga su propio espacio. Ejemplo: `usuario.wordpress.com`.
+- **Ejemplo:** `tienda.tudominio.com` o `dev.tudominio.com`.
+- **Dónde se configura:** En tu panel de DNS (Cloudflare, GoDaddy, etc.) creando un registro tipo **A** o **CNAME**.
+- **Misión:** Decirle al mundo: _"Si buscas esta dirección, ve a esta dirección IP"_.
 
 ---
 
@@ -24,17 +23,3 @@ Para que un subdominio funcione, debe ser definido en la zona DNS del dominio pr
 2. **Registro CNAME:** Crea un "alias" que apunta a otro nombre de dominio. Es útil para servicios externos (como apuntar `tienda.tusitio.com` hacia `shopify.com`).
 
 ---
-
-## Diferencia entre Subdominio y Subdirectorio
-
-Es común confundirlos, pero tienen impactos distintos en el SEO y la administración:
-
-|**Característica**|**Subdominio (blog.web.com)**|**Subdirectorio (web.com/blog)**|
-|---|---|---|
-|**Jerarquía**|Entendido como una entidad separada.|Entendido como parte del sitio principal.|
-|**SEO**|Puede heredar menos "autoridad" del principal.|Comparte toda la autoridad del dominio.|
-|**Hosting**|Puede estar en un servidor totalmente distinto.|Generalmente está en el mismo servidor.|
-|**Certificados**|Requiere un certificado SSL dedicado o uno _Wildcard_.|Cubierto por el SSL del dominio principal.|
-
----
-
