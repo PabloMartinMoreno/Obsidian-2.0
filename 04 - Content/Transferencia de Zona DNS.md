@@ -6,6 +6,7 @@ tags:
 type: Concept
 linked:
   - "[[DNS]]"
+  - "[[dnsenum]]"
 ---
 # Transferencia de Zona
 

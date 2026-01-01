@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
+      "basename": "dig",
+      "path": "04 - Content/dig.md"
+    },
+    {
+      "basename": "DNS (53) - Enumeración",
+      "path": "04 - Content/DNS (53) - Enumeración.md"
+    },
+    {
+      "basename": "dnsenum",
+      "path": "04 - Content/dnsenum.md"
     },
     {
       "basename": "Transferencia de Zona DNS",
       "path": "04 - Content/Transferencia de Zona DNS.md"
     },
     {
-      "basename": "DNS (53) - Enumeración",
-      "path": "04 - Content/DNS (53) - Enumeración.md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Subdominios",
@@ -133,16 +141,8 @@
       "path": "05 - Templates/04 - Type/_command.md"
     },
     {
-      "basename": "dnsenum",
-      "path": "04 - Content/dnsenum.md"
-    },
-    {
       "basename": "host",
       "path": "04 - Content/Process/host.md"
-    },
-    {
-      "basename": "dig",
-      "path": "04 - Content/dig.md"
     },
     {
       "basename": "nslookup",
