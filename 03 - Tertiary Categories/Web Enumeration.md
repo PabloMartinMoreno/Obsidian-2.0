@@ -20,7 +20,7 @@ type: Tertiary Category
 
 - [[Subdomains Passive Enumeration]] (Búsqueda de subdominios sin contacto directo.)
 - [[Google Dorking]] (Uso de motores de búsqueda para encontrar paneles y archivos expuestos.)
-- [[DNS Enumeration (53)]] (Consulta de registros A, CNAME, TXT, transferencias de zona, etc.)
+- [[DNS (53) - Enumeración]] (Consulta de registros A, CNAME, TXT, transferencias de zona, etc.)
     - [[DNS Enumeration Command Comparison]] (Referencia rápida de comandos para distintas herramientas.)
 - [[Performing Whois Lookup]] (Información de registro de dominio y propietarios.)
 - [[Certificate Transparency Logs]] (Uso de crt.sh u otras fuentes para encontrar subdominios y dominios relacionados a través de certificados SSL.)

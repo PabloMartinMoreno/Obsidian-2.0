@@ -23,8 +23,8 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[Common SMTP Commands]]"
-  - "[[POP3 Enumeration (110, 995)]]"
-  - "[[IMAP Enumeration (143, 993)]]"
+  - "[[POP3 (110, 995) - Enumeración]]"
+  - "[[IMAP (143, 993) - Enumeración]]"
 ---
 # SMTP Enumeration (25,465,587)
 
@@ -56,7 +56,7 @@ linked:
 
 El **Simple Mail Transfer Protocol (SMTP)** es el protocolo principal para enviar correos por redes IP. Facilita la comunicación entre un cliente de correo y un servidor saliente, o directamente entre servidores SMTP.
 
-SMTP se usa habitualmente junto con protocolos de recepción como [[POP3 Enumeration (110, 995)]] o [[IMAP Enumeration (143, 993)]] para recibir emails.
+SMTP se usa habitualmente junto con protocolos de recepción como [[POP3 (110, 995) - Enumeración]] o [[IMAP (143, 993) - Enumeración]] para recibir emails.
 
 La mayoría de servidores modernos soportan **ESMTP** (Extended SMTP), que incluye características como `SMTP-Auth` para mejorar la seguridad.
 

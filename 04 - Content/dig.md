@@ -16,7 +16,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: Command
 linked:
-  - "[[DNS Enumeration (53)]]"
+  - "[[DNS (53) - Enumeración]]"
   - "[[DNS]]"
   - "[[DNS - Herramientas]]"
   - "[[nslookup]]"

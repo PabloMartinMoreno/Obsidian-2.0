@@ -16,7 +16,7 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[DNS Enumeration (53)]]"
+  - "[[DNS (53) - Enumeración]]"
   - "[[curl]]"
   - "[[ffuf]]"
   - "[[Seclists]]"
@@ -59,4 +59,4 @@ Estos métodos son particularmente útiles para revelar otras partes de una infr
 
 ## Notas Relacionadas
 
-- [[DNS Enumeration (53)]]: Para una enumeración DNS más profunda.
+- [[DNS (53) - Enumeración]]: Para una enumeración DNS más profunda.

@@ -5,7 +5,10 @@ tags:
   - type/concept
 type: Concept
 linked:
+  - "[[DNS (53) - Enumeración]]"
   - "[[DNS - Herramientas]]"
+  - "[[Subdominios]]"
+  - "[[Transferencia de Zona DNS]]"
 ---
 # DNS: El Sistema de Nombres de Dominio
 

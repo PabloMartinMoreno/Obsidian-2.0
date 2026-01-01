@@ -1,8 +1,136 @@
 {
   "recentFiles": [
     {
-      "basename": "DNS Enumeration (53)",
-      "path": "04 - Content/DNS Enumeration (53).md"
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Transferencia de Zona DNS",
+      "path": "04 - Content/Transferencia de Zona DNS.md"
+    },
+    {
+      "basename": "DNS (53) - Enumeración",
+      "path": "04 - Content/DNS (53) - Enumeración.md"
+    },
+    {
+      "basename": "Subdominios",
+      "path": "04 - Content/Subdominios.md"
+    },
+    {
+      "basename": "DNS",
+      "path": "04 - Content/DNS.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "VPN - Enumeración",
+      "path": "04 - Content/Process/VPN - Enumeración.md"
+    },
+    {
+      "basename": "ICS - Enumeración",
+      "path": "SCADA/ICS - Enumeración.md"
+    },
+    {
+      "basename": "Finger (79) - Enumeración",
+      "path": "04 - Content/Finger (79) - Enumeración.md"
+    },
+    {
+      "basename": "IPMI (623) - Enumeración",
+      "path": "04 - Content/IPMI (623) - Enumeración.md"
+    },
+    {
+      "basename": "SNMP (161,162,10161,10162) - Enumeración",
+      "path": "04 - Content/SNMP (161,162,10161,10162) - Enumeración.md"
+    },
+    {
+      "basename": "PostgreSQL (5432) - Enumeración",
+      "path": "04 - Content/Process/PostgreSQL (5432) - Enumeración.md"
+    },
+    {
+      "basename": "MongoDB (27017) - Enumeración",
+      "path": "04 - Content/Process/MongoDB (27017) - Enumeración.md"
+    },
+    {
+      "basename": "MySQL (3306) - Enumeración",
+      "path": "04 - Content/MySQL (3306) - Enumeración.md"
+    },
+    {
+      "basename": "Oracle TNS (1521) - Enumeración",
+      "path": "04 - Content/Oracle TNS (1521) - Enumeración.md"
+    },
+    {
+      "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
+      "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
+    },
+    {
+      "basename": "Kerberos (88) - Enumeración",
+      "path": "04 - Content/Process/Kerberos (88) - Enumeración.md"
+    },
+    {
+      "basename": "LDAP (389, 636, 3268, 3269) - Enumeración",
+      "path": "04 - Content/LDAP (389, 636, 3268, 3269) - Enumeración.md"
+    },
+    {
+      "basename": "IMAP (143, 993) - Enumeración",
+      "path": "04 - Content/IMAP (143, 993) - Enumeración.md"
+    },
+    {
+      "basename": "POP3 (110, 995) - Enumeración",
+      "path": "04 - Content/POP3 (110, 995) - Enumeración.md"
+    },
+    {
+      "basename": "SMTP (25,465,587) - Enumeración",
+      "path": "04 - Content/SMTP (25,465,587) - Enumeración.md"
+    },
+    {
+      "basename": "Telnet (23) - Enumeración",
+      "path": "04 - Content/Process/Telnet (23) - Enumeración.md"
+    },
+    {
+      "basename": "TFTP (69) - Enumeración",
+      "path": "04 - Content/TFTP (69) - Enumeración.md"
+    },
+    {
+      "basename": "Rsync (873) - Enumeración",
+      "path": "04 - Content/Rsync (873) - Enumeración.md"
+    },
+    {
+      "basename": "RDP (3389) - Enumeración",
+      "path": "04 - Content/RDP (3389) - Enumeración.md"
+    },
+    {
+      "basename": "NFS (111, 2049) - Enumeración",
+      "path": "04 - Content/NFS (111, 2049) - Enumeración.md"
+    },
+    {
+      "basename": "SMB (139, 445) - Enumeración",
+      "path": "04 - Content/SMB (139, 445) - Enumeración.md"
+    },
+    {
+      "basename": "SSH (22) - Enumeración",
+      "path": "04 - Content/SSH (22) - Enumeración.md"
+    },
+    {
+      "basename": "FTP (21) - Enumeración",
+      "path": "04 - Content/FTP (21) - Enumeración.md"
+    },
+    {
+      "basename": "DNS - Herramientas",
+      "path": "04 - Content/DNS - Herramientas.md"
+    },
+    {
+      "basename": "Fuzzing Subdomains & Virtual Hosts",
+      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
+    },
+    {
+      "basename": "_concept",
+      "path": "05 - Templates/04 - Type/_concept.md"
+    },
+    {
+      "basename": "_command",
+      "path": "05 - Templates/04 - Type/_command.md"
     },
     {
       "basename": "dnsenum",
@@ -21,36 +149,16 @@
       "path": "04 - Content/Process/nslookup.md"
     },
     {
-      "basename": "Subdominio",
-      "path": "04 - Content/Subdominio.md"
-    },
-    {
       "basename": "dnsrecon",
       "path": "04 - Content/Process/dnsrecon.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Fuzzing Subdomains & Virtual Hosts",
-      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
-    },
-    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "DNS",
-      "path": "04 - Content/DNS.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Certificate Transparency Logs",
@@ -85,120 +193,12 @@
       "path": "04 - Content/Social Engineering Intelligence.md"
     },
     {
-      "basename": "DNS - Herramientas",
-      "path": "04 - Content/DNS - Herramientas.md"
-    },
-    {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
-    },
-    {
-      "basename": "Digging DNS — Explorando DNS",
-      "path": "04 - Content/Process/Digging DNS — Explorando DNS.md"
-    },
-    {
-      "basename": "DNS - CWES",
-      "path": "04 - Content/Process/DNS - CWES.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "whois",
-      "path": "04 - Content/whois.md"
-    },
-    {
-      "basename": "whois - Escenarios de Uso",
-      "path": "04 - Content/whois - Escenarios de Uso.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition - Introduction",
-      "path": "04 - Content/Process/Information Gathering - Web Edition - Introduction.md"
-    },
-    {
-      "basename": "nmap",
-      "path": "04 - Content/nmap.md"
-    },
-    {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Process/HTTP.md"
-    },
-    {
-      "basename": "HTTPS",
-      "path": "04 - Content/Process/HTTPS.md"
-    },
-    {
-      "basename": "Métodos HTTP",
-      "path": "04 - Content/Process/Métodos HTTP.md"
-    },
-    {
-      "basename": "HTTP Headers",
-      "path": "04 - Content/Process/HTTP Headers.md"
-    },
-    {
-      "basename": "http-flow",
-      "path": "04 - Content/Process/http-flow.md"
-    },
-    {
-      "basename": "Criptografía Simétrica vs. Asimétrica",
-      "path": "04 - Content/Process/Criptografía Simétrica vs. Asimétrica.md"
-    },
-    {
-      "basename": "URL",
-      "path": "04 - Content/Process/URL.md"
-    },
-    {
-      "basename": "Certificados SSL-TLS",
-      "path": "04 - Content/Process/Certificados SSL-TLS.md"
-    },
-    {
-      "basename": "Curl - Fuzzing Parámetros y Valores",
-      "path": "04 - Content/Curl - Fuzzing Parámetros y Valores.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Códigos de Estado HTTP",
-      "path": "04 - Content/Process/Códigos de Estado HTTP.md"
-    },
-    {
-      "basename": "Cookies y Sesiones",
-      "path": "04 - Content/Process/Cookies y Sesiones.md"
-    },
-    {
-      "basename": "examen",
-      "path": "04 - Content/Process/examen.md"
-    },
-    {
-      "basename": "Well-Known URIs",
-      "path": "04 - Content/Process/Well-Known URIs.md"
-    },
-    {
-      "basename": "Fuzzing Parameters & Values",
-      "path": "04 - Content/Fuzzing Parameters & Values.md"
-    },
-    {
-      "basename": "Fuzzing Directories & Pages",
-      "path": "04 - Content/Fuzzing Directories & Pages.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     }
   ],
   "omittedPaths": [],

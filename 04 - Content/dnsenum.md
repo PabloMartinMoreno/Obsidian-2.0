@@ -17,7 +17,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: Command
 linked:
-  - "[[DNS Enumeration (53)]]"
+  - "[[DNS (53) - Enumeración]]"
 ---
 # dnsenum
 
@@ -74,7 +74,7 @@ DNSenum no se limita a buscar la IP de un sitio; realiza una serie de pasos lóg
 
 ## Notas Relacionadas
 
-- [[DNS Enumeration (53)]]
+- [[DNS (53) - Enumeración]]
 
 
 ***

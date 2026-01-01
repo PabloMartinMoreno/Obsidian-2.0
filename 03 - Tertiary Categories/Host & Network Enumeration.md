@@ -41,48 +41,48 @@ type: Tertiary Category
  Técnicas detalladas para extraer información de servicios específicos, organizadas por protocolo/función.
 
  ### File & Remote Access Services
-- [[FTP Enumeration (21)]]
-- [[SSH Enumeration (22)]]
-- [[SMB Enumeration (139, 445)]]
+- [[FTP (21) - Enumeración]]
+- [[SSH (22) - Enumeración]]
+- [[SMB (139, 445) - Enumeración]]
       - [[Interacting with SMB from Windows]] (Uso de herramientas nativas de Windows para interactuar con SMB.)
       - [[RpcClient]] (Herramienta para enumerar información de sistemas Windows vía RPC.)
       - [[Spidering SMB Shares]] (Técnicas para explorar recursos compartidos SMB.)
-- [[NFS Enumeration (111, 2049)]]
-- [[RDP Enumeration (3389)]]
-- [[Rsync Enumeration (873)]]
-- [[TFTP Enumeration (69)]]
-- [[Telnet Enumeration (23)]] 
+- [[NFS (111, 2049) - Enumeración]]
+- [[RDP (3389) - Enumeración]]
+- [[Rsync (873) - Enumeración]]
+- [[TFTP (69) - Enumeración]]
+- [[Telnet (23) - Enumeración]] 
 
 
  ### Messaging & Directory Services
-- [[SMTP Enumeration (25,465,587)]]
+- [[SMTP (25,465,587) - Enumeración]]
        - [[Common SMTP Commands]]
-- [[POP3 Enumeration (110, 995)]]
+- [[POP3 (110, 995) - Enumeración]]
        - [[Common POP3 Commands]]
-- [[IMAP Enumeration (143, 993)]]
+- [[IMAP (143, 993) - Enumeración]]
        - [[Common IMAP Commands]]
-- [[LDAP Enumeration (389, 636, 3268, 3269)]]
-- [[Kerberos Enumeration (88)]]
+- [[LDAP (389, 636, 3268, 3269) - Enumeración]]
+- [[Kerberos (88) - Enumeración]]
 
   ### Database Services
-- [[MSSQL Enumeration (1433, 1434, 2433)]]
+- [[MSSQL (1433, 1434, 2433) - Enumeración]]
        - [[T-SQL Commands Cheatsheet]]
-- [[Oracle TNS Enumeration (1521)]]
+- [[Oracle TNS (1521) - Enumeración]]
        - [[SQL*Plus Commands]]
-- [[MySQL Enumeration (3306)]]
+- [[MySQL (3306) - Enumeración]]
        - [[SQL Commands]]
-- [[PostgreSQL Enumeration (5432)]]
-- [[MongoDB Enumeration (27017)]] (Base de datos NoSQL popular.)
+- [[PostgreSQL (5432) - Enumeración]]
+- [[MongoDB (27017) - Enumeración]] (Base de datos NoSQL popular.)
 
   ### Infrastructure & Other Services
-- [[DNS Enumeration (53)]]
+- [[DNS (53) - Enumeración]]
 	- [[dig]]
 	- [[dnsenum]]
-- [[SNMP Enumeration (161,162,10161,10162)]]
-- [[IPMI Enumeration (623)]]
-- [[Finger Enumeration (79)]]
-  - [[VPN Enumeration]] (Identificación de tipos de VPN y sus puntos de acceso.)
-  - [[SCADA/ICS Enumeration]] (Técnicas para descubrir sistemas de control industrial.)
+- [[SNMP (161,162,10161,10162) - Enumeración]]
+- [[IPMI (623) - Enumeración]]
+- [[Finger (79) - Enumeración]]
+  - [[VPN - Enumeración]] (Identificación de tipos de VPN y sus puntos de acceso.)
+  - [[ICS - Enumeración]] (Técnicas para descubrir sistemas de control industrial.)
 
 
   ## 🛠 General Tools & Concepts

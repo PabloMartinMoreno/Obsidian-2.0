@@ -10,6 +10,17 @@ linked:
 
 En la fase de **Reconocimiento (Footprinting)**, el DNS es una de las fuentes de información más ricas. Estas herramientas ayudan a descubrir subdominios, registros ocultos y posibles vectores de ataque como transferencias de zona.
 
+
+| Herramienta                          | Tipo (pasivo/activo)                 | Función principal                             | Qué obtiene / cómo se usa                                                                                                           | Cuándo elegirla                                                                                            |
+| ------------------------------------ | ------------------------------------ | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **whois**                            | 🔵 Pasivo                            | Datos del registrador/propietario             | Información del registrante, NS declarados, fechas, contactos.                                                                      | Inicio de reconocimiento pasivo; contexto administrativo                                                   |
+| **dig**                              | 🟡 Activo                            | Consultas DNS puntuales y precisas            | Registros A/AAAA/MX/NS/TXT/SOA, AXFR si está abierto; permite `@<server>`                                                           | Verificar registros, probar un NS específico, depurar resoluciones                                         |
+| **nslookup**                         | 🟡 Activo                            | Consultas DNS simples (útil en Windows)       | Igual que `dig` pero formato más básico                                                                                             | Consultas rápidas o entornos donde `dig` no está disponible                                                |
+| **dnsrecon**                         | 🔴 Activo (automatizado)             | Enumeración avanzada de DNS                   | Fuerza bruta de subdominios, pruebas AXFR, búsquedas inversas, consulta de registros                                                | Enumeración profunda con wordlists; auditorías en laboratorio/autorizadas                                  |
+| **dnsenum**                          | 🔴 Activo (híbrido: pasivo + activo) | Enumeración/colección completa de subdominios | Brute force de subdominios, intentos AXFR, reverse lookup, whois lookup y recolección OSINT; genera listados y puede usar wordlists | Buen complemento cuando querés combinar búsquedas pasivas/osint + fuerza bruta; útil para informes rápidos |
+| **theHarvester / amass / sublist3r** | 🔵/🔴 (depende)                      | Enumeración pasiva y activa de subdominios    | Recolectan de motores, cert transparency, APIs y/o fuerza bruta                                                                     | Cuando querés mezclar fuentes OSINT (certs, motores, feeds)                                                |
+
+
 ---
 
 ## 1. Herramientas Nativas (CLI)

@@ -44,7 +44,7 @@ linked:
 
 **NFS (Network File System) es un protocolo que permite el acceso remoto a sistemas de archivos a través de una red, haciendo que parezcan locales.**
 
-Se utiliza comúnmente en entornos basados en Unix, a diferencia de la [[SMB Enumeration (139, 445)]], que se usa principalmente en Windows.
+Se utiliza comúnmente en entornos basados en Unix, a diferencia de la [[SMB (139, 445) - Enumeración]], que se usa principalmente en Windows.
 
 **NFS carece de autenticación o autorización integradas, dependiendo de las opciones del protocolo RPC para la seguridad.** La autenticación se basa en las asignaciones UID/GID, que, si están mal configuradas, pueden provocar accesos no autorizados.
 

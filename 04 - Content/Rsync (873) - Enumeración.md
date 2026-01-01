@@ -22,8 +22,8 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[SSH Enumeration (22)]]"
-  - "[[FTP Enumeration (21)]]"
+  - "[[SSH (22) - Enumeración]]"
+  - "[[FTP (21) - Enumeración]]"
 ---
 # Enumeración Rsync (873)
 
@@ -48,6 +48,6 @@ linked:
 
 A menudo se utiliza para copias de seguridad y espejado, debido a su capacidad para minimizar la transferencia de datos copiando solo las partes de los archivos que han cambiado.
 
-Los módulos Rsync actúan como directorios en un servidor de [[FTP Enumeration (21)]], organizando datos que pueden estar opcionalmente protegidos con contraseña. *Estos módulos pueden contener información sensible* y, cuando se usa Rsync sin SSH, los datos se transmiten sin cifrar, lo que puede exponerlos en redes no confiables.
+Los módulos Rsync actúan como directorios en un servidor de [[FTP (21) - Enumeración]], organizando datos que pueden estar opcionalmente protegidos con contraseña. *Estos módulos pueden contener información sensible* y, cuando se usa Rsync sin SSH, los datos se transmiten sin cifrar, lo que puede exponerlos en redes no confiables.
 
-El puerto predeterminado para Rsync es **TCP 873**, y aunque puede usar [[SSH Enumeration (22)]] para transferencias seguras, la falta de cifrado en redes no seguras puede dejar los datos vulnerables.
+El puerto predeterminado para Rsync es **TCP 873**, y aunque puede usar [[SSH (22) - Enumeración]] para transferencias seguras, la falta de cifrado en redes no seguras puede dejar los datos vulnerables.

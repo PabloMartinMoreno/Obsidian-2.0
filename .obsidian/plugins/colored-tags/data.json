@@ -489,7 +489,8 @@
     "type/sub-command": 11,
     "tool/dig": 82,
     "tool/dnsenum": 83,
-    "meta/brute-force": 66
+    "meta/brute-force": 66,
+    "protocol/axfr": 21
   },
   "_version": 3
 }

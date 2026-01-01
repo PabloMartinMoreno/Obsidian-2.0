@@ -20,13 +20,14 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Comparación Comandos de Enumeración DNS]]"
-  - "[[Seclists]]"
-  - "[[Subdominio]]"
   - "[[dig]]"
   - "[[dnsenum]]"
   - "[[host]]"
   - "[[nslookup]]"
+  - "[[DNS]]"
+  - "[[Seclists]]"
+  - "[[Subdominios]]"
+  - "[[Transferencia de Zona DNS]]"
 ---
 # DNS Enumeration (53)
 
