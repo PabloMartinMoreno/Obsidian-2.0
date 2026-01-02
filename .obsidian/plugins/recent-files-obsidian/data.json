@@ -5,6 +5,10 @@
       "path": "04 - Content/Subdominio vs Virtual Host.md"
     },
     {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
       "basename": "Subdominio",
       "path": "04 - Content/Subdominio.md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "Transferencia de Zona DNS",
       "path": "04 - Content/Transferencia de Zona DNS.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "DNS",
