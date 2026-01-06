@@ -1,52 +1,84 @@
 {
   "recentFiles": [
     {
-      "basename": "Subdominio vs Virtual Host",
-      "path": "04 - Content/Subdominio vs Virtual Host.md"
+      "basename": "Certificate Transparency Logs",
+      "path": "04 - Content/Process/Certificate Transparency Logs.md"
     },
     {
-      "basename": "Virtual Host",
-      "path": "04 - Content/Virtual Host.md"
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     },
     {
-      "basename": "Subdominio",
-      "path": "04 - Content/Subdominio.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
-    },
-    {
-      "basename": "Reconociendo un Subdominio de un Virtual Host",
-      "path": "Reconociendo un Subdominio de un Virtual Host.md"
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
     },
     {
       "basename": "DNS (53) - Enumeración",
       "path": "04 - Content/DNS (53) - Enumeración.md"
     },
     {
-      "basename": "Virtual Hosts",
-      "path": "04 - Content/Process/Virtual Hosts.md"
+      "basename": "DNS",
+      "path": "04 - Content/DNS.md"
     },
     {
-      "basename": "dig",
-      "path": "04 - Content/dig.md"
+      "basename": "Subdominio",
+      "path": "04 - Content/Subdominio.md"
     },
     {
-      "basename": "dnsenum",
-      "path": "04 - Content/dnsenum.md"
+      "basename": "Subdominio vs Virtual Host",
+      "path": "04 - Content/Subdominio vs Virtual Host.md"
     },
     {
       "basename": "Transferencia de Zona DNS",
       "path": "04 - Content/Transferencia de Zona DNS.md"
     },
     {
-      "basename": "DNS",
-      "path": "04 - Content/DNS.md"
-    },
-    {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "dig",
+      "path": "04 - Content/dig.md"
+    },
+    {
+      "basename": "DNS - Herramientas",
+      "path": "04 - Content/DNS - Herramientas.md"
+    },
+    {
+      "basename": "Fuzzing Subdomains & Virtual Hosts",
+      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "NetBIOS Enumeration (137, 138, 139)",
+      "path": "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md"
+    },
+    {
+      "basename": "Reconociendo un Subdominio de un Virtual Host",
+      "path": "Reconociendo un Subdominio de un Virtual Host.md"
+    },
+    {
+      "basename": "Virtual Host",
+      "path": "04 - Content/Virtual Host.md"
+    },
+    {
+      "basename": "Penetration Test",
+      "path": "01 - Primary Categories/Penetration Test.md"
+    },
+    {
+      "basename": "Virtual Hosts",
+      "path": "04 - Content/Process/Virtual Hosts.md"
+    },
+    {
+      "basename": "dnsenum",
+      "path": "04 - Content/dnsenum.md"
     },
     {
       "basename": "VPN - Enumeración",
@@ -137,14 +169,6 @@
       "path": "04 - Content/FTP (21) - Enumeración.md"
     },
     {
-      "basename": "DNS - Herramientas",
-      "path": "04 - Content/DNS - Herramientas.md"
-    },
-    {
-      "basename": "Fuzzing Subdomains & Virtual Hosts",
-      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
-    },
-    {
       "basename": "_concept",
       "path": "05 - Templates/Type/_concept.md"
     },
@@ -165,18 +189,6 @@
       "path": "04 - Content/Process/dnsrecon.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Certificate Transparency Logs",
-      "path": "04 - Content/Process/Certificate Transparency Logs.md"
-    },
-    {
       "basename": "Passive Reconnaissance & OSINT",
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Subdomains Passive Enumeration",
       "path": "04 - Content/Subdomains Passive Enumeration.md"
-    },
-    {
-      "basename": "GitHub Dorking",
-      "path": "04 - Content/GitHub Dorking.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Google Dorking.md"
-    },
-    {
-      "basename": "CanaryTokens",
-      "path": "04 - Content/CanaryTokens.md"
     }
   ],
   "omittedPaths": [],

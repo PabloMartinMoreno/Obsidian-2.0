@@ -68,3 +68,28 @@ ___
 - **Subdomain Discovery:** Busca registros públicos en servidores DNS. Si el administrador no creó el registro DNS, no lo encontrará ahí.
 - **VHost Discovery (Fuzzing):** A veces, los administradores configuran un Virtual Host (ej. `interno.empresa.com`) pero **no crean el registro DNS** para que nadie de afuera lo vea.
 	- Si uno lanza una petición directa a la IP del servidor cambiando manualmente la cabecera `Host` (usando herramientas como `ffuf`), el servidor responderá con el sitio "oculto" porque el Virtual Host está ahí, esperando ser llamado, aunque no tenga una "dirección oficial" en el DNS.15
+
+## ¿Hacen falta ambos para funcionar? 
+
+La respuesta corta es: **Sí, para que un sitio web funcione públicamente en internet, necesitas los dos.**
+
+Son como las dos mitades de un puente:
+1. El **Subdominio** lleva al usuario desde su casa hasta la puerta de tu servidor.
+2. El **Virtual Host** lo recibe en la puerta y le muestra el contenido correcto.
+
+Sin embargo, para entenderlo a fondo (y esto es muy útil si estás aprendiendo administración de sistemas o seguridad), es bueno saber qué pasa si falta uno de los dos:
+
+### Escenario A: Se tiene Subdominio pero NO Virtual Host
+
+- **Qué se hace:** Se configura el DNS (`app.miweb.com` -> IP `1.2.3.4`), pero olvidaste configurar Apache/Nginx.
+- **Qué pasa:** El usuario llega a tu servidor, pero el servidor "no se da por enterado" de que ese subdominio es especial.
+- **Resultado:** El servidor mostrará su **página por defecto** (la famosa página que dice "It Works!" de Apache) o, peor aún, mostrará el contenido del primer sitio web que encuentre configurado, lo cual es un error de seguridad y configuración.
+
+### Escenario B: Se tiene Virtual Host pero NO Subdominio (El "Truco")
+
+- **Qué se hace:** Se configura Apache/Nginx para responder a `secreto.miweb.com`, pero no compraste el dominio ni configuraste el DNS público.
+- **Qué pasa:** Nadie en internet puede entrar porque el nombre no existe en el sistema DNS global.
+- **¿Funciona?** **Sí, pero solo para uno mismo.**
+    - Esto se usa mucho en desarrollo. Puedes "engañar" a tu computadora editando tu archivo local **`/etc/hosts`** (en Linux/Mac) o `hosts` (en Windows).
+    - Le dices a la PC: _"Oye, no busques en internet, yo te digo que `secreto.miweb.com` es la IP `127.0.0.1`"_.
+    - Tu navegador envía la petición, el Virtual Host la recibe y te muestra la web.

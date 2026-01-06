@@ -8,7 +8,7 @@ linked:
   - "[[Subdominio vs Virtual Host]]"
   - "[[Reconociendo un Subdominio de un Virtual Host]]"
 ---
-# Subdominios
+# Subdominio
 
 ___
 
