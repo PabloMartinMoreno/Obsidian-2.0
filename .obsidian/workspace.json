@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Proceso de Gestión de Accidentes.md",
+                "file": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Proceso de Gestión de Accidentes"
+              "title": "Cyber Kill Chain y MITRE ATT&CK"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Proceso de Gestión de Accidentes.md",
+                "file": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Proceso de Gestión de Accidentes"
+              "title": "Gráfico de Cyber Kill Chain y MITRE ATT&CK"
             }
           },
           {
@@ -265,11 +265,16 @@
   },
   "active": "11a456a136b06405",
   "lastOpenFiles": [
+    "00 - Resources/Pasted image 20260106161953.png",
+    "00 - Resources/Pasted image 20260106161936.png",
+    "00 - Resources/Pasted image 20260106161922.png",
+    "00 - Resources/Pasted image 20260106161913.png",
+    "04 - Content/Process/Gestión de Incidentes.md",
+    "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
+    "04 - Content/Process/Proceso de Gestión de Accidentes.md",
     "00 - Resources/Pasted image 20260106145522.png",
     "00 - Resources/Pasted image 20260106145457.png",
     "00 - Resources/Pasted image 20260106145405.png",
-    "04 - Content/Process/Gestión de Incidentes.md",
-    "04 - Content/Process/Proceso de Gestión de Accidentes.md",
     "01 - Primary Categories/Blue Team.md",
     "01 - Primary Categories/Red Team.md",
     "01 - Primary Categories/OS Internals.md",
@@ -292,17 +297,12 @@
     "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md",
     "Reconociendo un Subdominio de un Virtual Host.md",
     "04 - Content/Virtual Host.md",
-    "04 - Content/Process/Virtual Hosts.md",
     "SCADA",
     "00 - Resources/Pasted image 20251230174414.png",
     "00 - Resources/Pasted image 20251226153038.png",
     "Certificados SSL",
     "00 - Resources/Pasted image 20251225153503.png",
     "00 - Resources/Pasted image 20251225152753.png",
-    "00 - Resources/Pasted image 20251126135617.png",
-    "00 - Resources/Pasted image 20251126135612.png",
-    "00 - Resources/Pasted image 20251126135557.png",
-    "00 - Resources/Pasted image 20251126135512.png",
     "04 - Content/Process/Sin título.base",
     "Metasploit multi",
     "LXC ",

@@ -24,8 +24,6 @@ La **gestión de incidentes** es un conjunto claramente definido de procedimient
 
 ![[Pasted image 20260106145405.png]]
 
-**Diagrama de flujo del Ciclo de Vida de Respuesta a Incidentes:** Preparación → Detección y Análisis → Contención, Erradicación y Recuperación → Actividad Post-Incidente, con flechas que muestran bucles de retroalimentación desde cada etapa hacia las etapas anteriores y hacia la Preparación para la mejora continua. Título debajo: "Modelo del Ciclo de Vida de Respuesta a Incidentes".
-
 Es importante notar que la gestión de incidentes no se limita solo a incidentes de intrusión.
 
 Otros tipos de incidentes, como los causados por **insiders maliciosos** (empleados internos), problemas de disponibilidad y pérdida de propiedad intelectual, también caen dentro del alcance de la gestión de incidentes. Un plan integral de gestión de incidentes debe abordar varios tipos de incidentes y proporcionar las medidas adecuadas para identificar, contener, erradicar y recuperarse de ellos para restaurar las operaciones comerciales normales lo más rápida y eficientemente posible.
@@ -60,11 +58,9 @@ Uno de los recursos más utilizados sobre gestión de incidentes es la **Guía d
 
 - **WannaCry (2017):** El ransomware WannaCry se propagó como un gusano utilizando el exploit SMB EternalBlue, afectando a más de 200,000 sistemas en más de 150 países. Los impactos de alto perfil incluyeron hospitales y empresas. Este incidente se debió a sistemas Windows sin parches, a pesar de que el parche MS17-010 estaba disponible antes del brote.
 
-
 ### Empleado Desleal / Amenaza Interna (Insider Threat)
 
 - **Cash App / Block Inc. (Divulgación 2021; Aviso Público 2022):** Un ex empleado accedió a la información personal de millones de usuarios de Cash App, según se informó en las divulgaciones de la compañía. Aproximadamente 8.2 millones de clientes actuales y anteriores fueron potencialmente afectados, lo que llevó a un escrutinio regulatorio y acuerdos. La causa raíz fue el abuso del acceso legítimo de los empleados y controles internos y monitoreo insuficientes.
-
 
 ### Phishing / Ingeniería Social
 
@@ -73,7 +69,6 @@ Uno de los recursos más utilizados sobre gestión de incidentes es la **Guía d
 - **Ataque de Phishing al Departamento del Interior de EE. UU.:** Los atacantes utilizaron una técnica de "gemelo malvado" (evil twin) para engañar a las personas para que se conectaran a una red Wi-Fi falsa, permitiendo a los hackers robar credenciales y acceder a la red. Este incidente reveló una falta de infraestructura de red inalámbrica segura y medidas de seguridad insuficientes, incluida una autenticación de usuario débil y pruebas de red inadecuadas.
 
 - **Secuestro de Cuentas de Twitter 2020:** En 2020, muchas cuentas de Twitter de alto perfil fueron comprometidas por partes externas para promover una estafa de bitcoin. Los atacantes obtuvieron acceso a las herramientas administrativas de Twitter, lo que les permitió alterar cuentas y publicar tweets directamente. Parecían haber utilizado ingeniería social para obtener acceso a las herramientas a través de empleados de Twitter.
-
 
 ### Ataque a la Cadena de Suministro (Supply-Chain Attack)
 
@@ -117,9 +112,4 @@ A lo largo de este módulo, nos referiremos a un escenario de incidente para com
 El diagrama a continuación muestra una visión general de la víctima y los actores de amenazas.
 ![[Pasted image 20260106145522.png]]
 
-
-_Diagrama de flujo de red: Actores de amenazas en Internet sondean dos consolas web —ManageEngine AD Manager y un Portal de Informes de Clientes PHP— a través de un firewall hacia una red interna que contiene un Controlador de Dominio, múltiples máquinas Windows, un Servidor de Base de Datos y Servidores de Archivos. Los registros de eventos (logs) de estos sistemas van al SIEM, que se integra con TheHive. TheHive notifica a un Analista de SOC, quien realiza el análisis y genera alertas y casos._
-
 Basado en la información que hemos recopilado, el primer actor de amenaza ganó entrada cuando los administradores del sistema olvidaron cambiar la contraseña predeterminada admin/admin en una aplicación orientada a Internet, es decir, **ManageEngine ADManager Plus**, después de una actualización del producto. Aprovechando esto, los atacantes iniciaron sesión con éxito, realizaron reconocimiento, mapearon usuarios y máquinas, y finalmente crearon nuevas cuentas privilegiadas de Active Directory. Usando una de las cuentas recién creadas, los adversarios pivotaron (se movieron lateralmente) más adentro en el entorno, identificando un servicio RDP externo expuesto por una mala configuración. Explotando ese punto de entrada, escalaron su control y finalmente usaron Objetos de Política de Grupo (GPOs) para desplegar spyware utilizando un paquete MSI en múltiples endpoints.
-
-En la siguiente sección, aprenderemos sobre los marcos **Cyber Kill Chain** y **MITRE ATT&CK**. Las fases en estos marcos reflejan el ciclo de vida del atacante y las acciones observables en cada etapa.

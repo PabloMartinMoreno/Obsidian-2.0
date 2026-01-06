@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Proceso de Gestión de Accidentes",
-      "path": "04 - Content/Process/Proceso de Gestión de Accidentes.md"
+      "basename": "Cyber Kill Chain y MITRE ATT&CK",
+      "path": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md"
     },
     {
       "basename": "Gestión de Incidentes",
       "path": "04 - Content/Process/Gestión de Incidentes.md"
+    },
+    {
+      "basename": "Proceso de Gestión de Accidentes",
+      "path": "04 - Content/Process/Proceso de Gestión de Accidentes.md"
     },
     {
       "basename": "Blue Team",
@@ -195,10 +199,6 @@
     {
       "basename": "nslookup",
       "path": "04 - Content/Process/nslookup.md"
-    },
-    {
-      "basename": "dnsrecon",
-      "path": "04 - Content/Process/dnsrecon.md"
     }
   ],
   "omittedPaths": [],
