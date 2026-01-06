@@ -15,7 +15,7 @@ tags:
   - meta/open-relay
   - meta/vhost-headers
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

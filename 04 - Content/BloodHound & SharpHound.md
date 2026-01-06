@@ -7,7 +7,7 @@ tags:
   - technique/recon/active
   - asset/active-directory
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
   - "[[Active Directory]]"

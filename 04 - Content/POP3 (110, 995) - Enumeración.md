@@ -13,7 +13,7 @@ tags:
   - meta/commands
   - meta/auth-methods
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

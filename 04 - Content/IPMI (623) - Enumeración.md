@@ -12,7 +12,7 @@ tags:
   - meta/management-ports
   - technique/credential-access
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

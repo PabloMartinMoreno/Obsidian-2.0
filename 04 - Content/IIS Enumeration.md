@@ -10,7 +10,7 @@ tags:
   - tool/shortscan
   - meta/headers
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

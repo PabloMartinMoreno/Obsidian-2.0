@@ -7,7 +7,7 @@ tags:
   - meta/filters
   - meta/examples
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

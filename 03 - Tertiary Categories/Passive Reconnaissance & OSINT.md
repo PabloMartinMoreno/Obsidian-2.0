@@ -5,7 +5,7 @@ tags:
   - type/moc/tertiary
   - technique/recon/passive
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 type: Tertiary Category

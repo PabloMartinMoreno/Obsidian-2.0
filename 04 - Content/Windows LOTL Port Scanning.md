@@ -5,7 +5,7 @@ tags:
   - tool/powershell
   - "#porhacer"
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

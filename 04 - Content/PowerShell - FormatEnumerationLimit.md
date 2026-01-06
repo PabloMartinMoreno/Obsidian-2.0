@@ -3,7 +3,7 @@ aliases:
 tags:
   - command
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
   - "[[Red Team]]"
   - "[[Development]]"
 secondary categories:

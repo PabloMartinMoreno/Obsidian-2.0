@@ -7,7 +7,7 @@ tags:
   - asset/honeypot
   - meta/alerting
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

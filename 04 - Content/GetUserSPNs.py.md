@@ -4,7 +4,7 @@ aliases:
 tags:
 primary categories:
   - "[[Red Team]]"
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Credential Harvesting]]"
   - "[[Kerberoasting]]"

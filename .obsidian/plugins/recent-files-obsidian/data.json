@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Proceso de Gestión de Accidentes",
+      "path": "04 - Content/Process/Proceso de Gestión de Accidentes.md"
+    },
+    {
+      "basename": "Gestión de Incidentes",
+      "path": "04 - Content/Process/Gestión de Incidentes.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
       "basename": "Certificate Transparency Logs",
       "path": "04 - Content/Certificate Transparency Logs.md"
     },
@@ -67,10 +83,6 @@
     {
       "basename": "Virtual Host",
       "path": "04 - Content/Virtual Host.md"
-    },
-    {
-      "basename": "Penetration Test",
-      "path": "01 - Primary Categories/Penetration Test.md"
     },
     {
       "basename": "Virtual Hosts",
@@ -187,18 +199,6 @@
     {
       "basename": "dnsrecon",
       "path": "04 - Content/Process/dnsrecon.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Passive Infrastructure Identification.md"
-    },
-    {
-      "basename": "Subdomains Passive Enumeration",
-      "path": "04 - Content/Subdomains Passive Enumeration.md"
     }
   ],
   "omittedPaths": [],

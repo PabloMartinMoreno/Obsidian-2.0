@@ -6,11 +6,38 @@ primary categories:
   - "[[000 - Global Index]]"
 type: Primary Category
 ---
-# [[Red Team]]
+# Red Team
 
 ***
 
-* Add link(s) [[]] to related SECONDARY categories
+## 🟢[[Information Gathering]]
+
 
 ***
+
+## 🔨 [[Resource Development]]
+
+
+***
+
+## 🔴[[Exploitation]]
+
+
+***
+
+## ⚪[[Post-Exploitation]]
+
+
+***
+
+## 🟤[[Lateral Movement]]
+
+
+***
+
+## ⚙️[[Operational Tasks]]
+
+
+***
+
 

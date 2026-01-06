@@ -11,7 +11,7 @@ tags:
   - meta/params
   - protocol/http
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

@@ -10,7 +10,7 @@ tags:
   - meta/zone-transfer
   - meta/brute-force
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

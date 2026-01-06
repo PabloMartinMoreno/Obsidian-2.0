@@ -3,7 +3,7 @@ aliases:
 tags:
   - type/moc/tertiary
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Operational Tasks]]"
 type: Tertiary Category

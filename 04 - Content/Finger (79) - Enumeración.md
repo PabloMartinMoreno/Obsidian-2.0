@@ -11,7 +11,7 @@ tags:
   - tool/msfconsole
   - meta/user-enumeration
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

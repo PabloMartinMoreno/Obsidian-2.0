@@ -9,7 +9,7 @@ tags:
   - meta/plugins
   - meta/themes
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

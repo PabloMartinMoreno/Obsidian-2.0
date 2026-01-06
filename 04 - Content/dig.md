@@ -9,7 +9,7 @@ tags:
   - protocol/dns
   - port/53
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

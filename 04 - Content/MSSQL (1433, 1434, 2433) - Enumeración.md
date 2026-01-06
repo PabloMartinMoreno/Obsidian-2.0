@@ -17,7 +17,7 @@ tags:
   - meta/db-users
   - technique/credential-access
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

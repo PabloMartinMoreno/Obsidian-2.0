@@ -6,7 +6,7 @@ tags:
   - technique/recon/active
   - asset/web-app
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 type: Tertiary Category

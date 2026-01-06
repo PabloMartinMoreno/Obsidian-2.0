@@ -9,7 +9,7 @@ tags:
   - tool/curl
   - meta/modules
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

@@ -8,7 +8,7 @@ tags:
   - meta/index
   - meta/checklist
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 type: Tertiary Category

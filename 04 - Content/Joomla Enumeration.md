@@ -7,7 +7,7 @@ tags:
   - tool/curl
   - tool/droopescan
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

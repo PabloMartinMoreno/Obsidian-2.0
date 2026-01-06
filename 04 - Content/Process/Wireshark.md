@@ -7,7 +7,7 @@ tags:
   - meta/filters
   - meta/protocol-analysis
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

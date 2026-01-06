@@ -12,7 +12,7 @@ tags:
   - meta/keys
   - meta/ciphers
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

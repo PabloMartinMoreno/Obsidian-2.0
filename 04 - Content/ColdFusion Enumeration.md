@@ -11,7 +11,7 @@ tags:
   - tool/nmap
   - tool/curl
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

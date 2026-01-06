@@ -5,7 +5,7 @@ aliases:
 tags:
   - playbook
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
   - "[[Red Team]]"
 secondary categories:
   - "[[Post-Exploitation]]"

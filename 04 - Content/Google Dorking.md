@@ -7,7 +7,7 @@ tags:
   - asset/web-app
   - meta/osint
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

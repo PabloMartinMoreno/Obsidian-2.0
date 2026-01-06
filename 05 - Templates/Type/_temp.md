@@ -3,7 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Exploitation]]"
 tertiary categories:

@@ -5,7 +5,7 @@ tags:
   - payload
 primary categories:
   - "[[Development]]"
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
   - "[[Red Team]]"
 secondary categories:
   - "[[PowerShell]]"

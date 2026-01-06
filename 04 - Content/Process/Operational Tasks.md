@@ -3,7 +3,7 @@ aliases:
 tags:
   - type/moc/secondary
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 type: Secondary Category
 ---
 # Operational Tasks

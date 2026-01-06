@@ -8,7 +8,7 @@ tags:
   - tool/nmap
   - tool/prtgadmin
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

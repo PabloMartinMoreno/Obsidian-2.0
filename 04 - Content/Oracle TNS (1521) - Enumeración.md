@@ -14,7 +14,7 @@ tags:
   - meta/credentials
   - technique/recon/active
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

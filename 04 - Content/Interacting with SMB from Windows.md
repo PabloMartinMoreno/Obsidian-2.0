@@ -10,7 +10,7 @@ tags:
   - meta/impersonation
   - meta/ps-remoting
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

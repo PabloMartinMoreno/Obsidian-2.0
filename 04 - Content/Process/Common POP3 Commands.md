@@ -7,7 +7,7 @@ tags:
   - tool/telnet
   - tool/openssl-s_client
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

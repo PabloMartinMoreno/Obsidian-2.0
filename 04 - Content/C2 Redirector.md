@@ -3,7 +3,7 @@ aliases:
 tags:
   - infrastructure
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
   - "[[Red Team]]"
 secondary categories:
   - "[[C2 Tradecraft & Profiles]]"

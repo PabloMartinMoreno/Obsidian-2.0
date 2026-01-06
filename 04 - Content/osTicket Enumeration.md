@@ -7,7 +7,7 @@ tags:
   - tool/curl
   - meta/known-paths
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

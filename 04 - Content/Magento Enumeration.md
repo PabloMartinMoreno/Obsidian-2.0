@@ -8,7 +8,7 @@ tags:
   - tool/php
   - meta/extensions
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

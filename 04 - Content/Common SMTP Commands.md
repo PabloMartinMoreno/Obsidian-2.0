@@ -7,7 +7,7 @@ tags:
   - meta/examples
   - tool/telnet
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

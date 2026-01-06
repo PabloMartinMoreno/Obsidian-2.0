@@ -7,7 +7,7 @@ tags:
   - tool/whois
   - meta/osint
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

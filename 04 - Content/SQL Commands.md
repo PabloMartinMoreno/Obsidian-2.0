@@ -9,7 +9,7 @@ tags:
   - tool/mysql
   - tool/mysql-client
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

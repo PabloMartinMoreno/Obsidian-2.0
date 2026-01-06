@@ -9,7 +9,7 @@ tags:
   - tool/ffuf
   - meta/virtual-hosts
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

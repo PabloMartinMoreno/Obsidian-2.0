@@ -6,10 +6,12 @@ primary categories:
   - "[[000 - Global Index]]"
 type: Primary Category
 ---
-# [[OS Internals]]
+#  Blue Team
 
 ***
 
-* Add link(s) [[]] to related SECONDARY categories
+## HTB
+
+[[Gestión de Incidentes]]
 
 ***

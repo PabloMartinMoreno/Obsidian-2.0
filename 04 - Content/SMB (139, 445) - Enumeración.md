@@ -15,7 +15,7 @@ tags:
   - meta/permissions
   - meta/credentials
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

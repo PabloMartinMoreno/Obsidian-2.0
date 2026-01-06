@@ -13,7 +13,7 @@ tags:
   - meta/principal-enum
   - cred/kerberos-tickets
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:

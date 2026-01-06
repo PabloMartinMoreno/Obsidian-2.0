@@ -3,7 +3,7 @@ aliases:
 tags:
   - type/moc/tertiary
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Lateral Movement]]"
   - "[[Windows]]"

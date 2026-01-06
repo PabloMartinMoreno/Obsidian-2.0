@@ -4,7 +4,7 @@ tags:
   - mindmap
 primary categories:
   - "[[Training]]"
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
   - "[[Red Team]]"
 secondary categories:
   - "[[Active Directory]]"

@@ -8,7 +8,7 @@ tags:
   - meta/search-patterns
   - meta/exfiltration
 primary categories:
-  - "[[Penetration Test]]"
+  - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
