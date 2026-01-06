@@ -2,7 +2,23 @@
   "recentFiles": [
     {
       "basename": "Certificate Transparency Logs",
-      "path": "04 - Content/Process/Certificate Transparency Logs.md"
+      "path": "04 - Content/Certificate Transparency Logs.md"
+    },
+    {
+      "basename": "dig",
+      "path": "04 - Content/dig.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "DNS (53) - Enumeración",
+      "path": "04 - Content/DNS (53) - Enumeración.md"
     },
     {
       "basename": "Information Gathering - Web Edition",
@@ -11,10 +27,6 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "DNS (53) - Enumeración",
-      "path": "04 - Content/DNS (53) - Enumeración.md"
     },
     {
       "basename": "DNS",
@@ -37,24 +49,12 @@
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
     },
     {
-      "basename": "dig",
-      "path": "04 - Content/dig.md"
-    },
-    {
       "basename": "DNS - Herramientas",
       "path": "04 - Content/DNS - Herramientas.md"
     },
     {
       "basename": "Fuzzing Subdomains & Virtual Hosts",
       "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "NetBIOS Enumeration (137, 138, 139)",

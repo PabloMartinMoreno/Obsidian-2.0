@@ -1,5 +1,24 @@
+---
+aliases:
+tags:
+  - type/concept
+type: Concept
+linked:
+---
+# Certificate Transparency Logs
 
-# Registros de Transparencia de Certificados (Certificate Transparency Logs)
+***
+
+## Cheatsheet
+
+
+| **Comando**                                                                                                                             | **Descripción**                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| curl -s "https://crt.sh/?q=facebook.com&output=json" \| jq -r '.[] \| select(.name_value \| contains("dev")) \| .name_value' \| sort -u | Uso de la API de `crt.sh` para ver resultados desde consola |
+
+
+
+## Registros de Transparencia de Certificados (Certificate Transparency Logs)
 
 En la vasta extensión de Internet, la confianza es un recurso frágil. Uno de los pilares de esa confianza es el protocolo **SSL/TLS (Secure Sockets Layer / Transport Layer Security)**, que cifra la comunicación entre tu navegador y un sitio web.  
 En el núcleo de SSL/TLS se encuentra el **certificado digital**, un pequeño archivo que verifica la identidad de un sitio web y permite una comunicación segura y cifrada.
@@ -60,7 +79,7 @@ Existen dos opciones populares para buscar en los registros de transparencia de 
 
 ## Ejemplo: Búsqueda con `crt.sh` desde la terminal
 
-Aunque **crt.sh** ofrece una interfaz web, también podés usar su **API** para automatizar búsquedas desde la terminal.  
+Aunque **crt.sh** ofrece una interfaz web, también se puede usar su **API** para automatizar búsquedas desde la terminal.  
 Por ejemplo, para encontrar todos los subdominios que contienen la palabra “dev” en _facebook.com_:
 
 ```bash
@@ -75,7 +94,6 @@ curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[] | select(.name
     Ordena los resultados y elimina duplicados.
 
 **Salida:**
-
 ```
 *.dev.facebook.com
 *.newdev.facebook.com

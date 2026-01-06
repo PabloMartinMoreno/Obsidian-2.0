@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Certificate Transparency Logs.md",
+                "file": "04 - Content/Certificate Transparency Logs.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Certificate Transparency Logs.md",
+                "file": "04 - Content/Certificate Transparency Logs.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -265,19 +265,20 @@
   },
   "active": "d5483cac356de3f2",
   "lastOpenFiles": [
+    "04 - Content/dig.md",
+    "04 - Content/Certificate Transparency Logs.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "04 - Content/DNS (53) - Enumeración.md",
     "04 - Content/Process/Information Gathering - Web Edition.md",
     "04 - Content/Process/CWES.md",
-    "04 - Content/DNS (53) - Enumeración.md",
     "04 - Content/DNS.md",
     "04 - Content/Subdominio.md",
     "04 - Content/Subdominio vs Virtual Host.md",
     "04 - Content/Transferencia de Zona DNS.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
-    "04 - Content/dig.md",
     "04 - Content/DNS - Herramientas.md",
     "04 - Content/Fuzzing Subdomains & Virtual Hosts.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "02 - Secondary Categories/Information Gathering.md",
     "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md",
     "Reconociendo un Subdominio de un Virtual Host.md",
     "04 - Content/Virtual Host.md",
@@ -291,7 +292,6 @@
     "04 - Content/IPMI (623) - Enumeración.md",
     "04 - Content/SNMP (161,162,10161,10162) - Enumeración.md",
     "04 - Content/Process/PostgreSQL (5432) - Enumeración.md",
-    "04 - Content/Process/MongoDB (27017) - Enumeración.md",
     "00 - Resources/Pasted image 20251230174414.png",
     "00 - Resources/Pasted image 20251226153038.png",
     "Certificados SSL",
