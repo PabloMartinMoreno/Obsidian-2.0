@@ -8,7 +8,7 @@ linked:
   - "[[Subdominio vs Virtual Host]]"
   - "[[Reconociendo un Subdominio de un Virtual Host]]"
 ---
-# Virtual Hosts
+es una etiqueta en el sistema de direcciones (DNS) de internet.# Virtual Hosts
 
 ***
 
