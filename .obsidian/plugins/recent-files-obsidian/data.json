@@ -1,20 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "Cyber Kill Chain y MITRE ATT&CK",
-      "path": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md"
+      "basename": "Etapa de Detección y Análisis (Parte 2)",
+      "path": "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md"
     },
     {
       "basename": "Gestión de Incidentes",
       "path": "04 - Content/Process/Gestión de Incidentes.md"
     },
     {
-      "basename": "Proceso de Gestión de Accidentes",
-      "path": "04 - Content/Process/Proceso de Gestión de Accidentes.md"
+      "basename": "Etapa de Detección y Análisis (Parte 1)",
+      "path": "04 - Content/Process/Etapa de Detección y Análisis (Parte 1).md"
+    },
+    {
+      "basename": "Etapa de Preparación (Parte 2",
+      "path": "04 - Content/Process/Etapa de Preparación (Parte 2.md"
+    },
+    {
+      "basename": "Etapa de Preparación (Parte 1)",
+      "path": "04 - Content/Process/Etapa de Preparación (Parte 1).md"
+    },
+    {
+      "basename": "Resumen del Proceso de Gestión de Incidentes",
+      "path": "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md"
     },
     {
       "basename": "Blue Team",
       "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "Cyber Kill Chain y MITRE ATT&CK",
+      "path": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md"
+    },
+    {
+      "basename": "Proceso de Gestión de Accidentes",
+      "path": "04 - Content/Process/Proceso de Gestión de Accidentes.md"
     },
     {
       "basename": "Red Team",
@@ -179,26 +199,6 @@
     {
       "basename": "SSH (22) - Enumeración",
       "path": "04 - Content/SSH (22) - Enumeración.md"
-    },
-    {
-      "basename": "FTP (21) - Enumeración",
-      "path": "04 - Content/FTP (21) - Enumeración.md"
-    },
-    {
-      "basename": "_concept",
-      "path": "05 - Templates/Type/_concept.md"
-    },
-    {
-      "basename": "_command",
-      "path": "05 - Templates/Type/_command.md"
-    },
-    {
-      "basename": "host",
-      "path": "04 - Content/Process/host.md"
-    },
-    {
-      "basename": "nslookup",
-      "path": "04 - Content/Process/nslookup.md"
     }
   ],
   "omittedPaths": [],
