@@ -5,8 +5,32 @@
       "path": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md"
     },
     {
+      "basename": "Pasted image 20251021141158",
+      "path": "00 - Resources/Images/Pasted image 20251021141158.png"
+    },
+    {
       "basename": "Gestión de Incidentes",
       "path": "04 - Content/Process/Gestión de Incidentes.md"
+    },
+    {
+      "basename": "Pasted image 20260107154343",
+      "path": "00 - Resources/Images/Pasted image 20260107154343.png"
+    },
+    {
+      "basename": "vault-structure-13",
+      "path": "00 - Resources/Images/vault-structure-13.gif"
+    },
+    {
+      "basename": "Pasted image 20250528202309",
+      "path": "00 - Resources/Images/Pasted image 20250528202309.png"
+    },
+    {
+      "basename": "vault-structure-14",
+      "path": "00 - Resources/Images/vault-structure-14.gif"
+    },
+    {
+      "basename": "vault-structure-15",
+      "path": "00 - Resources/Images/vault-structure-15.gif"
     },
     {
       "basename": "Etapa de Actividad Post-Incidente",
@@ -155,50 +179,6 @@
     {
       "basename": "MySQL (3306) - Enumeración",
       "path": "04 - Content/MySQL (3306) - Enumeración.md"
-    },
-    {
-      "basename": "Oracle TNS (1521) - Enumeración",
-      "path": "04 - Content/Oracle TNS (1521) - Enumeración.md"
-    },
-    {
-      "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
-      "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
-    },
-    {
-      "basename": "Kerberos (88) - Enumeración",
-      "path": "04 - Content/Process/Kerberos (88) - Enumeración.md"
-    },
-    {
-      "basename": "LDAP (389, 636, 3268, 3269) - Enumeración",
-      "path": "04 - Content/LDAP (389, 636, 3268, 3269) - Enumeración.md"
-    },
-    {
-      "basename": "IMAP (143, 993) - Enumeración",
-      "path": "04 - Content/IMAP (143, 993) - Enumeración.md"
-    },
-    {
-      "basename": "POP3 (110, 995) - Enumeración",
-      "path": "04 - Content/POP3 (110, 995) - Enumeración.md"
-    },
-    {
-      "basename": "SMTP (25,465,587) - Enumeración",
-      "path": "04 - Content/SMTP (25,465,587) - Enumeración.md"
-    },
-    {
-      "basename": "Telnet (23) - Enumeración",
-      "path": "04 - Content/Process/Telnet (23) - Enumeración.md"
-    },
-    {
-      "basename": "TFTP (69) - Enumeración",
-      "path": "04 - Content/TFTP (69) - Enumeración.md"
-    },
-    {
-      "basename": "Rsync (873) - Enumeración",
-      "path": "04 - Content/Rsync (873) - Enumeración.md"
-    },
-    {
-      "basename": "RDP (3389) - Enumeración",
-      "path": "04 - Content/RDP (3389) - Enumeración.md"
     }
   ],
   "omittedPaths": [],
