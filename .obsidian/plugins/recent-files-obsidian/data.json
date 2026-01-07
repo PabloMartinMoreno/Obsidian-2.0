@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Etapa de Detección y Análisis (Parte 2)",
-      "path": "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md"
+      "basename": "Análisis de la Brecha de Insight Nexus",
+      "path": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md"
     },
     {
       "basename": "Gestión de Incidentes",
       "path": "04 - Content/Process/Gestión de Incidentes.md"
+    },
+    {
+      "basename": "Etapa de Actividad Post-Incidente",
+      "path": "04 - Content/Process/Etapa de Actividad Post-Incidente.md"
+    },
+    {
+      "basename": "Etapa de Contención, Erradicación y Recuperación",
+      "path": "04 - Content/Process/Etapa de Contención, Erradicación y Recuperación.md"
+    },
+    {
+      "basename": "Etapa de Detección y Análisis (Parte 2)",
+      "path": "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md"
     },
     {
       "basename": "Etapa de Detección y Análisis (Parte 1)",
@@ -187,18 +199,6 @@
     {
       "basename": "RDP (3389) - Enumeración",
       "path": "04 - Content/RDP (3389) - Enumeración.md"
-    },
-    {
-      "basename": "NFS (111, 2049) - Enumeración",
-      "path": "04 - Content/NFS (111, 2049) - Enumeración.md"
-    },
-    {
-      "basename": "SMB (139, 445) - Enumeración",
-      "path": "04 - Content/SMB (139, 445) - Enumeración.md"
-    },
-    {
-      "basename": "SSH (22) - Enumeración",
-      "path": "04 - Content/SSH (22) - Enumeración.md"
     }
   ],
   "omittedPaths": [],

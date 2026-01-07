@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md",
+                "file": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Etapa de Detección y Análisis (Parte 2)"
+              "title": "Análisis de la Brecha de Insight Nexus"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md",
+                "file": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Etapa de Detección y Análisis (Parte 2)"
+              "title": "Gráfico de Análisis de la Brecha de Insight Nexus"
             }
           },
           {
@@ -265,11 +265,18 @@
   },
   "active": "1dec7ea23617439a",
   "lastOpenFiles": [
+    "00 - Resources/Pasted image 20260107155118.png",
+    "00 - Resources/Pasted image 20260107155052.png",
+    "04 - Content/Process/Gestión de Incidentes.md",
+    "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
+    "04 - Content/Process/Etapa de Actividad Post-Incidente.md",
+    "00 - Resources/Pasted image 20260107154343.png",
+    "04 - Content/Process/Etapa de Contención, Erradicación y Recuperación.md",
+    "00 - Resources/Pasted image 20260107153745.png",
+    "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md",
     "00 - Resources/Pasted image 20260107090509.png",
     "00 - Resources/Pasted image 20260107081836.png",
     "00 - Resources/Pasted image 20260107081810.png",
-    "04 - Content/Process/Gestión de Incidentes.md",
-    "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md",
     "04 - Content/Process/Etapa de Detección y Análisis (Parte 1).md",
     "00 - Resources/Pasted image 20260107080440.png",
     "04 - Content/Process/Etapa de Preparación (Parte 2.md",
@@ -280,11 +287,7 @@
     "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
     "00 - Resources/Pasted image 20260106161953.png",
-    "00 - Resources/Pasted image 20260106161936.png",
-    "00 - Resources/Pasted image 20260106161922.png",
-    "00 - Resources/Pasted image 20260106161913.png",
     "04 - Content/Process/Proceso de Gestión de Accidentes.md",
-    "00 - Resources/Pasted image 20260106145522.png",
     "01 - Primary Categories/Red Team.md",
     "01 - Primary Categories/OS Internals.md",
     "01 - Primary Categories/Threat Intelligence.md",
@@ -298,9 +301,6 @@
     "04 - Content/Process/CWES.md",
     "04 - Content/DNS.md",
     "04 - Content/Subdominio.md",
-    "04 - Content/Subdominio vs Virtual Host.md",
-    "04 - Content/Transferencia de Zona DNS.md",
-    "03 - Tertiary Categories/Host & Network Enumeration.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
