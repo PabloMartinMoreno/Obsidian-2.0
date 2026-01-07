@@ -82,6 +82,7 @@ La Inteligencia Artificial (IA) está transformando la forma en que las organiza
 Por ejemplo: La función "Attack Discovery" de **Elastic Security** utiliza IA generativa para analizar eventos de miles de detecciones, resumiendo y agrupando alertas relacionadas en una historia de ataque.
 
 _AI Attack Discovery_ aprovecha los LLMs (Grandes Modelos de Lenguaje) para analizar alertas en un entorno e identificar amenazas. El resumen representa un ataque y muestra las relaciones entre múltiples alertas para ayudarnos a identificar qué usuarios y hosts están involucrados. Esto también muestra mapeos de **MITRE ATT&CK**. Aquí hay un ejemplo de cómo se ve el descubrimiento de ataques:
+![[Pasted image 20260107090509.png]]
 
 En este descubrimiento, la IA ayudó revisando múltiples alertas y generó una visión general completa del ataque, identificando las actividades clave que ocurrieron durante el incidente. La IA también puede ayudar en la respuesta a incidentes. Algunos de los casos de uso incluyen:
 
