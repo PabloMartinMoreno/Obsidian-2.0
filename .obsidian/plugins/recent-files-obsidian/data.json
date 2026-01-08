@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Desarrollo de Casos de Uso de SIEM",
-      "path": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md"
+      "basename": "Ejemplos visuales de SIEM",
+      "path": "04 - Content/Process/Ejemplos visuales de SIEM.md"
     },
     {
       "basename": "Security Monitoring & SIEM Fundamentals",
       "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
+    },
+    {
+      "basename": "Desarrollo de Casos de Uso de SIEM",
+      "path": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md"
     },
     {
       "basename": "MITRE ATT&CK y Operaciones de Seguridad",
@@ -195,10 +199,6 @@
     {
       "basename": "SNMP (161,162,10161,10162) - Enumeración",
       "path": "04 - Content/SNMP (161,162,10161,10162) - Enumeración.md"
-    },
-    {
-      "basename": "PostgreSQL (5432) - Enumeración",
-      "path": "04 - Content/Process/PostgreSQL (5432) - Enumeración.md"
     }
   ],
   "omittedPaths": [],

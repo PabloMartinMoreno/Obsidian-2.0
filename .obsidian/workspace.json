@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
+                "file": "04 - Content/Process/Ejemplos visuales de SIEM.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Desarrollo de Casos de Uso de SIEM"
+              "title": "Ejemplos visuales de SIEM"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
+                "file": "04 - Content/Process/Ejemplos visuales de SIEM.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Desarrollo de Casos de Uso de SIEM"
+              "title": "Gráfico de Ejemplos visuales de SIEM"
             }
           },
           {
@@ -265,23 +265,24 @@
   },
   "active": "1dec7ea23617439a",
   "lastOpenFiles": [
-    "00 - Resources/Pasted image 20260108170324.png",
-    "00 - Resources/Pasted image 20260108170301.png",
-    "00 - Resources/Pasted image 20260108170231.png",
-    "00 - Resources/Pasted image 20260108170214.png",
+    "00 - Resources/Pasted image 20260108171356.png",
+    "00 - Resources/Pasted image 20260108171349.png",
+    "00 - Resources/Pasted image 20260108171342.png",
+    "00 - Resources/Pasted image 20260108171323.png",
+    "00 - Resources/Pasted image 20260108171257.png",
+    "00 - Resources/Pasted image 20260108171238.png",
+    "00 - Resources/Pasted image 20260108171226.png",
+    "00 - Resources/Pasted image 20260108171216.png",
+    "00 - Resources/Pasted image 20260108171206.png",
+    "00 - Resources/Pasted image 20260108171139.png",
+    "00 - Resources/Pasted image 20260108171127.png",
     "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+    "04 - Content/Process/Ejemplos visuales de SIEM.md",
     "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
     "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md",
     "04 - Content/Process/Definición y Fundamentos del SOC.md",
     "04 - Content/Process/Introducción al Elastic Stack.md",
     "04 - Content/Process/Definición y Fundamentos de SIEM.md",
-    "00 - Resources/Pasted image 20260108144918.png",
-    "00 - Resources/Pasted image 20260108144903.png",
-    "00 - Resources/Pasted image 20260108144836.png",
-    "00 - Resources/Pasted image 20260108144758.png",
-    "00 - Resources/Pasted image 20260108144749.png",
-    "00 - Resources/Pasted image 20260108144725.png",
-    "00 - Resources/Pasted image 20260108144708.png",
     "01 - Primary Categories/Blue Team.md",
     "000 - Global Index.md",
     "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
@@ -300,7 +301,6 @@
     "01 - Primary Categories/Threat Intelligence.md",
     "01 - Primary Categories/Training.md",
     "04 - Content/Certificate Transparency Logs.md",
-    "04 - Content/dig.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
