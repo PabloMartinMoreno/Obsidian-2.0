@@ -1,2 +1,6 @@
-[[SIEM Definition & Fundamentals]]
-[[Introduction To The Elastic Stack]]
+[[Definición y Fundamentos de SIEM]]
+[[Introducción al Elastic Stack]]
+[[Definición y Fundamentos del SOC]]
+[[MITRE ATT&CK y Operaciones de Seguridad]]
+[[Desarrollo de Casos de Uso de SIEM]]
+

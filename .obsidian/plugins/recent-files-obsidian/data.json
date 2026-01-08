@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Introduction To The Elastic Stack",
-      "path": "04 - Content/Process/Introduction To The Elastic Stack.md"
+      "basename": "Desarrollo de Casos de Uso de SIEM",
+      "path": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md"
     },
     {
       "basename": "Security Monitoring & SIEM Fundamentals",
       "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
     },
     {
-      "basename": "SIEM Definition & Fundamentals",
-      "path": "04 - Content/Process/SIEM Definition & Fundamentals.md"
+      "basename": "MITRE ATT&CK y Operaciones de Seguridad",
+      "path": "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md"
+    },
+    {
+      "basename": "Definición y Fundamentos del SOC",
+      "path": "04 - Content/Process/Definición y Fundamentos del SOC.md"
+    },
+    {
+      "basename": "Introducción al Elastic Stack",
+      "path": "04 - Content/Process/Introducción al Elastic Stack.md"
+    },
+    {
+      "basename": "Definición y Fundamentos de SIEM",
+      "path": "04 - Content/Process/Definición y Fundamentos de SIEM.md"
     },
     {
       "basename": "Blue Team",
@@ -187,14 +199,6 @@
     {
       "basename": "PostgreSQL (5432) - Enumeración",
       "path": "04 - Content/Process/PostgreSQL (5432) - Enumeración.md"
-    },
-    {
-      "basename": "MongoDB (27017) - Enumeración",
-      "path": "04 - Content/Process/MongoDB (27017) - Enumeración.md"
-    },
-    {
-      "basename": "MySQL (3306) - Enumeración",
-      "path": "04 - Content/MySQL (3306) - Enumeración.md"
     }
   ],
   "omittedPaths": [],

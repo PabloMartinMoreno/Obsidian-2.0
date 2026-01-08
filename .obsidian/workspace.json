@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Introduction To The Elastic Stack.md",
+                "file": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Introduction To The Elastic Stack"
+              "title": "Desarrollo de Casos de Uso de SIEM"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Introduction To The Elastic Stack.md",
+                "file": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Introduction To The Elastic Stack"
+              "title": "Gráfico de Desarrollo de Casos de Uso de SIEM"
             }
           },
           {
@@ -265,6 +265,16 @@
   },
   "active": "1dec7ea23617439a",
   "lastOpenFiles": [
+    "00 - Resources/Pasted image 20260108170324.png",
+    "00 - Resources/Pasted image 20260108170301.png",
+    "00 - Resources/Pasted image 20260108170231.png",
+    "00 - Resources/Pasted image 20260108170214.png",
+    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+    "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
+    "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md",
+    "04 - Content/Process/Definición y Fundamentos del SOC.md",
+    "04 - Content/Process/Introducción al Elastic Stack.md",
+    "04 - Content/Process/Definición y Fundamentos de SIEM.md",
     "00 - Resources/Pasted image 20260108144918.png",
     "00 - Resources/Pasted image 20260108144903.png",
     "00 - Resources/Pasted image 20260108144836.png",
@@ -272,16 +282,9 @@
     "00 - Resources/Pasted image 20260108144749.png",
     "00 - Resources/Pasted image 20260108144725.png",
     "00 - Resources/Pasted image 20260108144708.png",
-    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
-    "04 - Content/Process/Introduction To The Elastic Stack.md",
-    "04 - Content/Process/SIEM Definition & Fundamentals.md",
     "01 - Primary Categories/Blue Team.md",
     "000 - Global Index.md",
     "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
-    "00 - Resources/Images/Pasted image 20251021141158.png",
-    "00 - Resources/Images/Pasted image 20260107155856.png",
-    "00 - Resources/Images/Pasted image 20260107155847.png",
-    "00 - Resources/Images/Pasted image 20260107155836.png",
     "04 - Content/Process/Gestión de Incidentes.md",
     "04 - Content/Process/Etapa de Actividad Post-Incidente.md",
     "04 - Content/Process/Etapa de Contención, Erradicación y Recuperación.md",
@@ -298,9 +301,6 @@
     "01 - Primary Categories/Training.md",
     "04 - Content/Certificate Transparency Logs.md",
     "04 - Content/dig.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "02 - Secondary Categories/Information Gathering.md",
-    "04 - Content/DNS (53) - Enumeración.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
