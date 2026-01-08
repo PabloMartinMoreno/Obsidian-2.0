@@ -11,15 +11,12 @@
             "id": "1dec7ea23617439a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "04 - Content/Process/Ejemplos visuales de SIEM.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+                "file": "00 - Resources/Pasted image 20260108170324.png"
               },
-              "icon": "lucide-file",
-              "title": "Ejemplos visuales de SIEM"
+              "icon": "lucide-image",
+              "title": "Pasted image 20260108170324"
             }
           }
         ],
@@ -141,7 +138,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Ejemplos visuales de SIEM.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +208,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Ejemplos visuales de SIEM"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -263,19 +259,19 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "1dec7ea23617439a",
+  "active": "af77475b0bc9914d",
   "lastOpenFiles": [
-    "00 - Resources/Pasted image 20260108171356.png",
-    "00 - Resources/Pasted image 20260108171349.png",
-    "00 - Resources/Pasted image 20260108171342.png",
-    "00 - Resources/Pasted image 20260108171323.png",
-    "00 - Resources/Pasted image 20260108171257.png",
-    "00 - Resources/Pasted image 20260108171238.png",
-    "00 - Resources/Pasted image 20260108171226.png",
-    "00 - Resources/Pasted image 20260108171216.png",
-    "00 - Resources/Pasted image 20260108171206.png",
-    "00 - Resources/Pasted image 20260108171139.png",
-    "00 - Resources/Pasted image 20260108171127.png",
+    "00 - Resources/Pasted image 20260108170324.png",
+    "00 - Resources/Pasted image 20260108170608.png",
+    "00 - Resources/Pasted image 20260108170618.png",
+    "00 - Resources/Pasted image 20260108170748.png",
+    "00 - Resources/Pasted image 20260108170734.png",
+    "00 - Resources/Pasted image 20260108170730.png",
+    "00 - Resources/Pasted image 20260108170718.png",
+    "00 - Resources/Pasted image 20260108170700.png",
+    "00 - Resources/Pasted image 20260108170647.png",
+    "00 - Resources/Pasted image 20260108170636.png",
+    "00 - Resources/Pasted image 20260108170755.png",
     "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
     "04 - Content/Process/Ejemplos visuales de SIEM.md",
     "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",

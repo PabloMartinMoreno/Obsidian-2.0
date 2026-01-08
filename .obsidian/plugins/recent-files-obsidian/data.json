@@ -1,8 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Ejemplos visuales de SIEM",
-      "path": "04 - Content/Process/Ejemplos visuales de SIEM.md"
+      "basename": "Pasted image 20260108170324",
+      "path": "00 - Resources/Pasted image 20260108170324.png"
+    },
+    {
+      "basename": "Pasted image 20260108144708",
+      "path": "00 - Resources/Pasted image 20260108144708.png"
     },
     {
       "basename": "Security Monitoring & SIEM Fundamentals",
@@ -131,74 +135,6 @@
     {
       "basename": "Information Gathering - Web Edition",
       "path": "04 - Content/Process/Information Gathering - Web Edition.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "DNS",
-      "path": "04 - Content/DNS.md"
-    },
-    {
-      "basename": "Subdominio",
-      "path": "04 - Content/Subdominio.md"
-    },
-    {
-      "basename": "Subdominio vs Virtual Host",
-      "path": "04 - Content/Subdominio vs Virtual Host.md"
-    },
-    {
-      "basename": "Transferencia de Zona DNS",
-      "path": "04 - Content/Transferencia de Zona DNS.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "DNS - Herramientas",
-      "path": "04 - Content/DNS - Herramientas.md"
-    },
-    {
-      "basename": "Fuzzing Subdomains & Virtual Hosts",
-      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
-    },
-    {
-      "basename": "NetBIOS Enumeration (137, 138, 139)",
-      "path": "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md"
-    },
-    {
-      "basename": "Reconociendo un Subdominio de un Virtual Host",
-      "path": "Reconociendo un Subdominio de un Virtual Host.md"
-    },
-    {
-      "basename": "Virtual Host",
-      "path": "04 - Content/Virtual Host.md"
-    },
-    {
-      "basename": "Virtual Hosts",
-      "path": "04 - Content/Process/Virtual Hosts.md"
-    },
-    {
-      "basename": "dnsenum",
-      "path": "04 - Content/dnsenum.md"
-    },
-    {
-      "basename": "VPN - Enumeración",
-      "path": "04 - Content/Process/VPN - Enumeración.md"
-    },
-    {
-      "basename": "Finger (79) - Enumeración",
-      "path": "04 - Content/Finger (79) - Enumeración.md"
-    },
-    {
-      "basename": "IPMI (623) - Enumeración",
-      "path": "04 - Content/IPMI (623) - Enumeración.md"
-    },
-    {
-      "basename": "SNMP (161,162,10161,10162) - Enumeración",
-      "path": "04 - Content/SNMP (161,162,10161,10162) - Enumeración.md"
     }
   ],
   "omittedPaths": [],
