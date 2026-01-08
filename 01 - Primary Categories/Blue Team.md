@@ -13,5 +13,6 @@ type: Primary Category
 ## HTB
 
 [[Gestión de Incidentes]]
+[[Security Monitoring & SIEM Fundamentals]]
 
 ***

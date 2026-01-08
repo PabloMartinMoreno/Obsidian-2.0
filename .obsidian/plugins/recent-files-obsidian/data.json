@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Análisis de la Brecha de Insight Nexus",
-      "path": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md"
+      "basename": "Introduction To The Elastic Stack",
+      "path": "04 - Content/Process/Introduction To The Elastic Stack.md"
+    },
+    {
+      "basename": "Security Monitoring & SIEM Fundamentals",
+      "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
+    },
+    {
+      "basename": "SIEM Definition & Fundamentals",
+      "path": "04 - Content/Process/SIEM Definition & Fundamentals.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
     },
     {
       "basename": "000 - Global Index",
       "path": "000 - Global Index.md"
+    },
+    {
+      "basename": "Análisis de la Brecha de Insight Nexus",
+      "path": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md"
     },
     {
       "basename": "Pasted image 20251021141158",
@@ -63,10 +79,6 @@
     {
       "basename": "Resumen del Proceso de Gestión de Incidentes",
       "path": "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
     },
     {
       "basename": "Cyber Kill Chain y MITRE ATT&CK",

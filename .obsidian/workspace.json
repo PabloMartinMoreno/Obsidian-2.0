@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
+                "file": "04 - Content/Process/Introduction To The Elastic Stack.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Análisis de la Brecha de Insight Nexus"
+              "title": "Introduction To The Elastic Stack"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
+                "file": "04 - Content/Process/Introduction To The Elastic Stack.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Análisis de la Brecha de Insight Nexus"
+              "title": "Gráfico de Introduction To The Elastic Stack"
             }
           },
           {
@@ -265,19 +265,24 @@
   },
   "active": "1dec7ea23617439a",
   "lastOpenFiles": [
+    "00 - Resources/Pasted image 20260108144918.png",
+    "00 - Resources/Pasted image 20260108144903.png",
+    "00 - Resources/Pasted image 20260108144836.png",
+    "00 - Resources/Pasted image 20260108144758.png",
+    "00 - Resources/Pasted image 20260108144749.png",
+    "00 - Resources/Pasted image 20260108144725.png",
+    "00 - Resources/Pasted image 20260108144708.png",
+    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+    "04 - Content/Process/Introduction To The Elastic Stack.md",
+    "04 - Content/Process/SIEM Definition & Fundamentals.md",
+    "01 - Primary Categories/Blue Team.md",
     "000 - Global Index.md",
     "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
     "00 - Resources/Images/Pasted image 20251021141158.png",
     "00 - Resources/Images/Pasted image 20260107155856.png",
     "00 - Resources/Images/Pasted image 20260107155847.png",
     "00 - Resources/Images/Pasted image 20260107155836.png",
-    "00 - Resources/Images/Pasted image 20260107155822.png",
-    "00 - Resources/Images/Pasted image 20260107155808.png",
-    "00 - Resources/Images/Pasted image 20260107155756.png",
-    "00 - Resources/Images/Pasted image 20260107155741.png",
-    "00 - Resources/Images/Pasted image 20260107155721.png",
     "04 - Content/Process/Gestión de Incidentes.md",
-    "00 - Resources/Images/Pasted image 20260107154343.png",
     "04 - Content/Process/Etapa de Actividad Post-Incidente.md",
     "04 - Content/Process/Etapa de Contención, Erradicación y Recuperación.md",
     "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md",
@@ -285,7 +290,6 @@
     "04 - Content/Process/Etapa de Preparación (Parte 2.md",
     "04 - Content/Process/Etapa de Preparación (Parte 1).md",
     "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md",
-    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
     "04 - Content/Process/Proceso de Gestión de Accidentes.md",
     "01 - Primary Categories/Red Team.md",
@@ -297,10 +301,6 @@
     "03 - Tertiary Categories/Web Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
     "04 - Content/DNS (53) - Enumeración.md",
-    "04 - Content/Process/Information Gathering - Web Edition.md",
-    "04 - Content/Process/CWES.md",
-    "04 - Content/DNS.md",
-    "04 - Content/Subdominio.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
