@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+                "file": "04 - Content/Process/El Proceso de Triaje.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Security Monitoring & SIEM Fundamentals"
+              "title": "El Proceso de Triaje"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+                "file": "04 - Content/Process/El Proceso de Triaje.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Security Monitoring & SIEM Fundamentals"
+              "title": "Gráfico de El Proceso de Triaje"
             }
           },
           {
@@ -264,6 +264,9 @@
   },
   "active": "b05eab870f221198",
   "lastOpenFiles": [
+    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+    "04 - Content/Process/El Proceso de Triaje.md",
+    "04 - Content/Process/Ejemplos visuales de SIEM.md",
     "01 - Primary Categories/Blue Team.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170608.png",
@@ -275,8 +278,6 @@
     "00 - Resources/Pasted image 20260108170700.png",
     "00 - Resources/Pasted image 20260108170647.png",
     "00 - Resources/Pasted image 20260108170636.png",
-    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
-    "04 - Content/Process/Ejemplos visuales de SIEM.md",
     "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
     "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md",
     "04 - Content/Process/Definición y Fundamentos del SOC.md",
