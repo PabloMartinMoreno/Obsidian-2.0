@@ -4,19 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "ea3d6dc36989540d",
+        "id": "45d547ea85fdb9ab",
         "type": "tabs",
         "children": [
           {
-            "id": "1dec7ea23617439a",
+            "id": "b05eab870f221198",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "00 - Resources/Pasted image 20260108170324.png"
+                "file": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260108170324"
+              "icon": "lucide-file",
+              "title": "Security Monitoring & SIEM Fundamentals"
             }
           }
         ],
@@ -138,6 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -208,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "title": "Gráfico de Security Monitoring & SIEM Fundamentals"
             }
           },
           {
@@ -255,12 +259,12 @@
       "markdown-importer:Abrir el importador de Markdown": true,
       "bases:Crear nueva base": false,
       "command-palette:Abrir paleta de comandos": false,
-      "templater-obsidian:Templater": false,
-      "homepage:Open homepage": false
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "af77475b0bc9914d",
+  "active": "b05eab870f221198",
   "lastOpenFiles": [
+    "01 - Primary Categories/Blue Team.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170608.png",
     "00 - Resources/Pasted image 20260108170618.png",
@@ -271,7 +275,6 @@
     "00 - Resources/Pasted image 20260108170700.png",
     "00 - Resources/Pasted image 20260108170647.png",
     "00 - Resources/Pasted image 20260108170636.png",
-    "00 - Resources/Pasted image 20260108170755.png",
     "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
     "04 - Content/Process/Ejemplos visuales de SIEM.md",
     "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
@@ -279,7 +282,6 @@
     "04 - Content/Process/Definición y Fundamentos del SOC.md",
     "04 - Content/Process/Introducción al Elastic Stack.md",
     "04 - Content/Process/Definición y Fundamentos de SIEM.md",
-    "01 - Primary Categories/Blue Team.md",
     "000 - Global Index.md",
     "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
     "04 - Content/Process/Gestión de Incidentes.md",

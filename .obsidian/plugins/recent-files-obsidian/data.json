@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Security Monitoring & SIEM Fundamentals",
+      "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
       "basename": "Pasted image 20260108170324",
       "path": "00 - Resources/Pasted image 20260108170324.png"
     },
     {
       "basename": "Pasted image 20260108144708",
       "path": "00 - Resources/Pasted image 20260108144708.png"
-    },
-    {
-      "basename": "Security Monitoring & SIEM Fundamentals",
-      "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
     },
     {
       "basename": "Desarrollo de Casos de Uso de SIEM",
@@ -31,10 +35,6 @@
     {
       "basename": "Definición y Fundamentos de SIEM",
       "path": "04 - Content/Process/Definición y Fundamentos de SIEM.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
     },
     {
       "basename": "000 - Global Index",
