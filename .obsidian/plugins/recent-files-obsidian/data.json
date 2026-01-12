@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "El Proceso de Triaje",
-      "path": "04 - Content/Process/El Proceso de Triaje.md"
+      "basename": "Registros de Eventos de Windows",
+      "path": "04 - Content/Process/Registros de Eventos de Windows.md"
     },
     {
-      "basename": "Security Monitoring & SIEM Fundamentals",
-      "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
+      "basename": "Windows Event Logs & Finding Evil",
+      "path": "04 - Content/Process/Windows Event Logs & Finding Evil.md"
     },
     {
       "basename": "Blue Team",
       "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "El Proceso de Triaje",
+      "path": "04 - Content/Process/El Proceso de Triaje.md"
+    },
+    {
+      "basename": "Cyber Kill Chain y MITRE ATT&CK",
+      "path": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md"
+    },
+    {
+      "basename": "Security Monitoring & SIEM Fundamentals",
+      "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
     },
     {
       "basename": "Pasted image 20260108170324",
@@ -103,10 +115,6 @@
     {
       "basename": "Resumen del Proceso de Gestión de Incidentes",
       "path": "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md"
-    },
-    {
-      "basename": "Cyber Kill Chain y MITRE ATT&CK",
-      "path": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md"
     },
     {
       "basename": "Proceso de Gestión de Accidentes",

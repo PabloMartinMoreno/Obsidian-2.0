@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/El Proceso de Triaje.md",
+                "file": "04 - Content/Process/Registros de Eventos de Windows.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "El Proceso de Triaje"
+              "title": "Registros de Eventos de Windows"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/El Proceso de Triaje.md",
+                "file": "04 - Content/Process/Registros de Eventos de Windows.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de El Proceso de Triaje"
+              "title": "Gráfico de Registros de Eventos de Windows"
             }
           },
           {
@@ -264,20 +264,24 @@
   },
   "active": "b05eab870f221198",
   "lastOpenFiles": [
-    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
-    "04 - Content/Process/El Proceso de Triaje.md",
-    "04 - Content/Process/Ejemplos visuales de SIEM.md",
+    "00 - Resources/Pasted image 20260112144059.png",
+    "00 - Resources/Pasted image 20260112143958.png",
+    "00 - Resources/Pasted image 20260112143941.png",
+    "00 - Resources/Pasted image 20260112143910.png",
+    "00 - Resources/Pasted image 20260112143758.png",
+    "04 - Content/Process/Windows Event Logs & Finding Evil.md",
+    "04 - Content/Process/Registros de Eventos de Windows.md",
     "01 - Primary Categories/Blue Team.md",
+    "04 - Content/Process/El Proceso de Triaje.md",
+    "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
+    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
+    "04 - Content/Process/Ejemplos visuales de SIEM.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170608.png",
     "00 - Resources/Pasted image 20260108170618.png",
     "00 - Resources/Pasted image 20260108170748.png",
     "00 - Resources/Pasted image 20260108170734.png",
     "00 - Resources/Pasted image 20260108170730.png",
-    "00 - Resources/Pasted image 20260108170718.png",
-    "00 - Resources/Pasted image 20260108170700.png",
-    "00 - Resources/Pasted image 20260108170647.png",
-    "00 - Resources/Pasted image 20260108170636.png",
     "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
     "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md",
     "04 - Content/Process/Definición y Fundamentos del SOC.md",
@@ -293,13 +297,9 @@
     "04 - Content/Process/Etapa de Preparación (Parte 2.md",
     "04 - Content/Process/Etapa de Preparación (Parte 1).md",
     "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md",
-    "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
     "04 - Content/Process/Proceso de Gestión de Accidentes.md",
     "01 - Primary Categories/Red Team.md",
     "01 - Primary Categories/OS Internals.md",
-    "01 - Primary Categories/Threat Intelligence.md",
-    "01 - Primary Categories/Training.md",
-    "04 - Content/Certificate Transparency Logs.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",

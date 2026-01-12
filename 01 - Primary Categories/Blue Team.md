@@ -14,5 +14,7 @@ type: Primary Category
 
 [[Gestión de Incidentes]]
 [[Security Monitoring & SIEM Fundamentals]]
+[[Windows Event Logs & Finding Evil]]
+
 
 ***
