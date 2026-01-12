@@ -18,33 +18,6 @@ Acceder al Visor de Eventos de Windows como usuario administrativo nos permite e
 
 Cabe destacar que el Visor de Eventos tiene la capacidad de abrir y mostrar archivos `.evtx` guardados previamente.
 
-#### La Anatomía de un Registro de Evento
-
-Al examinar los registros de Aplicación, encontramos dos niveles distintos de eventos: **información** y **error**. Los eventos de información brindan detalles generales de uso, mientras que los eventos de error resaltan problemas específicos.
-
-Cada entrada en el Registro de Eventos de Windows es un "Evento" y contiene los siguientes componentes principales:
-
-- **Nombre del registro (_Log Name_):** El nombre del registro (ej. Aplicación, Sistema).
-- **Fuente (_Source_):** El software que registró el evento.
-- **ID de Evento (_Event ID_):** Un identificador único para el tipo de evento.
-- **Categoría de tarea:** Ayuda a entender el propósito o uso del evento.
-- **Nivel (_Level_):** La gravedad (Información, Advertencia, Error, Crítico, Verbose).
-- **Palabras clave (_Keywords_):** Banderas para categorizar eventos (ej. "Auditoría Correcta" o "Auditoría Fallida").
-- **Usuario:** La cuenta de usuario que estaba conectada cuando ocurrió el evento.
-- **OpCode:** Identifica la operación específica.
-- **Registrado (_Logged_):** Fecha y hora del evento.
-- **Equipo (_Computer_):** Nombre del equipo donde ocurrió.
-- **Datos XML:** Toda la información anterior en formato XML junto con datos adicionales.
-
-El campo **Palabras clave** es particularmente útil para filtrar.
-
-Mirando más de cerca un evento de seguridad, consideremos el **ID de Evento 4624** (Inicio de sesión exitoso).
-
-Según la documentación de Microsoft, este evento significa la creación de una sesión de inicio de sesión. Dentro de este registro, encontramos detalles cruciales:
-
-- **Logon ID:** Permite correlacionar este inicio de sesión con otros eventos que comparten el mismo ID.
-- **Logon Type:** Indica el tipo de inicio de sesión (ej. Tipo 5 es inicio de sesión de Servicio).
-
 #### Aprovechando Consultas XML Personalizadas
 
 Para agilizar nuestro análisis, podemos crear consultas XML personalizadas para identificar eventos relacionados utilizando el "Logon ID" como punto de partida. Al navegar a _"Filtrar registro actual"_ -> _"XML"_ -> _"Editar consulta manualmente"_, obtenemos acceso a un lenguaje de consulta que permite búsquedas más granulares.
