@@ -9,7 +9,6 @@ El registro de eventos de Windows ofrece capacidades integrales para registrar e
 Los registros se categorizan en diferentes registros de eventos, como "Aplicación", "Sistema", "Seguridad" y otros, para organizar los eventos según su fuente o propósito. Se puede acceder a ellos utilizando la aplicación **Visor de Eventos** (_Event Viewer_) o programáticamente mediante APIs.
 
 Acceder al Visor de Eventos de Windows como usuario administrativo nos permite explorar los diversos registros disponibles:
-![[Pasted image 20260112143758.png]]
 
 - **Aplicación (_Application_):** Errores de aplicaciones y eventos generales.
 - **Seguridad (_Security_):** Eventos de auditoría de seguridad (inicios de sesión, acceso a objetos).
@@ -18,15 +17,11 @@ Acceder al Visor de Eventos de Windows como usuario administrativo nos permite e
 - **Eventos Reenviados (_Forwarded Events_):** Muestra datos de registro de eventos reenviados desde otras máquinas (útil para administradores que desean una vista consolidada).
 
 Cabe destacar que el Visor de Eventos tiene la capacidad de abrir y mostrar archivos `.evtx` guardados previamente.
-![[Pasted image 20260112143941.png]]
 
 #### La Anatomía de un Registro de Evento
 
 Al examinar los registros de Aplicación, encontramos dos niveles distintos de eventos: **información** y **error**. Los eventos de información brindan detalles generales de uso, mientras que los eventos de error resaltan problemas específicos.
-![[Pasted image 20260112143958.png]]
 
-
-![[Pasted image 20260112144059.png]]
 Cada entrada en el Registro de Eventos de Windows es un "Evento" y contiene los siguientes componentes principales:
 
 - **Nombre del registro (_Log Name_):** El nombre del registro (ej. Aplicación, Sistema).
