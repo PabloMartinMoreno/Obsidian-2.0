@@ -125,3 +125,36 @@ ___
 1. **Mañanas (Teoría):** Estudia el módulo de **HTB Academy**.
 2. **Tardes (Dudas):** Si no entendiste un concepto (ej: DNS), búscalo en **Professor Messer** o **NetworkChuck**.
 3. **Fines de Semana (Práctica):** Mira un video de **MyDFIR** y trata de copiar lo que hace en tu computadora (instalar un SIEM, configurar una alerta).
+
+___
+
+# Arquitectura hibrida
+
+#### A. En tu Linux Principal (Host) -> DOCKER
+
+Usa Docker para la infraestructura de servidores (el "Cerebro").5
+- Corre el contenedor de **Splunk** o **Elastic**.
+- Corre el contenedor de **Wazuh Server**.
+- _Ventaja:_ No gastas recursos en una VM de servidor pesado.
+
+#### B. En VirtualBox/KVM -> WINDOWS 10 VM
+
+Usa una VM ligera de Windows solo como "Punta de Lanza".
+- Aquí instalas los agentes (Sysmon) que envían los logs al Docker de tu Host.
+- Aquí descargas los Sherlocks y los analizas con las herramientas de Windows.
+- _Seguridad:_ Si un malware explota aquí, solo rompe la VM, no toca tu Linux principal.
+
+### Ejemplo Práctico: Levantar Splunk en 30 segundos (Docker)
+
+Si ya tienes docker en tu Linux, olvídate de instalar cosas raras. Copia y pega esto en tu terminal y tendrás el SIEM listo:
+```Bash
+docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=password123" --name splunk splunk/splunk:latest
+```
+1. Corres eso.
+2. Abres tu navegador en `http://localhost:8000`.
+3. Listo, ya tienes Splunk para practicar logs.
+
+### Resumen
+
+- **¿SIEM / Logs?** -> Docker (Seguro y Rápido).
+- **¿Analizar el archivo malicioso / Forense?** -> VM de Windows (Seguro y Necesario para CDSA).
