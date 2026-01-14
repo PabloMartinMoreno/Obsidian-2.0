@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Ruta CDSA.md",
+                "file": "04 - Content/Process/Registros de Eventos de Windows.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Ruta CDSA"
+              "title": "Registros de Eventos de Windows"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Ruta CDSA.md",
+                "file": "04 - Content/Process/Registros de Eventos de Windows.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Ruta CDSA"
+              "title": "Gráfico de Registros de Eventos de Windows"
             }
           },
           {
@@ -264,8 +264,8 @@
   },
   "active": "b05eab870f221198",
   "lastOpenFiles": [
-    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/Ruta CDSA.md",
+    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/Registros de Eventos de Windows.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
