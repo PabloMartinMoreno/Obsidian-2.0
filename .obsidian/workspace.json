@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Registros de Eventos de Windows.md",
+                "file": "04 - Content/Process/Ruta CDSA.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Registros de Eventos de Windows"
+              "title": "Ruta CDSA"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Registros de Eventos de Windows.md",
+                "file": "04 - Content/Process/Ruta CDSA.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Registros de Eventos de Windows"
+              "title": "Gráfico de Ruta CDSA"
             }
           },
           {
@@ -264,16 +264,17 @@
   },
   "active": "b05eab870f221198",
   "lastOpenFiles": [
+    "01 - Primary Categories/Blue Team.md",
+    "04 - Content/Process/Ruta CDSA.md",
+    "04 - Content/Process/Registros de Eventos de Windows.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",
     "00 - Resources/Pasted image 20260112143910.png",
-    "04 - Content/Process/Registros de Eventos de Windows.md",
     "00 - Resources/Pasted image 20260112144059.png",
     "00 - Resources/Pasted image 20260112143958.png",
     "00 - Resources/Pasted image 20260112143941.png",
     "04 - Content/Process/Windows Event Logs & Finding Evil.md",
-    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/El Proceso de Triaje.md",
     "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
     "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
@@ -281,7 +282,6 @@
     "00 - Resources/Pasted image 20260108170608.png",
     "00 - Resources/Pasted image 20260108170618.png",
     "00 - Resources/Pasted image 20260108170748.png",
-    "00 - Resources/Pasted image 20260108170734.png",
     "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
     "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md",
     "04 - Content/Process/Definición y Fundamentos del SOC.md",

@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Ruta CDSA",
+      "path": "04 - Content/Process/Ruta CDSA.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
       "basename": "Registros de Eventos de Windows",
       "path": "04 - Content/Process/Registros de Eventos de Windows.md"
     },
@@ -15,10 +23,6 @@
     {
       "basename": "Windows Event Logs & Finding Evil",
       "path": "04 - Content/Process/Windows Event Logs & Finding Evil.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
     },
     {
       "basename": "El Proceso de Triaje",
