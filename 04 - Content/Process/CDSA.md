@@ -144,17 +144,43 @@ Usa una VM ligera de Windows solo como "Punta de Lanza".
 - Aquí descargas los Sherlocks y los analizas con las herramientas de Windows.
 - _Seguridad:_ Si un malware explota aquí, solo rompe la VM, no toca tu Linux principal.
 
-### Ejemplo Práctico: Levantar Splunk en 30 segundos (Docker)
+### Ejemplo Práctico: Levantar Splunk en Docker
 
-Si ya tienes docker en tu Linux, olvídate de instalar cosas raras. Copia y pega esto en tu terminal y tendrás el SIEM listo:
-```Bash
-docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=password123" --name splunk splunk/splunk:latest
+1. Crea una carpeta para tu lab:
+    ```Bash
+    mkdir splunk-lab && cd splunk-lab
+    ```
+    
+2. Crea un archivo llamado `docker-compose.yml`:
+    ```Bash
+    nano docker-compose.yml
+    ```
+    
+3. Pega este contenido dentro:
+```YAML
+version: "3"
+services:
+  splunk:
+    image: splunk/splunk:latest
+    container_name: splunk-lab
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=Password123!
+    ports:
+      - "8000:8000"
+      - "9997:9997"
+    volumes:
+      - ./opt/splunk/etc:/opt/splunk/etc
+      - ./opt/splunk/var:/opt/splunk/var
 ```
-1. Corres eso.
-2. Abres tu navegador en `http://localhost:8000`.
-3. Listo, ya tienes Splunk para practicar logs.
 
-### Resumen
-
-- **¿SIEM / Logs?** -> Docker (Seguro y Rápido).
-- **¿Analizar el archivo malicioso / Forense?** -> VM de Windows (Seguro y Necesario para CDSA).
+4. Guarda (`Ctrl+O`, `Enter`) y sal (`Ctrl+X`).
+    
+5. Inícialo con:
+    ```Bash
+    sudo docker-compose up -d
+    ```
+    
+6.   http://localhost:8000
+	**Usuario:** `admin`
+	**Contraseña:** `Password123!` (o la que hayas puesto).
