@@ -11,7 +11,7 @@ type: Primary Category
 ***
 ## CDSA
 
-[[Ruta CDSA]]
+[[CDSA]]
 
 ## HTB
 
