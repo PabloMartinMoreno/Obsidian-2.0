@@ -8,18 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b05eab870f221198",
+            "id": "351b75d9baba909c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/CDSA.md",
+                "file": "04 - Content/Process/Recollection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "CDSA"
+              "title": "Recollection"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/CDSA.md",
+                "file": "04 - Content/Process/Recollection.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de CDSA"
+              "title": "Gráfico de Recollection"
             }
           },
           {
@@ -262,10 +262,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "b05eab870f221198",
+  "active": "351b75d9baba909c",
   "lastOpenFiles": [
-    "04 - Content/Process/Mangobleed.md",
+    "04 - Content/Process/Recollection.md",
     "04 - Content/Process/CDSA.md",
+    "04 - Content/Process/Mangobleed.md",
     "04 - Content/Process/Entrevistas CDSA.md",
     "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/Registros de Eventos de Windows.md",
@@ -299,7 +300,6 @@
     "04 - Content/Process/Etapa de Preparación (Parte 2.md",
     "04 - Content/Process/Etapa de Preparación (Parte 1).md",
     "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md",
-    "04 - Content/Process/Proceso de Gestión de Accidentes.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
