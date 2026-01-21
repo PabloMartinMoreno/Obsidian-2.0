@@ -1,3 +1,5 @@
+[Securonix Threat Research Knowledge Sharing Series: Hiding the PowerShell Execution Flow - Securonix](https://www.securonix.com/blog/hiding-the-powershell-execution-flow/)
+[Recollection \| Unmasking Unix Auth Logs: The Brutus Challenge \| Hack The Box \| Sherlocks - YouTube](https://www.youtube.com/watch?v=j5lCLOxlKBA)
 volatility - [Installation · volatilityfoundation/volatility Wiki · GitHub](https://github.com/volatilityfoundation/volatility/wiki/installation)
 
 
