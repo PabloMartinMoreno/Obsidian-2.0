@@ -194,6 +194,12 @@ At line:1 char:31
                                                                                                                         
 PS C:\Users\user> (gv '*MDR*').naMe[3,11,2]-joIN''                                                                      
 iex                                                                                                                     
-PS C:\Users\user>                                                                                                       
-
+PS C:\Users\user>
 ```
+
+
+python2 vol.py --profile Win7SP1x64 -f ../recollection.bin filescan | grep password.txt
+```powershell
+\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt
+```
+
