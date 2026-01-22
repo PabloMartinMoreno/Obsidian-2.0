@@ -21,21 +21,8 @@
               "icon": "lucide-file",
               "title": "Recollection"
             }
-          },
-          {
-            "id": "7263be731e106c97",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.5"
-              },
-              "icon": "lucide-book-up",
-              "title": "Registro de cambios 1.11.5"
-            }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -275,7 +262,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "7263be731e106c97",
+  "active": "351b75d9baba909c",
   "lastOpenFiles": [
     "04 - Content/Process/Recollection.md",
     "04 - Content/Process/CDSA.md",
