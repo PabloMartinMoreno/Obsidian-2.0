@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Recollection",
-      "path": "04 - Content/Process/Recollection.md"
+      "basename": "sherlocks",
+      "path": "04 - Content/Process/sherlocks.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
     },
     {
       "basename": "CDSA",
       "path": "04 - Content/Process/CDSA.md"
+    },
+    {
+      "basename": "Recollection",
+      "path": "04 - Content/Process/Recollection.md"
+    },
+    {
+      "basename": "vol",
+      "path": "04 - Content/Process/vol.md"
     },
     {
       "basename": "Mangobleed",
@@ -15,10 +27,6 @@
     {
       "basename": "Entrevistas CDSA",
       "path": "04 - Content/Process/Entrevistas CDSA.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
     },
     {
       "basename": "Registros de Eventos de Windows",

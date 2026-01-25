@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Recollection.md",
+                "file": "04 - Content/Process/sherlocks.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Recollection"
+              "title": "sherlocks"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Recollection.md",
+                "file": "04 - Content/Process/sherlocks.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Recollection"
+              "title": "Gráfico de sherlocks"
             }
           },
           {
@@ -264,11 +264,13 @@
   },
   "active": "351b75d9baba909c",
   "lastOpenFiles": [
-    "04 - Content/Process/Recollection.md",
+    "01 - Primary Categories/Blue Team.md",
+    "04 - Content/Process/sherlocks.md",
     "04 - Content/Process/CDSA.md",
+    "04 - Content/Process/Recollection.md",
+    "04 - Content/Process/vol.md",
     "04 - Content/Process/Mangobleed.md",
     "04 - Content/Process/Entrevistas CDSA.md",
-    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/Registros de Eventos de Windows.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
@@ -298,8 +300,6 @@
     "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md",
     "04 - Content/Process/Etapa de Detección y Análisis (Parte 1).md",
     "04 - Content/Process/Etapa de Preparación (Parte 2.md",
-    "04 - Content/Process/Etapa de Preparación (Parte 1).md",
-    "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
