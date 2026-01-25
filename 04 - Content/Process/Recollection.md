@@ -1,5 +1,7 @@
 [Securonix Threat Research Knowledge Sharing Series: Hiding the PowerShell Execution Flow - Securonix](https://www.securonix.com/blog/hiding-the-powershell-execution-flow/)
 
+## Vol2
+
 python2 vol.py -f ../recollection.bin imageinfo
 ```bash
   Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
@@ -199,4 +201,53 @@ python2 vol.py --profile Win7SP1x64 -f ../recollection.bin filescan | grep passw
 ```powershell
 \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt
 ```
+
+
+## Vol3 
+
+### 1 
+
+vol -f recollection.bin windows.info
+```bash
+Volatility 3 Framework 2.26.2
+Progress:  100.00		PDB scanning finished                        
+Variable	Value
+
+Kernel Base	0xf8000285c000
+DTB	0x187000
+Symbols	file:///home/kali/.local/share/pipx/venvs/volatility3/lib/python3.13/site-packages/volatility3/symbols/windows/ntkrnlmp.pdb/DADDB88936DE450292977378F364B110-1.json.xz
+Is64Bit	True
+IsPAE	False
+layer_name	0 WindowsIntel32e
+memory_layer	1 FileLayer
+KdDebuggerDataBlock	0xf80002a3f120
+NTBuildLab	7601.24214.amd64fre.win7sp1_ldr_
+CSDVersion	1
+KdVersionBlock	0xf80002a3f0e8
+Major/Minor	15.7601
+MachineType	34404
+KeNumberProcessors	1
+SystemTime	2022-12-19 16:07:30+00:00
+NtSystemRoot	C:\Windows
+NtProductType	NtProductWinNt
+NtMajorVersion	6
+NtMinorVersion	1
+PE MajorOperatingSystemVersion	6
+PE MinorOperatingSystemVersion	1
+PE Machine	34404
+PE TimeDateStamp	Thu Aug  2 02:18:10 2018
+```
+- **NtMajorVersion**: En Windows 7 será `6`.
+- **NtMinorVersion**: En Windows 7 será `1`.
+- **NtBuildNumber**: Aquí está la clave para saber si es SP1 o no.
+    - `7600` = Windows 7 (RTM)
+    - `7601` = Windows 7 (Service Pack 1)
+- **Symbol Table**: Verás un nombre largo (ej. `ntkrnlmp.pdb/GUID...`). Si Volatility logró descargar los símbolos, esto confirma que detectó el kernel correctamente.
+
+o 
+
+vol -f recollection.bin windows.registry.printkey --key "Software\Microsoft\Windows NT\CurrentVersion"
+(en este caso no lo reconoce)
+
+### 2 
 

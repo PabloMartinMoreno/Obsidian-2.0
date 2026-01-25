@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/sherlocks.md",
+                "file": "04 - Content/Process/Recollection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "sherlocks"
+              "title": "Recollection"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/sherlocks.md",
+                "file": "04 - Content/Process/Recollection.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de sherlocks"
+              "title": "Gráfico de Recollection"
             }
           },
           {
@@ -264,8 +264,8 @@
   },
   "active": "351b75d9baba909c",
   "lastOpenFiles": [
-    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/sherlocks.md",
+    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/CDSA.md",
     "04 - Content/Process/Recollection.md",
     "04 - Content/Process/vol.md",
