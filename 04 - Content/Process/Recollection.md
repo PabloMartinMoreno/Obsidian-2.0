@@ -528,48 +528,7 @@ Name                                                  Pid   PPid   Thds   Hnds T
 . 0xfffffa8003a8db00:conhost.exe                     3524    388      2     55 2022-12-19 15:40:08 UTC+0000
 ```
 
-**Respuesta:** `cmd.exe`Name                                                  Pid   PPid   Thds   Hnds Time
--------------------------------------------------- ------ ------ ------ ------ ----
- 0xfffffa8005967060:explorer.exe                     2032   1988     23    906 2022-12-19 15:33:13 UTC+0000
-. 0xfffffa8003de2750:notepad.exe                     3476   2032      1     62 2022-12-19 15:50:42 UTC+0000
-. 0xfffffa80059e9b00:msedge.exe                      2380   2032     43   1123 2022-12-19 15:34:29 UTC+0000
-.. 0xfffffa800383cb00:msedge.exe                     2752   2380     16    300 2022-12-19 15:34:32 UTC+0000
-.. 0xfffffa8003ce4700:msedge.exe                     2060   2380     15    255 2022-12-19 15:53:59 UTC+0000
-.. 0xfffffa80055e3160:msedge.exe                     2396   2380      8     87 2022-12-19 15:34:29 UTC+0000
-.. 0xfffffa800586e2d0:msedge.exe                     2588   2380     16    235 2022-12-19 15:34:31 UTC+0000
-.. 0xfffffa8003bc1b00:msedge.exe                     2160   2380     12    161 2022-12-19 16:03:52 UTC+0000
-.. 0xfffffa8003d7c060:msedge.exe                     3560   2380     15    330 2022-12-19 16:03:48 UTC+0000
-.. 0xfffffa8005addb00:msedge.exe                     3032   2380     12    191 2022-12-19 15:34:35 UTC+0000
-.. 0xfffffa800586eb00:msedge.exe                     2680   2380      8    142 2022-12-19 15:34:31 UTC+0000
-.. 0xfffffa8003b16b00:msedge.exe                      980   2380     12    195 2022-12-19 15:35:05 UTC+0000
-. 0xfffffa8003cbc060:cmd.exe                         4052   2032      1     23 2022-12-19 15:40:08 UTC+0000
-.. 0xfffffa8005abbb00:powershell.exe                 3532   4052      5    606 2022-12-19 15:44:44 UTC+0000
-. 0xfffffa8003d6b060:powershell.exe                  3688   2032      5    367 2022-12-19 15:43:39 UTC+0000
- 0xfffffa80036ef040:System                              4      0     81    519 2022-12-19 15:32:28 UTC+0000
-. 0xfffffa80048f1920:smss.exe                         260      4      2     29 2022-12-19 15:32:28 UTC+0000
- 0xfffffa8004fa7b00:csrss.exe                         328    320      9    330 2022-12-19 15:32:30 UTC+0000
- 0xfffffa80036f9060:wininit.exe                       376    320      3     76 2022-12-19 15:32:30 UTC+0000
-. 0xfffffa8004ef18e0:services.exe                     472    376      8    189 2022-12-19 15:32:30 UTC+0000
-.. 0xfffffa800524c060:svchost.exe                     672    472      7    244 2022-12-19 15:32:32 UTC+0000
-.. 0xfffffa8003a60060:wmpnetwk.exe                   2652    472     13    409 2022-12-19 15:34:54 UTC+0000
-.. 0xfffffa80052a8060:svchost.exe                     804    472     18    438 2022-12-19 15:32:32 UTC+0000
-... 0xfffffa8005959230:dwm.exe                       2012    804      3     73 2022-12-19 15:33:13 UTC+0000
-.. 0xfffffa80058d4b00:taskhost.exe                   1960    472      9    203 2022-12-19 15:33:13 UTC+0000
-.. 0xfffffa80052b3b00:svchost.exe                     832    472     17    382 2022-12-19 15:32:32 UTC+0000
-.. 0xfffffa8005477b00:svchost.exe                    1248    472     16    268 2022-12-19 15:32:37 UTC+0000
-.. 0xfffffa8005423b00:svchost.exe                    1220    472     10    189 2022-12-19 15:32:37 UTC+0000
-.. 0xfffffa80059152d0:SearchIndexer.                 1784    472     14    623 2022-12-19 15:33:19 UTC+0000
-.. 0xfffffa80052dcb00:svchost.exe                     288    472     14    464 2022-12-19 15:32:37 UTC+0000
-.. 0xfffffa80053a9b00:svchost.exe                    1144    472     17    314 2022-12-19 15:32:37 UTC+0000
-.. 0xfffffa8005207790:svchost.exe                     596    472     10    348 2022-12-19 15:32:31 UTC+0000
-.. 0xfffffa80052beb00:svchost.exe                     856    472     28    945 2022-12-19 15:32:32 UTC+0000
-... 0xfffffa8003ba9060:wuauclt.exe                   3336    856      3     94 2022-12-19 15:35:59 UTC+0000
-... 0xfffffa8003f08b00:taskeng.exe                   3268    856      4     77 2022-12-19 16:03:12 UTC+0000
-.. 0xfffffa8003a32b00:sppsvc.exe                     1572    472      4    147 2022-12-19 15:34:52 UTC+0000
-.. 0xfffffa8005373b00:spoolsv.exe                    1116    472     13    268 2022-12-19 15:32:37 UTC+0000
-.. 0xfffffa800527ab00:svchost.exe                     764    472     18    468 2022-12-19 15:32:32 UTC+0000
-. 0xfffffa8004fce500:lsass.exe                        480    376      6    547 2022-12-19 15:32:30 UTC+0000
-. 0xfffffa8004efab00:lsm.exe                          488    376      9    141 2022-12-19 15:32:30 UTC+0000
- 0xfffffa8004fb3b00:csrss.exe                         388    368      8    377 2022-12-19 15:32:30 UTC+0000
-. 0xfffffa8003d67060:conhost.exe                     2312    388      2     54 2022-12-19 15:43:39 UTC+0000
-. 0xfffffa8003a8db00:conhost.exe                     3524    388      2     55 2022-12-19 15:40:08 UTC+0000
+**Respuesta:** `cmd.exe`
+
+## 16) El atacante podría haber utilizado una dirección de correo electrónico para iniciar sesión en una red social. ¿Puede indicarnos la dirección de correo electrónico?
+
