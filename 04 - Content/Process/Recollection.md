@@ -532,7 +532,12 @@ Name                                                  Pid   PPid   Thds   Hnds T
 
 ## 16) El atacante podría haber utilizado una dirección de correo electrónico para iniciar sesión en una red social. ¿Puede indicarnos la dirección de correo electrónico?
 
-```
+Recordando que antes había una parte que decía `hacked by mafia`:
+```bash
+strings recollection.bin | grep mafia
 ```
 
 **Respuesta:** `mafia_code1337@gmail.com`
+
+## 17) Utilizando el navegador MS Edge, la víctima buscó información sobre una solución SIEM. ¿Cómo se llama la solución SIEM?
+
