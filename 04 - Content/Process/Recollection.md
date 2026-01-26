@@ -541,3 +541,23 @@ strings recollection.bin | grep mafia
 
 ## 17) Utilizando el navegador MS Edge, la víctima buscó información sobre una solución SIEM. ¿Cómo se llama la solución SIEM?
 
+### Vol3 
+
+```
+vol -f recollection.bin windows.filescan.FileScan | grep History
+```
+
+```powershell
+
+```
+### Vol2
+```bash
+python2 /opt/volatility/vol.py -f recollection.bin --profile=Win7SP1x64 filescan | grep History
+```
+
+```powershell
+0x000000011de6e9c0     16      0 R--rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
+0x000000011e0d16f0     17      1 RW-rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History
+0x000000011e4d59e0     16      0 R--rwd \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Windows\History\desktop.ini
+0x000000011fc57a10     17      1 RW-rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
+```
