@@ -532,3 +532,7 @@ Name                                                  Pid   PPid   Thds   Hnds T
 
 ## 16) El atacante podría haber utilizado una dirección de correo electrónico para iniciar sesión en una red social. ¿Puede indicarnos la dirección de correo electrónico?
 
+```
+```
+
+**Respuesta:** `mafia_code1337@gmail.com`
