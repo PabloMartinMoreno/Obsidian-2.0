@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Metodología Forense & Orden de Volatilidad.md",
+                "file": "04 - Content/Process/Metodología Forense.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Metodología Forense & Orden de Volatilidad"
+              "title": "Metodología Forense"
             }
           }
         ],
@@ -157,7 +157,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Metodología Forense & Orden de Volatilidad.md",
+                "file": "04 - Content/Process/Metodología Forense.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -228,7 +228,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Metodología Forense & Orden de Volatilidad"
+              "title": "Gráfico de Metodología Forense"
             }
           },
           {
@@ -281,9 +281,9 @@
   "active": "f99668ee4792b3e4",
   "lastOpenFiles": [
     "04 - Content/Process/Recollection.md",
-    "04 - Content/Process/Metodología Forense & Orden de Volatilidad.md",
-    "04 - Content/Process/sherlocks.md",
+    "04 - Content/Process/Metodología Forense.md",
     "01 - Primary Categories/Blue Team.md",
+    "04 - Content/Process/sherlocks.md",
     "04 - Content/Process/CDSA.md",
     "04 - Content/Process/vol.md",
     "04 - Content/Process/Mangobleed.md",
