@@ -548,16 +548,29 @@ vol -f recollection.bin windows.filescan.FileScan | grep History
 ```
 
 ```powershell
-
+0x11de6e9c0100.0\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
+0x11e0d16f0	\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History
+0x11e4d59e0	\Users\user\AppData\Local\Microsoft\Windows\History\desktop.ini
+0x11fc57a10	\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
 ```
+
+```bash
+vol -f recollection.bin -o . windows.dumpfiles.DumpFiles --physaddr 0x11e0d16f0
+```
+
+```bash
+strings file.0x11e0d16f0.0xfa80056d1440.DataSectionObject.History.dat | less
+```
+
+**Respuesta:** Wazuh
+
 ### Vol2
 ```bash
 python2 /opt/volatility/vol.py -f recollection.bin --profile=Win7SP1x64 filescan | grep History
 ```
 
-```powershell
-0x000000011de6e9c0     16      0 R--rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
-0x000000011e0d16f0     17      1 RW-rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History
-0x000000011e4d59e0     16      0 R--rwd \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Windows\History\desktop.ini
-0x000000011fc57a10     17      1 RW-rw- \Device\HarddiskVolume2\Users\user\AppData\Local\Microsoft\Edge\User Data\Default\History-journal
+```bash
+python2 /opt/volatility/vol.py -f recollection.bin --profile=Win7SP1x64 dumpfiles -Q 0x000000011e0d16f0 --dump-dir .
 ```
+
+## 18) 
