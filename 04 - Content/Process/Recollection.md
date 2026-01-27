@@ -573,4 +573,6 @@ python2 /opt/volatility/vol.py -f recollection.bin --profile=Win7SP1x64 filescan
 python2 /opt/volatility/vol.py -f recollection.bin --profile=Win7SP1x64 dumpfiles -Q 0x000000011e0d16f0 --dump-dir .
 ```
 
-## 18) 
+## 18) El usuario víctima descargó un archivo exe. El nombre del archivo imitaba un binario legítimo de Microsoft con un error tipográfico (es decir, el binario legítimo es powershell.exe y el atacante nombró al malware como powershall.exe). Indíquenos el nombre del archivo con la extensión.
+
+**Respuesta:** `csrsss.exe`
