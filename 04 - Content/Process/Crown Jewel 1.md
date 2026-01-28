@@ -32,5 +32,199 @@ chainsaw hunt *.evtx --sigma /usr/share/chainsaw/sigma --mapping /usr/share/chai
 	```
 Las cuentas que terminan en 500 son usuario administrador local, por ende la parte de la eliminiación de tareas las hizo con el usuario admin. 
 ```
-
 Uso el ID del proceso `6264` para obtener más información del proceso:
+
+```bash
+chainsaw search 6264 *.evtx
+```
+```html
+---
+Event_attributes:
+  xmlns: http://schemas.microsoft.com/win/2004/08/events/event
+Event:
+  System:
+    Provider_attributes:
+      Name: Microsoft-Windows-Security-Auditing
+      Guid: 54849625-5478-4994-A5BA-3E3B0328C30D
+    EventID: 4699
+    Version: 1
+    Level: 0
+    Task: 12804
+    Opcode: 0
+    Keywords: '0x8020000000000000'
+    TimeCreated_attributes:
+      SystemTime: 2024-05-14T03:42:43.844992Z
+    EventRecordID: 5934
+    Correlation_attributes:
+      ActivityID: 9E03AA9F-A5B0-0005-01AB-039EB0A5DA01
+    Execution_attributes:
+      ProcessID: 828
+      ThreadID: 492
+    Channel: Security
+    Computer: DC01.forela.local
+    Security: null
+  EventData:
+    SubjectUserSid: S-1-5-21-3239415629-1862073780-2394361899-500
+    SubjectUserName: Administrator
+    SubjectDomainName: FORELA
+    SubjectLogonId: '0xa8b86'
+    TaskName: \CreateExplorerShellUnelevatedTask
+    TaskContent: ''
+    ClientProcessStartKey: 2814749767106679
+    ClientProcessId: 6264
+    ParentProcessId: 6244
+    RpcCallClientLocality: 0
+    FQDN: DC01.forela.local
+
+---
+Event_attributes:
+  xmlns: http://schemas.microsoft.com/win/2004/08/events/event
+Event:
+  System:
+    Provider_attributes:
+      Name: Microsoft-Windows-Security-Auditing
+      Guid: 54849625-5478-4994-A5BA-3E3B0328C30D
+    EventID: 4698
+    Version: 1
+    Level: 0
+    Task: 12804
+    Opcode: 0
+    Keywords: '0x8020000000000000'
+    TimeCreated_attributes:
+      SystemTime: 2024-05-14T03:42:43.854198Z
+    EventRecordID: 5935
+    Correlation_attributes:
+      ActivityID: 9E03AA9F-A5B0-0005-01AB-039EB0A5DA01
+    Execution_attributes:
+      ProcessID: 828
+      ThreadID: 968
+    Channel: Security
+    Computer: DC01.forela.local
+    Security: null
+  EventData:
+    SubjectUserSid: S-1-5-21-3239415629-1862073780-2394361899-500
+    SubjectUserName: Administrator
+    SubjectDomainName: FORELA
+    SubjectLogonId: '0xa8b86'
+    TaskName: \CreateExplorerShellUnelevatedTask
+    TaskContent: "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\r\n<Task version=\"1.3\" xmlns=\"http://schemas.microsoft.com/windows/2004/02/mit/task\">\r\n  <RegistrationInfo>\r\n    <Author>ExplorerShellUnelevated</Author>\r\n    <URI>\\CreateExplorerShellUnelevatedTask</URI>\r\n  </RegistrationInfo>\r\n  <Triggers>\r\n    <RegistrationTrigger id=\"CreateExplorerShell_Trigger\">\r\n      <Enabled>true</Enabled>\r\n      <Delay>PT0S</Delay>\r\n    </RegistrationTrigger>\r\n  </Triggers>\r\n  <Settings>\r\n    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>\r\n    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>\r\n    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>\r\n    <AllowHardTerminate>true</AllowHardTerminate>\r\n    <StartWhenAvailable>true</StartWhenAvailable>\r\n    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>\r\n    <IdleSettings>\r\n      <Duration>PT10M</Duration>\r\n      <WaitTimeout>PT1H</WaitTimeout>\r\n      <StopOnIdleEnd>true</StopOnIdleEnd>\r\n      <RestartOnIdle>false</RestartOnIdle>\r\n    </IdleSettings>\r\n    <AllowStartOnDemand>true</AllowStartOnDemand>\r\n    <Enabled>true</Enabled>\r\n    <Hidden>false</Hidden>\r\n    <RunOnlyIfIdle>false</RunOnlyIfIdle>\r\n    <DisallowStartOnRemoteAppSession>false</DisallowStartOnRemoteAppSession>\r\n    <UseUnifiedSchedulingEngine>true</UseUnifiedSchedulingEngine>\r\n    <WakeToRun>false</WakeToRun>\r\n    <ExecutionTimeLimit>PT72H</ExecutionTimeLimit>\r\n    <Priority>6</Priority>\r\n  </Settings>\r\n  <Actions Context=\"Author\">\r\n    <Exec>\r\n      <Command>C:\\Windows\\Explorer.EXE</Command>\r\n      <Arguments>/NoUACCheck</Arguments>\r\n    </Exec>\r\n  </Actions>\r\n  <Principals>\r\n    <Principal id=\"Author\">\r\n      <UserId>FORELA\\Administrator</UserId>\r\n      <LogonType>InteractiveToken</LogonType>\r\n      <RunLevel>LeastPrivilege</RunLevel>\r\n    </Principal>\r\n  </Principals>\r\n</Task>"
+    ClientProcessStartKey: 2814749767106679
+    ClientProcessId: 6264
+    ParentProcessId: 6244
+    RpcCallClientLocality: 0
+    FQDN: DC01.forela.local
+
+---
+Event_attributes:
+  xmlns: http://schemas.microsoft.com/win/2004/08/events/event
+Event:
+  System:
+    Provider_attributes:
+      Name: Microsoft-Windows-Ntfs
+      Guid: 3FF37A1C-A68D-4D6E-8C9B-F79E8B16C482
+    EventID: 158
+    Version: 0
+    Level: 4
+    Task: 0
+    Opcode: 0
+    Keywords: '0x4000000000200000'
+    TimeCreated_attributes:
+      SystemTime: 2023-03-08T08:09:47.859784Z
+    EventRecordID: 42
+    Correlation: null
+    Execution_attributes:
+      ProcessID: 4
+      ThreadID: 184
+    Channel: Microsoft-Windows-Ntfs/Operational
+    Computer: WIN-D7MHOC9OLC8
+    Security_attributes:
+      UserID: S-1-5-18
+  EventData:
+    VolumeCorrelationId: 17A28535-1E81-4F9F-8B4A-85BB7474B0C9
+    VolumeNameLength: 2
+    VolumeName: 'C:'
+    UserFileReads: 49787
+    UserFileReadBytes: 1877563392
+    UserDiskReads: 49385
+    UserFileWrites: 32141
+    UserFileWriteBytes: 1993039872
+    UserDiskWrites: 32920
+    MetaDataReads: 6312
+    MetaDataReadBytes: 117485568
+    MetaDataDiskReads: 7204
+    MetaDataWrites: 1379
+    MetaDataWriteBytes: 13361152
+    MetaDataDiskWrites: 1998
+    MftReads: 5596
+    MftReadBytes: 110747648
+    MftWrites: 1104
+    MftWriteBytes: 9371648
+    Mft2Writes: 2
+    Mft2WriteBytes: 8192
+    RootIndexReads: 0
+    RootIndexReadBytes: 0
+    RootIndexWrites: 0
+    RootIndexWriteBytes: 0
+    BitmapReads: 4
+    BitmapReadBytes: 3256320
+    BitmapWrites: 160
+    BitmapWriteBytes: 1064960
+    MftBitmapReads: 1
+    MftBitmapReadBytes: 20480
+    MftBitmapWrites: 30
+    MftBitmapWriteBytes: 131072
+    UserIndexReads: 1511
+    UserIndexReadBytes: 7434240
+    UserIndexWrites: 514
+    UserIndexWriteBytes: 3223552
+    LogFileReads: 46
+    LogFileReadBytes: 188416
+    LogFileWrites: 3598
+    LogFileWriteBytes: 57954304
+    LogFileFull: 0
+    LogFileFullReasonBucket1: 0
+    LogFileFullReasonBucket2: 0
+    LogFileFullReasonBucket3: 0
+    LogFileFullReasonBucket4: 0
+    LogFileFullReasonBucket5: 0
+    LogFileFullReasonBucket6: 0
+    LogFileFullReasonBucket7: 0
+    LogFileFullReasonBucket8: 0
+    LogFileFullReasonBucket9: 0
+    LogFileFullReasonBucket10: 0
+    LogFileFullReasonBucket11: 0
+    LogFileFullReasonBucket12: 0
+    LogFileFullReasonBucket13: 0
+    LogFileFullReasonBucket14: 0
+    LogFileFullReasonBucket15: 0
+    DiskResourceFailure: 0
+    VolumeTrimCount: 71
+    VolumeTrimTime: 11
+    VolumeTrimSize: 1154800
+    AvgVolumeTrimTime: 0
+    AvgVolumeTrimSize: 16264
+    VolumeTrimSkippedCount: 0
+    VolumeTrimSkippedSize: 0
+    FileLevelTrimCount: 0
+    FileLevelTrimTime: 0
+    FileLevelTrimSize: 0
+    AvgFileLevelTrimTime: 0
+    AvgFileLevelTrimSize: 0
+    NtfsFillStatInfoFromMftRecordCalledCount: 0
+    NtfsFillStatInfoFromMftRecordBailedBecauseOfAttributeListCount: 0
+    NtfsFillStatInfoFromMftRecordBailedBecauseOfNonResReparsePointCount: 0
+```
+Al buscar en Google el id de evento 4698 dice que es una eliminación de tarea programada. Al buscar en Google el comando `CreateExplorerShellUnelevatedTask` no parece haber nada raro, podría ser un falso positivo. 
+
+A continuación pruebo con un volcado de memoria: 
+```bash
+chainsaw dump *.evtx --json > events.json
+```
+```ad-tip
+El resultado aparece en una lista `[]`, eso es un problema porque al querer resaltarlo con `jq -c` aparece todo en una misma linea. Para deshacerme del mismo hago: `jq .[] -c`, de esta forma cada evento tiene una linea diferente.
+```
+
+```bash
+cat events.json | jq '.[]'
+```
+
