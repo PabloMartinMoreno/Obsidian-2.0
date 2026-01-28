@@ -228,3 +228,14 @@ El resultado aparece en una lista `[]`, eso es un problema porque al querer resa
 cat events.json | jq '.[]'
 ```
 
+Como el archivo es muy grande voy a filtrar por eventos y canal del sistema:
+```bash
+cat events.json | jq '.[].Event | select(.System.Channel == "System") | .System.EventID'
+```
+
+A la lista de todos los eventos la voy a ordenar y filtrar:
+```
+cat events.json | jq '.[].Event | select(.System.Channel == "System") | .System.EventID' | sort | uniq -c | awk '{print $2":"$1}' | sort -n
+```
+
+A continuación le paso eso a la IA, le explico que es cada cosa y le pido que me explique que es cada evento de la lista. De esta manera puede tener una clara información de lo que contiene el registro. 
