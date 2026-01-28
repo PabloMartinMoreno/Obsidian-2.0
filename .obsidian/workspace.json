@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Crown Jewel 1.md",
+                "file": "04 - Content/Process/chainsaw.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Crown Jewel 1"
+              "title": "chainsaw"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Crown Jewel 1.md",
+                "file": "04 - Content/Process/chainsaw.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Crown Jewel 1"
+              "title": "Gráfico de chainsaw"
             }
           },
           {
@@ -264,8 +264,9 @@
   },
   "active": "351b75d9baba909c",
   "lastOpenFiles": [
-    "04 - Content/Process/sherlocks.md",
     "04 - Content/Process/Crown Jewel 1.md",
+    "04 - Content/Process/chainsaw.md",
+    "04 - Content/Process/sherlocks.md",
     "04 - Content/Process/sherlocks a hacer.md",
     "01 - Primary Categories/Blue Team.md",
     "04 - Content/Process/Recollection.md",
@@ -299,7 +300,6 @@
     "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md",
     "04 - Content/Process/Gestión de Incidentes.md",
     "04 - Content/Process/Etapa de Actividad Post-Incidente.md",
-    "04 - Content/Process/Etapa de Contención, Erradicación y Recuperación.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
