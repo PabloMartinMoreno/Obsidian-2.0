@@ -239,3 +239,49 @@ cat events.json | jq '.[].Event | select(.System.Channel == "System") | .System.
 ```
 
 A continuación le paso eso a la IA, le explico que es cada cosa y le pido que me explique que es cada evento de la lista. De esta manera puede tener una clara información de lo que contiene el registro. 
+```python
+Los "Smoking Guns" (Lo más importante)
+
+Estos son los eventos que indican el problema real. La máquina tiene el disco rígido o la controladora muriendo.
+
+- **55 (NTFS):** **Corrupción de sistema de archivos.** La estructura del disco está corrupta e inutilizable. Esto es grave.
+- **98 (NTFS):** El volumen requiere un `CHKDSK /F` (reparación) y necesita ser desmontado. Confirma el evento 55.
+- **129 (Storport):** **Reset to Device.** El driver de almacenamiento (Storport) tuvo que reiniciar el dispositivo porque no respondía. Típico de discos muriendo o latencia extrema.
+- **153 (Disk):** **I/O Retry.** Se reintentó una operación de entrada/salida en un bloque lógico. Es un "bad block" o error físico de lectura/escritura.    
+- **162 (Volmgr):** **Crash Dump Failed.** Windows intentó guardar la memoria (el volcado) tras un pantallazo azul, pero falló. (Lógico, si el disco está fallando, no puede escribir el error).
+
+---
+
+Ciclo de Crash y Reinicio
+
+Estos eventos son la _consecuencia_ de los errores de arriba.
+
+- **41 (Kernel-Power):** **Reinicio Inesperado.** El sistema se reinició sin apagarse limpiamente. (El famoso "se cortó la luz" o crash).
+- **6008 (EventLog):** "El cierre anterior del sistema fue inesperado". Confirma que se colgó o se apagó mal.
+- **1001 (WER-SystemErrorReporting):** **BugCheck.** Aquí es donde Windows intenta reportar el código de error del Pantallazo Azul (BSOD).
+- **6005 (EventLog):** El servicio de logs se inició (indica que la máquina acaba de arrancar).
+- **6009 (EventLog):** Información del sistema (Build, OS Version) al arrancar.
+- **6013 (EventLog):** Uptime del sistema (cuánto tiempo lleva prendida).
+- **12 (Kernel-General):** El sistema operativo se inició (arranque exitoso).
+- **13 (Kernel-General):** El sistema se está apagando (si aparece, es un apagado controlado; si falta antes de un 6005, fue crash).
+
+---
+
+Ruido de Sistema y Servicios
+
+Eventos normales o informativos que dan contexto de la actividad.
+
+- **1 (Kernel-General):** **Cambio de hora del sistema.** El reloj se ajustó.
+- **7036 (Service Control Manager):** Un servicio cambió de estado (inició o paró). Es el evento más ruidoso (106 veces en tu lista).
+- **7040 (SCM):** Cambio en el tipo de inicio de un servicio (ej. de Manual a Auto).
+- **20 (WindowsUpdateClient):** Error o éxito en instalación de actualizaciones (a veces es Kernel-General, pero usualmente Update).
+- **1014 (DNS Client):** **Name Resolution Time Out.** La PC perdió conexión a internet o el DNS tardó en responder. Muy común.
+- **10016 (DistributedCOM):** Error de permisos DCOM. Ruido clásico de Windows, generalmente ignorable.
+- **50036 / 50103 / 51046 (Dhcp-Client):** El servicio DHCP inició, paró o está negociando una IP. Indica actividad de red al arrancar.
+    
+
+Resumen
+
+> _"La evidencia (Event IDs 55, 98, 129, 153) indica una falla física o lógica severa en el subsistema de almacenamiento, lo que impide que el sistema escriba volcados de memoria (ID 162) y causa reinicios inesperados (ID 41, 6008)."_
+```
+
