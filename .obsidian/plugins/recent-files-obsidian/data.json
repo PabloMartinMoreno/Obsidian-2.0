@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "Fuzzing Parameters & Values",
+      "path": "04 - Content/Fuzzing Parameters & Values.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
       "basename": "Crown Jewel 1",
       "path": "04 - Content/Process/Crown Jewel 1.md"
     },
@@ -165,24 +181,12 @@
       "path": "04 - Content/Process/Proceso de Gestión de Accidentes.md"
     },
     {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
       "basename": "Certificate Transparency Logs",
       "path": "04 - Content/Certificate Transparency Logs.md"
     },
     {
       "basename": "dig",
       "path": "04 - Content/dig.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "DNS (53) - Enumeración",
