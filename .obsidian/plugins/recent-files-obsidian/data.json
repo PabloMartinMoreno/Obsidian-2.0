@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Linux Post-Exploitation",
+      "path": "04 - Content/Process/Linux Post-Exploitation.md"
     },
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Common Exploitation Tools",
+      "path": "04 - Content/Process/Common Exploitation Tools.md"
+    },
+    {
+      "basename": "Client-Side Exploitation",
+      "path": "04 - Content/Process/Client-Side Exploitation.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
     },
     {
       "basename": "Service Exploitation",
@@ -15,10 +35,6 @@
     {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "Resource Development",
@@ -183,22 +199,6 @@
     {
       "basename": "Fuzzing Parameters & Values",
       "path": "04 - Content/Fuzzing Parameters & Values.md"
-    },
-    {
-      "basename": "Crown Jewel 1",
-      "path": "04 - Content/Process/Crown Jewel 1.md"
-    },
-    {
-      "basename": "chainsaw",
-      "path": "04 - Content/Process/chainsaw.md"
-    },
-    {
-      "basename": "sherlocks",
-      "path": "04 - Content/Process/sherlocks.md"
-    },
-    {
-      "basename": "sherlocks a hacer",
-      "path": "04 - Content/Process/sherlocks a hacer.md"
     }
   ],
   "omittedPaths": [],
