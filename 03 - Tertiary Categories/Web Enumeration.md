@@ -17,7 +17,6 @@ type: Tertiary Category
 
 ## 🌍 Reconnaissance & Infrastructure
   Recolección inicial de información pasiva y análisis de infraestructura DNS.
-- [[Subdomains Passive Enumeration]] (Búsqueda de subdominios sin contacto directo.)
 - [[DNS (53) - Enumeración]] (Consulta de registros A, CNAME, TXT, transferencias de zona, etc.)
     - [[DNS Enumeration Command Comparison]] (Referencia rápida de comandos para distintas herramientas.)
 - [[Cloud Enumeration for Web Assets]] (Detección de buckets S3, Azure Blobs, etc., que podrían contener activos web.)
@@ -30,15 +29,13 @@ type: Tertiary Category
 - [[Fuzzing Subdomains & Virtual Hosts]] (Búsqueda activa de VHosts en el servidor web mediante cabeceras Host.)
 - [[Crawling & Spidering]]] (Mapeo automático de la estructura del sitio siguiendo enlaces.)
        - [[robots.txt]] & [[Well-Known URIs]] (Revisión de archivos estándar que revelan rutas sensibles.)
-- [[Asset Discovery & JavaScript Analysis]] (Análisis de archivos JS para encontrar endpoints, claves API, o información oculta.)
-- [[CORS Misconfiguration Enumeration]] (Identificación de configuraciones de Cross-Origin Resource Sharing que pueden ser abusadas.)
+ - [[API Enumeration]]
 
 ## 🆔 Fingerprinting & Technology Analysis
   Identificación de tecnologías, frameworks y CMS utilizados.
 
 - [[Fingerprinting Web Technologies]] (Detección del stack tecnológico: Wappalyzer, cabeceras, cookies.)
 - [[Visual Reconnaissance with EyeWitness]] (Captura automatizada de capturas de pantalla para identificar servicios visualmente.)
-- [[Wappalyzer]] (Herramienta común para el fingerprinting automático de tecnologías web.)
 
 
 ## 🎯 Targeted Technology Enumeration

@@ -17,6 +17,7 @@ type: Tertiary Category
 ##  🕸 Public Data Mining (Dorking)
   Uso de motores de búsqueda y repositorios públicos para encontrar información expuesta.
 
+- [[Subdomains Passive Enumeration]] (Búsqueda de subdominios sin contacto directo.)
 - [[Google Dorking]] (Uso de operadores avanzados en Google para hallar archivos, paneles de login y vulnerabilidades.)
 - [[GitHub Dorking]] (Búsqueda de secretos, claves API y código fuente sensible en repositorios.)
  - [[Shodan & Censys Recon]] (Búsqueda de activos expuestos e indexados por motores de búsqueda IoT.)

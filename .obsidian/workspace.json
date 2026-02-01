@@ -264,8 +264,9 @@
   },
   "active": "351b75d9baba909c",
   "lastOpenFiles": [
-    "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Process/Honeytokens & Tracking Pixels.md",
     "04 - Content/Process/Untitled.md",
     "04 - Content/CanaryTokens.md",
@@ -274,7 +275,6 @@
     "04 - Content/Subdominio.md",
     "03 - Tertiary Categories/Active Directory Enumeration.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Process/Performing Whois Lookup.md",
     "01 - Primary Categories/Red Team.md",
     "04 - Content/Process/Common Web Vulnerabilities.md",
