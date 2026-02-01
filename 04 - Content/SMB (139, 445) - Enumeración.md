@@ -23,8 +23,8 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[Spidering SMB Shares]]"
-  - "[[04 - Content/Interacting with SMB from Windows]]"
   - "[[RpcClient]]"
+  - "[[Interacting with SMB from Windows]]"
 ---
 # Enumeración SMB (139, 445)
 

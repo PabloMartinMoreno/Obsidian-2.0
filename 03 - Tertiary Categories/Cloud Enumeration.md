@@ -13,37 +13,49 @@ type: Tertiary Category
 
 ***
 
-## ☁ AWS (Amazon Web Services)
-  Enumeración específica para entornos de Amazon.
 
-   - [[AWS Enumeration]]
-   - [[AWS S3 Bucket Enumeration]] (Descubrimiento de buckets públicos y permisos ACL.)
-   - [[AWS IAM Enumeration]] (Enumeración de usuarios, roles y políticas de permisos.)
+ ## 🔑 Initial Access & Credential Discovery
+Búsqueda de claves y accesos.
+
+- [[Cloud Credential Hunting]] (Búsqueda de API Keys en GitHub, metadatos, o aplicaciones expuestas.)
+- [[Cloud Metadata Services]] (Técnicas para extraer credenciales temporales desde instancias comprometidas - SSRF a 169.254.169.254.)
+
+
+## ☁ AWS (Amazon Web Services)
+
+- [[AWS Enumeration]] (Visión general y CLI cheatsheet.)
+- [[AWS S3 Bucket Enumeration]] (Storage: Buckets públicos, permisos ACL.)
+- [[AWS IAM Enumeration]] (Identity: Usuarios, roles, políticas y escalada de privilegios.)
+- [[AWS Lambda & Serverless Enum]] (Si aplica.)
+
 
 ## 🟦 Azure & Microsoft 365
   Enumeración para la nube de Microsoft y su gestión de identidad.
+  
+- [[Azure Enumeration]]
+- [[Azure AD (Entra ID) Enumeration]]
+- [[Azure Blob Storage Enumeration]]
+- [[Microsoft 365 Enumeration]]
 
-   - [[Azure Enumeration]]
-   - [[Azure AD (Entra ID) Enumeration]] (Enumeración de usuarios, grupos y aplicaciones en el directorio activo de la nube.)
-   - [[Azure Blob Storage Enumeration]] (Búsqueda de contenedores de almacenamiento expuestos.)
-   - [[Microsoft 365 Enumeration]] (Enumeración de servicios O365, Teams y SharePoint.)
 
 ## 🟩 GCP (Google Cloud Platform)
   Enumeración para entornos de Google.
+  
+- [[GCP Enumeration]]
+- [[GCP Storage Buckets Enumeration]]
 
-   - [[GCP Enumeration]]
-   - [[GCP Storage Buckets Enumeration]] (Búsqueda de buckets de almacenamiento mal configurados.)
 
 ## 📦 Containers & Orchestration
   Enumeración de infraestructuras de contenedores (omnipresentes en Cloud).
+  
+- [[Kubernetes Enumeration]]
+- [[Docker Enumeration]]
 
-   - [[Kubernetes Enumeration]] (Enumeración de clusters, pods y servicios K8s.)
-   - [[Docker Enumeration]] (Enumeración de registros y demonios Docker expuestos.)
 
-## 🛠 Multi-Cloud Tools
-  Herramientas de auditoría automatizada.
+## 🛡 Configuration & Security Auditing
+Análisis automatizado de la postura de seguridad.
 
-   - [[ScoutSuite]] (Herramienta de auditoría de seguridad multi-nube.)
-   - [[CloudSploit]] (Escáner de configuraciones de seguridad y cumplimiento.)
+- [[Cloud Configuration Auditing]] (Herramientas: ScoutSuite, CloudSploit, Prowler.)
 
-***
+
+___

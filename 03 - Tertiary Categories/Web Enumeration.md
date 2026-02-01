@@ -15,11 +15,12 @@ type: Tertiary Category
 
 ***
 
-## 🌍 Reconnaissance & Infrastructure
-  Recolección inicial de información pasiva y análisis de infraestructura DNS.
-- [[DNS (53) - Enumeración]] (Consulta de registros A, CNAME, TXT, transferencias de zona, etc.)
-    - [[DNS Enumeration Command Comparison]] (Referencia rápida de comandos para distintas herramientas.)
-- [[Cloud Enumeration for Web Assets]] (Detección de buckets S3, Azure Blobs, etc., que podrían contener activos web.)
+## 🆔 Fingerprinting & Technology Analysis
+  Identificación de tecnologías, frameworks y CMS utilizados.
+
+- [[Fingerprinting Web Technologies]] (Detección del stack tecnológico: Wappalyzer, cabeceras, cookies.)
+- [[Visual Reconnaissance with EyeWitness]] (Captura automatizada de capturas de pantalla para identificar servicios visualmente.)
+
 
 ## 🔍 Content Discovery & Fuzzing
   Búsqueda activa de directorios ocultos, archivos, parámetros y rutas virtuales.
@@ -30,12 +31,15 @@ type: Tertiary Category
 - [[Crawling & Spidering]]] (Mapeo automático de la estructura del sitio siguiendo enlaces.)
        - [[robots.txt]] & [[Well-Known URIs]] (Revisión de archivos estándar que revelan rutas sensibles.)
  - [[API Enumeration]]
+ - [[Cloud Enumeration for Web Assets]]`
 
-## 🆔 Fingerprinting & Technology Analysis
-  Identificación de tecnologías, frameworks y CMS utilizados.
 
-- [[Fingerprinting Web Technologies]] (Detección del stack tecnológico: Wappalyzer, cabeceras, cookies.)
-- [[Visual Reconnaissance with EyeWitness]] (Captura automatizada de capturas de pantalla para identificar servicios visualmente.)
+## 🔓 Vulnerability & Leak Scanning
+Búsqueda automatizada de fallos conocidos y exposiciones.
+
+- [[Web Vulnerability Scanning]] (*[[nikto]], Nuclei, etc.)
+- [[Source Code Disclosure]] ([[git-dumper]], [[.ds_store]], backups)
+- [[CORS Misconfiguration Enumeration]]
 
 
 ## 🎯 Targeted Technology Enumeration
@@ -60,27 +64,5 @@ type: Tertiary Category
 - [[ColdFusion Enumeration]]
 - [[Nginx & Apache Enumeration]] (Enumeración específica para los servidores web más comunes.)
 
-
-## 🛠 Tooling & Resources
-  Arsenal de herramientas categorizado por función.
-
-### Proxies & Clients
-   - [[BurpSuite]] (Proxy de intercepción y análisis manual/automatizado.)
-   - [[curl]] (Cliente de línea de comandos para peticiones HTTP crudas.)
-
-### Fuzzers & Scanners
-   - [[ffuf]] (Fuzzer web rápido para directorios, VHosts y parámetros.)
-   - [[gobuster]] (Herramienta clásica para fuerza bruta de URIs y DNS.)
-   - [[feroxbuster]] (Fuzzer recursivo escrito en Rust.)
-   - [[nikto]] (Escáner de vulnerabilidades web y configuraciones por defecto.)
-   - [[git-dumper]] (Herramienta para descargar repositorios `.git` expuestos.)
-
-### Network & DNS Tools
-   - [[dig]] (Consultas DNS manuales.)
-   - [[dnsenum]] (Enumeración DNS automatizada.)
-   - [[rustscan]] (Escaneo de puertos ultrarrápido.)
-
-### Wordlists
-  - [[ Seclists]] (Colección de listas para fuzzing de usuarios, contraseñas y directorios.)
 
 ***

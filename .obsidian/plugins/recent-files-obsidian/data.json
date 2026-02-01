@@ -1,16 +1,124 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "04 - Content/Process/Service Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Exploitation",
+      "path": "04 - Content/Process/Active Directory Exploitation.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Resource Development",
+      "path": "04 - Content/Process/Resource Development.md"
+    },
+    {
+      "basename": "Evasion & Obfuscation",
+      "path": "04 - Content/Process/Evasion & Obfuscation.md"
+    },
+    {
+      "basename": "Payload & Malware Engineering",
+      "path": "04 - Content/Process/Payload & Malware Engineering.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Passive Reconnaissance & OSINT",
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Fingerprinting Web Technologies",
+      "path": "04 - Content/Fingerprinting Web Technologies.md"
+    },
+    {
+      "basename": "Reverse Engineering",
+      "path": "03 - Tertiary Categories/Reverse Engineering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "AWS Enumeration",
+      "path": "04 - Content/Process/AWS Enumeration.md"
+    },
+    {
+      "basename": "NetBIOS Enumeration (137, 138, 139)",
+      "path": "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md"
+    },
+    {
+      "basename": "Finger (79) - Enumeración",
+      "path": "04 - Content/Finger (79) - Enumeración.md"
+    },
+    {
+      "basename": "DNS (53) - Enumeración",
+      "path": "04 - Content/DNS (53) - Enumeración.md"
+    },
+    {
+      "basename": "MySQL (3306) - Enumeración",
+      "path": "04 - Content/MySQL (3306) - Enumeración.md"
+    },
+    {
+      "basename": "Oracle TNS (1521) - Enumeración",
+      "path": "04 - Content/Oracle TNS (1521) - Enumeración.md"
+    },
+    {
+      "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
+      "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
+    },
+    {
+      "basename": "IMAP (143, 993) - Enumeración",
+      "path": "04 - Content/IMAP (143, 993) - Enumeración.md"
+    },
+    {
+      "basename": "POP3 (110, 995) - Enumeración",
+      "path": "04 - Content/POP3 (110, 995) - Enumeración.md"
+    },
+    {
+      "basename": "SMTP (25,465,587) - Enumeración",
+      "path": "04 - Content/SMTP (25,465,587) - Enumeración.md"
+    },
+    {
+      "basename": "SMB (139, 445) - Enumeración",
+      "path": "04 - Content/SMB (139, 445) - Enumeración.md"
+    },
+    {
+      "basename": "Interacting with SMB from Windows",
+      "path": "04 - Content/Interacting with SMB from Windows.md"
+    },
+    {
+      "basename": "Fuzzing Directories & Pages",
+      "path": "04 - Content/Fuzzing Directories & Pages.md"
+    },
+    {
+      "basename": "Crawling & Spidering",
+      "path": "04 - Content/Process/Crawling & Spidering.md"
     },
     {
       "basename": "Honeytokens & Tracking Pixels",
@@ -33,20 +141,8 @@
       "path": "04 - Content/Subdominio.md"
     },
     {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
       "basename": "Performing Whois Lookup",
       "path": "04 - Content/Process/Performing Whois Lookup.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "Common Web Vulnerabilities",
@@ -59,14 +155,6 @@
     {
       "basename": "File Upload Vulnerabilities",
       "path": "04 - Content/Process/File Upload Vulnerabilities.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Admonition",
@@ -111,90 +199,6 @@
     {
       "basename": "sherlocks a hacer",
       "path": "04 - Content/Process/sherlocks a hacer.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
-    },
-    {
-      "basename": "Recollection",
-      "path": "04 - Content/Process/Recollection.md"
-    },
-    {
-      "basename": "Metodología Forense",
-      "path": "04 - Content/Process/Metodología Forense.md"
-    },
-    {
-      "basename": "CDSA",
-      "path": "04 - Content/Process/CDSA.md"
-    },
-    {
-      "basename": "vol",
-      "path": "04 - Content/Process/vol.md"
-    },
-    {
-      "basename": "Mangobleed",
-      "path": "04 - Content/Process/Mangobleed.md"
-    },
-    {
-      "basename": "Entrevistas CDSA",
-      "path": "04 - Content/Process/Entrevistas CDSA.md"
-    },
-    {
-      "basename": "Registros de Eventos de Windows",
-      "path": "04 - Content/Process/Registros de Eventos de Windows.md"
-    },
-    {
-      "basename": "Pasted image 20260108170324",
-      "path": "00 - Resources/Pasted image 20260108170324.png"
-    },
-    {
-      "basename": "Pasted image 20260108170301",
-      "path": "00 - Resources/Pasted image 20260108170301.png"
-    },
-    {
-      "basename": "Windows Event Logs & Finding Evil",
-      "path": "04 - Content/Process/Windows Event Logs & Finding Evil.md"
-    },
-    {
-      "basename": "El Proceso de Triaje",
-      "path": "04 - Content/Process/El Proceso de Triaje.md"
-    },
-    {
-      "basename": "Cyber Kill Chain y MITRE ATT&CK",
-      "path": "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md"
-    },
-    {
-      "basename": "Security Monitoring & SIEM Fundamentals",
-      "path": "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md"
-    },
-    {
-      "basename": "Pasted image 20260108144708",
-      "path": "00 - Resources/Pasted image 20260108144708.png"
-    },
-    {
-      "basename": "Desarrollo de Casos de Uso de SIEM",
-      "path": "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md"
-    },
-    {
-      "basename": "MITRE ATT&CK y Operaciones de Seguridad",
-      "path": "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md"
-    },
-    {
-      "basename": "Definición y Fundamentos del SOC",
-      "path": "04 - Content/Process/Definición y Fundamentos del SOC.md"
-    },
-    {
-      "basename": "Introducción al Elastic Stack",
-      "path": "04 - Content/Process/Introducción al Elastic Stack.md"
-    },
-    {
-      "basename": "Definición y Fundamentos de SIEM",
-      "path": "04 - Content/Process/Definición y Fundamentos de SIEM.md"
-    },
-    {
-      "basename": "Análisis de la Brecha de Insight Nexus",
-      "path": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md"
     }
   ],
   "omittedPaths": [],
