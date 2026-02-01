@@ -1,20 +1,68 @@
 {
   "recentFiles": [
     {
-      "basename": "Fuzzing Parameters & Values",
-      "path": "04 - Content/Fuzzing Parameters & Values.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Common Web Vulnerabilities",
+      "path": "04 - Content/Process/Common Web Vulnerabilities.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "File Upload Vulnerabilities",
+      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Admonition",
+      "path": "04 - Content/Admonition.md"
+    },
+    {
+      "basename": "AD - mindmap 2025 - 03",
+      "path": "04 - Content/AD - mindmap 2025 - 03.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD - Hosts Enumeration.md"
+    },
+    {
+      "basename": "Abusing PHP Filters",
+      "path": "04 - Content/Process/Abusing PHP Filters.md"
+    },
+    {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
+    },
+    {
+      "basename": "Reconociendo un Subdominio de un Virtual Host",
+      "path": "04 - Content/Reconociendo un Subdominio de un Virtual Host.md"
+    },
+    {
+      "basename": "Fuzzing Parameters & Values",
+      "path": "04 - Content/Fuzzing Parameters & Values.md"
     },
     {
       "basename": "Crown Jewel 1",
@@ -113,10 +161,6 @@
       "path": "04 - Content/Process/Definición y Fundamentos de SIEM.md"
     },
     {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
-    },
-    {
       "basename": "Análisis de la Brecha de Insight Nexus",
       "path": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md"
     },
@@ -155,46 +199,6 @@
     {
       "basename": "Etapa de Contención, Erradicación y Recuperación",
       "path": "04 - Content/Process/Etapa de Contención, Erradicación y Recuperación.md"
-    },
-    {
-      "basename": "Etapa de Detección y Análisis (Parte 2)",
-      "path": "04 - Content/Process/Etapa de Detección y Análisis (Parte 2).md"
-    },
-    {
-      "basename": "Etapa de Detección y Análisis (Parte 1)",
-      "path": "04 - Content/Process/Etapa de Detección y Análisis (Parte 1).md"
-    },
-    {
-      "basename": "Etapa de Preparación (Parte 2",
-      "path": "04 - Content/Process/Etapa de Preparación (Parte 2.md"
-    },
-    {
-      "basename": "Etapa de Preparación (Parte 1)",
-      "path": "04 - Content/Process/Etapa de Preparación (Parte 1).md"
-    },
-    {
-      "basename": "Resumen del Proceso de Gestión de Incidentes",
-      "path": "04 - Content/Process/Resumen del Proceso de Gestión de Incidentes.md"
-    },
-    {
-      "basename": "Proceso de Gestión de Accidentes",
-      "path": "04 - Content/Process/Proceso de Gestión de Accidentes.md"
-    },
-    {
-      "basename": "Certificate Transparency Logs",
-      "path": "04 - Content/Certificate Transparency Logs.md"
-    },
-    {
-      "basename": "dig",
-      "path": "04 - Content/dig.md"
-    },
-    {
-      "basename": "DNS (53) - Enumeración",
-      "path": "04 - Content/DNS (53) - Enumeración.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
     }
   ],
   "omittedPaths": [],

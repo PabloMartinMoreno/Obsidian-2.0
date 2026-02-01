@@ -33,6 +33,3 @@ type: Mindmap
 [^1]: AD - mindmap 2025 - 03, Orange CyberDefense, https://orange-cyberdefense.github.io/ocd-mindmaps/img/mindmap_ad_dark_classic_2025.03.excalidraw.svg
 
 ***
-
-*Created Date*: <%+tp.file.creation_date("MMMM Do YYYY (HH:mm a)")%>  
-*Last Modified Date*: <%+tp.file.last_modified_date("MMMM Do YYYY (HH:mm a)")%>

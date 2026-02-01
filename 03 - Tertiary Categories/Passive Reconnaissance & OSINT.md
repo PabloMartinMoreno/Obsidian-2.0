@@ -31,15 +31,12 @@ type: Tertiary Category
 - [[Wayback Machine & Archive Recon]] (Análisis de versiones antiguas de la web para encontrar archivos olvidados.)
 - [[Cloud Buckets & Blobs Discovery]] (Búsqueda pasiva de buckets S3/Azure mal configurados usando nombres de empresa.)
 
-
-
 ## 👥 Human Intelligence (HUMINT)
   Recolección de información sobre empleados para ataques de ingeniería social.
 
 - [[Social Engineering Intelligence]] (Búsqueda de correos, roles y relaciones de empleados en redes sociales y metadatos.)
 - [[Email Harvesting]] (Recolección de formatos de correo corporativo (ej: nombre.apellido) usando Hunter.io o similares.)
 - [[Breach Data Search]] (Búsqueda de correos y contraseñas filtradas en bases de datos de brechas públicas - ej: HaveIBeenPwned.)
-
 
 ## 🎣 Deception & Tracking
   Herramientas para rastrear accesos o generar trampas.

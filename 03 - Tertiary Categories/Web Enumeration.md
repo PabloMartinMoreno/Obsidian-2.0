@@ -17,13 +17,9 @@ type: Tertiary Category
 
 ## 🌍 Reconnaissance & Infrastructure
   Recolección inicial de información pasiva y análisis de infraestructura DNS.
-
 - [[Subdomains Passive Enumeration]] (Búsqueda de subdominios sin contacto directo.)
-- [[Google Dorking]] (Uso de motores de búsqueda para encontrar paneles y archivos expuestos.)
 - [[DNS (53) - Enumeración]] (Consulta de registros A, CNAME, TXT, transferencias de zona, etc.)
     - [[DNS Enumeration Command Comparison]] (Referencia rápida de comandos para distintas herramientas.)
-- [[Performing Whois Lookup]] (Información de registro de dominio y propietarios.)
-- [[Certificate Transparency Logs]] (Uso de crt.sh u otras fuentes para encontrar subdominios y dominios relacionados a través de certificados SSL.)
 - [[Cloud Enumeration for Web Assets]] (Detección de buckets S3, Azure Blobs, etc., que podrían contener activos web.)
 
 ## 🔍 Content Discovery & Fuzzing

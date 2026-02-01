@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Fuzzing Parameters & Values.md",
+                "file": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Fuzzing Parameters & Values"
+              "title": "Passive Reconnaissance & OSINT"
             }
           }
         ],
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:type/command",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -120,7 +120,8 @@
               "title": "Etiquetas"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -140,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Fuzzing Parameters & Values.md",
+                "file": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -211,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Fuzzing Parameters & Values"
+              "title": "Gráfico de Passive Reconnaissance & OSINT"
             }
           },
           {
@@ -263,9 +264,22 @@
   },
   "active": "351b75d9baba909c",
   "lastOpenFiles": [
-    "03 - Tertiary Categories/Web Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
     "01 - Primary Categories/Red Team.md",
+    "04 - Content/Process/Common Web Vulnerabilities.md",
+    "04 - Content/Process/CWES.md",
+    "04 - Content/Process/File Upload Vulnerabilities.md",
+    "04 - Content/Process/Web Exploitation.md",
+    "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Admonition.md",
+    "04 - Content/AD - mindmap 2025 - 03.md",
+    "04 - Content/AD - Hosts Enumeration.md",
+    "04 - Content/Process/Abusing PHP Filters.md",
+    "000 - Global Index.md",
+    "04 - Content/Reconociendo un Subdominio de un Virtual Host.md",
+    "04 - Content/Fuzzing Parameters & Values.md",
     "04 - Content/Process/Crown Jewel 1.md",
     "04 - Content/Process/chainsaw.md",
     "04 - Content/Process/sherlocks.md",
@@ -276,8 +290,6 @@
     "04 - Content/Process/CDSA.md",
     "04 - Content/Process/vol.md",
     "04 - Content/Process/Mangobleed.md",
-    "04 - Content/Process/Entrevistas CDSA.md",
-    "04 - Content/Process/Registros de Eventos de Windows.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",
@@ -285,20 +297,9 @@
     "00 - Resources/Pasted image 20260112144059.png",
     "00 - Resources/Pasted image 20260112143958.png",
     "00 - Resources/Pasted image 20260112143941.png",
-    "04 - Content/Process/Windows Event Logs & Finding Evil.md",
-    "04 - Content/Process/El Proceso de Triaje.md",
-    "04 - Content/Process/Cyber Kill Chain y MITRE ATT&CK.md",
-    "04 - Content/Process/Security Monitoring & SIEM Fundamentals.md",
-    "04 - Content/Process/Ejemplos visuales de SIEM.md",
     "00 - Resources/Pasted image 20260108170608.png",
     "00 - Resources/Pasted image 20260108170618.png",
     "00 - Resources/Pasted image 20260108170748.png",
-    "04 - Content/Process/Desarrollo de Casos de Uso de SIEM.md",
-    "04 - Content/Process/MITRE ATT&CK y Operaciones de Seguridad.md",
-    "04 - Content/Process/Definición y Fundamentos del SOC.md",
-    "04 - Content/Process/Introducción al Elastic Stack.md",
-    "04 - Content/Process/Definición y Fundamentos de SIEM.md",
-    "000 - Global Index.md",
     "SCADA",
     "Certificados SSL",
     "04 - Content/Process/Sin título.base",
