@@ -1,16 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Honeytokens & Tracking Pixels",
+      "path": "04 - Content/Process/Honeytokens & Tracking Pixels.md"
+    },
+    {
+      "basename": "CanaryTokens",
+      "path": "04 - Content/CanaryTokens.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Google Dorking.md"
+    },
+    {
+      "basename": "Subdomains Passive Enumeration",
+      "path": "04 - Content/Subdomains Passive Enumeration.md"
+    },
+    {
+      "basename": "Subdominio",
+      "path": "04 - Content/Subdominio.md"
+    },
+    {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "Performing Whois Lookup",
+      "path": "04 - Content/Process/Performing Whois Lookup.md"
     },
     {
       "basename": "Red Team",
@@ -163,42 +195,6 @@
     {
       "basename": "Análisis de la Brecha de Insight Nexus",
       "path": "04 - Content/Process/Análisis de la Brecha de Insight Nexus.md"
-    },
-    {
-      "basename": "Pasted image 20251021141158",
-      "path": "00 - Resources/Images/Pasted image 20251021141158.png"
-    },
-    {
-      "basename": "Gestión de Incidentes",
-      "path": "04 - Content/Process/Gestión de Incidentes.md"
-    },
-    {
-      "basename": "Pasted image 20260107154343",
-      "path": "00 - Resources/Images/Pasted image 20260107154343.png"
-    },
-    {
-      "basename": "vault-structure-13",
-      "path": "00 - Resources/Images/vault-structure-13.gif"
-    },
-    {
-      "basename": "Pasted image 20250528202309",
-      "path": "00 - Resources/Images/Pasted image 20250528202309.png"
-    },
-    {
-      "basename": "vault-structure-14",
-      "path": "00 - Resources/Images/vault-structure-14.gif"
-    },
-    {
-      "basename": "vault-structure-15",
-      "path": "00 - Resources/Images/vault-structure-15.gif"
-    },
-    {
-      "basename": "Etapa de Actividad Post-Incidente",
-      "path": "04 - Content/Process/Etapa de Actividad Post-Incidente.md"
-    },
-    {
-      "basename": "Etapa de Contención, Erradicación y Recuperación",
-      "path": "04 - Content/Process/Etapa de Contención, Erradicación y Recuperación.md"
     }
   ],
   "omittedPaths": [],

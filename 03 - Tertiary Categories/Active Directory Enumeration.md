@@ -14,6 +14,11 @@ type: Tertiary Category
 ---
 # Enumeración de Active Directory
 
+Discovery: ¿Qué hay ahí? (Hosts, Redes).
+Identities: ¿Quién está ahí? (Users, Groups).
+Permissions: ¿Qué pueden hacer? (ACLs, GPOs, Delegation).
+Attack Paths: ¿Cómo llego al objetivo? (BloodHound, Grafos).
+
 ***
 
 ## 🗺 Domain & Network Discovery
@@ -43,10 +48,12 @@ type: Tertiary Category
 - [[AD - GPO & SYSVOL Enumeration]] (Búsqueda específica de contraseñas en scripts o preferencias de grupo en SYSVOL.)
 
 
-## 🛠 Specialized Tools
-  Herramientas que automatizan y visualizan la enumeración de Active Directory.
+ ## 🗺 Attack Path & Vulnerability Analysis
+Mapeo visual de relaciones y búsqueda automatizada de debilidades estructurales.
 
-- [[BloodHound & SharpHound]] (Recolección y visualización de rutas de ataque en AD.)
-- [[PingCastle]] (Herramienta de auditoría de salud y seguridad de AD, excelente para encontrar fallos estructurales.)
+- [[AD - Attack Path Mapping]] (Identificación de rutas de ataque complejas hacia objetivos de alto valor - *Enlaza a BloodHound*).
+- [[AD - Health & Security Auditing]] (Auditoría automatizada de configuraciones riesgosas - *Enlaza a PingCastle*).
+
 
 ***
+

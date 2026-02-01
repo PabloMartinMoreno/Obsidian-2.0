@@ -28,6 +28,7 @@ type: Tertiary Category
 - [[Subdomains Passive Enumeration]] (Descubrimiento de subdominios mediante fuentes públicas como CT logs y DNS históricos.)
 - [[Passive Infrastructure Identification]] (Identificación de tecnologías, proveedores de hosting y bloques de red.)
 - [[Certificate Transparency Logs]] (Uso de crt.sh para encontrar subdominios nuevos y antiguos vía certificados SSL.)
+- [[Performing Whois Lookup]] (Información de registro de dominio y propietarios.)
 - [[Wayback Machine & Archive Recon]] (Análisis de versiones antiguas de la web para encontrar archivos olvidados.)
 - [[Cloud Buckets & Blobs Discovery]] (Búsqueda pasiva de buckets S3/Azure mal configurados usando nombres de empresa.)
 
@@ -38,9 +39,11 @@ type: Tertiary Category
 - [[Email Harvesting]] (Recolección de formatos de correo corporativo (ej: nombre.apellido) usando Hunter.io o similares.)
 - [[Breach Data Search]] (Búsqueda de correos y contraseñas filtradas en bases de datos de brechas públicas - ej: HaveIBeenPwned.)
 
-## 🎣 Deception & Tracking
-  Herramientas para rastrear accesos o generar trampas.
 
-- [[CanaryTokens]] (Generación de tokens para detectar cuándo y desde dónde se accede a un recurso o enlace.)
+## 🎣 Tracking & Deception
+Técnicas para monitorizar accesos o identificar si estamos siendo investigados.
+
+- [[Honeytokens & Tracking Pixels]] (Uso de tokens como CanaryTokens para rastrear apertura de correos o documentos.)
+
 
 ***

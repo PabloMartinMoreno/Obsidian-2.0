@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+                "file": "03 - Tertiary Categories/Web Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Passive Reconnaissance & OSINT"
+              "title": "Web Enumeration"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+                "file": "03 - Tertiary Categories/Web Enumeration.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Passive Reconnaissance & OSINT"
+              "title": "Gráfico de Web Enumeration"
             }
           },
           {
@@ -265,8 +265,17 @@
   "active": "351b75d9baba909c",
   "lastOpenFiles": [
     "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+    "04 - Content/Process/Honeytokens & Tracking Pixels.md",
+    "04 - Content/Process/Untitled.md",
+    "04 - Content/CanaryTokens.md",
+    "04 - Content/Google Dorking.md",
+    "04 - Content/Subdomains Passive Enumeration.md",
+    "04 - Content/Subdominio.md",
+    "03 - Tertiary Categories/Active Directory Enumeration.md",
+    "03 - Tertiary Categories/Host & Network Enumeration.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Process/Performing Whois Lookup.md",
     "01 - Primary Categories/Red Team.md",
     "04 - Content/Process/Common Web Vulnerabilities.md",
     "04 - Content/Process/CWES.md",
@@ -281,15 +290,6 @@
     "04 - Content/Reconociendo un Subdominio de un Virtual Host.md",
     "04 - Content/Fuzzing Parameters & Values.md",
     "04 - Content/Process/Crown Jewel 1.md",
-    "04 - Content/Process/chainsaw.md",
-    "04 - Content/Process/sherlocks.md",
-    "04 - Content/Process/sherlocks a hacer.md",
-    "01 - Primary Categories/Blue Team.md",
-    "04 - Content/Process/Recollection.md",
-    "04 - Content/Process/Metodología Forense.md",
-    "04 - Content/Process/CDSA.md",
-    "04 - Content/Process/vol.md",
-    "04 - Content/Process/Mangobleed.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",
