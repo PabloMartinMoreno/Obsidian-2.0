@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Red Team.md",
+                "file": "04 - Content/Process/Nvim.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Red Team"
+              "title": "Nvim"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "01 - Primary Categories/Red Team.md",
+                "file": "04 - Content/Process/Nvim.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Red Team"
+              "title": "Gráfico de Nvim"
             }
           },
           {
@@ -264,9 +264,10 @@
   },
   "active": "351b75d9baba909c",
   "lastOpenFiles": [
+    "01 - Primary Categories/Red Team.md",
+    "04 - Content/Process/Nvim.md",
     "02 - Secondary Categories/Post-Exploitation.md",
     "04 - Content/Process/Linux Post-Exploitation.md",
-    "01 - Primary Categories/Red Team.md",
     "02 - Secondary Categories/Exploitation.md",
     "04 - Content/Process/Common Exploitation Tools.md",
     "04 - Content/Process/Client-Side Exploitation.md",
@@ -289,7 +290,6 @@
     "04 - Content/Finger (79) - Enumeración.md",
     "04 - Content/DNS (53) - Enumeración.md",
     "04 - Content/MySQL (3306) - Enumeración.md",
-    "04 - Content/Oracle TNS (1521) - Enumeración.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",

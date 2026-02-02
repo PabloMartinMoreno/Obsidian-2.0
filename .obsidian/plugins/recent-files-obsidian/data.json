@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Nvim",
+      "path": "04 - Content/Process/Nvim.md"
+    },
+    {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Reconociendo un Subdominio de un Virtual Host",
       "path": "04 - Content/Reconociendo un Subdominio de un Virtual Host.md"
-    },
-    {
-      "basename": "Fuzzing Parameters & Values",
-      "path": "04 - Content/Fuzzing Parameters & Values.md"
     }
   ],
   "omittedPaths": [],
