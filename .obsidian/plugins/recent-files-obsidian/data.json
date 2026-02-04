@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Nvim",
-      "path": "04 - Content/Process/Nvim.md"
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Nvim",
+      "path": "04 - Content/Process/Nvim.md"
     },
     {
       "basename": "Post-Exploitation",
@@ -53,20 +65,12 @@
       "path": "04 - Content/Process/Payload & Malware Engineering.md"
     },
     {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
       "basename": "Passive Reconnaissance & OSINT",
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
     },
     {
       "basename": "Host & Network Enumeration",
       "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Fingerprinting Web Technologies",
@@ -195,10 +199,6 @@
     {
       "basename": "000 - Global Index",
       "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "Reconociendo un Subdominio de un Virtual Host",
-      "path": "04 - Content/Reconociendo un Subdominio de un Virtual Host.md"
     }
   ],
   "omittedPaths": [],

@@ -11,10 +11,15 @@
             "id": "4287da7c48cb3c4a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "04 - Content/curl.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "curl"
             }
           }
         ],
@@ -136,6 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "04 - Content/curl.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -206,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "title": "Gráfico de curl"
             }
           },
           {
@@ -258,8 +264,10 @@
   },
   "active": "4287da7c48cb3c4a",
   "lastOpenFiles": [
-    "04 - Content/Process/Nvim.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Red Team.md",
+    "04 - Content/Process/Nvim.md",
     "02 - Secondary Categories/Post-Exploitation.md",
     "04 - Content/Process/Linux Post-Exploitation.md",
     "02 - Secondary Categories/Exploitation.md",
@@ -271,10 +279,8 @@
     "04 - Content/Process/Resource Development.md",
     "04 - Content/Process/Evasion & Obfuscation.md",
     "04 - Content/Process/Payload & Malware Engineering.md",
-    "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Fingerprinting Web Technologies.md",
     "03 - Tertiary Categories/Reverse Engineering.md",
     "03 - Tertiary Categories/Cloud Enumeration.md",
