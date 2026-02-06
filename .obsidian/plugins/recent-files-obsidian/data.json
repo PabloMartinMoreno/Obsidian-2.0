@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Bypass de Espacios en Command Injection",
+      "path": "04 - Content/Bypass de Espacios en Command Injection.md"
+    },
+    {
       "basename": "curl",
       "path": "04 - Content/curl.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Abusing PHP Filters",
       "path": "04 - Content/Process/Abusing PHP Filters.md"
-    },
-    {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
     }
   ],
   "omittedPaths": [],

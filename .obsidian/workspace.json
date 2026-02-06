@@ -4,38 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "62cba0df86c3eac5",
+        "id": "843a98e67e6d7bc3",
         "type": "tabs",
         "children": [
           {
-            "id": "4287da7c48cb3c4a",
+            "id": "ed56799bb87a2a96",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/curl.md",
+                "file": "04 - Content/Bypass de Espacios en Command Injection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "curl"
-            }
-          },
-          {
-            "id": "dfc51649022f5af0",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.7"
-              },
-              "icon": "lucide-book-up",
-              "title": "Registro de cambios 1.11.7"
+              "title": "Bypass de Espacios en Command Injection"
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -154,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/curl.md",
+                "file": "04 - Content/Bypass de Espacios en Command Injection.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -225,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de curl"
+              "title": "Gráfico de Bypass de Espacios en Command Injection"
             }
           },
           {
@@ -275,8 +262,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "dfc51649022f5af0",
+  "active": "ed56799bb87a2a96",
   "lastOpenFiles": [
+    "04 - Content/Bypass de Espacios en Command Injection.md",
+    "04 - Content/curl.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Red Team.md",
@@ -301,8 +290,6 @@
     "04 - Content/Process/AWS Enumeration.md",
     "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md",
     "04 - Content/Finger (79) - Enumeración.md",
-    "04 - Content/DNS (53) - Enumeración.md",
-    "04 - Content/MySQL (3306) - Enumeración.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",
