@@ -1,5 +1,5 @@
 {
-  "confirmDeletion": false,
+  "confirmDeletion": true,
   "showAddCommand": true,
   "debug": false,
   "editorMenu": [],
@@ -15,7 +15,7 @@
     "statusbar": [],
     "leftRibbon": []
   },
-  "spacing": "8",
+  "spacing": 8,
   "advancedToolbar": {
     "rowHeight": 48,
     "rowCount": 1,

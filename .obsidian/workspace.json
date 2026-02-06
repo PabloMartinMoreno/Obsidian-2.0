@@ -21,8 +21,21 @@
               "icon": "lucide-file",
               "title": "curl"
             }
+          },
+          {
+            "id": "dfc51649022f5af0",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Registro de cambios 1.11.7"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -262,7 +275,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "4287da7c48cb3c4a",
+  "active": "dfc51649022f5af0",
   "lastOpenFiles": [
     "03 - Tertiary Categories/Web Enumeration.md",
     "02 - Secondary Categories/Information Gathering.md",
