@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Stored XSS",
+      "path": "04 - Content/Process/Stored XSS.md"
+    },
+    {
+      "basename": "XSS Discovery",
+      "path": "04 - Content/Process/XSS Discovery.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
       "basename": "Reverse Shell",
       "path": "04 - Content/Reverse Shell.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "File Upload Vulnerabilities",
       "path": "04 - Content/Process/File Upload Vulnerabilities.md"
-    },
-    {
-      "basename": "Admonition",
-      "path": "04 - Content/Admonition.md"
-    },
-    {
-      "basename": "AD - mindmap 2025 - 03",
-      "path": "04 - Content/AD - mindmap 2025 - 03.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration",
-      "path": "04 - Content/AD - Hosts Enumeration.md"
     }
   ],
   "omittedPaths": [],
