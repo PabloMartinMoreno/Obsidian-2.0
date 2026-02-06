@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "843a98e67e6d7bc3",
+        "id": "9669d16079ee59b0",
         "type": "tabs",
         "children": [
           {
-            "id": "ed56799bb87a2a96",
+            "id": "fd7f6dfddb1c64f0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Bypass de Espacios en Command Injection.md",
+                "file": "04 - Content/Reverse Shell.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Bypass de Espacios en Command Injection"
+              "title": "Reverse Shell"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Bypass de Espacios en Command Injection.md",
+                "file": "04 - Content/Reverse Shell.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Bypass de Espacios en Command Injection"
+              "title": "Gráfico de Reverse Shell"
             }
           },
           {
@@ -262,8 +262,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "ed56799bb87a2a96",
+  "active": "fd7f6dfddb1c64f0",
   "lastOpenFiles": [
+    "04 - Content/Reverse Shell.md",
     "04 - Content/Bypass de Espacios en Command Injection.md",
     "04 - Content/curl.md",
     "03 - Tertiary Categories/Web Enumeration.md",
@@ -289,7 +290,6 @@
     "03 - Tertiary Categories/Active Directory Enumeration.md",
     "04 - Content/Process/AWS Enumeration.md",
     "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md",
-    "04 - Content/Finger (79) - Enumeración.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",

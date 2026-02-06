@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Reverse Shell",
+      "path": "04 - Content/Reverse Shell.md"
+    },
+    {
       "basename": "Bypass de Espacios en Command Injection",
       "path": "04 - Content/Bypass de Espacios en Command Injection.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "AD - Hosts Enumeration",
       "path": "04 - Content/AD - Hosts Enumeration.md"
-    },
-    {
-      "basename": "Abusing PHP Filters",
-      "path": "04 - Content/Process/Abusing PHP Filters.md"
     }
   ],
   "omittedPaths": [],
