@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "9669d16079ee59b0",
+        "id": "68a8658a83ce5920",
         "type": "tabs",
         "children": [
           {
-            "id": "fd7f6dfddb1c64f0",
+            "id": "24e8f773df1ff79c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "04 - Content/Process/Stored XSS.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Stored XSS"
+              "title": "Nueva pestaña"
             }
           }
         ],
@@ -141,7 +136,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Stored XSS.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +206,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Stored XSS"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -262,8 +256,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "fd7f6dfddb1c64f0",
+  "active": "24e8f773df1ff79c",
   "lastOpenFiles": [
+    "04 - Content/Process/Stored XSS.md",
     "04 - Content/Process/XSS Discovery.md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/Reverse Shell.md",
@@ -289,7 +284,6 @@
     "04 - Content/Fingerprinting Web Technologies.md",
     "03 - Tertiary Categories/Reverse Engineering.md",
     "03 - Tertiary Categories/Cloud Enumeration.md",
-    "03 - Tertiary Categories/Active Directory Enumeration.md",
     "00 - Resources/Pasted image 20260108170324.png",
     "00 - Resources/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",
