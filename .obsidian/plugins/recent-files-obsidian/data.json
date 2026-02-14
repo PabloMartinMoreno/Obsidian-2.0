@@ -1,32 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "Operational Tasks",
-      "path": "04 - Content/Process/Operational Tasks.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
     },
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
-      "basename": "Resource Development",
-      "path": "04 - Content/Process/Resource Development.md"
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "Information Gathering",
@@ -35,6 +19,30 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Fuzzing Parameters & Values",
+      "path": "04 - Content/Fuzzing Parameters & Values.md"
+    },
+    {
+      "basename": "Fuzzing Directories & Pages",
+      "path": "04 - Content/Fuzzing Directories & Pages.md"
+    },
+    {
+      "basename": "Operational Tasks",
+      "path": "04 - Content/Process/Operational Tasks.md"
+    },
+    {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
+    },
+    {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Resource Development",
+      "path": "04 - Content/Process/Resource Development.md"
     },
     {
       "basename": "Blue Team",
@@ -191,14 +199,6 @@
     {
       "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
       "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
-    },
-    {
-      "basename": "IMAP (143, 993) - Enumeración",
-      "path": "04 - Content/IMAP (143, 993) - Enumeración.md"
-    },
-    {
-      "basename": "POP3 (110, 995) - Enumeración",
-      "path": "04 - Content/POP3 (110, 995) - Enumeración.md"
     }
   ],
   "omittedPaths": [],

@@ -37,7 +37,7 @@ type: Tertiary Category
 ## 🔓 Vulnerability & Leak Scanning
 Búsqueda automatizada de fallos conocidos y exposiciones.
 
-- [[Web Vulnerability Scanning]] (*[[nikto]], Nuclei, etc.)
+- [[Web Vulnerability Scanning]] (*[[nikto]], Nuclei.)
 - [[Source Code Disclosure]] ([[git-dumper]], [[.ds_store]], backups)
 - [[CORS Misconfiguration Enumeration]]
 

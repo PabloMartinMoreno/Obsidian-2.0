@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Operational Tasks.md",
+                "file": "04 - Content/Process/Web Exploitation.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Operational Tasks"
+              "title": "Web Exploitation"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Operational Tasks.md",
+                "file": "04 - Content/Process/Web Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Operational Tasks"
+              "title": "Gráfico de Web Exploitation"
             }
           },
           {
@@ -265,14 +265,17 @@
   },
   "active": "531badcc67a5fc7f",
   "lastOpenFiles": [
-    "01 - Primary Categories/Red Team.md",
-    "02 - Secondary Categories/Post-Exploitation.md",
     "02 - Secondary Categories/Exploitation.md",
-    "04 - Content/Process/Web Exploitation.md",
-    "04 - Content/Process/Resource Development.md",
+    "01 - Primary Categories/Red Team.md",
     "02 - Secondary Categories/Information Gathering.md",
     "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Fuzzing Parameters & Values.md",
+    "04 - Content/Fuzzing Directories & Pages.md",
+    "04 - Content/Process/Operational Tasks.md",
     "000 - Global Index.md",
+    "02 - Secondary Categories/Post-Exploitation.md",
+    "04 - Content/Process/Web Exploitation.md",
+    "04 - Content/Process/Resource Development.md",
     "01 - Primary Categories/Blue Team.md",
     "01 - Primary Categories/Social Engineering.md",
     "01 - Primary Categories/Artificial Intelligence.md",
@@ -291,9 +294,6 @@
     "05 - Writeups/VulnHub/Presidential.md",
     "05 - Writeups/VulnHub/My Expense.md",
     "05 - Writeups/VulnHub/Infovore.md",
-    "05 - Writeups/VulnHub/ICA 1.md",
-    "05 - Writeups/VulnHub/Durian 1.md",
-    "05 - Writeups/VulnHub/Dev Guru 1.md",
     "05 - Writeups/VulnHub",
     "05 - Writeups/VulNyx",
     "05 - Writeups/PortSwigger",
