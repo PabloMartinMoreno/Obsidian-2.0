@@ -5,12 +5,36 @@
       "path": "000 - Global Index.md"
     },
     {
+      "basename": "Operational Tasks",
+      "path": "04 - Content/Process/Operational Tasks.md"
+    },
+    {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
     },
     {
+      "basename": "Post-Exploitation",
+      "path": "02 - Secondary Categories/Post-Exploitation.md"
+    },
+    {
+      "basename": "Exploitation",
+      "path": "02 - Secondary Categories/Exploitation.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Resource Development",
+      "path": "04 - Content/Process/Resource Development.md"
+    },
+    {
       "basename": "Information Gathering",
       "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
       "basename": "Blue Team",
@@ -89,20 +113,8 @@
       "path": "04 - Content/curl.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
       "basename": "Linux Post-Exploitation",
       "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Common Exploitation Tools",
@@ -113,20 +125,12 @@
       "path": "04 - Content/Process/Client-Side Exploitation.md"
     },
     {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
-    },
-    {
       "basename": "Service Exploitation",
       "path": "04 - Content/Process/Service Exploitation.md"
     },
     {
       "basename": "Active Directory Exploitation",
       "path": "04 - Content/Process/Active Directory Exploitation.md"
-    },
-    {
-      "basename": "Resource Development",
-      "path": "04 - Content/Process/Resource Development.md"
     },
     {
       "basename": "Evasion & Obfuscation",
@@ -195,10 +199,6 @@
     {
       "basename": "POP3 (110, 995) - Enumeración",
       "path": "04 - Content/POP3 (110, 995) - Enumeración.md"
-    },
-    {
-      "basename": "SMTP (25,465,587) - Enumeración",
-      "path": "04 - Content/SMTP (25,465,587) - Enumeración.md"
     }
   ],
   "omittedPaths": [],
