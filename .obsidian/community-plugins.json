@@ -3,7 +3,6 @@
   "obsidian-style-settings",
   "obsidian-auto-link-title",
   "obsidian-quiet-outline",
-  "obsidian-reading-time",
   "recent-files-obsidian",
   "obsidian-smart-typography",
   "supercharged-links-obsidian",
@@ -22,5 +21,6 @@
   "code-styler",
   "obsidian-admonition",
   "obsidian-emoji-toolbar",
-  "tabs"
+  "tabs",
+  "homepage"
 ]

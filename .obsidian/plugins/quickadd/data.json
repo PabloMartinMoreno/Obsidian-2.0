@@ -11,7 +11,7 @@
           "name": "Hack The Box",
           "type": "Template",
           "command": true,
-          "templatePath": "00 - Recursos/Plantillas/_writeup/_hack the box.md",
+          "templatePath": "00 - Recursos/Templates/_writeup/_hack the box.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -47,7 +47,7 @@
           "name": "HackMyVM",
           "type": "Template",
           "command": true,
-          "templatePath": "00 - Recursos/Plantillas/_writeup/_hackmyvm.md",
+          "templatePath": "00 - Recursos/Templates/_writeup/_hackmyvm.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -83,7 +83,7 @@
           "name": "OverTheWire",
           "type": "Template",
           "command": true,
-          "templatePath": "00 - Recursos/Plantillas/_writeup/_overthewire.md",
+          "templatePath": "00 - Recursos/Templates/_writeup/_overthewire.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -119,7 +119,7 @@
           "name": "TryHackMe",
           "type": "Template",
           "command": true,
-          "templatePath": "00 - Recursos/Plantillas/_writeup/_tryhackme.md",
+          "templatePath": "00 - Recursos/Templates/_writeup/_tryhackme.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -155,7 +155,7 @@
           "name": "VulnHub",
           "type": "Template",
           "command": true,
-          "templatePath": "00 - Recursos/Plantillas/_writeup/_vulnhub.md",
+          "templatePath": "00 - Recursos/Templates/_writeup/_vulnhub.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -191,7 +191,7 @@
           "name": "DockerLabs",
           "type": "Template",
           "command": true,
-          "templatePath": "00 - Recursos/Plantillas/_writeup/_dockerlabs.md",
+          "templatePath": "00 - Recursos/Templates/_writeup/_dockerlabs.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -227,7 +227,7 @@
           "name": "VulNyx",
           "type": "Template",
           "command": true,
-          "templatePath": "00 - Recursos/Plantillas/_writeup/_vulnyx.md",
+          "templatePath": "00 - Recursos/Templates/_writeup/_vulnyx.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -272,14 +272,16 @@
           "name": "Concept",
           "type": "Template",
           "command": true,
-          "templatePath": "05 - Templates/Type/_concept.md",
+          "templatePath": "00 - Resources/Templates/Type/_concept.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
           },
           "folder": {
             "enabled": true,
-            "folders": [],
+            "folders": [
+              "04 - Content/Process"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -300,7 +302,7 @@
           "name": "Command",
           "type": "Template",
           "command": true,
-          "templatePath": "05 - Templates/Type/_command.md",
+          "templatePath": "00 - Resources/Templates/Type/_command.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -330,7 +332,7 @@
           "name": "Sub-Command",
           "type": "Template",
           "command": true,
-          "templatePath": "05 - Templates/Type/_sub-command.md",
+          "templatePath": "00 - Resources//Templates/Type/_sub-command.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""
@@ -360,7 +362,7 @@
           "name": "Cheatsheet",
           "type": "Template",
           "command": true,
-          "templatePath": "05 - Templates/Type/_cheatsheet.md",
+          "templatePath": "00 - Resources/Templates/Type/_cheatsheet.md",
           "fileNameFormat": {
             "enabled": false,
             "format": ""

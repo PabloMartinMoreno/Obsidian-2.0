@@ -1,8 +1,68 @@
 {
   "recentFiles": [
     {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "Pasted image 20260108144749",
+      "path": "00 - Resources/Images/Pasted image 20260108144749.png"
+    },
+    {
+      "basename": "Pasted image 20260108144708",
+      "path": "00 - Resources/Images/Pasted image 20260108144708.png"
+    },
+    {
+      "basename": "Pasted image 20260108144758",
+      "path": "00 - Resources/Images/Pasted image 20260108144758.png"
+    },
+    {
+      "basename": "Escape",
+      "path": "05 - Writeups/Escape.md"
+    },
+    {
+      "basename": "LFI - Rutas Principales",
+      "path": "04 - Content/Process/LFI - Rutas Principales.md"
+    },
+    {
+      "basename": "Atajos Consola",
+      "path": "04 - Content/Process/Atajos Consola.md"
+    },
+    {
+      "basename": "Escalada de Privilegios - Comandos Comunes",
+      "path": "04 - Content/Process/Escalada de Privilegios - Comandos Comunes.md"
+    },
+    {
+      "basename": "Nvim",
+      "path": "04 - Content/Process/Nvim.md"
+    },
+    {
+      "basename": "Terminal Interactiva",
+      "path": "04 - Content/Process/Terminal Interactiva.md"
+    },
+    {
+      "basename": "Reverse Shells",
+      "path": "04 - Content/Process/Reverse Shells.md"
+    },
+    {
+      "basename": "Obtener login en os linux sin contraseña",
+      "path": "04 - Content/Process/Obtener login en os linux sin contraseña.md"
+    },
+    {
       "basename": "File Upload Bypass",
-      "path": "File Upload Bypass.md"
+      "path": "04 - Content/Process/File Upload Bypass.md"
     },
     {
       "basename": "Stored XSS",
@@ -31,18 +91,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Nvim",
-      "path": "04 - Content/Process/Nvim.md"
     },
     {
       "basename": "Post-Exploitation",
@@ -151,54 +199,6 @@
     {
       "basename": "SMTP (25,465,587) - Enumeración",
       "path": "04 - Content/SMTP (25,465,587) - Enumeración.md"
-    },
-    {
-      "basename": "SMB (139, 445) - Enumeración",
-      "path": "04 - Content/SMB (139, 445) - Enumeración.md"
-    },
-    {
-      "basename": "Interacting with SMB from Windows",
-      "path": "04 - Content/Interacting with SMB from Windows.md"
-    },
-    {
-      "basename": "Fuzzing Directories & Pages",
-      "path": "04 - Content/Fuzzing Directories & Pages.md"
-    },
-    {
-      "basename": "Crawling & Spidering",
-      "path": "04 - Content/Process/Crawling & Spidering.md"
-    },
-    {
-      "basename": "Honeytokens & Tracking Pixels",
-      "path": "04 - Content/Process/Honeytokens & Tracking Pixels.md"
-    },
-    {
-      "basename": "CanaryTokens",
-      "path": "04 - Content/CanaryTokens.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Google Dorking.md"
-    },
-    {
-      "basename": "Subdomains Passive Enumeration",
-      "path": "04 - Content/Subdomains Passive Enumeration.md"
-    },
-    {
-      "basename": "Subdominio",
-      "path": "04 - Content/Subdominio.md"
-    },
-    {
-      "basename": "Performing Whois Lookup",
-      "path": "04 - Content/Process/Performing Whois Lookup.md"
-    },
-    {
-      "basename": "Common Web Vulnerabilities",
-      "path": "04 - Content/Process/Common Web Vulnerabilities.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     }
   ],
   "omittedPaths": [],
