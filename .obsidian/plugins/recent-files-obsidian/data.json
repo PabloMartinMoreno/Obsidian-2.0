@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload Bypass",
+      "path": "File Upload Bypass.md"
+    },
+    {
       "basename": "Stored XSS",
       "path": "04 - Content/Process/Stored XSS.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "File Upload Vulnerabilities",
-      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
     }
   ],
   "omittedPaths": [],
