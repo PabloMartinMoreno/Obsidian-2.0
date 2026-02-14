@@ -5,7 +5,7 @@ tags:
 type: Concept
 linked:
 ---
-# File Upload Bypass - Cheatsheet
+# File Upload Bypass
 
 ***
 
