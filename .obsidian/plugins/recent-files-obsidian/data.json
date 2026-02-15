@@ -1,12 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
+      "basename": "Command Injection - Operators",
+      "path": "04 - Content/Process/Command Injection - Operators.md"
+    },
+    {
+      "basename": "Pre-code",
+      "path": "04 - Content/Process/Pre-code.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/curl.md"
+    },
+    {
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
+    },
+    {
+      "basename": "Fuzzing Directories & Pages",
+      "path": "04 - Content/Fuzzing Directories & Pages.md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/Process/OS Command Injection.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
     },
     {
       "basename": "Local File Inclusion (LFI)",
@@ -35,10 +71,6 @@
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "000 - Global Index",
@@ -89,16 +121,8 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
       "basename": "Fuzzing Parameters & Values",
       "path": "04 - Content/Fuzzing Parameters & Values.md"
-    },
-    {
-      "basename": "Fuzzing Directories & Pages",
-      "path": "04 - Content/Fuzzing Directories & Pages.md"
     },
     {
       "basename": "Operational Tasks",
@@ -175,30 +199,6 @@
     {
       "basename": "Bypass de Espacios en Command Injection",
       "path": "04 - Content/Bypass de Espacios en Command Injection.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "Linux Post-Exploitation",
-      "path": "04 - Content/Process/Linux Post-Exploitation.md"
-    },
-    {
-      "basename": "Common Exploitation Tools",
-      "path": "04 - Content/Process/Common Exploitation Tools.md"
-    },
-    {
-      "basename": "Client-Side Exploitation",
-      "path": "04 - Content/Process/Client-Side Exploitation.md"
-    },
-    {
-      "basename": "Service Exploitation",
-      "path": "04 - Content/Process/Service Exploitation.md"
-    },
-    {
-      "basename": "Active Directory Exploitation",
-      "path": "04 - Content/Process/Active Directory Exploitation.md"
     }
   ],
   "omittedPaths": [],
