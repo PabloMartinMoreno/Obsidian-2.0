@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Fingerprinting Web Technologies",
       "path": "04 - Content/Fingerprinting Web Technologies.md"
-    },
-    {
-      "basename": "Reverse Engineering",
-      "path": "03 - Tertiary Categories/Reverse Engineering.md"
     }
   ],
   "omittedPaths": [],
