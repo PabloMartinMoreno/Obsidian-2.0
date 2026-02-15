@@ -1,8 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "Metodología Forense",
+      "path": "04 - Content/Process/Metodología Forense.md"
+    },
+    {
+      "basename": "Gestión de Incidentes",
+      "path": "04 - Content/Process/Gestión de Incidentes.md"
+    },
+    {
+      "basename": "Etapa de Preparación (Parte 1)",
+      "path": "04 - Content/Process/Etapa de Preparación (Parte 1).md"
+    },
+    {
+      "basename": "PEN-200",
+      "path": "04 - Content/PEN-200.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
+    },
+    {
+      "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
+      "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
+    },
+    {
+      "basename": "AD - mindmap 2025 - 03",
+      "path": "04 - Content/AD - mindmap 2025 - 03.md"
+    },
+    {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
     },
     {
       "basename": "Exploitation",
@@ -33,20 +77,12 @@
       "path": "04 - Content/Process/Operational Tasks.md"
     },
     {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
-    },
-    {
       "basename": "Post-Exploitation",
       "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
       "basename": "Resource Development",
       "path": "04 - Content/Process/Resource Development.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
     },
     {
       "basename": "Pasted image 20260108144749",
@@ -163,42 +199,6 @@
     {
       "basename": "Reverse Engineering",
       "path": "03 - Tertiary Categories/Reverse Engineering.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "AWS Enumeration",
-      "path": "04 - Content/Process/AWS Enumeration.md"
-    },
-    {
-      "basename": "NetBIOS Enumeration (137, 138, 139)",
-      "path": "04 - Content/Process/NetBIOS Enumeration (137, 138, 139).md"
-    },
-    {
-      "basename": "Finger (79) - Enumeración",
-      "path": "04 - Content/Finger (79) - Enumeración.md"
-    },
-    {
-      "basename": "DNS (53) - Enumeración",
-      "path": "04 - Content/DNS (53) - Enumeración.md"
-    },
-    {
-      "basename": "MySQL (3306) - Enumeración",
-      "path": "04 - Content/MySQL (3306) - Enumeración.md"
-    },
-    {
-      "basename": "Oracle TNS (1521) - Enumeración",
-      "path": "04 - Content/Oracle TNS (1521) - Enumeración.md"
-    },
-    {
-      "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
-      "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
     }
   ],
   "omittedPaths": [],

@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1cb141616307c953",
+        "id": "858df0880463bff8",
         "type": "tabs",
         "children": [
           {
-            "id": "531badcc67a5fc7f",
+            "id": "93f40395cfbc25bc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "04 - Content/Process/Web Exploitation.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Web Exploitation"
+              "title": "Nueva pestaña"
             }
           }
         ],
@@ -141,7 +136,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/Web Exploitation.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +206,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Web Exploitation"
+              "title": "Vista gráfica"
             }
           },
           {
@@ -263,8 +257,20 @@
       "homepage:Open homepage": false
     }
   },
-  "active": "531badcc67a5fc7f",
+  "active": "93f40395cfbc25bc",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES.md",
+    "01 - Primary Categories/Blue Team.md",
+    "04 - Content/Process/Metodología Forense.md",
+    "04 - Content/Process/Gestión de Incidentes.md",
+    "04 - Content/Process/Etapa de Preparación (Parte 1).md",
+    "04 - Content/PEN-200.md",
+    "04 - Content/Process/Introduction to Web Applications.md",
+    "04 - Content/Process/Web Requests.md",
+    "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md",
+    "04 - Content/AD - mindmap 2025 - 03.md",
+    "04 - Content/Process/Web Exploitation.md",
+    "000 - Global Index.md",
     "02 - Secondary Categories/Exploitation.md",
     "01 - Primary Categories/Red Team.md",
     "02 - Secondary Categories/Information Gathering.md",
@@ -272,11 +278,8 @@
     "04 - Content/Fuzzing Parameters & Values.md",
     "04 - Content/Fuzzing Directories & Pages.md",
     "04 - Content/Process/Operational Tasks.md",
-    "000 - Global Index.md",
     "02 - Secondary Categories/Post-Exploitation.md",
-    "04 - Content/Process/Web Exploitation.md",
     "04 - Content/Process/Resource Development.md",
-    "01 - Primary Categories/Blue Team.md",
     "01 - Primary Categories/Social Engineering.md",
     "01 - Primary Categories/Artificial Intelligence.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
@@ -285,15 +288,6 @@
     "00 - Resources/Images/Pasted image 20260108144758.png",
     "05 - Writeups/Escape.md",
     "05 - Writeups/VulnHub/Symfonos 6.md",
-    "05 - Writeups/VulnHub/Symfonos 3.md",
-    "05 - Writeups/VulnHub/Symfonos 2.md",
-    "05 - Writeups/VulnHub/Symfonos 1.md",
-    "05 - Writeups/VulnHub/Solstice.md",
-    "05 - Writeups/VulnHub/Shuriken 1.md",
-    "05 - Writeups/VulnHub/Secure Code 1.md",
-    "05 - Writeups/VulnHub/Presidential.md",
-    "05 - Writeups/VulnHub/My Expense.md",
-    "05 - Writeups/VulnHub/Infovore.md",
     "05 - Writeups/VulnHub",
     "05 - Writeups/VulNyx",
     "05 - Writeups/PortSwigger",
