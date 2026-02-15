@@ -5,8 +5,16 @@
       "path": "04 - Content/Process/Command Injection - Operators.md"
     },
     {
-      "basename": "Pre-code",
-      "path": "04 - Content/Process/Pre-code.md"
+      "basename": "Command Injection - Bypass de Espacios",
+      "path": "04 - Content/Command Injection - Bypass de Espacios.md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/Process/OS Command Injection.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "00 - Resources/Templates/Type/_precode.md"
     },
     {
       "basename": "curl",
@@ -27,10 +35,6 @@
     {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/Process/OS Command Injection.md"
     },
     {
       "basename": "Red Team",
@@ -195,10 +199,6 @@
     {
       "basename": "Reverse Shell",
       "path": "04 - Content/Reverse Shell.md"
-    },
-    {
-      "basename": "Bypass de Espacios en Command Injection",
-      "path": "04 - Content/Bypass de Espacios en Command Injection.md"
     }
   ],
   "omittedPaths": [],

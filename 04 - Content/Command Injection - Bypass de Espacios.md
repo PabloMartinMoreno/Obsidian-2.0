@@ -4,6 +4,8 @@ tags:
   - type/concept
 type: Concept
 linked:
+  - "[[OS Command Injection]]"
+  - "[[Command Injection - Operators]]"
 ---
 # Bypass de Espacios en Command Injection
 Técnicas para ejecutar comandos cuando el carácter "espacio" está bloqueado (WAF/Filtros).
