@@ -7,8 +7,9 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
-  - "[[Command Injection - Operators]]"
+  - "[[Command Injection - Operadores]]"
   - "[[Command Injection - Bypass de Espacios]]"
+  - "[[Command Injection - Evasión de Blacklist (Caracteres Prohibidos)]]"
 ---
 # OS Command Injection
 

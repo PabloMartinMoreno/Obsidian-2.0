@@ -10,7 +10,7 @@ linked:
   - "[[OS Command Injection]]"
   - "[[Command Injection - Bypass de Espacios]]"
 ---
-# Command Injection - Operators
+# Command Injection - Operadores
 
 ***
 

@@ -1,16 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Command Injection - Operators",
-      "path": "04 - Content/Process/Command Injection - Operators.md"
-    },
-    {
-      "basename": "Command Injection - Bypass de Espacios",
-      "path": "04 - Content/Command Injection - Bypass de Espacios.md"
+      "basename": "Command Injection - Evasión de Blacklist (Caracteres Prohibidos)",
+      "path": "04 - Content/Process/Command Injection - Evasión de Blacklist (Caracteres Prohibidos).md"
     },
     {
       "basename": "OS Command Injection",
       "path": "04 - Content/Process/OS Command Injection.md"
+    },
+    {
+      "basename": "Command Injection - Operadores",
+      "path": "04 - Content/Process/Command Injection - Operadores.md"
     },
     {
       "basename": "_precode",
@@ -19,6 +19,10 @@
     {
       "basename": "curl",
       "path": "04 - Content/curl.md"
+    },
+    {
+      "basename": "Command Injection - Bypass de Espacios",
+      "path": "04 - Content/Command Injection - Bypass de Espacios.md"
     },
     {
       "basename": "Web Enumeration",
@@ -195,10 +199,6 @@
     {
       "basename": "XSS Discovery",
       "path": "04 - Content/Process/XSS Discovery.md"
-    },
-    {
-      "basename": "Reverse Shell",
-      "path": "04 - Content/Reverse Shell.md"
     }
   ],
   "omittedPaths": [],
