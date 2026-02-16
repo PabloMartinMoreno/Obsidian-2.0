@@ -10,7 +10,7 @@ relacionados:
   - "[[Serialización]]"
   - "[[Deserialización]]"
   - "[[Remote Code Execution]]"
-  - "[[Command Injection]]"
+  - "[[OS Command Injection]]"
   - "[[Virtual Hosting]]"
   - "[[Symbolic Link Exploitation]]"
   - "[[pspy]]"

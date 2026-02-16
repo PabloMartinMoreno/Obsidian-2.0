@@ -17,7 +17,7 @@ relacionados:
   - "[[Cracking Hashes]]"
   - "[[Abusing Sudoers Privilege]]"
   - "[[Filter Bypass]]"
-  - "[[Command Injection]]"
+  - "[[OS Command Injection]]"
 ---
 # HackTheBox - CozyHosting
 

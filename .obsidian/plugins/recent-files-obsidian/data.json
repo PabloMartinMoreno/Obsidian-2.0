@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Command Injection - Evasión de Blacklist (Caracteres Prohibidos)",
-      "path": "04 - Content/Process/Command Injection - Evasión de Blacklist (Caracteres Prohibidos).md"
-    },
-    {
       "basename": "OS Command Injection",
       "path": "04 - Content/Process/OS Command Injection.md"
     },
     {
-      "basename": "Command Injection - Operadores",
-      "path": "04 - Content/Process/Command Injection - Operadores.md"
+      "basename": "Command Injection - Operadores Especificos",
+      "path": "04 - Content/Process/Command Injection - Operadores Especificos.md"
+    },
+    {
+      "basename": "Bypassing Injection - Lista Negra de Comandos",
+      "path": "04 - Content/Process/Bypassing Injection - Lista Negra de Comandos.md"
+    },
+    {
+      "basename": "Command Injection - Operadores Generales",
+      "path": "04 - Content/Process/Command Injection - Operadores Generales.md"
+    },
+    {
+      "basename": "Command Injection - Generación de Caracteres Bloqueados",
+      "path": "04 - Content/Process/Command Injection - Generación de Caracteres Bloqueados.md"
+    },
+    {
+      "basename": "Command Injection - Bypass de Espacios",
+      "path": "04 - Content/Command Injection - Bypass de Espacios.md"
     },
     {
       "basename": "_precode",
@@ -19,10 +31,6 @@
     {
       "basename": "curl",
       "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "Command Injection - Bypass de Espacios",
-      "path": "04 - Content/Command Injection - Bypass de Espacios.md"
     },
     {
       "basename": "Web Enumeration",
@@ -191,14 +199,6 @@
     {
       "basename": "File Upload Bypass",
       "path": "04 - Content/Process/File Upload Bypass.md"
-    },
-    {
-      "basename": "Stored XSS",
-      "path": "04 - Content/Process/Stored XSS.md"
-    },
-    {
-      "basename": "XSS Discovery",
-      "path": "04 - Content/Process/XSS Discovery.md"
     }
   ],
   "omittedPaths": [],
