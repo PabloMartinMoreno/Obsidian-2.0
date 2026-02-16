@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[OS Command Injection]]"
 ---
 # Command Injection - Herramientas de Obfuscación Automática
 
@@ -14,29 +15,18 @@ linked:
 
 ## Cheatsheet
 
-Siguiendo con la nomenclatura que hemos establecido, esta nota debería titularse **`CI - Automated Obfuscation Tools`**.
-
-Aquí tienes el cheatsheet. He separado la instalación del uso, ya que estas herramientas requieren un setup previo que no querrás repetir cada vez, pero que necesitas tener documentado por si cambias de máquina.
-
----
-
-## Cheatsheet: Herramientas de Obfuscación Automática
-
-Uso de frameworks para generar payloads complejos cuando la ofuscación manual (comillas, reversión) no es suficiente.
-
 ### 1. Linux: Bashfuscator
 
 Framework modular para ofuscar scripts de Bash.
 
 - **Repo:** `https://github.com/Bashfuscator/Bashfuscator`
-    
 
-|**Acción**|**Comando / Flag**|**Descripción**|
-|---|---|---|
-|**Instalación**|<pre><code>git clone ...<br><br>  <br><br>cd Bashfuscator<br><br>  <br><br>pip3 install setuptools==65<br><br>  <br><br>python3 setup.py install --user</code></pre>|Requiere `setuptools==65` específicamente. Se ejecuta desde `./bashfuscator/bin/`.|
-|**Uso Básico**|<pre><code>./bashfuscator -c 'cat /etc/passwd'</code></pre>|Genera un payload aleatorio. **Ojo:** Puede generar salidas enormes (+1MB).|
-|**Uso Optimizado**<br><br>  <br><br>_(Recomendado)_|<pre><code>./bashfuscator -c 'comando' -s 1 -t 1 --no-mangling --layers 1</code></pre>|Genera payloads **cortos y simples**. Ideal para inyecciones con límite de caracteres.|
-|**Verificación**|<pre><code>bash -c 'PAYLOAD_GENERADO'</code></pre>|Prueba localmente que el churro de código generado ejecuta lo que quieres.|
+| **Acción**                                      | **Comando / Flag**                                                                                                                                                   | **Descripción**                                                                                                |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| <br><br><br><br><br><br><br><br>**Instalación** | <pre><code>git clone ...<br><br>  <br><br>cd Bashfuscator<br><br>  <br><br>pip3 install setuptools==65<br><br>  <br><br>python3 setup.py install --user</code></pre> | <br><br><br><br><br><br><br>Requiere `setuptools==65` específicamente. Se ejecuta desde `./bashfuscator/bin/`. |
+| <br>**Uso Básico**                              | <pre><code>./bashfuscator -c 'cat /etc/passwd'</code></pre>                                                                                                          | <br>Genera un payload aleatorio. **Ojo:** Puede generar salidas enormes (+1MB).                                |
+| <br>**Uso Optimizado**<br><br>_(Recomendado)_   | <pre><code>./bashfuscator -c 'comando' -s 1 -t 1 --no-mangling --layers 1</code></pre>                                                                               | <br>Genera payloads **cortos y simples**. Ideal para inyecciones con límite de caracteres.                     |
+| <br>**Verificación**                            | <pre><code>bash -c 'PAYLOAD_GENERADO'</code></pre>                                                                                                                   | <br>Prueba localmente que el churro de código generado ejecuta lo que quieres.                                 |
 
 ---
 

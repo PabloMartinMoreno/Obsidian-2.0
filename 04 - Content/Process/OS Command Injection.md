@@ -13,6 +13,7 @@ linked:
   - "[[Command Injection - Operadores Especificos]]"
   - "[[Bypassing Injection - Lista Negra de Comandos]]"
   - "[[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)]]"
+  - "[[Command Injection - Herramientas de Obfuscación Automática]]"
 ---
 # OS Command Injection
 
