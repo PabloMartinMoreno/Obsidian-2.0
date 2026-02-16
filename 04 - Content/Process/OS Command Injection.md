@@ -12,6 +12,7 @@ linked:
   - "[[Command Injection - Generación de Caracteres Bloqueados]]"
   - "[[Command Injection - Operadores Especificos]]"
   - "[[Bypassing Injection - Lista Negra de Comandos]]"
+  - "[[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)]]"
 ---
 # OS Command Injection
 

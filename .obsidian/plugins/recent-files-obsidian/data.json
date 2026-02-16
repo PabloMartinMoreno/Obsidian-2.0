@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/Process/OS Command Injection.md"
+    },
+    {
       "basename": "Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)",
       "path": "04 - Content/Process/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md"
     },
     {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/Process/OS Command Injection.md"
+      "basename": "Generación de Base64 para Windows (desde Linux)",
+      "path": "04 - Content/Process/Generación de Base64 para Windows (desde Linux).md"
     },
     {
       "basename": "Bypassing Injection - Lista Negra de Comandos",
@@ -195,10 +199,6 @@
     {
       "basename": "Reverse Shells",
       "path": "04 - Content/Process/Reverse Shells.md"
-    },
-    {
-      "basename": "Obtener login en os linux sin contraseña",
-      "path": "04 - Content/Process/Obtener login en os linux sin contraseña.md"
     }
   ],
   "omittedPaths": [],
