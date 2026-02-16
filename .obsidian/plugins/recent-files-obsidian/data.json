@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)",
+      "path": "04 - Content/Process/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md"
+    },
+    {
       "basename": "OS Command Injection",
       "path": "04 - Content/Process/OS Command Injection.md"
     },
     {
-      "basename": "Command Injection - Operadores Especificos",
-      "path": "04 - Content/Process/Command Injection - Operadores Especificos.md"
-    },
-    {
       "basename": "Bypassing Injection - Lista Negra de Comandos",
       "path": "04 - Content/Process/Bypassing Injection - Lista Negra de Comandos.md"
+    },
+    {
+      "basename": "Command Injection - Operadores Especificos",
+      "path": "04 - Content/Process/Command Injection - Operadores Especificos.md"
     },
     {
       "basename": "Command Injection - Operadores Generales",
@@ -195,10 +199,6 @@
     {
       "basename": "Obtener login en os linux sin contraseña",
       "path": "04 - Content/Process/Obtener login en os linux sin contraseña.md"
-    },
-    {
-      "basename": "File Upload Bypass",
-      "path": "04 - Content/Process/File Upload Bypass.md"
     }
   ],
   "omittedPaths": [],
