@@ -28,6 +28,7 @@ linked:
 | <br>**XQuery Injection**     | <pre><code>`'` `;` `--` `/* */`</code></pre>                |
 | <br>**Shellcode Injection**  | <pre><code>\x \u %u %n</code></pre>                         |
 | <br>**Header Injection**     | <pre><code>\n \r\n \t %0d %0a %09</code></pre>              |
+^ci-operadores-especificos
 
 ***
 

@@ -3,8 +3,11 @@ aliases:
 tags:
   - type/cheatsheet
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Exploitation]]"
 tertiary categories:
+  - "[[Web Exploitation]]"
 type: CheatSheet
 linked:
   - "[[Command Injection - Operadores Generales]]"
@@ -20,6 +23,24 @@ linked:
 ***
 
 ## Cheatsheet
+
+````tabs
+tab: **Operadores Generales**
+![[Command Injection - Operadores Generales#^ci-operadores-generales]]
+
+tab: **Operadores Especificos**
+![[Command Injection - Operadores Especificos#^ci-operadores-especificos]]
+
+tab: **Bypass de Espacios**
+
+tab: **Caracteres Bloqueados**
+
+tab: **Lista Negra de Comandos**
+
+tab: **Obfuscacion Avanzada**
+
+tab: **Obfuscacion Automatica**
+````
 
 
 ***

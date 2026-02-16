@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/File Upload Bypass.md",
+                "file": "04 - Content/Process/Command Injection - Generación de Caracteres Bloqueados.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "File Upload Bypass"
+              "title": "Command Injection - Generación de Caracteres Bloqueados"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/File Upload Bypass.md",
+                "file": "04 - Content/Process/Command Injection - Generación de Caracteres Bloqueados.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de File Upload Bypass"
+              "title": "Gráfico de Command Injection - Generación de Caracteres Bloqueados"
             }
           },
           {
@@ -264,32 +264,32 @@
   },
   "active": "f12e3ac7334b4b80",
   "lastOpenFiles": [
-    "05 - Writeups/HackTheBox/Magic.md",
-    "04 - Content/Process/File Upload Bypass.md",
     "04 - Content/Process/OS Command Injection.md",
+    "04 - Content/Process/Command Injection - Operadores Generales.md",
+    "04 - Content/Process/Command Injection - Operadores Especificos.md",
+    "04 - Content/Fuzzing Directories & Pages.md",
+    "04 - Content/ffuf.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Fingerprinting Web Technologies.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "01 - Primary Categories/Red Team.md",
+    "02 - Secondary Categories/Exploitation.md",
+    "04 - Content/Process/Web Exploitation.md",
+    "04 - Content/Process/File Upload Bypass.md",
+    "05 - Writeups/HackTheBox/Magic.md",
     "04 - Content/Process/Command Injection - Herramientas de Obfuscación Automática.md",
     "04 - Content/Process/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
     "04 - Content/Process/Generación de Base64 para Windows (desde Linux).md",
     "04 - Content/Process/Bypassing Injection - Lista Negra de Comandos.md",
-    "04 - Content/Process/Command Injection - Operadores Especificos.md",
-    "04 - Content/Process/Command Injection - Operadores Generales.md",
     "04 - Content/Process/Command Injection - Generación de Caracteres Bloqueados.md",
     "04 - Content/Command Injection - Bypass de Espacios.md",
     "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/curl.md",
     "04 - Content/Process/Pre-code.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
-    "04 - Content/Fuzzing Directories & Pages.md",
-    "04 - Content/ffuf.md",
     "04 - Content/Process/SQL Injection (SQLi).md",
-    "01 - Primary Categories/Red Team.md",
-    "04 - Content/Process/Web Exploitation.md",
     "04 - Content/SQL Commands.md",
     "04 - Content/Process/Local File Inclusion (LFI).md",
     "04 - Content/Process/SQLi to RCE.md",
-    "04 - Content/Process/MySQL Read & Write.md",
-    "04 - Content/Process/SQLi Enumeration.md",
-    "04 - Content/Process/Union-based SQLi.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
