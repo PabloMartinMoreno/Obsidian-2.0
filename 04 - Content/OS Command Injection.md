@@ -17,6 +17,7 @@ linked:
   - "[[Bypassing Injection - Lista Negra de Comandos]]"
   - "[[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)]]"
   - "[[Command Injection - Herramientas de Obfuscación Automática]]"
+  - "[[Command Injection - Prevención]]"
 ---
 # OS Command Injection
 

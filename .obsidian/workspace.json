@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f12e3ac7334b4b80",
+            "id": "aea33a5981d6c161",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/OS Command Injection.md",
+                "file": "04 - Content/OS Command Injection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/OS Command Injection.md",
+                "file": "04 - Content/OS Command Injection.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -262,16 +262,17 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f12e3ac7334b4b80",
+  "active": "aea33a5981d6c161",
   "lastOpenFiles": [
+    "04 - Content/Process/Command Injection - Prevención.md",
+    "04 - Content/OS Command Injection.md",
+    "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md",
+    "04 - Content/Command Injection - Operadores Generales.md",
+    "04 - Content/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
+    "04 - Content/Bypassing Injection - Lista Negra de Comandos.md",
+    "04 - Content/Command Injection - Operadores Especificos.md",
+    "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md",
     "04 - Content/Command Injection - Bypass de Espacios.md",
-    "04 - Content/Process/OS Command Injection.md",
-    "04 - Content/Process/Command Injection - Operadores Especificos.md",
-    "04 - Content/Process/Command Injection - Operadores Generales.md",
-    "04 - Content/Process/Command Injection - Herramientas de Obfuscación Automática.md",
-    "04 - Content/Process/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
-    "04 - Content/Process/Bypassing Injection - Lista Negra de Comandos.md",
-    "04 - Content/Process/Command Injection - Generación de Caracteres Bloqueados.md",
     "04 - Content/Fuzzing Directories & Pages.md",
     "04 - Content/ffuf.md",
     "03 - Tertiary Categories/Web Enumeration.md",
@@ -289,7 +290,6 @@
     "04 - Content/Process/SQL Injection (SQLi).md",
     "04 - Content/SQL Commands.md",
     "04 - Content/Process/Local File Inclusion (LFI).md",
-    "04 - Content/Process/SQLi to RCE.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
