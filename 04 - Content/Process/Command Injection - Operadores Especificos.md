@@ -15,7 +15,7 @@ linked:
 
 ## Cheatsheet
 
-| Tipo de Inyección            | Operadores Comunes                                          |
+| **Tipo de Inyección**        | **Operadores Comunes**                                      |
 | :--------------------------- | :---------------------------------------------------------- |
 | <br>**SQL Injection**        | <pre><code>' , ; -- /* */</code></pre>                      |
 | <br>**Command Injection**    | <pre><code>;&&</code></pre>                                 |

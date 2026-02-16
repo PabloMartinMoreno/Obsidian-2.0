@@ -24,6 +24,7 @@ linked:
 | <br>**Windows (PS)**  | <br>**Array Indexing**     | <pre><code>$env:HOMEPATH[0]</code></pre>      | <br>PowerShell trata las cadenas como arrays. Extrae el carácter en la posición 0 (`\`).         |
 | <br>**Discovery**     | <br>**Listar Variables**   | <pre><code>printenv</code></pre>              | <br>**Linux**: Muestra todas las variables de entorno disponibles para buscar caracteres útiles. |
 | <br>**Discovery**     | <br>**Listar Variables**   | <pre><code>Get-ChildItem Env:</code></pre>    | <br>**Windows (PS)**: Muestra las variables de entorno para encontrar caracteres a reutilizar.   |
+^ci-caracteres-bloqueados
 
 ---
 

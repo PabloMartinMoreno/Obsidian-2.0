@@ -24,24 +24,46 @@ linked:
 
 ## Cheatsheet
 
+### Operadores
+
 ````tabs
 tab: **Operadores Generales**
 ![[Command Injection - Operadores Generales#^ci-operadores-generales]]
 
 tab: **Operadores Especificos**
 ![[Command Injection - Operadores Especificos#^ci-operadores-especificos]]
-
-tab: **Bypass de Espacios**
-
-tab: **Caracteres Bloqueados**
-
-tab: **Lista Negra de Comandos**
-
-tab: **Obfuscacion Avanzada**
-
-tab: **Obfuscacion Automatica**
 ````
 
+___
+
+### Evasión de Filtros
+
+````tabs
+tab: **Espacios**
+![[Command Injection - Bypass de Espacios#^ci-bypass-espacios]]
+
+tab: **Caracteres Bloqueados**
+![[Command Injection - Generación de Caracteres Bloqueados#^ci-caracteres-bloqueados]]
+
+tab: **Lista Negra de Comandos**
+![[Bypassing Injection - Lista Negra de Comandos#^ci-blacklist-comandos]]
+````
+
+___
+
+### Obfuscación
+
+````tabs
+tab: **Mayusculas**
+![[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)#^ci-avanzado-mayusculas]]
+
+tab: **Comandos Invertidos**
+![[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)#^ci-avanzado-comandos-invertidos]]
+
+tab: **Comandos Codificados**
+![[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)#^ci-avanzado-comandos-codificados]]
+
+````
 
 ***
 
