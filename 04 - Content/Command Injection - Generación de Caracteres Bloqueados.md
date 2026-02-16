@@ -19,7 +19,7 @@ linked:
 | --------------------- | -------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | <br>**Linux (Bash)**  | <br>**Bypass (Slash)**     | <pre><code>${PATH:0:1}</code></pre>           | <br>Extrae el carácter `/` que suele estar al inicio de la variable `$PATH` .                    |
 | <br>**Linux**         | <br>**Bypass (Semicolon)** | <pre><code>${LS_COLORS:10:1}</code></pre>     | <br>Genera un punto y coma `;`. Útil para encadenar comandos inyectados.                         |
-| <br>Linux             | <br>**Bypass (Shifting)**  | <pre><code>$(tr '!-}' '"-~'<<<[)</code></pre> | <br>Genera una barra invertida `\`. Desplaza el carácter `[` (+1 ASCII) usando `tr`.             |
+| <br>**Linux**         | <br>**Bypass (Shifting)**  | <pre><code>$(tr '!-}' '"-~'<<<[)</code></pre> | <br>Genera una barra invertida `\`. Desplaza el carácter `[` (+1 ASCII) usando `tr`.             |
 | <br>**Windows (CMD)** | <br>**Variable Substring** | <pre><code>%HOMEPATH:~6,-11%</code></pre>     | <br>Extrae `\` usando offsets. Inicio positivo (6) y fin negativo (-11) para recortar la cadena. |
 | <br>**Windows (PS)**  | <br>**Array Indexing**     | <pre><code>$env:HOMEPATH[0]</code></pre>      | <br>PowerShell trata las cadenas como arrays. Extrae el carácter en la posición 0 (`\`).         |
 | <br>**Discovery**     | <br>**Listar Variables**   | <pre><code>printenv</code></pre>              | <br>**Linux**: Muestra todas las variables de entorno disponibles para buscar caracteres útiles. |

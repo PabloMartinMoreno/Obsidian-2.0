@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
     },
     {
-      "basename": "Command Injection - Prevención",
-      "path": "04 - Content/Process/Command Injection - Prevención.md"
-    },
-    {
       "basename": "Command Injection - Herramientas de Obfuscación Automática",
       "path": "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md"
+    },
+    {
+      "basename": "Command Injection - Prevención",
+      "path": "04 - Content/Command Injection - Prevención.md"
+    },
+    {
+      "basename": "Command Injection - Generación de Caracteres Bloqueados",
+      "path": "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md"
     },
     {
       "basename": "Command Injection - Operadores Generales",
@@ -27,10 +39,6 @@
     {
       "basename": "Command Injection - Operadores Especificos",
       "path": "04 - Content/Command Injection - Operadores Especificos.md"
-    },
-    {
-      "basename": "Command Injection - Generación de Caracteres Bloqueados",
-      "path": "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md"
     },
     {
       "basename": "Command Injection - Bypass de Espacios",
@@ -63,10 +71,6 @@
     {
       "basename": "Exploitation",
       "path": "02 - Secondary Categories/Exploitation.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
     },
     {
       "basename": "File Upload Bypass",
@@ -195,10 +199,6 @@
     {
       "basename": "Escape",
       "path": "05 - Writeups/Escape.md"
-    },
-    {
-      "basename": "LFI - Rutas Principales",
-      "path": "04 - Content/Process/LFI - Rutas Principales.md"
     }
   ],
   "omittedPaths": [],

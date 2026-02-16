@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/OS Command Injection.md",
+                "file": "04 - Content/Process/Server-Side Request Forgery (SSRF).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "OS Command Injection"
+              "title": "Server-Side Request Forgery (SSRF)"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/OS Command Injection.md",
+                "file": "04 - Content/Process/Server-Side Request Forgery (SSRF).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de OS Command Injection"
+              "title": "Gráfico de Server-Side Request Forgery (SSRF)"
             }
           },
           {
@@ -264,14 +264,15 @@
   },
   "active": "aea33a5981d6c161",
   "lastOpenFiles": [
-    "04 - Content/Process/Command Injection - Prevención.md",
+    "04 - Content/Process/Web Exploitation.md",
     "04 - Content/OS Command Injection.md",
     "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md",
+    "04 - Content/Command Injection - Prevención.md",
+    "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md",
     "04 - Content/Command Injection - Operadores Generales.md",
     "04 - Content/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
     "04 - Content/Bypassing Injection - Lista Negra de Comandos.md",
     "04 - Content/Command Injection - Operadores Especificos.md",
-    "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md",
     "04 - Content/Command Injection - Bypass de Espacios.md",
     "04 - Content/Fuzzing Directories & Pages.md",
     "04 - Content/ffuf.md",
@@ -280,7 +281,6 @@
     "02 - Secondary Categories/Information Gathering.md",
     "01 - Primary Categories/Red Team.md",
     "02 - Secondary Categories/Exploitation.md",
-    "04 - Content/Process/Web Exploitation.md",
     "04 - Content/Process/File Upload Bypass.md",
     "05 - Writeups/HackTheBox/Magic.md",
     "04 - Content/Process/Generación de Base64 para Windows (desde Linux).md",

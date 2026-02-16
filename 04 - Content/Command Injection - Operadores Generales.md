@@ -15,16 +15,16 @@ linked:
 
 ## Cheatsheet
 
-| **Operador**       |          **Carácter**          |          **URL Encoded**          | **Comportamiento de Ejecución** | **Notas**                                                                             |
-| :----------------- | :----------------------------: | :-------------------------------: | :------------------------------ | :------------------------------------------------------------------------------------ |
-| <br>**Semicolon**  |   <pre><code>;</code></pre>    |    <pre><code>%3b</code></pre>    | <br>Ejecuta **Ambos**           | <br>Secuencial (primero uno, luego el otro).                                          |
-| <br>**New Line**   |   <pre><code>\n</code></pre>   |    <pre><code>%0a</code></pre>    | <br>Ejecuta **Ambos**           | <br>Simula presionar Enter.                                                           |
-| <br>**Background** |   <pre><code>&</code></pre>    |    <pre><code>%26</code></pre>    | <br>Ejecuta **Ambos**           | <br>Ejecuta el comando en segundo plano (background).                                 |
-| <br><br>**Pipe**   | <br><pre><code>\|</code></pre> |  <br><pre><code>%7c</code></pre>  | <br><br>Ejecuta **Ambos**       | <br>Pasa la salida del 1º como entrada del 2º (Usualmente solo ves la salida del 2º). |
-| <br>**AND**        |   <pre><code>&&</code></pre>   |  <pre><code>%26%26</code></pre>   | <br>**Condicional**             | <br>Ejecuta el 2º **solo si** el 1º tiene éxito.                                      |
-| <br>**OR**         |  <pre><code>\|\|</code></pre>  |  <pre><code>%7c%7c</code></pre>   | <br>**Condicional**             | <br>Ejecuta el 2º **solo si** el 1º falla (error).                                    |
-| <br>**Sub-Shell**  |   <pre><code>`</code></pre>    |  <pre><code>>%60%60</code></pre>  | <br>Ejecuta **Ambos**           | <br>**Sólo Linux**. Ejecuta el contenido entre comillas primero.                      |
-| <br>**Sub-Shell**  |  <pre><code>$()</code></pre>   | <pre><code>%24%28%29</code></pre> | <br>Ejecuta **Ambos**           | <br>**Sólo Linux**. Igual que las backticks.                                          |
+| **Operador**       |         **Carácter**         |          **URL Encoded**          | **Comportamiento de Ejecución** | **Notas**                                                                             |
+| :----------------- | :--------------------------: | :-------------------------------: | :------------------------------ | :------------------------------------------------------------------------------------ |
+| <br>**Semicolon**  |  <pre><code>;</code></pre>   |    <pre><code>%3b</code></pre>    | <br>Ejecuta **Ambos**           | <br>Secuencial (primero uno, luego el otro).                                          |
+| <br>**New Line**   |  <pre><code>\n</code></pre>  |    <pre><code>%0a</code></pre>    | <br>Ejecuta **Ambos**           | <br>Simula presionar Enter.                                                           |
+| <br>**Background** |  <pre><code>&</code></pre>   |    <pre><code>%26</code></pre>    | <br>Ejecuta **Ambos**           | <br>Ejecuta el comando en segundo plano (background).                                 |
+| <br>**Pipe**       |  <pre><code>\|</code></pre>  |    <pre><code>%7c</code></pre>    | <br>Ejecuta **Ambos**           | <br>Pasa la salida del 1º como entrada del 2º (Usualmente solo ves la salida del 2º). |
+| <br>**AND**        |  <pre><code>&&</code></pre>  |  <pre><code>%26%26</code></pre>   | <br>**Condicional**             | <br>Ejecuta el 2º **solo si** el 1º tiene éxito.                                      |
+| <br>**OR**         | <pre><code>\|\|</code></pre> |  <pre><code>%7c%7c</code></pre>   | <br>**Condicional**             | <br>Ejecuta el 2º **solo si** el 1º falla (error).                                    |
+| <br>**Sub-Shell**  |  <pre><code>`</code></pre>   |  <pre><code>>%60%60</code></pre>  | <br>Ejecuta **Ambos**           | <br>**Sólo Linux**. Ejecuta el contenido entre comillas primero.                      |
+| <br>**Sub-Shell**  | <pre><code>$()</code></pre>  | <pre><code>%24%28%29</code></pre> | <br>Ejecuta **Ambos**           | <br>**Sólo Linux**. Igual que las backticks.                                          |
 ^ci-operadores-generales
 
 > [!WARNING] Excepción en Windows
