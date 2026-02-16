@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload Bypass",
+      "path": "04 - Content/Process/File Upload Bypass.md"
+    },
+    {
+      "basename": "Magic",
+      "path": "05 - Writeups/HackTheBox/Magic.md"
+    },
+    {
       "basename": "OS Command Injection",
       "path": "04 - Content/Process/OS Command Injection.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "Escalada de Privilegios - Comandos Comunes",
       "path": "04 - Content/Process/Escalada de Privilegios - Comandos Comunes.md"
-    },
-    {
-      "basename": "Nvim",
-      "path": "04 - Content/Process/Nvim.md"
-    },
-    {
-      "basename": "Terminal Interactiva",
-      "path": "04 - Content/Process/Terminal Interactiva.md"
     }
   ],
   "omittedPaths": [],

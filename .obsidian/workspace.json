@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/OS Command Injection.md",
+                "file": "04 - Content/Process/File Upload Bypass.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "OS Command Injection"
+              "title": "File Upload Bypass"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/OS Command Injection.md",
+                "file": "04 - Content/Process/File Upload Bypass.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de OS Command Injection"
+              "title": "Gráfico de File Upload Bypass"
             }
           },
           {
@@ -264,8 +264,10 @@
   },
   "active": "f12e3ac7334b4b80",
   "lastOpenFiles": [
-    "04 - Content/Process/Command Injection - Herramientas de Obfuscación Automática.md",
+    "05 - Writeups/HackTheBox/Magic.md",
+    "04 - Content/Process/File Upload Bypass.md",
     "04 - Content/Process/OS Command Injection.md",
+    "04 - Content/Process/Command Injection - Herramientas de Obfuscación Automática.md",
     "04 - Content/Process/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
     "04 - Content/Process/Generación de Base64 para Windows (desde Linux).md",
     "04 - Content/Process/Bypassing Injection - Lista Negra de Comandos.md",
@@ -288,8 +290,6 @@
     "04 - Content/Process/MySQL Read & Write.md",
     "04 - Content/Process/SQLi Enumeration.md",
     "04 - Content/Process/Union-based SQLi.md",
-    "04 - Content/Process/Cross-Site Scripting (XSS).md",
-    "02 - Secondary Categories/Exploitation.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
