@@ -9,7 +9,6 @@ linked:
 
 ***
 
-
 ## Cheatsheet
 
 |**Etapa**|**Objetivo**|**Acción / Payload**|**Indicador de Éxito / Resultado**|

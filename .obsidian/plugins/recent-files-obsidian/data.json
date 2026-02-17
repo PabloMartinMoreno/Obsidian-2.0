@@ -5,12 +5,16 @@
       "path": "04 - Content/Process/SSRF - Reconocimiento.md"
     },
     {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
-    },
-    {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
     },
     {
       "basename": "OS Command Injection",
@@ -107,10 +111,6 @@
     {
       "basename": "curl",
       "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQL Commands",
