@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/OS Command Injection.md"
+    },
+    {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/OS Command Injection.md"
     },
     {
       "basename": "Command Injection - Herramientas de Obfuscación Automática",
