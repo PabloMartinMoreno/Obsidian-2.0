@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/OS Command Injection.md"
+      "basename": "SSRF - Reconocimiento",
+      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
     },
     {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/OS Command Injection.md"
     },
     {
       "basename": "Server-Side Attacks",
@@ -19,10 +27,6 @@
     {
       "basename": "Server-Side Includes (SSI) Injection",
       "path": "04 - Content/Process/Server-Side Includes (SSI) Injection.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
     },
     {
       "basename": "Command Injection - Herramientas de Obfuscación Automática",
@@ -195,10 +199,6 @@
     {
       "basename": "Resource Development",
       "path": "04 - Content/Process/Resource Development.md"
-    },
-    {
-      "basename": "Pasted image 20260108144749",
-      "path": "00 - Resources/Images/Pasted image 20260108144749.png"
     }
   ],
   "omittedPaths": [],

@@ -15,7 +15,7 @@ linked:
 ## Cheatsheet
 
 
-***
+---
 
 ## Overview
 
