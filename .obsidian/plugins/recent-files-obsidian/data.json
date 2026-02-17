@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
-    },
-    {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "Server-Side Attacks",
+      "path": "04 - Content/Server-Side Attacks.md"
+    },
+    {
+      "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
+      "path": "04 - Content/Process/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
+    },
+    {
+      "basename": "Server-Side Includes (SSI) Injection",
+      "path": "04 - Content/Process/Server-Side Includes (SSI) Injection.md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
     },
     {
       "basename": "OS Command Injection",
@@ -187,18 +199,6 @@
     {
       "basename": "Pasted image 20260108144749",
       "path": "00 - Resources/Images/Pasted image 20260108144749.png"
-    },
-    {
-      "basename": "Pasted image 20260108144708",
-      "path": "00 - Resources/Images/Pasted image 20260108144708.png"
-    },
-    {
-      "basename": "Pasted image 20260108144758",
-      "path": "00 - Resources/Images/Pasted image 20260108144758.png"
-    },
-    {
-      "basename": "Escape",
-      "path": "05 - Writeups/Escape.md"
     }
   ],
   "omittedPaths": [],
