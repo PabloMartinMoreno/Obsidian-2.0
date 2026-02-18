@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Aragog",
+      "path": "05 - Writeups/VulnHub/Aragog.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Reverse Shells",
+      "path": "04 - Content/Process/Reverse Shells.md"
+    },
+    {
+      "basename": "Reverse Shell",
+      "path": "04 - Content/Reverse Shell.md"
     },
     {
       "basename": "Web Exploitation",
@@ -23,10 +35,6 @@
     {
       "basename": "Local File Inclusion (LFI)",
       "path": "04 - Content/Process/Local File Inclusion (LFI).md"
-    },
-    {
-      "basename": "Reverse Shell",
-      "path": "04 - Content/Reverse Shell.md"
     },
     {
       "basename": "OS Command Injection",
@@ -191,14 +199,6 @@
     {
       "basename": "AD - mindmap 2025 - 03",
       "path": "04 - Content/AD - mindmap 2025 - 03.md"
-    },
-    {
-      "basename": "Fuzzing Parameters & Values",
-      "path": "04 - Content/Fuzzing Parameters & Values.md"
-    },
-    {
-      "basename": "Operational Tasks",
-      "path": "04 - Content/Process/Operational Tasks.md"
     }
   ],
   "omittedPaths": [],

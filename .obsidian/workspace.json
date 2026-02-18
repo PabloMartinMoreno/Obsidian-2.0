@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/SQL Injection (SQLi).md",
+                "file": "05 - Writeups/VulnHub/Aragog.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Injection (SQLi)"
+              "title": "Aragog"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/SQL Injection (SQLi).md",
+                "file": "05 - Writeups/VulnHub/Aragog.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de SQL Injection (SQLi)"
+              "title": "Gráfico de Aragog"
             }
           },
           {
@@ -264,13 +264,14 @@
   },
   "active": "6fc47fefc44cf168",
   "lastOpenFiles": [
-    "04 - Content/Process/Web Exploitation.md",
     "04 - Content/Process/SQL Injection (SQLi).md",
+    "04 - Content/Process/Reverse Shells.md",
+    "04 - Content/Reverse Shell.md",
+    "04 - Content/Process/Web Exploitation.md",
     "03 - Tertiary Categories/Web Enumeration.md",
     "04 - Content/Process/File Upload Bypass.md",
     "05 - Writeups/HackTheBox/Magic.md",
     "04 - Content/Process/Local File Inclusion (LFI).md",
-    "04 - Content/Reverse Shell.md",
     "04 - Content/OS Command Injection.md",
     "04 - Content/Process/Server-Side Template Injection (SSTI).md",
     "04 - Content/Process/SSRF - Reconocimiento.md",
@@ -289,7 +290,6 @@
     "04 - Content/Fuzzing Directories & Pages.md",
     "04 - Content/ffuf.md",
     "04 - Content/Fingerprinting Web Technologies.md",
-    "02 - Secondary Categories/Information Gathering.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
