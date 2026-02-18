@@ -1,8 +1,8 @@
 ---
 aliases:
 tags:
-  - type/concept
-type: Concept
+  - type/cheatsheet
+type: CheatSheet
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
 ---

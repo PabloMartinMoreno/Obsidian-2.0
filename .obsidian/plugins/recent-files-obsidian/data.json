@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "SSRF - Gopher",
+      "path": "04 - Content/Process/SSRF - Gopher.md"
+    },
+    {
       "basename": "SSRF - Explotación",
       "path": "04 - Content/Process/SSRF - Explotación.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "00 - Resources/Templates/Type/_precode.md"
     },
     {
       "basename": "Server-Side Request Forgery (SSRF)",
@@ -11,6 +19,10 @@
     {
       "basename": "SSRF - Reconocimiento",
       "path": "04 - Content/Process/SSRF - Reconocimiento.md"
+    },
+    {
+      "basename": "SSRF - Mecanismo Lógico",
+      "path": "04 - Content/Process/SSRF - Mecanismo Lógico.md"
     },
     {
       "basename": "Server-Side Attacks",
@@ -133,10 +145,6 @@
       "path": "04 - Content/Process/Generación de Base64 para Windows (desde Linux).md"
     },
     {
-      "basename": "_precode",
-      "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
       "basename": "curl",
       "path": "04 - Content/curl.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "PEN-200",
       "path": "04 - Content/PEN-200.md"
-    },
-    {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
     }
   ],
   "omittedPaths": [],

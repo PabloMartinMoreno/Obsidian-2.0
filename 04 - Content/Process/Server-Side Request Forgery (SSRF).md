@@ -11,7 +11,9 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[Server-Side Attacks]]"
+  - "[[SSRF - Mecanismo Lógico]]"
   - "[[SSRF - Reconocimiento]]"
+  - "[[SSRF - Explotación]]"
 ---
 # Server-Side Request Forgery (SSRF)
 
