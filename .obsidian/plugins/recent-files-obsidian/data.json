@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "SSRF - Reconocimiento",
+      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "Server-Side Attacks",
+      "path": "04 - Content/Server-Side Attacks.md"
+    },
+    {
+      "basename": "Web Exploitation",
+      "path": "04 - Content/Process/Web Exploitation.md"
+    },
+    {
+      "basename": "File Upload Vulnerabilities",
+      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
@@ -15,10 +35,6 @@
     {
       "basename": "Reverse Shell",
       "path": "04 - Content/Reverse Shell.md"
-    },
-    {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
     },
     {
       "basename": "Web Enumeration",
@@ -43,18 +59,6 @@
     {
       "basename": "Server-Side Template Injection (SSTI)",
       "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "SSRF - Reconocimiento",
-      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "Server-Side Attacks",
-      "path": "04 - Content/Server-Side Attacks.md"
     },
     {
       "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
@@ -195,10 +199,6 @@
     {
       "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
       "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
-    },
-    {
-      "basename": "AD - mindmap 2025 - 03",
-      "path": "04 - Content/AD - mindmap 2025 - 03.md"
     }
   ],
   "omittedPaths": [],

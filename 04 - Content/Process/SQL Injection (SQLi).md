@@ -3,8 +3,11 @@ aliases:
 tags:
   - type/cheatsheet
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Exploitation|Explotación]]"
 tertiary categories:
+  - "[[Web Exploitation]]"
 type: CheatSheet
 linked:
   - "[[SQL Commands]]"

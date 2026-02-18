@@ -4,6 +4,7 @@ tags:
   - type/concept
 type: Concept
 linked:
+  - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 # SSRF - Reconocimiento
 
