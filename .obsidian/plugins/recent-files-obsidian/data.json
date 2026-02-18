@@ -1,24 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "SSRF - Reconocimiento",
-      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
       "basename": "Web Exploitation",
       "path": "04 - Content/Process/Web Exploitation.md"
     },
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+      "basename": "Web Enumeration",
+      "path": "03 - Tertiary Categories/Web Enumeration.md"
     },
     {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
+      "basename": "File Upload Bypass",
+      "path": "04 - Content/Process/File Upload Bypass.md"
+    },
+    {
+      "basename": "Magic",
+      "path": "05 - Writeups/HackTheBox/Magic.md"
+    },
+    {
+      "basename": "Local File Inclusion (LFI)",
+      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
+    },
+    {
+      "basename": "Reverse Shell",
+      "path": "04 - Content/Reverse Shell.md"
     },
     {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
+    },
+    {
+      "basename": "SSRF - Reconocimiento",
+      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
     },
     {
       "basename": "Server-Side Attacks",
@@ -73,10 +97,6 @@
       "path": "04 - Content/ffuf.md"
     },
     {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
       "basename": "Fingerprinting Web Technologies",
       "path": "04 - Content/Fingerprinting Web Technologies.md"
     },
@@ -93,14 +113,6 @@
       "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
-      "basename": "File Upload Bypass",
-      "path": "04 - Content/Process/File Upload Bypass.md"
-    },
-    {
-      "basename": "Magic",
-      "path": "05 - Writeups/HackTheBox/Magic.md"
-    },
-    {
       "basename": "Generación de Base64 para Windows (desde Linux)",
       "path": "04 - Content/Process/Generación de Base64 para Windows (desde Linux).md"
     },
@@ -115,10 +127,6 @@
     {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "Local File Inclusion (LFI)",
-      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
     },
     {
       "basename": "SQLi to RCE",
@@ -191,14 +199,6 @@
     {
       "basename": "Operational Tasks",
       "path": "04 - Content/Process/Operational Tasks.md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
-    },
-    {
-      "basename": "Resource Development",
-      "path": "04 - Content/Process/Resource Development.md"
     }
   ],
   "omittedPaths": [],

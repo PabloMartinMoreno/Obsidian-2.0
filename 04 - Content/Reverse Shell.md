@@ -4,6 +4,7 @@ tags:
   - type/concept
 type: Concept
 linked:
+  - "[[nc]]"
 ---
 # Reverse Shell
 
