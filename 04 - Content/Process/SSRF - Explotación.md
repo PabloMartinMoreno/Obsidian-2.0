@@ -9,13 +9,12 @@ type: CheatSheet
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[SSRF - Gopher]]"
+  - "[[Anatomía de la Construcción de un Payload Gopher]]"
 ---
 # SSRF - Explotación
 
 ***
-```
-<pre><code></code></pre>
-```
+
 ## Cheatsheet
 
 | **Técnica / Objetivo**                      | **Protocolo**       | **Payload / Comando**                                                                                     | **Detalles y Notas**                                                                                                                                                         |
@@ -26,7 +25,8 @@ linked:
 | <br>**Interacción con SMTP**                | <br>`gopher://`     | <pre><code>gopher://127.0.0.1:25/_MAIL%20FROM...</code></pre>                                             | Permite enviar correos electrónicos falsificados desde el `localhost` (puerto 25), a menudo confiable para el servidor de correo interno.                                    |
 | **Generación de Payloads (Gopherus)**       | <br>Script          | <pre><code>python2.7 gopherus.py --exploit [smtp\|mysql\|redis]</code></pre>                              | Herramienta para automatizar la creación de URLs Gopher complejas. Soporta: [[MySQL]], [[PostgreSQL]], FastCGI, Redis, SMTP, Zabbix.                                         |
 
-### Consideraciones de Codificación
+### Consideraciones de Codificación 
+([[Anatomía de la Construcción de un Payload Gopher]])
 
 Al trabajar con el protocolo **Gopher**, la codificación es crítica para el éxito del exploit:
 
@@ -36,7 +36,7 @@ Al trabajar con el protocolo **Gopher**, la codificación es crítica para el é
 |**2. URL Encode**|Codificar caracteres especiales, especialmente saltos de línea (`%0D%0A`) y espacios (`%20`).|El formato de URL no soporta espacios ni saltos de línea directos.|
 |**3. Doble URL Encode**|Volver a codificar el payload completo si se pasa como parámetro GET/POST.|El servidor web decodificará el parámetro una vez; el backend que realiza la petición SSRF necesita recibir los caracteres codificados para procesarlos correctamente.|
 
-[[SSRF - Gopher]]
+
 
 ***
 

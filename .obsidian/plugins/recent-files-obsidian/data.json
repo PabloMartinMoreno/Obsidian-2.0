@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "SSRF - Explotación",
+      "path": "04 - Content/Process/SSRF - Explotación.md"
+    },
+    {
       "basename": "SSRF - Gopher",
       "path": "04 - Content/Process/SSRF - Gopher.md"
     },
     {
-      "basename": "SSRF - Explotación",
-      "path": "04 - Content/Process/SSRF - Explotación.md"
+      "basename": "Anatomía de la Construcción de un Payload Gopher",
+      "path": "04 - Content/Process/Anatomía de la Construcción de un Payload Gopher.md"
     },
     {
       "basename": "_precode",
@@ -195,10 +199,6 @@
     {
       "basename": "Etapa de Preparación (Parte 1)",
       "path": "04 - Content/Process/Etapa de Preparación (Parte 1).md"
-    },
-    {
-      "basename": "PEN-200",
-      "path": "04 - Content/PEN-200.md"
     }
   ],
   "omittedPaths": [],
