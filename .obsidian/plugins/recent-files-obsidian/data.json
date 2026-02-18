@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "SSRF - Reconocimiento",
-      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
+      "basename": "SSRF - Explotación",
+      "path": "04 - Content/Process/SSRF - Explotación.md"
     },
     {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "SSRF - Reconocimiento",
+      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
     },
     {
       "basename": "Server-Side Attacks",
@@ -195,10 +199,6 @@
     {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?",
-      "path": "04 - Content/Process/¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?.md"
     }
   ],
   "omittedPaths": [],
