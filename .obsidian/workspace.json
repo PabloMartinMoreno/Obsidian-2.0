@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Writeups/VulnHub/Aragog.md",
+                "file": "04 - Content/Process/SQL Injection (SQLi).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Aragog"
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "05 - Writeups/VulnHub/Aragog.md",
+                "file": "04 - Content/Process/SQL Injection (SQLi).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Aragog"
+              "title": "Gráfico de SQL Injection (SQLi)"
             }
           },
           {
@@ -264,6 +264,7 @@
   },
   "active": "6fc47fefc44cf168",
   "lastOpenFiles": [
+    "05 - Writeups/VulnHub/Aragog.md",
     "04 - Content/Process/SQL Injection (SQLi).md",
     "04 - Content/Process/Reverse Shells.md",
     "04 - Content/Reverse Shell.md",
@@ -289,7 +290,6 @@
     "04 - Content/Command Injection - Bypass de Espacios.md",
     "04 - Content/Fuzzing Directories & Pages.md",
     "04 - Content/ffuf.md",
-    "04 - Content/Fingerprinting Web Technologies.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",

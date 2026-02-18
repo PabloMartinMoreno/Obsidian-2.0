@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Aragog",
-      "path": "05 - Writeups/VulnHub/Aragog.md"
-    },
-    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Aragog",
+      "path": "05 - Writeups/VulnHub/Aragog.md"
     },
     {
       "basename": "Reverse Shells",
