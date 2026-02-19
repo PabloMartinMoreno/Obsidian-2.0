@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/SSRF - Explotación.md",
+                "file": "04 - Content/Process/Anatomía de la Construcción de un Payload Gopher.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SSRF - Explotación"
+              "title": "Anatomía de la Construcción de un Payload Gopher"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/SSRF - Explotación.md",
+                "file": "04 - Content/Process/Anatomía de la Construcción de un Payload Gopher.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de SSRF - Explotación"
+              "title": "Gráfico de Anatomía de la Construcción de un Payload Gopher"
             }
           },
           {
@@ -264,9 +264,9 @@
   },
   "active": "c5b4ccb0ce9a70e2",
   "lastOpenFiles": [
+    "04 - Content/Process/SSRF - Explotación.md",
     "04 - Content/Process/SSRF - Gopher.md",
     "04 - Content/Process/Anatomía de la Construcción de un Payload Gopher.md",
-    "04 - Content/Process/SSRF - Explotación.md",
     "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/Process/Server-Side Request Forgery (SSRF).md",
     "04 - Content/Process/SSRF - Reconocimiento.md",

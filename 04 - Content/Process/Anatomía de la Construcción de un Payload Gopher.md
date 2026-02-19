@@ -12,12 +12,12 @@ ___
 
 El proceso consta de 3 fases: **Diseño de la Petición**, **Codificación (Encoding)** y **Ensamblaje**.
 
-## Fase 1: La Petición HTTP Original (Lo que queremos enviar)
+## Fase 1: La Petición HTTP Original (Lo que se quiere enviar)
 
 Primero, escribimos la petición HTTP tal cual la enviaríamos si estuviéramos dentro del servidor.
 ```HTTP
 POST /admin.php HTTP/1.1
-Host: dateserver.htb
+Host: dateserver.com
 Content-Length: 13
 Content-Type: application/x-www-form-urlencoded
 
@@ -28,8 +28,7 @@ adminpw=admin
 
 ## Fase 2: Traducción a Formato URL (Encoding)
 
-Gopher no entiende de espacios ni de saltos de línea de texto. Tenemos que convertir todo a caracteres URL (`%XX`).
-
+Gopher no entiende de espacios ni de saltos de línea de texto. Hay que convertir todo a caracteres URL (`%XX`).
 1. **Espacios:** Se cambian por `%20`.
 2. **Saltos de Línea:** En HTTP, una línea nueva es `\r\n` (Carriage Return + Line Feed). Esto se traduce como `%0D%0A`.
 
@@ -39,7 +38,7 @@ Gopher no entiende de espacios ni de saltos de línea de texto. Tenemos que conv
 | ------------------------------------------------- | ------------------------------ |
 | `POST /admin.php HTTP/1.1`                        | `POST%20/admin.php%20HTTP/1.1` |
 | _(Salto de línea)_                                | `%0D%0A`                       |
-| `Host: dateserver.htb`                            | `Host:%20dateserver.htb`       |
+| `Host: dateserver.com`                            | `Host:%20dateserver.com`       |
 | _(Salto de línea)_                                | `%0D%0A`                       |
 | ...                                               | ...                            |
 | _(Doble Salto para separar cabeceras del cuerpo)_ | `%0D%0A%0D%0A`                 |
@@ -52,11 +51,10 @@ Gopher no entiende de espacios ni de saltos de línea de texto. Tenemos que conv
 
 Ahora debemos decirle al navegador/curl que use el protocolo Gopher.
 1. **Esquema:** `gopher://`
-2. **Destino:** `dateserver.htb:80`
+2. **Destino:** `dateserver.com:80`
 3. **El Selector (El truco):** Gopher requiere un carácter inicial para saber el tipo de archivo. Como estamos enviando datos brutos, usamos un guion bajo `_` que el servidor Gopher eliminará antes de enviar los datos.
 
 **Estructura:**
-
 `gopher://host:puerto/` + `_` + `PAYLOAD_CODIFICADO`
 
 ## Fase 4: La Doble Codificación (El paso final en el ejemplo)
@@ -65,22 +63,21 @@ El texto menciona un paso extra crucial:
 
 > "Since we are sending our URL within the HTTP POST parameter dateserver... we need to URL-encode the entire URL again."
 
-Como vamos a meter esta URL de Gopher **dentro** de una petición web (`dateserver=...`), si enviamos un `%20`, el servidor web externo lo decodificará como un espacio _antes_ de procesar el SSRF, rompiendo el payload.
+Como se va a meter esta URL de Gopher **dentro** de una petición web (`dateserver=...`), si se envia un `%20`, el servidor web externo lo decodificará como un espacio _antes_ de procesar el SSRF, rompiendo el payload.
 
-Por eso, codificamos los `%` de nuevo (`%` se convierte en `%25`).
+Por eso, se codifica los `%` de nuevo (`%` se convierten en `%25`).
 - `%20` -> `%2520`
 - `%0D%0A` -> `%250D%250A`
 
 **Resultado Final (La "invención"):**
-
 `gopher://dateserver.htb:80/_POST%2520/admin.php%2520HTTP...`
 
 ---
 
 ## Resumen Visual
 
-No tienes que memorizar esto ni hacerlo a mano siempre. Para eso existen herramientas como:
+No hace falta memorizar esto ni hacerlo a mano siempre. Para eso existen herramientas como:
 1. **Gopherus:** Genera payloads automáticamente.
-2. **CyberChef:** Puedes usar la receta "To Gopher" o hacer URL Encode manual.
+2. **CyberChef:** Se puede usar la receta "To Gopher" o hacer URL Encode manual.
 
-La "magia" es simplemente que estás escribiendo los bytes TCP uno por uno usando `%XX`.
+La "magia" es simplemente que se está escribiendo los bytes TCP uno por uno usando `%XX`.
