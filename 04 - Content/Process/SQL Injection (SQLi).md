@@ -5,9 +5,9 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Exploitation|Explotación]]"
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - "[[Web Exploitation]]"
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
   - "[[SQL Commands]]"

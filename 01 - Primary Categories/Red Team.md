@@ -20,7 +20,7 @@ type: Primary Category
 
 ***
 
-## 🔴[[Exploitation]]
+## 🔴[[Explotación]]
 
 
 ***

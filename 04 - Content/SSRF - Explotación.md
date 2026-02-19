@@ -24,6 +24,7 @@ linked:
 | <br>**Bypass de Método (GET a POST)**       | <br><br>`gopher://` | <pre><code>gopher://<IP>:<PORT>/_POST%20/admin.php...</code></pre>                                        | El protocolo [[Gopher]] permite enviar bytes arbitrarios a un socket TCP. Útil para interactuar con formularios internos que requieren POST cuando el SSRF solo permite GET. |
 | <br>**Interacción con SMTP**                | <br>`gopher://`     | <pre><code>gopher://127.0.0.1:25/_MAIL%20FROM...</code></pre>                                             | Permite enviar correos electrónicos falsificados desde el `localhost` (puerto 25), a menudo confiable para el servidor de correo interno.                                    |
 | **Generación de Payloads (Gopherus)**       | <br>Script          | <pre><code>python2.7 gopherus.py --exploit [smtp\|mysql\|redis]</code></pre>                              | Herramienta para automatizar la creación de URLs Gopher complejas. Soporta: [[MySQL]], [[PostgreSQL]], FastCGI, Redis, SMTP, Zabbix.                                         |
+^ssrf-explotacion
 
 ### Consideraciones de Codificación 
 ([[Anatomía de la Construcción de un Payload Gopher]])

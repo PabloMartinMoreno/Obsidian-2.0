@@ -5,7 +5,7 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Exploitation]]"
+  - "[[Explotación]]"
 tertiary categories:
   - "[[Active Directory Exploitation]]"
 type: CheatSheet

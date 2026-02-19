@@ -20,7 +20,7 @@ type: Secondary Category
 
 ***
 
-## [[Web Exploitation]]
+## [[Web Explotación]]
 
 
 ***

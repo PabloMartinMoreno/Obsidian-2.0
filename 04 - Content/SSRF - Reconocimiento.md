@@ -18,6 +18,7 @@ linked:
 |**2. Confirmación (Out-of-Band)**|Verificar si el servidor realiza peticiones externas.|**Payload:** `http://<MI_IP>:8000/ssrf`<br><br>  <br><br>**Listener:** `nc -lnvp 8000`|Se recibe una conexión HTTP en el listener de `netcat` proveniente del servidor objetivo.|
 |**3. Verificación de Respuesta**|Determinar si es Blind SSRF o si hay retorno visual.|**Payload:** `http://127.0.0.1/index.php` (o la misma URL de la app).|La respuesta HTTP contiene el código HTML de la propia aplicación. Si se ve el contenido, **no** es Blind SSRF.|
 |**4. Enumeración de Puertos**|Escanear servicios internos en el servidor (localhost).|Utilizar el SSRF para apuntar a `http://127.0.0.1:<PUERTO>`.|Diferencia en la respuesta entre puertos abiertos y cerrados (ej. mensaje de error vs. código 200/404 o contenido vacío).|
+^ssrf-reconocimiento
 
 ## Automatización con FFUF
 

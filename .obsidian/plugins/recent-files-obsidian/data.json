@@ -1,40 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "Anatomía de la Construcción de un Payload Gopher",
-      "path": "04 - Content/Process/Anatomía de la Construcción de un Payload Gopher.md"
-    },
-    {
-      "basename": "SSRF - Explotación",
-      "path": "04 - Content/Process/SSRF - Explotación.md"
-    },
-    {
-      "basename": "SSRF - Gopher",
-      "path": "04 - Content/Process/SSRF - Gopher.md"
-    },
-    {
-      "basename": "_precode",
-      "path": "00 - Resources/Templates/Type/_precode.md"
+      "basename": "Web Explotación",
+      "path": "04 - Content/Process/Web Explotación.md"
     },
     {
       "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Process/Server-Side Request Forgery (SSRF).md"
+      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "Anatomía de la Construcción de un Payload Gopher",
+      "path": "04 - Content/Anatomía de la Construcción de un Payload Gopher.md"
+    },
+    {
+      "basename": "SSRF - Gopher",
+      "path": "04 - Content/SSRF - Gopher.md"
+    },
+    {
+      "basename": "SSRF - Explotación",
+      "path": "04 - Content/SSRF - Explotación.md"
     },
     {
       "basename": "SSRF - Reconocimiento",
-      "path": "04 - Content/Process/SSRF - Reconocimiento.md"
+      "path": "04 - Content/SSRF - Reconocimiento.md"
     },
     {
       "basename": "SSRF - Mecanismo Lógico",
-      "path": "04 - Content/Process/SSRF - Mecanismo Lógico.md"
+      "path": "04 - Content/SSRF - Mecanismo Lógico.md"
     },
     {
       "basename": "Server-Side Attacks",
       "path": "04 - Content/Server-Side Attacks.md"
     },
     {
-      "basename": "Web Exploitation",
-      "path": "04 - Content/Process/Web Exploitation.md"
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "00 - Resources/Templates/Type/_precode.md"
     },
     {
       "basename": "File Upload Vulnerabilities",
@@ -139,10 +143,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Exploitation",
-      "path": "02 - Secondary Categories/Exploitation.md"
     },
     {
       "basename": "Generación de Base64 para Windows (desde Linux)",
