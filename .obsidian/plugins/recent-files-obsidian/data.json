@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload Bypass",
+      "path": "04 - Content/Process/File Upload Bypass.md"
+    },
+    {
       "basename": "File Upload - Desactivación de Validación Front-end",
       "path": "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "File Upload Vulnerabilities",
       "path": "04 - Content/Process/File Upload Vulnerabilities.md"
-    },
-    {
-      "basename": "File Upload Bypass",
-      "path": "04 - Content/Process/File Upload Bypass.md"
     },
     {
       "basename": "Web Explotación",

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md",
+                "file": "04 - Content/Process/File Upload Bypass.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "File Upload - Desactivación de Validación Front-end"
+              "title": "File Upload Bypass"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md",
+                "file": "04 - Content/Process/File Upload Bypass.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de File Upload - Desactivación de Validación Front-end"
+              "title": "Gráfico de File Upload Bypass"
             }
           },
           {
@@ -264,8 +264,8 @@
   },
   "active": "e68bd0e9dd0462c3",
   "lastOpenFiles": [
-    "04 - Content/Process/File Upload - Shells en PHP.md",
     "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md",
+    "04 - Content/Process/File Upload - Shells en PHP.md",
     "04 - Content/Reverse Shell.md",
     "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/Process/File Upload Vulnerabilities.md",
