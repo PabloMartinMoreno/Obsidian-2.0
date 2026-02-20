@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/File Upload Vulnerabilities.md"
     },
     {
+      "basename": "File Upload Bypass",
+      "path": "04 - Content/Process/File Upload Bypass.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "04 - Content/Process/Web Explotación.md"
     },
@@ -83,10 +87,6 @@
     {
       "basename": "Web Enumeration",
       "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "File Upload Bypass",
-      "path": "04 - Content/Process/File Upload Bypass.md"
     },
     {
       "basename": "Magic",
