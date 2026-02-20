@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload - Shells en PHP",
+      "path": "04 - Content/Process/File Upload - Shells en PHP.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "00 - Resources/Templates/Type/_precode.md"
+    },
+    {
       "basename": "File Upload Vulnerabilities",
       "path": "04 - Content/Process/File Upload Vulnerabilities.md"
     },
@@ -63,10 +71,6 @@
     {
       "basename": "Explotación",
       "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "_precode",
-      "path": "00 - Resources/Templates/Type/_precode.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
@@ -195,10 +199,6 @@
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
     }
   ],
   "omittedPaths": [],
