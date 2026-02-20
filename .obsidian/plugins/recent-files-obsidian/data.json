@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Reverse Shell",
-      "path": "04 - Content/Reverse Shell.md"
+      "basename": "File Upload - Desactivación de Validación Front-end",
+      "path": "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md"
     },
     {
       "basename": "File Upload - Shells en PHP",
       "path": "04 - Content/Process/File Upload - Shells en PHP.md"
+    },
+    {
+      "basename": "Reverse Shell",
+      "path": "04 - Content/Reverse Shell.md"
     },
     {
       "basename": "_precode",
@@ -195,10 +199,6 @@
     {
       "basename": "Union-based SQLi",
       "path": "04 - Content/Process/Union-based SQLi.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     }
   ],
   "omittedPaths": [],
