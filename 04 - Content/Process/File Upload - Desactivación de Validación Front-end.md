@@ -1,11 +1,8 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+  - type/concept
+type: Concept
 linked:
   - "[[File Upload Vulnerabilities]]"
 ---

@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "File Upload Bypass",
-      "path": "04 - Content/Process/File Upload Bypass.md"
+      "basename": "File Upload - Bypass de Filtros de Lista Negra",
+      "path": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md"
+    },
+    {
+      "basename": "File Upload Vulnerabilities",
+      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
     },
     {
       "basename": "File Upload - Desactivación de Validación Front-end",
       "path": "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md"
+    },
+    {
+      "basename": "File Upload Bypass",
+      "path": "04 - Content/Process/File Upload Bypass.md"
+    },
+    {
+      "basename": "File Upload - Reconocimiento de Filtro",
+      "path": "04 - Content/File Upload - Reconocimiento de Filtro.md"
     },
     {
       "basename": "File Upload - Shells en PHP",
@@ -19,10 +31,6 @@
     {
       "basename": "_precode",
       "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
-      "basename": "File Upload Vulnerabilities",
-      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
     },
     {
       "basename": "Web Explotación",
@@ -191,14 +199,6 @@
     {
       "basename": "MySQL Read & Write",
       "path": "04 - Content/Process/MySQL Read & Write.md"
-    },
-    {
-      "basename": "SQLi Enumeration",
-      "path": "04 - Content/Process/SQLi Enumeration.md"
-    },
-    {
-      "basename": "Union-based SQLi",
-      "path": "04 - Content/Process/Union-based SQLi.md"
     }
   ],
   "omittedPaths": [],
