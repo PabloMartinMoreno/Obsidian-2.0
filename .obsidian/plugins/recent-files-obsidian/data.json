@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload Vulnerabilities",
+      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "04 - Content/Process/Web Explotación.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Introduction to Web Applications",
+      "path": "04 - Content/Process/Introduction to Web Applications.md"
+    },
+    {
+      "basename": "Sensitive Data Exposure",
+      "path": "04 - Content/Process/Sensitive Data Exposure.md"
+    },
+    {
+      "basename": "Front End vs. Back End",
+      "path": "04 - Content/Process/Front End vs. Back End.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "Server-Side Request Forgery (SSRF)",
@@ -39,10 +63,6 @@
     {
       "basename": "_precode",
       "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
-      "basename": "File Upload Vulnerabilities",
-      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
@@ -179,26 +199,6 @@
     {
       "basename": "000 - Global Index",
       "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
-    },
-    {
-      "basename": "Metodología Forense",
-      "path": "04 - Content/Process/Metodología Forense.md"
-    },
-    {
-      "basename": "Gestión de Incidentes",
-      "path": "04 - Content/Process/Gestión de Incidentes.md"
-    },
-    {
-      "basename": "Etapa de Preparación (Parte 1)",
-      "path": "04 - Content/Process/Etapa de Preparación (Parte 1).md"
     }
   ],
   "omittedPaths": [],
