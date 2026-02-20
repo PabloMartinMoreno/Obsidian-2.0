@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload - Ataques de Configuración",
+      "path": "04 - Content/Process/File Upload - Ataques de Configuración.md"
+    },
+    {
       "basename": "File Upload - Bypass de Filtros de Lista Negra",
       "path": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md"
+    },
+    {
+      "basename": "File Upload Bypass",
+      "path": "04 - Content/Process/File Upload Bypass.md"
+    },
+    {
+      "basename": "File Upload - Bypass de Filtros de Lista Blanca",
+      "path": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Blanca.md"
     },
     {
       "basename": "File Upload Vulnerabilities",
@@ -11,10 +23,6 @@
     {
       "basename": "File Upload - Desactivación de Validación Front-end",
       "path": "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md"
-    },
-    {
-      "basename": "File Upload Bypass",
-      "path": "04 - Content/Process/File Upload Bypass.md"
     },
     {
       "basename": "File Upload - Reconocimiento de Filtro",
@@ -191,14 +199,6 @@
     {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "SQLi to RCE",
-      "path": "04 - Content/Process/SQLi to RCE.md"
-    },
-    {
-      "basename": "MySQL Read & Write",
-      "path": "04 - Content/Process/MySQL Read & Write.md"
     }
   ],
   "omittedPaths": [],

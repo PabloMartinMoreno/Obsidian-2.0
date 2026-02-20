@@ -8,18 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "027fa86c58e3db3f",
+            "id": "3ed54c4dcee063b4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md",
+                "file": "04 - Content/Process/File Upload - Ataques de Configuración.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "File Upload - Bypass de Filtros de Lista Negra"
+              "title": "File Upload - Ataques de Configuración"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md",
+                "file": "04 - Content/Process/File Upload - Ataques de Configuración.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de File Upload - Bypass de Filtros de Lista Negra"
+              "title": "Gráfico de File Upload - Ataques de Configuración"
             }
           },
           {
@@ -239,11 +239,13 @@
               "title": "Advanced Tables"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 244.5
+    "width": 244.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -262,14 +264,16 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "027fa86c58e3db3f",
+  "active": "3ed54c4dcee063b4",
   "lastOpenFiles": [
+    "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md",
+    "04 - Content/Process/File Upload - Ataques de Configuración.md",
+    "04 - Content/Process/File Upload Bypass.md",
+    "04 - Content/Process/File Upload - Bypass de Filtros de Lista Blanca.md",
     "04 - Content/Process/File Upload Vulnerabilities.md",
     "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md",
-    "04 - Content/Process/File Upload Bypass.md",
     "04 - Content/File Upload - Reconocimiento de Filtro.md",
     "04 - Content/Process/File Upload - Shells en PHP.md",
-    "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md",
     "04 - Content/Reverse Shell.md",
     "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/Process/Web Explotación.md",
@@ -288,8 +292,6 @@
     "02 - Secondary Categories/Explotación.md",
     "04 - Content/Process/SQL Injection (SQLi).md",
     "05 - Writeups/VulnHub/Aragog.md",
-    "04 - Content/Process/Reverse Shells.md",
-    "03 - Tertiary Categories/Web Enumeration.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
