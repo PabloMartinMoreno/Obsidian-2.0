@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/File Upload - Shells en PHP.md",
+                "file": "04 - Content/Reverse Shell.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "File Upload - Shells en PHP"
+              "title": "Reverse Shell"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/File Upload - Shells en PHP.md",
+                "file": "04 - Content/Reverse Shell.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de File Upload - Shells en PHP"
+              "title": "Gráfico de Reverse Shell"
             }
           },
           {
@@ -264,8 +264,8 @@
   },
   "active": "511b4290f26b44f3",
   "lastOpenFiles": [
-    "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/Process/File Upload - Shells en PHP.md",
+    "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/Process/File Upload Vulnerabilities.md",
     "04 - Content/Process/File Upload Bypass.md",
     "04 - Content/Process/Web Explotación.md",
