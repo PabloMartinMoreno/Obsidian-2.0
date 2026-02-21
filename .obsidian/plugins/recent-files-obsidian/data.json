@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "File Upload - Ataques de Configuración",
-      "path": "04 - Content/Process/File Upload - Ataques de Configuración.md"
-    },
-    {
       "basename": "File Upload - Bypass de Filtros de Lista Negra",
       "path": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md"
+    },
+    {
+      "basename": "File Upload Vulnerabilities",
+      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
+    },
+    {
+      "basename": "File Upload - Evasión de Contenido",
+      "path": "04 - Content/Process/File Upload - Evasión de Contenido.md"
+    },
+    {
+      "basename": "File Upload - Técnicas de Confusión",
+      "path": "04 - Content/Process/File Upload - Técnicas de Confusión.md"
     },
     {
       "basename": "File Upload Bypass",
@@ -17,8 +25,8 @@
       "path": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Blanca.md"
     },
     {
-      "basename": "File Upload Vulnerabilities",
-      "path": "04 - Content/Process/File Upload Vulnerabilities.md"
+      "basename": "File Upload - Ataques de Configuración",
+      "path": "04 - Content/Process/File Upload - Ataques de Configuración.md"
     },
     {
       "basename": "File Upload - Desactivación de Validación Front-end",
@@ -191,14 +199,6 @@
     {
       "basename": "Generación de Base64 para Windows (desde Linux)",
       "path": "04 - Content/Process/Generación de Base64 para Windows (desde Linux).md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/curl.md"
-    },
-    {
-      "basename": "SQL Commands",
-      "path": "04 - Content/SQL Commands.md"
     }
   ],
   "omittedPaths": [],
