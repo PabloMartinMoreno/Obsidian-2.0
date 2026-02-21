@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md",
+                "file": "04 - Content/Command Injection - Prevención.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "File Upload - Bypass de Filtros de Lista Negra"
+              "title": "Command Injection - Prevención"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md",
+                "file": "04 - Content/Command Injection - Prevención.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -207,12 +207,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.8318056085910617,
+                  "scale": 0.798146972692529,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de File Upload - Bypass de Filtros de Lista Negra"
+              "title": "Gráfico de Command Injection - Prevención"
             }
           },
           {
@@ -266,32 +266,32 @@
   },
   "active": "be6f1a800fe8279d",
   "lastOpenFiles": [
-    "04 - Content/Process/File Upload Vulnerabilities.md",
-    "04 - Content/Process/File Upload - Evasión de Contenido.md",
-    "04 - Content/Process/File Upload - Técnicas de Confusión.md",
+    "04 - Content/OS Command Injection.md",
+    "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md",
+    "04 - Content/Bypassing Injection - Lista Negra de Comandos.md",
+    "04 - Content/Command Injection - Operadores Especificos.md",
+    "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md",
+    "04 - Content/Command Injection - Bypass de Espacios.md",
+    "04 - Content/Command Injection - Operadores Generales.md",
+    "04 - Content/Process/Web Explotación.md",
+    "04 - Content/Process/SQL Injection (SQLi).md",
+    "04 - Content/File Upload Vulnerabilities.md",
+    "04 - Content/File Upload - Bypass de Contenido.md",
+    "04 - Content/File Upload - Desactivación de Validación Front-end.md",
+    "04 - Content/File Upload - Shells en PHP.md",
+    "04 - Content/File Upload - Bypass por Confusión y Desincronización.md",
+    "04 - Content/File Upload - Bypass de Sobrescritura de Configuración.md",
+    "04 - Content/File Upload - Bypass de Filtros de Lista Negra.md",
+    "04 - Content/File Upload - Reconocimiento de Filtros.md",
+    "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md",
     "04 - Content/Process/File Upload Bypass.md",
-    "04 - Content/Process/File Upload - Bypass de Filtros de Lista Negra.md",
-    "04 - Content/Process/File Upload - Bypass de Filtros de Lista Blanca.md",
-    "04 - Content/Process/File Upload - Ataques de Configuración.md",
-    "04 - Content/Process/File Upload - Desactivación de Validación Front-end.md",
-    "04 - Content/File Upload - Reconocimiento de Filtro.md",
-    "04 - Content/Process/File Upload - Shells en PHP.md",
     "04 - Content/Reverse Shell.md",
     "00 - Resources/Templates/Type/_precode.md",
-    "04 - Content/Process/Web Explotación.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Introduction to Web Applications.md",
     "04 - Content/Process/Sensitive Data Exposure.md",
     "04 - Content/Process/Front End vs. Back End.md",
     "04 - Content/Process/Web Requests.md",
-    "04 - Content/Server-Side Request Forgery (SSRF).md",
-    "04 - Content/Anatomía de la Construcción de un Payload Gopher.md",
-    "04 - Content/SSRF - Gopher.md",
-    "04 - Content/SSRF - Explotación.md",
-    "04 - Content/SSRF - Reconocimiento.md",
-    "04 - Content/SSRF - Mecanismo Lógico.md",
-    "04 - Content/Server-Side Attacks.md",
-    "02 - Secondary Categories/Explotación.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",

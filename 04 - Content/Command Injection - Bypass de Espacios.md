@@ -1,13 +1,13 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
-type: CheatSheet
+  - type/concept
 linked:
   - "[[OS Command Injection]]"
 primary categories:
 secondary categories:
 tertiary categories:
+type: Concept
 ---
 # Bypass de Espacios en Command Injection
 Técnicas para ejecutar comandos cuando el carácter "espacio" está bloqueado (WAF/Filtros).

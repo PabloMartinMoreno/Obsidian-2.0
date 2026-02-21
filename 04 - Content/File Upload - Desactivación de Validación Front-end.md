@@ -12,10 +12,11 @@ linked:
 
 ## Cheatsheet de Métodos de Evasión
 
-| **Método**                                | **Herramienta**              | **Mecanismo de Acción**                                                                                                                | **Ventaja Principal**                                                                                               |
-| ----------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| **Modificación de Petición al Back-end**  | `[[Burp Suite]]` / Proxy     | Interceptar la petición HTTP legítima para alterar el parámetro `filename` y el contenido del archivo antes de que llegue al servidor. | Ignora completamente el código frontend; evade cualquier lógica de validación de la interfaz de usuario.            |
+|                **Método**                 |       **Herramienta**        | **Mecanismo de Acción**                                                                                                                | **Ventaja Principal**                                                                                               |
+|:-----------------------------------------:|:----------------------------:| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Modificación de Petición al Back-end**  |   `[[Burp Suite]]` / Proxy   | Interceptar la petición HTTP legítima para alterar el parámetro `filename` y el contenido del archivo antes de que llegue al servidor. | Ignora completamente el código frontend; evade cualquier lógica de validación de la interfaz de usuario.            |
 | **Desactivación de Validación Front-end** | `[[DevTools]]` del Navegador | Modificar el DOM en tiempo real para eliminar eventos y atributos restrictivos (ej. `onchange="checkFile(this)"` o `accept`).          | Permite utilizar el flujo normal de la aplicación y la interfaz gráfica original para subir archivos no permitidos. |
+^fu-frontend
 
 ## Detalles de Implementación
 

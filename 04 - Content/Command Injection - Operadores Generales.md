@@ -1,11 +1,11 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/concept
 primary categories:
 secondary categories:
 tertiary categories:
-type: CheatSheet
+type: Concept
 linked:
   - "[[OS Command Injection]]"
 ---
