@@ -1,10 +1,10 @@
 ---
 aliases:
 tags:
-  - type/concept
-type: Concept
+  - type/cheatsheet
+type: CheatSheet
 linked:
-  - "[[File Upload Vulnerabilities]]"
+  - "[[File Upload - Vulnerabilidades]]"
 ---
 # File Upload - Bypass de Filtros de Lista Blanca
 

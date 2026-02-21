@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Command Injection - Prevención.md",
+                "file": "04 - Content/Process/Web Explotación.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Command Injection - Prevención"
+              "title": "Web Explotación"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Command Injection - Prevención.md",
+                "file": "04 - Content/Process/Web Explotación.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de Command Injection - Prevención"
+              "title": "Gráfico de Web Explotación"
             }
           },
           {
@@ -266,32 +266,32 @@
   },
   "active": "be6f1a800fe8279d",
   "lastOpenFiles": [
+    "04 - Content/File Upload - Vulnerabilidades.md",
+    "04 - Content/Process/Web Explotación.md",
+    "04 - Content/Process/Local File Inclusion (LFI).md",
     "04 - Content/OS Command Injection.md",
+    "04 - Content/File Upload - Desactivación de Validación Front-end.md",
+    "04 - Content/File Upload - Shells en PHP.md",
+    "04 - Content/File Upload - Bypass por Confusión y Desincronización.md",
+    "04 - Content/File Upload - Bypass de Contenido.md",
+    "04 - Content/File Upload - Bypass de Sobrescritura de Configuración.md",
+    "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md",
+    "04 - Content/File Upload - Bypass de Filtros de Lista Negra.md",
+    "04 - Content/File Upload - Reconocimiento de Filtros.md",
+    "04 - Content/Command Injection - Prevención.md",
     "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md",
+    "04 - Content/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
     "04 - Content/Bypassing Injection - Lista Negra de Comandos.md",
     "04 - Content/Command Injection - Operadores Especificos.md",
     "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md",
     "04 - Content/Command Injection - Bypass de Espacios.md",
     "04 - Content/Command Injection - Operadores Generales.md",
-    "04 - Content/Process/Web Explotación.md",
     "04 - Content/Process/SQL Injection (SQLi).md",
-    "04 - Content/File Upload Vulnerabilities.md",
-    "04 - Content/File Upload - Bypass de Contenido.md",
-    "04 - Content/File Upload - Desactivación de Validación Front-end.md",
-    "04 - Content/File Upload - Shells en PHP.md",
-    "04 - Content/File Upload - Bypass por Confusión y Desincronización.md",
-    "04 - Content/File Upload - Bypass de Sobrescritura de Configuración.md",
-    "04 - Content/File Upload - Bypass de Filtros de Lista Negra.md",
-    "04 - Content/File Upload - Reconocimiento de Filtros.md",
-    "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md",
     "04 - Content/Process/File Upload Bypass.md",
     "04 - Content/Reverse Shell.md",
     "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Introduction to Web Applications.md",
-    "04 - Content/Process/Sensitive Data Exposure.md",
-    "04 - Content/Process/Front End vs. Back End.md",
-    "04 - Content/Process/Web Requests.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",

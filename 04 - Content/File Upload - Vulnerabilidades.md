@@ -19,7 +19,7 @@ linked:
   - "[[File Upload - Shells en PHP]]"
   - "[[File Upload - Desactivación de Validación Front-end]]"
 ---
-# File Upload Vulnerabilities
+# File Upload - Vulnerabilidades
 
 ***
 

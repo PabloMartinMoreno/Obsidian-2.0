@@ -33,7 +33,7 @@ type: Tertiary Category
 - [[Local File Inclusion (LFI)]] (Inclusión de archivos locales del servidor en la respuesta web.)
 - [[Directory Traversal]] (Navegación fuera del directorio raíz web para leer archivos sensibles.)
 - [[Remote File Inclusion (RFI)]] (Inclusión de archivos alojados externamente para ejecutar código remoto.)
-- [[File Upload Vulnerabilities]] (Subida de archivos maliciosos para obtener ejecución de código.)
+- [[File Upload - Vulnerabilidades]] (Subida de archivos maliciosos para obtener ejecución de código.)
 
 
   ## 🛡 Access Control & Authentication
