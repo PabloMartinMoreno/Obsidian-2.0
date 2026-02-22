@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Web Explotación.md",
+                "file": "01 - Primary Categories/Red Team.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Explotación"
+              "title": "Red Team"
             }
           }
         ],
@@ -266,11 +266,17 @@
   },
   "active": "be6f1a800fe8279d",
   "lastOpenFiles": [
-    "04 - Content/Process/BOLA - IDOR.md",
+    "04 - Content/Fuzzing Parameters & Values.md",
+    "04 - Content/ffuf.md",
+    "03 - Tertiary Categories/Web Enumeration.md",
+    "04 - Content/Fuzzing Directories & Pages.md",
+    "02 - Secondary Categories/Information Gathering.md",
+    "01 - Primary Categories/Red Team.md",
     "04 - Content/Process/Web Explotación.md",
+    "04 - Content/OS Command Injection.md",
+    "04 - Content/Process/BOLA - IDOR.md",
     "04 - Content/File Upload - Vulnerabilidades.md",
     "04 - Content/Process/Local File Inclusion (LFI).md",
-    "04 - Content/OS Command Injection.md",
     "04 - Content/File Upload - Desactivación de Validación Front-end.md",
     "04 - Content/File Upload - Shells en PHP.md",
     "04 - Content/File Upload - Bypass por Confusión y Desincronización.md",
@@ -286,12 +292,6 @@
     "04 - Content/Command Injection - Operadores Especificos.md",
     "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md",
     "04 - Content/Command Injection - Bypass de Espacios.md",
-    "04 - Content/Command Injection - Operadores Generales.md",
-    "04 - Content/Process/SQL Injection (SQLi).md",
-    "04 - Content/Process/File Upload Bypass.md",
-    "04 - Content/Reverse Shell.md",
-    "00 - Resources/Templates/Type/_precode.md",
-    "04 - Content/Process/CWES.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
