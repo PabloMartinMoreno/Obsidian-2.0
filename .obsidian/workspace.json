@@ -266,8 +266,9 @@
   },
   "active": "be6f1a800fe8279d",
   "lastOpenFiles": [
-    "04 - Content/File Upload - Vulnerabilidades.md",
+    "04 - Content/Process/BOLA - IDOR.md",
     "04 - Content/Process/Web Explotación.md",
+    "04 - Content/File Upload - Vulnerabilidades.md",
     "04 - Content/Process/Local File Inclusion (LFI).md",
     "04 - Content/OS Command Injection.md",
     "04 - Content/File Upload - Desactivación de Validación Front-end.md",
@@ -291,7 +292,6 @@
     "04 - Content/Reverse Shell.md",
     "00 - Resources/Templates/Type/_precode.md",
     "04 - Content/Process/CWES.md",
-    "04 - Content/Process/Introduction to Web Applications.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
