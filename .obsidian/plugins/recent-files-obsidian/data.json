@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "IDOR - Manipulación del Cuerpo de la Petición",
+      "path": "04 - Content/Process/IDOR - Manipulación del Cuerpo de la Petición.md"
+    },
+    {
+      "basename": "BOLA - IDOR",
+      "path": "04 - Content/Process/BOLA - IDOR.md"
+    },
+    {
+      "basename": "IDOR - Manipulación de Parámetros y Rutas",
+      "path": "04 - Content/Process/IDOR - Manipulación de Parámetros y Rutas.md"
+    },
+    {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
     },
@@ -31,10 +43,6 @@
     {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
-    },
-    {
-      "basename": "BOLA - IDOR",
-      "path": "04 - Content/Process/BOLA - IDOR.md"
     },
     {
       "basename": "File Upload - Vulnerabilidades",
@@ -191,14 +199,6 @@
     {
       "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
       "path": "04 - Content/Process/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
-    },
-    {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Process/Server-Side Includes (SSI) Injection.md"
-    },
-    {
-      "basename": "Fingerprinting Web Technologies",
-      "path": "04 - Content/Fingerprinting Web Technologies.md"
     }
   ],
   "omittedPaths": [],
