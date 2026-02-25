@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "04 - Content/Process/Web Explotación.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
       "basename": "BOLA - IDOR",
       "path": "04 - Content/BOLA - IDOR.md"
     },
@@ -25,10 +41,6 @@
       "path": "04 - Content/IDOR - Manipulación de Cabeceras HTTP y Protocolo.md"
     },
     {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
       "basename": "Fuzzing Parameters & Values",
       "path": "04 - Content/Fuzzing Parameters & Values.md"
     },
@@ -49,16 +61,8 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Web Explotación",
-      "path": "04 - Content/Process/Web Explotación.md"
-    },
-    {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
     },
     {
       "basename": "Local File Inclusion (LFI)",
@@ -187,10 +191,6 @@
     {
       "basename": "Server-Side Attacks",
       "path": "04 - Content/Server-Side Attacks.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
     },
     {
       "basename": "Aragog",
