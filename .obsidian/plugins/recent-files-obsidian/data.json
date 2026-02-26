@@ -1,20 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+      "basename": "XXE - Clásico SSRF",
+      "path": "04 - Content/Process/XXE - Clásico SSRF.md"
     },
     {
-      "basename": "File Upload - Bypass de Filtros de Lista Blanca",
-      "path": "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md"
+      "basename": "XXE - Inyección Mediante XInclude",
+      "path": "04 - Content/Process/XXE - Inyección Mediante XInclude.md"
+    },
+    {
+      "basename": "XXE - Clásico In-band",
+      "path": "04 - Content/Process/XXE - Clásico In-band.md"
+    },
+    {
+      "basename": "XML External Entity (XXE)",
+      "path": "04 - Content/Process/XML External Entity (XXE).md"
     },
     {
       "basename": "Web Explotación",
       "path": "04 - Content/Process/Web Explotación.md"
     },
     {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
       "basename": "Explotación",
       "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "File Upload - Bypass de Filtros de Lista Blanca",
+      "path": "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md"
     },
     {
       "basename": "Red Team",
@@ -183,22 +199,6 @@
     {
       "basename": "SSRF - Reconocimiento",
       "path": "04 - Content/SSRF - Reconocimiento.md"
-    },
-    {
-      "basename": "SSRF - Mecanismo Lógico",
-      "path": "04 - Content/SSRF - Mecanismo Lógico.md"
-    },
-    {
-      "basename": "Server-Side Attacks",
-      "path": "04 - Content/Server-Side Attacks.md"
-    },
-    {
-      "basename": "Aragog",
-      "path": "05 - Writeups/VulnHub/Aragog.md"
-    },
-    {
-      "basename": "Reverse Shells",
-      "path": "04 - Content/Process/Reverse Shells.md"
     }
   ],
   "omittedPaths": [],
