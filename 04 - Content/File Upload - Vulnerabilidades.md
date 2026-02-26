@@ -60,3 +60,5 @@ tab: **Confusión**
 
 
 ***
+
+/usr/share/seclists/Discovery/Web-Content/web-all-content-types.txt
