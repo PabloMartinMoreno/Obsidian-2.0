@@ -31,7 +31,7 @@ linked:
 
 ## Overview
 
-La vulnerabilidad de [[XXE]] actúa como un vector directo para lograr un ataque de [[SSRF]] (Server-Side Request Forgery) cuando se define el valor de una entidad externa utilizando una URL de red en lugar de una ruta de archivo local. Al operar en la variante clásica (_in-band_), el parser procesa la solicitud y el contenido de la respuesta de esa petición interna se incrusta en el nodo XML, reflejándose directamente en la respuesta HTTP que recibo.
+La vulnerabilidad de [[XXE]] actúa como un vector directo para lograr un ataque de [[SSRF]] (Server-Side Request Forgery) cuando se define el valor de una entidad externa utilizando una URL de red en lugar de una ruta de archivo local. Al operar en la variante clásica (_in-band_), el parser procesa la solicitud y el contenido de la respuesta de esa petición interna se incrusta en el nodo XML, reflejándose directamente en la respuesta HTTP que se recibe.
 
 
 ***

@@ -24,21 +24,16 @@ linked:
 ## Consideraciones de Explotación
 
 - **Resolución habilitada:** Para que cualquiera de estos payloads funcione, el componente que procesa el XML (como configuraciones por defecto en frameworks antiguos de Java o PHP) debe tener permitida la resolución de entidades externas.
-    
 - **Reflejo de datos:** La clave del ataque _in-band_ reside en identificar en qué nodo o atributo del documento XML se refleja la entrada del usuario. El llamado a la entidad (`&xxe;`) debe colocarse exactamente en ese nodo.
-    
 - **Limitaciones de caracteres:** Si el archivo extraído contiene formato XML válido o caracteres reservados, el parser intentará interpretarlo, lo que a menudo genera un error de sintaxis y arruina la extracción. El uso de wrappers (como `CDATA` dinámico o Base64) es mandatorio en estos casos.
-    
 - **Pivoteo táctico:** Si la inyección es exitosa pero la aplicación no devuelve el resultado en la respuesta (el servidor lo procesa pero no lo muestra), el enfoque _in-band_ deja de ser viable. En ese caso, la nota a vincular sería [[Blind XXE]] para forzar canales de exfiltración mediante [[XXE Out-of-Band (OOB)]].
-    
+
 
 ---
 
-¿Te gustaría que redacte una nota complementaria detallando las técnicas y payloads para "Blind XXE / Out-of-Band (OOB)"?
-***
-
 ## Overview
 
+El ataque de [[XXE]] (XML External Entity) en su variante clásica o _in-band_ ocurre cuando una aplicación procesa un documento XML de forma insegura y devuelve el valor de la entidad externa procesada directamente dentro de la respuesta HTTP. Esto me permite confirmar y recuperar el resultado del payload de manera inmediata en la misma transacción.
 
 ***
 

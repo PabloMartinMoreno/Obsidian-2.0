@@ -1,16 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "XXE - DTDs Locales",
+      "path": "04 - Content/Process/XXE - DTDs Locales.md"
+    },
+    {
+      "basename": "XXE - Out-of-Band (OOB) y DTDs Externos",
+      "path": "04 - Content/Process/XXE - Out-of-Band (OOB) y DTDs Externos.md"
+    },
+    {
+      "basename": "XXE - Blind Basado en Errores",
+      "path": "04 - Content/Process/XXE - Blind Basado en Errores.md"
+    },
+    {
+      "basename": "XXE - Carga de Archivos (Formatos XML Ocultos)",
+      "path": "04 - Content/Process/XXE - Carga de Archivos (Formatos XML Ocultos).md"
+    },
+    {
+      "basename": "XXE - Clásico In-band",
+      "path": "04 - Content/Process/XXE - Clásico In-band.md"
+    },
+    {
       "basename": "XXE - Clásico SSRF",
       "path": "04 - Content/Process/XXE - Clásico SSRF.md"
     },
     {
       "basename": "XXE - Inyección Mediante XInclude",
       "path": "04 - Content/Process/XXE - Inyección Mediante XInclude.md"
-    },
-    {
-      "basename": "XXE - Clásico In-band",
-      "path": "04 - Content/Process/XXE - Clásico In-band.md"
     },
     {
       "basename": "XML External Entity (XXE)",
@@ -183,22 +199,6 @@
     {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "Anatomía de la Construcción de un Payload Gopher",
-      "path": "04 - Content/Anatomía de la Construcción de un Payload Gopher.md"
-    },
-    {
-      "basename": "SSRF - Gopher",
-      "path": "04 - Content/SSRF - Gopher.md"
-    },
-    {
-      "basename": "SSRF - Explotación",
-      "path": "04 - Content/SSRF - Explotación.md"
-    },
-    {
-      "basename": "SSRF - Reconocimiento",
-      "path": "04 - Content/SSRF - Reconocimiento.md"
     }
   ],
   "omittedPaths": [],
