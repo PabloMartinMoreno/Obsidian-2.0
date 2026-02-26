@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload - Bypass de Filtros de Lista Blanca",
+      "path": "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md"
+    },
+    {
       "basename": "File Upload - Vulnerabilidades",
       "path": "04 - Content/File Upload - Vulnerabilidades.md"
     },
@@ -87,10 +91,6 @@
     {
       "basename": "File Upload - Bypass de Sobrescritura de Configuración",
       "path": "04 - Content/File Upload - Bypass de Sobrescritura de Configuración.md"
-    },
-    {
-      "basename": "File Upload - Bypass de Filtros de Lista Blanca",
-      "path": "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md"
     },
     {
       "basename": "File Upload - Bypass de Filtros de Lista Negra",

