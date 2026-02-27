@@ -9,7 +9,7 @@ type: CheatSheet
 linked:
   - "[[OS Command Injection]]"
 ---
-# Bypassing Injection - Lista Negra de Comandos (Obfuscation)
+# Command Injection - Lista Negra de Comandos (Obfuscation)
 
 ***
 

@@ -14,7 +14,7 @@ linked:
   - "[[Command Injection - Bypass de Espacios]]"
   - "[[Command Injection - Generación de Caracteres Bloqueados]]"
   - "[[Command Injection - Operadores Especificos]]"
-  - "[[Bypassing Injection - Lista Negra de Comandos]]"
+  - "[[Command Injection - Lista Negra de Comandos]]"
   - "[[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)]]"
   - "[[Command Injection - Herramientas de Obfuscación Automática]]"
   - "[[Command Injection - Prevención]]"
