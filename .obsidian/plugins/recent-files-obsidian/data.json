@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Terminal Interactiva",
+      "path": "04 - Content/Process/Terminal Interactiva.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "04 - Content/Process/Web Explotación.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Web Requests",
       "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
     }
   ],
   "omittedPaths": [],
