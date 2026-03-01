@@ -7,7 +7,7 @@ primary categories:
 secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
-  - "[[Web Explotación]]"
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
   - "[[SQL Commands]]"

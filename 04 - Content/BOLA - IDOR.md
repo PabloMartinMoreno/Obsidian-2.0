@@ -7,7 +7,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Web Explotación]]"
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
   - "[[IDOR - Manipulación de Parámetros y Rutas]]"

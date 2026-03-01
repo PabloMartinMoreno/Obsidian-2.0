@@ -1,4 +1,24 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Explotación]]"
+tertiary categories:
+  - "[[Explotación Web]]"
+type: CheatSheet
+linked:
+---
 # Cross-Site Scripting (XSS) 
+
+## Cheatsheet
+
+
+
+
+
 
 ## Qué es
 

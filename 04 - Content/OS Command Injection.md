@@ -7,7 +7,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Web Explotación]]"
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
   - "[[Command Injection - Operadores Generales]]"

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/OS Command Injection.md",
+                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "OS Command Injection"
+              "title": "Cross-Site Scripting (XSS)"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/OS Command Injection.md",
+                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -212,7 +212,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de OS Command Injection"
+              "title": "Gráfico de Cross-Site Scripting (XSS)"
             }
           },
           {
@@ -264,8 +264,15 @@
   },
   "active": "e716a72afb2aef3c",
   "lastOpenFiles": [
-    "04 - Content/Command Injection - Prevención.md",
+    "04 - Content/Process/Explotación Web.md",
+    "04 - Content/Process/XML External Entity (XXE).md",
+    "02 - Secondary Categories/Explotación.md",
+    "04 - Content/Process/XXE - Inyección Mediante XInclude.md",
+    "04 - Content/Process/XXE - Out-of-Band (OOB) y DTDs Externos.md",
+    "04 - Content/Process/XXE - Clásico In-band.md",
+    "04 - Content/Process/Cross-Site Scripting (XSS).md",
     "04 - Content/OS Command Injection.md",
+    "04 - Content/Command Injection - Prevención.md",
     "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md",
     "04 - Content/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
     "04 - Content/Command Injection - Lista Negra de Comandos.md",
@@ -275,21 +282,14 @@
     "04 - Content/Command Injection - Operadores Generales.md",
     "04 - Content/File Upload - Vulnerabilidades.md",
     "04 - Content/Process/Terminal Interactiva.md",
-    "04 - Content/Process/Web Explotación.md",
     "04 - Content/Process/XXE - DTDs Locales.md",
-    "04 - Content/Process/XXE - Out-of-Band (OOB) y DTDs Externos.md",
     "04 - Content/Process/XXE - Blind Basado en Errores.md",
     "04 - Content/Process/XXE - Carga de Archivos (Formatos XML Ocultos).md",
-    "04 - Content/Process/XXE - Clásico In-band.md",
     "04 - Content/Process/XXE - Clásico SSRF.md",
-    "04 - Content/Process/XXE - Inyección Mediante XInclude.md",
-    "04 - Content/Process/XML External Entity (XXE).md",
-    "02 - Secondary Categories/Explotación.md",
     "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md",
     "01 - Primary Categories/Red Team.md",
     "04 - Content/BOLA - IDOR.md",
     "04 - Content/IDOR - Manipulación del Cuerpo de la Petición.md",
-    "04 - Content/IDOR - Manipulación de Parámetros y Rutas.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",

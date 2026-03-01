@@ -7,7 +7,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Web Explotación]]"
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
   - "[[File Upload - Reconocimiento de Filtros]]"
