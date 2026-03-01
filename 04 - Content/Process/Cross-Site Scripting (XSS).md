@@ -13,6 +13,7 @@ linked:
   - "[[XSS - HTML Básico]]"
   - "[[XSS - Etiqueta <script> Estándar]]"
   - "[[XSS - Manejadores de Eventos HTML]]"
+  - "[[XSS - Pseudo-protocolos]]"
 ---
 # Cross-Site Scripting (XSS) 
 

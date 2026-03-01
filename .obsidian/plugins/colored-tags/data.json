@@ -497,7 +497,8 @@
     "html-injection": 140,
     "cheatsheet": 141,
     "javascript": 142,
-    "event-handlers": 143
+    "event-handlers": 143,
+    "pseudo-protocolos": 144
   },
   "_version": 3
 }

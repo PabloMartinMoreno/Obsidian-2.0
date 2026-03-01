@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "XSS - Escape de Contexto en Atributos",
+      "path": "04 - Content/Process/XSS - Escape de Contexto en Atributos.md"
+    },
+    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - Pseudo-protocolos",
+      "path": "04 - Content/Process/XSS - Pseudo-protocolos.md"
     },
     {
       "basename": "XSS - Manejadores de Eventos HTML",
@@ -191,14 +199,6 @@
     {
       "basename": "Reverse Shell",
       "path": "04 - Content/Reverse Shell.md"
-    },
-    {
-      "basename": "_precode",
-      "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     }
   ],
   "omittedPaths": [],
