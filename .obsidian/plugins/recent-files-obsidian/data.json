@@ -5,8 +5,32 @@
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
+      "basename": "XSS - Manejadores de Eventos HTML",
+      "path": "04 - Content/Process/XSS - Manejadores de Eventos HTML.md"
+    },
+    {
+      "basename": "XSS - Etiqueta <script> Estándar",
+      "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
+    },
+    {
+      "basename": "XSS - HTML Básico",
+      "path": "04 - Content/Process/XSS - HTML Básico.md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
+      "basename": "File Upload - Bypass de Filtros de Lista Blanca",
+      "path": "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md"
+    },
+    {
+      "basename": "XXE - DTDs Locales",
+      "path": "04 - Content/Process/XXE - DTDs Locales.md"
     },
     {
       "basename": "XML External Entity (XXE)",
@@ -65,16 +89,8 @@
       "path": "04 - Content/Command Injection - Operadores Generales.md"
     },
     {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
-    },
-    {
       "basename": "Terminal Interactiva",
       "path": "04 - Content/Process/Terminal Interactiva.md"
-    },
-    {
-      "basename": "XXE - DTDs Locales",
-      "path": "04 - Content/Process/XXE - DTDs Locales.md"
     },
     {
       "basename": "XXE - Blind Basado en Errores",
@@ -87,10 +103,6 @@
     {
       "basename": "XXE - Clásico SSRF",
       "path": "04 - Content/Process/XXE - Clásico SSRF.md"
-    },
-    {
-      "basename": "File Upload - Bypass de Filtros de Lista Blanca",
-      "path": "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md"
     },
     {
       "basename": "Red Team",
@@ -187,18 +199,6 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Introduction to Web Applications",
-      "path": "04 - Content/Process/Introduction to Web Applications.md"
-    },
-    {
-      "basename": "Sensitive Data Exposure",
-      "path": "04 - Content/Process/Sensitive Data Exposure.md"
-    },
-    {
-      "basename": "Front End vs. Back End",
-      "path": "04 - Content/Process/Front End vs. Back End.md"
     }
   ],
   "omittedPaths": [],

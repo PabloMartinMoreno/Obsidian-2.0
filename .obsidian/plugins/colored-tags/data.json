@@ -491,7 +491,13 @@
     "tool/dnsenum": 83,
     "meta/brute-force": 66,
     "protocol/axfr": 21,
-    "incompleto": 137
+    "incompleto": 137,
+    "ciberseguridad": 138,
+    "xss": 139,
+    "html-injection": 140,
+    "cheatsheet": 141,
+    "javascript": 142,
+    "event-handlers": 143
   },
   "_version": 3
 }

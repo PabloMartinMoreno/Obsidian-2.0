@@ -10,6 +10,9 @@ tertiary categories:
   - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[XSS - HTML Básico]]"
+  - "[[XSS - Etiqueta <script> Estándar]]"
+  - "[[XSS - Manejadores de Eventos HTML]]"
 ---
 # Cross-Site Scripting (XSS) 
 
