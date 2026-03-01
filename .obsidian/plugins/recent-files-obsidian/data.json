@@ -1,24 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
-      "path": "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md"
-    },
-    {
-      "basename": "XSS - Payloads Polyglot",
-      "path": "04 - Content/Process/XSS - Payloads Polyglot.md"
-    },
-    {
-      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
-      "path": "04 - Content/Process/XSS - Manipulación de Sources y Sinks (DOM-based).md"
-    },
-    {
       "basename": "XSS - Pseudo-protocolos",
       "path": "04 - Content/Process/XSS - Pseudo-protocolos.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "00 - Resources/Templates/Type/_precode.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "XSS - Manejadores de Eventos HTML",
@@ -31,6 +23,18 @@
     {
       "basename": "XSS - Etiqueta <script> Estándar",
       "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
+    },
+    {
+      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
+      "path": "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md"
+    },
+    {
+      "basename": "XSS - Payloads Polyglot",
+      "path": "04 - Content/Process/XSS - Payloads Polyglot.md"
+    },
+    {
+      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
+      "path": "04 - Content/Process/XSS - Manipulación de Sources y Sinks (DOM-based).md"
     },
     {
       "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
@@ -195,10 +199,6 @@
     {
       "basename": "File Upload - Bypass de Contenido",
       "path": "04 - Content/File Upload - Bypass de Contenido.md"
-    },
-    {
-      "basename": "File Upload - Bypass de Sobrescritura de Configuración",
-      "path": "04 - Content/File Upload - Bypass de Sobrescritura de Configuración.md"
     }
   ],
   "omittedPaths": [],

