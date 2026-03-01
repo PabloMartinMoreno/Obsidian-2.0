@@ -14,6 +14,10 @@ linked:
   - "[[XSS - Etiqueta <script> Estándar]]"
   - "[[XSS - Manejadores de Eventos HTML]]"
   - "[[XSS - Pseudo-protocolos]]"
+  - "[[XSS - Manipulación de Sources y Sinks (DOM-based)]]"
+  - "[[XSS - Payloads Polyglot]]"
+  - "[[XSS - Explotación Out-of-Band (Blind XSS)]]"
+  - "[[XSS - Explotación de Mutaciones del Navegador (mXSS)]]"
 ---
 # Cross-Site Scripting (XSS) 
 

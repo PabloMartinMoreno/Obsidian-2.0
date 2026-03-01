@@ -1,28 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "XSS - Escape de Contexto en Atributos",
-      "path": "04 - Content/Process/XSS - Escape de Contexto en Atributos.md"
+      "basename": "XSS - Pseudo-protocolos",
+      "path": "04 - Content/Process/XSS - Pseudo-protocolos.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
-      "basename": "XSS - Pseudo-protocolos",
-      "path": "04 - Content/Process/XSS - Pseudo-protocolos.md"
-    },
-    {
       "basename": "XSS - Manejadores de Eventos HTML",
       "path": "04 - Content/Process/XSS - Manejadores de Eventos HTML.md"
+    },
+    {
+      "basename": "XSS - HTML Básico",
+      "path": "04 - Content/Process/XSS - HTML Básico.md"
     },
     {
       "basename": "XSS - Etiqueta <script> Estándar",
       "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
     },
     {
-      "basename": "XSS - HTML Básico",
-      "path": "04 - Content/Process/XSS - HTML Básico.md"
+      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
+      "path": "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
+    },
+    {
+      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
+      "path": "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md"
+    },
+    {
+      "basename": "XSS - Payloads Polyglot",
+      "path": "04 - Content/Process/XSS - Payloads Polyglot.md"
+    },
+    {
+      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
+      "path": "04 - Content/Process/XSS - Manipulación de Sources y Sinks (DOM-based).md"
+    },
+    {
+      "basename": "XSS - Escape de Contexto en Atributos",
+      "path": "04 - Content/Process/XSS - Escape de Contexto en Atributos.md"
     },
     {
       "basename": "Explotación Web",
@@ -183,22 +199,6 @@
     {
       "basename": "File Upload - Bypass de Sobrescritura de Configuración",
       "path": "04 - Content/File Upload - Bypass de Sobrescritura de Configuración.md"
-    },
-    {
-      "basename": "File Upload - Bypass de Filtros de Lista Negra",
-      "path": "04 - Content/File Upload - Bypass de Filtros de Lista Negra.md"
-    },
-    {
-      "basename": "File Upload - Reconocimiento de Filtros",
-      "path": "04 - Content/File Upload - Reconocimiento de Filtros.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Reverse Shell",
-      "path": "04 - Content/Reverse Shell.md"
     }
   ],
   "omittedPaths": [],

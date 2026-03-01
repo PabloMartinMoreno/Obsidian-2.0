@@ -498,7 +498,8 @@
     "cheatsheet": 141,
     "javascript": 142,
     "event-handlers": 143,
-    "pseudo-protocolos": 144
+    "pseudo-protocolos": 144,
+    "dom-xss": 145
   },
   "_version": 3
 }

