@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
-      "path": "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
+      "basename": "XSS - Etiqueta <script> Estándar",
+      "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - HTML Básico",
+      "path": "04 - Content/Process/XSS - HTML Básico.md"
+    },
+    {
+      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
+      "path": "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
     },
     {
       "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
@@ -31,14 +39,6 @@
     {
       "basename": "XSS - Manejadores de Eventos HTML",
       "path": "04 - Content/Process/XSS - Manejadores de Eventos HTML.md"
-    },
-    {
-      "basename": "XSS - HTML Básico",
-      "path": "04 - Content/Process/XSS - HTML Básico.md"
-    },
-    {
-      "basename": "XSS - Etiqueta <script> Estándar",
-      "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
     },
     {
       "basename": "XSS - Escape de Contexto en Atributos",
