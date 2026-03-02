@@ -77,7 +77,7 @@ tab: **Comandos Codificados**
 
 
 ***
-
+echo $(tr '!-}' '"-~'<<<A)
 
 ### 1. La entrada: `<<<[`
 
