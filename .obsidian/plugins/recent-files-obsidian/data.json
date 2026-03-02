@@ -5,6 +5,10 @@
       "path": "04 - Content/OS Command Injection.md"
     },
     {
+      "basename": "Command Injection - Lista Negra de Comandos",
+      "path": "04 - Content/Command Injection - Lista Negra de Comandos.md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
     },
@@ -95,10 +99,6 @@
     {
       "basename": "Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)",
       "path": "04 - Content/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md"
-    },
-    {
-      "basename": "Command Injection - Lista Negra de Comandos",
-      "path": "04 - Content/Command Injection - Lista Negra de Comandos.md"
     },
     {
       "basename": "Command Injection - Operadores Especificos",

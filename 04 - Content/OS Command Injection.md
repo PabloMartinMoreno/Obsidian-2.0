@@ -47,7 +47,7 @@ tab: **Caracteres Bloqueados**
 ![[Command Injection - Generación de Caracteres Bloqueados#^ci-caracteres-bloqueados]]
 
 tab: **Lista Negra de Comandos**
-![[Bypassing Injection - Lista Negra de Comandos#^ci-blacklist-comandos]]
+![[Command Injection - Lista Negra de Comandos#^ci-blacklist-comandos]]
 ````
 
 ___
