@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8a343a19e4916977",
+            "id": "9a4191df84bbee45",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -264,10 +264,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "8a343a19e4916977",
+  "active": "9a4191df84bbee45",
   "lastOpenFiles": [
-    "04 - Content/Process/XSS - HTML Básico.md",
+    "04 - Content/Process/XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples.md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
+    "00 - Resources/Templates/Type/_precode.md",
+    "04 - Content/Process/XSS - Escape de Contexto en Atributos.md",
+    "04 - Content/Process/XSS - HTML Básico.md",
     "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md",
     "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md",
     "04 - Content/Process/XSS - Payloads Polyglot.md",
@@ -289,9 +292,6 @@
     "04 - Content/Process/Deobfuscation.md",
     "04 - Content/Process/Advance Obfuscation.md",
     "04 - Content/Process/Basic Obfuscation.md",
-    "04 - Content/Process/Code Obfuscation.md",
-    "04 - Content/Process/Web Fuzzing.md",
-    "04 - Content/Process/API Fuzzing.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",

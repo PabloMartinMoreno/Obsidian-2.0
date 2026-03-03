@@ -18,12 +18,14 @@ linked:
   - "[[XSS - Payloads Polyglot]]"
   - "[[XSS - Explotación Out-of-Band (Blind XSS)]]"
   - "[[XSS - Explotación de Mutaciones del Navegador (mXSS)]]"
+  - "[[XSS - Escape de Contexto en Atributos]]"
+  - "[[XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples]]"
 ---
 # Cross-Site Scripting (XSS) 
 
 ## Cheatsheet
 
-### Inyecciones Clásicas
+### 1. Inyecciones Clásicas
 
 ````tabs
 tab: **Inyección Directa de HTML Básico**
@@ -34,42 +36,42 @@ tab: **Inyección de Etiquetas <script>**
 
 ````
 
-### Manipulación de Contextos y Eventos
+### 2. Manipulación de Contextos y Eventos
 
 ````tabs
 tab: **Inyección de Manejadores de Eventos HTML**
-
+![[XSS - Manejadores de Eventos HTML#^xss-eventos]]
 
 tab: **Inyección de Pseudo-Protocolos**
-
+![[XSS - Pseudo-protocolos#^xss-pseudoprotocolos]]
 
 tab: **Inyección de Escape de Contexto en Atributos**
-
+![[XSS - Escape de Contexto en Atributos#^xss-atributos]]
 
 ````
 
-### Técnicas de Evasión
+### 3. Técnicas de Evasión
 
 ````tabs
 tab: **Evasion de Filtros y WAF mediante Codificaciones Múltiples**
-
+![[XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples#^xss-waf]]
 
 tab: **Inyección de Payloads Polyglot**
-
+![[XSS - Payloads Polyglot#^xss-polyglot]]
 
 ````
 
-### Explotación del Lado del Cliente
+### 4. Explotación del Lado del Cliente
 
 ````tabs
 tab: **Manipulación directa de _Sources_ y _Sinks_**
-
+![[XSS - Manipulación de Sources y Sinks (DOM-based)#^xss-sources]]
 
 tab: **Explotación Out-of-Band (Blind XSS)**
-
+![[XSS - Explotación Out-of-Band (Blind XSS)#^xss-blind]]
 
 tab: **Explotación mediante mutaciones del navegador (mXSS)**
-
+![[XSS - Explotación de Mutaciones del Navegador (mXSS)#^xss-mxss]]
 
 ````
 
@@ -150,9 +152,3 @@ Ocurre enteramente en el **navegador**. El servidor envía la página bien, pero
 |**DOM-based**|En el navegador (Cliente -> Cliente)|Depende de cómo se comparta el link|
 
 ---
-
-## Notas Relacionadas
-
-- [[Prevención de XSS]]
-- [[Content Security Policy (CSP)]]
-- [[Robo de Sesiones]]

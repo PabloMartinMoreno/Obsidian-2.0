@@ -5,6 +5,18 @@
       "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
     },
     {
+      "basename": "XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples",
+      "path": "04 - Content/Process/XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "00 - Resources/Templates/Type/_precode.md"
+    },
+    {
+      "basename": "XSS - Escape de Contexto en Atributos",
+      "path": "04 - Content/Process/XSS - Escape de Contexto en Atributos.md"
+    },
+    {
       "basename": "XSS - HTML Básico",
       "path": "04 - Content/Process/XSS - HTML Básico.md"
     },
@@ -137,14 +149,6 @@
       "path": "04 - Content/Process/Explotación Web.md"
     },
     {
-      "basename": "_precode",
-      "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
-      "basename": "XSS - Escape de Contexto en Atributos",
-      "path": "04 - Content/Process/XSS - Escape de Contexto en Atributos.md"
-    },
-    {
       "basename": "File Upload - Vulnerabilidades",
       "path": "04 - Content/File Upload - Vulnerabilidades.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "BOLA - IDOR",
-      "path": "04 - Content/BOLA - IDOR.md"
     }
   ],
   "omittedPaths": [],

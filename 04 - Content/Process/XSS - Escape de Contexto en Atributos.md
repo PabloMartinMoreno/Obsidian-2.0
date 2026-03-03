@@ -22,6 +22,8 @@ linked:
 |Atributos sin comillas|`x onmouseover=alert(1)`|Ocurre cuando el HTML está mal formado (ej. `<input value=INYECCIÓN>`). Un simple espacio es suficiente para escapar e introducir un nuevo atributo.|
 |Dentro de un manejador JS|`');alert(1);//`|Escape directo dentro de un atributo que ya ejecuta JavaScript (ej. `<button onclick="func('INYECCIÓN')">`). Cierra la función legítima y comenta el resto.|
 
+^xss-atributos
+
 ### Mecánicas de Ruptura Estructural
 
 Para que la inyección sea exitosa, debo analizar cómo la aplicación web envuelve mi entrada en el código fuente y replicar esos caracteres de cierre en mi payload.
