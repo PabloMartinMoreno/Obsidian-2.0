@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Command Injection - Prevención.md",
+                "file": "04 - Content/OS Command Injection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Command Injection - Prevención"
+              "title": "OS Command Injection"
             }
           }
         ],
@@ -244,7 +244,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 244.5
+    "width": 244.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -265,13 +266,14 @@
   },
   "active": "8a343a19e4916977",
   "lastOpenFiles": [
-    "04 - Content/OS Command Injection.md",
-    "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md",
     "04 - Content/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md",
+    "04 - Content/OS Command Injection.md",
     "04 - Content/Command Injection - Lista Negra de Comandos.md",
+    "04 - Content/Command Injection - Bypass de Espacios.md",
+    "04 - Content/Command Injection - Prevención.md",
+    "04 - Content/Command Injection - Herramientas de Obfuscación Automática.md",
     "04 - Content/Command Injection - Operadores Especificos.md",
     "04 - Content/Command Injection - Generación de Caracteres Bloqueados.md",
-    "04 - Content/Command Injection - Bypass de Espacios.md",
     "04 - Content/Command Injection - Operadores Generales.md",
     "04 - Content/Process/Explotación Web.md",
     "04 - Content/Process/Cross-Site Scripting (XSS).md",
@@ -290,7 +292,6 @@
     "04 - Content/Process/XXE - DTDs Locales.md",
     "04 - Content/Process/XML External Entity (XXE).md",
     "02 - Secondary Categories/Explotación.md",
-    "04 - Content/Process/XXE - Inyección Mediante XInclude.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",

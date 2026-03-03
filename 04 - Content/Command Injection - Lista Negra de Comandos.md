@@ -45,8 +45,3 @@ linked:
 
 
 ***
-
-## Notas Relacionadas
-
-
-***

