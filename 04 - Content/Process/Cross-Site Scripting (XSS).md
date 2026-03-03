@@ -23,50 +23,62 @@ linked:
 
 ## Cheatsheet
 
+### Inyecciones Clásicas
+
+````tabs
+tab: **Inyección Directa de HTML Básico**
+![[XSS - HTML Básico#^xss-html]]
+
+tab: **Inyección de Etiquetas <script>**
+![[XSS - Etiqueta <script> Estándar#^xss-script]]
+
+````
+
+### Manipulación de Contextos y Eventos
+
+````tabs
+tab: **Inyección de Manejadores de Eventos HTML**
 
 
+tab: **Inyección de Pseudo-Protocolos**
 
 
+tab: **Inyección de Escape de Contexto en Atributos**
 
-## Qué es
+
+````
+
+### Técnicas de Evasión
+
+````tabs
+tab: **Evasion de Filtros y WAF mediante Codificaciones Múltiples**
+
+
+tab: **Inyección de Payloads Polyglot**
+
+
+````
+
+### Explotación del Lado del Cliente
+
+````tabs
+tab: **Manipulación directa de _Sources_ y _Sinks_**
+
+
+tab: **Explotación Out-of-Band (Blind XSS)**
+
+
+tab: **Explotación mediante mutaciones del navegador (mXSS)**
+
+
+````
+
+
+## Overview
 
 Las vulnerabilidades de HTML Injection a menudo pueden usarse para realizar ataques **Cross-Site Scripting (XSS)** inyectando código JavaScript que se ejecuta en el cliente. Si podemos ejecutar código en la máquina de la víctima, podemos potencialmente acceder a su cuenta o incluso a su equipo. XSS es muy similar a HTML Injection, pero **XSS inyecta JavaScript** para ataques más avanzados en el cliente, en lugar de solo HTML.
 
-## Tipos principales 
-
-* **Reflected XSS:** ocurre cuando la entrada del usuario se muestra en la página después de procesarla (p. ej. resultado de búsqueda o mensaje de error).
-* **Stored XSS:** ocurre cuando la entrada del usuario se almacena en la base de datos del back end y luego se muestra al recuperarla (p. ej. posts o comentarios).
-* **DOM XSS:** ocurre cuando la entrada del usuario se muestra directamente en el navegador y se escribe en un objeto del DOM (p. ej. nombre de usuario vulnerable o título de página).
-
-## Ejemplo de DOM XSS 
-
-Payload:
-
-```javascript
-#"><img src=/ onerror=alert(document.cookie)>
-```
-
-## Qué sucede al inyectarlo
-
-* Al ingresar ese payload en el ejemplo vulnerable sin sanitización, aparece una ventana `alert` con el valor de la cookie del usuario.
-* El payload accede al árbol DOM y recupera `document.cookie`; cuando el navegador procesa la entrada se considera un nuevo DOM y el JavaScript se ejecuta, mostrando la cookie en un popup.
-* Un atacante puede usar esto para robar sesiones (enviar la cookie a sí mismo) y luego intentar autenticarse como la víctima.
-* El mismo principio permite realizar otros tipos de ataques contra usuarios de la aplicación.
-
-
----
-
-# XSS (Cross-Site Scripting)
-
-> [!SUMMARY] Resumen
-> 
-> Vulnerabilidad que permite inyectar scripts maliciosos en webs vistas por otros usuarios.
-> 
-> Objetivo: Ejecutar código en el navegador de la víctima (robo de cookies, sesiones, redirecciones).
-
----
-
-## 1. XSS Reflejado (Reflected)
+### XSS Reflejado (Reflected)
 
 El script malicioso **no se guarda** en el servidor; viaja en la URL y el servidor lo "refleja" en la respuesta.
 
@@ -84,7 +96,7 @@ El script malicioso **no se guarda** en el servidor; viaja en la URL y el servid
 
 ---
 
-## 2. XSS Almacenado (Stored)
+### XSS Almacenado (Stored)
 
 El script malicioso **se guarda** permanentemente en el servidor (Base de datos, foros, comentarios).
 
@@ -110,7 +122,7 @@ El script malicioso **se guarda** permanentemente en el servidor (Base de datos,
 
 ---
 
-## 3. XSS basado en DOM (DOM-based)
+### XSS basado en DOM (DOM-based)
 
 Ocurre enteramente en el **navegador**. El servidor envía la página bien, pero el Javascript del sitio manipula los datos de forma insegura.
 
@@ -126,9 +138,10 @@ Ocurre enteramente en el **navegador**. El servidor envía la página bien, pero
 > ```
 > Si la URL es `sitio.com#<img src=x onerror=alert(1)>`, se ejecuta el ataque.
 
+
 ---
 
-## Diferencias Clave
+### Diferencias Clave
 
 |**Tipo**|**¿Dónde se aloja el payload?**|**¿Quién ve el ataque?**|
 |---|---|---|

@@ -1,8 +1,104 @@
 {
   "recentFiles": [
     {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - HTML Básico",
+      "path": "04 - Content/Process/XSS - HTML Básico.md"
+    },
+    {
+      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
+      "path": "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
+    },
+    {
+      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
+      "path": "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md"
+    },
+    {
+      "basename": "XSS - Payloads Polyglot",
+      "path": "04 - Content/Process/XSS - Payloads Polyglot.md"
+    },
+    {
+      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
+      "path": "04 - Content/Process/XSS - Manipulación de Sources y Sinks (DOM-based).md"
+    },
+    {
+      "basename": "XSS - Pseudo-protocolos",
+      "path": "04 - Content/Process/XSS - Pseudo-protocolos.md"
+    },
+    {
+      "basename": "XSS - Manejadores de Eventos HTML",
+      "path": "04 - Content/Process/XSS - Manejadores de Eventos HTML.md"
+    },
+    {
+      "basename": "XSS - Etiqueta <script> Estándar",
+      "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
+    },
+    {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Cheklist para el Examen CBBH",
+      "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
+    },
+    {
+      "basename": "Server-Side Attacks",
+      "path": "04 - Content/Server-Side Attacks.md"
+    },
+    {
+      "basename": "SQL Injection Fundamentals",
+      "path": "04 - Content/Process/SQL Injection Fundamentals.md"
+    },
+    {
+      "basename": "Subverting Query Logic",
+      "path": "04 - Content/Process/Subverting Query Logic.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS) moc",
+      "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
+    },
+    {
+      "basename": "Stored XSS",
+      "path": "04 - Content/Process/Stored XSS.md"
+    },
+    {
+      "basename": "Detectar tipo de codificacion",
+      "path": "04 - Content/Process/Detectar tipo de codificacion.md"
+    },
+    {
+      "basename": "deobfuscation simple",
+      "path": "04 - Content/Process/deobfuscation simple.md"
+    },
+    {
+      "basename": "Web Fuzzing",
+      "path": "04 - Content/Process/Web Fuzzing.md"
+    },
+    {
+      "basename": "API Fuzzing",
+      "path": "04 - Content/Process/API Fuzzing.md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition",
+      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
+    },
+    {
+      "basename": "Information Gathering - Web Edition - Introduction",
+      "path": "04 - Content/Process/Information Gathering - Web Edition - Introduction.md"
+    },
+    {
+      "basename": "Proxychains",
+      "path": "04 - Content/Process/Proxychains.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)",
@@ -41,44 +137,8 @@
       "path": "04 - Content/Process/Explotación Web.md"
     },
     {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "XSS - Etiqueta <script> Estándar",
-      "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
-    },
-    {
-      "basename": "XSS - HTML Básico",
-      "path": "04 - Content/Process/XSS - HTML Básico.md"
-    },
-    {
-      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
-      "path": "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
-    },
-    {
-      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
-      "path": "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md"
-    },
-    {
-      "basename": "XSS - Payloads Polyglot",
-      "path": "04 - Content/Process/XSS - Payloads Polyglot.md"
-    },
-    {
-      "basename": "XSS - Pseudo-protocolos",
-      "path": "04 - Content/Process/XSS - Pseudo-protocolos.md"
-    },
-    {
-      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
-      "path": "04 - Content/Process/XSS - Manipulación de Sources y Sinks (DOM-based).md"
-    },
-    {
       "basename": "_precode",
       "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
-      "basename": "XSS - Manejadores de Eventos HTML",
-      "path": "04 - Content/Process/XSS - Manejadores de Eventos HTML.md"
     },
     {
       "basename": "XSS - Escape de Contexto en Atributos",
@@ -139,66 +199,6 @@
     {
       "basename": "BOLA - IDOR",
       "path": "04 - Content/BOLA - IDOR.md"
-    },
-    {
-      "basename": "IDOR - Manipulación del Cuerpo de la Petición",
-      "path": "04 - Content/IDOR - Manipulación del Cuerpo de la Petición.md"
-    },
-    {
-      "basename": "IDOR - Manipulación de Parámetros y Rutas",
-      "path": "04 - Content/IDOR - Manipulación de Parámetros y Rutas.md"
-    },
-    {
-      "basename": "IDOR - Explotación Indirecta y Lógica de Negocio",
-      "path": "04 - Content/IDOR - Explotación Indirecta y Lógica de Negocio.md"
-    },
-    {
-      "basename": "IDOR - Técnicas de Evasión y Bypass de Filtros",
-      "path": "04 - Content/IDOR - Técnicas de Evasión y Bypass de Filtros.md"
-    },
-    {
-      "basename": "IDOR - Manipulación de Cabeceras HTTP y Protocolo",
-      "path": "04 - Content/IDOR - Manipulación de Cabeceras HTTP y Protocolo.md"
-    },
-    {
-      "basename": "Fuzzing Parameters & Values",
-      "path": "04 - Content/Fuzzing Parameters & Values.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
-    },
-    {
-      "basename": "Web Enumeration",
-      "path": "03 - Tertiary Categories/Web Enumeration.md"
-    },
-    {
-      "basename": "Fuzzing Directories & Pages",
-      "path": "04 - Content/Fuzzing Directories & Pages.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Local File Inclusion (LFI)",
-      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
-    },
-    {
-      "basename": "File Upload - Desactivación de Validación Front-end",
-      "path": "04 - Content/File Upload - Desactivación de Validación Front-end.md"
-    },
-    {
-      "basename": "File Upload - Shells en PHP",
-      "path": "04 - Content/File Upload - Shells en PHP.md"
-    },
-    {
-      "basename": "File Upload - Bypass por Confusión y Desincronización",
-      "path": "04 - Content/File Upload - Bypass por Confusión y Desincronización.md"
-    },
-    {
-      "basename": "File Upload - Bypass de Contenido",
-      "path": "04 - Content/File Upload - Bypass de Contenido.md"
     }
   ],
   "omittedPaths": [],

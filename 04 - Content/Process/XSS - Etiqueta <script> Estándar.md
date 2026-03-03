@@ -24,6 +24,7 @@ linked:
 |        <pre><code>`';}</script><script>alert(1)</script>`</code></pre>         |      <br>Reflejo dentro de un bloque `<script>` legítimo existente.       | <br>Rompe la cadena de texto de la variable original, cierra el bloque de script preexistente para evitar errores de sintaxis residuales, y abre un entorno de ejecución completamente limpio y controlado.<br><br> |
 |           <pre><code>`<script defer>alert(1)</script>`</code></pre>            |                       <br>Filtros léxicos básicos.                        |  <br>Evasión de WAF o listas negras simples que buscan la cadena exacta `<script>`. La inclusión de atributos estándar de HTML5 como `defer`, `async` o `type="text/javascript"` altera la firma esperada.<br><br>  |
 |     <pre><code>`<script>eval(atob('YWxlcnQoMSk='))</script>`</code></pre>      |                   <br><br>Filtros de contenido interno.                   |          <br>Oculta el payload malicioso (ej. `alert(1)`) de los filtros que analizan el texto entre las etiquetas. Decodifica el string en Base64 en tiempo de ejecución y lo pasa a la función `eval()`.          |
+^xss-script
 
 ### Ruptura de Contextos Existentes
 

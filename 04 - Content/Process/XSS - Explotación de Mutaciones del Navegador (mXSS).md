@@ -22,7 +22,7 @@ linked:
 |    <pre><code>`<math><mtext><table></mtable><mglyph><style>...<img src=x onerror=alert(1)>`     |        <br><br>Anidación inválida y autocorrección.        |               <br>Explotación clásica contra librerías robustas. Al mezclar etiquetas MathML con tablas HTML rotas, el motor del navegador reordena forzosamente la jerarquía de los nodos al renderizar. Esta rutina de recuperación extrae el payload que originalmente estaba inofensivamente anidado.<br><br>               |
 | <pre><code>`<form><math><mtext></form><form><mglyph><style></math><img src=x onerror=alert(1)>` | <br><br>Manipulación de la pila del parser (Parser Stack). |                    <br>Confunde la máquina de estados del navegador. Al abrir etiquetas que alteran el contexto y cerrarlas fuera de secuencia, la corrección automática muta el árbol del DOM creando elementos ejecutables completamente nuevos que no existían en el código sanitizado original.<br><br>                     |
 |                 <pre><code>`<template><svg><animatetransform onbegin=alert(1)>`                 |      <br><br>Nodos inertes y contextos de activación.      |            <br>Se abusa de la etiqueta `<template>`, la cual se supone que debe mantener su contenido inerte. Si la aplicación extrae el contenido del template y lo inserta en el DOM activo sin una re-sanitización estricta, el navegador muta el estado de inerte a ejecutable, disparando los eventos.<br><br>             |
-
+^xss-mxss
 
 ___
 

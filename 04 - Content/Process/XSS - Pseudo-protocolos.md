@@ -24,6 +24,7 @@ linked:
 |   <br><br>Evasión léxica (Espacios)    |                      <br><br>`<a href="java&#x09;script:alert(1)">Click</a>`                       | <br>**Evasión.** Los navegadores ignoran tabulaciones (`&#x09;`), espacios o saltos de línea (`%0A`) insertados antes de los dos puntos del protocolo, rompiendo filtros de coincidencia exacta.<br><br> |
 |   <br><br>Evasión vía Entidades HTML   | <br><br>`<a href="&#x6A;&#x61;&#x76;&#x61;&#x73<br><br>;&#x63;&#x72;&#x69;&#x70;&#x74;:alert(1)">` |                          <br>**Evasión.** El contenido de los atributos se decodifica _antes_ de validarse como URL. Ofusca la palabra clave completa frente a un WAF.<br><br>                           |
 | <br><br>Ejecución con codificación URL |                 <br><br>`<a href="javascript:%61%6c%65%72%74%28%31%29">Click</a>`                  |                <br>**Evasión.** Todo el bloque de código posterior a los dos puntos puede estar codificado en formato URL (URL encode) para evadir firmas de payloads conocidos.<br><br>                 |
+^xss-pseudoprotocolos
 
 ### Inyección en Contextos de Navegación
 

