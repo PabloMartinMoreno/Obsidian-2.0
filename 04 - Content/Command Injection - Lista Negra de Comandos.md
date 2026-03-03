@@ -15,13 +15,13 @@ linked:
 
 ## Cheatsheet
 
-| **Entorno**     | **Técnica**              | **Carácter**                | **Ejemplo (whoami)**               | **Notas / Restricciones**                                             |
-| --------------- | ------------------------ | --------------------------- | ---------------------------------- | --------------------------------------------------------------------- |
-| <br>**Ambos**   | <br>**Comillas Simples** | <pre><code>'</code></pre>   | <pre><code>w'h'o'am'i</code></pre> | Deben ir en **pares** (número par). No se pueden mezclar con dobles.  |
-| <br>**Ambos**   | <br>**Comillas Dobles**  | <pre><code>"</code></pre>   | <pre><code>w"h"o"am"i</code></pre> | Deben ir en **pares** (número par). No se pueden mezclar con simples. |
-| <br>**Linux**   | <br>**Backslash**        | <pre><code>`\`</code></pre> | <pre><code>w\ho\am\i</code></pre>  | La shell ignora la barra invertida dentro del comando.                |
-| <br>**Linux**   | <br>**Positional Param** | <pre><code>$@</code></pre>  | <pre><code>who$@ami</code></pre>   | Bash trata `$@` como un parámetro vacío, uniendo el comando.          |
-| <br>**Windows** | <br>**Caret**            | <pre><code>^</code></pre>   | <pre><code>who^ami</code></pre>    | Símbolo de escape en CMD. Se ignora al procesar el comando.           |
+|   **Entorno**   |       **Técnica**        |        **Carácter**         |        **Ejemplo (whoami)**        |                       **Notas / Restricciones**                       |
+|:---------------:|:------------------------:|:---------------------------:|:----------------------------------:|:---------------------------------------------------------------------:|
+|  <br>**Ambos**  | <br>**Comillas Simples** |  <pre><code>'</code></pre>  | <pre><code>w'h'o'am'i</code></pre> | Deben ir en **pares** (número par). No se pueden mezclar con dobles.  |
+|  <br>**Ambos**  | <br>**Comillas Dobles**  |  <pre><code>"</code></pre>  | <pre><code>w"h"o"am"i</code></pre> | Deben ir en **pares** (número par). No se pueden mezclar con simples. |
+|  <br>**Linux**  |    <br>**Backslash**     | <pre><code>`\`</code></pre> | <pre><code>w\ho\am\i</code></pre>  |        La shell ignora la barra invertida dentro del comando.         |
+|  <br>**Linux**  | <br>**Positional Param** | <pre><code>$@</code></pre>  |  <pre><code>who$@ami</code></pre>  |     Bash trata `$@` como un parámetro vacío, uniendo el comando.      |
+| <br>**Windows** |      <br>**Caret**       |  <pre><code>^</code></pre>  |  <pre><code>who^ami</code></pre>   |      Símbolo de escape en CMD. Se ignora al procesar el comando.      |
 ^ci-blacklist-comandos
 
 ---
