@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/XSS - Etiqueta <script> Estándar.md",
+                "file": "04 - Content/Cross-Site Scripting (XSS).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "XSS - Etiqueta <script> Estándar"
+              "title": "Cross-Site Scripting (XSS)"
             }
           }
         ],
@@ -267,8 +267,8 @@
   },
   "active": "9a4191df84bbee45",
   "lastOpenFiles": [
-    "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/XSS - Etiqueta <script> Estándar.md",
+    "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/XSS - HTML Básico.md",
     "04 - Content/XSS - Filtros XSS y WAF mediante Codificaciones Múltiples.md",
     "04 - Content/XSS - Explotación Out-of-Band (Blind XSS).md",

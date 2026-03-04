@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "XSS - Etiqueta <script> Estándar",
-      "path": "04 - Content/XSS - Etiqueta <script> Estándar.md"
-    },
-    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - Etiqueta <script> Estándar",
+      "path": "04 - Content/XSS - Etiqueta <script> Estándar.md"
     },
     {
       "basename": "XSS - HTML Básico",
