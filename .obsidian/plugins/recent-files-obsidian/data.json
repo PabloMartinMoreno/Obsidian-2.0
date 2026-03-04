@@ -1,52 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Process/Cross-Site Scripting (XSS).md"
+      "basename": "XSS - Etiqueta <script> Estándar",
+      "path": "04 - Content/XSS - Etiqueta <script> Estándar.md"
     },
     {
-      "basename": "XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples",
-      "path": "04 - Content/Process/XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples.md"
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
+      "path": "04 - Content/XSS - Explotación Out-of-Band (Blind XSS).md"
+    },
+    {
+      "basename": "XSS - Payloads Polyglot",
+      "path": "04 - Content/XSS - Payloads Polyglot.md"
+    },
+    {
+      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
+      "path": "04 - Content/XSS - Manipulación de Sources y Sinks (DOM-based).md"
+    },
+    {
+      "basename": "XSS - Pseudo-protocolos",
+      "path": "04 - Content/XSS - Pseudo-protocolos.md"
+    },
+    {
+      "basename": "XSS - Manejadores de Eventos HTML",
+      "path": "04 - Content/XSS - Manejadores de Eventos HTML.md"
+    },
+    {
+      "basename": "XSS - Filtros XSS y WAF mediante Codificaciones Múltiples",
+      "path": "04 - Content/XSS - Filtros XSS y WAF mediante Codificaciones Múltiples.md"
+    },
+    {
+      "basename": "XSS - Escape de Contexto en Atributos",
+      "path": "04 - Content/XSS - Escape de Contexto en Atributos.md"
+    },
+    {
+      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
+      "path": "04 - Content/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
+    },
+    {
+      "basename": "XSS - HTML Básico",
+      "path": "04 - Content/XSS - HTML Básico.md"
     },
     {
       "basename": "_precode",
       "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
-      "basename": "XSS - Escape de Contexto en Atributos",
-      "path": "04 - Content/Process/XSS - Escape de Contexto en Atributos.md"
-    },
-    {
-      "basename": "XSS - HTML Básico",
-      "path": "04 - Content/Process/XSS - HTML Básico.md"
-    },
-    {
-      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
-      "path": "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
-    },
-    {
-      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
-      "path": "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md"
-    },
-    {
-      "basename": "XSS - Payloads Polyglot",
-      "path": "04 - Content/Process/XSS - Payloads Polyglot.md"
-    },
-    {
-      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
-      "path": "04 - Content/Process/XSS - Manipulación de Sources y Sinks (DOM-based).md"
-    },
-    {
-      "basename": "XSS - Pseudo-protocolos",
-      "path": "04 - Content/Process/XSS - Pseudo-protocolos.md"
-    },
-    {
-      "basename": "XSS - Manejadores de Eventos HTML",
-      "path": "04 - Content/Process/XSS - Manejadores de Eventos HTML.md"
-    },
-    {
-      "basename": "XSS - Etiqueta <script> Estándar",
-      "path": "04 - Content/Process/XSS - Etiqueta <script> Estándar.md"
     },
     {
       "basename": "OS Command Injection",

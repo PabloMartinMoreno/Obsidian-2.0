@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Cross-Site Scripting (XSS).md",
+                "file": "04 - Content/XSS - Etiqueta <script> Estándar.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Cross-Site Scripting (XSS)"
+              "title": "XSS - Etiqueta <script> Estándar"
             }
           }
         ],
@@ -266,18 +266,18 @@
   },
   "active": "9a4191df84bbee45",
   "lastOpenFiles": [
-    "04 - Content/Process/XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples.md",
-    "04 - Content/Process/Cross-Site Scripting (XSS).md",
+    "04 - Content/Cross-Site Scripting (XSS).md",
+    "04 - Content/XSS - Etiqueta <script> Estándar.md",
+    "04 - Content/XSS - Explotación Out-of-Band (Blind XSS).md",
+    "04 - Content/XSS - Payloads Polyglot.md",
+    "04 - Content/XSS - Manipulación de Sources y Sinks (DOM-based).md",
+    "04 - Content/XSS - Pseudo-protocolos.md",
+    "04 - Content/XSS - Manejadores de Eventos HTML.md",
+    "04 - Content/XSS - Filtros XSS y WAF mediante Codificaciones Múltiples.md",
+    "04 - Content/XSS - Escape de Contexto en Atributos.md",
+    "04 - Content/XSS - Explotación de Mutaciones del Navegador (mXSS).md",
+    "04 - Content/XSS - HTML Básico.md",
     "00 - Resources/Templates/Type/_precode.md",
-    "04 - Content/Process/XSS - Escape de Contexto en Atributos.md",
-    "04 - Content/Process/XSS - HTML Básico.md",
-    "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md",
-    "04 - Content/Process/XSS - Explotación Out-of-Band (Blind XSS).md",
-    "04 - Content/Process/XSS - Payloads Polyglot.md",
-    "04 - Content/Process/XSS - Manipulación de Sources y Sinks (DOM-based).md",
-    "04 - Content/Process/XSS - Pseudo-protocolos.md",
-    "04 - Content/Process/XSS - Manejadores de Eventos HTML.md",
-    "04 - Content/Process/XSS - Etiqueta <script> Estándar.md",
     "04 - Content/OS Command Injection.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Cheklist para el Examen CBBH.md",

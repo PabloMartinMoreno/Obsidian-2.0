@@ -19,7 +19,7 @@ linked:
   - "[[XSS - Explotación Out-of-Band (Blind XSS)]]"
   - "[[XSS - Explotación de Mutaciones del Navegador (mXSS)]]"
   - "[[XSS - Escape de Contexto en Atributos]]"
-  - "[[XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples]]"
+  - "[[XSS - Filtros XSS y WAF mediante Codificaciones Múltiples]]"
 ---
 # Cross-Site Scripting (XSS) 
 
@@ -54,7 +54,7 @@ tab: **Inyección de Escape de Contexto en Atributos**
 
 ````tabs
 tab: **Evasion de Filtros y WAF mediante Codificaciones Múltiples**
-![[XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples#^xss-waf]]
+![[XSS - Filtros XSS y WAF mediante Codificaciones Múltiples#^xss-waf]]
 
 tab: **Inyección de Payloads Polyglot**
 ![[XSS - Payloads Polyglot#^xss-polyglot]]
