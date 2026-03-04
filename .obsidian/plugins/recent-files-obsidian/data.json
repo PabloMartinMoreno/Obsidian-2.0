@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/OS Command Injection.md"
+      "basename": "LFI - Rutas Principales",
+      "path": "04 - Content/Process/LFI - Rutas Principales.md"
     },
     {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/OS Command Injection.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
@@ -195,10 +199,6 @@
     {
       "basename": "XXE - Clásico SSRF",
       "path": "04 - Content/Process/XXE - Clásico SSRF.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     }
   ],
   "omittedPaths": [],

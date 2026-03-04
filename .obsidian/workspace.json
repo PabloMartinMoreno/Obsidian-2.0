@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/OS Command Injection.md",
+                "file": "04 - Content/Process/LFI - Rutas Principales.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "OS Command Injection"
+              "title": "LFI - Rutas Principales"
             }
           }
         ],
@@ -125,8 +125,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 231.51103591918945,
-    "collapsed": true
+    "width": 231.51103591918945
   },
   "right": {
     "id": "802be9fb7af15fc2",
@@ -268,6 +267,8 @@
   "active": "9a4191df84bbee45",
   "lastOpenFiles": [
     "04 - Content/Process/Explotación Web.md",
+    "04 - Content/Process/LFI - Rutas Principales.md",
+    "04 - Content/OS Command Injection.md",
     "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/XSS - Payloads Polyglot.md",
     "04 - Content/XSS - Manipulación de Sources y Sinks (DOM-based).md",
@@ -280,7 +281,6 @@
     "04 - Content/XSS - Escape de Contexto en Atributos.md",
     "04 - Content/XSS - Explotación de Mutaciones del Navegador (mXSS).md",
     "00 - Resources/Templates/Type/_precode.md",
-    "04 - Content/OS Command Injection.md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Cheklist para el Examen CBBH.md",
     "04 - Content/Server-Side Attacks.md",
@@ -292,7 +292,6 @@
     "04 - Content/Process/Detectar tipo de codificacion.md",
     "04 - Content/Process/deobfuscation simple.md",
     "04 - Content/Process/Deobfuscation.md",
-    "04 - Content/Process/Advance Obfuscation.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
