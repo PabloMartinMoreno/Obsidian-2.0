@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "XSS - Payloads Polyglot",
+      "path": "04 - Content/XSS - Payloads Polyglot.md"
+    },
+    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
+      "path": "04 - Content/XSS - Manipulación de Sources y Sinks (DOM-based).md"
     },
     {
       "basename": "XSS - Etiqueta <script> Estándar",
@@ -19,14 +27,6 @@
     {
       "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
       "path": "04 - Content/XSS - Explotación Out-of-Band (Blind XSS).md"
-    },
-    {
-      "basename": "XSS - Payloads Polyglot",
-      "path": "04 - Content/XSS - Payloads Polyglot.md"
-    },
-    {
-      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
-      "path": "04 - Content/XSS - Manipulación de Sources y Sinks (DOM-based).md"
     },
     {
       "basename": "XSS - Pseudo-protocolos",
