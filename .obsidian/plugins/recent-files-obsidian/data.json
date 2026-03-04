@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "LFI - Rutas Principales",
-      "path": "04 - Content/Process/LFI - Rutas Principales.md"
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
+      "basename": "Local File Inclusion (LFI)",
+      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
+    },
+    {
+      "basename": "LFI - Rutas Principales",
+      "path": "04 - Content/Process/LFI - Rutas Principales.md"
     },
     {
       "basename": "OS Command Injection",
@@ -191,14 +199,6 @@
     {
       "basename": "XXE - Blind Basado en Errores",
       "path": "04 - Content/Process/XXE - Blind Basado en Errores.md"
-    },
-    {
-      "basename": "XXE - Carga de Archivos (Formatos XML Ocultos)",
-      "path": "04 - Content/Process/XXE - Carga de Archivos (Formatos XML Ocultos).md"
-    },
-    {
-      "basename": "XXE - Clásico SSRF",
-      "path": "04 - Content/Process/XXE - Clásico SSRF.md"
     }
   ],
   "omittedPaths": [],
