@@ -1,40 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL - Consultas Avanzadas",
-      "path": "04 - Content/Process/SQL - Consultas Avanzadas.md"
+      "basename": "SQL - Interacción Especial",
+      "path": "04 - Content/Process/SQL - Interacción Especial.md"
     },
     {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "SQL - Manipulación de Resultados",
-      "path": "04 - Content/Process/SQL - Manipulación de Resultados.md"
-    },
-    {
-      "basename": "SQL - Operadores y Lógica",
-      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
-    },
-    {
-      "basename": "SQL - Conexión y Gestión de Bases de Datos",
-      "path": "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md"
-    },
-    {
-      "basename": "SQL - Estructura Básica",
-      "path": "04 - Content/Process/SQL - Estructura Básica.md"
-    },
-    {
-      "basename": "SQL - Manipulación de Datos (DML-DQL)",
-      "path": "04 - Content/Process/SQL - Manipulación de Datos (DML/SQL - Manipulación de Datos (DML-DQL).md"
-    },
-    {
-      "basename": "SQL - Definición de Datos (DDL)",
-      "path": "04 - Content/Process/SQL - Definición de Datos (DDL).md"
-    },
-    {
-      "basename": "SQL - Interacción Especial",
-      "path": "04 - Content/Process/SQL - Interacción Especial.md"
     },
     {
       "basename": "SQL - Funciones y Expresiones Clave",
@@ -45,8 +17,36 @@
       "path": "04 - Content/Process/SQL - Exploración de Metadatos.md"
     },
     {
+      "basename": "SQL - Conexión y Gestión de Bases de Datos",
+      "path": "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md"
+    },
+    {
+      "basename": "SQL - Estructura Básica",
+      "path": "04 - Content/Process/SQL - Estructura Básica.md"
+    },
+    {
+      "basename": "SQL - Operadores y Lógica",
+      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
+    },
+    {
+      "basename": "SQL - Manipulación de Resultados",
+      "path": "04 - Content/Process/SQL - Manipulación de Resultados.md"
+    },
+    {
+      "basename": "SQL - Consultas Avanzadas",
+      "path": "04 - Content/Process/SQL - Consultas Avanzadas.md"
+    },
+    {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
+    },
+    {
+      "basename": "SQL - Manipulación de Datos (DML-DQL)",
+      "path": "04 - Content/Process/SQL - Manipulación de Datos (DML/SQL - Manipulación de Datos (DML-DQL).md"
+    },
+    {
+      "basename": "SQL - Definición de Datos (DDL)",
+      "path": "04 - Content/Process/SQL - Definición de Datos (DDL).md"
     },
     {
       "basename": "Explotación Web",
