@@ -16,9 +16,16 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[SQL Injection (SQLi)]]"
   - "[[SQL - Estructura Básica]]"
   - "[[SQL - Operadores y Lógica]]"
+  - "[[SQL - Manipulación de Resultados]]"
+  - "[[SQL - Consultas Avanzadas]]"
+  - "[[SQL - Exploración de Metadatos]]"
+  - "[[SQL - Funciones y Expresiones Clave]]"
+  - "[[SQL - Interacción Especial]]"
+  - "[[SQL - Conexión y Gestión de Bases de Datos]]"
+  - "[[SQL - Definición de Datos (DDL)]]"
+  - "[[SQL - Manipulación de Datos (DML-DQL)]]"
 ---
 # Comandos SQL
 
@@ -26,50 +33,31 @@ linked:
 
 ## Cheatsheet
 
-### Conexión y Gestión de Bases de Datos
+````tabs
+tab: **Estructura Básica**
+![[SQL - Estructura Básica]]
 
-|**Comando**|**Descripción**|
-|---|---|
-|`mysql -u root -h docker.hackthebox.eu -P 3306 -p`|Login a la base de datos remota.|
-|`SHOW DATABASES;`|Listar bases de datos disponibles.|
-|`USE users;`|Cambiar a la base de datos `users`.|
+tab: **Operadores y Lógica**
+![[SQL - Operadores y Lógica]]
 
-### Definición de Datos (DDL) - Tablas
+tab: **Manipulación de Resultados**
+![[SQL - Manipulación de Resultados]]
 
-|**Comando**|**Descripción**|
-|---|---|
-|`SHOW TABLES;`|Listar tablas en la DB actual.|
-|`DESCRIBE logins;`|Ver columnas y propiedades de una tabla.|
-|`CREATE TABLE logins (id INT, ...);`|Crear una tabla nueva.|
-|`DROP TABLE logins;`|Eliminar una tabla.|
-|`ALTER TABLE logins ADD newCol INT;`|Agregar una columna nueva.|
-|`ALTER TABLE logins RENAME COLUMN old TO new;`|Renombrar una columna.|
-|`ALTER TABLE logins MODIFY col DATE;`|Cambiar el tipo de dato de una columna.|
-|`ALTER TABLE logins DROP col;`|Eliminar una columna.|
+tab: **Consultas Avanzadas**
+![[sql - ]]
 
-### Manipulación de Datos (DML/DQL) - Consultas
+tab: **Explotación de Metadatos**
+![[sql - ]]
 
-|**Comando**|**Descripción**|
-|---|---|
-|`SELECT * FROM table_name;`|Mostrar todas las columnas.|
-|`SELECT col1, col2 FROM table;`|Mostrar columnas específicas.|
-|`INSERT INTO table VALUES (val1,..);`|Insertar valores.|
-|`UPDATE table SET col1=val1 WHERE <cond>;`|Actualizar valores existentes.|
-|`SELECT * FROM table ORDER BY col1;`|Ordenar resultados.|
-|`SELECT * FROM table ORDER BY col1 DESC;`|Ordenar descendente.|
-|`SELECT * FROM table LIMIT 1, 2;`|Mostrar 2 resultados saltando el primero (offset 1).|
-|`SELECT * FROM table WHERE name LIKE 'adm%';`|Buscar por patrón (wildcard).|
+tab: **Expresiones Clave**
+![[sql - ]]
 
-### Precedencia de Operadores
+tab: **Interacción Especial**
+![[sql - ]]
 
-```
-División `/`, Multiplicación `*`, Módulo `%`
-Suma `+`, Resta `-`
-Comparación `=`, `>`, `<`, `!=`, `LIKE`
-NOT `!`
-AND `&&`
-OR `||`
-```
+````
+
+
 
 ---
 
