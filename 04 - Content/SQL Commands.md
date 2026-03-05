@@ -33,29 +33,43 @@ linked:
 
 ## Cheatsheet
 
-````tabs
+### Base 
+
+````tabs 
+
+tab: **Conexión y Gestión**
+![[SQL - Conexión y Gestión de Bases de Datos#^sql-conexion]]
+
 tab: **Estructura Básica**
-![[SQL - Estructura Básica]]
+![[SQL - Estructura Básica#^sql-base]]
 
 tab: **Operadores y Lógica**
-![[SQL - Operadores y Lógica]]
+![[SQL - Operadores y Lógica#^sql-logica]]
 
 tab: **Manipulación de Resultados**
-![[SQL - Manipulación de Resultados]]
-
-tab: **Consultas Avanzadas**
-![[sql - ]]
-
-tab: **Explotación de Metadatos**
-![[sql - ]]
-
-tab: **Expresiones Clave**
-![[sql - ]]
-
-tab: **Interacción Especial**
-![[sql - ]]
+![[SQL - Manipulación de Resultados#^sql-resultados]]
 
 ````
+
+___
+
+### Otras Consultas
+
+````tabs
+tab: **Consultas Avanzadas**
+![[SQL - Consultas Avanzadas#^sql-avanzado]]
+
+tab: **Explotación de Metadatos**
+![[SQL - Exploración de Metadatos#^sql-metadatos]]
+
+tab: **Expresiones Clave**
+![[SQL - Funciones y Expresiones Clave#^sql-expresiones]]
+
+tab: **Interacción Especial**
+![[SQL - Interacción Especial#^sql-interaccionEspecial]]
+
+````
+
 
 
 
