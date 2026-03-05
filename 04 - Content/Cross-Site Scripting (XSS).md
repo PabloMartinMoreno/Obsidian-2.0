@@ -20,6 +20,7 @@ linked:
   - "[[XSS - Explotación de Mutaciones del Navegador (mXSS)]]"
   - "[[XSS - Escape de Contexto en Atributos]]"
   - "[[XSS - Filtros XSS y WAF mediante Codificaciones Múltiples]]"
+  - "[[XSS - CWES]]"
 ---
 # Cross-Site Scripting (XSS) 
 

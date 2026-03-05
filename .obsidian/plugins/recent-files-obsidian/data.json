@@ -9,6 +9,18 @@
       "path": "04 - Content/Process/Explotación Web.md"
     },
     {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - CWES",
+      "path": "04 - Content/Process/XSS - CWES.md"
+    },
+    {
+      "basename": "XSS - Payloads Polyglot",
+      "path": "04 - Content/XSS - Payloads Polyglot.md"
+    },
+    {
       "basename": "Local File Inclusion (LFI)",
       "path": "04 - Content/Process/Local File Inclusion (LFI).md"
     },
@@ -19,14 +31,6 @@
     {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "XSS - Payloads Polyglot",
-      "path": "04 - Content/XSS - Payloads Polyglot.md"
     },
     {
       "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
@@ -195,10 +199,6 @@
     {
       "basename": "Terminal Interactiva",
       "path": "04 - Content/Process/Terminal Interactiva.md"
-    },
-    {
-      "basename": "XXE - Blind Basado en Errores",
-      "path": "04 - Content/Process/XXE - Blind Basado en Errores.md"
     }
   ],
   "omittedPaths": [],

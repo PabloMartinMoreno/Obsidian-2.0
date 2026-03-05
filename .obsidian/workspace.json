@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "332a972e97f6ece2",
+        "id": "14457494d4eb4cd2",
         "type": "tabs",
         "children": [
           {
-            "id": "9a4191df84bbee45",
+            "id": "68955356b4690e9d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -125,7 +125,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 231.51103591918945
+    "width": 231.51103591918945,
+    "collapsed": true
   },
   "right": {
     "id": "802be9fb7af15fc2",
@@ -264,14 +265,16 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "9a4191df84bbee45",
+  "active": "68955356b4690e9d",
   "lastOpenFiles": [
     "04 - Content/Process/Explotación Web.md",
+    "04 - Content/Cross-Site Scripting (XSS).md",
+    "04 - Content/Process/XSS - CWES.md",
+    "04 - Content/XSS - Payloads Polyglot.md",
+    "04 - Content/Process/SQL Injection (SQLi).md",
     "04 - Content/Process/Local File Inclusion (LFI).md",
     "04 - Content/Process/LFI - Rutas Principales.md",
     "04 - Content/OS Command Injection.md",
-    "04 - Content/Cross-Site Scripting (XSS).md",
-    "04 - Content/XSS - Payloads Polyglot.md",
     "04 - Content/XSS - Manipulación de Sources y Sinks (DOM-based).md",
     "04 - Content/XSS - Etiqueta <script> Estándar.md",
     "04 - Content/XSS - HTML Básico.md",
@@ -290,8 +293,6 @@
     "04 - Content/Process/Cross-Site Scripting (XSS) moc.md",
     "04 - Content/Process/Stored XSS.md",
     "04 - Content/Process/JavaScript Deobfuscation moc.md",
-    "04 - Content/Process/Detectar tipo de codificacion.md",
-    "04 - Content/Process/deobfuscation simple.md",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
