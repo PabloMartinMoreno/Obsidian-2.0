@@ -17,6 +17,8 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[SQL Injection (SQLi)]]"
+  - "[[SQL - Estructura Básica]]"
+  - "[[SQL - Operadores y Lógica]]"
 ---
 # Comandos SQL
 

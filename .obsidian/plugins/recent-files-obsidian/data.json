@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL - Manipulación de Resultados",
+      "path": "04 - Content/Process/SQL - Manipulación de Resultados.md"
+    },
+    {
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
+    },
+    {
+      "basename": "SQL - Operadores y Lógica",
+      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
+    },
+    {
+      "basename": "_precode",
+      "path": "00 - Resources/Templates/Type/_precode.md"
+    },
+    {
+      "basename": "SQL - Estructura Básica",
+      "path": "04 - Content/Process/SQL - Estructura Básica.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "MySQL (3306) - Enumeración",
+      "path": "04 - Content/MySQL (3306) - Enumeración.md"
+    },
+    {
+      "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
+      "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
@@ -67,10 +99,6 @@
     {
       "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
       "path": "04 - Content/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
-    },
-    {
-      "basename": "_precode",
-      "path": "00 - Resources/Templates/Type/_precode.md"
     },
     {
       "basename": "CWES",
@@ -171,34 +199,6 @@
     {
       "basename": "File Upload - Bypass de Filtros de Lista Blanca",
       "path": "04 - Content/File Upload - Bypass de Filtros de Lista Blanca.md"
-    },
-    {
-      "basename": "XXE - DTDs Locales",
-      "path": "04 - Content/Process/XXE - DTDs Locales.md"
-    },
-    {
-      "basename": "XML External Entity (XXE)",
-      "path": "04 - Content/Process/XML External Entity (XXE).md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "XXE - Inyección Mediante XInclude",
-      "path": "04 - Content/Process/XXE - Inyección Mediante XInclude.md"
-    },
-    {
-      "basename": "XXE - Out-of-Band (OOB) y DTDs Externos",
-      "path": "04 - Content/Process/XXE - Out-of-Band (OOB) y DTDs Externos.md"
-    },
-    {
-      "basename": "XXE - Clásico In-band",
-      "path": "04 - Content/Process/XXE - Clásico In-band.md"
-    },
-    {
-      "basename": "Terminal Interactiva",
-      "path": "04 - Content/Process/Terminal Interactiva.md"
     }
   ],
   "omittedPaths": [],
