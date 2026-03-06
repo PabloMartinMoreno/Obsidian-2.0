@@ -24,8 +24,7 @@ linked:
   - "[[SQL - Funciones y Expresiones Clave]]"
   - "[[SQL - Interacción Especial]]"
   - "[[SQL - Conexión y Gestión de Bases de Datos]]"
-  - "[[SQL - Definición de Datos (DDL)]]"
-  - "[[SQL - Manipulación de Datos (DML-DQL)]]"
+  - "[[SQL Injection (SQLi)]]"
 ---
 # Comandos SQL
 
@@ -53,13 +52,13 @@ tab: **Manipulación de Resultados**
 
 ___
 
-### Otras Consultas
+### Avanzado
 
 ````tabs
 tab: **Consultas Avanzadas**
 ![[SQL - Consultas Avanzadas#^sql-avanzado]]
 
-tab: **Explotación de Metadatos**
+tab: **Exploración de Metadatos**
 ![[SQL - Exploración de Metadatos#^sql-metadatos]]
 
 tab: **Expresiones Clave**

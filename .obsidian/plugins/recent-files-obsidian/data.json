@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL - Interacción Especial",
-      "path": "04 - Content/Process/SQL - Interacción Especial.md"
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
+    },
+    {
+      "basename": "SQL - Operadores y Lógica",
+      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
+    },
+    {
+      "basename": "SQL - Interacción Especial",
+      "path": "04 - Content/Process/SQL - Interacción Especial.md"
     },
     {
       "basename": "SQL - Funciones y Expresiones Clave",
@@ -25,10 +33,6 @@
       "path": "04 - Content/Process/SQL - Estructura Básica.md"
     },
     {
-      "basename": "SQL - Operadores y Lógica",
-      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
-    },
-    {
       "basename": "SQL - Manipulación de Resultados",
       "path": "04 - Content/Process/SQL - Manipulación de Resultados.md"
     },
@@ -39,14 +43,6 @@
     {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
-    },
-    {
-      "basename": "SQL - Manipulación de Datos (DML-DQL)",
-      "path": "04 - Content/Process/SQL - Manipulación de Datos (DML/SQL - Manipulación de Datos (DML-DQL).md"
-    },
-    {
-      "basename": "SQL - Definición de Datos (DDL)",
-      "path": "04 - Content/Process/SQL - Definición de Datos (DDL).md"
     },
     {
       "basename": "Explotación Web",
@@ -75,10 +71,6 @@
     {
       "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
       "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
