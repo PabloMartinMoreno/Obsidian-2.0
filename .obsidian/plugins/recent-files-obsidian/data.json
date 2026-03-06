@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+      "basename": "SQL - Interacción Especial",
+      "path": "04 - Content/Process/SQL - Interacción Especial.md"
     },
     {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
     },
     {
-      "basename": "SQL - Operadores y Lógica",
-      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
+      "basename": "SQL - Conexión y Gestión de Bases de Datos",
+      "path": "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md"
     },
     {
-      "basename": "SQL - Interacción Especial",
-      "path": "04 - Content/Process/SQL - Interacción Especial.md"
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQL - Operadores y Lógica",
+      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
     },
     {
       "basename": "SQL - Funciones y Expresiones Clave",
@@ -23,10 +27,6 @@
     {
       "basename": "SQL - Exploración de Metadatos",
       "path": "04 - Content/Process/SQL - Exploración de Metadatos.md"
-    },
-    {
-      "basename": "SQL - Conexión y Gestión de Bases de Datos",
-      "path": "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md"
     },
     {
       "basename": "SQL - Estructura Básica",
