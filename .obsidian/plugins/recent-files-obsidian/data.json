@@ -5,6 +5,38 @@
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
+      "basename": "SQLI - Lateral",
+      "path": "04 - Content/Process/SQLI - Lateral.md"
+    },
+    {
+      "basename": "SQLI - Routed",
+      "path": "04 - Content/Process/SQLI - Routed.md"
+    },
+    {
+      "basename": "SQLI - Second order",
+      "path": "04 - Content/Process/SQLI - Second order.md"
+    },
+    {
+      "basename": "SQLI - Error based",
+      "path": "04 - Content/Process/SQLI - Error based.md"
+    },
+    {
+      "basename": "SQLI  - Union based",
+      "path": "04 - Content/Process/SQLI  - Union based.md"
+    },
+    {
+      "basename": "SQLI - Boolean based",
+      "path": "04 - Content/Process/SQLI - Boolean based.md"
+    },
+    {
+      "basename": "SQLI - Time based",
+      "path": "04 - Content/Process/SQLI - Time based.md"
+    },
+    {
+      "basename": "SQLI - Out of Band",
+      "path": "04 - Content/Process/SQLI - Out of Band.md"
+    },
+    {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
     },
@@ -167,30 +199,6 @@
     {
       "basename": "Web Fuzzing",
       "path": "04 - Content/Process/Web Fuzzing.md"
-    },
-    {
-      "basename": "API Fuzzing",
-      "path": "04 - Content/Process/API Fuzzing.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition",
-      "path": "04 - Content/Process/Information Gathering - Web Edition.md"
-    },
-    {
-      "basename": "Information Gathering - Web Edition - Introduction",
-      "path": "04 - Content/Process/Information Gathering - Web Edition - Introduction.md"
-    },
-    {
-      "basename": "Proxychains",
-      "path": "04 - Content/Process/Proxychains.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)",
-      "path": "04 - Content/Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding).md"
     }
   ],
   "omittedPaths": [],

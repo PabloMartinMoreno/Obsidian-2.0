@@ -11,10 +11,17 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[SQL Commands]]"
-  - "[[Union-based SQLi]]"
   - "[[SQLi Enumeration]]"
   - "[[MySQL Read & Write]]"
   - "[[SQLi to RCE]]"
+  - "[[SQLI - Error based]]"
+  - "[[SQLI  - Union based]]"
+  - "[[SQLI - Boolean based]]"
+  - "[[SQLI - Time based]]"
+  - "[[SQLI - Out of Band]]"
+  - "[[SQLI - Second order]]"
+  - "[[SQLI - Routed]]"
+  - "[[SQLI - Lateral]]"
 ---
 # SQL Injection (SQLi)
 
