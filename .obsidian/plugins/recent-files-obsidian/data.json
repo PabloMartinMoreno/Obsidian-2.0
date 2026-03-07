@@ -1,28 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL - Exploración de Metadatos",
-      "path": "04 - Content/Process/SQL - Exploración de Metadatos.md"
-    },
-    {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
     },
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+      "basename": "SQL - Interacción Especial y Archivos",
+      "path": "04 - Content/Process/SQL - Interacción Especial y Archivos.md"
     },
     {
       "basename": "SQL - Funciones y Expresiones Clave",
       "path": "04 - Content/Process/SQL - Funciones y Expresiones Clave.md"
     },
     {
-      "basename": "SQL - Consultas Avanzadas",
-      "path": "04 - Content/Process/SQL - Consultas Avanzadas.md"
+      "basename": "SQL - Subconsultas y Estructuras Avanzadas",
+      "path": "04 - Content/Process/SQL - Subconsultas y Estructuras Avanzadas.md"
     },
     {
       "basename": "SQL - Manipulación de Resultados",
       "path": "04 - Content/Process/SQL - Manipulación de Resultados.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQL - Conexión y Gestión de Bases de Datos",
+      "path": "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md"
+    },
+    {
+      "basename": "SQL - Exploración de Metadatos",
+      "path": "04 - Content/Process/SQL - Exploración de Metadatos.md"
     },
     {
       "basename": "SQL - Operadores y Lógica",
@@ -31,14 +39,6 @@
     {
       "basename": "SQL - Estructura Básica",
       "path": "04 - Content/Process/SQL - Estructura Básica.md"
-    },
-    {
-      "basename": "SQL - Interacción Especial",
-      "path": "04 - Content/Process/SQL - Interacción Especial.md"
-    },
-    {
-      "basename": "SQL - Conexión y Gestión de Bases de Datos",
-      "path": "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md"
     },
     {
       "basename": "OS Command Injection",

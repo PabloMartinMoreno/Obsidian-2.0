@@ -9,7 +9,7 @@ type: CheatSheet
 linked:
   - "[[SQL Commands]]"
 ---
-# SQL - Consultas Avanzadas
+# SQL - Subconsultas y Estructuras Avanzadas
 
 ***
 
