@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Process/SQL Injection (SQLi).md"
+    },
+    {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "SQL - Manipulación de Resultados",
       "path": "04 - Content/Process/SQL - Manipulación de Resultados.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQL - Conexión y Gestión de Bases de Datos",
