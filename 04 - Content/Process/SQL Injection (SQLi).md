@@ -14,14 +14,14 @@ linked:
   - "[[SQLi Enumeration]]"
   - "[[MySQL Read & Write]]"
   - "[[SQLi to RCE]]"
-  - "[[SQLI - Error based]]"
-  - "[[SQLI  - Union based]]"
-  - "[[SQLI - Boolean based]]"
-  - "[[SQLI - Time based]]"
-  - "[[SQLI - Out of Band]]"
-  - "[[SQLI - Second order]]"
-  - "[[SQLI - Routed]]"
-  - "[[SQLI - Lateral]]"
+  - "[[SQLi - Error based]]"
+  - "[[SQLi  - Union based]]"
+  - "[[SQLi - Boolean based]]"
+  - "[[SQLi - Time based]]"
+  - "[[SQLi - Out of Band]]"
+  - "[[SQLi - Second order]]"
+  - "[[SQLi - Routed]]"
+  - "[[SQLi - Lateral]]"
 ---
 # SQL Injection (SQLi)
 

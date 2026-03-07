@@ -5,36 +5,36 @@
       "path": "04 - Content/Process/SQL Injection (SQLi).md"
     },
     {
-      "basename": "SQLI - Lateral",
-      "path": "04 - Content/Process/SQLI - Lateral.md"
+      "basename": "SQLi - Lateral",
+      "path": "04 - Content/Process/SQLi - Lateral.md"
     },
     {
-      "basename": "SQLI - Routed",
-      "path": "04 - Content/Process/SQLI - Routed.md"
+      "basename": "SQLi - Routed",
+      "path": "04 - Content/Process/SQLi - Routed.md"
     },
     {
-      "basename": "SQLI - Second order",
-      "path": "04 - Content/Process/SQLI - Second order.md"
+      "basename": "SQLi - Second order",
+      "path": "04 - Content/Process/SQLi - Second order.md"
     },
     {
-      "basename": "SQLI - Error based",
-      "path": "04 - Content/Process/SQLI - Error based.md"
+      "basename": "SQLi - Out of Band",
+      "path": "04 - Content/Process/SQLi - Out of Band.md"
     },
     {
-      "basename": "SQLI  - Union based",
-      "path": "04 - Content/Process/SQLI  - Union based.md"
+      "basename": "SQLi - Time based",
+      "path": "04 - Content/Process/SQLi - Time based.md"
     },
     {
-      "basename": "SQLI - Boolean based",
-      "path": "04 - Content/Process/SQLI - Boolean based.md"
+      "basename": "SQLi - Boolean based",
+      "path": "04 - Content/Process/SQLi - Boolean based.md"
     },
     {
-      "basename": "SQLI - Time based",
-      "path": "04 - Content/Process/SQLI - Time based.md"
+      "basename": "SQLi  - Union based",
+      "path": "04 - Content/Process/SQLi  - Union based.md"
     },
     {
-      "basename": "SQLI - Out of Band",
-      "path": "04 - Content/Process/SQLI - Out of Band.md"
+      "basename": "SQLi - Error based",
+      "path": "04 - Content/Process/SQLi - Error based.md"
     },
     {
       "basename": "SQL Commands",
