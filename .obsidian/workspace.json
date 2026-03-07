@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/SQL - Interacción Especial.md",
+                "file": "04 - Content/Process/SQL - Exploración de Metadatos.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL - Interacción Especial"
+              "title": "SQL - Exploración de Metadatos"
             }
           }
         ],
@@ -245,7 +245,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 244.5
+    "width": 244.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -267,17 +268,17 @@
   "active": "dd734dfdaa96d3f5",
   "lastOpenFiles": [
     "04 - Content/SQL Commands.md",
-    "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md",
     "04 - Content/Process/SQL Injection (SQLi).md",
-    "04 - Content/Process/SQL - Operadores y Lógica.md",
-    "04 - Content/Process/SQL - Interacción Especial.md",
-    "04 - Content/Process/SQL - Manipulación de Datos (DML/SQL - Manipulación de Datos (DML-DQL).md",
-    "04 - Content/Process/SQL - Definición de Datos (DDL).md",
     "04 - Content/Process/SQL - Funciones y Expresiones Clave.md",
     "04 - Content/Process/SQL - Exploración de Metadatos.md",
-    "04 - Content/Process/SQL - Estructura Básica.md",
-    "04 - Content/Process/SQL - Manipulación de Resultados.md",
     "04 - Content/Process/SQL - Consultas Avanzadas.md",
+    "04 - Content/Process/SQL - Manipulación de Resultados.md",
+    "04 - Content/Process/SQL - Operadores y Lógica.md",
+    "04 - Content/Process/SQL - Estructura Básica.md",
+    "04 - Content/Process/SQL - Interacción Especial.md",
+    "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md",
+    "04 - Content/Process/SQL - Manipulación de Datos (DML/SQL - Manipulación de Datos (DML-DQL).md",
+    "04 - Content/Process/SQL - Definición de Datos (DDL).md",
     "04 - Content/OS Command Injection.md",
     "04 - Content/Process/Explotación Web.md",
     "03 - Tertiary Categories/Host & Network Enumeration.md",
