@@ -29,6 +29,52 @@ linked:
 
 ## Cheatsheet
 
+### In-Band SQLi
+
+````tabs
+
+tab: **Union-based**
+![[SQLi  - Union based#^sqli-union]]
+
+tab: **Error-based**
+![[SQLi - Error based#^sqli-error]]
+````
+
+### Inferential Blind
+
+````tabs
+tab: **Boolean-based Blind**
+![[SQLi - Boolean based#^sqli-boolean]]
+
+tab: **Time-based Blind**
+![[SQLi - Time based#^sqli-time]]
+````
+
+### Out-of-Band
+
+````tabs
+tab: **OOB**
+![[SQLi - Out of Band#^sqli-out]]
+````
+
+### Técnicas Avanzadas y de Contexto Específico
+
+````tabs
+tab: **Second-order**
+![[SQLi - Second order#^sqli-second]]
+
+tab: **Routed**
+![[SQLi - Routed#^sqli-routed]]
+
+tab: **Lateral**
+![[SQLi - Lateral#^sqli-lateral]]
+````
+
+
+___
+
+## Paso a paso
+
 ### 1. Auth Bypass (Acceso Inicial)
 
 _Payloads para saltarse formularios de login._

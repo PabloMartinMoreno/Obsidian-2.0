@@ -13,7 +13,7 @@ relacionados:
   - "[[Spring Boot]]"
   - "[[Information Leakage]]"
   - "[[Cookie Hijacking]]"
-  - "[[SQL Injection (SQLI)|SQLI]]"
+  - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[Cracking Hashes]]"
   - "[[Abusing Sudoers Privilege]]"
   - "[[Filter Bypass]]"

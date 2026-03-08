@@ -10,7 +10,7 @@ dificultad: Media
 ip: 10.10.10.185
 os: Linux
 relacionados:
-  - "[[SQL Injection (SQLI)|SQLI]]"
+  - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[Port Forwarding]]"
   - "[[Magic Bytes]]"
   - "[[Doble extension]]"

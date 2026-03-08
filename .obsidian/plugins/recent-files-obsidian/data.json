@@ -2,39 +2,35 @@
   "recentFiles": [
     {
       "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Process/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "SQLi - Lateral",
-      "path": "04 - Content/Process/SQLi - Lateral.md"
-    },
-    {
-      "basename": "SQLi - Routed",
-      "path": "04 - Content/Process/SQLi - Routed.md"
-    },
-    {
-      "basename": "SQLi - Second order",
-      "path": "04 - Content/Process/SQLi - Second order.md"
-    },
-    {
-      "basename": "SQLi - Out of Band",
-      "path": "04 - Content/Process/SQLi - Out of Band.md"
+      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQLi - Time based",
-      "path": "04 - Content/Process/SQLi - Time based.md"
+      "path": "04 - Content/SQLi - Time based.md"
     },
     {
       "basename": "SQLi - Boolean based",
-      "path": "04 - Content/Process/SQLi - Boolean based.md"
+      "path": "04 - Content/SQLi - Boolean based.md"
+    },
+    {
+      "basename": "SQLi - Lateral",
+      "path": "04 - Content/SQLi - Lateral.md"
+    },
+    {
+      "basename": "SQLi - Second order",
+      "path": "04 - Content/SQLi - Second order.md"
+    },
+    {
+      "basename": "SQLi - Out of Band",
+      "path": "04 - Content/SQLi - Out of Band.md"
     },
     {
       "basename": "SQLi  - Union based",
-      "path": "04 - Content/Process/SQLi  - Union based.md"
+      "path": "04 - Content/SQLi  - Union based.md"
     },
     {
       "basename": "SQLi - Error based",
-      "path": "04 - Content/Process/SQLi - Error based.md"
+      "path": "04 - Content/SQLi - Error based.md"
     },
     {
       "basename": "SQL Commands",
@@ -42,35 +38,39 @@
     },
     {
       "basename": "SQL - Interacción Especial y Archivos",
-      "path": "04 - Content/Process/SQL - Interacción Especial y Archivos.md"
+      "path": "04 - Content/SQL - Interacción Especial y Archivos.md"
     },
     {
       "basename": "SQL - Funciones y Expresiones Clave",
-      "path": "04 - Content/Process/SQL - Funciones y Expresiones Clave.md"
-    },
-    {
-      "basename": "SQL - Subconsultas y Estructuras Avanzadas",
-      "path": "04 - Content/Process/SQL - Subconsultas y Estructuras Avanzadas.md"
-    },
-    {
-      "basename": "SQL - Manipulación de Resultados",
-      "path": "04 - Content/Process/SQL - Manipulación de Resultados.md"
-    },
-    {
-      "basename": "SQL - Conexión y Gestión de Bases de Datos",
-      "path": "04 - Content/Process/SQL - Conexión y Gestión de Bases de Datos.md"
+      "path": "04 - Content/SQL - Funciones y Expresiones Clave.md"
     },
     {
       "basename": "SQL - Exploración de Metadatos",
-      "path": "04 - Content/Process/SQL - Exploración de Metadatos.md"
+      "path": "04 - Content/SQL - Exploración de Metadatos.md"
+    },
+    {
+      "basename": "SQL - Subconsultas y Estructuras Avanzadas",
+      "path": "04 - Content/SQL - Subconsultas y Estructuras Avanzadas.md"
+    },
+    {
+      "basename": "SQL - Manipulación de Resultados",
+      "path": "04 - Content/SQL - Manipulación de Resultados.md"
     },
     {
       "basename": "SQL - Operadores y Lógica",
-      "path": "04 - Content/Process/SQL - Operadores y Lógica.md"
+      "path": "04 - Content/SQL - Operadores y Lógica.md"
     },
     {
       "basename": "SQL - Estructura Básica",
-      "path": "04 - Content/Process/SQL - Estructura Básica.md"
+      "path": "04 - Content/SQL - Estructura Básica.md"
+    },
+    {
+      "basename": "SQL - Conexión y Gestión de Bases de Datos",
+      "path": "04 - Content/SQL - Conexión y Gestión de Bases de Datos.md"
+    },
+    {
+      "basename": "SQLi - Routed",
+      "path": "04 - Content/SQLi - Routed.md"
     },
     {
       "basename": "OS Command Injection",

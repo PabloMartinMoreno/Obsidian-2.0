@@ -12,7 +12,7 @@ relacionados:
   - "[[Notas/Procesar/dig|dig]]"
   - "[[LFI]]"
   - "[[Log Poisoning]]"
-  - "[[SQL Injection (SQLI)|SQLI]]"
+  - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[Cron]]"
   - "[[vhosts]]"
   - "[[fail2ban]]"

@@ -10,7 +10,7 @@ dificultad: Media
 ip: 10.10.10.104
 os: Windows
 relacionados:
-  - "[[SQL Injection (SQLI)|SQLI]]"
+  - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[xp_dirtree]]"
   - "[[Net-NTLMv2 Hash]]"
   - "[[Windows Defender Evasion]]"

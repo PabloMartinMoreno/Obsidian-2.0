@@ -13,7 +13,7 @@ relacionados:
   - "[[SNMP]]"
   - "[[Information Leakage]]"
   - "[[Local Port Forwarding]]"
-  - "[[SQL Injection (SQLI)|SQLI]]"
+  - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[CVE-2019-20224]]"
   - "[[PATH Hijacking]]"
 ---

@@ -14,7 +14,7 @@ relacionados:
   - "[[02 - Herramientas/ftp|ftp]]"
   - "[[02 - Herramientas/ssh|ssh]]"
   - "[[nvim]]"
-  - "[[SQL Injection (SQLI)]]"
+  - "[[SQL Injection (SQLi)]]"
 ---
 #  HackTheBox - Vaccine
 

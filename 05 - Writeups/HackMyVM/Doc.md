@@ -12,7 +12,7 @@ relacionados:
   - "[[chisel]]"
   - "[[Port Forwarding]]"
   - "[[shred]]"
-  - "[[SQL Injection (SQLI)]]"
+  - "[[SQL Injection (SQLi)]]"
 ---
 #  Hack My VM - Doc
 
@@ -84,7 +84,7 @@ ___
 
 ## Explotación de vulnerabilidades
 
-### [[SQL Injection (SQLI)|SQL Injection (SQLI)]]
+### [[SQL Injection (SQLi)|SQL Injection (SQLI)]]
 
 Tenemos dos formas de usar [[sqlmap]]:
 

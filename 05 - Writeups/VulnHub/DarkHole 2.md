@@ -8,7 +8,7 @@ dificultad: Fácil
 os: Linux
 relacionados:
   - "[[03 - Conceptos/SSH|SSH]]"
-  - "[[SQL Injection (SQLI)]]"
+  - "[[SQL Injection (SQLi)]]"
   - "[[Puerto interno]]"
   - "[[Port Forwarding]]"
   - "[[sqlmap]]"
@@ -68,7 +68,7 @@ if($_POST['email'] == "lush@admin.com" && $_POST['password'] == "321"){
 
 Esto reveló que el panel de login aceptaba el correo **lush@admin.com** y la contraseña **321** sin mayores restricciones, lo que evidenciaba una mala práctica de seguridad en el manejo de credenciales.
 
-### [[SQL Injection (SQLI)|SQL Injection (SQLI)]] en la aplicación
+### [[SQL Injection (SQLi)|SQL Injection (SQLI)]] en la aplicación
 
 Una vez accedido al panel de login y al interior de la aplicación, se observó que la URL del dashboard contenía un parámetro `id` que era vulnerable a inyección SQL. Esto se evidenció al interactuar con el sistema, ya que el parámetro permitía manipular las consultas SQL que se ejecutaban en el backend.
 

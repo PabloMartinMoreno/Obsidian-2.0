@@ -9,7 +9,7 @@ os: Linux
 relacionados:
   - "[[Cross-Site Scripting (XSS)]]"
   - "[[Cookie Hijacking]]"
-  - "[[SQL Injection (SQLI)]]"
+  - "[[SQL Injection (SQLi)]]"
   - "[[Bypass de Restricciones]]"
   - "[[Cracking Hashes]]"
 ---

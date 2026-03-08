@@ -12,7 +12,7 @@ os: Windows
 relacionados:
   - "[[Cross-Site Request Forgery (SCRF)]]"
   - "[[Cross-Site Scripting (XSS)]]"
-  - "[[SQL Injection (SQLI)|SQLI]]"
+  - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[IIS Exploitation]]"
   - "[[Abusing Linux subsystem]]"
   - "[[Information Leakage]]"

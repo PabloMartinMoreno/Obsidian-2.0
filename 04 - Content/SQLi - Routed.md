@@ -21,7 +21,7 @@ linked:
 | <br>Middleware / Broker       | <br>Analiza parámetros inocuos (como `tenant_id`) para enrutar la petición al clúster correspondiente.                              | <br>Empaqueta la carga útil en un nuevo formato de transporte interno o la inserta en una cola de mensajes. | <br>Mi inyección en el campo `query` permanece latente, aprovechando que el middleware solo inspecciona y procesa las variables de enrutamiento.<br><br>                                                           |
 | <br>Motor Intermedio (Linked) | <br>Actúa como puente. Ejecuta una consulta para comunicarse con el SGBD final (ej. `dblink` en PostgreSQL u `OpenQuery` en MSSQL). | <br>`SELECT * FROM OPENQUERY(TargetDB, 'SELECT * FROM data WHERE id = ''1'''' OR ''''1''''=''''1''')`       | <br>Constituye el desafío principal. Exige inyectar comillas anidadas, escapes múltiples o codificación (Hex) para evitar que el nodo intermedio rompa la sintaxis al reensamblar la consulta.<br><br>             |
 | <br>SGBD Objetivo (Target)    | <br>Recibe la consulta final desencapsulada y la procesa directamente en su motor.                                                  | <br>El payload se ejecuta limpio: `SELECT * FROM data WHERE id = '1' OR '1'='1'`                            | <br>La vulnerabilidad detona en un entorno aislado. Al carecer de conexión directa con la respuesta HTTP inicial, la confirmación y exfiltración de datos requieren forzosamente técnicas de [[OOB SQLi]].<br><br> |
-
+^sqli-routed
 
 ___
 

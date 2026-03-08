@@ -17,7 +17,7 @@ relacionados:
   - "[[Default credentials]]"
   - "[[SQLI HTB Soccer]]"
   - "[[SQLi Boolean-Based]]"
-  - "[[SQL Injection (SQLI)]]"
+  - "[[SQL Injection (SQLi)]]"
 ---
 # HackTheBox - Soccer
 

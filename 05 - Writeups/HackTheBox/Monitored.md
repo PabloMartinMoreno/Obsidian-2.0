@@ -17,7 +17,7 @@ relacionados:
   - "[[UDP]]"
   - "[[API authentication token]]"
   - "[[Token-based Login]]"
-  - "[[SQL Injection (SQLI)|SQLI]]"
+  - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[Error-Based SQL Injection]]"
   - "[[API Abuse for User Creation]]"
   - "[[Remote Code Execution|RCE]]"
