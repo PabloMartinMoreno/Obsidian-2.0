@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "sherlocks a hacer",
+      "path": "04 - Content/Process/sherlocks a hacer.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "deobfuscation simple",
       "path": "04 - Content/Process/deobfuscation simple.md"
-    },
-    {
-      "basename": "Web Fuzzing",
-      "path": "04 - Content/Process/Web Fuzzing.md"
     }
   ],
   "omittedPaths": [],
