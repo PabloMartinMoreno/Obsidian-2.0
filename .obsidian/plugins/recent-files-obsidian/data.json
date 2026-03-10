@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "SSRF - Explotación",
+      "path": "04 - Content/SSRF - Explotación.md"
+    },
+    {
+      "basename": "SSRF - Gopher",
+      "path": "04 - Content/SSRF - Gopher.md"
+    },
+    {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Cross-Site Scripting (XSS) moc",
       "path": "04 - Content/Process/Cross-Site Scripting (XSS) moc.md"
-    },
-    {
-      "basename": "Stored XSS",
-      "path": "04 - Content/Process/Stored XSS.md"
-    },
-    {
-      "basename": "Detectar tipo de codificacion",
-      "path": "04 - Content/Process/Detectar tipo de codificacion.md"
-    },
-    {
-      "basename": "deobfuscation simple",
-      "path": "04 - Content/Process/deobfuscation simple.md"
     }
   ],
   "omittedPaths": [],
