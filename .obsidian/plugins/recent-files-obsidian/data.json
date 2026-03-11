@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQLi - Boolean based",
+      "path": "04 - Content/SQLi - Boolean based.md"
+    },
+    {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
     },
@@ -17,20 +25,12 @@
       "path": "04 - Content/SQL Commands.md"
     },
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
-    },
-    {
       "basename": "sherlocks a hacer",
       "path": "04 - Content/Process/sherlocks a hacer.md"
     },
     {
       "basename": "SQLi - Time based",
       "path": "04 - Content/SQLi - Time based.md"
-    },
-    {
-      "basename": "SQLi - Boolean based",
-      "path": "04 - Content/SQLi - Boolean based.md"
     },
     {
       "basename": "SQLi - Lateral",
