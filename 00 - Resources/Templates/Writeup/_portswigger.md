@@ -2,7 +2,7 @@
 tags:
   - CTF
   - estado/incompleto
-platform: "[[PortSwigger]]"
+platform: "[[PortSwigger - Blind SQL injection with conditional responses]]"
 type: CTF
 web: https://portswigger.net/web-security/
 difficulty:

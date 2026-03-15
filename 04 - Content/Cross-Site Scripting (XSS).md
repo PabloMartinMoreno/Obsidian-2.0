@@ -84,7 +84,6 @@ Las vulnerabilidades de HTML Injection a menudo pueden usarse para realizar ataq
 ### XSS Reflejado (Reflected)
 
 El script malicioso **no se guarda** en el servidor; viaja en la URL y el servidor lo "refleja" en la respuesta.
-
 - **Vector:** Enlaces maliciosos (Phishing).
 - **Persistencia:** Nula (requiere que la víctima haga clic cada vez).
 
@@ -92,7 +91,6 @@ El script malicioso **no se guarda** en el servidor; viaja en la URL y el servid
 > http://sitio.com/buscar?q=<script>alert('XSS')</script>
 
 **Cómo funciona:**
-
 1. La víctima hace clic en el link.
 2. El servidor recibe la `q` y la pone en el HTML de respuesta: `Resultados para: <script>...</script>`.
 3. El navegador ejecuta el script.
@@ -102,7 +100,6 @@ El script malicioso **no se guarda** en el servidor; viaja en la URL y el servid
 ### XSS Almacenado (Stored)
 
 El script malicioso **se guarda** permanentemente en el servidor (Base de datos, foros, comentarios).
-
 - **Vector:** Formularios de comentarios, perfiles de usuario, posts.
 - **Persistencia:** Alta (afecta a cualquiera que visite la página).
 
@@ -117,7 +114,6 @@ El script malicioso **se guarda** permanentemente en el servidor (Base de datos,
 > ```
 
 **Cómo funciona:**
-
 1. El servidor guarda el comentario.
 2. Cuando otros usuarios (o el administrador) cargan el post, el servidor sirve el comentario con el script.
 3. El script se ejecuta automáticamente sin que el usuario haga nada extraño.
@@ -128,10 +124,8 @@ El script malicioso **se guarda** permanentemente en el servidor (Base de datos,
 ### XSS basado en DOM (DOM-based)
 
 Ocurre enteramente en el **navegador**. El servidor envía la página bien, pero el Javascript del sitio manipula los datos de forma insegura.
-
 - **Fuente (Source):** `location.hash`, `location.search`, `document.referrer`.
 - **Sumidero (Sink):** `innerHTML`, `document.write`, `eval()`.
-    
 
 > [!BUG] Ejemplo Javascript
 > ```JavaScript
@@ -144,12 +138,21 @@ Ocurre enteramente en el **navegador**. El servidor envía la página bien, pero
 
 ---
 
-### Diferencias Clave
+## Diferencias Clave
 
-|**Tipo**|**¿Dónde se aloja el payload?**|**¿Quién ve el ataque?**|
-|---|---|---|
-|**Reflejado**|En la URL (Cliente -> Servidor -> Cliente)|Solo la víctima que hace clic|
-|**Almacenado**|Base de Datos del Servidor|Todos los visitantes|
-|**DOM-based**|En el navegador (Cliente -> Cliente)|Depende de cómo se comparta el link|
+| **Tipo de XSS** | **¿Dónde reside la vulnerabilidad?**   | **¿Se almacena en el servidor?** | **Método de entrega principal**           |
+| --------------- | -------------------------------------- | -------------------------------- | ----------------------------------------- |
+| **Stored**      | Servidor (procesamiento de datos)      | Sí                               | Navegación normal a la página afectada    |
+| **Reflected**   | Servidor (procesamiento de respuestas) | No                               | Enlace manipulado enviado por el atacante |
+| **DOM-based**   | Cliente (JavaScript en el navegador)   | No                               | Modificación del entorno local / URL      |
+
+
+Lo que define si es DOM, Reflejado o Almacenado es **qué parte del sistema cometió el error de colocar el _payload_ en el código de la página.**
+
+- **Como Stored XSS:** Se crea un perfil en una red social y en la sección "Biografía" se escribe `<img src="" onerror=alert(window.origin)>`. El servidor lo guarda en su base de datos. Cada vez que alguien visite el perfil, el servidor inyectará ese código en el HTML y la alerta saltará.
+
+- **Como Reflected XSS:** En un buscador defectuoso, al buscar la palabra `<img src="" onerror=alert(window.origin)>`. El servidor recibe la petición y devuelve una página web que dice: `<h1>Resultados para: <img src="" onerror=alert(window.origin)></h1>`. El servidor lo reflejó.
+
+- **Como DOM-based XSS:** Entras a la URL `sitio.com/perfil?nombre=<img src="" onerror=alert(window.origin)>`. El servidor devuelve una página HTML totalmente limpia. Sin embargo, el desarrollador escribió un código JavaScript en el _frontend_ que toma el parámetro `nombre` de la URL y lo mete directamente en la página usando `document.body.innerHTML = nombre;`. Aquí, el culpable fue el JavaScript local.
 
 ---
