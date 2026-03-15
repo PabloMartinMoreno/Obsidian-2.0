@@ -5,6 +5,10 @@
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
+      "basename": "SQLi  - Union based",
+      "path": "04 - Content/SQLi  - Union based.md"
+    },
+    {
       "basename": "SQLi - Boolean based",
       "path": "04 - Content/SQLi - Boolean based.md"
     },
@@ -43,10 +47,6 @@
     {
       "basename": "SQLi - Out of Band",
       "path": "04 - Content/SQLi - Out of Band.md"
-    },
-    {
-      "basename": "SQLi  - Union based",
-      "path": "04 - Content/SQLi  - Union based.md"
     },
     {
       "basename": "SQLi - Error based",
