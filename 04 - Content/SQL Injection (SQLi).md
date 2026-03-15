@@ -11,9 +11,6 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[SQL Commands]]"
-  - "[[SQLi Enumeration]]"
-  - "[[MySQL Read & Write]]"
-  - "[[SQLi to RCE]]"
   - "[[SQLi - Error based]]"
   - "[[SQLi  - Union based]]"
   - "[[SQLi - Boolean based]]"
