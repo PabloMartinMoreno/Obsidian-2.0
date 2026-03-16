@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
+    },
+    {
+      "basename": "XSS - CWES",
+      "path": "04 - Content/Process/XSS - CWES.md"
+    },
+    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
     },
@@ -131,10 +139,6 @@
     {
       "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
       "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
-    },
-    {
-      "basename": "XSS - CWES",
-      "path": "04 - Content/Process/XSS - CWES.md"
     },
     {
       "basename": "XSS - Payloads Polyglot",
