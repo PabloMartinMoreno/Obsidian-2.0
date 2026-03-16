@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/SQL Injection (SQLi).md",
+                "file": "04 - Content/Cross-Site Scripting (XSS).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Injection (SQLi)"
+              "title": "Cross-Site Scripting (XSS)"
             }
           }
         ],
@@ -266,10 +266,10 @@
   },
   "active": "dbd533dbce17a58f",
   "lastOpenFiles": [
-    "04 - Content/Process/PortSwigger - Blind SQL injection with conditional responses.md",
-    "04 - Content/SQL Injection (SQLi).md",
-    "04 - Content/Process/CWES - Checklists.md",
     "04 - Content/Process/XSS - CWES.md",
+    "04 - Content/SQL Injection (SQLi).md",
+    "04 - Content/Process/PortSwigger - Blind SQL injection with conditional responses.md",
+    "04 - Content/Process/CWES - Checklists.md",
     "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/PortSwigger - Blind SQL injection with conditional errors.md",
     "04 - Content/SQL Commands.md",

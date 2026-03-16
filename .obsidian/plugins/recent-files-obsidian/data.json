@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - CWES",
+      "path": "04 - Content/Process/XSS - CWES.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
@@ -11,14 +19,6 @@
     {
       "basename": "CWES - Checklists",
       "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
-      "basename": "XSS - CWES",
-      "path": "04 - Content/Process/XSS - CWES.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "SQL Commands",
