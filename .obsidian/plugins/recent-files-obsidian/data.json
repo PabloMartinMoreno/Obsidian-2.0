@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "PortSwigger - Blind SQL injection with conditional responses",
+      "path": "04 - Content/Process/PortSwigger - Blind SQL injection with conditional responses.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
       "basename": "CWES - Checklists",
       "path": "04 - Content/Process/CWES - Checklists.md"
     },
@@ -11,14 +19,6 @@
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "PortSwigger - Blind SQL injection with conditional responses",
-      "path": "04 - Content/Process/PortSwigger - Blind SQL injection with conditional responses.md"
     },
     {
       "basename": "SQL Commands",
