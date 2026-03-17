@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Cross-Site Scripting (XSS).md",
+                "file": "04 - Content/Process/XSS - CWES.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Cross-Site Scripting (XSS)"
+              "title": "XSS - CWES"
             }
           }
         ],
@@ -266,10 +266,10 @@
   },
   "active": "dbd533dbce17a58f",
   "lastOpenFiles": [
+    "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/Explotación Web.md",
     "04 - Content/File Upload - Vulnerabilidades.md",
     "04 - Content/Process/Local File Inclusion (LFI).md",
-    "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/Process/XSS - CWES.md",
     "04 - Content/SQL Injection (SQLi).md",
     "04 - Content/Process/PortSwigger - Blind SQL injection with conditional responses.md",
