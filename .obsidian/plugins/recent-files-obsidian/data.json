@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "XSS - CWES",
-      "path": "04 - Content/Process/XSS - CWES.md"
-    },
-    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XSS - CWES",
+      "path": "04 - Content/Process/XSS - CWES.md"
     },
     {
       "basename": "Explotación Web",
