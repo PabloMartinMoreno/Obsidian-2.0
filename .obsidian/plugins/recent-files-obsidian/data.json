@@ -5,6 +5,18 @@
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
     },
     {
+      "basename": "Explotación Web",
+      "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
+      "basename": "Local File Inclusion (LFI)",
+      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
+    },
+    {
       "basename": "XSS - CWES",
       "path": "04 - Content/Process/XSS - CWES.md"
     },
@@ -121,10 +133,6 @@
       "path": "04 - Content/OS Command Injection.md"
     },
     {
-      "basename": "Explotación Web",
-      "path": "04 - Content/Process/Explotación Web.md"
-    },
-    {
       "basename": "FTP (21) - Enumeración",
       "path": "04 - Content/FTP (21) - Enumeración.md"
     },
@@ -143,10 +151,6 @@
     {
       "basename": "XSS - Payloads Polyglot",
       "path": "04 - Content/XSS - Payloads Polyglot.md"
-    },
-    {
-      "basename": "Local File Inclusion (LFI)",
-      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
     },
     {
       "basename": "LFI - Rutas Principales",
@@ -195,10 +199,6 @@
     {
       "basename": "Cheklist para el Examen CBBH",
       "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
-    },
-    {
-      "basename": "Server-Side Attacks",
-      "path": "04 - Content/Server-Side Attacks.md"
     }
   ],
   "omittedPaths": [],
