@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "airmon-ng",
+      "path": "04 - Content/Process/airmon-ng.md"
+    },
+    {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Cheklist para el Examen CBBH",
-      "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
     }
   ],
   "omittedPaths": [],
