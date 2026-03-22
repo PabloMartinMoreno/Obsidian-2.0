@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "URL",
+      "path": "04 - Content/URL.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Process/HTTP.md"
+    },
+    {
       "basename": "airmon-ng",
       "path": "04 - Content/Process/airmon-ng.md"
     },
     {
       "basename": "XSS - CWES",
       "path": "04 - Content/Process/XSS - CWES.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "Explotación Web",
@@ -191,14 +199,6 @@
     {
       "basename": "XSS - Escape de Contexto en Atributos",
       "path": "04 - Content/XSS - Escape de Contexto en Atributos.md"
-    },
-    {
-      "basename": "XSS - Explotación de Mutaciones del Navegador (mXSS)",
-      "path": "04 - Content/XSS - Explotación de Mutaciones del Navegador (mXSS).md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     }
   ],
   "omittedPaths": [],
