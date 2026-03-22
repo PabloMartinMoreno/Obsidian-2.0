@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "d4e4e8d38b80a04c",
+        "id": "310ca714ff671514",
         "type": "tabs",
         "children": [
           {
-            "id": "a44fe0a3cbe54735",
+            "id": "236d7c18d6b3ac5f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md",
+                "file": "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "PortSwigger - XSS - DOM XSS in document.write sink using source location.search"
+              "title": "PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search"
             }
           }
         ],
@@ -264,8 +264,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "a44fe0a3cbe54735",
+  "active": "236d7c18d6b3ac5f",
   "lastOpenFiles": [
+    "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md",
     "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md",
     "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/URL.md",
@@ -291,7 +292,6 @@
     "04 - Content/SSRF - Gopher.md",
     "04 - Content/Process/sherlocks a hacer.md",
     "04 - Content/SQLi - Time based.md",
-    "04 - Content/SQLi - Lateral.md",
     "04 - Content/Process/SQL - Manipulación de Datos (DML",
     "04 - Content/Process/Manipulación de Datos (DML",
     "00 - Resources/Images/Pasted image 20260108144749.png",

@@ -9,7 +9,9 @@ linked:
 
 ***
 
-## 🔷 DOM XSS
+## Explicación 
+
+### 🔷 DOM XSS
 Es un tipo específico de XSS donde la vulnerabilidad ocurre **completamente en el navegador**, sin que el servidor esté involucrado. El JavaScript de la página toma datos del usuario y los mete en el DOM de forma insegura.
 
 Existen 3 tipos de XSS:
@@ -20,7 +22,7 @@ Existen 3 tipos de XSS:
 
 ---
 
-## 🔷 Source (Fuente): `location.search`
+### 🔷 Source (Fuente): `location.search`
 Un **source** es el **origen de los datos controlados por el atacante**. Es donde el JavaScript lee información que el usuario puede manipular.
 
 `location.search` es todo lo que va después del `?` en la URL:
@@ -34,7 +36,7 @@ Otros sources comunes: `location.hash`, `document.referrer`, `document.cookie`
 
 ---
 
-## 🔷 Sink (Sumidero): `document.write`
+### 🔷 Sink (Sumidero): `document.write`
 Un **sink** es el **destino peligroso** donde terminan esos datos. Es la función o propiedad que, si recibe input malicioso, ejecuta el ataque.
 
 `document.write()` escribe HTML directamente en la página. Si le pasás:
@@ -48,7 +50,7 @@ Otros sinks peligrosos: `innerHTML`, `eval()`, `setTimeout()`, `src`
 
 ---
 
-## 🔷 El flujo completo del lab
+### 🔷 El flujo completo del lab
 
 ```
 URL (?q=TU_INPUT)
@@ -68,7 +70,7 @@ alert() se ejecuta 💥
 
 ---
 
-## Resumen de vocabulario clave
+### Resumen de vocabulario clave
 
 | Término | Qué es |
 |---|---|
@@ -79,3 +81,9 @@ alert() se ejecuta 💥
 | **`document.write`** | Función JS que escribe HTML crudo en la página |
 
 ___
+
+## Respuesta
+
+```js
+"><script>alert(window.origin)</script><!--
+```

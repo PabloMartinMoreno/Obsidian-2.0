@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search",
+      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md"
+    },
+    {
       "basename": "PortSwigger - XSS - DOM XSS in document.write sink using source location.search",
       "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "XSS - Pseudo-protocolos",
       "path": "04 - Content/XSS - Pseudo-protocolos.md"
-    },
-    {
-      "basename": "XSS - Manejadores de Eventos HTML",
-      "path": "04 - Content/XSS - Manejadores de Eventos HTML.md"
     }
   ],
   "omittedPaths": [],
