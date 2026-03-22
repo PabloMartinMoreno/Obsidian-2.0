@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "URL",
-      "path": "04 - Content/URL.md"
+      "basename": "PortSwigger - XSS - DOM XSS in document.write sink using source location.search",
+      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "URL",
+      "path": "04 - Content/URL.md"
     },
     {
       "basename": "HTTP",
@@ -195,10 +199,6 @@
     {
       "basename": "XSS - Manejadores de Eventos HTML",
       "path": "04 - Content/XSS - Manejadores de Eventos HTML.md"
-    },
-    {
-      "basename": "XSS - Escape de Contexto en Atributos",
-      "path": "04 - Content/XSS - Escape de Contexto en Atributos.md"
     }
   ],
   "omittedPaths": [],

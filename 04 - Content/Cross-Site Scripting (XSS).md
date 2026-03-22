@@ -155,4 +155,38 @@ Lo que define si es DOM, Reflejado o Almacenado es **qué parte del sistema come
 
 - **Como DOM-based XSS:** Entras a la URL `sitio.com/perfil?nombre=<img src="" onerror=alert(window.origin)>`. El servidor devuelve una página HTML totalmente limpia. Sin embargo, el desarrollador escribió un código JavaScript en el _frontend_ que toma el parámetro `nombre` de la URL y lo mete directamente en la página usando `document.body.innerHTML = nombre;`. Aquí, el culpable fue el JavaScript local.
 
+
 ---
+
+## Para entender XSS
+
+**Base del navegador**
+- Cómo funciona el DOM (qué es un nodo, cómo el navegador construye el árbol HTML)
+- Diferencia entre HTML parseado y JavaScript ejecutado
+- Cómo el navegador decide qué es "código" y qué es "texto"
+
+**Los tres tipos de XSS**
+- Reflected (el servidor devuelve tu input en la respuesta)
+- Stored (el payload se guarda en una base de datos)
+- DOM-based (todo pasa en el cliente, sin pasar por el servidor)
+
+**Sources y Sinks**
+- Sources: `location.search`, `location.hash`, `document.referrer`, `document.cookie`, `window.name`
+- Los sinks más comunes: `innerHTML`, `document.write`, `eval()`, `setTimeout()`, `src`, `href`, `outerHTML`
+
+**Contextos de inyección**
+- No es lo mismo inyectar dentro de una etiqueta HTML, que dentro de un atributo, que dentro de un bloque JavaScript. Cada contexto requiere un payload diferente.
+
+**Encoding y bypass**
+- HTML encoding, URL encoding, JavaScript encoding
+- Por qué algunos filtros se pueden bypassear cambiando el encoding
+
+**Content Security Policy (CSP)**
+- Qué es y cómo intenta mitigar XSS
+- Por qué a veces está mal configurada y se puede bypassear
+
+**Impacto real**
+- Robo de cookies de sesión
+- Keylogging
+- Redirección a sitios maliciosos
+- CSRF forzado desde XSS
