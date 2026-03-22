@@ -4,6 +4,7 @@ tags:
   - type/concept
 type: Concept
 linked:
+  - "[[PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source]]"
 ---
 # PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search
 

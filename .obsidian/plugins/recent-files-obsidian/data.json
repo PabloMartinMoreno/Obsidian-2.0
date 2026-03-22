@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search",
-      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md"
+      "basename": "PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event",
+      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event.md"
+    },
+    {
+      "basename": "PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source",
+      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source.md"
     },
     {
       "basename": "PortSwigger - XSS - DOM XSS in document.write sink using source location.search",
       "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md"
+    },
+    {
+      "basename": "PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search",
+      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
@@ -191,14 +199,6 @@
     {
       "basename": "XSS - Filtros XSS y WAF mediante Codificaciones Múltiples",
       "path": "04 - Content/XSS - Filtros XSS y WAF mediante Codificaciones Múltiples.md"
-    },
-    {
-      "basename": "XSS - Explotación Out-of-Band (Blind XSS)",
-      "path": "04 - Content/XSS - Explotación Out-of-Band (Blind XSS).md"
-    },
-    {
-      "basename": "XSS - Pseudo-protocolos",
-      "path": "04 - Content/XSS - Pseudo-protocolos.md"
     }
   ],
   "omittedPaths": [],
