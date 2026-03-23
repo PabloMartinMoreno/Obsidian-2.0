@@ -1,24 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event",
-      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event.md"
+      "basename": "PortSwigger - XSS - DOM XSS in document.write sink using source location.search",
+      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md"
     },
     {
       "basename": "PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source",
       "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source.md"
     },
     {
-      "basename": "PortSwigger - XSS - DOM XSS in document.write sink using source location.search",
-      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md"
-    },
-    {
       "basename": "PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search",
       "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md"
+    },
+    {
+      "basename": "PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event",
+      "path": "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "URL",
