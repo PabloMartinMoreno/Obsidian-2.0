@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md",
+                "file": "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "PortSwigger - XSS - DOM XSS in document.write sink using source location.search"
+              "title": "PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event"
             }
           }
         ],
@@ -267,10 +267,10 @@
   "active": "ae2c5eff5c78e7fd",
   "lastOpenFiles": [
     "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source.md",
-    "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md",
     "04 - Content/Process/PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event.md",
-    "04 - Content/Cross-Site Scripting (XSS).md",
+    "04 - Content/Process/PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search.md",
     "04 - Content/Process/PortSwigger - XSS - DOM XSS in document.write sink using source location.search.md",
+    "04 - Content/Cross-Site Scripting (XSS).md",
     "04 - Content/URL.md",
     "04 - Content/Process/HTTP.md",
     "04 - Content/Process/URL1.md",
