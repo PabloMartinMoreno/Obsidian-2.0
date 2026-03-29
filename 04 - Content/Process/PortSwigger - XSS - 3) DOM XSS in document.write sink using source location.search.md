@@ -4,7 +4,7 @@ tags:
   - type/concept
 type: Concept
 linked:
-  - "[[PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search]]"
+  - "[[PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search]]"
 ---
 # PortSwigger - XSS - DOM XSS in document.write sink using source location.search
 

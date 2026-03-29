@@ -4,7 +4,7 @@ tags:
   - type/concept
 type: Concept
 linked:
-  - "[[PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event]]"
+  - "[[PortSwigger - XSS - 6) DOM XSS in jQuery selector sink using a hashchange event]]"
 ---
 # PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source
 
