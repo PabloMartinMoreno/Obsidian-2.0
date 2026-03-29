@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search",
+      "path": "04 - Content/Process/PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search.md"
+    },
+    {
       "basename": "PortSwigger - XSS - 3) DOM XSS in document.write sink using source location.search",
       "path": "04 - Content/Process/PortSwigger - XSS - 3) DOM XSS in document.write sink using source location.search.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "PortSwigger - XSS - 5) DOM XSS in jQuery anchor href attribute sink using location.search source",
       "path": "04 - Content/Process/PortSwigger - XSS - 5) DOM XSS in jQuery anchor href attribute sink using location.search source.md"
-    },
-    {
-      "basename": "PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search",
-      "path": "04 - Content/Process/PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
