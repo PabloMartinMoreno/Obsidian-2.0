@@ -1,6 +1,50 @@
 {
   "recentFiles": [
     {
+      "basename": "Local File Inclusion (LFI)",
+      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
+    },
+    {
+      "basename": "Explotación Web",
+      "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Shells",
+      "path": "04 - Content/Process/Shells.md"
+    },
+    {
+      "basename": "Reverse Shells",
+      "path": "04 - Content/Process/Reverse Shells.md"
+    },
+    {
+      "basename": "Reverse Shell",
+      "path": "04 - Content/Reverse Shell.md"
+    },
+    {
+      "basename": "Operational Tasks",
+      "path": "04 - Content/Process/Operational Tasks.md"
+    },
+    {
+      "basename": "Resource Development",
+      "path": "04 - Content/Process/Resource Development.md"
+    },
+    {
+      "basename": "Payload & Malware Engineering",
+      "path": "04 - Content/Process/Payload & Malware Engineering.md"
+    },
+    {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
       "basename": "PortSwigger - XSS - 6) DOM XSS in jQuery selector sink using a hashchange event",
       "path": "04 - Content/Process/PortSwigger - XSS - 6) DOM XSS in jQuery selector sink using a hashchange event.md"
     },
@@ -35,18 +79,6 @@
     {
       "basename": "XSS - CWES",
       "path": "04 - Content/Process/XSS - CWES.md"
-    },
-    {
-      "basename": "Explotación Web",
-      "path": "04 - Content/Process/Explotación Web.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
-    },
-    {
-      "basename": "Local File Inclusion (LFI)",
-      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
     },
     {
       "basename": "SQL Injection (SQLi)",
@@ -167,38 +199,6 @@
     {
       "basename": "Windows LOTL Port Scanning",
       "path": "04 - Content/Windows LOTL Port Scanning.md"
-    },
-    {
-      "basename": "_precode",
-      "path": "00 - Resources/Templates/Type/_precode.md"
-    },
-    {
-      "basename": "MSSQL (1433, 1434, 2433) - Enumeración",
-      "path": "04 - Content/MSSQL (1433, 1434, 2433) - Enumeración.md"
-    },
-    {
-      "basename": "XSS - Payloads Polyglot",
-      "path": "04 - Content/XSS - Payloads Polyglot.md"
-    },
-    {
-      "basename": "LFI - Rutas Principales",
-      "path": "04 - Content/Process/LFI - Rutas Principales.md"
-    },
-    {
-      "basename": "XSS - Manipulación de Sources y Sinks (DOM-based)",
-      "path": "04 - Content/XSS - Manipulación de Sources y Sinks (DOM-based).md"
-    },
-    {
-      "basename": "XSS - Etiqueta <script> Estándar",
-      "path": "04 - Content/XSS - Etiqueta <script> Estándar.md"
-    },
-    {
-      "basename": "XSS - HTML Básico",
-      "path": "04 - Content/XSS - HTML Básico.md"
-    },
-    {
-      "basename": "XSS - Filtros XSS y WAF mediante Codificaciones Múltiples",
-      "path": "04 - Content/XSS - Filtros XSS y WAF mediante Codificaciones Múltiples.md"
     }
   ],
   "omittedPaths": [],
