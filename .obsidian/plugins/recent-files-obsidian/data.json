@@ -1,8 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Local File Inclusion (LFI)",
-      "path": "04 - Content/Process/Local File Inclusion (LFI).md"
+      "basename": "LFI To RCE - Log Poisoning ",
+      "path": "04 - Content/Process/LFI To RCE - Log Poisoning .md"
+    },
+    {
+      "basename": "LFI - Remote File Inclusion (RFI)",
+      "path": "04 - Content/Process/LFI - Remote File Inclusion (RFI).md"
+    },
+    {
+      "basename": "LFI - PHP Wrappers",
+      "path": "04 - Content/Process/LFI - PHP Wrappers.md"
+    },
+    {
+      "basename": "LFI - Null Byte Injection ",
+      "path": "04 - Content/Process/LFI - Null Byte Injection .md"
+    },
+    {
+      "basename": "LFI - Path Traversal y Bypass de Filtros",
+      "path": "04 - Content/Process/LFI - Path Traversal y Bypass de Filtros.md"
+    },
+    {
+      "basename": "LFI - Básico",
+      "path": "04 - Content/Process/LFI - Básico.md"
+    },
+    {
+      "basename": "File Inclusion",
+      "path": "04 - Content/Process/File Inclusion.md"
     },
     {
       "basename": "Explotación Web",
@@ -175,30 +199,6 @@
     {
       "basename": "SQL - Operadores y Lógica",
       "path": "04 - Content/SQL - Operadores y Lógica.md"
-    },
-    {
-      "basename": "SQL - Estructura Básica",
-      "path": "04 - Content/SQL - Estructura Básica.md"
-    },
-    {
-      "basename": "SQL - Conexión y Gestión de Bases de Datos",
-      "path": "04 - Content/SQL - Conexión y Gestión de Bases de Datos.md"
-    },
-    {
-      "basename": "SQLi - Routed",
-      "path": "04 - Content/SQLi - Routed.md"
-    },
-    {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/OS Command Injection.md"
-    },
-    {
-      "basename": "FTP (21) - Enumeración",
-      "path": "04 - Content/FTP (21) - Enumeración.md"
-    },
-    {
-      "basename": "Windows LOTL Port Scanning",
-      "path": "04 - Content/Windows LOTL Port Scanning.md"
     }
   ],
   "omittedPaths": [],

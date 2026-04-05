@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "94eb434fc6fcf1a5",
+        "id": "fc5a2ba892220715",
         "type": "tabs",
         "children": [
           {
-            "id": "ae2c5eff5c78e7fd",
+            "id": "f9d7f764be5423c3",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "04 - Content/Process/Local File Inclusion (LFI).md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Local File Inclusion (LFI)"
+              "title": "Nueva pestaña"
             }
           }
         ],
@@ -264,8 +259,15 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "ae2c5eff5c78e7fd",
+  "active": "f9d7f764be5423c3",
   "lastOpenFiles": [
+    "04 - Content/Process/LFI To RCE - Log Poisoning .md",
+    "04 - Content/Process/LFI - Remote File Inclusion (RFI).md",
+    "04 - Content/Process/LFI - PHP Wrappers.md",
+    "04 - Content/Process/LFI - Null Byte Injection .md",
+    "04 - Content/Process/LFI - Path Traversal y Bypass de Filtros.md",
+    "04 - Content/Process/LFI - Básico.md",
+    "04 - Content/Process/File Inclusion.md",
     "04 - Content/Process/Explotación Web.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
@@ -285,13 +287,6 @@
     "04 - Content/Process/HTTP.md",
     "04 - Content/Process/URL1.md",
     "04 - Content/Process/airmon-ng.md",
-    "04 - Content/Process/XSS - CWES.md",
-    "04 - Content/Process/Local File Inclusion (LFI).md",
-    "04 - Content/SQL Injection (SQLi).md",
-    "04 - Content/Process/PortSwigger - Blind SQL injection with conditional responses.md",
-    "04 - Content/Process/CWES - Checklists.md",
-    "04 - Content/Process/PortSwigger - Blind SQL injection with conditional errors.md",
-    "04 - Content/SQL Commands.md",
     "04 - Content/Process/SQL - Manipulación de Datos (DML",
     "04 - Content/Process/Manipulación de Datos (DML",
     "00 - Resources/Images/Pasted image 20260108144749.png",
