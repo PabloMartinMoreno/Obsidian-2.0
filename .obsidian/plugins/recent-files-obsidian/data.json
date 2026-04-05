@@ -1,20 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "LFI To RCE - Log Poisoning ",
-      "path": "04 - Content/Process/LFI To RCE - Log Poisoning .md"
+      "basename": "File Inclusion",
+      "path": "04 - Content/Process/File Inclusion.md"
     },
     {
-      "basename": "LFI - Remote File Inclusion (RFI)",
-      "path": "04 - Content/Process/LFI - Remote File Inclusion (RFI).md"
+      "basename": "LFI - Null Byte Injection",
+      "path": "04 - Content/Process/LFI - Null Byte Injection.md"
+    },
+    {
+      "basename": "LFI To RCE - PHP Filter Chains",
+      "path": "04 - Content/Process/LFI To RCE - PHP Filter Chains.md"
+    },
+    {
+      "basename": "LFI To RCE - Session File Poisoning",
+      "path": "04 - Content/Process/LFI To RCE - Session File Poisoning.md"
+    },
+    {
+      "basename": "LFI To RCE - Log Poisoning",
+      "path": "04 - Content/Process/LFI To RCE - Log Poisoning.md"
+    },
+    {
+      "basename": "LFI To RCE - Phar Deserialization",
+      "path": "04 - Content/Process/LFI To RCE - Phar Deserialization.md"
+    },
+    {
+      "basename": "RFI - Remote File Inclusion",
+      "path": "04 - Content/Process/RFI - Remote File Inclusion.md"
+    },
+    {
+      "basename": "LFI To RCE - File Upload + LFI",
+      "path": "04 - Content/Process/LFI To RCE - File Upload + LFI.md"
+    },
+    {
+      "basename": "LFI To RCE - proc self environ",
+      "path": "04 - Content/Process/LFI To RCE - proc self environ.md"
     },
     {
       "basename": "LFI - PHP Wrappers",
       "path": "04 - Content/Process/LFI - PHP Wrappers.md"
-    },
-    {
-      "basename": "LFI - Null Byte Injection ",
-      "path": "04 - Content/Process/LFI - Null Byte Injection .md"
     },
     {
       "basename": "LFI - Path Traversal y Bypass de Filtros",
@@ -23,10 +47,6 @@
     {
       "basename": "LFI - Básico",
       "path": "04 - Content/Process/LFI - Básico.md"
-    },
-    {
-      "basename": "File Inclusion",
-      "path": "04 - Content/Process/File Inclusion.md"
     },
     {
       "basename": "Explotación Web",
@@ -175,30 +195,6 @@
     {
       "basename": "SQLi - Error based",
       "path": "04 - Content/SQLi - Error based.md"
-    },
-    {
-      "basename": "SQL - Interacción Especial y Archivos",
-      "path": "04 - Content/SQL - Interacción Especial y Archivos.md"
-    },
-    {
-      "basename": "SQL - Funciones y Expresiones Clave",
-      "path": "04 - Content/SQL - Funciones y Expresiones Clave.md"
-    },
-    {
-      "basename": "SQL - Exploración de Metadatos",
-      "path": "04 - Content/SQL - Exploración de Metadatos.md"
-    },
-    {
-      "basename": "SQL - Subconsultas y Estructuras Avanzadas",
-      "path": "04 - Content/SQL - Subconsultas y Estructuras Avanzadas.md"
-    },
-    {
-      "basename": "SQL - Manipulación de Resultados",
-      "path": "04 - Content/SQL - Manipulación de Resultados.md"
-    },
-    {
-      "basename": "SQL - Operadores y Lógica",
-      "path": "04 - Content/SQL - Operadores y Lógica.md"
     }
   ],
   "omittedPaths": [],

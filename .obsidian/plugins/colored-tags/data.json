@@ -499,7 +499,12 @@
     "javascript": 142,
     "event-handlers": 143,
     "pseudo-protocolos": 144,
-    "dom-xss": 145
+    "dom-xss": 145,
+    "cybersecurity": 146,
+    "lfi": 147,
+    "rfi": 148,
+    "file-inclusion": 149,
+    "web-hacking": 150
   },
   "_version": 3
 }

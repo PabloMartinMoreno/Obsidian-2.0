@@ -4,17 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "fc5a2ba892220715",
+        "id": "2a90eac55d2d45cb",
         "type": "tabs",
         "children": [
           {
-            "id": "f9d7f764be5423c3",
+            "id": "ed9e571fee25bc5f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "04 - Content/Process/File Inclusion.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "File Inclusion"
             }
           }
         ],
@@ -259,15 +264,25 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f9d7f764be5423c3",
+  "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
-    "04 - Content/Process/LFI To RCE - Log Poisoning .md",
-    "04 - Content/Process/LFI - Remote File Inclusion (RFI).md",
+    "00 - Resources/Pasted image 20260405112752.png",
+    "04 - Content/Process/LFI - Null Byte Injection.md",
+    "04 - Content/Process/File Inclusion.md",
+    "04 - Content/Process/LFI To RCE - PHP Filter Chains.md",
+    "04 - Content/Process/LFI To RCE - Session File Poisoning.md",
+    "04 - Content/Process/LFI To RCE - Log Poisoning.md",
+    "04 - Content/Process/LFI To RCE - Phar Deserialization.md",
+    "04 - Content/Process/RFI - Remote File Inclusion.md",
+    "04 - Content/Process/LFI To RCE - File Upload + LFI.md",
+    "04 - Content/Process/LFI To RCE - proc self environ.md",
+    "04 - Content/Process/LFI To RCE - /proc/self/environ.md",
+    "04 - Content/Process/LFI To RCE - /proc/self",
+    "04 - Content/Process/LFI To RCE - /proc",
+    "04 - Content/Process/LFI To RCE - ",
     "04 - Content/Process/LFI - PHP Wrappers.md",
-    "04 - Content/Process/LFI - Null Byte Injection .md",
     "04 - Content/Process/LFI - Path Traversal y Bypass de Filtros.md",
     "04 - Content/Process/LFI - Básico.md",
-    "04 - Content/Process/File Inclusion.md",
     "04 - Content/Process/Explotación Web.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
@@ -280,13 +295,6 @@
     "04 - Content/File Upload - Vulnerabilidades.md",
     "04 - Content/Process/PortSwigger - XSS - 6) DOM XSS in jQuery selector sink using a hashchange event.md",
     "04 - Content/Process/PortSwigger - XSS - 5) DOM XSS in jQuery anchor href attribute sink using location.search source.md",
-    "04 - Content/Process/PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search.md",
-    "04 - Content/Process/PortSwigger - XSS - 3) DOM XSS in document.write sink using source location.search.md",
-    "04 - Content/Cross-Site Scripting (XSS).md",
-    "04 - Content/URL.md",
-    "04 - Content/Process/HTTP.md",
-    "04 - Content/Process/URL1.md",
-    "04 - Content/Process/airmon-ng.md",
     "04 - Content/Process/SQL - Manipulación de Datos (DML",
     "04 - Content/Process/Manipulación de Datos (DML",
     "00 - Resources/Images/Pasted image 20260108144749.png",
@@ -297,9 +305,6 @@
     "05 - Writeups/PortSwigger",
     "05 - Writeups/OverTheWire",
     "05 - Writeups/HackTheBox",
-    "05 - Writeups/HackMyVM",
-    "05 - Writeups/DockerLabs",
-    "05 - Writeups",
     "00 - Resources/Images/Pasted image 20260108170324.png",
     "00 - Resources/Images/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",

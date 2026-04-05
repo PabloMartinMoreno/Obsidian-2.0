@@ -8,7 +8,7 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-# LFI - Remote File Inclusion (RFI)
+# RFI - Remote File Inclusion
 
 ***
 
