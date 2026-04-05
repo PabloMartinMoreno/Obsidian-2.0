@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/File Inclusion.md",
+                "file": "04 - Content/Process/LFI - Básico.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "File Inclusion"
+              "title": "LFI - Básico"
             }
           }
         ],
@@ -266,9 +266,9 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
+    "04 - Content/Process/File Inclusion.md",
     "00 - Resources/Pasted image 20260405112752.png",
     "04 - Content/Process/LFI - Null Byte Injection.md",
-    "04 - Content/Process/File Inclusion.md",
     "04 - Content/Process/LFI To RCE - PHP Filter Chains.md",
     "04 - Content/Process/LFI To RCE - Session File Poisoning.md",
     "04 - Content/Process/LFI To RCE - Log Poisoning.md",
@@ -311,7 +311,6 @@
     "00 - Resources/Pasted image 20260112143910.png",
     "00 - Resources/Pasted image 20260112144059.png",
     "00 - Resources/Pasted image 20260112143958.png",
-    "00 - Resources/Pasted image 20260112143941.png",
     "00 - Resources/Diagrams/Canvas/INICIO.canvas",
     "00 - Recursos/Diagramas/Canvas/Ejemplo.canvas",
     "00 - Recursos/Diagramas/Canvas/Sin título.canvas",
