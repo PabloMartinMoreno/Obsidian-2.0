@@ -14,7 +14,7 @@ linked:
 
 ## Cheatsheet
 
-| Técnica                         | Descripción                                                                          | Payload                                                         |
+| **Técnica**                     | **Descripción**                                                                      | **Payload**                                                     |
 | ------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
 | <br>php://filter base64<br><br> | <br><br>Leer código fuente encodeado en base64<br><br>                               | <br><br>`php://filter/convert.base64-encode/resource=index.php` |
 | <br>php://filter rot13          | <br>Leer código fuente encodeado en ROT13<br><br>                                    | <br>`php://filter/string.rot13/resource=config.php`             |

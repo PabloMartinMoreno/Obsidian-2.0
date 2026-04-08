@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/LFI - Básico.md",
+                "file": "04 - Content/Process/File Inclusion.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "LFI - Básico"
+              "title": "File Inclusion"
             }
           }
         ],
@@ -266,7 +266,9 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
+    "04 - Content/Process/LFI - PHP Wrappers.md",
     "04 - Content/Process/File Inclusion.md",
+    "04 - Content/Process/LFI - Básico.md",
     "00 - Resources/Pasted image 20260405112752.png",
     "04 - Content/Process/LFI - Null Byte Injection.md",
     "04 - Content/Process/LFI To RCE - PHP Filter Chains.md",
@@ -280,9 +282,7 @@
     "04 - Content/Process/LFI To RCE - /proc/self",
     "04 - Content/Process/LFI To RCE - /proc",
     "04 - Content/Process/LFI To RCE - ",
-    "04 - Content/Process/LFI - PHP Wrappers.md",
     "04 - Content/Process/LFI - Path Traversal y Bypass de Filtros.md",
-    "04 - Content/Process/LFI - Básico.md",
     "04 - Content/Process/Explotación Web.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
