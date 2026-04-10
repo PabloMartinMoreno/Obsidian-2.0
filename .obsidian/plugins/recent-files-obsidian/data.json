@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "DNS - CWES",
+      "path": "04 - Content/Process/DNS - CWES.md"
+    },
+    {
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
+    },
+    {
       "basename": "File Inclusion",
       "path": "04 - Content/Process/File Inclusion.md"
     },
@@ -133,10 +145,6 @@
       "path": "04 - Content/Process/PortSwigger - Blind SQL injection with conditional responses.md"
     },
     {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
     },
@@ -191,10 +199,6 @@
     {
       "basename": "SQLi - Out of Band",
       "path": "04 - Content/SQLi - Out of Band.md"
-    },
-    {
-      "basename": "SQLi - Error based",
-      "path": "04 - Content/SQLi - Error based.md"
     }
   ],
   "omittedPaths": [],
