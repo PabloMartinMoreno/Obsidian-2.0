@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "File Inclusion",
+      "path": "04 - Content/Process/File Inclusion.md"
+    },
+    {
+      "basename": "LFI - Básico",
+      "path": "04 - Content/Process/LFI - Básico.md"
+    },
+    {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Web Requests",
+      "path": "04 - Content/Process/Web Requests.md"
     },
     {
       "basename": "DNS - CWES",
@@ -13,16 +25,8 @@
       "path": "04 - Content/Process/CWES - Checklists.md"
     },
     {
-      "basename": "File Inclusion",
-      "path": "04 - Content/Process/File Inclusion.md"
-    },
-    {
       "basename": "LFI - PHP Wrappers",
       "path": "04 - Content/Process/LFI - PHP Wrappers.md"
-    },
-    {
-      "basename": "LFI - Básico",
-      "path": "04 - Content/Process/LFI - Básico.md"
     },
     {
       "basename": "LFI - Null Byte Injection",
@@ -195,10 +199,6 @@
     {
       "basename": "SQLi - Second order",
       "path": "04 - Content/SQLi - Second order.md"
-    },
-    {
-      "basename": "SQLi - Out of Band",
-      "path": "04 - Content/SQLi - Out of Band.md"
     }
   ],
   "omittedPaths": [],
