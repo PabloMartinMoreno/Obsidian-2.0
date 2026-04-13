@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/File Inclusion.md",
+                "file": "04 - Content/Process/Explotación Web.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "File Inclusion"
+              "title": "Explotación Web"
             }
           }
         ],
@@ -266,8 +266,8 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
-    "04 - Content/Process/LFI To RCE - Phar Deserialization.md",
     "04 - Content/Process/File Inclusion.md",
+    "04 - Content/Process/LFI To RCE - Phar Deserialization.md",
     "04 - Content/Process/LFI To RCE - PHP Filter Chains.md",
     "04 - Content/Process/LFI To RCE - File Upload + LFI.md",
     "04 - Content/Process/LFI To RCE - Session File Poisoning.md",
