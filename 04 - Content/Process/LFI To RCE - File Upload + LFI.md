@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[File Inclusion]]"
 ---
 # LFI To RCE - File Upload + LFI
 
@@ -26,7 +27,7 @@ linked:
 | <br>PHP en chunk IDAT de PNG<br><br> | <br>Esconder código PHP dentro de un chunk válido de PNG                                        | <br>Payload en IDAT → LFI al PNG subido<br><br>                                           |
 | <br>Upload a /tmp + LFI race         | <br>Aprovechar el archivo temporal que PHP crea durante el upload antes de que se borre<br><br> | <br>LFI a `/tmp/php<random>` con race condition<br><br>                                   |
 | <br>ZIP upload + wrapper             | <br>Subir un ZIP con un .php adentro y accederlo via zip://                                     | <br>Upload: `payload.zip` → LFI: `zip:///var/www/uploads/payload.zip%23shell.php`<br><br> |
-
+^lfi-fileupload
 
 ***
 

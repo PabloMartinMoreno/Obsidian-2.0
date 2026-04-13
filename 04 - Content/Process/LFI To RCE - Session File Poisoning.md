@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[File Inclusion]]"
 ---
 # LFI To RCE - Session File Poisoning 
 
@@ -26,6 +27,7 @@ linked:
 | <br>Poisoning con base64 decode<br><br>    | <br>Evadir filtros encodeando el payload en la sesión                                           | <br>`<?php system(base64_decode('aWQ=')); ?>`<br><br>                      |
 | <br>Session upload progress                | <br>Abusar de `session.upload_progress` para inyectar código en la sesión sin campo controlable | <br>POST con `PHP_SESSION_UPLOAD_PROGRESS` conteniendo payload PHP<br><br> |
 | <br>Brute force de session ID              | <br>Si no conocés tu PHPSESSID, intentar predecir o forzar el ID                                | <br>Fuerza bruta sobre `/tmp/sess_XXXXX`<br><br>                           |
+^lfi-sessionpoisoning
 
 
 ***

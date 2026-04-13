@@ -7,6 +7,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
+  - "[[File Inclusion]]"
 ---
 # LFI To RCE - Phar Deserialization
 
@@ -26,6 +27,7 @@ linked:
 | <br>Phar + file operations        | <br>Triggear la deserialización con funciones que no son `include` (file_exists, is_dir, etc.)<br><br> | <br>`file_exists('phar:///tmp/evil.phar')` triggerea deserialización<br><br>              |
 | <br>Phar con metadata anidada     | <br>Anidar múltiples objetos serializados para construir cadenas complejas de gadgets<br><br>          | <br>Metadata con objetos encadenados tipo POP chain<br><br>                               |
 | <br>Phar + tar/zip format         | <br>Usar formatos alternativos de PHAR (tar o zip) para evadir detección                               | <br>PHAR en formato TAR que no tiene la signature estándar<br><br>                        |
+^lfi-deserialization
 
 
 ***

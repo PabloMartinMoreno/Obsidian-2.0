@@ -3,8 +3,11 @@ aliases:
 tags:
   - type/cheatsheet
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
   - "[[LFI - Básico]]"
@@ -25,6 +28,59 @@ linked:
 ***
 
 ## Cheatsheet
+
+### Vectores de Entrada (Básicos)
+
+````tabs
+tab: **Básico** 
+![[LFI - Básico#^lfi-basico]]
+
+tab: **Remoto**
+![[RFI - Remote File Inclusion#^lfi-remote]]
+````
+
+### Técnicas de Evasión (Bypassing)
+
+````tabs
+tab: **Path Traversal** 
+![[LFI - Path Traversal y Bypass de Filtros#^lfi-traversal]]
+
+tab: **Null Byte**
+![[LFI - Null Byte Injection#^lfi-nullbyte]]
+````
+
+### Abuso de Protocolos/Streams (Wrappers)
+
+````tabs
+tab: **Wrappers** 
+![[LFI - PHP Wrappers#^lfi-wrappers]]
+
+tab: **Filter Chain**
+![[LFI To RCE - PHP Filter Chains#^lfi-phpfilter]]
+````
+
+### Envenenamiento de Archivos (Poisoning para RCE)
+
+````tabs
+tab: **Log Poisoning** 
+![[LFI To RCE - Log Poisoning#^lfi-logpoisoning]]
+
+tab: **Session File Poisoning**
+![[LFI To RCE - Session File Poisoning#^lfi-sessionpoisoning]]
+
+tab: **/proc/self/environ**
+![[LFI To RCE - proc self environ#^lfi-environ]]
+````
+
+### Vectores Combinados y Lógica
+
+````tabs
+tab: **File Upload + LFI** 
+![[LFI To RCE - File Upload + LFI#^lfi-fileupload]]
+
+tab: **Phar Deserialization**
+![[LFI To RCE - Phar Deserialization#^lfi-deserialization]]
+````
 
 
 ***
