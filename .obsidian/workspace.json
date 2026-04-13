@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Explotación Web.md",
+                "file": "04 - Content/Server-Side Request Forgery (SSRF).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Explotación Web"
+              "title": "Server-Side Request Forgery (SSRF)"
             }
           }
         ],
@@ -266,6 +266,8 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
+    "04 - Content/SSRF - Explotación.md",
+    "04 - Content/Process/Explotación Web.md",
     "04 - Content/Process/File Inclusion.md",
     "04 - Content/Process/LFI To RCE - Phar Deserialization.md",
     "04 - Content/Process/LFI To RCE - PHP Filter Chains.md",
@@ -278,7 +280,6 @@
     "04 - Content/Process/LFI - Null Byte Injection.md",
     "04 - Content/Process/LFI - Path Traversal y Bypass de Filtros.md",
     "04 - Content/Process/LFI - Básico.md",
-    "04 - Content/Process/Explotación Web.md",
     "04 - Content/SQL Injection (SQLi).md",
     "04 - Content/Process/CWES.md",
     "04 - Content/Process/Web Requests.md",
@@ -295,7 +296,6 @@
     "04 - Content/Process/Reverse Shells.md",
     "04 - Content/Reverse Shell.md",
     "04 - Content/Process/Operational Tasks.md",
-    "04 - Content/Process/Resource Development.md",
     "04 - Content/Process/SQL - Manipulación de Datos (DML",
     "04 - Content/Process/Manipulación de Datos (DML",
     "00 - Resources/Images/Pasted image 20260108144749.png",

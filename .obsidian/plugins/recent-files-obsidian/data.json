@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "SSRF - Explotación",
+      "path": "04 - Content/SSRF - Explotación.md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
     },
@@ -171,14 +179,6 @@
     {
       "basename": "SQLi - Boolean based",
       "path": "04 - Content/SQLi - Boolean based.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "SSRF - Explotación",
-      "path": "04 - Content/SSRF - Explotación.md"
     },
     {
       "basename": "SSRF - Gopher",
