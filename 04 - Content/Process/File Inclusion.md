@@ -18,7 +18,6 @@ linked:
   - "[[LFI To RCE - Log Poisoning ]]"
   - "[[LFI To RCE - proc self environ]]"
   - "[[LFI To RCE - Session File Poisoning ]]"
-  - "[[LFI To RCE - Session File Poisoning ]]"
   - "[[LFI To RCE - File Upload + LFI]]"
   - "[[LFI To RCE - PHP Filter Chains ]]"
   - "[[LFI To RCE - Phar Deserialization]]"
