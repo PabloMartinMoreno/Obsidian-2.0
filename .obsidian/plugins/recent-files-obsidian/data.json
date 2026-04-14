@@ -2,7 +2,51 @@
   "recentFiles": [
     {
       "basename": "File Inclusion",
-      "path": "04 - Content/Process/File Inclusion.md"
+      "path": "04 - Content/File Inclusion.md"
+    },
+    {
+      "basename": "LFI To RCE - Phar Deserialization",
+      "path": "04 - Content/LFI To RCE - Phar Deserialization.md"
+    },
+    {
+      "basename": "LFI To RCE - PHP Filter Chains",
+      "path": "04 - Content/LFI To RCE - PHP Filter Chains.md"
+    },
+    {
+      "basename": "LFI To RCE - File Upload + LFI",
+      "path": "04 - Content/LFI To RCE - File Upload + LFI.md"
+    },
+    {
+      "basename": "LFI To RCE - Session File Poisoning",
+      "path": "04 - Content/LFI To RCE - Session File Poisoning.md"
+    },
+    {
+      "basename": "LFI To RCE - proc self environ",
+      "path": "04 - Content/LFI To RCE - proc self environ.md"
+    },
+    {
+      "basename": "LFI To RCE - Log Poisoning",
+      "path": "04 - Content/LFI To RCE - Log Poisoning.md"
+    },
+    {
+      "basename": "RFI - Remote File Inclusion",
+      "path": "04 - Content/RFI - Remote File Inclusion.md"
+    },
+    {
+      "basename": "LFI - PHP Wrappers",
+      "path": "04 - Content/LFI - PHP Wrappers.md"
+    },
+    {
+      "basename": "LFI - Null Byte Injection",
+      "path": "04 - Content/LFI - Null Byte Injection.md"
+    },
+    {
+      "basename": "LFI - Path Traversal y Bypass de Filtros",
+      "path": "04 - Content/LFI - Path Traversal y Bypass de Filtros.md"
+    },
+    {
+      "basename": "LFI - Básico",
+      "path": "04 - Content/LFI - Básico.md"
     },
     {
       "basename": "Server-Side Request Forgery (SSRF)",
@@ -15,50 +59,6 @@
     {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
-    },
-    {
-      "basename": "LFI To RCE - Phar Deserialization",
-      "path": "04 - Content/Process/LFI To RCE - Phar Deserialization.md"
-    },
-    {
-      "basename": "LFI To RCE - PHP Filter Chains",
-      "path": "04 - Content/Process/LFI To RCE - PHP Filter Chains.md"
-    },
-    {
-      "basename": "LFI To RCE - File Upload + LFI",
-      "path": "04 - Content/Process/LFI To RCE - File Upload + LFI.md"
-    },
-    {
-      "basename": "LFI To RCE - Session File Poisoning",
-      "path": "04 - Content/Process/LFI To RCE - Session File Poisoning.md"
-    },
-    {
-      "basename": "LFI To RCE - proc self environ",
-      "path": "04 - Content/Process/LFI To RCE - proc self environ.md"
-    },
-    {
-      "basename": "LFI To RCE - Log Poisoning",
-      "path": "04 - Content/Process/LFI To RCE - Log Poisoning.md"
-    },
-    {
-      "basename": "RFI - Remote File Inclusion",
-      "path": "04 - Content/Process/RFI - Remote File Inclusion.md"
-    },
-    {
-      "basename": "LFI - PHP Wrappers",
-      "path": "04 - Content/Process/LFI - PHP Wrappers.md"
-    },
-    {
-      "basename": "LFI - Null Byte Injection",
-      "path": "04 - Content/Process/LFI - Null Byte Injection.md"
-    },
-    {
-      "basename": "LFI - Path Traversal y Bypass de Filtros",
-      "path": "04 - Content/Process/LFI - Path Traversal y Bypass de Filtros.md"
-    },
-    {
-      "basename": "LFI - Básico",
-      "path": "04 - Content/Process/LFI - Básico.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
