@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Explotación Web",
+      "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
       "basename": "File Inclusion",
       "path": "04 - Content/File Inclusion.md"
     },
@@ -55,10 +59,6 @@
     {
       "basename": "SSRF - Explotación",
       "path": "04 - Content/SSRF - Explotación.md"
-    },
-    {
-      "basename": "Explotación Web",
-      "path": "04 - Content/Process/Explotación Web.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
