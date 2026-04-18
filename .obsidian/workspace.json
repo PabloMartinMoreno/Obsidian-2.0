@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Server-Side Template Injection (SSTI).md",
+                "file": "04 - Content/Process/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Server-Side Template Injection (SSTI)"
+              "title": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection"
             }
           }
         ],
@@ -266,9 +266,11 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
+    "04 - Content/Process/Explotación Web.md",
+    "04 - Content/Process/Server-Side Includes (SSI) Injection.md",
+    "04 - Content/Process/Server-Side Template Injection (SSTI).md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
-    "04 - Content/Process/Explotación Web.md",
     "04 - Content/Server-Side Request Forgery (SSRF).md",
     "04 - Content/OS Command Injection.md",
     "02 - Secondary Categories/Explotación.md",
@@ -292,7 +294,6 @@
     "04 - Content/LFI To RCE - PHP Filter Chains.md",
     "04 - Content/LFI To RCE - File Upload + LFI.md",
     "04 - Content/LFI To RCE - Session File Poisoning.md",
-    "04 - Content/LFI To RCE - proc self environ.md",
     "00 - Resources/Pasted image 20260405112752.png",
     "04 - Content/Process/LFI To RCE - /proc/self",
     "04 - Content/Process/LFI To RCE - /proc",
@@ -311,7 +312,6 @@
     "00 - Resources/Images/Pasted image 20260108170301.png",
     "00 - Resources/Pasted image 20260112143758.png",
     "00 - Resources/Pasted image 20260112143910.png",
-    "00 - Resources/Pasted image 20260112144059.png",
     "00 - Resources/Diagrams/Canvas/INICIO.canvas",
     "00 - Recursos/Diagramas/Canvas/Ejemplo.canvas",
     "00 - Recursos/Diagramas/Canvas/Sin título.canvas",
