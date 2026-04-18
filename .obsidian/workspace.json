@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Server-Side Request Forgery (SSRF).md",
+                "file": "04 - Content/Process/Server-Side Template Injection (SSTI).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Server-Side Request Forgery (SSRF)"
+              "title": "Server-Side Template Injection (SSTI)"
             }
           }
         ],
@@ -267,6 +267,7 @@
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
     "04 - Content/Process/Explotación Web.md",
+    "04 - Content/Server-Side Request Forgery (SSRF).md",
     "04 - Content/OS Command Injection.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
@@ -291,7 +292,6 @@
     "04 - Content/LFI To RCE - Session File Poisoning.md",
     "04 - Content/LFI To RCE - proc self environ.md",
     "04 - Content/LFI To RCE - Log Poisoning.md",
-    "04 - Content/RFI - Remote File Inclusion.md",
     "00 - Resources/Pasted image 20260405112752.png",
     "04 - Content/Process/LFI To RCE - /proc/self",
     "04 - Content/Process/LFI To RCE - /proc",
