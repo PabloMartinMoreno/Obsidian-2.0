@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/postgresql
   - technique/recon/active
+  - asset/database
+  - service/postgresql
   - estado/incompleto
 primary categories:
 secondary categories:

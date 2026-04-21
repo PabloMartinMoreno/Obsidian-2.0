@@ -2,9 +2,12 @@
 aliases:
 tags:
   - type/writeup
-  - cert/cbbh
   - vuln/sqli
+  - technique/execution
+  - asset/database
+  - asset/web-app
   - estado/incompleto
+  - cert/cbbh
 primary categories:
 secondary categories:
 tertiary categories:

@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/vpn
   - technique/recon/active
+  - asset/network
+  - service/vpn
   - estado/incompleto
 primary categories:
 secondary categories:

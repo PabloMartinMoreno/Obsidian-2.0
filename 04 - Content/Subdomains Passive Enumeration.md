@@ -3,8 +3,10 @@ aliases:
   - Enumeración Pasiva de Subdominios
 tags:
   - type/cheatsheet
+  - technique/recon/active
   - technique/recon/passive
   - asset/domain
+  - asset/web-app
   - meta/reference
 primary categories:
   - "[[Red Team]]"

@@ -3,6 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/recon/active
+  - asset/mail-server
   - service/pop3
 primary categories:
   - "[[Red Team]]"

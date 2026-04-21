@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/file-upload
+  - technique/execution
+  - asset/web-app
 type: CheatSheet
 linked:
   - "[[File Upload - Vulnerabilidades]]"

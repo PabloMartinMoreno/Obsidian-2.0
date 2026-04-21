@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/moc/tertiary
+  - technique/lateral-movement
 primary categories:
   - "[[Red Team]]"
 secondary categories:

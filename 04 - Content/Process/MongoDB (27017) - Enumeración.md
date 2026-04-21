@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/mongodb
   - technique/recon/active
+  - asset/database
+  - service/mongodb
   - estado/incompleto
 primary categories:
 secondary categories:

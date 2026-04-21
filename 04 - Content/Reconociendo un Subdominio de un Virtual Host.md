@@ -2,6 +2,8 @@
 aliases:
 tags:
   - type/concept
+  - technique/recon/active
+  - asset/web-app
 type: Concept
 linked:
   - "[[Subdominio]]"

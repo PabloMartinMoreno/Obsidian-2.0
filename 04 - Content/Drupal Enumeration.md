@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
   - asset/web-app
   - service/drupal
   - service/http

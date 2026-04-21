@@ -3,6 +3,9 @@ aliases:
 tags:
   - type/vulnerability
   - vuln/sqli
+  - technique/execution
+  - asset/database
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

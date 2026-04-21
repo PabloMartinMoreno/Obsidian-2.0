@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/vulnerability
   - vuln/command-injection
+  - technique/execution
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

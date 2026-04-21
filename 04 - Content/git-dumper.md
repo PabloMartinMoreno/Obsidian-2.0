@@ -4,6 +4,7 @@ tags:
   - type/tool
   - technique/recon/active
   - asset/source-code
+  - asset/web-app
   - service/git
   - service/http
   - tool/git-dumper

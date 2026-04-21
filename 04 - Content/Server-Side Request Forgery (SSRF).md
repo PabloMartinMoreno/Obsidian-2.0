@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/vulnerability
   - vuln/ssrf
+  - technique/lateral-movement
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

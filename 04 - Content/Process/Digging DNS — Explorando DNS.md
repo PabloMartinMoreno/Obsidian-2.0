@@ -2,6 +2,8 @@
 aliases:
 tags:
   - type/concept
+  - technique/recon/active
+  - asset/network
   - service/dns
   - estado/incompleto
 primary categories:

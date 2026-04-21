@@ -3,6 +3,9 @@ aliases:
 tags:
   - type/vulnerability
   - vuln/idor
+  - technique/discovery
+  - asset/api
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

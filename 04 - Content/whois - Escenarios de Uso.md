@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/concept
+  - technique/recon/passive
 type: Concept
 linked:
   - "[[whois]]"

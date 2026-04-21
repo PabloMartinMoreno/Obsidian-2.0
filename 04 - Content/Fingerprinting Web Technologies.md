@@ -3,6 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/recon/active
+  - technique/recon/passive
   - asset/web-server
   - service/apache
 primary categories:

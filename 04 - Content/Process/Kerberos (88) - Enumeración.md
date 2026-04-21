@@ -2,7 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/credential-access
   - technique/recon/active
+  - asset/active-directory
   - service/kerberos
   - cred/kerberos-tickets
 primary categories:

@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/credential-access
+  - technique/recon/active
+  - asset/database
   - service/mysql
 primary categories:
   - "[[Red Team]]"

@@ -3,6 +3,9 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/sqli
+  - technique/execution
+  - asset/database
+  - asset/web-app
 primary categories:
 secondary categories:
 tertiary categories:

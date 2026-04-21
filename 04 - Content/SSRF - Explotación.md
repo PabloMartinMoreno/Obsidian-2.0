@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/ssrf
+  - technique/lateral-movement
+  - asset/web-app
 primary categories:
 secondary categories:
 tertiary categories:

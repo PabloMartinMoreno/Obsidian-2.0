@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
   - asset/web-app
   - service/coldfusion
   - service/http

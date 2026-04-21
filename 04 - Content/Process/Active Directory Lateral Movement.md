@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/moc/tertiary
+  - asset/active-directory
 primary categories:
   - "[[Red Team]]"
 secondary categories:

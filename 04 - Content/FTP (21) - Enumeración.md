@@ -3,6 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/recon/active
+  - asset/file-share
   - service/ftp
 primary categories:
   - "[[Red Team]]"

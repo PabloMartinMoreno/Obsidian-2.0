@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/command-injection
+  - technique/execution
+  - asset/web-app
 primary categories:
 secondary categories:
 tertiary categories:

@@ -2,6 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
+  - asset/file-share
+  - asset/web-app
   - asset/web-server
   - service/http
   - service/iis

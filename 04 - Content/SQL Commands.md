@@ -3,6 +3,10 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/sqli
+  - technique/execution
+  - technique/recon/active
+  - asset/database
+  - asset/web-app
   - service/mysql
   - service/sql
 primary categories:

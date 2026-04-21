@@ -2,6 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
+  - asset/file-share
   - env/windows
   - service/smb
 primary categories:

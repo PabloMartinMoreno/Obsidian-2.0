@@ -4,6 +4,7 @@ tags:
   - type/command
   - type/tool
   - technique/recon/active
+  - asset/network
   - service/dns
   - tool/dnsenum
 primary categories:

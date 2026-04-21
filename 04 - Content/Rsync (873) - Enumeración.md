@@ -4,6 +4,7 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/recon/active
+  - asset/file-share
   - service/rsync
 primary categories:
   - "[[Red Team]]"

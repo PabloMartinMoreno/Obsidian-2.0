@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/tool
-  - tool/responder
+  - technique/credential-access
   - asset/active-directory
+  - tool/responder
   - estado/incompleto
 primary categories:
 secondary categories:

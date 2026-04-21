@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/concept
   - vuln/lfi
+  - technique/execution
+  - asset/web-app
 type: Concept
 linked:
 ---

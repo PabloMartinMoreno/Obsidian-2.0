@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/ssrf
+  - technique/lateral-movement
+  - asset/web-app
 type: CheatSheet
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"

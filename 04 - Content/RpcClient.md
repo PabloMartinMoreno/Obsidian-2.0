@@ -2,7 +2,9 @@
 aliases:
 tags:
   - type/tool
+  - technique/lateral-movement
   - technique/recon/active
+  - asset/file-share
   - service/rpc
   - service/smb
   - tool/impacket

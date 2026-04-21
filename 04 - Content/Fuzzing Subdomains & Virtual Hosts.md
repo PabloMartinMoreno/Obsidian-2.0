@@ -5,6 +5,7 @@ tags:
   - type/cheatsheet
   - technique/recon/active
   - asset/dns
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

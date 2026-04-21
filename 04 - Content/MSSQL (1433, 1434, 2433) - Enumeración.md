@@ -4,6 +4,8 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/credential-access
+  - technique/recon/active
+  - asset/database
   - service/mssql
   - service/sql
 primary categories:

@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/tool
+  - technique/discovery
   - technique/recon/active
   - asset/active-directory
   - tool/bloodhound

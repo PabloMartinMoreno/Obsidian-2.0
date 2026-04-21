@@ -2,8 +2,11 @@
 aliases:
 tags:
   - type/tool
-  - tool/sqlmap
   - vuln/sqli
+  - technique/execution
+  - asset/database
+  - asset/web-app
+  - tool/sqlmap
   - estado/incompleto
 primary categories:
 secondary categories:

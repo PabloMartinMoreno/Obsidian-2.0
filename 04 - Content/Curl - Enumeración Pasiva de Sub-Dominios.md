@@ -2,6 +2,8 @@
 aliases:
 tags:
   - type/sub-command
+  - technique/recon/active
+  - asset/web-app
 type: Sub-Command
 linked:
   - "[[curl]]"

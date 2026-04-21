@@ -3,6 +3,8 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/xss
+  - technique/execution
+  - asset/web-app
 primary categories:
 secondary categories:
 tertiary categories:

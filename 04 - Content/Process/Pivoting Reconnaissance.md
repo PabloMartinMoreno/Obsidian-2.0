@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/concept
+  - technique/lateral-movement
   - technique/recon/active
   - estado/incompleto
 primary categories:

@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/tool
-  - tool/nikto
+  - technique/recon/active
   - asset/web-app
+  - tool/nikto
   - estado/incompleto
 primary categories:
 secondary categories:

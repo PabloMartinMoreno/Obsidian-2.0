@@ -2,6 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
+  - asset/database
   - service/mssql
 primary categories:
   - "[[Red Team]]"

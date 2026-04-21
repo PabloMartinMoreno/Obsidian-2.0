@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/dns
   - technique/recon/active
+  - asset/network
+  - service/dns
   - estado/incompleto
 primary categories:
 secondary categories:

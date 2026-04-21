@@ -6,6 +6,7 @@ tags:
   - type/tool
   - technique/recon/active
   - asset/infrastructure
+  - asset/network
   - service/dns
   - tool/dig
 primary categories:

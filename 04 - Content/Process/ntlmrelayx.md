@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/tool
-  - tool/ntlmrelayx
+  - technique/credential-access
   - asset/active-directory
+  - tool/ntlmrelayx
   - estado/incompleto
 primary categories:
 secondary categories:

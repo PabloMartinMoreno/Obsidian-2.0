@@ -3,7 +3,10 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/credential-access
+  - technique/lateral-movement
   - technique/recon/active
+  - asset/endpoint
+  - env/windows
   - service/rdp
   - service/wordpress
 primary categories:

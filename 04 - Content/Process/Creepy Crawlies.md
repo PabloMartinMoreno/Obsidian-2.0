@@ -2,6 +2,8 @@
 aliases:
 tags:
   - type/concept
+  - technique/recon/active
+  - asset/web-app
   - estado/incompleto
 primary categories:
 secondary categories:

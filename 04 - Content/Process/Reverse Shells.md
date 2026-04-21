@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/execution
 primary categories:
   - "[[Red Team]]"
 secondary categories:

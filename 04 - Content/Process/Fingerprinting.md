@@ -2,8 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
-  - asset/web-app
   - technique/recon/active
+  - technique/recon/passive
+  - asset/web-app
   - estado/incompleto
 primary categories:
 secondary categories:

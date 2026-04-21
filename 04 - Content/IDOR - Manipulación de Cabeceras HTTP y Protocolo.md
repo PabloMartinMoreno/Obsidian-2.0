@@ -3,6 +3,9 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/idor
+  - technique/discovery
+  - asset/api
+  - asset/web-app
 primary categories:
 secondary categories:
 tertiary categories:

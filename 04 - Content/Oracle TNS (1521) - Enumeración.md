@@ -3,6 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/recon/active
+  - asset/database
   - service/oracle
   - service/tns
 primary categories:

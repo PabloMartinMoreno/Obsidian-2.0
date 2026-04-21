@@ -3,6 +3,7 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/recon/active
+  - asset/endpoint
   - service/ssh
 primary categories:
   - "[[Red Team]]"
