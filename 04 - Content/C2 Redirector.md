@@ -92,5 +92,5 @@ Redirectors, like most C2 infrastructure, should be treated as disposable assets
 
 ***
 
-*Created Date*: <%+tp.file.creation_date("MMMM Do YYYY (HH:mm a)")%>  
-*Last Modified Date*: <%+tp.file.last_modified_date("MMMM Do YYYY (HH:mm a)")%>
+*Created Date*: October 19th 2025 (01:22 am)  
+*Last Modified Date*: April 21st 2026 (05:30 pm)
