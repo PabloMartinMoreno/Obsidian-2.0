@@ -15,7 +15,7 @@ relacionados:
   - "[[Git Hooks]]"
   - "[[Gitea]]"
   - "[[Remote Code Execution|RCE]]"
-  - "[[LFI]]"
+  - "[[File Inclusion]]"
   - "[[Finding out the PIN (Werkzeug Debugger)]]"
   - "[[Information Leakage]]"
   - "[[Abusing Cron Job]]"

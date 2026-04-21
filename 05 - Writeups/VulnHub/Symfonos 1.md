@@ -15,7 +15,7 @@ relacionados:
   - "[[telnet]]"
   - "[[SMTP]]"
   - "[[Mejora de terminal interactiva]]"
-  - "[[LFI|LFI]]"
+  - "[[File Inclusion|LFI]]"
   - "[[Log Poisoning]]"
   - "[[samba]]"
   - "[[WordPress]]"
@@ -143,7 +143,7 @@ ___
 
 ## Análisis de vulnerabilidades
 
-### Busco conexión por [[03 - Conceptos/SSH|SSH]]
+### Busco conexión por [[SSH (22) - Enumeración|SSH]]
 
 - Intento de fuerza bruta con [[hydra]] para SSH con el usuario `Zeus` y `Helios` para las posibles contraseñas que estaba en la parte de `anonymous` del Samba: 
     ```bash

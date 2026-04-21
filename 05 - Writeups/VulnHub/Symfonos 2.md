@@ -11,7 +11,7 @@ relacionados:
   - "[[smbclient]]"
   - "[[john]]"
   - "[[searchsploit]]"
-  - "[[02 - Herramientas/ssh|ssh]]"
+  - "[[SSH (22) - Enumeración|ssh]]"
   - "[[Local Port Forwarding]]"
   - "[[Port Forwarding]]"
 ---

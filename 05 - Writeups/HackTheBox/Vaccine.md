@@ -12,7 +12,7 @@ relacionados:
   - "[[sqlmap]]"
   - "[[md5sum]]"
   - "[[02 - Herramientas/ftp|ftp]]"
-  - "[[02 - Herramientas/ssh|ssh]]"
+  - "[[SSH (22) - Enumeración|ssh]]"
   - "[[nvim]]"
   - "[[SQL Injection (SQLi)]]"
 ---

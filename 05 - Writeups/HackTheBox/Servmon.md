@@ -12,7 +12,7 @@ os: Windows
 relacionados:
   - "[[NVMS-1000 Exploitation]]"
   - "[[Directory Traversal]]"
-  - "[[LFI|Local FIle Inclusion]]"
+  - "[[File Inclusion|Local FIle Inclusion]]"
   - "[[Local Port Forwarding]]"
   - "[[NSClient++ Exploitation]]"
   - "[[Password Reuse]]"

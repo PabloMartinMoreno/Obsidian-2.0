@@ -9,12 +9,12 @@ autor:
 relacionados:
   - "[[Pares de claves SSH]]"
   - "[[Bandit 01]]"
-  - "[[02 - Herramientas/ssh|ssh]]"
+  - "[[SSH (22) - Enumeración|ssh]]"
 ---
 # Datos
 
 > [!TODO] Objetivo
-> **Conectarse al juego usando [[03 - Conceptos/SSH|SSH]].**
+> **Conectarse al juego usando [[SSH (22) - Enumeración|SSH]].**
 > El objetivo de este nivel es que te conectes al juego usando SSH. El host al que necesitas conectarte es bandit.labs.overthewire.org, en el puerto 2220. El nombre de usuario es bandit0 y la contraseña es bandit0. Una vez conectado, ve a la página del Nivel 1 para averiguar cómo superar el Nivel 1.
 ^Objetivo
 

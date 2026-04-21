@@ -7,7 +7,7 @@ web: https://www.vulnhub.com/presidential
 dificultad: Fácil
 os: Linux
 relacionados:
-  - "[[02 - Herramientas/ssh|ssh]]"
+  - "[[SSH (22) - Enumeración|ssh]]"
   - "[[john]]"
   - "[[phpmyadmin]]"
   - "[[getcap]]"

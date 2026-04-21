@@ -8,7 +8,7 @@ dificultad: Fácil
 os: Linux
 relacionados:
   - "[[servidor php]]"
-  - "[[LFI|LFI]]"
+  - "[[File Inclusion|LFI]]"
   - "[[Log Poisoning]]"
   - "[[RCE]]"
   - "[[SUID]]"

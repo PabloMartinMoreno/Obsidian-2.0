@@ -52,7 +52,7 @@ ___
 
 ## Overview
 
-Cuando la entrada que suministro se refleja directamente dentro de las propiedades de una etiqueta HTML existente (como `value`, `class`, `placeholder` o `href`), el ataque de [[XSS]] requiere una fase previa de preparación: el escape de contexto. No puedo simplemente inyectar una etiqueta `<script>` porque el motor del navegador interpretará mi código como una simple cadena de texto perteneciente al atributo.
+Cuando la entrada que suministro se refleja directamente dentro de las propiedades de una etiqueta HTML existente (como `value`, `class`, `placeholder` o `href`), el ataque de [[Cross-Site Scripting (XSS)]] requiere una fase previa de preparación: el escape de contexto. No puedo simplemente inyectar una etiqueta `<script>` porque el motor del navegador interpretará mi código como una simple cadena de texto perteneciente al atributo.
 
 El objetivo central de esta técnica es manipular la sintaxis esperada por el analizador léxico (parser) del navegador, inyectando los caracteres exactos que cierran prematuramente el atributo actual y, dependiendo del escenario, cerrar la etiqueta anfitriona completa o abrir espacio para inyectar manejadores de eventos maliciosos.
 

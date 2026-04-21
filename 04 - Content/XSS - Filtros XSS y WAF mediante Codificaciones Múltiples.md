@@ -40,7 +40,7 @@ linked:
 
 ## Overview
 
-Al realizar auditorías de seguridad, es altamente probable que los vectores de ataque [[XSS]] directos (como `<script>alert(1)</script>`) sean neutralizados por un [[WAF]] o por funciones de sanitización en el backend. Para superar estas defensas, recurro a técnicas de evasión mediante codificaciones múltiples y mixtas.
+Al realizar auditorías de seguridad, es altamente probable que los vectores de ataque [[Cross-Site Scripting (XSS)]] directos (como `<script>alert(1)</script>`) sean neutralizados por un [[WAF]] o por funciones de sanitización en el backend. Para superar estas defensas, recurro a técnicas de evasión mediante codificaciones múltiples y mixtas.
 
 El objetivo principal de esta estrategia es ofuscar la firma del payload malicioso para que las reglas de filtrado (basadas comúnmente en expresiones regulares o listas negras) no lo detecten. El éxito de la inyección depende de explotar la discrepancia entre cómo el filtro de seguridad interpreta la cadena y cómo el motor del navegador (HTML parser, JavaScript engine, URL parser) la decodifica antes de su ejecución. Dominar el orden de decodificación en el contexto de la vulnerabilidad es vital para construir un payload funcional.
 

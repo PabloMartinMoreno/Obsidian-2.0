@@ -10,7 +10,7 @@ relacionados:
   - "[[Pares de claves SSH]]"
   - "[[Bandit 12]]"
   - "[[Bandit 14]]"
-  - "[[02 - Herramientas/ssh|ssh]]"
+  - "[[SSH (22) - Enumeración|ssh]]"
 ---
 # Datos
 

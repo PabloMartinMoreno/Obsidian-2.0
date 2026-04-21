@@ -16,7 +16,7 @@ relacionados:
   - "[[Cracking Hashes]]"
   - "[[docker]]"
   - "[[pipelines]]"
-  - "[[03 - Conceptos/SSH|SSH]]"
+  - "[[SSH (22) - Enumeración|SSH]]"
 ---
 # HackTheBox - Builder
 

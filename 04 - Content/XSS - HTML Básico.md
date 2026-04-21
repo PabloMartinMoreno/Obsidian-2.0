@@ -41,7 +41,7 @@ ___
 
 ## Overview
 
-La inyección de HTML básico altera la estructura del documento mediante la inserción de etiquetas estándar permitidas. En la cadena de explotación de un [[XSS]], utilizo estas etiquetas estructurales no necesariamente para ejecutar código de forma inmediata, sino para modificar el entorno del [[DOM]], secuestrar la carga de recursos relativos, exfiltrar información mediante CSS o montar escenarios de ingeniería social directamente sobre la interfaz de la aplicación vulnerable.
+La inyección de HTML básico altera la estructura del documento mediante la inserción de etiquetas estándar permitidas. En la cadena de explotación de un [[Cross-Site Scripting (XSS)]], utilizo estas etiquetas estructurales no necesariamente para ejecutar código de forma inmediata, sino para modificar el entorno del [[DOM]], secuestrar la carga de recursos relativos, exfiltrar información mediante CSS o montar escenarios de ingeniería social directamente sobre la interfaz de la aplicación vulnerable.
 
 
 ___

@@ -9,7 +9,7 @@ os: Linux
 relacionados:
   - "[[PATH Hijacking]]"
   - "[[gobuster]]"
-  - "[[IDOR]]"
+  - "[[BOLA - IDOR]]"
   - "[[Manipulación de Cookies]]"
 ---
 # HackTheBox - Oopsie
@@ -56,7 +56,7 @@ Visito `http://10.129.206.47/cdn-cgi/login/` y encuentro una página de inicio d
 
 ## Análisis de Vulnerabilidades
 
-### Manipulación de Parámetros ([[IDOR]])
+### Manipulación de Parámetros ([[BOLA - IDOR]])
 
 Una vez iniciado como invitado, observo que la URL incluye un parámetro `id=2`. Al cambiar este valor a `id=1`, accedo a la información del usuario administrador. Esto indica una vulnerabilidad de **Insecure Direct Object Reference (IDOR)**, donde puedo acceder a recursos sin la autorización adecuada.
 

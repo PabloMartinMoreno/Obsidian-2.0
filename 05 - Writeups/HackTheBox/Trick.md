@@ -10,7 +10,7 @@ os: Linux
 relacionados:
   - "[[Notas/Procesar/nslookup|nslookup]]"
   - "[[Notas/Procesar/dig|dig]]"
-  - "[[LFI]]"
+  - "[[File Inclusion]]"
   - "[[Log Poisoning]]"
   - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[Cron]]"

@@ -20,7 +20,7 @@ relacionados:
   - "[[Remote Code Execution|RCE]]"
   - "[[Abusing SUID Binary]]"
   - "[[Abusing Sudoers]]"
-  - "[[LFI]]"
+  - "[[File Inclusion]]"
   - "[[Bypass de Funciones Deshabilitadas]]"
   - "[[Bypass de Filtros con Wrappers PHP]]"
   - "[[preg_match]]"

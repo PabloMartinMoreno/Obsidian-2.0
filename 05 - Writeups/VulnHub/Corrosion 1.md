@@ -7,7 +7,7 @@ web: https://www.vulnhub.com/corrosion1
 dificultad: Fácil
 os: Linux
 relacionados:
-  - "[[LFI|LFI]]"
+  - "[[File Inclusion|LFI]]"
   - "[[Log Poisoning]]"
   - "[[john]]"
 ---

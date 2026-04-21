@@ -9,7 +9,7 @@ os: Linux
 relacionados:
   - "[[hydra]]"
   - "[[msfconsole]]"
-  - "[[02 - Herramientas/ssh|ssh]]"
+  - "[[SSH (22) - Enumeración|ssh]]"
 ---
 ##### Resolución haciendo pivoting desde la maquina `Blog`
 

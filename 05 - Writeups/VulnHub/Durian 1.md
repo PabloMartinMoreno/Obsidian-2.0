@@ -8,7 +8,7 @@ dificultad: Fácil
 os: Linux
 relacionados:
   - "[[gobuster]]"
-  - "[[LFI|LFI]]"
+  - "[[File Inclusion|LFI]]"
   - "[[Log Poisoning]]"
   - "[[Burpsuite]]"
   - "[[getcap]]"

@@ -8,7 +8,7 @@ dificultad: Media
 os: Linux
 relacionados:
   - "[[Race Condition]]"
-  - "[[LFI]]"
+  - "[[File Inclusion]]"
   - "[[LFI2RCE]]"
   - "[[docker]]"
   - "[[Password Reuse]]"

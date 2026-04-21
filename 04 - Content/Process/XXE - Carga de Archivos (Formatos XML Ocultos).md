@@ -33,7 +33,7 @@ linked:
 
 La funcionalidad de carga de archivos presenta un vector de ataque encubierto para [[XXE]] cuando la aplicación acepta formatos que, bajo la superficie, están estructurados parcial o totalmente en XML. Formatos comunes como imágenes vectoriales (SVG) o documentos ofimáticos modernos (DOCX, XLSX, PPTX) dependen de analizadores XML en el backend para procesar contenido, renderizar imágenes o extraer metadatos.
 
-Si el servidor utiliza una librería de procesamiento multimedia o de documentos (como ImageMagick, Apache POI, etc.) que no desactiva la resolución de entidades externas, puedo explotar la carga de archivos para lograr extracción de datos locales o un [[SSRF]].
+Si el servidor utiliza una librería de procesamiento multimedia o de documentos (como ImageMagick, Apache POI, etc.) que no desactiva la resolución de entidades externas, puedo explotar la carga de archivos para lograr extracción de datos locales o un [[Server-Side Request Forgery (SSRF)]].
 
 
 ***

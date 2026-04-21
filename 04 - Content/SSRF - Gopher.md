@@ -14,7 +14,7 @@ linked:
 
 ***
 
-El protocolo **Gopher** es un sistema de distribución de documentos anterior a la World Wide Web (HTTP). Aunque hoy en día está prácticamente obsoleto para navegar, es una herramienta crítica en la explotación de [[SSRF]] debido a su capacidad para **enviar bytes arbitrarios** a una conexión TCP.
+El protocolo **Gopher** es un sistema de distribución de documentos anterior a la World Wide Web (HTTP). Aunque hoy en día está prácticamente obsoleto para navegar, es una herramienta crítica en la explotación de [[Server-Side Request Forgery (SSRF)]] debido a su capacidad para **enviar bytes arbitrarios** a una conexión TCP.
 
 ## ¿Qué es Gopher?
 

@@ -60,7 +60,7 @@ Si el sistema bloquea el payload básico pero no implementa un bloqueo de caract
 
 ## Overview
 
-La inyección de la etiqueta `<script>` representa la forma más clásica, directa y fundamental de ejecutar un ataque de [[XSS]]. Este vector asume que la aplicación web refleja la entrada en el [[DOM]] permitiendo la estructura de etiquetas HTML y que no neutraliza de forma explícita la palabra clave `script`.
+La inyección de la etiqueta `<script>` representa la forma más clásica, directa y fundamental de ejecutar un ataque de [[Cross-Site Scripting (XSS)]]. Este vector asume que la aplicación web refleja la entrada en el [[DOM]] permitiendo la estructura de etiquetas HTML y que no neutraliza de forma explícita la palabra clave `script`.
 
 El objetivo aquí no es depender de manejadores de eventos (como `onerror` o `onload`), sino forzar al motor de renderizado del navegador a abrir un nuevo contexto de ejecución de JavaScript y procesar el código suministrado de forma inmediata.
 
