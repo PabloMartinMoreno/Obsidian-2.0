@@ -1,12 +1,11 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
-  - meta/screenshots
-  - tool/eyewitness
-  - asset/web-app
-  - protocol/http
+  - type/tool
   - technique/recon/active
+  - asset/web-app
+  - service/http
+  - tool/eyewitness
 primary categories:
   - "[[Red Team]]"
 secondary categories:

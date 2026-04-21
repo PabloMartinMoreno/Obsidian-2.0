@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/concept
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Introducción
 
 La recopilación de información web (Web Reconnaissance) es la base de una evaluación de seguridad exhaustiva. Este proceso implica recolectar de forma sistemática y meticulosa información sobre un sitio web o una aplicación web objetivo. Piénsalo como la fase preparatoria antes de profundizar en análisis y posibles explotaciones. Forma una parte crítica de la fase de "Recolección de Información" del proceso de pruebas de penetración.

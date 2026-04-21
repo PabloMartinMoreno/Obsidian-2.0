@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - command
+  - type/command
 primary categories:
   - "[[Red Team]]"
   - "[[Red Team]]"

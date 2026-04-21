@@ -1,11 +1,11 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
-  - tool/bloodhound
-  - tool/sharphound
+  - type/tool
   - technique/recon/active
   - asset/active-directory
+  - tool/bloodhound
+  - tool/sharphound
 primary categories:
   - "[[Red Team]]"
 secondary categories:

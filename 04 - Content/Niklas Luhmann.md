@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - biography
+  - type/concept
 primary categories:
 secondary categories:
 type: Biography

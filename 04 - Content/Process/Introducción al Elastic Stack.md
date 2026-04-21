@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - tool/elasticsearch
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Introducción al Elastic Stack
 
 #### ¿Qué es el Elastic Stack?

@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Etapa de Preparación (Parte 2)
 
 Otra parte de la etapa de Preparación es protegerse contra incidentes. Si bien la protección no es necesariamente responsabilidad del equipo de gestión de incidentes, cualquier actividad relacionada con la protección debe ser conocida por ellos para comprender mejor el tipo y la sofisticación de un incidente y saber dónde buscar artefactos o evidencias que puedan ayudar en la investigación.

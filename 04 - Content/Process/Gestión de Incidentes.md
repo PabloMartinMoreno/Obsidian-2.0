@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 [[Proceso de Gestión de Accidentes]]
 [[Cyber Kill Chain y MITRE ATT&CK]]
 [[Resumen del Proceso de Gestión de Incidentes]]

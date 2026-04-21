@@ -2,17 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
+  - technique/recon/active
   - service/oracle
   - service/tns
-  - protocol/tcp
-  - port/1521
-  - tool/nmap
-  - tool/odat
-  - tool/sqlplus
-  - meta/tns-listener
-  - meta/service-names
-  - meta/credentials
-  - technique/recon/active
 primary categories:
   - "[[Red Team]]"
 secondary categories:

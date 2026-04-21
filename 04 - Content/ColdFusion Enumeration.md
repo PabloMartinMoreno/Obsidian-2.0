@@ -4,12 +4,7 @@ tags:
   - type/cheatsheet
   - asset/web-app
   - service/coldfusion
-  - protocol/http
-  - tool/coldfusion-scanner
-  - meta/known-issues
-  - tool/ffuf
-  - tool/nmap
-  - tool/curl
+  - service/http
 primary categories:
   - "[[Red Team]]"
 secondary categories:

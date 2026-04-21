@@ -4,10 +4,7 @@ tags:
   - type/cheatsheet
   - asset/web-app
   - service/drupal
-  - protocol/http
-  - tool/droopescan
-  - tool/curl
-  - meta/modules
+  - service/http
 primary categories:
   - "[[Red Team]]"
 secondary categories:

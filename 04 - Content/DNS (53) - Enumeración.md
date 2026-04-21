@@ -2,16 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/dns
-  - protocol/dns
-  - port/53
-  - tool/nmap
-  - tool/dnsrecon
-  - tool/nslookup
-  - tool/host
-  - meta/zone-transfer
-  - meta/records
   - technique/recon/active
+  - service/dns
 primary categories:
   - "[[Red Team]]"
 secondary categories:

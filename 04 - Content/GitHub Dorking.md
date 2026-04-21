@@ -4,8 +4,6 @@ tags:
   - type/cheatsheet
   - technique/recon/passive
   - asset/repository
-  - meta/osint
-  - tool/github
 primary categories:
   - "[[Red Team]]"
 secondary categories:

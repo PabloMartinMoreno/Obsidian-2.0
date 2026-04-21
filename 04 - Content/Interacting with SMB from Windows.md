@@ -2,13 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/smb
   - env/windows
-  - tool/powershell
-  - tool/net
-  - tool/dir
-  - meta/impersonation
-  - meta/ps-remoting
+  - service/smb
 primary categories:
   - "[[Red Team]]"
 secondary categories:

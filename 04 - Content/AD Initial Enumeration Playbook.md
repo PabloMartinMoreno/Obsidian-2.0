@@ -3,7 +3,7 @@ aliases:
   - AD Initial Enumeration Cheat Sheet
   - AD Initial Enumeration Checklist
 tags:
-  - playbook
+  - type/playbook
 primary categories:
   - "[[Red Team]]"
   - "[[Red Team]]"

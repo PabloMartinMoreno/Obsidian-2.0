@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Análisis de la Brecha de Insight Nexus
 
 #### Escenario del Incidente

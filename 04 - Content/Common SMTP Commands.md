@@ -2,10 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - protocol/smtp
-  - meta/commands
-  - meta/examples
-  - tool/telnet
+  - service/smtp
 primary categories:
   - "[[Red Team]]"
 secondary categories:

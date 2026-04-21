@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/xss
 primary categories:
 secondary categories:
 tertiary categories:

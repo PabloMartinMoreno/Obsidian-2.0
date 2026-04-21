@@ -3,12 +3,9 @@ aliases:
 tags:
   - type/cheatsheet
   - asset/web-server
+  - service/http
   - service/iis
-  - protocol/http
-  - protocol/smb
-  - tool/nmap
-  - tool/shortscan
-  - meta/headers
+  - service/smb
 primary categories:
   - "[[Red Team]]"
 secondary categories:

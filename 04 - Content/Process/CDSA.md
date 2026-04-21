@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - cert/cdsa
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Ruta CDSA
 ### FASE 1: Los Cimientos (Mes 1)
 

@@ -2,10 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/http
   - service/joomla
-  - protocol/http
-  - tool/curl
-  - tool/droopescan
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Etapa de Detección y Análisis (Parte 2)
 
 Cuando se inicia una investigación, nuestro objetivo es comprender qué sucedió y cómo sucedió. Para analizar los datos relacionados con el incidente de manera adecuada y eficiente, los miembros del equipo de gestión de incidentes necesitan un profundo conocimiento técnico y experiencia en el campo. Uno podría preguntarse: _"¿Por qué nos importa cómo ocurrió un incidente? ¿Por qué no simplemente reconstruimos los sistemas afectados y básicamente olvidamos que sucedió?"_.

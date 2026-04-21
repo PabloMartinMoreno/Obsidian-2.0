@@ -2,8 +2,7 @@
 aliases:
 tags:
   - type/command
-  - meta/scripts
-  - meta/scan-profiles
+  - type/tool
   - technique/recon/active
   - tool/nmap
 primary categories:

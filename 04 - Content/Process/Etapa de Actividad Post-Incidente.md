@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Etapa de Actividad Post-Incidente
 
 En esta etapa, nuestro objetivo es documentar el incidente y mejorar nuestras capacidades basándonos en las **lecciones aprendidas** del mismo. Esta etapa nos da la oportunidad de reflexionar sobre la amenaza entendiendo qué ocurrió, qué hicimos y cómo resultaron nuestras acciones y actividades. Esta información se recopila y analiza mejor en una reunión con todas las **partes interesadas (_stakeholders_)** que estuvieron involucradas durante el incidente. Generalmente tiene lugar unos días después del incidente, cuando el informe del incidente se ha finalizado.

@@ -4,12 +4,6 @@ tags:
   - type/cheatsheet
   - technique/recon/active
   - service/finger
-  - protocol/finger
-  - port/79
-  - tool/finger
-  - tool/nmap
-  - tool/msfconsole
-  - meta/user-enumeration
 primary categories:
   - "[[Red Team]]"
 secondary categories:

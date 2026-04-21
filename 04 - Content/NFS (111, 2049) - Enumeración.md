@@ -4,16 +4,6 @@ tags:
   - type/cheatsheet
   - technique/recon/active
   - service/nfs
-  - protocol/nfs
-  - port/111
-  - port/2049
-  - tool/showmount
-  - tool/nmap
-  - tool/rpcinfo
-  - tool/lsof
-  - tool/mount
-  - meta/exports
-  - meta/permissions
 primary categories:
   - "[[Red Team]]"
 secondary categories:

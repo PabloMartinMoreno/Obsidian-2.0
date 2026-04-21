@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/concept
+  - vuln/ssrf
 type: Concept
 linked:
   - "[[SSRF - Explotación]]"

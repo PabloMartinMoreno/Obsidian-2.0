@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Metodología Forense & Orden de Volatilidad
 
 **Estándar:** RFC 3227

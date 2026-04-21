@@ -1,7 +1,7 @@
 ---
 tags:
-  - CTF
-  - windows
+  - type/writeup
+  - env/windows
   - estado/completo
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/144

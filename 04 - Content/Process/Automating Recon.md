@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Automatizando el reconocimiento
 
 Mientras que el reconocimiento manual puede ser eficaz, también puede ser lento y propenso a errores humanos. Automatizar tareas de reconocimiento web puede mejorar significativamente la eficiencia y la precisión, permitiéndote recopilar información a gran escala e identificar vulnerabilidades potenciales con mayor rapidez.

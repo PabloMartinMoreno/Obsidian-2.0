@@ -3,17 +3,8 @@ aliases:
   - Enumeración Rsync (873)
 tags:
   - type/cheatsheet
-  - service/rsync
-  - protocol/rsync
-  - port/873
-  - tool/nmap
-  - tool/rsync
-  - tool/msfconsole
-  - tool/netexec
-  - meta/exports
-  - meta/readable-files
-  - meta/anonymous
   - technique/recon/active
+  - service/rsync
 primary categories:
   - "[[Red Team]]"
 secondary categories:

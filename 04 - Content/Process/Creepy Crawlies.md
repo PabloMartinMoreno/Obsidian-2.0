@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Herramientas de crawling
 
 Son herramientas que automatizan el proceso de rastreo, haciéndolo más rápido y eficiente, y permitiéndote concentrarte en el análisis de los datos extraídos.

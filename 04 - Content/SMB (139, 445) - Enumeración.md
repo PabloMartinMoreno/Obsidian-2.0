@@ -4,16 +4,6 @@ tags:
   - type/cheatsheet
   - technique/recon/active
   - service/smb
-  - protocol/smb
-  - port/139
-  - port/445
-  - tool/smbclient
-  - tool/enum4linux
-  - tool/netexec
-  - tool/nmap
-  - meta/shares
-  - meta/permissions
-  - meta/credentials
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Crawling
 
 Crawling, a menudo llamado _spidering_, es el proceso automatizado de recorrer sistemáticamente la World Wide Web. De forma similar a cómo una araña navega su telaraña, un _web crawler_ sigue enlaces de una página a otra recopilando información. Estos crawlers son esencialmente bots que usan algoritmos predefinidos para descubrir e indexar páginas web, haciéndolas accesibles a través de motores de búsqueda o para otros fines como análisis de datos y reconocimiento web.

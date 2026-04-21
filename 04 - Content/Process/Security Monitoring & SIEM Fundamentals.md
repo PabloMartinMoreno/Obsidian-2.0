@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - asset/network
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 [[Definición y Fundamentos de SIEM]]
 [[Introducción al Elastic Stack]]
 [[Definición y Fundamentos del SOC]]

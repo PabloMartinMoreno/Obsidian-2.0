@@ -2,10 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/http
   - service/osticket
-  - protocol/http
-  - tool/curl
-  - meta/known-paths
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/xss
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## Descubrimiento de XSS
 
 A esta altura, deberíamos tener un buen entendimiento de qué es una vulnerabilidad XSS, los tres tipos de XSS, y cómo cada tipo se diferencia del resto. También deberíamos entender cómo funciona XSS a través de inyectar código JavaScript en el código fuente del lado del cliente, ejecutando así código adicional, que luego aprenderemos a usar a nuestro favor.

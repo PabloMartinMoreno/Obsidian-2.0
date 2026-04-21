@@ -3,19 +3,9 @@ aliases:
   - Enumeración MSSQL (1433, 1434, 2433)
 tags:
   - type/cheatsheet
+  - technique/credential-access
   - service/mssql
   - service/sql
-  - protocol/tcp
-  - port/1433
-  - port/1434
-  - port/2433
-  - tool/netexec
-  - tool/mssqlclient
-  - tool/sqlcmd
-  - meta/instances
-  - meta/credentials
-  - meta/db-users
-  - technique/credential-access
 primary categories:
   - "[[Red Team]]"
 secondary categories:

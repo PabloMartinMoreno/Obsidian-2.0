@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/command
+  - type/tool
 primary categories:
 secondary categories:
 tertiary categories:

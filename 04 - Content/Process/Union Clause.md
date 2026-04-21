@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/sqli
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Cláusula Union
 
 Hasta ahora, solo hemos estado manipulando la consulta original para subvertir la lógica de la aplicación web y eludir la autenticación, utilizando el operador `OR` y comentarios. Sin embargo, otro tipo de inyección SQL consiste en inyectar consultas SQL enteras que se ejecutan junto con la consulta original.

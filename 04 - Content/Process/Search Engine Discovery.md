@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Descubrimiento mediante motores de búsqueda
 
 Los motores de búsqueda actúan como nuestros guías en el vasto paisaje de Internet, ayudándonos a navegar por la aparentemente infinita cantidad de información. Sin embargo, más allá de su función principal de responder consultas cotidianas, los motores de búsqueda también contienen un tesoro de datos que puede ser invaluable para el reconocimiento web y la recolección de información. Esta práctica, conocida como descubrimiento mediante motores de búsqueda o recolección OSINT (Inteligencia de Fuentes Abiertas), consiste en usar motores de búsqueda como herramientas potentes para descubrir información sobre sitios web objetivo, organizaciones e individuos.

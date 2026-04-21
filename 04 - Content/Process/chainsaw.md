@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/tool
+  - tool/chainsaw
+  - env/windows
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 **Chainsaw** es una herramienta de línea de comandos potente y rápida, diseñada específicamente para el análisis forense y la **caza de amenazas (Threat Hunting)** en registros de eventos de Windows (`.evtx`).
 
 ## Módulos Principales

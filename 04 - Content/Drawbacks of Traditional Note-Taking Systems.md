@@ -1,7 +1,8 @@
 ---
 aliases:
 tags:
-  - idea
+  - type/concept
+  - estado/incompleto
 primary categories:
   - "[[Vault Administration]]"
 secondary categories:

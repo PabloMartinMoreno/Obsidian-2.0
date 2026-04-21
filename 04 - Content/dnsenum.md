@@ -2,13 +2,10 @@
 aliases:
 tags:
   - type/command
-  - tool/dnsenum
-  - service/dns
-  - protocol/dns
-  - port/53
+  - type/tool
   - technique/recon/active
-  - meta/zone-transfer
-  - meta/brute-force
+  - service/dns
+  - tool/dnsenum
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -2,10 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - tool/canarytokens
   - technique/recon/passive
   - asset/honeypot
-  - meta/alerting
 primary categories:
   - "[[Red Team]]"
 secondary categories:

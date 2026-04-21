@@ -1,13 +1,12 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
-  - asset/source-code
-  - tool/git-dumper
-  - protocol/http
-  - protocol/git
-  - meta/poc
+  - type/tool
   - technique/recon/active
+  - asset/source-code
+  - service/git
+  - service/http
+  - tool/git-dumper
 primary categories:
   - "[[Red Team]]"
 secondary categories:

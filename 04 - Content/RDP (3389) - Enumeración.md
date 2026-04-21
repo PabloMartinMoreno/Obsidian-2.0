@@ -2,17 +2,10 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/wordpress
-  - protocol/rdp
-  - port/3389
-  - tool/nmap
-  - tool/freerdp
-  - tool/rdpscan
-  - meta/ciphers
-  - meta/credentials
-  - meta/rdp-policy
-  - technique/recon/active
   - technique/credential-access
+  - technique/recon/active
+  - service/rdp
+  - service/wordpress
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -1,6 +1,6 @@
 ---
 tags:
-  - CTF
+  - type/writeup
   - estado/completo
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit11.html

@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - service/dns
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 
 ## Herramientas DNS
 

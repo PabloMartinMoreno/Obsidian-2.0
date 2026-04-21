@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/playbook
+  - cert/cbbh
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## Footprinting & Fingerprinting
 
 ### Fingerprinting del Servidor Web y Tecnologías

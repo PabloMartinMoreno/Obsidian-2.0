@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Etapa de Preparación (Parte 1)
 
 En la etapa de Preparación, tenemos dos objetivos separados. El primero es el establecimiento de una capacidad de **gestión de incidentes** dentro de la organización. El segundo es la capacidad de protegerse contra y prevenir incidentes de seguridad de TI implementando medidas de protección adecuadas. Tales medidas incluyen el endurecimiento (_hardening_) de endpoints y servidores, la división en niveles (_tiering_) del Directorio Activo, la Autenticación Multifactor (MFA), la gestión de accesos privilegiados (PAM), etc. Aunque proteger contra incidentes no es responsabilidad del equipo de gestión de incidentes, esta actividad es fundamental para el éxito general de ese equipo.

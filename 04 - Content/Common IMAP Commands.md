@@ -2,10 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - protocol/imap
-  - meta/commands
-  - meta/examples
-  - tool/telnet
+  - service/imap
 primary categories:
   - "[[Red Team]]"
 secondary categories:

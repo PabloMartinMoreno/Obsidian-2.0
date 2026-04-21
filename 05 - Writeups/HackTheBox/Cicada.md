@@ -1,10 +1,10 @@
 ---
 tags:
-  - CTF
-  - windows
-  - OSCP
+  - type/writeup
+  - asset/active-directory
+  - env/windows
   - estado/completo
-  - activeDirectory
+  - cert/oscp
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/627
 dificultad: Fácil

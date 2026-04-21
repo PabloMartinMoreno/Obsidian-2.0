@@ -2,15 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/mysql
-  - protocol/mysql
-  - port/3306
-  - tool/mysql
-  - tool/nmap
-  - meta/db-users
-  - meta/credentials
-  - meta/schemas
   - technique/credential-access
+  - service/mysql
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/command-injection
 primary categories:
 secondary categories:
 tertiary categories:

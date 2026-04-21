@@ -2,9 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/jenkins
   - asset/web-app
-  - protocol/http
+  - service/http
+  - service/jenkins
 primary categories:
   - "[[Red Team]]"
 secondary categories:

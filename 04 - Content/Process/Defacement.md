@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## Defacement 
 
 Ahora que entendemos los diferentes tipos de XSS y los distintos métodos para descubrir vulnerabilidades XSS en páginas web, podemos comenzar a aprender cómo explotarlas. Como mencionamos antes, el daño y el alcance de un ataque XSS dependen del tipo de XSS: uno **almacenado** es el más crítico, mientras que uno **DOM-based** es menos grave.

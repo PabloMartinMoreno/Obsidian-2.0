@@ -2,7 +2,7 @@
 aliases:
   - run.ps1
 tags:
-  - payload
+  - type/payload
 primary categories:
   - "[[Development]]"
   - "[[Red Team]]"

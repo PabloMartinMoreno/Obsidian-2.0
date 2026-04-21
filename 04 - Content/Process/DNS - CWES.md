@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - service/dns
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # DNS
 
 El Sistema de Nombres de Dominio (DNS) actúa como el GPS de Internet, guiando tu viaje en línea desde puntos reconocibles (nombres de dominio) hasta coordenadas numéricas precisas (direcciones IP). Al igual que un GPS traduce el nombre de un destino en latitud y longitud para navegar, el DNS traduce nombres legibles por humanos (por ejemplo, `www.example.com`) en las direcciones IP numéricas (por ejemplo, `192.0.2.1`) que las computadoras usan para comunicarse.

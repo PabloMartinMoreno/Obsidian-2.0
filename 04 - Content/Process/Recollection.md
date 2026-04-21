@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 
 ## 1 y 2) ¿Cuál es el sistema operativo de la máquina? y ¿Cuándo se creó el volcado de memoria?
 ### Vol3

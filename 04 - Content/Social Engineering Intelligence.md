@@ -3,9 +3,8 @@ aliases:
 tags:
   - type/cheatsheet
   - technique/recon/passive
-  - asset/personnel
   - asset/organization
-  - meta/osint
+  - asset/personnel
 primary categories:
   - "[[Red Team]]"
 secondary categories:

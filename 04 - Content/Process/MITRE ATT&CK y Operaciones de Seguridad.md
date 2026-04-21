@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### MITRE ATT&CK y Operaciones de Seguridad
 
 #### ¿Qué es MITRE ATT&CK?

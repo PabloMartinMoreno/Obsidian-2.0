@@ -1,6 +1,6 @@
 ---
 tags:
-  - CTF
+  - type/writeup
   - estado/completo
 plataforma: "[[VulNyx]]"
 dificultad: Fácil

@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # robots.txt
 
 Imaginá que sos invitado a una gran fiesta en una mansión. Aunque podés moverte libremente y explorar, puede haber ciertas habitaciones con carteles de “Privado” que se espera que no entres.  

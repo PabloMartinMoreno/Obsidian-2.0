@@ -2,15 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/ftp
-  - protocol/ftp
-  - port/21
-  - tool/ftp
-  - tool/nmap
-  - tool/wget
-  - meta/anonymous
-  - meta/uploads
   - technique/recon/active
+  - service/ftp
 primary categories:
   - "[[Red Team]]"
 secondary categories:

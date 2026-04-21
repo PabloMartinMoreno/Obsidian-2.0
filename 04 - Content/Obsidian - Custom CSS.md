@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - basic
+  - type/concept
 primary categories:
   - "[[Vault Administration]]"
 secondary categories:

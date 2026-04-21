@@ -2,11 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/http
   - service/splunk
-  - protocol/http
-  - tool/splunk-sdk
-  - meta/credentials
-  - meta/management-ports
 primary categories:
   - "[[Red Team]]"
 secondary categories:

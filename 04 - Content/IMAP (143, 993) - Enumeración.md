@@ -4,15 +4,6 @@ tags:
   - type/cheatsheet
   - technique/recon/active
   - service/imap
-  - protocol/imap
-  - port/143
-  - port/993
-  - tool/openssl-s_client
-  - tool/telnet
-  - tool/imapclient
-  - tool/nmap
-  - meta/commands
-  - meta/auth-methods
 primary categories:
   - "[[Red Team]]"
 secondary categories:

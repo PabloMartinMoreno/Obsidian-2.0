@@ -4,8 +4,7 @@ tags:
   - type/cheatsheet
   - asset/web-app
   - service/gitlab
-  - protocol/http
-  - meta/credentials
+  - service/http
 primary categories:
   - "[[Red Team]]"
 secondary categories:

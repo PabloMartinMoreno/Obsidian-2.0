@@ -2,10 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - protocol/pop3
-  - meta/commands
-  - tool/telnet
-  - tool/openssl-s_client
+  - service/pop3
 primary categories:
   - "[[Red Team]]"
 secondary categories:

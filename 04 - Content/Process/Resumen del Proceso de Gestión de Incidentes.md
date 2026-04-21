@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Resumen del Proceso de Gestión de Incidentes
 
 Ahora que estamos familiarizados con la **Cyber Kill Chain** (Cadena de Muerte Cibernética) y sus etapas, podemos predecir y anticipar mejor los siguientes pasos en un ataque y también sugerir medidas apropiadas contra ellos.

@@ -1,11 +1,8 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/tool
   - tool/tcpdump
-  - meta/pcap
-  - meta/filters
-  - meta/examples
 primary categories:
   - "[[Red Team]]"
 secondary categories:

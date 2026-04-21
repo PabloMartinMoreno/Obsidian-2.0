@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/xss
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## Phishing con XSS — Explicación Clara y Directa
 
 Un ataque de phishing usando XSS consiste en **inyectar código HTML/JS en una página confiable**, para que el usuario:

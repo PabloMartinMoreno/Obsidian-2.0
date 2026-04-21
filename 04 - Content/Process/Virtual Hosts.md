@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Virtual Hosts — Hosts Virtuales
 
 Una vez que el DNS dirige el tráfico al servidor correcto, la configuración del servidor web determina cómo se manejan las peticiones entrantes. Servidores web como Apache, Nginx o IIS están diseñados para alojar múltiples sitios o aplicaciones en un solo servidor. Lo logran mediante **virtual hosting**, que les permite diferenciar entre dominios, subdominios o sitios distintos con contenido independiente.

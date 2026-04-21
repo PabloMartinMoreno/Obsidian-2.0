@@ -5,11 +5,7 @@ tags:
   - type/cheatsheet
   - technique/recon/active
   - asset/web-app
-  - protocol/http
-  - tool/ffuf
-  - tool/curl
-  - meta/wordlists
-  - meta/poc
+  - service/http
 primary categories:
   - "[[Red Team]]"
 secondary categories:

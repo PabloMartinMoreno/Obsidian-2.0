@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Well-Known URIs
 
 El estándar **.well-known**, definido en el **RFC 8615**, sirve como un directorio estandarizado dentro del dominio raíz de un sitio web.  

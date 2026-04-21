@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/file-upload
 type: CheatSheet
 linked:
   - "[[File Upload - Vulnerabilidades]]"

@@ -5,7 +5,6 @@ tags:
   - technique/recon/passive
   - asset/domain
   - asset/web-app
-  - meta/osint
 primary categories:
   - "[[Red Team]]"
 secondary categories:

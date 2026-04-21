@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/xss
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## Secuestro de Sesión
 
 Las aplicaciones web modernas utilizan cookies para mantener la sesión de un usuario a lo largo de diferentes visitas. Esto permite que el usuario solo tenga que iniciar sesión una vez y seguir autenticado incluso si vuelve al sitio otro día.

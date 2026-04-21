@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/concept
+  - vuln/lfi
 type: Concept
 linked:
 ---

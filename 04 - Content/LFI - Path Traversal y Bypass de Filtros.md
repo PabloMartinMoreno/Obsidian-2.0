@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/lfi
 primary categories:
 secondary categories:
 tertiary categories:

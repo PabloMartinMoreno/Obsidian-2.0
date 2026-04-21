@@ -3,11 +3,11 @@ aliases:
   - Domain Information Groper
 tags:
   - type/command
+  - type/tool
   - technique/recon/active
   - asset/infrastructure
+  - service/dns
   - tool/dig
-  - protocol/dns
-  - port/53
 primary categories:
   - "[[Red Team]]"
 secondary categories:

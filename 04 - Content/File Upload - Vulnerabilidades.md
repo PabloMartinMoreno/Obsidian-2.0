@@ -1,7 +1,8 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/vulnerability
+  - vuln/file-upload
 primary categories:
   - "[[Red Team]]"
 secondary categories:

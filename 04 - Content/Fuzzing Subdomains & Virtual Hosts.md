@@ -5,9 +5,6 @@ tags:
   - type/cheatsheet
   - technique/recon/active
   - asset/dns
-  - tool/curl
-  - tool/ffuf
-  - meta/virtual-hosts
 primary categories:
   - "[[Red Team]]"
 secondary categories:

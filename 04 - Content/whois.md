@@ -2,10 +2,10 @@
 aliases:
 tags:
   - type/command
+  - type/tool
   - technique/recon/passive
   - asset/infrastructure
   - tool/whois
-  - meta/osint
 primary categories:
   - "[[Red Team]]"
 secondary categories:

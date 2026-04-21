@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Filtrado de salida de fuzzing
 
 Las herramientas de fuzzing web como **gobuster**, **ffuf** y **wenum** están diseñadas para realizar escaneos exhaustivos, lo que suele generar una gran cantidad de datos. Rebuscar entre esta salida para identificar los hallazgos más relevantes puede ser una tarea abrumadora. Sin embargo, estas herramientas ofrecen mecanismos de filtrado potentes para agilizar tu análisis y centrarte en los resultados que realmente importan.

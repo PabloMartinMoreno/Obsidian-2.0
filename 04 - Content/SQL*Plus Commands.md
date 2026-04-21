@@ -3,8 +3,6 @@ aliases:
 tags:
   - type/cheatsheet
   - service/oracle
-  - meta/commands
-  - tool/sqlplus
 primary categories:
   - "[[Red Team]]"
 secondary categories:

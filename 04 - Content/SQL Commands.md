@@ -2,12 +2,9 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/sqli
   - service/mysql
   - service/sql
-  - meta/commands
-  - meta/examples
-  - tool/mysql
-  - tool/mysql-client
 primary categories:
   - "[[Red Team]]"
 secondary categories:

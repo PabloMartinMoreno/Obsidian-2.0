@@ -1,7 +1,8 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
+  - type/vulnerability
+  - vuln/command-injection
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - asset/network
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Desarrollo de Casos de Uso de SIEM
 
 #### ¿Qué es un Caso de Uso de SIEM?

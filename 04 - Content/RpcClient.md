@@ -1,15 +1,13 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
-  - service/smb
+  - type/tool
+  - technique/recon/active
   - service/rpc
+  - service/smb
+  - tool/impacket
   - tool/rpcclient
   - tool/smbclient
-  - tool/impacket
-  - meta/rpc
-  - meta/calls
-  - technique/recon/active
 primary categories:
   - "[[Red Team]]"
 secondary categories:

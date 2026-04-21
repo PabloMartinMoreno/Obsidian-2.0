@@ -2,6 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/ssrf
 type: CheatSheet
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"

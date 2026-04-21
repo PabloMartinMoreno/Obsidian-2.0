@@ -2,11 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/http
   - service/magento
-  - protocol/http
-  - tool/curl
-  - tool/php
-  - meta/extensions
 primary categories:
   - "[[Red Team]]"
 secondary categories:

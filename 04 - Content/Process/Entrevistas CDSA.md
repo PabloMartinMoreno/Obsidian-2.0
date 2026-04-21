@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - cert/cdsa
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 #### 1. ¿Qué es un SIEM y para qué se utiliza?
 
 Un **SIEM** (Security Information and Event Management) es una solución centralizada que recolecta, agrega y analiza logs de múltiples fuentes (firewalls, servidores, antivirus). Se utiliza para detectar amenazas mediante correlación de eventos en tiempo real, gestionar incidentes y cumplir con normativas de auditoría.

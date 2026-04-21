@@ -1,9 +1,9 @@
 ---
 tags:
-  - CTF
+  - type/writeup
+  - env/linux
   - estado/completo
-  - linux
-  - OSCP
+  - cert/oscp
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/603
 dificultad: Fácil

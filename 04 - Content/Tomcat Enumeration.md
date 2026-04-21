@@ -2,11 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/http
   - service/tomcat
-  - protocol/http
-  - tool/curl
-  - meta/manager-app
-  - meta/credentials
 primary categories:
   - "[[Red Team]]"
 secondary categories:

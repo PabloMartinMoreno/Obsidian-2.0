@@ -2,12 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/http
   - service/wordpress
-  - protocol/http
-  - tool/wpscan
-  - tool/ffuf
-  - meta/plugins
-  - meta/themes
 primary categories:
   - "[[Red Team]]"
 secondary categories:

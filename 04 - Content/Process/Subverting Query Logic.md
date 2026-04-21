@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/sqli
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## Subvirtiendo la lógica de la consulta
 
 Ahora que tenemos una idea básica sobre cómo funcionan las sentencias SQL, comencemos con la inyección SQL (SQLi). Antes de empezar a ejecutar consultas SQL enteras, primero aprenderemos a modificar la consulta original inyectando el operador `OR` y utilizando comentarios SQL para subvertir la lógica original de la consulta. Un ejemplo básico de esto es la evasión (bypass) de la autenticación web, lo cual demostraremos en esta sección.

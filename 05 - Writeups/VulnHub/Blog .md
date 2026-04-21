@@ -1,6 +1,6 @@
 ---
 tags:
-  - CTF
+  - type/writeup
   - estado/completo
 plataforma: "[[VulNyx]]"
 web: https://www.vulnhub.com/blog

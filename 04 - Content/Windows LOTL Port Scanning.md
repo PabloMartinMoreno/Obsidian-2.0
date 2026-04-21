@@ -2,8 +2,7 @@
 aliases:
 tags:
   - type/cheatsheet
-  - tool/powershell
-  - "#porhacer"
+  - estado/incompleto
 primary categories:
   - "[[Red Team]]"
 secondary categories:

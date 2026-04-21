@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 Este código es un ejemplo clásico de un "CTF" (Capture The Flag). Tiene una vulnerabilidad crítica que permite **RCE (Remote Code Execution)**, lo cual es el primer paso vital para conseguir acceso al sistema y eventualmente escalar privilegios a root.
 
 Aunque el código te "trollea" con el mensaje `<h1>esta web será vulnerable a XXE????</h1>`, la verdadera vulnerabilidad es mucho más grave y directa que un XXE.

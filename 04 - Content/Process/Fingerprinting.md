@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Fingerprinting
 
 El **fingerprinting** se enfoca en extraer detalles técnicos sobre las tecnologías que impulsan un sitio web o una aplicación web. De manera similar a cómo una huella dactilar identifica de forma única a una persona, las “huellas digitales” de los servidores web, sistemas operativos y componentes de software pueden revelar información crítica sobre la infraestructura del objetivo y posibles debilidades de seguridad. Este conocimiento permite a los atacantes adaptar sus ataques y explotar vulnerabilidades específicas de las tecnologías identificadas.

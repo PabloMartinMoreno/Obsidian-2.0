@@ -2,11 +2,6 @@
 aliases:
 tags:
   - type/cheatsheet
-  - meta/credentials
-  - tool/hashcat
-  - tool/credscan
-  - meta/password-polices
-  - meta/default-creds
 primary categories:
   - "[[Red Team]]"
 secondary categories:

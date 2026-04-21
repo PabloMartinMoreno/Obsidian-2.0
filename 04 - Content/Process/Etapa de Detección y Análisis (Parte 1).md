@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Etapa de Detección y Análisis (Parte 1)
 
 En este punto, hemos creado procesos y procedimientos, y tenemos pautas sobre cómo actuar ante incidentes de seguridad.

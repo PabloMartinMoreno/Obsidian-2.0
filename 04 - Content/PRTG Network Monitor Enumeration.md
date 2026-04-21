@@ -2,11 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
+  - service/http
   - service/prtg
-  - protocol/http
-  - tool/curl
-  - tool/nmap
-  - tool/prtgadmin
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### Etapa de Contención, Erradicación y Recuperación
 
 Cuando la investigación está completa y hemos comprendido el tipo de incidente y el impacto en el negocio (basado en todas las pistas reunidas y la información ensamblada en la línea de tiempo), es hora de entrar en la etapa de contención para evitar que el incidente cause más daños.

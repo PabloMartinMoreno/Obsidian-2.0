@@ -2,7 +2,6 @@
 aliases:
 tags:
   - type/concept
-  - protocol/axfr
 type: Concept
 linked:
   - "[[DNS]]"

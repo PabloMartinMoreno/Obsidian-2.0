@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 
 - **Usá `dnsenum`** cuando querés una enumeración _DNS-first_: intentos de AXFR (zone transfer), consulta de NS/MX/WHOIS, búsquedas inversas y un flujo de trabajo “todo en uno” orientado a DNS. Es la opción típica para reconocimiento DNS profundo. ([GitHub](https://github.com/fwaeytens/dnsenum?utm_source=chatgpt.com "dnsenum is a perl script that enumerates DNS information"))
 

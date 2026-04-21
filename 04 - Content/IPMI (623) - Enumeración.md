@@ -2,15 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - service/ipmi
-  - protocol/ipmi
-  - port/623
-  - tool/nmap
-  - tool/msfconsole
-  - meta/default-creds
-  - meta/firmware
-  - meta/management-ports
   - technique/credential-access
+  - service/ipmi
 primary categories:
   - "[[Red Team]]"
 secondary categories:

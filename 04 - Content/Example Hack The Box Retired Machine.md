@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - case_study
+  - type/concept
 primary categories:
   - "[[Training]]"
 secondary categories:

@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - service/dns
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 
 Aunque la fuerza bruta puede ser un enfoque útil, existe un método menos invasivo y potencialmente más eficiente para descubrir subdominios dentro de una zona DNS. Este mecanismo, diseñado para replicar registros DNS entre servidores de nombres, puede convertirse inadvertidamente en una mina de oro de información si está mal configurado.
 

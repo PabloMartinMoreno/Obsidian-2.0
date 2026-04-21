@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/xss
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## ¿Por qué usar `window.origin` y no cualquier otra cosa?
 
 Cuando probás un XSS usás un `alert()` solo para saber si el código se ejecuta. Podrías poner:

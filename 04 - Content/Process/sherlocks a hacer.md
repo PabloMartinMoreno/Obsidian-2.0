@@ -1,3 +1,14 @@
+---
+aliases:
+tags:
+  - type/concept
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ### 🟢 Nivel 1: Very Easy (Calentamiento y Conceptos Base)
 
 _Objetivo: Familiarizarse con la plataforma y logs individuales._

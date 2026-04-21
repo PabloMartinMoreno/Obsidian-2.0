@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/writeup
+  - cert/cbbh
+  - vuln/sqli
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## 🛠️ Metodología del Ataque (Desglose Lógico)
 
 ### 1. Confirmar la Vulnerabilidad

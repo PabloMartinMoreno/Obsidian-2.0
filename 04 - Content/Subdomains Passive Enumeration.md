@@ -6,8 +6,6 @@ tags:
   - technique/recon/passive
   - asset/domain
   - meta/reference
-  - tool/whois
-  - tool/curl
 primary categories:
   - "[[Red Team]]"
 secondary categories:

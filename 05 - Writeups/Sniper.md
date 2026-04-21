@@ -1,9 +1,9 @@
 ---
 tags:
-  - CTF
+  - type/writeup
+  - env/windows
   - estado/incompleto
-  - OSCP
-  - windows
+  - cert/oscp
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/211
 dificultad: Media

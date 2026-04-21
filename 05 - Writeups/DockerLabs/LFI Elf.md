@@ -1,6 +1,6 @@
 ---
 tags:
-  - CTF
+  - type/writeup
   - estado/completo
 plataforma: "[[docker labs]]"
 web: https://www.dockerlabs.com/lfielf

@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/xss
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## XSS Prevention
 
 Para este punto, ya deberíamos tener una buena comprensión de qué es una vulnerabilidad XSS, sus distintos tipos, cómo detectarlas y cómo explotarlas. Concluiremos el módulo aprendiendo cómo **defendernos** de las vulnerabilidades XSS.

@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - type/concept
+  - asset/active-directory
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 [[chainsaw]]
 
 El controlador de dominio de Forela está siendo atacado. Se cree que la cuenta del administrador del dominio ha sido comprometida y se sospecha que el autor de la amenaza ha volcado la base de datos NTDS.dit en el controlador de dominio. Acabamos de recibir una alerta de que se está utilizando vssadmin en el DC, ya que esto no forma parte de la programación rutinaria, tenemos buenas razones para creer que el atacante ha abusado de esta utilidad LOLBIN para hacerse con la joya de la corona del entorno del dominio. Realice algunos análisis de los artefactos proporcionados para una clasificación rápida y, si es posible, expulse al atacante lo antes posible.

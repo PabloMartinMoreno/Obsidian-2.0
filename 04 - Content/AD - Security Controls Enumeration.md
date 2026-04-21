@@ -2,8 +2,8 @@
 aliases:
 tags:
   - type/cheatsheet
-  - asset/active-directory
   - technique/recon/active
+  - asset/active-directory
 primary categories:
   - "[[Red Team]]"
 secondary categories:

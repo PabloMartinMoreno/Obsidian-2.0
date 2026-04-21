@@ -1,7 +1,8 @@
 ---
 aliases:
 tags:
-  - infrastructure
+  - type/concept
+  - asset/infrastructure
 primary categories:
   - "[[Red Team]]"
   - "[[Red Team]]"

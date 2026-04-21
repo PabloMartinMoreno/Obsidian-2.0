@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - vuln/xss
+  - asset/web-app
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 ## XSS basado en DOM (DOM XSS)
 
 El tercer y último tipo de XSS es otro tipo No Persistente llamado **XSS basado en DOM**.

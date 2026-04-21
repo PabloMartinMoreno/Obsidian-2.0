@@ -1,6 +1,6 @@
 ---
 tags:
-  - CTF
+  - type/writeup
   - estado/completo
 plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/entry/ica-1,748/

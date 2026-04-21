@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - type/cheatsheet
+  - asset/web-app
+  - technique/recon/active
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 # Fuzzing de API
 
 El fuzzing de API es una forma especializada de fuzzing orientada a APIs web. Aunque los principios básicos del fuzzing siguen siendo los mismos —enviar entradas inesperadas o inválidas a un objetivo— el fuzzing de API se centra en la estructura y los protocolos únicos que usan las APIs web.
