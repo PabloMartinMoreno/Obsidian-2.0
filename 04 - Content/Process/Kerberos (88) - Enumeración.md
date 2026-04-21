@@ -15,6 +15,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Port Enumeration]]"
 ---
 # Kerberos Enumeration (88)
 

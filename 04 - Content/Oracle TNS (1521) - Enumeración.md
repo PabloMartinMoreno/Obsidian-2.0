@@ -14,7 +14,8 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[SQL*Plus Commands]]"
+- "[[SQL*Plus Commands]]"
+  - "[[Port Enumeration]]"
 ---
 # Oracle TNS Enumeration (1521)
 

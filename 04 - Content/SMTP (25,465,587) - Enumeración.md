@@ -13,9 +13,10 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Common SMTP Commands]]"
+- "[[Common SMTP Commands]]"
   - "[[POP3 (110, 995) - Enumeración]]"
   - "[[IMAP (143, 993) - Enumeración]]"
+  - "[[Port Enumeration]]"
 ---
 # SMTP Enumeration (25,465,587)
 

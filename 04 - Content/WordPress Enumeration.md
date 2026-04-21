@@ -14,7 +14,8 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[WordPress Exploitation]]"
+- "[[WordPress Exploitation]]"
+  - "[[Web Technology Enumeration]]"
 ---
 # WordPress Enumeration
 

@@ -16,8 +16,9 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[T-SQL Command]]"
+- "[[T-SQL Command]]"
   - "[[SQLi to RCE]]"
+  - "[[Port Enumeration]]"
 ---
 # Enumeración MSSQL (1433, 1434, 2433)
 

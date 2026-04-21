@@ -13,7 +13,8 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Common POP3 Commands]]"
+- "[[Common POP3 Commands]]"
+  - "[[Port Enumeration]]"
 ---
 # POP3 Enumeration (110, 995)
 

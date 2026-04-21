@@ -14,7 +14,8 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Fingerprinting Web Technologies]]"
+- "[[Fingerprinting Web Technologies]]"
+  - "[[Web Technology Enumeration]]"
 ---
 # Tomcat Enumeration
 

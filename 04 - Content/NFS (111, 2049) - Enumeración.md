@@ -13,6 +13,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Port Enumeration]]"
 ---
 # Enumeración NFS (111, 2049)
 

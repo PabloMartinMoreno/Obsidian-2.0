@@ -17,7 +17,8 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[RDP Exploitation (3389)]]"
+- "[[RDP Exploitation (3389)]]"
+  - "[[Port Enumeration]]"
 ---
 # RDP Enumeration (3389)
 

@@ -13,13 +13,14 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[dig]]"
+- "[[dig]]"
   - "[[dnsenum]]"
   - "[[host]]"
   - "[[nslookup]]"
   - "[[DNS]]"
   - "[[Seclists]]"
   - "[[Transferencia de Zona DNS]]"
+  - "[[Port Enumeration]]"
 ---
 # DNS Enumeration (53)
 

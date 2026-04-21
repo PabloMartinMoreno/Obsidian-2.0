@@ -13,7 +13,8 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Common IMAP Commands]]"
+- "[[Common IMAP Commands]]"
+  - "[[Port Enumeration]]"
 ---
 # Enumeración IMAP (143, 993)
 

@@ -12,6 +12,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Port Enumeration]]"
 ---
 # TFTP Enumeration (69)
 

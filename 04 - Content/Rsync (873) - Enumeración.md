@@ -14,8 +14,9 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[SSH (22) - Enumeración]]"
+- "[[SSH (22) - Enumeración]]"
   - "[[FTP (21) - Enumeración]]"
+  - "[[Port Enumeration]]"
 ---
 # Enumeración Rsync (873)
 

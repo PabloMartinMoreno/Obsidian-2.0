@@ -10,5 +10,6 @@ primary categories:
 secondary categories:
 tertiary categories:
 linked:
+  - "[[Port Enumeration]]"
 ---
 

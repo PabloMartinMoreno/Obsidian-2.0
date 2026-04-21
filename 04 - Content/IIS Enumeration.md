@@ -17,6 +17,7 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Web Technology Enumeration]]"
 ---
 # IIS Enumeration
 

@@ -13,6 +13,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 type: CheatSheet
 linked:
+  - "[[Port Enumeration]]"
 ---
 # SSH Enumeration (22)
 
