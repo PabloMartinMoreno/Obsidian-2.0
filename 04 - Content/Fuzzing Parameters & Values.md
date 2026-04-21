@@ -30,10 +30,10 @@ tab: **Curl**
 ![[Curl - Fuzzing Parámetros y Valores#^curl-fuzzing-parametros]]
 
 tab: **Ffuf**
-![[Ffuf#^ffuf-fuzzing-parametros]]
+![[ffuf#^ffuf-fuzzing-parametros]]
 
 tab: **Gobuster**
-![[GoBuster#^gobuster-fuzzing-parametros]]
+![[gobuster#^gobuster-fuzzing-parametros]]
 
 tab: **Wordlists**
 ![[Seclists#^wordlists-fuzzing-parametros]]

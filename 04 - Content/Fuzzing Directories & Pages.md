@@ -27,16 +27,16 @@ linked:
 
 ````tabs
 tab: **Ffuf**
-![[Ffuf#^ffuf-fuzzing-directorios]]
+![[ffuf#^ffuf-fuzzing-directorios]]
 
 tab: **GoBuster**
-![[GoBuster#^gobuster-fuzzing-directorios]]
+![[gobuster#^gobuster-fuzzing-directorios]]
 
 tab: **FeroxBuster**
-![[FeroxBuster#^feroxbuster-fuzzing-directorios]]
+![[feroxbuster#^feroxbuster-fuzzing-directorios]]
 
 tab: **Wordlists**
-![[Seclists#^wordlists-fuzzing-directorios]]]
+![[Seclists#^wordlists-fuzzing-directorios]]
 
 ````
 

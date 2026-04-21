@@ -31,7 +31,7 @@ tab: **Curl**
 ![[Curl - Enumeración de Sub-Dominios y V.Host#^curl-enum-subdominios-vhost]]
 
 tab: **Ffuf**
-![[Ffuf#^ffuf-enum-vhost]]
+![[ffuf#^ffuf-enum-vhost]]
 
 tab: **GoBuster**
 ![[gobuster#^gobuster-enum-vhost]]

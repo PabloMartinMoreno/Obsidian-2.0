@@ -28,7 +28,7 @@ linked:
 
 ````tabs
 tab: **Whois**
-![[Whois#^whois-enum-pasiva-subdominios]]
+![[whois#^whois-enum-pasiva-subdominios]]
 
 tab: **Curl**
 ![[Curl - Enumeración Pasiva de Sub-Dominios#^curl-enum-pasiva-subdominios]]

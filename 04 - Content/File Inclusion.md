@@ -15,14 +15,14 @@ type: CheatSheet
 linked:
   - "[[LFI - Básico]]"
   - "[[LFI - Path Traversal y Bypass de Filtros]]"
-  - "[[LFI - Null Byte Injection ]]"
+  - "[[LFI - Null Byte Injection]]"
   - "[[LFI - PHP Wrappers]]"
   - "[[RFI - Remote File Inclusion]]"
-  - "[[LFI To RCE - Log Poisoning ]]"
+  - "[[LFI To RCE - Log Poisoning]]"
   - "[[LFI To RCE - proc self environ]]"
-  - "[[LFI To RCE - Session File Poisoning ]]"
+  - "[[LFI To RCE - Session File Poisoning]]"
   - "[[LFI To RCE - File Upload + LFI]]"
-  - "[[LFI To RCE - PHP Filter Chains ]]"
+  - "[[LFI To RCE - PHP Filter Chains]]"
   - "[[LFI To RCE - Phar Deserialization]]"
 ---
 # File Inclusion 
