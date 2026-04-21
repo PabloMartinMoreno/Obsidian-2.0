@@ -7,10 +7,14 @@ tags:
   - asset/api
   - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[BOLA - IDOR]]"
 ---
 # IDOR - Manipulación de Cabeceras HTTP y Protocolo
 

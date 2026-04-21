@@ -6,10 +6,14 @@ tags:
   - technique/execution
   - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # XSS - Escape de Contexto en Atributos
 

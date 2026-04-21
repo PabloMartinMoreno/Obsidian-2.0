@@ -7,6 +7,7 @@ tags:
   - asset/web-app
 type: Concept
 linked:
+  - "[[File Inclusion]]"
 ---
 # LFI - Rutas Principales
 

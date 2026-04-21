@@ -7,7 +7,8 @@ tags:
   - asset/web-app
 type: Concept
 linked:
-  - "[[SSRF - Explotación]]"
+- "[[SSRF - Explotación]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 # SSRF - Mecanismo Lógico
 

@@ -7,8 +7,9 @@ tags:
   - asset/web-app
 type: Concept
 linked:
-  - "[[SSRF - Explotación]]"
+- "[[SSRF - Explotación]]"
   - "[[Anatomía de la Construcción de un Payload Gopher]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 # El Protocolo Gopher en SSRF
 
