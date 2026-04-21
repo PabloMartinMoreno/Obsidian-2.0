@@ -1,0 +1,96 @@
+---
+aliases:
+  - XXE
+tags:
+  - type/vulnerability
+  - vuln/xxe
+  - technique/execution
+  - asset/web-app
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Explotación]]"
+tertiary categories:
+  - "[[Explotación Web]]"
+type: Vulnerability
+linked:
+  - "[[XXE - Clásico In-band]]"
+  - "[[XXE - Clásico SSRF]]"
+  - "[[XXE - Inyección Mediante XInclude]]"
+  - "[[XXE - Blind Basado en Errores]]"
+  - "[[XXE - Out-of-Band (OOB) y DTDs Externos]]"
+  - "[[XXE - Carga de Archivos (Formatos XML Ocultos)]]"
+  - "[[XXE - DTDs Locales]]"
+---
+# XML External Entity (XXE)
+
+***
+
+## Cheatsheet
+
+````tabs
+tab: **Clásico In-band**
+![[XXE - Clásico In-band#^xxe-clasico-inband]]
+
+tab: **Clásico SSRF**
+![[XXE - Clásico SSRF#^xxe-clasico-ssrf]]
+
+tab: **XInclude**
+![[XXE - Inyección Mediante XInclude#^xxe-xinclude]]
+
+tab: **Blind (Errores)**
+![[XXE - Blind Basado en Errores#^xxe-blind-errores]]
+
+tab: **Out-of-Band (OOB)**
+![[XXE - Out-of-Band (OOB) y DTDs Externos#^xxe-oob]]
+
+tab: **Carga de Archivos**
+![[XXE - Carga de Archivos (Formatos XML Ocultos)#^xxe-carga-archivos]]
+
+tab: **DTDs Locales**
+![[XXE - DTDs Locales#^xxe-dtds-locales]]
+````
+
+---
+
+## Overview
+
+**XML External Entity (XXE)** es una vulnerabilidad de _injection_ que afecta a parsers XML mal configurados. El atacante abusa de la capacidad del parser para resolver **entidades externas** declaradas en el `DOCTYPE`, logrando:
+
+- **Lectura arbitraria de archivos** locales del servidor (`file:///etc/passwd`, `.env`, claves privadas).
+- **SSRF** apuntando a red interna o endpoints de metadatos cloud (`http://169.254.169.254/`).
+- **Exfiltración OOB** cuando el contenido no se refleja directamente.
+- **DoS** mediante expansión recursiva (Billion Laughs).
+- **RCE** en parsers con soporte de wrappers exóticos (`expect://`, `jar://`).
+
+### Vectores de entrada
+
+- Endpoints que aceptan `Content-Type: application/xml` o `text/xml`.
+- Subida de archivos con formatos basados en XML: `.docx`, `.xlsx`, `.svg`, `.xml`, `.wsdl`, `.rss`.
+- APIs SOAP, configuraciones internas, webhooks que consumen XML.
+- Parámetros que pasan por deserialización XML (Java `XMLDecoder`, .NET `XmlDocument`).
+
+### Identificación
+
+1. Interceptar request con Burp, detectar XML en body o content-type.
+2. Enviar payload de prueba con entidad simple (`<!ENTITY test "hola">` + `&test;`) — si se refleja, el parser resuelve entidades.
+3. Escalar a entidad externa con `SYSTEM "file:///etc/hostname"`.
+4. Si no se refleja nada, pivotar a **Blind** (errores) u **OOB** (DNS/HTTP callback).
+
+### Prevención
+
+- Deshabilitar resolución de DTDs externos y entidades externas en la config del parser.
+- Java: `XMLInputFactory.setProperty("javax.xml.stream.supportDTD", false)`.
+- PHP: `libxml_disable_entity_loader(true)` (obsoleto en PHP 8+, deshabilitado por default).
+- .NET: `XmlReaderSettings { DtdProcessing = Prohibit }`.
+- Preferir formatos alternativos (JSON) cuando sea posible.
+
+***
+
+## Notas Relacionadas
+
+- [[Server-Side Request Forgery (SSRF)]] — XXE a menudo escala a SSRF.
+- [[File Inclusion]] — técnica complementaria de lectura de archivos.
+- [[Insecure Deserialization]] — mismo nivel de abuso de parsers.
+
+***

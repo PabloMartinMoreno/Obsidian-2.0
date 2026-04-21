@@ -2,11 +2,18 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/xxe
+  - technique/execution
+  - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[XML External Entity (XXE)]]"
 ---
 # XXE - DTDs Locales
 
@@ -20,6 +27,8 @@ linked:
 | **Sistemas Linux (Entornos Debian/Ubuntu)** | `/usr/share/xml/fontconfig/fonts.dtd`    | Redefino la entidad `expr` o similar. La lógica de codificación de entidades (como `&#x25;` para `%`) es idéntica al payload anterior, cambiando únicamente la ruta del DTD y la entidad objetivo a sobrescribir.                                                                                                                                                                                                                                   |
 | **Sistemas Windows**                        | `C:\Windows\System32\wbem\xml\wmi20.dtd` | Dependiendo del analizador y la versión de Windows, busco DTDs predeterminados. Alternativamente, si conozco el framework (ej. Java), apunto a archivos dentro del directorio de instalación, como `[RUTA_JAVA]\jre\lib\fontconfig.dtd`.                                                                                                                                                                                                            |
 | **Cisco WebEx / Aplicaciones Específicas**  | `/opt/webex/bin/.../webex.dtd`           | Si la aplicación es un producto empaquetado conocido, investigo el sistema de archivos del appliance para identificar DTDs estáticos y construir la ruta absoluta en el vector `SYSTEM`.                                                                                                                                                                                                                                                            |
+
+^xxe-dtds-locales
 
 ## Consideraciones Tácticas y Limitaciones
 

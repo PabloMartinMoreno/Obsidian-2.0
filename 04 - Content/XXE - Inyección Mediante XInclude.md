@@ -2,11 +2,18 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/xxe
+  - technique/execution
+  - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[XML External Entity (XXE)]]"
 ---
 # XXE - Inyección Mediante XInclude
 
@@ -28,6 +35,8 @@ linked:
 
 
 ***
+
+^xxe-xinclude
 
 ## Overview
 

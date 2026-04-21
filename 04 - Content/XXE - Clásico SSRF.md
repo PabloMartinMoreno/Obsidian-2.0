@@ -2,11 +2,18 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/xxe
+  - technique/execution
+  - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[XML External Entity (XXE)]]"
 ---
 # XXE - Clásico SSRF
 
@@ -28,6 +35,8 @@ linked:
 - **Ausencia de Reflejo:** Si la aplicación ejecuta la petición de red pero no devuelve el resultado en la respuesta HTTP, el ataque _in-band_ deja de ser útil. En tal escenario, la estrategia debe pivotar hacia técnicas de [[Blind SSRF]] o [[XXE Out-of-Band (OOB)]] basadas en tiempos de respuesta o interacciones DNS.
 
 ***
+
+^xxe-clasico-ssrf
 
 ## Overview
 

