@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Explotación Web.md",
+                "file": "04 - Content/SQL Injection (SQLi).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Explotación Web"
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -266,9 +266,9 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
+    "04 - Content/Process/Explotación Web.md",
     "04 - Content/Active Directory Explotación.md",
     "04 - Content/GetUserSPNs.py.md",
-    "04 - Content/Process/Explotación Web.md",
     "04 - Content/Process/Cheklist para el Examen CBBH.md",
     "04 - Content/OS Command Injection.md",
     "04 - Content/SQL Injection (SQLi).md",
