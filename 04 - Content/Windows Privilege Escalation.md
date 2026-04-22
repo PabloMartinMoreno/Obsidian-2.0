@@ -20,6 +20,8 @@ linked:
   - "[[LSASS Dumping]]"
   - "[[Registros de Eventos de Windows]]"
   - "[[Windows Event Logs & Finding Evil]]"
+  - "[[PrivEsc Enumeration Tools]]"
+  - "[[PowerView]]"
   - "[[evil-winrm]]"
   - "[[Metasploit Framework]]"
 ---

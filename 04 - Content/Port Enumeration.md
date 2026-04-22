@@ -35,6 +35,8 @@ linked:
   - "[[SNMP (161,162,10161,10162) - Enumeración]]"
   - "[[SSH (22) - Enumeración]]"
   - "[[TFTP (69) - Enumeración]]"
+  - "[[nmap]]"
+  - "[[rustscan]]"
 ---
 # Port Enumeration
 

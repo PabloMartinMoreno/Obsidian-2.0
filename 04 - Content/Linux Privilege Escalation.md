@@ -18,6 +18,7 @@ linked:
   - "[[Linux PrivEsc - Cron Jobs]]"
   - "[[Linux PrivEsc - PATH Hijacking]]"
   - "[[Linux PrivEsc - Abusing Sudoers]]"
+  - "[[PrivEsc Enumeration Tools]]"
   - "[[Pivoting & Port Forwarding]]"
   - "[[john]]"
   - "[[hashcat]]"
