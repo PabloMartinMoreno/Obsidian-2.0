@@ -600,7 +600,9 @@
     "tool/searchsploit": 109,
     "tool/exploit-db": 110,
     "technique/command-and-control": 22,
-    "technique/exfiltration": 23
+    "technique/exfiltration": 23,
+    "env/cloud-azure": 5,
+    "env/cloud-gcp": 6
   },
   "_version": 3
 }
