@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Explotación Web.md",
+                "file": "04 - Content/SQL Injection (SQLi).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Explotación Web"
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -266,9 +266,19 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
-    "04 - Content/Process/Directory Traversal.md",
-    "04 - Content/Process/Explotación Web.md",
+    "04 - Content/BloodHound Cypher Queries.md",
+    "04 - Content/AD CS Abuse.md",
+    "04 - Content/AS-REP Roasting.md",
+    "04 - Content/Kerberoasting.md",
+    "04 - Content/JWT Attacks.md",
+    "04 - Content/Windows Privilege Escalation.md",
+    "04 - Content/Active Directory Exploitation.md",
+    "04 - Content/Cross-Site Request Forgery (CSRF).md",
+    "05 - Writeups/DockerLabs/LFI Elf.md",
     "04 - Content/SQL Injection (SQLi).md",
+    "04 - Content/SQL Commands.md",
+    "04 - Content/Process/Explotación Web.md",
+    "04 - Content/Process/Directory Traversal.md",
     "04 - Content/ffuf.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
@@ -282,18 +292,8 @@
     "04 - Content/SQLi - Error based.md",
     "04 - Content/Process/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md",
     "04 - Content/Process/Server-Side Includes (SSI) Injection.md",
-    "04 - Content/Process/Server-Side Template Injection (SSTI).md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
-    "04 - Content/Server-Side Request Forgery (SSRF).md",
-    "02 - Secondary Categories/Post-Exploitation.md",
-    "04 - Content/Certificate Transparency Logs.md",
-    "04 - Content/Process/Performing Whois Lookup.md",
-    "04 - Content/Social Engineering Intelligence.md",
-    "04 - Content/Passive Infrastructure Identification.md",
-    "04 - Content/Subdomains Passive Enumeration.md",
-    "04 - Content/Process/Crawling & Spidering.md",
-    "04 - Content/Fuzzing Subdomains & Virtual Hosts.md",
     "00 - Resources/Pasted image 20260405112752.png",
     "04 - Content/Process/LFI To RCE - /proc/self",
     "04 - Content/Process/LFI To RCE - /proc",

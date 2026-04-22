@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "LFI Elf",
+      "path": "05 - Writeups/DockerLabs/LFI Elf.md"
+    },
+    {
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
     },
     {
       "basename": "Directory Traversal",
       "path": "04 - Content/Process/Directory Traversal.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "ffuf",
@@ -191,14 +199,6 @@
     {
       "basename": "Operational Tasks",
       "path": "04 - Content/Process/Operational Tasks.md"
-    },
-    {
-      "basename": "Resource Development",
-      "path": "04 - Content/Process/Resource Development.md"
-    },
-    {
-      "basename": "Payload & Malware Engineering",
-      "path": "04 - Content/Process/Payload & Malware Engineering.md"
     }
   ],
   "omittedPaths": [],

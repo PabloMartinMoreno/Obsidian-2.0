@@ -555,7 +555,8 @@
     "asset/file-share": 17,
     "technique/initial-access": 11,
     "asset/database": 18,
-    "vuln/xxe": 13
+    "vuln/xxe": 13,
+    "vuln/ssti": 14
   },
   "_version": 3
 }
