@@ -23,7 +23,7 @@ linked:
   - "[[Pass-the-Hash]]"
   - "[[Golden Ticket]]"
   - "[[Silver Ticket]]"
-  - "[[LSASS]]"
+  - "[[LSASS Dumping]]"
 ---
 # Pass-the-Ticket
 

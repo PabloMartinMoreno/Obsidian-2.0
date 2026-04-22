@@ -21,7 +21,7 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[ntlmrelayx]]"
-  - "[[responder]]"
+  - "[[Responder]]"
   - "[[AD CS Abuse]]"
 ---
 # NTLM Relay
@@ -63,7 +63,7 @@ Victim → (coerce) → Attacker MITM → Relay → Target (auth as victim)
 
 ## 1. Capturar autenticación (4 vías)
 
-### a) LLMNR / NBT-NS / mDNS poisoning ([[responder]])
+### a) LLMNR / NBT-NS / mDNS poisoning ([[Responder]])
 ```bash
 sudo responder -I eth0 -wv
 # Modo relay (no responde challenge, forwarda)

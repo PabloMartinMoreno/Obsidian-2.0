@@ -17,7 +17,7 @@ type: MOC
 linked:
   - "[[Windows PrivEsc Payloads]]"
   - "[[Windows Post-Exploitation]]"
-  - "[[LSASS]]"
+  - "[[LSASS Dumping]]"
   - "[[Registros de Eventos de Windows]]"
   - "[[Windows Event Logs & Finding Evil]]"
 ---
@@ -52,7 +52,7 @@ Contexto inicial asumido: shell como user estándar (RDP, WinRM, webshell, SSH, 
 - `C:\Windows\Panther\` — logs de instalación con creds.
 - `c:\inetpub\wwwroot\web.config`, `appsettings.json`, `.env` — app creds.
 - `C:\Windows\System32\config\` (requiere SYSTEM) — SAM, SYSTEM, SECURITY hives.
-- **LSASS dump** — [[LSASS]]. `procdump -ma lsass.exe`, `comsvcs.dll` MiniDump.
+- **LSASS dump** — [[LSASS Dumping]]. `procdump -ma lsass.exe`, `comsvcs.dll` MiniDump.
 - **DPAPI** — `mimikatz dpapi::cred`, `SharpDPAPI`.
 - **Browser creds** — Chrome `Login Data`, Firefox `logins.json` + `key4.db`, Edge.
 - **WiFi** — `netsh wlan show profile`, `netsh wlan show profile "SSID" key=clear`.

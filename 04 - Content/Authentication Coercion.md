@@ -24,7 +24,7 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[NTLM Relay]]"
-  - "[[responder]]"
+  - "[[Responder]]"
   - "[[ntlmrelayx]]"
 ---
 # Authentication Coercion

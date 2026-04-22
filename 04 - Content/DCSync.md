@@ -21,7 +21,7 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[Golden Ticket]]"
-  - "[[LSASS]]"
+  - "[[LSASS Dumping]]"
 ---
 # DCSync
 

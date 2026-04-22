@@ -20,7 +20,7 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[Kerberos Pass-the-Ticket]]"
-  - "[[LSASS]]"
+  - "[[LSASS Dumping]]"
   - "[[DCSync]]"
 ---
 # Pass-the-Hash
