@@ -37,6 +37,7 @@ linked:
   - "[[TFTP (69) - Enumeración]]"
   - "[[nmap]]"
   - "[[rustscan]]"
+  - "[[masscan]]"
 ---
 # Port Enumeration
 

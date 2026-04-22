@@ -20,6 +20,7 @@ linked:
   - "[[Metasploit Framework]]"
   - "[[netexec]]"
   - "[[SSH (22) - Enumeración]]"
+  - "[[Proxychains]]"
 ---
 # Pivoting & Port Forwarding
 
