@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "SSRF - Explotación",
+      "path": "04 - Content/SSRF - Explotación.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
@@ -137,10 +145,6 @@
       "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
     },
     {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
-    },
-    {
       "basename": "Certificate Transparency Logs",
       "path": "04 - Content/Certificate Transparency Logs.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "LFI To RCE - Session File Poisoning",
       "path": "04 - Content/LFI To RCE - Session File Poisoning.md"
-    },
-    {
-      "basename": "LFI To RCE - proc self environ",
-      "path": "04 - Content/LFI To RCE - proc self environ.md"
     }
   ],
   "omittedPaths": [],
