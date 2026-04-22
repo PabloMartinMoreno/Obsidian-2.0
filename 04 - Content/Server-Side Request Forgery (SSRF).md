@@ -1,73 +1,145 @@
 ---
 aliases:
+  - SSRF
+  - Server-Side Request Forgery
 tags:
   - type/vulnerability
   - vuln/ssrf
-  - technique/lateral-movement
+  - technique/initial-access
+  - technique/discovery
   - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Explotación]]"
+  - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Explotación Web]]"
 type: CheatSheet
 linked:
-  - "[[Server-Side Attacks]]"
-  - "[[SSRF - Mecanismo Lógico]]"
-  - "[[SSRF - Reconocimiento]]"
-  - "[[SSRF - Explotación]]"
-  - "[[SSRF - Gopher]]"
-  - "[[Anatomía de la Construcción de un Payload Gopher]]"
+  - "[[SSRF - Básico]]"
+  - "[[SSRF - Protocolos Alternativos]]"
+  - "[[SSRF - Blind SSRF]]"
+  - "[[SSRF - Cloud Metadata]]"
+  - "[[Burp Suite]]"
 ---
-# Server-Side Request Forgery (SSRF)
+# SSRF (Server-Side Request Forgery)
 
 ***
 
 ## Cheatsheet
 
-````tabs
-tab: **Reconocimiento**
-![[SSRF - Reconocimiento#^ssrf-reconocimiento]]
+### 1. In-Band (respuesta directa)
 
-tab: **Explotación**
-![[SSRF - Explotación#^ssrf-explotacion]]
+````tabs
+tab: **Básico (loopback + LAN)**
+![[SSRF - Básico#^ssrf-basico]]
+
+tab: **Protocolos Alternativos**
+![[SSRF - Protocolos Alternativos#^ssrf-protocols]]
 ````
 
----
+### 2. Blind / Out-of-Band
+
+````tabs
+tab: **Blind SSRF**
+![[SSRF - Blind SSRF#^ssrf-blind]]
+````
+
+### 3. Cloud-specific
+
+````tabs
+tab: **Cloud Metadata (AWS/GCP/Azure)**
+![[SSRF - Cloud Metadata#^ssrf-cloud]]
+````
+
+___
 
 ## Overview
 
-Es una vulnerabilidad en la que un atacante engaña a un servidor web para que realice peticiones (generalmente HTTP) en su nombre hacia un destino arbitrario.
+**SSRF (Server-Side Request Forgery)** es una vulnerabilidad donde el atacante induce a la aplicación server-side a realizar requests HTTP (u otros protocolos) a destinos controlados por él — típicamente servicios internos inaccesibles desde internet (loopback, LAN, metadata endpoints).
 
-El peligro principal del SSRF es que **la petición se origina desde el servidor vulnerable**. Esto le permite al atacante saltarse firewalls y acceder a cosas que normalmente no están expuestas a internet, como bases de datos internas, servicios de administración locales o metadatos críticos en entornos cloud.
+El backend se convierte en **proxy no intencional** — el atacante hereda la perspectiva de red del server.
 
-### 1. Identificar los puntos de entrada (Vectores comunes)
+### Vectores de inyección típicos
 
-Se debe prestar atención a cualquier funcionalidad que requiera que el servidor obtenga datos de otro lugar. Los sospechosos habituales incluyen:
-- **Parámetros en la URL:** Variables con nombres sugestivos como `?url=`, `?dest=`, `?path=`, `?uri=`, `?endpoint=`, o `?domain=`.
-- **Funciones de importación o exportación:** Subir una foto de perfil pegando un enlace, importar un archivo XML/PDF, o generar un reporte desde una fuente externa.
-- **Webhooks y llamadas a APIs:** Integraciones de terceros donde se le indica a la aplicación a qué URL enviar notificaciones o solicitar datos.
-- **Lectura de archivos:** A veces los parámetros que parecen solicitar archivos locales (como `?file=report.pdf`) pueden ser manipulados para aceptar URLs (`?file=http://...`).
+| Funcionalidad | Ejemplo |
+|---|---|
+| Import URL / file fetcher | `POST /api/import` con `{"url": "http://atk/image.jpg"}` |
+| Link preview / OG metadata | Red sociales, chat apps renderizando URLs pegadas |
+| Webhooks | Webhook target URL controlado por user |
+| PDF/HTML renderers | wkhtmltopdf, Puppeteer — renderiza remote images/iframes |
+| XML parsers (XXE → SSRF) | `<!ENTITY x SYSTEM "http://internal/">` |
+| OAuth redirect / SSO callbacks | `redirect_uri=http://internal-admin/` |
+| Proxy endpoints explícitos | `/fetch?url=` (obvio pero común) |
 
-### 2. Pruebas de manipulación (Técnicas de detección)
+### Impacto
 
-Una vez identificado el parámetro, el objetivo es cambiar su valor para ver cómo reacciona el servidor.
-- **Apuntar a la red interna:** Cambiar la URL por direcciones de bucle local (localhost) o IPs privadas.
-    - Ejemplos: `http://127.0.0.1`, `http://localhost`, `http://192.168.0.1`, `http://10.0.0.1`.
-    - **Qué observar:** Si la aplicación devuelve el panel de administración de un enrutador interno, servicios locales del servidor (como un puerto de base de datos exponiendo información) o muestra errores que revelan la existencia de esos servicios, es un claro indicador de SSRF.
-- **Endpoints de metadatos en la nube:** Si la aplicación está alojada en la nube (AWS, GCP, Azure), intentar acceder a la dirección mágica de metadatos.
-    - Ejemplo: `http://169.254.169.254/latest/meta-data/`
-    - **Qué observar:** Si la respuesta contiene credenciales temporales, nombres de roles o datos de la infraestructura, la vulnerabilidad está confirmada y es crítica.
-- **Interacción Out-of-Band (OOB):** Esta es la técnica más confiable cuando el SSRF es "ciego" (el servidor hace la petición, pero no te muestra el resultado en la pantalla).
-    - Insertar una URL de un servidor que uno controle (por ejemplo, usando servicios como un webhook temporal o un servidor DNS propio).
-    - **Qué observar:** Si se recibe un ping, una solicitud HTTP o una consulta DNS en tu servidor proveniente de la IP de la aplicación objetivo, se confirma que el servidor está procesando las URLs y saliendo a internet.
+- **Credential access**: robar IAM tokens via cloud metadata ([[SSRF - Cloud Metadata]]).
+- **Internal service enum**: detectar servicios internos bindeados a loopback.
+- **RCE**: chain SSRF → Redis / ElasticSearch / memcached sin auth + gopher smuggling ([[SSRF - Protocolos Alternativos]]).
+- **Data exfil**: leer files locales via `file://`, leer responses de APIs internas.
+- **Pivot**: server víctima se vuelve pivote a otros hosts inalcanzables.
+- **Bypass de WAF/FW**: traffic originado internamente no pasa por controles perimetrales.
 
-### 3. Monitoreo y Análisis de Logs
+___
 
-A nivel de infraestructura, la detección no solo se hace probando la aplicación de frente, sino observando el comportamiento de la red.
-- Revisar los registros (logs) del firewall y del servidor web en busca de un volumen inusual de conexiones salientes iniciadas por los propios servidores de la aplicación.
-- Buscar en los logs intentos de conexión desde la DMZ hacia segmentos críticos de la red interna o hacia puertos inusuales (como el puerto de MySQL, Redis o SSH) donde normalmente un servidor web no tendría por qué comunicarse.
+## Detection workflow
 
+1. **Input mapping**: identificar todo campo que acepte URL o hostname.
+2. **Callback test**: apuntar URL al Burp Collaborator / interactsh.
+   ```
+   http://<unique>.oastify.com/
+   ```
+3. **Si hay DNS hit**: confirmado fetch server-side.
+4. **Si hay HTTP hit**: confirmado SSRF in-band completo.
+5. **Si solo DNS**: pasar a [[SSRF - Blind SSRF]] playbook.
+6. **Escalación**: probar loopback, LAN, metadata endpoints.
+
+___
+
+## Filtros comunes y evasión
+
+| Filtro | Bypass |
+|---|---|
+| Blacklist `127.0.0.1`, `localhost` | `0.0.0.0`, `[::1]`, `127.1`, `127.0.0.0.1`, IP en decimal/hex/octal. |
+| Blacklist `192.168.*`, `10.*` | IPv6-mapped (`[::ffff:10.0.0.1]`), hostnames internos (`db.internal`). |
+| DNS whitelist scheme | Redirect 302 desde host atacante whitelisted a `file://` / `gopher://`. |
+| URL parser vs DNS resolver diff | `http://allowed.com#@evil.com/`, `http://evil.com\\@allowed.com/`, `http://allowed.com.evil.com/`. |
+| SSRF en URL sin schema | `//evil.com/` (schema-relative), depende de lib. |
+| Regex dotted-quad | `http://[0:0:0:0:0:ffff:7f00:0001]/` (IPv6 literal). |
+
+### DNS rebinding
+
+Truco clásico: el atacante controla `rebind.evil.com` con TTL=0. Primera resolución → IP pública whitelisted. Segunda (desde el fetch) → `127.0.0.1`. Vulnerable solo si la validación y el fetch resuelven DNS por separado.
+
+___
+
+## Para entender SSRF
+
+**Modelo de red del server**
+- El server corre dentro de una red interna — puede ver cosas que vos desde internet no.
+- Servicios internos a menudo asumen "si llega request, es legit" → sin auth.
+- Metadata endpoints de cloud bindeados a link-local IPs.
+
+**Dos validaciones separadas**
+- Parser URL (qué hostname extraer) ≠ DNS resolver (qué IP es).
+- Parser HTTP (ver URL "como humano") ≠ socket connect (qué IP usa realmente).
+- Gap entre ambos = bypass territory.
+
+**Time of check vs time of use (TOCTOU)**
+- Validar URL, resolve una vez, luego fetch resuelve de nuevo → DNS rebinding.
+
+**Impacto por cloud**
+- Metadata endpoints = IAM tokens = full cloud compromise.
+- IMDSv2 mitigó muchos, pero IMDSv1 aún común en VMs legacy.
+
+___
+
+## Recursos
+
+- [PortSwigger - SSRF](https://portswigger.net/web-security/ssrf)
+- [PayloadsAllTheThings - SSRF](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Request%20Forgery)
+- [HackTricks - SSRF](https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery)
+- [OWASP - SSRF Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)
 
 ***
