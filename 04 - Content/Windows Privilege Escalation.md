@@ -20,6 +20,8 @@ linked:
   - "[[LSASS Dumping]]"
   - "[[Registros de Eventos de Windows]]"
   - "[[Windows Event Logs & Finding Evil]]"
+  - "[[evil-winrm]]"
+  - "[[Metasploit Framework]]"
 ---
 # Windows Privilege Escalation
 

@@ -20,7 +20,7 @@ tertiary categories:
 type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
-  - "[[ntlmrelayx]]"
+  - "[[Impacket Toolkit]]"
   - "[[Responder]]"
   - "[[AD CS Abuse]]"
 ---

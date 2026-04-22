@@ -16,12 +16,7 @@ type: Secondary Category
 
 ***
 
-## [[Pivoting]]
-
-
-***
-
-## [[Tunneling]]
+## [[Pivoting & Port Forwarding]]
 
 
 ***

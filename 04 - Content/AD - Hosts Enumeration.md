@@ -14,7 +14,7 @@ tertiary categories:
   - "[[Active Directory Enumeration]]"
 type: CheatSheet
 linked:
-  - "[[Pivoting Reconnaissance]]"
+  - "[[Pivoting & Port Forwarding]]"
   - "[[BloodHound & SharpHound]]"
   - "[[nmap]]"
 ---
@@ -31,7 +31,7 @@ tab: Linux
 |--------|-------------|
 | `nxc smb <network-range>`                  | Escanea el rango de red especificado en busca de servicios SMB, ayudando a identificar hosts Windows activos.                                                                      |
 | `sudo responder -I <network-interface> -A` | Captura tráfico LLMNR, NBT-NS y MDNS en la interfaz especificada para identificar hosts de forma pasiva.<br><br>**Nota:** El modo *Analyze* (`-A`) evita el envenenamiento activo. |
-| [[Pivoting Reconnaissance]]                    | Técnicas y herramientas usadas para el reconocimiento interno después de obtener un punto de apoyo en la red. |
+| [[Pivoting & Port Forwarding]]                    | Técnicas y herramientas usadas para el reconocimiento interno después de obtener un punto de apoyo en la red. |
 
 tab: Windows
 | **Comando** | **Descripción** |
@@ -57,7 +57,7 @@ Desde un **host Windows unido al dominio**, los hosts activos se pueden descubri
 
 ## Notas relacionadas
 
-- **[[Pivoting Reconnaissance]]:** Para técnicas adicionales para descubrir hosts activos en una red.  
+- **[[Pivoting & Port Forwarding]]:** Para técnicas adicionales para descubrir hosts activos en una red.  
 - **[[BloodHound & SharpHound]]:** Enumeran toda la red AD y mapean las relaciones.  
 - **[[nmap]]:** Asegúrate de realizar una enumeración de servicios exhaustiva en cualquier host descubierto.
 

@@ -22,7 +22,7 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[NTLM Relay]]"
-  - "[[ntlmrelayx]]"
+  - "[[Impacket Toolkit]]"
   - "[[Authentication Coercion]]"
 ---
 # Responder

@@ -25,7 +25,7 @@ linked:
   - "[[Active Directory Exploitation]]"
   - "[[NTLM Relay]]"
   - "[[Responder]]"
-  - "[[ntlmrelayx]]"
+  - "[[Impacket Toolkit]]"
 ---
 # Authentication Coercion
 
@@ -51,7 +51,7 @@ Funciones RPC "inocentes" que aceptan una ruta UNC como parámetro fuerzan al ta
 
 **Trigger**: RPC call desde atacante (unauth o low-priv) → target intenta acceder a `\\attacker\share` → envía NTLM del computer account del target.
 
-**Resultado**: NetNTLMv2 de `TARGET$` → relay vía [[ntlmrelayx]] a LDAPS/ADCS/SMB.
+**Resultado**: NetNTLMv2 de `TARGET$` → relay vía `ntlmrelayx` ([[Impacket Toolkit]]) a LDAPS/ADCS/SMB.
 
 ## Requisitos
 
