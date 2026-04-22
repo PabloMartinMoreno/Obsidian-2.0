@@ -5,6 +5,10 @@
       "path": "04 - Content/Active Directory Explotación.md"
     },
     {
+      "basename": "Explotación Web",
+      "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
       "basename": "Explotación",
       "path": "02 - Secondary Categories/Explotación.md"
     },
@@ -23,10 +27,6 @@
     {
       "basename": "Linux Post-Explotación",
       "path": "04 - Content/Process/Linux Post-Explotación.md"
-    },
-    {
-      "basename": "Explotación Web",
-      "path": "04 - Content/Process/Explotación Web.md"
     },
     {
       "basename": "Active Directory",
