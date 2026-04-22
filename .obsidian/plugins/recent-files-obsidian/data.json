@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "Explotación Web",
+      "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
       "basename": "Active Directory Explotación",
       "path": "04 - Content/Active Directory Explotación.md"
     },
     {
-      "basename": "Explotación Web",
-      "path": "04 - Content/Process/Explotación Web.md"
+      "basename": "GetUserSPNs.py",
+      "path": "04 - Content/GetUserSPNs.py.md"
+    },
+    {
+      "basename": "Cheklist para el Examen CBBH",
+      "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/OS Command Injection.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "Explotación",
@@ -15,6 +31,14 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Burp Suite",
+      "path": "04 - Content/Burp Suite.md"
+    },
+    {
+      "basename": "sqlmap",
+      "path": "04 - Content/sqlmap.md"
     },
     {
       "basename": "Windows Post-Explotación",
@@ -65,10 +89,6 @@
       "path": "04 - Content/BloodHound & SharpHound.md"
     },
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
-    },
-    {
       "basename": "LFI Elf",
       "path": "05 - Writeups/DockerLabs/LFI Elf.md"
     },
@@ -99,10 +119,6 @@
     {
       "basename": "LFI - Null Byte Injection",
       "path": "04 - Content/LFI - Null Byte Injection.md"
-    },
-    {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/OS Command Injection.md"
     },
     {
       "basename": "SQLi - Error based",
@@ -183,22 +199,6 @@
     {
       "basename": "LFI To RCE - proc self environ",
       "path": "04 - Content/LFI To RCE - proc self environ.md"
-    },
-    {
-      "basename": "LFI To RCE - Log Poisoning",
-      "path": "04 - Content/LFI To RCE - Log Poisoning.md"
-    },
-    {
-      "basename": "RFI - Remote File Inclusion",
-      "path": "04 - Content/RFI - Remote File Inclusion.md"
-    },
-    {
-      "basename": "LFI - PHP Wrappers",
-      "path": "04 - Content/LFI - PHP Wrappers.md"
-    },
-    {
-      "basename": "LFI - Path Traversal y Bypass de Filtros",
-      "path": "04 - Content/LFI - Path Traversal y Bypass de Filtros.md"
     }
   ],
   "omittedPaths": [],
