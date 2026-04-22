@@ -596,7 +596,11 @@
     "tool/feroxbuster": 107,
     "cred/password-cracking": 6,
     "cores": 153,
-    "tool/masscan": 108
+    "tool/masscan": 108,
+    "tool/searchsploit": 109,
+    "tool/exploit-db": 110,
+    "technique/command-and-control": 22,
+    "technique/exfiltration": 23
   },
   "_version": 3
 }

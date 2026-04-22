@@ -9,7 +9,7 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Privilege Escalation]]"
 type: MOC

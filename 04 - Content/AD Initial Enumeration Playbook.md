@@ -8,7 +8,7 @@ primary categories:
   - "[[Red Team]]"
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
   - "[[Domain Enumeration]]"
   - "[[Active Directory]]"
 type: Playbook

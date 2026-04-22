@@ -6,12 +6,12 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
   - "[[Windows]]"
 type: Tertiary Category
 ---
 ***
-# Windows Post-Exploitation
+# Windows Post-Explotación
 
   > Nota: Esta sección se centra en la enumeración inicial y la "Conciencia Situacional" una vez obtenida la shell.
 

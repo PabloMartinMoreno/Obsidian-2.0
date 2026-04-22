@@ -17,7 +17,7 @@ tertiary categories:
 type: Atomic
 linked:
   - "[[BloodHound & SharpHound]]"
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
 ---
 # BloodHound Cypher Queries
 

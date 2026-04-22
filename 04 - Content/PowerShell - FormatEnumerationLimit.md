@@ -9,7 +9,7 @@ primary categories:
 secondary categories:
   - "[[PowerShell]]"
   - "[[Domain Enumeration]]"
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
   - "[[Active Directory]]"
 type: Command
 ---

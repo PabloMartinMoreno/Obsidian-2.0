@@ -15,7 +15,7 @@ type: Secondary Category
 
 ***
 
-## [[Active Directory Exploitation]]
+## [[Active Directory Explotación]]
 
 
 ***

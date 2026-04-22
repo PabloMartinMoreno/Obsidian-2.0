@@ -23,7 +23,7 @@ linked:
   - "[[Silver Ticket]]"
   - "[[Shadow Credentials]]"
   - "[[AD CS Abuse]]"
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[Impacket Toolkit]]"
 ---
 # Rubeus

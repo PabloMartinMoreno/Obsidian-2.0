@@ -11,7 +11,7 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Exploitation Tools]]"
 linked:
@@ -19,7 +19,7 @@ linked:
   - "[[nmap]]"
   - "[[Windows Privilege Escalation]]"
   - "[[Linux Privilege Escalation]]"
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[Pass-the-Hash]]"
   - "[[NTLM Relay]]"
 ---

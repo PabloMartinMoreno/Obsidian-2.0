@@ -7,7 +7,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
 type: CheatSheet
 linked:
 ---

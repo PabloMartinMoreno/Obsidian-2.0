@@ -17,7 +17,7 @@ secondary categories:
 tertiary categories:
   - "[[Active Directory Enumeration]]"
 linked:
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[BloodHound & SharpHound]]"
   - "[[Rubeus]]"
   - "[[Kerberoasting]]"

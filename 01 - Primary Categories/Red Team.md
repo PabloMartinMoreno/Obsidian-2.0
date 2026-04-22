@@ -25,7 +25,7 @@ type: Primary Category
 
 ***
 
-## ⚪[[Post-Exploitation]]
+## ⚪[[Post-Explotación]]
 
 
 ***

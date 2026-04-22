@@ -9,7 +9,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
   - "[[Kerberoasting]]"
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
   - "[[Active Directory]]"
 type: Tool
 ---

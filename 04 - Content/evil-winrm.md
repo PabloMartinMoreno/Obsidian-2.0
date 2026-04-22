@@ -12,7 +12,7 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Lateral Movement]]"
 linked:
@@ -20,7 +20,7 @@ linked:
   - "[[Pass-the-Ticket]]"
   - "[[netexec]]"
   - "[[Windows Privilege Escalation]]"
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[AMSI Bypasses]]"
 ---
 # evil-winrm

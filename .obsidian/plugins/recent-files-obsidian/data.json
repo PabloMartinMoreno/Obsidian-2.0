@@ -1,24 +1,68 @@
 {
   "recentFiles": [
     {
+      "basename": "Active Directory Explotación",
+      "path": "04 - Content/Active Directory Explotación.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Windows Post-Explotación",
+      "path": "04 - Content/Process/Windows Post-Explotación.md"
+    },
+    {
+      "basename": "Post-Explotación",
+      "path": "02 - Secondary Categories/Post-Explotación.md"
+    },
+    {
+      "basename": "Linux Post-Explotación",
+      "path": "04 - Content/Process/Linux Post-Explotación.md"
+    },
+    {
+      "basename": "Explotación Web",
+      "path": "04 - Content/Process/Explotación Web.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
       "basename": "Active Directory Enumeration",
       "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "AD - Password Policy Enumeration",
+      "path": "04 - Content/AD - Password Policy Enumeration.md"
+    },
+    {
+      "basename": "AD - Users & Groups Enumeration",
+      "path": "04 - Content/AD - Users & Groups Enumeration.md"
     },
     {
       "basename": "AD - Hosts Enumeration",
       "path": "04 - Content/AD - Hosts Enumeration.md"
     },
     {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/BloodHound & SharpHound.md"
-    },
-    {
       "basename": "AD Initial Enumeration Playbook",
       "path": "04 - Content/AD Initial Enumeration Playbook.md"
     },
     {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
+    },
+    {
+      "basename": "Pivoting & Port Forwarding",
+      "path": "04 - Content/Pivoting & Port Forwarding.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/BloodHound & SharpHound.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
@@ -29,28 +73,12 @@
       "path": "05 - Writeups/DockerLabs/LFI Elf.md"
     },
     {
-      "basename": "SQL Commands",
-      "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "Explotación Web",
-      "path": "04 - Content/Process/Explotación Web.md"
-    },
-    {
       "basename": "Directory Traversal",
       "path": "04 - Content/Process/Directory Traversal.md"
     },
     {
       "basename": "ffuf",
       "path": "04 - Content/ffuf.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "Information Gathering",
@@ -95,10 +123,6 @@
     {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "Post-Exploitation",
-      "path": "02 - Secondary Categories/Post-Exploitation.md"
     },
     {
       "basename": "Certificate Transparency Logs",
@@ -175,30 +199,6 @@
     {
       "basename": "LFI - Path Traversal y Bypass de Filtros",
       "path": "04 - Content/LFI - Path Traversal y Bypass de Filtros.md"
-    },
-    {
-      "basename": "LFI - Básico",
-      "path": "04 - Content/LFI - Básico.md"
-    },
-    {
-      "basename": "SSRF - Explotación",
-      "path": "04 - Content/SSRF - Explotación.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Web Requests",
-      "path": "04 - Content/Process/Web Requests.md"
-    },
-    {
-      "basename": "DNS - CWES",
-      "path": "04 - Content/Process/DNS - CWES.md"
-    },
-    {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
     }
   ],
   "omittedPaths": [],

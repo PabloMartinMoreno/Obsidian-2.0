@@ -12,13 +12,13 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
 type: Atomic
 linked:
   - "[[LSASS Dumping]]"
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[DCSync]]"
   - "[[Golden Ticket]]"
   - "[[Silver Ticket]]"

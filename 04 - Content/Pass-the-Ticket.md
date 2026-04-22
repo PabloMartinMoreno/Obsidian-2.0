@@ -19,7 +19,7 @@ tertiary categories:
   - "[[Active Directory]]"
 type: Atomic
 linked:
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[Pass-the-Hash]]"
   - "[[Golden Ticket]]"
   - "[[Silver Ticket]]"

@@ -18,7 +18,7 @@ tertiary categories:
   - "[[Active Directory]]"
 type: Atomic
 linked:
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[Kerberos Pass-the-Ticket]]"
   - "[[LSASS Dumping]]"
   - "[[DCSync]]"

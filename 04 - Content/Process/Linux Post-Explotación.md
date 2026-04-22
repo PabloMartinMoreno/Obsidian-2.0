@@ -7,12 +7,12 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
   - "[[Linux]]"
 type: Tertiary Category
 ---
 ***
-# Linux Post-Exploitation
+# Linux Post-Explotación
 Enumeración inicial y Conciencia Situacional.
 
 ## System & Network Information

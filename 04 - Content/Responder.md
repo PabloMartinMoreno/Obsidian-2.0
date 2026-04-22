@@ -20,7 +20,7 @@ tertiary categories:
   - "[[Active Directory]]"
 type: Atomic
 linked:
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[NTLM Relay]]"
   - "[[Impacket Toolkit]]"
   - "[[Authentication Coercion]]"

@@ -13,14 +13,14 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Operational Tasks]]"
 type: Atomic
 linked:
   - "[[Reverse Shell]]"
-  - "[[Linux Post-Exploitation]]"
-  - "[[Windows Post-Exploitation]]"
+  - "[[Linux Post-Explotación]]"
+  - "[[Windows Post-Explotación]]"
   - "[[netexec]]"
 ---
 # File Transfers

@@ -18,7 +18,7 @@ tertiary categories:
   - "[[Active Directory]]"
 type: Atomic
 linked:
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[evil-winrm]]"
   - "[[netexec]]"
   - "[[Impacket Toolkit]]"

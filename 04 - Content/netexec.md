@@ -13,12 +13,12 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Post-Exploitation]]"
+  - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Credential Access]]"
   - "[[Lateral Movement]]"
 linked:
-  - "[[Active Directory Exploitation]]"
+  - "[[Active Directory Explotación]]"
   - "[[Pass-the-Hash]]"
   - "[[Kerberoasting]]"
   - "[[AS-REP Roasting]]"

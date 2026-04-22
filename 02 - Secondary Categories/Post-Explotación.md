@@ -10,12 +10,12 @@ type: Secondary Category
 
 ***
 
-## [[Linux Post-Exploitation]]
+## [[Linux Post-Explotación]]
 
 
 ***
 
-## [[Windows Post-Exploitation]]
+## [[Windows Post-Explotación]]
 
 
 ***
