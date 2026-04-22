@@ -7,7 +7,6 @@ aliases:
 tags:
   - type/atomic
   - technique/credential-access
-  - technique/os-credential-dumping
   - env/windows
   - asset/active-directory
   - cred/ntlm

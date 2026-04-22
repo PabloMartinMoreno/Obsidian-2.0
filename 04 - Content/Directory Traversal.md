@@ -17,8 +17,6 @@ tertiary categories:
   - "[[Web Enumeration]]"
 type: Atomic
 linked:
-  - "[[LFI - Rutas Principales]]"
-  - "[[Abusing PHP Filters]]"
   - "[[gobuster]]"
   - "[[ffuf]]"
   - "[[Burp Suite]]"
@@ -189,8 +187,6 @@ Body: <?php system('id'); ?>
 # Phar deserialization (PHP 7+)
 ?file=phar:///tmp/exploit.phar
 ```
-
-Ver [[Abusing PHP Filters]] en profundidad.
 
 ## 6. LFI → RCE chains
 

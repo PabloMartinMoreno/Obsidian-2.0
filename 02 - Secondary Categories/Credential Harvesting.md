@@ -40,12 +40,10 @@ Extracción y captura de credenciales — hashes, tickets, cleartext, tokens —
 ## 4. Cracking
 
 - [[hashcat]] — modes 1000 (NTLM), 5600 (NetNTLMv2), 13100 (TGS), 18200 (AS-REP), 2100 (DCC2).
-- [[John the Ripper]] — fallback / rule-based.
 
 ## 5. Reuso directo
 
 - [[Pass-the-Hash]] — NT hash → SMB/WMI/PsExec.
 - [[Pass-the-Ticket]] — ccache/kirbi → ticket injection.
-- [[Overpass-the-Hash]] — NT hash → TGT via `Rubeus asktgt`.
 
 ***

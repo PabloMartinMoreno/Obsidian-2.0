@@ -8,7 +8,6 @@ tags:
   - type/atomic
   - technique/credential-access
   - technique/initial-access
-  - technique/mitm
   - env/windows
   - asset/active-directory
   - cred/ntlm

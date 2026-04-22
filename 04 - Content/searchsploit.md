@@ -18,7 +18,6 @@ type: Atomic
 linked:
   - "[[nmap]]"
   - "[[Metasploit]]"
-  - "[[Enumeration]]"
 ---
 # searchsploit
 

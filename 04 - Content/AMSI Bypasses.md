@@ -9,19 +9,14 @@ tags:
   - technique/defense-evasion
   - technique/execution
   - env/windows
-  - tool/powershell
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Defense Evasion]]"
-tertiary categories:
   - "[[Payload Engineering]]"
 type: Atomic
 linked:
   - "[[evil-winrm]]"
-  - "[[PowerView]]"
-  - "[[PrivEsc Enumeration Tools]]"
-  - "[[Rubeus]]"
+  - "[[MSFVenom]]"
 ---
 # AMSI Bypasses
 

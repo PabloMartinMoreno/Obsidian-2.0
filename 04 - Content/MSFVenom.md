@@ -18,7 +18,6 @@ type: Atomic
 linked:
   - "[[Metasploit]]"
   - "[[Reverse Shell]]"
-  - "[[Shellter]]"
   - "[[AMSI Bypasses]]"
 ---
 # msfvenom
