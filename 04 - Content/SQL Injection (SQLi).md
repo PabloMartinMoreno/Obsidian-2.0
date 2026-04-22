@@ -23,6 +23,8 @@ linked:
   - "[[SQLi - Second order]]"
   - "[[SQLi - Routed]]"
   - "[[SQLi - Lateral]]"
+  - "[[sqlmap]]"
+  - "[[Burp Suite]]"
 ---
 # SQL Injection (SQLi)
 

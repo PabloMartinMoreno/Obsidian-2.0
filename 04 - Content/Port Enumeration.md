@@ -104,7 +104,7 @@ Cada atómica cubre banner grabbing, enum activa, default creds, CVEs histórico
 ## Herramientas transversales
 
 - [[nmap]] — scripts NSE cubren gran parte de enum inicial.
-- [[Metasploit]] — módulos `auxiliary/scanner/*`.
+- [[Metasploit Framework]] — módulos `auxiliary/scanner/*`.
 - [[netexec]] — SMB/LDAP/WinRM/SSH brute + enum unificada.
 
 ***

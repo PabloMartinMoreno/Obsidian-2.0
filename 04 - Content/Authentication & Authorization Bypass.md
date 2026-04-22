@@ -15,6 +15,9 @@ tertiary categories:
   - "[[Explotación Web]]"
 type: Vulnerability
 linked:
+  - "[[JWT Attacks]]"
+  - "[[Burp Suite]]"
+  - "[[hashcat]]"
 ---
 # Authentication & Authorization Bypass
 
