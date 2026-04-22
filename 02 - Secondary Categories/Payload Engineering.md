@@ -32,17 +32,9 @@ Desarrollo, entrega, y evasión de payloads — desde reverse shells hasta impla
 - [[AMSI Bypasses]] — desactivar/corromper AMSI en-process (PowerShell, .NET Assembly.Load).
 - [[evil-winrm]] — Invoke-Binary para loader reflectivo sin tocar disk.
 
-## 3. AD-aware payloads
+## 3. Toolkits
 
-- [[Mimikatz Cheatsheet]] — credential extraction.
-- [[Rubeus]] — Kerberos abuse (kerberoast, PtT, S4U).
-- [[Certipy]] — ADCS abuse.
-- [[PowerView]] — AD enum + ACL abuse.
-
-## 4. Toolkits
-
-- [[Impacket Toolkit]] — Python clients (psexec, wmiexec, secretsdump, ntlmrelayx).
-- [[netexec]] — successor de CrackMapExec.
 - [[Metasploit]] — framework + msfvenom para shellcode.
+- [[Impacket Toolkit]] — Python clients con payloads (psexec, wmiexec).
 
 ***
