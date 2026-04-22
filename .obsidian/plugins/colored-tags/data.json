@@ -556,7 +556,17 @@
     "technique/initial-access": 11,
     "asset/database": 18,
     "vuln/xxe": 13,
-    "vuln/ssti": 14
+    "vuln/ssti": 14,
+    "type/atomic": 14,
+    "service/ad-cs": 44,
+    "technique/kerberos": 12,
+    "cred/kerberos": 2,
+    "technique/enumeration": 13,
+    "type/hub": 15,
+    "vuln/csrf": 15,
+    "technique/persistence": 14,
+    "cred/ntlm": 3,
+    "cred/jwt": 4
   },
   "_version": 3
 }
