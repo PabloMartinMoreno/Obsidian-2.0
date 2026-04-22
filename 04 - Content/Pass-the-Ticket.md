@@ -24,6 +24,8 @@ linked:
   - "[[Golden Ticket]]"
   - "[[Silver Ticket]]"
   - "[[LSASS Dumping]]"
+  - "[[Rubeus]]"
+  - "[[Impacket Toolkit]]"
 ---
 # Pass-the-Ticket
 

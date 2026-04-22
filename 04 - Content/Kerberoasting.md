@@ -22,6 +22,9 @@ linked:
   - "[[Kerberos (88) - Enumeración]]"
   - "[[GetUserSPNs.py]]"
   - "[[AS-REP Roasting]]"
+  - "[[Rubeus]]"
+  - "[[hashcat]]"
+  - "[[Impacket Toolkit]]"
 ---
 # Kerberoasting
 

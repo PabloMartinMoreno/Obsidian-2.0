@@ -18,6 +18,8 @@ linked:
   - "[[JWT Attacks]]"
   - "[[Burp Suite]]"
   - "[[hashcat]]"
+  - "[[Hydra]]"
+  - "[[ffuf]]"
 ---
 # Authentication & Authorization Bypass
 

@@ -21,7 +21,10 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[DCSync]]"
-  - "[[Kerberos Pass-the-Ticket]]"
+  - "[[Pass-the-Ticket]]"
+  - "[[Rubeus]]"
+  - "[[Impacket Toolkit]]"
+  - "[[Mimikatz Cheatsheet]]"
 ---
 # Golden Ticket
 

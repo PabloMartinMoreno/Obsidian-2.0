@@ -21,6 +21,9 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[Windows Privilege Escalation]]"
+  - "[[Certipy]]"
+  - "[[Shadow Credentials]]"
+  - "[[NTLM Relay]]"
 ---
 # AD CS Abuse
 

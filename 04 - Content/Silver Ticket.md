@@ -20,8 +20,11 @@ type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
   - "[[Golden Ticket]]"
-  - "[[Kerberos Pass-the-Ticket]]"
+  - "[[Pass-the-Ticket]]"
   - "[[Kerberoasting]]"
+  - "[[Rubeus]]"
+  - "[[Impacket Toolkit]]"
+  - "[[Mimikatz Cheatsheet]]"
 ---
 # Silver Ticket
 

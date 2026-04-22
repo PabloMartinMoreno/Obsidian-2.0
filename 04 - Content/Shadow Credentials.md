@@ -21,6 +21,8 @@ linked:
   - "[[Active Directory Exploitation]]"
   - "[[AD CS Abuse]]"
   - "[[NTLM Relay]]"
+  - "[[Certipy]]"
+  - "[[Rubeus]]"
 ---
 # Shadow Credentials
 

@@ -21,6 +21,9 @@ linked:
   - "[[Active Directory Exploitation]]"
   - "[[Kerberos (88) - Enumeración]]"
   - "[[Kerberoasting]]"
+  - "[[Rubeus]]"
+  - "[[hashcat]]"
+  - "[[Impacket Toolkit]]"
 ---
 # AS-REP Roasting
 
