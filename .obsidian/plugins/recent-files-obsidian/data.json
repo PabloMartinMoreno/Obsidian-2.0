@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "Active Directory Enumeration",
+      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD - Hosts Enumeration.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/BloodHound & SharpHound.md"
+    },
+    {
+      "basename": "AD Initial Enumeration Playbook",
+      "path": "04 - Content/AD Initial Enumeration Playbook.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
@@ -47,10 +67,6 @@
     {
       "basename": "Passive Reconnaissance & OSINT",
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
     },
     {
       "basename": "LFI - Null Byte Injection",
@@ -183,22 +199,6 @@
     {
       "basename": "CWES - Checklists",
       "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
-      "basename": "Shells",
-      "path": "04 - Content/Process/Shells.md"
-    },
-    {
-      "basename": "Reverse Shells",
-      "path": "04 - Content/Process/Reverse Shells.md"
-    },
-    {
-      "basename": "Reverse Shell",
-      "path": "04 - Content/Reverse Shell.md"
-    },
-    {
-      "basename": "Operational Tasks",
-      "path": "04 - Content/Process/Operational Tasks.md"
     }
   ],
   "omittedPaths": [],
