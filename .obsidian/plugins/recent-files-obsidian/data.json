@@ -5,12 +5,16 @@
       "path": "04 - Content/Process/Explotación Web.md"
     },
     {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
+      "basename": "Directory Traversal",
+      "path": "04 - Content/Process/Directory Traversal.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/ffuf.md"
     },
     {
       "basename": "Explotación",
@@ -195,10 +199,6 @@
     {
       "basename": "Payload & Malware Engineering",
       "path": "04 - Content/Process/Payload & Malware Engineering.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
     }
   ],
   "omittedPaths": [],

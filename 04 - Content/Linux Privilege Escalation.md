@@ -14,8 +14,30 @@ tertiary categories:
   - "[[Privilege Escalation]]"
 type: MOC
 linked:
+  - "[[Linux PrivEsc - SUID y SGID]]"
+  - "[[Linux PrivEsc - Cron Jobs]]"
+  - "[[Linux PrivEsc - PATH Hijacking]]"
+  - "[[Linux PrivEsc - Abusing Sudoers]]"
 ---
 # Linux Privilege Escalation
+
+***
+
+## Cheatsheet
+
+````tabs
+tab: **SUID / SGID**
+![[Linux PrivEsc - SUID y SGID#^linux-privesc-suid]]
+
+tab: **Cron**
+![[Linux PrivEsc - Cron Jobs#^linux-privesc-cron]]
+
+tab: **PATH Hijack**
+![[Linux PrivEsc - PATH Hijacking#^linux-privesc-path-hijack]]
+
+tab: **Sudoers**
+![[Linux PrivEsc - Abusing Sudoers#^linux-privesc-sudoers]]
+````
 
 ***
 

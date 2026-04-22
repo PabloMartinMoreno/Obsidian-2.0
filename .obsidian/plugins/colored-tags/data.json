@@ -549,7 +549,13 @@
     "service/rdp": 42,
     "vuln/rfi": 12,
     "service/git": 43,
-    "cert/oscp": 3
+    "cert/oscp": 3,
+    "asset/api": 15,
+    "asset/mail-server": 16,
+    "asset/file-share": 17,
+    "technique/initial-access": 11,
+    "asset/database": 18,
+    "vuln/xxe": 13
   },
   "_version": 3
 }
