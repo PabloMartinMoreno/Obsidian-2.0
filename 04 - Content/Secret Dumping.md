@@ -21,6 +21,7 @@ tertiary categories:
 type: Atomic
 linked:
   - "[[Active Directory Exploitation]]"
+  - "[[DCSync]]"
   - "[[LSASS Dumping]]"
   - "[[Mimikatz Cheatsheet]]"
   - "[[Impacket Toolkit]]"

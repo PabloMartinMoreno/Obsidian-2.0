@@ -21,6 +21,7 @@ linked:
   - "[[netexec]]"
   - "[[Windows Privilege Escalation]]"
   - "[[Active Directory Exploitation]]"
+  - "[[AMSI Bypasses]]"
 ---
 # evil-winrm
 
