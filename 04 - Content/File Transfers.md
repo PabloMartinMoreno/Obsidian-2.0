@@ -19,6 +19,8 @@ tertiary categories:
 type: Atomic
 linked:
   - "[[Reverse Shell]]"
+  - "[[Linux Post-Explotación]]"
+  - "[[Windows Post-Explotación]]"
   - "[[netexec]]"
 ---
 # File Transfers
