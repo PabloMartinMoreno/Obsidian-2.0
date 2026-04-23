@@ -602,7 +602,11 @@
     "technique/command-and-control": 22,
     "technique/exfiltration": 23,
     "env/cloud-azure": 5,
-    "env/cloud-gcp": 6
+    "env/cloud-gcp": 6,
+    "vuln/ssi": 16,
+    "technique/collection": 24,
+    "vuln/nosqli": 17,
+    "vuln/xslt-injection": 18
   },
   "_version": 3
 }

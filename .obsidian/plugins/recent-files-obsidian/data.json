@@ -1,8 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "Explotación Web",
+      "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "NoSQL Injection",
+      "path": "04 - Content/NoSQL Injection.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Server-Side Includes (SSI) Injection",
+      "path": "04 - Content/Server-Side Includes (SSI) Injection.md"
+    },
+    {
       "basename": "SSRF - CWES",
       "path": "04 - Content/SSRF - CWES.md"
+    },
+    {
+      "basename": "SSRF - Gopher",
+      "path": "04 - Content/SSRF - Gopher.md"
     },
     {
       "basename": "Server-Side Request Forgery (SSRF)",
@@ -23,10 +43,6 @@
     {
       "basename": "SSRF - Explotación",
       "path": "04 - Content/SSRF - Explotación.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "Explotación Web",
@@ -153,10 +169,6 @@
       "path": "04 - Content/Process/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
     },
     {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Process/Server-Side Includes (SSI) Injection.md"
-    },
-    {
       "basename": "Server-Side Template Injection (SSTI)",
       "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Fuzzing Subdomains & Virtual Hosts",
       "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
-    },
-    {
-      "basename": "Fuzzing Parameters & Values",
-      "path": "04 - Content/Fuzzing Parameters & Values.md"
-    },
-    {
-      "basename": "Fuzzing Directories & Pages",
-      "path": "04 - Content/Fuzzing Directories & Pages.md"
-    },
-    {
-      "basename": "File Inclusion",
-      "path": "04 - Content/File Inclusion.md"
     }
   ],
   "omittedPaths": [],
