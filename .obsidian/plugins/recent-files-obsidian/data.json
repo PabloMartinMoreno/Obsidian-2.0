@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "SSRF - Básico",
-      "path": "04 - Content/SSRF - Básico.md"
+      "basename": "SSRF - CWES",
+      "path": "04 - Content/SSRF - CWES.md"
     },
     {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "SSRF - Mecanismo Lógico",
+      "path": "04 - Content/SSRF - Mecanismo Lógico.md"
+    },
+    {
+      "basename": "SSRF - Básico",
+      "path": "04 - Content/SSRF - Básico.md"
     },
     {
       "basename": "SSRF - Protocolos Alternativos",
@@ -191,14 +199,6 @@
     {
       "basename": "File Inclusion",
       "path": "04 - Content/File Inclusion.md"
-    },
-    {
-      "basename": "LFI To RCE - Phar Deserialization",
-      "path": "04 - Content/LFI To RCE - Phar Deserialization.md"
-    },
-    {
-      "basename": "LFI To RCE - PHP Filter Chains",
-      "path": "04 - Content/LFI To RCE - PHP Filter Chains.md"
     }
   ],
   "omittedPaths": [],

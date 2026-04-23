@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/SSRF - Básico.md",
+                "file": "04 - Content/SSRF - CWES.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SSRF - Básico"
+              "title": "SSRF - CWES"
             }
           }
         ],
@@ -266,7 +266,12 @@
   },
   "active": "ed9e571fee25bc5f",
   "lastOpenFiles": [
+    "04 - Content/SSRF - CWES.md.tmp.6119.1776904716819",
+    "04 - Content/SSRF - CWES.md.tmp.6119.1776904711778",
     "04 - Content/Server-Side Request Forgery (SSRF).md",
+    "04 - Content/SSRF - CWES.md",
+    "04 - Content/SSRF - Mecanismo Lógico.md",
+    "04 - Content/SSRF - Básico.md",
     "04 - Content/SSRF - Protocolos Alternativos.md",
     "04 - Content/SSRF - Explotación.md",
     "04 - Content/SQL Injection (SQLi).md",
@@ -297,14 +302,9 @@
     "04 - Content/AD - Users & Groups Enumeration.md",
     "04 - Content/AD - Hosts Enumeration.md",
     "04 - Content/AD Initial Enumeration Playbook.md",
-    "04 - Content/SQL Commands.md",
-    "04 - Content/Pivoting & Port Forwarding.md",
-    "04 - Content/searchsploit.md",
-    "04 - Content/BloodHound & SharpHound.md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
     "00 - Resources/Pasted image 20260405112752.png",
-    "04 - Content/Process/LFI To RCE - /proc/self",
     "00 - Resources/Images/Pasted image 20260108144749.png",
     "00 - Resources/Images/Pasted image 20260108144708.png",
     "00 - Resources/Images/Pasted image 20260108144758.png",
