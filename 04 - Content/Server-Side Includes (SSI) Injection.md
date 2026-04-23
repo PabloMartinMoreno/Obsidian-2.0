@@ -28,28 +28,24 @@ linked:
 
 ## Cheatsheet
 
-### 1. Ejecución directa (RCE)
+### 1. Ejecución / RCE
 
 ````tabs
 tab: **Comandos (exec cmd)**
 ![[SSI - Ejecución de Comandos#^ssi-exec]]
 ````
 
-### 2. Lectura / inclusión
+### 2. Lectura e Info Gathering
 
 ````tabs
-tab: **Inclusión de archivos**
+tab: **Inclusión de Archivos (include)**
 ![[SSI - Inclusión de Archivos#^ssi-include]]
-````
 
-### 3. Enumeración
-
-````tabs
 tab: **Fingerprinting (echo, fsize, flastmod)**
 ![[SSI - Fingerprinting#^ssi-fingerprinting]]
 ````
 
-### 4. Evasión
+### 3. Evasión
 
 ````tabs
 tab: **Evasión de filtros y WAF**

@@ -32,31 +32,23 @@ linked:
 
 ## Cheatsheet
 
-### 1. Mecanismo Lógico
+### 1. Descubrimiento
 
 ````tabs
-tab: **Código vulnerable + patrones**
+tab: **Mecanismo Lógico (código vulnerable + patrones)**
 ![[SSRF - Mecanismo Lógico#^ssrf-mecanismo-logico]]
-````
 
-### 2. Reconocimiento
-
-````tabs
-tab: **Etapas + FFUF port enum**
+tab: **Reconocimiento (etapas + FFUF port enum)**
 ![[SSRF - Reconocimiento#^ssrf-reconocimiento]]
 ````
 
-### 3. Explotación
+### 2. Explotación
 
 ````tabs
 tab: **Técnicas (HTTP, file://, gopher://, SMTP)**
 ![[SSRF - Explotación#^ssrf-explotacion]]
-````
 
-### 4. Gopher Smuggling
-
-````tabs
-tab: **Protocolo Gopher**
+tab: **Protocolo Gopher (smuggling)**
 ![[SSRF - Gopher#^ssrf-gopher]]
 ````
 

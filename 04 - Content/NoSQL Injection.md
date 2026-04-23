@@ -30,31 +30,27 @@ linked:
 
 ## Cheatsheet
 
-### 1. Auth Bypass rápido
+### 1. In-Band (respuesta directa)
 
 ````tabs
-tab: **Operadores ($ne, $gt, $regex)**
+tab: **Operadores ($ne, $gt, $regex) — Auth Bypass**
 ![[NoSQLi - Operadores (Auth Bypass)#^nosqli-operators]]
-````
 
-### 2. Concatenación / Syntax
-
-````tabs
-tab: **Inyección sintáctica**
+tab: **Inyección Sintáctica (string concat, JSON escape)**
 ![[NoSQLi - Inyección Sintáctica#^nosqli-syntax]]
 ````
 
-### 3. JavaScript server-side
+### 2. Server-side Code Execution
 
 ````tabs
-tab: **$where, mapReduce, $function**
+tab: **JavaScript ($where, mapReduce, $function)**
 ![[NoSQLi - JavaScript ($where, mapReduce)#^nosqli-js]]
 ````
 
-### 4. Extracción blind
+### 3. Blind / Inferential
 
 ````tabs
-tab: **Char-by-char via $regex / $where**
+tab: **Extracción char-by-char ($regex, time-based)**
 ![[NoSQLi - Extracción Blind#^nosqli-blind]]
 ````
 
