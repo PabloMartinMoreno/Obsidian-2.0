@@ -36,7 +36,7 @@ linked:
 
 ````tabs
 tab: **Código vulnerable + patrones**
-![[SSRF - Mecanismo Lógico#Mecanismo Lógico del SSRF]]
+![[SSRF - Mecanismo Lógico#^ssrf-mecanismo-logico]]
 ````
 
 ### 2. Reconocimiento
@@ -57,7 +57,7 @@ tab: **Técnicas (HTTP, file://, gopher://, SMTP)**
 
 ````tabs
 tab: **Protocolo Gopher**
-![[SSRF - Gopher#El Protocolo Gopher en SSRF]]
+![[SSRF - Gopher#^ssrf-gopher]]
 ````
 
 ___

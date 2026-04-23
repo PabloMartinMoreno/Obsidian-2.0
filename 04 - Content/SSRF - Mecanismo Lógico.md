@@ -15,8 +15,21 @@ linked:
 
 ***
 
-## Mecanismo Lógico del SSRF
+## Cheatsheet
+
+| **Aspecto** | **Detalle** |
+|:---:|---|
+| **Modelo** | Server recibe URL de user input → hace fetch server-side → devuelve body al atacante. |
+| **Funciones PHP típicas** | `file_get_contents`, `curl_exec`, `fopen`, `fsockopen`. |
+| **Parámetros sospechosos** | `url`, `link`, `uri`, `src`, `target`, `dest`, `source`, `webhook`, `callback`, `api_url`, `image_url`, `avatar`, `proxy`, `fetch`, `page`. |
+| **Uso legítimo** | Weather APIs, avatar loaders, webhooks, PDF generators, link previews. |
+| **Ataque base** | Reemplazar URL externa por `http://127.0.0.1/admin` → server trae panel interno. |
+| **Escenarios reales** | Avatar URL → banner grab SSH interno. Webhook → DB interna. PDF → SSRF+LFI con `file:///etc/passwd`. |
 ^ssrf-mecanismo-logico
+
+___
+
+## Mecanismo Lógico del SSRF
 
 ### El Código Vulnerable (Lo que no se ve)
 

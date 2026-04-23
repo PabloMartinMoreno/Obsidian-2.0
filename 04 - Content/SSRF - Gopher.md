@@ -16,8 +16,20 @@ linked:
 
 ***
 
-El protocolo **Gopher** es un sistema de distribución de documentos anterior a la World Wide Web (HTTP). Aunque hoy en día está prácticamente obsoleto para navegar, es una herramienta crítica en la explotación de [[Server-Side Request Forgery (SSRF)]] debido a su capacidad para **enviar bytes arbitrarios** a una conexión TCP.
+## Cheatsheet
+
+| **Aspecto** | **Detalle** |
+|:---:|---|
+| **Protocolo** | Gopher (RFC 1436), puerto default 70. |
+| **Función en SSRF** | Enviar **bytes arbitrarios** a socket TCP — bypass de la restricción GET-only del SSRF HTTP. |
+| **Estructura URL** | `gopher://<IP>:<PUERTO>/_<DATOS-URL-ENCODED>` — el `_` se descarta (primer char = tipo recurso Gopher). |
+| **Encoding** | Espacios → `%20`, CRLF → `%0D%0A`, calcular `Content-Length` exacto. |
+| **Servicios target** | MySQL (3306), Redis (6379), SMTP (25), FastCGI (9000), Memcached (11211). |
+| **Tool de generación** | `python2.7 gopherus.py --exploit [redis\|mysql\|smtp\|fastcgi]` |
+| **Ejemplo POST** | `gopher://host:80/_POST%20/admin.php%20HTTP/1.1%0D%0AHost:%20host%0D%0AContent-Length:%2010%0D%0A%0D%0Auser=admin` |
 ^ssrf-gopher
+
+___
 
 ## ¿Qué es Gopher?
 
