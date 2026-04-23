@@ -20,6 +20,7 @@ linked:
   - "[[SSRF - Protocolos Alternativos]]"
   - "[[SSRF - Blind SSRF]]"
   - "[[SSRF - Cloud Metadata]]"
+  - "[[SSRF - CWES]]"
   - "[[Burp Suite]]"
 ---
 # SSRF (Server-Side Request Forgery)
@@ -51,6 +52,10 @@ tab: **Blind SSRF**
 tab: **Cloud Metadata (AWS/GCP/Azure)**
 ![[SSRF - Cloud Metadata#^ssrf-cloud]]
 ````
+
+___
+
+> **Flujo examen HTB CWES/CBBH** → ver [[SSRF - CWES]] (índice linealizado: mecanismo lógico → reconocimiento → explotación → gopher smuggling, orientado al lab).
 
 ___
 

@@ -7,15 +7,16 @@ tags:
   - asset/web-app
 type: Concept
 linked:
-- "[[SSRF - Explotación]]"
+  - "[[SSRF - Explotación]]"
+  - "[[SSRF - CWES]]"
   - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 # SSRF - Mecanismo Lógico
 
 ***
 
-
 ## Mecanismo Lógico del SSRF
+^ssrf-mecanismo-logico
 
 ### El Código Vulnerable (Lo que no se ve)
 

@@ -7,7 +7,8 @@ tags:
   - asset/web-app
 type: Concept
 linked:
-- "[[SSRF - Explotación]]"
+  - "[[SSRF - Explotación]]"
+  - "[[SSRF - CWES]]"
   - "[[Anatomía de la Construcción de un Payload Gopher]]"
   - "[[Server-Side Request Forgery (SSRF)]]"
 ---
@@ -16,6 +17,7 @@ linked:
 ***
 
 El protocolo **Gopher** es un sistema de distribución de documentos anterior a la World Wide Web (HTTP). Aunque hoy en día está prácticamente obsoleto para navegar, es una herramienta crítica en la explotación de [[Server-Side Request Forgery (SSRF)]] debido a su capacidad para **enviar bytes arbitrarios** a una conexión TCP.
+^ssrf-gopher
 
 ## ¿Qué es Gopher?
 

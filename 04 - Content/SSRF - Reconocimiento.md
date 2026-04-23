@@ -8,6 +8,7 @@ tags:
 type: CheatSheet
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[SSRF - CWES]]"
 ---
 # SSRF - Reconocimiento
 

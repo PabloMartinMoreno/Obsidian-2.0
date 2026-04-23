@@ -11,6 +11,7 @@ tertiary categories:
 type: CheatSheet
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[SSRF - CWES]]"
   - "[[SSRF - Gopher]]"
   - "[[Anatomía de la Construcción de un Payload Gopher]]"
 ---
