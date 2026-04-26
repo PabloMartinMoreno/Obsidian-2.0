@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "Sin título",
-      "path": "04 - Content/Process/Sin título.md"
+      "basename": "GoodGames",
+      "path": "04 - Content/Process/GoodGames.md"
     },
     {
       "basename": "CWES - Maquinas",
       "path": "04 - Content/Process/CWES - Maquinas.md"
+    },
+    {
+      "basename": "BountyHunter",
+      "path": "04 - Content/Process/BountyHunter.md"
+    },
+    {
+      "basename": "Usage",
+      "path": "05 - Writeups/HackTheBox/Usage.md"
+    },
+    {
+      "basename": "Sniper",
+      "path": "05 - Writeups/Sniper.md"
+    },
+    {
+      "basename": "Bashed",
+      "path": "04 - Content/Process/Bashed.md"
     },
     {
       "basename": "CWES",
@@ -183,22 +199,6 @@
     {
       "basename": "Server-Side Template Injection (SSTI)",
       "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "Certificate Transparency Logs",
-      "path": "04 - Content/Certificate Transparency Logs.md"
-    },
-    {
-      "basename": "Performing Whois Lookup",
-      "path": "04 - Content/Process/Performing Whois Lookup.md"
-    },
-    {
-      "basename": "Social Engineering Intelligence",
-      "path": "04 - Content/Social Engineering Intelligence.md"
-    },
-    {
-      "basename": "Passive Infrastructure Identification",
-      "path": "04 - Content/Passive Infrastructure Identification.md"
     }
   ],
   "omittedPaths": [],
