@@ -5,6 +5,10 @@
       "path": "05 - Writeups/HackTheBox/Usage.md"
     },
     {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
       "basename": "CWES - Maquinas",
       "path": "04 - Content/Process/CWES - Maquinas.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "LFI - Null Byte Injection",
       "path": "04 - Content/LFI - Null Byte Injection.md"
-    },
-    {
-      "basename": "SQLi - Error based",
-      "path": "04 - Content/SQLi - Error based.md"
     }
   ],
   "omittedPaths": [],
