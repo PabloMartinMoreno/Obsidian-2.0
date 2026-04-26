@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Sin título",
+      "path": "04 - Content/Process/Sin título.md"
+    },
+    {
+      "basename": "CWES - Maquinas",
+      "path": "04 - Content/Process/CWES - Maquinas.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Passive Infrastructure Identification",
       "path": "04 - Content/Passive Infrastructure Identification.md"
-    },
-    {
-      "basename": "Subdomains Passive Enumeration",
-      "path": "04 - Content/Subdomains Passive Enumeration.md"
-    },
-    {
-      "basename": "Crawling & Spidering",
-      "path": "04 - Content/Process/Crawling & Spidering.md"
-    },
-    {
-      "basename": "Fuzzing Subdomains & Virtual Hosts",
-      "path": "04 - Content/Fuzzing Subdomains & Virtual Hosts.md"
     }
   ],
   "omittedPaths": [],
