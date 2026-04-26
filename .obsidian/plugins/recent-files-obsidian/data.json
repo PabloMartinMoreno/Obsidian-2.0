@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "GoodGames",
-      "path": "04 - Content/Process/GoodGames.md"
+      "basename": "Usage",
+      "path": "05 - Writeups/HackTheBox/Usage.md"
     },
     {
       "basename": "CWES - Maquinas",
       "path": "04 - Content/Process/CWES - Maquinas.md"
     },
     {
-      "basename": "BountyHunter",
-      "path": "04 - Content/Process/BountyHunter.md"
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
     },
     {
-      "basename": "Usage",
-      "path": "05 - Writeups/HackTheBox/Usage.md"
+      "basename": "GoodGames",
+      "path": "04 - Content/Process/GoodGames.md"
+    },
+    {
+      "basename": "BountyHunter",
+      "path": "04 - Content/Process/BountyHunter.md"
     },
     {
       "basename": "Sniper",
@@ -195,10 +199,6 @@
     {
       "basename": "SQLi - Error based",
       "path": "04 - Content/SQLi - Error based.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Process/Server-Side Template Injection (SSTI).md"
     }
   ],
   "omittedPaths": [],

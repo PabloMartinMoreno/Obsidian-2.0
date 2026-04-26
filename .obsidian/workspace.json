@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/GoodGames.md",
+                "file": "05 - Writeups/HackTheBox/Usage.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "GoodGames"
+              "title": "Usage"
             }
           }
         ],
@@ -267,6 +267,7 @@
   "active": "91aa512f180347ff",
   "lastOpenFiles": [
     "04 - Content/Process/CWES - Maquinas.md",
+    "04 - Content/Process/CWES - Checklists.md",
     "04 - Content/Process/GoodGames.md",
     "04 - Content/Process/BountyHunter.md",
     "05 - Writeups/HackTheBox/Usage.md",
@@ -301,7 +302,6 @@
     "04 - Content/SSI - Fingerprinting.md",
     "04 - Content/SSI - Inclusión de Archivos.md",
     "04 - Content/SSI - Ejecución de Comandos.md",
-    "04 - Content/SSRF - CWES.md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
     "00 - Resources/Pasted image 20260405112752.png",
