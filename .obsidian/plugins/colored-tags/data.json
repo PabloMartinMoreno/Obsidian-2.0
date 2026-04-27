@@ -612,7 +612,9 @@
     "vuln/jwt": 20,
     "fragment": 154,
     "vuln/http-smuggling": 21,
-    "vuln/prototype-pollution": 22
+    "vuln/prototype-pollution": 22,
+    "vuln/graphql": 23,
+    "vuln/cache-poisoning": 24
   },
   "_version": 3
 }

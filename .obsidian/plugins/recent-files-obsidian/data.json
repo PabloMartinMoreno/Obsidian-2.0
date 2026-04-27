@@ -5,6 +5,14 @@
       "path": "03 - Tertiary Categories/Explotación Web.md"
     },
     {
+      "basename": "Web Cache Poisoning",
+      "path": "04 - Content/Web Cache Poisoning.md"
+    },
+    {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/GraphQL Injection.md"
+    },
+    {
       "basename": "Prototype Pollution - Tooling",
       "path": "04 - Content/Prototype Pollution - Tooling.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "AD - Password Policy Enumeration",
       "path": "04 - Content/AD - Password Policy Enumeration.md"
-    },
-    {
-      "basename": "AD - Users & Groups Enumeration",
-      "path": "04 - Content/AD - Users & Groups Enumeration.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration",
-      "path": "04 - Content/AD - Hosts Enumeration.md"
     }
   ],
   "omittedPaths": [],
