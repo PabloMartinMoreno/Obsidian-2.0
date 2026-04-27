@@ -18,6 +18,7 @@ type: Tertiary Category
 
 - [[SQL Injection (SQLi)]]
 - [[NoSQL Injection]] (Inyección en bases de datos modernas como MongoDB para evadir autenticación o extraer datos.)
+- [[GraphQL Injection]] (Vulnerabilidades específicas de APIs GraphQL: introspection abuse, inyecciones en resolvers, batching para bypass de rate limit, IDOR via global IDs, mass assignment via mutations, DoS por queries recursivas.)
 - [[LDAP Injection]] (Manipulación de consultas LDAP para acceder a directorios de usuarios internos.)
 - [[OS Command Injection]] (Ejecución directa de comandos del sistema operativo en el servidor.)
 - [[Server-Side Template Injection (SSTI)]] (Inyección de código en plantillas web para obtener RCE.)
