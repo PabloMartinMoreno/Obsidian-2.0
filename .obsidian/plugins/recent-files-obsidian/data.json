@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
     },
     {
       "basename": "Explotación Web",
       "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
     },
     {
       "basename": "HTTP Request Smuggling",
@@ -195,10 +199,6 @@
     {
       "basename": "Pivoting & Port Forwarding",
       "path": "04 - Content/Pivoting & Port Forwarding.md"
-    },
-    {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/BloodHound & SharpHound.md"
     }
   ],
   "omittedPaths": [],
