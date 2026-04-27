@@ -20,18 +20,18 @@ linked:
 
 ## Token No Validado (Remove)
 
-| **Objetivo** | **Probe** | **Notas** |
-|:---:|:---:|:---:|
-| Eliminar token completamente | Submit sin field `csrf_token` | Backend que solo valida si presente → bypass total. |
-| Eliminar header CSRF | `X-CSRF-Token` removido | Mismo concepto en headers. |
-| Empty token | `csrf_token=` (string vacío) | Algunos comparan con `==` laxo. |
-| Token NULL | `csrf_token=null` | String literal "null". |
-| Token undefined | Sin field en absoluto | Diferente de empty. |
-| Header con valor vacío | `X-CSRF-Token: ` | Trailing space — algunos parsers strip. |
-| Token con whitespace | `csrf_token= ` | Otros normalizan. |
-| Múltiples fields | `<input name="csrf_token" value="">` + `<input name="csrf_token" value="legit">` | Server toma primero o último. |
-| Cookie sí, header no | Si solo cookie tiene token, no header | Double-submit con backend laxo. |
-| GET con params | Convertir POST a GET con params del body | Algunos endpoints aceptan ambos. |
+|         **Objetivo**         |                                    **Probe**                                     |                      **Notas**                      |
+| :--------------------------: | :------------------------------------------------------------------------------: | :-------------------------------------------------: |
+| Eliminar token completamente |                          Submit sin field `csrf_token`                           | Backend que solo valida si presente → bypass total. |
+|     Eliminar header CSRF     |                             `X-CSRF-Token` removido                              |             Mismo concepto en headers.              |
+|         Empty token          |                           `csrf_token=` (string vacío)                           |            Algunos comparan con == laxo.            |
+|          Token NULL          |                                `csrf_token=null`                                 |               String literal "null".                |
+|       Token undefined        |                              Sin field en absoluto                               |                 Diferente de empty.                 |
+|    Header con valor vacío    |                                 `X-CSRF-Token: `                                 |       Trailing space — algunos parsers strip.       |
+|     Token con whitespace     |                                  `csrf_token= `                                  |                  Otros normalizan.                  |
+|       Múltiples fields       | `<input name="csrf_token" value="">` + `<input name="csrf_token" value="legit">` |            Server toma primero o último.            |
+|     Cookie sí, header no     |                      Si solo cookie tiene token, no header                       |           Double-submit con backend laxo.           |
+|        GET con params        |                     Convertir POST a GET con params del body                     |          Algunos endpoints aceptan ambos.           |
 ^csrf-bypass-token-remove
 
 ___

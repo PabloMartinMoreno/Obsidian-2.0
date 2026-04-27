@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "Explotación Web",
+      "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "Prototype Pollution - Tooling",
+      "path": "04 - Content/Prototype Pollution - Tooling.md"
+    },
+    {
+      "basename": "Prototype Pollution",
+      "path": "04 - Content/Prototype Pollution.md"
+    },
+    {
       "basename": "Cross-Site Request Forgery (CSRF)",
       "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
     },
     {
-      "basename": "Explotación Web",
-      "path": "03 - Tertiary Categories/Explotación Web.md"
+      "basename": "CSRF - Bypass de Token",
+      "path": "04 - Content/CSRF - Bypass de Token.md"
     },
     {
       "basename": "Server-Side Template Injection (SSTI)",
@@ -187,18 +199,6 @@
     {
       "basename": "AD - Hosts Enumeration",
       "path": "04 - Content/AD - Hosts Enumeration.md"
-    },
-    {
-      "basename": "AD Initial Enumeration Playbook",
-      "path": "04 - Content/AD Initial Enumeration Playbook.md"
-    },
-    {
-      "basename": "SQL Commands",
-      "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "Pivoting & Port Forwarding",
-      "path": "04 - Content/Pivoting & Port Forwarding.md"
     }
   ],
   "omittedPaths": [],
