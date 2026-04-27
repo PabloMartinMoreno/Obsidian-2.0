@@ -610,7 +610,8 @@
     "vuln/dos": 19,
     "technique/impact": 25,
     "vuln/jwt": 20,
-    "fragment": 154
+    "fragment": 154,
+    "vuln/http-smuggling": 21
   },
   "_version": 3
 }

@@ -5,6 +5,10 @@
       "path": "03 - Tertiary Categories/Explotación Web.md"
     },
     {
+      "basename": "Insecure Deserialization",
+      "path": "04 - Content/Insecure Deserialization.md"
+    },
+    {
       "basename": "JWT Attacks",
       "path": "04 - Content/JWT Attacks.md"
     },
