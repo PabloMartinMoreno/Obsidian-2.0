@@ -15,7 +15,7 @@ tertiary categories:
   - "[[Explotación Web]]"
 type: Vulnerability
 linked:
-  - "[[JWT Atacks]]"
+  - "[[JWT Attacks]]"
   - "[[Burp Suite]]"
   - "[[hashcat]]"
   - "[[Hydra]]"

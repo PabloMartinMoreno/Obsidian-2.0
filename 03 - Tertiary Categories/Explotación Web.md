@@ -21,7 +21,7 @@ type: Tertiary Category
 - [[LDAP Injection]] (Manipulación de consultas LDAP para acceder a directorios de usuarios internos.)
 - [[OS Command Injection]] (Ejecución directa de comandos del sistema operativo en el servidor.)
 - [[Server-Side Template Injection (SSTI)]] (Inyección de código en plantillas web para obtener RCE.)
--  [[Server-Side Includes (SSI) Injection]] (Server-Side Includes: Inyección de directivas en servidores web para RCE.)
+- [[Server-Side Includes (SSI) Injection]] (Server-Side Includes: Inyección de directivas en servidores web para RCE.)
 - [[XML Attacks]]
 	- [[XML External Entity (XXE)]] (Abuso del procesamiento XML para leer archivos o realizar SSRF.)
 	- [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]] (Inyección de transformaciones maliciosas para RCE o lectura de archivos.)

@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "HTTP Request Smuggling",
+      "path": "04 - Content/HTTP Request Smuggling.md"
+    },
+    {
+      "basename": "HTTP Brute Forcing",
+      "path": "04 - Content/Process/HTTP Brute Forcing.md"
+    },
+    {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
       "basename": "Insecure Deserialization",
@@ -183,22 +199,6 @@
     {
       "basename": "BloodHound & SharpHound",
       "path": "04 - Content/BloodHound & SharpHound.md"
-    },
-    {
-      "basename": "LFI Elf",
-      "path": "05 - Writeups/DockerLabs/LFI Elf.md"
-    },
-    {
-      "basename": "Directory Traversal",
-      "path": "04 - Content/Process/Directory Traversal.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/ffuf.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
     }
   ],
   "omittedPaths": [],
