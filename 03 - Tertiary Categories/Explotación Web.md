@@ -63,6 +63,7 @@ type: Tertiary Category
 - [[Insecure Deserialization]] (Manipulación de datos serializados para ejecutar código o alterar la lógica.)
 - [[Prototype Pollution]] (Modificación de `Object.prototype` en runtimes JS para inyectar propiedades heredadas globalmente — habilita RCE, auth bypass, XSS via gadgets.)
 - [[Race Conditions]] (Explotación de concurrencia para realizar acciones simultáneas no permitidas, ej: gastar el mismo saldo dos veces.)
+- [[Open Redirect]] (Redirección no validada vía parámetro reflejado: phishing UX, OAuth code theft, SSRF chain bypass, XSS via `javascript:`, token leak via Referer.)
 - [[Mass Assignment]] (Modificación de campos de objetos internos (ej: `is_admin`) a través de APIs que no filtran la entrada.)
 - [[Web Cache Poisoning]] (Manipulación de la caché del servidor para servir contenido malicioso a otros usuarios.)
 - [[HTTP Request Smuggling]]
