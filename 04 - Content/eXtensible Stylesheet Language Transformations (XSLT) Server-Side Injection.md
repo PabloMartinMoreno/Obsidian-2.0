@@ -21,8 +21,11 @@ type: CheatSheet
 linked:
   - '[[XSLT - Fingerprinting]]'
   - '[[XSLT - Lectura de Archivos (document)]]'
+  - '[[XSLT - SSRF]]'
   - '[[XSLT - Extension Functions (RCE)]]'
+  - '[[XSLT - DoS]]'
   - '[[XSLT - Blind Exfil]]'
+  - '[[XSLT - Bypasses y Evasion]]'
   - '[[Server-Side Request Forgery (SSRF)]]'
   - '[[XML External Entity (XXE)]]'
   - '[[Burp Suite]]'
@@ -33,81 +36,87 @@ linked:
 
 ## Cheatsheet
 
-### Discovery & Detection
+### 🔍 Detección y Fingerprinting
 
 ````tabs
-tab: **Probe inicial**
-![[XSLT - Fingerprinting#^xslt-fp-probe]]
+tab: **Detección Básica**
+![[XSLT - Fingerprinting#^xslt-fp-detection]]
 
-tab: **Versión y vendor**
-![[XSLT - Fingerprinting#^xslt-fp-version]]
-
-tab: **Function availability**
-![[XSLT - Fingerprinting#^xslt-fp-funcs]]
-
-tab: **Errores y stack traces**
-![[XSLT - Fingerprinting#^xslt-fp-errors]]
+tab: **Fingerprinting de Motores**
+![[XSLT - Fingerprinting#^xslt-fp-engines]]
 ````
 
-### Lectura de archivos / SSRF
+### 📁 Lectura de Archivos Locales (LFI)
 
 ````tabs
-tab: **document() para XML**
-![[XSLT - Lectura de Archivos (document)#^xslt-doc-xml]]
+tab: **Función document()**
+![[XSLT - Lectura de Archivos (document)#^xslt-lfi-document]]
 
-tab: **unparsed-text() para raw**
-![[XSLT - Lectura de Archivos (document)#^xslt-doc-raw]]
+tab: **XXE dentro de XSLT**
+![[XSLT - Lectura de Archivos (document)#^xslt-lfi-xxe]]
 
-tab: **SSRF chain**
-![[XSLT - Lectura de Archivos (document)#^xslt-doc-ssrf]]
-
-tab: **Path traversal**
-![[XSLT - Lectura de Archivos (document)#^xslt-doc-traversal]]
+tab: **Lectura de Directorios**
+![[XSLT - Lectura de Archivos (document)#^xslt-lfi-dirs]]
 ````
 
-### Remote Code Execution
+### 🌐 Server-Side Request Forgery (SSRF)
 
 ````tabs
-tab: **PHP (libxslt)**
+tab: **Escaneo de Puertos Internos**
+![[XSLT - SSRF#^xslt-ssrf-portscan]]
+
+tab: **Cloud Metadata e Internos**
+![[XSLT - SSRF#^xslt-ssrf-cloud]]
+````
+
+### 💀 Remote Code Execution (RCE)
+
+````tabs
+tab: **PHP / libxslt**
 ![[XSLT - Extension Functions (RCE)#^xslt-rce-php]]
 
-tab: **Saxon (Java)**
+tab: **Java / Saxon**
 ![[XSLT - Extension Functions (RCE)#^xslt-rce-saxon]]
 
-tab: **Xalan-Java**
-![[XSLT - Extension Functions (RCE)#^xslt-rce-xalan]]
-
-tab: **MSXML / .NET**
+tab: **Microsoft / MSXML**
 ![[XSLT - Extension Functions (RCE)#^xslt-rce-msxml]]
-
-tab: **BaseX / eXist-DB**
-![[XSLT - Extension Functions (RCE)#^xslt-rce-basex]]
 ````
 
-### Blind Exfiltration
+### 💥 Denegación de Servicio (DoS)
 
 ````tabs
-tab: **Error-based**
-![[XSLT - Blind Exfil#^xslt-blind-error]]
+tab: **Billion Laughs**
+![[XSLT - DoS#^xslt-dos-billion]]
 
-tab: **OOB HTTP**
-![[XSLT - Blind Exfil#^xslt-blind-oob]]
+tab: **Recursión Infinita / Loops**
+![[XSLT - DoS#^xslt-dos-recursion]]
+````
 
-tab: **DNS exfil**
-![[XSLT - Blind Exfil#^xslt-blind-dns]]
+### 📡 Exfiltración de Datos (OOB)
 
-tab: **Boolean oracle**
-![[XSLT - Blind Exfil#^xslt-blind-bool]]
+````tabs
+tab: **HTTP via URLs**
+![[XSLT - Blind Exfil#^xslt-oob-http]]
 
-tab: **Time-based**
-![[XSLT - Blind Exfil#^xslt-blind-time]]
+tab: **DNS via Subdomain**
+![[XSLT - Blind Exfil#^xslt-oob-dns]]
+````
+
+### 🛡️ Bypasses y Evasión de Filtros
+
+````tabs
+tab: **Encoding (UTF-16 / UTF-7)**
+![[XSLT - Bypasses y Evasion#^xslt-bypass-encoding]]
+
+tab: **Namespaces Alternativos**
+![[XSLT - Bypasses y Evasion#^xslt-bypass-namespaces]]
 ````
 
 ___
 
 ## Overview
 
-**XSLT Server-Side Injection** = el backend transforma un documento XML aplicando una stylesheet XSL, y el atacante controla **el stylesheet** (o un fragmento embebido en él). El motor XSLT es un intérprete completo: itera, evalúa expresiones XPath, lee archivos con `document()`, hace HTTP con la misma función, y según vendor permite llamar **código nativo** (PHP, Java, JScript). Resultado: file read, SSRF y RCE en un solo vector.
+**XSLT Server-Side Injection** = el backend transforma un documento XML aplicando una stylesheet XSL, y el atacante controla **el stylesheet** (o un fragmento embebido en él). El motor XSLT es un intérprete completo: itera, evalúa expresiones XPath, lee archivos con `document()`, hace HTTP con la misma función, y según vendor permite llamar **código nativo** (PHP, Java, JScript). Resultado: file read, SSRF, RCE y DoS en un solo vector.
 
 Vector mucho menos defendido que SQLi/XXE porque casi nadie audita el flujo XSL → motores enteros vienen con extensions habilitadas por default (Xalan, MSXML legacy, Saxon-PE/EE).
 
@@ -130,7 +139,7 @@ Si la app acepta XML pero las entidades externas están deshabilitadas → puede
 | **Saxon-HE** | Java | 2.0 / 3.0 | Sin RCE nativo (file/SSRF/blind sí) |
 | **Saxon-PE / EE** | Java | 2.0 / 3.0 | `java:java.lang.Runtime` reflection |
 | **Xalan-Java** | Java | 1.0 | Default permite static Java calls |
-| **MSXML** | .NET / COM | 1.0 / 2.0 | `msxsl:script` (JScript / VBScript) |
+| **MSXML** | .NET / COM | 1.0 / 2.0 | `msxsl:script` (JScript / VBScript / C#) |
 | **BaseX / eXist-DB** | Java | 3.0 | Java extension functions + `proc:system` |
 
 ___
@@ -154,7 +163,9 @@ ___
 6. Si reflection bloqueada / no hay output:
    - file read con document() / unparsed-text()
    - SSRF a interno o cloud metadata vía document()
-   - Blind exfil: error-based / OOB HTTP / DNS / boolean / time-based
+   - OOB exfil via HTTP / DNS callback
+7. Si hay WAF: aplicar bypasses (UTF-16/UTF-7, namespaces alternativos).
+8. Si nada funciona → DoS para impacto reportable (billion laughs, recursión).
 ```
 
 ___
@@ -211,7 +222,8 @@ ___
 - **SSRF** — `document('http://...')` fetcha URLs internas, cloud metadata, port scan via timing.
 - **RCE** — extension functions en libxslt+PHP, Saxon-PE/EE, Xalan-Java, MSXML.
 - **Information disclosure** — versión exacta del motor + product → CVE lookup directo.
-- **DoS** — loops `<xsl:for-each select="1 to 999999999">` o billion laughs en XSLT.
+- **DoS** — billion laughs, recursión infinita, loops gigantes — derriba el servicio.
+- **OOB exfiltration** — egress HTTP/DNS sin necesidad de output reflejado.
 
 ___
 
@@ -241,6 +253,8 @@ ___
   ```
 - **Network egress filtering** — bloquear HTTP outbound desde el proceso transformador (mata SSRF/OOB exfil).
 - **Sandboxing** — correr el transformador en proceso separado con FS read-only y sin red.
+- **Disable DTDs** — `feature: disallow-doctype-decl = true` (bloquea XXE + billion laughs).
+- **Timeout** — limitar tiempo de transformación a 1-5s (bloquea DoS por loops).
 
 ___
 

