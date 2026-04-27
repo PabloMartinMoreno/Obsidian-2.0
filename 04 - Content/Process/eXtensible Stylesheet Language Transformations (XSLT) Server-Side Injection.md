@@ -33,32 +33,74 @@ linked:
 
 ## Cheatsheet
 
-### 1. Discovery / Fingerprint
+### Discovery & Detection
 
 ````tabs
-tab: **Versión, vendor, funciones disponibles**
-![[XSLT - Fingerprinting#^xslt-fingerprinting]]
+tab: **Probe inicial**
+![[XSLT - Fingerprinting#^xslt-fp-probe]]
+
+tab: **Versión y vendor**
+![[XSLT - Fingerprinting#^xslt-fp-version]]
+
+tab: **Function availability**
+![[XSLT - Fingerprinting#^xslt-fp-funcs]]
+
+tab: **Errores y stack traces**
+![[XSLT - Fingerprinting#^xslt-fp-errors]]
 ````
 
-### 2. Lectura de archivos / SSRF
+### Lectura de archivos / SSRF
 
 ````tabs
-tab: **document y unparsed-text — file read + HTTP fetch**
-![[XSLT - Lectura de Archivos (document)#^xslt-document]]
+tab: **document() para XML**
+![[XSLT - Lectura de Archivos (document)#^xslt-doc-xml]]
+
+tab: **unparsed-text() para raw**
+![[XSLT - Lectura de Archivos (document)#^xslt-doc-raw]]
+
+tab: **SSRF chain**
+![[XSLT - Lectura de Archivos (document)#^xslt-doc-ssrf]]
+
+tab: **Path traversal**
+![[XSLT - Lectura de Archivos (document)#^xslt-doc-traversal]]
 ````
 
-### 3. Remote Code Execution
+### Remote Code Execution
 
 ````tabs
-tab: **Extension functions — `php:function`, Java reflection, MSXML script**
-![[XSLT - Extension Functions (RCE)#^xslt-extensions]]
+tab: **PHP (libxslt)**
+![[XSLT - Extension Functions (RCE)#^xslt-rce-php]]
+
+tab: **Saxon (Java)**
+![[XSLT - Extension Functions (RCE)#^xslt-rce-saxon]]
+
+tab: **Xalan-Java**
+![[XSLT - Extension Functions (RCE)#^xslt-rce-xalan]]
+
+tab: **MSXML / .NET**
+![[XSLT - Extension Functions (RCE)#^xslt-rce-msxml]]
+
+tab: **BaseX / eXist-DB**
+![[XSLT - Extension Functions (RCE)#^xslt-rce-basex]]
 ````
 
-### 4. Blind / OOB Exfiltration
+### Blind Exfiltration
 
 ````tabs
-tab: **Error-based, OOB `document()`, DNS, boolean / time oracle**
-![[XSLT - Blind Exfil#^xslt-blind]]
+tab: **Error-based**
+![[XSLT - Blind Exfil#^xslt-blind-error]]
+
+tab: **OOB HTTP**
+![[XSLT - Blind Exfil#^xslt-blind-oob]]
+
+tab: **DNS exfil**
+![[XSLT - Blind Exfil#^xslt-blind-dns]]
+
+tab: **Boolean oracle**
+![[XSLT - Blind Exfil#^xslt-blind-bool]]
+
+tab: **Time-based**
+![[XSLT - Blind Exfil#^xslt-blind-time]]
 ````
 
 ___
@@ -89,7 +131,7 @@ Si la app acepta XML pero las entidades externas están deshabilitadas → puede
 | **Saxon-PE / EE** | Java | 2.0 / 3.0 | `java:java.lang.Runtime` reflection |
 | **Xalan-Java** | Java | 1.0 | Default permite static Java calls |
 | **MSXML** | .NET / COM | 1.0 / 2.0 | `msxsl:script` (JScript / VBScript) |
-| **BaseX / eXist-DB** | Java | 3.0 | Java extension functions |
+| **BaseX / eXist-DB** | Java | 3.0 | Java extension functions + `proc:system` |
 
 ___
 
@@ -98,7 +140,7 @@ ___
 ```
 1. Identificar transformación XSL (upload XML, render PDF/RSS, dashboards, SOAP).
 2. Probe inyección:
-   <xsl:value-of select="'XSLT-OK'"/>
+   <xsl:value-of select="'XSLT-OK'"/>     o     <xsl:value-of select="7*7"/>
 3. Fingerprint (versión + vendor + product):
    system-property('xsl:version' | 'xsl:vendor' | 'xsl:product-name')
 4. Mapear extensions disponibles:
@@ -112,7 +154,7 @@ ___
 6. Si reflection bloqueada / no hay output:
    - file read con document() / unparsed-text()
    - SSRF a interno o cloud metadata vía document()
-   - Blind exfil OOB / error-based / DNS
+   - Blind exfil: error-based / OOB HTTP / DNS / boolean / time-based
 ```
 
 ___
