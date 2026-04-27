@@ -614,7 +614,9 @@
     "vuln/http-smuggling": 21,
     "vuln/prototype-pollution": 22,
     "vuln/graphql": 23,
-    "vuln/cache-poisoning": 24
+    "vuln/cache-poisoning": 24,
+    "vuln/race-condition": 25,
+    "vuln/open-redirect": 26
   },
   "_version": 3
 }
