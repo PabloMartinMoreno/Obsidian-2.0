@@ -22,7 +22,7 @@ linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[Insecure Direct Object References (IDOR)]]"
   - "[[Cross-Site Request Forgery (CSRF)]]"
-  - "[[JWT Attacks]]"
+  - "[[JWT Atacks]]"
 ---
 # Burp Suite
 
@@ -121,7 +121,7 @@ Resource pool: límite de requests concurrentes (CE = 1 thread throttled).
 
 BApps imprescindibles:
 
-- **JWT Editor** — sign/verify JWTs, key confusion, alg:none (ver [[JWT Attacks]]).
+- **JWT Editor** — sign/verify JWTs, key confusion, alg:none (ver [[JWT Atacks]]).
 - **Autorize** — auto-testing de authZ / IDOR (compara response como User A vs User B / no-auth).
 - **Param Miner** — descubre params ocultos (headers, query, body).
 - **Turbo Intruder** — Python-scripted fuzzer (10k+ req/s, HTTP/2 racing).

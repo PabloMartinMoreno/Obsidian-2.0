@@ -40,7 +40,7 @@ type: Tertiary Category
   Fallos en la verificación de identidad o en los permisos de acceso a recursos.
 
 - [[Authentication & Authorization Bypass]] (Evasión de mecanismos de login o restricciones de acceso.)
-- [[JWT Exploitation (JSON Web Tokens)]] (Manipulación de tokens de sesión: None algorithm, cambio de firmas, fuerza bruta de secretos.)
+- [[JWT Attacks]] (Manipulación de tokens de sesión: None algorithm, cambio de firmas, fuerza bruta de secretos.)
 - [[OAuth 2.0 Misconfigurations]] (Abuso de flujos de autenticación federada para secuestrar cuentas.)
 - [[HTTP Brute Forcing]] (Ataques de fuerza bruta contra formularios de login o autenticación básica.)
 - [[BOLA - IDOR]] (Referencia directa a objetos inseguros para acceder a datos de otros usuarios.)

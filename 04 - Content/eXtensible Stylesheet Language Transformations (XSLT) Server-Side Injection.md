@@ -146,7 +146,6 @@ ___
 
 ## Workflow de explotación
 
-```
 1. Identificar transformación XSL (upload XML, render PDF/RSS, dashboards, SOAP).
 2. Probe inyección:
    <xsl:value-of select="'XSLT-OK'"/>     o     <xsl:value-of select="7*7"/>
@@ -166,7 +165,7 @@ ___
    - OOB exfil via HTTP / DNS callback
 7. Si hay WAF: aplicar bypasses (UTF-16/UTF-7, namespaces alternativos).
 8. Si nada funciona → DoS para impacto reportable (billion laughs, recursión).
-```
+
 
 ___
 

@@ -606,7 +606,11 @@
     "vuln/ssi": 16,
     "technique/collection": 24,
     "vuln/nosqli": 17,
-    "vuln/xslt-injection": 18
+    "vuln/xslt-injection": 18,
+    "vuln/dos": 19,
+    "technique/impact": 25,
+    "vuln/jwt": 20,
+    "fragment": 154
   },
   "_version": 3
 }

@@ -40,7 +40,7 @@ Al auditar o diseñar pruebas de [[API Security]], la evaluación del cuerpo de 
 ### Principios de Mitigación
 
 Para prevenir la manipulación del cuerpo de la petición, el sistema no debe depender nunca de los identificadores proporcionados por el cliente para tomar decisiones de autorización. El patrón arquitectónico correcto implica:
-- Extraer la identidad del usuario y su contexto de un token seguro y validado criptográficamente del lado del servidor (como un [[JWT]] correctamente implementado).
+- Extraer la identidad del usuario y su contexto de un token seguro y validado criptográficamente del lado del servidor (como un [[JWT Atacks]] correctamente implementado).
 - Utilizar Data Transfer Objects (DTO) estrictos que ignoren cualquier parámetro adicional no esperado en el payload (evitando el _Binding_ automático o _Mass Assignment_).
 - Validar siempre que el usuario autenticado posee los derechos explícitos sobre el identificador del objeto que se está intentando modificar o consultar.
 

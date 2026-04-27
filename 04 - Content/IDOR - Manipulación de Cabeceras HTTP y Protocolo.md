@@ -43,7 +43,7 @@ Durante la revisión de la postura de seguridad y el análisis de [[API Security
 
 La protección contra la manipulación a nivel de protocolo exige una arquitectura de confianza cero ([[Zero Trust]]) en la frontera de la aplicación:
 - Tratar todas las cabeceras HTTP entrantes como entradas de usuario no confiables, del mismo modo que se trata la URL o el cuerpo de la petición.
-- Establecer la identidad del usuario y sus permisos exclusivamente a través de mecanismos de sesión seguros e inalterables desde el lado del cliente (como un [[JWT]] validado).
+- Establecer la identidad del usuario y sus permisos exclusivamente a través de mecanismos de sesión seguros e inalterables desde el lado del cliente (como un [[JWT Atacks]] validado).
 - Configurar los proxies inversos y los balanceadores de carga para que eliminen sistemáticamente cualquier cabecera interna de enrutamiento o autorización (`X-User-Id`, `X-Forwarded-For`) si la petición proviene directamente del internet público, reescribiéndolas solo de manera controlada dentro de la red privada.
 
 ***

@@ -15,7 +15,7 @@ tertiary categories:
   - "[[Explotación Web]]"
 type: Vulnerability
 linked:
-  - "[[JWT Attacks]]"
+  - "[[JWT Atacks]]"
   - "[[Burp Suite]]"
   - "[[hashcat]]"
   - "[[Hydra]]"
@@ -100,6 +100,6 @@ El objetivo es **acceder como otro usuario** o **elevar privilegios dentro de la
 - [[BOLA - IDOR]] — bypass de authorization a nivel de objeto.
 - [[Cross-Site Request Forgery (CSRF)]] — autenticación válida forzada por atacante.
 - [[Session Hijacking XSS]] — robo de sesión post-auth.
-- [[JWT]] — tokens específicos, vectores propios.
+- [[JWT Atacks]] — tokens específicos, vectores propios.
 
 ***

@@ -14,7 +14,7 @@ linked:
   - "[[Kerberoasting]]"
   - "[[AS-REP Roasting]]"
   - "[[Responder]]"
-  - "[[JWT Attacks]]"
+  - "[[JWT Atacks]]"
 ---
 # hashcat
 
