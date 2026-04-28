@@ -622,7 +622,10 @@
     "vuln/jndi-injection": 28,
     "vuln/mass-assignment": 29,
     "vuln/html-injection": 30,
-    "vuln/host-header-injection": 31
+    "vuln/host-header-injection": 31,
+    "vuln/subdomain-takeover": 32,
+    "vuln/session-hijacking": 33,
+    "vuln/crlf-injection": 34
   },
   "_version": 3
 }

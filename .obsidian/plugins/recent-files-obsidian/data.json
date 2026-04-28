@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Authentication & Authorization Bypass.md"
-    },
-    {
       "basename": "Explotación Web",
       "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
