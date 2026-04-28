@@ -68,6 +68,7 @@ type: Tertiary Category
 - [[Web Cache Poisoning]] (Manipulación de la caché del servidor para servir contenido malicioso a otros usuarios.)
 - [[HTTP Request Smuggling]]
 - [[Host Header Injection]]
+- [[Subdomain Takeover]] (Reclamo de subdomains con DNS dangling: CNAME a third-party services deleted (S3/Heroku/GitHub Pages), NS takeover, expired domain reclaim — chains con cookie scope, OAuth redirect_uri, CSP bypass, email spoofing.)
 
 
  ## 🎯 Specific Application Exploitation
