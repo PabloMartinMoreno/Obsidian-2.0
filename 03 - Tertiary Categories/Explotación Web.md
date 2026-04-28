@@ -45,6 +45,7 @@ type: Tertiary Category
 - [[OAuth 2.0 Misconfigurations]] (Abuso de flujos de autenticación federada para secuestrar cuentas.)
 - [[HTTP Brute Forcing]] (Ataques de fuerza bruta contra formularios de login o autenticación básica.)
 - [[BOLA - IDOR]] (Referencia directa a objetos inseguros para acceder a datos de otros usuarios.)
+- [[Session Hijacking]] (Robo o forge de sesión authenticated: cookie theft via XSS / MITM / sniffing, weak HMAC crack, JWT manipulation, fixation pre-auth, replay long-lived tokens, CSWSH, cookie tossing cross-subdomain.)
 
 
   ## 🎭 Client-Side Attacks
