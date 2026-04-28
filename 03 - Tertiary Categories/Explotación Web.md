@@ -25,7 +25,7 @@ type: Tertiary Category
 - [[Server-Side Includes (SSI) Injection]] (Server-Side Includes: Inyección de directivas en servidores web para RCE.)
 - [[CRLF Injection]] (Inyección de caracteres `\r\n` en headers/body/protocolos: header injection (Set-Cookie/CSP bypass), HTTP response splitting + XSS, cache poisoning, SMTP email injection, log forgery, HRS combo, Memcached/Redis injection.)
 - [[HTTP Parameter Pollution]] (Multiple values del mismo parameter explotando differential entre stacks: WAF bypass via param split, auth bypass front/back diferencial, SQLi en ASP.NET concat, Mass Assignment combo, logic flow manipulation.)
-- [[XML Attacks]]
+- XML Attacks
 	- [[XML External Entity (XXE)]] (Abuso del procesamiento XML para leer archivos o realizar SSRF.)
 	- [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]] (Inyección de transformaciones maliciosas para RCE o lectura de archivos.)
 
