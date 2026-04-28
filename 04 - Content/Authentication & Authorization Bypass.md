@@ -2,24 +2,38 @@
 aliases:
   - Auth Bypass
   - Authentication Bypass
+  - Authorization Bypass
+  - BFLA / BOLA
 tags:
   - type/vulnerability
   - vuln/auth-bypass
   - technique/initial-access
+  - technique/credential-access
+  - technique/privilege-escalation
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación|Explotación]]'
 tertiary categories:
-  - "[[Explotación Web]]"
-type: Vulnerability
+  - '[[Explotación Web]]'
+type: CheatSheet
 linked:
-  - "[[JWT Attacks]]"
-  - "[[Burp Suite]]"
-  - "[[hashcat]]"
-  - "[[Hydra]]"
-  - "[[ffuf]]"
+  - '[[Auth Bypass - Deteccion y Reconocimiento]]'
+  - '[[Auth Bypass - Bypass de Autenticacion]]'
+  - '[[Auth Bypass - Bypass de Autorizacion]]'
+  - '[[Auth Bypass - Tokens y Sessions]]'
+  - '[[Auth Bypass - Flow Logic Flaws]]'
+  - '[[Auth Bypass - Brute Force y Credential Stuffing]]'
+  - '[[JWT Attacks]]'
+  - '[[BOLA - IDOR]]'
+  - '[[Mass Assignment]]'
+  - '[[Race Conditions]]'
+  - '[[Host Header Injection]]'
+  - '[[hashcat]]'
+  - '[[Hydra]]'
+  - '[[ffuf]]'
+  - '[[Burp Suite]]'
 ---
 # Authentication & Authorization Bypass
 
@@ -27,79 +41,356 @@ linked:
 
 ## Cheatsheet
 
-| **Categoría**                       | **Técnica**                                                         | **Ejemplo / PoC**                                                           |
-| ----------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| **Credenciales default**            | Probar `admin:admin`, `root:root`, docs del producto                | `hydra`, `medusa`, wordlists de SecLists.                                   |
-| **SQL Injection en login**          | `' OR 1=1--`                                                        | Bypass del `WHERE user='x' AND pass='y'`.                                   |
-| **Truncation attack**               | DB trunca passwords largos                                          | `admin                                      x` → match por prefijo.        |
-| **Username enumeration**            | Diferencia en timing o response entre user válido/inválido          | Enumerar usuarios antes de brute force.                                     |
-| **Forced browsing**                 | Acceder directo a `/admin/dashboard`                                | Ruta post-login sin check server-side.                                      |
-| **HTTP verb tampering**             | `GET /admin` bloqueado → `POST /admin` permite                      | Auth aplicada solo a ciertos verbos.                                        |
-| **Header spoofing**                 | `X-Forwarded-For: 127.0.0.1`, `X-Original-URL: /admin`              | Bypass de middleware de path/ip.                                            |
-| **JWT none algorithm**              | `{"alg":"none"}` + payload modificado                               | Firma no validada.                                                          |
-| **JWT key confusion**               | RS256 → HS256 usando pubkey como secret                             | Atacante firma como servidor.                                               |
-| **Session fixation**                | Forzar session ID conocido antes de login                           | Reusar cookie tras auth legítima de víctima.                                |
-| **Password reset token predecible** | Token basado en timestamp o UUIDv1                                  | Predecir y usar antes que víctima.                                          |
-| **2FA bypass**                      | Flow permite skip vía `POST /verify?code=` con código vacío          | Logic flaw, response-based bypass, race conditions.                         |
-| **OAuth redirect_uri manipulation** | `redirect_uri=atacante.com`                                         | Token/code enviado a atacante.                                              |
-| **Mass Assignment**                 | `POST /register` con `"role":"admin"` extra                         | Backend sin whitelist de campos.                                            |
-| **Insecure Direct Object Reference** | `?user_id=2` en request de otro usuario                             | Ver [[BOLA - IDOR]] para detalle.                                           |
-| **Password spraying**               | Lista de users comunes + 1 password común                           | Evita lockouts individuales, efectivo en AD y SaaS.                         |
+### 🔍 Detección y Reconocimiento
 
-## Flujo de testing
+````tabs
+tab: **Identificar Endpoints Auth/Authz**
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-endpoints]]
 
-```bash
-# 1. Username enum (timing differ)
-ffuf -w users.txt -X POST -u https://target/login -d 'user=FUZZ&pass=x' \
-     -o enum.json -of json
+tab: **Username Enumeration**
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-enum]]
 
-# 2. Default creds primero
-hydra -L common-users.txt -P common-pass.txt target https-post-form \
-      "/login:user=^USER^&pass=^PASS^:F=Invalid"
+tab: **Logic Flaw Recon**
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-flow]]
+````
 
-# 3. SQLi en login
-sqlmap -u "https://target/login" --data="user=admin&pass=admin" \
-       --level 5 --risk 3 --forms
+### 🔓 Bypass de Autenticación (login)
 
-# 4. JWT analysis
-jwt_tool <token> -S  # scan
-jwt_tool <token> -X a  # alg none
-jwt_tool <token> -X k -pk public.pem  # key confusion
+````tabs
+tab: **Default Credentials**
+![[Auth Bypass - Bypass de Autenticacion#^auth-bypass-defaults]]
 
-# 5. Forced browsing
-ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt \
-     -u https://target/FUZZ -fc 301,302,401,403
-```
+tab: **SQL Injection en Login**
+![[Auth Bypass - Bypass de Autenticacion#^auth-bypass-sqli]]
+
+tab: **HTTP Verb Tampering**
+![[Auth Bypass - Bypass de Autenticacion#^auth-bypass-verb]]
+
+tab: **Header Spoofing**
+![[Auth Bypass - Bypass de Autenticacion#^auth-bypass-headers]]
+
+tab: **Forced Browsing**
+![[Auth Bypass - Bypass de Autenticacion#^auth-bypass-forced]]
+
+tab: **Truncation Attack**
+![[Auth Bypass - Bypass de Autenticacion#^auth-bypass-truncation]]
+````
+
+### 🛡️ Bypass de Autorización (post-auth)
+
+````tabs
+tab: **IDOR / BOLA (Object-Level)**
+![[Auth Bypass - Bypass de Autorizacion#^auth-authz-idor]]
+
+tab: **Mass Assignment (Field-Level)**
+![[Auth Bypass - Bypass de Autorizacion#^auth-authz-mass-assign]]
+
+tab: **Path-Based Privesc**
+![[Auth Bypass - Bypass de Autorizacion#^auth-authz-path]]
+
+tab: **Role Manipulation**
+![[Auth Bypass - Bypass de Autorizacion#^auth-authz-role]]
+
+tab: **Verb-Based Authorization Gaps (BFLA)**
+![[Auth Bypass - Bypass de Autorizacion#^auth-authz-bfla]]
+````
+
+### 🎟️ Tokens y Sessions
+
+````tabs
+tab: **JWT Bypass (Quick Reference)**
+![[Auth Bypass - Tokens y Sessions#^auth-tokens-jwt]]
+
+tab: **Session Fixation**
+![[Auth Bypass - Tokens y Sessions#^auth-tokens-fixation]]
+
+tab: **Predictable Tokens**
+![[Auth Bypass - Tokens y Sessions#^auth-tokens-predictable]]
+
+tab: **Cookie Tampering**
+![[Auth Bypass - Tokens y Sessions#^auth-tokens-cookie]]
+
+tab: **OAuth `redirect_uri` Manipulation**
+![[Auth Bypass - Tokens y Sessions#^auth-tokens-oauth]]
+````
+
+### 🌀 Flow Logic Flaws
+
+````tabs
+tab: **Password Reset Bypass / Token Leak**
+![[Auth Bypass - Flow Logic Flaws#^auth-flow-reset]]
+
+tab: **2FA Bypass**
+![[Auth Bypass - Flow Logic Flaws#^auth-flow-2fa]]
+
+tab: **Magic Link Reuse / Tampering**
+![[Auth Bypass - Flow Logic Flaws#^auth-flow-magic]]
+
+tab: **Email Confirmation Bypass**
+![[Auth Bypass - Flow Logic Flaws#^auth-flow-email-confirm]]
+
+tab: **OAuth State / Nonce Missing**
+![[Auth Bypass - Flow Logic Flaws#^auth-flow-oauth-state]]
+
+tab: **Race Conditions en Auth**
+![[Auth Bypass - Flow Logic Flaws#^auth-flow-race]]
+````
+
+### 💪 Brute Force y Credential Stuffing
+
+````tabs
+tab: **Default Credential Wordlists**
+![[Auth Bypass - Brute Force y Credential Stuffing#^auth-brute-defaults]]
+
+tab: **Password Spraying**
+![[Auth Bypass - Brute Force y Credential Stuffing#^auth-brute-spraying]]
+
+tab: **Username Enum + Targeted Brute**
+![[Auth Bypass - Brute Force y Credential Stuffing#^auth-brute-targeted]]
+
+tab: **Offline Crack (Hashcat / John)**
+![[Auth Bypass - Brute Force y Credential Stuffing#^auth-brute-hashcat]]
+
+tab: **Online (Hydra / Medusa / CME)**
+![[Auth Bypass - Brute Force y Credential Stuffing#^auth-brute-online]]
+
+tab: **Bypass Rate Limiting / Lockout**
+![[Auth Bypass - Brute Force y Credential Stuffing#^auth-brute-bypass]]
+````
+
+___
 
 ## Overview
 
-El objetivo es **acceder como otro usuario** o **elevar privilegios dentro de la misma cuenta**. Agrupa fallas de autenticación (¿quién sos?) y autorización (¿qué podés hacer?).
+**Authentication & Authorization Bypass** = familia de vulnerabilidades que permiten al atacante (a) **autenticarse como otro usuario** sin credenciales válidas o (b) **acceder a recursos / acciones no autorizadas** post-login. Combinable con virtually cualquier vector web — frequently chained con SQLi, HHI, IDOR, JWT, race conditions, mass assignment.
 
-### Orden de prioridad en un engagement
+OWASP Top 10 — A01 (2021) Broken Access Control. OWASP API Top 10 — API1 (BOLA), API2 (Authentication), API4 (BFLA), API5 (BOLA at function-level).
 
-1. **Recon de usuarios** antes de tocar passwords — si hay username enum, brute force se vuelve dirigido.
-2. **Default creds y weak passwords** — 5 min de trabajo, ROI alto.
-3. **Logic flaws en flows de reset/2FA/OAuth** — suelen pasar tests automáticos.
-4. **JWT/Session issues** — audita tokens, no solo tráfico.
-5. **IDOR / Mass Assignment** una vez dentro — autorización granular falla más que la auth inicial.
+### Diferencia Auth vs Authz
 
-### Headers que afectan auth
+| | **Authentication** | **Authorization** |
+|---|---|---|
+| Pregunta | "Quién sos?" | "Qué podés hacer?" |
+| Mecanismo | Credentials, tokens, sessions | RBAC, ACL, ownership checks |
+| Bypass focus | Login bypass, token forgery | Privesc, IDOR, mass assign |
+| OWASP API | API2 (Broken Authentication) | API1 BOLA, API4 BFLA |
+| Common bug | Default creds, SQLi login | IDOR, role tampering |
 
-| Header               | Abuso típico                                                     |
-| -------------------- | ---------------------------------------------------------------- |
-| `X-Forwarded-For`    | Bypass de IP allowlisting                                        |
-| `X-Original-URL`     | Bypass de path-based middleware                                  |
-| `X-Rewrite-URL`      | Mismo concepto                                                   |
-| `X-Forwarded-Host`   | Host header injection en password reset                          |
-| `Host`               | Cache poisoning, password reset hijack                           |
-| `Referer`            | Algunos sistemas lo usan para CSRF protection (bypasseable)      |
-| `Origin`             | CORS misconfig leads to auth info leak                           |
+Auth fails → atacante = different user. Authz fails → atacante = same user con escalated privilege.
 
-## Notas relacionadas
+### Diferencia con vulns relacionadas
 
-- [[BOLA - IDOR]] — bypass de authorization a nivel de objeto.
-- [[Cross-Site Request Forgery (CSRF)]] — autenticación válida forzada por atacante.
-- [[Session Hijacking XSS]] — robo de sesión post-auth.
-- [[JWT Atacks]] — tokens específicos, vectores propios.
+| | **Auth Bypass** | **CSRF** | **XSS** |
+|---|---|---|---|
+| Quién acción | Atacante posing as user | Victim browser forced | Atacante's script en víctima |
+| Vector | Login flow / token / session | Cross-site request | Reflected / stored input |
+| Necesita victim | NO (atacante actúa solo) | SÍ (logged-in victim) | SÍ (victim renders payload) |
+| Defense | Strong auth + token validation | CSRF token + SameSite | Output encode + CSP |
+
+___
+
+## Workflow de explotación
+
+```
+1. Reconocimiento:
+   - Map all auth/authz endpoints
+   - Identify user enumeration vectors
+   - Map multi-step flows (reset, 2FA, OAuth)
+
+2. Quick wins (5-min ROI):
+   - Default credentials (admin:admin)
+   - SQLi en login (' OR 1=1 --)
+   - Forced browsing (/admin direct)
+   - Header spoofing (X-Forwarded-For: 127.0.0.1)
+
+3. Token analysis:
+   - JWT decode → check alg, kid, claims
+   - Cookie inspection → tampering possible?
+   - Predict patterns → UUID v1, sequential IDs
+
+4. Flow logic flaws:
+   - Password reset poisoning (HHI chain)
+   - 2FA bypass via empty / replay / race
+   - OAuth redirect_uri manipulation
+   - Email confirmation skip
+
+5. Authorization (post-auth):
+   - IDOR sequential IDs
+   - Mass Assignment (isAdmin: true)
+   - Path-based privesc (/admin)
+   - Role manipulation en JWT/cookie
+
+6. Brute force (last resort):
+   - Password spraying (1 pass, many users)
+   - Targeted brute con username enum
+   - Bypass rate limit (HTTP/2 race, IP spoof)
+   - Offline crack (hashcat) si hashes obtenidos
+```
+
+___
+
+## Detección rápida
+
+### Indicadores en código backend
+
+```python
+# Python — VULN (no rate limit)
+@app.route('/login', methods=['POST'])
+def login():
+    if check_password(request.form['user'], request.form['pass']):
+        session['user'] = request.form['user']
+        return redirect('/dashboard')
+    return 'Invalid', 401
+
+# Python — SAFE (rate limit + lockout)
+@app.route('/login', methods=['POST'])
+@rate_limit('5 per 15 minutes')
+def login():
+    user = request.form['user']
+    if get_lockout(user):
+        return 'Account locked', 403
+    if check_password(user, request.form['pass']):
+        increment_success(user)
+        session['user'] = user
+        return redirect('/dashboard')
+    increment_failure(user)
+    return 'Invalid credentials', 401  # Generic
+```
+
+```javascript
+// Node.js — VULN (forced browsing)
+app.get('/admin', (req, res) => {
+    res.sendFile('admin.html');  // ← No auth check!
+});
+
+// Node.js — SAFE
+app.get('/admin', requireAdmin, (req, res) => {
+    res.sendFile('admin.html');
+});
+
+function requireAdmin(req, res, next) {
+    if (!req.user || req.user.role !== 'admin') {
+        return res.status(403).send('Forbidden');
+    }
+    next();
+}
+```
+
+### Probes mínimos
+
+```bash
+# 1. Username enumeration via timing
+for u in admin alice bob john; do
+  T=$(curl -s -o /dev/null -w '%{time_total}' \
+       -X POST -d "username=$u&password=wrong" https://target/login)
+  echo "$u: $T"
+done
+
+# 2. SQLi probe
+curl -X POST -d "username=admin' OR 1=1 -- &password=x" https://target/login
+
+# 3. Default creds
+hydra -L common-users.txt -P common-pass.txt target.com https-post-form \
+      "/login:user=^USER^&pass=^PASS^:F=Invalid"
+
+# 4. Forced browsing
+ffuf -w common-paths.txt -u https://target/FUZZ -fc 401,403,404
+
+# 5. Header spoofing
+curl -H "X-Forwarded-For: 127.0.0.1" -H "X-Original-URL: /admin" \
+     https://target/
+
+# 6. JWT analysis
+python3 jwt_tool.py <token> -M pb
+```
+
+___
+
+## Impacto
+
+- **Account takeover** — atacante = victim user.
+- **Privilege escalation** — user → admin.
+- **Data breach** — IDOR + bulk fetch users.
+- **Full app compromise** — admin = full control.
+- **Compliance violation** — auth bypass = SOC2/PCI fail.
+- **Financial fraud** — auth bypass + financial actions.
+- **Persistence** — backdoor account creation.
+- **Reputation damage** — visible breach.
+- **Lateral movement** — auth bypass en internal systems.
+- **Supply chain compromise** — auth bypass en CI/CD admin.
+
+___
+
+## Mitigación (defender)
+
+- **Strong password policy** — min 12 chars, complexity, breached password check (HIBP API).
+- **Rate limiting + lockout** — per IP + per user, exponential backoff.
+- **Generic error messages** — `Invalid credentials` (no diff valid/invalid user).
+- **MFA enforcement** — TOTP / WebAuthn / push, NOT SMS only.
+- **Server-side session validation** — never trust client-side auth flags.
+- **Strong session ID generation** — cryptographic random, ≥ 16 bytes.
+- **Session regeneration post-login** — kill old session, create new.
+- **HttpOnly + Secure + SameSite=Lax/Strict cookies** — defense in depth.
+- **Hardcoded URL en password reset** — never use Host header.
+- **Signed reset tokens** — even if URL hijacked, token invalid out-of-context.
+- **Single-use tokens con DB tracking** — `jti` blacklist after use.
+- **OAuth strict redirect_uri** — exact match, pre-registered, HTTPS only.
+- **OAuth state + PKCE** — required for all flows.
+- **JWT alg whitelist** — `algorithms=['RS256']` always specified.
+- **JWT key rotation** — periodic rotation + grace period.
+- **bcrypt / Argon2 con random salt** — slow hashing.
+- **No password en URL/logs** — query strings logged, never include creds.
+- **Audit log + monitoring** — failed logins, privesc attempts, anomalous patterns.
+- **Penetration testing periódico** — dedicated auth/authz testing.
+- **OWASP ASVS compliance** — comprehensive checklist.
+
+___
+
+## Para entender Auth Bypass
+
+**Por qué auth bypass sigue siendo común:**
+
+1. **Auth es complejo** — flows multi-step (reset, 2FA, OAuth) tienen muchos puntos de falla.
+2. **Frameworks default no son seguros** — devs olvidan rate limit, CSRF, validation.
+3. **Logic flaws no detectables por scanners** — automated tools miss multi-step bugs.
+4. **Mass Assignment / IDOR** son bugs de design, not coding mistake — más difíciles de fix.
+5. **Token validation laxa** — JWT con `alg=none` default, predictable secrets, weak crypto.
+6. **Race conditions modernos** — HTTP/2 single-packet attacks (Kettle 2023) revivieron vector.
+
+**Por qué auth y authz son hermanas pero distintas:**
+
+Auth (authentication) verifica identidad. Authz (authorization) verifica permission. Atacante puede:
+- Bypass auth → log in as victim (ATO).
+- Bypass authz → access victim's data despite weak auth (BOLA / IDOR).
+- Both → full compromise.
+
+App vulnerable typically falla en uno o ambos: weak password policy + IDOR = pre-auth recon → ATO via brute → IDOR para access bulk data.
+
+**Common chain pattern:**
+
+1. Username enumeration (timing).
+2. Password spraying (Spring2025!).
+3. JWT inspection (alg=none).
+4. IDOR sequential IDs (bulk extract).
+5. Mass Assignment (isAdmin: true).
+6. Persistencia via API key gen.
+
+Cada step bajo CVSS pero combined = catastrófico. Pen-testers raramente paran en un step.
+
+___
+
+## Recursos
+
+- [OWASP Top 10 - A01:2021 Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) — overview.
+- [OWASP API Top 10 - 2023](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) — API-specific.
+- [OWASP Authentication Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) — defense.
+- [OWASP Authorization Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) — defense.
+- [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) — comprehensive checklist.
+- [PortSwigger - Authentication](https://portswigger.net/web-security/authentication) — labs.
+- [PortSwigger - Access Control](https://portswigger.net/web-security/access-control) — labs.
+- [PayloadsAllTheThings - Authentication](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Account%20Takeover) — payloads.
+- [HackTricks - Authentication Bypass](https://book.hacktricks.xyz/pentesting-web/login-bypass) — referencia.
+- [HackerOne - Top OWASP](https://hackerone.com/top-10-vulnerabilities) — bug bounty insight.
+- [Have I Been Pwned API](https://haveibeenpwned.com/API/v3) — breach data.
 
 ***
