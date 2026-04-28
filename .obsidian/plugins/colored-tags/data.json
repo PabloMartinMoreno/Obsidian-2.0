@@ -626,7 +626,9 @@
     "vuln/subdomain-takeover": 32,
     "vuln/session-hijacking": 33,
     "vuln/crlf-injection": 34,
-    "vuln/hpp": 35
+    "vuln/hpp": 35,
+    "technique/chaining": 26,
+    "technique/tooling": 27
   },
   "_version": 3
 }
