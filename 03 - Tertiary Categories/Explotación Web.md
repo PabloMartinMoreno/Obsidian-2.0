@@ -23,6 +23,7 @@ type: Tertiary Category
 - [[OS Command Injection]] (Ejecución directa de comandos del sistema operativo en el servidor.)
 - [[Server-Side Template Injection (SSTI)]] (Inyección de código en plantillas web para obtener RCE.)
 - [[Server-Side Includes (SSI) Injection]] (Server-Side Includes: Inyección de directivas en servidores web para RCE.)
+- [[CRLF Injection]] (Inyección de caracteres `\r\n` en headers/body/protocolos: header injection (Set-Cookie/CSP bypass), HTTP response splitting + XSS, cache poisoning, SMTP email injection, log forgery, HRS combo, Memcached/Redis injection.)
 - [[XML Attacks]]
 	- [[XML External Entity (XXE)]] (Abuso del procesamiento XML para leer archivos o realizar SSRF.)
 	- [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]] (Inyección de transformaciones maliciosas para RCE o lectura de archivos.)
