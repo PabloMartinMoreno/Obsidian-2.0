@@ -14,97 +14,124 @@ secondary categories:
 tertiary categories:
   - "[[Explotación Web]]"
 type: Vulnerability
-linked:
 ---
+
 # Clickjacking
+
+UI redress: superponer página víctima en iframe casi invisible sobre UI atacante. El user clickea creyendo interactuar con la decoy, pero los clicks van al iframe → submits, transfers, password changes, OAuth grants ejecutados sin awareness.
 
 ***
 
-## Cheatsheet
+## Detección y Reconocimiento
 
-| **Escenario**                          | **Detección**                                                                              | **PoC**                                                                   |
-| -------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| **Falta de header X-Frame-Options**    | `curl -sI https://target/` — no aparece `X-Frame-Options` ni `Content-Security-Policy: frame-ancestors`. | iframe del target en página atacante → renderiza.                         |
-| **CSP frame-ancestors permisivo**      | `CSP: frame-ancestors *` o ausente                                                          | Permite embed desde cualquier origen.                                     |
-| **Bypass via sandbox attribute**       | `<iframe sandbox>`                                                                          | Remueve protecciones JavaScript anti-frame, útil para payload con interacción.|
-| **Target soporta iframes con opacity** | Botón/form crítico en posición predecible                                                   | Overlay opacity 0 + z-index con captura de clicks.                        |
-| **Drag-and-drop Clickjacking**         | Datos sensibles en campos inputs                                                            | `ondragstart` exfiltra el contenido arrastrado.                           |
-| **Cursor-jacking**                     | UX confuso                                                                                  | CSS `cursor: none` + cursor falso desplazado → usuario clickea donde cree.|
+```tabs
+tab: Headers Anti-Framing
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-headers]]
 
-## PoC estándar
+tab: CSP frame-ancestors
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-csp]]
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-  iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0.00001;
-    z-index: 2;
-  }
-  .decoy {
-    position: absolute;
-    top: 300px; left: 200px;
-    z-index: 1;
-    background: red; color: white;
-    padding: 20px; font-size: 24px;
-  }
-</style>
-</head>
-<body>
-  <div class="decoy">¡GANASTE! Click aquí</div>
-  <iframe src="https://target.com/admin/delete-account"></iframe>
-</body>
-</html>
+tab: Test de Framing Real
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-framing]]
 ```
 
-## Identificación rápida
+## Vectores Básicos
 
-```bash
-# Check headers
-curl -sI https://target.com/ | grep -iE 'x-frame-options|content-security-policy'
+```tabs
+tab: Opacity Overlay
+![[Clickjacking - Vectores Basicos#^cj-vector-opacity]]
 
-# Si no aparece ninguno → probablemente vulnerable
-# Si aparece "X-Frame-Options: SAMEORIGIN" o "DENY" → bloqueado
-# Si aparece "CSP: ... frame-ancestors 'self'" → bloqueado
-# Si aparece "CSP: ... frame-ancestors *" → vulnerable
+tab: Decoy Reposicionado
+![[Clickjacking - Vectores Basicos#^cj-vector-decoy]]
+
+tab: Doble Iframe Anidado
+![[Clickjacking - Vectores Basicos#^cj-vector-double-iframe]]
+
+tab: Fullscreen API
+![[Clickjacking - Vectores Basicos#^cj-vector-fullscreen]]
 ```
 
-## Overview
+## Variantes Avanzadas
 
-**Clickjacking** es una técnica de UI redressing donde un atacante superpone una página víctima (cargada en iframe) sobre una interfaz atacante, engañando al usuario para que ejecute acciones no intencionadas (submit de forms, transferencias, cambios de configuración).
+```tabs
+tab: Drag & Drop Jacking
+![[Clickjacking - Variantes Avanzadas#^cj-advanced-dragdrop]]
 
-### Vectores de impacto
+tab: Cursor Jacking
+![[Clickjacking - Variantes Avanzadas#^cj-advanced-cursorjacking]]
 
-- Confirmación de transferencias bancarias o pagos.
-- Cambios de password sin interacción explícita.
-- Posting en redes sociales.
-- Habilitación de cámaras/micrófonos en WebRTC.
-- Framing de formularios OAuth para robo de consentimiento.
+tab: Scroll Jacking
+![[Clickjacking - Variantes Avanzadas#^cj-advanced-scrolljacking]]
 
-### Prevención
+tab: Touch Jacking
+![[Clickjacking - Variantes Avanzadas#^cj-advanced-touchjacking]]
 
-```http
-X-Frame-Options: DENY
-# o
-X-Frame-Options: SAMEORIGIN
-
-# Mejor, usar CSP moderna:
-Content-Security-Policy: frame-ancestors 'self'
-# o
-Content-Security-Policy: frame-ancestors 'none'
+tab: Stroke Jacking
+![[Clickjacking - Variantes Avanzadas#^cj-advanced-strokejacking]]
 ```
 
-- **CSP `frame-ancestors`** es el estándar moderno, obsoleta a `X-Frame-Options`.
-- Frame busting por JavaScript (`if (top != self) top.location = self.location`) es **bypasseable** con `sandbox`.
-- SameSite cookies ayudan indirectamente (si la acción requiere cookie y está en `SameSite=Strict`, el iframe cross-origin no la envía).
+## Bypass de Anti-Framing
+
+```tabs
+tab: JS Frame-Busting
+![[Clickjacking - Bypass de Anti-Framing#^cj-bypass-jsbusting]]
+
+tab: Sandbox Attribute
+![[Clickjacking - Bypass de Anti-Framing#^cj-bypass-sandbox]]
+
+tab: X-Frame-Options
+![[Clickjacking - Bypass de Anti-Framing#^cj-bypass-xfo]]
+
+tab: CSP frame-ancestors
+![[Clickjacking - Bypass de Anti-Framing#^cj-bypass-csp]]
+
+tab: Browser Quirks
+![[Clickjacking - Bypass de Anti-Framing#^cj-bypass-quirks]]
+```
+
+## Chains con Otras Vulns
+
+```tabs
+tab: Self-XSS → Stored
+![[Clickjacking - Chains con Otras Vulns#^cj-chain-xss]]
+
+tab: SameSite Lax CSRF
+![[Clickjacking - Chains con Otras Vulns#^cj-chain-csrf]]
+
+tab: OAuth Consent
+![[Clickjacking - Chains con Otras Vulns#^cj-chain-oauth]]
+
+tab: WebRTC Hijack
+![[Clickjacking - Chains con Otras Vulns#^cj-chain-webrtc]]
+
+tab: Subdomain Takeover
+![[Clickjacking - Chains con Otras Vulns#^cj-chain-subtakeover]]
+```
+
+## Tooling
+
+```tabs
+tab: Burp + Clickbandit
+![[Clickjacking - Tooling#^cj-tool-burp]]
+
+tab: PoC Generators
+![[Clickjacking - Tooling#^cj-tool-generators]]
+
+tab: Scanners
+![[Clickjacking - Tooling#^cj-tool-scanners]]
+
+tab: Browser DevTools
+![[Clickjacking - Tooling#^cj-tool-devtools]]
+
+tab: Wordlists & Repos
+![[Clickjacking - Tooling#^cj-tool-wordlists]]
+```
+
+***
 
 ## Notas relacionadas
 
-- [[Cross-Site Scripting (XSS)]] — clickjacking + XSS = exploit más potente.
-- [[Cross-Site Request Forgery (CSRF)]] — técnica análoga sin UI.
-
-***
+- [[Cross-Site Scripting (XSS)]] — chain Self-XSS → Stored via clickjack del submit.
+- [[Cross-Site Request Forgery (CSRF)]] — técnica análoga sin UI; clickjack bypassea SameSite=Lax.
+- [[Open Redirect]] — combo OAuth consent + redirect_uri controlado.
+- [[HTML Injection]] — inyección estática que puede habilitar self-framing.
