@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Directory Traversal",
-      "path": "04 - Content/Directory Traversal.md"
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQL Commands",
+      "path": "04 - Content/SQL Commands.md"
     },
     {
       "basename": "Explotación Web",
       "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "Directory Traversal",
+      "path": "04 - Content/Directory Traversal.md"
     },
     {
       "basename": "Cross-Site Request Forgery (CSRF)",
@@ -35,10 +43,6 @@
     {
       "basename": "NoSQL Injection",
       "path": "04 - Content/NoSQL Injection.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "JWT Attacks",
@@ -195,10 +199,6 @@
     {
       "basename": "Active Directory Explotación",
       "path": "04 - Content/Active Directory Explotación.md"
-    },
-    {
-      "basename": "GetUserSPNs.py",
-      "path": "04 - Content/GetUserSPNs.py.md"
     }
   ],
   "omittedPaths": [],
