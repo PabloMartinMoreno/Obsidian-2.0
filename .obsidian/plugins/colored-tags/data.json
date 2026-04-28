@@ -620,7 +620,9 @@
     "vuln/ldap-injection": 27,
     "asset/directory-service": 19,
     "vuln/jndi-injection": 28,
-    "vuln/mass-assignment": 29
+    "vuln/mass-assignment": 29,
+    "vuln/html-injection": 30,
+    "vuln/host-header-injection": 31
   },
   "_version": 3
 }

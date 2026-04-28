@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Authentication & Authorization Bypass.md"
+    },
+    {
+      "basename": "Explotación Web",
+      "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQL Commands",
       "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "Explotación Web",
-      "path": "03 - Tertiary Categories/Explotación Web.md"
     },
     {
       "basename": "Directory Traversal",
@@ -55,10 +59,6 @@
     {
       "basename": "Burp Suite",
       "path": "04 - Content/Burp Suite.md"
-    },
-    {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
       "basename": "JWT - Tooling y Brute Force",
