@@ -628,7 +628,12 @@
     "vuln/crlf-injection": 34,
     "vuln/hpp": 35,
     "technique/chaining": 26,
-    "technique/tooling": 27
+    "technique/tooling": 27,
+    "technique/social-engineering": 28,
+    "vuln/oauth": 36,
+    "technique/redirect-bypass": 29,
+    "technique/account-binding": 30,
+    "technique/account-takeover": 31
   },
   "_version": 3
 }

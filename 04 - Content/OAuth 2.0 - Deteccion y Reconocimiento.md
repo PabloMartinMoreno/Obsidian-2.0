@@ -1,145 +1,213 @@
 ---
 aliases:
-  - OAuth 2.0 Detection
+  - OAuth Detection
   - OAuth Recon
+  - .well-known Discovery
+  - Client ID Enum
 tags:
+  - type/cheatsheet
   - vuln/oauth
-  - technique/recon
   - technique/discovery
-primary: "[[OAuth 2.0 Misconfigurations]]"
+  - asset/web-app
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: CheatSheet
+linked:
+  - "[[OAuth 2.0 Misconfigurations]]"
+  - "[[Burp Suite]]"
 ---
-
 # OAuth 2.0 - Detección y Reconocimiento
 
-Pre-explotación: descubrir endpoints, flow type, client_id values, response_type permitidos. Sin esto, todos los ataques siguientes son ciegos.
+***
 
 ## Discovery via .well-known
 
-OAuth 2.0 + OpenID Connect exponen metadata en endpoints estándar. Todo el flow se mapea desde acá.
+| **Endpoint** | **Spec** | **Notas** |
+|:---:|:---:|:---:|
+| `/.well-known/oauth-authorization-server` | RFC 8414 | Authorization server metadata. |
+| `/.well-known/openid-configuration` | OIDC Discovery | Includes OAuth + OIDC fields. |
+| `/.well-known/jwks.json` (via `jwks_uri`) | RFC 7517 | Public keys para JWT verify. |
+| `/.well-known/oauth-protected-resource` | RFC 9728 (draft) | Resource server metadata. |
+| `authorization_endpoint` | OAuth core | Where authz request goes. |
+| `token_endpoint` | OAuth core | Where code/token exchange. |
+| `introspection_endpoint` | RFC 7662 | Token validity check. |
+| `revocation_endpoint` | RFC 7009 | Token revoke. |
+| `userinfo_endpoint` | OIDC | User claims (id_token complement). |
+| `registration_endpoint` | RFC 7591 | Dynamic Client Registration. |
+| `device_authorization_endpoint` | RFC 8628 | Device flow start. |
+| `grant_types_supported` | Discovery | Lists implicit/code/device/etc. |
+| `response_types_supported` | Discovery | code, token, id_token combos. |
+| `code_challenge_methods_supported` | RFC 7636 | PKCE: `S256`/`plain`. |
+| `token_endpoint_auth_methods_supported` | Discovery | `none`/`client_secret_post`/`client_secret_basic`. |
+^oauth-detect-wellknown
 
-| Endpoint | Spec | Datos clave |
-|----------|------|-------------|
-| `/.well-known/oauth-authorization-server` | RFC 8414 | `authorization_endpoint`, `token_endpoint`, `grant_types_supported`, `response_types_supported` |
-| `/.well-known/openid-configuration` | OIDC Discovery | Above + `userinfo_endpoint`, `jwks_uri`, `issuer`, `id_token_signing_alg_values_supported` |
-| `/.well-known/jwks.json` (via `jwks_uri`) | RFC 7517 | Public keys para JWT verification |
-| `/.well-known/oauth-protected-resource` | RFC 9728 (draft) | Resource server metadata |
+### Discovery rápido
 
 ```bash
-# Discovery completo
+# Full discovery
 curl -s https://target/.well-known/openid-configuration | jq .
 
 # Campos críticos
 curl -s https://target/.well-known/openid-configuration | jq '{
   authorization_endpoint,
   token_endpoint,
+  registration_endpoint,
   grant_types_supported,
   response_types_supported,
   scopes_supported,
   token_endpoint_auth_methods_supported,
   code_challenge_methods_supported
 }'
+
+# Red flags
+# - response_types_supported incluye "token"/"id_token" → implicit habilitado (deprecated)
+# - code_challenge_methods_supported ausente o solo "plain" → PKCE débil
+# - token_endpoint_auth_methods_supported: ["none"] → public clients sin secret
+# - registration_endpoint sin auth → dynamic client registration abierta
 ```
 
-Red flags al revisar metadata:
-- `response_types_supported` incluye `token` o `id_token` → implicit flow habilitado (deprecated, vulnerable a leaks).
-- `code_challenge_methods_supported` ausente o solo `plain` → PKCE débil.
-- `token_endpoint_auth_methods_supported: ["none"]` → public clients sin secret.
-- `subject_types_supported: ["public"]` → mismo `sub` global → tracking cross-app.
-
-^oauth-detect-wellknown
+___
 
 ## Identificación de Flow Type
 
-Cada flow tiene attack surface distinta. Identificar primero qué flow se usa.
+| **Flow** | **Indicador** | **Notas** |
+|:---:|:---:|:---:|
+| Authorization Code | `response_type=code` | Web apps confidential — most secure. |
+| Auth Code + PKCE | `response_type=code` + `code_challenge=...` | SPA/mobile recommended. |
+| Implicit | `response_type=token` o `id_token` | Legacy SPA — deprecated 2020. |
+| Hybrid | `response_type=code id_token` | OIDC complejo. |
+| Client Credentials | `grant_type=client_credentials` | M2M — no user. |
+| Resource Owner Password | `grant_type=password` | Legacy — credential exposure. |
+| Device Authorization | `grant_type=urn:ietf:params:oauth:grant-type:device_code` | TVs/IoT. |
+| Refresh Token | `grant_type=refresh_token` | Long sessions. |
+| JWT Bearer | `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer` | RFC 7523. |
+| SAML Bearer | `grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer` | Enterprise. |
+| Token Exchange | `grant_type=urn:ietf:params:oauth:grant-type:token-exchange` | RFC 8693. |
+| `prompt=none` silent | Silent auth si session existe | Combo CSRF. |
+| `prompt=login` force | Force re-auth | Defense. |
+| `display=popup` | Popup modal | Combo `window.opener`. |
+| `display=touch` | Mobile UX | App-specific. |
+^oauth-detect-flow
 
-| Flow | Indicador en URL | Cuándo se usa | Vulns típicas |
-|------|------------------|---------------|---------------|
-| **Authorization Code** | `response_type=code` | Web apps confidential | redirect_uri bypass, code reuse, mix-up |
-| **Auth Code + PKCE** | `response_type=code` + `code_challenge=...` | SPA, mobile | PKCE downgrade, code_verifier leak |
-| **Implicit** | `response_type=token` o `id_token` | Legacy SPA (deprecated 2020) | Token en fragment, referer leak, `window.opener` theft |
-| **Hybrid** | `response_type=code id_token` | OIDC | Code + id_token race, nonce skip |
-| **Client Credentials** | `grant_type=client_credentials` | M2M | Secret leak, scope upgrade |
-| **Resource Owner Password** | `grant_type=password` | Legacy (avoid) | Credential exposure, no MFA |
-| **Device Authorization** | `grant_type=urn:ietf:params:oauth:grant-type:device_code` | TVs, IoT | Device code phishing, polling abuse |
-| **Refresh Token** | `grant_type=refresh_token` | Long sessions | Rotation broken, replay |
+### Capture flow real
 
 ```bash
-# Capturar flow real con Burp Proxy → ver request a /authorize
-# Buscar params críticos:
-# response_type, client_id, redirect_uri, scope, state, nonce, code_challenge
+# Burp Proxy → loggear request a /authorize
+# Identificar:
+# - response_type
+# - client_id  
+# - redirect_uri
+# - scope
+# - state, nonce
+# - code_challenge, code_challenge_method
+# - prompt, display
 ```
 
-^oauth-detect-flow
+___
 
 ## Client ID Enumeration
 
-`client_id` no es secret en OAuth — viaja en URL pública. Pero enumerar todos los registered clients del provider revela attack surface.
+| **Técnica** | **Comando/Acción** | **Notas** |
+|:---:|:---:|:---:|
+| Frontend JS recon | `curl -s https://target \| grep -oE 'client_id["\s]*[:=]["\s]*[a-zA-Z0-9-]+'` | Hardcoded common. |
+| JS bundle dump | `wget -r https://target/static/js/ && grep -r 'client_id' .` | Bundles. |
+| Source maps | `*.js.map` files reveal originals | Webpack default. |
+| Mobile APK decompile | `apktool d app.apk && grep -r 'client_id' .` | Android. |
+| Mobile IPA strings | `unzip app.ipa && strings Payload/*.app/* \| grep -i client` | iOS. |
+| GitHub dorks | `"client_id" "victim.com" site:github.com` | Leaked configs. |
+| GitLab/Bitbucket dorks | Similar dorks | Adjacent. |
+| Wayback Machine | `web.archive.org/web/*/target/oauth*` | Historical. |
+| Common pattern guess | `web`, `mobile`, `ios`, `android`, `cli`, `desktop` | Default IDs. |
+| Dev/staging prefixes | `dev-clientid`, `staging-`, `test-` | Sibling apps. |
+| Postman/Insomnia leaks | Public collections con tokens | OSINT. |
+| Dynamic Registration | `POST /register` si endpoint expuesto sin auth | Jackpot. |
+| OAuth-error message leak | Error responses reveal valid client_ids | Verbose errors. |
+| Mobile intent filters | `manifest.xml` reveals OAuth schemes | Android. |
+| `discovery_endpoint` per-tenant | Multi-tenant providers expose tenant client_ids | SaaS. |
+^oauth-detect-clientid
 
-| Técnica | Cómo | Output |
-|---------|------|--------|
-| **Recon en frontend** | Buscar en JS bundles: `client_id`, `clientId`, `oauth_client` | IDs hardcoded |
-| **Mobile app decompile** | `apktool d app.apk` → `grep -r 'client_id' .` | Mobile client IDs |
-| **GitHub dorks** | `"client_id" "victim.com"` site:github.com | Leaked configs |
-| **Wayback Machine** | `web.archive.org/web/*/target/oauth*` | Historical client IDs |
-| **Dynamic Registration** (RFC 7591) | `POST /register` si endpoint expuesto | Crear client controlled |
-| **Common patterns** | Probar `web`, `mobile`, `ios`, `android`, `cli` | Default IDs |
-| **Dev/staging mix** | `dev-clientid`, `staging-`, `test-` prefixes | Lower-secured siblings |
+### Dynamic Registration test (jackpot si abierto)
 
 ```bash
-# Frontend dump
-curl -s https://target | grep -oE 'client_id["\s]*[:=]["\s]*[a-zA-Z0-9-]+' | sort -u
-
-# Dynamic registration check (si está abierto = jackpot)
 curl -X POST https://target/oauth/register \
   -H 'Content-Type: application/json' \
-  -d '{"client_name":"test","redirect_uris":["https://attacker.com/cb"]}'
+  -d '{
+    "client_name": "test-recon",
+    "redirect_uris": ["https://attacker.com/cb"],
+    "grant_types": ["authorization_code", "refresh_token"],
+    "response_types": ["code"],
+    "scope": "openid email profile"
+  }'
+# Si returns client_id/client_secret sin auth → critical misconfig
 ```
 
-Si dynamic registration está abierto sin auth → atacante registra client con redirect_uri controlado → todo el resto del attack es trivial.
-
-^oauth-detect-clientid
+___
 
 ## Response Type & Scope Discovery
 
-Probar qué `response_type` values y `scope` values acepta el server. Combos no documentados = ataque chain.
+| **Test** | **Request** | **Notas** |
+|:---:|:---:|:---:|
+| Response type fuzz | `?response_type=code` / `token` / `id_token` cada uno | Cuáles acepta. |
+| Combined response types | `?response_type=code id_token token` | Hybrid soportado? |
+| Scope brute común | `openid`, `profile`, `email`, `offline_access` | Standard. |
+| Scope sensitive guess | `admin`, `internal`, `*`, `read:internal`, `user.read` | App-specific. |
+| Scope mass list | SecLists `oauth-scopes.txt` | Wordlist. |
+| Custom scope formats | `read:users`, `write:admin`, `org:internal` | Guess by context. |
+| `scope=*` wildcard | Some servers return all granted scopes | Greedy. |
+| `prompt=none` silent grant | Si user logged in IdP → silent code | Combo CSRF. |
+| `display=popup` | Popup mode | Combo `window.opener` postMessage. |
+| `display=touch` | Mobile UX | App-specific. |
+| `nonce=XYZ` | Para id_token replay defense | OIDC. |
+| `acr_values` | Authentication Context Class | MFA forced. |
+| `max_age=0` | Force re-auth | Defense. |
+| `id_token_hint` | Pre-fill subject | Logout combo. |
+| `request` JWT param | RFC 9101 — full request as JWT | Advanced. |
+| `request_uri` JAR | Pull request from URI | SSRF combo. |
+^oauth-detect-response
 
-| Test | Request | Lo que muestra |
-|------|---------|---------------|
-| Response type fuzzing | `?response_type=code,token,id_token` cada uno | Cuáles acepta el server |
-| Combined response types | `?response_type=code id_token token` | Hybrid flow soportado? |
-| Scope brute | `?scope=admin email profile openid offline_access ...` | Qué scopes aceptan sin error |
-| Custom scopes | `?scope=read:internal` | Scopes app-specific |
-| Scope upgrade | Cambiar token con scope mayor en re-consent | Silent escalation viable? |
-| `prompt=none` | `?prompt=none` | Silent re-auth (combo CSRF) |
-| `display=popup` | `?display=popup` | Popup mode (combo `window.opener`) |
+### Scope enum loop
 
 ```bash
-# Scope enum
-for scope in openid profile email admin internal user.read offline_access; do
+KNOWN_CLIENT="abc123"
+KNOWN_REDIRECT="https://known.com/cb"
+
+for scope in openid profile email admin internal user.read offline_access write read:admin; do
   echo "=== $scope ==="
-  curl -sI "https://target/oauth/authorize?client_id=KNOWN&response_type=code&redirect_uri=https://known.com&scope=$scope" \
+  curl -sI "https://target/oauth/authorize?client_id=$KNOWN_CLIENT&response_type=code&redirect_uri=$KNOWN_REDIRECT&scope=$scope&state=XYZ" \
     | grep -iE 'location|error'
 done
 ```
 
-^oauth-detect-response
+___
 
-## Redirect URI Registration Check
+## Redirect URI Validation Type
 
-Antes de bypass attempts, identificar cómo el server valida `redirect_uri`. Determina qué bypass funciona.
+| **Validación server-side** | **Test** | **Notas** |
+|:---:|:---:|:---:|
+| Exact match | `redirect_uri=https://known.com/cb/extra` → error | Solo Open Redirect chain explota. |
+| Prefix match | `redirect_uri=https://known.com/cb.attacker.com` → OK | Suffix abuse posible. |
+| Substring match | `redirect_uri=https://attacker.com/known.com/cb` → OK | Substring smuggle. |
+| Hostname only (no path) | `redirect_uri=https://known.com/anything` → OK | Path attacks. |
+| Domain wildcard | `redirect_uri=https://anything.known.com/cb` → OK | Subdomain takeover combo. |
+| Scheme flexible | `redirect_uri=javascript://known.com/...` → OK | Scheme abuse. |
+| Multiple registered | Probar todos los registered URIs | Pick weakest. |
+| Trailing slash optional | `cb/` vs `cb` distinto | Normalize bug. |
+| Case insensitive | `KNOWN.com` aceptado | Normalize. |
+| Userinfo `@` accepted | `https://known.com@attacker.com/cb` | Parser confusion. |
+| Fragment `#@` trick | `https://attacker.com#@known.com/cb` | Parser confusion. |
+| Unicode IDN | `https://kńown.com/cb` punycode | Homograph. |
+| `?@` query trick | `https://known.com?@attacker.com/cb` | Parser confusion. |
+| `\` backslash | `https://known.com\.attacker.com/cb` | Parser inconsistent. |
+| Triple slash | `https:///attacker.com/cb` | Edge parser. |
+| Loopback flexibility | `http://127.0.0.1:PORT/cb` | Public client allowed. |
+^oauth-detect-redirect
 
-| Validación | Test | Bypass aplicable |
-|------------|------|------------------|
-| **Exact match** | `redirect_uri=https://known.com/cb/extra` → error | Solo via Open Redirect chain |
-| **Prefix match** | `redirect_uri=https://known.com/cb.attacker.com` → OK | Suffix abuse |
-| **Substring match** | `redirect_uri=https://attacker.com/known.com/cb` → OK | Substring smuggle |
-| **Hostname match (no path)** | `redirect_uri=https://known.com/anything` → OK | Path traversal en cb |
-| **Domain wildcard** | `redirect_uri=https://anything.known.com/cb` → OK | Subdomain takeover |
-| **Scheme flexible** | `redirect_uri=javascript://known.com/...` → OK | Scheme abuse |
-| **Multiple registered** | Probar todos los registered URIs | Pick weakest |
+### Test suite redirect_uri
 
 ```bash
-# Detect validation type
+KNOWN_CLIENT="abc123"
+
 for uri in \
   "https://known.com/cb" \
   "https://known.com/cb/extra" \
@@ -147,12 +215,17 @@ for uri in \
   "https://known.com.attacker.com/cb" \
   "https://attacker.com/known.com/cb" \
   "https://sub.known.com/cb" \
-  "javascript://known.com/%0aalert(1)"; do
+  "https://known.com@attacker.com/cb" \
+  "https://attacker.com#@known.com/cb" \
+  "https://known.com\\.attacker.com/cb" \
+  "javascript://known.com/%0aalert(1)" \
+  "data:text/html,test" \
+  "https:///attacker.com/cb"; do
   ENC=$(printf '%s' "$uri" | jq -sRr @uri)
   CODE=$(curl -s -o /dev/null -w '%{http_code}' \
-    "https://target/oauth/authorize?client_id=KNOWN&response_type=code&redirect_uri=$ENC")
+    "https://target/oauth/authorize?client_id=$KNOWN_CLIENT&response_type=code&redirect_uri=$ENC&scope=email&state=XYZ")
   echo "$CODE  $uri"
 done
 ```
 
-^oauth-detect-redirect
+***
