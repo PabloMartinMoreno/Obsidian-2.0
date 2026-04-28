@@ -5,6 +5,14 @@
       "path": "03 - Tertiary Categories/Explotación Web.md"
     },
     {
+      "basename": "Remote File Inclusion (RFI)",
+      "path": "04 - Content/Process/Remote File Inclusion (RFI).md"
+    },
+    {
+      "basename": "Server-Side Includes (SSI) Injection",
+      "path": "04 - Content/Server-Side Includes (SSI) Injection.md"
+    },
+    {
       "basename": "Authentication & Authorization Bypass",
       "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
@@ -161,10 +169,6 @@
       "path": "04 - Content/Process/CWES.md"
     },
     {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Server-Side Includes (SSI) Injection.md"
-    },
-    {
       "basename": "SSRF - CWES",
       "path": "04 - Content/SSRF - CWES.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Explotación Web",
       "path": "04 - Content/Process/Explotación Web.md"
-    },
-    {
-      "basename": "Active Directory Explotación",
-      "path": "04 - Content/Active Directory Explotación.md"
     }
   ],
   "omittedPaths": [],

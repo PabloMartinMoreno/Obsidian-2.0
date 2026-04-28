@@ -625,7 +625,8 @@
     "vuln/host-header-injection": 31,
     "vuln/subdomain-takeover": 32,
     "vuln/session-hijacking": 33,
-    "vuln/crlf-injection": 34
+    "vuln/crlf-injection": 34,
+    "vuln/hpp": 35
   },
   "_version": 3
 }
