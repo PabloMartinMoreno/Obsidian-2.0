@@ -16,7 +16,7 @@ secondary categories:
 tertiary categories:
 type: CheatSheet
 linked:
-  - "[[JWT Atacks]]"
+  - "[[JWT Attacks]]"
 ---
 # JWT - Ataques al Algoritmo
 

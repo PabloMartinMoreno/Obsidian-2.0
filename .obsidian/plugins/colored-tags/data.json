@@ -616,7 +616,11 @@
     "vuln/graphql": 23,
     "vuln/cache-poisoning": 24,
     "vuln/race-condition": 25,
-    "vuln/open-redirect": 26
+    "vuln/open-redirect": 26,
+    "vuln/ldap-injection": 27,
+    "asset/directory-service": 19,
+    "vuln/jndi-injection": 28,
+    "vuln/mass-assignment": 29
   },
   "_version": 3
 }

@@ -14,17 +14,16 @@ tertiary categories:
   - "[[Explotación Web]]"
 type: CheatSheet
 linked:
-  - "[[SQL Commands]]"
-  - "[[SQLi - Error based]]"
+  - "[[File Inclusion]]"
   - "[[SQLi  - Union based]]"
+  - "[[SQLi - Error based]]"
   - "[[SQLi - Boolean based]]"
   - "[[SQLi - Time based]]"
   - "[[SQLi - Out of Band]]"
   - "[[SQLi - Second order]]"
   - "[[SQLi - Routed]]"
   - "[[SQLi - Lateral]]"
-  - "[[sqlmap]]"
-  - "[[Burp Suite]]"
+  - "[[SQL Commands]]"
 ---
 # SQL Injection (SQLi)
 

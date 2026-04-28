@@ -22,7 +22,7 @@ linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[Insecure Direct Object References (IDOR)]]"
   - "[[Cross-Site Request Forgery (CSRF)]]"
-  - "[[JWT Atacks]]"
+  - "[[JWT Attacks]]"
 ---
 # Burp Suite
 

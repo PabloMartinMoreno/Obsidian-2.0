@@ -1,8 +1,84 @@
 {
   "recentFiles": [
     {
+      "basename": "Directory Traversal",
+      "path": "04 - Content/Directory Traversal.md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "BOLA - IDOR",
+      "path": "04 - Content/BOLA - IDOR.md"
+    },
+    {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
+      "basename": "File Inclusion",
+      "path": "04 - Content/File Inclusion.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
+    },
+    {
+      "basename": "NoSQL Injection",
+      "path": "04 - Content/NoSQL Injection.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "JWT Attacks",
+      "path": "04 - Content/JWT Attacks.md"
+    },
+    {
+      "basename": "Cookies y Sesiones",
+      "path": "04 - Content/Process/Cookies y Sesiones.md"
+    },
+    {
+      "basename": "Burp Suite",
+      "path": "04 - Content/Burp Suite.md"
+    },
+    {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Authentication & Authorization Bypass.md"
+    },
+    {
+      "basename": "JWT - Tooling y Brute Force",
+      "path": "04 - Content/JWT - Tooling y Brute Force.md"
+    },
+    {
+      "basename": "JWT - Manipulacion de Claims",
+      "path": "04 - Content/JWT - Manipulacion de Claims.md"
+    },
+    {
+      "basename": "JWT - Inyeccion en Headers",
+      "path": "04 - Content/JWT - Inyeccion en Headers.md"
+    },
+    {
+      "basename": "JWT - Ataques al Algoritmo",
+      "path": "04 - Content/JWT - Ataques al Algoritmo.md"
+    },
+    {
+      "basename": "JWT - Deteccion y Reconocimiento",
+      "path": "04 - Content/JWT - Deteccion y Reconocimiento.md"
+    },
+    {
+      "basename": "Open Redirect",
+      "path": "04 - Content/Open Redirect.md"
     },
     {
       "basename": "Web Cache Poisoning",
@@ -21,16 +97,8 @@
       "path": "04 - Content/Prototype Pollution.md"
     },
     {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
       "basename": "CSRF - Bypass de Token",
       "path": "04 - Content/CSRF - Bypass de Token.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
     },
     {
       "basename": "HTTP Request Smuggling",
@@ -41,16 +109,8 @@
       "path": "04 - Content/Process/HTTP Brute Forcing.md"
     },
     {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Authentication & Authorization Bypass.md"
-    },
-    {
       "basename": "Insecure Deserialization",
       "path": "04 - Content/Insecure Deserialization.md"
-    },
-    {
-      "basename": "JWT Attacks",
-      "path": "04 - Content/JWT Attacks.md"
     },
     {
       "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
@@ -61,24 +121,12 @@
       "path": "04 - Content/XSLT - Lectura de Archivos (document).md"
     },
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
-    },
-    {
       "basename": "XSLT - Fingerprinting",
       "path": "04 - Content/XSLT - Fingerprinting.md"
     },
     {
-      "basename": "Burp Suite",
-      "path": "04 - Content/Burp Suite.md"
-    },
-    {
       "basename": "Usage",
       "path": "05 - Writeups/HackTheBox/Usage.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
     },
     {
       "basename": "CWES - Maquinas",
@@ -107,10 +155,6 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "NoSQL Injection",
-      "path": "04 - Content/NoSQL Injection.md"
     },
     {
       "basename": "Server-Side Includes (SSI) Injection",
@@ -155,50 +199,6 @@
     {
       "basename": "GetUserSPNs.py",
       "path": "04 - Content/GetUserSPNs.py.md"
-    },
-    {
-      "basename": "Cheklist para el Examen CBBH",
-      "path": "04 - Content/Process/Cheklist para el Examen CBBH.md"
-    },
-    {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/OS Command Injection.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "sqlmap",
-      "path": "04 - Content/sqlmap.md"
-    },
-    {
-      "basename": "Windows Post-Explotación",
-      "path": "04 - Content/Process/Windows Post-Explotación.md"
-    },
-    {
-      "basename": "Post-Explotación",
-      "path": "02 - Secondary Categories/Post-Explotación.md"
-    },
-    {
-      "basename": "Linux Post-Explotación",
-      "path": "04 - Content/Process/Linux Post-Explotación.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Active Directory Enumeration",
-      "path": "03 - Tertiary Categories/Active Directory Enumeration.md"
-    },
-    {
-      "basename": "AD - Password Policy Enumeration",
-      "path": "04 - Content/AD - Password Policy Enumeration.md"
     }
   ],
   "omittedPaths": [],
