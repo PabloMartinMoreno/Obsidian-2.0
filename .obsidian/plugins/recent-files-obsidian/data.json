@@ -5,8 +5,12 @@
       "path": "03 - Tertiary Categories/Explotación Web.md"
     },
     {
-      "basename": "Remote File Inclusion (RFI)",
-      "path": "04 - Content/Process/Remote File Inclusion (RFI).md"
+      "basename": "Clickjacking",
+      "path": "04 - Content/Clickjacking.md"
+    },
+    {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
     },
     {
       "basename": "Server-Side Includes (SSI) Injection",
@@ -39,10 +43,6 @@
     {
       "basename": "BOLA - IDOR",
       "path": "04 - Content/BOLA - IDOR.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
     },
     {
       "basename": "File Inclusion",
