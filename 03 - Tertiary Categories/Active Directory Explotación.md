@@ -16,7 +16,7 @@ secondary categories:
   - "[[Explotación]]"
 type: Tertiary Category
 ---
-# Explotación de Active Directory
+# Active Directory Explotación
 
 Roadmap post-foothold inicial: credential access → privilege escalation → dominance & persistence.
 

@@ -13,7 +13,7 @@ secondary categories:
   - "[[Information Gathering]]"
 type: Tertiary Category
 ---
-# Enumeración de Active Directory
+# Active Directory Enumeración
 
 Discovery → Identities → Permissions → Attack Paths.
 
