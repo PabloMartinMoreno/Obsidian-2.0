@@ -1,6 +1,7 @@
 ---
 aliases:
   - Enumeración de Active Directory
+  - AD Enumeration
 tags:
   - type/moc/tertiary
   - asset/active-directory
@@ -14,46 +15,43 @@ type: Tertiary Category
 ---
 # Enumeración de Active Directory
 
-Discovery: ¿Qué hay ahí? (Hosts, Redes).
-Identities: ¿Quién está ahí? (Users, Groups).
-Permissions: ¿Qué pueden hacer? (ACLs, GPOs, Delegation).
-Attack Paths: ¿Cómo llego al objetivo? (BloodHound, Grafos).
+Discovery → Identities → Permissions → Attack Paths.
 
 ***
 
 ## 🗺 Domain & Network Discovery
-  Identificación de hosts, topología y características generales del dominio.
+Identificación de hosts, topología y características generales del dominio.
 
-- [[AD - Hosts Enumeration]] (Descubrimiento de máquinas unidas al dominio.)
-- [[AD - Network Layout]] (Mapeo de la estructura de red y subredes.)
-- [[AD - Domain & Forest Trusts]] (Identificación de relaciones de confianza entre dominios y bosques.)
-- [[AD - DNS & SRV Records]] (Enumeración de registros DNS específicos de AD como _ldap y _kerberos.)
-
-
-## 🆔 User & Group Intelligence
-  Recopilación de información sobre identidades y sus asociaciones.
-
-- [[AD - Users & Groups Enumeration]] (Obtención de listas de usuarios, grupos y sus atributos.)
-- [[AD - Password Policy Enumeration]] (Descubrimiento de la política de contraseñas del dominio.)
-- [[AD - LAPS Enumeration]] (Verificar si LAPS está implementado y quién puede leer las contraseñas de administrador local.)
+- [[AD - Hosts Enumeration]] (DC location via SRV records, computer objects, sites, subnets, OUs, RID brute, RPC enum.)
+- [[AD - DNS & SRV Records]] (Discovery via `_ldap._tcp.dc._msdcs`, AXFR transfer, adidnsdump, AD-integrated zones.)
+- [[AD - Domain & Forest Trusts]] (Trust enum, direction/type, transitive vs non-transitive, cross-forest mapping.)
 
 
-## 🔎 Object & Security Auditing
-  Inspección detallada de objetos del directorio y controles de seguridad.
+## 🆔 Users, Groups & Privileged Identities
+Recopilación de información sobre identidades, atributos y asociaciones privilegiadas.
 
-- [[AD - Object Permissions Enumeration]] (Auditoría de ACLs en objetos AD para identificar configuraciones inseguras.)
-- [[AD - Security Controls Enumeration]] (Identificación de configuraciones de seguridad, como GPOs o políticas de auditoría.)
-- [[AD - Certificate Services (AD CS) Enumeration]] (Enumeración de plantillas de certificados vulnerables - CRÍTICO hoy en día.)
-- [[AD - Delegation Enumeration]] (Identificación de computadoras/usuarios con delegación incondicional o restringida.)
-- [[AD - GPO & SYSVOL Enumeration]] (Búsqueda específica de contraseñas en scripts o preferencias de grupo en SYSVOL.)
+- [[AD - Users Enumeration]] (samAccountName, UPN, attributes, UAC flags, SPNs, asreproastable, kerberoastable.)
+- [[AD - Groups Enumeration]] (Privileged groups, recursive membership, nested chains, foreign security principals.)
+- [[AD - Password Policy Enumeration]] (Default policy, fine-grained PSO, lockout threshold, krbtgt password age.)
+- [[AD - LAPS Enumeration]] (Legacy `ms-Mcs-AdmPwd`, modern `msLAPS-Password`, password readers discovery.)
+- [[AD - gMSA Enumeration]] (Group Managed Service Accounts, password readers, gMSADumper.)
 
 
- ## 🗺 Attack Path & Vulnerability Analysis
+## 🔎 Object Permissions & ACL Auditing
+Inspección detallada de objetos del directorio y controles de seguridad.
+
+- [[AD - ACL Enumeration]] (DACL inspection, dangerous ACEs, BloodHound edges, dsacls, Get-ObjectAcl.)
+- [[AD - DCSync Rights Discovery]] (Get-Changes/Get-Changes-All extended rights, non-default holders.)
+- [[AD - Delegation Enumeration]] (Unconstrained, Constrained S4U, RBCD targets, Shadow Credentials.)
+- [[AD - Certificate Services (AD CS) Enumeration]] (Templates, ESC1-15 candidates, Enterprise CAs, certipy find.)
+- [[AD - GPO & SYSVOL Enumeration]] (Linked GPOs per OU, gPCFileSysPath, cpassword search, SYSVOL scripts.)
+
+
+## 🗺 Attack Path & Vulnerability Analysis
 Mapeo visual de relaciones y búsqueda automatizada de debilidades estructurales.
 
-- [[AD - Attack Path Mapping]] (Identificación de rutas de ataque complejas hacia objetivos de alto valor - *Enlaza a BloodHound*).
-- [[AD - Health & Security Auditing]] (Auditoría automatizada de configuraciones riesgosas - *Enlaza a PingCastle*).
+- [[BloodHound & SharpHound]] (Collection con SharpHound/RustHound/AzureHound, ingest CE, queries Cypher, edges built-in, custom analytics.)
+- [[AD - Health & Security Auditing]] (PingCastle, Purple Knight, ADRecon — auditorías automatizadas de configuraciones riesgosas.)
 
 
 ***
-
