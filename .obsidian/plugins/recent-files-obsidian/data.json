@@ -5,6 +5,18 @@
       "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
     },
     {
+      "basename": "AD - Password Policy Enumeration",
+      "path": "04 - Content/AD - Password Policy Enumeration.md"
+    },
+    {
+      "basename": "AD - Users Enumeration",
+      "path": "04 - Content/AD - Users Enumeration.md"
+    },
+    {
+      "basename": "AD - Domain & Forest Trusts",
+      "path": "04 - Content/AD - Domain & Forest Trusts.md"
+    },
+    {
       "basename": "AD - DNS & SRV Records",
       "path": "04 - Content/AD - DNS & SRV Records.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "JWT - Manipulacion de Claims",
       "path": "04 - Content/JWT - Manipulacion de Claims.md"
-    },
-    {
-      "basename": "JWT - Inyeccion en Headers",
-      "path": "04 - Content/JWT - Inyeccion en Headers.md"
-    },
-    {
-      "basename": "JWT - Ataques al Algoritmo",
-      "path": "04 - Content/JWT - Ataques al Algoritmo.md"
-    },
-    {
-      "basename": "JWT - Deteccion y Reconocimiento",
-      "path": "04 - Content/JWT - Deteccion y Reconocimiento.md"
     }
   ],
   "omittedPaths": [],
