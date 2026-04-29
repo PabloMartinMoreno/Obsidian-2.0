@@ -11,22 +11,22 @@ tags:
   - technique/privilege-escalation
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Prototype Pollution - Deteccion y Reconocimiento]]'
-  - '[[Prototype Pollution - Vectores Server-Side]]'
-  - '[[Prototype Pollution - Vectores Client-Side]]'
-  - '[[Prototype Pollution - Gadgets y Explotacion]]'
-  - '[[Prototype Pollution - Tooling]]'
-  - '[[Prototype Pollution - Bypasses y Filter Evasion]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Insecure Deserialization]]'
-  - '[[Burp Suite]]'
+  - "[[Prototype Pollution - Deteccion y Reconocimiento]]"
+  - "[[Prototype Pollution - Vectores Server-Side]]"
+  - "[[Prototype Pollution - Vectores Client-Side]]"
+  - "[[Prototype Pollution - Gadgets y Explotacion]]"
+  - "[[Prototype Pollution - Tooling]]"
+  - "[[Prototype Pollution - Bypasses y Filter Evasion]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Insecure Deserialization]]"
+  - "[[Burp Suite]]"
 ---
 # Prototype Pollution
 

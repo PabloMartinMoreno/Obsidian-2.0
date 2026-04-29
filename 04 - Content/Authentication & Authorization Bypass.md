@@ -12,28 +12,28 @@ tags:
   - technique/privilege-escalation
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Auth Bypass - Deteccion y Reconocimiento]]'
-  - '[[Auth Bypass - Bypass de Autenticacion]]'
-  - '[[Auth Bypass - Bypass de Autorizacion]]'
-  - '[[Auth Bypass - Tokens y Sessions]]'
-  - '[[Auth Bypass - Flow Logic Flaws]]'
-  - '[[Auth Bypass - Brute Force y Credential Stuffing]]'
-  - '[[JWT Attacks]]'
-  - '[[BOLA - IDOR]]'
-  - '[[Mass Assignment]]'
-  - '[[Race Conditions]]'
-  - '[[Host Header Injection]]'
-  - '[[hashcat]]'
-  - '[[Hydra]]'
-  - '[[ffuf]]'
-  - '[[Burp Suite]]'
+  - "[[Auth Bypass - Deteccion y Reconocimiento]]"
+  - "[[Auth Bypass - Bypass de Autenticacion]]"
+  - "[[Auth Bypass - Bypass de Autorizacion]]"
+  - "[[Auth Bypass - Tokens y Sessions]]"
+  - "[[Auth Bypass - Flow Logic Flaws]]"
+  - "[[Auth Bypass - Brute Force y Credential Stuffing]]"
+  - "[[JWT Attacks]]"
+  - "[[BOLA - IDOR]]"
+  - "[[Mass Assignment]]"
+  - "[[Race Conditions]]"
+  - "[[Host Header Injection]]"
+  - "[[hashcat]]"
+  - "[[Hydra]]"
+  - "[[ffuf]]"
+  - "[[Burp Suite]]"
 ---
 # Authentication & Authorization Bypass
 

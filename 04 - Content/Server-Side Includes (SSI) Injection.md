@@ -10,21 +10,21 @@ tags:
   - technique/collection
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[SSI - Deteccion y Reconocimiento]]'
-  - '[[SSI - Ejecucion de Comandos]]'
-  - '[[SSI - Inclusion de Archivos]]'
-  - '[[SSI - Information Gathering]]'
-  - '[[SSI - Evasion de Filtros]]'
-  - '[[SSI - Tooling]]'
-  - '[[File Inclusion]]'
-  - '[[Burp Suite]]'
+  - "[[SSI - Deteccion y Reconocimiento]]"
+  - "[[SSI - Ejecucion de Comandos]]"
+  - "[[SSI - Inclusion de Archivos]]"
+  - "[[SSI - Information Gathering]]"
+  - "[[SSI - Evasion de Filtros]]"
+  - "[[SSI - Tooling]]"
+  - "[[File Inclusion]]"
+  - "[[Burp Suite]]"
 ---
 # Server-Side Includes (SSI) Injection
 

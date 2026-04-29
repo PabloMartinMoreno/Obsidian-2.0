@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Explotación Web]]"
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
   - "[[BOLA - IDOR]]"

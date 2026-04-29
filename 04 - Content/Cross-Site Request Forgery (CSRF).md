@@ -11,24 +11,24 @@ tags:
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[CSRF - Deteccion y Reconocimiento]]'
-  - '[[CSRF - Vectores de Ataque]]'
-  - '[[CSRF - Bypass de Token]]'
-  - '[[CSRF - Bypass de SameSite y Referer]]'
-  - '[[CSRF - Tipos Especiales]]'
-  - '[[CSRF - Tooling]]'
-  - '[[Clickjacking]]'
-  - '[[Authentication & Authorization Bypass]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Cookies y Sesiones]]'
-  - '[[Burp Suite]]'
+  - "[[CSRF - Deteccion y Reconocimiento]]"
+  - "[[CSRF - Vectores de Ataque]]"
+  - "[[CSRF - Bypass de Token]]"
+  - "[[CSRF - Bypass de SameSite y Referer]]"
+  - "[[CSRF - Tipos Especiales]]"
+  - "[[CSRF - Tooling]]"
+  - "[[Clickjacking]]"
+  - "[[Authentication & Authorization Bypass]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Cookies y Sesiones]]"
+  - "[[Burp Suite]]"
 ---
 # Cross-Site Request Forgery (CSRF)
 

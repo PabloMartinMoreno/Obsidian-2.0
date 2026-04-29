@@ -12,22 +12,22 @@ tags:
   - technique/credential-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Directory Traversal - Deteccion y Reconocimiento]]'
-  - '[[Directory Traversal - Payloads Basicos]]'
-  - '[[Directory Traversal - Bypass de Sanitizacion]]'
-  - '[[Directory Traversal - Vectores OS y Stack]]'
-  - '[[Directory Traversal - Chains y Variantes]]'
-  - '[[Directory Traversal - Tooling]]'
-  - '[[File Inclusion]]'
-  - '[[Insecure Deserialization]]'
-  - '[[Burp Suite]]'
+  - "[[Directory Traversal - Deteccion y Reconocimiento]]"
+  - "[[Directory Traversal - Payloads Basicos]]"
+  - "[[Directory Traversal - Bypass de Sanitizacion]]"
+  - "[[Directory Traversal - Vectores OS y Stack]]"
+  - "[[Directory Traversal - Chains y Variantes]]"
+  - "[[Directory Traversal - Tooling]]"
+  - "[[File Inclusion]]"
+  - "[[Insecure Deserialization]]"
+  - "[[Burp Suite]]"
 ---
 # Directory Traversal
 

@@ -13,22 +13,22 @@ tags:
   - technique/credential-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Web Cache Poisoning - Deteccion y Reconocimiento]]'
-  - '[[Web Cache Poisoning - Unkeyed Inputs]]'
-  - '[[Web Cache Poisoning - Vectores de Poisoning]]'
-  - '[[Web Cache Poisoning - Cache Deception]]'
-  - '[[Web Cache Poisoning - Tooling]]'
-  - '[[Web Cache Poisoning - Bypasses Avanzados]]'
-  - '[[HTTP Request Smuggling]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Burp Suite]]'
+  - "[[Web Cache Poisoning - Deteccion y Reconocimiento]]"
+  - "[[Web Cache Poisoning - Unkeyed Inputs]]"
+  - "[[Web Cache Poisoning - Vectores de Poisoning]]"
+  - "[[Web Cache Poisoning - Cache Deception]]"
+  - "[[Web Cache Poisoning - Tooling]]"
+  - "[[Web Cache Poisoning - Bypasses Avanzados]]"
+  - "[[HTTP Request Smuggling]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Burp Suite]]"
 ---
 # Web Cache Poisoning
 

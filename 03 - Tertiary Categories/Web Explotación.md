@@ -7,6 +7,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Explotación]]"
+  - "[[Web]]"
 type: Tertiary Category
 ---
 # Explotación Web

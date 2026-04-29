@@ -10,23 +10,23 @@ tags:
   - technique/defense-evasion
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[HPP - Deteccion y Reconocimiento]]'
-  - '[[HPP - Server-Side]]'
-  - '[[HPP - Client-Side]]'
-  - '[[HPP - Per-Stack Behavior]]'
-  - '[[HPP - Bypass de Validacion]]'
-  - '[[HPP - Tooling]]'
-  - '[[SQL Injection (SQLi)]]'
-  - '[[Mass Assignment]]'
-  - '[[CRLF Injection]]'
-  - '[[Burp Suite]]'
+  - "[[HPP - Deteccion y Reconocimiento]]"
+  - "[[HPP - Server-Side]]"
+  - "[[HPP - Client-Side]]"
+  - "[[HPP - Per-Stack Behavior]]"
+  - "[[HPP - Bypass de Validacion]]"
+  - "[[HPP - Tooling]]"
+  - "[[SQL Injection (SQLi)]]"
+  - "[[Mass Assignment]]"
+  - "[[CRLF Injection]]"
+  - "[[Burp Suite]]"
 ---
 # HTTP Parameter Pollution
 

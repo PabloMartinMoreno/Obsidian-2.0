@@ -9,6 +9,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
+  - "[[Web]]"
 type: Tertiary Category
 ---
 # Enumeración Web

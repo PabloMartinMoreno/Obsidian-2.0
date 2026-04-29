@@ -10,7 +10,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Explotación Web]]"
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
   - "[[Cross-Site Scripting (XSS)]]"

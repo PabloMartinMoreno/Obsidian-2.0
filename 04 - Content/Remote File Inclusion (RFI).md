@@ -10,22 +10,22 @@ tags:
   - technique/initial-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[RFI - Deteccion y Reconocimiento]]'
-  - '[[RFI - Vectores Basicos]]'
-  - '[[RFI - PHP Wrappers y Schemes]]'
-  - '[[RFI - Bypass de Filtros]]'
-  - '[[RFI - Hostear Payload Remote]]'
-  - '[[RFI - Tooling]]'
-  - '[[File Inclusion]]'
-  - '[[Insecure Deserialization]]'
-  - '[[Burp Suite]]'
+  - "[[RFI - Deteccion y Reconocimiento]]"
+  - "[[RFI - Vectores Basicos]]"
+  - "[[RFI - PHP Wrappers y Schemes]]"
+  - "[[RFI - Bypass de Filtros]]"
+  - "[[RFI - Hostear Payload Remote]]"
+  - "[[RFI - Tooling]]"
+  - "[[File Inclusion]]"
+  - "[[Insecure Deserialization]]"
+  - "[[Burp Suite]]"
 ---
 # Remote File Inclusion (RFI)
 

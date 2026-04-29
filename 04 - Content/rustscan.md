@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Recon]]"
 tertiary categories:
-  - "[[Explotación Web]]"
+  - "[[Web Explotación]]"
 type: Tool
 linked:
   - "[[nmap]]"

@@ -12,23 +12,23 @@ tags:
   - technique/discovery
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[XSLT - Fingerprinting]]'
-  - '[[XSLT - Lectura de Archivos (document)]]'
-  - '[[XSLT - SSRF]]'
-  - '[[XSLT - Extension Functions (RCE)]]'
-  - '[[XSLT - DoS]]'
-  - '[[XSLT - Blind Exfil]]'
-  - '[[XSLT - Bypasses y Evasion]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[XML External Entity (XXE)]]'
-  - '[[Burp Suite]]'
+  - "[[XSLT - Fingerprinting]]"
+  - "[[XSLT - Lectura de Archivos (document)]]"
+  - "[[XSLT - SSRF]]"
+  - "[[XSLT - Extension Functions (RCE)]]"
+  - "[[XSLT - DoS]]"
+  - "[[XSLT - Blind Exfil]]"
+  - "[[XSLT - Bypasses y Evasion]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[XML External Entity (XXE)]]"
+  - "[[Burp Suite]]"
 ---
 # eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection
 

@@ -12,25 +12,25 @@ tags:
   - technique/initial-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Session Hijacking - Deteccion y Reconocimiento]]'
-  - '[[Session Hijacking - Vectores de Robo]]'
-  - '[[Session Hijacking - Cookie Tampering y Forging]]'
-  - '[[Session Hijacking - Fixation y Replay]]'
-  - '[[Session Hijacking - Cross-Origin y Cross-Subdomain]]'
-  - '[[Session Hijacking - Tooling]]'
-  - '[[Authentication & Authorization Bypass]]'
-  - '[[JWT Attacks]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Cross-Site Request Forgery (CSRF)]]'
-  - '[[Subdomain Takeover]]'
-  - '[[Burp Suite]]'
+  - "[[Session Hijacking - Deteccion y Reconocimiento]]"
+  - "[[Session Hijacking - Vectores de Robo]]"
+  - "[[Session Hijacking - Cookie Tampering y Forging]]"
+  - "[[Session Hijacking - Fixation y Replay]]"
+  - "[[Session Hijacking - Cross-Origin y Cross-Subdomain]]"
+  - "[[Session Hijacking - Tooling]]"
+  - "[[Authentication & Authorization Bypass]]"
+  - "[[JWT Attacks]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Cross-Site Request Forgery (CSRF)]]"
+  - "[[Subdomain Takeover]]"
+  - "[[Burp Suite]]"
 ---
 # Session Hijacking
 

@@ -15,7 +15,7 @@ primary categories:
 secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
-  - "[[Explotación Web]]"
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
   - "[[NoSQLi - Operadores (Auth Bypass)]]"

@@ -11,23 +11,23 @@ tags:
   - technique/credential-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Open Redirect - Deteccion y Reconocimiento]]'
-  - '[[Open Redirect - Vectores Basicos]]'
-  - '[[Open Redirect - Bypass de Validacion]]'
-  - '[[Open Redirect - Vectores Especificos]]'
-  - '[[Open Redirect - Chains con Otras Vulns]]'
-  - '[[Open Redirect - Tooling]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[Burp Suite]]'
+  - "[[Open Redirect - Deteccion y Reconocimiento]]"
+  - "[[Open Redirect - Vectores Basicos]]"
+  - "[[Open Redirect - Bypass de Validacion]]"
+  - "[[Open Redirect - Vectores Especificos]]"
+  - "[[Open Redirect - Chains con Otras Vulns]]"
+  - "[[Open Redirect - Tooling]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[Burp Suite]]"
 ---
 # Open Redirect
 

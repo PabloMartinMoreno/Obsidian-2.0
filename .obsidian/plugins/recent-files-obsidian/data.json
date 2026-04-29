@@ -1,16 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "Web",
-      "path": "04 - Content/Process/Web.md"
+      "basename": "Active Directory Enumeración",
+      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
+      "basename": "AD - DNS & SRV Records",
+      "path": "04 - Content/AD - DNS & SRV Records.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD - Hosts Enumeration.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration - DC Discovery",
+      "path": "04 - Content/AD - Hosts Enumeration - DC Discovery.md"
     },
     {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
     },
     {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
       "basename": "Web Enumeración",
       "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "Web",
+      "path": "04 - Content/Process/Web.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "Explotación",
@@ -19,10 +43,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Explotación Web",
-      "path": "03 - Tertiary Categories/Explotación Web.md"
     },
     {
       "basename": "Windows & Active Directory Lateral Movement",
@@ -87,18 +107,6 @@
     {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Active Directory Enumeración",
-      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration",
-      "path": "04 - Content/AD - Hosts Enumeration.md"
     },
     {
       "basename": "AD Initial Enumeration Playbook",
@@ -191,14 +199,6 @@
     {
       "basename": "JWT - Deteccion y Reconocimiento",
       "path": "04 - Content/JWT - Deteccion y Reconocimiento.md"
-    },
-    {
-      "basename": "Open Redirect",
-      "path": "04 - Content/Open Redirect.md"
-    },
-    {
-      "basename": "Web Cache Poisoning",
-      "path": "04 - Content/Web Cache Poisoning.md"
     }
   ],
   "omittedPaths": [],

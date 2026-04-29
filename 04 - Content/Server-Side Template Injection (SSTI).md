@@ -10,23 +10,23 @@ tags:
   - technique/initial-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[SSTI - Deteccion y Fingerprinting]]'
-  - '[[SSTI - Ejecucion por Engine]]'
-  - '[[SSTI - Sandbox Escape]]'
-  - '[[SSTI - Tooling]]'
-  - '[[SSTI - Bypasses y Filter Evasion]]'
-  - '[[Insecure Deserialization]]'
-  - '[[XML External Entity (XXE)]]'
-  - '[[OS Command Injection]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Burp Suite]]'
+  - "[[SSTI - Deteccion y Fingerprinting]]"
+  - "[[SSTI - Ejecucion por Engine]]"
+  - "[[SSTI - Sandbox Escape]]"
+  - "[[SSTI - Tooling]]"
+  - "[[SSTI - Bypasses y Filter Evasion]]"
+  - "[[Insecure Deserialization]]"
+  - "[[XML External Entity (XXE)]]"
+  - "[[OS Command Injection]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Burp Suite]]"
 ---
 # Server-Side Template Injection (SSTI)
 

@@ -11,23 +11,23 @@ tags:
   - technique/credential-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Host Header Injection - Deteccion y Reconocimiento]]'
-  - '[[Host Header Injection - Vectores Comunes]]'
-  - '[[Host Header Injection - Headers Alternativos]]'
-  - '[[Host Header Injection - Bypass de Validacion]]'
-  - '[[Host Header Injection - Chains y Variantes]]'
-  - '[[Host Header Injection - Tooling]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[HTTP Request Smuggling]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[Burp Suite]]'
+  - "[[Host Header Injection - Deteccion y Reconocimiento]]"
+  - "[[Host Header Injection - Vectores Comunes]]"
+  - "[[Host Header Injection - Headers Alternativos]]"
+  - "[[Host Header Injection - Bypass de Validacion]]"
+  - "[[Host Header Injection - Chains y Variantes]]"
+  - "[[Host Header Injection - Tooling]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[HTTP Request Smuggling]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[Burp Suite]]"
 ---
 # Host Header Injection
 

@@ -12,25 +12,25 @@ tags:
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[GraphQL - Deteccion y Reconocimiento]]'
-  - '[[GraphQL - Introspection y Schema Discovery]]'
-  - '[[GraphQL - Inyecciones via Resolvers]]'
-  - '[[GraphQL - Auth y Logica]]'
-  - '[[GraphQL - DoS]]'
-  - '[[GraphQL - Tooling]]'
-  - '[[SQL Injection (SQLi)]]'
-  - '[[NoSQL Injection]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[Cross-Site Request Forgery (CSRF)]]'
-  - '[[BOLA - IDOR]]'
-  - '[[Burp Suite]]'
+  - "[[GraphQL - Deteccion y Reconocimiento]]"
+  - "[[GraphQL - Introspection y Schema Discovery]]"
+  - "[[GraphQL - Inyecciones via Resolvers]]"
+  - "[[GraphQL - Auth y Logica]]"
+  - "[[GraphQL - DoS]]"
+  - "[[GraphQL - Tooling]]"
+  - "[[SQL Injection (SQLi)]]"
+  - "[[NoSQL Injection]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[Cross-Site Request Forgery (CSRF)]]"
+  - "[[BOLA - IDOR]]"
+  - "[[Burp Suite]]"
 ---
 # GraphQL Injection
 

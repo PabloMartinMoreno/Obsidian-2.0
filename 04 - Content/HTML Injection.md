@@ -11,23 +11,23 @@ tags:
   - technique/exfiltration
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[HTML Injection - Deteccion y Reconocimiento]]'
-  - '[[HTML Injection - Vectores Comunes]]'
-  - '[[HTML Injection - Inyeccion Sin Script]]'
-  - '[[HTML Injection - Bypass de Filtros]]'
-  - '[[HTML Injection - Chains con Otras Vulns]]'
-  - '[[HTML Injection - Tooling]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[Server-Side Template Injection (SSTI)]]'
-  - '[[Burp Suite]]'
+  - "[[HTML Injection - Deteccion y Reconocimiento]]"
+  - "[[HTML Injection - Vectores Comunes]]"
+  - "[[HTML Injection - Inyeccion Sin Script]]"
+  - "[[HTML Injection - Bypass de Filtros]]"
+  - "[[HTML Injection - Chains con Otras Vulns]]"
+  - "[[HTML Injection - Tooling]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[Server-Side Template Injection (SSTI)]]"
+  - "[[Burp Suite]]"
 ---
 # HTML Injection
 

@@ -13,21 +13,21 @@ tags:
   - technique/defense-evasion
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[HTTP Request Smuggling - Deteccion]]'
-  - '[[HTTP Request Smuggling - Variantes Clasicas]]'
-  - '[[HTTP Request Smuggling - HTTP2 Downgrade]]'
-  - '[[HTTP Request Smuggling - Explotacion]]'
-  - '[[HTTP Request Smuggling - Tooling]]'
-  - '[[HTTP Request Smuggling - Bypasses]]'
-  - '[[Burp Suite]]'
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[HTTP Request Smuggling - Deteccion]]"
+  - "[[HTTP Request Smuggling - Variantes Clasicas]]"
+  - "[[HTTP Request Smuggling - HTTP2 Downgrade]]"
+  - "[[HTTP Request Smuggling - Explotacion]]"
+  - "[[HTTP Request Smuggling - Tooling]]"
+  - "[[HTTP Request Smuggling - Bypasses]]"
+  - "[[Burp Suite]]"
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # HTTP Request Smuggling
 

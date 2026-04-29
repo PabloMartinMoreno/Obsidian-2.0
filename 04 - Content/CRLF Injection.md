@@ -11,23 +11,23 @@ tags:
   - technique/exfiltration
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[CRLF Injection - Deteccion y Reconocimiento]]'
-  - '[[CRLF Injection - HTTP Header Injection]]'
-  - '[[CRLF Injection - HTTP Response Splitting]]'
-  - '[[CRLF Injection - Bypass de Sanitizacion]]'
-  - '[[CRLF Injection - Vectores Especificos]]'
-  - '[[CRLF Injection - Tooling]]'
-  - '[[HTTP Request Smuggling]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Burp Suite]]'
+  - "[[CRLF Injection - Deteccion y Reconocimiento]]"
+  - "[[CRLF Injection - HTTP Header Injection]]"
+  - "[[CRLF Injection - HTTP Response Splitting]]"
+  - "[[CRLF Injection - Bypass de Sanitizacion]]"
+  - "[[CRLF Injection - Vectores Especificos]]"
+  - "[[CRLF Injection - Tooling]]"
+  - "[[HTTP Request Smuggling]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Burp Suite]]"
 ---
 # CRLF Injection
 

@@ -12,21 +12,21 @@ tags:
   - technique/privilege-escalation
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Insecure Deserialization - Deteccion y Reconocimiento]]'
-  - '[[Insecure Deserialization - Object Injection]]'
-  - '[[Insecure Deserialization - Formatos Estructurados]]'
-  - '[[Insecure Deserialization - Tooling]]'
-  - '[[Insecure Deserialization - Bypasses y Evasion]]'
-  - '[[XML External Entity (XXE)]]'
-  - '[[Server-Side Template Injection (SSTI)]]'
-  - '[[Burp Suite]]'
+  - "[[Insecure Deserialization - Deteccion y Reconocimiento]]"
+  - "[[Insecure Deserialization - Object Injection]]"
+  - "[[Insecure Deserialization - Formatos Estructurados]]"
+  - "[[Insecure Deserialization - Tooling]]"
+  - "[[Insecure Deserialization - Bypasses y Evasion]]"
+  - "[[XML External Entity (XXE)]]"
+  - "[[Server-Side Template Injection (SSTI)]]"
+  - "[[Burp Suite]]"
 ---
 # Insecure Deserialization
 

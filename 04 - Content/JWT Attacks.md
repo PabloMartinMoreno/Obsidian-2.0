@@ -13,21 +13,21 @@ tags:
   - asset/web-app
   - cred/jwt
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[JWT - Deteccion y Reconocimiento]]'
-  - '[[JWT - Ataques al Algoritmo]]'
-  - '[[JWT - Inyeccion en Headers]]'
-  - '[[JWT - Manipulacion de Claims]]'
-  - '[[JWT - Tooling y Brute Force]]'
-  - '[[Authentication & Authorization Bypass]]'
-  - '[[Cookies y Sesiones]]'
-  - '[[Burp Suite]]'
+  - "[[JWT - Deteccion y Reconocimiento]]"
+  - "[[JWT - Ataques al Algoritmo]]"
+  - "[[JWT - Inyeccion en Headers]]"
+  - "[[JWT - Manipulacion de Claims]]"
+  - "[[JWT - Tooling y Brute Force]]"
+  - "[[Authentication & Authorization Bypass]]"
+  - "[[Cookies y Sesiones]]"
+  - "[[Burp Suite]]"
 ---
 # JWT Attacks
 

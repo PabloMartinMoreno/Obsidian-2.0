@@ -13,23 +13,23 @@ tags:
   - asset/web-app
   - asset/dns
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Subdomain Takeover - Deteccion y Reconocimiento]]'
-  - '[[Subdomain Takeover - Tipos por Servicio]]'
-  - '[[Subdomain Takeover - NS Takeover y DNS-Level]]'
-  - '[[Subdomain Takeover - Vectores de Explotacion]]'
-  - '[[Subdomain Takeover - Chains con Otras Vulns]]'
-  - '[[Subdomain Takeover - Tooling y Wordlists]]'
-  - '[[Host Header Injection]]'
-  - '[[Open Redirect]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[Burp Suite]]'
+  - "[[Subdomain Takeover - Deteccion y Reconocimiento]]"
+  - "[[Subdomain Takeover - Tipos por Servicio]]"
+  - "[[Subdomain Takeover - NS Takeover y DNS-Level]]"
+  - "[[Subdomain Takeover - Vectores de Explotacion]]"
+  - "[[Subdomain Takeover - Chains con Otras Vulns]]"
+  - "[[Subdomain Takeover - Tooling y Wordlists]]"
+  - "[[Host Header Injection]]"
+  - "[[Open Redirect]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[Burp Suite]]"
 ---
 # Subdomain Takeover
 

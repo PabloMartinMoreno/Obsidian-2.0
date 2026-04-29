@@ -12,23 +12,23 @@ tags:
   - technique/initial-access
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Explotación Web]]'
+  - "[[Web Explotación]]"
 type: CheatSheet
 linked:
-  - '[[Mass Assignment - Deteccion y Reconocimiento]]'
-  - '[[Mass Assignment - Vectores Comunes]]'
-  - '[[Mass Assignment - Frameworks Vulnerables]]'
-  - '[[Mass Assignment - Bypass de Whitelists]]'
-  - '[[Mass Assignment - Chains con Otras Vulns]]'
-  - '[[Mass Assignment - Tooling]]'
-  - '[[BOLA - IDOR]]'
-  - '[[Prototype Pollution]]'
-  - '[[GraphQL Injection]]'
-  - '[[Burp Suite]]'
+  - "[[Mass Assignment - Deteccion y Reconocimiento]]"
+  - "[[Mass Assignment - Vectores Comunes]]"
+  - "[[Mass Assignment - Frameworks Vulnerables]]"
+  - "[[Mass Assignment - Bypass de Whitelists]]"
+  - "[[Mass Assignment - Chains con Otras Vulns]]"
+  - "[[Mass Assignment - Tooling]]"
+  - "[[BOLA - IDOR]]"
+  - "[[Prototype Pollution]]"
+  - "[[GraphQL Injection]]"
+  - "[[Burp Suite]]"
 ---
 # Mass Assignment
 
