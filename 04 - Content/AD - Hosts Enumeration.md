@@ -11,7 +11,7 @@ secondary categories:
   - "[[Active Directory]]"
   - "[[Information Gathering]]"
 tertiary categories:
-  - "[[Active Directory Enumeration]]"
+  - "[[Active Directory Enumeración]]"
 type: CheatSheet
 linked:
   - "[[Pivoting & Port Forwarding]]"

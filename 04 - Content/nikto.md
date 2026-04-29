@@ -15,7 +15,7 @@ tertiary categories:
   - "[[Explotación Web]]"
 type: Tool
 linked:
-  - "[[Web Enumeration]]"
+  - "[[Web Enumeración]]"
   - "[[Fingerprinting]]"
   - "[[Burp Suite]]"
   - "[[nmap]]"

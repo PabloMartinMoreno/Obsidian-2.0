@@ -18,7 +18,7 @@ tertiary categories:
 type: Atomic
 linked:
   - "[[LSASS Dumping]]"
-  - "[[Active Directory Explotación]]"
+  - "[[Active Directory Explotación 1]]"
   - "[[DCSync]]"
   - "[[Golden Ticket]]"
   - "[[Silver Ticket]]"

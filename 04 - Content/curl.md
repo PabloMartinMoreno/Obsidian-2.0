@@ -8,7 +8,7 @@ primary categories:
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
-  - "[[Web Enumeration]]"
+  - "[[Web Enumeración]]"
 type: Command
 linked:
   - "[[Curl - Fuzzing Parámetros y Valores]]"

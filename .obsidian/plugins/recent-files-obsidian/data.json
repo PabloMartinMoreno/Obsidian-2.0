@@ -1,8 +1,116 @@
 {
   "recentFiles": [
     {
+      "basename": "Web",
+      "path": "04 - Content/Process/Web.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
       "basename": "Explotación Web",
       "path": "03 - Tertiary Categories/Explotación Web.md"
+    },
+    {
+      "basename": "Windows & Active Directory Lateral Movement",
+      "path": "03 - Tertiary Categories/Windows & Active Directory Lateral Movement.md"
+    },
+    {
+      "basename": "Social Engineering Assets",
+      "path": "03 - Tertiary Categories/Social Engineering Assets.md"
+    },
+    {
+      "basename": "Shells",
+      "path": "03 - Tertiary Categories/Shells.md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "03 - Tertiary Categories/Service Exploitation.md"
+    },
+    {
+      "basename": "Procedures & Methodologies",
+      "path": "03 - Tertiary Categories/Procedures & Methodologies.md"
+    },
+    {
+      "basename": "Payload & Malware Engineering",
+      "path": "03 - Tertiary Categories/Payload & Malware Engineering.md"
+    },
+    {
+      "basename": "Persistence Techniques",
+      "path": "03 - Tertiary Categories/Persistence Techniques.md"
+    },
+    {
+      "basename": "Credentials Cracking",
+      "path": "03 - Tertiary Categories/Credentials Cracking.md"
+    },
+    {
+      "basename": "Cross-Compiling Exploit Code",
+      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
+    },
+    {
+      "basename": "Evasion & Obfuscation",
+      "path": "03 - Tertiary Categories/Evasion & Obfuscation.md"
+    },
+    {
+      "basename": "Common Exploitation Tools",
+      "path": "03 - Tertiary Categories/Common Exploitation Tools.md"
+    },
+    {
+      "basename": "Command & Control (C2)",
+      "path": "04 - Content/Process/Command & Control (C2).md"
+    },
+    {
+      "basename": "Client-Side Exploitation",
+      "path": "03 - Tertiary Categories/Client-Side Exploitation.md"
+    },
+    {
+      "basename": "C2 Infrastructure",
+      "path": "03 - Tertiary Categories/C2 Infrastructure.md"
+    },
+    {
+      "basename": "Active Directory Lateral Movement",
+      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
+    },
+    {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Active Directory Enumeración",
+      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD - Hosts Enumeration.md"
+    },
+    {
+      "basename": "AD Initial Enumeration Playbook",
+      "path": "04 - Content/AD Initial Enumeration Playbook.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "AD Enumeration",
+      "path": "04 - Content/Process/AD Enumeration.md"
     },
     {
       "basename": "Clickjacking",
@@ -19,10 +127,6 @@
     {
       "basename": "Authentication & Authorization Bypass",
       "path": "04 - Content/Authentication & Authorization Bypass.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQL Commands",
@@ -95,110 +199,6 @@
     {
       "basename": "Web Cache Poisoning",
       "path": "04 - Content/Web Cache Poisoning.md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/GraphQL Injection.md"
-    },
-    {
-      "basename": "Prototype Pollution - Tooling",
-      "path": "04 - Content/Prototype Pollution - Tooling.md"
-    },
-    {
-      "basename": "Prototype Pollution",
-      "path": "04 - Content/Prototype Pollution.md"
-    },
-    {
-      "basename": "CSRF - Bypass de Token",
-      "path": "04 - Content/CSRF - Bypass de Token.md"
-    },
-    {
-      "basename": "HTTP Request Smuggling",
-      "path": "04 - Content/HTTP Request Smuggling.md"
-    },
-    {
-      "basename": "HTTP Brute Forcing",
-      "path": "04 - Content/Process/HTTP Brute Forcing.md"
-    },
-    {
-      "basename": "Insecure Deserialization",
-      "path": "04 - Content/Insecure Deserialization.md"
-    },
-    {
-      "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
-      "path": "04 - Content/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
-    },
-    {
-      "basename": "XSLT - Lectura de Archivos (document)",
-      "path": "04 - Content/XSLT - Lectura de Archivos (document).md"
-    },
-    {
-      "basename": "XSLT - Fingerprinting",
-      "path": "04 - Content/XSLT - Fingerprinting.md"
-    },
-    {
-      "basename": "Usage",
-      "path": "05 - Writeups/HackTheBox/Usage.md"
-    },
-    {
-      "basename": "CWES - Maquinas",
-      "path": "04 - Content/Process/CWES - Maquinas.md"
-    },
-    {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
-      "basename": "GoodGames",
-      "path": "04 - Content/Process/GoodGames.md"
-    },
-    {
-      "basename": "BountyHunter",
-      "path": "04 - Content/Process/BountyHunter.md"
-    },
-    {
-      "basename": "Sniper",
-      "path": "05 - Writeups/Sniper.md"
-    },
-    {
-      "basename": "Bashed",
-      "path": "04 - Content/Process/Bashed.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "SSRF - CWES",
-      "path": "04 - Content/SSRF - CWES.md"
-    },
-    {
-      "basename": "SSRF - Gopher",
-      "path": "04 - Content/SSRF - Gopher.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "SSRF - Mecanismo Lógico",
-      "path": "04 - Content/SSRF - Mecanismo Lógico.md"
-    },
-    {
-      "basename": "SSRF - Básico",
-      "path": "04 - Content/SSRF - Básico.md"
-    },
-    {
-      "basename": "SSRF - Protocolos Alternativos",
-      "path": "04 - Content/SSRF - Protocolos Alternativos.md"
-    },
-    {
-      "basename": "SSRF - Explotación",
-      "path": "04 - Content/SSRF - Explotación.md"
-    },
-    {
-      "basename": "Explotación Web",
-      "path": "04 - Content/Process/Explotación Web.md"
     }
   ],
   "omittedPaths": [],

@@ -16,10 +16,10 @@ secondary categories:
   - "[[Information Gathering]]"
   - "[[Active Directory]]"
 tertiary categories:
-  - "[[Active Directory Enumeration]]"
+  - "[[Active Directory Enumeración]]"
 type: CheatSheet
 linked:
-  - "[[Active Directory Explotación]]"
+  - "[[Active Directory Explotación 1]]"
   - "[[BloodHound Cypher Queries]]"
   - "[[AD Initial Enumeration Playbook]]"
 ---
@@ -268,6 +268,6 @@ Formato JSON específico, ver `BloodHound/docs/collection/`. Permite ingestar da
 - [Rusthound](https://github.com/OPENCYBER-FR/RustHound)
 - [ADExplorerSnapshot.py](https://github.com/c3c/ADExplorerSnapshot.py)
 - [[BloodHound Cypher Queries]] — queries cheatsheet.
-- [[Active Directory Explotación]] — hub de explotación post-enum.
+- [[Active Directory Explotación 1]] — hub de explotación post-enum.
 
 ***

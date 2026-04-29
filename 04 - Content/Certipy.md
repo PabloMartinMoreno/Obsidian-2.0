@@ -23,7 +23,7 @@ linked:
   - "[[Pass-the-Ticket]]"
   - "[[Impacket Toolkit]]"
   - "[[Rubeus]]"
-  - "[[Active Directory Explotación]]"
+  - "[[Active Directory Explotación 1]]"
 ---
 # Certipy
 

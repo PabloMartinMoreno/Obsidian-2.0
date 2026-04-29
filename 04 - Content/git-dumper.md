@@ -13,7 +13,7 @@ primary categories:
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
-  - "[[Web Enumeration]]"
+  - "[[Web Enumeración]]"
 type: CheatSheet
 linked:
 ---

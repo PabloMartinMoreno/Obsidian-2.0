@@ -22,7 +22,7 @@ tertiary categories:
   - "[[Active Directory]]"
 type: Atomic
 linked:
-  - "[[Active Directory Explotación]]"
+  - "[[Active Directory Explotación 1]]"
   - "[[NTLM Relay]]"
   - "[[Responder]]"
   - "[[Impacket Toolkit]]"

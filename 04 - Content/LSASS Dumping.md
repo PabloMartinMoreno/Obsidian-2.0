@@ -19,7 +19,7 @@ tertiary categories:
   - "[[Active Directory]]"
 type: Atomic
 linked:
-  - "[[Active Directory Explotación]]"
+  - "[[Active Directory Explotación 1]]"
   - "[[Mimikatz Cheatsheet]]"
   - "[[Windows Privilege Escalation]]"
   - "[[Pass-the-Hash]]"

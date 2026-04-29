@@ -11,7 +11,7 @@ type: Secondary Category
 
 ***
 
-## 🖥️[[Active Directory Enumeration]]
+## 🖥️[[Active Directory Enumeración]]
 
 
 ***
@@ -21,7 +21,7 @@ type: Secondary Category
 
 ***
 
-## 🌐[[Web Enumeration]]
+## 🌐[[Web Enumeración]]
 
 
 ***

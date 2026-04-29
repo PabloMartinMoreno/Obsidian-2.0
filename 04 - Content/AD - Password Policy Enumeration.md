@@ -11,7 +11,7 @@ secondary categories:
   - "[[Information Gathering]]"
   - "[[Active Directory]]"
 tertiary categories:
-  - "[[Active Directory Enumeration]]"
+  - "[[Active Directory Enumeración]]"
 type: CheatSheet
 linked: "[[Password Spraying]]"
 ---

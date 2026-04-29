@@ -19,7 +19,7 @@ tertiary categories:
   - "[[Credential Harvesting]]"
 type: Atomic
 linked:
-  - "[[Active Directory Explotación]]"
+  - "[[Active Directory Explotación 1]]"
   - "[[DCSync]]"
   - "[[LSASS Dumping]]"
   - "[[Mimikatz Cheatsheet]]"

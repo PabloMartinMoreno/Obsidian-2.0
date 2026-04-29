@@ -18,7 +18,7 @@ tertiary categories:
   - "[[Credential Access]]"
   - "[[Lateral Movement]]"
 linked:
-  - "[[Active Directory Explotación]]"
+  - "[[Active Directory Explotación 1]]"
   - "[[Pass-the-Hash]]"
   - "[[Kerberoasting]]"
   - "[[AS-REP Roasting]]"

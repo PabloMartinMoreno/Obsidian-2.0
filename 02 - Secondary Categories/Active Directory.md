@@ -10,7 +10,7 @@ type: Secondary Category
 
 ***
 
-## [[Active Directory Enumeration]]
+## [[Active Directory Enumeración]]
 
 
 ***
