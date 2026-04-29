@@ -18,5 +18,6 @@
     "supercharged-links-gen",
     "titulo-link"
   ],
-  "nativeMenus": false
+  "nativeMenus": false,
+  "theme": "obsidian"
 }

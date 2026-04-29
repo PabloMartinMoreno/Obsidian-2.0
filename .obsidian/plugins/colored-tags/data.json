@@ -633,7 +633,9 @@
     "vuln/oauth": 36,
     "technique/redirect-bypass": 29,
     "technique/account-binding": 30,
-    "technique/account-takeover": 31
+    "technique/account-takeover": 31,
+    "vuln/brute-force": 37,
+    "1-5": 155
   },
   "_version": 3
 }
