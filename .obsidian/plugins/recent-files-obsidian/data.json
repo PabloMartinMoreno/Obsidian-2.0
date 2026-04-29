@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
+    },
+    {
+      "basename": "Usage",
+      "path": "05 - Writeups/HackTheBox/Usage.md"
+    },
+    {
       "basename": "Active Directory Enumeración",
       "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
     },
@@ -31,10 +47,6 @@
     {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Web Enumeración",
@@ -173,10 +185,6 @@
       "path": "04 - Content/File Inclusion.md"
     },
     {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
-    },
-    {
       "basename": "NoSQL Injection",
       "path": "04 - Content/NoSQL Injection.md"
     },
@@ -191,14 +199,6 @@
     {
       "basename": "Burp Suite",
       "path": "04 - Content/Burp Suite.md"
-    },
-    {
-      "basename": "JWT - Tooling y Brute Force",
-      "path": "04 - Content/JWT - Tooling y Brute Force.md"
-    },
-    {
-      "basename": "JWT - Manipulacion de Claims",
-      "path": "04 - Content/JWT - Manipulacion de Claims.md"
     }
   ],
   "omittedPaths": [],
