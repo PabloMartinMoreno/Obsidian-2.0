@@ -23,41 +23,30 @@ linked:
 
 ## Bulk Computer Listing
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-ADComputer -Filter *` | All computers | RSAT minimal. |
-| `Get-ADComputer -Filter * -Properties *` | All attributes | Full detail. |
-| `Get-NetComputer -FullData` | PowerView | Adversary. |
-| `nxc ldap DC -u u -p p --computers` | netexec | Quick list. |
-| `ldapsearch -h DC -D u -w p -b "DC=dom,DC=local" "(objectCategory=computer)" cn dNSHostName operatingSystem` | Raw LDAP | Linux. |
-| `windapsearch -d <dom> --dc-ip DC -u user -p pass --computers` | Wrapper | Helper. |
-| `bloodhound-python -d <dom> -c Computers` | BH Python | Visualize. |
-| `SharpHound.exe -c Computers` | BH C# | Windows. |
-| `pywerview computer` | Linux PowerView | Adjacent. |
-| `Get-WmiObject Win32_ComputerSystem` (per-host) | WMI | Local-only. |
-| `dsquery computer -limit 0` | Legacy | All computers. |
-| `adfind -f "(objectCategory=computer)" -bit -c` | Joeware adfind | Comprehensive. |
-| `Get-ADComputer -Filter * | Measure | Count | Sizing. |
-| Anonymous bind blocked? | Modern AD | Need creds. |
-| Default Computers container | `CN=Computers,DC=dom,DC=local` | Default location. |
-| Domain Controllers OU | `OU=Domain Controllers,DC=dom,DC=local` | DC location. |
+| `nxc ldap <DC> -u u -p p --computers` | Lista hostname rápida | Quick inventory. |
+| `nxc ldap <DC> -u u -p p --query "(objectCategory=computer)" "cn,dNSHostName,operatingSystem,operatingSystemVersion,lastLogonTimestamp"` | Detalle custom via LDAP filter | Atributos específicos. |
+| `Get-ADComputer -Filter * -Properties OperatingSystem,LastLogonDate,Description` | Computers + atributos útiles | RSAT estándar. |
+| `Get-NetComputer -FullData` (PowerView) | Computers desde adversary tool | Sin RSAT. |
+| `bloodhound-python -d <dom> -u u -p p -ns <DC> -c Computers --zip` | Computers para BloodHound | Graph analysis. |
+| `SharpHound.exe -c Computers` | Igual desde Windows | Sin Linux. |
+| `ldapsearch -h <DC> -D u -w p -b "DC=corp,DC=local" "(objectCategory=computer)" cn dNSHostName operatingSystem` | LDAP raw | Linux sin nxc. |
+| `adfind -f "(objectCategory=computer)" -bit -c` | Joeware adfind | Windows portable. |
 ^ad-computers-bulk
 
-### Bulk dump
-
 ```bash
-# netexec (fast)
-nxc ldap DC -u user -p pass --computers > computers.txt
+# Pipeline típico — bulk + parseo
+nxc ldap <DC> -u user -p pass --computers > computers.txt
 
-# Detailed attributes
-nxc ldap DC -u user -p pass --query \
+nxc ldap <DC> -u user -p pass --query \
   "(objectCategory=computer)" \
   "cn,dNSHostName,operatingSystem,operatingSystemVersion,lastLogonTimestamp,servicePrincipalName" \
   > computers_detail.txt
 ```
 
 ```powershell
-# RSAT
+# RSAT — CSV con atributos accionables
 Get-ADComputer -Filter * -Properties OperatingSystem,OperatingSystemVersion,LastLogonDate,Description |
   Select Name,DNSHostName,OperatingSystem,OperatingSystemVersion,LastLogonDate,Description |
   Sort LastLogonDate -Descending |
@@ -68,49 +57,41 @@ ___
 
 ## Critical Computer Attributes
 
-| **Atributo** | **Significado** | **Notas** |
+| **Atributo** | **Significado** | **Para qué sirve** |
 |:---:|:---:|:---:|
-| `cn` / `samAccountName` | Hostname (with `$`) | Standard ID. |
-| `dNSHostName` | FQDN | Network ID. |
-| `operatingSystem` | OS name | Targeting. |
-| `operatingSystemVersion` | Build number | Vuln matching. |
-| `operatingSystemServicePack` | SP | Legacy. |
-| `lastLogonTimestamp` | Last logon (replicated, ~14d delay) | Activity. |
-| `lastLogon` | Last logon (per-DC, real-time) | Activity (per-DC). |
-| `pwdLastSet` | Computer account password last change | Stale check. |
-| `userAccountControl` | Flags (TRUSTED_FOR_DELEGATION, etc) | Critical bitfield. |
-| `servicePrincipalName` | SPNs (host/HOST/RestrictedKrbHost) | Service ID. |
-| `msDS-AllowedToDelegateTo` | Constrained delegation targets | Critical. |
-| `msDS-AllowedToActOnBehalfOfOtherIdentity` | RBCD | Critical. |
-| `ms-Mcs-AdmPwd` (legacy) / `msLAPS-Password` | LAPS password | Direct cred. |
-| `description` | Free-text — passwords leak | Always check. |
+| `cn` / `samAccountName` | Hostname (con `$` final) | ID en logs/queries. |
+| `dNSHostName` | FQDN | Resolución DNS. |
+| `operatingSystem` + `operatingSystemVersion` | OS + build | Vuln matching (CVE per build). |
+| `lastLogonTimestamp` | Last logon (replicated, ~14d delay) | Live vs stale. |
+| `lastLogon` | Last logon real (per-DC) | Activity exacta (consultar todos DCs). |
+| `pwdLastSet` | Computer account password rotation | Stale check (default 30d). |
+| `userAccountControl` | Bitfield flags | Detect delegation flags. |
+| `servicePrincipalName` | SPNs (host/HOST/MSSQLSvc/HTTP/etc) | Identificar rol del host. |
+| `msDS-AllowedToDelegateTo` | Constrained delegation targets | Privesc path. |
+| `msDS-AllowedToActOnBehalfOfOtherIdentity` | RBCD config | Lateral target. |
+| `ms-Mcs-AdmPwd` / `msLAPS-Password` | LAPS password (si readable) | Direct local admin. |
+| `description` | Free-text — passwords leak comunes | Always grep. |
 | `managedBy` | Owner DN | Path indicator. |
-| `objectSid` | SID | RID extraction. |
-| `whenCreated` / `whenChanged` | Lifecycle | Recent activity. |
+| `objectSid` | SID (RID extraction) | Cross-correlate. |
 ^ad-computers-attrs
 
-### UAC flags decoded for computers
-
-```
-0x00000002  ACCOUNTDISABLE
-0x00001000  WORKSTATION_TRUST_ACCOUNT  (default workstation)
-0x00002000  SERVER_TRUST_ACCOUNT       (DC)
-0x00080000  TRUSTED_FOR_DELEGATION     ← Unconstrained delegation
-0x00100000  NOT_DELEGATED
-0x01000000  TRUSTED_TO_AUTH_FOR_DELEGATION  ← Constrained w/protocol transition
-```
+**UAC flags relevantes para computers:**
+- `0x00080000` TRUSTED_FOR_DELEGATION — **Unconstrained**
+- `0x01000000` TRUSTED_TO_AUTH_FOR_DELEGATION — **Constrained con protocol transition**
+- `0x00100000` NOT_DELEGATED — explicitly excluded
+- `0x00002000` SERVER_TRUST_ACCOUNT — DC
 
 ```bash
-# Find unconstrained delegation
-nxc ldap DC -u u -p p --trusted-for-delegation
+# Unconstrained delegation (CRITICAL)
+nxc ldap <DC> -u u -p p --trusted-for-delegation
 
-# Or LDAP raw
-ldapsearch -h DC -D u -w p -b "DC=dom,DC=local" \
+# LDAP raw — UAC bit 524288
+ldapsearch -h <DC> -D u -w p -b "DC=corp,DC=local" \
   "(&(objectCategory=computer)(userAccountControl:1.2.840.113556.1.4.803:=524288))" \
   cn dNSHostName
 
-# Find constrained delegation
-ldapsearch -h DC -D u -w p -b "DC=dom,DC=local" \
+# Constrained delegation
+ldapsearch -h <DC> -D u -w p -b "DC=corp,DC=local" \
   "(&(objectCategory=computer)(msDS-AllowedToDelegateTo=*))" \
   cn dNSHostName msDS-AllowedToDelegateTo
 ```
@@ -119,130 +100,87 @@ ___
 
 ## High-Value Targets Identification
 
-| **Filter** | **Purpose** | **Notas** |
+| **Filtro / Comando** | **Qué identifica** | **Riesgo** |
 |:---:|:---:|:---:|
-| `OperatingSystem -like "*Server*"` | Servers only | Targeting tier 1+. |
-| `TrustedForDelegation -eq $true` | Unconstrained delegation | Critical compromise target. |
-| `msDS-AllowedToDelegateTo -ne $null` | Constrained delegation | Privileged. |
-| `msDS-AllowedToActOnBehalfOfOtherIdentity -ne $null` | RBCD configured | Lateral target. |
-| OU = Domain Controllers | DCs explicit | Top-tier. |
-| `LastLogonDate < 30 days ago` | Active hosts | Live targets. |
-| `LastLogonDate < 7 days` | Recently active | Sessions likely cached. |
-| `ServicePrincipalName -like "*MSSQLSvc*"` | SQL Servers | DB target. |
-| `ServicePrincipalName -like "*HTTP*"` | Web servers | Adjacent. |
-| `ServicePrincipalName -like "*ldap*"` | DCs (also workstation/HOST) | Filter. |
-| `Description` contains keywords | Manual review for clues | Passwords leak. |
-| OS = Windows Server 2008 / 2012 | Legacy — likely vuln | Easy target. |
-| OS = Windows Server 2003 | Very legacy | Critical. |
-| OS = Linux / non-Windows | AD-joined Linux | Edge. |
-| Hostname contains "DC" / "DB" / "SQL" | Naming convention | Easy ID. |
-| Hostname contains "PROD" / "DEV" / "TEST" | Environment ID | Risk grading. |
+| `Get-ADComputer -Filter {OperatingSystem -like "*Server*"}` | Servers solamente | Tier 1+ targets. |
+| `Get-ADComputer -Filter {TrustedForDelegation -eq $true -and PrimaryGroupID -ne 516}` | Unconstrained no-DC | Critical (TGT capture). |
+| `Get-ADComputer -Filter * -Pr msDS-AllowedToDelegateTo \| ? msDS-AllowedToDelegateTo` | Constrained delegation | Privesc S4U. |
+| `Get-ADComputer -Filter * -Pr msDS-AllowedToActOnBehalfOfOtherIdentity \| ? msDS-AllowedToActOnBehalfOfOtherIdentity` | RBCD configurado | Lateral target. |
+| `Get-ADComputer -SearchBase "OU=Domain Controllers,..."` | Solo DCs | Tier 0. |
+| `Get-ADComputer -Filter {Enabled -eq $true -and LastLogonDate -gt (Get-Date).AddDays(-7)}` | Hosts activos última semana | Sessions cached probable. |
+| `Get-ADComputer -Filter {ServicePrincipalName -like "*MSSQLSvc*"}` | SQL servers | DB target. |
+| `Get-ADComputer -Filter {OperatingSystem -like "*2008*" -or OperatingSystem -like "*2003*"}` | OS legacy | Easy compromise. |
+| `Get-ADComputer -Filter * \| ? Name -match "DB\|SQL\|DC\|HV\|VC"` | Naming convention | Quick ID por rol. |
 ^ad-computers-hvtargets
 
-### High-value enumeration
-
 ```powershell
-# Servers only (active)
-Get-ADComputer -Filter {OperatingSystem -like "*Server*" -and Enabled -eq $true} `
-  -Properties OperatingSystem,OperatingSystemVersion,LastLogonDate,Description |
-  Where {$_.LastLogonDate -gt (Get-Date).AddDays(-30)} |
-  Select Name,DNSHostName,OperatingSystem,LastLogonDate,Description
-
-# Unconstrained delegation (CRITICAL)
-Get-ADComputer -Filter {TrustedForDelegation -eq $true -and PrimaryGroupID -ne 516} `
-  -Properties TrustedForDelegation,LastLogonDate
-# (PrimaryGroupID 516 = Domain Controllers — exclude DCs which are expected to have this flag)
-
-# Constrained delegation
-Get-ADComputer -Filter {msDS-AllowedToDelegateTo -like "*"} `
-  -Properties msDS-AllowedToDelegateTo |
-  Select Name,@{n='DelegatedTo';e={$_.'msDS-AllowedToDelegateTo' -join '; '}}
-
-# RBCD configured (lateral target)
-Get-ADComputer -Filter * `
-  -Properties msDS-AllowedToActOnBehalfOfOtherIdentity |
-  Where {$_.'msDS-AllowedToActOnBehalfOfOtherIdentity'} |
-  Select Name,DNSHostName
+# HVTs en una pasada
+Get-ADComputer -Filter {Enabled -eq $true} `
+  -Properties OperatingSystem,LastLogonDate,TrustedForDelegation,msDS-AllowedToDelegateTo,msDS-AllowedToActOnBehalfOfOtherIdentity,ServicePrincipalName |
+  Where { $_.TrustedForDelegation -or $_.'msDS-AllowedToDelegateTo' -or $_.'msDS-AllowedToActOnBehalfOfOtherIdentity' } |
+  Select Name,DNSHostName,OperatingSystem,
+    @{n='Unconstrained';e={$_.TrustedForDelegation}},
+    @{n='Constrained';e={$_.'msDS-AllowedToDelegateTo' -join ','}},
+    @{n='RBCD';e={[bool]$_.'msDS-AllowedToActOnBehalfOfOtherIdentity'}}
 ```
 
 ___
 
 ## Stale Computer Accounts
 
-| **Indicator** | **Filter** | **Notas** |
+| **Filtro** | **Qué encuentra** | **Por qué importa** |
 |:---:|:---:|:---:|
-| `pwdLastSet` very old | Computer pwd not rotated | Stale. |
-| `LastLogonDate > 180 days` | No domain logon | Likely abandoned. |
-| `Enabled=true` but stale | Defense gap | Risk. |
-| Disabled but in priv group | Re-enable risk | Audit. |
-| Computer password = default | After failed re-join | Risk. |
-| Servers stale > 90 days | Critical hosts | Security audit. |
-| Pre-Windows 2000 compatible (ANONYMOUS LOGON in Pre-Windows 2000 group) | Legacy | Edge. |
-| Computer pwd never set | Anomaly | Investigation. |
-| sIDHistory present | Migrated computer | Check trust. |
-| Rouge computer accounts | Created by non-admin | Audit ms-DS-MachineAccountQuota. |
-| Service account on workstation | Misconfig | Investigate. |
-| Computer in Tier 0 OU | Should not be (unless DC) | Audit. |
-| Mass-create from default container | Random unjoin | Suspicious. |
-| `whenCreated` very recent + privileged OU | Possible attacker creation | Detection. |
-| Description contains password | Common leak | Check. |
-| Quote-default password ("password", "Pa$$w0rd!") in description | Default/test | Check. |
+| `Get-ADComputer -Filter {LastLogonDate -lt (Get-Date).AddDays(-180)}` | Hosts inactivos >180d | Probable rogue / olvidado. |
+| `Get-ADComputer -Filter * -Pr PasswordLastSet \| ? {$_.PasswordLastSet -lt (Get-Date).AddDays(-90)}` | Computer pwd >90d (default 30d) | Stuck rotation = likely stale. |
+| `Get-ADComputer -Filter {Enabled -eq $true -and LastLogonDate -lt (Get-Date).AddDays(-365)}` | Enabled + 1 año sin logon | Cleanup target / risk. |
+| `Get-ADComputer -Filter * -Pr Description \| ? {$_.Description -match "(?i)pass\|pwd\|temp"}` | Description con keywords | Common cred leak. |
+| `Get-ADComputer -Filter * -Pr SIDHistory \| ? SIDHistory` | Computers con SID History | Migration leftover. |
+| `Get-ADComputer -Filter {whenCreated -gt (Get-Date).AddDays(-7)}` | Recientemente creados | Posible attacker (MachineAccountQuota=10 default). |
+| `(Get-ADDomain).ms-DS-MachineAccountQuota` | Quota de MSA per user (default 10) | Permite atacante crear computers. |
 ^ad-computers-stale
 
-### Stale audit
-
 ```powershell
-# Stale > 180 days
-$staleDate = (Get-Date).AddDays(-180)
-Get-ADComputer -Filter {LastLogonDate -lt $staleDate -and Enabled -eq $true} `
-  -Properties LastLogonDate,OperatingSystem |
-  Select Name,DNSHostName,OperatingSystem,LastLogonDate
-
-# Computer account pwd > 90 days (default rotation 30d)
-$pwdStale = (Get-Date).AddDays(-90)
-Get-ADComputer -Filter * -Properties PasswordLastSet |
-  Where {$_.PasswordLastSet -lt $pwdStale} |
-  Select Name,PasswordLastSet
+# Audit completo stale
+$Stale = (Get-Date).AddDays(-180)
+Get-ADComputer -Filter {LastLogonDate -lt $Stale -and Enabled -eq $true} `
+  -Properties LastLogonDate,OperatingSystem,PasswordLastSet,Description |
+  Select Name,DNSHostName,OperatingSystem,LastLogonDate,PasswordLastSet,Description |
+  Export-Csv stale-computers.csv -NoTypeInformation
 ```
 
 ___
 
 ## Bulk Profile Live Targets
 
-| **Combine** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Live + signing off | `nxc smb hosts.txt -u u -p p --signing` filter | Relay candidates. |
-| Live + LAPS readable | `nxc smb hosts.txt -u u -p p --laps` | Cred path. |
-| Live + admin access | `nxc smb hosts.txt -u u -p p` (Pwn3d marker) | Lateral foothold. |
-| Live + session count | `nxc smb hosts.txt -u u -p p --sessions` | Pivot prep. |
-| Live + loggedon users | `nxc smb hosts.txt -u u -p p --loggedon-users` | Tier-X user discovery. |
-| Live + share enum | `nxc smb hosts.txt -u u -p p --shares` | Spider target prep. |
-| Live + RID brute | `nxc smb hosts.txt -u u -p p --rid-brute` | Local accounts enum. |
-| Live + svc enum | `nxc smb hosts.txt -u u -p p --services` | Service discovery. |
-| Live + WMI exec test | `nxc smb hosts.txt -u u -p p -x whoami` | Code exec verify. |
-| Live + WinRM access | `nxc winrm hosts.txt -u u -p p` | Lateral path. |
-| Live + RDP access | `nxc rdp hosts.txt -u u -p p` (limited) | Adjacent. |
-| Live + SSH on Linux | `nxc ssh hosts.txt -u u -p p` | Linux AD-joined. |
-| Live + MSSQL access | `nxc mssql hosts.txt -u u -p p` | DB enumeration. |
-| Live + LDAP query | `nxc ldap DC -u u -p p` | DC query. |
-| HTTPS WinRM (5986) | `nxc winrm hosts.txt -u u -p p --port 5986` | Encrypted. |
-| HTTP WinRM (5985) | Default port | Standard. |
+| `nxc smb hosts.txt -u u -p p` | Live + admin (`Pwn3d!`) + signing + OS | Profile estándar. |
+| `nxc smb hosts.txt -u u -p p --gen-relay-list relay.txt` | Hosts sin signing → relay list | NTLM Relay prep. |
+| `nxc smb hosts.txt -u u -p p --laps` | Hosts con LAPS readable | Cred path local admin. |
+| `nxc smb hosts.txt -u u -p p --sessions` | Sessions activas (RID > 1000) | Pivot prep. |
+| `nxc smb hosts.txt -u u -p p --loggedon-users` | Users actualmente logueados | Tier-X discovery. |
+| `nxc smb hosts.txt -u u -p p --shares` | Shares + perms per host | Spider prep. |
+| `nxc smb hosts.txt -u u -p p --rid-brute` | Local accounts via RID | Lateral candidates. |
+| `nxc smb hosts.txt -u u -p p -x "whoami"` | Code exec verify | Confirm priv. |
+| `nxc winrm hosts.txt -u u -p p` | WinRM access (5985/5986) | Lateral path. |
+| `nxc rdp hosts.txt -u u -p p` | RDP NLA check | Adjacent lateral. |
+| `nxc mssql hosts.txt -u u -p p` | MSSQL Integrated Auth | DB lateral. |
+| `nxc ssh hosts.txt -u u -p p` | Linux AD-joined SSH | Hybrid lateral. |
 ^ad-computers-bulk-profile
 
-### Profile pipeline
-
 ```bash
-# Get all server names
-nxc ldap DC -u user -p pass --computers > servers.txt
+# Pipeline completo desde computer list
+nxc ldap <DC> -u user -p pass --computers > servers.txt
 
-# Quick live + admin profile
+# Profile multi-protocolo
 nxc smb servers.txt -u user -p pass
+nxc smb servers.txt -u user -p pass --gen-relay-list relay.txt
+nxc smb servers.txt -u user -p pass --laps
 
-# Output decode:
-# (Pwn3d!)        = local admin
-# Signing: True   = relay-resistant
-# Signing: False  = relay candidate ←
-# OS info         = vuln matching
+# Output flags clave:
+#   (Pwn3d!)         = local admin
+#   Signing: False   = NTLM Relay candidate
+#   LAPS readable    = direct local admin password
 ```
 
 ***
