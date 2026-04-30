@@ -20,82 +20,56 @@ linked:
 
 ***
 
-## AXFR Basics
+## AXFR Quick Test
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| AXFR = Full Zone Transfer | RFC 5936 | Standard DNS. |
-| IXFR = Incremental Transfer | Differential | Adjacent. |
-| Designed for secondary servers | Master → slave sync | Original purpose. |
-| Atacante abuse → enum zone | Misconfig allows unauth | Critical leak. |
-| TCP port 53 (zone transfers) | UDP doesn't support AXFR | TCP-only. |
-| Response = entire zone | All records returned | Full dump. |
-| Default Microsoft DNS | Allow only configured masters | Secure default. |
-| BIND default | Allow only configured slaves | Secure default. |
-| Misconfig: `allow-transfer { any; }` | Common BIND mistake | Critical. |
-| Microsoft: "Allow zone transfers to any server" | GUI misconfig option | Common. |
-| TSIG-secured AXFR | Authenticated transfer | Modern best practice. |
-| Tested via `dig AXFR <zone> @<server>` | Direct | Standard. |
-| Per-zone allowed | Different policies per zone | Granular. |
-| Reverse zones often forgotten | Often allow AXFR | Common oversight. |
-| Cloud DNS (Route53) | Different model | No AXFR per-se. |
-| DNS-over-HTTPS doesn't support | DoH/DoT scope | Edge. |
+| `dig AXFR <dom> @<DC>` | Zone completa si AXFR permitido | Test inicial. |
+| `dig AXFR _msdcs.<dom> @<DC>` | _msdcs zone | DC GUIDs + topology. |
+| `dig AXFR <dom> @<DC> +short` | Output sin headers | Scripting. |
+| `host -l <dom> <DC>` | AXFR via host(1) | Sin dig. |
+| `nmap -p53 --script dns-zone-transfer --script-args dns-zone-transfer.domain=<dom> <DC>` | AXFR via nmap | Bulk + script-friendly. |
 ^ad-axfr-basics
 
-### Quick AXFR test
+**Resultados:**
+- `Refused` / `connection refused` → bien defendido (default Win/BIND).
+- `Transfer failed` → server side error o ACL.
+- Output completo → vulnerable, dump full zone.
 
 ```bash
-DOM="dom.local"
-DC="dc01.dom.local"
-
-# Test AXFR
-dig AXFR "$DOM" "@$DC"
-
-# Common results:
-# Refused: AXFR not allowed (good defense)
-# Failure: connection issues
-# Full output: VULNERABLE — all records dumped
+DOM="corp.local"
+for dc in $(dig +short SRV "_ldap._tcp.dc._msdcs.$DOM" | awk '{print $4}' | sed 's/\.$//'); do
+  echo "=== $dc ==="
+  dig AXFR "$DOM" "@$dc" +short | head -10
+done
 ```
 
 ___
 
-## AXFR Attack Targets
+## AXFR Attack — todas las zonas a probar
 
-| **Target Zone** | **Comando** | **Notas** |
+| **Zona** | **Comando** | **Por qué** |
 |:---:|:---:|:---:|
-| Forward primary zone | `dig AXFR dom.local @DC` | Most data. |
-| `_msdcs` subdomain | `dig AXFR _msdcs.dom.local @DC` | All DC GUIDs. |
-| Reverse lookup zones | `dig AXFR 0.10.in-addr.arpa @DC` | PTR records. |
-| Cross-zone | Try every discoverable zone | Bulk enum. |
-| Public-facing internal zones | If internal DNS public | Critical exposure. |
-| Conditional forwarders | Identify cross-zone references | Adjacent. |
-| Stub zones | Limited records | Adjacent. |
-| Trust zones | Inter-forest DNS visibility | Edge. |
-| Subdomain zones | `app.dom.local` separately | If delegated. |
-| Reverse IPv6 zones | `0.0...ip6.arpa` | Often forgotten. |
-| Internal email zones | If MX records hosted | Adjacent. |
-| Active Directory partition zones | `DomainDnsZones.<dom>` | Edge. |
-| `ForestDnsZones.<forest>` | Forest-wide records | Edge. |
-| Backup DNS servers | Sometimes more permissive | Try all. |
-| Slave DNS servers | Often inherit perms | Try too. |
-| Hidden master DNS | Edge enterprise | Try. |
+| Forward primary | `dig AXFR corp.local @<DC>` | Records principales. |
+| `_msdcs` subdomain | `dig AXFR _msdcs.corp.local @<DC>` | DC GUIDs + topology. |
+| `DomainDnsZones` partition | `dig AXFR DomainDnsZones.corp.local @<DC>` | Edge — pocas veces accesible. |
+| `ForestDnsZones` partition | `dig AXFR ForestDnsZones.corp.local @<DC>` | Edge — forest-wide. |
+| Reverse `/16` | `dig AXFR 0.10.in-addr.arpa @<DC>` | PTRs (hostname disclosure). |
+| Reverse `/24` | `dig AXFR 10.0.10.in-addr.arpa @<DC>` | PTRs subnet específico. |
+| Sub-domain delegada | `dig AXFR app.corp.local @<DC>` | Apps en zonas separadas. |
 ^ad-axfr-targets
 
-### Bulk AXFR test
-
 ```bash
-DOM="dom.local"
-
-# Get all DCs
+DOM="corp.local"
 DCS=$(dig +short SRV "_ldap._tcp.dc._msdcs.$DOM" | awk '{print $4}' | sed 's/\.$//')
 
-# Try AXFR on each DC + each known zone
+# Probar todas las zonas conocidas en cada DC
 for dc in $DCS; do
   for zone in "$DOM" "_msdcs.$DOM" "DomainDnsZones.$DOM" "ForestDnsZones.$DOM"; do
-    RESULT=$(timeout 5 dig AXFR "$zone" "@$dc" +short 2>&1)
-    if [ -n "$RESULT" ] && ! echo "$RESULT" | grep -q "Transfer failed\|REFUSED"; then
-      echo "[+] AXFR SUCCESS: $zone @ $dc"
-      echo "$RESULT" | head -5
+    R=$(timeout 5 dig AXFR "$zone" "@$dc" +short 2>&1)
+    if [ -n "$R" ] && ! echo "$R" | grep -qE "failed|REFUSED|connection"; then
+      echo "[+] AXFR OK: $zone @ $dc"
+      echo "$R" | head -5
     fi
   done
 done
@@ -105,125 +79,76 @@ ___
 
 ## dnsrecon / dnsenum / fierce
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| dnsrecon AXFR | `dnsrecon -d dom.local -t axfr` | Targeted. |
-| dnsrecon standard | `dnsrecon -d dom.local` | Multi-mode. |
-| dnsrecon brute | `dnsrecon -d dom.local -t brt -D wordlist.txt` | Subdomain brute. |
-| dnsrecon SRV | `dnsrecon -d dom.local -t srv` | SRV-only. |
-| dnsrecon reverse | `dnsrecon -r 10.0.0.0/24` | PTR sweep. |
-| dnsrecon JSON output | `-j out.json` | Parseable. |
-| dnsenum standard | `dnsenum dom.local` | Multi-mode similar. |
-| dnsenum threads | `dnsenum --threads 10 dom.local` | Performance. |
-| dnsenum brute | `dnsenum -f wordlist.txt dom.local` | Subdomain. |
-| fierce default | `fierce -dns dom.local` | Brute + zone walk. |
-| fierce wordlist | `fierce -dns dom.local -wordlist hosts.txt` | Custom. |
-| fierce range | `fierce -dns dom.local -range 10.0.0.0/24` | Reverse. |
-| `host -l <zone> <server>` | Quick AXFR | BIND tools. |
-| `nslookup` interactive AXFR | `ls dom.local` | Legacy. |
-| `gobuster dns` | DNS subdomain brute | Modern. |
-| Massdns + wordlists | Bulk brute | Performance. |
+| `dnsrecon -d <dom> -t axfr` | AXFR contra todos NS records | One-shot. |
+| `dnsrecon -d <dom>` | Standard records (SOA, NS, MX, A) + AXFR + SRV | Recon completo. |
+| `dnsrecon -d <dom> -t brt -D wordlist.txt` | Subdomain brute | Sin AXFR. |
+| `dnsrecon -d <dom> -t std,axfr,srv,brt -D wordlist.txt -j out.json` | Pipeline completo + JSON | Automation. |
+| `dnsrecon -r 10.0.0.0/24` | Reverse PTR sweep | Network mapping. |
+| `dnsenum --threads 10 <dom>` | Multi-mode threaded | Alt tool. |
+| `fierce --domain <dom> --subdomain-file wordlist.txt` | Brute + zone walk | Alt. |
+| `gobuster dns -d <dom> -w wordlist -t 50 -r <DC>` | Brute fast con DNS server custom | Internal DNS resolver. |
 ^ad-axfr-tools
 
-### dnsrecon comprehensive
-
 ```bash
-# Comprehensive recon
-dnsrecon -d dom.local -t std,axfr,srv,brt -D /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -j dns.json
-
-# Output sections:
-# - Standard records (SOA, NS, MX, A)
-# - SRV records (LDAP, Kerberos, GC)
-# - Subdomain brute results
-# - AXFR if successful
-```
-
-```bash
-# fierce
-fierce --domain dom.local --subdomain-file /usr/share/wordlists/dnsmap.txt
+# Pipeline completo
+dnsrecon -d corp.local -n <DC-IP> \
+  -t std,axfr,srv,brt \
+  -D /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
+  -j dns_recon.json
 ```
 
 ___
 
-## Reverse Zone Enumeration (PTR Records)
+## Reverse Zone Enumeration (PTR)
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `dig AXFR 0.10.in-addr.arpa @DC` | All PTRs in /16 | If allowed. |
-| `dig +short -x 10.0.0.10` | Single PTR lookup | Standard. |
-| Reverse range sweep | `for i in {1..254}; do dig +short -x 10.0.0.$i; done` | Bulk. |
-| `dnsrecon -r 10.0.0.0/24` | Bulk reverse | Tool. |
-| `nmap -sn 10.0.0.0/24` (with --resolve-all) | Adjacent | Network scan. |
-| Reverse + forward correlation | Validate consistency | Audit. |
-| Forgotten reverse zones | Often AXFR open | Common bug. |
-| `0.in-addr.arpa` for /8 | Big network | Edge. |
-| IPv6 reverse `0.0.0...ip6.arpa` | IPv6 specific | Modern. |
-| Stale PTR records | Old hostnames | Recon clue. |
-| Multiple PTRs same IP | Misconfig | Edge. |
-| Reverse + classless | RFC 2317 delegation | Edge. |
-| Subnet-specific zones | `64-95.0.10.in-addr.arpa` | Edge. |
-| Decentralized DNS reverse | Per-subnet servers | Edge. |
-| AD-integrated reverse | Often centrally stored | Standard. |
-| Hostnames reveal function | "DC01", "WEBSRV01" | Recon clue. |
+| `dig AXFR 0.10.in-addr.arpa @<DC>` | PTRs `/16` completos | Si AXFR permitido en reverse. |
+| `dig +short -x 10.0.0.10` | PTR de IP específica | Targeted. |
+| `dnsrecon -r 10.0.0.0/24` | Bulk reverse sweep | Sin AXFR. |
+| `nmap -sn 10.0.0.0/24 --resolve-all` | Reverse + ping sweep | Adjacent network scan. |
+| `for i in {1..254}; do dig +short -x 10.0.0.$i @<DC>; done` | Brute reverse manual | Sin tools. |
 ^ad-axfr-reverse
 
-### Reverse zone bulk
+**Reverse zones suelen ser el "hueco" en hardening** — admins olvidan permisos AXFR en zonas reverse mientras forward está cerrada.
 
 ```bash
-# AXFR reverse
-dig AXFR 0.10.in-addr.arpa @DC
-dig AXFR 168.192.in-addr.arpa @DC
-
-# Reverse sweep + AXFR fallback
-DC="10.0.0.10"
-for net in 0 1 2 3 4 5 10; do
-  RESULT=$(dig AXFR "$net.10.in-addr.arpa" "@$DC" +short 2>&1)
-  [ -n "$RESULT" ] && [[ "$RESULT" != *"failed"* ]] && echo "[+] AXFR ok: $net.10.in-addr.arpa"
+# Probar AXFR en zonas reverse comunes
+for net in $(seq 0 255); do
+  R=$(timeout 3 dig AXFR "$net.10.in-addr.arpa" "@<DC>" +short 2>&1)
+  [ -n "$R" ] && [[ "$R" != *"failed"* ]] && echo "[+] AXFR ok: $net.10.in-addr.arpa"
 done
 ```
 
 ___
 
-## Subdomain Brute Force (No AXFR fallback)
+## Subdomain Brute (sin AXFR)
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `gobuster dns` | `gobuster dns -d dom.local -w wordlist` | Fast. |
-| `gobuster dns -t 50` | High threading | Performance. |
-| `dnscan` | `dnscan -d dom.local -w wordlist.txt` | Adjacent. |
-| `subbrute` | Targeted brute | Old but works. |
-| `massdns` | `massdns -r resolvers.txt -t A subdomains.txt` | Massive. |
-| `puredns` | wrapper around massdns | Modern. |
-| `amass enum -d dom.local` | Multi-source enum | OSINT + brute. |
-| `amass intel -d dom.local` | Recon intel | Adjacent. |
-| `findomain` | Fast Rust subdomain | Modern. |
-| `subfinder` | Multi-source | OSINT-heavy. |
-| `chaos-client` | ProjectDiscovery | API-based. |
-| `assetfinder` | Tomnomnom | Quick. |
-| `crt.sh + parsing` | Cert transparency | Public DNS leak. |
-| `securitytrails.com` | Historical DNS | OSINT. |
-| `dnsdumpster.com` | Visual recon | OSINT. |
-| Internal DNS = different from external | Internal-only zones | Recon scope. |
+| `gobuster dns -d <dom> -r <DC-IP> -w wordlist -t 50` | Brute rápido con resolver custom | Internal DNS. |
+| `dnscan -d <dom> -w wordlist.txt` | Alt brute | Sin gobuster. |
+| `puredns bruteforce wordlist.txt <dom> -r resolvers.txt` | Massdns wrapper modern | Performance massive. |
+| `amass enum -d <dom> -passive` | OSINT + passive | External recon. |
+| `findomain -t <dom>` | Rust fast | OSINT-only. |
+| `subfinder -d <dom> -all -silent` | Multi-source | OSINT-heavy. |
 ^ad-axfr-brute
 
-### Subdomain brute strategy
-
 ```bash
-DOM="dom.local"
-
-# Internal DNS-aware brute (point at DC)
-gobuster dns -d "$DOM" -r DC-IP \
+# Internal DNS-aware brute
+gobuster dns -d corp.local -r <DC-IP> \
   -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt \
   -t 50 -o subdomains.txt
 
-# Common AD-specific subdomains
-WORDLIST="dc dc01 dc02 dns mail exchange smtp pop imap mx www intranet portal vpn rdp \
-ts citrix sql sqlsrv mssql mysql postgres web app api dev test staging prod \
-files share fileserver print printer domain forest shadow backup"
-
-for sub in $WORDLIST; do
-  IP=$(dig +short A "$sub.$DOM" @DC-IP)
-  [ -n "$IP" ] && echo "$sub.$DOM -> $IP"
+# Targeted AD-specific common
+for sub in dc dc01 dc02 dns mail exchange smtp ldap ldaps gc \
+           pdc kdc files share fileserver print printer \
+           sql mssql mysql web app api dev test prod \
+           ts rdp citrix vpn portal intranet; do
+  IP=$(dig +short A "$sub.corp.local" @<DC>)
+  [ -n "$IP" ] && echo "$sub.corp.local -> $IP"
 done
 ```
 
@@ -231,45 +156,27 @@ ___
 
 ## Public DNS Leak (External Recon)
 
-| **Vector** | **Risk** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Public-facing AD DNS | Internal records via public resolvers | Critical exposure. |
-| Cert transparency logs | crt.sh reveals subdomains | OSINT. |
-| Wayback Machine | Historical subdomains | OSINT. |
-| Google dorks | `site:dom.local` | OSINT. |
-| GitHub leaked configs | DNS in code | OSINT. |
-| Pastebin DNS dumps | Old AXFR results | OSINT. |
-| Public BGP / WHOIS | IP ranges | OSINT. |
-| Shodan / Censys | Hostname-IP correlation | OSINT. |
-| DNS aggregators | dnsdumpster, securitytrails | OSINT. |
-| Public NS records leak topology | NS hostnames internal | Indicator. |
-| MX records leak email gateway | Adjacent recon | Standard. |
-| TXT records SPF/DKIM | Email infrastructure | Adjacent. |
-| Cloud metadata DNS | Cloud-hosted internal | Edge. |
-| CDN bypass via DNS | Origin server discovery | OSINT. |
-| Subdomain takeover candidates | Stale CNAMEs | Critical (Subdomain Takeover hub). |
-| Internal-only resolvers blocked externally | Default modern | Defense. |
+| `curl -s "https://crt.sh/?q=%25.<dom>&output=json" \| jq -r '.[].name_value' \| sort -u` | Subdomains via cert transparency | Pre-engagement OSINT. |
+| `subfinder -d <dom> -all -silent` | Multi-source aggregator | Pre-engagement. |
+| `amass enum -passive -d <dom>` | Passive OSINT + DNS | Pre-engagement. |
+| `dnsdumpster.com` (web) | Visual map externa | Quick view. |
+| `securitytrails.com` | Historical DNS | DNS pivots. |
+| `shodan search "ssl.cert.subject.cn:<dom>"` | Hosts con cert del dominio | Cross-correlate. |
 ^ad-axfr-public
 
-### Public DNS recon
-
 ```bash
-DOM="dom.local"
+# Pipeline OSINT pre-engagement
+DOM="corp.local"
 
-# Cert transparency logs
-curl -s "https://crt.sh/?q=%25.$DOM&output=json" | \
-  jq -r '.[].name_value' | sort -u
+# Aggregate sources
+subfinder -d "$DOM" -all -silent > subs.txt
+amass enum -passive -d "$DOM" >> subs.txt
+curl -s "https://crt.sh/?q=%25.$DOM&output=json" | jq -r '.[].name_value' >> subs.txt
 
-# Subfinder (multi-source)
-subfinder -d "$DOM" -all -silent
-
-# Amass intel
-amass intel -d "$DOM" -src
-amass enum -passive -d "$DOM"
-
-# Resolve discovered subdomains
-subfinder -d "$DOM" -all -silent | \
-  httpx -title -web-server -tech-detect
+# Dedupe + resolve
+sort -u subs.txt | httpx -title -web-server -tech-detect
 ```
 
 ***

