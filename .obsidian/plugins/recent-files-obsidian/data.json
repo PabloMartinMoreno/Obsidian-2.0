@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Subdomain Takeover",
+      "path": "04 - Content/Subdomain Takeover.md"
+    },
+    {
+      "basename": "BloodHound & SharpHound",
+      "path": "04 - Content/BloodHound & SharpHound.md"
+    },
+    {
       "basename": "Active Directory Enumeración",
       "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
     },
@@ -27,10 +39,6 @@
     {
       "basename": "CWES - Checklists",
       "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Server-Side Template Injection (SSTI)",
@@ -191,14 +199,6 @@
     {
       "basename": "Cross-Site Request Forgery (CSRF)",
       "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "BOLA - IDOR",
-      "path": "04 - Content/BOLA - IDOR.md"
     }
   ],
   "omittedPaths": [],
