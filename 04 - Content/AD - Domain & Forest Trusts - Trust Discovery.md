@@ -22,274 +22,162 @@ linked:
 
 ## Native Windows Tools
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `nltest /domain_trusts` | All trusts with flags | Native quick. |
-| `nltest /domain_trusts /all_trusts` | Forest-wide enum | Comprehensive. |
-| `nltest /domain_trusts /v` | Verbose | Detailed flags. |
-| `nltest /trusted_domains` | Direct trusts only | Local domain. |
-| `nltest /server:DC /trusted_domains` | Per-server | Cross-target. |
-| `nltest /sc_query:<dom>` | Secure channel status | Trust health. |
-| `nltest /sc_verify:<dom>` | Trust verify | Adjacent. |
-| `nltest /sc_reset:<dom>` | Reset SC (privileged) | Edge. |
-| `Get-ADTrust -Filter *` | RSAT detail | Direction + type. |
-| `Get-ADTrust -Filter * -Properties *` | All attributes | Complete. |
-| `dsquery * -filter "(objectClass=trustedDomain)"` | Legacy | Old. |
-| `netdom query trust` | Native | Adjacent. |
-| `netdom query domain` | Adjacent | Quick. |
-| `Get-ADForest | Select Domains` | Forest list | Forest scope. |
-| `[System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest().Domains` | .NET forest | DotNet. |
-| `[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().GetAllTrustRelationships()` | .NET trusts | DotNet. |
+| `nltest /domain_trusts` | Trusts directos del domain actual | Quick check. |
+| `nltest /domain_trusts /all_trusts /v` | Todos los trusts (forest-wide) verbose | Mapping completo. |
+| `nltest /trusted_domains` | Solo trusts directos (no transitive) | Subset. |
+| `nltest /server:<DC> /trusted_domains` | Trusts vistos desde DC específico | Cross-DC validation. |
+| `nltest /sc_query:<dom>` | Estado del secure channel | Trust health. |
+| `nltest /sc_verify:<dom>` | Verificar trust funciona | Health check. |
+| `Get-ADTrust -Filter *` | Trusts via RSAT con direction + type | Detail completo. |
+| `Get-ADTrust -Filter * -Properties SIDFilteringForestAware,SIDFilteringQuarantined,TGTDelegation,SelectiveAuthentication` | Atributos críticos hardening | Audit defender. |
+| `netdom query trust` | Trusts via netdom | Native alt. |
+| `[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().GetAllTrustRelationships()` | Trusts via .NET | Sin RSAT/nltest. |
 ^ad-trust-discover-native
 
-### nltest comprehensive
-
-```cmd
-:: All trusts with verbose flags
-nltest /domain_trusts /all_trusts /v
-
-:: Output flags decoded:
-:: PRIMARY      -> Trust originates from this domain
-:: NATIVE       -> Native mode trust (vs mixed)
-:: TREE_ROOT    -> Forest tree root domain
-:: WITHIN_FOREST -> Inter-domain (intra-forest)
-:: DIRECT_OUTBOUND -> Outbound only
-:: DIRECT_INBOUND  -> Inbound only
-:: FOREST_TRANSITIVE -> Forest-level transitive
-:: CROSS_ORGANIZATION -> Cross-org (with Selective Auth typical)
-
-:: Per-trust secure channel verify
-nltest /sc_verify:trustdomain.com
+```powershell
+# Audit completo trusts con flags hardening
+Get-ADTrust -Filter * -Properties * |
+  Select Name,Source,Target,Direction,TrustType,IsTransitive,
+         SelectiveAuthentication,TGTDelegation,
+         SIDFilteringForestAware,SIDFilteringQuarantined,UplevelOnly
 ```
 
-```powershell
-# RSAT detailed
-Get-ADTrust -Filter * -Properties * | 
-  Select Name,Source,Target,Direction,TrustType,IsTransitive,SelectiveAuthentication,TGTDelegation,SIDFilteringForestAware,SIDFilteringQuarantined,UplevelOnly
+```cmd
+:: Output flags decoded:
+:: PRIMARY            -> Trust originates here
+:: NATIVE             -> Native mode
+:: TREE_ROOT          -> Tree root domain
+:: WITHIN_FOREST      -> Intra-forest
+:: DIRECT_OUTBOUND    -> Outbound only
+:: DIRECT_INBOUND     -> Inbound only
+:: FOREST_TRANSITIVE  -> Forest-level transitive
+:: CROSS_ORGANIZATION -> Selective Auth típico
+nltest /domain_trusts /all_trusts /v
 ```
 
 ___
 
 ## LDAP Trust Discovery
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `ldapsearch -b "CN=System,DC=dom,DC=local" "(objectClass=trustedDomain)"` | Linux LDAP | Direct. |
-| `nxc ldap DC -u u -p p --query "(objectClass=trustedDomain)" "*"` | netexec wrapper | Quick. |
-| Trust object location | `CN=System,DC=dom,DC=local` | Always. |
-| Object class | `trustedDomain` | LDAP class. |
-| Object naming | `CN=trustname.com,CN=System,...` | DN pattern. |
-| Critical attrs | `trustDirection`, `trustType`, `trustAttributes`, `trustPartner` | Core fields. |
-| `trustPartner` attribute | Other domain FQDN | ID. |
-| `flatName` attribute | NetBIOS name | Adjacent. |
-| `securityIdentifier` (SID) | Foreign domain SID | Cross-domain SID. |
-| `trustAuthIncoming` (binary) | Incoming trust password (if access) | Sensitive. |
-| `trustAuthOutgoing` (binary) | Outgoing trust password | Sensitive. |
-| `whenCreated` / `whenChanged` | Trust lifecycle | Audit. |
-| Trust account in `Users` | `<NETBIOS>$` user object | TDO related. |
-| Computer-style auth account | `<dom>$@<peer>` | Trust auth principal. |
-| Cross-trust references | Adjacent domains | Map. |
-| Cross-forest TrustedDomain in Configuration NC | `CN=Cross-Ref,CN=Partitions,CN=Configuration,...` | Forest-level. |
+| `ldapsearch -h <DC> -D u -w p -b "CN=System,DC=corp,DC=local" "(objectClass=trustedDomain)" cn flatName trustPartner trustDirection trustType trustAttributes securityIdentifier` | Trusts via LDAP raw (Linux) | Sin RSAT. |
+| `nxc ldap <DC> -u u -p p --query "(objectClass=trustedDomain)" "*"` | Wrapper netexec | Quick. |
+| `ldapsearch ... -b "CN=Partitions,CN=Configuration,DC=corp,DC=local" "(objectClass=crossRef)"` | Cross-references forest-level | Forest map. |
 ^ad-trust-discover-ldap
 
-### LDAP trust dump
+**Atributos clave del `trustedDomain`:**
+- `trustPartner` → FQDN del peer
+- `flatName` → NetBIOS del peer
+- `trustDirection` → 1=inbound, 2=outbound, 3=bidirectional
+- `trustType` → 1=Windows NT, 2=Active Directory, 3=Kerberos realm
+- `trustAttributes` → bitfield (transitive, forest, selective auth, etc)
+- `securityIdentifier` → SID del foreign domain
 
 ```bash
-# Trusts via LDAP (linux)
-ldapsearch -h DC -D 'dom\user' -w pass \
-  -b "CN=System,DC=dom,DC=local" \
+# Trust dump completo
+ldapsearch -h <DC> -D 'corp\u' -w pass \
+  -b "CN=System,DC=corp,DC=local" \
   "(objectClass=trustedDomain)" \
-  cn flatName trustPartner trustDirection trustType trustAttributes securityIdentifier whenCreated
-
-# Forest-level cross-references
-ldapsearch -h DC -D 'dom\user' -w pass \
-  -b "CN=Partitions,CN=Configuration,DC=forest,DC=local" \
-  "(objectClass=crossRef)" \
-  cn nCName dnsRoot trustParent
+  cn flatName trustPartner trustDirection trustType trustAttributes \
+  securityIdentifier whenCreated whenChanged
 ```
 
 ___
 
 ## PowerView / pywerview
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-DomainTrust` | Local trusts | Adversary tool. |
-| `Get-DomainTrust -SearchBase "GC://target.local"` | GC-scoped query | Adjacent. |
-| `Get-DomainTrustMapping` | Multi-domain crawl | Forest map (slow). |
-| `Get-DomainTrustMapping -API` | Use Win32 API | Alt method. |
-| `Get-ForestTrust` | Forest-level | Forest-only. |
-| `Get-ForestDomain` | All domains in forest | Forest mapping. |
-| `Get-ForestGlobalCatalog` | GC list | Adjacent. |
-| `Get-DomainSID` | Local domain SID | Cross-trust SID resolution. |
-| `Convert-ADName` | Convert formats | Helper. |
-| `Get-DomainObject` for trust account | Trust account user object | Detail. |
-| pywerview `get-domaintrust` | Linux equivalent | Adjacent. |
-| pywerview `get-domaintrust-mapping` | Map | Adjacent. |
-| `Get-NetForest` (older PowerView) | Forest object | Legacy. |
-| `Find-ForeignUser` | Users in foreign groups | Cross-trust analysis. |
-| `Find-ForeignGroup` | Groups containing foreign principals | Adjacent. |
-| `Get-DomainGroup -MemberDomain` | Filter by member domain | Cross-trust check. |
+| `Get-DomainTrust` | Trusts del domain actual | Adversary tool. |
+| `Get-DomainTrustMapping` | Crawl multi-domain forest map | Auto-walk trusts. |
+| `Get-ForestTrust` | Trusts forest-level | Forest scope. |
+| `Get-ForestDomain` | Todos domains del forest | Forest mapping. |
+| `Find-ForeignUser` | Users con membership en groups foreign | Cross-trust path discovery. |
+| `Find-ForeignGroup` | Groups con miembros foreign | Cross-trust audit. |
+| `Get-DomainSID` | Local domain SID | Para resolver SID foreign. |
+| `Get-DomainObject -SearchBase "CN=System,DC=corp,DC=local" -LDAPFilter "(objectClass=trustedDomain)" -Properties *` | LDAP trust object detallado | Atributos completos. |
+| `pywerview get-domaintrust -u u -p p -d corp.local --dc-ip <DC>` | Linux equivalent | Sin Windows. |
+| `pywerview get-domaintrust-mapping -u u -p p -d corp.local --dc-ip <DC>` | Linux mapping | Linux. |
 ^ad-trust-discover-powerview
 
-### PowerView trust mapping
-
 ```powershell
-# Direct trusts only
-Get-DomainTrust
-
-# Walk all reachable trusts (forest map)
+# Mapping forest + foreign principals
+Import-Module .\PowerView.ps1
 Get-DomainTrustMapping
-
-# Forest-level
-Get-ForestTrust
-Get-ForestDomain
-
-# Find foreign users (e.g., users from other domains in groups here)
 Find-ForeignUser
 Find-ForeignGroup
-
-# Detailed trust object (LDAP-level)
-Get-DomainObject -SearchBase "CN=System,DC=dom,DC=local" -LDAPFilter "(objectClass=trustedDomain)" -Properties *
 ```
 
 ___
 
 ## BloodHound Trust Edges
 
-| **Edge** | **Significado** | **Notas** |
+| **Cypher Query** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `TrustedBy` | Inverse of trust direction | Forest map edge. |
-| `Domain → Domain` (Trusts) | Outbound trust | Standard. |
-| Trust types in BH | External, Forest, ParentChild, TreeRoot, CrossLink, Unknown | Built-in. |
-| Trust direction (Inbound/Outbound/Bidirectional) | Edge property | Standard. |
-| Pre-2024 BloodHound CE limitation | Post-trust edge processing manual | Older. |
-| BHCE 6.x trust edges | Improved automation | Modern. |
-| `MATCH (a:Domain)-[r:Trusts]->(b:Domain)` | Cypher query | Standard. |
-| Custom Cypher: paths via trust | `MATCH p=shortestPath(...)` cross-trust | Advanced. |
-| ForeignGroupMembership (cross-trust group) | Edge | Standard. |
-| TrustedToAuth (trust delegation) | TGT delegation enabled | Edge. |
-| BloodHound trust collection | `-c Trusts` | Targeted. |
-| BloodHound forest-aware queries | Cross-forest enumeration | Modern. |
-| Visual: trust graph | Tier-based visualization | Helpful. |
-| Pre-trust SID extraction | Required for ACL paths | Process. |
-| Manual GPO collection per domain | Cross-domain ingest | Workflow. |
-| Bidirectional path | Forest-wide reachability | Use case. |
+| `MATCH p=(a:Domain)-[r:Trusts]->(b:Domain) RETURN p` | Visualizar todos trusts | Forest topology. |
+| `MATCH p=(a:Domain)-[r:Trusts]->(b:Domain) WHERE r.isTransitive=true RETURN p` | Trusts transitivos solamente | Critical path enum. |
+| `MATCH (u:User)-[:MemberOf*1..]->(g:Group) WHERE u.domain <> g.domain RETURN u.name,u.domain,g.name,g.domain` | Foreign group members | Cross-trust users en priv. |
+| `MATCH (foreign:User) WHERE foreign.domain="OTHER-DOM" MATCH (da:Group {name:"DOMAIN ADMINS@LOCAL-DOM"}) MATCH p=shortestPath((foreign)-[*1..]->(da)) RETURN p` | Path foreign user → DA local | Attack path planning. |
 ^ad-trust-discover-bh
 
-### BloodHound trust queries
+```bash
+# SharpHound — collection trust + ACLs
+SharpHound.exe -c Trusts,ACL,ObjectProps,Container,LocalGroup --Stealth
 
-```cypher
-// All trust relationships
-MATCH p=(a:Domain)-[r:Trusts]->(b:Domain)
-RETURN p
-
-// Find foreign group members (cross-trust)
-MATCH p=(u:User)-[:MemberOf]->(g:Group)
-WHERE u.domain <> g.domain
-RETURN u.name,g.name
-
-// Path from foreign user to local DA
-MATCH (foreign:User)
-WHERE foreign.domain = "OTHER-DOM"
-MATCH (da:Group {name:"DOMAIN ADMINS@LOCAL-DOM"})
-MATCH p=shortestPath((foreign)-[*1..]->(da))
-RETURN p
-
-// Trust attacks possible (transitive)
-MATCH p=(:Domain)-[r:Trusts]->(:Domain)
-WHERE r.istransitive = true
-RETURN p
+# BloodHound.py Linux equivalent
+bloodhound-python -d corp.local -u u -p p -ns <DC> -c Trusts --zip
 ```
 
 ___
 
 ## Cross-Forest / Forest Discovery
 
-| **Concepto** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Forest root domain | First domain created in forest | Top tier. |
-| Tree root domains | Top of each tree (multiple trees) | Standard. |
-| `Get-ADForest -Identity <forest>` | Forest object | RSAT. |
-| `Get-ADForest -Current LocalComputer` | Current forest | RSAT. |
-| `[System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()` | .NET | Adjacent. |
-| Trees in forest | `Get-ADForest \| Select Domains` | List. |
-| Cross-forest trust | External or Forest type | Specific. |
-| Inter-forest two-way | Bidirectional cross-forest | Standard. |
-| One-way external (legacy) | Pre-2003 cross-forest | Legacy. |
-| Forest-wide auth (default) | All users from foreign forest can auth | Permissive. |
-| Selective Auth | Only Allowed-To-Authenticate principals | Hardening. |
-| Per-forest Schema Master | Forest-level FSMO | Tier 0. |
-| Forest functional level | Determines features | Capability. |
-| GC required for forest queries | Adjacent | Forest-aware. |
-| Cross-forest queries via referrals | LDAP referral chasing | Standard. |
-| Foreign Security Principals container | `CN=ForeignSecurityPrincipals,DC=...` | SIDs from foreign domains. |
+| `Get-ADForest -Current LocalComputer` | Forest object completo | Forest scope. |
+| `(Get-ADForest).Domains` | Lista domains del forest | Multi-domain mapping. |
+| `(Get-ADForest).GlobalCatalogs` | GCs del forest | Forest queries. |
+| `Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=corp,DC=local" -Filter *` | SIDs foreign en local domain | Cross-trust audit. |
+| `[System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()` | Forest via .NET | Sin RSAT. |
 ^ad-trust-discover-forest
 
-### Forest discovery
-
 ```powershell
-# Current forest info
-Get-ADForest -Current LocalComputer | Select Name,RootDomain,Domains,GlobalCatalogs
-
-# All domains in forest
-Get-ADForest -Current LocalComputer | Select -ExpandProperty Domains
-
-# Per-domain functional level
-foreach ($d in (Get-ADForest -Current LocalComputer).Domains) {
-  $domInfo = Get-ADDomain -Identity $d
+# Per-domain functional levels (capability matrix)
+foreach ($d in (Get-ADForest).Domains) {
+  $i = Get-ADDomain -Identity $d
   [PSCustomObject]@{
-    Name = $d
-    NetBIOSName = $domInfo.NetBIOSName
-    DomainMode = $domInfo.DomainMode
-    ParentDomain = $domInfo.ParentDomain
+    Name         = $d
+    NetBIOS      = $i.NetBIOSName
+    DomainMode   = $i.DomainMode
+    ParentDomain = $i.ParentDomain
   }
 }
-
-# Foreign Security Principals (cross-trust SIDs in local domain)
-Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=dom,DC=local" -Filter * |
-  Select Name,DistinguishedName
 ```
 
 ___
 
 ## Anonymous / Pre-Auth Trust Discovery
 
-| **Vector** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| LDAP RootDSE (anonymous) | `ldapsearch -x -h DC -s base namingcontexts` | Sometimes shows trust partitions. |
-| Forest naming context | `rootDomainNamingContext` | Forest root identifier. |
-| Cross-references in Configuration NC | `CN=Partitions` | Forest map (auth typically required). |
-| DNS-based trust hints | Foreign domain SRV records | Indirect. |
-| Public DNS for `_msdcs.<foreign>` | Foreign domain discovery | OSINT. |
-| Conditional forwarders | Trust DNS hints | Indirect. |
-| GC enumeration | Forest-wide via single query | Adjacent. |
-| `nltest /trusted_domains` from non-domain host | Edge | Limited. |
-| RPC enum trust list (legacy) | rpcclient enumtrust | Anonymous if allowed. |
-| Hostname patterns (cross-domain) | `vendor.partner.com` | OSINT. |
-| Email domain hints | `user@vendor.com` MX record | OSINT. |
-| Public DNS NS records | Cross-org DNS hosting | OSINT. |
-| Wayback / cert transparency | Historical trust hints | OSINT. |
-| Internal share names with foreign domains | `\\foreigndomain\share` | Indirect. |
-| Cross-forest GC query | Adjacent | Adjacent. |
-| `nltest /server:foreign-DC /trusted_domains` | If reachable | Cross-target. |
+| `ldapsearch -x -h <DC> -s base -b "" rootDomainNamingContext` | Forest root identifier | Sin auth. |
+| `dig +short SRV _ldap._tcp.dc._msdcs.<foreign-dom>` | DCs del foreign domain via DNS | Pre-auth discovery. |
+| `rpcclient -U "" <DC> -N -c 'enumtrust'` | Trusts via null session | Si null permitido. |
+| `nltest /server:<foreign-DC> /trusted_domains` | Trusts vistos desde foreign DC | Si reachable. |
 ^ad-trust-discover-anon
 
-### Anonymous trust hints
-
 ```bash
-# Anonymous LDAP namingContexts
-ldapsearch -x -h DC -s base -b "" namingContexts
+# Pipeline pre-auth — forest hints
+ldapsearch -x -h <DC> -s base -b "" namingContexts rootDomainNamingContext
 
-# Forest hint via rootDomainNamingContext
-ldapsearch -x -h DC -s base -b "" rootDomainNamingContext
-
-# DNS-based cross-domain hints
-dig +short SRV _ldap._tcp.dc._msdcs.partner.com
-dig +short MX dom.local
-
-# Conditional forwarders revealed via DNS query (if anonymous DNS access)
-dig +trace partner.com @DC
+# DNS hints sobre foreign domains conocidos
+for fd in partner.com vendor.local; do
+  echo "=== $fd ==="
+  dig +short SRV "_ldap._tcp.dc._msdcs.$fd"
+done
 ```
 
 ***

