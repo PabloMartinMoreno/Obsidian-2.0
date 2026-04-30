@@ -20,289 +20,144 @@ linked:
 
 ***
 
-## PingCastle Modes
+## Healthcheck completo
 
-| **Mode** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Healthcheck | `PingCastle.exe --healthcheck --server DC` | Comprehensive audit. |
-| Healthcheck XML/HTML | `--no-enum-limit --healthcheck` | Detailed. |
-| Carto | `PingCastle.exe --carto` | Forest map | Trust topology. |
-| Conso | `PingCastle.exe --conso` | Consolidate multiple reports. |
-| Scanner | `PingCastle.exe --scanner <type> --server DC` | Specific scan. |
-| ADConf | `PingCastle.exe --adconf --server DC` | Specific AD config. |
-| HCRules | `PingCastle.exe --hcrules` | Rule list | Standard. |
-| HealthcheckLog | `--healthcheck --log` | Log to file | Standard. |
-| Interactive mode | `PingCastle.exe` (no args) | Menu-driven | Standard. |
-| Multi-domain support | Per-domain | Standard. |
-| Free version (community) | Limited | Standard. |
-| Pro version (commercial) | Full features | Adjacent. |
-| Modern Healthcheck v3.x | Updated | Tool. |
-| Per-quarter audit | Standard | Compliance. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Defender + red team usage | Both | Standard. |
-^ad-pingcastle-modes
-
-### PingCastle quick start
+| `PingCastle.exe --healthcheck --server dc.dom.local` | `ad_hc_<dom>.html` + `.xml` con score 0-100 | Auditoría inicial. |
+| `PingCastle.exe --healthcheck --server DC --no-enum-limit` | Sin truncar listas largas (>100 entries) | Forest grande. |
+| `PingCastle.exe --healthcheck --server DC --user u --password p` | Auth explícita (no current user) | Cuenta dedicada de auditoría. |
+| `PingCastle.exe --healthcheck --explore-trust` | Recorre trusts y audita cada uno | Forest multi-domain. |
+| `PingCastle.exe --healthcheck --level Full` | Verbose máximo | Debug del propio PingCastle. |
+| `PingCastle.exe --healthcheck --xmls-directory C:\reports` | XMLs a directorio custom | Pipeline CI/CD. |
+| `PingCastle.exe --healthcheck --no-enum-limit --reachable` | Solo DCs alcanzables (skip down) | Multi-DC con caídos. |
+^ad-pingcastle-healthcheck
 
 ```cmd
-:: Comprehensive Healthcheck
-PingCastle.exe --healthcheck --server DC --no-enum-limit
+:: Audit estándar — 95% de los casos
+PingCastle.exe --healthcheck --server dc01.corp.local --no-enum-limit
 
 :: Output:
-::   ad_hc_<domain>.xml (detailed)
-::   ad_hc_<domain>.html (visual)
-
-:: Trust map (forest-wide)
-PingCastle.exe --carto --server DC
-
-:: Specific scanner
-PingCastle.exe --scanner null_session --server DC
-PingCastle.exe --scanner share --server DC
-PingCastle.exe --scanner zerologon --server DC
+::   ad_hc_corp.local.xml   (datos crudos para parseo)
+::   ad_hc_corp.local.html  (reporte visual con score)
 ```
 
 ___
 
-## Healthcheck Sections
+## Carto (trust topology)
 
-| **Section** | **Detail** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Domain Information | Basic info | Standard. |
-| Stale Objects | Inactive accounts | Standard. |
-| Privileged Accounts | Tier 0 audit | Critical. |
-| Trust Information | Domain trusts | Standard. |
-| Anomalies | Misconfigs detected | Critical. |
-| Password Policy | Default + PSO | Standard. |
-| krbtgt password age | Stale check | Critical. |
-| Service accounts | SPN audit | Standard. |
-| ACL anomalies | Per-object | Standard. |
-| GPO security | Per-GPO | Standard. |
-| ADCS configuration | Modern | Tool. |
-| LAPS deployment | Modern | Tool. |
-| Authenticated Users in priv | Critical | Audit. |
-| Pre-Windows 2000 group | Legacy audit | Standard. |
-| OS version compliance | Standard | Audit. |
-| Each rule has score impact | Standard | Standard. |
-^ad-pingcastle-sections
-
-___
-
-## Score Interpretation
-
-| **Score Range** | **Detail** | **Notas** |
-|:---:|:---:|:---:|
-| 0-30 | Excellent | Best practice. |
-| 30-50 | Good | Standard. |
-| 50-70 | Average | Improvement needed. |
-| 70-100 | Poor | Critical issues. |
-| Lower = better | Standard | Standard. |
-| Per-section subscores | Standard | Standard. |
-| Trend over time | Per-quarter comparison | Standard. |
-| Compare to industry baseline | Adjacent | Standard. |
-| Per-rule severity | Standard | Standard. |
-| Critical rules priority | Standard | Standard. |
-| Cleanup recommendations | Per-rule | Standard. |
-| Modern: continuous PingCastle | Defender side | Adjacent. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Cross-correlate with engagement | Per-engagement | Standard. |
-| Audit log retention | Standard | Adjacent. |
-| Modern: per-quarter trend | Standard | Compliance. |
-^ad-pingcastle-score
-
-### Score check
+| `PingCastle.exe --carto` | Mapa visual del forest | Discovery inicial multi-domain. |
+| `PingCastle.exe --carto --server DC` | Carto desde DC específico | DC con visibilidad cross-trust. |
+| `PingCastle.exe --carto --explore-trust` | Sigue trusts transitivos | Forest con trusts externos. |
+| `PingCastle.exe --carto --no-enum-limit` | Sin truncar trusts | >100 trusts. |
+^ad-pingcastle-carto
 
 ```cmd
-:: Generate report
-PingCastle.exe --healthcheck --server DC --no-enum-limit
+:: Mapa completo del forest
+PingCastle.exe --carto --server dc01.corp.local --explore-trust
 
-:: Open ad_hc_<domain>.html in browser
-:: View global score + section scores
-:: Click rules for remediation guidance
+:: Output: ad_carto_<forest>.html
 ```
 
 ___
 
-## Common PingCastle Findings
+## Scanners específicos
 
-| **Finding** | **Severity** | **Notas** |
+| **Comando** | **Qué chequea** | **Cuándo** |
 |:---:|:---:|:---:|
-| krbtgt password >180 days | High | Critical. |
-| GPP cpassword found | Critical | Pre-MS14-025. |
-| Reversible encryption | High | Critical. |
-| Anonymous SAMR enabled | High | Audit. |
-| Authenticated Users with priv ACE | Critical | Audit. |
-| LAPS not deployed | Medium | Modern. |
-| LAPSv1 only (not v2) | Low | Adjacent. |
-| Unconstrained delegation non-DC | High | Critical. |
-| ADCS ESC1-ESC15 vulnerabilities | Critical | Modern. |
-| Stale users in priv groups | Medium | Standard. |
-| Schema Admins not empty | Low | Best practice. |
-| Pre-Windows 2000 populated | Low | Legacy. |
-| Cross-trust SID Filtering off | High | Critical. |
-| TGT Delegation cross-forest | High | Pre-2019. |
-| EDITF_ATTRIBUTESUBJECTALTNAME2 | Critical | ESC6. |
-| Password not required | Medium | Audit. |
+| `PingCastle.exe --scanner zerologon --server DC` | CVE-2020-1472 vulnerable | Pre-Aug-2020 patches. |
+| `PingCastle.exe --scanner null_session --server DC` | Null bind LDAP/SMB | Legacy DCs / pre-Win2003. |
+| `PingCastle.exe --scanner share --server DC` | Open shares anónimos | Recon shares públicos. |
+| `PingCastle.exe --scanner smb_v1 --server DC` | SMBv1 habilitado | Hosts legacy. |
+| `PingCastle.exe --scanner printerbug --server DC` | MS-RPRN coercion | Pre-PetitPotam patches. |
+| `PingCastle.exe --scanner petitpotam --server DC` | MS-EFSR coercion (CVE-2021-36942) | Pre-Aug-2021 patches. |
+| `PingCastle.exe --scanner spooler --server DC` | Spooler RPC activo | Print Nightmare-adjacent. |
+| `PingCastle.exe --scanner laps_bitlocker --server DC` | LAPS deployed + BitLocker keys | Audit LAPS coverage. |
+| `PingCastle.exe --scanner localadmin --server DC` | Local admins por host | Lateral movement surface. |
+| `PingCastle.exe --scanner foreignusers --server DC` | Cuentas foreign en priv groups | Cross-trust surface. |
+^ad-pingcastle-scanners
+
+```cmd
+:: Scan masivo de coercion (PetitPotam + PrinterBug + DFS)
+PingCastle.exe --scanner coercion --server dc01.corp.local
+
+:: Scan con lista de hosts
+PingCastle.exe --scanner null_session --scmode-file hosts.txt
+```
+
+___
+
+## Hallazgos críticos a buscar
+
+| **Hallazgo** | **Severidad** | **Acción inmediata** |
+|:---:|:---:|:---:|
+| `krbtgt password >180 days` | High | `Reset-KrbTgt` 2× con 24h gap. |
+| `GPP cpassword found` | Critical | Borrar GPO + rotar passwords expuestos. |
+| `Reversible encryption` | High | Quitar flag + force password change. |
+| `Anonymous SAMR enabled` | High | Disable anonymous LDAP/SAMR. |
+| `Authenticated Users with priv ACE` | Critical | Limpiar ACL del objeto. |
+| `Unconstrained delegation non-DC` | High | Migrar a Constrained o RBCD. |
+| `EDITF_ATTRIBUTESUBJECTALTNAME2` | Critical | Disable flag (ESC6). |
+| `ADCS template ESC1` | Critical | Disable `ENROLLEE_SUPPLIES_SUBJECT`. |
+| `LAPS not deployed` | Medium | Deploy LAPSv2. |
+| `Pre-Win2000 group populated` | Low | Vaciar grupo. |
+| `Cross-trust SID Filtering off` | High | `netdom trust /quarantine:yes`. |
+| `Schema Admins not empty` | Low | Vaciar fuera de cambios de schema. |
 ^ad-pingcastle-findings
 
 ___
 
-## Specific Scanners
+## Consolidación + trends
 
-| **Scanner** | **Detail** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| `null_session` | Anonymous SMB enum | Standard. |
-| `share` | Open shares | Standard. |
-| `zerologon` | CVE-2020-1472 check | Critical. |
-| `smb_v1` | SMBv1 detection | Standard. |
-| `printerbug` | PrinterBug coercion test | Adjacent. |
-| `petitpotam` | PetitPotam test | Adjacent. |
-| `coercion` | Multiple coercion tests | Comprehensive. |
-| `laps_bitlocker` | LAPS + BitLocker | Modern. |
-| `oxidbindings` | RPC bindings | Edge. |
-| `localadmin` | Local admin check | Adjacent. |
-| Per-host scanners | Standard | Standard. |
-| Bulk scanner | `--scanner all` | Edge. |
-| Output: per-scanner XML/HTML | Standard | Standard. |
-| Detection: scanner activity | Defender | Adjacent. |
-| Modern: integrated in healthcheck | Standard | Tool. |
-| Compliance: per-quarter scan | Standard | Adjacent. |
-^ad-pingcastle-scanners
+| `PingCastle.exe --conso` | Consolida XMLs del directorio actual | Comparar Q1 vs Q2. |
+| `PingCastle.exe --conso --xmls-directory C:\reports\2026` | Conso de directorio custom | Per-año. |
+| `PingCastle.exe --regen-report ad_hc_<dom>.xml` | Regenera HTML desde XML viejo | Rebuild reporte. |
+| `PingCastle.exe --hcrules` | Lista todas las reglas con descripción | Lookup de regla específica. |
+^ad-pingcastle-conso
 
-### Per-scanner usage
+```powershell
+# Audit recurrente — 1 vez por trimestre
+$Q = "2026-Q2"
+$Out = "C:\audit\$Q"
+New-Item -ItemType Directory -Path $Out -Force
 
-```cmd
-:: Zerologon check
-PingCastle.exe --scanner zerologon --server DC
+PingCastle.exe --healthcheck --server dc01 --no-enum-limit
+PingCastle.exe --carto --explore-trust
+Move-Item ad_hc_*.* $Out
+Move-Item ad_carto_*.* $Out
 
-:: Coercion tests (PetitPotam, PrinterBug, etc.)
-PingCastle.exe --scanner coercion --server DC
-
-:: Null session check
-PingCastle.exe --scanner null_session --server DC
-
-:: SMB shares enum
-PingCastle.exe --scanner share --server DC
+# Comparar con trimestre anterior
+Copy-Item C:\audit\2026-Q1\ad_hc_*.xml $Out
+PingCastle.exe --conso --xmls-directory $Out
 ```
 
 ___
 
-## Carto (Trust Topology)
+## Score interpretation
 
-| **Comando** | **Función** | **Notas** |
+| **Score** | **Significado** | **Acción** |
 |:---:|:---:|:---:|
-| `PingCastle.exe --carto` | Forest map | Standard. |
-| `--carto --server DC` | Specific DC | Adjacent. |
-| Output: visual trust topology | Standard | Tool. |
-| Cross-correlate with Get-ADTrust | Standard | Audit. |
-| Per-trust attributes | Standard | Standard. |
-| BloodHound trust comparison | Adjacent | Tool. |
-| Detection: bulk trust queries | Defender | Adjacent. |
-| Modern: continuous monitoring | Defender side | Adjacent. |
-| Adjacent: Trust hub | Cross-ref | Adjacent. |
-| Compliance: documented trust baseline | Standard | Adjacent. |
-| Per-quarter trust audit | Standard | Compliance. |
-| Cross-correlate priv | Standard | Audit. |
-| Stale trusts | Audit | Standard. |
-| Modern: BHCE preferred for visual | Standard | Tool. |
-| OPSEC: bulk trust enum | Defender | OPSEC. |
-| Custom analytics | Tool. |
-^ad-pingcastle-carto
-
-### Carto usage
-
-```cmd
-:: Forest trust map
-PingCastle.exe --carto --server DC --explore-trust 
-
-:: Output: 
-::   carto_<forest>.html (visual map)
-::   carto_<forest>.xml (data)
-```
+| 0-30 | Buena postura | Mantener + audit trimestral. |
+| 30-50 | Aceptable | Atacar findings High primero. |
+| 50-70 | Pobre | Plan de remediación 90 días. |
+| 70-100 | Crítico | Probable compromiso latente, IR. |
+^ad-pingcastle-score
 
 ___
 
-## Reports + Trend Analysis
+## Recursos
 
-| **Concepto** | **Detalle** | **Notas** |
-|:---:|:---:|:---:|
-| Per-quarter healthcheck | Standard | Standard. |
-| Compare reports over time | Trend | Standard. |
-| `--conso` consolidates multiple | Standard | Tool. |
-| XML for parsing | Adjacent | Standard. |
-| HTML for review | Standard | Standard. |
-| Per-rule severity tracking | Standard | Standard. |
-| Compliance: documented trend | Standard | Adjacent. |
-| Cross-correlate with engagement | Per-engagement | Standard. |
-| Modern: continuous monitoring | Defender side | Adjacent. |
-| Audit log retention | Standard | Adjacent. |
-| Per-engagement scoping | Standard | OPSEC. |
-| Detection: PingCastle activity | Defender | Adjacent. |
-| Adjacent: Purple Knight | Cross-ref | Adjacent. |
-| Modern: BHCE cross-correlate | Standard | Adjacent. |
-| Per-domain trend | Standard | Compliance. |
-| Custom analytics scripts | Tool. |
-^ad-pingcastle-reports
-
-### Report consolidation
-
-```cmd
-:: Generate multiple reports per-quarter
-:: Q1: PingCastle.exe --healthcheck --server DC -o q1_report.xml
-:: Q2: PingCastle.exe --healthcheck --server DC -o q2_report.xml
-:: ...
-
-:: Consolidate
-PingCastle.exe --conso
-
-:: Output: trends + comparisons
-```
-
-___
-
-## Defender + Red Team Usage
-
-| **Use** | **Detail** | **Notas** |
-|:---:|:---:|:---:|
-| Defender baseline | Per-quarter | Standard. |
-| Red team pre-engagement | Recon | Standard. |
-| Red team post-engagement | Document state | Standard. |
-| Compliance audit | Per-quarter | Compliance. |
-| BHCE alternative | Adjacent | Tool. |
-| Microsoft Defender for Identity adjacent | Modern | Defender. |
-| Free community edition | Standard | Standard. |
-| Pro commercial | Adjacent | Standard. |
-| Multi-domain forest | Standard | Standard. |
-| Cross-correlate with priv tier | Standard | Audit. |
-| Detection: PingCastle binary | Defender | Adjacent. |
-| Modern: continuous PingCastle | Defender side | Adjacent. |
-| Per-engagement scope | Standard | OPSEC. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Audit log retention | Standard | Adjacent. |
-| Modern: extreme audit | Best practice | Standard. |
-^ad-pingcastle-usage
-
-___
-
-## Wordlists & Recursos
-
-| **Recurso** | **URL / Path** | **Notas** |
-|:---:|:---:|:---:|
-| PingCastle docs | `www.pingcastle.com` | Tool docs. |
-| PingCastle download | `www.pingcastle.com/download/` | Free. |
-| Vincent Le Toux blog | Author | Research. |
-| HackTricks PingCastle | `book.hacktricks.xyz` | Reference. |
-| The Hacker Recipes | `thehacker.recipes` | Reference. |
-| ADSecurity PingCastle | `adsecurity.org` | Defender intel. |
-| Microsoft Defender for Identity | Modern | Defender. |
-| Adjacent: Purple Knight | Cross-ref | Adjacent. |
-| Modern: continuous PingCastle | Defender side | Adjacent. |
-| `awesome-active-directory` | GitHub | Foundation. |
-| Compliance: PingCastle baseline | Standard | Adjacent. |
-| Cross-correlate with engagement | Per-engagement | Standard. |
-| Audit baseline | Standard | Compliance. |
-| Per-quarter trend | Standard | Adjacent. |
-| Modern: defender side | Standard | Standard. |
-| Custom analytics | Tool. |
+| **Recurso** | **URL** |
+|:---:|:---:|
+| PingCastle download | `https://www.pingcastle.com/download/` |
+| PingCastle docs | `https://www.pingcastle.com/documentation/` |
+| Rule reference (`--hcrules`) | Built-in |
+| Source | `https://github.com/vletoux/pingcastle` |
+| ADSecurity blog | `https://adsecurity.org` |
 ^ad-pingcastle-resources
 
 ***
