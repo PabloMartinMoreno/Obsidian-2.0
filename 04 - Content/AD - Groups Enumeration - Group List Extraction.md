@@ -23,101 +23,63 @@ linked:
 
 ## Bulk Group Listing
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `nxc ldap DC -u u -p p --groups` | All groups | netexec quick. |
-| `nxc smb DC -u u -p p --groups` | SAMR-based | Adjacent. |
-| `Get-ADGroup -Filter *` | RSAT minimal | Standard. |
-| `Get-ADGroup -Filter * -Properties *` | Full attrs | Detailed. |
-| `Get-NetGroup` (PowerView) | Adversary tool | Same. |
-| `Get-DomainGroup` (PowerView v3) | Newer | Adjacent. |
-| `rpcclient -U u DC -c "enumdomgroups"` | RPC enum | Standard. |
-| `rpcclient -U "" DC -N -c "enumdomgroups"` | Anonymous | Edge. |
-| `rpcclient -U u DC -c "enumalsgroups domain"` | Alias groups | Edge. |
-| `rpcclient -U u DC -c "enumalsgroups builtin"` | Built-in alias | Edge. |
-| `dsquery group -limit 0` | Legacy | Old. |
-| `ldapsearch ... "(objectCategory=group)"` | LDAP raw | Linux. |
-| `windapsearch -d <dom> -u u -p p --groups` | Wrapper | Helper. |
-| `nxc ldap DC --query "(objectCategory=group)" "*"` | Custom | Flexible. |
-| Group object class | `group` | LDAP. |
-| Group sAMAccountType | 268435456 (security global), 268435457 (security local), 536870912 (distribution) | Filter. |
+| `nxc ldap <DC> -u u -p p --groups` | Lista groups via LDAP | Standard. |
+| `nxc smb <DC> -u u -p p --groups` | Lista via SAMR | Alt path. |
+| `Get-ADGroup -Filter * -Properties Description,GroupCategory,GroupScope` | Groups + atributos útiles | RSAT detail. |
+| `Get-DomainGroup` (PowerView) | Sin RSAT | Adversary. |
+| `rpcclient -U 'corp\u%pass' <DC> -c 'enumdomgroups;enumalsgroups builtin'` | Groups + built-in aliases | Sin LDAP tools. |
+| `ldapsearch ... "(objectCategory=group)" cn description groupType objectSid` | LDAP raw | Linux. |
+| `windapsearch -d corp.local -u u -p p --dc-ip <DC> --groups` | Wrapper | Helper. |
 ^ad-grouplist-bulk
 
-### Bulk dump
-
 ```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# netexec (quickest)
-nxc ldap $DC -u $USER -p $PASS --groups > groups.txt
-
-# RPC variant
-rpcclient -U "$USER%$PASS" $DC -c 'enumdomgroups' > groups_rpc.txt
-
-# RSAT detailed
-Get-ADGroup -Filter * -Properties Description,GroupCategory,GroupScope |
-  Select Name,GroupCategory,GroupScope,Description |
-  Export-Csv groups.csv -NoTypeInformation
+DC=10.10.10.10
+nxc ldap $DC -u user -p pass --groups > groups.txt
+rpcclient -U 'corp\user%pass' $DC -c 'enumdomgroups' > groups_rpc.txt
 ```
 
-```bash
-# LDAP direct
-ldapsearch -h $DC -D "dom\\$USER" -w $PASS -b "DC=dom,DC=local" \
-  "(objectCategory=group)" \
-  cn description groupType objectSid memberOf
+```powershell
+Get-ADGroup -Filter * -Properties Description,GroupCategory,GroupScope,Members |
+  Select Name,GroupCategory,GroupScope,Description,@{n='MemberCount';e={$_.Members.Count}} |
+  Export-Csv groups.csv -NoTypeInformation
 ```
 
 ___
 
 ## Group Properties & Attributes
 
-| **Atributo** | **Significado** | **Notas** |
+| **Atributo** | **Significado** | **Cuándo importa** |
 |:---:|:---:|:---:|
-| `cn` / `name` | Group name | Standard ID. |
-| `samAccountName` | Login name (legacy) | Standard. |
-| `description` | Free-text | Always check. |
-| `groupType` | Bitfield: scope + type | Critical. |
-| `objectSid` | Group SID | Standard. |
-| `member` | Members (DNs) | Direct membership. |
-| `memberOf` | Parent groups | Nested. |
-| `managedBy` | Manager DN | Owner indicator. |
-| `whenCreated` / `whenChanged` | Lifecycle | Audit. |
-| `info` | Notes field | Edge. |
-| `gidNumber` | POSIX gid (Unix integration) | Edge. |
-| `mail` | Mailing list | Distribution. |
-| `displayName` | UI display | Adjacent. |
-| `objectGUID` | Unique ID | Persistent. |
-| `tokenGroups` | (Computed) Transitive members | Read-only. |
-| `primaryGroupID` | RID of users with this primary | Edge. |
+| `cn` / `samAccountName` | Group name | ID. |
+| `description` | Free-text | Cred leaks ocasionales. |
+| `groupType` | Bitfield: scope + security/distribution | Filter scope. |
+| `objectSid` | Group SID | Cross-trust + RID. |
+| `member` | Members (DNs directos) | Direct membership. |
+| `memberOf` | Parent groups (nested) | Recursive analysis. |
+| `managedBy` | Manager DN | Owner discovery. |
+| `adminCount` | =1 si protected | Tier 0/1 marker. |
 | `nTSecurityDescriptor` | DACL | ACL audit. |
-| `adminCount` | Was protected group | SDProp marker. |
 ^ad-grouplist-attrs
 
-### groupType bitfield decoded
+**`groupType` bitfield:**
+- `0x80000000` — `SECURITY_ENABLED` (security group)
+- `0x00000002` — `GLOBAL` scope
+- `0x00000004` — `DOMAIN_LOCAL` scope
+- `0x00000008` — `UNIVERSAL` scope
 
-```
-0x80000000 (-2147483648)  SECURITY_ENABLED  (security group)
-0x00000001 (1)            SYSTEM (built-in, can't delete)
-0x00000002 (2)            GLOBAL scope
-0x00000004 (4)            DOMAIN_LOCAL scope
-0x00000008 (8)            UNIVERSAL scope
-0x00000010 (16)           APP_BASIC
-0x00000020 (32)           APP_QUERY
-
-# Common combinations:
--2147483646  Security Global       (most common)
--2147483644  Security Domain Local
--2147483640  Security Universal
-2            Distribution Global   (non-security)
-8            Distribution Universal
-```
+**Combinaciones comunes:**
+- `-2147483646` → Security Global (más común).
+- `-2147483644` → Security Domain Local (built-in).
+- `-2147483640` → Security Universal (forest scope).
+- `2` → Distribution Global (mailing list).
 
 ```bash
-# Filter security groups only
-ldapsearch ... "(&(objectCategory=group)(groupType:1.2.840.113556.1.4.803:=2147483648))" cn
+# Solo security groups (bit 0x80000000)
+ldapsearch ... "(&(objectCategory=group)(groupType:1.2.840.113556.1.4.803:=2147483648))" cn description
 
-# Filter universal scope (forest-wide)
+# Universal scope (forest-wide)
 ldapsearch ... "(&(objectCategory=group)(groupType:1.2.840.113556.1.4.803:=8))" cn
 ```
 
@@ -125,191 +87,88 @@ ___
 
 ## Direct Members Query
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-ADGroupMember "Domain Admins"` | Direct members (RSAT) | Standard. |
-| `Get-ADGroupMember "Domain Admins" -Recursive` | Transitive | Nested. |
-| `Get-NetGroupMember` (PowerView) | Adversary | Same. |
-| `Get-DomainGroupMember -Identity DA -Recurse` | PowerView v3 | Adjacent. |
-| `nxc smb DC -u u -p p --groups "Domain Admins"` | netexec | Quick. |
-| `rpcclient -U u DC -c "querygroupmem 0x200"` | RPC by RID | Direct. |
-| `rpcclient -U u DC -c "queryaliasmem builtin 0x220"` | Alias built-in | Adjacent. |
-| `ldapsearch ... "(memberOf=CN=Domain Admins,CN=Users,DC=...)"` | Members via reverse query | Indirect. |
-| `ldapsearch ... -b "CN=Domain Admins,CN=Users,DC=..."` | Direct member attr | Standard. |
-| LDAP `member` attribute | Array of DNs | Direct. |
-| LDAP `member;range=0-1499` | Paged for large groups | Standard. |
-| `Get-ADGroup -Identity X -Properties Members` | RSAT direct | Standard. |
-| `Get-ADGroup -Identity X | Select -ExpandProperty Members` | Member DNs | Concise. |
-| Resolve member SAM | Per-DN `Get-ADUser` | Adjacent. |
-| Distribution group members | Same query | Adjacent. |
-| Empty groups | `members.count = 0` | Audit. |
+| `Get-ADGroupMember "<group>"` | Members directos | Standard. |
+| `Get-ADGroupMember "<group>" -Recursive` | Members transitivos (nested) | Effective members. |
+| `Get-ADGroup -Identity "<group>" -Pr Members \| Select -Expand Members` | Member DNs | Direct LDAP-style. |
+| `nxc smb <DC> -u u -p p --groups "<group>"` | Members via netexec | Quick targeted. |
+| `rpcclient -U 'corp\u%pass' <DC> -c 'querygroupmem 0x200'` | Members por RID (512=DA) | Direct RPC. |
+| `rpcclient -U 'corp\u%pass' <DC> -c 'queryaliasmem builtin 0x220'` | Built-in alias Administrators | Alias. |
+| `ldapsearch -b "CN=<group>,CN=Users,DC=corp,DC=local" -s base "(objectClass=*)" member` | Members via member attr | LDAP raw. |
+| `ldapsearch -b "DC=corp,DC=local" "(memberOf=CN=<group>,...)" samAccountName` | Reverse query (users con group en memberOf) | Direct only. |
 ^ad-grouplist-members
 
-### Members enumeration
+**Caveat:** LDAP `member` attribute trunca a 1500 entradas. Para groups grandes usar paged: `member;range=0-1499`, `member;range=1500-2999`, etc. RSAT `Get-ADGroupMember` maneja paging automático.
 
 ```powershell
-# Direct + recursive
-Get-ADGroupMember "Domain Admins" | Select Name,SamAccountName,ObjectClass
-Get-ADGroupMember "Domain Admins" -Recursive | Select Name,SamAccountName
-
-# Per-group manager + members
-Get-ADGroup -Filter * -Properties Members,ManagedBy |
-  Where {$_.Members.Count -gt 0} |
-  Select Name,@{n='MemberCount';e={$_.Members.Count}},ManagedBy
-```
-
-```bash
-# netexec for specific group
-nxc smb DC -u user -p pass --groups "Domain Admins"
-
-# LDAP raw
-ldapsearch -h DC -D 'dom\u' -w pass -b "CN=Domain Admins,CN=Users,DC=dom,DC=local" \
-  -s base "(objectClass=*)" member
-
-# Reverse: who's member of group X
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(memberOf=CN=Domain Admins,CN=Users,DC=dom,DC=local)" \
-  samAccountName
+# Snapshot completo (direct + recursive)
+$g = "Domain Admins"
+@{
+  Direct    = (Get-ADGroupMember $g | Measure).Count
+  Recursive = (Get-ADGroupMember $g -Recursive | Measure).Count
+  Members   = Get-ADGroupMember $g -Recursive | Select Name,SamAccountName,objectClass
+}
 ```
 
 ___
 
 ## Groups by Scope
 
-| **Scope** | **Filter** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Global groups | `groupType bit 2` | Most common. |
-| Domain Local groups | `groupType bit 4` | Built-in mostly. |
-| Universal groups | `groupType bit 8` | Forest-wide. |
-| `(samAccountType=268435456)` | Global Security | Direct. |
-| `(samAccountType=268435457)` | Domain Local Security | Direct. |
-| `(samAccountType=536870912)` | Distribution | Adjacent. |
-| Cross-domain membership | Universal only | Forest design. |
-| Domain Local restrict | Same domain only | Standard. |
-| Global accept members from same domain | Standard | Standard. |
-| Universal members forest-wide | Standard | Standard. |
-| GC stores Universal membership | Forest queries | Standard. |
-| Built-in always Domain Local | Per-domain | Standard. |
-| `Domain Admins` is Global Security | Standard | Standard. |
-| `Enterprise Admins` is Universal | Forest scope | Standard. |
-| `Administrators` is Domain Local | Built-in | Standard. |
-| `Schema Admins` is Universal | Forest scope | Standard. |
+| `Get-ADGroup -Filter {GroupScope -eq "Global"}` | Global groups (most common) | Per-scope audit. |
+| `Get-ADGroup -Filter {GroupScope -eq "DomainLocal"}` | Domain Local (built-ins típicamente) | Built-in audit. |
+| `Get-ADGroup -Filter {GroupScope -eq "Universal"}` | Universal (forest scope, almacenado en GC) | Forest queries. |
+| `Get-ADGroup -Filter {GroupCategory -eq "Distribution"}` | Distribution (no security) | Mailing lists. |
+| `ldapsearch ... "(samAccountType=268435456)"` | Security Global numérico | Linux. |
+| `ldapsearch ... "(samAccountType=268435457)"` | Security Domain Local | Linux. |
 ^ad-grouplist-scope
 
-### Scope filters
-
-```bash
-# Global security groups
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(samAccountType=268435456)" \
-  cn description
-
-# Universal groups (forest-wide)
-ldapsearch ... "(&(objectCategory=group)(groupType:1.2.840.113556.1.4.803:=8))" \
-  cn description
-
-# Domain local groups
-ldapsearch ... "(&(objectCategory=group)(groupType:1.2.840.113556.1.4.803:=4))" \
-  cn description
-```
-
-```powershell
-# RSAT
-Get-ADGroup -Filter {GroupScope -eq "Global"}
-Get-ADGroup -Filter {GroupScope -eq "DomainLocal"}
-Get-ADGroup -Filter {GroupScope -eq "Universal"}
-```
+**Scope rules:**
+- **Global** → miembros del mismo domain. Visible cross-domain.
+- **Domain Local** → miembros de cualquier domain del forest. Solo visible local.
+- **Universal** → miembros de cualquier domain. Visible forest-wide (almacenado en GC).
+- Tier 0 forest-wide (Schema Admins, Enterprise Admins) son **Universal**.
 
 ___
 
 ## Anonymous Group Enumeration
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `nxc smb DC -u '' -p '' --groups` | Null SAMR | Quick. |
-| `rpcclient -U "" DC -N -c 'enumdomgroups'` | Anonymous RPC | Standard. |
-| `rpcclient -U "" DC -N -c 'enumalsgroups builtin'` | Built-in alias | Adjacent. |
-| `enum4linux-ng -G DC` | Bulk anonymous | Comprehensive. |
-| `enum4linux -G DC` | Legacy | Old. |
-| `impacket-samrdump 'dom/'@DC` | Anonymous SAMR | Standard. |
-| Modern Server 2019+ | Often blocks anonymous | Hardened. |
-| Legacy 2008-2012 | Often allows | Audit. |
-| `RestrictAnonymous=2` blocks | Registry hardening | Defense. |
-| `RestrictAnonymousSAM=1` blocks | Adjacent | Defense. |
-| Pre-Windows 2000 group | Allows anonymous SAMR | Edge legacy. |
-| Modern: anonymous LDAP also blocked | Default | Standard. |
-| Test always at start of engagement | Quick win check | OPSEC. |
-| Bulk subnet test | All DCs | Sweep. |
-| Detection: Event 4661 (Object access) | Defender | Adjacent. |
-| Combine with RID brute | Map users + groups | Strategy. |
+| `nxc smb <DC> -u '' -p '' --groups` | Null SAMR groups | Test misconfig. |
+| `rpcclient -U "" <DC> -N -c 'enumdomgroups;enumalsgroups builtin;enumalsgroups domain'` | Anonymous RPC groups + aliases | Direct. |
+| `enum4linux-ng -G <DC>` | Bulk anonymous | Sin tools individual. |
+| `impacket-samrdump 'corp.local/'@<DC>` | Anonymous SAMR | Linux. |
 ^ad-grouplist-anon
 
-### Null group enum
-
 ```bash
-# Test domain-wide
-DCS=$(dig +short SRV "_ldap._tcp.dc._msdcs.dom.local" | awk '{print $4}' | sed 's/\.$//')
+# Sweep anonymous en subnet
+nxc smb 10.0.0.0/24 -u '' -p '' --groups
 
-for dc in $DCS; do
-  echo "=== $dc ==="
-  nxc smb $dc -u '' -p '' --groups 2>&1 | head -10
-done
-
-# Comprehensive null check
-enum4linux-ng -G -A DC -oJ enum_anon.json
-
-# RPC anonymous
-rpcclient -U "" DC -N -c '
-enumdomgroups;
-enumalsgroups domain;
-enumalsgroups builtin
-'
+# Comprehensive
+enum4linux-ng -G -A <DC> -oJ enum_anon.json
 ```
 
 ___
 
-## Cross-Domain Group Discovery (Forest-Wide)
+## Cross-Domain (Forest-Wide)
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| GC port 3268 query | Forest-wide groups | Standard. |
-| `ldapsearch -h DC -p 3268 -b ""` | Generic GC bind | Forest. |
-| `Get-ADGroup -Filter * -Server DC:3268` | RSAT GC | Adjacent. |
-| Universal groups in GC only | Forest scope | Standard. |
-| Cross-domain membership via referrals | LDAP | Standard. |
-| Foreign Security Principals (FSP) | Cross-trust members | LDAP container. |
-| `CN=ForeignSecurityPrincipals,DC=...` | FSP container | Standard. |
-| Resolve FSP SIDs | Cross-domain LDAP | Adjacent. |
-| Multi-domain SharpHound | Per-domain | Sequential. |
-| Cross-trust group membership | BloodHound | Visual. |
-| Cypher: cross-domain group queries | Custom | Tool. |
-| Cross-forest universal groups | Edge | Adjacent. |
-| Schema Admins forest-wide | Critical | Standard. |
-| Per-trust membership | Audit cross-trust | Standard. |
-| Hidden cross-trust groups | Edge | Investigate. |
-| Forest root critical groups | Top tier | Strategy. |
+| `ldapsearch -h <DC> -p 3268 -D 'corp\u' -w pass -b "" "(objectCategory=group)" cn distinguishedName` | Groups forest-wide via GC | Cross-domain. |
+| `Get-ADGroup -Filter * -Server <DC>:3268` | RSAT GC | Cross-domain RSAT. |
+| `Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=corp,DC=local" -Filter *` | FSPs (cross-trust SIDs) | Cross-trust members. |
+| `bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip` | Ingest multi-domain (run per domain) | Forest-wide graph. |
 ^ad-grouplist-forest
 
-### Forest-wide groups
-
 ```bash
-# Cross-domain via GC port
-ldapsearch -h DC -p 3268 -D 'dom\user' -w pass -b "" \
-  "(objectCategory=group)" \
-  cn distinguishedName
-
-# Forest-wide BloodHound
-bloodhound-python -d dom-A.local -u user -p pass -ns DC-A -c All
-bloodhound-python -d dom-B.local -u user -p pass -ns DC-B -c All
-# Ingest both ZIPs
-```
-
-```powershell
-# Forest-wide RSAT
-Get-ADForest | Select -ExpandProperty Domains | ForEach-Object {
-  Get-ADGroup -Filter * -Server $_ |
-    Select Name,GroupScope,@{n='Domain';e={$_.DistinguishedName -replace '.*DC=([^,]+),DC=([^,]+).*','$1.$2'}}
-}
+# Multi-domain BloodHound
+for d in corp.local partner.com; do
+  DC=$(dig +short SRV "_ldap._tcp.dc._msdcs.$d" | awk '{print $4}' | head -1 | sed 's/\.$//')
+  bloodhound-python -d "$d" -u "auditor@$d" -p 'Pass!' -ns "$DC" -c All --zip -o "./loot/$d/"
+done
 ```
 
 ***

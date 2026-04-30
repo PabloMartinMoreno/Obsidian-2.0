@@ -20,164 +20,98 @@ linked:
 
 ***
 
-## Direct vs Recursive Membership
+## Direct vs Recursive
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Direct membership | `member` attribute | Standard. |
-| Direct via memberOf | Reverse-link | Adjacent. |
-| Recursive (transitive) | Nested → flattened | Privilege analysis. |
-| `tokenGroups` (computed) | Transitive groups | Read-only. |
-| `tokenGroupsGlobalAndUniversal` | All transitive forest-wide | Read-only. |
-| `Get-ADGroupMember -Recursive` | RSAT recursive | Standard. |
-| `Get-NetGroupMember -Recurse` (PowerView) | Adversary | Same. |
-| `Get-DomainGroupMember -Recurse` (PowerView v3) | Adjacent | Standard. |
-| LDAP recursive filter | `:1.2.840.113556.1.4.1941:=` | OID. |
-| Token expansion at logon | Standard Kerberos | Standard. |
-| Token bloat issue | Many SIDs slow logon | Performance. |
-| Bouncing token check | Per-resource | Adjacent. |
-| `whoami /groups` | Local effective | Per-user. |
-| Cross-domain recursive | Universal groups required | Adjacent. |
-| Cross-trust recursive | Forest trust + transitive | Edge. |
-| Detection: bulk recursive query | Defender SIEM | Adjacent. |
+| `Get-ADGroupMember <group>` | Direct members | Solo nivel 1. |
+| `Get-ADGroupMember <group> -Recursive` | Effective members (nested expanded) | Privilege analysis. |
+| `Get-ADUser <user> -Pr tokenGroups \| Select -Expand tokenGroups` | Transitive groups del user (computed SIDs) | Per-user effective. |
+| `Get-ADUser <user> -Pr tokenGroupsGlobalAndUniversal` | Transitive forest-wide | Cross-domain. |
+| `ldapsearch ... "(memberOf:1.2.840.113556.1.4.1941:=CN=<group>,...)" samAccountName` | Recursive via LDAP_MATCHING_RULE_IN_CHAIN OID | Sin RSAT. |
+| `whoami /groups` | Token efectivo del usuario actual | Per-session live. |
 ^ad-recursive-direct
 
-### Recursive query examples
-
-```powershell
-# RSAT recursive
-Get-ADGroupMember "Domain Admins" -Recursive | Select Name,SamAccountName,ObjectClass
-
-# tokenGroups (computed) — needs specific user
-Get-ADUser jsmith -Properties tokenGroups | 
-  Select -ExpandProperty tokenGroups |
-  ForEach-Object {(New-Object System.Security.Principal.SecurityIdentifier($_)).Translate([System.Security.Principal.NTAccount])}
-
-# tokenGroupsGlobalAndUniversal (cross-domain)
-Get-ADUser jsmith -Properties tokenGroupsGlobalAndUniversal |
-  Select -ExpandProperty tokenGroupsGlobalAndUniversal
-```
+**OID `1.2.840.113556.1.4.1941`** = LDAP_MATCHING_RULE_IN_CHAIN. Recursive transitivity en filters LDAP.
 
 ```bash
-# LDAP recursive filter (OID 1.2.840.113556.1.4.1941)
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(memberOf:1.2.840.113556.1.4.1941:=CN=Domain Admins,CN=Users,DC=dom,DC=local)" \
+# Recursive members de DA via LDAP raw
+ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" \
+  "(memberOf:1.2.840.113556.1.4.1941:=CN=Domain Admins,CN=Users,DC=corp,DC=local)" \
   samAccountName
+```
+
+```powershell
+# tokenGroups (SIDs → names)
+$u = Get-ADUser jsmith -Properties tokenGroups
+$u.tokenGroups | % {
+  try { (New-Object System.Security.Principal.SecurityIdentifier($_)).Translate([System.Security.Principal.NTAccount]) }
+  catch { "UNRESOLVED:$($_.Value)" }
+}
 ```
 
 ___
 
 ## Nested Group Patterns
 
-| **Pattern** | **Detail** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Tier 0 contains Tier 1 contains Tier 2 | Standard tiering | Hardening pattern. |
-| Privileged group via 3+ nesting levels | Hidden privilege | Audit risk. |
-| Cross-domain via Universal groups | Forest-wide membership | Standard. |
-| Distribution group as member | Edge — invalid for security | Edge. |
-| Circular nesting | A→B→A | Detect with cycle. |
-| Self-membership (rare) | Edge | Edge. |
-| Foreign Security Principal in chain | Cross-trust | Adjacent. |
-| Computer in security group | Edge — usually OK | Standard. |
-| User as primary group of another | `primaryGroupID` | Edge. |
-| Service account in admin chain | Common audit finding | Critical. |
-| Stale users in nested admin chain | Old privilege | Audit. |
-| Recursive admin discovery | BloodHound | Visual. |
-| Empty nested groups | Nested but no members | Audit. |
-| GPO-linked groups recursive | GPO inheritance | Adjacent. |
-| ACL on group object | Adjacent | Adjacent. |
-| Cross-OU privileged | OU + group + recursive | Comprehensive. |
+| `ldapsearch ... -b "CN=<user>,..." -s base "memberOf;range=0-*"` | Direct memberOf paged | Domain con muchos groups. |
+| `ldapsearch ... "(member:1.2.840.113556.1.4.1941:=CN=<user>,...)" cn` | Todos groups recursivos que contienen al user | Recursive UP. |
+| `Get-ADUser <user> -Pr MemberOf \| Select -Expand MemberOf` | Direct memberOf | Standard. |
+| `Get-ADGroup <group> -Pr MemberOf \| Select -Expand MemberOf` | Parent groups del group (nesting up) | Walk chain. |
 ^ad-recursive-patterns
 
-### Nested chain analysis
-
 ```powershell
-# Find all groups containing user (recursive up)
-function Get-RecursiveGroupMembership {
+# Walk recursive UP — todos groups donde está el user (directa + nested)
+function Get-RecursiveMembership {
   param([string]$User)
-  $direct = Get-ADUser $User -Properties MemberOf | Select -ExpandProperty MemberOf
+  $direct = (Get-ADUser $User -Pr MemberOf).MemberOf
   $all = New-Object System.Collections.Generic.HashSet[string]
   $queue = New-Object System.Collections.Generic.Queue[string]
-  
-  $direct | ForEach-Object { $queue.Enqueue($_); [void]$all.Add($_) }
-  
+  $direct | % { $queue.Enqueue($_); [void]$all.Add($_) }
+
   while ($queue.Count -gt 0) {
-    $group = $queue.Dequeue()
-    $parents = (Get-ADGroup $group -Properties MemberOf).MemberOf
-    foreach ($p in $parents) {
-      if ($all.Add($p)) { $queue.Enqueue($p) }
+    $g = $queue.Dequeue()
+    (Get-ADGroup $g -Pr MemberOf).MemberOf | % {
+      if ($all.Add($_)) { $queue.Enqueue($_) }
     }
   }
   return $all
 }
 
-Get-RecursiveGroupMembership -User "jsmith"
-```
-
-```bash
-# LDAP recursive parent groups (memberOf chain)
-ldapsearch -h DC -D 'dom\u' -w pass -b "CN=jsmith,CN=Users,DC=dom,DC=local" \
-  -s base "(objectClass=*)" \
-  "memberOf;range=0-*"
-
-# All groups recursively containing user
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(member:1.2.840.113556.1.4.1941:=CN=jsmith,CN=Users,DC=dom,DC=local)" \
-  cn distinguishedName
+Get-RecursiveMembership -User jsmith
 ```
 
 ___
 
-## Foreign Security Principals (FSP)
+## Foreign Security Principals
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| FSP container | `CN=ForeignSecurityPrincipals,DC=dom,DC=local` | Standard. |
-| Stored as objects with foreign SID | Cross-trust | Standard. |
-| `objectClass=foreignSecurityPrincipal` | Class | Direct. |
-| Foreign user in local group | Creates FSP entry | Standard. |
-| Foreign group nested in local | Creates FSP entry | Standard. |
-| FSP DN = foreign SID | `CN=S-1-5-21-...,CN=ForeignSecurityPrincipals,...` | Standard. |
-| Resolve FSP SID via cross-trust LDAP | Adjacent | Standard. |
-| Resolve via .NET Translate | Local resolution | Standard. |
-| Find-ForeignUser (PowerView) | Foreign users in local groups | Adversary. |
-| Find-ForeignGroup (PowerView) | Foreign groups | Same. |
-| Cross-trust audit | Cross-forest | Standard. |
-| Bidirectional trust = bidirectional FSP | Standard | Standard. |
-| External trust limits FSP | Specific scope | Edge. |
-| Authenticated Users SID = S-1-5-11 | Always present | Standard. |
-| NT AUTHORITY\\* SIDs | System-built-in | Standard. |
-| Cross-forest privileged FSP | Critical risk | Audit. |
+| `Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=corp,DC=local" -Filter *` | Lista FSPs (foreign SIDs) | Cross-trust audit. |
+| `Find-ForeignUser` (PowerView) | Foreign users en groups locales | Sin RSAT. |
+| `Find-ForeignGroup` (PowerView) | Foreign groups en groups locales | Sin RSAT. |
+| `Get-ADGroupMember "Domain Admins" -Recursive \| ? distinguishedName -match "ForeignSecurityPrincipals"` | Foreign principals en DA | Critical audit. |
 ^ad-recursive-fsp
 
-### FSP enumeration
-
 ```powershell
-# All FSPs
-Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=dom,DC=local" -Filter * |
-  Select Name,DistinguishedName
-
-# Resolve FSP SIDs
-Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=dom,DC=local" -Filter * |
-  ForEach-Object {
-    $sid = $_.Name
-    try {
-      $resolved = (New-Object System.Security.Principal.SecurityIdentifier($sid)).Translate([System.Security.Principal.NTAccount])
-      [PSCustomObject]@{ SID = $sid; Name = $resolved }
-    } catch {
-      [PSCustomObject]@{ SID = $sid; Name = "UNRESOLVABLE" }
-    }
+# FSP resolution (SID → name)
+Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=corp,DC=local" -Filter * | % {
+  $sid = $_.Name
+  try {
+    $resolved = (New-Object System.Security.Principal.SecurityIdentifier($sid)).Translate([System.Security.Principal.NTAccount])
+    [PSCustomObject]@{ SID = $sid; Name = $resolved }
+  } catch {
+    [PSCustomObject]@{ SID = $sid; Name = "UNRESOLVED" }
   }
+}
 
-# PowerView
-Find-ForeignUser
-Find-ForeignGroup
-
-# Cross-trust members in privileged groups (CRITICAL audit)
-$privGroups = @("Domain Admins","Enterprise Admins","Schema Admins","Administrators")
-foreach ($g in $privGroups) {
-  Get-ADGroupMember $g -Recursive | 
-    Where {$_.distinguishedName -match "ForeignSecurityPrincipals"}
+# Critical audit — foreign en priv
+foreach ($g in "Domain Admins","Enterprise Admins","Schema Admins","Administrators") {
+  Get-ADGroupMember $g -Recursive |
+    Where { $_.distinguishedName -match "ForeignSecurityPrincipals" } |
+    Select @{n='Group';e={$g}},Name,SID
 }
 ```
 
@@ -185,133 +119,87 @@ ___
 
 ## tokenGroups Calculation
 
-| **Atributo** | **Significado** | **Notas** |
+| **Atributo / Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `tokenGroups` | Transitive direct + nested groups | Computed. |
-| `tokenGroupsGlobalAndUniversal` | Forest-wide via GC | Computed. |
-| `tokenGroupsNoGCAcceptable` | Filtered subset | Edge. |
-| Computed at query time | Not stored | Standard. |
-| Returns SIDs (not names) | Resolve separately | Standard. |
-| Per-user query | Specific user | Standard. |
-| Performance impact | Heavy LDAP query | Adjacent. |
-| Privilege required | Authenticated read | Standard. |
-| Always includes `Authenticated Users` SID | Standard | Standard. |
-| `Everyone` SID conditional | Edge | Standard. |
-| Cross-domain via tokenGroupsGlobalAndUniversal | Forest-wide | Standard. |
-| Token bloat manifest at logon | Performance | Adjacent. |
-| Compare to `whoami /groups` | Per-session | Adjacent. |
-| Useful for impersonation planning | Token scope | Strategy. |
-| BloodHound uses tokenGroups | Tool | Adjacent. |
-| Detection: bulk tokenGroups query | Defender | Adjacent. |
+| `Get-ADUser <u> -Pr tokenGroups` | Transitive groups del user (SIDs computed) | Per-user effective. |
+| `Get-ADUser <u> -Pr tokenGroupsGlobalAndUniversal` | Forest-wide transitive | Cross-domain. |
+| `Get-ADUser <u> -Pr tokenGroupsNoGCAcceptable` | Subset sin requerir GC | Edge. |
+| `whoami /groups` | Token activo del usuario actual | Per-session. |
+| `whoami /all` | Token completo + privileges | Detail. |
 ^ad-recursive-tokengroups
 
-### tokenGroups query
+**Diferencia clave:**
+- `tokenGroups` → solo Domain Local + Global del current domain.
+- `tokenGroupsGlobalAndUniversal` → incluye Universal (forest-wide). Requiere GC.
 
 ```powershell
-# Per-user transitive groups
-$user = "jsmith"
-$adUser = Get-ADUser $user -Properties tokenGroups
-$adUser.tokenGroups | ForEach-Object {
-  try {
-    [PSCustomObject]@{
-      SID = $_.Value
-      Name = (New-Object System.Security.Principal.SecurityIdentifier($_)).Translate([System.Security.Principal.NTAccount])
-    }
-  } catch {
-    [PSCustomObject]@{ SID = $_.Value; Name = "UNRESOLVABLE" }
-  }
-}
+# Comparación útil
+$u = "jsmith"
+$tg = Get-ADUser $u -Properties tokenGroups,tokenGroupsGlobalAndUniversal
 
-# Forest-wide
-Get-ADUser $user -Properties tokenGroupsGlobalAndUniversal | 
-  Select -ExpandProperty tokenGroupsGlobalAndUniversal
+[PSCustomObject]@{
+  User                 = $u
+  TokenGroupsCount     = $tg.tokenGroups.Count
+  ForestWideCount      = $tg.tokenGroupsGlobalAndUniversal.Count
+  ForestExtra          = $tg.tokenGroupsGlobalAndUniversal.Count - $tg.tokenGroups.Count
+}
 ```
 
 ___
 
 ## primaryGroupID Edge Cases
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `primaryGroupID` attribute | RID of "primary group" | Numeric. |
-| Default: 513 (Domain Users) | Standard | Standard. |
-| 515 = Domain Computers (computer objects) | Computer default | Standard. |
-| 514 = Domain Guests | Guest default | Standard. |
-| 516 = Domain Controllers (DC computer accounts) | DC default | Standard. |
-| 521 = Read-only DC | RODC default | Standard. |
-| Membership not visible in `member` attribute | Implicit | Important. |
-| Stealth membership trick | Set primaryGroupID = priv RID | Edge legacy. |
-| `Get-ADUser ... -Properties primaryGroupID` | Direct | Standard. |
-| Cross-correlate with group membership | Detection | Standard. |
-| User with primaryGroupID=512 but not in DA member | Membership without enumeration | Detection. |
-| Modern Windows blocks this trick | Hardened | Standard. |
-| Detection: primaryGroupID change | Audit event | Defender. |
-| Per-user different primary | Edge | Edge. |
-| BloodHound considers primaryGroupID | Tool | Adjacent. |
-| Audit: non-default primaryGroupID | Suspicious | Audit. |
+| `Get-ADUser -Filter * -Pr PrimaryGroupID \| ? PrimaryGroupID -ne 513` | Users con primary group != Domain Users (default) | Audit anomaly. |
+| `Get-ADUser -Filter {PrimaryGroupID -eq 512}` | Users con DA como primary group (stealth membership) | Critical hunt. |
+| `Get-ADUser -Filter {PrimaryGroupID -eq 519}` | Users con EA como primary | Forest-wide critical. |
 ^ad-recursive-primary
 
-### primaryGroupID audit
+**Por qué importa:** `primaryGroupID` define group membership **implícita** que NO aparece en el atributo `member` del group. Atacante puede setear `primaryGroupID = 512` (Domain Admins) → es DA pero no aparece en `Get-ADGroupMember "Domain Admins"`. Stealth membership.
+
+**Defaults legítimos:** 513=Domain Users (users), 515=Domain Computers (computers), 514=Domain Guests, 516=Domain Controllers (DC computer accounts), 521=RODC.
 
 ```powershell
-# Non-default primary group (513 = Domain Users)
-Get-ADUser -Filter * -Properties PrimaryGroupID | 
-  Where {$_.PrimaryGroupID -ne 513} |
-  Select Name,SamAccountName,PrimaryGroupID
-
-# Users with primaryGroupID=512 (DA via primary — stealth)
-Get-ADUser -Filter {PrimaryGroupID -eq 512} -Properties PrimaryGroupID
+# Hunt stealth admin via primaryGroupID
+Get-ADUser -Filter {PrimaryGroupID -in 512,519,518,544} -Pr PrimaryGroupID,whenChanged |
+  Select Name,SamAccountName,PrimaryGroupID,whenChanged
 ```
 
 ___
 
 ## Group Membership Audit (Bulk)
 
-| **Audit Pattern** | **Detection** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Foreign principals in priv groups | Cross-trust risk | Critical. |
-| Service accounts in DA | Common misconfig | Critical. |
-| Stale users in priv groups | Old privilege | Audit. |
-| Empty privileged groups | Best practice (EA, Schema) | Defense. |
-| Recently added members | Possible attacker plant | Defender. |
-| Computer accounts in priv groups | Edge | Investigate. |
-| Distribution group nested in security | Edge invalid | Edge. |
-| Disabled accounts in priv groups | Re-enable risk | Audit. |
-| Multiple admins per group | Concentration risk | Strategy. |
-| Single admin (lone wolf) | Bus factor | Operational. |
-| Unauth bulk query of members | Detection signal | Defender. |
-| BloodHound HighValue tag | Auto-marked | Tool. |
-| AdminSDHolder propagated | Tier 0 marker | Standard. |
-| Cross-OU group references | Broad scope | Audit. |
-| Group ACL allowing add | ACL abuse path | Privesc. |
-| Group descriptions with creds | Free-text leak | Common. |
+| `Get-ADGroupMember "Domain Admins" -Recursive \| Get-ADUser -Pr ServicePrincipalName \| ? ServicePrincipalName` | DAs con SPN (kerberoastable priv) | Critical. |
+| `Get-ADGroupMember "Domain Admins" -Recursive \| ? Enabled -eq $false` | Disabled accounts en DA (re-enable risk) | Audit. |
+| `Get-ADGroupMember "Domain Admins" -Recursive \| Get-ADUser -Pr LastLogonDate \| ? LastLogonDate -lt (Get-Date).AddDays(-180)` | Stale DAs | Cleanup. |
+| `Get-ADGroup -Filter * -Pr Members,whenChanged \| ? whenChanged -gt (Get-Date).AddDays(-7)` | Groups modificados última semana | Detect persistence. |
+| `Get-ADGroup -Filter * -Pr Description \| ? Description -match "(?i)pass\|cred"` | Description leak en groups | Free-text hunt. |
 ^ad-recursive-audit
 
-### Comprehensive group audit
-
 ```powershell
-# All privileged groups recursive members + flags
-$privGroups = "Domain Admins","Enterprise Admins","Schema Admins","Administrators",
-              "Account Operators","Backup Operators","Server Operators","Print Operators"
+# Audit comprehensive priv groups
+$Priv = "Domain Admins","Enterprise Admins","Schema Admins","Administrators",
+        "Account Operators","Backup Operators","Server Operators","Print Operators"
 
-$report = @()
-foreach ($g in $privGroups) {
-  Get-ADGroupMember $g -Recursive -ErrorAction SilentlyContinue | 
-    Get-ADUser -Properties Description,LastLogonDate,Enabled,ServicePrincipalName,whenCreated -ErrorAction SilentlyContinue |
+$Report = foreach ($g in $Priv) {
+  Get-ADGroupMember $g -Recursive -EA SilentlyContinue |
+    Get-ADUser -Properties Description,LastLogonDate,Enabled,ServicePrincipalName,whenCreated -EA SilentlyContinue |
     ForEach-Object {
-      $report += [PSCustomObject]@{
-        Group = $g
-        Name = $_.Name
-        SamAccountName = $_.SamAccountName
-        Enabled = $_.Enabled
-        IsService = $null -ne $_.ServicePrincipalName
+      [PSCustomObject]@{
+        Group     = $g
+        Name      = $_.Name
+        SAM       = $_.SamAccountName
+        Enabled   = $_.Enabled
+        IsService = [bool]$_.ServicePrincipalName
         LastLogon = $_.LastLogonDate
-        Created = $_.whenCreated
-        Description = $_.Description
+        Created   = $_.whenCreated
       }
     }
 }
-$report | Export-Csv priv_audit.csv -NoTypeInformation
+$Report | Export-Csv priv_audit.csv -NoTypeInformation
 ```
 
 ***

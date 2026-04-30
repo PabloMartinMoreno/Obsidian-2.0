@@ -5,16 +5,20 @@
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
+      "basename": "Active Directory Enumeración",
+      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD - Hosts Enumeration.md"
+    },
+    {
       "basename": "Subdomain Takeover",
       "path": "04 - Content/Subdomain Takeover.md"
     },
     {
       "basename": "BloodHound & SharpHound",
       "path": "04 - Content/BloodHound & SharpHound.md"
-    },
-    {
-      "basename": "Active Directory Enumeración",
-      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
     },
     {
       "basename": "AD - ACL Enumeration",
@@ -63,10 +67,6 @@
     {
       "basename": "AD - DNS & SRV Records",
       "path": "04 - Content/AD - DNS & SRV Records.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration",
-      "path": "04 - Content/AD - Hosts Enumeration.md"
     },
     {
       "basename": "AD - Hosts Enumeration - DC Discovery",
