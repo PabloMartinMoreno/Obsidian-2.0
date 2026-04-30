@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Active Directory Enumeración",
+      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
+      "basename": "AD - ACL Enumeration",
+      "path": "04 - Content/AD - ACL Enumeration.md"
+    },
+    {
+      "basename": "AD - Delegation Enumeration",
+      "path": "04 - Content/AD - Delegation Enumeration.md"
+    },
+    {
+      "basename": "AD - DCSync Rights Discovery",
+      "path": "04 - Content/AD - DCSync Rights Discovery.md"
+    },
+    {
+      "basename": "AD - ACL Enumeration - ACE Filtering y Bulk Audit",
+      "path": "04 - Content/AD - ACL Enumeration - ACE Filtering y Bulk Audit.md"
+    },
+    {
+      "basename": "netexec",
+      "path": "04 - Content/netexec.md"
+    },
+    {
       "basename": "CWES - Checklists",
       "path": "04 - Content/Process/CWES - Checklists.md"
     },
@@ -15,10 +39,6 @@
     {
       "basename": "Usage",
       "path": "05 - Writeups/HackTheBox/Usage.md"
-    },
-    {
-      "basename": "Active Directory Enumeración",
-      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
     },
     {
       "basename": "AD - Password Policy Enumeration",
@@ -179,26 +199,6 @@
     {
       "basename": "BOLA - IDOR",
       "path": "04 - Content/BOLA - IDOR.md"
-    },
-    {
-      "basename": "File Inclusion",
-      "path": "04 - Content/File Inclusion.md"
-    },
-    {
-      "basename": "NoSQL Injection",
-      "path": "04 - Content/NoSQL Injection.md"
-    },
-    {
-      "basename": "JWT Attacks",
-      "path": "04 - Content/JWT Attacks.md"
-    },
-    {
-      "basename": "Cookies y Sesiones",
-      "path": "04 - Content/Process/Cookies y Sesiones.md"
-    },
-    {
-      "basename": "Burp Suite",
-      "path": "04 - Content/Burp Suite.md"
     }
   ],
   "omittedPaths": [],
