@@ -3,7 +3,6 @@ aliases:
   - Domain Root ACL
   - AdminSDHolder Audit
   - DA Group ACL
-  - ADCS Template ACL
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
@@ -22,85 +21,56 @@ linked:
 
 ## Domain Root Object
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `DC=dom,DC=local` | Domain root | Top tier. |
-| Default ACEs: DA, EA, Administrators, SYSTEM | Standard | Standard. |
-| DCSync rights here | GetChanges + GetChangesAll | Critical. |
-| WriteOwner here = ultimate Tier 0 | Critical | Critical. |
-| WriteDACL here = grant DCSync | Critical | Critical. |
-| GenericAll here = forest control | Critical | Critical. |
-| Cross-correlate non-default principals | Audit | Standard. |
-| BloodHound highvalue domain object | Visual | Tool. |
-| Default Authenticated Users: Read | Standard | Standard. |
-| Domain Computers: GenericAll on self | Edge | Standard. |
-| Detection: ACL modify on domain root | Defender | Critical alert. |
-| Modern: extreme minimal modify | Hardening | Standard. |
-| Audit: every change reviewed | Compliance | Standard. |
-| Forest root vs child domain root | Both critical | Adjacent. |
-| Cross-trust read | Standard | Adjacent. |
-| Modern: monitor 24x7 | Defender | Standard. |
+| `Get-Acl "AD:DC=corp,DC=local"` | DACL del domain root | Critical audit. |
+| `(Get-Acl "AD:DC=corp,DC=local").Access \| ? {$_.ObjectType -in "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2","1131f6ad-9c07-11d1-f79f-00c04fc2dcd2"}` | DCSync rights granted | Critical hunt. |
+| `(Get-Acl "AD:DC=corp,DC=local").Access \| ? IdentityReference -notmatch "BUILTIN\|NT AUTHORITY\|Domain Admins\|Enterprise Admins\|SYSTEM\|Domain Controllers\|Exchange"` | Non-default ACEs en root | Anomaly hunt. |
 ^ad-objspec-domainroot
 
-### Domain root audit
-
 ```powershell
-# Domain root DACL (CRITICAL audit)
-$domDN = (Get-ADDomain).DistinguishedName
-Get-Acl "AD:$domDN" | Select -ExpandProperty Access |
+# DCSync ACEs en domain root
+Get-Acl "AD:$((Get-ADDomain).DistinguishedName)" |
+  Select -Expand Access |
   Where {
-    $_.AccessControlType -eq "Allow" -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Domain Controllers|Authenticated Users|Self"
+    $_.ObjectType -in @(
+      "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2",  # GetChanges
+      "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2"   # GetChangesAll
+    )
   } |
-  Select IdentityReference,ActiveDirectoryRights,InheritanceType,ObjectType
+  Select IdentityReference,ActiveDirectoryRights,ObjectType
 ```
 
 ___
 
 ## Privileged Groups (DA, EA, Schema)
 
-| **Group** | **Critical ACEs** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Domain Admins | Member attribute write = Add to DA | Critical. |
-| Enterprise Admins | Forest-wide privilege | Critical. |
-| Schema Admins | Schema modification | Critical. |
-| Built-in Administrators | Per-host admin | Critical. |
-| AdminSDHolder propagation | Standard | Adjacent. |
-| Default holders: SYSTEM, EA, DA | Standard | Standard. |
-| Cross-correlate non-default | Audit | Standard. |
-| Stale modify rights | Audit | Standard. |
-| Service accounts with member write | Common misconfig | Audit. |
-| BloodHound `AddMember`/`AddSelf`/`GenericAll` edges | Tool | Standard. |
-| `Member` attribute writes | AddMember | Standard. |
-| `Self` extended right on group | AddSelf | Standard. |
-| Modify rights via group nesting | Recursive | Standard. |
-| Detection: priv group ACL modify | Defender | Critical alert. |
-| Modern: minimal modify rights | Hardening | Standard. |
-| Audit: per-group baseline | Compliance | Standard. |
+| `Get-Acl "AD:CN=Domain Admins,CN=Users,DC=corp,DC=local"` | DACL del DA group | Critical. |
+| `Get-Acl "AD:CN=Enterprise Admins,CN=Users,DC=corp,DC=local"` (forest root) | EA DACL | Forest critical. |
+| `Get-Acl "AD:CN=Schema Admins,CN=Users,DC=corp,DC=local"` (forest root) | Schema DACL | Forest critical. |
+| `(Get-Acl "AD:<priv-group-DN>").Access \| ? {$_.ObjectType -eq "bf9679c0-0de6-11d0-a285-00aa003049e2"}` | WriteProperty `member` (AddMember) | Audit. |
 ^ad-objspec-privgroups
 
-### Priv group ACL audit
-
 ```powershell
-# DA group DACL
-$daDN = (Get-ADGroup "Domain Admins").DistinguishedName
-Get-Acl "AD:$daDN" | Select -ExpandProperty Access |
-  Where {
-    $_.AccessControlType -eq "Allow" -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN"
-  } |
-  Select IdentityReference,ActiveDirectoryRights
+# Audit ACEs no-default en priv groups
+$Priv = "Domain Admins","Enterprise Admins","Schema Admins","Administrators",
+        "Account Operators","Backup Operators","Server Operators"
 
-# EA + Schema (forest root only)
-$forestRoot = (Get-ADForest).RootDomain
-@("Enterprise Admins", "Schema Admins") | ForEach-Object {
-  $g = Get-ADGroup -Identity $_ -Server $forestRoot
-  Get-Acl "AD:$($g.DistinguishedName)" | Select -ExpandProperty Access |
-    Where {
-      $_.AccessControlType -eq "Allow" -and
-      $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN"
-    } |
-    Select @{n='Group';e={$_.IdentityReference}},IdentityReference,ActiveDirectoryRights
+foreach ($g in $Priv) {
+  $dn = (Get-ADGroup $g -EA SilentlyContinue).DistinguishedName
+  if ($dn) {
+    Write-Host "`n=== $g ==="
+    Get-Acl "AD:$dn" |
+      Select -Expand Access |
+      Where {
+        $_.AccessControlType -eq "Allow" -and
+        $_.IdentityReference -notmatch "BUILTIN|NT AUTHORITY|Domain Admins|Enterprise Admins|SYSTEM|Cert Publishers" -and
+        $_.ActiveDirectoryRights -match "Generic|Write|AllExtendedRights"
+      } |
+      Select IdentityReference,ActiveDirectoryRights
+  }
 }
 ```
 
@@ -108,147 +78,63 @@ ___
 
 ## AdminSDHolder Object
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `CN=AdminSDHolder,CN=System,DC=...` | DACL template | Standard. |
-| SDProp process | Every 60min | Standard. |
-| Propagates DACL to protected groups + members | Standard | Standard. |
-| Protected groups list (default) | DA, EA, Schema, Administrators, Account Operators, Backup Operators, Server Operators, Print Operators, Replicators, Domain Controllers | Standard. |
-| Modify AdminSDHolder ACL = persistent Tier 0 control | Critical | Critical. |
-| BloodHound `WriteDacl` on AdminSDHolder | Visual | Tool. |
-| Default holders: SYSTEM, DA, EA | Standard | Standard. |
-| Cross-correlate non-default | Critical audit | Critical. |
-| Detection: AdminSDHolder ACL modify | Defender | Critical alert. |
-| Persistence: add ACE to AdminSDHolder | Stealth backdoor | Critical. |
-| Modern: monitor 24x7 | Defender | Standard. |
-| Audit: per-quarter | Compliance | Standard. |
-| `dsHeuristics` flag controls auto-propagation | Edge | Edge. |
-| Per-domain AdminSDHolder | Each domain | Standard. |
-| Cross-domain SDProp | Edge | Edge. |
-| Recovery: revert AdminSDHolder to baseline | Standard | Adjacent. |
+| `Get-Acl "AD:CN=AdminSDHolder,CN=System,DC=corp,DC=local"` | DACL template (re-applied a Tier 0 cada 60min via SDProp) | **Critical persistence detection**. |
+| `(Get-Acl "AD:CN=AdminSDHolder,CN=System,DC=corp,DC=local").Access \| ? IdentityReference -notmatch "BUILTIN\|NT AUTHORITY\|Domain Admins\|Enterprise Admins\|SYSTEM"` | Backdoor hunt | Persistence detection. |
+| `Get-ADObject "CN=AdminSDHolder,CN=System,DC=corp,DC=local" -Pr whenChanged` | Last modify time | Detect tampering. |
 ^ad-objspec-adminsdholder
 
-### AdminSDHolder audit
+**Por qué crítico:** SDProp copia DACL de AdminSDHolder a todos los Tier 0 objects (DA members, etc) cada 60min. Atacante con WriteDacl sobre AdminSDHolder = backdoor self-restoring incluso si lo quitan del priv group.
 
 ```powershell
-# AdminSDHolder DACL (CRITICAL audit)
-$asdh = "CN=AdminSDHolder,CN=System,$((Get-ADDomain).DistinguishedName)"
-
-Get-Acl "AD:$asdh" | Select -ExpandProperty Access |
+# Hunt backdoor en AdminSDHolder
+Get-Acl "AD:CN=AdminSDHolder,CN=System,$((Get-ADDomain).DistinguishedName)" |
+  Select -Expand Access |
   Where {
     $_.AccessControlType -eq "Allow" -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Authenticated Users"
+    $_.IdentityReference -notmatch "BUILTIN|NT AUTHORITY|Domain Admins|Enterprise Admins|SYSTEM" -and
+    $_.ActiveDirectoryRights -match "Generic|Write|AllExtendedRights"
   } |
   Select IdentityReference,ActiveDirectoryRights,ObjectType
-
-# Any non-default ACE = potential persistence backdoor
-```
-
-```cypher
-// BloodHound
-MATCH (u)-[:WriteDacl|WriteOwner|GenericAll]->(asdh)
-WHERE asdh.name = "ADMINSDHOLDER@DOM.LOCAL"
-RETURN u.name
 ```
 
 ___
 
 ## Computer Objects
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Per-computer DACL | Standard | Standard. |
-| GenericAll on computer = full | Reset pwd, modify attrs | Privesc. |
-| `WriteProperty msDS-AllowedToActOnBehalfOfOtherIdentity` = RBCD | Critical | Standard. |
-| `WriteProperty msDS-KeyCredentialLink` = Shadow Cred | Modern | Standard. |
-| `WriteProperty servicePrincipalName` = Targeted Kerberoast | Standard | Standard. |
-| `ReadProperty ms-Mcs-AdmPwd` / `msLAPS-Password` = LAPS | Adjacent | Standard. |
-| BloodHound computer ACL edges | Modern | Tool. |
-| Self extended right (computer) = computer modifies own attrs | Standard | Standard. |
-| Default: computer modifies own KeyCredentialLink | Self | Standard. |
-| Cross-correlate priv computer | Tier 0 (DCs) | Critical. |
-| DC computer ACL = forest control | Critical | Critical. |
-| Stale ACE | Audit | Standard. |
-| Per-host explicit override | Edge | Edge. |
-| Modern: minimal computer ACE | Best practice | Standard. |
-| Audit: bulk computer ACL | Compliance | Standard. |
-| Detection: ACL modify on computers | Defender | Adjacent. |
+| `Get-Acl "AD:<computer-DN>"` | DACL per-computer | Per-host audit. |
+| `Get-ADComputer -Filter * \| % { (Get-Acl "AD:$($_.DistinguishedName)").Access \| ? IdentityReference -notmatch "..." }` | Bulk audit | Forest-wide. |
+| `(Get-Acl "AD:<computer-DN>").Access \| ? ObjectType -eq "3f78c3e5-f79a-46bd-a0b8-9d18116ddc79"` | Specific RBCD attr ACE | RBCD enum. |
+| `Get-ADComputer -Filter * -Pr msDS-AllowedToActOnBehalfOfOtherIdentity \| ? msDS-AllowedToActOnBehalfOfOtherIdentity` | RBCD configurado | Audit. |
 ^ad-objspec-computers
-
-### Computer ACL audit
-
-```powershell
-# DC computer ACL (CRITICAL)
-Get-ADComputer -Filter {OperatingSystem -like "*Server*" -and PrimaryGroupID -eq 516} |
-  ForEach-Object {
-    $dn = $_.DistinguishedName
-    Write-Host "`n=== $($_.Name) ==="
-    Get-Acl "AD:$dn" | Select -ExpandProperty Access |
-      Where {
-        $_.AccessControlType -eq "Allow" -and
-        $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN"
-      } |
-      Select IdentityReference,ActiveDirectoryRights
-  }
-
-# All computers with msDS-AllowedToActOnBehalfOfOtherIdentity write rights
-Get-ADComputer -Filter * | ForEach-Object {
-  $acl = Get-Acl "AD:$($_.DistinguishedName)"
-  $rbcdWrite = $acl.Access | Where {
-    $_.AccessControlType -eq "Allow" -and
-    $_.ActiveDirectoryRights -match "WriteProperty|GenericAll|GenericWrite"
-  }
-  if ($rbcdWrite -and $rbcdWrite.IdentityReference -notmatch "Domain Admins|SYSTEM") {
-    [PSCustomObject]@{
-      Computer = $_.Name
-      Modifiers = ($rbcdWrite.IdentityReference | Sort -Unique) -join '; '
-    }
-  }
-}
-```
 
 ___
 
 ## OU Objects
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Per-OU DACL | Granular | Standard. |
-| GenericAll on OU = full control of contents | Standard | Privesc. |
-| `WriteProperty gPLink` = modify GPO links | GPO Abuse | Standard. |
-| CreateChild = create user/computer/group | Edge privesc | Edge. |
-| WriteProperty Gpc-File-Sys-Path | SYSVOL modify | Edge. |
-| BloodHound OU ACL edges | Modern | Tool. |
-| Per-OU GPO inheritance impact | Standard | Standard. |
-| Stale OU permissions | Audit | Standard. |
-| Helpdesk per-OU delegation | Standard | Standard. |
-| Tier-aware OU ACL | Best practice | Standard. |
-| Detection: OU ACL modify | Defender | Adjacent. |
-| Modern: minimal modify rights | Hardening | Standard. |
-| Cross-OU inheritance | Standard | Standard. |
-| Audit: per-OU baseline | Compliance | Standard. |
-| Per-tier OU separation | Microsoft model | Standard. |
-| Foreign principals on OU | Cross-trust | Critical. |
+| `Get-Acl "AD:<OU-DN>"` | DACL del OU | Per-OU audit. |
+| `(Get-Acl "AD:<OU-DN>").Access \| ? {$_.ObjectType -eq "f30e3bbe-9ff0-11d1-b603-0000f80367c1"}` | WriteProperty `gPLink` (link GPO) | Critical. |
+| `(Get-Acl "AD:<OU-DN>").Access \| ? ActiveDirectoryRights -match "CreateChild\|DeleteChild"` | Crear/borrar children (e.g., crear users) | Privesc. |
+| `Get-GPInheritance -Target "<OU-DN>"` | GPOs aplicados | Cross-correlate. |
 ^ad-objspec-ous
 
-### OU ACL audit
-
 ```powershell
-# All OUs with non-default ACEs
-Get-ADOrganizationalUnit -Filter * | ForEach-Object {
-  $dn = $_.DistinguishedName
-  $acl = Get-Acl "AD:$dn"
-  $nonDefault = $acl.Access | Where {
-    $_.AccessControlType -eq "Allow" -and
-    ($_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDACL|WriteOwner|CreateChild|WriteProperty") -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Authenticated Users"
-  }
-  if ($nonDefault) {
-    [PSCustomObject]@{
-      OU = $_.Name
-      Modifiers = ($nonDefault.IdentityReference | Sort -Unique) -join '; '
-    }
-  }
+# Audit Tier 0 OUs primero
+$Tier0OUs = Get-ADOrganizationalUnit -Filter "Name -like '*Tier0*' -or Name -like '*T0*' -or Name -like '*Admin*'"
+foreach ($ou in $Tier0OUs) {
+  Write-Host "`n=== $($ou.DistinguishedName) ==="
+  Get-Acl "AD:$($ou.DistinguishedName)" |
+    Select -Expand Access |
+    Where {
+      $_.IdentityReference -notmatch "BUILTIN|Domain Admins|Enterprise Admins|SYSTEM" -and
+      $_.ActiveDirectoryRights -match "Generic|Write|Create"
+    } |
+    Select IdentityReference,ActiveDirectoryRights
 }
 ```
 
@@ -256,45 +142,26 @@ ___
 
 ## Group Policy Objects (GPOs)
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| GPO ACL | Per-GPO | Standard. |
-| GenericAll on GPO = modify settings | Standard | Privesc. |
-| `WriteProperty gPCFileSysPath` | Edge | Edge. |
-| Linked OUs determine scope | Standard | Standard. |
-| Default Domain Policy GPO | Critical | Standard. |
-| Domain Controllers Policy GPO | Critical | Standard. |
-| BloodHound GPO ACL edges | Modern | Tool. |
-| Cross-correlate with linked OUs | Standard | Tool. |
-| Helpdesk GPO modify | Common misconfig | Audit. |
-| Per-GPO ACL audit | Standard | Standard. |
-| Stale GPO ownership | Audit | Standard. |
-| Detection: GPO ACL modify | Defender | Adjacent. |
-| Adjacent: GPO Abuse hub | Cross-ref | Adjacent. |
-| Modern: minimal modify rights | Hardening | Standard. |
-| GPO Creator Owners group → new GPO ownership | Standard | Standard. |
-| Compliance: GPO change review | Standard | Adjacent. |
+| `Get-GPO -All \| % { Get-GPPermission -Guid $_.Id -All }` | Permissions per-GPO | Bulk audit. |
+| `Get-Acl "AD:CN={<gpo-guid>},CN=Policies,CN=System,DC=corp,DC=local"` | DACL raw del GPO container | Per-GPO. |
+| `Get-Acl "\\<DC>\sysvol\corp.local\Policies\{<gpo-guid>}"` | DACL filesystem (SYSVOL side) | Filesystem ACL. |
+| `Find-InterestingDomainAcl -ResolveGUIDs \| ? ObjectAceType -match "groupPolicyContainer"` | GPOs con dangerous ACEs | Bulk hunt. |
 ^ad-objspec-gpos
 
-### GPO ACL audit
-
 ```powershell
-Get-GPO -All | ForEach-Object {
-  $gpo = $_
-  $aclPath = "AD:CN={$($gpo.Id)},CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)"
-  $acl = Get-Acl $aclPath
-  
-  $nonDefault = $acl.Access | Where {
-    $_.AccessControlType -eq "Allow" -and
-    ($_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDACL|WriteOwner") -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Authenticated Users"
-  }
-  
-  if ($nonDefault) {
+# Audit GPOs con non-default modify ACEs
+Get-GPO -All | % {
+  $perms = Get-GPPermission -Guid $_.Id -All -EA SilentlyContinue |
+    Where {
+      $_.Permission -in "GpoEditDeleteModifySecurity","GpoEdit" -and
+      $_.Trustee.Name -notmatch "Domain Admins|Enterprise Admins|SYSTEM"
+    }
+  if ($perms) {
     [PSCustomObject]@{
-      GPO = $gpo.DisplayName
-      Id = $gpo.Id
-      Modifiers = ($nonDefault.IdentityReference | Sort -Unique) -join '; '
+      GPO = $_.DisplayName
+      Modifiers = ($perms | % { "$($_.Trustee.Name):$($_.Permission)" }) -join '; '
     }
   }
 }
@@ -302,109 +169,27 @@ Get-GPO -All | ForEach-Object {
 
 ___
 
-## ADCS Templates & CA Objects
+## ADCS Templates & CA
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Cert Template ACL | Per-template | Standard. |
-| `Enroll` permission | Required to request cert | Standard. |
-| `AutoEnroll` permission | Auto-enrollment | Adjacent. |
-| `WriteProperty` on template = ESC4 | Modify template config | Critical. |
-| Vulnerable templates: ESC1, ESC2, ESC3, etc. | Standard | Standard. |
-| CA object ACL | `CN=Enterprise CA,CN=Public Key Services,...` | Standard. |
-| `Manage CA` permission | ESC7 | Critical. |
-| `Manage Certificates` permission | ESC7 | Critical. |
-| BloodHound ADCS edges | Modern (BHCE 5.x+) | Tool. |
-| `certipy find -vulnerable` | Bulk audit | Standard. |
-| Cross-correlate priv | Standard | Standard. |
-| NTAuthCertificates ACL | ESC11 | Critical. |
-| Cert Publishers group | Adjacent | Adjacent. |
-| Detection: ADCS ACL modify | Defender | Adjacent. |
-| Adjacent: ADCS Enumeration hub | Cross-ref | Adjacent. |
-| Adjacent: ADCS Abuse hub | Cross-ref | Adjacent. |
+| `Get-Acl "AD:CN=<template>,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=corp,DC=local"` | DACL template | Per-template audit. |
+| `certutil -dsTemplate` | Templates raw | Inventory. |
+| `Get-CertificateTemplate \| Get-CertificateTemplateAcl` (PSPKI) | DACLs per-template | Standard. |
+| `certipy find -u u -p pass -dc-ip <DC> -vulnerable -stdout` | Vulnerable templates auto-detect | Linux. |
+| `Certify.exe find /vulnerable` | Windows | Standard. |
 ^ad-objspec-adcs
-
-### ADCS ACL audit
-
-```bash
-# Certipy bulk vulnerable scan
-certipy find -u user -p pass -dc-ip DC -vulnerable -enabled
-
-# Output: ESC1-ESC15 vulnerable templates + CA misconfigs
-```
-
-```powershell
-# Per-template DACL (manual)
-$templatePath = "CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration,DC=dom,DC=local"
-Get-ChildItem "AD:$templatePath" | ForEach-Object {
-  Get-Acl "AD:$($_.DistinguishedName)" |
-    Select -ExpandProperty Access |
-    Where {
-      $_.ActiveDirectoryRights -match "WriteProperty|GenericAll|GenericWrite|WriteDACL"
-    }
-}
-```
 
 ___
 
 ## Bulk Forest-Wide Audit
 
-| **Audit** | **Detail** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Per-domain bulk | Standard | Adjacent. |
-| Forest-wide via foreach | Iterate domains | Standard. |
-| `Find-InterestingDomainAcl` per domain | PowerView | Adjacent. |
-| Custom Cypher BloodHound | Forest-wide | Tool. |
-| ADRecon ACL section | Per-domain | Standard. |
-| PingCastle ACL findings | Defender | Standard. |
-| Purple Knight ACL | Defender | Standard. |
-| Microsoft Defender for Identity | Modern detection | Defender. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Stale ACE detection | Audit | Standard. |
-| Per-quarter audit | Standard ops | Adjacent. |
-| Cross-trust ACL | Forest-wide | Adjacent. |
-| Foreign principals in ACL | Critical | Audit. |
-| Detection: bulk ACL changes | Defender ML | Modern. |
-| Audit log retention | Standard | Adjacent. |
-| BloodHound continuous | Modern | Tool. |
+| `Find-InterestingDomainAcl -ResolveGUIDs` (PowerView) | Bulk hunt forest-wide | Standard. |
+| `Find-InterestingDomainAcl -ResolveGUIDs -Domain <other-dom>` | Cross-domain | Forest-wide. |
+| `(Get-ADForest).Domains \| % { Find-InterestingDomainAcl -Domain $_ -ResolveGUIDs }` | Iterate all domains | Forest audit. |
+| BloodHound multi-domain ingest + Cypher `MATCH p=...->(:Domain) WHERE u.domain <> domain.name` | Cross-domain via BH | Visual. |
 ^ad-objspec-bulk
-
-### Forest-wide audit
-
-```powershell
-$forest = Get-ADForest
-
-foreach ($d in $forest.Domains) {
-  Write-Host "`n=== $d ==="
-  
-  $domDN = (Get-ADDomain -Identity $d).DistinguishedName
-  
-  # Domain root
-  $rootAcl = Get-Acl "AD:$domDN" | Select -ExpandProperty Access |
-    Where {
-      $_.AccessControlType -eq "Allow" -and
-      ($_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDacl|WriteOwner|ExtendedRight") -and
-      $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Authenticated Users|Domain Controllers"
-    }
-  
-  if ($rootAcl) {
-    Write-Host "Domain root non-default ACEs:"
-    $rootAcl | Select IdentityReference,ActiveDirectoryRights | Format-Table
-  }
-  
-  # AdminSDHolder per domain
-  $asdh = "CN=AdminSDHolder,CN=System,$domDN"
-  $asdhAcl = Get-Acl "AD:$asdh" | Select -ExpandProperty Access |
-    Where {
-      $_.AccessControlType -eq "Allow" -and
-      $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Authenticated Users"
-    }
-  
-  if ($asdhAcl) {
-    Write-Host "AdminSDHolder non-default ACEs:"
-    $asdhAcl | Select IdentityReference,ActiveDirectoryRights | Format-Table
-  }
-}
-```
 
 ***

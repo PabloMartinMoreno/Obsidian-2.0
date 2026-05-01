@@ -3,7 +3,7 @@ aliases:
   - ACL Inspection
   - dsacls
   - Get-Acl AD
-  - Get-ObjectAcl PowerView
+  - Get-DomainObjectAcl
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
@@ -22,269 +22,137 @@ linked:
 
 ## RSAT / PowerShell Native
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-Acl "AD:CN=user,..."` | DACL of object | Standard. |
-| `Get-Acl "AD:$dn" | Select -ExpandProperty Access` | Access list | Standard. |
-| `(Get-Acl "AD:$dn").Access` | Direct access | Adjacent. |
-| AD: PSDrive | Maps AD as filesystem | Standard. |
-| Filter `AccessControlType -eq "Allow"` | Allow ACEs only | Standard. |
-| Filter `ActiveDirectoryRights` | Specific rights | Standard. |
-| `IdentityReference` | Principal granted right | Standard. |
-| `InheritanceType` | Inherited or explicit | Adjacent. |
-| `ObjectType` GUID | Specific attribute/extended right | Standard. |
-| `InheritedObjectType` GUID | Child object class | Edge. |
-| `Get-Acl "AD:OU=X,..."` | OU DACL | Standard. |
-| `Set-Acl` | Modify (privileged) | Privileged. |
-| `Get-ADObject -Properties nTSecurityDescriptor` | Direct attribute read | Standard. |
-| `dsacls "CN=user,..."` | Native CLI | Standard. |
-| `dsacls /S` | Show inherited | Adjacent. |
-| `icacls` for filesystem | Adjacent (NTFS) | Adjacent. |
+| `Get-Acl "AD:<DN>"` | DACL del objeto | Per-object audit. |
+| `(Get-Acl "AD:<DN>").Access` | ACEs decoded | Standard. |
+| `(Get-Acl "AD:<DN>").Owner` | Owner del objeto | Ownership check. |
+| `Get-Acl "AD:<DN>" \| Select -Expand Access \| ? IdentityReference -match "<principal>"` | Filter por principal | Targeted. |
+| `Get-Acl "AD:<DN>" \| Select -Expand Access \| ? ActiveDirectoryRights -match "GenericAll\|GenericWrite\|WriteDacl\|WriteOwner"` | ACEs peligrosas | Audit. |
+| `Set-Acl "AD:<DN>" -AclObject $acl` | Modify (priv) | Privesc step / hardening. |
 ^ad-acl-tools-rsat
 
-### RSAT ACL inspection
-
 ```powershell
-# Per-object DACL
-$dn = "CN=Administrator,CN=Users,DC=dom,DC=local"
-Get-Acl "AD:$dn" | Select -ExpandProperty Access |
-  Where AccessControlType -eq "Allow" |
-  Select IdentityReference,ActiveDirectoryRights,InheritanceType,ObjectType
-
-# All inherited + explicit
-Get-Acl "AD:$dn" | Select -ExpandProperty Access |
-  Format-Table IdentityReference,ActiveDirectoryRights,InheritanceType -AutoSize
-
-# Native dsacls
-dsacls "CN=Administrator,CN=Users,DC=dom,DC=local"
+# Quick audit ACEs peligrosas en un objeto
+Get-Acl "AD:CN=Domain Admins,CN=Users,DC=corp,DC=local" |
+  Select -Expand Access |
+  Where {
+    $_.AccessControlType -eq "Allow" -and
+    $_.IdentityReference -notmatch "BUILTIN|NT AUTHORITY|Domain Admins|Enterprise Admins|SYSTEM" -and
+    $_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDacl|WriteOwner"
+  } |
+  Select IdentityReference,ActiveDirectoryRights,ObjectType
 ```
 
 ___
 
 ## PowerView (Adversary)
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-DomainObjectAcl -SamAccountName user` | User ACL | Adversary. |
-| `Get-DomainObjectAcl -SearchBase "DC=..." -ResolveGUIDs` | All objects | Bulk. |
-| `Get-DomainObjectAcl -ResolveGUIDs` | Resolve right GUIDs | Standard. |
-| `Find-InterestingDomainAcl` | Filter dangerous ACEs | Standard. |
-| `Find-InterestingDomainAcl -ResolveGUIDs` | Resolved | Standard. |
-| `Get-DomainObjectAcl -Identity user` | Per-user | Standard. |
-| `Get-DomainObjectAcl -Identity user -RightsFilter All` | Filter | Standard. |
-| `Get-ObjectAcl` (PowerView v2) | Older syntax | Legacy. |
-| `Add-DomainObjectAcl` | Modify (privileged) | Privileged. |
-| `Remove-DomainObjectAcl` | Modify (privileged) | Privileged. |
-| `Set-DomainObjectAcl` | Modify (privileged) | Privileged. |
-| `Get-DomainObject -Properties nTSecurityDescriptor` | Raw SD | Adjacent. |
-| `Get-DomainOU -Properties nTSecurityDescriptor` | OU SD | Adjacent. |
-| `Get-DomainGroup -Properties nTSecurityDescriptor` | Group SD | Adjacent. |
-| `Get-DomainComputer -Properties nTSecurityDescriptor` | Computer SD | Adjacent. |
-| pywerview equivalent | Linux | Adjacent. |
+| `Get-DomainObjectAcl -SamAccountName <name> -ResolveGUIDs` | DACL con GUIDs resueltos | Standard. |
+| `Get-DomainObjectAcl -Identity <DN> -ResolveGUIDs` | Por DN | Targeted. |
+| `Find-InterestingDomainAcl -ResolveGUIDs` | Bulk hunt ACEs peligrosas | Forest-wide privesc hunt. |
+| `Find-InterestingDomainAcl -ResolveGUIDs \| ? IdentityReferenceName -match "<user>"` | Filter post-bulk | Per-principal. |
+| `Add-DomainObjectAcl -TargetIdentity <victim> -PrincipalIdentity <atacante> -Rights All` | Add ACE (priv) | Privesc step. |
+| `Remove-DomainObjectAcl -TargetIdentity <victim> -PrincipalIdentity <atacante>` | Cleanup | Post-engagement. |
 ^ad-acl-tools-powerview
-
-### PowerView ACL queries
 
 ```powershell
 Import-Module .\PowerView.ps1
 
-# Per-user ACL (resolved)
-Get-DomainObjectAcl -SamAccountName administrator -ResolveGUIDs |
-  Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
-
-# Find all interesting (dangerous) ACEs
+# Bulk hunt
 Find-InterestingDomainAcl -ResolveGUIDs |
-  Where IdentityReferenceClass -ne "computer" |
-  Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights
-
-# Specific search base
-Get-DomainObjectAcl -SearchBase "OU=Workstations,DC=dom,DC=local" -ResolveGUIDs |
-  Where {$_.ActiveDirectoryRights -match "GenericAll|WriteDACL|WriteOwner"}
-```
-
-```bash
-# Linux pywerview
-pywerview get-objectacl -u user -p pass -d dom.local --dc-ip DC --samaccountname administrator
+  Where { $_.IdentityReferenceName -notmatch "Domain Admins|Enterprise Admins|SYSTEM" } |
+  Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
 ```
 
 ___
 
 ## BloodHound (Visual)
 
-| **Edge** | **Significado** | **Notas** |
+| **Cypher** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `GenericAll` | Full control | Standard. |
-| `GenericWrite` | Modify any non-protected attr | Standard. |
-| `WriteDacl` | Modify ACL | Standard. |
-| `WriteOwner` | Change owner | Standard. |
-| `ForceChangePassword` | Reset pwd | Standard. |
-| `AddMember` | Add to group | Standard. |
-| `AddSelf` | Self-add | Standard. |
-| `AllExtendedRights` | All ext rights | Standard. |
-| `WriteSPN` | Write servicePrincipalName | Modern. |
-| `AddKeyCredentialLink` | Shadow Credentials | Modern. |
-| `WriteAccountRestrictions` | Modify UAC | Modern. |
-| `GetChanges` / `GetChangesAll` | DCSync | Standard. |
-| `Owns` | Object ownership | Standard. |
-| BloodHound CE 5.x+ improved ACL | Modern | Tool. |
-| Cypher: dangerous ACL paths | Custom | Standard. |
-| Visual: ACL graph per object | Helpful | Standard. |
-| Per-domain collection required | Standard | Adjacent. |
-| Sharphound `-c ACL` | Targeted | Standard. |
+| `MATCH p=(u {owned:true})-[:GenericAll\|GenericWrite\|WriteDacl\|WriteOwner\|ForceChangePassword\|AddMember\|AddSelf\|AllExtendedRights*1..]->(target {highvalue:true}) RETURN p` | Paths owned → high-value via ACL | Privesc planning. |
+| `MATCH p=shortestPath((u {owned:true})-[*1..]->(da:Group {name:"DOMAIN ADMINS@CORP.LOCAL"})) RETURN p` | Shortest path a DA | Standard. |
+| `MATCH (u)-[r:GenericAll]->(target) WHERE u.domain <> target.domain RETURN u.name,target.name` | Cross-domain ACL | Cross-trust. |
+| `MATCH (u)-[r:GetChanges\|GetChangesAll]->(d:Domain) RETURN u.name,d.name` | DCSync rights | Critical hunt. |
 ^ad-acl-tools-bh
 
-### BloodHound ACL queries
-
-```cypher
-// Dangerous ACEs leading to privileged
-MATCH p=(u)-[:GenericAll|GenericWrite|WriteDacl|WriteOwner|AddMember|ForceChangePassword*1..]->(target {highvalue: true})
-RETURN p
-
-// Per-object inbound ACL
-MATCH (target {name: "ADMINISTRATOR@DOM.LOCAL"})
-MATCH (u)-[r]->(target)
-WHERE type(r) IN ["GenericAll","GenericWrite","WriteDacl","WriteOwner","AddMember","ForceChangePassword","AllExtendedRights"]
-RETURN u.name, type(r)
-
-// Custom ACL chain to DA
-MATCH p=shortestPath((u {owned: true})-[*1..]->(g:Group {name: "DOMAIN ADMINS@DOM.LOCAL"}))
-RETURN p
+```bash
+# SharpHound captures ACL automáticamente con -c All o -c ACL
+.\SharpHound.exe -c ACL,Container,Group,ObjectProps
+# o Linux
+bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip
 ```
 
 ___
 
 ## dsacls (Native Windows)
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `dsacls "DN"` | Per-object ACL | Standard. |
-| `dsacls "DN" /S` | Include inherited | Standard. |
-| `dsacls "DN" /T` | Include children | Adjacent. |
-| `dsacls /G principal:rights` | Grant (privileged) | Privileged. |
-| `dsacls /R principal` | Remove (privileged) | Privileged. |
-| `dsacls /P:Y` | Disable inheritance | Edge. |
-| `dsacls "OU=X,DC=..."` | OU ACL | Standard. |
-| Native ResKit utility | Always available | Standard. |
-| Output: per-line ACE | Readable format | Standard. |
-| Filter via findstr | Standard | Standard. |
-| `dsquery * | dsacls` pipeline | Combinable | Edge. |
-| Adjacent: `icacls` for files | NTFS | Adjacent. |
-| Modern: PowerShell preferred | Standard | Adjacent. |
-| Compatibility legacy | Standard | Standard. |
-| Detection: dsacls events | Edge | Adjacent. |
-| Audit: per-object dsacls output | Standard | Standard. |
+| `dsacls "<DN>"` | DACL completa native | Sin RSAT. |
+| `dsacls "<DN>" /A` | Audit + DACL | Detail. |
+| `dsacls "<DN>" /G "<principal>:<rights>"` | Add ACE (priv) | Privesc step. |
+| `dsacls "<DN>" /R "<principal>"` | Revoke ACE (priv) | Cleanup. |
+| `dsacls "<DN>" \| findstr /i "Authenticated Users\|Domain Users"` | Quick filter wide ACEs | Audit quick. |
 ^ad-acl-tools-dsacls
 
-### dsacls usage
-
 ```cmd
-:: Per-object ACL with inheritance
-dsacls "CN=Administrator,CN=Users,DC=dom,DC=local" /S
+:: Audit dangerous ACEs en domain root
+dsacls "DC=corp,DC=local" | findstr /i "Authenticated Users\|Everyone\|Domain Users"
 
-:: Filter for specific rights
-dsacls "CN=Administrator,CN=Users,DC=dom,DC=local" | findstr /i "GenericAll\|WriteDACL\|WriteOwner"
-
-:: OU ACL
-dsacls "OU=Workstations,DC=dom,DC=local" /S /T
+:: Add GenericAll (privesc)
+dsacls "CN=victim,CN=Users,DC=corp,DC=local" /G "corp\atacante:GA"
 ```
 
 ___
 
-## ldapsearch / Linux (Raw nTSecurityDescriptor)
+## ldapsearch / Linux
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `ldapsearch ... nTSecurityDescriptor` | Raw SD | Standard. |
-| Binary blob | Need decoder | Standard. |
-| `bloodyAD --resolve-sd` | Decoded SDDL | Linux. |
-| `ldapsearch -E '!1.2.840.113556.1.4.801=::MAMCAQc='` | LDAP Server SD Flags Control | Standard. |
-| LDAP_SERVER_SD_FLAGS_OID control | Get full SD | Standard. |
-| Owner + group + DACL + SACL | Full SD | Adjacent. |
-| Default returns DACL only | Standard | Standard. |
-| Need privilege for SACL | Audit log permissions | Edge. |
-| `pywerview get-objectacl` | Linux equivalent | Adjacent. |
-| `bloodyAD get object DN --resolve-sd` | Bulk audit | Standard. |
-| Custom Python + ldap3 + sec descriptor decoder | DIY | Edge. |
-| `ldapsearch -h DC -E '!1.2...'` | Use control | Edge. |
-| Modern Linux: bloodyAD preferred | Standard | Standard. |
-| Detection: bulk SD reads | Defender | Adjacent. |
-| Cross-platform: Python | Standard | Standard. |
-| Compliance: red team scoped | Standard | OPSEC. |
+| `ldapsearch -h <DC> -D 'corp\u' -w pass -b "<DN>" -s base "(objectClass=*)" nTSecurityDescriptor` | Raw security descriptor (binary) | Linux. |
+| `bloodyAD --host <DC> -d corp -u u -p pass get object "<DN>" --resolve-sd` | DACL decoded human-readable | Linux standard. |
+| `bloodyAD --host <DC> -d corp -u u -p pass add genericAll <victim> <atacante>` | Add ACE | Privesc. |
+| `bloodyAD --host <DC> -d corp -u u -p pass remove genericAll <victim> <atacante>` | Remove ACE | Cleanup. |
+| `dacledit.py corp.local/u:p -dc-ip <DC> -principal <atacante> -target <victim> -action read` | Read DACL Linux (Impacket-adjacent) | Edge. |
+| `dacledit.py corp.local/u:p -dc-ip <DC> -principal <atacante> -target <victim> -rights FullControl -action write` | Write DACL Linux | Privesc. |
 ^ad-acl-tools-linux
 
-### Linux ACL inspection
-
 ```bash
-# bloodyAD (recommended for Linux)
-bloodyAD --host DC -d dom -u user -p pass \
-  get object "CN=Administrator,CN=Users,DC=dom,DC=local" --resolve-sd
+# bloodyAD — standard Linux ACL audit
+bloodyAD --host <DC> -d corp -u auditor -p 'Pass!' \
+  get object "CN=Domain Admins,CN=Users,DC=corp,DC=local" --resolve-sd
 
-# Output: decoded SDDL with principal names
-
-# Raw ldapsearch
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=Administrator,CN=Users,DC=dom,DC=local" \
-  -s base "(objectClass=*)" nTSecurityDescriptor
-
-# With SD Flags Control (more detail)
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -E '!1.2.840.113556.1.4.801=::MAMCAQc=' \
-  -b "DC=dom,DC=local" \
-  "(objectClass=user)" nTSecurityDescriptor
+# dacledit (Impacket-adjacent, krbrelayx project)
+git clone https://github.com/dirkjanm/krbrelayx
+python3 dacledit.py corp.local/auditor:'Pass!' -dc-ip <DC> \
+  -principal atacante -target Administrator -action read
 ```
 
 ___
 
-## ADRecon / Bulk ACL Reports
+## ADRecon / Bulk Reports
 
-| **Tool** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| ADRecon ACL section | XLSX sheet | Comprehensive. |
-| ADRecon -Collect ACLs | Specific category | Standard. |
-| ADCollector .NET | Faster | Standard. |
-| windapsearch --custom | Adjacent | Edge. |
-| ldapdomaindump | HTML report | Standard. |
-| BloodyAD audit scripts | LDAP modify + audit | Adjacent. |
-| `Get-ADAclAuditing` (custom) | Per-org | Edge. |
-| PingCastle ACL section | Defender | Standard. |
-| Purple Knight ACL | Defender | Standard. |
-| Microsoft Defender for Identity | ACL anomaly | Defender. |
-| Custom Python audit | DIY | Standard. |
-| Cross-correlate with priv | Standard | Adjacent. |
-| Per-OU ACL audit | Granular | Standard. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Stale ACL detection | Audit | Adjacent. |
-| Forest-wide ACL scan | Multi-domain | Adjacent. |
+| `.\ADRecon.ps1 -DomainController <DC> -OutputType Excel` | Excel multi-sheet (incluye `ACLs` sheet) | Auditor-friendly. |
+| `.\ADRecon.ps1 ... -Collect ACLs` | Solo ACLs | Targeted. |
+| Inspect `ADRecon-Report\CSV-Files\ACLs.csv` | Bulk export | Post-process. |
+| `ldapdomaindump 'corp\u:p'@<DC> -o report/` | Includes ACL info en HTML/JSON | Linux equivalent. |
 ^ad-acl-tools-bulk
 
-### Bulk ACL audit
-
 ```powershell
-# Find all dangerous ACLs in domain (CSV export)
-$dangerousRights = "GenericAll","GenericWrite","WriteDACL","WriteOwner",
-                    "ExtendedRight","AllExtendedRights"
+.\ADRecon.ps1 -DomainController <DC> -Credential (Get-Credential) -OutputType CSV -OutputDir .\report
 
-Get-ADObject -Filter * -SearchBase "DC=dom,DC=local" |
-  ForEach-Object {
-    $dn = $_.DistinguishedName
-    Get-Acl "AD:$dn" | Select -ExpandProperty Access |
-      Where {
-        $_.AccessControlType -eq "Allow" -and
-        ($_.ActiveDirectoryRights -match ($dangerousRights -join "|")) -and
-        $_.IdentityReference -notmatch "BUILTIN|NT AUTHORITY|Domain Admins|Enterprise Admins|SYSTEM"
-      } |
-      Select @{n='ObjectDN';e={$dn}},IdentityReference,ActiveDirectoryRights,ObjectType
-  } |
-  Export-Csv dangerous_acls.csv -NoTypeInformation
-```
-
-```bash
-# Linux equivalent via bloodyAD + scripting
-bloodyAD --host DC -d dom -u user -p pass \
-  search "(objectClass=user)" --resolve-sd > all_user_acls.txt
-
-# Filter for dangerous rights
-grep -E "GenericAll|GenericWrite|WriteDACL|WriteOwner" all_user_acls.txt
+# Filter dangerous ACEs from bulk
+Import-Csv .\report\CSV-Files\ACLs.csv |
+  Where {
+    $_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDacl|WriteOwner|ForceChangePassword" -and
+    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|SYSTEM|BUILTIN"
+  }
 ```
 
 ***
