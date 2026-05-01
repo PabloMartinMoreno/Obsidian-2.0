@@ -3,7 +3,7 @@ aliases:
   - LAPSv1
   - ms-Mcs-AdmPwd
   - Legacy LAPS
-  - AdmPwd attribute
+  - Microsoft LAPS legacy
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
@@ -22,285 +22,119 @@ linked:
 
 ## LAPSv1 Architecture
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Atributo** | **Significado** | **Cuándo** |
 |:---:|:---:|:---:|
-| `ms-Mcs-AdmPwd` attribute | Cleartext local admin password | LAPSv1 core. |
-| `ms-Mcs-AdmPwdExpirationTime` | FILETIME expiration | Adjacent. |
-| Per-computer attribute | One password per host | Standard. |
-| Stored on Computer object | LDAP location | Standard. |
-| Default Confidential flag | Read-only restricted | Standard. |
-| Schema extension required | `Update-AdmPwdADSchema` | Privileged install. |
-| Client-side LAPS MSI | Per-host install | Required. |
-| GPO-driven password rotation | Default 30 days | Standard. |
-| Password generated locally | Per-host | Standard. |
-| Pushed to AD on rotation | Standard | Standard. |
-| Local Administrator account | RID 500 default | Standard. |
-| Custom account configurable | GPO setting | Edge. |
-| Read permission separate from password | ACL controls | Standard. |
-| Public Microsoft GitHub repo (deprecated) | Archived | Adjacent. |
-| Modern: deprecated post-2023 | Microsoft direction | Standard. |
-| Migration path to LAPSv2 | Coexist or replace | Adjacent. |
+| `ms-Mcs-AdmPwd` | **Cleartext** local admin password | Almacenado plain en LDAP. |
+| `ms-Mcs-AdmPwdExpirationTime` | FILETIME expiration | Trigger rotation. |
+| Computer self-write | Computer rota su propio pwd | `Self` ACE permission. |
+| GPO `LAPS.admx` | Configuración deployment | `HKLM\Software\Policies\Microsoft Services\AdmPwd`. |
+| Default rotation | 30 días | Configurable. |
 ^ad-lapsv1-arch
 
-### LAPSv1 schema extension check
-
-```powershell
-# Schema attributes
-Get-ADObject -SearchBase "CN=Schema,CN=Configuration,$((Get-ADDomain).DistinguishedName)" `
-  -Filter "Name -eq 'ms-Mcs-AdmPwd' -or Name -eq 'ms-Mcs-AdmPwdExpirationTime'" |
-  Select Name,DistinguishedName
-
-# Confidentiality flag
-Get-ADObject -SearchBase "CN=Schema,..." -Filter "Name -eq 'ms-Mcs-AdmPwd'" -Properties searchFlags |
-  Select Name,@{n='ConfidentialFlag';e={($_.searchFlags -band 128) -ne 0}}
-# searchFlags bit 128 = CONFIDENTIAL — only specific principals can read
-```
+**Default state (post-deploy):**
+1. Schema extended con `ms-Mcs-AdmPwd*` attrs.
+2. GPO con `AdmPwd.dll` deploy.
+3. Computer reset password local admin (default `Administrator` o RID 500).
+4. Pwd se almacena en `ms-Mcs-AdmPwd` (plain text LDAP).
+5. Computer self-rotate cada `ms-Mcs-AdmPwdExpirationTime`.
 
 ___
 
 ## LAPSv1 Read via LDAP
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-ADComputer host -Properties ms-Mcs-AdmPwd` | RSAT direct | Standard. |
-| `ldapsearch ... "(cn=host)" ms-Mcs-AdmPwd` | LDAP raw | Linux. |
-| `nxc smb host -u u -p p --laps` | netexec wrapper | Bulk. |
-| `nxc ldap DC -u u -p p --query "(ms-Mcs-AdmPwd=*)" "*"` | LDAP filter | Custom. |
-| `Get-AdmPwdPassword -ComputerName host` | Native LAPS PowerShell module | Per-host. |
-| `crackmapexec smb hosts -u u -p p --laps` | Older name | Same. |
-| Required: read permission | Per-OU/computer | ACL. |
-| Default Authenticated Users: NO read | CONFIDENTIAL flag | Standard. |
-| Specific group reads | Per-OU GPO config | Standard. |
-| Bulk read attempts | Test all hosts | Standard. |
-| Output: cleartext password + expiration | Direct cred | Standard. |
-| Cross-correlate with priv | LAPS readers in priv groups | Audit. |
-| Detection: bulk LAPS query events | Defender | Adjacent. |
-| BloodHound `ReadLAPSPassword` edge | Modern collection | Tool. |
-| Authenticated required typical | Standard | Standard. |
-| Per-host result: success or denied | Per-ACL | Standard. |
+| `Get-ADComputer <host> -Properties ms-Mcs-AdmPwd,ms-Mcs-AdmPwdExpirationTime` | Single host pwd | RSAT. |
+| `Get-ADComputer -Filter * -Pr ms-Mcs-AdmPwd \| ? 'ms-Mcs-AdmPwd'` | Bulk readable pwds | Coverage = ACL grants. |
+| `nxc smb hosts.txt -u u -p p --laps` | Bulk read via netexec | Quick. |
+| `nxc ldap <DC> -u u -p p --query "(ms-Mcs-AdmPwd=*)" "samAccountName,ms-Mcs-AdmPwd"` | LDAP filter readable | Linux. |
+| `ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" "(ms-Mcs-AdmPwd=*)" samAccountName ms-Mcs-AdmPwd` | LDAP raw | Linux. |
 ^ad-lapsv1-read
 
-### LAPSv1 read examples
-
 ```bash
-# netexec bulk
+# Bulk LAPS dump (solo hosts con read access)
 nxc smb hosts.txt -u user -p pass --laps
 
-# Output format:
-# SMB         10.0.0.50  445  WS01  [+] Found ms-Mcs-AdmPwd: a8B3#k$pQv2!nM7@xL
-# SMB         10.0.0.60  445  WS02  [-] Failed to read
-
-# LDAP direct
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=computer)(ms-Mcs-AdmPwd=*))" \
-  cn dNSHostName ms-Mcs-AdmPwd ms-Mcs-AdmPwdExpirationTime
-
-# Targeted single host
-ldapsearch -h DC -D 'dom\u' -w pass -b "CN=WS01,CN=Computers,DC=dom,DC=local" \
-  -s base "(objectClass=*)" ms-Mcs-AdmPwd
+# Output:
+# host01    LAPS    Administrator:abcDef123!
+# host05    LAPS    Administrator:xyz9876@@
 ```
 
 ```powershell
-# RSAT
+# RSAT bulk
 Get-ADComputer -Filter * -Properties ms-Mcs-AdmPwd,ms-Mcs-AdmPwdExpirationTime |
-  Where {$_.'ms-Mcs-AdmPwd'} |
-  Select Name,DNSHostName,
-    @{n='Password';e={$_.'ms-Mcs-AdmPwd'}},
-    @{n='Expiration';e={[datetime]::FromFileTime($_.'ms-Mcs-AdmPwdExpirationTime')}}
-
-# LAPS PowerShell module (if installed)
-Get-AdmPwdPassword -ComputerName WS01
+  Where 'ms-Mcs-AdmPwd' |
+  Select Name,@{n='AdmPwd';e={$_.'ms-Mcs-AdmPwd'}},
+         @{n='Expires';e={[datetime]::FromFileTime($_.'ms-Mcs-AdmPwdExpirationTime')}}
 ```
 
 ___
 
 ## LAPSv1 ACL Audit
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Per-computer DACL | `Get-Acl "AD:CN=host,..."` | Standard. |
-| Filter for `ms-Mcs-AdmPwd` read | Specific GUID | Filter. |
-| `dsacls "CN=host,..." | findstr "ms-Mcs-AdmPwd"` | Native | Adjacent. |
-| LAPSv1 GUID for read | `Read msDS-AllowedToActOnBehalfOfOtherIdentity` schema GUID | LDAP. |
-| `Find-AdmPwdExtendedRights` (LAPS module) | Native helper | Standard. |
-| Per-OU ACL inheritance | Standard | Standard. |
-| `ReadProperty on ms-Mcs-AdmPwd` | Specific permission | Direct. |
-| `All Extended Rights` | Includes LAPS read | Edge. |
-| `GenericAll on computer` | Full control = LAPS read | ACL combo. |
-| Check who can read | Per-host audit | Standard. |
-| Bulk audit | Per-OU iteration | Standard. |
-| Default: only specific groups | Best practice | Hardening. |
-| Default: Authenticated Users blocked | CONFIDENTIAL flag | Standard. |
-| Detection: ACL modify on LAPS attr | Defender | Adjacent. |
-| BloodHound `ReadLAPSPassword` edge | Visual | Tool. |
-| Audit: who has LAPS read | Compliance | Standard. |
+| `(Get-Acl "AD:<computer-DN>").Access \| ? {$_.ObjectType -eq "ea1b7b93-5e48-46d5-bc6c-4df4fda78a35"}` | ACEs `ExtendedRight` `All-Extended-Rights` (incluye AdmPwd read) | Per-host audit. |
+| `Find-AdmPwdExtendedRights -Identity "OU=X,DC=corp,DC=local"` (LAPS PowerShell module) | Quien puede leer LAPS por OU | Native helper. |
+| `dsacls "<computer-DN>" \| Select-String "ms-Mcs-AdmPwd"` | DACL específico via dsacls | Sin RSAT. |
+| `Get-LapsADExtendedRights -Identity "OU=X,DC=corp,DC=local"` (Win LAPS module) | Native modern wrapper | Si Win LAPS module instalado. |
 ^ad-lapsv1-acl
 
-### LAPSv1 ACL audit
+**ACE permission necesario para read:**
+- `ExtendedRight: All-Extended-Rights` (GUID `00000000-0000-0000-0000-000000000000`) sobre el computer object, OR
+- `ReadProperty` específico sobre `ms-Mcs-AdmPwd` attribute.
 
 ```powershell
-# Find principals with LAPS read on specific computer
-$computer = "CN=WS01,CN=Computers,DC=dom,DC=local"
-$lapsAttr = "AdmPwd"  # ms-Mcs-AdmPwd
-
-Get-Acl "AD:$computer" | Select -ExpandProperty Access |
-  Where {
-    $_.AccessControlType -eq "Allow" -and
-    ($_.ActiveDirectoryRights -match "ReadProperty|GenericAll|GenericRead|ExtendedRight")
-  } |
-  Select IdentityReference,ActiveDirectoryRights
-
-# Native LAPS helper (if module installed)
+# Native helper LAPSv1
 Import-Module AdmPwd.PS
-Find-AdmPwdExtendedRights -Identity "OU=Workstations,DC=dom,DC=local"
-```
-
-```bash
-# Linux LDAP
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=WS01,CN=Computers,DC=dom,DC=local" \
-  -s base nTSecurityDescriptor
-
-# bloodyAD (decode SDDL)
-bloodyAD --host DC -d dom -u user -p pass get object "CN=WS01,..." --resolve-sd
+Find-AdmPwdExtendedRights -Identity "OU=Servers,DC=corp,DC=local" |
+  Select ObjectDN,@{n='Readers';e={$_.ExtendedRightHolders -join '; '}}
 ```
 
 ___
 
 ## LAPSv1 Misconfigurations
 
-| **Misconfig** | **Risk** | **Notas** |
+| **Comando** | **Qué detecta** | **Riesgo** |
 |:---:|:---:|:---:|
-| Authenticated Users with read | Default permissive | Critical (rare default but possible). |
-| Domain Users with read | Anyone in domain | Critical. |
-| ACL inheritance from broad parent | Indirect read | Audit. |
-| Stale LAPS-set computers | Old passwords still readable | Adjacent. |
-| LAPS not deployed (no schema) | No protection | Audit gap. |
-| LAPS deployed but no GPO link | Schema only, no rotation | Edge. |
-| Password rotation interval >90 days | Stale passwords | Audit. |
-| Custom non-default local account | Edge configuration | Edge. |
-| Default Administrator account | RID 500 | Standard. |
-| LAPS not on Domain Controllers | Best practice | Standard. |
-| LAPS on DCs (rare) | Hardening | Edge. |
-| Confidential flag not set | Authenticated Users may read | Critical. |
-| `searchFlags & 128 = 0` | Confidential off | Vuln. |
-| Per-OU LAPS gap | Some OUs without coverage | Audit. |
-| Cross-OU inheritance unintended | Edge | Audit. |
-| Recovery: helper accounts excluded | Per-org policy | Standard. |
+| `(Get-Acl "AD:<computer-DN>").Access \| ? IdentityReference -match "Authenticated Users\|Domain Users\|Everyone"` | Wide access ACE en LAPS attrs | **CRITICAL** — todos pueden leer. |
+| `Find-AdmPwdExtendedRights -Identity "DC=corp,DC=local" \| ? ExtendedRightHolders -match "Authenticated Users\|Domain Users"` | Bulk wide access | Audit. |
+| `Get-ADComputer -Filter * -Pr ms-Mcs-AdmPwdExpirationTime \| ? {$_.'ms-Mcs-AdmPwdExpirationTime' -lt (Get-Date).ToFileTime() - (90*24*3600*10000000)}` | Pwds no rotados >90d | Stale rotation. |
+| `Get-ADComputer -Filter * -Pr ms-Mcs-AdmPwd,Enabled \| ? {-not $_.'ms-Mcs-AdmPwd' -and $_.Enabled}` | Computers sin LAPS pwd set | Coverage gap. |
+| Compare GPO scope vs computer scope | Mismatch | Audit deployment. |
 ^ad-lapsv1-misconfig
-
-### LAPSv1 misconfig audit
-
-```powershell
-# Audit: Confidential flag set?
-$lapsSchema = Get-ADObject -SearchBase "CN=Schema,CN=Configuration,$((Get-ADDomain).DistinguishedName)" `
-  -Filter "Name -eq 'ms-Mcs-AdmPwd'" -Properties searchFlags
-
-if (($lapsSchema.searchFlags -band 128) -eq 0) {
-  Write-Warning "ms-Mcs-AdmPwd Confidential flag NOT set — Authenticated Users may read"
-}
-
-# Find computers where Authenticated Users can read LAPS (audit)
-Get-ADComputer -Filter * -Properties ms-Mcs-AdmPwd | ForEach-Object {
-  $dn = $_.DistinguishedName
-  $acl = Get-Acl "AD:$dn"
-  $authUsers = $acl.Access | Where {
-    $_.IdentityReference -eq "NT AUTHORITY\Authenticated Users" -and
-    ($_.ActiveDirectoryRights -match "GenericAll|GenericRead")
-  }
-  if ($authUsers) {
-    Write-Host "[!] $($_.Name) has Authenticated Users read"
-  }
-}
-```
 
 ___
 
-## LAPSv1 Read Permissions Discovery
+## LAPSv1 Read Permissions
 
-| **Vector** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Find-AdmPwdExtendedRights` | LAPS PS module | Native helper. |
-| Per-OU read | OU-level permission | Standard. |
-| Per-computer read | Granular | Standard. |
-| Read via group membership | Indirect | Standard. |
-| Bulk audit script | DIY | Standard. |
-| BloodHound `ReadLAPSPassword` edge | Visual | Tool. |
-| `Get-ObjectAcl -DistinguishedName host -ResolveGUIDs` | PowerView | Adjacent. |
-| `dsacls` native | Adjacent | Adjacent. |
-| Tier 0 admins read all | Standard | Standard. |
-| Helpdesk groups read workstations | Tiered model | Standard. |
-| Audit: minimal read principals | Best practice | Standard. |
-| Cross-correlate with priv | LAPS readers in priv groups | Audit. |
-| Stale read permissions | Old delegations | Audit. |
-| Service accounts as readers | Common find | Audit. |
-| BackupOperators / ServerOperators read | Per-org config | Edge. |
-| Detection: LAPS read events | Defender | Adjacent. |
+| `Find-AdmPwdExtendedRights -Identity <OU>` | Lista users/groups con read | Per-OU audit. |
+| `Set-AdmPwdReadPasswordPermission -Identity <OU> -AllowedPrincipals "Group X"` | Grant read (priv) | Hardening / setup. |
+| `Set-AdmPwdResetPasswordPermission -Identity <OU> -AllowedPrincipals "Group X"` | Grant reset (priv) | Force rotation. |
 ^ad-lapsv1-readers
 
-### LAPS readers discovery
-
-```powershell
-# Native LAPS module helper
-Import-Module AdmPwd.PS
-Find-AdmPwdExtendedRights -Identity "OU=Workstations,DC=dom,DC=local"
-
-# Manual via DACL audit
-$ou = "OU=Workstations,DC=dom,DC=local"
-$lapsRead = "00000000-0000-0000-0000-000000000000"  # ms-Mcs-AdmPwd schema GUID
-
-Get-ADComputer -SearchBase $ou -Filter * | ForEach-Object {
-  $acl = Get-Acl "AD:$($_.DistinguishedName)"
-  $readers = $acl.Access | Where {
-    $_.AccessControlType -eq "Allow" -and
-    ($_.ActiveDirectoryRights -match "ReadProperty|GenericAll|AllExtendedRights")
-  }
-  [PSCustomObject]@{
-    Computer = $_.Name
-    Readers = ($readers.IdentityReference | Sort -Unique) -join '; '
-  }
-}
-```
+**Default readers** después de install LAPS GPO: solo `Domain Admins` (vía herencia). Hardening = grant read a tier-specific groups (e.g., `T1 Server Admins` para Server OU, no flat `Domain Admins`).
 
 ___
 
 ## LAPSv1 Replacement (Migration to LAPSv2)
 
-| **Step** | **Detalle** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Install LAPSv2 schema | Native Server 2022+ | Standard. |
-| Configure GPO LAPSv2 | New ADMX | Standard. |
-| Decommission LAPSv1 GPO | Per-OU | Standard. |
-| Remove LAPSv1 client install | Optional | Adjacent. |
-| Coexistence period | Both attrs may exist | Edge. |
-| Verify LAPSv2 deployment | `msLAPS-Password` populated | Standard. |
-| Test LAPSv2 read | Authorized principals | Standard. |
-| Disable LAPSv1 attribute updates | Stop GPO settings | Standard. |
-| Schema cleanup (rare) | Don't remove schema | Standard. |
-| Audit migration completion | Per-OU | Standard. |
-| Update read permissions | LAPSv2 ACL | Standard. |
-| Detection: LAPSv1 read events post-migration | Anomaly | Defender. |
-| BloodHound LAPSv2 edges | Modern | Tool. |
-| Compliance: deprecate LAPSv1 | Microsoft direction | Standard. |
-| Per-org migration timeline | Variable | Operational. |
-| Modern best practice: LAPSv2 only | Hardening | Standard. |
+| `Update-LapsADSchema` (Win LAPS module) | Extender schema con `msLAPS-*` attrs | Pre-migration. |
+| `Set-LapsADComputerSelfPermission -Identity <OU>` | Set self-write LAPSv2 ACE | Post-schema. |
+| `Set-LapsADReadPasswordPermission -Identity <OU> -AllowedPrincipals <Group>` | Grant read LAPSv2 | Hardening. |
+| `Find-LapsADExtendedRights -Identity <OU>` | Audit LAPSv2 ACEs (post-migration) | Verify. |
+| `Invoke-LapsPolicyProcessing` (per-host) | Force rotación post-migration | Cleanup pwd LAPSv1. |
 ^ad-lapsv1-migration
 
-### Coexistence detection
-
-```powershell
-# Find computers with both LAPSv1 + LAPSv2 set (mid-migration)
-Get-ADComputer -Filter * `
-  -Properties ms-Mcs-AdmPwd,msLAPS-Password,
-    ms-Mcs-AdmPwdExpirationTime,msLAPS-PasswordExpirationTime |
-  Where {
-    $_.'ms-Mcs-AdmPwd' -and $_.'msLAPS-Password'
-  } |
-  Select Name,
-    @{n='LAPSv1Set';e={$null -ne $_.'ms-Mcs-AdmPwd'}},
-    @{n='LAPSv2Set';e={$null -ne $_.'msLAPS-Password'}},
-    @{n='V1Exp';e={[datetime]::FromFileTime($_.'ms-Mcs-AdmPwdExpirationTime')}},
-    @{n='V2Exp';e={[datetime]::FromFileTime($_.'msLAPS-PasswordExpirationTime')}}
-```
+**Migration workflow:**
+1. `Update-LapsADSchema` (extender schema con LAPSv2).
+2. Deploy LAPSv2 GPO (configurar `BackupDirectory=AD`).
+3. Pull legacy LAPSv1 GPO (no remover hasta migration completa).
+4. Force rotation: clients usan LAPSv2 attrs.
+5. Cleanup `ms-Mcs-AdmPwd*` viejo via `Set-ADObject -Clear`.
 
 ***
