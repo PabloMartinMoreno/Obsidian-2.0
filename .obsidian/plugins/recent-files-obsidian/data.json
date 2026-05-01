@@ -1,8 +1,36 @@
 {
   "recentFiles": [
     {
+      "basename": "Kerberoasting",
+      "path": "04 - Content/Kerberoasting.md"
+    },
+    {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "Pass-the-Hash",
+      "path": "04 - Content/Pass-the-Hash.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
       "basename": "Active Directory Enumeración",
       "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
+      "basename": "AD - Health y Security Auditing",
+      "path": "04 - Content/AD - Health y Security Auditing.md"
+    },
+    {
+      "basename": "AD - GPO y SYSVOL Enumeration - GPO Inheritance y Scope",
+      "path": "04 - Content/AD - GPO y SYSVOL Enumeration - GPO Inheritance y Scope.md"
+    },
+    {
+      "basename": "AD - ADCS Enumeration",
+      "path": "04 - Content/AD - ADCS Enumeration.md"
     },
     {
       "basename": "Web Explotación",
@@ -75,10 +103,6 @@
     {
       "basename": "AD - Hosts Enumeration - DC Discovery",
       "path": "04 - Content/AD - Hosts Enumeration - DC Discovery.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
     },
     {
       "basename": "Web Enumeración",
@@ -161,10 +185,6 @@
       "path": "04 - Content/Process/Active Directory Lateral Movement.md"
     },
     {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
       "basename": "AD Initial Enumeration Playbook",
       "path": "04 - Content/AD Initial Enumeration Playbook.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "Clickjacking",
       "path": "04 - Content/Clickjacking.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
-    },
-    {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Server-Side Includes (SSI) Injection.md"
-    },
-    {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Authentication & Authorization Bypass.md"
-    },
-    {
-      "basename": "SQL Commands",
-      "path": "04 - Content/SQL Commands.md"
-    },
-    {
-      "basename": "Directory Traversal",
-      "path": "04 - Content/Directory Traversal.md"
     }
   ],
   "omittedPaths": [],

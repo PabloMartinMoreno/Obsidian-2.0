@@ -43,15 +43,15 @@ Inspección detallada de objetos del directorio y controles de seguridad.
 - [[AD - ACL Enumeration]] (DACL inspection, dangerous ACEs, BloodHound edges, dsacls, Get-ObjectAcl.)
 - [[AD - DCSync Rights Discovery]] (Get-Changes/Get-Changes-All extended rights, non-default holders.)
 - [[AD - Delegation Enumeration]] (Unconstrained, Constrained S4U, RBCD targets, Shadow Credentials.)
-- [[AD - Certificate Services (AD CS) Enumeration]] (Templates, ESC1-15 candidates, Enterprise CAs, certipy find.)
-- [[AD - GPO & SYSVOL Enumeration]] (Linked GPOs per OU, gPCFileSysPath, cpassword search, SYSVOL scripts.)
+- [[AD - ADCS Enumeration]] (Templates, ESC1-15 candidates, Enterprise CAs, certipy find.)
+- [[AD - GPO y SYSVOL Enumeration|AD - GPO & SYSVOL Enumeration]] (Linked GPOs per OU, gPCFileSysPath, cpassword search, SYSVOL scripts.)
 
 
 ## 🗺 Attack Path & Vulnerability Analysis
 Mapeo visual de relaciones y búsqueda automatizada de debilidades estructurales.
 
 - [[BloodHound & SharpHound]] (Collection con SharpHound/RustHound/AzureHound, ingest CE, queries Cypher, edges built-in, custom analytics.)
-- [[AD - Health & Security Auditing]] (PingCastle, Purple Knight, ADRecon — auditorías automatizadas de configuraciones riesgosas.)
+- [[AD - Health y Security Auditing|AD - Health & Security Auditing]] (PingCastle, Purple Knight, ADRecon — auditorías automatizadas de configuraciones riesgosas.)
 
 
 ***
