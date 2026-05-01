@@ -64,8 +64,6 @@ Dado que phpbash ya entrega una terminal interactiva en el navegador, **obtener 
 1. **Estabilidad:** la interfaz web puede tener limitaciones en comandos interactivos o de larga duración.
 2. **Comodidad:** una shell local permite usar herramientas como `tmux`, autocompletado, historial, etc.
 
-El writeup oficial menciona dos enfoques estándar para conseguirlo:
-
 #### Opción A — Reverse shell (connect-back)
 
 Se ejecuta a través de phpbash un comando "connect-back" que abre una conexión saliente desde el objetivo hacia un listener controlado por el atacante. Existen muchas variantes (bash, python, nc, perl, php, etc.); cualquiera de ellas funciona aquí porque el servidor tiene salida hacia el atacante y phpbash ejecuta comandos arbitrarios sin filtrado.

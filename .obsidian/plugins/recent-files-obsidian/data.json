@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/Bashed.md"
     },
     {
+      "basename": "Reverse Shell",
+      "path": "04 - Content/Reverse Shell.md"
+    },
+    {
       "basename": "CWES - Maquinas",
       "path": "04 - Content/Process/CWES - Maquinas.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Active Directory Lateral Movement",
       "path": "04 - Content/Process/Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "AD Initial Enumeration Playbook",
-      "path": "04 - Content/AD Initial Enumeration Playbook.md"
     }
   ],
   "omittedPaths": [],
