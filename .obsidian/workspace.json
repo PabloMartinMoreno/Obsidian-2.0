@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/GraphQL Injection.md",
+                "file": "03 - Tertiary Categories/Active Directory Enumeración.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "GraphQL Injection"
+              "title": "Active Directory Enumeración"
             }
           }
         ],
@@ -266,18 +266,19 @@
   },
   "active": "1991f5d5c37672bf",
   "lastOpenFiles": [
-    "04 - Content/AD - DCSync Rights Discovery - Tooling.md.tmp.3658.1777602850329",
-    "04 - Content/AD - DCSync Rights Discovery - BloodHound DCSync Edges.md.tmp.3658.1777602801235",
-    "04 - Content/AD - DCSync Rights Discovery - Common Misconfigs.md.tmp.3658.1777602763873",
-    "04 - Content/AD - DCSync Rights Discovery - ACL Audit on Domain Root.md.tmp.3658.1777602717227",
-    "04 - Content/AD - DCSync Rights Discovery - Default vs Non-Default Holders.md.tmp.3658.1777602674446",
-    "04 - Content/AD - ACL Enumeration - Tooling.md.tmp.3658.1777602555925",
-    "04 - Content/AD - ACL Enumeration - ACE Filtering y Bulk Audit.md.tmp.3658.1777602504014",
-    "04 - Content/AD - ACL Enumeration - Object-Specific Audits.md.tmp.3658.1777602454720",
-    "04 - Content/AD - ACL Enumeration - ACL Path Patterns.md.tmp.3658.1777602396242",
-    "04 - Content/AD - ACL Enumeration - Dangerous ACE Patterns.md.tmp.3658.1777602336628",
-    "04 - Content/AD - ACL Enumeration - ACL Inspection Tools.md.tmp.3658.1777602265716",
+    "04 - Content/BloodHound & SharpHound - Tooling Ecosystem.md.tmp.108492.1777606416036",
+    "04 - Content/BloodHound & SharpHound - Multi-Domain y Forest.md.tmp.108492.1777606361629",
+    "04 - Content/BloodHound & SharpHound - Edges y Analytics.md.tmp.108492.1777606317766",
+    "04 - Content/BloodHound & SharpHound - Cypher Queries.md.tmp.108492.1777606271003",
+    "04 - Content/BloodHound & SharpHound - BloodHound CE.md.tmp.108492.1777606215387",
+    "04 - Content/BloodHound & SharpHound - Collectors.md.tmp.108492.1777606170818",
+    "04 - Content/AD - GPO y SYSVOL Enumeration - Tooling.md.tmp.108492.1777606099425",
+    "04 - Content/AD - GPO y SYSVOL Enumeration - GPO Inheritance y Scope.md.tmp.108492.1777606043835",
+    "04 - Content/AD - GPO y SYSVOL Enumeration - GPP cpassword.md.tmp.108492.1777605998017",
+    "04 - Content/AD - GPO y SYSVOL Enumeration - SYSVOL Content Discovery.md.tmp.108492.1777605954647",
+    "04 - Content/AD - GPO y SYSVOL Enumeration - GPO ACL Audit.md.tmp.108492.1777605908513",
     "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/GraphQL Injection.md",
     "03 - Tertiary Categories/Active Directory Enumeración.md",
     "04 - Content/AD - Hosts Enumeration.md",
     "04 - Content/AD - Health y Security Auditing.md",
@@ -301,7 +302,6 @@
     "04 - Content/AD - GPO y SYSVOL Enumeration - GPP cpassword.md",
     "04 - Content/AD - GPO y SYSVOL Enumeration - SYSVOL Content Discovery.md",
     "04 - Content/AD - GPO y SYSVOL Enumeration - GPO ACL Audit.md",
-    "04 - Content/AD - GPO y SYSVOL Enumeration - GPO Discovery.md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
     "00 - Resources/Pasted image 20260405112752.png",
