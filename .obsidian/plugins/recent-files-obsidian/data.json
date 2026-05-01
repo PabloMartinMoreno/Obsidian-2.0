@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Bashed",
+      "path": "04 - Content/Process/Bashed.md"
+    },
+    {
+      "basename": "CWES - Maquinas",
+      "path": "04 - Content/Process/CWES - Maquinas.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
       "basename": "Kerberoasting",
       "path": "04 - Content/Kerberoasting.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "AD Initial Enumeration Playbook",
       "path": "04 - Content/AD Initial Enumeration Playbook.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "AD Enumeration",
-      "path": "04 - Content/Process/AD Enumeration.md"
-    },
-    {
-      "basename": "Clickjacking",
-      "path": "04 - Content/Clickjacking.md"
     }
   ],
   "omittedPaths": [],
