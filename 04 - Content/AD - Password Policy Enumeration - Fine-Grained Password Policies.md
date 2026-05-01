@@ -22,183 +22,78 @@ linked:
 
 ## PSO Overview
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PSO = Password Settings Object | Per-user/group policy | Modern. |
-| Introduced Server 2008 | Domain functional level required | Standard. |
-| Container DN | `CN=Password Settings Container,CN=System,DC=...` | Storage. |
-| Object class | `msDS-PasswordSettings` | LDAP. |
-| Per-PSO precedence | Lower number wins | Standard. |
-| Multiple PSOs per user | Conflict resolved by precedence | Standard. |
-| Group-based or user-based | Granular | Flexible. |
-| Override default domain policy | Per-target | Standard. |
-| Required Domain Functional Level | 2008+ | Edge. |
-| AD CS / ADFS not affected | Only AD passwords | Adjacent. |
-| `msDS-PSOApplied` on user | Reverse-link to PSO | Standard. |
-| `Get-ADFineGrainedPasswordPolicy` | RSAT | Standard. |
-| `Get-ADUserResultantPasswordPolicy` | Effective policy | Standard. |
-| Authenticated read default | Standard | Standard. |
-| BloodHound PSO awareness | Modern | Tool. |
-| Audit per-PSO weakness | Risk indicator | Standard. |
+| `Get-ADFineGrainedPasswordPolicy -Filter *` | Lista PSOs | Standard. |
+| `Get-ADFineGrainedPasswordPolicy -Filter * -Properties *` | Atributos completos | Detail. |
+| `Get-ADFineGrainedPasswordPolicySubject <pso-name>` | Quién aplica | Scope check. |
+| `ldapsearch ... -b "CN=Password Settings Container,CN=System,DC=corp,DC=local" "(objectClass=msDS-PasswordSettings)"` | LDAP raw | Linux. |
+| `nxc ldap <DC> -u u -p p --query "(objectClass=msDS-PasswordSettings)" "*"` | Wrapper netexec | Quick. |
 ^ad-pso-overview
 
-### PSO discovery
-
-```powershell
-# All PSOs
-Get-ADFineGrainedPasswordPolicy -Filter * | Select Name,Precedence,AppliesTo
-
-# Specific PSO detail
-Get-ADFineGrainedPasswordPolicy -Identity "Tier0_PSO" -Properties *
-```
+**Container DN:** `CN=Password Settings Container,CN=System,DC=corp,DC=local`. PSOs override Default Domain Policy para users/groups específicos. Solo aplica a users (no computers). Requiere Domain Functional Level ≥2008.
 
 ```bash
-# LDAP raw
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=Password Settings Container,CN=System,DC=dom,DC=local" \
-  -s onelevel \
+ldapsearch -h <DC> -D 'corp\u' -w pass \
+  -b "CN=Password Settings Container,CN=System,DC=corp,DC=local" \
   "(objectClass=msDS-PasswordSettings)" \
-  cn msDS-PasswordSettingsPrecedence msDS-PSOAppliesTo \
-  msDS-MinimumPasswordLength msDS-PasswordHistoryLength \
-  msDS-LockoutThreshold msDS-LockoutDuration \
-  msDS-MaximumPasswordAge msDS-MinimumPasswordAge \
-  msDS-PasswordComplexityEnabled msDS-PasswordReversibleEncryptionEnabled
+  cn msDS-PasswordSettingsPrecedence msDS-PSOAppliesTo
 ```
 
 ___
 
 ## PSO Critical Attributes
 
-| **Atributo** | **Significado** | **Notas** |
+| **Atributo** | **Significado** | **Importancia** |
 |:---:|:---:|:---:|
-| `msDS-PasswordSettingsPrecedence` | Lower = wins on conflict | Critical. |
-| `msDS-PSOAppliesTo` | DNs of users/groups | Scope. |
-| `msDS-MinimumPasswordLength` | Min length | Direct. |
-| `msDS-PasswordHistoryLength` | History count | Direct. |
-| `msDS-LockoutThreshold` | Failed attempts | Direct. |
-| `msDS-LockoutDuration` | FILETIME ticks negative | Decode. |
-| `msDS-LockoutObservationWindow` | Reset window | Adjacent. |
-| `msDS-MaximumPasswordAge` | Max age (FILETIME) | Decode. |
-| `msDS-MinimumPasswordAge` | Min age (FILETIME) | Decode. |
-| `msDS-PasswordComplexityEnabled` | Boolean | Standard. |
-| `msDS-PasswordReversibleEncryptionEnabled` | Boolean — vuln if true | Critical. |
-| `objectGUID` | Unique ID | Standard. |
-| `whenCreated` | Audit | Adjacent. |
-| `whenChanged` | Modification audit | Adjacent. |
-| `description` | Free-text | Audit. |
-| ACL on PSO object | Read controls | Granular. |
+| `msDS-PasswordSettingsPrecedence` | Int — menor = mayor precedencia (resuelve conflicts) | Si user en múltiples PSOs. |
+| `msDS-PasswordReversibleEncryptionEnabled` | Bool — reversible storage | CRITICAL si `True`. |
+| `msDS-PasswordHistoryLength` | History count | Audit. |
+| `msDS-PasswordComplexityEnabled` | Bool | Audit. |
+| `msDS-MinimumPasswordLength` | Min chars | Audit. |
+| `msDS-MinimumPasswordAge` / `msDS-MaximumPasswordAge` | Int64 (ticks) | Spray window. |
+| `msDS-LockoutThreshold` | Int (0 = no lockout) | Spray prep. |
+| `msDS-LockoutDuration` / `msDS-LockoutObservationWindow` | Int64 (ticks) | Spray pacing. |
+| `msDS-PSOAppliesTo` | DN array — users/groups con PSO aplicado | Scope. |
 ^ad-pso-attrs
 
-### PSO detail audit
-
 ```powershell
-# All PSO settings
 Get-ADFineGrainedPasswordPolicy -Filter * -Properties * |
   Select Name,Precedence,
-    @{n='Subjects';e={$_.AppliesTo -join '; '}},
-    MinPasswordLength,
-    LockoutThreshold,
-    LockoutDuration,
-    LockoutObservationWindow,
-    PasswordHistoryCount,
-    MaxPasswordAge,
-    MinPasswordAge,
-    ComplexityEnabled,
-    ReversibleEncryptionEnabled
-```
-
-```bash
-# Per-PSO deep query
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=Tier0_PSO,CN=Password Settings Container,CN=System,DC=dom,DC=local" \
-  -s base "(objectClass=*)" "*"
+         @{n='Reversible';e={$_.ReversibleEncryptionEnabled}},
+         @{n='Complexity';e={$_.ComplexityEnabled}},
+         MinPasswordLength,
+         LockoutThreshold,
+         @{n='Applies';e={$_.AppliesTo -join '; '}}
 ```
 
 ___
 
 ## PSO Scope (msDS-PSOAppliesTo)
 
-| **Pattern** | **Scope** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Group DN | All members + nested | Standard. |
-| User DN | Single user | Standard. |
-| Multiple values | Comma-separated DNs | Standard. |
-| Tier 0 group PSO | Strict (DA, EA, etc.) | Standard. |
-| Service Account group PSO | Often laxer | Audit. |
-| Privileged group with weak PSO | Critical risk | Detection. |
-| Empty `msDS-PSOAppliesTo` | PSO not applied to anyone | Edge. |
-| `msDS-PSOApplied` on user | Reverse direction | Standard. |
-| Per-user PSO via direct DN | Standard | Granular. |
-| Nested groups expansion | Recursive | Standard. |
-| Cross-domain not supported | Per-domain | Standard. |
-| BloodHound PSO support | Modern | Tool. |
-| Default scope: Tier 0 typically | Best practice | Standard. |
-| Service accounts often in laxer PSO | Common practice | Audit. |
-| Custom HR/Finance PSO | Per-business unit | Common. |
-| Find weakest PSO | Spray candidate | Strategy. |
+| `Get-ADFineGrainedPasswordPolicySubject <pso>` | Subjects directos del PSO | Scope per-PSO. |
+| `Get-ADUser -Filter * -Properties msDS-ResultantPSO \| ? msDS-ResultantPSO` | Users con PSO efectivo | Effective scope. |
+| `(Get-ADUser <user> -Pr msDS-ResultantPSO).'msDS-ResultantPSO'` | PSO efectivo del user | Per-user. |
 ^ad-pso-scope
 
-### Scope analysis
+**Resolución:**
+1. PSO directo en user (mayor prioridad).
+2. PSO en cualquier group del user.
+3. Si múltiples → menor `Precedence` gana.
+4. Tie → menor GUID.
+5. Si nada → Default Domain Policy.
 
 ```powershell
-# Per-PSO subjects
-Get-ADFineGrainedPasswordPolicy -Filter * | ForEach-Object {
+# Map PSOs → users efectivos
+Get-ADFineGrainedPasswordPolicy -Filter * | % {
   $pso = $_
-  Write-Host "`n=== $($pso.Name) (Precedence: $($pso.Precedence)) ==="
-  Write-Host "MinLen: $($pso.MinPasswordLength), Lockout: $($pso.LockoutThreshold), Complexity: $($pso.ComplexityEnabled)"
-  Write-Host "Applies to:"
-  Get-ADFineGrainedPasswordPolicySubject -Identity $pso |
-    Select Name,SamAccountName,ObjectClass
-}
-```
-
-___
-
-## Resultant Password Policy (Per-User Effective)
-
-| **Concepto** | **Detalle** | **Notas** |
-|:---:|:---:|:---:|
-| `Get-ADUserResultantPasswordPolicy` | Effective policy for user | Standard. |
-| Resolution algorithm | Lowest precedence PSO wins | Standard. |
-| If no PSO applies | Default Domain Policy | Fallback. |
-| `msDS-PSOApplied` on user | Reverse reference | LDAP. |
-| Direct user PSO | Higher precedence than group | Standard. |
-| Multiple group PSOs | Lowest precedence wins | Standard. |
-| Tier 0 expected: strictest PSO | Best practice | Standard. |
-| Spray strategy: target weakest PSO subject | Per-user PSO | Strategy. |
-| Service account PSO often laxer | Common audit finding | Audit. |
-| Per-user query | Specific user | Standard. |
-| Forest-wide cross-domain not supported | Per-domain | Standard. |
-| BloodHound PSO edges | Modern collection | Tool. |
-| Audit: every privileged user has strict PSO | Compliance | Standard. |
-| Detection: PSO modify event | Defender | Adjacent. |
-| Read permission: authenticated default | Standard | Standard. |
-| Hardening: restrict read of PSO | Edge | Defense. |
-^ad-pso-resultant
-
-### Per-user effective policy
-
-```powershell
-# Specific user
-Get-ADUserResultantPasswordPolicy -Identity jsmith |
-  Select Name,Precedence,MinPasswordLength,LockoutThreshold,ComplexityEnabled
-
-# All privileged users + their effective policy
-$priv = Get-ADUser -Filter {AdminCount -eq 1}
-foreach ($u in $priv) {
-  $pol = Get-ADUserResultantPasswordPolicy -Identity $u -ErrorAction SilentlyContinue
-  if ($pol) {
+  $pso.AppliesTo | % {
     [PSCustomObject]@{
-      User = $u.SamAccountName
-      AppliedPSO = $pol.Name
-      MinLen = $pol.MinPasswordLength
-      Lockout = $pol.LockoutThreshold
-      Complexity = $pol.ComplexityEnabled
-    }
-  } else {
-    [PSCustomObject]@{
-      User = $u.SamAccountName
-      AppliedPSO = "DEFAULT (no PSO)"
+      PSO = $pso.Name
+      Precedence = $pso.Precedence
+      Subject = $_
     }
   }
 }
@@ -206,48 +101,57 @@ foreach ($u in $priv) {
 
 ___
 
-## PSO Misconfigurations
+## Resultant Password Policy
 
-| **Misconfig** | **Risk** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Service account PSO with min length 6 | Spray-friendly | Critical. |
-| Tier 0 PSO weak | Direct privesc spray | Critical. |
-| ReversibleEncryption enabled in PSO | DCSync recovers cleartext | Critical. |
-| Lockout disabled in PSO | Free brute force | Critical. |
-| Lockout threshold = 0 (no lockout) | Same | Critical. |
-| Complexity disabled | Common dictionary words | Audit. |
-| Long max age (e.g., 999 days) | Stale passwords | Audit. |
-| Empty subjects (orphaned PSO) | Edge | Edge. |
-| Multiple overlapping PSOs | Confusing precedence | Audit. |
-| User in multiple groups with conflicting PSOs | Lowest precedence wins | Standard. |
-| PSO on Authenticated Users (overly broad) | Edge misconfig | Audit. |
-| PSO ACL too permissive | Anyone can read | Adjacent. |
-| Hidden PSOs (ACL deny) | Edge | Detection. |
-| Detection: PSO modify events | Defender | Adjacent. |
-| Audit: weakest PSO vs Tier 0 | Compliance | Standard. |
-| Audit: legacy PSOs from migrations | Standard | Audit. |
-^ad-pso-misconfig
-
-### PSO weakness detection
+| `Get-ADUserResultantPasswordPolicy -Identity <user>` | Policy efectivo del user (PSO o DDP) | Per-user check. |
+| `Get-ADUser <user> -Pr msDS-ResultantPSO` | DN del PSO aplicado (null = DDP) | Quick check. |
+| `Get-ADFineGrainedPasswordPolicy -Identity (Get-ADUser <user> -Pr msDS-ResultantPSO).'msDS-ResultantPSO'` | Detail del PSO efectivo | Compose. |
+^ad-pso-resultant
 
 ```powershell
-# Find weak PSOs (vulnerable settings)
-Get-ADFineGrainedPasswordPolicy -Filter * | ForEach-Object {
-  $weak = @()
-  if ($_.MinPasswordLength -lt 8) { $weak += "MIN_LENGTH<8" }
-  if (-not $_.ComplexityEnabled) { $weak += "COMPLEXITY_OFF" }
-  if ($_.ReversibleEncryptionEnabled) { $weak += "REVERSIBLE_ENC" }
-  if ($_.LockoutThreshold -eq 0) { $weak += "NO_LOCKOUT" }
-  if ($_.LockoutThreshold -gt 50) { $weak += "HIGH_LOCKOUT_THRESHOLD" }
-  
-  if ($weak) {
+# Per-user effective policy
+$u = "jsmith"
+$pso = (Get-ADUser $u -Properties msDS-ResultantPSO).'msDS-ResultantPSO'
+
+if ($pso) {
+  Write-Host "$u → PSO: $pso"
+  Get-ADFineGrainedPasswordPolicy -Identity $pso |
+    Select MinPasswordLength,LockoutThreshold,ComplexityEnabled
+} else {
+  Write-Host "$u → Default Domain Policy"
+  Get-ADDefaultDomainPasswordPolicy
+}
+```
+
+___
+
+## PSO Misconfigurations
+
+| **Comando** | **Qué detecta** | **Riesgo** |
+|:---:|:---:|:---:|
+| `Get-ADFineGrainedPasswordPolicy -Filter {ReversibleEncryptionEnabled -eq $true}` | PSO con reversible encryption | DCSync recovera cleartext. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {LockoutThreshold -eq 0}` | PSO sin lockout (spray fácil) | Critical para spray. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {MinPasswordLength -lt 8}` | PSO con min length débil | Audit. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {ComplexityEnabled -eq $false}` | Sin complejidad | Audit. |
+| `Get-ADFineGrainedPasswordPolicy -Filter * -Pr AppliesTo \| ? {$_.AppliesTo -match "Domain Users"}` | PSO aplicado a `Domain Users` (afecta a todo el domain) | Wide blast. |
+^ad-pso-misconfig
+
+```powershell
+# Audit comprehensive PSOs débiles
+Get-ADFineGrainedPasswordPolicy -Filter * -Properties * | % {
+  $issues = @()
+  if ($_.ReversibleEncryptionEnabled) { $issues += "REVERSIBLE" }
+  if ($_.LockoutThreshold -eq 0)      { $issues += "NO_LOCKOUT" }
+  if ($_.MinPasswordLength -lt 8)     { $issues += "WEAK_LEN" }
+  if (-not $_.ComplexityEnabled)      { $issues += "NO_COMPLEXITY" }
+  if ($issues) {
     [PSCustomObject]@{
       PSO = $_.Name
       Precedence = $_.Precedence
-      Weaknesses = $weak -join ', '
-      MinLength = $_.MinPasswordLength
-      Lockout = $_.LockoutThreshold
-      Complexity = $_.ComplexityEnabled
+      Issues = $issues -join ','
+      Applies = $_.AppliesTo -join '; '
     }
   }
 }
@@ -257,80 +161,25 @@ ___
 
 ## PSO Read Permission ACL
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Default read: Authenticated Users | Standard | Permissive. |
-| `Read msDS-PasswordSettings` ACL | Per-PSO control | Granular. |
-| Hidden PSOs via ACL deny | Edge | Detection. |
-| Modify PSO requires write permission | Privileged | Standard. |
-| Per-PSO ACL audit | Standard | Defender. |
-| `Get-Acl "AD:CN=Tier0_PSO,..."` | RSAT | Standard. |
-| `dsacls` on PSO | Native | Adjacent. |
-| BloodHound PSO ACL edges | Modern | Tool. |
-| Authenticated Users read = standard | Default | Common. |
-| Restrict to specific groups | Hardening | Defense. |
-| Per-user read for own PSO | Standard | Standard. |
-| Cross-domain PSO read | Edge | Adjacent. |
-| Detection: ACL modify on PSO | Defender | Adjacent. |
-| Modify ACL = privesc adjacent | ACL Abuse hub | Adjacent. |
-| Hidden PSOs = audit findings | Compliance | Standard. |
-| Backup of PSO config | Standard | Adjacent. |
+| `Get-Acl "AD:CN=Password Settings Container,CN=System,DC=corp,DC=local" \| Select -Expand Access` | DACL del container | Audit read perms. |
+| `(Get-Acl "AD:<pso-DN>").Access \| ? IdentityReference -notmatch "BUILTIN\|NT AUTHORITY\|Domain Admins"` | Non-default principals con access | Detect anomaly. |
+| `dsacls "CN=Password Settings Container,CN=System,DC=corp,DC=local"` | Native ACL | Sin RSAT. |
 ^ad-pso-acl
 
-### PSO ACL audit
-
-```powershell
-# Per-PSO DACL
-Get-ADFineGrainedPasswordPolicy -Filter * | ForEach-Object {
-  $dn = $_.DistinguishedName
-  Write-Host "`n=== $($_.Name) ==="
-  Get-Acl "AD:$dn" |
-    Select -ExpandProperty Access |
-    Where {$_.AccessControlType -eq "Allow"} |
-    Select IdentityReference,ActiveDirectoryRights |
-    Where IdentityReference -notmatch "BUILTIN|NT AUTHORITY|Domain Admins|Enterprise Admins"
-}
-```
+**Default:** solo Domain Admins / Enterprise Admins / SYSTEM pueden leer PSOs. Usuarios normales sin permisos = no ven PSOs aunque les apliquen. Modificación DACL para extender visibility = audit finding.
 
 ___
 
-## Anonymous PSO Discovery (Limited)
+## Anonymous PSO Discovery
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Anonymous LDAP read of PSOs | Often blocked | Edge. |
-| RPC `getdompwinfo` shows DEFAULT only | Not PSO | Standard. |
-| Authenticated read typical | Standard | Standard. |
-| `nxc ldap DC -u '' -p ''` PSO query | Limited | Edge. |
-| Modern Server 2019+ | Anonymous typically blocked | Hardened. |
-| Legacy: anonymous LDAP often allowed | Audit | Edge. |
-| Cross-trust PSO read | Edge | Adjacent. |
-| Forest-wide PSO query via GC | Edge | Edge. |
-| BloodHound passive discovery | Authenticated required | Tool. |
-| Manual pattern matching from kerbrute | Indirect inference | OPSEC win. |
-| Lockout test = infer PSO via spray response | Indirect | Edge. |
-| Spray pacing based on observed lockout | Per-user response | Strategy. |
-| Detection: PSO read events | Defender | Adjacent. |
-| Audit: ACL allows anonymous | Critical risk | Defender. |
-| Pre-auth based inference | Limited info | Edge. |
-| Bulk-based timing inference | Edge OPSEC | Edge. |
+| `ldapsearch -x -h <DC> -b "CN=Password Settings Container,CN=System,DC=corp,DC=local" "(objectClass=msDS-PasswordSettings)"` | Anonymous attempt | Test. |
+| `nxc ldap <DC> -u '' -p '' --query "(objectClass=msDS-PasswordSettings)" "*"` | Vía netexec | Quick. |
 ^ad-pso-anonymous
 
-### Anonymous PSO probe
-
-```bash
-# Try anonymous LDAP for PSO container
-ldapsearch -x -h DC \
-  -b "CN=Password Settings Container,CN=System,DC=dom,DC=local" \
-  -s onelevel \
-  "(objectClass=msDS-PasswordSettings)" \
-  cn
-
-# Usually returns "Operations error" (auth required)
-# If returns data → anonymous misconfig (rare)
-
-# Authenticated baseline
-nxc ldap DC -u user -p pass --query "(objectClass=msDS-PasswordSettings)" "*"
-```
+**Casi siempre bloqueado** — PSOs requieren auth. Si pega anónimo = misconfig grave.
 
 ***

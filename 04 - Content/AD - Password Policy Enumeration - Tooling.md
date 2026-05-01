@@ -3,7 +3,6 @@ aliases:
   - Password Policy Tooling
   - polenum
   - samba-tool passwordsettings
-  - PingCastle Policy
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
@@ -23,302 +22,127 @@ linked:
 
 ## netexec / crackmapexec
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| SMB password policy | `nxc smb DC -u u -p p --pass-pol` | Standard. |
-| LDAP password policy | `nxc ldap DC -u u -p p --pass-pol` | Same data. |
-| Anonymous attempt | `nxc smb DC -u '' -p '' --pass-pol` | Null. |
-| Bulk subnet | `nxc smb 10.0.0.0/24 -u u -p p --pass-pol` | Sweep. |
-| crackmapexec older name | Same flags | Compat. |
-| Output: comprehensive policy | Decoded | Standard. |
-| Authenticated reliable | Standard | Reliable. |
-| Forest-wide via different DCs | Per-domain | Adjacent. |
-| Combine with --users | Pre-spray prep | Workflow. |
-| Combine with --groups | Adjacent | Adjacent. |
-| Output to file | Standard | Reportable. |
-| Verbose `-v` | Debug | Standard. |
-| `--continue-on-success` | Multi-host | Standard. |
-| BloodHound integration | Adjacent | Adjacent. |
-| Per-DC variation | Same domain → same | Standard. |
-| Multi-DC same domain | Standard | Standard. |
+| `nxc smb <DC> -u u -p p --pass-pol` | Policy via SMB | Standard. |
+| `nxc ldap <DC> -u u -p p --pass-pol` | Policy via LDAP | SMB blocked. |
+| `nxc smb <DC> -u '' -p '' --pass-pol` | Anonymous attempt | Test misconfig. |
+| `nxc ldap <DC> -u u -p p --query "(objectClass=msDS-PasswordSettings)" "*"` | PSOs via LDAP | Detail. |
+| `nxc ldap <DC> -u u -p p --query "(samAccountName=krbtgt)" "PasswordLastSet,msDS-KeyVersionNumber"` | krbtgt age | Audit. |
 ^ad-pwdpol-tool-netexec
-
-### netexec recipes
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# Standard authenticated
-nxc smb $DC -u $USER -p $PASS --pass-pol
-
-# Anonymous quick check
-nxc smb $DC -u '' -p '' --pass-pol
-
-# LDAP variant
-nxc ldap $DC -u $USER -p $PASS --pass-pol
-
-# Bulk sweep (test all DCs)
-nxc smb dcs.txt -u $USER -p $PASS --pass-pol
-
-# Combined recon (policy + users + groups)
-nxc smb $DC -u $USER -p $PASS --pass-pol --users --groups
-```
 
 ___
 
 ## RSAT / PowerShell
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-ADDefaultDomainPasswordPolicy` | Default policy | Standard. |
-| `Get-ADDefaultDomainPasswordPolicy -Identity dom` | Specific domain | Standard. |
-| `Get-ADFineGrainedPasswordPolicy -Filter *` | All PSOs | Standard. |
-| `Get-ADFineGrainedPasswordPolicy -Identity X -Properties *` | PSO detail | Standard. |
-| `Get-ADFineGrainedPasswordPolicySubject -Identity PSO` | PSO subjects | Standard. |
-| `Get-ADUserResultantPasswordPolicy -Identity user` | Per-user effective | Standard. |
-| `Get-ADDomain` | Domain info | Adjacent. |
-| `Get-ADRootDSE` | Forest info | Adjacent. |
-| `New-ADFineGrainedPasswordPolicy` | Create PSO | Privileged. |
-| `Set-ADFineGrainedPasswordPolicy` | Modify PSO | Privileged. |
-| `Add-ADFineGrainedPasswordPolicySubject` | Add subject | Privileged. |
-| `Remove-ADFineGrainedPasswordPolicySubject` | Remove subject | Privileged. |
-| `Remove-ADFineGrainedPasswordPolicy` | Delete PSO | Privileged. |
-| `Get-DomainPolicy` (PowerView) | Adversary | Same. |
-| `Get-DomainPolicyData` (PowerView v3) | Adjacent | Adjacent. |
-| `net accounts /domain` | Native quick | Adjacent. |
+| `Get-ADDefaultDomainPasswordPolicy` | DDP completo | Standard. |
+| `Get-ADFineGrainedPasswordPolicy -Filter *` | PSOs | Standard. |
+| `Get-ADFineGrainedPasswordPolicySubject <pso>` | Subjects del PSO | Scope. |
+| `Get-ADUserResultantPasswordPolicy <user>` | Policy efectivo del user | Per-user. |
+| `Get-ADUser <user> -Pr msDS-ResultantPSO,badPwdCount,lockoutTime` | Estado per-user | Pre-spray. |
+| `Search-ADAccount -LockedOut` | Lockeados ahora | Triage. |
+| `Search-ADAccount -PasswordExpired` | Pwds expirados | Audit. |
+| `Search-ADAccount -PasswordNeverExpires -UsersOnly` | Pwd never expires | Audit. |
+| `(Get-ADForest).Domains \| % { Get-ADDefaultDomainPasswordPolicy -Server $_ }` | Forest-wide DDP | Multi-domain. |
 ^ad-pwdpol-tool-rsat
-
-### RSAT comprehensive
-
-```powershell
-# Default policy
-Get-ADDefaultDomainPasswordPolicy | Select MinPasswordLength,ComplexityEnabled,
-  LockoutThreshold,LockoutDuration,LockoutObservationWindow,
-  PasswordHistoryCount,MaxPasswordAge,ReversibleEncryptionEnabled
-
-# All PSOs comprehensive
-Get-ADFineGrainedPasswordPolicy -Filter * -Properties * |
-  Select Name,Precedence,@{n='AppliesTo';e={$_.AppliesTo -join '; '}},
-    MinPasswordLength,ComplexityEnabled,LockoutThreshold,LockoutDuration,
-    PasswordHistoryCount,MaxPasswordAge,ReversibleEncryptionEnabled
-
-# Per-user effective policy (privileged users)
-Get-ADUser -Filter {AdminCount -eq 1} | ForEach-Object {
-  $pol = Get-ADUserResultantPasswordPolicy -Identity $_ -ErrorAction SilentlyContinue
-  [PSCustomObject]@{
-    User = $_.SamAccountName
-    PSO = if ($pol) { $pol.Name } else { "DEFAULT" }
-    MinLength = if ($pol) { $pol.MinPasswordLength } else { "DEFAULT" }
-    Complexity = if ($pol) { $pol.ComplexityEnabled } else { "DEFAULT" }
-  }
-}
-```
 
 ___
 
 ## rpcclient / Native Linux
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `rpcclient -U "" DC -N -c 'getdompwinfo'` | Anonymous policy | Standard. |
-| `rpcclient -U user%pass DC -c 'getdompwinfo'` | Authenticated | Standard. |
-| `rpcclient -U "" DC -N -c 'querydominfo'` | Domain info | Adjacent. |
-| `rpcclient -U "" DC -N -c 'lsaquery'` | Domain SID | Adjacent. |
-| `samba-tool domain passwordsettings show` | Linux Samba DC | Edge. |
-| `samba-tool domain passwordsettings set` | Privileged set | Privileged. |
-| Multi-command interactive | rpcclient prompt | Standard. |
-| `polenum` (Python) | Wrapper around rpcclient | Adjacent. |
-| `polenum.py 'dom/u:p'@DC` | Authenticated wrap | Standard. |
-| `polenum.py 'dom/'@DC` | Anonymous | Standard. |
-| Modern alternative: `nxc smb DC --pass-pol` | Better | Standard. |
-| Output bitfield decode | pwdProperties | Standard. |
-| Anonymous fallback path | Edge | Standard. |
-| Authenticated reliable | Standard | Standard. |
-| Cross-correlate with multiple tools | Standard | Adjacent. |
-| Detection: bulk RPC events | Defender | Adjacent. |
+| `rpcclient -U "" <DC> -N -c 'getdompwinfo'` | Anonymous policy | Test null. |
+| `rpcclient -U 'corp\u%pass' <DC> -c 'getdompwinfo'` | Authenticated | Standard. |
+| `rpcclient -U 'corp\u%pass' <DC> -c 'querydominfo'` | Domain info detallado | Alt. |
+| `polenum -d corp.local -u user -p pass <DC>` | Policy via Python | Sin rpcclient. |
+| `samba-tool domain passwordsettings show -U u%pass -H ldap://<DC>` | Samba native | Linux con Samba. |
 ^ad-pwdpol-tool-rpc
 
-### rpcclient + polenum
-
 ```bash
-# rpcclient anonymous + interactive
-rpcclient -U "" DC -N
-> getdompwinfo
-> querydominfo
-> lsaquery
-> exit
+# polenum (legacy pero útil)
+pip install polenum-ng  # o git clone
+polenum -d corp.local -u auditor -p 'Pass!' <DC>
 
-# Single-line
-rpcclient -U "" DC -N -c 'getdompwinfo; querydominfo'
-
-# polenum (older but still useful)
-polenum.py 'dom.local/'@DC  # anonymous
-polenum.py 'dom.local/user:pass'@DC  # authenticated
+# Output:
+# Minimum password Length: 8
+# Password History Length: 24
+# Maximum password age: 90 days
+# Account Lockout Threshold: 5
 ```
 
 ___
 
 ## enum4linux / enum4linux-ng
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `enum4linux -P DC` | Legacy policy enum | Old. |
-| `enum4linux-ng -P DC` | Modern | Better. |
-| `enum4linux-ng -P -A DC` | Comprehensive | Standard. |
-| `enum4linux-ng -P -u user -p pass DC` | Authenticated | Standard. |
-| `enum4linux-ng -P -oJ pol.json` | JSON output | Parseable. |
-| `enum4linux-ng -P -oY pol.yaml` | YAML | Edge. |
-| `enum4linux-ng -P -d` | Debug | Adjacent. |
-| Anonymous + authenticated | Both supported | Flexible. |
-| Output: comprehensive | Decoded | Standard. |
-| Cross-correlate with other tools | Standard | Standard. |
-| Verbose `-v` | Standard | Standard. |
-| Bulk via shell loop | Standard | Adjacent. |
-| Detection: bulk SMB/RPC | Defender | Adjacent. |
-| Legacy enum4linux scripts | Old | Adjacent. |
-| Modern resilience | Hardened systems | Standard. |
-| Combined sections | -A all categories | Comprehensive. |
+| `enum4linux-ng -P <DC>` | Solo password policy | Targeted. |
+| `enum4linux-ng -A <DC> -oJ enum.json` | Comprehensive + JSON | Audit. |
+| `enum4linux-ng -A -u u -p pass <DC>` | Authenticated comprehensive | Standard. |
+| `enum4linux -P <DC>` | Legacy fallback | Sin -ng. |
 ^ad-pwdpol-tool-enum4linux
-
-### enum4linux-ng usage
-
-```bash
-# Anonymous policy only
-enum4linux-ng -P DC -oJ pol_anon.json
-
-# Authenticated + comprehensive
-enum4linux-ng -P -A -u user -p pass DC -oJ enum_auth.json
-
-# Parse JSON output
-cat pol_anon.json | jq '.policy'
-```
 
 ___
 
 ## PingCastle / Purple Knight / ADRecon
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PingCastle healthcheck | `PingCastle.exe --healthcheck --server DC` | Defender comprehensive. |
-| PingCastle ADConf | `--adconf --server DC` | Adjacent. |
-| Purple Knight | GUI tool, run on DC | Standard. |
-| ADRecon | `.\ADRecon.ps1 -Method LDAP -DomainController DC` | XLSX output. |
-| ADRecon section: Password Policy | XLSX sheet | Standard. |
-| ADCollector (.NET) | `.\ADCollector.exe` | Faster. |
-| `pingcastle --healthcheck-secret-store` | Adjacent | Edge. |
-| Microsoft Defender for Identity | Cloud | Modern. |
-| Azure AD Connect Health | Sync-related | Edge. |
-| BloodHound `--collect-password-policies` | Adjacent | Tool. |
-| ldapdomaindump `ldd` | HTML reports | Standard. |
-| `adscan` (community) | Adjacent | Edge. |
-| Custom Python LDAP audit | DIY | Flexible. |
-| Audit baseline scripts | Standard | Compliance. |
-| Periodic re-audit | Standard | Defender ops. |
-| Remediation tracking | Standard | Adjacent. |
+| `PingCastle.exe --healthcheck --server <DC>` | Audit completo (incluye policy + krbtgt) | Quarterly. |
+| `PingCastle.exe --hcrules \| grep -i "pwd\|password\|lockout"` | Reglas password policy | Reference. |
+| Purple Knight GUI → Indicators → Password category | IoEs password | Cross-tool. |
+| `.\ADRecon.ps1 -DomainController <DC> -OutputType Excel` | Excel multi-sheet (incluye `PasswordAttributes`, `FineGrainedPasswordPolicy`) | Auditor-friendly. |
 ^ad-pwdpol-tool-pingcastle
 
-### PingCastle output sections
+```powershell
+# ADRecon password sections
+.\ADRecon.ps1 -DomainController <DC> -OutputType CSV -OutputDir .\report
 
-```cmd
-:: PingCastle comprehensive
-PingCastle.exe --healthcheck --server DC --no-enum-limit
-
-:: Output: ad_hc_<domain>.xml + ad_hc_<domain>.html
-:: Sections include:
-:: - Domain Password Policy
-:: - Fine-Grained Password Policies
-:: - krbtgt password age
-:: - Reversible Encryption usage
-:: - PASSWD_NOTREQD users
-:: - DONT_EXPIRE_PASSWORD privileged users
-:: - Honeytoken accounts
+# Inspeccionar:
+# report\CSV-Files\PasswordAttributes.csv
+# report\CSV-Files\FineGrainedPasswordPolicy.csv
 ```
 
 ___
 
 ## Custom Audit Scripts
 
-| **Script** | **Use** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Custom Python LDAP audit | Flexible | DIY. |
-| PowerShell forest-wide audit | RSAT-based | Standard. |
-| Bash + ldapsearch | Linux DIY | Standard. |
-| BloodHound custom Cypher | Modern | Tool. |
-| GitHub `awesome-active-directory` | Curated | Foundation. |
-| Microsoft `Compare-PasswordPolicy.ps1` | Reference | Standard. |
-| Will Schroeder PowerView scripts | Adversary | Standard. |
-| Sean Metcalf scripts | Defender | Reference. |
-| `Test-PSO.ps1` (community) | Per-user PSO check | Adjacent. |
-| Compliance audit scripts (per standard) | Standard | Compliance. |
-| Honeypot account scripts | Defender plant | Detection. |
-| krbtgt rotation script (Microsoft) | `Reset-KrbtgtKeyInteractive.ps1` | Standard. |
-| Periodic re-audit cron job | Operational | Standard. |
-| Per-OU policy audit | Granular | Standard. |
-| Cross-domain forest audit | Standard | Adjacent. |
-| BloodHound CE custom queries | Modern | Tool. |
+| `Test-PasswordQuality` (DSInternals) | Audit passwords offline desde NTDS.dit (pwned hashes, weak, reuse) | IR + audit profundo. |
+| `Get-ADDBAccount -All -DBPath <ntds.dit> -BootKey ...` | Parse NTDS.dit offline | Forensics. |
+| Custom PowerShell pipeline pre-spray | Filter safe targets | Spray prep. |
 ^ad-pwdpol-tool-custom
 
-### Forest-wide audit (custom RSAT)
-
 ```powershell
-$forest = Get-ADForest
+# DSInternals pipeline (offline NTDS audit)
+Install-Module DSInternals
+$bk = Get-BootKey -SystemHivePath 'C:\IFM\registry\SYSTEM'
+$accts = Get-ADDBAccount -All -DBPath 'C:\IFM\Active Directory\ntds.dit' -BootKey $bk
 
-$report = @()
-foreach ($d in $forest.Domains) {
-  Write-Host "Auditing $d ..." -ForegroundColor Cyan
-  
-  # Default policy
-  $pol = Get-ADDefaultDomainPasswordPolicy -Identity $d
-  
-  # krbtgt age
-  $krbtgt = Get-ADUser krbtgt -Server $d -Properties pwdLastSet
-  $krbtgtAge = ((Get-Date) - [datetime]::FromFileTime($krbtgt.pwdLastSet)).Days
-  
-  # PSO count
-  $psoCount = (Get-ADFineGrainedPasswordPolicy -Filter * -Server $d).Count
-  
-  $report += [PSCustomObject]@{
-    Domain = $d
-    MinLength = $pol.MinPasswordLength
-    Complexity = $pol.ComplexityEnabled
-    LockoutThreshold = $pol.LockoutThreshold
-    LockoutDurationMin = $pol.LockoutDuration.TotalMinutes
-    MaxAgeDays = $pol.MaxPasswordAge.Days
-    HistoryCount = $pol.PasswordHistoryCount
-    Reversible = $pol.ReversibleEncryptionEnabled
-    KrbtgtAgeDays = $krbtgtAge
-    KrbtgtRisk = if ($krbtgtAge -gt 180) {"STALE"} else {"OK"}
-    PSOCount = $psoCount
-  }
-}
-
-$report | Format-Table -AutoSize
-$report | Export-Csv password_policy_audit.csv -NoTypeInformation
+# Test contra HIBP pwned hashes
+$accts | Test-PasswordQuality `
+  -WeakPasswordHashesSortedFile pwned-passwords-ntlm-sorted.txt
 ```
 
 ___
 
-## Wordlists & Recursos
+## Recursos
 
-| **Recurso** | **URL / Path** | **Notas** |
-|:---:|:---:|:---:|
-| HackTricks Password Policy | `book.hacktricks.xyz/windows-hardening/active-directory-methodology` | Reference. |
-| The Hacker Recipes | `thehacker.recipes/ad/recon/passwd-policy` | Comprehensive. |
-| ADSecurity (Sean Metcalf) | `adsecurity.org` | Defender intel. |
-| Microsoft Password Policy Docs | `learn.microsoft.com` | Vendor. |
-| NIST SP 800-63B | Authentication Guideline | Compliance. |
-| PCI-DSS v4 Requirements | Per-standard | Compliance. |
-| HIPAA Security Rule | Per-standard | Compliance. |
-| Will Schroeder PowerView | GitHub | Adversary tool. |
-| Sean Metcalf - Best Practices | adsecurity.org | Reference. |
-| BloodHound docs | `bloodhound.specterops.io` | Tool. |
-| PingCastle docs | `www.pingcastle.com` | Defender. |
-| Purple Knight docs | Semperis | Defender. |
-| `Reset-KrbtgtKeyInteractive.ps1` | Microsoft TechNet | krbtgt rotation. |
-| MITRE ATT&CK T1201 | Password Policy Discovery | Framework. |
-| OWASP Cheat Sheet on AD | Adjacent | Standard. |
-| Microsoft Tier Model | Hardening reference | Standard. |
+| **Recurso** | **URL** |
+|:---:|:---:|
+| Microsoft Default Domain Policy docs | `https://learn.microsoft.com/windows/security/threat-protection/security-policy-settings/password-policy` |
+| Microsoft FGPP docs | `https://learn.microsoft.com/windows-server/identity/ad-ds/manage/configure-fine-grained-password-policies` |
+| New-KrbtgtKeys.ps1 | `https://github.com/microsoft/New-KrbtgtKeys.ps1` |
+| DSInternals | `https://github.com/MichaelGrafnetter/DSInternals` |
+| HIBP Pwned Passwords NTLM | `https://haveibeenpwned.com/Passwords` |
+| NIST 800-63B Digital Identity | `https://pages.nist.gov/800-63-3/sp800-63b.html` |
+| CIS Benchmarks | `https://www.cisecurity.org/cis-benchmarks` |
+| polenum | `https://github.com/eDarkness/polenum` |
+| HackTricks Password Policy | `https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/password-spraying` |
 ^ad-pwdpol-tool-resources
 
 ***

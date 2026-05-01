@@ -3,7 +3,7 @@ aliases:
   - Password Policy Audit
   - Weak Policy Detection
   - Reversible Encryption
-  - krbtgt Stale
+  - Compliance Standards
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
@@ -16,360 +16,179 @@ type: CheatSheet
 linked:
   - "[[AD - Password Policy Enumeration]]"
 ---
-# AD - Password Policy Enumeration - Audit & Misconfigurations
+# AD - Password Policy Enumeration - Audit & Misconfiguraciones
 
 ***
 
 ## Weak Min Length / No Complexity
 
-| **Misconfig** | **Risk** | **Notas** |
+| **Comando** | **Qué detecta** | **Riesgo** |
 |:---:|:---:|:---:|
-| MinPasswordLength < 7 | Default 7 | Below = weak. |
-| MinPasswordLength < 14 (modern) | Below = audit | Best practice 14+. |
-| ComplexityEnabled = false | Common dictionary attacks | Spray-friendly. |
-| ReversibleEncryptionEnabled = true | DCSync recovers cleartext | Critical. |
-| PasswordHistoryCount = 0 | Re-use same password | Audit. |
-| PasswordHistoryCount < 24 | Common reuse | Audit. |
-| MaxPasswordAge = 0 (never expires) | Stale passwords | Audit. |
-| MaxPasswordAge > 365 days | Lax | Audit. |
-| MinPasswordAge = 0 | Quick re-rotation | Edge. |
-| Per-PSO weakness override | More common than default | Audit. |
-| Tier 0 PSO weak = critical | Privileged exposure | Critical. |
-| Service account PSO weak | Common practice | Audit. |
-| Combine: weak + privileged | Critical | Audit. |
-| Default Domain Policy weak | Wide impact | Audit. |
-| Detection: policy modify events | Defender | Adjacent. |
-| Compliance: PCI-DSS / HIPAA / SOX requirements | Standard | Adjacent. |
+| `(Get-ADDefaultDomainPasswordPolicy).MinPasswordLength` | Min length DDP | <12 = audit fail moderno (NIST 800-63B recomienda ≥8 con MFA, ≥14 sin). |
+| `(Get-ADDefaultDomainPasswordPolicy).ComplexityEnabled` | Complejidad ON/OFF | False = critical. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {MinPasswordLength -lt 12}` | PSOs con length débil | Audit. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {ComplexityEnabled -eq $false}` | PSOs sin complejidad | Audit. |
+| `Get-ADFineGrainedPasswordPolicy -Filter * -Pr AppliesTo \| ? AppliesTo -match "Domain Users"` | PSO global débil | Wide blast radius. |
 ^ad-audit-weakness
 
-### Audit script
-
 ```powershell
-# Default Domain Policy weakness check
-$pol = Get-ADDefaultDomainPasswordPolicy
+# Comprehensive weakness audit
+$DDP = Get-ADDefaultDomainPasswordPolicy
+$Issues = @()
 
-$weaknesses = @()
-if ($pol.MinPasswordLength -lt 14) { $weaknesses += "MIN_LENGTH<14: $($pol.MinPasswordLength)" }
-if (-not $pol.ComplexityEnabled) { $weaknesses += "COMPLEXITY_OFF" }
-if ($pol.ReversibleEncryptionEnabled) { $weaknesses += "REVERSIBLE_ENC" }
-if ($pol.PasswordHistoryCount -lt 12) { $weaknesses += "HISTORY<12: $($pol.PasswordHistoryCount)" }
-if ($pol.MaxPasswordAge.Days -gt 90) { $weaknesses += "MAX_AGE>90: $($pol.MaxPasswordAge.Days) days" }
-if ($pol.LockoutThreshold -eq 0) { $weaknesses += "NO_LOCKOUT" }
+if ($DDP.MinPasswordLength -lt 12) { $Issues += "DDP MinLen: $($DDP.MinPasswordLength)" }
+if (-not $DDP.ComplexityEnabled)   { $Issues += "DDP Complexity OFF" }
+if ($DDP.LockoutThreshold -eq 0)   { $Issues += "DDP No Lockout" }
+if ($DDP.PasswordHistoryCount -lt 12) { $Issues += "DDP History: $($DDP.PasswordHistoryCount)" }
 
-if ($weaknesses) {
-  Write-Host "Default Domain Policy weaknesses:" -ForegroundColor Red
-  $weaknesses | ForEach-Object { Write-Host "  - $_" }
-} else {
-  Write-Host "Default Domain Policy passes audit" -ForegroundColor Green
+Get-ADFineGrainedPasswordPolicy -Filter * | % {
+  if ($_.MinPasswordLength -lt 12) { $Issues += "PSO $($_.Name) MinLen: $($_.MinPasswordLength)" }
+  if (-not $_.ComplexityEnabled)   { $Issues += "PSO $($_.Name) Complexity OFF" }
+  if ($_.LockoutThreshold -eq 0)   { $Issues += "PSO $($_.Name) No Lockout" }
 }
 
-# All PSOs weakness check
-Get-ADFineGrainedPasswordPolicy -Filter * | ForEach-Object {
-  $weak = @()
-  if ($_.MinPasswordLength -lt 14) { $weak += "MIN_LENGTH<14" }
-  if (-not $_.ComplexityEnabled) { $weak += "COMPLEXITY_OFF" }
-  if ($_.ReversibleEncryptionEnabled) { $weak += "REVERSIBLE_ENC" }
-  if ($_.LockoutThreshold -eq 0) { $weak += "NO_LOCKOUT" }
-  
-  if ($weak) {
-    [PSCustomObject]@{
-      PSO = $_.Name
-      Weaknesses = $weak -join ', '
-      AppliesTo = $_.AppliesTo -join '; '
-    }
-  }
-}
+$Issues
 ```
 
 ___
 
-## Reversible Encryption (DOMAIN_PASSWORD_STORE_CLEARTEXT)
+## Reversible Encryption
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué detecta** | **Riesgo** |
 |:---:|:---:|:---:|
-| ReversibleEncryptionEnabled = true | Stored as recoverable cleartext | Critical vuln. |
-| Why exists: legacy CHAP / DIGEST auth | Ancient compat | Edge. |
-| DCSync recovers cleartext | `secretsdump` direct | Standard. |
-| Per-user UAC flag (0x80) | Granular setting | Adjacent. |
-| Default Domain Policy global setting | Force on/off | Standard. |
-| PSO override per-user/group | Granular | Standard. |
-| Modern: should always be FALSE | Hardening | Standard. |
-| Detection: policy with reversible ON | Defender alarm | Adjacent. |
-| Detection: per-user UAC flag set | Defender | Adjacent. |
-| Privileged user with reversible | Critical risk | Critical. |
-| Cleanup: disable + force password change | Mitigation | Standard. |
-| GPO can enforce force-disable | Hardening | Standard. |
-| Compliance violation typically | Audit | Adjacent. |
-| Cross-correlate with admin count | Critical | Audit. |
-| `secretsdump --just-dc-user user` | Privileged dump | Tool. |
-| Output "CLEARTEXT_PASSWORD: ..." | If reversible | Standard. |
+| `(Get-ADDefaultDomainPasswordPolicy).ReversibleEncryptionEnabled` | DDP reversible global | True = todos users con flag = cleartext recoverable. |
+| `Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true}` | Users con UAC `ENCRYPTED_TEXT_PWD_ALLOWED` (0x80) | DCSync recovera cleartext. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {ReversibleEncryptionEnabled -eq $true}` | PSOs con reversible | Audit. |
+| `secretsdump.py corp/admin:pass@<DC> -just-dc-user <victim>` | Recovery cleartext via DCSync | Privesc + lateral. |
 ^ad-audit-reversible
 
-### Reversible encryption recovery
-
-```powershell
-# Domain-level check
-(Get-ADDefaultDomainPasswordPolicy).ReversibleEncryptionEnabled
-
-# PSO-level check
-Get-ADFineGrainedPasswordPolicy -Filter * | 
-  Where ReversibleEncryptionEnabled -eq $true |
-  Select Name,AppliesTo
-
-# Per-user UAC flag check (UAC bit 128 = 0x80)
-Get-ADUser -Filter * -Properties UserAccountControl |
-  Where {$_.UserAccountControl -band 128} |
-  Select Name,SamAccountName,UserAccountControl
-
-# Or: AllowReversiblePasswordEncryption boolean
-Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true}
+**Output secretsdump si reversible:**
+```
+victim:CLEARTEXT_PASSWORD:RealPasswordInClear!
 ```
 
-```bash
-# DCSync to recover cleartext (privileged required)
-impacket-secretsdump dom.local/admin:pass@DC -just-dc-user victim
-
-# Output (if reversible enabled):
-# victim:CLEARTEXT_PASSWORD:hereistheactualpassword
+```powershell
+# Hunt + count
+$rev = Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true} -Properties AdminCount
+"Users con reversible: $($rev.Count) (priv: $($rev.Where({$_.AdminCount -eq 1}).Count))"
 ```
 
 ___
 
 ## krbtgt Stale Password
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Acción** |
 |:---:|:---:|:---:|
-| krbtgt holds KDC trust password | Signs all TGTs | Critical. |
-| Recommended rotation: 180 days | Microsoft guidance | Standard. |
-| Stale krbtgt | Persistent Golden Ticket risk | Critical. |
-| `Get-ADUser krbtgt -Properties pwdLastSet` | Direct query | Standard. |
-| Rotation requires twice consecutively | Replication delay | Procedure. |
-| Cached tickets invalidated post-rotation | Operational | Standard. |
-| Detection: krbtgt password change events | Defender | Adjacent. |
-| Detection: krbtgt > 180 days | Audit | Defender. |
-| Microsoft script: `Reset-KrbtgtKeyInteractive.ps1` | Reference tool | Standard. |
-| RODC has separate krbtgt-RODC | Edge | Adjacent. |
-| Cross-domain krbtgt independent | Per-domain | Standard. |
-| Forest-wide krbtgt audit | Per-domain | Standard. |
-| `pwdLastSet` 0 = never set | Edge | Edge. |
-| Edge case: krbtgt re-creation | Rare | Edge. |
-| BloodHound krbtgt awareness | Tool | Adjacent. |
-| Adjacent: trust account passwords | Same concept | Adjacent. |
+| `Get-ADUser krbtgt -Properties PasswordLastSet,msDS-KeyVersionNumber` | Age + KVNO | >180d = audit fail. |
+| `(Get-ADForest).Domains \| % { Get-ADUser krbtgt -Server $_ -Pr PasswordLastSet }` | Forest-wide krbtgt | Multi-domain audit. |
+| `.\New-KrbtgtKeys.ps1 -OperationalMode -OneStep` (Microsoft GitHub) | Reset 1× | Necesita 2× con 24h gap. |
 ^ad-audit-krbtgt
 
-### krbtgt audit
+**Reset workflow correcto:**
+1. `New-KrbtgtKeys.ps1 -OperationalMode -OneStep` → reset 1.
+2. Wait 24h (replicación full forest + KDCs todos sirven KVNO nuevo).
+3. `New-KrbtgtKeys.ps1 -OperationalMode -OneStep` → reset 2.
+4. Golden Tickets viejos invalidados (KVNO -1 ya no aceptado).
 
 ```powershell
-# Per-domain krbtgt age
-$forest = Get-ADForest
-foreach ($d in $forest.Domains) {
-  $krbtgt = Get-ADUser krbtgt -Server $d -Properties pwdLastSet
-  $ageDays = ((Get-Date) - [datetime]::FromFileTime($krbtgt.pwdLastSet)).Days
-  
-  $color = if ($ageDays -gt 180) {"Red"} elseif ($ageDays -gt 90) {"Yellow"} else {"Green"}
-  Write-Host "$d krbtgt: $ageDays days" -ForegroundColor $color
-  
-  if ($ageDays -gt 180) {
-    Write-Warning "  Golden Ticket persistent risk"
+# Forest krbtgt audit
+foreach ($d in (Get-ADForest).Domains) {
+  $k = Get-ADUser krbtgt -Server $d -Properties PasswordLastSet,msDS-KeyVersionNumber
+  $age = ((Get-Date) - $k.PasswordLastSet).Days
+  [PSCustomObject]@{
+    Domain = $d
+    AgeDays = $age
+    KVNO = $k.'msDS-KeyVersionNumber'
+    Status = if ($age -gt 180) { "STALE" } else { "OK" }
   }
 }
-```
-
-```bash
-# Linux LDAP
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=krbtgt,CN=Users,DC=dom,DC=local" \
-  -s base "(objectClass=*)" pwdLastSet
 ```
 
 ___
 
 ## No-Lockout / Lockout=0
 
-| **Misconfig** | **Risk** | **Notas** |
+| **Comando** | **Qué detecta** | **Riesgo** |
 |:---:|:---:|:---:|
-| LockoutThreshold = 0 | No lockout | Critical. |
-| Free brute force | Direct vuln | Critical. |
-| Spray friendly | Attack accelerator | Strategy. |
-| Per-PSO disabled | Granular vuln | Audit. |
-| Service account PSO no-lockout | Common practice | Audit. |
-| Detection: lockout disable event | Defender | Adjacent. |
-| Modern hardening: lockout always on | Best practice | Standard. |
-| Aggressive lockout: threshold = 3 | Strict | Edge. |
-| Lockout admin accounts (DOMAIN_LOCKOUT_ADMINS) | Edge | Standard. |
-| Detection: bulk Event 4625 with no 4740 | Inference | Defender. |
-| Atacante OPSEC win: identify no-lockout users | Spray candidates | Strategy. |
-| Cross-correlate: priv + no-lockout | Critical | Strategy. |
-| Authenticated baseline always works | Standard | Reliable. |
-| Anonymous detection | Limited info | Edge. |
-| OPSEC: test single attempt fail to verify | Pre-spray | Standard. |
-| Bypass via auth-only paths | Adjacent | Adjacent. |
+| `(Get-ADDefaultDomainPasswordPolicy).LockoutThreshold` | =0 → spray ilimitado | Critical. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {LockoutThreshold -eq 0}` | PSOs sin lockout | Audit. |
+| `Get-ADFineGrainedPasswordPolicy -Filter {LockoutThreshold -gt 0 -and LockoutThreshold -lt 5}` | Threshold muy bajo (1-4) | DOS risk (lockout fácil de triggers). |
 ^ad-audit-nolockout
 
-### No-lockout detection
-
-```powershell
-# Default Domain Policy
-$pol = Get-ADDefaultDomainPasswordPolicy
-if ($pol.LockoutThreshold -eq 0) {
-  Write-Host "DEFAULT POLICY: NO LOCKOUT — critical brute force risk" -ForegroundColor Red
-}
-
-# PSO-level
-Get-ADFineGrainedPasswordPolicy -Filter * |
-  Where LockoutThreshold -eq 0 |
-  Select Name,AppliesTo,LockoutThreshold |
-  Format-Table
-
-# Per-user effective (find users with no lockout)
-Get-ADUser -Filter {AdminCount -eq 1} | ForEach-Object {
-  $u = $_
-  $pol = Get-ADUserResultantPasswordPolicy -Identity $u -ErrorAction SilentlyContinue
-  if ($pol -and $pol.LockoutThreshold -eq 0) {
-    Write-Host "$($u.SamAccountName): NO LOCKOUT (privileged + free brute)" -ForegroundColor Red
-  }
-}
-```
+**Trade-off:** threshold=0 → vulnerable a spray. threshold=1 → vulnerable a DOS (lockout intencional). Sweet spot: 5-10 con observation window 30min.
 
 ___
 
-## Compliance Standards Reference
+## Compliance Standards
 
-| **Standard** | **Min Length** | **Other Requirements** |
+| **Standard** | **Recomendación clave** | **Comando audit** |
 |:---:|:---:|:---:|
-| NIST SP 800-63B (modern 2024) | 8+ (recommended 15+) | No complexity, breach check, no rotation. |
-| PCI-DSS v4 | 12+ | Complexity, lockout 10 attempts, 30-day rotation. |
-| HIPAA | "Reasonable" — typically 8+ | Per-org policy. |
-| SOX | Per-org policy | Adjacent. |
-| ISO 27001 | Per-org policy | Adjacent. |
-| FISMA | Per-classification | Edge. |
-| Microsoft Default | 7 | Outdated. |
-| Modern best practice | 14+ | Without complexity (random). |
-| Modern best practice (with complexity) | 12+ | Standard. |
-| Service accounts | 25+ random | Defender best practice. |
-| Tier 0 admins | 16+ random | Strictest. |
-| MFA required for privileged | Standard | Modern. |
-| Breach detection (HIBP) | Modern requirement | Standard. |
-| Lockout: 5-10 attempts | Standard | Standard. |
-| Lockout duration: 30 min | Standard | Standard. |
-| Rotation: dropped (NIST) | Modern | Adjacent. |
+| **NIST 800-63B** (2024) | Min 15 chars, no complejidad obligatoria, no rotation periódica forzada, MFA recomendado | `Get-ADDefaultDomainPasswordPolicy` |
+| **CIS Microsoft Windows Server 2022 Benchmark** | Min 14, complexity ON, history 24, max age 60d, lockout 5/30min/30min | Audit + benchmark tool. |
+| **PCI-DSS 4.0 (req 8.3.6)** | Min 12, change every 90d, history 4 | Custom audit. |
+| **HIPAA** | "Strong" sin numérico (vago) — usually 8+ complex | Custom. |
+| **DISA STIG Windows Server 2022** | Min 14, complexity, history 24, lockout 3/15min | Compliance pack. |
 ^ad-audit-compliance
 
-### Compliance audit script
-
 ```powershell
-$pol = Get-ADDefaultDomainPasswordPolicy
-
-$compliance = @{
-  "PCI-DSS v4" = @{
-    MinLength = 12
-    Complexity = $true
-    History = 4
-    MaxAge = 90
-    LockoutMin = 10
-  }
-  "NIST SP 800-63B" = @{
-    MinLength = 8
-    Complexity = $false  # NIST drops complexity req
-    History = 0  # NIST drops history req for breach-tested
-    MaxAge = 0  # NIST drops mandatory rotation
-    LockoutMin = 5
-  }
+# CIS-style audit
+$p = Get-ADDefaultDomainPasswordPolicy
+$cis = @{
+  MinLen14    = $p.MinPasswordLength -ge 14
+  Complexity  = $p.ComplexityEnabled
+  History24   = $p.PasswordHistoryCount -ge 24
+  MaxAge60    = $p.MaxPasswordAge.Days -le 60 -and $p.MaxPasswordAge.Days -gt 0
+  Lockout5    = $p.LockoutThreshold -ge 1 -and $p.LockoutThreshold -le 5
+  NoReversible = -not $p.ReversibleEncryptionEnabled
 }
-
-foreach ($std in $compliance.Keys) {
-  $req = $compliance[$std]
-  Write-Host "`n=== $std ==="
-  Write-Host "MinLength: $($pol.MinPasswordLength) vs required $($req.MinLength)" -ForegroundColor $(if ($pol.MinPasswordLength -ge $req.MinLength) {"Green"} else {"Red"})
-  Write-Host "Complexity: $($pol.ComplexityEnabled) vs required $($req.Complexity)"
-  Write-Host "MaxAge: $($pol.MaxPasswordAge.Days) days"
-  Write-Host "LockoutThreshold: $($pol.LockoutThreshold) (min: $($req.LockoutMin))"
-}
+$cis
 ```
 
 ___
 
-## Custom PSO Audit (Service Accounts)
+## Custom PSO Audit
 
-| **Audit** | **Detail** | **Notas** |
+| **Comando** | **Qué detecta** | **Cuándo** |
 |:---:|:---:|:---:|
-| Service account PSO laxer than default | Common practice | Audit. |
-| Tier 0 PSO stricter than default | Best practice | Standard. |
-| Cross-correlate user → PSO → settings | Per-user audit | Standard. |
-| `Get-ADUserResultantPasswordPolicy` | Per-user effective | Standard. |
-| Per-PSO ACL (read permission) | Adjacent | Adjacent. |
-| Hidden PSOs via ACL deny | Edge detection | Defender. |
-| Stale PSOs (orphaned) | Migration leftover | Audit. |
-| Empty `msDS-PSOAppliesTo` | Edge | Edge. |
-| Multiple overlapping PSOs | Conflict via precedence | Audit. |
-| BloodHound PSO awareness | Modern | Tool. |
-| Detection: PSO modify events | Defender | Adjacent. |
-| Compliance: every priv user has strict PSO | Standard | Audit. |
-| Compliance: every service account has strict PSO | Standard | Audit. |
-| Audit log: PSO creation events | Defender | Adjacent. |
-| Authentication anomaly cross-PSO | Edge | Adjacent. |
-| Honeypot accounts in laxer PSO | Defender plant | Detection. |
+| `Get-ADFineGrainedPasswordPolicy -Filter * -Pr AppliesTo \| ? {-not $_.AppliesTo}` | PSO sin subjects (huérfano) | Cleanup. |
+| `Get-ADFineGrainedPasswordPolicy -Filter * \| Sort Precedence` | PSOs ordenados por precedence | Resolution order. |
+| `Get-ADFineGrainedPasswordPolicy -Filter * \| Group-Object Precedence \| ? Count -gt 1` | Multiple PSOs misma precedence (tie) | Resolución por GUID = ambiguo. |
+| `Get-ADFineGrainedPasswordPolicy -Filter * -Pr AppliesTo \| ? {$_.AppliesTo -match "(?i)svc\|service"}` | PSOs aplicados a service accounts | Often weaker. |
 ^ad-audit-customsvcs
 
-### Service account PSO audit
-
 ```powershell
-# Service accounts (SPN-bound) + their effective PSOs
-$svcUsers = Get-ADUser -Filter {ServicePrincipalName -like "*"} -Properties ServicePrincipalName
-
-$svcUsers | ForEach-Object {
-  $u = $_
-  $pol = Get-ADUserResultantPasswordPolicy -Identity $u -ErrorAction SilentlyContinue
-  
-  [PSCustomObject]@{
-    User = $u.SamAccountName
-    AppliedPSO = if ($pol) { $pol.Name } else { "DEFAULT" }
-    MinLength = if ($pol) { $pol.MinPasswordLength } else { (Get-ADDefaultDomainPasswordPolicy).MinPasswordLength }
-    Lockout = if ($pol) { $pol.LockoutThreshold } else { (Get-ADDefaultDomainPasswordPolicy).LockoutThreshold }
-    ComplexityEnabled = if ($pol) { $pol.ComplexityEnabled } else { (Get-ADDefaultDomainPasswordPolicy).ComplexityEnabled }
-    SPNs = $u.ServicePrincipalName -join '; '
-  }
-} | Where {$_.MinLength -lt 25} | Sort MinLength
+# PSO inventory completo
+Get-ADFineGrainedPasswordPolicy -Filter * -Properties * |
+  Select Name,Precedence,MinPasswordLength,LockoutThreshold,
+         ComplexityEnabled,ReversibleEncryptionEnabled,
+         @{n='Subjects';e={$_.AppliesTo -join '; '}},
+         @{n='SubjectCount';e={$_.AppliesTo.Count}} |
+  Sort Precedence
 ```
 
 ___
 
-## PingCastle / Purple Knight Output
+## PingCastle / Purple Knight
 
-| **Tool** | **Section** | **Notas** |
+| **Comando** | **Qué detecta** | **Cuándo** |
 |:---:|:---:|:---:|
-| PingCastle Healthcheck | Password Policy section | Comprehensive. |
-| PingCastle krbtgt age | Direct flag | Standard. |
-| PingCastle weak PSO | Per-PSO check | Standard. |
-| PingCastle Reversible Encryption | Direct flag | Critical. |
-| Purple Knight Password section | Comprehensive | Standard. |
-| Defender for Identity policy section | Cloud | Modern. |
-| AzureADConnectHealth (sync) | Cloud | Edge. |
-| ADRecon password sheet | XLSX | Standard. |
-| ADCollector | Adjacent | Adjacent. |
-| BloodHound `--collect-password-policies` | Adjacent | Tool. |
-| Custom audit scripts | DIY | Standard. |
-| Microsoft Defender Advanced Threat Protection | Cloud | Modern. |
-| Manual ldapsearch + parse | Linux DIY | Standard. |
-| Audit baseline scripts | Standard | Compliance. |
-| Periodic re-audit | Standard ops | Adjacent. |
-| Remediation tracking | Compliance | Adjacent. |
+| `PingCastle.exe --healthcheck --server <DC> --no-enum-limit` | Audit completo (incluye password policy) | Quarterly audit. |
+| Open `ad_hc_corp.local.html` → buscar reglas `S-PwdLen`, `S-PwdNotRequired`, `A-Reversible*`, `A-LockoutDuration` | Findings password policy específicos | Post-PingCastle. |
+| Purple Knight GUI → Indicators → "Password" category | IoEs password policy | Cross-check con PingCastle. |
+| `Invoke-Locksmith` (PowerShell) | Adjacent — ADCS audit (incluye templates con password issues) | Cross-domain. |
 ^ad-audit-tools
 
-### PingCastle quick
-
 ```cmd
-:: PingCastle Healthcheck
-PingCastle.exe --healthcheck --server DC
+:: PingCastle quarterly audit
+PingCastle.exe --healthcheck --server dc01 --no-enum-limit
+:: Output: ad_hc_<dom>.html
 
-:: Output: HTML report with password policy analysis
-:: Key sections:
-:: - Domain Password Policy
-:: - Fine-Grained Password Policies
-:: - krbtgt password age
-:: - Reversible Encryption usage
-:: - PASSWD_NOTREQD users
-:: - DONT_EXPIRE_PASSWORD privileged users
+:: Reglas a buscar:
+:: - S-PwdLastSet-90 (krbtgt stale >90d)
+:: - S-PwdLastSet-180 (krbtgt stale >180d)
+:: - S-Reversible (reversible encryption enabled)
+:: - A-LockoutThreshold-0 (no lockout)
+:: - S-PwdNotRequired (PASSWD_NOTREQD users)
 ```
 
 ***
