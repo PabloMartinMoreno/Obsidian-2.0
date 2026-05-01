@@ -16,243 +16,113 @@ type: CheatSheet
 linked:
   - "[[AD - gMSA Enumeration]]"
 ---
-# AD - gMSA Enumeration - sMSA & dMSA
+# AD - gMSA Enumeration - sMSA y dMSA
 
 ***
 
 ## sMSA (Standalone Managed Service Account)
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| sMSA = single-host service account | Pre-gMSA legacy | Server 2008. |
-| Class `msDS-ManagedServiceAccount` | LDAP class | Standard. |
-| Storage default | `CN=Managed Service Accounts,DC=...` | Standard. |
-| Single computer binding | One host per sMSA | Standard. |
-| Auto password rotation | 30 days default | Standard. |
-| `Install-ADServiceAccount` per host | Per-computer install | Privileged. |
-| Discontinued by Microsoft | Replaced by gMSA | Adjacent. |
-| Legacy environments still use | Edge | Edge. |
-| Schema requires Server 2008+ | Standard | Standard. |
-| KDS Root Key NOT required | Different from gMSA | Edge. |
-| Per-host attribute | Standard | Standard. |
-| `msDS-HostServiceAccount` | Computer using sMSA | Standard. |
-| Detection: sMSA discovery | Standard | Standard. |
-| Cross-correlate with computer | Standard | Adjacent. |
-| Audit: sMSA migration to gMSA | Compliance | Standard. |
-| Modern: deprecated | Adjacent | Adjacent. |
+| `Get-ADServiceAccount -Filter {ObjectClass -eq "msDS-ManagedServiceAccount"}` | Solo sMSAs | Inventory. |
+| `ldapsearch ... "(objectClass=msDS-ManagedServiceAccount)" samAccountName servicePrincipalName` | LDAP raw | Linux. |
+| `Get-ADServiceAccount <smsa> -Properties HostComputers,msDS-HostServiceAccount` | Host bound | Per-sMSA detail. |
 ^ad-smsa-arch
 
-### sMSA discovery
+**Diferencias vs gMSA:**
+- **sMSA** = bound a 1 host (`msDS-HostServiceAccount` attr en computer + `msDS-ManagedServiceAccount` class).
+- **gMSA** = multi-host via `msDS-GroupMSAMembership` ACL.
+- Auto-rotation 30d default.
+- Win 2008 R2+ (legacy).
 
 ```powershell
-# All sMSAs
-Get-ADObject -Filter "ObjectClass -eq 'msDS-ManagedServiceAccount'" -Properties * |
+Get-ADServiceAccount -Filter {ObjectClass -eq "msDS-ManagedServiceAccount"} \
+  -Properties HostComputers,msDS-HostServiceAccount |
   Select Name,SamAccountName,
-    @{n='Host';e={$_.HostComputers -join '; '}},
-    Enabled,PasswordLastSet
-
-# Or via Get-ADServiceAccount (returns both sMSA + gMSA)
-Get-ADServiceAccount -Filter * -Properties * |
-  Where ObjectClass -eq "msDS-ManagedServiceAccount" |
-  Select Name,SamAccountName
-```
-
-```bash
-# LDAP raw
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=Managed Service Accounts,DC=dom,DC=local" \
-  "(objectClass=msDS-ManagedServiceAccount)" \
-  cn samAccountName servicePrincipalName msDS-HostServiceAccount
+         @{n='Host';e={$_.HostComputers}}
 ```
 
 ___
 
 ## sMSA Password Read
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Single-host bound | Only that computer reads | Standard. |
-| Atacante with computer admin → sMSA password | Standard | Standard. |
-| `Install-ADServiceAccount` on bound host | Per-computer | Privileged. |
-| `Test-ADServiceAccount` | Verify install | Standard. |
-| LSASS contains sMSA cred (if running) | Mimikatz dump | Adjacent. |
-| Per-host LSASS dump | Adjacent | Adjacent. |
-| Computer hash + sMSA bound | Direct relationship | Standard. |
-| netexec sMSA support | Limited (gMSA-focused) | Edge. |
-| LDAP read password | If authorized (rare) | Edge. |
-| msDS-ManagedPassword blob (sMSA) | Edge — different from gMSA | Edge. |
-| Modern: sMSA deprecated | Adjacent | Adjacent. |
-| Migration gMSA preferred | Best practice | Standard. |
-| Detection: sMSA install events | Defender | Adjacent. |
-| Audit: sMSA usage | Standard | Standard. |
-| Per-host enumeration | `Get-ADServiceAccount` per-host | Edge. |
-| Adjacent: dMSA modern replacement | Server 2025 | Modern. |
+| `secretsdump.py corp.local/admin:pass@<DC> -just-dc-user '<smsa>$'` | DCSync sMSA hash (priv) | Privileged dump. |
+| Compromise host bound a sMSA | `secretsdump LOCAL` extrae hash desde LSA secrets | Computer compromise path. |
+| `mimikatz: lsadump::secrets` | LSA Secrets (incluye sMSA) | Local DA. |
 ^ad-smsa-read
 
-### sMSA password access
-
-```powershell
-# As admin on host bound to sMSA
-Install-ADServiceAccount -Identity sMSA-svc01
-Test-ADServiceAccount -Identity sMSA-svc01  # True if can read
-
-# LSASS dump (if sMSA service running)
-# mimikatz: sekurlsa::logonpasswords  → may show sMSA cred
-```
+**Por qué diferente de gMSA:** sMSA password NO está en LDAP attribute readable. Está en LSA Secrets del host bound. Compromise del host = read LSA secrets = sMSA pwd.
 
 ___
 
 ## dMSA (Delegated Managed Service Account, Server 2025)
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| dMSA = new in Server 2025 | Modern | Cutting-edge. |
-| Class `msDS-DelegatedManagedServiceAccount` | LDAP class | Modern. |
-| Replaces sMSA + gMSA hybrid | Modern | Adjacent. |
-| Per-computer + group readers | Best of both | Standard. |
-| Schema requires Server 2025 | Edge | Edge. |
-| KDS Root Key required | Same as gMSA | Standard. |
-| Auto-rotation enhanced | Modern | Standard. |
-| Better integration with Azure AD Connect | Hybrid | Modern. |
-| Detection: dMSA discovery | Modern | Standard. |
-| BloodHound dMSA support | Future | Tool. |
-| Limited tooling support yet | 2025+ | Edge. |
-| Migration sMSA/gMSA → dMSA | Future | Adjacent. |
-| Adjacent: Azure AD-joined dMSA | Hybrid | Modern. |
-| Compliance: latest standard | Modern | Standard. |
-| Audit: dMSA usage early adopters | Edge | Edge. |
-| Microsoft documentation evolving | Modern | Adjacent. |
+| `Get-ADServiceAccount -Filter {ObjectClass -eq "msDS-DelegatedManagedServiceAccount"}` | dMSAs | Modern Server 2025+. |
+| `ldapsearch ... "(objectClass=msDS-DelegatedManagedServiceAccount)" samAccountName msDS-DelegatedMSAState msDS-SupersededAccountState` | LDAP raw | Linux. |
+| `Get-ADServiceAccount <dmsa> -Properties msDS-DelegatedMSAState` | Estado migration | Status. |
 ^ad-dmsa-arch
 
-### dMSA discovery (Server 2025+)
-
-```powershell
-# Modern Server 2025
-Get-ADObject -Filter "ObjectClass -eq 'msDS-DelegatedManagedServiceAccount'" -Properties *
-
-# May not be available pre-2025
-# Check schema
-Get-ADObject -SearchBase "CN=Schema,..." -Filter "Name -like '*delegated-managed-service-account*'"
-```
-
-```bash
-# LDAP raw
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "DC=dom,DC=local" \
-  "(objectClass=msDS-DelegatedManagedServiceAccount)" \
-  cn samAccountName
-```
+**Por qué dMSA:**
+- Designed para reemplazar service accounts legacy.
+- Migration path: `msDS-SupersededServiceAccountState` enlaza a cuenta vieja.
+- Inheritor: dMSA hereda passwords + Kerberos keys via Kerberos delegation token.
+- **Kerberos-only**: NO NTLM auth posible (defense feature).
+- Modern attack vectors emergiendo (BadSuccessor — Akamai 2025): si tenés `WriteProperty` sobre `msDS-ManagedAccountPrecededByLink` podés impersonar service account vía dMSA.
 
 ___
 
-## sMSA vs gMSA vs dMSA Comparison
+## sMSA vs gMSA vs dMSA
 
-| **Aspect** | **sMSA** | **gMSA** | **dMSA** |
+| **Aspecto** | **sMSA** | **gMSA** | **dMSA** |
 |:---:|:---:|:---:|:---:|
-| Server version | 2008+ | 2012+ | 2025+ |
-| Multi-host support | No (single) | Yes | Yes (delegated) |
-| KDS Root Key | Not required | Required | Required |
-| Auto password rotation | Yes (30d default) | Yes (30d default) | Yes (modern) |
-| Cluster scenarios | No | Yes | Yes |
-| Cloud integration | Limited | Limited | Modern (Azure AD) |
-| ACL granularity | Per-host | Per-principal (group/user/computer) | Hybrid |
-| Microsoft direction | Deprecated | Recommended (until 2025) | Modern (2025+) |
-| Migration path | sMSA → gMSA | gMSA → dMSA | (current modern) |
-| Tool support | Limited | Mature (gMSADumper, etc.) | Emerging |
-| BloodHound support | Limited | Yes (modern) | Future |
-| Detection support | Standard | Mature | Emerging |
-| Compliance | Legacy | Standard | Modern best |
-| Adjacent risk | Single-host blast | Multi-host blast | Variable |
-| Audit complexity | Low | Medium | High (modern) |
-| Atacante interest | Low | High | Emerging |
+| Hosts | 1 | N (vía group) | 1 (delegation) |
+| Min OS | Server 2008 R2 | Server 2012 | Server 2025 |
+| Password storage | LSA Secrets host | LDAP `msDS-ManagedPassword` | Kerberos delegation (no LDAP) |
+| Read mechanism | Local host | LDAP query | Kerberos token |
+| KDS Root Key | No | Yes | Yes |
+| Auto-rotation | 30d | 30d default | 30d default |
+| NTLM auth | Yes | Yes | **No (Kerberos-only)** |
+| Persistence resistance | Medium | Low (GoldenGMSA) | High (no offline forge known) |
+| Migration target | Modern → gMSA/dMSA | Modern → dMSA | Final |
 ^ad-msa-comparison
-
-### Multi-MSA enumeration
-
-```powershell
-# All MSAs (sMSA + gMSA + dMSA)
-Get-ADObject -Filter {
-  ObjectClass -eq "msDS-ManagedServiceAccount" -or
-  ObjectClass -eq "msDS-GroupManagedServiceAccount" -or
-  ObjectClass -eq "msDS-DelegatedManagedServiceAccount"
-} -Properties * |
-  Select Name,SamAccountName,ObjectClass,DistinguishedName |
-  Sort ObjectClass,Name
-```
 
 ___
 
 ## Migration Patterns
 
-| **From** | **To** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| sMSA → gMSA | Server 2012+ | Standard. |
-| gMSA → dMSA | Server 2025 | Modern. |
-| Direct sMSA → dMSA | Possible | Edge. |
-| Coexistence period | Common | Standard. |
-| Per-host migration | Standard | Operational. |
-| Service stop → uninstall sMSA → install gMSA | Standard | Procedure. |
-| Application reconfigure | Required | Operational. |
-| Test environment first | Best practice | Standard. |
-| Atacante: detect mid-migration | Mixed | Detection. |
-| Old sMSA still usable until disabled | Edge | Edge. |
-| Detection: MSA type changes | Defender | Adjacent. |
-| Audit: migration completion | Compliance | Standard. |
-| Stale sMSAs | Cleanup post-migration | Hygiene. |
-| Cross-correlate with apps | Per-app | Standard. |
-| Documentation: track migration | Operational | Standard. |
-| BloodHound mixed-MSA visibility | Modern | Tool. |
+| `New-ADServiceAccount <name> -DNSHostName <host>` (sMSA) | Crear sMSA | Legacy setup. |
+| `New-ADServiceAccount <name> -PrincipalsAllowedToRetrieveManagedPassword <Group>` (gMSA) | Crear gMSA | Standard. |
+| `New-ADServiceAccount <name> -Type MSDS-DelegatedManagedServiceAccount` (dMSA, Server 2025) | Crear dMSA | Modern. |
+| `Set-ADServiceAccount <dmsa> -SupersededServiceAccount <legacy-account>` | Link dMSA a legacy account | Migration. |
+| `Install-ADServiceAccount <name>` (per-host) | Install sMSA/gMSA en host | Setup. |
 ^ad-msa-migration
-
-### Mid-migration detection
-
-```powershell
-# Find computers with both sMSA + gMSA
-$smsaHosts = Get-ADComputer -Filter * -Properties msDS-HostServiceAccount |
-  Where {$_.'msDS-HostServiceAccount'} | Select Name,'msDS-HostServiceAccount'
-
-# Find sMSA + gMSA both targeting same hosts
-foreach ($host in $smsaHosts) {
-  Write-Host "$($host.Name): MSAs = $($host.'msDS-HostServiceAccount' -join '; ')"
-}
-```
 
 ___
 
-## Cross-Correlate with Computer Compromise
+## Cross-Correlate with Hosts
 
-| **Pattern** | **Detail** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Compromise host with sMSA → sMSA password | Standard chain | Standard. |
-| Compromise host with gMSA in HostComputers → gMSA password | Standard | Standard. |
-| LSASS dump on host running MSA service | Mimikatz | Adjacent. |
-| Computer admin → SYSTEM → MSA password | Standard | Standard. |
-| Cross-correlate priv MSA with compromised host | Strategy | Standard. |
-| Privileged MSA service running | High-value target | Standard. |
-| BloodHound: Computer→HasSession→User edge for MSA | Modern | Tool. |
-| Detection: MSA password access from non-host | Anomaly | Defender. |
-| Cross-correlate computer Tier with MSA Tier | Audit | Standard. |
-| Tier 0 hosts running gMSA in DA = DCSync chain | Critical | Standard. |
-| Stale MSA on decommissioned host | Edge | Edge. |
-| MSA migration leftover | Audit | Standard. |
-| Per-host MSA install audit | Standard | Standard. |
-| Compliance: minimal hosts per MSA | Best practice | Standard. |
-| Detection: bulk MSA reads | Defender | Adjacent. |
-| OPSEC: per-host targeted | Stealthier | OPSEC. |
+| `Get-ADComputer -Filter * -Pr msDS-HostServiceAccount \| ? msDS-HostServiceAccount` | Computers con sMSAs bound | Inventory. |
+| `Get-ADServiceAccount -Filter * -Pr PrincipalsAllowedToRetrieveManagedPassword` | gMSAs + readers | Standard. |
+| `Get-WmiObject Win32_Service -ComputerName <host> \| ? StartName -match "(?i)\$@"` | Services running as MSA | Per-host check. |
 ^ad-msa-correlate
 
-### Cross-correlate priv MSA + compromised host
-
 ```powershell
-# Privileged MSAs + their host computers
-Get-ADServiceAccount -Filter * -Properties HostComputers,MemberOf |
-  Where {
-    $_.MemberOf -match "Domain Admins|Enterprise Admins|Backup Operators|Server Operators"
-  } |
-  Select Name,@{n='Hosts';e={$_.HostComputers -join '; '}},
-    @{n='PrivGroups';e={$_.MemberOf -replace 'CN=([^,]+).*','$1' -join '; '}}
+# Mapping completo MSAs → hosts
+Get-ADComputer -Filter * -Properties msDS-HostServiceAccount |
+  Where 'msDS-HostServiceAccount' |
+  Select Name,@{n='sMSAs';e={$_.'msDS-HostServiceAccount' -join '; '}}
 
-# If atacante compromises any of those hosts → priv MSA password access
+Get-ADServiceAccount -Filter * -Properties PrincipalsAllowedToRetrieveManagedPassword |
+  Where PrincipalsAllowedToRetrieveManagedPassword |
+  Select Name,@{n='Readers';e={$_.PrincipalsAllowedToRetrieveManagedPassword -join '; '}}
 ```
 
 ***

