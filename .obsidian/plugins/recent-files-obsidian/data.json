@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/GraphQL Injection.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Directory Traversal",
       "path": "04 - Content/Directory Traversal.md"
-    },
-    {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
     }
   ],
   "omittedPaths": [],
