@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/Bashed.md"
     },
     {
+      "basename": "Terminal Interactiva",
+      "path": "04 - Content/Process/Terminal Interactiva.md"
+    },
+    {
       "basename": "Reverse Shell",
       "path": "04 - Content/Reverse Shell.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "C2 Infrastructure",
       "path": "03 - Tertiary Categories/C2 Infrastructure.md"
-    },
-    {
-      "basename": "Active Directory Lateral Movement",
-      "path": "04 - Content/Process/Active Directory Lateral Movement.md"
     }
   ],
   "omittedPaths": [],
