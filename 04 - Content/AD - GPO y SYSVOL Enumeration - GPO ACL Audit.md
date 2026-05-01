@@ -3,7 +3,7 @@ aliases:
   - GPO ACL Audit
   - GPO Modify Rights
   - WriteGPLink
-  - GPO Owner
+  - Group Policy Creator Owners
 tags:
   - type/cheatsheet
   - vuln/ad-enumeration
@@ -16,51 +16,29 @@ type: CheatSheet
 linked:
   - "[[AD - GPO y SYSVOL Enumeration]]"
 ---
-# AD - GPO & SYSVOL Enumeration - GPO ACL Audit
+# AD - GPO y SYSVOL Enumeration - GPO ACL Audit
 
 ***
 
 ## GPO Object DACL
 
-| **Right** | **Effect** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| GenericAll on GPO | Full control | Critical. |
-| GenericWrite on GPO | Modify settings | Critical. |
-| WriteDACL on GPO | Self-grant | Critical. |
-| WriteOwner on GPO | 2-step | Adjacent. |
-| Apply Group Policy | Standard read | Standard. |
-| `gpcFileSysPath` modify | SYSVOL files | Adjacent. |
-| Per-GPO DACL granular | Standard | Standard. |
-| Default holders: Domain Admins, Enterprise Admins, Group Policy Creator Owners (creator) | Standard | Standard. |
-| BloodHound `GenericAll`, `GenericWrite`, `WriteDacl`, `WriteOwner`, `Owns` on GPO | Standard | Tool. |
-| `WriteGPLink` separate edge | Adjacent | Tool. |
-| Cross-correlate with linked OUs | Critical | Audit. |
-| Modify GPO + linked Tier 0 OU = Tier 0 compromise | Standard chain | Critical. |
-| Detection: GPO ACL modify (Event 5136) | Defender | Adjacent. |
-| Modern: minimal modify rights | Hardening | Standard. |
-| Per-quarter GPO ACL audit | Standard | Compliance. |
+| `Get-GPPermission -Guid <GPO-GUID> -All` | Permisos del GPO (RSAT-GPO) | Standard. |
+| `Get-Acl "AD:CN={<GUID>},CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)"` | DACL raw del GPO container | Sin RSAT-GPO. |
+| `Get-GPO -All \| % { Get-GPPermission -Guid $_.Id -All }` | Bulk audit | Forest-wide. |
 ^ad-gpoacl-rights
 
-### GPO DACL audit
-
 ```powershell
-Get-GPO -All | ForEach-Object {
-  $gpo = $_
-  $aclPath = "AD:CN={$($gpo.Id)},CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)"
-  
-  $nonDefault = (Get-Acl $aclPath).Access | Where {
-    $_.AccessControlType -eq "Allow" -and
-    ($_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDACL|WriteOwner") -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN"
-  }
-  
-  if ($nonDefault) {
-    [PSCustomObject]@{
-      GPO = $gpo.DisplayName
-      Id = $gpo.Id
-      NonDefaultModifiers = ($nonDefault.IdentityReference | Sort -Unique) -join '; '
-    }
-  }
+# Audit GPOs con modify ACEs non-default
+Get-GPO -All | % {
+  $g = $_
+  Get-GPPermission -Guid $g.Id -All -EA SilentlyContinue |
+    Where {
+      $_.Permission -in "GpoEditDeleteModifySecurity","GpoEdit" -and
+      $_.Trustee.Name -notmatch "Domain Admins|Enterprise Admins|SYSTEM|Cert Publishers"
+    } |
+    Select @{n='GPO';e={$g.DisplayName}},@{n='Trustee';e={$_.Trustee.Name}},Permission
 }
 ```
 
@@ -68,333 +46,102 @@ ___
 
 ## GPO Owner
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| GPO Owner | nTSecurityDescriptor.Owner | Standard. |
-| Owner has implicit modify rights | Standard | Standard. |
-| Default: creator (Group Policy Creator Owners group) | Standard | Standard. |
-| BloodHound `Owns` edge | Visual | Tool. |
-| `Get-GPO -DisplayName X | Select Owner` | RSAT | Standard. |
-| Cross-correlate with priv tier | Standard | Audit. |
-| Stale ownership (old admin) | Audit | Standard. |
-| Modify ownership: take ownership | Adjacent privesc | Adjacent. |
-| Per-GPO ownership audit | Standard | Compliance. |
-| Detection: ownership change events | Defender | Adjacent. |
-| Modern: documented per-GPO owner | Standard | Compliance. |
-| Compliance: minimal modify rights | Best practice | Standard. |
-| Per-quarter ownership audit | Standard | Compliance. |
-| BloodHound modify owner edges | Modern | Tool. |
-| Adjacent: ACL Enumeration hub | Cross-ref | Adjacent. |
-| Cleanup post-engagement | Standard | OPSEC. |
+| `(Get-Acl "AD:CN={<GUID>},CN=Policies,CN=System,...").Owner` | Owner del GPO | Per-GPO. |
+| `Get-GPO -All \| % { (Get-Acl "AD:CN={$($_.Id.Guid)},CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)").Owner }` | Bulk owners | Forest-wide. |
 ^ad-gpoacl-owner
 
-### GPO ownership audit
-
-```powershell
-# All GPO owners
-Get-GPO -All | Select DisplayName,Owner |
-  Where Owner -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM"
-```
+**Por qué importa:** owner tiene **implicit Modify Permissions** = puede grant self GenericAll. Audit owners non-default.
 
 ___
 
 ## WriteGPLink ACE
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| WriteGPLink = modify gPLink on OU | Adjacent | Standard. |
-| Per-OU `gPLink` attribute | Direct | Standard. |
-| Atacante can link new GPO to OU | Standard | Critical. |
-| Atacante can unlink existing | Adjacent | Edge. |
-| Atacante can enforce/disable links | Edge | Adjacent. |
-| Combined with GPO modify = mass compromise | Standard chain | Critical. |
-| Combined with GPO Creator Owners = create + link | Standard | Critical. |
-| BloodHound `WriteGPLink` edge | Modern | Tool. |
-| Per-OU ACL audit | Standard | Compliance. |
-| Detection: gPLink modify events | Defender | Adjacent. |
-| Modern: minimal modify rights | Best practice | Standard. |
-| Per-quarter audit | Standard | Compliance. |
-| Cross-correlate with priv tier | Standard | Audit. |
-| Adjacent: GPO Abuse hub | Cross-ref | Adjacent. |
-| Stale WriteGPLink | Audit | Standard. |
-| Cleanup post-engagement | Standard | OPSEC. |
+| `Get-Acl "AD:<OU-DN>" \| Select -Expand Access \| ? ObjectType -eq "f30e3bbe-9ff0-11d1-b603-0000f80367c1"` | WriteProperty `gPLink` ACE | OU-level GPO link control. |
+| `Find-InterestingDomainAcl -ResolveGUIDs \| ? ObjectAceType -eq "GP-Link"` | Bulk hunt | Forest-wide. |
 ^ad-gpoacl-writegplink
 
-### WriteGPLink audit
-
-```powershell
-$writeGPLinkGUID = "f30e3bbe-9ff0-11d1-b603-0000f80367c1"  # gPLink attribute
-
-Get-ADOrganizationalUnit -Filter * | ForEach-Object {
-  $dn = $_.DistinguishedName
-  $acl = Get-Acl "AD:$dn"
-  
-  $writeGPLink = $acl.Access | Where {
-    $_.AccessControlType -eq "Allow" -and
-    (
-      ($_.ActiveDirectoryRights -match "WriteProperty" -and $_.ObjectType -eq $writeGPLinkGUID) -or
-      $_.ActiveDirectoryRights -match "GenericAll|GenericWrite"
-    ) -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN"
-  }
-  
-  if ($writeGPLink) {
-    [PSCustomObject]@{
-      OU = $_.Name
-      Modifiers = ($writeGPLink.IdentityReference | Sort -Unique) -join '; '
-    }
-  }
-}
-```
+**Por qué importa:** `WriteProperty gPLink` sobre OU = atacante puede **link malicious GPO** a la OU. Combinado con `Group Policy Creator Owners` (crear GPO) = mass compromise OU.
 
 ___
 
-## Group Policy Creator Owners Group
+## Group Policy Creator Owners
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Group Policy Creator Owners | RID 520 | Standard. |
-| Members can create new GPOs | Standard | Standard. |
-| Creator becomes GPO owner | Standard | Standard. |
-| Default: empty | Best practice | Standard. |
-| Members audit | Standard | Compliance. |
-| Combined with WriteGPLink = mass compromise | Standard chain | Critical. |
-| BloodHound priv group analysis | Standard | Tool. |
-| Cross-correlate with WriteGPLink ACE | Standard | Audit. |
-| Detection: GPO creation events (4719) | Defender | Adjacent. |
-| Modern: minimal members | Best practice | Standard. |
-| Per-quarter membership audit | Standard | Compliance. |
-| Stale members | Audit | Standard. |
-| Cleanup: empty group | Hygiene | Standard. |
-| Cross-correlate priv tier | Standard | Audit. |
-| Adjacent: Groups Enumeration hub | Cross-ref | Adjacent. |
-| Compliance: documented baseline | Standard | Adjacent. |
+| `Get-ADGroupMember "Group Policy Creator Owners" -Recursive` | Members efectivos | Audit. |
+| `New-GPO -Name "<MaliciousGPO>"` (priv = group member) | Crear GPO | Privesc step. |
 ^ad-gpoacl-gpocreator
 
-### GPO Creator Owners audit
-
-```powershell
-# Members
-Get-ADGroupMember "Group Policy Creator Owners" -Recursive |
-  Select Name,SamAccountName,ObjectClass
-
-# Default empty - any member is potential audit risk
-```
+**Combo crítico:**
+1. Member de `Group Policy Creator Owners` → crear GPO.
+2. `WriteProperty gPLink` sobre OU → link GPO.
+3. GPO contiene scheduled task / startup script malicious.
+4. `gpupdate /force` en victims → ejecuta como SYSTEM.
 
 ___
 
 ## ACL Inheritance from Domain Root
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Per-GPO inheritance from container | `CN=Policies,CN=System,DC=...` | Standard. |
-| Modify on Policies container = all GPOs | Critical | Critical. |
-| Default: Domain Admins, Enterprise Admins | Standard | Standard. |
-| Cross-correlate with priv tier | Standard | Audit. |
-| BloodHound container ACL edges | Modern | Tool. |
-| Detection: container ACL modify | Defender | Adjacent. |
-| Modern: minimal modify rights | Best practice | Standard. |
-| Per-quarter container ACL audit | Standard | Compliance. |
-| Stale container ACE | Audit | Standard. |
-| Cleanup: minimal | Hygiene | Standard. |
-| Adjacent: ACL Enumeration hub | Cross-ref | Adjacent. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Cross-correlate cross-trust | Standard | Audit. |
-| Modern: continuous monitoring | Defender | Standard. |
-| Audit log retention | Standard | Adjacent. |
-| Modern: extreme alerting | Best practice | Standard. |
+| `(Get-Acl "AD:$((Get-ADDomain).DistinguishedName)").Access \| ? IsInherited -eq $false \| ? ActiveDirectoryRights -match "WriteProperty"` | Direct ACEs en domain root | Cross-trust audit. |
+| `Get-GPInheritance -Target "$((Get-ADDomain).DistinguishedName)"` | GPOs aplicados a domain root | Top-level. |
 ^ad-gpoacl-inherit
-
-### Container ACL audit
-
-```powershell
-$containerDN = "CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)"
-
-(Get-Acl "AD:$containerDN").Access | Where {
-  $_.AccessControlType -eq "Allow" -and
-  ($_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDACL|WriteOwner|CreateChild") -and
-  $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN|Authenticated Users|Domain Controllers"
-}
-```
 
 ___
 
 ## SYSVOL File Permissions
 
-| **Concepto** | **Detalle** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| SYSVOL = NTFS share | Standard | Standard. |
-| Per-GPO directory ACL | NTFS-level | Standard. |
-| `\\dom\SYSVOL\dom\Policies\<GUID>\` | Standard path | Standard. |
-| Default: Authenticated Users Read | Standard | Permissive. |
-| Modify: Domain Admins, Enterprise Admins, Group Policy Creator Owners | Standard | Standard. |
-| Atacante write SYSVOL = modify GPO content | Standard chain | Critical. |
-| `Get-Acl \\dom\SYSVOL\dom\Policies\GUID\` | Native | Standard. |
-| icacls native | Adjacent | Standard. |
-| Cross-correlate with AD GPO ACL | Standard | Audit. |
-| BloodHound SYSVOL ACL adjacent | Edge | Tool. |
-| Detection: SYSVOL modify events | Defender | Adjacent. |
-| Modern: minimal modify rights | Best practice | Standard. |
-| Per-quarter SYSVOL audit | Standard | Compliance. |
-| Stale SYSVOL ACE | Audit | Standard. |
-| Cleanup: minimal | Hygiene | Standard. |
-| Cross-correlate per-DC SYSVOL | Replicated | Standard. |
+| `Get-Acl "\\<DC>\sysvol\corp.local\Policies\{<GUID>}"` | DACL filesystem del GPO | SYSVOL side. |
+| `icacls "\\<DC>\sysvol\corp.local\Policies\{<GUID>}"` | Native ACL | Sin RSAT. |
+| `cacls.exe \\<DC>\sysvol\... /T /Q` | Recursive | Edge. |
 ^ad-gpoacl-sysvol
 
-### SYSVOL ACL audit
+**Caveat:** GPO permissions están **en dos lugares**:
+1. **AD object** (`CN={GUID},CN=Policies,...`) — controla quien puede modify settings.
+2. **SYSVOL filesystem** (`\\<DC>\sysvol\...`) — controla quien puede modify scripts/files.
 
-```powershell
-# Per-GPO SYSVOL DACL
-$gpoPath = "\\dom.local\SYSVOL\dom.local\Policies"
-
-Get-ChildItem $gpoPath -Directory | ForEach-Object {
-  $acl = Get-Acl $_.FullName
-  $nonDefault = $acl.Access | Where {
-    $_.AccessControlType -eq "Allow" -and
-    ($_.FileSystemRights -match "FullControl|Write|Modify") -and
-    $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN"
-  }
-  
-  if ($nonDefault) {
-    [PSCustomObject]@{
-      GPO = $_.Name
-      Modifiers = ($nonDefault.IdentityReference | Sort -Unique) -join '; '
-    }
-  }
-}
-```
+Ambos deben matchear. Mismatch = privesc surface.
 
 ___
 
-## Cross-Correlate with Linked Tier 0 OUs
+## Cross-Correlate Tier 0
 
-| **Pattern** | **Risk** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| GPO modify + linked Tier 0 OU | CRITICAL | Critical. |
-| GPO modify + linked DC OU | CRITICAL | Critical. |
-| GPO modify + linked Servers OU | High | Audit. |
-| GPO modify + linked Workstations OU | Medium-High | Audit. |
-| Helpdesk with GPO modify rights | Cross-tier | Critical. |
-| Service account with GPO modify | Common | Audit. |
-| BloodHound priv GPO paths | Modern | Tool. |
-| Cypher: paths via GPO to highvalue | Custom | Tool. |
-| Detection: Tier 0 GPO modify | Defender critical | Defender. |
-| Modern: extreme alerting | Best practice | Standard. |
-| Per-quarter Tier 0 GPO audit | Standard | Compliance. |
-| Modern: minimal modify Tier 0 | Best practice | Standard. |
-| Cross-correlate GPO link enforced | Adjacent | Audit. |
-| Cleanup: stale Tier 0 GPO ACE | Hygiene | Standard. |
-| Adjacent: GPO Abuse hub | Cross-ref | Adjacent. |
-| Compliance: documented Tier 0 baseline | Standard | Adjacent. |
+| `Get-GPInheritance -Target "OU=Domain Controllers,..."` | GPOs aplicados a DCs | Critical. |
+| `Get-GPInheritance -Target "OU=Domain Controllers,..." \| % { Get-GPPermission -Guid $_.GpoLinks.GpoId -All }` | Permisos de GPOs en DC OU | ACL audit. |
 ^ad-gpoacl-tier0
-
-### Tier 0 GPO modify audit (cross-correlate)
-
-```powershell
-# Find GPOs linked to Tier 0 OUs (DC, custom Tier 0)
-$tier0OUs = "OU=Domain Controllers,$((Get-ADDomain).DistinguishedName)",
-            "OU=Tier 0,$((Get-ADDomain).DistinguishedName)"
-
-foreach ($ou in $tier0OUs) {
-  $linkedGPOs = (Get-GPInheritance -Target $ou -ErrorAction SilentlyContinue).GpoLinks
-  
-  foreach ($link in $linkedGPOs) {
-    $gpo = Get-GPO -Guid $link.GpoId
-    $aclPath = "AD:CN={$($gpo.Id)},CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)"
-    
-    $modifiers = (Get-Acl $aclPath).Access | Where {
-      $_.AccessControlType -eq "Allow" -and
-      ($_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDACL|WriteOwner") -and
-      $_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|Administrators|SYSTEM|BUILTIN"
-    }
-    
-    if ($modifiers) {
-      [PSCustomObject]@{
-        GPO = $gpo.DisplayName
-        LinkedTier0OU = $ou
-        NonDefaultModifiers = $modifiers.IdentityReference -join '; '
-      }
-    }
-  }
-}
-```
 
 ___
 
 ## BloodHound GPO Edges
 
-| **Edge** | **Significado** | **Notas** |
+| **Cypher** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `GpLink` | OU → GPO | Standard. |
-| `Owns` on GPO | Implicit modify | Standard. |
-| `WriteOwner` on GPO | 2-step | Standard. |
-| `WriteDacl` on GPO | Modify ACL | Standard. |
-| `GenericAll` on GPO | Full | Standard. |
-| `GenericWrite` on GPO | Modify settings | Standard. |
-| `WriteGPLink` on OU | Modify GPO link | Modern. |
-| `WriteSpn` on Computer (adjacent) | Edge | Adjacent. |
-| Cypher: paths via GPO | Custom | Tool. |
-| Cross-correlate with linked OUs | Standard | Tool. |
-| BHCE 5.x+ GPO support | Modern | Tool. |
-| Visual graph | Helpful | Standard. |
-| Per-domain ingest | Multi-domain | Adjacent. |
-| BHCE 6.x improved | Modern | Tool. |
-| Custom analytics | Cypher | Tool. |
-| Compliance: GPO baseline | Standard | Adjacent. |
+| `MATCH (u)-[:GpLink]->(o:OU) RETURN u,o` | GPLink edges (rare relación inversa) | Edge cases. |
+| `MATCH (g:GPO)-[:GpLink]->(o:OU) RETURN g,o` | GPO → OU links | Standard. |
+| `MATCH (u {owned:true})-[:GenericAll\|GenericWrite\|WriteDacl\|WriteOwner]->(g:GPO) RETURN u,g` | Privesc surface (modify GPO) | Path. |
+| `MATCH (u {owned:true})-[*1..]->(g:GPO)-[:GpLink]->(o:OU)-[:Contains]->(c:Computer) RETURN p` | Mass compromise paths | Critical. |
 ^ad-gpoacl-bh
-
-### BloodHound GPO queries
-
-```cypher
-// All GPO modify paths
-MATCH (u)-[:GenericAll|GenericWrite|WriteDacl|WriteOwner|Owns*1..]->(g:GPO)
-RETURN u.name, g.name
-
-// GPOs linked to highvalue OUs
-MATCH (g:GPO)-[:GpLink]->(ou:OU)-[:Contains*1..]->(c:Computer {highvalue: true})
-RETURN g.name, ou.name, c.name
-
-// Owned principal can modify GPO linked to highvalue
-MATCH (u {owned: true})-[:GenericAll|GenericWrite|WriteDacl|WriteOwner|MemberOf*1..]->(g:GPO)
-MATCH (g)-[:GpLink]->(ou:OU)-[:Contains*1..]->(target {highvalue: true})
-RETURN u.name, g.name, ou.name, target.name
-```
 
 ___
 
 ## Mitigations
 
-| **Mitigation** | **Detail** | **Notas** |
+| **Comando** | **Qué hace** | **Cuándo** |
 |:---:|:---:|:---:|
-| Strict GPO ACL | Best practice | Hardening. |
-| Empty Group Policy Creator Owners | Best practice | Standard. |
-| Minimal Tier 0 GPO modify | Best practice | Hardening. |
-| Per-OU minimal WriteGPLink | Best practice | Hardening. |
-| Detection: GPO modify events | Defender | Adjacent. |
-| Microsoft Defender for Identity GPO alerts | Modern | Defender. |
-| BloodHound continuous GPO audit | Modern | Tool. |
-| PingCastle / Purple Knight GPO | Defender | Standard. |
-| Per-quarter GPO ACL review | Standard | Compliance. |
-| Documented per-GPO purpose | Standard | Compliance. |
-| Stale GPO cleanup | Hygiene | Standard. |
-| Modern: continuous monitoring | Defender | Standard. |
-| Audit log retention | Standard | Adjacent. |
-| Compliance: documented baseline | Standard | Adjacent. |
-| Cross-correlate per-tier | Standard | Audit. |
-| Modern: extreme alerting Tier 0 | Critical | Standard. |
+| Restrict modify ACEs a Tier 0 only | Per-GPO ACL | Hardening. |
+| Empty `Group Policy Creator Owners` group | Best practice | Defense. |
+| Audit `WriteProperty gPLink` ACEs sobre Tier 0 OUs | Quarterly | Compliance. |
+| Remove non-default owners | Re-set owner = Domain Admins | Cleanup. |
+| Match AD + SYSVOL DACLs | Eliminate mismatches | Audit. |
 ^ad-gpoacl-mitigations
-
-### Hardening commands
-
-```powershell
-# Audit Group Policy Creator Owners (should be empty)
-Get-ADGroupMember "Group Policy Creator Owners" -Recursive
-
-# Tighten Tier 0 GPO ACL (remove non-Tier 0 modifiers)
-# Manual review per-GPO
-
-# Detection: enable GPO change auditing
-# Audit Policy: Audit Object Access → Directory Service Changes → Success
-```
 
 ***
