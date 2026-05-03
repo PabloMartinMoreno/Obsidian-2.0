@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "Pass-the-Ticket",
+      "path": "04 - Content/Pass-the-Ticket.md"
+    },
+    {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "NTDS.dit Extraction",
+      "path": "04 - Content/NTDS.dit Extraction.md"
+    },
+    {
+      "basename": "NTLM Relay",
+      "path": "04 - Content/NTLM Relay.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "Active Directory Enumeración",
+      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
       "basename": "CWES - Maquinas",
       "path": "04 - Content/Process/CWES - Maquinas.md"
     },
@@ -21,20 +45,8 @@
       "path": "04 - Content/Kerberoasting.md"
     },
     {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
       "basename": "Pass-the-Hash",
       "path": "04 - Content/Pass-the-Hash.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Active Directory Enumeración",
-      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
     },
     {
       "basename": "AD - Health y Security Auditing",
@@ -187,14 +199,6 @@
     {
       "basename": "Command & Control (C2)",
       "path": "04 - Content/Process/Command & Control (C2).md"
-    },
-    {
-      "basename": "Client-Side Exploitation",
-      "path": "03 - Tertiary Categories/Client-Side Exploitation.md"
-    },
-    {
-      "basename": "C2 Infrastructure",
-      "path": "03 - Tertiary Categories/C2 Infrastructure.md"
     }
   ],
   "omittedPaths": [],
