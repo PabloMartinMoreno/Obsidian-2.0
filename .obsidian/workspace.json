@@ -8,18 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1991f5d5c37672bf",
+            "id": "2c359c1028e59104",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Golden Ticket.md",
+                "file": "04 - Content/Process/Carga de archivos limitada.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Golden Ticket"
+              "title": "Carga de archivos limitada"
             }
           }
         ],
@@ -264,8 +264,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "1991f5d5c37672bf",
+  "active": "2c359c1028e59104",
   "lastOpenFiles": [
+    "04 - Content/File Upload - Vulnerabilidades.md",
+    "04 - Content/Process/Carga de archivos limitada.md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Golden Ticket.md",
     "04 - Content/Silver Ticket - Detection y Mitigations.md",
     "04 - Content/Silver Ticket - Detection y Mitigations.md.tmp.4284.1777821955939",
     "04 - Content/Silver Ticket - Forging Windows.md",
@@ -277,7 +281,6 @@
     "04 - Content/Silver Ticket - Prereqs y SPNs.md",
     "04 - Content/Silver Ticket - Prereqs y SPNs.md.tmp.4284.1777821825387",
     "03 - Tertiary Categories/Active Directory Explotación.md",
-    "04 - Content/File Upload - Vulnerabilidades.md",
     "04 - Content/Golden Ticket.md.tmp.4284.1777821672835",
     "04 - Content/Golden Ticket - Tooling.md",
     "04 - Content/Golden Ticket - Tooling.md.tmp.4284.1777821545156",
@@ -289,7 +292,6 @@
     "04 - Content/Golden Ticket - Forging Windows.md.tmp.4284.1777821475090",
     "04 - Content/Golden Ticket - Forging Linux.md",
     "04 - Content/Golden Ticket - Prereqs y Recolección.md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Pass-the-Ticket.md",
     "04 - Content/DCSync - Tooling.md",
     "04 - Content/DCSync - Detection y Mitigations.md",
@@ -300,8 +302,6 @@
     "04 - Content/Pass-the-Ticket - Tooling.md",
     "04 - Content/Pass-the-Ticket - Detection y Mitigations.md",
     "04 - Content/Pass-the-Ticket - Inyección y Uso.md",
-    "04 - Content/Pass-the-Ticket - Linux Extraction.md",
-    "04 - Content/Pass-the-Ticket - Windows Extraction.md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
     "00 - Resources/Pasted image 20260405112752.png",

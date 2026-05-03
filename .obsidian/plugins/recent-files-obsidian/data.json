@@ -1,12 +1,8 @@
 {
   "recentFiles": [
     {
-      "basename": "Golden Ticket",
-      "path": "04 - Content/Golden Ticket.md"
-    },
-    {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+      "basename": "Carga de archivos limitada",
+      "path": "04 - Content/Process/Carga de archivos limitada.md"
     },
     {
       "basename": "File Upload - Vulnerabilidades",
@@ -15,6 +11,14 @@
     {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Golden Ticket",
+      "path": "04 - Content/Golden Ticket.md"
+    },
+    {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
     },
     {
       "basename": "Pass-the-Ticket",
@@ -195,10 +199,6 @@
     {
       "basename": "Cross-Compiling Exploit Code",
       "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
-    },
-    {
-      "basename": "Evasion & Obfuscation",
-      "path": "03 - Tertiary Categories/Evasion & Obfuscation.md"
     }
   ],
   "omittedPaths": [],
