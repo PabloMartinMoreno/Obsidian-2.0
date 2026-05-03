@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Carga de archivos limitada",
-      "path": "04 - Content/Process/Carga de archivos limitada.md"
-    },
-    {
       "basename": "File Upload - Vulnerabilidades",
       "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
+      "basename": "File Upload CWES - XSS y XXE",
+      "path": "04 - Content/Process/File Upload CWES - XSS y XXE.md"
+    },
+    {
+      "basename": "Web Content Types",
+      "path": "04 - Content/Process/Web Content Types.md"
+    },
+    {
+      "basename": "Lista archivos php",
+      "path": "04 - Content/Process/Lista archivos php.md"
     },
     {
       "basename": "Web Explotación",
@@ -191,14 +199,6 @@
     {
       "basename": "Persistence Techniques",
       "path": "03 - Tertiary Categories/Persistence Techniques.md"
-    },
-    {
-      "basename": "Credentials Cracking",
-      "path": "03 - Tertiary Categories/Credentials Cracking.md"
-    },
-    {
-      "basename": "Cross-Compiling Exploit Code",
-      "path": "04 - Content/Process/Cross-Compiling Exploit Code.md"
     }
   ],
   "omittedPaths": [],
