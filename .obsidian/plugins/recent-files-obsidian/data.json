@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "HTTP Brute Forcing",
+      "path": "04 - Content/HTTP Brute Forcing.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Authentication & Authorization Bypass.md"
+    },
+    {
+      "basename": "Ataques de Fuerza Bruta",
+      "path": "04 - Content/Process/Ataques de Fuerza Bruta.md"
+    },
+    {
       "basename": "File Upload - Vulnerabilidades",
       "path": "04 - Content/File Upload - Vulnerabilidades.md"
     },
     {
-      "basename": "File Upload CWES - XSS y XXE",
-      "path": "04 - Content/Process/File Upload CWES - XSS y XXE.md"
+      "basename": "File Upload - XSS y XXE",
+      "path": "04 - Content/Process/File Upload - XSS y XXE.md"
     },
     {
       "basename": "Web Content Types",
@@ -15,10 +31,6 @@
     {
       "basename": "Lista archivos php",
       "path": "04 - Content/Process/Lista archivos php.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Golden Ticket",
@@ -187,18 +199,6 @@
     {
       "basename": "Service Exploitation",
       "path": "03 - Tertiary Categories/Service Exploitation.md"
-    },
-    {
-      "basename": "Procedures & Methodologies",
-      "path": "03 - Tertiary Categories/Procedures & Methodologies.md"
-    },
-    {
-      "basename": "Payload & Malware Engineering",
-      "path": "03 - Tertiary Categories/Payload & Malware Engineering.md"
-    },
-    {
-      "basename": "Persistence Techniques",
-      "path": "03 - Tertiary Categories/Persistence Techniques.md"
     }
   ],
   "omittedPaths": [],
