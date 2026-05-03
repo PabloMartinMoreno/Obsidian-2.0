@@ -44,120 +44,144 @@ Con el NT hash (o AES key) de **krbtgt** se puede forjar un TGT arbitrario. Como
 
 ## Prereqs y Recolección
 
-```tabs
-tabs:
-  - title: krbtgt hash
-    content: "![[Golden Ticket - Prereqs y Recolección#^gt-pre-krbtgt]]"
-  - title: AES keys
-    content: "![[Golden Ticket - Prereqs y Recolección#^gt-pre-aes]]"
-  - title: Domain SID
-    content: "![[Golden Ticket - Prereqs y Recolección#^gt-pre-sid]]"
-  - title: FQDN
-    content: "![[Golden Ticket - Prereqs y Recolección#^gt-pre-fqdn]]"
-  - title: Verificar prereqs
-    content: "![[Golden Ticket - Prereqs y Recolección#^gt-pre-verify]]"
-  - title: OPSEC checklist
-    content: "![[Golden Ticket - Prereqs y Recolección#^gt-pre-opsec]]"
-```
+````tabs
+tab: **krbtgt hash**
+![[Golden Ticket - Prereqs y Recolección#^gt-pre-krbtgt]]
+
+tab: **AES keys**
+![[Golden Ticket - Prereqs y Recolección#^gt-pre-aes]]
+
+tab: **Domain SID**
+![[Golden Ticket - Prereqs y Recolección#^gt-pre-sid]]
+
+tab: **FQDN**
+![[Golden Ticket - Prereqs y Recolección#^gt-pre-fqdn]]
+
+tab: **Verificar prereqs**
+![[Golden Ticket - Prereqs y Recolección#^gt-pre-verify]]
+
+tab: **OPSEC checklist**
+![[Golden Ticket - Prereqs y Recolección#^gt-pre-opsec]]
+````
 
 ___
 
 ## Forging Linux
 
-```tabs
-tabs:
-  - title: RC4 básico
-    content: "![[Golden Ticket - Forging Linux#^gt-forge-rc4]]"
-  - title: AES256 stealth
-    content: "![[Golden Ticket - Forging Linux#^gt-forge-aes]]"
-  - title: Flags avanzados
-    content: "![[Golden Ticket - Forging Linux#^gt-forge-flags]]"
-  - title: Cross-domain
-    content: "![[Golden Ticket - Forging Linux#^gt-forge-crossdomain]]"
-  - title: Verificar
-    content: "![[Golden Ticket - Forging Linux#^gt-forge-verify]]"
-  - title: Output / conversión
-    content: "![[Golden Ticket - Forging Linux#^gt-forge-output]]"
-```
+````tabs
+tab: **RC4 básico**
+![[Golden Ticket - Forging Linux#^gt-forge-rc4]]
+
+tab: **AES256 stealth**
+![[Golden Ticket - Forging Linux#^gt-forge-aes]]
+
+tab: **Flags avanzados**
+![[Golden Ticket - Forging Linux#^gt-forge-flags]]
+
+tab: **Cross-domain**
+![[Golden Ticket - Forging Linux#^gt-forge-crossdomain]]
+
+tab: **Verificar**
+![[Golden Ticket - Forging Linux#^gt-forge-verify]]
+
+tab: **Output / conversión**
+![[Golden Ticket - Forging Linux#^gt-forge-output]]
+````
 
 ___
 
 ## Forging Windows
 
-```tabs
-tabs:
-  - title: Rubeus RC4
-    content: "![[Golden Ticket - Forging Windows#^gt-forge-rubeus-rc4]]"
-  - title: Rubeus AES256
-    content: "![[Golden Ticket - Forging Windows#^gt-forge-rubeus-aes]]"
-  - title: Rubeus flags avanzados
-    content: "![[Golden Ticket - Forging Windows#^gt-forge-rubeus-flags]]"
-  - title: mimikatz
-    content: "![[Golden Ticket - Forging Windows#^gt-forge-mimi]]"
-  - title: Diamond Ticket
-    content: "![[Golden Ticket - Forging Windows#^gt-forge-diamond]]"
-  - title: Sapphire Ticket
-    content: "![[Golden Ticket - Forging Windows#^gt-forge-sapphire]]"
-```
+````tabs
+tab: **Rubeus RC4**
+![[Golden Ticket - Forging Windows#^gt-forge-rubeus-rc4]]
+
+tab: **Rubeus AES256**
+![[Golden Ticket - Forging Windows#^gt-forge-rubeus-aes]]
+
+tab: **Rubeus flags avanzados**
+![[Golden Ticket - Forging Windows#^gt-forge-rubeus-flags]]
+
+tab: **mimikatz**
+![[Golden Ticket - Forging Windows#^gt-forge-mimi]]
+
+tab: **Diamond Ticket**
+![[Golden Ticket - Forging Windows#^gt-forge-diamond]]
+
+tab: **Sapphire Ticket**
+![[Golden Ticket - Forging Windows#^gt-forge-sapphire]]
+````
 
 ___
 
 ## Uso y Lateral Movement
 
-```tabs
-tabs:
-  - title: Linux — impacket
-    content: "![[Golden Ticket - Uso y Lateral Movement#^gt-uso-linux]]"
-  - title: Windows — post-inject
-    content: "![[Golden Ticket - Uso y Lateral Movement#^gt-uso-windows]]"
-  - title: DC específico
-    content: "![[Golden Ticket - Uso y Lateral Movement#^gt-uso-dc]]"
-  - title: Cross-domain
-    content: "![[Golden Ticket - Uso y Lateral Movement#^gt-uso-crossdomain]]"
-  - title: Verificar acceso
-    content: "![[Golden Ticket - Uso y Lateral Movement#^gt-uso-verify]]"
-  - title: Persistencia
-    content: "![[Golden Ticket - Uso y Lateral Movement#^gt-uso-persist]]"
-```
+````tabs
+tab: **Linux — impacket**
+![[Golden Ticket - Uso y Lateral Movement#^gt-uso-linux]]
+
+tab: **Windows — post-inject**
+![[Golden Ticket - Uso y Lateral Movement#^gt-uso-windows]]
+
+tab: **DC específico**
+![[Golden Ticket - Uso y Lateral Movement#^gt-uso-dc]]
+
+tab: **Cross-domain**
+![[Golden Ticket - Uso y Lateral Movement#^gt-uso-crossdomain]]
+
+tab: **Verificar acceso**
+![[Golden Ticket - Uso y Lateral Movement#^gt-uso-verify]]
+
+tab: **Persistencia**
+![[Golden Ticket - Uso y Lateral Movement#^gt-uso-persist]]
+````
 
 ___
 
 ## Detection y Mitigations
 
-```tabs
-tabs:
-  - title: Events
-    content: "![[Golden Ticket - Detection y Mitigations#^gt-detect-events]]"
-  - title: MDI Alerts
-    content: "![[Golden Ticket - Detection y Mitigations#^gt-detect-mdi]]"
-  - title: KQL Hunt
-    content: "![[Golden Ticket - Detection y Mitigations#^gt-detect-kql]]"
-  - title: OPSEC Tips
-    content: "![[Golden Ticket - Detection y Mitigations#^gt-detect-opsec]]"
-  - title: Invalidación
-    content: "![[Golden Ticket - Detection y Mitigations#^gt-detect-invalidate]]"
-  - title: Hardening Checklist
-    content: "![[Golden Ticket - Detection y Mitigations#^gt-detect-checklist]]"
-```
+````tabs
+tab: **Events**
+![[Golden Ticket - Detection y Mitigations#^gt-detect-events]]
+
+tab: **MDI Alerts**
+![[Golden Ticket - Detection y Mitigations#^gt-detect-mdi]]
+
+tab: **KQL Hunt**
+![[Golden Ticket - Detection y Mitigations#^gt-detect-kql]]
+
+tab: **OPSEC Tips**
+![[Golden Ticket - Detection y Mitigations#^gt-detect-opsec]]
+
+tab: **Invalidación**
+![[Golden Ticket - Detection y Mitigations#^gt-detect-invalidate]]
+
+tab: **Hardening Checklist**
+![[Golden Ticket - Detection y Mitigations#^gt-detect-checklist]]
+````
 
 ___
 
 ## Tooling
 
-```tabs
-tabs:
-  - title: impacket-ticketer
-    content: "![[Golden Ticket - Tooling#^gt-tool-ticketer]]"
-  - title: impacket-lookupsid
-    content: "![[Golden Ticket - Tooling#^gt-tool-lookupsid]]"
-  - title: Rubeus
-    content: "![[Golden Ticket - Tooling#^gt-tool-rubeus]]"
-  - title: mimikatz
-    content: "![[Golden Ticket - Tooling#^gt-tool-mimi]]"
-  - title: New-KrbtgtKeys.ps1
-    content: "![[Golden Ticket - Tooling#^gt-tool-krbtgt]]"
-  - title: Recursos
-    content: "![[Golden Ticket - Tooling#^gt-tool-resources]]"
-```
+````tabs
+tab: **impacket-ticketer**
+![[Golden Ticket - Tooling#^gt-tool-ticketer]]
+
+tab: **impacket-lookupsid**
+![[Golden Ticket - Tooling#^gt-tool-lookupsid]]
+
+tab: **Rubeus**
+![[Golden Ticket - Tooling#^gt-tool-rubeus]]
+
+tab: **mimikatz**
+![[Golden Ticket - Tooling#^gt-tool-mimi]]
+
+tab: **New-KrbtgtKeys.ps1**
+![[Golden Ticket - Tooling#^gt-tool-krbtgt]]
+
+tab: **Recursos**
+![[Golden Ticket - Tooling#^gt-tool-resources]]
+````
 
 ***

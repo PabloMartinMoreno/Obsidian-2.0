@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Pass-the-Ticket",
-      "path": "04 - Content/Pass-the-Ticket.md"
+      "basename": "Golden Ticket",
+      "path": "04 - Content/Golden Ticket.md"
     },
     {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Pass-the-Ticket",
+      "path": "04 - Content/Pass-the-Ticket.md"
     },
     {
       "basename": "NTDS.dit Extraction",
@@ -59,10 +71,6 @@
     {
       "basename": "AD - ADCS Enumeration",
       "path": "04 - Content/AD - ADCS Enumeration.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "GraphQL Injection",
@@ -191,14 +199,6 @@
     {
       "basename": "Evasion & Obfuscation",
       "path": "03 - Tertiary Categories/Evasion & Obfuscation.md"
-    },
-    {
-      "basename": "Common Exploitation Tools",
-      "path": "03 - Tertiary Categories/Common Exploitation Tools.md"
-    },
-    {
-      "basename": "Command & Control (C2)",
-      "path": "04 - Content/Process/Command & Control (C2).md"
     }
   ],
   "omittedPaths": [],
