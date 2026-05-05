@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "File Inclusion",
+      "path": "04 - Content/File Inclusion.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Shells",
       "path": "03 - Tertiary Categories/Shells.md"
-    },
-    {
-      "basename": "Service Exploitation",
-      "path": "03 - Tertiary Categories/Service Exploitation.md"
     }
   ],
   "omittedPaths": [],
