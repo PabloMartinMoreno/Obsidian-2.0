@@ -17,7 +17,6 @@ linked:
   - "[[LFI - Path Traversal y Bypass de Filtros]]"
   - "[[LFI - Null Byte Injection]]"
   - "[[LFI - PHP Wrappers]]"
-  - "[[RFI - Remote File Inclusion]]"
   - "[[LFI To RCE - Log Poisoning]]"
   - "[[LFI To RCE - proc self environ]]"
   - "[[LFI To RCE - Session File Poisoning]]"

@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "LFI - PHP Wrappers",
+      "path": "04 - Content/LFI - PHP Wrappers.md"
+    },
+    {
       "basename": "File Inclusion",
       "path": "04 - Content/File Inclusion.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Social Engineering Assets",
       "path": "03 - Tertiary Categories/Social Engineering Assets.md"
-    },
-    {
-      "basename": "Shells",
-      "path": "03 - Tertiary Categories/Shells.md"
     }
   ],
   "omittedPaths": [],
