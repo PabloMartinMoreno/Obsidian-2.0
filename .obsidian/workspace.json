@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/LFI - PHP Wrappers.md",
+                "file": "04 - Content/File Inclusion.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "LFI - PHP Wrappers"
+              "title": "File Inclusion"
             }
           }
         ],
@@ -266,6 +266,7 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
+    "04 - Content/LFI - PHP Wrappers.md",
     "04 - Content/File Inclusion.md",
     "04 - Content/Process/RFI - Remote File Inclusion.md",
     "03 - Tertiary Categories/Web Explotación.md",
@@ -301,7 +302,6 @@
     "04 - Content/Golden Ticket - Prereqs y Recolección.md",
     "04 - Content/Pass-the-Ticket.md",
     "04 - Content/DCSync - Tooling.md",
-    "04 - Content/DCSync - Detection y Mitigations.md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
     "00 - Resources/Pasted image 20260405112752.png",
