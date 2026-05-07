@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "HTTP Brute Forcing",
+      "path": "04 - Content/HTTP Brute Forcing.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
       "basename": "LDAP Injection",
@@ -145,20 +153,12 @@
       "path": "04 - Content/BOLA - IDOR.md"
     },
     {
-      "basename": "HTTP Brute Forcing",
-      "path": "04 - Content/HTTP Brute Forcing.md"
-    },
-    {
       "basename": "OAuth 2.0 Misconfigurations",
       "path": "04 - Content/OAuth 2.0 Misconfigurations.md"
     },
     {
       "basename": "JWT Attacks",
       "path": "04 - Content/JWT Attacks.md"
-    },
-    {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
       "basename": "File Upload - Vulnerabilidades",
@@ -195,10 +195,6 @@
     {
       "basename": "Server-Side Includes (SSI) Injection",
       "path": "04 - Content/Server-Side Includes (SSI) Injection.md"
-    },
-    {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/OS Command Injection.md"
     }
   ],
   "omittedPaths": [],
