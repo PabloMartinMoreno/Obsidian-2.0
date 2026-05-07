@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
       "basename": "GraphQL Injection",
       "path": "04 - Content/GraphQL Injection.md"
     },
     {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
+      "basename": "LDAP Injection",
+      "path": "04 - Content/LDAP Injection.md"
+    },
+    {
+      "basename": "NoSQL Injection",
+      "path": "04 - Content/NoSQL Injection.md"
     },
     {
       "basename": "File Inclusion",
@@ -191,14 +199,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Windows & Active Directory Lateral Movement",
-      "path": "03 - Tertiary Categories/Windows & Active Directory Lateral Movement.md"
-    },
-    {
-      "basename": "Social Engineering Assets",
-      "path": "03 - Tertiary Categories/Social Engineering Assets.md"
     }
   ],
   "omittedPaths": [],

