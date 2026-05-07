@@ -24,7 +24,7 @@ linked:
 
 ## Burp Clickbandit
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Disponibilidad | Burp Pro built-in (Burp menu → Burp Clickbandit) | No en Community. |
 | Activar | Burp menu → Burp Clickbandit → "Copy Clickbandit to clipboard" | JS payload generated. |
@@ -56,7 +56,7 @@ ___
 
 ## PoC Generators y Templates
 
-| **Tool** | **Tipo** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp Clickbandit | Auto-grabador | Realistic clicks-based. |
 | [PortSwigger Lab Generator](https://portswigger.net/web-security/clickjacking) | Templates educativos | Aprender variantes. |
@@ -103,7 +103,7 @@ ___
 
 ## Scanners y Bulk Recon
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | nuclei templates clickjacking | `nuclei -u https://target -t http/misconfiguration/clickjacking/` | Bulk header scan. |
 | nuclei missing-security-headers | `nuclei -u target -t http/misconfiguration/missing-sri.yaml` etc | Adjacent. |
@@ -142,7 +142,7 @@ ___
 
 ## Browser DevTools y Frame Testing
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Test framing local | Console: `document.body.innerHTML+='<iframe src="URL">'` | Si carga → frameable. |
 | Inspect XFO en Network | Network tab → Response Headers | Direct check. |
@@ -162,7 +162,7 @@ ___
 
 ## Wordlists y Repos
 
-| **Repo** | **Contenido** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | [PayloadsAllTheThings - Clickjacking](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Clickjacking) | Templates, sandbox tricks | Foundation. |
 | [SecLists](https://github.com/danielmiessler/SecLists) | `Fuzzing/clickjacking-payloads.txt` | URL params auto-fill forms. |

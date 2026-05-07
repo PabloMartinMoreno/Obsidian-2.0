@@ -24,7 +24,7 @@ linked:
 
 ## Reflected XSS via Unkeyed Header
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Header unkeyed reflejado en response cacheada → XSS persistente para todo user que reciba cache hit | High impact. |
 | Header `X-Forwarded-Host` | `X-Forwarded-Host: <script>alert(1)</script>` reflejado en `<base href>` o canonical link | Common. |
@@ -69,7 +69,7 @@ ___
 
 ## Open Redirect via Host / X-Forwarded-Host
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | App usa `Host` o `X-Forwarded-Host` para construir redirect URLs (login flow, post-auth) → cache poison redirect | Phishing impact. |
 | Header `X-Forwarded-Host: attacker.com` | App genera `Location: https://attacker.com/login` | Server-side redirect. |
@@ -101,7 +101,7 @@ ___
 
 ## DoS via Cache Poisoning (404 / 500 Storm)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Forzar cache de error response (404/500) en URL legítima → all users reciben error | Denial of service masiva. |
 | Cache 404 | Header malformado → backend retorna 404 → cached | "Resource not found" para todos. |
@@ -119,7 +119,7 @@ ___
 
 ## Cookie Injection
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Header `Set-Cookie` puede ser cacheado en algunas configs anómalas → cookie controlled servida a otros users | Session fixation cache. |
 | Force Set-Cookie cached | Header maligno → backend Set-Cookie con value atacante | Cached response include Set-Cookie. |
@@ -136,7 +136,7 @@ ___
 
 ## Internal Header Injection
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Cache poison para inyectar headers internos que backend trustea | Chain con auth bypass. |
 | `X-Forwarded-For: 127.0.0.1` | Backend trustea como local IP → admin features unlocked | Auth bypass. |

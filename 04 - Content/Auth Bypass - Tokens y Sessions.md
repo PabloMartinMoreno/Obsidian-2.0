@@ -23,7 +23,7 @@ linked:
 
 ## JWT Bypass (Quick Reference)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `alg=none` | `{"alg":"none","typ":"JWT"}` + payload + empty sig | Standard. |
 | `alg=NONE` / `nOnE` case | Variants | Filter bypass. |
@@ -44,7 +44,7 @@ ___
 
 ## Session Fixation
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Atacante presets victim's session ID. After victim logs in, atacante uses same SID. | Pre-auth fixation. |
 | Force SID via URL | `https://target/login?PHPSESSID=ATTACKER_SET` | Standard. |
@@ -63,7 +63,7 @@ ___
 
 ## Predictable Tokens
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | UUIDv1 timestamp-based | Timestamp + node MAC → predictable | Insecure for security. |
 | Sequential session IDs | If incremental | Direct prediction. |
@@ -85,7 +85,7 @@ ___
 
 ## Cookie Tampering
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Cookie role flag | Cookie value `role=admin` cleartext | Direct. |
 | Cookie user_id manipulation | `user_id=1` change a `user_id=2` | IDOR via cookie. |
@@ -107,7 +107,7 @@ ___
 
 ## OAuth `redirect_uri` Manipulation
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Direct redirect | `redirect_uri=https://attacker.com/cb` | If no whitelist. |
 | Whitelist suffix bypass | `redirect_uri=https://target.com.attacker.com` | Suffix abuse. |

@@ -24,7 +24,7 @@ linked:
 
 ## Password Reset Bypass / Token Leak
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Token via Referer leak | URL con token → atacante's page → Referer | Standard. |
 | Reset poisoning | HHI inyecta link con attacker domain | High impact. |
@@ -47,7 +47,7 @@ ___
 
 ## 2FA Bypass
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | 2FA endpoint accepts empty | `POST /verify { code: "" }` | Empty bypass. |
 | 2FA endpoint accepts null | `code: null` | Same. |
@@ -74,7 +74,7 @@ ___
 
 ## Magic Link Reuse / Tampering
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Magic link single-use violated | Use same link twice | Reuse vector. |
 | Magic link long expiry | No expiry → valid forever | Persistencia. |
@@ -94,7 +94,7 @@ ___
 
 ## Email Confirmation Bypass
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Skip confirm endpoint | `POST /confirm { email: 'victim', confirmed: true }` | Direct. |
 | Confirm flag self-set | Mass Assignment `{ "email_verified": true }` | Common. |
@@ -113,7 +113,7 @@ ___
 
 ## OAuth State / Nonce Missing
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | State parameter missing | OAuth authz request sin `state` | CSRF + code theft. |
 | State predictable | Counter / timestamp / no random | Predict. |
@@ -136,7 +136,7 @@ ___
 
 ## Race Conditions en Auth
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Limit overrun login | 50 login attempts en single packet (HTTP/2) | Bypass rate limit. |
 | 2FA OTP brute con race | Same idea con OTP verification | Standard. |

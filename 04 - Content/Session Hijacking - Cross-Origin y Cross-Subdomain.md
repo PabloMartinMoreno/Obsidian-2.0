@@ -24,7 +24,7 @@ linked:
 
 ## Same-Origin Policy (SOP) Bypass
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Browser bug | Direct SOP bypass | Per-vuln. |
 | Subdomain trust abuse | Sub trusts parent y vice versa | Cross-sub. |
@@ -47,7 +47,7 @@ ___
 
 ## Subdomain Takeover Combo
 
-| **Workflow** | **Step** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Stage 1: Identify dangling sub | `*.target.com` con CNAME dangling | See Subdomain Takeover. |
 | Stage 2: Claim sub | Atacante owns subdomain | HTTPS valid. |
@@ -68,7 +68,7 @@ ___
 
 ## postMessage Handler Abuse
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App listens postMessage cross-origin. Atacante's iframe sends malicious data → app processes. | Cross-origin chat. |
 | Listener sin origin check | `window.addEventListener('message', e => process(e.data))` sin `e.origin` validation | Vulnerable. |
@@ -112,7 +112,7 @@ ___
 
 ## CORS Misconfig Credential Leak
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | CORS server permite atacante origin + Allow-Credentials → atacante's JS makes authenticated cross-origin requests + reads response | Standard. |
 | `Access-Control-Allow-Origin: *` con credentials | Browser rejects this combination — but server bug | Edge. |
@@ -156,7 +156,7 @@ ___
 
 ## WebSocket Hijacking (CSWSH)
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | WebSocket handshake = HTTP request con cookies. Sin Origin check, atacante opens WS to target → cross-origin auth'd connection. | Standard CSWSH. |
 | WS sin Origin check | `wss://target/socket` opens with cookies | Direct. |

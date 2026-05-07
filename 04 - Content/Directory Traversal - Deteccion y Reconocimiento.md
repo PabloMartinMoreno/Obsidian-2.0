@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Endpoints con File Params
 
-| **Param name** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `?file=` | Direct file param | Generic file load. |
 | `?path=` | Path param | Same. |
@@ -86,7 +86,7 @@ ___
 
 ## Detectar OS y Stack
 
-| **Indicator** | **OS / Stack** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `Server: Apache` + `.php` | Linux + PHP típico | LAMP stack. |
 | `Server: nginx` | Linux frequent | LEMP / nginx + PHP-FPM. |

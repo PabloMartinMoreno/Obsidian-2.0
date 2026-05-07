@@ -21,7 +21,7 @@ linked:
 
 ## TE Obfuscation (Transfer-Encoding)
 
-| **Variante** | **Header** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Whitespace antes de `:` | `Transfer-Encoding : chunked` | RFC permite OWS — algunos parsers strict, otros laxos. |
 | Tab en value | `Transfer-Encoding:\tchunked` | Tab en lugar de espacio. |
@@ -44,7 +44,7 @@ ___
 
 ## CL Obfuscation (Content-Length)
 
-| **Variante** | **Header** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Doble CL distinto | `Content-Length: 5\r\nContent-Length: 10` | RFC dice rejectar — laxos los aceptan, eligen uno. |
 | Doble CL igual | `Content-Length: 10\r\nContent-Length: 10` | Algunos rejectan duplicate exact, no diferentes. |
@@ -63,7 +63,7 @@ ___
 
 ## Whitespace Tricks
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Space en method | `GET  / HTTP/1.1` (doble espacio) | Algunos parsers strict, laxos aceptan. |
 | Tab en path | `GET\t/path HTTP/1.1` | Tab donde se espera space. |
@@ -85,7 +85,7 @@ ___
 
 ## Connection: close Abuse
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | `Connection: close` indica al server que cierre la conn después de la response. Si front cierra pero back no → desync. | Edge case más raro pero existe. |
 | Setup | Smuggle + `Connection: close` en outer request | Front cierra → back queda con bytes en buffer → próxima conn back los procesa. |

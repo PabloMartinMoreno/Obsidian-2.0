@@ -21,7 +21,7 @@ linked:
 
 ## URL Manipulation en DOM
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Frontend JS reads URL params, builds new URLs / actions. Atacante injects duplicate params → manipulates JS behavior. | DOM-based HPP. |
 | `URLSearchParams.get('a')` | Returns first param value | If JS uses `get()`. |
@@ -44,7 +44,7 @@ ___
 
 ## Form Action / Hidden Field Hijack
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Form action built from URL param | `<form action="${queryParam.action}">` | Direct. |
 | Atacante adds duplicate param | First innocuous, second malicious | Bypass. |
@@ -64,7 +64,7 @@ ___
 
 ## Encoded Param Confusion
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | URL-encoded duplicate name | `?a=1&%61=2` (`%61` = `a`) | Frontend filters first, backend decodes second. |
 | Doble encoded | `?a=1&%2561=2` (`%2561` decodes a `%61` then `a`) | Multi-decode. |
@@ -84,7 +84,7 @@ ___
 
 ## JS-Based Parsing Differences
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `URLSearchParams.get('a')` | Returns first | Standard JS. |
 | `URLSearchParams.getAll('a')` | Returns array | Explicit multi. |

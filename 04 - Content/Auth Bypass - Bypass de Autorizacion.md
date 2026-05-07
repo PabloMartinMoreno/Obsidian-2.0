@@ -24,7 +24,7 @@ linked:
 
 ## IDOR / BOLA (Object-Level)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Sequential IDs | `/api/users/1` → `/api/users/2` (otro user) | Standard IDOR. |
 | UUID predictable | UUIDv1 contiene timestamp | Predict next. |
@@ -64,7 +64,7 @@ ___
 
 ## Mass Assignment (Field-Level Privesc)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | isAdmin self-set | Body con `{"isAdmin": true}` | Direct privesc. |
 | role | `{"role": "admin"}` | Variant. |
@@ -81,7 +81,7 @@ ___
 
 ## Path-Based Privesc
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Direct admin path | `/admin` accessible sin auth | Forced browsing. |
 | Path traversal en authorized path | `/user/../admin` | Path normalization. |
@@ -100,7 +100,7 @@ ___
 
 ## Role Manipulation
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Cookie role tampering | Cookie con `role=admin` (cleartext) | Direct. |
 | JWT claim forgery | Modify JWT con `role:admin` | Combine con JWT bypass. |
@@ -120,7 +120,7 @@ ___
 
 ## Verb-Based Authorization Gaps (BFLA)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Backend has function-level auth on certain verbs but not all | OWASP API4 BFLA. |
 | GET allowed, POST not checked | `POST /admin/users` sin auth check | Standard BFLA. |

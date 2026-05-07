@@ -21,7 +21,7 @@ linked:
 
 ## Lock Contention Abuse
 
-| **Trick** | **Payload / Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | App usa locks pero implementación tiene window — race antes/después de lock acquire | Lock impl bug. |
 | Lock acquire race | TOCTOU entre "is locked?" y "set locked" | Common DIY bug. |
@@ -39,7 +39,7 @@ ___
 
 ## Database Isolation Level Abuse
 
-| **Isolation level** | **Vulnerability** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | READ UNCOMMITTED | Dirty reads → atacante read uncommitted state | Rarest. |
 | READ COMMITTED (default Postgres) | Phantom reads possible | Race window. |
@@ -78,7 +78,7 @@ ___
 
 ## Compensation Transaction Bypass
 
-| **Trick** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Sagas pattern: action + compensation transaction. Race entre action y compensation | Distributed compensation bug. |
 | Compensation never fires | Action succeeds, compensation never triggered → permanent state | Saga incomplete. |
@@ -97,7 +97,7 @@ ___
 
 ## Distributed System Races
 
-| **Trick** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Microservices con eventual consistency — race entre service A's view vs service B's view | Multi-service. |
 | Service-to-service race | Service A writes + Service B reads stale | Common pattern. |
@@ -117,7 +117,7 @@ ___
 
 ## Edge Cases
 
-| **Trick** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP/3 single-packet | QUIC streams race | Modern alternative to H2. |
 | WebSocket race | Multiple WS messages concurrent | Real-time. |

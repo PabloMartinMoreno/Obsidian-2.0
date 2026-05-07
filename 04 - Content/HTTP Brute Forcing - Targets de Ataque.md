@@ -24,7 +24,7 @@ linked:
 
 ## Login Forms (Form-Based)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Username + password POST | `username=admin&password=PASS` | Standard form. |
 | Email + password POST | `email=user@x&password=PASS` | Common variant. |
@@ -62,7 +62,7 @@ ___
 
 ## Basic / Digest / NTLM Authentication
 
-| **Mecanismo** | **Header** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP Basic Auth | `Authorization: Basic base64(user:pass)` | Trivial brute. |
 | HTTP Digest Auth | `Authorization: Digest username=...,response=...` | Hash challenge. |
@@ -103,7 +103,7 @@ ___
 
 ## API Keys / Tokens / Secrets
 
-| **Target** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | API key endpoint | `?api_key=FUZZ` | URL param. |
 | Bearer token API | `Authorization: Bearer FUZZ` | Modern API. |
@@ -141,7 +141,7 @@ ___
 
 ## OTP / MFA Codes
 
-| **OTP type** | **Space** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | 4-digit numeric | 10,000 combinaciones | Trivial sin rate limit. |
 | 6-digit numeric (TOTP) | 1,000,000 combinaciones | Race-based viable. |
@@ -181,7 +181,7 @@ ___
 
 ## Session Cookie / JWT Secret
 
-| **Target** | **Strategy** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Session ID predictable | Sequential / timestamp | Insecure RNG. |
 | Session ID short | <128 bits entropy | Brute viable. |

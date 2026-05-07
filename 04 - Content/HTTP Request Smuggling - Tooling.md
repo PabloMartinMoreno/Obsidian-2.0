@@ -24,7 +24,7 @@ linked:
 
 ## HTTP Request Smuggler (Burp Extension)
 
-| **Objetivo** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalar | Burp → Extensions → BApp Store → "HTTP Request Smuggler" | Hecha por James Kettle (PortSwigger). |
 | Smuggle Probe | Right-click request → "Smuggle Probe" | Auto-detecta CL.TE, TE.CL, TE.TE, CL.CL, H2.* |
@@ -42,7 +42,7 @@ ___
 
 ## smuggler.py (defparam)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `git clone https://github.com/defparam/smuggler && cd smuggler` | CLI standalone. |
 | Probe rápido | `python3 smuggler.py -u https://target/` | Test all techniques contra single URL. |
@@ -62,7 +62,7 @@ ___
 
 ## h2cSmuggler (BishopFox)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `git clone https://github.com/BishopFox/h2csmuggler && cd h2csmuggler` | Python H2 client low-level. |
 | Probe support | `python3 h2csmuggler.py -x https://target/` | Detecta si frontend acepta upgrade h2c. |
@@ -97,7 +97,7 @@ ___
 
 ## Turbo Intruder Scripts
 
-| **Objetivo** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalar | Burp → Extensions → "Turbo Intruder" (BApp Store) | Necesario para race conditions y HRS heavy. |
 | Single connection mode | `engine=Engine.BURP, pipeline=False` en script | Required para HRS (todos los requests en misma TCP conn). |

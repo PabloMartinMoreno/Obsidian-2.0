@@ -21,7 +21,7 @@ linked:
 
 ## Encoding Tricks (URL-encoded duplicates)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | URL-encode segundo nombre | `?a=1&%61=2` (`%61`=`a`) | Frontend WAF check string `a`, decoded match. |
 | Mixed case | `?a=1&A=2` | Case-sensitive WAF bypass. |
@@ -41,7 +41,7 @@ ___
 
 ## Splitting Param Values
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | ASP.NET split | `?q=SELECT&q=*&q=FROM&q=users` → backend gets `"SELECT,*,FROM,users"` | Standard. |
 | WAF signature evasion | Each fragment innocuous individually | Bypass. |
@@ -59,7 +59,7 @@ ___
 
 ## Array Notation (`a[]=1&a[]=2`)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | PHP array | `?a[]=1&a[]=2` → `$_GET['a'] = ['1','2']` | Standard PHP. |
 | Mixed scalar/array | `?a=1&a[]=2` → behavior varies | Edge. |
@@ -79,7 +79,7 @@ ___
 
 ## Mixed Input Sources (Query + Body + Cookie)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Query + body conflict | `?a=1` con body `a=2` | Per-stack precedence. |
 | PHP `$_REQUEST` | EGPCS order — last source wins | Per-config. |

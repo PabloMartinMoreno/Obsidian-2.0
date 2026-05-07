@@ -22,7 +22,7 @@ linked:
 
 ## Linux Objetivos de Alto Valor
 
-| **Path** | **Contenido** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/etc/passwd` | Users + UIDs | Standard probe (legible para todos). |
 | `/etc/shadow` | Password hashes | Root-only. |
@@ -62,7 +62,7 @@ ___
 
 ## Windows Objetivos de Alto Valor
 
-| **Path** | **Contenido** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `C:\\windows\\win.ini` | Windows ini | Legible probe. |
 | `C:\\windows\\system32\\drivers\\etc\\hosts` | Hosts file | Network info. |
@@ -117,7 +117,7 @@ ___
 
 ## Java Path Handling
 
-| **Quirk** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Java `File.getCanonicalPath()` | Resolves `../` correctly | Safe if used. |
 | Tomcat `..;/` | `..;/admin` bypasses filter | Tomcat-specific. |
@@ -138,7 +138,7 @@ ___
 
 ## Node.js / Express Path Quirks
 
-| **Quirk** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `path.join(base, userInput)` | `path.join("/var/www", "../etc/passwd")` resolves to `/etc/passwd` | Vulnerable to traversal. |
 | `path.resolve(base, userInput)` | Same risk | Same. |

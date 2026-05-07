@@ -22,7 +22,7 @@ linked:
 
 ## IP Rotation
 
-| **Método** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Tor SOCKS5 | `proxychains -q hydra ...` | Free, slow, exit nodes blocked sometimes. |
 | Free proxy lists | `gimmeproxy.com`, `proxyscrape.com` | Unreliable, slow. |
@@ -65,7 +65,7 @@ ___
 
 ## Header Spoofing (X-Forwarded-For etc)
 
-| **Header** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `X-Forwarded-For: 1.2.3.4` | App lee XFF en lugar de socket IP | Most common. |
 | `X-Real-IP: 1.2.3.4` | Variant Nginx | Same. |
@@ -105,7 +105,7 @@ ___
 
 ## User-Agent + Session Rotation
 
-| **Vector** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | User-Agent rotation | Random UA per request | Per-UA fingerprint detection. |
 | `Accept-Language` randomization | Diff locale per request | Locale-based fingerprint. |
@@ -140,7 +140,7 @@ ___
 
 ## Timing Distribution
 
-| **Estrategia** | **Pacing** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Random delay 1-5s | `sleep $((RANDOM % 5))` between attempts | Avoid burst detection. |
 | Sleep N min between bursts | 10 attempts then sleep 10 min | Reset counters. |
@@ -182,7 +182,7 @@ ___
 
 ## Endpoint / Account Rotation
 
-| **Vector** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Multiple login endpoints | `/login`, `/api/login`, `/oauth/token` | Per-endpoint counter. |
 | Mobile vs web endpoints | Different paths same backend | Counter per path. |

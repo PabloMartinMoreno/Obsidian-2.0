@@ -25,7 +25,7 @@ linked:
 
 ## JWT Secret Crack
 
-| **Tipo JWT** | **Brute** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HS256 weak secret | hashcat -m 16500 | Most common. |
 | HS384/HS512 weak secret | Same with -m 16511/16512 | Variants. |
@@ -66,7 +66,7 @@ ___
 
 ## Password Reset Token Brute
 
-| **Vector** | **Strategy** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | 4-digit numeric reset | 10K combos, brute viable | SMS-based. |
 | 6-digit numeric reset | 1M combos | Race + parallelism. |
@@ -107,7 +107,7 @@ ___
 
 ## OTP / 2FA Brute
 
-| **Tipo** | **Strategy** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | TOTP 6-digit | 1M combos, drift window 30s | Race attack. |
 | TOTP 4-digit | 10K — trivial | Burst. |
@@ -145,7 +145,7 @@ ___
 
 ## SSH / RDP / SMB / FTP Brute
 
-| **Servicio** | **Tool** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | SSH | `hydra ssh://target -L u.txt -P p.txt` | Slow due to TCP handshake. |
 | SSH key brute | Decrypt encrypted private key | `john --wordlist sshkey.john`. |
@@ -182,7 +182,7 @@ ___
 
 ## App-Specific (WordPress, Joomla, etc.)
 
-| **App** | **Endpoint** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | WordPress wp-login.php | POST `log=admin&pwd=PASS&wp-submit=Log+In` | Standard. |
 | WordPress XML-RPC | `POST /xmlrpc.php` con system.multicall (1500 attempts/req) | Bypass rate limit. |

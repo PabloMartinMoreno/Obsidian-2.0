@@ -16,7 +16,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[Host Header Injection - Vectores Comunes]]"
   - "[[Host Header Injection - Headers Alternativos]]"

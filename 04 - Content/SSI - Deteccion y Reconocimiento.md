@@ -21,7 +21,7 @@ linked:
 
 ## Identificar SSI Habilitado
 
-| **Indicator** | **Probe / Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Extensión `.shtml` | URL path con `.shtml` / `.shtm` / `.stm` | Apache/IIS handler default. |
 | Server header | `Server: Apache/2.x` con mod_include | Apache stack. |

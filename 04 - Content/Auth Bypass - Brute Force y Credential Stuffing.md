@@ -25,7 +25,7 @@ linked:
 
 ## Default Credential Wordlists
 
-| **Wordlist** | **Path / Repo** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | SecLists Default-Credentials | `seclists/Passwords/Default-Credentials/` | Curated list. |
 | nmap-defaults | `nmap` script `--script=*-default-accounts` | NSE script. |
@@ -44,7 +44,7 @@ ___
 
 ## Password Spraying
 
-| **Concept** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | One password tried against MANY users (vs brute force = many passwords on one user) | Avoid lockout. |
 | Common passwords | `Spring2025!`, `Welcome1`, `Password123` | Predictable corp passwords. |
@@ -64,7 +64,7 @@ ___
 
 ## Username Enum + Targeted Brute
 
-| **Workflow** | **Step** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Step 1: enum users | Username enumeration techniques | See Detection sub-note. |
 | Step 2: refine list | Filter to confirmed users | Reduce noise. |
@@ -82,7 +82,7 @@ ___
 
 ## Offline Crack (Hashcat / John)
 
-| **Hash type** | **Mode (hashcat)** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | MD5 | `-m 0` | Cracked en seconds. |
 | SHA1 | `-m 100` | Same. |
@@ -133,7 +133,7 @@ ___
 
 ## Online (Hydra / Medusa / Crackmapexec)
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Hydra HTTP form | `hydra -L users.txt -P passes.txt target https-post-form '/login:user=^USER^&pass=^PASS^:F=Invalid'` | Standard. |
 | Hydra HTTP basic | `hydra -L users.txt -P passes.txt -m / target https-get` | Basic auth. |
@@ -153,7 +153,7 @@ ___
 
 ## Bypass Rate Limiting / Lockout
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP/2 single-packet | Burst N requests in single packet | Modern. |
 | Race condition rate limit | Multiple simultaneous before counter increments | TOCTOU. |

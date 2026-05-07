@@ -53,7 +53,7 @@ ___
 
 ## jQuery `$.extend` deep
 
-| **Patrón** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Vulnerable call | `$.extend(true, target, src)` | `true` flag = recursive (vulnerable). |
 | jQuery <3.4.0 | CVE-2019-11358 | Versions vulnerable. |
@@ -68,7 +68,7 @@ ___
 
 ## Express body-parser y `qs`
 
-| **Patrón** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | qs default Express | `app.use(express.urlencoded({extended:true}))` | `extended:true` usa qs (vulnerable a parse de `__proto__`). |
 | qs query string | `?__proto__[polluted]=yes` | Server convierte a `{__proto__:{polluted:'yes'}}` object. |
@@ -105,7 +105,7 @@ ___
 
 ## Mongoose Schema Bypass
 
-| **Patrón** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Schema con `strict:false` | Schema permite cualquier field | Vulnerable a PP via update. |
 | `findOneAndUpdate` con $set | `User.findOneAndUpdate({_id:userId}, {$set: req.body})` | req.body controlado → injection. |
@@ -121,7 +121,7 @@ ___
 
 ## `Object.assign` con Input Controlado
 
-| **Patrón** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Object.assign shallow | `Object.assign(target, src)` — solo top level | Por sí mismo NO PP (no recursivo). |
 | Custom recursive merge | Loop manual de keys que descend en objetos | Vulnerable si dev olvida check de `__proto__`. |

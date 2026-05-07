@@ -21,7 +21,7 @@ linked:
 
 ## Introspection Query Completa
 
-| **Objetivo** | **Query** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Schema básico | `{__schema{types{name}}}` | Lista todos los types. |
 | Schema completo | Query introspection canonical (ver abajo) | Dump full schema. |
@@ -106,7 +106,7 @@ ___
 
 ## Field Suggestions (Typo Trick)
 
-| **Objetivo** | **Query** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Engine acepta typo y sugiere field correcto en error | Disclosure parcial sin introspection. |
 | Probe básico | `{usr}` → "Did you mean user?" | Single field. |
@@ -136,7 +136,7 @@ ___
 
 ## Schema Recovery con Tools
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | clairvoyance | `clairvoyance https://target/graphql -o schema.json` | Auto-recover schema sin introspection. |
 | GraphQL Voyager | `https://graphql-kit.com/graphql-voyager/` | Visualizar schema cargando JSON. |

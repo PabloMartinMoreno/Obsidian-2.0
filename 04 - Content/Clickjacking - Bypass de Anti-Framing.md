@@ -21,7 +21,7 @@ linked:
 
 ## JS Frame-Busting Bypass
 
-| **Frame-busting code** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `if (top != self) top.location = self.location` | `<iframe sandbox>` removes script execution | Sandbox bypass. |
 | `if (top != self) top.location.replace(self.location)` | Same | Same. |
@@ -63,7 +63,7 @@ ___
 
 ## Sandbox Attribute Tricks
 
-| **Sandbox value** | **Effect** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<iframe sandbox>` | Most restrictive — no scripts, forms, plugins, navigation | Standard bypass. |
 | `sandbox="allow-forms"` | Forms work, scripts disabled | Form-based attacks. |
@@ -85,7 +85,7 @@ ___
 
 ## X-Frame-Options Bypass
 
-| **Bypass** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `ALLOW-FROM` deprecated | Modern browsers ignore | Bypass via CSP if XFO ALLOW-FROM. |
 | Old IE / browser-specific | XFO inconsistent support | Edge. |
@@ -107,7 +107,7 @@ ___
 
 ## CSP frame-ancestors Bypass
 
-| **Bypass** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Wildcard subdomain | `frame-ancestors *.target.com` → atacante claims subdomain | SDT combo. |
 | `frame-ancestors *` | Permissive — direct framing | Misconfig. |
@@ -129,7 +129,7 @@ ___
 
 ## Browser Quirks y Edge Cases
 
-| **Quirk** | **Browser/Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Old IE compatibility | XFO inconsistent en IE 8/9 | Legacy. |
 | Firefox `frame-ancestors` | Modern browsers all support | Standard. |

@@ -24,7 +24,7 @@ linked:
 
 ## PHP / libxslt
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Probe namespace | `xmlns:php="http://php.net/xsl"` | Header del stylesheet. |
 | Detect | `<xsl:value-of select="function-available('php:function')"/>` | `true` si `registerPHPFunctions()` activo. |
@@ -51,7 +51,7 @@ ___
 
 ## Java / Saxon
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Probe namespace | `xmlns:Runtime="java:java.lang.Runtime"` | Saxon-PE/EE only — Saxon-HE NO. |
 | Detect | `<xsl:value-of select="function-available('saxon:evaluate')"/>` | `true` → PE/EE. |
@@ -89,7 +89,7 @@ ___
 
 ## Microsoft / MSXML
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Probe namespace MS | `xmlns:msxsl="urn:schemas-microsoft-com:xslt"` | Microsoft XSLT extensions. |
 | User namespace | `xmlns:ext="urn:extension"` | Para llamar funciones definidas. |

@@ -22,7 +22,7 @@ linked:
 
 ## Burp Intruder + Param Miner
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Param Miner | Burp BApp Store → "Param Miner" | Discover hidden params. |
 | Right-click → "Guess params" | Auto-discover query/body params | Standard. |
@@ -42,7 +42,7 @@ ___
 
 ## Custom curl Scripts
 
-| **Workflow** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Single duplicate test | `curl "https://target/?a=1&a=2"` | Standard. |
 | Multi-encoding test | `for enc in...; do curl ...; done` | Iterate. |
@@ -102,7 +102,7 @@ ___
 
 ## Per-Stack Test Harness
 
-| **Stack** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Docker per-stack | Run target stack en container | Reproducible. |
 | PHP test | `docker run -p 80:80 php:apache` | Test PHP behavior. |

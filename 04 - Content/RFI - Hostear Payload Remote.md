@@ -21,7 +21,7 @@ linked:
 
 ## Webshell Setup Atacante
 
-| **Setup** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Python HTTP server | `python3 -m http.server 80` | Quick, no install. |
 | Python HTTPS server | `python3 -m http.server --bind 0.0.0.0 443` con cert | TLS variant. |
@@ -77,7 +77,7 @@ ___
 
 ## Polyglot Files
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | File con multiple format magic bytes — bypasses extension/MIME filters. | Multi-vector. |
 | GIF + PHP polyglot | `GIF89a<?php system('id'); ?>` | Standard. |
@@ -118,7 +118,7 @@ ___
 
 ## Public Payload Servers
 
-| **Servicio** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Pastebin | Static text content | Limited. |
 | GitHub Gist | Public gist con raw URL | Standard. |
@@ -156,7 +156,7 @@ ___
 
 ## DNS Rebinding
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Atacante controls DNS server. First resolve → legit IP. Second resolve → atacante's IP. Backend's TOCTOU between validate + fetch. | TOCTOU. |
 | Setup atacante | DNS server con `rebind.atacante.com` rotating | Custom DNS. |

@@ -22,7 +22,7 @@ linked:
 
 ## Cache Key Normalization Tricks
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Cache puede normalizar cache key (e.g. lowercase URL, sort query params). Diferencias entre normalización del cache vs backend → poisoning. | Differential normalization. |
 | Param order | `?b=2&a=1` vs `?a=1&b=2` | Cache trata mismo, backend distinto (o viceversa). |
@@ -66,7 +66,7 @@ ___
 
 ## Race Conditions en Cache Fill
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Window entre cache miss y cache fill — atacante puede slip request entre que origin genera y cache stores | Timing-sensitive. |
 | Single-flight bypass | Cache que serializes requests al origin (lock) — race entre lock acquire | Edge. |
@@ -109,7 +109,7 @@ ___
 
 ## Multi-CDN Chains
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | App con Cloudflare → Akamai → origin. Cada cache normaliza distinto → diferenciales acumulables. | Multi-tier discrepancies. |
 | Detect multi-tier | Headers `Via:`, `X-Cache-*` con múltiples valores | Indicador. |
@@ -127,7 +127,7 @@ ___
 
 ## Fat GET / Fat POST
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Fat GET | GET con body — ambiguo, RFC permite pero no fomenta | Cache may ignore body, backend processes. |
 | Fat GET poison | `GET /page HTTP/1.1\r\nHost: target\r\nContent-Length: 22\r\n\r\nuser=admin&action=evil` | Cache key = URL only, backend processes body. |

@@ -21,7 +21,7 @@ linked:
 
 ## HTTP/2 Single-Packet Technique
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | HTTP/2 multiplexes streams en un solo TCP packet. N requests llegan al server simultáneamente — bypassea network jitter. | James Kettle 2023 paper. |
 | Setup | Cliente HTTP/2 + server con HTTP/2 support | Cloudflare/AWS ALB típicamente. |
@@ -62,7 +62,7 @@ ___
 
 ## Last-Byte Sync (HTTP/1.1)
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | HTTP/1.1 sin H2 — pre-load todos los requests excepto last byte, luego flush último byte de cada uno juntos | Pre-H2 técnica. |
 | Pipelining + delay | Send headers + N-1 bytes del body → hold last byte → flush juntos | Manual. |
@@ -80,7 +80,7 @@ ___
 
 ## Pre-Loading Delays
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Pre-warm server (caches, connections, JIT) antes del race burst | Reduce variability. |
 | Warm cache | Send 1 normal request antes → cache populated | Más predictable. |
@@ -98,7 +98,7 @@ ___
 
 ## Sleep Gadget Probe
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Si no estás seguro de race window — inject sleep en endpoint via SQLi/SSRF/etc. Sleep extiende processing time → race window enlargada artificialmente | Side-channel. |
 | SQLi sleep | `' OR pg_sleep(5) -- -` en arg vulnerable | Postgres. |

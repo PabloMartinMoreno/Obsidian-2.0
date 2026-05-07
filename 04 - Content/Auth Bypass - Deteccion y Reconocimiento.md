@@ -21,7 +21,7 @@ linked:
 
 ## Identificar Endpoints Auth / Authz
 
-| **Endpoint type** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/login`, `/signin`, `/auth` | Login form | Auth principal. |
 | `/logout`, `/signout` | Logout | Session destroy. |
@@ -48,7 +48,7 @@ ___
 
 ## Username Enumeration
 
-| **Vector** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Login response diff | `Invalid user` vs `Invalid password` | Direct enum. |
 | Generic message uniformization | `Invalid credentials` (safe) | Indistinguible — bypass-able via timing. |

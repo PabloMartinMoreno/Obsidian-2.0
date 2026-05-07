@@ -16,7 +16,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[Prototype Pollution - Vectores Server-Side]]"
   - "[[Prototype Pollution - Vectores Client-Side]]"

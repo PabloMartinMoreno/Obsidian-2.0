@@ -17,7 +17,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[Session Hijacking - Vectores de Robo]]"
   - "[[Session Hijacking - Cookie Tampering y Forging]]"

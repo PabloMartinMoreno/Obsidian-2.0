@@ -23,7 +23,7 @@ linked:
 
 ## Multi-Endpoint Races (Chains)
 
-| **Objetivo** | **Chain** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Race entre endpoints distintos que comparten estado. Endpoint A modifica → Endpoint B verifica | Cross-endpoint TOCTOU. |
 | Order race | `POST /cart/checkout` + `DELETE /cart/item/X` simultáneos | Item shipped sin cobrar. |
@@ -42,7 +42,7 @@ ___
 
 ## Promo Code / Voucher Redemption
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Voucher diseñado para 1-time-use o stock limitado. Race redime N veces simultáneamente | Stock overrun. |
 | Single-use voucher | Code "PROMO50" → 1 use total → race 100 veces | All applied. |
@@ -60,7 +60,7 @@ ___
 
 ## Voting / Rating Manipulation
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | App enforces "1 vote per user per item". Race spam votes → multiple counted | Direct manipulation. |
 | Like spam | `POST /like/123` × 100 simultáneos → like counter += 100 | Visible amplification. |
@@ -78,7 +78,7 @@ ___
 
 ## Account Takeover via Password Reset Race
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Reset token consume race. Atacante request reset → victim también request → atacante usa token de victim | Multi-actor race. |
 | Reset token reuse | Token marked-used after click. Race click + actual reset | Token lifetime extension. |
@@ -110,7 +110,7 @@ ___
 
 ## Cache Fill Race
 
-| **Objetivo** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Cache miss → backend genera response → cache stores. Race entre miss y store window | Cache poisoning timing. |
 | Single-flight bypass | Cache uses lock to prevent thundering herd. Race lock acquire | Bypass single-flight. |

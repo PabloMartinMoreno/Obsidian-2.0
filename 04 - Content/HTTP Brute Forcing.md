@@ -17,7 +17,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[HTTP Brute Forcing - Targets de Ataque]]"
   - "[[HTTP Brute Forcing - Wordlists y Strategy]]"

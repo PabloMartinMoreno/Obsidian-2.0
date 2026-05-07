@@ -40,7 +40,7 @@ ___
 
 ## Decodificación y Análisis
 
-| **Objetivo** | **Comando / payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Decode header rápido | `echo "eyJhbGciOi..." \| cut -d. -f1 \| base64 -d` | Padding puede faltar — agregar `==`. |
 | Decode payload | `echo "eyJhbGciOi..." \| cut -d. -f2 \| base64 -d` | Claims en JSON. |

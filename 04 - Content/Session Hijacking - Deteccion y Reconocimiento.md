@@ -21,7 +21,7 @@ linked:
 
 ## Identificar Mecanismos de Session
 
-| **Mecanismo** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Cookie session ID | `Set-Cookie: PHPSESSID=...`, `JSESSIONID=...`, `connect.sid=...` | Server-side state. |
 | JWT en cookie | `Set-Cookie: token=eyJ...` | Stateless self-contained. |
@@ -84,7 +84,7 @@ ___
 
 ## Mapear Session Lifecycle
 
-| **Stage** | **What to check** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Pre-auth state | Cookie issued anonymous? | Session fixation possible if same ID after login. |
 | Login → new cookie | Cookie regenerates post-auth? | Best practice. |

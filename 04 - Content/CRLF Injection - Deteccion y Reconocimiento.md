@@ -21,7 +21,7 @@ linked:
 
 ## Identificar Puntos de Header Reflexion
 
-| **Pattern** | **Endpoint type** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Redirect endpoints | `/redirect?url=...` con Location header | Most common vector. |
 | URL shorteners | `/r?to=...` | Same. |
@@ -89,7 +89,7 @@ ___
 
 ## Detectar Response Splitting Potencial
 
-| **Indicator** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Multi-line value en Location header | `Location: /path%0d%0aFoo:bar` | If preserved → splitting potencial. |
 | Inject empty line `%0d%0a%0d%0a` | Two CRLFs end headers, start body | Standard splitting. |

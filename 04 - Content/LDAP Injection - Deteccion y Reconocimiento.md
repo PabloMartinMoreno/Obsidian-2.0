@@ -84,7 +84,7 @@ ___
 
 ## Fingerprint del Directory Server
 
-| **Indicator** | **Server identificado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Header `Server: AD` o `Microsoft-HTTPAPI` | Active Directory (Windows) | Stack Microsoft. |
 | Errores con `samAccountName` | AD-specific attribute | AD confirmed. |

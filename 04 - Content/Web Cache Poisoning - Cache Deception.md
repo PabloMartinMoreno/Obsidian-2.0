@@ -21,7 +21,7 @@ linked:
 
 ## Path Confusion (.css / .js Extension Trick)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Cache configurado para cachear automáticamente paths con extensiones estáticas (`.css`, `.js`, `.png`). Atacante construye URL con extensión que termina en endpoint dinámico privado. | Vector clásico — Omer Gil 2017. |
 | URL trick básico | `https://target/account.css` → backend ignora `.css` y sirve `/account` (con data sensible) | Cache guarda response como `.css`. |
@@ -57,7 +57,7 @@ ___
 
 ## Path Normalization Differences
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Doble slash | `https://target//api/me` | Backend normaliza `//` a `/` → mismo endpoint, cache trata distinto. |
 | Slash + dot | `https://target/api/me/.` | Backend ignora `/.` → mismo endpoint. |
@@ -77,7 +77,7 @@ ___
 
 ## Static Prefix Abuse
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Prefix `/static/` mapeo | `https://target/static/../api/me` | Cache sees `/static/...`, backend resolve traversal. |
 | Prefix `/assets/` | `https://target/assets/../admin` | Igual idea. |
@@ -95,7 +95,7 @@ ___
 
 ## Encoded Slashes y Variantes
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | URL-encoded slash | `%2F` | Some caches treat as `/`, others not. |
 | Doble encoded | `%252F` | Decoded `%2F` = `/`. |

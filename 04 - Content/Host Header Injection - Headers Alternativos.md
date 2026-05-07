@@ -22,7 +22,7 @@ linked:
 
 ## `X-Forwarded-Host` (XFH)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Standard XFH | `X-Forwarded-Host: attacker.com` | Most common alternative. |
 | XFH con port | `X-Forwarded-Host: attacker.com:443` | Port included. |
@@ -41,7 +41,7 @@ ___
 
 ## `X-Forwarded-For` (XFF) y `X-Real-IP`
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | XFF en Host context | `X-Forwarded-For: attacker.com` | Normalmente IP, pero apps laxas. |
 | Spoof internal IP | `X-Forwarded-For: 127.0.0.1` | Internal trust bypass. |
@@ -62,7 +62,7 @@ ___
 
 ## `X-Forwarded-Server`
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Standard XFS | `X-Forwarded-Server: attacker.com` | Less common. |
 | Apache mod_proxy | Adds XFS in chained proxies | Apache specific. |
@@ -77,7 +77,7 @@ ___
 
 ## `X-HTTP-Host-Override` / `X-Host`
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Custom override | `X-HTTP-Host-Override: attacker.com` | Direct override. |
 | `X-Host: attacker.com` | Custom header | Frequent en custom apps. |
@@ -94,7 +94,7 @@ ___
 
 ## `X-Original-URL` / `X-Rewrite-URL`
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | IIS-specific headers que override path/URL | IIS-only typical. |
 | Path override | `X-Original-URL: /admin` | Backend processes admin path while client sees /. |
@@ -113,7 +113,7 @@ ___
 
 ## `Forwarded:` (RFC 7239)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Standard syntax | `Forwarded: by=<proxy>;for=<client>;host=<host>;proto=<scheme>` | RFC 7239. |
 | Host injection | `Forwarded: host=attacker.com` | Direct. |

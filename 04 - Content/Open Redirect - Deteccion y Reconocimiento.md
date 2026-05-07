@@ -62,7 +62,7 @@ ___
 
 ## Endpoints Comunes
 
-| **Endpoint** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/login` | `?next=/dashboard` | Post-login redirect. |
 | `/logout` | `?next=/` | Post-logout redirect. |

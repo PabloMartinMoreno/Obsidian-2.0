@@ -22,7 +22,7 @@ linked:
 
 ## Param Miner (Burp Extension)
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalar | Burp → Extensions → BApp Store → "Param Miner" | Free PortSwigger tool. |
 | Settings → cache poisoning detection | Toggle modo | Habilita probes. |
@@ -42,7 +42,7 @@ ___
 
 ## HTTP Request Smuggler (Combo)
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalar | Burp → Extensions → "HTTP Request Smuggler" | PortSwigger ext. |
 | Smuggle attack panel | Right-click request → Smuggle attack | Setup interactivo. |
@@ -67,7 +67,7 @@ ___
 
 ## Web Cache Vulnerability Scanner (WCVS)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `git clone https://github.com/Hackmanit/Web-Cache-Vulnerability-Scanner` | Go-based scanner. |
 | Compile | `go build -o wcvs main.go` | Si binario no preempaquetado. |
@@ -87,7 +87,7 @@ ___
 
 ## Manual curl / Burp Repeater
 
-| **Workflow** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Cache buster setup | `URL="https://target/page?cb=$(date +%s)"` | Force MISS inicial. |
 | Verify cacheable | `curl -sI "$URL" | grep -i x-cache` | HIT en segundo request. |

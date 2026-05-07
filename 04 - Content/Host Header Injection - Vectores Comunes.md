@@ -22,7 +22,7 @@ linked:
 
 ## Password Reset Poisoning
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App uses `Host` header to construct reset link → atacante envía request con Host: attacker → victim recibe email con link a attacker | Standard vector. |
 | PoC clásico | `POST /forgot` con `Host: attacker.com` y `email=victim@target.com` | Direct. |
@@ -61,7 +61,7 @@ ___
 
 ## Cache Poisoning via Host
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App reflects Host en response (e.g. `<base href="https://${HOST}/">`). Cache stores response keyed por URL only. Attacker poisons cache → all subsequent users see attacker's Host | Standard cache poisoning combo. |
 | `<base href>` poison | `Host: attacker.com` → cached `<base href="https://attacker.com/">` | All relative URLs route via attacker. |
@@ -80,7 +80,7 @@ ___
 
 ## SSRF a Virtual Hosts Internos
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Backend routes by Host header. Atacante injects internal Host → server returns internal vhost content | SSRF via routing. |
 | Internal admin vhost | `Host: admin.internal` | Hidden admin panel. |
@@ -101,7 +101,7 @@ ___
 
 ## Routing-Based Access Control Bypass
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Some apps grant trust based on Host (e.g. internal Host = no auth). Atacante spoofs Host → bypass auth check | Trust-based vector. |
 | Internal vhost no-auth | `Host: localhost` o `Host: internal.target.com` | Bypass login. |
@@ -119,7 +119,7 @@ ___
 
 ## Email Link Generation Hijack
 
-| **Workflow** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App uses Host para construir cualquier email link (welcome, notification, share, invite) | Beyond reset/confirm. |
 | Welcome email link | `https://${HOST}/welcome?token=...` | First-touch hijack. |

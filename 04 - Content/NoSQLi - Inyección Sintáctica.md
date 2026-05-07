@@ -21,7 +21,7 @@ linked:
 
 ## Cheatsheet
 
-| **Contexto** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|---|
 | **MongoDB shell string** | `admin' \|\| '1'=='1` | Escape de string + OR siempre true. Si app concatena a shell. |
 | **MongoDB JS function** | `admin'); return true; //` | Cierre del string + retorno forzado + comment. |

@@ -22,7 +22,7 @@ linked:
 
 ## Credential Stuffing vs Password Spray
 
-| **Estrategia** | **Cuándo usar** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Credential Stuffing | Tienes user:pass leaked DB | High success rate. |
 | Password Spray | Conoces users (enum) pero no passwords | Slow + wide. |
@@ -46,7 +46,7 @@ ___
 
 ## Leaked Databases
 
-| **DB** | **Source** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | RockYou.txt | 2009 leak — 14M passwords | Default `/usr/share/wordlists/rockyou.txt`. |
 | RockYou2024 | Aggregated mega-leak | 10B+ entries. |
@@ -85,7 +85,7 @@ ___
 
 ## Targeted Wordlists (CeWL, CUPP, Wordlister)
 
-| **Tool** | **Approach** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | CeWL | Crawl target site, build wordlist | `cewl -d 2 -m 5 https://target -w out.txt`. |
 | CUPP | Personal info → password permutations | Interactive: name, dob, partner, etc. |
@@ -122,7 +122,7 @@ ___
 
 ## Mangling Rules
 
-| **Rule** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `best64.rule` | hashcat default | 64 common transformations. |
 | `dive.rule` | Dive deep — slow | Comprehensive. |
@@ -161,7 +161,7 @@ ___
 
 ## Pattern-Based Strategy
 
-| **Patrón** | **Wordlist** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Default vendor passwords | `Default-Credentials/` SecLists | Routers, IoT. |
 | Common admin defaults | `admin/admin`, `root/root`, `test/test` | Quick check. |

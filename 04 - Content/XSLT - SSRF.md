@@ -25,7 +25,7 @@ linked:
 
 ## Escaneo de Puertos Internos
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Localhost — SSH probe | `<xsl:copy-of select="document('http://127.0.0.1:22/')"/>` | Banner SSH si responde. |
 | Localhost — Redis | `<xsl:copy-of select="document('http://127.0.0.1:6379/info')"/>` | Redis sin auth — info devuelve config. |

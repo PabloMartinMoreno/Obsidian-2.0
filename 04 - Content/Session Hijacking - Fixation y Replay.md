@@ -22,7 +22,7 @@ linked:
 
 ## Set Victim's Session ID Pre-Auth
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Atacante sets known SID en victim's browser. After victim logs in, app keeps same SID. Atacante uses SID. | Classic session fixation. |
 | URL parameter SID | `https://target/login?PHPSESSID=ATTACKER_SID` | Old apps con URL-based session. |
@@ -55,7 +55,7 @@ ___
 
 ## Replay Captured Tokens
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Atacante captures session token (XSS / sniff / etc) → uses it from own machine | Standard reuse. |
 | Cookie capture + reuse | Steal cookie → set en atacante's browser → access | Direct. |
@@ -77,7 +77,7 @@ ___
 
 ## Long-lived Sessions / Tokens
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `Max-Age=31536000` (1 year) | Cookie valid 1 year | Persistencia. |
 | Persistent "remember me" | Long-lived auth token | Common feature. |
@@ -98,7 +98,7 @@ ___
 
 ## Concurrent Session Abuse
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Atacante + victim simultaneously | Both sessions active | Standard. |
 | App permite multiple sessions | No "one device" enforcement | Common. |
@@ -117,7 +117,7 @@ ___
 
 ## Refresh Token Replay
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | OAuth/OIDC refresh token long-lived. Captured refresh = persistent access. | Standard OAuth. |
 | Refresh token capture | Network sniff, XSS, etc | Same vectors. |

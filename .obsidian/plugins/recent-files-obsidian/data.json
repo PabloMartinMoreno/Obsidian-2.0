@@ -1,44 +1,148 @@
 {
   "recentFiles": [
     {
+      "basename": "Insecure Deserialization",
+      "path": "04 - Content/Insecure Deserialization.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/GraphQL Injection.md"
+      "basename": "Subdomain Takeover",
+      "path": "04 - Content/Subdomain Takeover.md"
     },
     {
-      "basename": "LDAP Injection",
-      "path": "04 - Content/LDAP Injection.md"
+      "basename": "WordPress Exploitation",
+      "path": "04 - Content/Process/WordPress Exploitation.md"
     },
     {
-      "basename": "NoSQL Injection",
-      "path": "04 - Content/NoSQL Injection.md"
+      "basename": "Host Header Injection",
+      "path": "04 - Content/Host Header Injection.md"
     },
     {
-      "basename": "File Inclusion",
-      "path": "04 - Content/File Inclusion.md"
+      "basename": "HTTP Request Smuggling",
+      "path": "04 - Content/HTTP Request Smuggling.md"
     },
     {
-      "basename": "LFI - PHP Wrappers",
-      "path": "04 - Content/LFI - PHP Wrappers.md"
+      "basename": "Web Cache Poisoning",
+      "path": "04 - Content/Web Cache Poisoning.md"
+    },
+    {
+      "basename": "Mass Assignment",
+      "path": "04 - Content/Mass Assignment.md"
+    },
+    {
+      "basename": "Open Redirect",
+      "path": "04 - Content/Open Redirect.md"
+    },
+    {
+      "basename": "Race Conditions",
+      "path": "04 - Content/Race Conditions.md"
+    },
+    {
+      "basename": "Prototype Pollution",
+      "path": "04 - Content/Prototype Pollution.md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
+    },
+    {
+      "basename": "Session Hijacking",
+      "path": "04 - Content/Session Hijacking.md"
+    },
+    {
+      "basename": "BOLA - IDOR",
+      "path": "04 - Content/BOLA - IDOR.md"
     },
     {
       "basename": "HTTP Brute Forcing",
       "path": "04 - Content/HTTP Brute Forcing.md"
     },
     {
+      "basename": "OAuth 2.0 Misconfigurations",
+      "path": "04 - Content/OAuth 2.0 Misconfigurations.md"
+    },
+    {
+      "basename": "JWT Attacks",
+      "path": "04 - Content/JWT Attacks.md"
+    },
+    {
       "basename": "Authentication & Authorization Bypass",
       "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
-      "basename": "Ataques de Fuerza Bruta",
-      "path": "04 - Content/Process/Ataques de Fuerza Bruta.md"
-    },
-    {
       "basename": "File Upload - Vulnerabilidades",
       "path": "04 - Content/File Upload - Vulnerabilidades.md"
+    },
+    {
+      "basename": "Remote File Inclusion (RFI)",
+      "path": "04 - Content/Remote File Inclusion (RFI).md"
+    },
+    {
+      "basename": "Directory Traversal",
+      "path": "04 - Content/Directory Traversal.md"
+    },
+    {
+      "basename": "File Inclusion",
+      "path": "04 - Content/File Inclusion.md"
+    },
+    {
+      "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
+      "path": "04 - Content/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
+    },
+    {
+      "basename": "XML External Entity (XXE)",
+      "path": "04 - Content/XML External Entity (XXE).md"
+    },
+    {
+      "basename": "HTTP Parameter Pollution",
+      "path": "04 - Content/HTTP Parameter Pollution.md"
+    },
+    {
+      "basename": "CRLF Injection",
+      "path": "04 - Content/CRLF Injection.md"
+    },
+    {
+      "basename": "Server-Side Includes (SSI) Injection",
+      "path": "04 - Content/Server-Side Includes (SSI) Injection.md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/OS Command Injection.md"
+    },
+    {
+      "basename": "LDAP Injection",
+      "path": "04 - Content/LDAP Injection.md"
+    },
+    {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/GraphQL Injection.md"
+    },
+    {
+      "basename": "NoSQL Injection",
+      "path": "04 - Content/NoSQL Injection.md"
+    },
+    {
+      "basename": "LFI - PHP Wrappers",
+      "path": "04 - Content/LFI - PHP Wrappers.md"
+    },
+    {
+      "basename": "Ataques de Fuerza Bruta",
+      "path": "04 - Content/Process/Ataques de Fuerza Bruta.md"
     },
     {
       "basename": "File Upload - XSS y XXE",
@@ -95,110 +199,6 @@
     {
       "basename": "CWES",
       "path": "04 - Content/Process/CWES.md"
-    },
-    {
-      "basename": "Kerberoasting",
-      "path": "04 - Content/Kerberoasting.md"
-    },
-    {
-      "basename": "Pass-the-Hash",
-      "path": "04 - Content/Pass-the-Hash.md"
-    },
-    {
-      "basename": "AD - Health y Security Auditing",
-      "path": "04 - Content/AD - Health y Security Auditing.md"
-    },
-    {
-      "basename": "AD - GPO y SYSVOL Enumeration - GPO Inheritance y Scope",
-      "path": "04 - Content/AD - GPO y SYSVOL Enumeration - GPO Inheritance y Scope.md"
-    },
-    {
-      "basename": "AD - ADCS Enumeration",
-      "path": "04 - Content/AD - ADCS Enumeration.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration",
-      "path": "04 - Content/AD - Hosts Enumeration.md"
-    },
-    {
-      "basename": "Subdomain Takeover",
-      "path": "04 - Content/Subdomain Takeover.md"
-    },
-    {
-      "basename": "BloodHound & SharpHound",
-      "path": "04 - Content/BloodHound & SharpHound.md"
-    },
-    {
-      "basename": "AD - ACL Enumeration",
-      "path": "04 - Content/AD - ACL Enumeration.md"
-    },
-    {
-      "basename": "AD - Delegation Enumeration",
-      "path": "04 - Content/AD - Delegation Enumeration.md"
-    },
-    {
-      "basename": "AD - DCSync Rights Discovery",
-      "path": "04 - Content/AD - DCSync Rights Discovery.md"
-    },
-    {
-      "basename": "AD - ACL Enumeration - ACE Filtering y Bulk Audit",
-      "path": "04 - Content/AD - ACL Enumeration - ACE Filtering y Bulk Audit.md"
-    },
-    {
-      "basename": "netexec",
-      "path": "04 - Content/netexec.md"
-    },
-    {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "Usage",
-      "path": "05 - Writeups/HackTheBox/Usage.md"
-    },
-    {
-      "basename": "AD - Password Policy Enumeration",
-      "path": "04 - Content/AD - Password Policy Enumeration.md"
-    },
-    {
-      "basename": "AD - Users Enumeration",
-      "path": "04 - Content/AD - Users Enumeration.md"
-    },
-    {
-      "basename": "AD - Domain & Forest Trusts",
-      "path": "04 - Content/AD - Domain & Forest Trusts.md"
-    },
-    {
-      "basename": "AD - DNS & SRV Records",
-      "path": "04 - Content/AD - DNS & SRV Records.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration - DC Discovery",
-      "path": "04 - Content/AD - Hosts Enumeration - DC Discovery.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
-    },
-    {
-      "basename": "Web",
-      "path": "04 - Content/Process/Web.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     }
   ],
   "omittedPaths": [],

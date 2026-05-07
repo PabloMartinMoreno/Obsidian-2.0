@@ -23,7 +23,7 @@ linked:
 
 ## Predictable Session IDs
 
-| **Pattern** | **Vulnerability** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Sequential IDs | `session=1001`, `session=1002` | Direct prediction. |
 | Counter-based | Atomic increment | Same. |
@@ -63,7 +63,7 @@ ___
 
 ## Weak HMAC / Signed Cookies
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Server signs cookie con HMAC. Si secret weak → atacante crack secret + forge cookies | Crypto bypass. |
 | Hashcat HS256 | `hashcat -m 16500 cookie.txt rockyou.txt` | Like JWT. |
@@ -83,7 +83,7 @@ ___
 
 ## JWT Manipulation
 
-| **Vector** | **Reference** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `alg=none` | See `JWT Attacks` | Standard. |
 | Algorithm confusion | RS256 → HS256 | Same. |
@@ -100,7 +100,7 @@ ___
 
 ## Cookie Tossing (Sub Overrides Parent)
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Subdomain con XSS / takeover sets cookie con `Domain=.target.com` y `Path=/` → overrides parent's session cookie | Cross-subdomain attack. |
 | Subdomain XSS sets cookie | `document.cookie = 'session=ATTACKER_SET; Domain=.target.com'` | Direct. |
@@ -120,7 +120,7 @@ ___
 
 ## HttpOnly Bypass Tricks
 
-| **Trick** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `XMLHttpRequest` getResponseHeader | Get `Set-Cookie` from response | Bypass via response header read. |
 | `XmlHttpRequest.setRequestHeader('Cookie', ...)` | Set cookie en request — pero browser overrides | Mostly blocked. |

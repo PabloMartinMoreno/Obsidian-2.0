@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Endpoints que Reflejan / Dependen de Host
 
-| **Indicator** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Reset password endpoint | `/forgot`, `/reset` — emite link en email | Most common vector. |
 | Email confirmation | `/verify`, `/confirm` — enlaces al user | Same. |
@@ -85,7 +85,7 @@ ___
 
 ## Test Multi-Header Behavior
 
-| **Header type** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `X-Forwarded-Host` | `X-Forwarded-Host: attacker.com` con normal Host | Frontend strips, backend may use. |
 | `X-Forwarded-Server` | Less common | Some frameworks. |

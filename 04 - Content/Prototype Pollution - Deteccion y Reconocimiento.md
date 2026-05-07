@@ -106,7 +106,7 @@ ___
 
 ## Análisis Estático de Código JS
 
-| **Objetivo** | **Técnica** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Source code review | Buscar `merge`, `extend`, `set` con user input | Manual code review. |
 | AST analysis | ESLint plugin `eslint-plugin-security` | Detecta patterns automáticamente. |

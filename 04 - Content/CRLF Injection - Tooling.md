@@ -22,7 +22,7 @@ linked:
 
 ## crlfuzz (Go)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `go install github.com/dwisiswant0/crlfuzz/cmd/crlfuzz@latest` | Modern Go fuzzer. |
 | Single URL | `crlfuzz -u https://target.com` | Standard. |
@@ -43,7 +43,7 @@ ___
 
 ## Burp Intruder + Payloads
 
-| **Workflow** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Mark position | Select param value en Repeater → Send to Intruder | Standard. |
 | Sniper mode | Single position, multiple payloads | Default. |
@@ -95,7 +95,7 @@ ___
 
 ## Manual curl con `--data-binary`
 
-| **Workflow** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Send raw request | `curl --data-binary $'header: value\r\nFoo: bar' ...` | Bash $'...' interprets escape. |
 | Inject CRLF directly | `curl -H 'X-Header: value\r\nInjected: 1' ...` | Some curl versions reject. |
@@ -131,7 +131,7 @@ ___
 
 ## Otros Tools
 
-| **Tool** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `nuclei` templates | `nuclei -t vulnerabilities/generic/crlf-injection.yaml` | Bulk scan. |
 | ffuf con encoded | `ffuf -u "https://target/?p=FUZZ" -w crlf-payloads.txt -mr 'X-Probe'` | Standard fuzzer. |

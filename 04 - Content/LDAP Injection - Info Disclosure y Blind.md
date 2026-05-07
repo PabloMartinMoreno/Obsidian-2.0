@@ -22,7 +22,7 @@ linked:
 
 ## Wildcards para Enumeración
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `*` | Match all entries | Universal wildcard. |
 | `a*` | Entries starting con `a` | Prefix enum. |
@@ -44,7 +44,7 @@ ___
 
 ## Boolean-Based Char-by-Char
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Use OR filter para inferir char-by-char | Standard blind technique. |
 | Test single char | `*)(uid=admin*` matches → admin existe? | Existence check. |
@@ -90,7 +90,7 @@ ___
 
 ## Time-Based Oracle
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Heavy filter expression delays response | Inferir char por timing. |
 | Heavy expression | `(\|(cn=a)(cn=b)(cn=c)(cn=d)...(cn=z))` | Multi-OR para slowdown artificial. |
@@ -108,7 +108,7 @@ ___
 
 ## Error-Based Leak
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Error message contains LDAP filter or attribute value | Direct disclosure. |
 | Force syntax error | `*)(invalid` | Filter syntax error reveals partial. |

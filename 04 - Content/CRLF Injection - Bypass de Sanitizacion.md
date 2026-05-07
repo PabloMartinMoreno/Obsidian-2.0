@@ -21,7 +21,7 @@ linked:
 
 ## URL Encoding Variants
 
-| **Variant** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Single URL encoding | `%0d%0a` | Standard. |
 | LF only | `%0a` | Some servers tolerate sin CR. |
@@ -63,12 +63,14 @@ ___
 
 ## Unicode / Charset Variants
 
-| **Variant** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `
 ` JS Unicode | `
 ` (LF) | If JS context. |
-| `` JS | `` (CR) | Same. |
+| `
+` JS | `
+` (CR) | Same. |
 | `\x0a` Hex literal | If interpreted | Edge. |
 | `\012` Octal | Octal LF | Edge. |
 | Vertical Tab | `%0b` (VT) | Some servers treat as line break. |
@@ -88,7 +90,7 @@ ___
 
 ## Server-Specific Quirks
 
-| **Server** | **Quirk** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Apache | Strict on CRLF en headers post-2009 | Mostly mitigated. |
 | nginx | Strict | Same. |
@@ -112,7 +114,7 @@ ___
 
 ## Header Folding (Obsolete pero Edge)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | RFC 822 originally allowed multi-line headers via leading whitespace continuation. RFC 7230 obsoleted. | Legacy. |
 | Folded continuation | `X-Header: value\r\n continued` | Some old parsers accept. |

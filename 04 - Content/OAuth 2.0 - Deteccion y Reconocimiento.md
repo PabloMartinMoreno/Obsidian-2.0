@@ -23,7 +23,7 @@ linked:
 
 ## Discovery via .well-known
 
-| **Endpoint** | **Spec** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/.well-known/oauth-authorization-server` | RFC 8414 | Authorization server metadata. |
 | `/.well-known/openid-configuration` | OIDC Discovery | Includes OAuth + OIDC fields. |
@@ -71,7 +71,7 @@ ___
 
 ## Identificación de Flow Type
 
-| **Flow** | **Indicador** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Authorization Code | `response_type=code` | Web apps confidential — most secure. |
 | Auth Code + PKCE | `response_type=code` + `code_challenge=...` | SPA/mobile recommended. |
@@ -108,7 +108,7 @@ ___
 
 ## Client ID Enumeration
 
-| **Técnica** | **Comando/Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Frontend JS recon | `curl -s https://target \| grep -oE 'client_id["\s]*[:=]["\s]*[a-zA-Z0-9-]+'` | Hardcoded common. |
 | JS bundle dump | `wget -r https://target/static/js/ && grep -r 'client_id' .` | Bundles. |
@@ -146,7 +146,7 @@ ___
 
 ## Response Type & Scope Discovery
 
-| **Test** | **Request** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Response type fuzz | `?response_type=code` / `token` / `id_token` cada uno | Cuáles acepta. |
 | Combined response types | `?response_type=code id_token token` | Hybrid soportado? |
@@ -183,7 +183,7 @@ ___
 
 ## Redirect URI Validation Type
 
-| **Validación server-side** | **Test** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Exact match | `redirect_uri=https://known.com/cb/extra` → error | Solo Open Redirect chain explota. |
 | Prefix match | `redirect_uri=https://known.com/cb.attacker.com` → OK | Suffix abuse posible. |

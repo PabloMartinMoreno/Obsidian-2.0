@@ -18,7 +18,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[Web Cache Poisoning - Unkeyed Inputs]]"
   - "[[Web Cache Poisoning - Vectores de Poisoning]]"

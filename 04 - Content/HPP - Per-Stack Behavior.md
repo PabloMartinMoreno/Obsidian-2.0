@@ -22,7 +22,7 @@ linked:
 
 ## PHP (Last Value Wins)
 
-| **Function** | **Behavior** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `$_GET['a']` con `?a=1&a=2` | Returns `'2'` (last) | Standard. |
 | `$_POST['a']` con body `a=1&a=2` | Returns `'2'` | Same. |
@@ -43,7 +43,7 @@ ___
 
 ## ASP.NET (Concatenation con Coma)
 
-| **Function** | **Behavior** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `Request.QueryString["a"]` con `?a=1&a=2` | Returns `"1,2"` | Comma-separated. |
 | `Request.Form["a"]` con duplicate | Same | Same. |
@@ -64,7 +64,7 @@ ___
 
 ## Java (First Wins / Array)
 
-| **Function** | **Behavior** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `request.getParameter("a")` con `?a=1&a=2` | Returns `"1"` (first) | Standard. |
 | `request.getParameterValues("a")` | Returns `String[]` `["1", "2"]` | Explicit array. |
@@ -106,7 +106,7 @@ ___
 
 ## Node.js / Express (Varies)
 
-| **Library** | **Behavior** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `qs` library (Express default) | `?a=1&a=2` → `req.query.a = ['1', '2']` (array) | Default Express. |
 | `querystring` (Node legacy) | Same array behavior | Same. |
@@ -128,7 +128,7 @@ ___
 
 ## Ruby on Rails (Last Wins)
 
-| **Function** | **Behavior** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `params[:a]` con `?a=1&a=2` | Returns `"2"` (last) | Standard. |
 | `params[:a].class` | String | Default. |

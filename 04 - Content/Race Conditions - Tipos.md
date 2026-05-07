@@ -23,7 +23,7 @@ linked:
 
 ## Limit Overrun
 
-| **Objetivo** | **Payload / Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Endpoint decrementa cuota/balance sin lock atómico → N requests simultáneos pueden cada uno encontrar el pre-decrement value | Vector más común. |
 | Spend balance 2x | Send 2 requests simultáneos para spend 100% del balance | Cada uno ve balance lleno. |
@@ -55,7 +55,7 @@ ___
 
 ## Multi-Step State Machine
 
-| **Objetivo** | **Payload / Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Flow `A → B → C → D` con checks per-step. Race entre A→B salta C, etc | State skip. |
 | Order checkout race | `cart → review → pay → ship` — race salta `pay` | Free shipping. |
@@ -92,7 +92,7 @@ ___
 
 ## Confirmation Step Bypass
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Action peligrosa requiere confirm. Race entre action submit y confirm check. | Skip confirm step. |
 | Delete account race | `submit_delete + confirm_delete` simultáneos → execute sin verify confirm | Permanent damage. |
@@ -110,7 +110,7 @@ ___
 
 ## 2FA / OTP Race
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | OTP single-use validation. Race entre validate y mark-as-used | Multi-attempt. |
 | 6-digit OTP brute con race | 1M codes con N concurrent → en lugar de 5 attempts × hours, mil intentos en seg | Effective brute. |
@@ -128,7 +128,7 @@ ___
 
 ## File Upload Race
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Upload + scan + accept. Race accede file durante scan window. | TOCTOU file. |
 | Antivirus scan race | Upload php → scan in progress → access via web → execute antes de scan complete | Webshell drop. |
@@ -146,7 +146,7 @@ ___
 
 ## TOCTOU Filesystem
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Server check filesystem state, then act. Atacante manipula state entre check y act. | Local privesc clásico. |
 | Symlink race | App valida path + read. Atacante reemplaza con symlink durante race | Read sensitive file. |

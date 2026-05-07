@@ -22,7 +22,7 @@ linked:
 
 ## Headers No Incluidos en Cache Key
 
-| **Header candidato** | **Pattern de prueba** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `Host` | Cambiar Host → ¿response distinto pero MISMO cache key? | Vector clásico — apps con vhost routing. |
 | `X-Forwarded-Host` | Override Host backend-side | Comúnmente unkeyed + reflejado. |
@@ -66,7 +66,7 @@ ___
 
 ## Param Miner Workflow
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalar | Burp → Extensions → BApp Store → "Param Miner" | Free Burp ext (PortSwigger). |
 | Right-click request → "Guess headers" | Detecta headers ocultos que afectan response | Single click. |
@@ -103,7 +103,7 @@ ___
 
 ## Method / Path Normalization Differences
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Trailing slash | `GET /admin/` vs `GET /admin` | Cache key per path string — backend normaliza ambos al mismo handler → cache poisoning. |
 | Doble slash | `GET //admin` o `GET /admin//` | Cache trata como distinto path — backend normaliza. |

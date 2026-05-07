@@ -61,7 +61,7 @@ ___
 
 ## Análisis del Cache Key
 
-| **Objetivo** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Cache key = hash de (method + URL + algunos headers). Inputs no incluidos en key = unkeyed → vector. | Critical concept. |
 | Default cache key | Generalmente método + path + query | Sin headers (default). |

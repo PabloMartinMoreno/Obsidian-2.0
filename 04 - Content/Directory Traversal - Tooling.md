@@ -22,7 +22,7 @@ linked:
 
 ## dotdotpwn
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `git clone https://github.com/wireghoul/dotdotpwn` | Perl-based fuzzer. |
 | HTTP fuzz | `dotdotpwn.pl -m http -h target.com -f /etc/passwd -k root:` | URL fuzz con traversal. |
@@ -44,7 +44,7 @@ ___
 
 ## LFISuite
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `git clone https://github.com/D35m0nd142/LFISuite` | Python — auto-exploit + scanner. |
 | Run interactive | `python LFISuite.py` | Menu-driven. |
@@ -64,7 +64,7 @@ ___
 
 ## Burp Intruder + Wordlists
 
-| **Workflow** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Mark position | `?file=§...§` en Intruder | Standard position. |
 | Load wordlist | PayloadsAllTheThings/Directory Traversal | Standard. |
@@ -126,7 +126,7 @@ ___
 
 ## Custom Scripts
 
-| **Tool/Script** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `ffuf` traversal | `ffuf -u "https://target/api/file?path=FUZZ" -w paths.txt -mr 'root:'` | Match regex root. |
 | `wfuzz` LFI | `wfuzz -c -z file,paths.txt --hh 0 https://target/?file=FUZZ` | Hide hash 0 (404). |

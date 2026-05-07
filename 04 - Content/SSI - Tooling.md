@@ -22,7 +22,7 @@ linked:
 
 ## Burp Intruder + Active Scan
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Active Scanner | Burp Pro detects SSI | Built-in. |
 | BCheck SSI rules | Custom rules para SSI | Pro feature. |
@@ -62,7 +62,7 @@ ___
 
 ## Manual curl / Custom Scripts
 
-| **Workflow** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Single SSI probe | `curl --data-urlencode 'q=<!--#echo var="DATE_LOCAL" -->' https://target/search.shtml` | Standard. |
 | Iterate variants | Bash loop con encoding/whitespace | Quick test. |

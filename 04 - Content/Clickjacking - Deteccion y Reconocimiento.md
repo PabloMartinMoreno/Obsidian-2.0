@@ -67,7 +67,7 @@ ___
 
 ## CSP Analysis
 
-| **Variant** | **Effect** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `frame-ancestors 'none'` | Strictest — no frames | Modern strict. |
 | `frame-ancestors 'self'` | Only same-origin frames | Standard. |
@@ -90,7 +90,7 @@ ___
 
 ## Framing Test
 
-| **Test** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Inline iframe test | `<iframe src="https://target/"></iframe>` en HTML local | Standard. |
 | Per-route framing | Test each sensitive route independently | Granular. |

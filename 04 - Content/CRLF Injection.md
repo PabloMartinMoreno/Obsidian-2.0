@@ -16,7 +16,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[CRLF Injection - HTTP Header Injection]]"
   - "[[CRLF Injection - HTTP Response Splitting]]"

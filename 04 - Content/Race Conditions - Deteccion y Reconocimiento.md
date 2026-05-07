@@ -44,7 +44,7 @@ ___
 
 ## TOCTOU Patterns
 
-| **Pattern** | **Example** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | TOCTOU clásico | `if (balance >= amount) deduct(amount)` — sin lock | Time-of-check vs time-of-use gap. |
 | Auth check + privileged action | Check role at start, action at end (no re-check) | Privesc window. |
@@ -64,7 +64,7 @@ ___
 
 ## Atomicity / Locking Issues
 
-| **Indicator** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Transactional `BEGIN/COMMIT` ausente | Multi-statement DB ops | Sin atomicidad → race. |
 | `SELECT ... FOR UPDATE` ausente | Read sin lock | Concurrent reads = race. |

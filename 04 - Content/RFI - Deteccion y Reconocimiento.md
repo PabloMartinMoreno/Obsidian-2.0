@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Endpoints Vulnerables
 
-| **Pattern** | **Endpoint type** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `?page=home`, `?file=about` | Page selector via param | Most common. |
 | `?include=`, `?inc=` | Generic include | Direct. |
@@ -89,7 +89,7 @@ ___
 
 ## Detectar PHP Version + `allow_url_include`
 
-| **Indicator** | **Probe / Source** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | PHP version header | `X-Powered-By: PHP/x.y.z` response header | Standard. |
 | phpinfo() page | `/phpinfo.php`, `/info.php`, `/test.php` | Discovery. |

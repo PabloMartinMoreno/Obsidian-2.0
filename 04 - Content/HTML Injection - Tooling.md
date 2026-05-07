@@ -22,7 +22,7 @@ linked:
 
 ## Burp Intruder con HTML Wordlists
 
-| **Workflow** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Mark position | Identify reflected param → place §...§ | Standard. |
 | Sniper mode | Single position, multi-payloads | Default. |
@@ -74,7 +74,7 @@ ___
 
 ## Manual Review (Input/Output Mapping)
 
-| **Method** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp passive scan | Detect reflected inputs | Built-in. |
 | Burp Reflection extension | Highlights reflections en historial | Pasivo. |
@@ -112,7 +112,7 @@ ___
 
 ## DOM Invader (Burp DOM-side Tools)
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Habilitar | Burp Pro → DOM Invader → Enable | Built-in browser ext. |
 | Auto-detect sources | Identifies user input sources | URL params, hash, cookies. |
@@ -130,7 +130,7 @@ ___
 
 ## Otros Tools y Scripts
 
-| **Tool** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `dalfox` | XSS / HTML inj scanner | https://github.com/hahwul/dalfox |
 | `XSStrike` | Same family | https://github.com/s0md3v/XSStrike |

@@ -23,7 +23,7 @@ linked:
 
 ## Encoding (UTF-16 / UTF-7 / Otros)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | UTF-16 BE BOM | `0xFE 0xFF` + stylesheet en UTF-16 | Muchos WAFs solo escanean ASCII/UTF-8 — UTF-16 los evade. |
 | UTF-16 LE BOM | `0xFF 0xFE` + stylesheet en UTF-16 | Variante little-endian. |
@@ -52,7 +52,7 @@ ___
 
 ## Namespaces Alternativos / Ofuscación
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Prefix custom | `xmlns:foo="http://www.w3.org/1999/XSL/Transform"` + `<foo:value-of .../>` | Cambiar `xsl:` por cualquier otro prefijo. |
 | Default namespace | `<stylesheet xmlns="http://www.w3.org/1999/XSL/Transform">` | Sin prefijo — `<value-of .../>`. |

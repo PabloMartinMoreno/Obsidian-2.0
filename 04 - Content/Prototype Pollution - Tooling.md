@@ -23,7 +23,7 @@ linked:
 
 ## Burp DOM Invader
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Habilitar | Burp → DOM Invader → Enable + reload page | Built-in Burp Pro. |
 | Auto-detection PP sources | Detecta `__proto__`, `constructor.prototype` en JS | Activo while browsing. |
@@ -41,7 +41,7 @@ ___
 
 ## ppmap
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Repo | `https://github.com/kosmosec/proto-find` (ppmap evolved) | CLI scanner. |
 | Probe URL | `python ppmap.py -u https://target/` | Scan URL parameters. |
@@ -57,7 +57,7 @@ ___
 
 ## PPScan / ppfuzz
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | ppfuzz (Rust) | `git clone https://github.com/dwisiswant0/ppfuzz` | Fast Rust implementation. |
 | ppfuzz run | `ppfuzz -l urls.txt` | Bulk URL scan. |

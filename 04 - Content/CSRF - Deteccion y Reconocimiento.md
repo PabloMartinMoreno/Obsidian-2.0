@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Endpoints State-Changing
 
-| **Objetivo** | **Pista / Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Endpoints POST/PUT/DELETE en historial Burp | Filtrar `Method:POST,PUT,DELETE` en historial | First step. |
 | Forms en HTML | `grep -E '<form.*method="post"' burp-history.html` | HTML del frontend. |
@@ -40,7 +40,7 @@ ___
 
 ## Análisis de Tokens Existentes
 
-| **Objetivo** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Buscar token en form | `grep -oE 'name="(csrf[_-]?token\|_token\|authenticity_token)"\s+value="[^"]+"'` | Patrones comunes. |
 | Buscar token en headers | `X-CSRF-Token`, `X-XSRF-TOKEN`, `Anti-CSRF-Token` | Headers custom. |
@@ -78,7 +78,7 @@ ___
 
 ## Verificar SameSite / Referer Protections
 
-| **Objetivo** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Inspect cookies SameSite | `curl -I -b jar.txt https://target/` | Buscar `SameSite=Lax/Strict/None`. |
 | `SameSite=None` sin `Secure` | Inválido — browser ignora | Deja cookie vulnerable. |

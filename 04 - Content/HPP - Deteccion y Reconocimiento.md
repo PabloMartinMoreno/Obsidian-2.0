@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Endpoints con Multiple Params
 
-| **Pattern** | **Endpoint type** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Multi-input forms | Login, search, profile updates | Standard. |
 | API con many params | REST endpoints con N query params | Common. |
@@ -43,7 +43,7 @@ ___
 
 ## Probes con Duplicate Params
 
-| **Probe** | **Behavior to observe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Basic duplicate | `?a=1&a=2` → app uses what? | Standard. |
 | First wins | Backend uses `1` | Java common. |

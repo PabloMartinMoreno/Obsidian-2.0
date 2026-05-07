@@ -22,7 +22,7 @@ linked:
 
 ## Burp Param Miner
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalar | Burp → Extensions → BApp Store → "Param Miner" | Free PortSwigger. |
 | Right-click → "Guess headers" | Auto-discover headers que afectan response | Detect XFH, X-Host, etc. |
@@ -41,7 +41,7 @@ ___
 
 ## Custom curl Scripts
 
-| **Workflow** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Single Host probe | `curl -H "Host: attacker.com" https://target/...` | Quick. |
 | With XFH | `curl -H "X-Forwarded-Host: attacker.com" https://target/...` | Variant. |
@@ -104,7 +104,7 @@ ___
 
 ## HTTP Smuggler Combo (HRS Extension)
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp HTTP Request Smuggler | Identify HRS first | Pre-requisito. |
 | Smuggle attack panel | Right-click + Smuggle attack | Setup. |
@@ -134,7 +134,7 @@ ___
 
 ## Otros Tools y Scripts
 
-| **Tool** | **Uso** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `httprobe` | Verify Host responsiveness | Recon adjacent. |
 | `host-header-injection-fuzzer` | Custom scripts en GitHub | Various. |

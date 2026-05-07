@@ -21,7 +21,7 @@ linked:
 
 ## HTML Entity Encoding
 
-| **Original** | **Bypass payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<` (less than) | `&lt;` | NOT bypass — already escaped. |
 | `<` decimal | `&#60;` | Browser parses as `<` after decode. |
@@ -43,7 +43,7 @@ ___
 
 ## URL / Unicode Encoding
 
-| **Original** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | URL encode `<` | `%3C` | Bypass HTTP-layer filters. |
 | URL encode `>` | `%3E` | Same. |
@@ -65,7 +65,7 @@ ___
 
 ## Tag/Attribute Case Manipulation
 
-| **Original** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<script>` lowercase | `<SCRIPT>` uppercase | Some filters case-sensitive. |
 | Mixed case | `<ScRiPt>` | Same. |
@@ -86,7 +86,7 @@ ___
 
 ## Whitespace Tricks
 
-| **Bypass** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Tab in tag | `<img\tsrc=x>` | Browser normalizes. |
 | Newline in tag | `<img\nsrc=x>` | Same. |
@@ -108,7 +108,7 @@ ___
 
 ## Comment Injection
 
-| **Bypass** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Standard comment | `<!-- comment -->` | HTML comments. |
 | Filter break | `<scr<!---->ipt>` | If filter doesn't strip comments. |

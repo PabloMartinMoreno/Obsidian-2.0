@@ -23,7 +23,7 @@ linked:
 
 ## Login Form Discovery
 
-| **Endpoint** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/login`, `/signin`, `/auth` | Standard paths | Convención común. |
 | `/admin`, `/admin/login`, `/wp-admin` | Admin panels | High-value targets. |
@@ -62,7 +62,7 @@ ___
 
 ## Response Differential Success/Fail
 
-| **Indicador** | **Pattern** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP status code | 200 (success) vs 401/403 (fail) | Standard. |
 | Response length | `Content-Length` differs | Common diff. |
@@ -102,7 +102,7 @@ ___
 
 ## Rate Limit Detection
 
-| **Mecanismo** | **Test** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | 429 Too Many Requests | Spam 50 requests rápido | Standard. |
 | 403 tras N intentos | Lockout temporario | Common. |
@@ -142,7 +142,7 @@ ___
 
 ## Lockout Policy Probing
 
-| **Comportamiento** | **Test** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Account lockout permanente | Brute hasta block, espera horas | Email reset required. |
 | Account lockout temporario | 5 fails → 15 min lock | Slow brute viable. |
@@ -166,7 +166,7 @@ ___
 
 ## User Enumeration via Errors
 
-| **Vector** | **Diff** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Login error specificity | "Invalid username" vs "Invalid password" | Direct enum. |
 | Response time differential | DB lookup user vs not — measurable | Timing attack. |

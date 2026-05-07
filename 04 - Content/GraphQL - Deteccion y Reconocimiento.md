@@ -21,7 +21,7 @@ linked:
 
 ## Identificar Endpoints
 
-| **Path** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/graphql` | `curl -X POST -H "Content-Type: application/json" -d '{"query":"{__typename}"}' https://target/graphql` | Más común. |
 | `/api/graphql` | Mismo probe | Apps modernas. |
@@ -62,7 +62,7 @@ ___
 
 ## Fingerprint del Engine
 
-| **Engine** | **Indicador** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Apollo Server | Header `Server: apollo` o response con `extensions.tracing` | JS/TS dominante. |
 | Hasura | Path `/v1/graphql` + Header `x-hasura-*` en response | Postgres-backed. |

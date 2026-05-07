@@ -22,7 +22,7 @@ linked:
 
 ## Subdomain Enumeration
 
-| **Method** | **Tool / Source** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Passive — Certificate Transparency | crt.sh, Censys, Cert Spotter | Free, comprehensive. |
 | Passive — DNS aggregators | SecurityTrails, VirusTotal, dnsdumpster | API rate limits. |
@@ -112,7 +112,7 @@ ___
 
 ## Identificar Dangling Pointers
 
-| **Dangling pattern** | **Indicator** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | CNAME a `bucketname.s3.amazonaws.com` que no existe | NXDOMAIN o "NoSuchBucket" | S3 takeover candidate. |
 | CNAME a `*.cloudfront.net` con NXDOMAIN | Distribution deleted | CloudFront takeover. |

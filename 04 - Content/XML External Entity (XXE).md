@@ -12,7 +12,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Vulnerability
+type: CheatSheet
 linked:
   - "[[XXE - Clásico In-band]]"
   - "[[XXE - Clásico SSRF]]"

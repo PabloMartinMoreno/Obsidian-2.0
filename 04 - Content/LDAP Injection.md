@@ -18,7 +18,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[LDAP Injection - Auth Bypass]]"
   - "[[LDAP Injection - Info Disclosure y Blind]]"

