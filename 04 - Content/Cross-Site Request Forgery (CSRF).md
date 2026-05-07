@@ -16,9 +16,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[CSRF - Deteccion y Reconocimiento]]"
   - "[[CSRF - Vectores de Ataque]]"
   - "[[CSRF - Bypass de Token]]"
   - "[[CSRF - Bypass de SameSite y Referer]]"
@@ -35,19 +34,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints State-Changing**
-![[CSRF - Deteccion y Reconocimiento#^csrf-detect-endpoints]]
-
-tab: **Análisis de Tokens Existentes**
-![[CSRF - Deteccion y Reconocimiento#^csrf-detect-tokens]]
-
-tab: **Verificar SameSite / Referer**
-![[CSRF - Deteccion y Reconocimiento#^csrf-detect-protections]]
-````
 
 ### 🎯 Vectores de Ataque
 

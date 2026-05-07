@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[OAuth 2.0 - Deteccion y Reconocimiento]]"
   - "[[OAuth 2.0 - redirect_uri Manipulation]]"
   - "[[OAuth 2.0 - State y CSRF]]"
   - "[[OAuth 2.0 - Code y Token Theft]]"
@@ -36,25 +35,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Discovery via .well-known**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-wellknown]]
-
-tab: **Identificación de Flow Type**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-flow]]
-
-tab: **Client ID Enumeration**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-clientid]]
-
-tab: **Response Type & Scope Discovery**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-response]]
-
-tab: **Redirect URI Validation Type**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-redirect]]
-````
 
 ### 🎯 redirect_uri Manipulation
 

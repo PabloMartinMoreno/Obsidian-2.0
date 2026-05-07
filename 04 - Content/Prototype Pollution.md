@@ -16,9 +16,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Prototype Pollution - Deteccion y Reconocimiento]]"
   - "[[Prototype Pollution - Vectores Server-Side]]"
   - "[[Prototype Pollution - Vectores Client-Side]]"
   - "[[Prototype Pollution - Gadgets y Explotacion]]"
@@ -33,19 +32,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Sinks Vulnerables**
-![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-sinks]]
-
-tab: **Probes en Endpoints**
-![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-probes]]
-
-tab: **Análisis Estático de Código JS**
-![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-static]]
-````
 
 ### 🌐 Vectores Server-Side
 

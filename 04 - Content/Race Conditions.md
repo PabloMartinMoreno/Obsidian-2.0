@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Race Conditions - Deteccion y Reconocimiento]]"
   - "[[Race Conditions - Tipos]]"
   - "[[Race Conditions - Single-Packet Attack]]"
   - "[[Race Conditions - Vectores Especificos]]"
@@ -34,22 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints State-Changing**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-endpoints]]
-
-tab: **TOCTOU Patterns**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-toctou]]
-
-tab: **Atomicity / Locking Issues**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-atomicity]]
-
-tab: **Window de Exploit**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-window]]
-````
 
 ### 🎯 Tipos de Race Conditions
 

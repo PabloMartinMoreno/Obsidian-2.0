@@ -15,9 +15,8 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Clickjacking - Deteccion y Reconocimiento]]"
   - "[[Clickjacking - Vectores Basicos]]"
   - "[[Clickjacking - Variantes Avanzadas]]"
   - "[[Clickjacking - Bypass de Anti-Framing]]"
@@ -34,19 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Headers Anti-Framing**
-![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-headers]]
-
-tab: **CSP frame-ancestors**
-![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-csp]]
-
-tab: **Test de Framing Real**
-![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-framing]]
-````
 
 ### 🎯 Vectores Básicos
 

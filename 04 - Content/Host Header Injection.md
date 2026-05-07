@@ -16,9 +16,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Host Header Injection - Deteccion y Reconocimiento]]"
   - "[[Host Header Injection - Vectores Comunes]]"
   - "[[Host Header Injection - Headers Alternativos]]"
   - "[[Host Header Injection - Bypass de Validacion]]"
@@ -34,19 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints**
-![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-endpoints]]
-
-tab: **Probes con Valores Arbitrarios**
-![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-probes]]
-
-tab: **Multi-Header Behavior**
-![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-multi-header]]
-````
 
 ### 🎯 Vectores Comunes
 

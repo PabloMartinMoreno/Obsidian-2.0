@@ -16,9 +16,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Open Redirect - Deteccion y Reconocimiento]]"
   - "[[Open Redirect - Vectores Basicos]]"
   - "[[Open Redirect - Bypass de Validacion]]"
   - "[[Open Redirect - Vectores Especificos]]"
@@ -34,19 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Parámetros de Redirect**
-![[Open Redirect - Deteccion y Reconocimiento#^or-detect-params]]
-
-tab: **Endpoints Comunes**
-![[Open Redirect - Deteccion y Reconocimiento#^or-detect-endpoints]]
-
-tab: **Detectar 301/302 / JS-Based**
-![[Open Redirect - Deteccion y Reconocimiento#^or-detect-types]]
-````
 
 ### 🎯 Vectores Básicos
 

@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Insecure Deserialization - Deteccion y Reconocimiento]]"
   - "[[Insecure Deserialization - Object Injection]]"
   - "[[Insecure Deserialization - Formatos Estructurados]]"
   - "[[Insecure Deserialization - Tooling]]"
@@ -33,16 +32,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificación de Formatos**
-![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-formats]]
-
-tab: **Fingerprint del Stack**
-![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-fingerprint]]
-````
 
 ### 💉 Object Injection por Lenguaje
 

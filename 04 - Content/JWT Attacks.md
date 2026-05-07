@@ -18,9 +18,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[JWT - Deteccion y Reconocimiento]]"
   - "[[JWT - Ataques al Algoritmo]]"
   - "[[JWT - Inyeccion en Headers]]"
   - "[[JWT - Manipulacion de Claims]]"
@@ -34,16 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificación en Request**
-![[JWT - Deteccion y Reconocimiento#^jwt-detect-request]]
-
-tab: **Decodificación y Análisis**
-![[JWT - Deteccion y Reconocimiento#^jwt-detect-decode]]
-````
 
 ### 🔓 Ataques al Algoritmo
 

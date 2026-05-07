@@ -18,9 +18,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[HTTP Request Smuggling - Deteccion]]"
   - "[[HTTP Request Smuggling - Variantes Clasicas]]"
   - "[[HTTP Request Smuggling - HTTP2 Downgrade]]"
   - "[[HTTP Request Smuggling - Explotacion]]"
@@ -34,19 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección
-
-````tabs
-tab: **Probes Timing-based**
-![[HTTP Request Smuggling - Deteccion#^hrs-detect-timing]]
-
-tab: **Differential Response Detection**
-![[HTTP Request Smuggling - Deteccion#^hrs-detect-differential]]
-
-tab: **HTTP/2 Endpoint Detection**
-![[HTTP Request Smuggling - Deteccion#^hrs-detect-h2]]
-````
 
 ### 🔄 Variantes Clásicas (HTTP/1.1)
 

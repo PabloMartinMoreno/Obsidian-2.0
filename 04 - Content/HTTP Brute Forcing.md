@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[HTTP Brute Forcing - Deteccion y Reconocimiento]]"
   - "[[HTTP Brute Forcing - Targets de Ataque]]"
   - "[[HTTP Brute Forcing - Wordlists y Strategy]]"
   - "[[HTTP Brute Forcing - Bypass Rate-Limit]]"
@@ -37,25 +36,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Login Form Discovery**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-endpoints]]
-
-tab: **Response Diff Success/Fail**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-responsediff]]
-
-tab: **Rate Limit Detection**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-ratelimit]]
-
-tab: **Lockout Policy Probing**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-lockout]]
-
-tab: **User Enumeration**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-enum]]
-````
 
 ### 🎯 Targets de Ataque
 

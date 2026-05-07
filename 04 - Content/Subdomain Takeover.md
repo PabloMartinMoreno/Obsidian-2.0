@@ -18,9 +18,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Subdomain Takeover - Deteccion y Reconocimiento]]"
   - "[[Subdomain Takeover - Tipos por Servicio]]"
   - "[[Subdomain Takeover - NS Takeover y DNS-Level]]"
   - "[[Subdomain Takeover - Vectores de Explotacion]]"
@@ -36,22 +35,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Subdomain Enumeration**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-enum]]
-
-tab: **DNS Records Analysis**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-records]]
-
-tab: **Identificar Dangling Pointers**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-dangling]]
-
-tab: **Fingerprint del Tipo de Servicio**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-fingerprint]]
-````
 
 ### 🏗️ Tipos por Servicio
 

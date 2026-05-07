@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Auth Bypass - Deteccion y Reconocimiento]]"
   - "[[Auth Bypass - Bypass de Autenticacion]]"
   - "[[Auth Bypass - Bypass de Autorizacion]]"
   - "[[Auth Bypass - Tokens y Sessions]]"
@@ -40,19 +39,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints Auth/Authz**
-![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-endpoints]]
-
-tab: **Username Enumeration**
-![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-enum]]
-
-tab: **Logic Flaw Recon**
-![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-flow]]
-````
 
 ### 🔓 Bypass de Autenticación (login)
 

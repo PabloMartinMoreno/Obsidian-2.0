@@ -16,9 +16,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[HTML Injection - Deteccion y Reconocimiento]]"
   - "[[HTML Injection - Vectores Comunes]]"
   - "[[HTML Injection - Inyeccion Sin Script]]"
   - "[[HTML Injection - Bypass de Filtros]]"
@@ -34,19 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Puntos Reflejados**
-![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-points]]
-
-tab: **Probes con Tags Básicos**
-![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-probes]]
-
-tab: **Diferenciar HTML Injection vs XSS**
-![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-vs-xss]]
-````
 
 ### 🎯 Vectores Comunes
 

@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Mass Assignment - Deteccion y Reconocimiento]]"
   - "[[Mass Assignment - Vectores Comunes]]"
   - "[[Mass Assignment - Frameworks Vulnerables]]"
   - "[[Mass Assignment - Bypass de Whitelists]]"
@@ -35,19 +34,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints**
-![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-endpoints]]
-
-tab: **Descubrir Hidden Fields**
-![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-hidden]]
-
-tab: **Inferir Model via Response**
-![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-model]]
-````
 
 ### 🎯 Vectores Comunes
 

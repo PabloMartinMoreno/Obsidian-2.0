@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[XSLT - Fingerprinting]]"
   - "[[XSLT - Lectura de Archivos (document)]]"
   - "[[XSLT - SSRF]]"
   - "[[XSLT - Extension Functions (RCE)]]"
@@ -35,16 +34,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Fingerprinting
-
-````tabs
-tab: **Detección Básica**
-![[XSLT - Fingerprinting#^xslt-fp-detection]]
-
-tab: **Fingerprinting de Motores**
-![[XSLT - Fingerprinting#^xslt-fp-engines]]
-````
 
 ### 📁 Lectura de Archivos Locales (LFI)
 

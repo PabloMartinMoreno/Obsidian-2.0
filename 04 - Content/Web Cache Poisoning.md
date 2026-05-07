@@ -18,9 +18,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Web Cache Poisoning - Deteccion y Reconocimiento]]"
   - "[[Web Cache Poisoning - Unkeyed Inputs]]"
   - "[[Web Cache Poisoning - Vectores de Poisoning]]"
   - "[[Web Cache Poisoning - Cache Deception]]"
@@ -35,19 +34,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Capa de Caché**
-![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-layer]]
-
-tab: **Análisis del Cache Key**
-![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-cachekey]]
-
-tab: **Probes Hit/Miss**
-![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-hitmiss]]
-````
 
 ### 🎯 Identificación de Unkeyed Inputs
 

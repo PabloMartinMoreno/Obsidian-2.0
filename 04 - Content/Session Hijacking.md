@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Session Hijacking - Deteccion y Reconocimiento]]"
   - "[[Session Hijacking - Vectores de Robo]]"
   - "[[Session Hijacking - Cookie Tampering y Forging]]"
   - "[[Session Hijacking - Fixation y Replay]]"
@@ -37,19 +36,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Mecanismos de Session**
-![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-mechanism]]
-
-tab: **Analizar Atributos de Cookie**
-![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-cookie-attrs]]
-
-tab: **Mapear Session Lifecycle**
-![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-lifecycle]]
-````
 
 ### 🎯 Vectores de Robo
 
