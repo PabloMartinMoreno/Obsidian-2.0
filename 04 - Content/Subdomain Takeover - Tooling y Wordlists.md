@@ -24,29 +24,23 @@ linked:
 
 ## subjack / subzy / takeover (Detection)
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| subjack (Go) | `subjack -w subs.txt -t 100 -timeout 30 -ssl -c fingerprints.json` | Standard tool. |
-| subjack fingerprints | `fingerprints.json` con service signatures | Built-in patterns. |
-| subzy (Go) | `subzy run --targets subs.txt --hide_fails --vuln` | Modern alt. |
-| takeover (Python) | `takeover -d targets.txt` | Python alt. |
-| nuclei templates | `nuclei -t takeovers/ -l subs.txt` | Bulk scan, regularly updated. |
-| `can-i-take-over-xyz` | https://github.com/EdOverflow/can-i-take-over-xyz | Reference for fingerprints. |
-| Burp Active Scan | Limited subdomain takeover detection | Manual. |
-| ProjectDiscovery `dnsx` | `dnsx -l subs.txt -cname -resp` | DNS info, not takeover-specific. |
-| `httpx` con custom headers | `httpx -l subs.txt -title -content-length` | Detect anomalies. |
-| Custom one-liner | `for s in $(cat subs.txt); do curl -s "$s" | grep -i 'no such bucket\|no-such-app'; done` | Quick filter. |
-| Domain monitoring tools | DnsTwist, MonitorMe | Continuous. |
-| Combine con `gau` / `waybackurls` | Get historical URLs first | Recon source. |
+| `go install github.com/haccer/subjack@latest` | Install subjack | Primera vez. |
+| `subjack -w subs.txt -t 100 -timeout 30 -ssl -c $GOPATH/src/github.com/haccer/subjack/fingerprints.json -v` | Bulk takeover scan con fingerprints | Standard tool. |
+| `subjack -w subs.txt -ssl -o results.txt && grep -i 'vulnerable' results.txt` | Save + filter vulnerable | Post-scan. |
+| `go install -v github.com/PentestPad/subzy@latest && subzy run --targets subs.txt --hide_fails --vuln` | Modern alt con menos false positives | Subzy. |
+| `nuclei -t http/takeovers/ -l subs.txt -o nuclei-takeovers.txt` | Templates regularly updated por ProjectDiscovery | Bulk scan curado. |
+| `nuclei -t http/takeovers/ -u https://specific-sub.target.com` | Single target | Manual verification. |
+| `for s in $(cat subs.txt); do curl -s "$s" \| grep -iE 'no such bucket\|no-such-app\|nosuchbucket\|fastly error\|domain not configured' && echo "[!] $s"; done` | Quick filter manual sin tools | Custom one-liner. |
+| `pip install takeover && takeover -d targets.txt` | Python alt simple | Sin Go. |
 ^sdt-tool-detection
 
 ### subjack workflow estándar
 
 ```bash
-# 1. Compile/install
 go install github.com/haccer/subjack@latest
 
-# 2. Run scan
 subjack -w subs.txt \
   -t 100 \
   -timeout 30 \
@@ -54,14 +48,14 @@ subjack -w subs.txt \
   -c $GOPATH/src/github.com/haccer/subjack/fingerprints.json \
   -v -o results.txt
 
-# 3. Filter vulnerable
 grep -i '\[' results.txt | grep -v 'Not Vulnerable'
 
-# 4. Manual verify cada finding
+# Manual verify
 for sub in $(grep VULNERABLE results.txt | awk '{print $2}'); do
   echo "=== $sub ==="
   CNAME=$(dig +short CNAME "$sub")
-  curl -sI "$sub"
+  echo "  CNAME: $CNAME"
+  curl -sI "$sub" | head -3
 done
 ```
 
@@ -69,44 +63,35 @@ ___
 
 ## Subdomain Enumeration Tools
 
-| **Tool** | **Comando** | **Tipo** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| subfinder (PD) | `subfinder -d target.com -all -recursive -silent` | Passive. |
-| amass | `amass enum -active -d target.com -o subs.txt` | Active + passive. |
-| amass intel | `amass intel -d target.com -whois` | OSINT. |
-| assetfinder | `assetfinder --subs-only target.com` | Passive simple. |
-| findomain | `findomain --target target.com` | Modern alt. |
-| dnsrecon | `dnsrecon -d target.com -t std,brt` | Multi-mode. |
-| sublist3r | `sublist3r -d target.com` | Older but still works. |
-| github-subdomains | https://github.com/gwen001/github-subdomains | GitHub-specific recon. |
-| crobat | `crobat -s target.com` | Project Discovery. |
-| chaos | `chaos -d target.com -silent` | PD chaos DB. |
-| crt.sh API | `curl -s "https://crt.sh/?q=%25.target.com&output=json" \| jq -r '.[].name_value'` | CT logs. |
-| Censys API | `censys-cli search 'target.com'` | Active recon. |
-| Shodan API | `shodan domain target.com` | Network-level. |
-| Project Sonar | Rapid7 dataset | Bulk historical. |
-| Common subdomains | `seclists/Discovery/DNS/subdomains-top1million-110000.txt` | Brute. |
-| Resolved confirm | `dnsx -l subs.txt -resp -silent` | Filter live. |
+| `subfinder -d target.com -all -recursive -silent` | Pasivo enumeration multi-source | Recon inicial rápido. |
+| `amass enum -active -d target.com -o subs_active.txt` | Active + passive comprehensive | Más coverage que subfinder. |
+| `amass enum -passive -d target.com -silent` | Solo passive (sin tocar target) | Stealth recon. |
+| `assetfinder --subs-only target.com` | Pasivo simple | Quick + OSS. |
+| `findomain --target target.com` | Modern alt + Rust | Speed. |
+| `chaos -d target.com -silent -key $CHAOS_KEY` | PD chaos DB | Comprehensive PD source. |
+| `curl -s "https://crt.sh/?q=%25.target.com&output=json" \| jq -r '.[].name_value' \| sort -u` | Certificate Transparency logs | OSINT pasivo. |
+| `github-subdomains -d target.com -t $GITHUB_TOKEN` | GitHub-specific recon (commits/code search) | Code leaks. |
+| `cat subs_*.txt \| sort -u > subs.txt` | Combinar + dedupe outputs | Standardize. |
+| `dnsx -l subs.txt -resp -silent` | Filter live (resolvable) subs | Validation post-enum. |
 ^sdt-tool-enum
 
 ___
 
 ## DNS Probing y Resolution
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| dnsx | `dnsx -l subs.txt -resp -cname -silent` | PD modern. |
-| massdns | `massdns -r resolvers.txt -t A -o S subs.txt` | Bulk fast. |
-| puredns | `puredns bruteforce wordlist.txt target.com` | Modern brute. |
-| dig (manual) | `dig +short CNAME sub.target.com` | Standard. |
-| nslookup | Same | Legacy. |
-| host | `host -t any sub.target.com` | Multi-record. |
-| dnstracer | `dnstracer sub.target.com` | NS chain trace. |
-| dnsenum | `dnsenum --noreverse target.com` | All-in-one. |
-| dnsmap | `dnsmap target.com` | Brute force. |
-| Public resolvers list | `https://github.com/janmasarik/resolvers` | Required for massdns. |
-| PowerDNS | Self-hosted resolver | Speed. |
-| Custom Python script | `dnspython` library | Programmable. |
+| `dnsx -l subs.txt -resp -cname -silent` | Resolve A + CNAME records | Standard PD modern. |
+| `dnsx -l subs.txt -cname -resp -silent \| grep -E 's3\|herokuapp\|github\.io\|cloudfront\|azurewebsites'` | Filter takeover candidates | Pipeline filtering. |
+| `massdns -r /usr/share/wordlists/resolvers.txt -t A -o S subs.txt` | Bulk fast resolution | Volume scan. |
+| `puredns bruteforce wordlist.txt target.com -r resolvers.txt` | Modern brute force | DNS bruteforce. |
+| `dig +short CNAME sub.target.com` | Manual single CNAME query | Verification. |
+| `dig +trace sub.target.com` | NS chain trace | Glue / lame delegation check. |
+| `host -t any sub.target.com` | Multi-record query (A, CNAME, MX, etc) | Quick recon. |
+| `dnsenum --noreverse target.com` | All-in-one DNS enumeration | Standard. |
+| `wget https://raw.githubusercontent.com/janmasarik/resolvers/master/resolvers.txt -O resolvers.txt` | Download public resolvers | Pre-massdns. |
 ^sdt-tool-dns
 
 ### DNS recon workflow
@@ -117,13 +102,13 @@ subfinder -d target.com -all -silent | tee subs_passive.txt
 amass enum -active -d target.com -o subs_active.txt
 cat subs_*.txt | sort -u > subs.txt
 
-# 2. Resolve with dnsx
+# 2. Resolve
 dnsx -l subs.txt -resp -silent > resolved.txt
 
 # 3. Extract CNAMEs
 dnsx -l subs.txt -cname -resp -silent > cnames.txt
 
-# 4. Filter potential takeover candidates
+# 4. Filter takeover candidates
 grep -E 's3\.amazonaws\.com|herokuapp|github\.io|cloudfront|azurewebsites' cnames.txt > candidates.txt
 
 # 5. Run takeover scanner
@@ -134,54 +119,45 @@ ___
 
 ## can-i-take-over-xyz (Reference)
 
-| **Resource** | **URL** | **Uso** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Main repo | https://github.com/EdOverflow/can-i-take-over-xyz | Curated list of takeover services. |
-| Per-service status | List of "vulnerable / not vulnerable / pending" services | Verification. |
-| Service fingerprints | Body strings + DNS patterns | For tools / manual. |
-| Mitigation steps | Per-service defense | Defenders use. |
-| Bug bounty considerations | Notes on reportability | Reporting. |
-| Updates | Community-maintained, current | Recent additions. |
-| Fork: ProjectDiscovery nuclei templates | nuclei templates derived | Auto-scan. |
-| Fork: gowitness / aquatone screenshots | Visual confirmation | Standard. |
-| Combine con CVE database | Some takeovers have CVE | Documentation. |
-| Bug Bounty platforms | HackerOne / Bugcrowd disclosed reports | Learn from real cases. |
+| Browser → https://github.com/EdOverflow/can-i-take-over-xyz | Lista curada de servicios takeover | Lookup per-service. |
+| `git clone https://github.com/EdOverflow/can-i-take-over-xyz && grep -lE 'engine.*Vulnerable' README.md` | Servicios actualmente vulnerables | Status check. |
+| `grep -A5 "name.*S3" can-i-take-over-xyz/README.md` | Per-service detail (fingerprints, mitigations) | Service lookup. |
+| `nuclei -t http/takeovers/ -tags takeover -l subs.txt` (tag-filtered) | Templates derived from canitakeover | Auto-scan. |
+| `aquatone -threads 10 < subs.txt` | Visual screenshots de subdomains | Visual confirmation. |
+| `gowitness file -f subs.txt --threads 10` | Modern alt screenshot tool | Same. |
 ^sdt-tool-canitakeover
 
 ___
 
 ## Manual Verification
 
-| **Step** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| 1. DNS resolution | `dig +short CNAME sub.target.com` | Verify CNAME exists. |
-| 2. CNAME target unresolved | `dig +short A <cname-target>` | NXDOMAIN/NOERROR + no records. |
-| 3. HTTP response | `curl -sI https://sub.target.com` | Check status + headers. |
-| 4. Body fingerprint | `curl -s https://sub.target.com | head -c 500` | Match service signature. |
-| 5. Try claim service | Per-service: create account, configure custom domain | Reproducible. |
-| 6. Verify control | Atacante content visible at sub | PoC complete. |
-| 7. Write PoC | Document steps, screenshot, video | For bug bounty. |
-| 8. Report responsibly | Don't deface | Ethics. |
-| 9. Coordinate disclosure | Provide evidence to defender | Standard. |
-| 10. Verify fix | After defender fixes, re-check | Closure. |
+| `dig +short CNAME sub.target.com` | Verifica CNAME existe | Step 1. |
+| `dig +short A $(dig +short CNAME sub.target.com)` | Si vacío → CNAME target unresolved | Step 2 (dangling check). |
+| `curl -sI https://sub.target.com` | Status + headers | Step 3. |
+| `curl -s https://sub.target.com \| head -c 500` | Body fingerprint | Step 4 (match service signature). |
+| Per-service signup + add custom domain (manual) | Step 5 (claim service) | Reclamar. |
+| `curl -s https://sub.target.com \| grep -i "atacante"` | Step 6 (verify atacante content visible) | PoC complete. |
+| `gowitness single https://sub.target.com -o screenshot.png` | Screenshot reportable | Bug bounty PoC. |
+| `asciinema rec poc.cast` | Grabar full takeover process | Video PoC. |
 ^sdt-tool-manual
 
 ___
 
 ## Wordlists Comprehensivas
 
-| **Wordlist** | **Path / Repo** | **Uso** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| SecLists DNS | `seclists/Discovery/DNS/subdomains-top1million-{20000,110000}.txt` | Standard brute. |
-| Assetnote wordlists | https://wordlists.assetnote.io/ | Modern, curated. |
-| commonspeak2 wordlists | Common subdomain patterns | Same. |
-| `bo0om/fuzz.txt` | Comprehensive fuzz lists | General. |
-| Custom company-specific | Hand-curated | Targeted. |
-| Permutations (altdns) | `altdns -i subs.txt -o output.txt -w words.txt` | Mutations. |
-| ripgen / dnsgen | Same family | Variations. |
-| OWASP subdomain lists | OWASP-curated | Standard. |
-| GitHub recon wordlists | github-subdomains-wordlists | OSINT-focused. |
-| Cloud-specific | `seclists/Discovery/DNS/cloud-subdomains.txt` | Cloud focused. |
+| `cat /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt` | SecLists DNS top 110k | Standard brute. |
+| `wget https://wordlists-cdn.assetnote.io/data/manual/best-dns-wordlist.txt` | Assetnote curated | Modern wordlist. |
+| `wget https://wordlists-cdn.assetnote.io/data/manual/2m-subdomains.txt` | Assetnote 2M subs | Comprehensive. |
+| `git clone https://github.com/danielmiessler/SecLists && ls SecLists/Discovery/DNS/` | All SecLists DNS wordlists | Foundation. |
+| `altdns -i subs.txt -o permutations.txt -w altdns/words.txt` | Permutations sobre subs existentes | Variation discovery. |
+| `dnsgen subs.txt > generated.txt` | DNS pattern generator | Mutations. |
+| `cat seclists.txt assetnote.txt custom.txt \| sort -u > combined.txt` | Combinar + dedupe | Bulk wordlist. |
 ^sdt-tool-wordlists
 
 ***

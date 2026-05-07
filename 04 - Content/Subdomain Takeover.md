@@ -18,7 +18,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[Subdomain Takeover - Tipos por Servicio]]"
   - "[[Subdomain Takeover - NS Takeover y DNS-Level]]"

