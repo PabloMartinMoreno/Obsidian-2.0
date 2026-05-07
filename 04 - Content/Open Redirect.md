@@ -16,7 +16,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+type: CheatSheet
 linked:
   - "[[Open Redirect - Vectores Basicos]]"
   - "[[Open Redirect - Bypass de Validacion]]"

