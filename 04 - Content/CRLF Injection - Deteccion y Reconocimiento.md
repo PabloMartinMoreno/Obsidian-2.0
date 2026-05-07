@@ -45,7 +45,7 @@ ___
 
 ## Probes con CR/LF
 
-| **Probe** | **Payload encoded** | **Indicator** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Standard CRLF | `%0d%0a` (CR + LF) | Standard. |
 | Just LF | `%0a` | Some apps. |

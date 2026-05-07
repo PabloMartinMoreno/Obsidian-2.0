@@ -45,7 +45,7 @@ ___
 
 ## Probes con Valores Arbitrarios
 
-| **Probe** | **Payload** | **Indicador** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | External Host | `Host: attacker.com` | Si app responde 200 + reflejes attacker.com → vulnerable. |
 | Localhost | `Host: localhost` | Internal access? |

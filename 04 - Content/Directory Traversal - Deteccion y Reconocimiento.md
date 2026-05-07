@@ -50,7 +50,7 @@ ___
 
 ## Probes Iniciales
 
-| **Probe** | **Payload** | **Indicador vulnerable** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Unix traversal | `../etc/passwd` | Returns `/etc/passwd` content. |
 | Windows traversal | `..\\windows\\win.ini` | Returns Windows ini. |
