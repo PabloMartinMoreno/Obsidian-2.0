@@ -1,16 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
-    },
-    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "LDAP Injection",
       "path": "04 - Content/LDAP Injection.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
     },
     {
       "basename": "Bandit 09",
