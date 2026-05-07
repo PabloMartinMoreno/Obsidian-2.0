@@ -22,127 +22,97 @@ linked:
 
 ## Param Miner (Burp)
 
-| **Función** | **Acción** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalar | Burp → Extensions → BApp Store → "Param Miner" | Free PortSwigger. |
-| Right-click → "Guess JSON parameters" | Auto-discover JSON keys via fuzzing | Mass assignment vector. |
-| Right-click → "Guess params" | Discover query params/body params | Same. |
-| Right-click → "Guess headers" | Identifica headers ocultos (cache poisoning combo) | Adjacent. |
-| Settings → Bonus features | Hostnames, JSON, other | Advanced. |
-| Settings → Custom wordlist | Append custom JSON keys list | Extender. |
-| Default wordlist | 200+ common params | Solid baseline. |
-| Settings → Force cache miss | Cache poisoning specific | Per use case. |
-| Settings → Probe twice | Confirm consistency | Reduce FP. |
-| Output panel | "Param Miner" tab | Findings. |
-| Reflection detection | Auto-mark reflected params → can be mass assignment | Combine. |
+| Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
+| Right-click request → "Guess JSON parameters" | Auto-discover JSON keys vía fuzzing | JSON body endpoints. |
+| Right-click request → "Guess params" | Discover query string + body params | URL/form body. |
+| Right-click request → "Guess headers" | Detecta unkeyed headers (cache poisoning combo) | Múlti-vector. |
+| Param Miner → Settings → "Force cache miss" | Param discovery con cache busting | Cache-fronted apps. |
+| Param Miner → "bonus features" → "Hostnames" + "JSON" + "params" | Ampliar coverage | Audit completo. |
+| Param Miner → Custom wordlist (botón) | Append wordlist sensitive (isAdmin, role, etc) | Field discovery dirigido. |
+| Output panel → "Param Miner" tab | Findings + reflection markers | Post-scan review. |
 ^ma-tool-paramminer
 
 ___
 
 ## Source Map / JS Bundle Review
 
-| **Function** | **Workflow** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Source map URL | Look for `//# sourceMappingURL=...` in JS files | Standard webpack. |
-| Direct fetch `.map` | `curl https://target/static/js/main.js.map` | Sometimes exposed. |
-| `getsourcemap` tool | https://github.com/denandz/sourcemapper | Auto-extract. |
-| Restore source | Original source structure recovered | Reveals model classes. |
-| Search for sensitive fields | `grep -E 'isAdmin|role|tenant_id'` en restored | Identify candidates. |
-| Bundle analyzer | webpack-bundle-analyzer si npm config disponible | Per-stack. |
-| Mobile app DTO extract | APK / IPA decompile → DTO classes con fields | Mobile recon. |
-| GraphQL schema extract | Build outputs may contain bundled schema | Compile-time. |
-| TypeScript types in bundle | Type definitions sometimes left | Schema disclosure. |
-| Check build artifacts | `/static/`, `/_next/`, `/build/` | Default paths. |
-| `chrome://devtools` Sources | View original (if maps OK) | Manual. |
+| `curl -s https://target/static/js/main.js \| grep -oE 'sourceMappingURL=[^ ]+'` | Detecta source map URL | Webpack build con maps publicados. |
+| `curl -s https://target/static/js/main.js.map -o main.js.map` | Bajar source map raw | Map disponible. |
+| `npx sourcemapper -url https://target/static/js/main.js.map -output ./src` | Restore árbol de sources | Auto-extract. |
+| `grep -rE 'isAdmin\|role\|tenant_id\|password_hash' src/` | Identificar fields sensibles en source | Post-extract. |
+| `grep -rE 'interface User\|class User' src/` | TypeScript interfaces / classes | Schema disclosure. |
+| `apktool d app.apk -o decompiled/` y `grep -r 'isAdmin' decompiled/` | Mobile app DTO fields | Mobile recon. |
+| `jadx-gui app.apk` → search for DTO classes | UI-friendly Android decomp | Manual review. |
+| Chrome DevTools → Sources → ver original | Manual source review | Live debug. |
 ^ma-tool-sourcemap
 
 ___
 
 ## API Documentation Discovery
 
-| **Endpoint** | **Notas** |
-|:---:|:---:|
-| `/swagger.json` / `/swagger.yaml` | Swagger 2.0 schema. |
-| `/openapi.json` / `/openapi.yaml` | OpenAPI 3.x. |
-| `/api-docs` | Swagger UI default. |
-| `/api/docs` | Variant. |
-| `/redoc` | Redoc UI. |
-| `/swagger-ui.html` | Spring docs default. |
-| `/v2/api-docs` | Spring older. |
-| `/v3/api-docs` | Spring newer. |
-| `/docs.json` / `/docs.yaml` | Custom. |
-| `/explorer` | Generic API explorer. |
-| `/console` | Api console (Restlet etc). |
-| `/__debug__/` | Django debug. |
-| `/.well-known/api-docs` | Standard discovery endpoint. |
-| `/api-explorer/` | App-specific. |
-| GraphQL: `/graphql/playground` o `/graphql/explorer` | Dev mode. |
-| GraphQL Voyager schema upload | https://graphql-kit.com/graphql-voyager/ | Visualize. |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl https://target/swagger.json` | Swagger 2.0 schema | Path default Swagger. |
+| `curl https://target/openapi.json` | OpenAPI 3.x schema | Path default OpenAPI. |
+| `curl https://target/v2/api-docs` y `curl https://target/v3/api-docs` | Spring docs | Backend Java/Spring. |
+| `curl https://target/api-docs` | Swagger UI default | Otra ruta común. |
+| `curl https://target/.well-known/api-docs` | Discovery endpoint estándar | Modern apps. |
+| `for p in /swagger.json /openapi.json /api-docs /docs /redoc /swagger-ui.html /v2/api-docs /v3/api-docs; do curl -s -o "$(basename $p)" "https://target$p"; done` | Bulk probe paths comunes | Discovery rápido. |
+| `jq '.definitions \| keys' swagger.json` | Lista DTOs declarados | Post-download. |
+| `jq '.definitions.User.properties \| keys' swagger.json` | Fields del modelo User | Identificar campos sensibles. |
+| `jq '.paths \| to_entries[] \| select(.value.put or .value.patch) \| .key' openapi.json` | Endpoints con PUT/PATCH (MA targets) | Filter targets. |
+| Browse `https://target/graphql/playground` o `/graphql/explorer` | GraphQL UI dev mode | Backend GraphQL. |
 ^ma-tool-apidocs
 
-### Workflow API recon
+### Workflow API recon completo
 
 ```bash
-# 1. Find docs
-DOC_PATHS=(/swagger.json /openapi.json /api-docs /docs /redoc /swagger-ui.html /v2/api-docs /v3/api-docs)
-
-for p in "${DOC_PATHS[@]}"; do
-  echo "=== $p ==="
-  curl -s "https://target$p" -o "$(basename $p).json" 2>/dev/null
-  if [ -s "$(basename $p).json" ]; then
-    echo "[+] Found"
-    jq '.paths | keys' "$(basename $p).json" 2>/dev/null | head
-  fi
+# 1. Probe paths
+for p in /swagger.json /openapi.json /api-docs /docs.json /v2/api-docs /v3/api-docs; do
+  curl -s -o "$(basename $p)" "https://target$p" 2>/dev/null
+  [ -s "$(basename $p)" ] && echo "[+] Found: $p"
 done
 
-# 2. Parse Swagger/OpenAPI for sensitive fields
-jq '.definitions // .components.schemas | keys' swagger.json
-# Then per-schema:
-jq '.definitions.User.properties | keys' swagger.json
+# 2. Parse fields sensibles
+jq -r '.definitions // .components.schemas | to_entries[] | "\(.key): \(.value.properties | keys | join(\", \"))"' swagger.json | grep -iE 'admin|role|verified|tenant|owner|password|secret'
+
+# 3. Lista endpoints PUT/PATCH (vector primario MA)
+jq -r '.paths | to_entries[] | select(.value.put or .value.patch) | .key' openapi.json
 ```
 
 ___
 
 ## ffuf con Field Wordlists
 
-| **Workflow** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Setup ffuf for JSON keys | `ffuf -u https://target/api/profile -X PATCH -d '{"FUZZ":true}' -w wordlist.txt` | JSON body fuzz. |
-| Detect by response diff | `-mc 200` (only 200), `-fr 'rejected'` (filter rejection) | Standard ffuf flags. |
-| Custom Content-Type | `-H "Content-Type: application/json"` | Required for JSON. |
-| Auth headers | `-H "Authorization: Bearer $TOKEN"` | Authenticated. |
-| Multi-payload position | Use `FUZZ1`, `FUZZ2` con multi-wordlist | Advanced fuzz. |
-| Recursive fuzz | Deep nested keys | Custom logic. |
-| Rate limit | `-rate 10` | Avoid block. |
-| Match length | `-ml 1234` | Exact size match. |
-| Filter response | `-fr 'invalid'` excludes rejection messages | Cleaner output. |
-| Output | `-o results.json` | Reportable. |
+| `ffuf -u https://target/api/profile -X PATCH -H "Content-Type: application/json" -H "Authorization: Bearer $TOK" -d '{"FUZZ":true}' -w fields.txt -fr 'invalid\|rejected'` | Discover qué fields acepta el endpoint | Endpoint PUT/PATCH conocido. |
+| `ffuf -u https://target/api/users -X POST -d '{"email":"x@y.z","password":"x","FUZZ":true}' -w fields.txt -mc 200,201` | Discover signup-time MA fields | Signup endpoint. |
+| `ffuf ... -w fields.txt:FIELD -w values.txt:VAL -d '{"FIELD":"VAL"}'` | Multi-payload field+value combos | Probar field + value pairs. |
+| `ffuf ... -mr 'isAdmin\|role'` (match regex en response) | Detectar reflection del field en response | Confirma aceptación. |
+| `ffuf ... -ml 1234` | Match length exacto | Reduce FP cuando response varía. |
+| `ffuf ... -rate 10` | Rate limit propio | Evitar bloqueo. |
+| `ffuf ... -o results.json` | Output JSON reportable | Post-run review. |
 ^ma-tool-ffuf
 
 ___
 
-## Manual Review API Docs
+## Wordlist custom para field discovery
 
-| **Source** | **What to look for** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Swagger / OpenAPI schema | List all model fields per type | Visual review. |
-| `definitions` / `components.schemas` | All DTOs declared | Direct field list. |
-| `paths` | List endpoints + methods | Find PATCH/PUT. |
-| `securitySchemes` | Auth methods | Required for testing. |
-| `examples` | Example bodies | Show structure. |
-| Parameters per endpoint | Per-path validation | Different vs body. |
-| Response schemas | Reveal model fields backend exposes | Mirror request. |
-| Postman collections | Public collections | OSINT. |
-| GitHub leaked specs | Repo `apispec` etc | Search. |
-| Mobile DTO extraction | Decompile APK / IPA | Reverse engineering. |
-| Internal docs leaks | Confluence / Notion public exposure | OSINT. |
-| Source map types | TypeScript interface / class definitions | If bundled. |
-^ma-tool-manual
+| `cat <<EOF > fields.txt` (ver code block) | Wordlist sensitive fields | Para usar con ffuf/Param Miner. |
+| `curl -s https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/Mass%20Assignment/Intruder/mass_assignment.txt` | PayloadsAllTheThings wordlist | Comprehensive ready-made. |
+| Mix + dedup: `cat custom.txt PayloadsAllTheThings.txt \| sort -u > combined.txt` | Single wordlist consolidada | Bulk fuzzing. |
+^ma-tool-wordlist
 
-### Field discovery wordlist (custom)
+### Wordlist field discovery custom
 
 ```
-# Common sensitive field names
 isAdmin
 is_admin
 admin
@@ -156,18 +126,29 @@ is_active
 is_verified
 email_verified
 phone_verified
+kyc_verified
 mfa_enabled
 mfa_secret
 balance
 credits
 points
+tokens
+wallet
 tier
 plan
 subscription_status
+subscription_expires_at
+trial_extended
+quota_used
+quota_limit
+discount
+tax_rate
+referral_credit
 user_id
 owner_id
 tenant_id
 created_by
+modified_by
 created_at
 updated_at
 deleted_at
@@ -176,18 +157,17 @@ revision
 api_key
 password_hash
 password_reset_token
+mfa_secret
 external_id
 oauth_id
 verified
 trusted
 internal
-reserved
 priority
 scope
 access_level
 clearance
 secret
-internal_notes
 metadata
 ```
 

