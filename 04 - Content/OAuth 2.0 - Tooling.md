@@ -24,71 +24,47 @@ linked:
 
 ## Burp Suite + Extensions
 
-| **Función** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| EsPReSSO (BApp Store) | Extensions → BApp Store → EsPReSSO | Auto-detect OAuth/SAML, parse tokens, scan vulns. |
-| JSON Web Tokens (BApp Store) | Extensions → BApp Store → JSON Web Tokens | Decode/edit JWTs in-place. |
-| Param Miner | Extensions → BApp Store → Param Miner | Discover hidden params en authorize/token. |
-| Active Scanner Pro | Built-in Pro | Detecta open redirects en redirect_uri. |
-| Repeater + macros | Built-in | Replay flow steps, mod state/code/redirect_uri. |
-| Logger++ | Extensions → BApp Store | Filter requests por endpoint OAuth. |
-| Match & Replace | Settings → Sessions | Mod redirect_uri auto en todos los requests. |
-| Comparer | Built-in | Diff de responses con/sin params. |
-| Intruder fuzz | Built-in | Fuzz redirect_uri con bypasses. |
-| Scope-aware Proxy filter | `https://target/oauth/*` | Capture only OAuth flow. |
-| HTTP/2 support | Pro v2024+ | Modern OAuth servers. |
-| Save Item to Project | Built-in | Save token captures for later. |
-| Authentication Recorder | Pro | Record full OAuth flow as macro. |
-| Burp BCheck | Pro v2023+ | Custom OAuth checks. |
-| `Authz` extension (Authorization plugin) | BApp Store | Test scope/role escalations. |
-| HTTP Request Smuggler combo | BApp Store | Flow desync abuse. |
+| Burp → Extensions → BApp Store → "EsPReSSO" → Install | Auto-detect OAuth/SAML, parse tokens, scan vulns | OAuth flow audit. |
+| Burp → Extensions → BApp Store → "JSON Web Tokens" → Install | Decode/edit JWTs in-place en Repeater | Manipular id_token / access_token. |
+| Burp → Extensions → BApp Store → "Param Miner" → Install | Discover hidden params en authorize/token | Recon scope/redirect. |
+| Burp → Extensions → BApp Store → "Authz" → Install | Test scope/role escalations automatizados | Scope escalation. |
+| Burp Repeater → modificar `redirect_uri`/`state`/`response_type`/`scope` y replay | Manual flow manipulation | Standard manual testing. |
+| Burp Intruder con wordlist parser-confusion → fuzz `redirect_uri` | Bulk redirect_uri bypass test | Brute parser tricks. |
+| Burp Comparer → diff de responses con/sin `state` | Detecta validación state ausente | Session-bind check. |
+| Burp Settings → Match & Replace → mod `redirect_uri` global | Reescritura automática del flow | Workflow continuo. |
+| Burp Pro → Authentication Recorder → grabar full OAuth flow como macro | Replay flows complejos | Multi-step automation. |
 ^oauth-tool-burp
-
-### Workflow Burp típico
-
-```
-1. Proxy → loggear flow desde click "Sign in with X"
-2. EsPReSSO → identifica flow type, params, scope
-3. Repeater → modificar redirect_uri, state, response_type, scope
-4. Send to Intruder → fuzz redirect_uri con bypasses (parser confusion list)
-5. Comparer → diff de responses con/sin state
-6. Save flow as macro → replay con cambios
-```
 
 ___
 
 ## CLI y Discovery
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| oauth-toolkit (dafthack) | `git clone https://github.com/dafthack/oauth-toolkit && python oauth-toolkit.py -u target` | Bulk OAuth testing. |
-| oauthscan (maraisr) | `oauthscan https://target` | Misconfig scanner. |
-| openid-cli | `openid-cli probe https://target` | OIDC test. |
-| curl + jq manual | `curl -s URL/.well-known/openid-configuration \| jq .` | Discovery base. |
-| HTTPie | `http https://target/.well-known/openid-configuration` | Pretty CLI. |
-| postman OAuth collection | `postman.com/templates/oauth-2-0` | GUI flow runner. |
-| Insomnia OAuth | Built-in OAuth flow runner | Adjacent. |
-| `httpx` bulk discovery | `subfinder -d X \| httpx -path /.well-known/openid-configuration -mc 200` | Bulk recon. |
-| `nuclei oauth-templates` | `nuclei -u target -t http/exposures/oauth*` | Templates dedicados. |
-| `katana` crawl + grep | Crawl JS bundles, grep `client_id` | Frontend recon. |
-| `getJS` extract endpoints | Extract OAuth URLs from bundles | Recon. |
-| `gau` archive endpoints | URLs históricas via Wayback | Historical client_ids. |
-| `waybackurls` | `waybackurls target.com \| grep oauth` | Same. |
-| `subjack` takeover | Subdomain enum + takeover check | redirect_uri bypass combo. |
-| `interactsh` OOB | Detect OOB callbacks | SSRF combo. |
+| `curl -s https://target/.well-known/openid-configuration \| jq .` | Discovery completo (issuer, endpoints, supported flows) | Recon inicial OIDC. |
+| `curl -s https://target/.well-known/oauth-authorization-server \| jq .` | OAuth 2.0 discovery (RFC 8414) | Recon OAuth puro. |
+| `curl -s https://target/.well-known/openid-configuration \| jq '.jwks_uri' \| xargs curl -s \| jq .` | JWKS público | JWT signature verification. |
+| `subfinder -d known.com -silent \| httpx -silent -path /.well-known/openid-configuration -mc 200` | Bulk OIDC endpoint discovery | Multi-host recon. |
+| `nuclei -u target -t http/exposures/oauth*` | Templates dedicados a OAuth misconfigs | Auto-scan vulns. |
+| `katana -u https://target -jc \| grep -E 'client_id\|oauth\|authorize'` | Crawl JS bundles y extraer client_ids | Frontend recon. |
+| `gau target.com \| grep -E 'oauth\|authorize\|client_id\|redirect_uri'` | URLs históricas de archive.org | Historical client_ids. |
+| `waybackurls target.com \| grep oauth` | Same — variante | Historical. |
+| `git clone https://github.com/dafthack/oauth-toolkit && python oauth-toolkit.py -u target` | Bulk OAuth misconfig testing | Comprehensive scan. |
 ^oauth-tool-cli
 
 ### Bulk discovery pipeline
 
 ```bash
-# Subdomains + OAuth discovery + JWKS
+# Subdomains + OAuth discovery + key endpoints
 subfinder -d known.com -silent | \
   httpx -silent -path /.well-known/openid-configuration -mc 200 | \
   while read url; do
     echo "=== $url ==="
     curl -s "$url" | jq '{
-      issuer, 
-      authorization_endpoint, 
+      issuer,
+      authorization_endpoint,
       token_endpoint,
       registration_endpoint,
       response_types_supported,
@@ -103,24 +79,17 @@ ___
 
 ## JWT-specific Tools
 
-| **Tool** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| jwt.io decoder | `jwt.io` (browser) | NO usar producción tokens — logs. |
-| jwt-cli (mike-engel) | `jwt decode TOKEN` | Local decode/encode. |
-| jwt_tool (ticarpi) | `python3 jwt_tool.py TOKEN` | Attack suite. |
-| jwt_tool alg none | `python3 jwt_tool.py TOKEN -X a` | Test alg=none. |
-| jwt_tool HMAC confusion | `python3 jwt_tool.py TOKEN -X k` | RS→HS confusion. |
-| jwt_tool HMAC crack | `python3 jwt_tool.py TOKEN -C -d wordlist.txt` | Brute weak HMAC. |
-| jwt_tool kid injection | `python3 jwt_tool.py TOKEN -X i -I -hc kid -hv "../../tmp/x"` | kid path traversal. |
-| hashcat HMAC | `hashcat -m 16500 jwt.txt rockyou.txt` | GPU brute. |
-| jwks-rotated analysis | Public key pinning analysis | Adjacent. |
-| Burp JSON Web Tokens | In-place edit | Manual. |
-| `jwt_resign.py` script | Re-sign con leaked key | Custom. |
-| `python-jose` lib | Programmatic | For automation. |
-| `pyjwt` lib | Decode/encode | Standard Python. |
-| `jose-jwt` (Node) | Encode/decode | JS. |
-| `jwx` (Go) | Robust impl | Server-side test. |
-| OpenSSL key manipulation | `openssl ec -pubin -in key.pem` | Cert/key inspection. |
+| `jwt-cli decode $JWT` | Decode local sin enviar a sitio público | Análisis sin leak. |
+| `python3 jwt_tool.py $JWT` | Suite completa attacks | Multi-vector. |
+| `python3 jwt_tool.py $JWT -X a` | alg=none attack | Server acepta `alg:none`. |
+| `python3 jwt_tool.py $JWT -X k -pk pubkey.pem` | RS256 → HS256 confusion (necesita pubkey RSA) | HMAC confusion bug. |
+| `python3 jwt_tool.py $JWT -C -d wordlist.txt` | HMAC brute force secret | Weak HMAC secret. |
+| `python3 jwt_tool.py $JWT -X i -I -hc kid -hv "../../tmp/x"` | kid path traversal injection | kid header inject. |
+| `hashcat -m 16500 jwt.txt rockyou.txt` | GPU brute HMAC | Faster que jwt_tool. |
+| `openssl ec -pubin -in key.pem -text -noout` | Inspeccionar key pública | Key analysis. |
+| `curl -s $JWKS_URI \| jq '.keys[] \| .kid'` | Lista kids del JWKS | Pre-attack kid inject. |
 ^oauth-tool-jwt
 
 ### JWT attack quick checks
@@ -135,7 +104,7 @@ python3 jwt_tool.py "$JWT" -X a
 # HMAC crack
 python3 jwt_tool.py "$JWT" -C -d /usr/share/wordlists/rockyou.txt
 
-# RS256 → HS256 confusion (need server's RSA pub key)
+# RS256 → HS256 confusion (need server's RSA pubkey)
 python3 jwt_tool.py "$JWT" -X k -pk pubkey.pem
 ```
 
@@ -143,27 +112,18 @@ ___
 
 ## Test Servers / Sandboxes
 
-| **Server** | **Setup** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Auth0 dev tenant | `auth0.com` free signup | Full OAuth/OIDC playground. |
-| Keycloak | `docker run -p 8080:8080 quay.io/keycloak/keycloak start-dev` | Self-host total control. |
-| ory/hydra | `docker run oryd/hydra:latest` | Lightweight OAuth2. |
-| oauth.tools | `oauth.tools` browser | Online flow inspector. |
-| oidc-playground | `openidconnect.net` | OIDC interactive. |
-| WebGoat | `docker run webgoat/webgoat-8.0` | OWASP labs. |
-| OWASP Juice Shop | `docker run bkimminich/juice-shop` | Modern app vulns. |
-| PortSwigger Web Security Academy | `portswigger.net/web-security/oauth` | 5 free OAuth labs. |
-| HackTheBox / TryHackMe | OAuth-themed boxes | Practice. |
-| CTF Time OAuth challenges | `ctftime.org` search OAuth | Real challenges. |
-| Local IdP simulator | Custom Express/Flask mock | DIY testing. |
-| Spring Authorization Server | Java reference impl | Production-grade. |
-| Okta dev | `developer.okta.com` | Free dev tenant. |
-| Curity Dev | `curity.io` | Free dev license. |
-| AWS Cognito free tier | Cloud-managed | AWS edge. |
-| Microsoft Entra ID dev | Azure dev tenant | Microsoft stack. |
+| `docker run --rm -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:latest start-dev` | Keycloak full IdP en local | Test attacks contra Keycloak. |
+| `docker run -p 4444:4444 oryd/hydra:latest serve all --dev` | ory/hydra OAuth2 lightweight | Test contra hydra. |
+| Browser → https://oauth.tools | Online OAuth flow inspector | Quick visualization. |
+| Browser → https://openidconnect.net/playground | OIDC interactive playground | OIDC learning. |
+| `docker run -p 8080:8080 webgoat/webgoat-8.0` | OWASP labs locales | Practice. |
+| `docker run -p 3000:3000 bkimminich/juice-shop` | OWASP Juice Shop | Modern app + OAuth labs. |
+| Browser → https://portswigger.net/web-security/oauth | PortSwigger Academy 5 labs OAuth | Hands-on free. |
 ^oauth-tool-sandbox
 
-### Keycloak quick-start
+### Keycloak quick-start completo
 
 ```bash
 # Run
@@ -173,31 +133,24 @@ docker run --rm -p 8080:8080 \
   quay.io/keycloak/keycloak:latest start-dev
 
 # Console: http://localhost:8080
-# Create realm → create client → enable PKCE → test bypass attempts
+# 1. Create realm "test"
+# 2. Create client → enable PKCE
+# 3. Test attacks: redirect_uri parser, state replay, scope upgrade
 ```
 
 ___
 
 ## Wordlists & Payload Repos
 
-| **Repo** | **Contenido** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| [PayloadsAllTheThings - OAuth](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/OAuth%20Misconfiguration) | Bypass payloads, redirect_uri tricks | Foundation. |
-| [SecLists Discovery/oauth.txt](https://github.com/danielmiessler/SecLists) | Common OAuth endpoints | Recon list. |
-| [HackTricks - OAuth to Account Takeover](https://book.hacktricks.xyz/pentesting-web/oauth-to-account-takeover) | Reference completo | Comprehensive. |
-| HackerOne disclosed reports OAuth | `hackerone.com/hacktivity?querystring=oauth` | Real chains. |
-| Bugcrowd VRT OAuth section | Severity scoring | Reference. |
-| [OWASP OAuth Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html) | Defense | Defender side. |
-| RFC 6819 Threat Model | `datatracker.ietf.org/doc/html/rfc6819` | Spec threat catalog. |
-| RFC 9700 Best Practices | `datatracker.ietf.org/doc/html/rfc9700` | Modern (2025). |
-| RFC 9207 iss parameter | Mix-up defense | Per-IdP. |
-| RFC 7636 PKCE | Proof Key Code Exchange | Spec base. |
-| OAuth 2.1 Draft | `datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1` | Consolidated security. |
-| Aaron Parecki blog | `aaronparecki.com/oauth-2-simplified` | Practical writeups. |
-| Daniel Fett papers | `danielfett.de` | Academic deep dives. |
-| Orange Tsai SSRF paper | URL parser tricks | redirect_uri parser bypass. |
-| OAuth 2.0 Threat Model book | "OAuth 2 in Action" | Comprehensive. |
-| Web Security Academy OAuth | PortSwigger content + labs | Hands-on. |
+| `git clone https://github.com/swisskyrepo/PayloadsAllTheThings && cd PayloadsAllTheThings/OAuth\ Misconfiguration` | Payloads bypass redirect_uri + tricks | Foundation wordlist. |
+| `wget https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/OAuth%20Misconfiguration/Intruder/redirect_uri_bypass.txt` | Lista redirect_uri bypass payloads ready | Burp Intruder. |
+| Browser → https://book.hacktricks.xyz/pentesting-web/oauth-to-account-takeover | HackTricks reference completo | Lookup. |
+| Browser → https://hackerone.com/hacktivity?querystring=oauth | Disclosed real-world OAuth chains | Inspiration. |
+| Browser → https://datatracker.ietf.org/doc/html/rfc6819 | RFC 6819 threat model oficial | Threat catalog. |
+| Browser → https://datatracker.ietf.org/doc/html/rfc9700 | RFC 9700 OAuth Best Practices 2025 | Modern guidance. |
+| Browser → https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html | OWASP defense reference | Mitigations. |
 ^oauth-tool-wordlists
 
 ***
