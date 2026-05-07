@@ -22,7 +22,7 @@ linked:
 
 ## PHP
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Estructura serializada | `O:8:"ClassName":N:{s:4:"prop";s:5:"value";...}` | `O` object, `s` string, `i` int, `a` array. |
 | Magic methods relevantes | `__wakeup` / `__destruct` / `__toString` / `__call` / `__get` / `__set` | Triggers cuando el objeto se hidrata o se referencia. |
@@ -62,7 +62,7 @@ ___
 
 ## Java
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Sink primario | `ObjectInputStream.readObject()` | Default vulnerable sin filter. |
 | Header serializado | `0xACED 0x0005` (b64: `rO0ABXNy...`) | Confirma stream Java. |
@@ -99,7 +99,7 @@ ___
 
 ## Python
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Sink primario | `pickle.loads()` / `cPickle.loads()` / `pickle.load()` | RCE inmediato. |
 | Magic method | `__reduce__` retorna `(callable, args)` → ejecuta al deserializar. | Mecanismo declarativo. |
@@ -134,7 +134,7 @@ ___
 
 ## .NET
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Sink primario | `BinaryFormatter.Deserialize()` / `LosFormatter` / `ObjectStateFormatter` / `NetDataContractSerializer` / `SoapFormatter` | Múltiples APIs vulnerables. |
 | Generador estándar | `ysoserial.net.exe -g <Gadget> -f <Formatter> -c "<cmd>"` | Equivalente .NET de ysoserial. |
@@ -176,7 +176,7 @@ ___
 
 ## Ruby
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Sink Marshal | `Marshal.load()` / `Marshal.restore()` | RCE directo si input controlado. |
 | Sink YAML | `YAML.load()` (pre 3.1) / `Psych.load` (pre 3.1) | RCE en versiones viejas. |
@@ -214,7 +214,7 @@ ___
 
 ## Node.js
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Lib vulnerable | `node-serialize` (npm) `<= 0.0.4` | `unserialize()` ejecuta IIFE. |
 | Sink | `serialize.unserialize()` | Llama a `eval()` en strings con `_$$ND_FUNC$$_`. |

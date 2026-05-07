@@ -23,7 +23,7 @@ linked:
 
 ## phpggc (PHP)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalación | `git clone https://github.com/ambionics/phpggc && cd phpggc` | PHP CLI. |
 | Listar gadgets | `./phpggc -l` | Muestra todos los chains disponibles por framework. |
@@ -44,7 +44,7 @@ ___
 
 ## ysoserial (Java)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Descargar JAR | `wget https://github.com/frohoff/ysoserial/releases/download/v0.0.6/ysoserial-all.jar` | Releases oficiales. |
 | Listar gadgets | `java -jar ysoserial-all.jar` | Lista todos los chains. |
@@ -66,7 +66,7 @@ ___
 
 ## ysoserial.net (.NET)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Descargar | `https://github.com/pwntester/ysoserial.net/releases` | Windows binary. |
 | Listar gadgets | `ysoserial.net.exe --list` | Gadgets + formatters. |
@@ -87,7 +87,7 @@ ___
 
 ## fickling (Python pickle)
 
-| **Objetivo** | **Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Instalación | `pip install fickling` | Análisis + exploit pickle. |
 | Análisis estático | `fickling --check evil.pkl` | Detecta opcodes peligrosos sin ejecutar. |

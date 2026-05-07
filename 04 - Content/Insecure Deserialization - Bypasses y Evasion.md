@@ -22,7 +22,7 @@ linked:
 
 ## Magic Bytes y Encoding
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | WAF que filtra `aced0005` | Comprimir con gzip antes de enviar | `0x1f 0x8b` reemplaza header — algunos backends descomprimen auto. |
 | WAF que filtra `O:8:` (PHP) | Convertir a uppercase / hex char escapes | `s:` → `S:` (algunos PHP versions aceptan ambos). |
@@ -42,7 +42,7 @@ ___
 
 ## Class Allowlist Bypass
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Java JEP 290 (jdk.serialFilter) | Bypass usando classes en pkg permitido pero con efectos secundarios | Buscar gadgets en allowlist. |
 | Java SerializationFilter — chained class | Inner classes / lambdas que evaden check de class name | `Class$Inner` patterns. |
@@ -62,7 +62,7 @@ ___
 
 ## Length / Type Confusion
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | PHP CVE-2016-7124 `__wakeup` bypass | Anunciar más props que las que hay | `O:4:"User":2:{...una sola prop...}` → __wakeup no se llama. |
 | PHP fast-destruct | Reference loops para ejecutar `__destruct` antes que `__wakeup` | Trick específico PHP. |
@@ -80,7 +80,7 @@ ___
 
 ## Deser Encadenada (multi-hop)
 
-| **Objetivo** | **Payload / Comando** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Gadget de file write → trigger pickle en `.pyc` | Forge archivo `.pyc` que luego se importa | Multi-stage. |
 | Java URLDNS → JRMP → RCE | Chain de gadgets pequeños | Cuando un solo gadget no llega. |
