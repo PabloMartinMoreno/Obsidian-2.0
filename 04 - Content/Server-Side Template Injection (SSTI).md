@@ -15,9 +15,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[SSTI - Deteccion y Fingerprinting]]"
   - "[[SSTI - Ejecucion por Engine]]"
   - "[[SSTI - Sandbox Escape]]"
   - "[[SSTI - Tooling]]"
@@ -33,19 +32,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Fingerprinting
-
-````tabs
-tab: **Probes Polyglot**
-![[SSTI - Deteccion y Fingerprinting#^ssti-detect-polyglot]]
-
-tab: **Identificación por Delimitador**
-![[SSTI - Deteccion y Fingerprinting#^ssti-detect-delimiters]]
-
-tab: **Confirmación con Aritmética**
-![[SSTI - Deteccion y Fingerprinting#^ssti-detect-confirmacion]]
-````
 
 ### 💉 Ejecución por Engine
 

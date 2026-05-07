@@ -15,9 +15,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[SSI - Deteccion y Reconocimiento]]"
   - "[[SSI - Ejecucion de Comandos]]"
   - "[[SSI - Inclusion de Archivos]]"
   - "[[SSI - Information Gathering]]"
@@ -31,19 +30,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar SSI Habilitado**
-![[SSI - Deteccion y Reconocimiento#^ssi-detect-enabled]]
-
-tab: **Probes Iniciales**
-![[SSI - Deteccion y Reconocimiento#^ssi-detect-probes]]
-
-tab: **Fingerprint del Server**
-![[SSI - Deteccion y Reconocimiento#^ssi-detect-fingerprint]]
-````
 
 ### 💀 Ejecución de Comandos (RCE)
 

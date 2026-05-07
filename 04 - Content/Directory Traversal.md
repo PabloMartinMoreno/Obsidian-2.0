@@ -17,9 +17,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[Directory Traversal - Deteccion y Reconocimiento]]"
   - "[[Directory Traversal - Payloads Basicos]]"
   - "[[Directory Traversal - Bypass de Sanitizacion]]"
   - "[[Directory Traversal - Vectores OS y Stack]]"
@@ -34,19 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints**
-![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-params]]
-
-tab: **Probes Iniciales**
-![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-probes]]
-
-tab: **Detectar OS y Stack**
-![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-os]]
-````
 
 ### 🎯 Payloads Básicos
 

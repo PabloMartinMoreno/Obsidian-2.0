@@ -15,9 +15,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[HPP - Deteccion y Reconocimiento]]"
   - "[[HPP - Server-Side]]"
   - "[[HPP - Client-Side]]"
   - "[[HPP - Per-Stack Behavior]]"
@@ -33,19 +32,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints**
-![[HPP - Deteccion y Reconocimiento#^hpp-detect-endpoints]]
-
-tab: **Probes con Duplicate Params**
-![[HPP - Deteccion y Reconocimiento#^hpp-detect-probes]]
-
-tab: **Detectar Parser por Stack**
-![[HPP - Deteccion y Reconocimiento#^hpp-detect-stack]]
-````
 
 ### 🌐 Server-Side HPP
 

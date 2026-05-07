@@ -15,9 +15,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[RFI - Deteccion y Reconocimiento]]"
   - "[[RFI - Vectores Basicos]]"
   - "[[RFI - PHP Wrappers y Schemes]]"
   - "[[RFI - Bypass de Filtros]]"
@@ -32,19 +31,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints Vulnerables**
-![[RFI - Deteccion y Reconocimiento#^rfi-detect-endpoints]]
-
-tab: **Probes con URL Remota**
-![[RFI - Deteccion y Reconocimiento#^rfi-detect-probes]]
-
-tab: **Detectar PHP + `allow_url_include`**
-![[RFI - Deteccion y Reconocimiento#^rfi-detect-php]]
-````
 
 ### 🎯 Vectores Básicos
 

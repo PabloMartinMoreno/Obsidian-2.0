@@ -18,9 +18,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[LDAP Injection - Deteccion y Reconocimiento]]"
   - "[[LDAP Injection - Auth Bypass]]"
   - "[[LDAP Injection - Info Disclosure y Blind]]"
   - "[[LDAP Injection - Filter Manipulation]]"
@@ -35,19 +34,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Endpoints con LDAP Backend**
-![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-endpoints]]
-
-tab: **Probes de Inyección**
-![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-probes]]
-
-tab: **Fingerprint del Directory Server**
-![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-fingerprint]]
-````
 
 ### 🔓 Auth Bypass
 

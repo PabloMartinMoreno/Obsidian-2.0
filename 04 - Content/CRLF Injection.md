@@ -16,9 +16,8 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+type: Hub
 linked:
-  - "[[CRLF Injection - Deteccion y Reconocimiento]]"
   - "[[CRLF Injection - HTTP Header Injection]]"
   - "[[CRLF Injection - HTTP Response Splitting]]"
   - "[[CRLF Injection - Bypass de Sanitizacion]]"
@@ -34,19 +33,6 @@ linked:
 ***
 
 ## Cheatsheet
-
-### 🔍 Detección y Reconocimiento
-
-````tabs
-tab: **Identificar Puntos de Header Reflexion**
-![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-points]]
-
-tab: **Probes con CR/LF**
-![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-probes]]
-
-tab: **Detectar Response Splitting**
-![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-splitting]]
-````
 
 ### 📋 HTTP Header Injection
 
