@@ -1,12 +1,92 @@
 {
   "recentFiles": [
     {
-      "basename": "Insecure Deserialization",
-      "path": "04 - Content/Insecure Deserialization.md"
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
     },
     {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "LDAP Injection",
+      "path": "04 - Content/LDAP Injection.md"
+    },
+    {
+      "basename": "Bandit 09",
+      "path": "05 - Writeups/OverTheWire/Bandit 09.md"
+    },
+    {
+      "basename": "Insecure Deserialization",
+      "path": "04 - Content/Insecure Deserialization.md"
+    },
+    {
+      "basename": "Bandit 10",
+      "path": "05 - Writeups/OverTheWire/Bandit 10.md"
+    },
+    {
+      "basename": "Bandit 11",
+      "path": "05 - Writeups/OverTheWire/Bandit 11.md"
+    },
+    {
+      "basename": "Bandit 12",
+      "path": "05 - Writeups/OverTheWire/Bandit 12.md"
+    },
+    {
+      "basename": "Bandit 13",
+      "path": "05 - Writeups/OverTheWire/Bandit 13.md"
+    },
+    {
+      "basename": "Bandit 14",
+      "path": "05 - Writeups/OverTheWire/Bandit 14.md"
+    },
+    {
+      "basename": "Bandit 15",
+      "path": "05 - Writeups/OverTheWire/Bandit 15.md"
+    },
+    {
+      "basename": "Bandit 16",
+      "path": "05 - Writeups/OverTheWire/Bandit 16.md"
+    },
+    {
+      "basename": "Bandit 17",
+      "path": "05 - Writeups/OverTheWire/Bandit 17.md"
+    },
+    {
+      "basename": "Bandit 18",
+      "path": "05 - Writeups/OverTheWire/Bandit 18.md"
+    },
+    {
+      "basename": "Bandit 19",
+      "path": "05 - Writeups/OverTheWire/Bandit 19.md"
+    },
+    {
+      "basename": "Bandit 20",
+      "path": "05 - Writeups/OverTheWire/Bandit 20.md"
+    },
+    {
+      "basename": "Bandit 21",
+      "path": "05 - Writeups/OverTheWire/Bandit 21.md"
+    },
+    {
+      "basename": "Bandit 22",
+      "path": "05 - Writeups/OverTheWire/Bandit 22.md"
+    },
+    {
+      "basename": "Bandit 23",
+      "path": "05 - Writeups/OverTheWire/Bandit 23.md"
+    },
+    {
+      "basename": "OverTheWire",
+      "path": "04 - Content/Process/OverTheWire.md"
+    },
+    {
+      "basename": "Bandit 24",
+      "path": "05 - Writeups/OverTheWire/Bandit 24.md"
+    },
+    {
+      "basename": "Bandit 25",
+      "path": "05 - Writeups/OverTheWire/Bandit 25.md"
     },
     {
       "basename": "Subdomain Takeover",
@@ -55,10 +135,6 @@
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
     },
     {
       "basename": "Session Hijacking",
@@ -123,82 +199,6 @@
     {
       "basename": "OS Command Injection",
       "path": "04 - Content/OS Command Injection.md"
-    },
-    {
-      "basename": "LDAP Injection",
-      "path": "04 - Content/LDAP Injection.md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/GraphQL Injection.md"
-    },
-    {
-      "basename": "NoSQL Injection",
-      "path": "04 - Content/NoSQL Injection.md"
-    },
-    {
-      "basename": "LFI - PHP Wrappers",
-      "path": "04 - Content/LFI - PHP Wrappers.md"
-    },
-    {
-      "basename": "Ataques de Fuerza Bruta",
-      "path": "04 - Content/Process/Ataques de Fuerza Bruta.md"
-    },
-    {
-      "basename": "File Upload - XSS y XXE",
-      "path": "04 - Content/Process/File Upload - XSS y XXE.md"
-    },
-    {
-      "basename": "Web Content Types",
-      "path": "04 - Content/Process/Web Content Types.md"
-    },
-    {
-      "basename": "Lista archivos php",
-      "path": "04 - Content/Process/Lista archivos php.md"
-    },
-    {
-      "basename": "Golden Ticket",
-      "path": "04 - Content/Golden Ticket.md"
-    },
-    {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "Pass-the-Ticket",
-      "path": "04 - Content/Pass-the-Ticket.md"
-    },
-    {
-      "basename": "NTDS.dit Extraction",
-      "path": "04 - Content/NTDS.dit Extraction.md"
-    },
-    {
-      "basename": "NTLM Relay",
-      "path": "04 - Content/NTLM Relay.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "Active Directory Enumeración",
-      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
-    },
-    {
-      "basename": "CWES - Maquinas",
-      "path": "04 - Content/Process/CWES - Maquinas.md"
-    },
-    {
-      "basename": "Terminal Interactiva",
-      "path": "04 - Content/Process/Terminal Interactiva.md"
-    },
-    {
-      "basename": "Reverse Shell",
-      "path": "04 - Content/Reverse Shell.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
     }
   ],
   "omittedPaths": [],
