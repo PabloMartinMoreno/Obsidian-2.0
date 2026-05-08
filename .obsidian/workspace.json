@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/HTTP Brute Forcing.md",
+                "file": "04 - Content/File Inclusion.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "HTTP Brute Forcing"
+              "title": "File Inclusion"
             }
           }
         ],
@@ -266,6 +266,8 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/HTTP Brute Forcing.md",
     "04 - Content/Auth Bypass - Bypass de Autenticacion.md.tmp.3926.7dc3e9111450",
     "04 - Content/HPP - Tooling.md.tmp.3926.56f990335e38",
     "04 - Content/HPP - Bypass de Validacion.md.tmp.3926.f0fcf8febf02",
@@ -276,10 +278,7 @@
     "04 - Content/HTTP Request Smuggling - Tooling.md.tmp.3926.9ed07aa3155c",
     "04 - Content/HTTP Request Smuggling - Tooling.md.tmp.3926.9823a3044b55",
     "04 - Content/HTTP Request Smuggling - Tooling.md.tmp.3926.511a8ee0197d",
-    "04 - Content/HTTP Request Smuggling - Tooling.md.tmp.3926.12964f12795e",
     "04 - Content/Process/Ataques de Fuerza Bruta.md",
-    "04 - Content/HTTP Brute Forcing.md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Authentication & Authorization Bypass.md",
     "04 - Content/LDAP Injection.md",
     "04 - Content/Server-Side Template Injection (SSTI).md",
