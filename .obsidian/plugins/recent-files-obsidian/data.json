@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "File Inclusion",
-      "path": "04 - Content/File Inclusion.md"
+      "basename": "Broken autentication",
+      "path": "04 - Content/Process/Broken autentication.md"
     },
     {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
-      "basename": "HTTP Brute Forcing",
-      "path": "04 - Content/HTTP Brute Forcing.md"
-    },
-    {
       "basename": "Authentication & Authorization Bypass",
       "path": "04 - Content/Authentication & Authorization Bypass.md"
+    },
+    {
+      "basename": "File Inclusion",
+      "path": "04 - Content/File Inclusion.md"
+    },
+    {
+      "basename": "HTTP Brute Forcing",
+      "path": "04 - Content/HTTP Brute Forcing.md"
     },
     {
       "basename": "LDAP Injection",
