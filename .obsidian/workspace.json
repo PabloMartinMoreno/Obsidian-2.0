@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Web Explotación.md",
+                "file": "04 - Content/Process/Broken autentication.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Explotación"
+              "title": "Broken autentication"
             }
           }
         ],
@@ -266,21 +266,22 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
-    "04 - Content/Process/Broken autentication.md",
+    "04 - Content/Race Conditions - Bypasses y Edge Cases.md.tmp.3487.2e6f91346c7d",
+    "04 - Content/Race Conditions - Tooling.md.tmp.3487.536b8b37a9b4",
+    "04 - Content/Session Hijacking - Tooling.md.tmp.3487.c03fa7a40f69",
+    "04 - Content/Session Hijacking - Cross-Origin y Cross-Subdomain.md.tmp.3487.3eef29d232a6",
+    "04 - Content/Session Hijacking - Fixation y Replay.md.tmp.3487.2eb4a1961b95",
+    "04 - Content/Session Hijacking - Cookie Tampering y Forging.md.tmp.3487.868ad9dce1cf",
+    "04 - Content/Session Hijacking - Vectores de Robo.md.tmp.3487.8c7cb5c0e8d1",
+    "04 - Content/HTTP Brute Forcing - Tooling.md.tmp.3487.fdf5942d00f7",
+    "04 - Content/Prototype Pollution - Bypasses y Filter Evasion.md.tmp.3487.b85b55ff405a",
+    "04 - Content/Prototype Pollution - Tooling.md.tmp.3487.a3f055f6c80c",
+    "04 - Content/Prototype Pollution - Gadgets y Explotacion.md.tmp.3487.522697ff2242",
     "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Process/Broken autentication.md",
     "04 - Content/Authentication & Authorization Bypass.md",
     "04 - Content/File Inclusion.md",
     "04 - Content/HTTP Brute Forcing.md",
-    "04 - Content/Auth Bypass - Bypass de Autenticacion.md.tmp.3926.7dc3e9111450",
-    "04 - Content/HPP - Tooling.md.tmp.3926.56f990335e38",
-    "04 - Content/HPP - Bypass de Validacion.md.tmp.3926.f0fcf8febf02",
-    "04 - Content/HPP - Per-Stack Behavior.md.tmp.3926.990332b5cf0b",
-    "04 - Content/HPP - Client-Side.md.tmp.3926.b4a0894f4514",
-    "04 - Content/HPP - Server-Side.md.tmp.3926.fc053dd45a52",
-    "04 - Content/HTTP Request Smuggling - Bypasses.md.tmp.3926.8e8db43a1459",
-    "04 - Content/HTTP Request Smuggling - Tooling.md.tmp.3926.9ed07aa3155c",
-    "04 - Content/HTTP Request Smuggling - Tooling.md.tmp.3926.9823a3044b55",
-    "04 - Content/HTTP Request Smuggling - Tooling.md.tmp.3926.511a8ee0197d",
     "04 - Content/Process/Ataques de Fuerza Bruta.md",
     "04 - Content/LDAP Injection.md",
     "04 - Content/Server-Side Template Injection (SSTI).md",
@@ -301,7 +302,6 @@
     "05 - Writeups/OverTheWire/Bandit 22.md",
     "05 - Writeups/OverTheWire/Bandit 23.md",
     "04 - Content/Process/OverTheWire.md",
-    "05 - Writeups/OverTheWire/Bandit 24.md",
     "00 - Resources/Pasted image 20260418144914.png",
     "00 - Resources/Pasted image 20260418144906.png",
     "00 - Resources/Pasted image 20260405112752.png",
