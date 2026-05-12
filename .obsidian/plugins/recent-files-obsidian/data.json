@@ -5,6 +5,10 @@
       "path": "04 - Content/File Inclusion.md"
     },
     {
+      "basename": "Prototype Pollution - Bypasses y Filter Evasion",
+      "path": "04 - Content/Prototype Pollution - Bypasses y Filter Evasion.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "CRLF Injection",
       "path": "04 - Content/CRLF Injection.md"
-    },
-    {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Server-Side Includes (SSI) Injection.md"
     }
   ],
   "omittedPaths": [],
