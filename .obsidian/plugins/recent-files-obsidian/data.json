@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
+      "path": "04 - Content/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
+    },
+    {
       "basename": "File Inclusion",
       "path": "04 - Content/File Inclusion.md"
     },
@@ -183,10 +187,6 @@
     {
       "basename": "Directory Traversal",
       "path": "04 - Content/Directory Traversal.md"
-    },
-    {
-      "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
-      "path": "04 - Content/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
     },
     {
       "basename": "XML External Entity (XXE)",
