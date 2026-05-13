@@ -94,11 +94,26 @@ tab: **DNS via Subdomain**
 ### 🛡️ Bypasses y Evasión de Filtros
 
 ````tabs
-tab: **Encoding (UTF-16 / UTF-7)**
+tab: **Encoding (UTF-16/UTF-7)**
 ![[XSLT - Bypasses y Evasion#^xslt-bypass-encoding]]
 
-tab: **Namespaces Alternativos**
+tab: **Char References**
+![[XSLT - Bypasses y Evasion#^xslt-bypass-chars]]
+
+tab: **String Obfuscation XPath**
+![[XSLT - Bypasses y Evasion#^xslt-bypass-xpath]]
+
+tab: **Namespaces y Prefijos**
 ![[XSLT - Bypasses y Evasion#^xslt-bypass-namespaces]]
+
+tab: **CDATA y Entity Wrap**
+![[XSLT - Bypasses y Evasion#^xslt-bypass-cdata]]
+
+tab: **Comentarios y Whitespace**
+![[XSLT - Bypasses y Evasion#^xslt-bypass-comments]]
+
+tab: **HTTP Transport**
+![[XSLT - Bypasses y Evasion#^xslt-bypass-transport]]
 ````
 
 ___
