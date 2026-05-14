@@ -29,7 +29,7 @@ linked:
   - "[[XML External Entity (XXE)]]"
   - "[[Burp Suite]]"
 ---
-# eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection
+1# eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection
 
 ***
 
