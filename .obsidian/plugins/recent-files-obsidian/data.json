@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Auth Bypass - Brute Force y Credential Stuffing",
+      "path": "04 - Content/Auth Bypass - Brute Force y Credential Stuffing.md"
+    },
+    {
+      "basename": "HTTP Brute Forcing - Tipos Especiales",
+      "path": "04 - Content/HTTP Brute Forcing - Tipos Especiales.md"
+    },
+    {
+      "basename": "FTP (21) - Enumeración",
+      "path": "04 - Content/FTP (21) - Enumeración.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Remote File Inclusion (RFI)",
       "path": "04 - Content/Remote File Inclusion (RFI).md"
-    },
-    {
-      "basename": "Directory Traversal",
-      "path": "04 - Content/Directory Traversal.md"
-    },
-    {
-      "basename": "XML External Entity (XXE)",
-      "path": "04 - Content/XML External Entity (XXE).md"
-    },
-    {
-      "basename": "HTTP Parameter Pollution",
-      "path": "04 - Content/HTTP Parameter Pollution.md"
     }
   ],
   "omittedPaths": [],
