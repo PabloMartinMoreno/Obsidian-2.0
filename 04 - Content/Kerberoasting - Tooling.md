@@ -5,7 +5,7 @@ aliases:
   - GetUserSPNs
   - hashcat 13100
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory
@@ -13,11 +13,11 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[Kerberoasting]]"
-  - "[[netexec]]"
-  - "[[Impacket Toolkit]]"
+  - '[[Kerberoasting]]'
+  - '[[netexec]]'
+  - '[[Impacket Toolkit]]'
 ---
 # Kerberoasting - Tooling
 

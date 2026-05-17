@@ -5,7 +5,7 @@ aliases:
   - Tar Slip
   - Symlink Abuse
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/path-traversal
   - technique/execution
   - technique/lateral-movement
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Directory Traversal]]'
   - '[[File Inclusion]]'

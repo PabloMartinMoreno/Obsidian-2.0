@@ -5,7 +5,7 @@ aliases:
   - Login Redirect
   - Magic Link Redirect
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/open-redirect
   - vuln/auth-bypass
   - technique/credential-access
@@ -14,7 +14,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Open Redirect]]'
 ---

@@ -6,14 +6,14 @@ aliases:
   - H2 Desync
   - h2cSmuggling
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/http-smuggling
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTTP Request Smuggling]]'
 ---

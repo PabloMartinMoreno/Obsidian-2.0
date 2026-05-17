@@ -4,14 +4,14 @@ aliases:
   - SSI Recon
   - SSI Probe
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ssi
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Server-Side Includes (SSI) Injection]]'
 ---

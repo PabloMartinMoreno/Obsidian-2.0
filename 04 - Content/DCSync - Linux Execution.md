@@ -4,7 +4,7 @@ aliases:
   - secretsdump DCSync
   - impacket dcsync
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - env/linux
   - asset/active-directory
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[DCSync]]'
 ---

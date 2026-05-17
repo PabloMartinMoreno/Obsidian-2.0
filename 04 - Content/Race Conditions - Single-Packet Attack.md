@@ -4,14 +4,14 @@ aliases:
   - Last-Byte Sync
   - HTTP/2 Race
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/race-condition
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Race Conditions]]'
 ---

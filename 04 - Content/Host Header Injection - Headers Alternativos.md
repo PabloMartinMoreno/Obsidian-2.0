@@ -5,14 +5,14 @@ aliases:
   - Forwarded RFC 7239
   - X-HTTP-Host-Override
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/host-header-injection
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Host Header Injection]]'
 ---

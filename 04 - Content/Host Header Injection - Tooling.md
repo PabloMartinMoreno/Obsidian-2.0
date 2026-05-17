@@ -4,14 +4,14 @@ aliases:
   - Param Miner Host Header
   - Host Header Wordlists
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/host-header-injection
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Host Header Injection]]'
   - '[[Burp Suite]]'

@@ -4,7 +4,7 @@ aliases:
   - SSI file include
   - SSI LFI
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ssi
   - vuln/lfi
   - technique/collection
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Server-Side Includes (SSI) Injection]]'
 ---

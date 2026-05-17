@@ -5,16 +5,17 @@ aliases:
   - Kerberos SRV
   - DC SRV Lookup
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
+  - asset/dns
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - DNS & SRV Records]]"
+  - '[[AD - DNS & SRV Records]]'
 ---
 # AD - DNS & SRV Records - SRV Records Estándar AD
 

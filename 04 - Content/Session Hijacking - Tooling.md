@@ -4,14 +4,14 @@ aliases:
   - mitmproxy Cookie
   - Wireshark Cookie Capture
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Session Hijacking]]'
   - '[[Burp Suite]]'

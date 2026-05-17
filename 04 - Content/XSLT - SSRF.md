@@ -3,7 +3,7 @@ aliases:
   - XSLT SSRF
   - XSLT document HTTP
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xslt-injection
   - vuln/ssrf
   - technique/discovery
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - >-
     [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side

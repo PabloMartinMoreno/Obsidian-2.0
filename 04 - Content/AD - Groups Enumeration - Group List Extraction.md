@@ -5,17 +5,17 @@ aliases:
   - enumdomgroups
   - Get-ADGroup
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Groups Enumeration]]"
-  - "[[netexec]]"
+  - '[[AD - Groups Enumeration]]'
+  - '[[netexec]]'
 ---
 # AD - Groups Enumeration - Group List Extraction
 

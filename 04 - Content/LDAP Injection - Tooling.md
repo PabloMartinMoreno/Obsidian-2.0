@@ -5,7 +5,7 @@ aliases:
   - JNDI Exploit Kit
   - LDAP wordlists
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ldap-injection
   - technique/discovery
   - asset/web-app
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[LDAP Injection]]'
   - '[[Burp Suite]]'

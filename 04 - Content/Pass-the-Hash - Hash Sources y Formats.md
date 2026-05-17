@@ -5,7 +5,7 @@ aliases:
   - LM Hash
   - NTLM Hash Format
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - technique/lateral-movement
   - asset/active-directory
@@ -13,9 +13,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Pass-the-Hash]]"
+  - '[[Pass-the-Hash]]'
 ---
 # Pass-the-Hash - Hash Sources & Formats
 

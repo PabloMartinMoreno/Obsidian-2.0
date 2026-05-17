@@ -5,17 +5,17 @@ aliases:
   - PKCE Downgrade
   - Device Code Phishing
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/oauth
   - technique/privilege-escalation
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[OAuth 2.0 Misconfigurations]]"
-  - "[[Phishing]]"
+  - '[[OAuth 2.0 Misconfigurations]]'
+  - '[[Phishing]]'
 ---
 # OAuth 2.0 - Scope, Consent & Flow Abuse
 

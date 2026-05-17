@@ -6,16 +6,17 @@ aliases:
   - adidnsdump
   - krbrelayx dnstool
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
+  - asset/dns
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - DNS & SRV Records]]"
+  - '[[AD - DNS & SRV Records]]'
 ---
 # AD - DNS & SRV Records - Tooling
 

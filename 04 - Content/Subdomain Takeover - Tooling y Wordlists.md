@@ -7,14 +7,14 @@ aliases:
   - amass
   - dnsx
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/subdomain-takeover
   - technique/discovery
   - asset/dns
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Subdomain Takeover]]'
 ---

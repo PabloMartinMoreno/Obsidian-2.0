@@ -4,14 +4,14 @@ aliases:
   - SSTI Filter Evasion
   - SSTI WAF Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ssti
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Server-Side Template Injection (SSTI)]]'
 ---

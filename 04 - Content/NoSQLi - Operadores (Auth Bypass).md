@@ -4,17 +4,17 @@ aliases:
   - MongoDB Auth Bypass
   - $ne bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/nosqli
   - technique/initial-access
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[NoSQL Injection]]"
+  - '[[NoSQL Injection]]'
 ---
 # NoSQLi - Operadores (Auth Bypass)
 

@@ -3,7 +3,7 @@ aliases:
   - Kerberos Ticket Formats
   - kirbi ccache
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/lateral-movement
   - technique/credential-access
   - env/windows
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Pass-the-Ticket]]'
 ---

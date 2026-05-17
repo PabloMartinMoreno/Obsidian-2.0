@@ -4,19 +4,19 @@ aliases:
   - JWT Algorithm Confusion
   - JWT Weak Secret
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/jwt
   - vuln/auth-bypass
   - technique/credential-access
   - technique/defense-evasion
   - asset/web-app
   - cred/jwt
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[JWT Attacks]]"
+  - '[[JWT Attacks]]'
 ---
 # JWT - Ataques al Algoritmo
 

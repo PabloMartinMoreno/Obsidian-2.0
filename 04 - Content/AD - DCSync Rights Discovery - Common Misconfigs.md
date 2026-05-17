@@ -4,16 +4,16 @@ aliases:
   - Service Account DCSync
   - Authenticated Users DCSync
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - DCSync Rights Discovery]]"
+  - '[[AD - DCSync Rights Discovery]]'
 ---
 # AD - DCSync Rights Discovery - Common Misconfigs
 

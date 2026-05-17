@@ -4,7 +4,7 @@ aliases:
   - LDAP Login Bypass
   - LDAP Empty Bind
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ldap-injection
   - vuln/auth-bypass
   - technique/initial-access
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[LDAP Injection]]'
 ---

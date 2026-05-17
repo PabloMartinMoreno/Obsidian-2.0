@@ -6,7 +6,7 @@ aliases:
   - graphql-cop
   - GraphiQL
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/graphql
   - technique/discovery
   - technique/initial-access
@@ -14,7 +14,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[GraphQL Injection]]'
   - '[[Burp Suite]]'

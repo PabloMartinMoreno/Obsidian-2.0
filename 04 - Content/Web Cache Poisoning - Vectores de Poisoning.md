@@ -5,7 +5,7 @@ aliases:
   - Open Redirect Cache
   - Cookie Injection Cache
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/cache-poisoning
   - technique/initial-access
   - technique/impact
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Web Cache Poisoning]]'
   - '[[Cross-Site Scripting (XSS)]]'

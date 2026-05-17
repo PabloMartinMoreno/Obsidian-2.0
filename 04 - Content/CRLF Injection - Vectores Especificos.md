@@ -5,7 +5,7 @@ aliases:
   - Log Poisoning CRLF
   - Memcached Injection
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/crlf-injection
   - technique/initial-access
   - technique/lateral-movement
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[CRLF Injection]]'
   - '[[HTTP Request Smuggling]]'

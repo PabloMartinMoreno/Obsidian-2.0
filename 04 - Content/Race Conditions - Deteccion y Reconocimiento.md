@@ -3,14 +3,14 @@ aliases:
   - Race Detection
   - TOCTOU Detection
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/race-condition
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Race Conditions]]'
 ---

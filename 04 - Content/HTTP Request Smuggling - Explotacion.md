@@ -5,7 +5,7 @@ aliases:
   - Cache Poisoning Smuggle
   - Queue Poisoning
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/http-smuggling
   - technique/initial-access
   - technique/credential-access
@@ -14,7 +14,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTTP Request Smuggling]]'
   - '[[Cross-Site Scripting (XSS)]]'

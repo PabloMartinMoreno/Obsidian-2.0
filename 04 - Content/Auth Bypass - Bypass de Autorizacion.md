@@ -5,14 +5,14 @@ aliases:
   - Privilege Escalation Web
   - RBAC Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/auth-bypass
   - technique/privilege-escalation
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Authentication & Authorization Bypass]]'
   - '[[BOLA - IDOR]]'

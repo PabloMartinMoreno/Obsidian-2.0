@@ -5,17 +5,17 @@ aliases:
   - PowerView ACL
   - bloodyAD
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - ACL Enumeration]]"
-  - "[[BloodHound & SharpHound]]"
+  - '[[AD - ACL Enumeration]]'
+  - '[[BloodHound & SharpHound]]'
 ---
 # AD - ACL Enumeration - Tooling
 

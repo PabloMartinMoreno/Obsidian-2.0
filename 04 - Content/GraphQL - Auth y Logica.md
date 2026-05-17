@@ -5,7 +5,7 @@ aliases:
   - GraphQL IDOR
   - GraphQL Mass Assignment
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/graphql
   - vuln/auth-bypass
   - vuln/csrf
@@ -16,7 +16,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[GraphQL Injection]]'
   - '[[Cross-Site Request Forgery (CSRF)]]'

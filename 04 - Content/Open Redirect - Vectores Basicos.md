@@ -4,14 +4,14 @@ aliases:
   - Protocol-Relative Redirect
   - Scheme Switching
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/open-redirect
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Open Redirect]]'
 ---

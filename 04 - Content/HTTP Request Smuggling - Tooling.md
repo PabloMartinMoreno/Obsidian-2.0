@@ -5,7 +5,7 @@ aliases:
   - h2cSmuggler
   - Turbo Intruder
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/http-smuggling
   - technique/discovery
   - technique/initial-access
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[HTTP Request Smuggling]]'
   - '[[Burp Suite]]'

@@ -4,14 +4,14 @@ aliases:
   - SSI WAF Bypass
   - SSI Encoding
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ssi
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Server-Side Includes (SSI) Injection]]'
 ---

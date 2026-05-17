@@ -5,16 +5,16 @@ aliases:
   - Enterprise Admins
   - Tier 0 Groups
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - Groups Enumeration]]"
+  - '[[AD - Groups Enumeration]]'
 ---
 # AD - Groups Enumeration - Privileged Built-in Groups
 

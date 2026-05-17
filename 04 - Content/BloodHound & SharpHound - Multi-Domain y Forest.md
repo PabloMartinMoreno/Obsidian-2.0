@@ -5,16 +5,16 @@ aliases:
   - Cross-Trust BHCE
   - BHCE Forest Workflow
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[BloodHound & SharpHound]]"
+  - '[[BloodHound & SharpHound]]'
 ---
 # BloodHound & SharpHound - Multi-Domain & Forest
 

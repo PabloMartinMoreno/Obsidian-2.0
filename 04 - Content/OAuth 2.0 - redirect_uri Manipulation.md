@@ -5,18 +5,18 @@ aliases:
   - URL Parser Differential
   - OAuth Open Redirect Chain
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/oauth
   - technique/credential-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[OAuth 2.0 Misconfigurations]]"
-  - "[[Open Redirect]]"
-  - "[[Subdomain Takeover]]"
+  - '[[OAuth 2.0 Misconfigurations]]'
+  - '[[Open Redirect]]'
+  - '[[Subdomain Takeover]]'
 ---
 # OAuth 2.0 - redirect_uri Manipulation
 

@@ -4,15 +4,17 @@ aliases:
   - XSLT WAF Evasion
   - XSLT Encoding Tricks
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xslt-injection
   - technique/evasion
   - asset/web-app
-type: CheatSheet
+type: Technique
 linked:
-  - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
-  - "[[XML External Entity (XXE)]]"
-  - "[[Server-Side Request Forgery (SSRF)]]"
+  - >-
+    [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side
+    Injection]]
+  - '[[XML External Entity (XXE)]]'
+  - '[[Server-Side Request Forgery (SSRF)]]'
 ---
 
 # XSLT - Bypasses y Evasión

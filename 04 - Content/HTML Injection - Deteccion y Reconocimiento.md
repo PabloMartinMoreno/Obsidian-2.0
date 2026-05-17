@@ -3,14 +3,14 @@ aliases:
   - HTML Injection Detection
   - HTML Injection Recon
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/html-injection
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTML Injection]]'
 ---

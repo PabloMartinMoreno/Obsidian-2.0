@@ -6,18 +6,18 @@ aliases:
   - Burp Intruder
   - hashcat
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/brute-force
   - technique/credential-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[HTTP Brute Forcing]]"
-  - "[[Burp Suite]]"
-  - "[[ffuf]]"
+  - '[[HTTP Brute Forcing]]'
+  - '[[Burp Suite]]'
+  - '[[ffuf]]'
 ---
 # HTTP Brute Forcing - Tooling
 

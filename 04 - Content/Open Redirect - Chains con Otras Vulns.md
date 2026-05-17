@@ -5,7 +5,7 @@ aliases:
   - XSS via Redirect
   - OAuth Code Theft
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/open-redirect
   - technique/lateral-movement
   - technique/credential-access
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Open Redirect]]'
   - '[[Server-Side Request Forgery (SSRF)]]'

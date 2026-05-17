@@ -6,19 +6,19 @@ aliases:
   - ldapsearch AD
   - SharpHound Collector
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - Hosts Enumeration]]"
-  - "[[netexec]]"
-  - "[[BloodHound & SharpHound]]"
-  - "[[Impacket Toolkit]]"
+  - '[[AD - Hosts Enumeration]]'
+  - '[[netexec]]'
+  - '[[BloodHound & SharpHound]]'
+  - '[[Impacket Toolkit]]'
 ---
 # AD - Hosts Enumeration - Tooling
 

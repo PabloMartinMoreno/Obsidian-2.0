@@ -5,17 +5,17 @@ aliases:
   - Foreign Group Audit
   - Trust Account Discovery
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
-  - technique/credential-access
+  - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Domain & Forest Trusts]]"
-  - "[[Trust Abuse]]"
+  - '[[AD - Domain & Forest Trusts]]'
+  - '[[Trust Abuse]]'
 ---
 # AD - Domain & Forest Trusts - Trust Recon para Ataques
 

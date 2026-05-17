@@ -5,16 +5,16 @@ aliases:
   - Enforced GPO
   - RSoP
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - GPO y SYSVOL Enumeration]]"
+  - '[[AD - GPO y SYSVOL Enumeration]]'
 ---
 # AD - GPO y SYSVOL Enumeration - GPO Inheritance & Scope
 

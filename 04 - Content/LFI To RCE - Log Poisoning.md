@@ -1,16 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/lfi
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[File Inclusion]]"
+  - '[[File Inclusion]]'
 ---
 # LFI To RCE - Log Poisoning 
 

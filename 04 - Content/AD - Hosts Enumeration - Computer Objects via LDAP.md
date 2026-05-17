@@ -5,17 +5,17 @@ aliases:
   - Servers Enumeration
   - High-Value Computer Targets
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Hosts Enumeration]]"
-  - "[[netexec]]"
+  - '[[AD - Hosts Enumeration]]'
+  - '[[netexec]]'
 ---
 # AD - Hosts Enumeration - Computer Objects via LDAP
 

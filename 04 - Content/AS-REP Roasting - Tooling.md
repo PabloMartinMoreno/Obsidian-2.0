@@ -5,7 +5,7 @@ aliases:
   - Rubeus asreproast
   - kerbrute userenum
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory
@@ -13,11 +13,11 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AS-REP Roasting]]"
-  - "[[netexec]]"
-  - "[[Impacket Toolkit]]"
+  - '[[AS-REP Roasting]]'
+  - '[[netexec]]'
+  - '[[Impacket Toolkit]]'
 ---
 # AS-REP Roasting - Tooling
 

@@ -2,7 +2,7 @@
 aliases:
   - Silver Ticket Hash Sources
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - technique/kerberos
   - env/windows
@@ -11,9 +11,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Silver Ticket]]"
+  - '[[Silver Ticket]]'
 ---
 
 # Silver Ticket - Hash Collection

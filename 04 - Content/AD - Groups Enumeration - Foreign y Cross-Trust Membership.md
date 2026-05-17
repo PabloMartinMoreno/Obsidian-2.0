@@ -5,17 +5,17 @@ aliases:
   - Cross-Trust Group
   - FSP Audit
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Groups Enumeration]]"
-  - "[[AD - Domain & Forest Trusts]]"
+  - '[[AD - Groups Enumeration]]'
+  - '[[AD - Domain & Forest Trusts]]'
 ---
 # AD - Groups Enumeration - Foreign / Cross-Trust Membership
 

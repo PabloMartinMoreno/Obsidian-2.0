@@ -5,19 +5,20 @@ aliases:
   - DNS Records Injection
   - mitm6 DNS
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
-  - technique/credential-access
+  - technique/mitm
   - asset/active-directory
+  - asset/dns
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - DNS & SRV Records]]"
-  - "[[NTLM Relay]]"
-  - "[[mitm6 - IPv6 DHCP Spoofing]]"
-  - "[[LLMNR & NBT-NS Poisoning]]"
+  - '[[AD - DNS & SRV Records]]'
+  - '[[NTLM Relay]]'
+  - '[[mitm6 - IPv6 DHCP Spoofing]]'
+  - '[[LLMNR & NBT-NS Poisoning]]'
 ---
 # AD - DNS & SRV Records - DNS Spoofing & Records Injection
 

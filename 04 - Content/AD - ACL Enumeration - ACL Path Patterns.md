@@ -4,17 +4,17 @@ aliases:
   - BloodHound Paths
   - Privesc Path Patterns
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - ACL Enumeration]]"
-  - "[[BloodHound & SharpHound]]"
+  - '[[AD - ACL Enumeration]]'
+  - '[[BloodHound & SharpHound]]'
 ---
 # AD - ACL Enumeration - ACL Path Patterns
 

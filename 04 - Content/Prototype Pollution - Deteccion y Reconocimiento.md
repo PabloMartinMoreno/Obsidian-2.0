@@ -3,14 +3,14 @@ aliases:
   - PP Detection
   - Prototype Pollution Recon
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/prototype-pollution
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Prototype Pollution]]'
 ---

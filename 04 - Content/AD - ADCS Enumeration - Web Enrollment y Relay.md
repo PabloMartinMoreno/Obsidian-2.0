@@ -5,17 +5,17 @@ aliases:
   - ESC8 NTLM Relay
   - NDES SCEP
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - ADCS Enumeration]]"
-  - "[[NTLM Relay]]"
+  - '[[AD - ADCS Enumeration]]'
+  - '[[NTLM Relay]]'
 ---
 # AD - ADCS Enumeration - Web Enrollment & Relay
 

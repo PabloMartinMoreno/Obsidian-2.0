@@ -5,7 +5,7 @@ aliases:
   - Credential Guard
   - WDigest Disable
 tags:
-  - type/cheatsheet
+  - type/concept
   - technique/credential-access
   - technique/defense-evasion
   - env/windows
@@ -13,9 +13,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[LSASS Dumping]]"
+  - '[[LSASS Dumping]]'
 ---
 # LSASS Dumping - Detection & Mitigations
 

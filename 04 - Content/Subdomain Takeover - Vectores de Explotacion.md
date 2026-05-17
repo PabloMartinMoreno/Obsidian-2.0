@@ -5,7 +5,7 @@ aliases:
   - OAuth Trust Transfer
   - CSP Subdomain Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/subdomain-takeover
   - technique/initial-access
   - technique/credential-access
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Subdomain Takeover]]'
 ---

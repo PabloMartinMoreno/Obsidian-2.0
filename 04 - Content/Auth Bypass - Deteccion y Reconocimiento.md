@@ -4,14 +4,14 @@ aliases:
   - Auth Recon
   - Username Enum
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/auth-bypass
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Authentication & Authorization Bypass]]'
 ---

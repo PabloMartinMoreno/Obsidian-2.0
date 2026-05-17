@@ -4,16 +4,16 @@ aliases:
   - Resource-Based Constrained Delegation
   - msDS-AllowedToActOnBehalfOfOtherIdentity
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Delegation Enumeration]]"
+  - '[[AD - Delegation Enumeration]]'
 ---
 # AD - Delegation Enumeration - Resource-Based Constrained Delegation (RBCD)
 

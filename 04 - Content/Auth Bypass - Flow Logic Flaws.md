@@ -5,14 +5,14 @@ aliases:
   - Magic Link Reuse
   - OAuth State Missing
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/auth-bypass
   - technique/credential-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Authentication & Authorization Bypass]]'
   - '[[Race Conditions]]'

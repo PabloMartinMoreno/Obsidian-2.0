@@ -4,16 +4,16 @@ aliases:
   - Gopher SSRF
   - File Protocol SSRF
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ssrf
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[Server-Side Request Forgery (SSRF)]]"
+  - '[[Server-Side Request Forgery (SSRF)]]'
 ---
 # SSRF - Protocolos Alternativos
 

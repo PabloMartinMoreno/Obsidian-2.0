@@ -5,18 +5,18 @@ aliases:
   - Get-DomainGroup
   - BloodHound Groups
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - Groups Enumeration]]"
-  - "[[netexec]]"
-  - "[[BloodHound & SharpHound]]"
+  - '[[AD - Groups Enumeration]]'
+  - '[[netexec]]'
+  - '[[BloodHound & SharpHound]]'
 ---
 # AD - Groups Enumeration - Tooling
 

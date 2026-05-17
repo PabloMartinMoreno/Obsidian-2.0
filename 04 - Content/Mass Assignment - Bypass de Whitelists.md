@@ -4,14 +4,14 @@ aliases:
   - Nested Object Injection
   - Snake Camel Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/mass-assignment
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Mass Assignment]]'
 ---

@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/command-injection
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[OS Command Injection]]"
-  - "[[Generación de Base64 para Windows (desde Linux)]]"
+  - '[[OS Command Injection]]'
+  - '[[Generación de Base64 para Windows (desde Linux)]]'
 ---
 # Command Injection - Obfuscacion Avanzada
 

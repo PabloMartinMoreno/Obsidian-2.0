@@ -4,14 +4,14 @@ aliases:
   - LFISuite
   - Path Traversal Wordlists
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/path-traversal
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Directory Traversal]]'
   - '[[Burp Suite]]'

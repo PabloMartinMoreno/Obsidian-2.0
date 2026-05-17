@@ -6,13 +6,13 @@ aliases:
   - Java HPP
   - Node Express HPP
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/hpp
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTTP Parameter Pollution]]'
 ---

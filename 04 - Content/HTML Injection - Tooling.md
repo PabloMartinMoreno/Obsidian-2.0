@@ -4,14 +4,14 @@ aliases:
   - HTML Injection Wordlists
   - Burp DOM Invader
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/html-injection
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[HTML Injection]]'
   - '[[Burp Suite]]'

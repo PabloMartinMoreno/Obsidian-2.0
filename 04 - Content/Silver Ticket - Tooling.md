@@ -4,15 +4,15 @@ aliases:
   - impacket-ticketer silver
   - Rubeus silver
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/persistence
   - technique/kerberos
   - env/windows
   - env/linux
   - asset/active-directory
-type: CheatSheet
+type: Tool
 linked:
-  - "[[Silver Ticket]]"
+  - '[[Silver Ticket]]'
 ---
 
 # Silver Ticket - Tooling

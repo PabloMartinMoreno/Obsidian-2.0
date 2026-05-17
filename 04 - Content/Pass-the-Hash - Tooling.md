@@ -5,7 +5,7 @@ aliases:
   - Impacket PtH
   - Rubeus PtH
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/lateral-movement
   - technique/credential-access
   - asset/active-directory
@@ -13,11 +13,11 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[Pass-the-Hash]]"
-  - "[[netexec]]"
-  - "[[Impacket Toolkit]]"
+  - '[[Pass-the-Hash]]'
+  - '[[netexec]]'
+  - '[[Impacket Toolkit]]'
 ---
 # Pass-the-Hash - Tooling
 

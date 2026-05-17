@@ -5,16 +5,16 @@ aliases:
   - SYSVOL Search
   - NETLOGON
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
-  - technique/credential-access
+  - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - GPO y SYSVOL Enumeration]]"
+  - '[[AD - GPO y SYSVOL Enumeration]]'
 ---
 # AD - GPO y SYSVOL Enumeration - SYSVOL Content Discovery
 

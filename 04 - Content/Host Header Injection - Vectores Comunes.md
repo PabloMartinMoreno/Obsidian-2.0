@@ -4,7 +4,7 @@ aliases:
   - HHI Cache Poisoning
   - HHI SSRF
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/host-header-injection
   - technique/credential-access
   - technique/initial-access
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Host Header Injection]]'
 ---

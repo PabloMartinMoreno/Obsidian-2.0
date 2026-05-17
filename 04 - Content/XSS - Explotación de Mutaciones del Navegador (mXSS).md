@@ -1,16 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xss
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[Cross-Site Scripting (XSS)]]"
+  - '[[Cross-Site Scripting (XSS)]]'
 ---
 # XSS - Explotación de Mutaciones del Navegador (mXSS)
 

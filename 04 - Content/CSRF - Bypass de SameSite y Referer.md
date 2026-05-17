@@ -4,14 +4,14 @@ aliases:
   - Referer Bypass
   - Cookie SameSite Lax
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/csrf
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Cross-Site Request Forgery (CSRF)]]'
 ---

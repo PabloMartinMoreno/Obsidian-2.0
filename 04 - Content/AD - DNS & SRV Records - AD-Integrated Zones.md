@@ -5,16 +5,17 @@ aliases:
   - ForestDnsZones
   - MicrosoftDNS Partition
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
+  - asset/dns
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - DNS & SRV Records]]"
+  - '[[AD - DNS & SRV Records]]'
 ---
 # AD - DNS & SRV Records - AD-Integrated DNS Zones
 

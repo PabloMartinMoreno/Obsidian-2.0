@@ -4,14 +4,14 @@ aliases:
   - race-the-web
   - asyncio race
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/race-condition
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Race Conditions]]'
   - '[[Burp Suite]]'

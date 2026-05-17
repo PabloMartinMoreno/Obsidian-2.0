@@ -4,7 +4,7 @@ aliases:
   - DCSync delegation
   - dacledit DCSync
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/privilege-escalation
   - technique/credential-access
   - env/windows
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[DCSync]]'
 ---

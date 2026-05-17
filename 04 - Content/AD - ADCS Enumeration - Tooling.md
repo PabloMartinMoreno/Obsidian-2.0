@@ -5,17 +5,17 @@ aliases:
   - PSPKIAudit
   - Locksmith
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - ADCS Enumeration]]"
-  - "[[netexec]]"
+  - '[[AD - ADCS Enumeration]]'
+  - '[[netexec]]'
 ---
 # AD - ADCS Enumeration - Tooling
 

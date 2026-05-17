@@ -5,16 +5,16 @@ aliases:
   - AD bulk reports
   - PowerShell AD audit
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - Health y Security Auditing]]"
+  - '[[AD - Health y Security Auditing]]'
 ---
 # AD - Health & Security Auditing - ADRecon & ADCollector
 

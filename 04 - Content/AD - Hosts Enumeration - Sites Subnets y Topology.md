@@ -5,16 +5,16 @@ aliases:
   - AD Subnets
   - Site Links
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Hosts Enumeration]]"
+  - '[[AD - Hosts Enumeration]]'
 ---
 # AD - Hosts Enumeration - Sites, Subnets & Topology
 

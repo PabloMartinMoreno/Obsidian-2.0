@@ -5,18 +5,18 @@ aliases:
   - certipy shadow
   - Rubeus s4u
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
-  - technique/credential-access
+  - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - Delegation Enumeration]]"
-  - "[[netexec]]"
-  - "[[Impacket Toolkit]]"
+  - '[[AD - Delegation Enumeration]]'
+  - '[[netexec]]'
+  - '[[Impacket Toolkit]]'
 ---
 # AD - Delegation Enumeration - Tooling
 

@@ -4,14 +4,14 @@ aliases:
   - X-Frame-Options Check
   - CSP frame-ancestors
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/clickjacking
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Clickjacking]]'
 ---

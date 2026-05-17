@@ -4,14 +4,14 @@ aliases:
   - Param Miner
   - API Discovery
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/mass-assignment
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Mass Assignment]]'
   - '[[Burp Suite]]'

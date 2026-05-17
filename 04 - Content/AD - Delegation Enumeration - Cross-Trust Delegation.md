@@ -4,17 +4,17 @@ aliases:
   - TGT Delegation Trust
   - CVE-2019-1040
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Delegation Enumeration]]"
-  - "[[AD - Domain & Forest Trusts]]"
+  - '[[AD - Delegation Enumeration]]'
+  - '[[AD - Domain & Forest Trusts]]'
 ---
 # AD - Delegation Enumeration - Cross-Trust Delegation
 

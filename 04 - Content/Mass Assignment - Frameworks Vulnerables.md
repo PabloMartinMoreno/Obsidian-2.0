@@ -6,13 +6,13 @@ aliases:
   - Laravel Fillable
   - Mongoose Strict
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/mass-assignment
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Mass Assignment]]'
 ---

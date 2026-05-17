@@ -5,14 +5,14 @@ aliases:
   - HHI + Subdomain Takeover
   - Cookie Takeover Chain
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/subdomain-takeover
   - technique/lateral-movement
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Subdomain Takeover]]'
   - '[[Host Header Injection]]'

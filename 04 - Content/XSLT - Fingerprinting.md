@@ -4,14 +4,14 @@ aliases:
   - XSLT Fingerprint
   - XSLT Version Detection
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xslt-injection
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - >-
     [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side

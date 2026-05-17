@@ -4,14 +4,14 @@ aliases:
   - Polyglot Files RFI
   - Public Payload Servers
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/rfi
   - technique/execution
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Remote File Inclusion (RFI)]]'
 ---

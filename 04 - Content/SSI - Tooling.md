@@ -4,14 +4,14 @@ aliases:
   - SSI Wordlists
   - Burp SSI
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ssi
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Server-Side Includes (SSI) Injection]]'
   - '[[Burp Suite]]'

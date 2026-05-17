@@ -5,17 +5,17 @@ aliases:
   - rpcclient AD
   - enum4linux-ng
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Hosts Enumeration]]"
-  - "[[netexec]]"
+  - '[[AD - Hosts Enumeration]]'
+  - '[[netexec]]'
 ---
 # AD - Hosts Enumeration - RPC, SMB & NetBIOS Probing
 

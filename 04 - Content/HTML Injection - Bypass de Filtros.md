@@ -4,14 +4,14 @@ aliases:
   - HTML Filter Evasion
   - HTML Entity Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/html-injection
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTML Injection]]'
 ---

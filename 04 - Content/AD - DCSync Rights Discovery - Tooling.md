@@ -5,18 +5,18 @@ aliases:
   - Mimikatz dcsync
   - lsadump dcsync
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - DCSync Rights Discovery]]"
-  - "[[netexec]]"
-  - "[[Impacket Toolkit]]"
+  - '[[AD - DCSync Rights Discovery]]'
+  - '[[netexec]]'
+  - '[[Impacket Toolkit]]'
 ---
 # AD - DCSync Rights Discovery - Tooling
 

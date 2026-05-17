@@ -6,7 +6,7 @@ aliases:
   - CSWSH
   - WebSocket CSRF
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/csrf
   - technique/initial-access
   - technique/credential-access
@@ -14,7 +14,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Cross-Site Request Forgery (CSRF)]]'
 ---

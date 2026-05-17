@@ -4,14 +4,14 @@ aliases:
   - DotDot Payloads
   - Absolute Path Payloads
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/path-traversal
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Directory Traversal]]'
 ---

@@ -5,16 +5,16 @@ aliases:
   - pypykatz
   - nanodump
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/credential-access
   - env/windows
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[LSASS Dumping]]"
+  - '[[LSASS Dumping]]'
 ---
 # LSASS Dumping - Tooling
 

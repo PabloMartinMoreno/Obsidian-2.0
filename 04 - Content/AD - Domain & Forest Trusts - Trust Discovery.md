@@ -5,16 +5,16 @@ aliases:
   - Get-ADTrust
   - LDAP trustedDomain
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Domain & Forest Trusts]]"
+  - '[[AD - Domain & Forest Trusts]]'
 ---
 # AD - Domain & Forest Trusts - Trust Discovery
 

@@ -1,13 +1,13 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/file-upload
   - technique/execution
   - asset/web-app
-type: CheatSheet
+type: Technique
 linked:
-  - "[[File Upload - Vulnerabilidades]]"
+  - '[[File Upload - Vulnerabilidades]]'
 ---
 # File Upload - Reconocimiento de Filtro
 

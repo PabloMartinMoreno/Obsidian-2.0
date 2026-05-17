@@ -4,7 +4,7 @@ aliases:
   - XSLT File Read
   - XSLT LFI
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xslt-injection
   - vuln/lfi
   - technique/collection
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - >-
     [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side

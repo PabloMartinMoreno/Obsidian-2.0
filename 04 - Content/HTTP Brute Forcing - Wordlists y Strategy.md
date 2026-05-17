@@ -5,16 +5,16 @@ aliases:
   - Mangling Rules
   - Targeted Wordlists
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/brute-force
   - technique/credential-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[HTTP Brute Forcing]]"
+  - '[[HTTP Brute Forcing]]'
 ---
 # HTTP Brute Forcing - Wordlists y Strategy
 

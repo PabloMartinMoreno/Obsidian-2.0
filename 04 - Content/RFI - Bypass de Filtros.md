@@ -4,14 +4,14 @@ aliases:
   - Whitelist Bypass RFI
   - Null Byte RFI
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/rfi
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Remote File Inclusion (RFI)]]'
 ---

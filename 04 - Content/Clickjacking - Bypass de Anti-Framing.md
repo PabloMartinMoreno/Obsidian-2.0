@@ -4,14 +4,14 @@ aliases:
   - Sandbox Bypass
   - X-Frame-Options Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/clickjacking
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Clickjacking]]'
 ---

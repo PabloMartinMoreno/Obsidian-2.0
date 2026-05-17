@@ -4,7 +4,7 @@ aliases:
   - kerberos ptt
   - ticket injection
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/lateral-movement
   - env/windows
   - env/linux
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Pass-the-Ticket]]'
 ---

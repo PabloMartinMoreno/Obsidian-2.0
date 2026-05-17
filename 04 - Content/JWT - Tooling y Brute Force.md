@@ -5,19 +5,19 @@ aliases:
   - JWT Hashcat
   - JWT Bruteforce Tools
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/jwt
   - technique/credential-access
   - asset/web-app
   - cred/jwt
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Tool
 linked:
-  - "[[JWT Attacks]]"
-  - "[[hashcat]]"
-  - "[[john]]"
+  - '[[JWT Attacks]]'
+  - '[[hashcat]]'
+  - '[[john]]'
 ---
 # JWT - Tooling y Brute Force
 

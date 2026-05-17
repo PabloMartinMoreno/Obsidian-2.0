@@ -5,16 +5,16 @@ aliases:
   - X-Forwarded-For Spoof
   - Lockout Evasion
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/brute-force
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[HTTP Brute Forcing]]"
+  - '[[HTTP Brute Forcing]]'
 ---
 # HTTP Brute Forcing - Bypass de Rate-Limit
 

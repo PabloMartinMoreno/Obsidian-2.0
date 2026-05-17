@@ -4,7 +4,7 @@ aliases:
   - DOM Prototype Pollution
   - DOM PP
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/prototype-pollution
   - technique/initial-access
   - technique/execution
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Prototype Pollution]]'
   - '[[Cross-Site Scripting (XSS)]]'

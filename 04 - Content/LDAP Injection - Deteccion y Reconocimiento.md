@@ -4,7 +4,7 @@ aliases:
   - LDAP Recon
   - LDAP Fingerprint
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ldap-injection
   - technique/discovery
   - asset/web-app
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[LDAP Injection]]'
 ---

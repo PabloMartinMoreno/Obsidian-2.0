@@ -5,17 +5,17 @@ aliases:
   - Time-based NoSQLi
   - NoSQL Char-by-char exfil
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/nosqli
   - technique/exfiltration
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[NoSQL Injection]]"
+  - '[[NoSQL Injection]]'
 ---
 # NoSQLi - Extracción Blind
 

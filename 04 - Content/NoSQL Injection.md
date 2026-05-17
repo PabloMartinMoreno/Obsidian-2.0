@@ -11,18 +11,18 @@ tags:
   - asset/database
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación|Explotación]]"
+  - '[[Explotación|Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 type: CheatSheet
 linked:
-  - "[[NoSQLi - Operadores (Auth Bypass)]]"
-  - "[[NoSQLi - Inyección Sintáctica]]"
-  - "[[NoSQLi - JavaScript ($where, mapReduce)]]"
-  - "[[NoSQLi - Extracción Blind]]"
-  - "[[Burp Suite]]"
+  - '[[NoSQLi - Operadores (Auth Bypass)]]'
+  - '[[NoSQLi - Inyección Sintáctica]]'
+  - '[[NoSQLi - JavaScript ($where, mapReduce)]]'
+  - '[[NoSQLi - Extracción Blind]]'
+  - '[[Burp Suite]]'
 ---
 # NoSQL Injection
 

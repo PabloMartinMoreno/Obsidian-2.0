@@ -4,7 +4,7 @@ aliases:
   - ESE Database
   - JET Engine
 tags:
-  - type/cheatsheet
+  - type/concept
   - technique/credential-access
   - env/windows
   - asset/active-directory
@@ -13,9 +13,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[NTDS.dit Extraction]]"
+  - '[[NTDS.dit Extraction]]'
 ---
 # NTDS.dit Extraction - Architecture & Storage
 

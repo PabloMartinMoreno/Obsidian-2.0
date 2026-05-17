@@ -4,14 +4,14 @@ aliases:
   - CRLF Wordlists
   - Burp CRLF Injection
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/crlf-injection
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[CRLF Injection]]'
   - '[[Burp Suite]]'

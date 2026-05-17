@@ -3,7 +3,7 @@ aliases:
   - Golden Ticket Linux
   - impacket-ticketer golden
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/linux
@@ -11,9 +11,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Golden Ticket]]"
+  - '[[Golden Ticket]]'
 ---
 
 # Golden Ticket - Forging Linux

@@ -4,14 +4,14 @@ aliases:
   - Mass Assignment Recon
   - Hidden Field Discovery
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/mass-assignment
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Mass Assignment]]'
 ---

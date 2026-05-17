@@ -4,7 +4,7 @@ aliases:
   - Rubeus
   - mimikatz kerberos
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/lateral-movement
   - technique/credential-access
   - env/windows
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Pass-the-Ticket]]'
 ---

@@ -4,14 +4,14 @@ aliases:
   - WCVS
   - Web Cache Vulnerability Scanner
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/cache-poisoning
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Web Cache Poisoning]]'
   - '[[Burp Suite]]'

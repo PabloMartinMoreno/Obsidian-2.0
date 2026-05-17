@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/idor
   - technique/discovery
   - asset/api
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[BOLA - IDOR]]"
+  - '[[BOLA - IDOR]]'
 ---
 # IDOR - Técnicas de Evasión y Bypass de Filtros
 

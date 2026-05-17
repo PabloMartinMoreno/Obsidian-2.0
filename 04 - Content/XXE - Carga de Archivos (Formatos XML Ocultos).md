@@ -1,19 +1,19 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
-type: CheatSheet
+  - '[[Web Explotación]]'
+type: Technique
 linked:
-  - "[[XML External Entity (XXE)]]"
+  - '[[XML External Entity (XXE)]]'
 ---
 # XXE - Carga de Archivos (Formatos XML Ocultos)
 

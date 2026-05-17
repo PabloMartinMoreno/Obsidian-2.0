@@ -5,7 +5,7 @@ aliases:
   - GraphQL SSRF
   - GraphQL Command Injection
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/graphql
   - vuln/sqli
   - vuln/nosqli
@@ -15,7 +15,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[GraphQL Injection]]'
   - '[[SQL Injection (SQLi)]]'

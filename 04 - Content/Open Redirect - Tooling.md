@@ -4,14 +4,14 @@ aliases:
   - Open Redirect Scanner
   - ffuf Redirect
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/open-redirect
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Open Redirect]]'
   - '[[Burp Suite]]'

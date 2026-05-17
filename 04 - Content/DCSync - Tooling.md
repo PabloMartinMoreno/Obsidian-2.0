@@ -4,16 +4,16 @@ aliases:
   - secretsdump dcsync
   - mimikatz dcsync
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/credential-access
   - env/windows
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[DCSync]]"
+  - '[[DCSync]]'
 ---
 
 # DCSync - Tooling

@@ -4,14 +4,14 @@ aliases:
   - Response Splitting Detection
   - CRLF Recon
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/crlf-injection
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[CRLF Injection]]'
 ---

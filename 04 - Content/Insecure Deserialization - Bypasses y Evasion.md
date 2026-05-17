@@ -5,14 +5,14 @@ aliases:
   - JEP 290 Bypass
   - Filter Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/insecure-deser
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Insecure Deserialization]]'
 ---

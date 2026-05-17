@@ -4,14 +4,14 @@ aliases:
   - Header Obfuscation
   - Smuggling Evasion
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/http-smuggling
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTTP Request Smuggling]]'
 ---

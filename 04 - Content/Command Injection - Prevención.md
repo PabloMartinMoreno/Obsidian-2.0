@@ -1,16 +1,15 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/command-injection
-  - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Concept
 linked:
-  - "[[OS Command Injection]]"
+  - '[[OS Command Injection]]'
 ---
 # Command Injection - Prevención
 

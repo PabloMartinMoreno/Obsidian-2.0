@@ -5,14 +5,14 @@ aliases:
   - DNS-Level Takeover
   - Expired Domain
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/subdomain-takeover
   - technique/initial-access
   - asset/dns
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Subdomain Takeover]]'
 ---

@@ -4,14 +4,14 @@ aliases:
   - Param Miner HPP
   - Burp HPP
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/hpp
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[HTTP Parameter Pollution]]'
   - '[[Burp Suite]]'

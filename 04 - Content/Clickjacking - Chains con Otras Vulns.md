@@ -5,20 +5,20 @@ aliases:
   - Self-XSS to Stored
   - SameSite Lax Bypass
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/clickjacking
   - technique/lateral-movement
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Clickjacking]]"
-  - "[[Cross-Site Scripting (XSS)]]"
-  - "[[Cross-Site Request Forgery (CSRF)]]"
-  - "[[OAuth 2.0 Misconfigurations]]"
-  - "[[Subdomain Takeover]]"
+  - '[[Clickjacking]]'
+  - '[[Cross-Site Scripting (XSS)]]'
+  - '[[Cross-Site Request Forgery (CSRF)]]'
+  - '[[OAuth 2.0 Misconfigurations]]'
+  - '[[Subdomain Takeover]]'
 ---
 # Clickjacking - Chains con Otras Vulns
 

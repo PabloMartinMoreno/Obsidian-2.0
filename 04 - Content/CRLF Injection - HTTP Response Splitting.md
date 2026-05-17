@@ -4,14 +4,14 @@ aliases:
   - Response Splitting XSS
   - Body Injection via CRLF
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/crlf-injection
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[CRLF Injection]]'
   - '[[Cross-Site Scripting (XSS)]]'

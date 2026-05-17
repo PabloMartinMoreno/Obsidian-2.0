@@ -6,7 +6,7 @@ aliases:
   - Azure Takeover
   - CloudFront Takeover
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/subdomain-takeover
   - technique/initial-access
   - asset/cloud
@@ -14,7 +14,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Subdomain Takeover]]'
 ---

@@ -5,17 +5,17 @@ aliases:
   - Account Binding Attack
   - Pre-Account Takeover
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/oauth
   - vuln/csrf
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[OAuth 2.0 Misconfigurations]]"
-  - "[[Cross-Site Request Forgery (CSRF)]]"
+  - '[[OAuth 2.0 Misconfigurations]]'
+  - '[[Cross-Site Request Forgery (CSRF)]]'
 ---
 # OAuth 2.0 - State / CSRF / Login CSRF
 

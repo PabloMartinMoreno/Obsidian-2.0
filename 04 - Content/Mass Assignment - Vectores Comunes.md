@@ -4,7 +4,7 @@ aliases:
   - Mass Assignment ATO
   - Mass Assignment Financial
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/mass-assignment
   - technique/privilege-escalation
   - technique/credential-access
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Mass Assignment]]'
 ---

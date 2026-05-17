@@ -5,17 +5,17 @@ aliases:
   - .well-known Discovery
   - Client ID Enum
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/oauth
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[OAuth 2.0 Misconfigurations]]"
-  - "[[Burp Suite]]"
+  - '[[OAuth 2.0 Misconfigurations]]'
+  - '[[Burp Suite]]'
 ---
 # OAuth 2.0 - Detección y Reconocimiento
 

@@ -5,14 +5,14 @@ aliases:
   - Scroll-Jacking
   - Touch-Jacking
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/clickjacking
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Clickjacking]]'
 ---

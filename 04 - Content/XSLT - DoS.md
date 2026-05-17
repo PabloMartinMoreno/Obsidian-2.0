@@ -4,7 +4,7 @@ aliases:
   - XSLT Billion Laughs
   - XSLT Recursion DoS
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xslt-injection
   - vuln/dos
   - technique/impact
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - >-
     [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side

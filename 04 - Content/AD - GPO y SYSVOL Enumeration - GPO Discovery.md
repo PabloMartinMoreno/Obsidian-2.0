@@ -5,16 +5,16 @@ aliases:
   - gpcFileSysPath
   - groupPolicyContainer
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - GPO y SYSVOL Enumeration]]"
+  - '[[AD - GPO y SYSVOL Enumeration]]'
 ---
 # AD - GPO y SYSVOL Enumeration - GPO Discovery
 

@@ -4,14 +4,14 @@ aliases:
   - LFISuite RFI
   - Burp RFI
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/rfi
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Remote File Inclusion (RFI)]]'
   - '[[Burp Suite]]'

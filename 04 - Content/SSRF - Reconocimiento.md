@@ -1,14 +1,14 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Server-Side Request Forgery (SSRF)]]"
-  - "[[SSRF - CWES]]"
+  - '[[Server-Side Request Forgery (SSRF)]]'
+  - '[[SSRF - CWES]]'
 ---
 # SSRF - Reconocimiento
 

@@ -5,18 +5,18 @@ aliases:
   - jwt_tool
   - Keycloak Test
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/oauth
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[OAuth 2.0 Misconfigurations]]"
-  - "[[Burp Suite]]"
-  - "[[JWT Attacks]]"
+  - '[[OAuth 2.0 Misconfigurations]]'
+  - '[[Burp Suite]]'
+  - '[[JWT Attacks]]'
 ---
 # OAuth 2.0 - Tooling
 

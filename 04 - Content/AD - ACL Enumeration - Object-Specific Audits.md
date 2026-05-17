@@ -4,16 +4,16 @@ aliases:
   - AdminSDHolder Audit
   - DA Group ACL
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - ACL Enumeration]]"
+  - '[[AD - ACL Enumeration]]'
 ---
 # AD - ACL Enumeration - Object-Specific Audits
 

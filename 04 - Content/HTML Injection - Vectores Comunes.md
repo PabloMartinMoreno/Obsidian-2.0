@@ -4,7 +4,7 @@ aliases:
   - HTML Defacement
   - HTML SEO
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/html-injection
   - technique/initial-access
   - technique/impact
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTML Injection]]'
 ---

@@ -5,7 +5,7 @@ aliases:
   - gMSA Kerberoast
   - Protected Users Kerberoast
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory
@@ -13,10 +13,10 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Kerberoasting]]"
-  - "[[AD - Domain & Forest Trusts]]"
+  - '[[Kerberoasting]]'
+  - '[[AD - Domain & Forest Trusts]]'
 ---
 # Kerberoasting - Cross-Trust & Modern
 

@@ -4,16 +4,16 @@ aliases:
   - kerbrute userenum
   - Pre-Auth Username Validation
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AS-REP Roasting]]"
+  - '[[AS-REP Roasting]]'
 ---
 # AS-REP Roasting - Username Enumeration
 

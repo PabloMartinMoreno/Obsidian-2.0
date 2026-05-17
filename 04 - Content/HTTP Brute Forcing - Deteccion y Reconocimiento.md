@@ -5,17 +5,17 @@ aliases:
   - Lockout Policy Recon
   - User Enumeration
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/brute-force
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[HTTP Brute Forcing]]"
-  - "[[Burp Suite]]"
+  - '[[HTTP Brute Forcing]]'
+  - '[[Burp Suite]]'
 ---
 # HTTP Brute Forcing - Detección y Reconocimiento
 

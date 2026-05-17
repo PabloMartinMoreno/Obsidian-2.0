@@ -4,7 +4,7 @@ aliases:
   - CSRF PoC
   - CSRF Payloads
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/csrf
   - technique/initial-access
   - technique/execution
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Cross-Site Request Forgery (CSRF)]]'
 ---

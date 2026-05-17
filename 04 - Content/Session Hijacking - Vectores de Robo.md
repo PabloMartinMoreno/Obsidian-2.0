@@ -4,14 +4,14 @@ aliases:
   - MITM Session
   - Network Sniffing
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Session Hijacking]]'
   - '[[Cross-Site Scripting (XSS)]]'

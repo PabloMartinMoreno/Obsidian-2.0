@@ -5,16 +5,16 @@ aliases:
   - Backup Operators
   - Privileged Identity Groups
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Groups Enumeration]]"
+  - '[[AD - Groups Enumeration]]'
 ---
 # AD - Groups Enumeration - High-Value Group Identification
 

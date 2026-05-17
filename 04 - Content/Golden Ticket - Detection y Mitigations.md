@@ -3,7 +3,7 @@ aliases:
   - Golden Ticket Detection
   - Golden Ticket Mitigations
 tags:
-  - type/cheatsheet
+  - type/concept
   - technique/persistence
   - technique/kerberos
   - env/windows
@@ -11,9 +11,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[Golden Ticket]]"
+  - '[[Golden Ticket]]'
 ---
 
 # Golden Ticket - Detection y Mitigations

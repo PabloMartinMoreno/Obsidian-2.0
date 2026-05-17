@@ -4,7 +4,7 @@ aliases:
   - Rubeus golden
   - mimikatz golden
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/windows
@@ -12,9 +12,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Golden Ticket]]"
+  - '[[Golden Ticket]]'
 ---
 
 # Golden Ticket - Forging Windows

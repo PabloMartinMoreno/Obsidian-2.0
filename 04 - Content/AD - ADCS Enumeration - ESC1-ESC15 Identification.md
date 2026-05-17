@@ -5,16 +5,16 @@ aliases:
   - certipy vulnerable
   - ESC chain
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - ADCS Enumeration]]"
+  - '[[AD - ADCS Enumeration]]'
 ---
 # AD - ADCS Enumeration - ESC1-ESC15 Identification
 

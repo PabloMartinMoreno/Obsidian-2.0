@@ -5,17 +5,17 @@ aliases:
   - MS14-025
   - gpp-decrypt
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - GPO y SYSVOL Enumeration]]"
-  - "[[SYSVOL y GPP cpassword]]"
+  - '[[AD - GPO y SYSVOL Enumeration]]'
+  - '[[SYSVOL y GPP cpassword]]'
 ---
 # AD - GPO y SYSVOL Enumeration - GPP cpassword
 

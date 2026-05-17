@@ -4,7 +4,7 @@ aliases:
   - LDAP Boolean Extraction
   - LDAP Time-based
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ldap-injection
   - technique/exfiltration
   - asset/web-app
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[LDAP Injection]]'
 ---

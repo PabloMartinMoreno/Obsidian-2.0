@@ -4,7 +4,7 @@ aliases:
   - IMDS Abuse
   - AWS Metadata SSRF
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ssrf
   - technique/credential-access
   - technique/privilege-escalation
@@ -13,12 +13,12 @@ tags:
   - env/cloud-aws
   - env/cloud-azure
   - env/cloud-gcp
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[Server-Side Request Forgery (SSRF)]]"
+  - '[[Server-Side Request Forgery (SSRF)]]'
 ---
 # SSRF - Cloud Metadata
 

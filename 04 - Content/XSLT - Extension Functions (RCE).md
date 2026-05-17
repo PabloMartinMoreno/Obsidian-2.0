@@ -5,14 +5,14 @@ aliases:
   - 'XSLT php:function'
   - XSLT Java reflection
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/xslt-injection
   - technique/execution
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - >-
     [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side

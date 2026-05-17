@@ -3,14 +3,14 @@ aliases:
   - CSRF Detection
   - CSRF Recon
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/csrf
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Cross-Site Request Forgery (CSRF)]]'
 ---

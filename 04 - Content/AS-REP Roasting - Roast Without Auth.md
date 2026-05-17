@@ -4,7 +4,7 @@ aliases:
   - GetNPUsers no-pass
   - Pre-Auth Roast
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory
@@ -12,9 +12,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AS-REP Roasting]]"
+  - '[[AS-REP Roasting]]'
 ---
 # AS-REP Roasting - Roast Without Auth
 

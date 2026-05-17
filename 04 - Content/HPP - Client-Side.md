@@ -4,14 +4,14 @@ aliases:
   - DOM HPP
   - URL Manipulation
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/hpp
   - technique/initial-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTTP Parameter Pollution]]'
 ---

@@ -3,7 +3,7 @@ aliases:
   - PtT Detection
   - Kerberos ticket detection
 tags:
-  - type/cheatsheet
+  - type/concept
   - technique/lateral-movement
   - technique/credential-access
   - env/windows
@@ -11,7 +11,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
   - '[[Pass-the-Ticket]]'
 ---

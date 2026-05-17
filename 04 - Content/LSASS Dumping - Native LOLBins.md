@@ -5,16 +5,16 @@ aliases:
   - taskmgr lsass
   - LOLBins LSASS
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[LSASS Dumping]]"
+  - '[[LSASS Dumping]]'
 ---
 # LSASS Dumping - Native LOLBins
 

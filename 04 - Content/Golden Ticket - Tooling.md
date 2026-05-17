@@ -4,7 +4,7 @@ aliases:
   - impacket-ticketer
   - Rubeus golden
 tags:
-  - type/cheatsheet
+  - type/tool
   - technique/persistence
   - technique/kerberos
   - env/windows
@@ -13,9 +13,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[Golden Ticket]]"
+  - '[[Golden Ticket]]'
 ---
 
 # Golden Ticket - Tooling

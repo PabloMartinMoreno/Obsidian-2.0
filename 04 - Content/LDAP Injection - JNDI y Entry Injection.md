@@ -5,7 +5,7 @@ aliases:
   - LDAP Entry Poisoning
   - LDAP Referral
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ldap-injection
   - vuln/jndi-injection
   - technique/execution
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[LDAP Injection]]'
   - '[[Insecure Deserialization]]'

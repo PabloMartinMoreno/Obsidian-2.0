@@ -4,14 +4,14 @@ aliases:
   - Host Header Validation Bypass
   - Multiple Host Headers
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/host-header-injection
   - technique/defense-evasion
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Host Header Injection]]'
 ---

@@ -1,16 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/command-injection
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[OS Command Injection]]"
+  - '[[OS Command Injection]]'
 ---
 # Command Injection - Lista Negra de Comandos (Obfuscation)
 

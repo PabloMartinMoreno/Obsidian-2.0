@@ -4,7 +4,7 @@ aliases:
   - Burp CSRF
   - CSWSH PoC
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/csrf
   - technique/discovery
   - technique/initial-access
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Cross-Site Request Forgery (CSRF)]]'
   - '[[Burp Suite]]'

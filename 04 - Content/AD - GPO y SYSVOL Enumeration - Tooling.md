@@ -5,17 +5,17 @@ aliases:
   - Get-GPPPassword
   - Snaffler
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - GPO y SYSVOL Enumeration]]"
-  - "[[netexec]]"
+  - '[[AD - GPO y SYSVOL Enumeration]]'
+  - '[[netexec]]'
 ---
 # AD - GPO y SYSVOL Enumeration - Tooling
 

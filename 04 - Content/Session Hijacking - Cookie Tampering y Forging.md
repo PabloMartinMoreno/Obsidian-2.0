@@ -5,14 +5,14 @@ aliases:
   - HttpOnly Bypass
   - Predictable Session ID
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Session Hijacking]]'
   - '[[JWT Attacks]]'

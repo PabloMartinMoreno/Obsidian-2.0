@@ -4,7 +4,7 @@ aliases:
   - SSTI Burp Extensions
   - SSTI Wordlists
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ssti
   - technique/discovery
   - technique/execution
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Server-Side Template Injection (SSTI)]]'
   - '[[Burp Suite]]'

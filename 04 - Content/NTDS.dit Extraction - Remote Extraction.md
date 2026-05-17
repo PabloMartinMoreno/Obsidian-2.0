@@ -4,14 +4,14 @@ aliases:
   - secretsdump DA
   - DCSync Remote
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[NTDS.dit Extraction]]'
 ---

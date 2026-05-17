@@ -5,14 +5,14 @@ aliases:
   - PPScan
   - ppfuzz
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/prototype-pollution
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Prototype Pollution]]'
   - '[[Burp Suite]]'

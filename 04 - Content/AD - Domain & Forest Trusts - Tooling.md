@@ -6,18 +6,18 @@ aliases:
   - PowerView Trusts
   - BloodHound Trusts
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - Domain & Forest Trusts]]"
-  - "[[netexec]]"
-  - "[[BloodHound & SharpHound]]"
+  - '[[AD - Domain & Forest Trusts]]'
+  - '[[netexec]]'
+  - '[[BloodHound & SharpHound]]'
 ---
 # AD - Domain & Forest Trusts - Tooling
 

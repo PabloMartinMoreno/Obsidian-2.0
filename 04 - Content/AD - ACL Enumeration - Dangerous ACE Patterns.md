@@ -5,16 +5,16 @@ aliases:
   - ForceChangePassword
   - DCSync ACE
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - ACL Enumeration]]"
+  - '[[AD - ACL Enumeration]]'
 ---
 # AD - ACL Enumeration - Dangerous ACE Patterns
 

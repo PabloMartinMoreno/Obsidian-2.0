@@ -5,16 +5,16 @@ aliases:
   - External Trust
   - Parent-Child Trust
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - Domain & Forest Trusts]]"
+  - '[[AD - Domain & Forest Trusts]]'
 ---
 # AD - Domain & Forest Trusts - Trust Types
 

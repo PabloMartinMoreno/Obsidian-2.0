@@ -6,7 +6,7 @@ aliases:
   - xfreerdp pth
   - RestrictedAdmin
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/lateral-movement
   - technique/credential-access
   - asset/active-directory
@@ -14,9 +14,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Pass-the-Hash]]"
+  - '[[Pass-the-Hash]]'
 ---
 # Pass-the-Hash - WinRM y RDP
 

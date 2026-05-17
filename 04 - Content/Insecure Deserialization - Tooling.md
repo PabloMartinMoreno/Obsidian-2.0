@@ -6,14 +6,14 @@ aliases:
   - fickling
   - marshalsec
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/insecure-deser
   - technique/execution
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
   - '[[Insecure Deserialization]]'
 ---

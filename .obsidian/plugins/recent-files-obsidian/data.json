@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Kerberoasting",
+      "path": "04 - Content/Kerberoasting.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQLi - Error based",
+      "path": "04 - Content/SQLi - Error based.md"
+    },
+    {
+      "basename": "SQLi  - Union based",
+      "path": "04 - Content/SQLi  - Union based.md"
+    },
+    {
+      "basename": "SQLi - Routed",
+      "path": "04 - Content/SQLi - Routed.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
       "basename": "Auth Bypass - Brute Force y Credential Stuffing",
       "path": "04 - Content/Auth Bypass - Brute Force y Credential Stuffing.md"
     },
@@ -11,14 +43,6 @@
     {
       "basename": "FTP (21) - Enumeración",
       "path": "04 - Content/FTP (21) - Enumeración.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
     },
     {
       "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
@@ -175,30 +199,6 @@
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "Session Hijacking",
-      "path": "04 - Content/Session Hijacking.md"
-    },
-    {
-      "basename": "BOLA - IDOR",
-      "path": "04 - Content/BOLA - IDOR.md"
-    },
-    {
-      "basename": "OAuth 2.0 Misconfigurations",
-      "path": "04 - Content/OAuth 2.0 Misconfigurations.md"
-    },
-    {
-      "basename": "JWT Attacks",
-      "path": "04 - Content/JWT Attacks.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/File Upload - Vulnerabilidades.md"
-    },
-    {
-      "basename": "Remote File Inclusion (RFI)",
-      "path": "04 - Content/Remote File Inclusion (RFI).md"
     }
   ],
   "omittedPaths": [],

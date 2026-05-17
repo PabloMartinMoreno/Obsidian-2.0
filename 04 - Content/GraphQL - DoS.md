@@ -5,7 +5,7 @@ aliases:
   - Aliases Overload
   - Circular Fragments
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/graphql
   - vuln/dos
   - technique/impact
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[GraphQL Injection]]'
 ---

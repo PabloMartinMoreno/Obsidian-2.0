@@ -4,17 +4,17 @@ aliases:
   - JWT Recon
   - JWT Identification
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/jwt
   - technique/discovery
   - asset/web-app
   - cred/jwt
-primary categories:
-secondary categories:
-tertiary categories:
-type: CheatSheet
+primary categories: null
+secondary categories: null
+tertiary categories: null
+type: Technique
 linked:
-  - "[[JWT Attacks]]"
+  - '[[JWT Attacks]]'
 ---
 # JWT - Detección y Reconocimiento
 

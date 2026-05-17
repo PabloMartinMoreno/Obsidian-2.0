@@ -5,7 +5,7 @@ aliases:
   - EDR Evasion LSASS
   - Custom LSASS Dumper
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - technique/defense-evasion
   - env/windows
@@ -13,9 +13,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[LSASS Dumping]]"
+  - '[[LSASS Dumping]]'
 ---
 # LSASS Dumping - Modern EDR Evasion
 

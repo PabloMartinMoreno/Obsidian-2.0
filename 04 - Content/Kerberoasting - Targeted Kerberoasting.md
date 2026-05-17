@@ -4,7 +4,7 @@ aliases:
   - WriteSPN Abuse
   - servicePrincipalName ACL Abuse
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory
@@ -12,9 +12,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Kerberoasting]]"
+  - '[[Kerberoasting]]'
 ---
 # Kerberoasting - Targeted Kerberoasting
 

@@ -4,7 +4,7 @@ aliases:
   - Rubeus silver
   - mimikatz silver
 tags:
-  - type/cheatsheet
+  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/windows
@@ -12,9 +12,9 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[Silver Ticket]]"
+  - '[[Silver Ticket]]'
 ---
 
 # Silver Ticket - Forging Windows

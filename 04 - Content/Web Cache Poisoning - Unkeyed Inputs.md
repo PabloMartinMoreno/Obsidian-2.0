@@ -5,14 +5,14 @@ aliases:
   - Unkeyed Method
   - Param Miner Workflow
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/cache-poisoning
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Web Cache Poisoning]]'
 ---

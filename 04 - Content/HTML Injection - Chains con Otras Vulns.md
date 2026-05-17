@@ -5,14 +5,14 @@ aliases:
   - HTML Email Injection
   - PDF Template Injection
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/html-injection
   - technique/lateral-movement
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTML Injection]]'
   - '[[Cross-Site Scripting (XSS)]]'

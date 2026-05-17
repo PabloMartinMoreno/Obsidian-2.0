@@ -4,14 +4,14 @@ aliases:
   - Path Traversal Windows Targets
   - PHP Wrappers
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/path-traversal
   - vuln/lfi
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Directory Traversal]]'
   - '[[File Inclusion]]'

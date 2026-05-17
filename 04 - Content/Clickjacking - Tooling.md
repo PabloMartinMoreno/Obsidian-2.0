@@ -5,18 +5,18 @@ aliases:
   - Clickjacker
   - UI Redress Tooling
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/clickjacking
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[Clickjacking]]"
-  - "[[Burp Suite]]"
-  - "[[nuclei]]"
+  - '[[Clickjacking]]'
+  - '[[Burp Suite]]'
+  - '[[nuclei]]'
 ---
 # Clickjacking - Tooling
 

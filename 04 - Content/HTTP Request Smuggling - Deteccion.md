@@ -3,14 +3,14 @@ aliases:
   - HRS Detection
   - Smuggling Probes
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/http-smuggling
   - technique/discovery
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[HTTP Request Smuggling]]'
 ---

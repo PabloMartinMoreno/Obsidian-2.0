@@ -4,7 +4,7 @@ aliases:
   - AND OR Injection
   - LDAP Comments
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ldap-injection
   - technique/initial-access
   - asset/web-app
@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[LDAP Injection]]'
 ---

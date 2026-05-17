@@ -4,14 +4,14 @@ aliases:
   - IDOR Mass Assignment
   - GraphQL Mass Assignment
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/mass-assignment
   - technique/lateral-movement
   - asset/web-app
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Mass Assignment]]'
   - '[[BOLA - IDOR]]'

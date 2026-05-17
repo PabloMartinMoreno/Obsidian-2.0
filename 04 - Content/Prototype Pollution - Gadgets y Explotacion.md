@@ -5,7 +5,7 @@ aliases:
   - PP Auth Bypass
   - PP XSS
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/prototype-pollution
   - technique/execution
   - technique/privilege-escalation
@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
   - '[[Prototype Pollution]]'
 ---
