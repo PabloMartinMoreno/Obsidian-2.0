@@ -11,7 +11,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: Concept
+type: SubCheatSheet
 linked:
   - '[[AD - DCSync Rights Discovery]]'
 ---
