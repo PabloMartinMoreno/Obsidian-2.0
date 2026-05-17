@@ -5,16 +5,16 @@ aliases:
   - getdompwinfo
   - Get-ADDefaultDomainPasswordPolicy
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - Password Policy Enumeration]]"
+  - '[[AD - Password Policy Enumeration]]'
 ---
 # AD - Password Policy Enumeration - Default Domain Policy
 

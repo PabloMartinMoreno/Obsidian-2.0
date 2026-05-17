@@ -5,17 +5,17 @@ aliases:
   - GoldenGMSA
   - DSInternals gMSA
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - gMSA Enumeration]]"
-  - "[[netexec]]"
+  - '[[AD - gMSA Enumeration]]'
+  - '[[netexec]]'
 ---
 # AD - gMSA Enumeration - Tooling
 

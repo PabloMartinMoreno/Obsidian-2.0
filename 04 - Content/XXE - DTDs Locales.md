@@ -11,7 +11,7 @@ secondary categories:
   - '[[Explotación]]'
 tertiary categories:
   - '[[Web Explotación]]'
-type: Technique
+type: SubCheatSheet
 linked:
   - '[[XML External Entity (XXE)]]'
 ---

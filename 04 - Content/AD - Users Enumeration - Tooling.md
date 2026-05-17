@@ -5,18 +5,18 @@ aliases:
   - linkedin2username
   - GetADUsers
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - Users Enumeration]]"
-  - "[[netexec]]"
-  - "[[Impacket Toolkit]]"
+  - '[[AD - Users Enumeration]]'
+  - '[[netexec]]'
+  - '[[Impacket Toolkit]]'
 ---
 # AD - Users Enumeration - Tooling
 

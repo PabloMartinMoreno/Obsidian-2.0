@@ -5,16 +5,16 @@ aliases:
   - Windows LAPS
   - DPAPI-NG LAPS
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
-  - technique/discovery
+  - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - LAPS Enumeration]]"
+  - '[[AD - LAPS Enumeration]]'
 ---
 # AD - LAPS Enumeration - Windows LAPSv2
 

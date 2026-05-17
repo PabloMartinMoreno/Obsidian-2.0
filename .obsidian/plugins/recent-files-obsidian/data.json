@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
     },
@@ -27,10 +31,6 @@
     {
       "basename": "SQLi - Routed",
       "path": "04 - Content/SQLi - Routed.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Auth Bypass - Brute Force y Credential Stuffing",

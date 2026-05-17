@@ -8,7 +8,7 @@ tags:
   - vuln/xslt-injection
   - technique/evasion
   - asset/web-app
-type: Technique
+type: SubCheatSheet
 linked:
   - >-
     [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side

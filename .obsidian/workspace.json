@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Active Directory Explotación.md",
+                "file": "03 - Tertiary Categories/Web Explotación.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Active Directory Explotación"
+              "title": "Web Explotación"
             }
           }
         ],
@@ -266,8 +266,8 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
-    "02 - Secondary Categories/Explotación.md",
     "03 - Tertiary Categories/Active Directory Explotación.md",
+    "02 - Secondary Categories/Explotación.md",
     "04 - Content/Kerberoasting.md",
     "04 - Content/SQL Injection (SQLi).md",
     "04 - Content/SQLi - Error based.md",

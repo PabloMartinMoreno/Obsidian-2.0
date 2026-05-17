@@ -15,7 +15,7 @@ secondary categories:
   - '[[Explotación|Explotación]]'
 tertiary categories:
   - '[[Web Explotación]]'
-type: Technique
+type: SubCheatSheet
 linked:
   - '[[Server-Side Request Forgery (SSRF)]]'
   - '[[SSRF - Mecanismo Lógico]]'

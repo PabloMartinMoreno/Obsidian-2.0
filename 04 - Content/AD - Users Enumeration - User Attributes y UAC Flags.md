@@ -5,16 +5,16 @@ aliases:
   - userAccountControl Bitfield
   - User Properties
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - Users Enumeration]]"
+  - '[[AD - Users Enumeration]]'
 ---
 # AD - Users Enumeration - User Attributes & UAC Flags
 

@@ -5,18 +5,18 @@ aliases:
   - GetADUsers
   - SAMR enumdomusers
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - Users Enumeration]]"
-  - "[[netexec]]"
-  - "[[Impacket Toolkit]]"
+  - '[[AD - Users Enumeration]]'
+  - '[[netexec]]'
+  - '[[Impacket Toolkit]]'
 ---
 # AD - Users Enumeration - User List Extraction
 

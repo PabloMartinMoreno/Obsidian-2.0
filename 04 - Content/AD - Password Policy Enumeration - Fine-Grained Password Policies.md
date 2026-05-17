@@ -5,16 +5,16 @@ aliases:
   - msDS-PasswordSettings
   - Password Settings Container
 tags:
-  - type/cheatsheet
+  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Concept
 linked:
-  - "[[AD - Password Policy Enumeration]]"
+  - '[[AD - Password Policy Enumeration]]'
 ---
 # AD - Password Policy Enumeration - Fine-Grained Password Policies (PSO)
 

@@ -13,7 +13,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: Tool
+type: SubCheatSheet
 linked:
   - '[[HTTP Request Smuggling]]'
   - '[[Burp Suite]]'

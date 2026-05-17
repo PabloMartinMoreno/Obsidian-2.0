@@ -5,16 +5,16 @@ aliases:
   - LAPS Deployment Check
   - msLAPS-Password
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - LAPS Enumeration]]"
+  - '[[AD - LAPS Enumeration]]'
 ---
 # AD - LAPS Enumeration - LAPS Discovery
 

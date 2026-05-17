@@ -12,7 +12,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: Tool
+type: SubCheatSheet
 linked:
   - '[[OAuth 2.0 Misconfigurations]]'
   - '[[Burp Suite]]'

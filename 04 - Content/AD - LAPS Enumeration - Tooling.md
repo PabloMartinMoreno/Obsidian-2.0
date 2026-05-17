@@ -5,17 +5,17 @@ aliases:
   - LAPSToolkit
   - pyLAPS
 tags:
-  - type/cheatsheet
+  - type/tool
   - vuln/ad-enumeration
-  - technique/discovery
+  - technique/credential-access
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Tool
 linked:
-  - "[[AD - LAPS Enumeration]]"
-  - "[[netexec]]"
+  - '[[AD - LAPS Enumeration]]'
+  - '[[netexec]]'
 ---
 # AD - LAPS Enumeration - Tooling
 

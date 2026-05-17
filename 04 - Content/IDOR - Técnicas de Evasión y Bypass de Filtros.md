@@ -9,7 +9,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: Technique
+type: SubCheatSheet
 linked:
   - '[[BOLA - IDOR]]'
 ---

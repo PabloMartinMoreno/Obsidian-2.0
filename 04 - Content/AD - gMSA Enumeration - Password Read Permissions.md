@@ -4,16 +4,16 @@ aliases:
   - gMSA Password Readers
   - PrincipalsAllowedToRetrieveManagedPassword
 tags:
-  - type/cheatsheet
+  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: CheatSheet
+type: Technique
 linked:
-  - "[[AD - gMSA Enumeration]]"
+  - '[[AD - gMSA Enumeration]]'
 ---
 # AD - gMSA Enumeration - Password Read Permissions
 

@@ -8,7 +8,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: Technique
+type: SubCheatSheet
 linked:
   - '[[OS Command Injection]]'
   - '[[Generación de Base64 para Windows (desde Linux)]]'

@@ -5,7 +5,7 @@ tags:
   - vuln/file-upload
   - technique/execution
   - asset/web-app
-type: Technique
+type: SubCheatSheet
 linked:
   - '[[File Upload - Vulnerabilidades]]'
 ---

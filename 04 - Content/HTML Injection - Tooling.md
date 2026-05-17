@@ -11,7 +11,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: Tool
+type: SubCheatSheet
 linked:
   - '[[HTML Injection]]'
   - '[[Burp Suite]]'
