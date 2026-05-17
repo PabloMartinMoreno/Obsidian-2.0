@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Web Explotación.md",
+                "file": "04 - Content/Process/Broken autentication.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Explotación"
+              "title": "Broken autentication"
             }
           }
         ],
@@ -266,6 +266,8 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Authentication & Authorization Bypass.md",
     "03 - Tertiary Categories/Active Directory Explotación.md",
     "02 - Secondary Categories/Explotación.md",
     "04 - Content/Kerberoasting.md",
@@ -273,7 +275,6 @@
     "04 - Content/SQLi - Error based.md",
     "04 - Content/SQLi  - Union based.md",
     "04 - Content/SQLi - Routed.md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Auth Bypass - Brute Force y Credential Stuffing.md",
     "04 - Content/HTTP Brute Forcing - Tipos Especiales.md",
     "04 - Content/FTP (21) - Enumeración.md",
@@ -291,7 +292,6 @@
     "04 - Content/Clickjacking - Bypass de Anti-Framing.md.tmp.3516.728b2ad8a5e7",
     "04 - Content/Clickjacking - Vectores Basicos.md.tmp.3516.b08482af5926",
     "04 - Content/RFI - Tooling.md.tmp.3516.c63247f230e5",
-    "04 - Content/Authentication & Authorization Bypass.md",
     "04 - Content/HTTP Brute Forcing.md",
     "04 - Content/Process/Ataques de Fuerza Bruta.md",
     "04 - Content/LDAP Injection.md",

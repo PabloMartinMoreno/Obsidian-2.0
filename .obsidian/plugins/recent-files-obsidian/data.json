@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "Broken autentication",
+      "path": "04 - Content/Process/Broken autentication.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Authentication & Authorization Bypass",
+      "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
       "basename": "Active Directory Explotación",
@@ -55,14 +63,6 @@
     {
       "basename": "Prototype Pollution - Bypasses y Filter Evasion",
       "path": "04 - Content/Prototype Pollution - Bypasses y Filter Evasion.md"
-    },
-    {
-      "basename": "Broken autentication",
-      "path": "04 - Content/Process/Broken autentication.md"
-    },
-    {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Authentication & Authorization Bypass.md"
     },
     {
       "basename": "HTTP Brute Forcing",
