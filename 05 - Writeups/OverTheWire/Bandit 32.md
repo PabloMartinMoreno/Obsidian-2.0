@@ -43,7 +43,7 @@ Para entender la solución a este ejercicio… Si yo hago un script con el valor
 ```bash
 echo $1 > script.sh
 
-#Le doy permiso de ejecución
+# Le doy permiso de ejecución
 chmod +x script.sh
 ```
 
@@ -51,7 +51,7 @@ Al ejecutarlo no veo nada exactamente, ya que $1 hace referencia al argumento qu
 ```bash
 ./script.sh asdads
 
-#me sale
+# me sale
 asdads
 ```
 
@@ -60,7 +60,7 @@ Si le agrego un $2, veo el siguiente argumento:
 ```bash
 ./script.sh asdads eeee
 
-#me sale
+# me sale
 asdads eeeee
 ```
 
@@ -70,10 +70,10 @@ $0 $1 $2
 ```
 
 ```bash
-#Lo ejecuto 
+# Lo ejecuto 
 ./script.sh aaaaa asdads eeee
 
-#devuelve
+# devuelve
 ./script.sh asdads eeee
 ```
 El $0 me devuelve el nombre del archivo.

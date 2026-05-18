@@ -29,9 +29,9 @@ Mismo comienzo que los anteriores.
 
 La contraseña no parece estar en los logs, por lo que podría probar viendo las distintas ramas. 
 ```bash
-git branch -a #para listar las ramas
+git branch -a # para listar las ramas
 
-#Se ve lo siguiente
+# Se ve lo siguiente
 * master
   remotes/origin/HEAD -> origin/master
   remotes/origin/dev

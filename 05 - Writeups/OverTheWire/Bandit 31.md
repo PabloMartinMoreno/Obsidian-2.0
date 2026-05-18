@@ -37,7 +37,7 @@ Details:
     Branch: master
 
 
-#Traducido 
+# Traducido 
 Esta vez su tarea es enviar un archivo al repositorio remoto.
 
 Detalles:
@@ -63,7 +63,7 @@ Lo subo:
 ```bash
 git push -u origin master
 
-#Pongo la contraseña y me devuelve lo siguiente
+# Pongo la contraseña y me devuelve lo siguiente
 
 Enumerating objects: 4, done.
 Counting objects: 100% (4/4), done.

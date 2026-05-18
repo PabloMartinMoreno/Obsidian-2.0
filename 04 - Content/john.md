@@ -331,7 +331,7 @@ $1$2$3                  # Append 1,2,3
 
 - `--show` al final para export de crackeados: `john --show hashes.txt > cracked.txt`.
 - `--pot=custom.pot` — pot separado por engagement (no contamina ~/.john/john.pot).
-- `--fork=N` — paralelismo entre N procesos (hasta #cores).
+- `--fork=N` — paralelismo entre N procesos (hasta # cores).
 - `--format=...` acepta wildcards: `--format=crypt`, `--format=raw-*`.
 - `--loopback` — usa passwords ya crackeados como wordlist base.
 - `--prince` (Jumbo) — PRINCE attack, combina palabras de wordlist en chains.

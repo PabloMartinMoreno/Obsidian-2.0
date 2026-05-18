@@ -169,9 +169,9 @@ Confirmé que tenía permisos de escritura en la carpeta y que podía iniciar y 
 
 Para el payload, la idea es crearlo con `msfvenom`, pero antes tengo que verificar si se trata de una maquina windows de 64 o 32 bits:
 ```powershell
-systeminfo #no funciona
-[Environment]::Is64BitOperatingSystem #True
-[Environment]::Is64BitProcess #True
+systeminfo # no funciona
+[Environment]::Is64BitOperatingSystem # True
+[Environment]::Is64BitProcess # True
 ```
 Efectivamente es un Windows de 64 bits.
 

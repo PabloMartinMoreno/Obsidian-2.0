@@ -183,7 +183,7 @@ cat /home/theseus/user.txt
 Uso `mysqldump` con los datos obtenidos anteriormente para evitar tener que usar Chisel y hacer el portforwarding. 
 ```SQL
 mysqldump -u theseus -p Magic
-#password: Th3s3usW4sK1ng
+# password: Th3s3usW4sK1ng
 ```
 
 Obtengo la contraseña del usuario theseus con mayor facilidad. 

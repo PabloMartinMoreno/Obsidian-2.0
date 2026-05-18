@@ -33,7 +33,7 @@ Sí sin embargo al hacer un:
 ```bash
 git tag
 
-#veo
+# veo
 secret
 ```
 
@@ -41,7 +41,7 @@ Para ver el contenido de la tag uso:
 ```bash
 git show secret
 
-#veo el contenido
+# veo el contenido
 fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
 ```
 

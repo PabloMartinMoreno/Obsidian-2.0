@@ -98,7 +98,7 @@ También podría enviarme el archivo yo mismo a mi maquina para poder analizarlo
 nc -nlvp > captura.pcap
 nc <mi_ip> 443 < captura.pcap
 
-#hago un md5sum en ambos lados para ver que el envio haya llegado sin modificaciones
+# hago un md5sum en ambos lados para ver que el envio haya llegado sin modificaciones
 
 tshark -r captura.pcap -V "ftp" 2>/dev/null
 ```

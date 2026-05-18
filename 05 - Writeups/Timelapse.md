@@ -162,11 +162,13 @@ Me muestra las contraseñas:
 Hostname   : dc01.timelapse.htb
 Stored     : 1
 Readable   : 1
-Password   : #BYjJCuzL(V[LacY,NP8xpV;
+Password   : <ver abajo>
 Expiration : 10/17/2025 4:06:37 PM
 
 ...
 ```
+
+Contraseña obtenida: `#BYjJCuzL(V[LacY,NP8xpV;`
 
 Es la contraseña del usuario `Administrator`, leo la flag y maquina terminada.
 

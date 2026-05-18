@@ -32,7 +32,7 @@ To enable custom styling within Obsidian, you'll need to:
 ### 1. Colorized Graph Nodes
 
 #### Description
-Recolor  `unresolved` or non-existent notes to show up in graph view as dark red (#CF4747).
+Recolor  `unresolved` or non-existent notes to show up in graph view as dark red (`#CF4747`).
 
 While Obsidian exposes the ability to colorize the graph view using groups, there doesnt seem to yet be a way to colorize unresolved notes. For this we'll use a CSS snippet. 
 

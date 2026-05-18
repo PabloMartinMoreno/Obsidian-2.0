@@ -32,7 +32,7 @@ El fichero a leer tiene el nombre `-`, esto hace que el programa se confunda y n
 
 ```bash 
 cat -
-#queda colgado
+# queda colgado
 ```
 
 Existen varias formas para leerlo:

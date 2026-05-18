@@ -80,7 +80,7 @@ Veo dos puertos que dice `ssl`, por lo que me parece más lógico probar con eso
 ```bash
  ncat --ssl localhost 31790
 
-#Pongo la contraseña anterior y devuelve una clave privada:
+# Pongo la contraseña anterior y devuelve una clave privada:
 
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
