@@ -86,7 +86,7 @@ Después de ejecutar `ReconSpider.py`, los datos se guardarán en un archivo JSO
     "videos": [],
     "audio": [],
     "comments": [
-        "<!-- #masthead -->"
+        "<!-- masthead -->"
     ]
 }
 ```

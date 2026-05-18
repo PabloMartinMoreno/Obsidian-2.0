@@ -8,22 +8,22 @@ tags:
   - technique/credential-access
   - technique/privilege-escalation
   - env/active-directory
-  - service/adcs
+  - service/ad-cs
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Credential Access]]"
+  - '[[Credential Access]]'
 tertiary categories:
-  - "[[Active Directory Certificate Services]]"
+  - '[[Active Directory Certificate Services]]'
 linked:
-  - "[[AD CS Abuse]]"
-  - "[[Shadow Credentials]]"
-  - "[[NTLM Relay]]"
-  - "[[Kerberoasting]]"
-  - "[[Pass-the-Ticket]]"
-  - "[[Impacket Toolkit]]"
-  - "[[Rubeus]]"
-  - "[[Active Directory Explotación 1]]"
+  - '[[AD CS Abuse]]'
+  - '[[Shadow Credentials]]'
+  - '[[NTLM Relay]]'
+  - '[[Kerberoasting]]'
+  - '[[Pass-the-Ticket]]'
+  - '[[Impacket Toolkit]]'
+  - '[[Rubeus]]'
+  - '[[Active Directory Explotación 1]]'
 ---
 # Certipy
 
