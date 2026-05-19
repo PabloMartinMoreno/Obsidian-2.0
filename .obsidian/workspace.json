@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Windows Post-Explotación.md",
+                "file": "04 - Content/Process/Broken autentication.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Windows Post-Explotación"
+              "title": "Broken autentication"
             }
           }
         ],
@@ -266,22 +266,22 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
+    "04 - Content/SQL Injection (SQLi).md",
+    "04 - Content/SQLi  - Union based.md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "03 - Tertiary Categories/Windows Post-Explotación.md",
     "04 - Content/sedgRHaAD",
     "04 - Content/sed7QWSJv",
     "04 - Content/sedKbsyfx",
     "02 - Secondary Categories/Post-Explotación.md",
     "03 - Tertiary Categories/Linux Post-Explotación.md",
-    "03 - Tertiary Categories/Windows Post-Explotación.md",
     "04 - Content/Windows Privilege Escalation.md",
     "04 - Content/Process/Privilege Escalation.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
-    "04 - Content/SQL Injection (SQLi).md",
     "00 - Resources/Images/Pasted image 20260418144914.png",
     "00 - Resources/Images/Pasted image 20260418144906.png",
     "00 - Resources/Images/Pasted image 20260405112752.png",
-    "04 - Content/SQLi  - Union based.md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Process/Broken autentication.md",
     "04 - Content/Authentication & Authorization Bypass.md",
     "03 - Tertiary Categories/Active Directory Explotación.md",
@@ -301,7 +301,6 @@
     "04 - Content/Clickjacking - Tooling.md.tmp.3516.5d78c6321f7a",
     "04 - Content/Clickjacking - Chains con Otras Vulns.md.tmp.3516.c6290230e9bf",
     "04 - Content/Clickjacking - Variantes Avanzadas.md.tmp.3516.9dfbd9655dad",
-    "04 - Content/Clickjacking - Bypass de Anti-Framing.md.tmp.3516.728b2ad8a5e7",
     "04 - Content/HTTP Brute Forcing.md",
     "04 - Content/Process/Ataques de Fuerza Bruta.md",
     "04 - Content/LDAP Injection.md",
