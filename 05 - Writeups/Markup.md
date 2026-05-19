@@ -2,7 +2,7 @@
 tags:
   - type/writeup
   - env/windows
-  - estado/incompleto
+  - estado/completo
   - cert/oscp
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/Markup

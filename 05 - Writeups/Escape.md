@@ -3,7 +3,7 @@ tags:
   - type/writeup
   - asset/active-directory
   - env/windows
-  - estado/incompleto
+  - estado/completo
   - cert/oscp
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/531
