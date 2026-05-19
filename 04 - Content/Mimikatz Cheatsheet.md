@@ -3,7 +3,7 @@ aliases:
   - Mimikatz
   - Mimikatz Commands
 tags:
-  - type/atomic
+  - type/tool
   - technique/credential-access
   - technique/persistence
   - env/windows

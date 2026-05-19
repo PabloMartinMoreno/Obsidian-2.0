@@ -2,7 +2,7 @@
 aliases:
   - Rubeus
 tags:
-  - type/atomic
+  - type/tool
   - tool/rubeus
   - technique/credential-access
   - technique/lateral-movement

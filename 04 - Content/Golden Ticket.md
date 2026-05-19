@@ -4,7 +4,7 @@ aliases:
   - Golden TGT
   - Forged TGT
 tags:
-  - type/hub
+  - type/concept
   - technique/persistence
   - technique/credential-access
   - technique/kerberos

@@ -1,6 +1,6 @@
 ---
 tags:
-  - CTF
+  - meta/ctf
   - estado/incompleto
 platform: "[[PortSwigger - Blind SQL injection with conditional responses]]"
 type: CTF

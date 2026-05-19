@@ -4,7 +4,7 @@ aliases:
   - PowerView.ps1
   - PowerView-Dev
 tags:
-  - type/atomic
+  - type/tool
   - tool/powerview
   - technique/recon/active
   - technique/lateral-movement

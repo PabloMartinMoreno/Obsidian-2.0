@@ -1,7 +1,7 @@
 ---
 aliases:
 tags:
-  - type/mindmap
+  - type/concept
 primary categories:
   - "[[Training]]"
   - "[[Red Team]]"

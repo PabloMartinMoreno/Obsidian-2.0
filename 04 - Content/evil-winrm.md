@@ -3,7 +3,7 @@ aliases:
   - evil-winrm
   - Evil-WinRM
 tags:
-  - type/atomic
+  - type/tool
   - tool/evil-winrm
   - technique/lateral-movement
   - technique/post-exploitation

@@ -5,7 +5,7 @@ aliases:
   - Certipy
   - ESC1-ESC15
 tags:
-  - type/atomic
+  - type/technique
   - technique/privilege-escalation
   - technique/credential-access
   - env/windows

@@ -4,7 +4,7 @@ aliases:
   - CrackMapExec
   - CME
 tags:
-  - type/atomic
+  - type/tool
   - tool/netexec
   - technique/lateral-movement
   - technique/recon/active

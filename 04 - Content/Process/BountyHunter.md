@@ -1,6 +1,6 @@
 ---
 tags:
-  - CTF
+  - meta/ctf
   - estado/incompleto
 platform: "[[Hack the Box]]"
 type: CTF

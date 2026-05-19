@@ -5,7 +5,7 @@ aliases:
   - Tunneling
   - Pivoteo
 tags:
-  - type/atomic
+  - type/technique
   - technique/lateral-movement
   - technique/pivoting
   - technique/tunneling

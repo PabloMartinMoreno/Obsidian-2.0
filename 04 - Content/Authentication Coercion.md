@@ -8,7 +8,7 @@ aliases:
   - ShadowCoerce
   - SpoolSample
 tags:
-  - type/atomic
+  - type/technique
   - technique/credential-access
   - technique/lateral-movement
   - env/windows

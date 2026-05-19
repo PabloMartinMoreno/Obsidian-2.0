@@ -3,7 +3,7 @@ aliases:
   - Ffuf
   - Fuff
 tags:
-  - type/atomic
+  - type/tool
   - tool/ffuf
   - technique/recon/active
   - asset/web-app

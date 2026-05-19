@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Windows Post-Explotación",
+      "path": "03 - Tertiary Categories/Windows Post-Explotación.md"
+    },
+    {
+      "basename": "Post-Explotación",
+      "path": "02 - Secondary Categories/Post-Explotación.md"
+    },
+    {
+      "basename": "Linux Post-Explotación",
+      "path": "03 - Tertiary Categories/Linux Post-Explotación.md"
+    },
+    {
+      "basename": "Windows Privilege Escalation",
+      "path": "04 - Content/Windows Privilege Escalation.md"
+    },
+    {
+      "basename": "Privilege Escalation",
+      "path": "04 - Content/Process/Privilege Escalation.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/SQL Injection (SQLi).md"
     },
@@ -23,10 +51,6 @@
     {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
     },
     {
       "basename": "Kerberoasting",
@@ -175,30 +199,6 @@
     {
       "basename": "Mass Assignment",
       "path": "04 - Content/Mass Assignment.md"
-    },
-    {
-      "basename": "Open Redirect",
-      "path": "04 - Content/Open Redirect.md"
-    },
-    {
-      "basename": "Race Conditions",
-      "path": "04 - Content/Race Conditions.md"
-    },
-    {
-      "basename": "Prototype Pollution",
-      "path": "04 - Content/Prototype Pollution.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Cross-Site Scripting (XSS).md"
     }
   ],
   "omittedPaths": [],

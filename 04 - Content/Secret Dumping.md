@@ -5,7 +5,7 @@ aliases:
   - Hash Dumping
   - DCSync
 tags:
-  - type/atomic
+  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

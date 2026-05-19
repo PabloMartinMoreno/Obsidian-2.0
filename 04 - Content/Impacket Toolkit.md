@@ -3,7 +3,7 @@ aliases:
   - Impacket
   - impacket
 tags:
-  - type/atomic
+  - type/tool
   - tool/impacket
   - technique/lateral-movement
   - technique/credential-access

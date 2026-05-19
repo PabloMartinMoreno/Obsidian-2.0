@@ -3,7 +3,7 @@ aliases:
   - Burp
   - BurpSuite
 tags:
-  - type/atomic
+  - type/tool
   - tool/burpsuite
   - technique/recon/active
   - asset/web-app

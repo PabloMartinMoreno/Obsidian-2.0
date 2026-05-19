@@ -5,7 +5,7 @@ aliases:
   - AMSI Evasion
   - Defender Bypass
 tags:
-  - type/atomic
+  - type/technique
   - technique/defense-evasion
   - technique/execution
   - env/windows

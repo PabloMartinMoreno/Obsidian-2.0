@@ -3,7 +3,7 @@ aliases:
   - Nmap
   - Network Mapper
 tags:
-  - type/atomic
+  - type/tool
   - type/tool
   - tool/nmap
   - technique/recon/active

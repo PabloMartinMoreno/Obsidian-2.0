@@ -636,7 +636,10 @@
     "technique/account-takeover": 31,
     "vuln/brute-force": 37,
     "1-5": 155,
-    "vuln/ad-enumeration": 38
+    "vuln/ad-enumeration": 38,
+    "meta/ctf": 67,
+    "tool/sudo": 111,
+    "tool/perl": 112
   },
   "_version": 3
 }

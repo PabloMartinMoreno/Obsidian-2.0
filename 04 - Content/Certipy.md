@@ -3,7 +3,7 @@ aliases:
   - certipy
   - Certipy-AD
 tags:
-  - type/atomic
+  - type/tool
   - tool/certipy
   - technique/credential-access
   - technique/privilege-escalation

@@ -3,7 +3,7 @@ aliases:
   - hydra
   - THC-Hydra
 tags:
-  - type/atomic
+  - type/tool
   - tool/hydra
   - technique/credential-access
   - cred/brute-force
