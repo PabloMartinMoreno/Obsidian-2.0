@@ -11,4 +11,4 @@ o
 awk 'length($0) >= 10 && /[a-z]/ && /[A-Z]/ && /[0-9]/' /opt/useful/seclists/Passwords/Leaked-Databases/rockyou.txt > custom_wordlist.txt
 ```
 
-[Default Password Database - cirt.net](https://cirt.net/passwords/)
+[https://cirt.net/passwords/
