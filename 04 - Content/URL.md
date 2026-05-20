@@ -106,9 +106,9 @@ params.get('page'); // "2"
 
 
 ### 🔷 Hash / Fragment
-```
-#seccion
-```
+
+`#seccion`
+
 Indica una **sección dentro de la página**. El `#` y todo lo que sigue **nunca se envía al servidor**, vive solo en el navegador.
 
 ```javascript
