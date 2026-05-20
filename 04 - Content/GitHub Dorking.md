@@ -24,7 +24,8 @@ linked:
 | `owner:<target>` | Restringe los resultados de búsqueda a los que pertenecen a un propietario.                     |
 | `path:<string>`  | Restringe los resultados de búsqueda a archivos que contienen una cadena en su ruta de archivo. |
 
-#porhacer 
+> [!todo]
+> Pendiente completar.
 
 Se pueden combinar múltiples operadores para búsquedas precisas.
 

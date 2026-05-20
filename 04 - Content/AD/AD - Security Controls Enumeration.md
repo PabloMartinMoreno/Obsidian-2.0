@@ -14,6 +14,7 @@ tertiary categories:
 type: CheatSheet
 linked:
 ---
-#porhacer 
+> [!todo]
+> Pendiente completar.
 
 ***

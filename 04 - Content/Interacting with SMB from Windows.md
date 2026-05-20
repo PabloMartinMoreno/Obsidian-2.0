@@ -35,4 +35,7 @@ Puedes interactuar con recursos SMB desde hosts Windows usando **CMD** o **Power
 
 Ambas interfaces de línea de comandos permiten listar el contenido de carpetas compartidas, conectarse a recursos compartidos remotos y gestionar unidades mapeadas.
 
-*Esto es especialmente útil si se necesitan **exfiltrar datos** a través de SMB.* **#porhacer: enlazar a la nota de exfiltración usando SMB.**
+*Esto es especialmente útil si se necesitan **exfiltrar datos** a través de SMB.*
+
+> [!todo]
+> Enlazar nota de exfiltración usando SMB.

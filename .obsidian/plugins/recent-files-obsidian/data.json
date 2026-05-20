@@ -9,14 +9,6 @@
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "SQLi  - Union based",
-      "path": "04 - Content/SQLi  - Union based.md"
-    },
-    {
       "basename": "Windows Post-Explotación",
       "path": "03 - Tertiary Categories/Windows Post-Explotación.md"
     },
@@ -45,68 +37,16 @@
       "path": "01 - Primary Categories/Red Team.md"
     },
     {
-      "basename": "Authentication & Authorization Bypass",
-      "path": "04 - Content/Authentication & Authorization Bypass.md"
-    },
-    {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "Kerberoasting",
-      "path": "04 - Content/Kerberoasting.md"
-    },
-    {
-      "basename": "SQLi - Error based",
-      "path": "04 - Content/SQLi - Error based.md"
-    },
-    {
-      "basename": "SQLi - Routed",
-      "path": "04 - Content/SQLi - Routed.md"
-    },
-    {
-      "basename": "Auth Bypass - Brute Force y Credential Stuffing",
-      "path": "04 - Content/Auth Bypass - Brute Force y Credential Stuffing.md"
-    },
-    {
-      "basename": "HTTP Brute Forcing - Tipos Especiales",
-      "path": "04 - Content/HTTP Brute Forcing - Tipos Especiales.md"
     },
     {
       "basename": "FTP (21) - Enumeración",
       "path": "04 - Content/FTP (21) - Enumeración.md"
     },
     {
-      "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
-      "path": "04 - Content/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
-    },
-    {
-      "basename": "File Inclusion",
-      "path": "04 - Content/File Inclusion.md"
-    },
-    {
-      "basename": "Prototype Pollution - Bypasses y Filter Evasion",
-      "path": "04 - Content/Prototype Pollution - Bypasses y Filter Evasion.md"
-    },
-    {
-      "basename": "HTTP Brute Forcing",
-      "path": "04 - Content/HTTP Brute Forcing.md"
-    },
-    {
-      "basename": "LDAP Injection",
-      "path": "04 - Content/LDAP Injection.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Server-Side Template Injection (SSTI).md"
-    },
-    {
       "basename": "Bandit 09",
       "path": "05 - Writeups/OverTheWire/Bandit 09.md"
-    },
-    {
-      "basename": "Insecure Deserialization",
-      "path": "04 - Content/Insecure Deserialization.md"
     },
     {
       "basename": "Bandit 10",
@@ -177,28 +117,8 @@
       "path": "05 - Writeups/OverTheWire/Bandit 25.md"
     },
     {
-      "basename": "Subdomain Takeover",
-      "path": "04 - Content/Subdomain Takeover.md"
-    },
-    {
       "basename": "WordPress Exploitation",
       "path": "04 - Content/Process/WordPress Exploitation.md"
-    },
-    {
-      "basename": "Host Header Injection",
-      "path": "04 - Content/Host Header Injection.md"
-    },
-    {
-      "basename": "HTTP Request Smuggling",
-      "path": "04 - Content/HTTP Request Smuggling.md"
-    },
-    {
-      "basename": "Web Cache Poisoning",
-      "path": "04 - Content/Web Cache Poisoning.md"
-    },
-    {
-      "basename": "Mass Assignment",
-      "path": "04 - Content/Mass Assignment.md"
     }
   ],
   "omittedPaths": [],

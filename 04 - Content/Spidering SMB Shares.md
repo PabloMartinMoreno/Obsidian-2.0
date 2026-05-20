@@ -23,10 +23,10 @@ linked:
 | **Acción**                                                                                         | **Descripción**                                                                                                |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `nxc smb <target> -u <user> -p '<password>' --shares`                                              | Verifica si la cuenta tiene acceso a las carpetas compartidas.                                                 |
-| `nxc smb <target> -u <user> -p '<password>' --spider <share> --pattern <search-term>`              | Recorre un **share** para buscar archivos que contengan una cadena específica. #porhacer: Falta esta sintaxis. |
-| `nxc smb <target> -u <user> -p '<password>' --spider <share> --regex <regex>`                      | Recorre un **share** para buscar archivos que coincidan con un patrón regex. #porhacer: Falta esta sintaxis.   |
-| `nxc smb <target> -u <user> -p '<password>' --share <share> --get-file <remote-file> <local-file>` | Descarga un archivo desde un **share** SMB. #porhacer: Falta esta sintaxis.                                    |
-| `nxc smb <target> -u <user> -p '<password>' --share <share> --put-file <local-file> <remote-file>` | Sube un archivo a un **share** SMB. #porhacer: ¿algo relevante aquí?                                           |
+| `nxc smb <target> -u <user> -p '<password>' --spider <share> --pattern <search-term>`              | Recorre un **share** para buscar archivos que contengan una cadena específica. **TODO:** falta esta sintaxis. |
+| `nxc smb <target> -u <user> -p '<password>' --spider <share> --regex <regex>`                      | Recorre un **share** para buscar archivos que coincidan con un patrón regex. **TODO:** falta esta sintaxis.   |
+| `nxc smb <target> -u <user> -p '<password>' --share <share> --get-file <remote-file> <local-file>` | Descarga un archivo desde un **share** SMB. **TODO:** falta esta sintaxis.                                    |
+| `nxc smb <target> -u <user> -p '<password>' --share <share> --put-file <local-file> <remote-file>` | Sube un archivo a un **share** SMB. **TODO:** ¿algo relevante aquí?                                           |
 | `nxc smb <target> -u <user> -p '<password>' -M spider_plus -o DOWNLOAD_FLAG=TRUE`                  | Descarga todos los archivos de todos los **shares** no excluidos a `/tmp/cme_spider_plus`.                     |
 
 ## Overview

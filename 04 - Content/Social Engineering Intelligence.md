@@ -20,4 +20,5 @@ linked:
 
 ## CheatSheet
 
-#porhacer 
+> [!todo]
+> Pendiente completar.

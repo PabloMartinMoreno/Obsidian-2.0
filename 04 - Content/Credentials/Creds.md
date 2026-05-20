@@ -30,4 +30,5 @@ Es especialmente útil para ataques de **fuerza bruta de inicio de sesión**, ya
 
 ## Artículos Relacionados
 
-#porhacer enlazar fuerza bruta de contraseñas 
+> [!todo]
+> Enlazar fuerza bruta de contraseñas.

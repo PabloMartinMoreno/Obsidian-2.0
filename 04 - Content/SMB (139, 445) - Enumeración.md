@@ -85,4 +85,5 @@ Si la autenticación es exitosa, el usuario obtiene acceso a los recursos compar
 
 ---
 
-**#porhacer:** Hacer una nota sobre **EternalBlue** y vincularla.
+> [!todo]
+> Crear nota sobre **EternalBlue** y vincularla.
