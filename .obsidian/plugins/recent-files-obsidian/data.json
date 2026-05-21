@@ -17,10 +17,6 @@
       "path": "04 - Content/Process/Broken autentication.md"
     },
     {
-      "basename": "SQLi  - Union based",
-      "path": "04 - Content/Web/Injection/SQLi  - Union based.md"
-    },
-    {
       "basename": "SQLi - Error based",
       "path": "04 - Content/Web/Injection/SQLi - Error based.md"
     },

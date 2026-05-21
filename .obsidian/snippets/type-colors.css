@@ -3,16 +3,18 @@
    Selector boost via `body` para beat supercharged-links-gen specificity.
    Mantener en sync con graph.json colorGroups. */
 
-/* === Categories (MOCs) === */
+/* === Text link coloring === */
+
+/* Categories (MOCs) */
 body [data-link-kind="Primary Category" i] { color: #FF0000 !important; }
 body [data-link-kind="Secondary Category" i] { color: #4CF6FF !important; }
 body [data-link-kind="Tertiary Category" i] { color: #30FFA4 !important; }
 
-/* === Más usados === */
+/* Más usados */
 body [data-link-kind="CheatSheet" i] { color: #0EA5E9 !important; }
 body [data-link-kind="Command" i] { color: #FFCC34 !important; }
 
-/* === Paleta de alto contraste === */
+/* Paleta alto contraste */
 body [data-link-kind="Tool" i] { color: #FF6F00 !important; }
 body [data-link-kind="Technique" i] { color: #C8E000 !important; }
 body [data-link-kind="Concept" i] { color: #1E40AF !important; }
@@ -22,7 +24,29 @@ body [data-link-kind="Playbook" i] { color: #006400 !important; }
 body [data-link-kind="Payload" i] { color: #6A1B9A !important; }
 body [data-link-kind="TTP" i] { color: #556B2F !important; }
 
-/* === Sub-types: faded del padre === */
+/* Sub-types faded */
 body [data-link-kind="SubCheatSheet" i] { color: rgba(103, 232, 249, 0.6) !important; }
 body [data-link-kind="Sub-Command" i] { color: rgba(255, 204, 52, 0.5) !important; }
 body [data-link-kind="Sub-Note" i] { color: rgba(148, 163, 184, 0.5) !important; }
+
+/* === Tab header coloring (left border) === */
+
+body .workspace-tab-header[data-link-kind="Primary Category" i] { border-left: 3px solid #FF0000 !important; }
+body .workspace-tab-header[data-link-kind="Secondary Category" i] { border-left: 3px solid #4CF6FF !important; }
+body .workspace-tab-header[data-link-kind="Tertiary Category" i] { border-left: 3px solid #30FFA4 !important; }
+
+body .workspace-tab-header[data-link-kind="CheatSheet" i] { border-left: 3px solid #0EA5E9 !important; }
+body .workspace-tab-header[data-link-kind="Command" i] { border-left: 3px solid #FFCC34 !important; }
+
+body .workspace-tab-header[data-link-kind="Tool" i] { border-left: 3px solid #FF6F00 !important; }
+body .workspace-tab-header[data-link-kind="Technique" i] { border-left: 3px solid #C8E000 !important; }
+body .workspace-tab-header[data-link-kind="Concept" i] { border-left: 3px solid #1E40AF !important; }
+body .workspace-tab-header[data-link-kind="Vulnerability" i] { border-left: 3px solid #8B0000 !important; }
+body .workspace-tab-header[data-link-kind="Writeup" i] { border-left: 3px solid #C2185B !important; }
+body .workspace-tab-header[data-link-kind="Playbook" i] { border-left: 3px solid #006400 !important; }
+body .workspace-tab-header[data-link-kind="Payload" i] { border-left: 3px solid #6A1B9A !important; }
+body .workspace-tab-header[data-link-kind="TTP" i] { border-left: 3px solid #556B2F !important; }
+
+body .workspace-tab-header[data-link-kind="SubCheatSheet" i] { border-left: 3px solid rgba(103, 232, 249, 0.6) !important; }
+body .workspace-tab-header[data-link-kind="Sub-Command" i] { border-left: 3px solid rgba(255, 204, 52, 0.5) !important; }
+body .workspace-tab-header[data-link-kind="Sub-Note" i] { border-left: 3px solid rgba(148, 163, 184, 0.5) !important; }
