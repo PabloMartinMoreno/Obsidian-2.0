@@ -6,7 +6,7 @@ primary categories:
   - "[[Training]]"
 secondary categories:
   - "[[Hack the Box]]"
-kind: Debrief
+kind: Writeup
 ---
 # [[Example Hack The Box Retired Machine]]
 

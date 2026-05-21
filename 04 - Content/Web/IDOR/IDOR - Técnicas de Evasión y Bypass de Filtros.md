@@ -44,7 +44,7 @@ La defensa contra el _bypass_ de filtros no consiste en crear reglas de filtrado
 - Implementar [[Defensa en Profundidad]]. Los WAFs y filtros de entrada deben ser considerados controles compensatorios, no soluciones definitivas.
 - Normalizar siempre la entrada de datos (decodificación estandarizada y _type casting_ estricto) antes de realizar cualquier validación o verificación de seguridad en el backend.
 - Rechazar categóricamente cualquier petición que contenga caracteres inesperados o representaciones ambiguas (aplicar validación estricta mediante listas blancas / _Allowlisting_).
-- Basar la autorización exclusivamente en el contexto de sesión criptográficamente seguro (como un [[JWT Atacks]]) y en la verificación explícita de la relación entre el usuario autenticado y el recurso solicitado a nivel del modelo de datos, independientemente de cómo se haya formateado el ID en la petición.
+- Basar la autorización exclusivamente en el contexto de sesión criptográficamente seguro (como un [[JWT Attacks]]) y en la verificación explícita de la relación entre el usuario autenticado y el recurso solicitado a nivel del modelo de datos, independientemente de cómo se haya formateado el ID en la petición.
 
 
 ***

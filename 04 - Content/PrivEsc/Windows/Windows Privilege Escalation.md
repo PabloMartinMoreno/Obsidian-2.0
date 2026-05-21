@@ -13,7 +13,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Privilege Escalation]]"
-kind: MOC
+kind: Concept
 linked:
   - "[[Windows PrivEsc Payloads]]"
   - "[[Windows Post-Explotación]]"
@@ -107,7 +107,7 @@ Contexto inicial asumido: shell como user estándar (RDP, WinRM, webshell, SSH, 
 
 ## 8. Active Directory pivot (si en dominio)
 
-Si el host está unido a dominio, escalada local puede no ser necesaria — atacar directo el dominio. Hub: [[Active Directory Explotación 1]].
+Si el host está unido a dominio, escalada local puede no ser necesaria — atacar directo el dominio. Hub: [[Active Directory Explotación]].
 
 - **LAPS** — `ms-Mcs-AdmPwd` legible con user con GenericRead sobre computer object.
 - **GPP Passwords** (legacy) — `groups.xml` en `SYSVOL` con cpassword descifrable.

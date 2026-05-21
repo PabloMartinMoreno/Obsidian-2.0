@@ -17,9 +17,9 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Credential Harvesting]]"
-kind: Atomic
+kind: Technique
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[DCSync]]"
   - "[[LSASS Dumping]]"
   - "[[Mimikatz Cheatsheet]]"

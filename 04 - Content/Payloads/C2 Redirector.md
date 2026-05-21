@@ -8,7 +8,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[C2 Tradecraft & Profiles]]"
-kind: Infrastructure
+kind: Concept
 ---
 # [[C2 Redirector]]
 

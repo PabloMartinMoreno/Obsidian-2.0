@@ -20,7 +20,7 @@ linked:
   - "[[Pass-the-Ticket]]"
   - "[[netexec]]"
   - "[[Windows Privilege Escalation]]"
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[AMSI Bypasses]]"
 ---
 # evil-winrm

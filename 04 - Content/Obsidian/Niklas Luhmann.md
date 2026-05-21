@@ -4,7 +4,7 @@ tags:
   - type/concept
 primary categories:
 secondary categories:
-kind: Biography
+kind: Concept
 ---
 # [[Niklas Luhmann]]
 

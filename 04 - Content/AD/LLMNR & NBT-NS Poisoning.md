@@ -17,9 +17,9 @@ secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
   - "[[Active Directory]]"
-kind: Atomic
+kind: Technique
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[Responder]]"
   - "[[NTLM Relay]]"
   - "[[hashcat]]"

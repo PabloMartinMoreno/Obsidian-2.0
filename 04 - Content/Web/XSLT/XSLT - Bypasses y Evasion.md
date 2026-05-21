@@ -10,9 +10,7 @@ tags:
   - asset/web-app
 kind: SubCheatSheet
 linked:
-  - >-
-    [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side
-    Injection]]
+  - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
   - '[[XML External Entity (XXE)]]'
   - '[[Server-Side Request Forgery (SSRF)]]'
 ---

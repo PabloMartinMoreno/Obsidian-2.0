@@ -16,9 +16,9 @@ secondary categories:
   - "[[Lateral Movement]]"
 tertiary categories:
   - "[[Active Directory]]"
-kind: Atomic
+kind: Tool
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[evil-winrm]]"
   - "[[netexec]]"
   - "[[Impacket Toolkit]]"

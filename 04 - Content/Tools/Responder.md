@@ -18,9 +18,9 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-kind: Atomic
+kind: Tool
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[NTLM Relay]]"
   - "[[Impacket Toolkit]]"
   - "[[Authentication Coercion]]"

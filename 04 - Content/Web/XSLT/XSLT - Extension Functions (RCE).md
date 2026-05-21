@@ -14,9 +14,7 @@ secondary categories: null
 tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - >-
-    [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side
-    Injection]]
+  - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
 ---
 # XSLT - Extension Functions (RCE)
 

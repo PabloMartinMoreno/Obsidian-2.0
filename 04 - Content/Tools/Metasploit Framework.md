@@ -19,7 +19,7 @@ linked:
   - "[[nmap]]"
   - "[[Windows Privilege Escalation]]"
   - "[[Linux Privilege Escalation]]"
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[Pass-the-Hash]]"
   - "[[NTLM Relay]]"
 ---

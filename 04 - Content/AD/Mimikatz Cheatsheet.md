@@ -15,10 +15,10 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-kind: Atomic
+kind: CheatSheet
 linked:
   - "[[LSASS Dumping]]"
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[DCSync]]"
   - "[[Golden Ticket]]"
   - "[[Silver Ticket]]"

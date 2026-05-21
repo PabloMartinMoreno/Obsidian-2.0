@@ -14,7 +14,7 @@ secondary categories:
   - "[[Payload Engineering]]"
 tertiary categories:
   - "[[Payloads]]"
-kind: Atomic
+kind: Tool
 linked:
   - "[[Metasploit]]"
   - "[[Reverse Shell]]"

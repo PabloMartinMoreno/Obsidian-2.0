@@ -17,9 +17,9 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-kind: Hub
+kind: Technique
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[Golden Ticket]]"
   - "[[Pass-the-Ticket]]"
   - "[[Kerberoasting]]"

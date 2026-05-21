@@ -8,7 +8,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Active Directory]]"
-kind: Mindmap
+kind: Concept
 ---
 # [[AD - mindmap 2025 - 03]]
 

@@ -14,7 +14,7 @@ secondary categories:
   - "[[Pre-Exploitation]]"
 tertiary categories:
   - "[[Payloads]]"
-kind: Atomic
+kind: Tool
 linked:
   - "[[nmap]]"
   - "[[Metasploit]]"

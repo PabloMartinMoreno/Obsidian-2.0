@@ -16,9 +16,9 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-kind: Atomic
+kind: Technique
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[AD CS Abuse]]"
   - "[[NTLM Relay]]"
   - "[[Certipy]]"

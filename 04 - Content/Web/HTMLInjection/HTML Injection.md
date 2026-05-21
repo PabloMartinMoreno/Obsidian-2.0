@@ -16,7 +16,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-kind: Hub
+kind: Vulnerability
 linked:
   - "[[HTML Injection - Vectores Comunes]]"
   - "[[HTML Injection - Inyeccion Sin Script]]"

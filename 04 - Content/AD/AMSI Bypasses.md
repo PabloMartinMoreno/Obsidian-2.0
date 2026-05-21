@@ -13,7 +13,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Payload Engineering]]"
-kind: Atomic
+kind: Technique
 linked:
   - "[[evil-winrm]]"
   - "[[MSFVenom]]"

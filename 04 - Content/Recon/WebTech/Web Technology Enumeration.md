@@ -11,7 +11,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Enumeration]]"
-kind: MOC
+kind: Concept
 linked:
   - "[[ColdFusion Enumeration]]"
   - "[[Drupal Enumeration]]"

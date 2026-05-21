@@ -121,7 +121,7 @@ Resource pool: límite de requests concurrentes (CE = 1 thread throttled).
 
 BApps imprescindibles:
 
-- **JWT Editor** — sign/verify JWTs, key confusion, alg:none (ver [[JWT Atacks]]).
+- **JWT Editor** — sign/verify JWTs, key confusion, alg:none (ver [[JWT Attacks]]).
 - **Autorize** — auto-testing de authZ / IDOR (compara response como User A vs User B / no-auth).
 - **Param Miner** — descubre params ocultos (headers, query, body).
 - **Turbo Intruder** — Python-scripted fuzzer (10k+ req/s, HTTP/2 racing).

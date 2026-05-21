@@ -16,7 +16,7 @@ secondary categories:
 tertiary categories:
   - "[[Lateral Movement]]"
 linked:
-  - "[[Active Directory Explotación 1]]"
+  - "[[Active Directory Explotación]]"
   - "[[Metasploit Framework]]"
   - "[[netexec]]"
   - "[[SSH (22) - Enumeración]]"
