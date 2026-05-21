@@ -9,67 +9,115 @@
   "colorGroups": [
     {
       "query": "[\"kind\":\"Primary Category\"]",
-      "color": { "a": 1, "rgb": 16711680 }
+      "color": {
+        "a": 1,
+        "rgb": 16711680
+      }
     },
     {
       "query": "[\"kind\":\"Secondary Category\"]",
-      "color": { "a": 1, "rgb": 5043967 }
+      "color": {
+        "a": 1,
+        "rgb": 5043967
+      }
     },
     {
       "query": "[\"kind\":\"Tertiary Category\"]",
-      "color": { "a": 1, "rgb": 3211172 }
+      "color": {
+        "a": 1,
+        "rgb": 3211172
+      }
     },
     {
       "query": "[\"kind\":\"CheatSheet\"]",
-      "color": { "a": 1, "rgb": 959977 }
+      "color": {
+        "a": 1,
+        "rgb": 959977
+      }
     },
     {
       "query": "[\"kind\":\"Command\"]",
-      "color": { "a": 1, "rgb": 16763956 }
+      "color": {
+        "a": 1,
+        "rgb": 16763956
+      }
     },
     {
       "query": "[\"kind\":\"Tool\"]",
-      "color": { "a": 1, "rgb": 16740096 }
+      "color": {
+        "a": 1,
+        "rgb": 16740096
+      }
     },
     {
       "query": "[\"kind\":\"Technique\"]",
-      "color": { "a": 1, "rgb": 13164544 }
+      "color": {
+        "a": 1,
+        "rgb": 13164544
+      }
     },
     {
       "query": "[\"kind\":\"Concept\"]",
-      "color": { "a": 1, "rgb": 1982639 }
+      "color": {
+        "a": 1,
+        "rgb": 1982639
+      }
     },
     {
       "query": "[\"kind\":\"Vulnerability\"]",
-      "color": { "a": 1, "rgb": 9109504 }
+      "color": {
+        "a": 1,
+        "rgb": 9109504
+      }
     },
     {
       "query": "[\"kind\":\"Writeup\"]",
-      "color": { "a": 1, "rgb": 12720219 }
+      "color": {
+        "a": 1,
+        "rgb": 12720219
+      }
     },
     {
       "query": "[\"kind\":\"Playbook\"]",
-      "color": { "a": 1, "rgb": 25600 }
+      "color": {
+        "a": 1,
+        "rgb": 25600
+      }
     },
     {
       "query": "[\"kind\":\"Payload\"]",
-      "color": { "a": 1, "rgb": 6953882 }
+      "color": {
+        "a": 1,
+        "rgb": 6953882
+      }
     },
     {
       "query": "[\"kind\":\"TTP\"]",
-      "color": { "a": 1, "rgb": 5597999 }
+      "color": {
+        "a": 1,
+        "rgb": 5597999
+      }
     },
     {
       "query": "[\"kind\":\"SubCheatSheet\"]",
-      "color": { "a": 0.6, "rgb": 6809849 }
+      "color": {
+        "a": 1,
+        "rgb": 6809849
+      }
     },
     {
       "query": "[\"kind\":\"Sub-Command\"]",
-      "color": { "a": 0.5, "rgb": 16763956 }
+      "color": {
+        "a": 1,
+        "rgb": 16763956
+      }
     },
     {
       "query": "[\"kind\":\"Sub-Note\"]",
-      "color": { "a": 0.5, "rgb": 9741240 }
+      "color": {
+        "a": 1,
+        "rgb": 9741240
+      }
     }
   ],
   "collapse-display": true,
@@ -82,6 +130,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.1714946141138985,
+  "scale": 0.8392754766439736,
   "close": true
 }
