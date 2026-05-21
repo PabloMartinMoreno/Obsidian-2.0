@@ -12,7 +12,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Privilege Escalation]]"
-type: MOC
+kind: MOC
 linked:
   - "[[Linux PrivEsc - SUID y SGID]]"
   - "[[Linux PrivEsc - Cron Jobs]]"

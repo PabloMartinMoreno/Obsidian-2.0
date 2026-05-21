@@ -12,7 +12,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[IDOR - Manipulación de Parámetros y Rutas]]"
   - "[[IDOR - Manipulación del Cuerpo de la Petición]]"

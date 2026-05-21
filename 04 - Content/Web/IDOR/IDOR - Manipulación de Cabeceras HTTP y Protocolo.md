@@ -12,7 +12,7 @@ secondary categories:
   - '[[Explotación]]'
 tertiary categories:
   - '[[Web Explotación]]'
-type: SubCheatSheet
+kind: SubCheatSheet
 linked:
   - '[[BOLA - IDOR]]'
 ---

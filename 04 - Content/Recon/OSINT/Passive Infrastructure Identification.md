@@ -12,7 +12,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Passive Reconnaissance & OSINT]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[CanaryTokens]]"
 ---

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+                "file": "03 - Tertiary Categories/Web Explotación.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Injection (SQLi)"
+              "title": "Web Explotación"
             }
           }
         ],
@@ -266,10 +266,12 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
-    "04 - Content/Web/Injection/SQLi  - Union based.md",
-    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
-    "04 - Content/Web/Injection/SQLi - Error based.md",
+    "04 - Content/Web/Injection/NoSQL Injection.md",
     "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Process/Broken autentication.md",
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+    "04 - Content/Web/Injection/SQLi  - Union based.md",
+    "04 - Content/Web/Injection/SQLi - Error based.md",
     "04 - Content/Process/Incompletos.md",
     "000 - Global Index.md",
     "04 - Content/Process.md",
@@ -284,7 +286,6 @@
     "05 - Writeups/VulnHub/Corrosion 2.md.tmp",
     "05 - Writeups/VulnHub/Corrosion 1.md.tmp",
     "00 - Resources/Templates/Type/_sub-note.md",
-    "04 - Content/Process/Broken autentication.md",
     "04 - Content/Recon/WebTech/Fingerprinting Web Technologies.md",
     "04 - Content/Recon/Social Engineering Intelligence.md",
     "04 - Content/Web/Injection/T-SQL Commands.md",
@@ -301,7 +302,6 @@
     "04 - Content/Recon/OSINT/Google Dorking.md",
     "04 - Content/Recon/OSINT/GitHub Dorking.md",
     "04 - Content/Recon/Fuzzing/Fuzzing Subdomains & Virtual Hosts.md",
-    "04 - Content/Recon/Fuzzing/Fuzzing Parameters & Values.md",
     "00 - Resources/Images/Pasted image 20260418144914.png",
     "00 - Resources/Images/Pasted image 20260418144906.png",
     "00 - Resources/Images/Pasted image 20260405112752.png",

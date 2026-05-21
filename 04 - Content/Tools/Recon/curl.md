@@ -9,7 +9,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Web Enumeración]]"
-type: Command
+kind: Command
 linked:
   - "[[Curl - Fuzzing Parámetros y Valores]]"
   - "[[Curl - Enumeración Pasiva de Sub-Dominios]]"

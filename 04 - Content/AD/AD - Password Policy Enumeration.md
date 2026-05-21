@@ -16,7 +16,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - Password Policy Enumeration - Default Domain Policy]]"
   - "[[AD - Password Policy Enumeration - Fine-Grained Password Policies]]"

@@ -11,7 +11,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Command Injection - Operadores Generales]]"
   - "[[Command Injection - Bypass de Espacios]]"

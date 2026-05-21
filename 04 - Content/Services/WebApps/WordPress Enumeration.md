@@ -12,7 +12,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Web Enumeration]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
 - "[[WordPress Exploitation]]"
   - "[[Web Technology Enumeration]]"

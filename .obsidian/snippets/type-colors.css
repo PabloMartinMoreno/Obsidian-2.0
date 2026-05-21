@@ -1,26 +1,28 @@
-/* Type-based note coloring.
+/* Note coloring by `kind` frontmatter property.
+   Attribute set by supercharged-links plugin: data-link-kind="<value>".
    Selector boost via `body` para beat supercharged-links-gen specificity.
    Mantener en sync con graph.json colorGroups. */
 
 /* === Categories (MOCs) === */
-body [data-link-tags*="type/moc/primary" i] { color: #FF0000 !important; }
-body [data-link-tags*="type/moc/secondary" i] { color: #4CF6FF !important; }
-body [data-link-tags*="type/moc/tertiary" i] { color: #30FFA4 !important; }
+body [data-link-kind="Primary Category" i] { color: #FF0000 !important; }
+body [data-link-kind="Secondary Category" i] { color: #4CF6FF !important; }
+body [data-link-kind="Tertiary Category" i] { color: #30FFA4 !important; }
 
-/* === Tipos más usados === */
-body [data-link-tags*="type/command" i] { color: #FFCC34 !important; }
-body [data-link-tags*="type/cheatsheet" i] { color: #14B8A6 !important; }
+/* === Más usados === */
+body [data-link-kind="CheatSheet" i] { color: #0EA5E9 !important; }
+body [data-link-kind="Command" i] { color: #FFCC34 !important; }
 
-/* === Tipos nuevos — paleta de alto contraste === */
-body [data-link-tags*="type/tool" i] { color: #FF6F00 !important; }
-body [data-link-tags*="type/technique" i] { color: #C8E000 !important; }
-body [data-link-tags*="type/concept" i] { color: #1E40AF !important; }
-body [data-link-tags*="type/vulnerability" i] { color: #8B0000 !important; }
-body [data-link-tags*="type/writeup" i] { color: #C2185B !important; }
-body [data-link-tags*="type/playbook" i] { color: #006400 !important; }
-body [data-link-tags*="type/payload" i] { color: #6A1B9A !important; }
-body [data-link-tags*="type/ttp" i] { color: #556B2F !important; }
+/* === Paleta de alto contraste === */
+body [data-link-kind="Tool" i] { color: #FF6F00 !important; }
+body [data-link-kind="Technique" i] { color: #C8E000 !important; }
+body [data-link-kind="Concept" i] { color: #1E40AF !important; }
+body [data-link-kind="Vulnerability" i] { color: #8B0000 !important; }
+body [data-link-kind="Writeup" i] { color: #C2185B !important; }
+body [data-link-kind="Playbook" i] { color: #006400 !important; }
+body [data-link-kind="Payload" i] { color: #6A1B9A !important; }
+body [data-link-kind="TTP" i] { color: #556B2F !important; }
 
-/* === Sub-types: mismo color que padre con alpha 0.5 === */
-body [data-link-tags*="type/sub-command" i] { color: rgba(255, 204, 52, 0.5) !important; }
-body [data-link-tags*="type/sub-note" i] { color: rgba(148, 163, 184, 0.5) !important; }
+/* === Sub-types: faded del padre === */
+body [data-link-kind="SubCheatSheet" i] { color: rgba(103, 232, 249, 0.6) !important; }
+body [data-link-kind="Sub-Command" i] { color: rgba(255, 204, 52, 0.5) !important; }
+body [data-link-kind="Sub-Note" i] { color: rgba(148, 163, 184, 0.5) !important; }

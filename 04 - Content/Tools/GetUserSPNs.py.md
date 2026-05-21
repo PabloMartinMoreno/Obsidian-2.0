@@ -11,7 +11,7 @@ secondary categories:
   - "[[Kerberoasting]]"
   - "[[Post-Explotación]]"
   - "[[Active Directory]]"
-type: Tool
+kind: Tool
 ---
 # [[GetUserSPNs.py]]
 

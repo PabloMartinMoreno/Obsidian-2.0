@@ -15,7 +15,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[SQL - Conexión y Gestión de Bases de Datos]]"
   - "[[SQL - Estructura Básica]]"

@@ -18,7 +18,7 @@ secondary categories:
   - "[[Active Directory]]"
 tertiary categories:
   - "[[Active Directory Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[DCSync - Permisos y Discovery]]"
   - "[[DCSync - Linux Execution]]"

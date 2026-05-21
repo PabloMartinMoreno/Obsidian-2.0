@@ -15,7 +15,7 @@ secondary categories:
   - '[[Explotación|Explotación]]'
 tertiary categories:
   - '[[Web Explotación]]'
-type: CheatSheet
+kind: CheatSheet
 linked:
   - '[[RFI - Vectores Basicos]]'
   - '[[RFI - PHP Wrappers y Schemes]]'

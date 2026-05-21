@@ -17,7 +17,7 @@ secondary categories:
   - "[[Active Directory]]"
 tertiary categories:
   - "[[Active Directory Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Kerberoasting - SPN Discovery]]"
   - "[[Kerberoasting - Request TGS]]"

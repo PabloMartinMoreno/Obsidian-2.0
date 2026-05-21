@@ -12,7 +12,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Web Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Web Technology Enumeration]]"
 ---

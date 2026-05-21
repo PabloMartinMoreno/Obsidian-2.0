@@ -17,7 +17,7 @@ secondary categories:
   - '[[Active Directory]]'
 tertiary categories:
   - '[[Active Directory Explotación]]'
-type: CheatSheet
+kind: CheatSheet
 linked:
   - '[[NTDS.dit Extraction - Architecture y Storage]]'
   - '[[NTDS.dit Extraction - VSS y ntdsutil Methods]]'

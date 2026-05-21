@@ -15,7 +15,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Hub
+kind: Hub
 linked:
   - "[[Clickjacking - Vectores Basicos]]"
   - "[[Clickjacking - Variantes Avanzadas]]"

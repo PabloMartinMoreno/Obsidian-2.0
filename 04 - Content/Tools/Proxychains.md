@@ -14,7 +14,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Pivoting]]"
-type: Tool
+kind: Tool
 linked:
   - "[[Pivoting & Port Forwarding]]"
   - "[[nmap]]"

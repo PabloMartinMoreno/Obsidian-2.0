@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Concept
+kind: Concept
 linked:
 ---
 # Códigos de Estado HTTP

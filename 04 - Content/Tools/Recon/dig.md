@@ -15,7 +15,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: Command
+kind: Command
 linked:
   - "[[DNS (53) - Enumeración]]"
   - "[[DNS]]"

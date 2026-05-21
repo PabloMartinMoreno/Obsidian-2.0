@@ -6,7 +6,7 @@ tags:
   - technique/credential-access
 primary categories:
   - "[[Red Team]]"
-type: Secondary Category
+kind: Secondary Category
 ---
 # [[Credential Harvesting]]
 

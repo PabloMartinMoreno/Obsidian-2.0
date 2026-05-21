@@ -9,7 +9,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
   - "[[Linux]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 ***
 # Linux Post-Explotación

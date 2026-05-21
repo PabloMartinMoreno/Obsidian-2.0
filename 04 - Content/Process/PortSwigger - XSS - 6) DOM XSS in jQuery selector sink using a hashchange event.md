@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/concept
-type: Concept
+kind: Concept
 linked:
 ---
 # PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event

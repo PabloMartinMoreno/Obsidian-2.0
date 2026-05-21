@@ -14,7 +14,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory]]"
-type: Atomic
+kind: Atomic
 linked:
   - "[[BloodHound & SharpHound]]"
   - "[[Active Directory Explotación 1]]"

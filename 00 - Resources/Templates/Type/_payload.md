@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Payload
+kind: Payload
 linked:
 ---
 # <% tp.file.title %>

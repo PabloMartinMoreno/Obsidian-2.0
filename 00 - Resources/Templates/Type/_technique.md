@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Technique
+kind: Technique
 linked:
 ---
 # <% tp.file.title %>

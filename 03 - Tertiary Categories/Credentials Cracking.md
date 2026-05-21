@@ -6,7 +6,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Operational Tasks]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Credentials Cracking
 

@@ -11,7 +11,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[SMTP (25,465,587) - Enumeración]]"
 ---

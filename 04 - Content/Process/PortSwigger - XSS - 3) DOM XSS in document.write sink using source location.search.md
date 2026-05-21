@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/concept
-type: Concept
+kind: Concept
 linked:
   - "[[PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search]]"
 ---

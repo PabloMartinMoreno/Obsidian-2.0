@@ -4,7 +4,7 @@ aliases:
 tags:
   - type/moc/secondary
 primary categories:
-type: Secondary Category
+kind: Secondary Category
 ---
 # [[Weaponization]]
 

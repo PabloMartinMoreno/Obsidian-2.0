@@ -7,7 +7,7 @@ primary categories:
   - "[[Training]]"
 secondary categories:
   - "[[Learning Techniques]]"
-type: Basic
+kind: Basic
 ---
 # [[Zettelkasten]]
 

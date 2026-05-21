@@ -4,11 +4,11 @@
     "cursor": {
       "from": {
         "line": 27,
-        "ch": 0
+        "ch": 22
       },
       "to": {
         "line": 27,
-        "ch": 0
+        "ch": 22
       }
     },
     "expandedKeys": []
@@ -36,6 +36,34 @@
       },
       "to": {
         "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Web Explotación.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/NoSQL Injection.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 0
+      },
+      "to": {
+        "line": 26,
         "ch": 0
       }
     },

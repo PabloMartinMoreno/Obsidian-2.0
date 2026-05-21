@@ -18,7 +18,7 @@ secondary categories:
   - '[[Active Directory]]'
 tertiary categories:
   - '[[Active Directory Explotación]]'
-type: CheatSheet
+kind: CheatSheet
 linked:
   - '[[Pass-the-Ticket - Formatos y Conversión]]'
   - '[[Pass-the-Ticket - Windows Extraction]]'

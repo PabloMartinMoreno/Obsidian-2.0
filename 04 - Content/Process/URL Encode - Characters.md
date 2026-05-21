@@ -6,7 +6,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Concept
+kind: Concept
 linked:
 ---
 # URL Encode

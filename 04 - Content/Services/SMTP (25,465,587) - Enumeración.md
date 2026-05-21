@@ -11,7 +11,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
 - "[[Common SMTP Commands]]"
   - "[[POP3 (110, 995) - Enumeración]]"

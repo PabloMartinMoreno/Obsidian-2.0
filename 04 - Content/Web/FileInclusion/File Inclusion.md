@@ -11,7 +11,7 @@ secondary categories:
   - '[[Explotación]]'
 tertiary categories:
   - '[[Web Explotación]]'
-type: CheatSheet
+kind: CheatSheet
 linked:
   - '[[LFI - Básico]]'
   - '[[LFI - Path Traversal y Bypass de Filtros]]'

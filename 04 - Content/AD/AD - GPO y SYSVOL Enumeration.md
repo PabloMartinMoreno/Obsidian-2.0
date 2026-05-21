@@ -18,7 +18,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - GPO y SYSVOL Enumeration - GPO Discovery]]"
   - "[[AD - GPO y SYSVOL Enumeration - GPO ACL Audit]]"

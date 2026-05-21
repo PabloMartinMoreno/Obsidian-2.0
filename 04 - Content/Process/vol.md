@@ -6,7 +6,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Command
+kind: Command
 linked:
 ---
 # Framework - Volatility

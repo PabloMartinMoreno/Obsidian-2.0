@@ -8,7 +8,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Reconocimiento Pasivo
 

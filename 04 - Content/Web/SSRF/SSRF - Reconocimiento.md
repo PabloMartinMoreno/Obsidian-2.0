@@ -5,7 +5,7 @@ tags:
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app
-type: SubCheatSheet
+kind: SubCheatSheet
 linked:
   - '[[Server-Side Request Forgery (SSRF)]]'
   - '[[SSRF - CWES]]'

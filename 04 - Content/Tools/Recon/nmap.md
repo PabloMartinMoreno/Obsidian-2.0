@@ -13,7 +13,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: Command
+kind: Command
 linked:
   - "[[Port Enumeration]]"
   - "[[Windows LOTL Port Scanning]]"

@@ -16,7 +16,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Operational Tasks]]"
-type: Atomic
+kind: Atomic
 linked:
   - "[[Reverse Shell]]"
   - "[[Linux Post-Explotación]]"

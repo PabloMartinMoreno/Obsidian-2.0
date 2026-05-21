@@ -10,7 +10,7 @@ tags:
   - env/windows
   - env/linux
   - asset/active-directory
-type: SubCheatSheet
+kind: SubCheatSheet
 linked:
   - '[[Silver Ticket]]'
 ---

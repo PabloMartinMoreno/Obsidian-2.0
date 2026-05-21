@@ -20,13 +20,5 @@
   "anuppuccin-theme-settings@@anp-italic-custom": "anp-italic-teal",
   "anuppuccin-theme-settings@@anp-status-bar-select": "anp-floating-status-bar",
   "anuppuccin-theme-settings@@anp-bold-custom": "anp-bold-blue",
-  "anuppuccin-theme-settings@@anp-code-text-color@@dark": "#B1C2FA",
-  "supercharged-links@@8068-b85b-color": "#FF0000",
-  "supercharged-links@@8068-b85b-decoration": "initial",
-  "supercharged-links@@c-8068-b85b-use-background": false,
-  "supercharged-links@@8068-b85b-background-color": "#FF0000",
-  "supercharged-links@@bb6d-e482-color": "#4CF6FF",
-  "supercharged-links@@c2c6-d006-color": "#30FFA4",
-  "supercharged-links@@d998-7050-color": "#FFCC34",
-  "supercharged-links@@cd53-16f6-color": "#EC5AD6"
+  "anuppuccin-theme-settings@@anp-code-text-color@@dark": "#B1C2FA"
 }

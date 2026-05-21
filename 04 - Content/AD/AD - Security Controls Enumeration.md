@@ -11,7 +11,7 @@ secondary categories:
   - "[[Active Directory]]"
 tertiary categories:
   - "[[Passive Reconnaissance & OSINT]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
 ---
 > [!todo]

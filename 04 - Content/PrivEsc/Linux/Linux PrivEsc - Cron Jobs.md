@@ -13,7 +13,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Privilege Escalation]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Linux Privilege Escalation]]"
 ---

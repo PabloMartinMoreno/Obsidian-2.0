@@ -8,7 +8,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Reverse Engineering]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
 ---
 # JavaScript Deobfuscation

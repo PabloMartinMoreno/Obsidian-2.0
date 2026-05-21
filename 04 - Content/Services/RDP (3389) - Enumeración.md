@@ -15,7 +15,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
 - "[[RDP Exploitation (3389)]]"
   - "[[Port Enumeration]]"

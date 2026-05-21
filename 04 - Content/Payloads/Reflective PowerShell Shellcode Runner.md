@@ -11,7 +11,7 @@ secondary categories:
   - "[[PowerShell]]"
   - "[[Weaponization]]"
   - "[[Payload Engineering]]"
-type: Payload
+kind: Payload
 ---
 # [[Reflective PowerShell Shellcode Runner]]
 

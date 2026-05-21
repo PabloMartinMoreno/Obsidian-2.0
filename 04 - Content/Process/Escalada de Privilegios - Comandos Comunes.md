@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/concept
-type: Concept
+kind: Concept
 linked:
 ---
 # Comandos más Usados para la Escalada de Privilegios

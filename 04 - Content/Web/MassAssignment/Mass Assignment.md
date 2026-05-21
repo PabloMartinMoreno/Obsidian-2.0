@@ -17,7 +17,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Mass Assignment - Vectores Comunes]]"
   - "[[Mass Assignment - Frameworks Vulnerables]]"

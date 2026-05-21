@@ -3,7 +3,7 @@ aliases:
   - Domain Name System
 tags:
   - type/concept
-type: Concept
+kind: Concept
 linked:
   - "[[DNS (53) - Enumeración]]"
   - "[[DNS - Herramientas]]"

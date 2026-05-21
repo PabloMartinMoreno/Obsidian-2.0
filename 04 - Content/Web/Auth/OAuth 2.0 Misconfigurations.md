@@ -17,7 +17,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[OAuth 2.0 - redirect_uri Manipulation]]"
   - "[[OAuth 2.0 - State y CSRF]]"

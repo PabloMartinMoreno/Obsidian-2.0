@@ -12,7 +12,7 @@ secondary categories:
   - "[[Active Directory]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[BloodHound & SharpHound]]"
   - "[[LSASS]]"

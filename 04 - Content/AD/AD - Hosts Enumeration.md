@@ -16,7 +16,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - Hosts Enumeration - DC Discovery]]"
   - "[[AD - Hosts Enumeration - Sites Subnets y Topology]]"

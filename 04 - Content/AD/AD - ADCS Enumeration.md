@@ -18,7 +18,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - ADCS Enumeration - ADCS Discovery]]"
   - "[[AD - ADCS Enumeration - Certificate Templates Audit]]"

@@ -7,7 +7,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Persistence, Defense Evasion & C2]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Técnicas de Persistencia
 

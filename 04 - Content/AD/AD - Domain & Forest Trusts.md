@@ -16,7 +16,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - Domain & Forest Trusts - Trust Discovery]]"
   - "[[AD - Domain & Forest Trusts - Trust Types]]"

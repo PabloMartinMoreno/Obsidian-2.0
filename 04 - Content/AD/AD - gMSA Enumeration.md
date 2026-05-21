@@ -17,7 +17,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - gMSA Enumeration - gMSA Discovery]]"
   - "[[AD - gMSA Enumeration - Password Read Permissions]]"

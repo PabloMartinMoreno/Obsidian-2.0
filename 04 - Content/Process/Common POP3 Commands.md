@@ -11,7 +11,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Host & Network Enumeration]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
 ---
 # Comandos POP3 Comunes

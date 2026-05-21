@@ -20,7 +20,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Privilege Escalation]]"
-type: Tool
+kind: Tool
 linked:
   - "[[Linux Privilege Escalation]]"
   - "[[Windows Privilege Escalation]]"

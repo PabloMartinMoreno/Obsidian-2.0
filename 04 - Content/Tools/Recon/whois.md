@@ -12,7 +12,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Passive Reconnaissance & OSINT]]"
-type: Command
+kind: Command
 linked:
   - "[[whois - Escenarios de Uso]]"
 ---

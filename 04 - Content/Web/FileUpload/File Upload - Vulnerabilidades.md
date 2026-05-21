@@ -11,7 +11,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[File Upload - Reconocimiento de Filtros]]"
   - "[[File Upload - Bypass de Filtros de Lista Negra]]"

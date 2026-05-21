@@ -11,7 +11,7 @@ secondary categories:
   - "[[Domain Enumeration]]"
   - "[[Post-Explotación]]"
   - "[[Active Directory]]"
-type: Command
+kind: Command
 ---
 # [[PowerShell - FormatEnumerationLimit]]
 

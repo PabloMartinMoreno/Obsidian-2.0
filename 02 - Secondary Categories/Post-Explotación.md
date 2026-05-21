@@ -4,7 +4,7 @@ tags:
   - type/moc/secondary
 primary categories:
   - "[[Red Team]]"
-type: Secondary Category
+kind: Secondary Category
 ---
 # Post-Exploitation
 

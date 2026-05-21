@@ -17,7 +17,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Credential Harvesting]]"
-type: Atomic
+kind: Atomic
 linked:
   - "[[Active Directory Explotación 1]]"
   - "[[DCSync]]"

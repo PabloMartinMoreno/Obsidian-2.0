@@ -18,7 +18,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[HTTP Request Smuggling - Variantes Clasicas]]"
   - "[[HTTP Request Smuggling - HTTP2 Downgrade]]"

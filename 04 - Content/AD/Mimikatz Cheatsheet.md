@@ -15,7 +15,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-type: Atomic
+kind: Atomic
 linked:
   - "[[LSASS Dumping]]"
   - "[[Active Directory Explotación 1]]"

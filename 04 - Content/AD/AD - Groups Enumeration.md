@@ -16,7 +16,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - Groups Enumeration - Group List Extraction]]"
   - "[[AD - Groups Enumeration - Privileged Built-in Groups]]"

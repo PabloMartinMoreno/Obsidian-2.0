@@ -4,7 +4,7 @@ tags:
   - type/concept
   - technique/recon/active
   - asset/web-app
-type: Concept
+kind: Concept
 linked:
   - "[[Subdominio]]"
   - "[[Subdominio vs Virtual Host]]"

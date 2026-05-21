@@ -14,7 +14,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[SSRF - Básico]]"
   - "[[SSRF - Protocolos Alternativos]]"

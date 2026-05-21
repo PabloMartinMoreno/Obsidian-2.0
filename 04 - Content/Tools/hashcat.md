@@ -9,7 +9,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Kerberoasting]]"
   - "[[AS-REP Roasting]]"

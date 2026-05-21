@@ -8,7 +8,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
   - "[[Windows]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 ***
 # Windows Post-Explotación

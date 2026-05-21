@@ -8,7 +8,7 @@ primary categories:
 secondary categories:
   - "[[Lateral Movement]]"
   - "[[Windows]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Movimiento Lateral de Windows y AD
 

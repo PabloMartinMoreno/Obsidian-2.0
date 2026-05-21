@@ -8,7 +8,7 @@ tags:
   - technique/defense-evasion
 primary categories:
   - "[[Red Team]]"
-type: Secondary Category
+kind: Secondary Category
 ---
 # [[Payload Engineering]]
 

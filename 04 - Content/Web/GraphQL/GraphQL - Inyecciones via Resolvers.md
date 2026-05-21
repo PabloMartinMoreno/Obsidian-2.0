@@ -15,7 +15,7 @@ tags:
 primary categories: null
 secondary categories: null
 tertiary categories: null
-type: SubCheatSheet
+kind: SubCheatSheet
 linked:
   - '[[GraphQL Injection]]'
   - '[[SQL Injection (SQLi)]]'

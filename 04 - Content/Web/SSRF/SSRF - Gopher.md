@@ -5,7 +5,7 @@ tags:
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app
-type: Concept
+kind: Concept
 linked:
   - "[[SSRF - Explotación]]"
   - "[[SSRF - CWES]]"

@@ -13,7 +13,7 @@ secondary categories:
   - "[[Recon]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: Tool
+kind: Tool
 linked:
   - "[[Web Enumeración]]"
   - "[[Fingerprinting]]"

@@ -5,7 +5,7 @@ tags:
   - type/moc/secondary
 primary categories:
   - "[[Red Team]]"
-type: Secondary Category
+kind: Secondary Category
 ---
 # Recopilación de Información
 

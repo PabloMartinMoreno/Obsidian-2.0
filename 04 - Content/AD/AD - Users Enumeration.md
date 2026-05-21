@@ -16,7 +16,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - Users Enumeration - User List Extraction]]"
   - "[[AD - Users Enumeration - User Attributes y UAC Flags]]"

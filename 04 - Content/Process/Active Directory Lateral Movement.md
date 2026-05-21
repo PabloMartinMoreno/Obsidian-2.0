@@ -8,7 +8,7 @@ primary categories:
 secondary categories:
   - "[[Lateral Movement]]"
   - "[[Active Directory]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Active Directory Lateral Movement
 

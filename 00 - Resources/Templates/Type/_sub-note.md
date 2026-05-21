@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Sub-Note
+kind: Sub-Note
 parent:
 linked:
 ---

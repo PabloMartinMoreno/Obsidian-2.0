@@ -13,7 +13,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Privilege Escalation]]"
-type: MOC
+kind: MOC
 linked:
   - "[[Windows PrivEsc Payloads]]"
   - "[[Windows Post-Explotación]]"

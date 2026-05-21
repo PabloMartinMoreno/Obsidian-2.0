@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/concept
-type: Concept
+kind: Concept
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[Server-Side Template Injection (SSTI)]]"

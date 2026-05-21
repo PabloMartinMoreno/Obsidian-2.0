@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Tool
+kind: Tool
 linked:
 ---
 # <% tp.file.title %>

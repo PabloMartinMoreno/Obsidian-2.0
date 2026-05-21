@@ -18,7 +18,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-type: Hub
+kind: Hub
 linked:
   - "[[Active Directory Explotación 1]]"
   - "[[DCSync]]"

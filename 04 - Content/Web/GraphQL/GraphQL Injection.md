@@ -15,7 +15,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[GraphQL - Inyecciones via Resolvers]]"
   - "[[GraphQL - Auth y Logica]]"

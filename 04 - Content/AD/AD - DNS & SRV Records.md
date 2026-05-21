@@ -16,7 +16,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - DNS & SRV Records - SRV Records Estandar]]"
   - "[[AD - DNS & SRV Records - AD-Integrated Zones]]"

@@ -20,7 +20,7 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-type: Atomic
+kind: Atomic
 linked:
   - "[[Active Directory Explotación 1]]"
   - "[[NTLM Relay]]"

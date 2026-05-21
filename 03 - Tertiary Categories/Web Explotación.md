@@ -8,7 +8,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
   - "[[Web]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Explotación Web
 

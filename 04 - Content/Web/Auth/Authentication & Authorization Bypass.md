@@ -17,7 +17,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Auth Bypass - Bypass de Autenticacion]]"
   - "[[Auth Bypass - Bypass de Autorizacion]]"

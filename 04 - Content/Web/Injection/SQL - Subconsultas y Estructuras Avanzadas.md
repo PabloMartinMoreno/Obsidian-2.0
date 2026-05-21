@@ -9,7 +9,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[SQL Commands]]"
 ---

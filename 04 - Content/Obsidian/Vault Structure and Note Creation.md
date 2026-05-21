@@ -6,7 +6,7 @@ primary categories:
   - "[[Vault Administration]]"
 secondary categories:
   - "[[Obsidian]]"
-type: Basic
+kind: Basic
 ---
 # [[Vault Structure and Note Creation]]
 

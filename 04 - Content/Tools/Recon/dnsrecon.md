@@ -13,7 +13,7 @@ secondary categories:
   - "[[Recon]]"
 tertiary categories:
   - "[[Information Gathering]]"
-type: Tool
+kind: Tool
 linked:
   - "[[DNS - Herramientas]]"
   - "[[DNS (53) - Enumeración]]"

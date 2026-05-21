@@ -14,7 +14,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Web Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[whois]]"
   - "[[curl]]"

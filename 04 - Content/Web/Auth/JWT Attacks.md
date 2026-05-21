@@ -18,7 +18,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[JWT - Ataques al Algoritmo]]"
   - "[[JWT - Inyeccion en Headers]]"

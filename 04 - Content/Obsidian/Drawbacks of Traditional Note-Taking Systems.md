@@ -7,7 +7,7 @@ primary categories:
   - "[[Vault Administration]]"
 secondary categories:
   - "[[Learning Techniques]]"
-type: Idea
+kind: Idea
 ---
 # [[Drawbacks of Traditional Note-Taking Systems]]
 

@@ -8,7 +8,7 @@ secondary categories:
   - "[[Pre-Exploitation]]"
 tertiary categories:
   - "[[Payloads]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
 ---
 # Shellter

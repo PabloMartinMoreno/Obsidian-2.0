@@ -5,7 +5,7 @@ tags:
   - vuln/lfi
   - technique/execution
   - asset/web-app
-type: Concept
+kind: Concept
 linked:
   - "[[File Inclusion]]"
 ---

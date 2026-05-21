@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: Playbook
+kind: Playbook
 linked:
 ---
 # <% tp.file.title %>

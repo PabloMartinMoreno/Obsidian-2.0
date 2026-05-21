@@ -5,7 +5,7 @@ tags:
 primary categories:
   - "[[000 - Global Index]]"
   - "[[Vault Administration]]"
-type: Secondary Category
+kind: Secondary Category
 ---
 # [[Obsidian]]  
 

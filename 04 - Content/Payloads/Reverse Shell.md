@@ -3,7 +3,7 @@ aliases:
 tags:
   - type/concept
   - technique/execution
-type: Concept
+kind: Concept
 linked:
   - "[[nc]]"
 ---

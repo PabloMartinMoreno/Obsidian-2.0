@@ -10,7 +10,7 @@ primary categories:
 secondary categories:
   - "[[Information Gathering]]"
   - "[[Web]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Enumeración Web
 

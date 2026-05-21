@@ -11,7 +11,7 @@ secondary categories:
   - '[[Explotación]]'
 tertiary categories:
   - '[[Web Explotación]]'
-type: CheatSheet
+kind: CheatSheet
 linked:
   - '[[XSS - HTML Básico]]'
   - '[[XSS - Etiqueta <script> Estándar]]'

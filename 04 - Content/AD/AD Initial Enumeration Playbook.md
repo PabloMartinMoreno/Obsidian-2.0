@@ -11,7 +11,7 @@ secondary categories:
   - "[[Post-Explotación]]"
   - "[[Domain Enumeration]]"
   - "[[Active Directory]]"
-type: Playbook
+kind: Playbook
 ---
 # [[AD Initial Enumeration Playbook]]
 

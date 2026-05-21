@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-type: TTP
+kind: TTP
 mitre_id:
 mitre_url:
 linked:

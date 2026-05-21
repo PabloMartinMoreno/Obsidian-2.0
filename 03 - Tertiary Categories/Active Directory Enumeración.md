@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Active Directory]]"
   - "[[Information Gathering]]"
-type: Tertiary Category
+kind: Tertiary Category
 ---
 # Active Directory Enumeración
 

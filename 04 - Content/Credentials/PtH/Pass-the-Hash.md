@@ -17,7 +17,7 @@ secondary categories:
   - "[[Active Directory]]"
 tertiary categories:
   - "[[Active Directory Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Pass-the-Hash - Hash Sources y Formats]]"
   - "[[Pass-the-Hash - SMB Lateral]]"

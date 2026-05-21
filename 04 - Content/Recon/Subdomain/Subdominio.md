@@ -2,7 +2,7 @@
 aliases:
 tags:
   - type/concept
-type: Concept
+kind: Concept
 linked:
   - "[[Virtual Host|Virtual Host]]"
   - "[[Subdominio vs Virtual Host]]"

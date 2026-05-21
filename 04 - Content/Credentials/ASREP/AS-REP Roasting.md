@@ -17,7 +17,7 @@ secondary categories:
   - "[[Active Directory]]"
 tertiary categories:
   - "[[Active Directory Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AS-REP Roasting - Discovery]]"
   - "[[AS-REP Roasting - Roast Without Auth]]"

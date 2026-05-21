@@ -17,7 +17,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - Health y Security Auditing - PingCastle]]"
   - "[[AD - Health y Security Auditing - Purple Knight]]"

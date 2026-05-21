@@ -17,7 +17,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[AD - DCSync Rights Discovery - DCSync Rights Definition]]"
   - "[[AD - DCSync Rights Discovery - Default vs Non-Default Holders]]"

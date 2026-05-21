@@ -3,7 +3,7 @@ tags:
   - meta/ctf
   - estado/incompleto
 platform: "[[Hack the Box]]"
-type: CTF
+kind: CTF
 web: https://app.hackthebox.com/machines/GoodGames
 difficulty:
 ip:

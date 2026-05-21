@@ -91,7 +91,7 @@
     "service/rpc": 26,
     "service/smb": 25,
     "service/smtp": 18,
-    "service/snmp": 28,
+    "service/snmp": 48,
     "service/splunk": 12,
     "service/sql": 33,
     "service/ssh": 17,

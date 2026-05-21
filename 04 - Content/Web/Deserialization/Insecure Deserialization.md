@@ -17,7 +17,7 @@ secondary categories:
   - "[[Explotación|Explotación]]"
 tertiary categories:
   - "[[Web Explotación]]"
-type: CheatSheet
+kind: CheatSheet
 linked:
   - "[[Insecure Deserialization - Object Injection]]"
   - "[[Insecure Deserialization - Formatos Estructurados]]"
