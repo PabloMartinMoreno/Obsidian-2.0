@@ -14,9 +14,8 @@ linked:
 
 ## Overview
 
-```ad-tip
-
-```
+> [!tip]
+> 
 
 ## File Contents
 
@@ -28,6 +27,6 @@ linked:
 
 ### `file2.cs`
 
-```c#
+```csharp
 
 ```

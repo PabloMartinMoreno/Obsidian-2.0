@@ -1,11 +1,12 @@
 ---
 aliases:
 tags:
-  - type/sub-command
+  - type/sub-note
 primary categories:
 secondary categories:
 tertiary categories:
-type: Sub-Command
+type: Sub-Note
+parent:
 linked:
 ---
 # <% tp.file.title %>
@@ -17,4 +18,11 @@ linked:
 | Comando | Qué obtenés | Cuándo |
 | ------- | ----------- | ------ |
 |         |             |        |
+
+***
+
+## Notas
+
+> [!info]
+> 
 

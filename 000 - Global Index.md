@@ -105,6 +105,7 @@ LIMIT 20
 
 ## Atajos
 
+- [[Incompletos]] — MOC pendientes por dominio
 - [[Hack the Box]] — dashboard HTB
 - [[Active Directory]] — MOC AD
 - [[Web Enumeración]] — MOC web recon

@@ -14,5 +14,17 @@ linked:
 
 ## Overview
 
-```ad-tip
+> [!tip]
+> 
+
+## Instalación
+
+
+## Uso básico
+
+```bash
+
 ```
+
+## Notas Relacionadas
+

@@ -1,16 +1,18 @@
 ---
 tags:
+  - type/writeup
   - meta/ctf
   - estado/incompleto
-platform: "[[VulNyx]]"
-type: CTF
+  - asset/
+  - env/
+plataforma: "[[VulNyx]]"
 web: https://vulnyx.com/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
-difficulty:
+dificultad:
 ip:
 os:
-linked:
+relacionados:
 ---
-# VulnNyx - <% tp.file.title %>
+# VulNyx - <% tp.file.title %>
 
 ## Reconocimiento
 
@@ -26,8 +28,8 @@ linked:
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

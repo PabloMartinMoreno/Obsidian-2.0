@@ -1,23 +1,26 @@
 ---
 tags:
+  - type/writeup
   - meta/ctf
   - estado/incompleto
-platform: "[[OverTheWire]]"
-type: CTF
-web: https://overthewire.org/wargames/.../<% tp.file.title.toLowerCase().replace(/ /g, '') %>.html
-difficulty:
-os:
-linked:
+  - asset/
+  - env/linux
+wargame:
+plataforma: "[[OverTheWire]]"
+web: https://overthewire.org/wargames/
+dificultad:
+os: Linux
+relacionados:
 ---
-#  <% tp.file.title %>
+# <% tp.file.title %>
 
 ## Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > 
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > 
 ^recursos
 
@@ -26,5 +29,5 @@ linked:
 
 ## Bandera(s)
 
-> [!FLAG] `flag{B4nd3r4}`
+> [!flag] `flag{B4nd3r4}`
 ^bandera

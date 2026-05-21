@@ -1,24 +1,32 @@
 ---
 tags:
+  - type/writeup
   - meta/ctf
   - estado/incompleto
-platform: "[[PortSwigger - Blind SQL injection with conditional responses]]"
-type: CTF
+  - asset/web-app
+  - vuln/
+plataforma: "[[PortSwigger]]"
 web: https://portswigger.net/web-security/
-difficulty:
-os:
-linked:
+dificultad:
+relacionados:
 ---
-#  <% tp.file.title %>
+# <% tp.file.title %>
 
 ## Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > 
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > 
 ^recursos
 
 ## Resolución
+
+
+## Solución oficial
+
+> [!example]- Solución PortSwigger
+> 
+^solucion

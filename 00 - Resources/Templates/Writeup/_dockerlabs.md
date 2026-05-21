@@ -1,14 +1,16 @@
 ---
 tags:
+  - type/writeup
   - meta/ctf
   - estado/incompleto
-platform: "[[docker labs]]"
-type: CTF
+  - asset/
+  - env/
+plataforma: "[[DockerLabs]]"
 web: https://www.dockerlabs.com/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
-difficulty:
+dificultad:
 ip:
 os:
-linked:
+relacionados:
 ---
 # DockerLabs - <% tp.file.title %>
 
@@ -26,8 +28,8 @@ linked:
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

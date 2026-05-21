@@ -14,11 +14,14 @@ linked:
 
 ## Overview
 
-```ad-tip
-```
+> [!tip]
+> 
 
 ## Context/Background
 
+
 ## Potential Applications
 
+
 ## Next Steps
+

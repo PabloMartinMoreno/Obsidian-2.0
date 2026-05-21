@@ -6,6 +6,8 @@ primary categories:
 secondary categories:
 tertiary categories:
 type: TTP
+mitre_id:
+mitre_url:
 linked:
 ---
 # <% tp.file.title %>
@@ -14,13 +16,11 @@ linked:
 
 ## Overview
 
-```ad-tip
-Document tactics, techniques, and procedures from the MITRE ATT&CK Framework.
-```
+> [!tip]
+> Documenta tácticas, técnicas y procedimientos desde MITRE ATT&CK.
 
-```ad-info
-The content in this page is directly adapted from the [MITRE ATT&CK](https://attack.mitre.org/techniques/T1558/003/) framework for personal reference. Please consult the original MITRE ATT&CK entry for the most up-to-date and complete information.
-```
+> [!info]
+> Reemplazar `mitre_id` y `mitre_url` en frontmatter con el ID real (ej. `T1558.003`). Contenido adaptado de [MITRE ATT&CK](https://attack.mitre.org/).
 
 ## Procedure Examples
 

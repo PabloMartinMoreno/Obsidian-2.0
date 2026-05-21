@@ -1,14 +1,16 @@
 ---
 tags:
+  - type/writeup
   - meta/ctf
   - estado/incompleto
-platform: "[[HackMyVM]]"
-type: CTF
+  - asset/
+  - env/
+plataforma: "[[HackMyVM]]"
 web: https://hackmyvm.eu/machines/machine.php?vm=<% tp.file.title.replace(/ /g, '') %>
-difficulty:
+dificultad:
 ip:
 os:
-linked:
+relacionados:
 ---
 # HackMyVM - <% tp.file.title %>
 
@@ -26,8 +28,8 @@ linked:
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

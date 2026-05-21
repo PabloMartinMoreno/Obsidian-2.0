@@ -1,16 +1,18 @@
 ---
 tags:
+  - type/writeup
   - meta/ctf
   - estado/incompleto
-platform: "[[TryHackMe]]"
-type: CTF
+  - asset/
+  - env/
+plataforma: "[[TryHackMe]]"
 web: https://tryhackme.com/room/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
-difficulty:
+dificultad:
 ip:
 os:
-linked:
+relacionados:
 ---
-#  TryHackMe - <% tp.file.title %>
+# TryHackMe - <% tp.file.title %>
 
 ## Reconocimiento
 
@@ -26,8 +28,8 @@ linked:
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

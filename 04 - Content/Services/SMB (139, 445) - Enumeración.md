@@ -51,7 +51,7 @@ linked:
 ## Artículos Relacionados
 
 - [[Spidering SMB Shares]]: Uso de **NetExec** para buscar archivos en recursos compartidos.
-- [[04 - Content/Interacting with SMB from Windows]]: Uso de **PowerShell** y **CMD** para interactuar con recursos SMB.
+- [[Interacting with SMB from Windows]]: Uso de **PowerShell** y **CMD** para interactuar con recursos SMB.
 - [[RpcClient]]: Uso de la herramienta CLI **RpcClient** para enumeración.
 
 ---

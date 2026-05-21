@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
+    },
+    {
       "basename": "Broken autentication",
       "path": "04 - Content/Process/Broken autentication.md"
     },
@@ -21,10 +25,6 @@
       "path": "03 - Tertiary Categories/Linux Post-Explotación.md"
     },
     {
-      "basename": "Windows Privilege Escalation",
-      "path": "04 - Content/Windows Privilege Escalation.md"
-    },
-    {
       "basename": "Privilege Escalation",
       "path": "04 - Content/Process/Privilege Escalation.md"
     },
@@ -39,10 +39,6 @@
     {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "FTP (21) - Enumeración",
-      "path": "04 - Content/FTP (21) - Enumeración.md"
     },
     {
       "basename": "Bandit 09",
