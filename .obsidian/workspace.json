@@ -266,6 +266,8 @@
   },
   "active": "11322202f9e7d882",
   "lastOpenFiles": [
+    "04 - Content/Process/Todo Round-Up.md",
+    "04 - Content/Process/Todo Round-Up.md.tmp.4112.59954976d36d",
     "02 - Secondary Categories/Active Directory.md.tmp.4112.31a10b097cbe",
     "04 - Content/Process/Password Reuse.md",
     "04 - Content/Process/Password Reuse.md.tmp.4112.ba9ba6aecc83",
@@ -280,8 +282,6 @@
     "00 - Resources/Templater Scripts/promptKind.js",
     "00 - Resources/Templater Scripts/promptKind.js.tmp.4112.df696e8d8cce",
     "00 - Resources/Templater Scripts/today.js",
-    "00 - Resources/Templater Scripts/today.js.tmp.4112.4f8e7471697a",
-    "00 - Resources/Templater Scripts/extractIP.js",
     "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/Injection/SQLi - Union based.md",
     "05 - Writeups/VulnHub/Blog.md",
