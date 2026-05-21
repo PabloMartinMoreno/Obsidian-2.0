@@ -282,10 +282,10 @@ Con esto, obtuve acceso completo al sistema y capturé la bandera de `root`.
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 9a7b06abf34bfdf25e7eb74bb309e676
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > a99f3a5e906271b5d7101cab9f7b60a1
-^bandera
+^bandera-root

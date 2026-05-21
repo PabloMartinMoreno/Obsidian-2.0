@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Para acceder al siguiente nivel, debe utilizar el binario setuid en el directorio home. Ejecútalo sin argumentos para saber cómo usarlo. La contraseña para este nivel se puede encontrar en el lugar habitual (/etc/bandit_pass), después de haber utilizado el binario setuid.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > [setuid on Wikipedia](https://en.wikipedia.org/wiki/Setuid)
 ^recursos
 
@@ -43,5 +43,5 @@ Por ende lo puedo usar para encontrar la contraseña del nivel:
 
 # Bandera(s)
 
-> [!FLAG] `0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO`
+> [!flag] `0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO`
 ^bandera

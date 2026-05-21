@@ -53,7 +53,7 @@ PORT      STATE SERVICE VERSION
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
 
-> [!INFO] Punto de Interés
+> [!info] Punto de Interés
 > 
 > El puerto 8500 llama la atención. Aunque nmap no pudo identificar el servicio (fmtp?), decidí investigarlo a través de un navegador web. Noté que el servidor tardaba entre 20 y 30 segundos en responder, lo que podría ser un factor importante más adelante.
 
@@ -129,7 +129,7 @@ Hotfix(s):                 N/A
 ...
 ```
 
-> [!INFO] Hallazgo Clave
+> [!info] Hallazgo Clave
 > 
 > La salida de systeminfo fue reveladora. El sistema es un Windows Server 2008 R2 y, lo más importante, no tiene ningún hotfix (parche de seguridad) aplicado. Esto lo convierte en un objetivo ideal para exploits de kernel conocidos.
 
@@ -208,11 +208,11 @@ nt authority\system
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 4185e4694c7a4502b98a74d6192f955c
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > a2988bdc9e01f9fcaf3ee4ed69ef0df7
-^bandera
+^bandera-root
 

@@ -77,7 +77,7 @@ netexec smb 10.10.10.149 -u Hazard -p 'stealth1agent'
 
 Sin embargo, tener credenciales válidas me permite realizar una enumeración más profunda. Decidí llevar a cabo un ataque de **RID Brute Force** para descubrir más usuarios en el sistema.
 
-> [!INFO] ¿Qué es un RID Brute Force? 🕵️‍♂️
+> [!info] ¿Qué es un RID Brute Force? 🕵️‍♂️
 > 
 > En Windows, cada usuario tiene un Identificador de Seguridad (SID). El SID se compone de un identificador de dominio y un Identificador Relativo (RID). Mientras que el identificador de dominio es el mismo para todos los usuarios locales, el RID es único para cada uno. Un ataque de RID Brute Force consiste en iterar a través de posibles valores de RID (ej. 500 para Administrator, 1001, 1002...) para descubrir nombres de usuario válidos en el sistema.
 
@@ -120,7 +120,7 @@ Efectivamente, vi un proceso `firefox.exe` en ejecución. Mi hipótesis fue que 
 
 Para verificar mi teoría, necesitaba volcar la memoria del proceso `firefox.exe`. Utilicé la herramienta **procdump** de la suite Sysinternals. Primero, subí el ejecutable a la máquina víctima. Luego, identifiqué el PID del proceso de Firefox y ejecuté `procdump`.
 
-> [!NOTE]
+> [!note]
 > 
 > Usé el flag -ma para asegurarme de que se realizara un volcado completo de la memoria del proceso, lo que aumenta las posibilidades de encontrar las credenciales.
 
@@ -166,10 +166,10 @@ hecho, pude leer la bandera final en `C:\Users\Administrator\Desktop\root.txt`.
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > ce40b7b97b493961644dc79aa5a8a903
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > a6ec4b485c4b76b295cb4a51b399fa29
-^bandera
+^bandera-root

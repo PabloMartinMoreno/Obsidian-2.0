@@ -460,10 +460,10 @@ Listo ya habremos limpiado nuestro **rastro**.
 
 ## Bandera(s)
 
-> [!FLAG] `flag{usuario}`
+> [!flag] `flag{usuario}`
 > HMVtakemydocs
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > HMVfinallyroot
-^bandera
+^bandera-root

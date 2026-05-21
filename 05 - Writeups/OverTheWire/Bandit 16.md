@@ -17,11 +17,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Las credenciales para el siguiente nivel se pueden recuperar enviando la contraseña del nivel actual a un puerto en localhost en el rango 31000 a 32000. Primero averigua cuáles de estos puertos tienen un servidor escuchando en ellos. Luego averigua cuáles de ellos hablan SSL y cuáles no. Sólo hay 1 servidor que dará las siguientes credenciales, los demás simplemente te devolverán lo que le envíes.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 >**Comandos:**
 > ssh, telnet, nc, openssl, s_client, nmap
 > 
@@ -123,5 +123,5 @@ ssh -i id_rsa bandit17@localhost -p 2220
 
 # Bandera(s)
 
-> [!FLAG] `EReVavePLFHtFlFsjn3hyzMlvSuSAcRD`
+> [!flag] `EReVavePLFHtFlFsjn3hyzMlvSuSAcRD`
 ^bandera

@@ -69,7 +69,7 @@ Al interactuar con `transfer.aspx`, confirmé que permitía subir archivos. Mi p
 
 Para identificar qué extensiones _sí_ estaban permitidas, decidí realizar un fuzzing. Capturé una petición de subida de archivo válida con **Burp Suite** y la envié a la herramienta **Intruder**. Utilicé una lista de extensiones comunes en entornos IIS/ASP para probar sistemáticamente cuál podría evadir el filtro.
 
-> [!NOTE] El descubrimiento clave fue que los archivos con la extensión `.config` se subían correctamente, a diferencia de otros. Esto lo noté por la diferencia en la longitud de la respuesta del servidor, que indicaba que el archivo había sido aceptado y guardado.
+> [!note] El descubrimiento clave fue que los archivos con la extensión `.config` se subían correctamente, a diferencia de otros. Esto lo noté por la diferencia en la longitud de la respuesta del servidor, que indicaba que el archivo había sido aceptado y guardado.
 
 
 ___
@@ -146,11 +146,11 @@ whoami /priv
 
 La salida de estos comandos reveló dos puntos críticos:
 
-> [!WARNING]
+> [!warning]
 > 
 > El servidor era un Microsoft Windows Server 2008 R2 sin ningún Hotfix instalado. Esto significaba que, además de cualquier otra técnica, el sistema era un candidato perfecto para una gran variedad de exploits de kernel públicos.
 
-> [!INFO]
+> [!info]
 > 
 > Mi usuario tenía habilitado el privilegio SeImpersonatePrivilege. Este privilegio es comúnmente asignado a cuentas de servicio (como las que ejecutan IIS) y permite a un proceso suplantar el token de seguridad de otro usuario, lo cual es una vía clásica para la escalada de privilegios.
 
@@ -191,10 +191,10 @@ El exploit se ejecutó con éxito. Juicy Potato abusó del privilegio `SeImperso
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 65219c58e67601f857c5a503b499cfc3
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > caac7493fa4d172e5e407f31146015a4
-^bandera
+^bandera-root

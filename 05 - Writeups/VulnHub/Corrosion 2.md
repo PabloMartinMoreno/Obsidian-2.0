@@ -232,11 +232,11 @@ cat root.txt
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > ca73a018ae6908a7d0ea5d1c269ba4b6
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 2fdbf8d4f894292361d6c72c8e833a4b
-^bandera
+^bandera-root
 

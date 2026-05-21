@@ -88,7 +88,7 @@ Posteriormente, utilicé `enum4linux` para obtener más detalles sobre la config
 enum4linux -a 10.10.10.172
 ```
 
-> [!WARNING] Vulnerabilidad Crítica
+> [!warning] Vulnerabilidad Crítica
 > 
 > enum4linux reveló que la política de bloqueo de cuentas (Account Lockout Threshold) estaba deshabilitada (None). Esto significa que podía realizar ataques de fuerza bruta o password spraying sin riesgo de bloquear ninguna cuenta.
 
@@ -151,7 +151,7 @@ Esta búsqueda reveló un archivo llamado `azure.xml` en la carpeta del usuario 
 </Objs>
 ```
 
-> [!NOTE] Reutilización de Contraseñas
+> [!note] Reutilización de Contraseñas
 > 
 > Debido a la reutilización de contraseñas, una práctica muy común, decidí probar esta credencial (4n0therD4y@n0th3r$) con el usuario mhope.
 
@@ -242,7 +242,7 @@ evil-winrm -i 10.10.10.172 -u mhope -p "4n0therD4y@n0th3r$" -s .
 
 El script funcionó a la perfección y reveló las credenciales de la cuenta de sincronización.
 
-> [!DANGER] Mala Configuración Crítica
+> [!danger] Mala Configuración Crítica
 > 
 > En lugar de usar una cuenta de servicio de bajos privilegios (como NT SERVICE\ADSync en una instalación por defecto), la instalación personalizada de Azure AD Connect fue configurada para usar la cuenta del Administrador del Dominio.
 
@@ -273,10 +273,10 @@ Finalmente, con acceso de administrador del dominio, obtuve la bandera de root d
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > ae4406451c1a4c77d16938aa8ed97269
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 >59b6b495bd6e4c6ce45ae3a4ea6804a1
-^bandera
+^bandera-root

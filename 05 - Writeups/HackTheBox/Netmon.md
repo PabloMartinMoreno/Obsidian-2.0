@@ -58,7 +58,7 @@ ftp> get "PRTG Configuration.old.bak"
 
 Al inspeccionar el contenido del archivo, encontré credenciales en texto plano para el usuario `prtgadmin`.
 
-> [!INFO] Credenciales Encontradas
+> [!info] Credenciales Encontradas
 > 
 > Revisando el archivo PRTG Configuration.old.bak, localicé un usuario y una contraseña:
 > 
@@ -110,7 +110,7 @@ Con esto, obtuve una shell interactiva como `NT AUTHORITY\SYSTEM`.
 
 ### Método 2: Reverse Shell con PowerShell (OPSEC)
 
-> [!NOTE] Mejora de OPSEC
+> [!note] Mejora de OPSEC
 > 
 > Crear un usuario en el sistema es una acción ruidosa que puede ser fácilmente detectada. Un método más sigiloso es obtener una reverse shell directamente en memoria.
 
@@ -145,10 +145,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 54a4b9b6ccc209d2e1b433e7d1ab53a0
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > e0c9f1e1eb7bec27bd7cd47ef04b9046
-^bandera
+^bandera-root

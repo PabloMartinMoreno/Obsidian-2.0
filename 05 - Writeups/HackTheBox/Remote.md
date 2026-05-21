@@ -61,7 +61,7 @@ mkdir /mnt/backups
 sudo mount -t nfs 10.10.10.180:/site_backups /mnt/backups/
 ```
 
-> [!NOTE] Un recurso NFS mal configurado y accesible por todos es una fuente común de fugas de información crítica. Siempre es uno de los primeros puntos a revisar.
+> [!note] Un recurso NFS mal configurado y accesible por todos es una fuente común de fugas de información crítica. Siempre es uno de los primeros puntos a revisar.
 
 Al listar el contenido del directorio montado, encontré una copia de seguridad completa del sitio web de Umbraco.
 
@@ -240,10 +240,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 31c07011d74eadd0251bf46fc9b0c775
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 25fd8cb265ad103f151311bee56b0815
-^bandera
+^bandera-root

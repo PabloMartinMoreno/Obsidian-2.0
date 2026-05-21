@@ -173,7 +173,7 @@ Encuentra el usuario `admin` y `plugins` vulnerables.
 - `-o (--only-matching)`: Hace que grep solo muestre las partes de la línea que coinciden con el patrón, en lugar de la línea completa.
 - `-P (--perl-regexp)`: Permite usar expresiones regulares en el estilo de Perl, que son más avanzadas que las POSIX estándar.
 
-> [!TIP] Explicación
+> [!tip] Explicación
 	>La expresión regular `'.*?'` se desglosa de la siguiente manera:
 	>- **`.`**: Coincide con cualquier carácter, excepto saltos de línea.
 	>- **`*`**: Indica que puede haber cero o más repeticiones del carácter anterior (en este caso, cualquier carácter).
@@ -324,5 +324,5 @@ Listo, tengo acceso root.
 
 ## Bandera(s)
 
-> [!FLAG] `flag{B4nd3r4}`
+> [!flag] `flag{B4nd3r4}`
 ^bandera

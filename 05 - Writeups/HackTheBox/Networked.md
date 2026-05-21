@@ -84,7 +84,7 @@ function check_file_type($file) {
 
 A su vez, esta función utiliza `mime_content_type()` para determinar el tipo MIME basándose en los "magic bytes" del archivo.
 
-> [!WARNING] Vulnerabilidad: Bypass de Tipo MIME
+> [!warning] Vulnerabilidad: Bypass de Tipo MIME
 > 
 > La función mime_content_type() puede ser engañada. Si incluyo los "magic bytes" de un tipo de archivo permitido (como PNG o JPG) al inicio de mi payload malicioso, el servidor lo identificará como una imagen válida, permitiéndome eludir el primer filtro de seguridad.
 
@@ -100,7 +100,7 @@ foreach ($validext as $vext) {
 }
 ```
 
-> [!WARNING] Vulnerabilidad: Bypass de Extensión
+> [!warning] Vulnerabilidad: Bypass de Extensión
 > 
 > El script solo comprueba si el nombre del archivo termina en una extensión de imagen válida (.jpg, .png, etc.). No impide el uso de dobles extensiones. Un archivo llamado shell.php.png pasaría esta validación. Si el servidor Apache está configurado para ejecutar archivos con extensión .php sin importar qué otras extensiones le sigan, podré ejecutar código.
 
@@ -163,7 +163,7 @@ foreach ($files as $key => $value) {
 ?>
 ```
 
-> [!DANGER] Vulnerabilidad: Inyección de Comandos en Cronjob
+> [!danger] Vulnerabilidad: Inyección de Comandos en Cronjob
 > 
 > La variable $value, que contiene el nombre del archivo, se concatena directamente en un comando exec(). No hay ningún tipo de saneamiento sobre el nombre del archivo. Esto significa que puedo crear un archivo en el directorio /var/www/html/uploads/ con un nombre malicioso que contenga un payload de inyección de comandos.
 
@@ -215,7 +215,7 @@ done
 /sbin/ifup guly0
 ```
 
-> [!INFO] Vulnerabilidad: Command Injection en Network Scripts
+> [!info] Vulnerabilidad: Command Injection en Network Scripts
 > 
 > En sistemas basados en CentOS/RHEL, los scripts de configuración de red (ifcfg-*) son "sourced" (incluidos y ejecutados en el contexto del shell actual) por el comando ifup. Si podemos escribir en uno de estos archivos, podemos inyectar comandos. El script changename.sh me permite escribir valores en el archivo ifcfg-guly. Aunque hay una regex `(^[a-zA-Z0-9_\ /-]+$)` que valida la entrada, esta permite espacios, lo cual es suficiente para la inyección.
 
@@ -246,10 +246,10 @@ Al presionar Enter después de la última entrada, el script ejecutó `/sbin/ifu
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 88c8d29401d7ac4539968be3372d1bf7
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 99cca545f156af67074258a9167c5419
-^bandera
+^bandera-root

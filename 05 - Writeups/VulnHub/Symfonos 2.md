@@ -245,6 +245,6 @@ Con permisos elevados, se accede al archivo `proof.txt` ubicado en `/root`.
 
 ## Bandera(s)
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > ![[Pasted image 20250128155735.png]]
 ^bandera

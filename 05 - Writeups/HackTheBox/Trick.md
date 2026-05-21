@@ -191,7 +191,7 @@ El portal de login en `preprod-payroll.trick.htb` es vulnerable a una inyección
 
 Esto me concede acceso al panel de administración.
 
-> [!WARNING] Rabbit Hole
+> [!warning] Rabbit Hole
 > 
 > El subdominio preprod-payroll.trick.htb es una distracción (rabbit hole). Aunque se puede obtener acceso a un panel de administración mediante una inyección SQL simple, no conduce a la escalada de privilegios.
 
@@ -347,10 +347,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 16c016013b2c1a1db8e334bcd744355e
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 1a0d453fa21e35844b781b305c291ba3
-^bandera
+^bandera-root

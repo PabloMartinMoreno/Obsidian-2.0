@@ -53,7 +53,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 El servidor web intentaba redirigirme al dominio `editorial.htb`, así que lo agregué a mi archivo `/etc/hosts` para poder acceder correctamente al sitio.
 
-> [!NOTE] Añadiendo el host
+> [!note] Añadiendo el host
 > 
 > Es crucial añadir el nombre de dominio al archivo de hosts locales para resolver la IP correctamente y poder interactuar con la aplicación web como se espera.
 > 
@@ -292,10 +292,10 @@ Con esto, completé la escalada de privilegios y comprometí totalmente la máqu
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > d27e53ed721a6d90b19bd50b595e43d4
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 1390a87c9a0bed8fcdcd64898ca040e2
-^bandera
+^bandera-root

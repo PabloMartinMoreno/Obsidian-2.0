@@ -185,7 +185,7 @@ Pongo a escuchar Netcat en el puerto 443:
 nc -lvnp 443
 ```
 
->[!TIP]
+>[!tip]
 >Ponerme en escucha por el puerto 443 tiene la ventaja de ser un poco más sigiloso. La reverse shell son datos del host remoto a nuestra maquina y el puerto 443 es trafico http, lo que es muy común que el trafico https salga de la red. Por lo que al usar el puerto en cuestión es menor notable. 
 
 **Ejecución de la reverse shell en la máquina víctima:**
@@ -294,10 +294,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] Usuario `cat /var/lib/postgresql/user.txt`
+> [!flag] Usuario `cat /var/lib/postgresql/user.txt`
 > ec9b13ca4d6229cd5cc1e09980965bf7
-^bandera
+^bandera-user
 
-> [!FLAG] Root `cat /root/root.txt`
+> [!flag] Root `cat /root/root.txt`
 > dd6e058e814260bc70e9bbdef2715849
-^bandera
+^bandera-root

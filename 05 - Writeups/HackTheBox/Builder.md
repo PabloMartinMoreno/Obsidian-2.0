@@ -75,13 +75,13 @@ Lists all the available commands or a detailed description of single command.
 COMMAND : Name of the command (default: root:x:0:0:root:/root:/bin/bash)
 ```
 
->[!TIP] Mejora visual 
+>[!tip] Mejora visual 
 >Para mejorar la salida y que no se repita, le agregue un grep al comando anterior y una redirección:
 >```bash
 >java -jar jenkins-cli.jar -s 'http://10.10.11.10:8080/' connect-node @/etc/passwd 2>&1 | grep -oP '".*?"'
 >```
 
->[!WARNING] Comando help y otros
+>[!warning] Comando help y otros
 >El comando `help` no era ideal para leer archivos XML completos, ya que se detenía después de los primeros argumentos. Por suerte, el comando `connect-node` sí devolvía el contenido completo del archivo en los mensajes de error.
 
 ### Enumeración y Obtención de Credenciales
@@ -127,7 +127,7 @@ cd /var/jenkins_home/
 
 Dentro del directorio `users`, encontré un archivo `users.xml` y un directorio con el nombre de mi usuario local (`admin_1331226977042020838`). El archivo `users.xml` mapeaba el nombre de usuario al nombre del directorio. Dentro de ese directorio, el archivo `config.xml` contenía el hash de la contraseña.
 
-> [!INFO]
+> [!info]
 > 
 > El comando connect-node funcionó porque el atributo denyAnonymousReadAccess estaba configurado en false en la máquina objetivo, permitiendo el acceso de lectura a usuarios anónimos.
 
@@ -208,10 +208,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 441f9fc899d9ddd035200eb1ba28ff65
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 0e18542cbb18ade1b5b4115900a0847e
-^bandera
+^bandera-root

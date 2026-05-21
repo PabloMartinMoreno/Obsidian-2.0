@@ -277,10 +277,10 @@ af13b0bee69f8a877c3faf667f7beacf
 ---
 ## Bandera(s)
 
-> [!FLAG] **Bandera de Usuario**
+> [!flag] **Bandera de Usuario**
 > f2c74ee8db7983851ab2a96a44eb7981
-^bandera
+^bandera-user
 
-> [!FLAG] **Bandera de Root**
+> [!flag] **Bandera de Root**
 > af13b0bee69f8a877c3faf667f7beacf
-^bandera
+^bandera-root

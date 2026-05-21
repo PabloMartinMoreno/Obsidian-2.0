@@ -13,12 +13,12 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > **Conectarse al juego usando [[SSH (22) - Enumeración|SSH]].**
 > El objetivo de este nivel es que te conectes al juego usando SSH. El host al que necesitas conectarte es bandit.labs.overthewire.org, en el puerto 2220. El nombre de usuario es bandit0 y la contraseña es bandit0. Una vez conectado, ve a la página del Nivel 1 para averiguar cómo superar el Nivel 1.
 ^Objetivo
 
->[!TIP] Recursos
+>[!tip] Recursos
 > **Comandos**
 > - [ssh](https://man7.org/linux/man-pages/man1/ssh.1.html)
 > 
@@ -39,7 +39,7 @@ Para leer el archivo:
 > ```bash 
 > cat readme
 
->[!TIP]
+>[!tip]
 Otra forma para conectarse a ssh es usando [[sshpass]]: 
 >```bash
 >sshpass -p '[contraseña]' ssh bandit2@bandit.labs.overthewire.org -p 2220
@@ -51,5 +51,5 @@ sshpass -f [fichero] ssh bandit20@bandit.labs.overthewire.org -p 2220
 
 # Bandera
 
-> [!FLAG]  `ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If`
+> [!flag]  `ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If`
 

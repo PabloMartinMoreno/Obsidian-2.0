@@ -163,11 +163,11 @@ ssh root@localhost -p 2222
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > HMV665sXzDS
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > HMVtyr543FG
-^bandera
+^bandera-root
 

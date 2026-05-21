@@ -63,7 +63,7 @@ Mi atención se centró entonces en el subdominio `staging.love.htb`. Al acceder
 
 Recordé que el puerto 5000 estaba abierto pero me devolvía un mensaje de `You don't have permission to access this resource` al intentar acceder directamente. Esto me hizo sospechar que podría haber una vulnerabilidad de **Server-Side Request Forgery (SSRF)**. Mi hipótesis era que podía usar la aplicación de escaneo para hacer que el servidor realizara una petición a sí mismo (localhost) en ese puerto.
 
-> [!NOTE] ¿Qué es SSRF?
+> [!note] ¿Qué es SSRF?
 > 
 > Una vulnerabilidad de Server-Side Request Forgery (SSRF) ocurre cuando un atacante puede coaccionar a una aplicación del lado del servidor para que realice peticiones HTTP a un dominio elegido por el atacante. En este caso, la aproveché para acceder a un servicio interno que no era accesible desde el exterior.
 
@@ -123,7 +123,7 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallEle
 ```
 El comando confirmó que esta política estaba habilitada (valor `1`).
 
-> [!WARNING] Peligro de AlwaysInstallElevated
+> [!warning] Peligro de AlwaysInstallElevated
 > 
 > Cuando la política AlwaysInstallElevated está habilitada tanto en HKEY_CURRENT_USER como en HKEY_LOCAL_MACHINE, permite que cualquier usuario instale paquetes de Windows Installer (.msi) con privilegios de SYSTEM. Es una grave brecha de seguridad que facilita enormemente la escalada de privilegios.
 
@@ -183,10 +183,10 @@ nt authority\system
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 31801d372a5c9e2fba3d7a541d304e87
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > c9a2e126a269441e4303bc604fa2135d
-^bandera
+^bandera-root

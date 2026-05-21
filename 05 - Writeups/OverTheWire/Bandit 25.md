@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Entrar en bandit26 desde bandit25 debería ser bastante fácil... El shell para el usuario bandit26 no es /bin/bash, sino otra cosa. Averigua qué es, cómo funciona y cómo salir de él.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > ssh, cat, more, vi, ls, id, pwd
 ^recursos
 
@@ -73,5 +73,5 @@ A continuación sigue volver a apretar `esc + shift + :` para ahora escribir `sh
 
 # Bandera(s)
 
-> [!FLAG] `s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ`
+> [!flag] `s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ`
 ^bandera

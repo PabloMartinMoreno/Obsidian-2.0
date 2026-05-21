@@ -15,7 +15,7 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 >  Un demonio está escuchando en el puerto 30002 y te dará la contraseña para bandit25 si se le da la contraseña para bandit24 y un código secreto numérico de 4 dígitos. No hay forma de recuperar el código PIN excepto repasando todas las 10000 combinaciones, lo que se denomina forzar de forma bruta. 
 >  No es necesario crear nuevas conexiones cada vez.
 ^objetivo
@@ -41,7 +41,7 @@ Luego simplemente seria cuestión de agregarlo al `nc`
 cat combinations.txt | nc localhost 30002 
 ```
 
->[!TIP] Extra
+>[!tip] Extra
 [[grep]] tiene un comando para no mostrar lineas que no nos interesa ver: `grep -v`
 >
 Lo que simplificaría la vista para la contraseña correcta: 
@@ -57,5 +57,5 @@ cat combinations.txt | nc localhost 30002 | grep -vE "Wrong|Please enter"
 
 # Bandera(s)
 
-> [!FLAG] `iCi86ttT4KSNe1armKiwbQNmB3YJP3q4`
+> [!flag] `iCi86ttT4KSNe1armKiwbQNmB3YJP3q4`
 ^bandera

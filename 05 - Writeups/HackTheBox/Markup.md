@@ -107,7 +107,7 @@ Con la clave privada en mi poder, el siguiente paso era utilizarla para acceder 
 1. Copié la clave privada y la guardé en un archivo local llamado `id_rsa`.
 2. Asigné los permisos correctos al archivo para que el cliente SSH la aceptara.
     
-> [!WARNING] Permisos de Clave SSH
+> [!warning] Permisos de Clave SSH
 > 
 > Es crucial que los permisos de la clave privada sean restrictivos. El cliente SSH rechazará la clave si los permisos son demasiado abiertos. El comando chmod 600 es el estándar para esto.
 
@@ -216,8 +216,8 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

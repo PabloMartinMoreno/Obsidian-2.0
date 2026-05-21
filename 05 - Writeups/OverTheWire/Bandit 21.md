@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Un programa se está ejecutando automáticamente a intervalos regulares desde cron, el programador de trabajos basado en el tiempo. Busque en /etc/cron.d/ la configuración y vea qué comando se está ejecutando.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > cron, crontab, crontab(5) (use “man 5 crontab” to access this)
 ^recursos
 
@@ -57,5 +57,5 @@ Y obtengo la pass.
 
 # Bandera(s)
 
-> [!FLAG] `tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q`
+> [!flag] `tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q`
 ^bandera

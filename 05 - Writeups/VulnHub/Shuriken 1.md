@@ -195,7 +195,7 @@ echo
 tar czf $dest/$archive_file $backup_files
 ```
 
-> [!TIP]
+> [!tip]
 > Veo que manda los ficheros que están en `Documents` de mi usuario usando `*`. Esto me permite crear ficheros para que pasen como parámetros. 
 
 Me ayudo con los comandos que me da `GTFOBINS` para pedir una shell con `tar`.
@@ -217,12 +217,12 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{User}`
+> [!flag] `flag{User}`
 > 67528b07b382dfaa490f4dffc57dcdc0
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{Root}`
+> [!flag] `flag{Root}`
 > d0f9655a4454ac54e3002265d40b2edd
-^bandera
+^bandera-root
 
 

@@ -252,8 +252,8 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

@@ -44,7 +44,7 @@ gobuster dir -u http://10.10.10.185 -w /usr/share/dirb/wordlists/common.txt -x p
 
 `gobuster` reveló la existencia de `upload.php`, que me redirigía al login, y un directorio `/images`.
 
-> [!INFO] Directorio de subida potencial
+> [!info] Directorio de subida potencial
 > 
 > Decidí profundizar en el directorio /images con otro escaneo de gobuster, lo que me llevó a descubrir la ruta /images/uploads. Anoté esta ruta, ya que parecía ser el destino de los archivos subidos.
 
@@ -72,7 +72,7 @@ El `-- -` comenta el resto de la consulta, y la condición `1=1` siempre es verd
 
 Una vez dentro, me encontré en la página `upload.php`. Mi objetivo era subir un webshell para obtener ejecución de comandos. Sin embargo, mi primer intento de subir un archivo `shell.php` fue rechazado. Esto indicaba que existía una validación del tipo de archivo.
 
-> [!WARNING] Bypass de Doble Extensión y Magic Bytes
+> [!warning] Bypass de Doble Extensión y Magic Bytes
 > 
 > La aplicación parecía estar validando los archivos de dos maneras:
 > 
@@ -133,7 +133,7 @@ Intenté usar esta contraseña para cambiar al usuario `theseus` con `su`, pero 
 
 #### Opción 1: MySQL con Chisel
 
-> [!TIP] Port Forwarding con Chisel
+> [!tip] Port Forwarding con Chisel
 > 
 > Para acceder a la base de datos, necesitaba reenviar el puerto 3306 de la máquina víctima a mi máquina. Utilicé Chisel para esto.
 
@@ -207,7 +207,7 @@ Para entender su funcionamiento, usé el comando `strings`.
 strings /bin/sysinfo
 ```
 
-> [!DANGER] Vulnerabilidad de Path Hijacking
+> [!danger] Vulnerabilidad de Path Hijacking
 > 
 > El análisis con strings reveló que /bin/sysinfo llamaba a comandos del sistema como cat, free, lshw y fdisk sin usar sus rutas absolutas (ej: cat en lugar de /bin/cat). Esto abre la puerta a un ataque de Path Hijacking. Puedo modificar la variable de entorno $PATH para que apunte primero a un directorio bajo mi control (como /tmp). Luego, creo un script malicioso con el mismo nombre que uno de los comandos llamados (ej: cat) en ese directorio. Cuando sysinfo (ejecutándose como root) intente llamar a cat, ejecutará mi script malicioso con privilegios de root.
 
@@ -250,10 +250,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 6d575a21239830534522d1c6a59c04fd
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 99a7a733bda0e3845ce5f3ffc12d43d2
-^bandera
+^bandera-root

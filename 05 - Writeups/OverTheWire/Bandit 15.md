@@ -14,13 +14,13 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se puede recuperar enviando la contraseña del nivel actual al puerto 30001 en localhost utilizando encriptación SSL.
 >
 Nota útil: ¿Obtiene "HEARTBEATING" y "Read R BLOCK"? Utilice -ign_eof y lea la sección "COMANDOS CONECTADOS" en la página de manual. Junto a 'R' y 'Q', el comando 'B' también funciona en esta versión de ese comando...
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 >**Comandos:**
 > ssh, telnet, nc, openssl, s_client, nmap
 > 
@@ -45,5 +45,5 @@ Al igual que el anterior envió la contraseña anterior y listo.
 
 # Bandera(s)
 
-> [!FLAG] `kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx`
+> [!flag] `kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx`
 ^bandera

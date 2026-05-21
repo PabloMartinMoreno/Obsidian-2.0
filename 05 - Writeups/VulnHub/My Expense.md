@@ -141,7 +141,7 @@ En hashes.com se pone el hash recibido y da la contraseña `HackMe` para el usua
 
 ## Bandera(s)
 
-> [!FLAG] `flag{B4nd3r4}`
+> [!flag] `flag{B4nd3r4}`
 > H4CKY0URL1F3
 ^bandera
 

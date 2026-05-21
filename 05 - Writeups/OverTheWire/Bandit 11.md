@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 La contraseña para el siguiente nivel se almacena en el archivo data.txt, donde todas las letras minúsculas (a-z) y mayúsculas (A-Z) se han girado 13 posiciones
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos:**
 grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 > 
@@ -38,5 +38,5 @@ cat data.txt | tr A-Za-z N-ZA-Mn-za-m
 
 # Bandera(s)
 
-> [!FLAG] `7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4`
+> [!flag] `7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4`
 ^bandera

@@ -60,7 +60,7 @@ C$              Disk      Default share
 IPC$            IPC       Remote IPC
 ```
 
-> [!TIP]
+> [!tip]
 > Los recursos compartidos sin un `$` al final suelen ser accesibles sin privilegios administrativos. El recurso compartido `backups` parece prometedor.
 
 ##### Accediendo al recurso compartido `backups`
@@ -105,7 +105,7 @@ El archivo contiene:
 - **Nombre de usuario**: `ARCHETYPE\sql_svc`
 - **Contraseña**: `M3g4c0rp123`
 
-> [!TIP]
+> [!tip]
 > Aunque `smbclient` es excelente para conectarse a recursos compartidos SMB, herramientas como `smbmap` y `crackmapexec` proporcionan información más detallada sobre los permisos de los recursos compartidos y pueden ser valiosas durante la enumeración.
 
 ___
@@ -280,10 +280,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] **Bandera de Usuario**
+> [!flag] **Bandera de Usuario**
 >
 > `3e7b102e78218e935bf3f4951fec21a3`
 
-> [!FLAG] **Bandera de Root**
+> [!flag] **Bandera de Root**
 >
 > `b91ccec3305e98240082d4474b848528`

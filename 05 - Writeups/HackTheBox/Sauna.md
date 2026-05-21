@@ -135,7 +135,7 @@ Importé los datos en la GUI de BloodHound y ejecuté la consulta "Find Principa
 
 ### DCSync y Pass-the-Hash
 
-> [!DANGER] Privilegio DCSync
+> [!danger] Privilegio DCSync
 > 
 > El privilegio DS-Replication-Get-Changes-All (comúnmente conocido como DCSync) es uno de los más críticos en Active Directory. Permite a una cuenta solicitar al Controlador de Dominio que replique información de directorio, incluyendo los hashes de las contraseñas de todos los usuarios, ¡incluido el del administrador del dominio!
 
@@ -162,10 +162,10 @@ evil-winrm -i $(cat ip) -u 'administrator' -H '823452073d75b9d1cf70ebdf86c7f98e'
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > ce75957ca5ccb1fd25c441a9b89d7425
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 >182a5c041f94518654f72ac863523b6d
-^bandera
+^bandera-root

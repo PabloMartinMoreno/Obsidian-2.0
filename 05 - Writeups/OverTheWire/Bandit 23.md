@@ -16,7 +16,7 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 >  Un programa se está ejecutando automáticamente a intervalos regulares desde cron, el programador de trabajos basado en el tiempo. Busque en /etc/cron.d/ la configuración y vea qué comando se está ejecutando.
 >  ___
 > 
@@ -24,7 +24,7 @@ relacionados:
 >  **NOTA 2**: Ten en cuenta que tu shell script es eliminado una vez ejecutado, por lo que puede que quieras guardar una copia...
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos: **
 >
 > - [[chmod]] 
@@ -128,7 +128,7 @@ Creo la carpeta temporal donde voy a recibir la carpeta.
 mktemp -d
 ```
 
-> [!TIP] Extra
+> [!tip] Extra
 > Por si llego a salir de la carpeta y no recuerdo el nombre puedo asignarle el valor a una variable:
 >```bash
 dir=$(mktemp -d)
@@ -169,5 +169,5 @@ La flag está en `password.log`
 
 # Bandera(s)
 
-> [!FLAG] `gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8`
+> [!flag] `gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8`
 ^bandera

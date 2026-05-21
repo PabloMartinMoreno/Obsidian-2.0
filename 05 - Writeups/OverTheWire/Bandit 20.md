@@ -14,13 +14,13 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Hay un binario setuid en el homedirectory que hace lo siguiente: establece una conexión con localhost en el puerto que especifiques como argumento en la línea de comandos. Luego lee una línea de texto de la conexión y la compara con la contraseña del nivel anterior (bandit20). Si la contraseña es correcta, transmitirá la contraseña para el siguiente nivel (bandit21).
 >
 NOTA: Prueba a conectarte a tu propio demonio de red para ver si funciona como crees
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > ssh, nc, cat, bash, screen, tmux, Unix ‘job control’ (bg, fg, jobs, &, CTRL-Z, …)
 ^recursos
 
@@ -51,5 +51,5 @@ Al enviar la contraseña de `bandit20` desde la sesión de `nc`, recibo en la se
 
 # Bandera(s)
 
-> [!FLAG] `EeoULMCra2q0dSkYj561DX7s1CpBuOBt`
+> [!flag] `EeoULMCra2q0dSkYj561DX7s1CpBuOBt`
 ^bandera

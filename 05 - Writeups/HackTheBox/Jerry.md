@@ -53,7 +53,7 @@ Al acceder con mi navegador a `http://10.129.136.9:8080`, me encontré con la p�
 
 Durante la enumeración del sitio, encontré las credenciales de acceso expuestas. Con la combinación de usuario y contraseña en mi poder, mi siguiente paso fue autenticarme.
 
-> [!NOTE] Alternativa: Fuerza Bruta con Hydra
+> [!note] Alternativa: Fuerza Bruta con Hydra
 > 
 > Si no hubiera encontrado las credenciales directamente, mi siguiente paso habría sido realizar un ataque de fuerza bruta con una herramienta como Hydra, utilizando un diccionario común de credenciales para Tomcat. El comando habría sido similar a este:
 > 
@@ -99,7 +99,7 @@ C:\apache-tomcat-7.0.88>whoami
 nt authority\system
 ```
 
-> [!DANGER] Privilegios Excesivos de Servicio
+> [!danger] Privilegios Excesivos de Servicio
 > 
 > Ejecutar servicios de red, especialmente servidores web como Tomcat, con privilegios de NT AUTHORITY\SYSTEM es una práctica de seguridad extremadamente pobre. Cualquier vulnerabilidad en la aplicación web, como en este caso el acceso al panel de administración, se traduce directamente en una compromisión total e instantánea del sistema operativo, eliminando la necesidad de realizar pasos adicionales de escalada de privilegios.
 
@@ -114,10 +114,10 @@ C:\apache-tomcat-7.0.88>type C:\Users\Administrator\Desktop\flags\"2 for the pri
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 7004dbcef0f854e0fb401875f26ebd00
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 04a8b36e1545a455393d067e772fe90e
-^bandera
+^bandera-root

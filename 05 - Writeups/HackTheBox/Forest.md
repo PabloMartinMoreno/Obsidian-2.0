@@ -54,7 +54,7 @@ ldapsearch -x -H ldap://10.10.10.161:389 -b "dc=htb,dc=local"
     
 La consulta fue exitosa, devolviendo información sobre el dominio.
 
-> [!NOTE] Permiso de Consulta Anónima en LDAP
+> [!note] Permiso de Consulta Anónima en LDAP
 > 
 > La capacidad de realizar consultas a LDAP sin autenticación es una mala configuración de seguridad. Me permite enumerar usuarios, grupos, políticas y la estructura general del dominio, proporcionando información crucial para planificar un ataque.
 
@@ -201,7 +201,7 @@ Esto generó un archivo `.zip` que descargué a mi máquina para analizarlo con 
 
 Tras importar los datos, marqué al usuario `svc-alfresco` como comprometido. El análisis reveló que, a través de membresías anidadas, `svc-alfresco` pertenecía al grupo **Account Operators**.
 
-> [!INFO] El Poder de 'Account Operators'
+> [!info] El Poder de 'Account Operators'
 > 
 > Los miembros del grupo Account Operators tienen permisos para crear y modificar cuentas de usuario y grupo en el dominio. Crucialmente, pueden añadir usuarios a cualquier grupo que no esté protegido por el sistema (como Domain Admins), lo cual representa una vía de escalada de privilegios muy potente.
 
@@ -268,10 +268,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 38b4e0f0556a072680f2c3de1c71014f
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 1dba8b9e720e9194a5f4f3f82f39304f
-^bandera
+^bandera-root

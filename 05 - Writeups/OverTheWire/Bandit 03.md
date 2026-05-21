@@ -12,7 +12,7 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en un archivo oculto en el directorio `inhere`.
 ^objetivo
 # Resolución
@@ -25,7 +25,7 @@ cd inhere
 ls -a
 ```
 
-> [!INFO] Ficheros especiales
+> [!info] Ficheros especiales
 > **El *fichero `.`* hace referencia al *directorio actual***
 > Por ejemplo, `cd .` te mueve al directorio actual (es decir, no hace nada).
 > 
@@ -36,10 +36,10 @@ ls -a
 cat ...Hiding-From-You
 ```
 
->[!INFO] Archivos ocultos
+>[!info] Archivos ocultos
 >Los ficheros y carpetas que empiezan con `.` están ocultos.
 
 # Bandera
 
-> [!FLAG] `MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx`
+> [!flag] `MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx`
 ^bandera

@@ -53,7 +53,7 @@ Al navegar a `http://10.10.10.233`, me encontré con lo que parecía ser un pane
 
 Explorando la interfaz, encontré una sección de **"Settings"** o configuración. Dentro de esta sección, localicé una página para la configuración de **LDAP**, donde ya estaban autocompletados un nombre de usuario (`svc-printer`) y el dominio (`RETURN.local`).
 
-> [!WARNING] Paneles de Administración Inseguros
+> [!warning] Paneles de Administración Inseguros
 > 
 > Los paneles de administración de dispositivos de red como impresoras, switches o cámaras IP a menudo contienen configuraciones sensibles. Es común que permitan probar la conexión con servicios como LDAP o SMB, lo que puede ser abusado para filtrar las credenciales que tienen almacenadas.
 
@@ -143,7 +143,7 @@ BUILTIN\Users                              Alias            S-1-5-32-545 Mandato
 
 Inmediatamente, el grupo **`BUILTIN\Server Operators`** llamó mi atención.
 
-> [!WARNING] El Peligro del Grupo "Server Operators"
+> [!warning] El Peligro del Grupo "Server Operators"
 > 
 > Este es un grupo de alto privilegio. Sus miembros pueden realizar tareas administrativas críticas, como iniciar y detener servicios, configurar recursos compartidos de red y respaldar/restaurar archivos. La capacidad de modificar servicios es un vector de escalada de privilegios clásico y muy poderoso.
 
@@ -195,7 +195,7 @@ Recibí una conexión inmediatamente, ¡pero había un problema! La shell moría
 
 Para solucionar la inestabilidad, utilicé una técnica para desacoplar mi shell del ciclo de vida del servicio. En lugar de ejecutar `nc64.exe` directamente, hice que el servicio ejecutara `cmd.exe`, que a su vez lanzaría mi payload como un proceso hijo.
 
-> [!TIP] Desacoplando Procesos para una Shell Estable
+> [!tip] Desacoplando Procesos para una Shell Estable
 > 
 > Al ejecutar cmd.exe /c [comando], el SCM inicia cmd.exe. Este, a su vez, ejecuta el comando (mi reverse shell) como un proceso separado y luego termina. El SCM mata el proceso cmd.exe al no recibir respuesta, pero el proceso de la reverse shell que este generó sigue vivo e independiente.
 
@@ -225,10 +225,10 @@ Con una shell estable como `NT AUTHORITY\SYSTEM`, solo quedaba navegar al escrit
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 530e690d7f6ad5d943015a4697b6618b
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > f2c50e59ea8140e3a3f435f0ee342d72
-^bandera
+^bandera-root

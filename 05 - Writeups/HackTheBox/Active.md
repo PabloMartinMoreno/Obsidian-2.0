@@ -142,7 +142,7 @@ Al inspeccionar el contenido del archivo, encontré credenciales para un usuario
 </Groups>
 ```
 
-> [!NOTE] Vulnerabilidad GPP
+> [!note] Vulnerabilidad GPP
 > 
 > La contraseña almacenada en el atributo cpassword está cifrada con AES-256, pero la clave de cifrado es pública. Esto permite que cualquiera que pueda leer este archivo pueda descifrar la contraseña fácilmente.
 
@@ -192,7 +192,7 @@ smb: \SVC_TGS\Desktop\> get user.txt
 
 Con acceso al dominio, mi objetivo era encontrar una vía para escalar privilegios. Utilicé `ldapsearch` para consultar el Controlador de Dominio y listar todos los usuarios activos.
 
-> [!INFO] Desglose del Filtro LDAP
+> [!info] Desglose del Filtro LDAP
 > 
 > El filtro (&(objectCategory=person)(objectClass=user)(!(useraccountcontrol:1.2.840.113556.1.4.803:=2))) busca objetos que sean personas y usuarios, y excluye aquellos que tienen el bit de "cuenta deshabilitada" (2) activado en el atributo userAccountControl.
 
@@ -224,7 +224,7 @@ user:[SVC_TGS] rid:[0x44f]
 
 El siguiente paso fue buscar cuentas de usuario que tuvieran configurado un **Service Principal Name (SPN)**. Un SPN asocia un servicio con una cuenta de inicio de sesión. Si una cuenta de usuario (en lugar de una cuenta de máquina) tiene un SPN, es vulnerable a un ataque de **Kerberoasting**.
 
-> [!WARNING] ¿Qué es Kerberoasting?
+> [!warning] ¿Qué es Kerberoasting?
 > 
 > Este ataque permite a cualquier usuario autenticado solicitar un Ticket Granting Service (TGS) para un servicio asociado a un SPN. Parte de este ticket está cifrado con el hash NTLM de la cuenta de servicio. Al capturar este ticket, puedo intentar crackear el hash offline para obtener la contraseña en texto plano.
 
@@ -285,10 +285,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > be726c482499c4c1515edbc6983ecd0d
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > ec8b57bdfcd09bf0759450fa2e0a2e29
-^bandera
+^bandera-root

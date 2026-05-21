@@ -119,10 +119,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 22854d0aec6ba776f9d35bf7b0e00217
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 96440606fb88aa7497cde5a8e68daf8f
-^bandera
+^bandera-root

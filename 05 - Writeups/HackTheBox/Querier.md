@@ -278,10 +278,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 10286b7b489fe10b70e10dbf8db9caff
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 75d73eba1e9ae0ff05fc3932400d06f6
-^bandera
+^bandera-root

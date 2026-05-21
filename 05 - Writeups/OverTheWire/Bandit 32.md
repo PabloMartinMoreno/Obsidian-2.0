@@ -11,11 +11,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Después de tanto git, es hora de otra escapada. ¡Buena suerte!
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > sh, man
 ^recursos
 
@@ -115,5 +115,5 @@ Es el ultimo bandit
 
 # Bandera(s)
 
-> [!FLAG] `fin`
+> [!flag] `fin`
 ^bandera

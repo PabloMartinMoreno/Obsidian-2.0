@@ -145,11 +145,11 @@ El script se ejecutó con éxito, y obtuve una shell de `root`. Finalmente, pude
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > d6c1cabf15f99c099cc9f1e11352dcfa
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 0e2c6f7967e913b419fec8e992e21f50
-^bandera
+^bandera-root
 

@@ -12,11 +12,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en un archivo llamado - ubicado en el directorio home
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos**
 > - [ls](https://man7.org/linux/man-pages/man1/ls.1.html)
 > - [cd](https://man7.org/linux/man-pages/man1/cd.1.html)
@@ -46,5 +46,5 @@ Listo, esa es la contraseña.
 
 # Bandera
 
-> [!FLAG] `ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If`
+> [!flag] `ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If`
 ^bandera

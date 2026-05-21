@@ -177,7 +177,7 @@ Encuentro varios directorios dudosos, entre esos el siguiente.
 /var/tmp/sv
 ```
 
->[!TIP] 
+>[!tip] 
 >El SUID en directorios no tiene un uso funcional, simplemente está en la maquina para facilitar encontrar la posible vulnerabilidad.
 
 #### Puertos
@@ -246,11 +246,11 @@ bash -p
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 c0e1f61ff8e753d8b27615bdc4f25794
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 f950998f0d484a2ef1ea83ed4f42bbca
-^bandera
+^bandera-root
 

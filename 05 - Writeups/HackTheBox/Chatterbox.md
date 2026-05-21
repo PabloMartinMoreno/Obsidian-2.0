@@ -48,7 +48,7 @@ PORT      STATE SERVICE VERSION
 Service Info: Host: CHATTERBOX; OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
 
-> [!INFO] Superficie de Ataque Principal
+> [!info] Superficie de Ataque Principal
 > 
 > Los puertos 9255 y 9256 están ejecutando un servicio llamado AChat chat system. Este software, al no ser un servicio estándar de Windows, se convirtió en mi principal objetivo para la enumeración de vulnerabilidades.
 
@@ -123,7 +123,7 @@ Una vez dentro del sistema, mi objetivo era escalar privilegios a `Administrator
 
 El script reveló un hallazgo crítico: credenciales de `Autologon` almacenadas en el registro de Windows.
 
-> [!WARNING] Credenciales en Texto Plano
+> [!warning] Credenciales en Texto Plano
 > 
 > La funcionalidad de Autologon de Windows permite iniciar sesión automáticamente, pero para ello almacena el nombre de usuario y la contraseña en texto plano en el registro. Esto representa un grave riesgo de seguridad, ya que cualquier usuario con acceso local puede leer estas credenciales.
 
@@ -164,10 +164,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 652c82e5983b035f29225cbe602a7791
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 78770ad8e9968eddb731f3ab7f8a1519
-^bandera
+^bandera-root

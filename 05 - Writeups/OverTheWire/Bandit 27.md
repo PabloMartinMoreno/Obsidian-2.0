@@ -13,13 +13,13 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Hay un repositorio git en ssh://bandit27-git@localhost/home/bandit27-git/repo a través del puerto 2220. La contraseña para el usuario bandit27-git es la misma que para el usuario bandit27.
 >
 Clona el repositorio y encuentra la contraseña para el siguiente nivel.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > [[git]]
 ^recursos
 
@@ -41,5 +41,5 @@ La contraseña está adentro.
 
 # Bandera(s)
 
-> [!FLAG] `Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN`
+> [!flag] `Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN`
 ^bandera

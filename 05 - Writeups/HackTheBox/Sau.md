@@ -41,7 +41,7 @@ PORT      STATE    SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 1.61 seconds
 ```
 
-> [!INFO] Puertos Encontrados
+> [!info] Puertos Encontrados
 > - **Puerto 22/tcp (SSH):** Abierto.
 > - **Puerto 80/tcp (HTTP):** Filtrado, no se puede acceder directamente.
 > - **Puerto 55555/tcp:** Abierto, con un servicio desconocido.
@@ -244,10 +244,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 75006c72f8993fdc8d15526ed5ce45f4
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > e1e56f3d29f3d135294dbb79a299e1ef
-^bandera
+^bandera-root

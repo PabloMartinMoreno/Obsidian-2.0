@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se puede recuperar enviando la contraseña del nivel actual al puerto 30000 en localhost.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos:**
 > ssh, telnet, nc, openssl, s_client, nmap
 > 
@@ -39,7 +39,7 @@ nc localhost 30000
 
 Pongo la contraseña del nivel anterior y listo.
 
->[!TIP] 
+>[!tip] 
 >Las contraseñas se pueden enviar directamente de la siguiente forma:
 >
 >```bash
@@ -50,5 +50,5 @@ Pongo la contraseña del nivel anterior y listo.
 
 # Bandera(s)
 
-> [!FLAG] `8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo`
+> [!flag] `8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo`
 ^bandera

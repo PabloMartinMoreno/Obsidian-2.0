@@ -204,14 +204,14 @@ o
 
 ## Bandera(s)
 
-> [!FLAG] `flag{Docker}`
+> [!flag] `flag{Docker}`
 > FLAG{Congrats_on_owning_phpinfo_hope_you_enjoyed_it}
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{User}`
+> [!flag] `flag{User}`
 > FLAG{Escaped_from_D0ck3r}
-^bandera
+^bandera-root
 
-> [!FLAG] `flag{Root}`
+> [!flag] `flag{Root}`
 FLAG{And_now_You_are_done}
 ^bandera

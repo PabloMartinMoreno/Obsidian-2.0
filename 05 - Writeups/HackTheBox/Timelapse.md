@@ -114,7 +114,7 @@ type $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.tx
 ```
 
 En el historial encontré las credenciales para el usuario `svc_deploy`.
-> [!NOTE] Credenciales Encontradas
+> [!note] Credenciales Encontradas
 > 
 > - **Usuario:** `svc_deploy`
 >     
@@ -215,10 +215,10 @@ Conseguí una shell como `NT AUTHORITY\SYSTEM` y completé el compromiso total d
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 51ad2c605e81b4f14dd4f68ccc64dc7e
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 81e3f6f349436d66345d48d9c3fc1dd8
-^bandera
+^bandera-root

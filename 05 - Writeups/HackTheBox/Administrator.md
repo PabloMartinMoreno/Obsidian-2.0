@@ -134,7 +134,7 @@ El ataque confirmó que las credenciales para la usuaria `emily` eran válidas. 
 
 El análisis en BloodHound reveló que `emily` poseía permisos `GenericWrite` sobre el usuario `ethan`.
 
-> [!NOTE]
+> [!note]
 > 
 > El permiso GenericWrite me permite modificar atributos no protegidos de un objeto de usuario. Un uso común para la escalada de privilegios es añadir un Service Principal Name (SPN) a la cuenta víctima. Al hacerlo, la cuenta se vuelve "kerberoastable", lo que significa que puedo solicitar un ticket de servicio Kerberos (TGS) para ella. La parte encriptada de este ticket está cifrada con el hash de la contraseña del usuario, el cual puedo intentar crackear offline.
 
@@ -142,7 +142,7 @@ Para realizar este ataque de **Kerberoasting dirigido**, utilicé el script `tar
 
 Inicialmente, encontré un error `KRB_AP_ERR_SKEW`, que indica una desincronización de reloj entre mi máquina y el controlador de dominio.
 
-> [!WARNING]
+> [!warning]
 > 
 > Error de Sincronización (Clock Skew)
 > 
@@ -219,10 +219,10 @@ evil-winrm -i 10.10.11.42 -u Administrator -H '3dc553ce4b9fd20bd016e098d2d2fd2e'
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > a63e68314d738fc17402cd1493d92688
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 09789d70104162abe943561a80174b7f
-^bandera
+^bandera-root

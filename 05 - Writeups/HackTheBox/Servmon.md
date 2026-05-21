@@ -51,7 +51,7 @@ Encontré dos archivos particularmente reveladores:
 
 1. `Nadine\Confidential.txt`: Este archivo contenía una nota que me alertó sobre un archivo de contraseñas en el escritorio de otro usuario.
 
-> [!NOTE] Contenido de Confidential.txt
+> [!note] Contenido de Confidential.txt
 > 
 > Nathan,
 > 
@@ -63,7 +63,7 @@ Encontré dos archivos particularmente reveladores:
 
 2. `Nathan\Notes to do.txt`: Este archivo ofrecía un contexto sobre las aplicaciones instaladas y las tareas de seguridad pendientes, mencionando específicamente **NVMS** y **NSClient**.
 
-> [!NOTE] Contenido de `Notes to do.txt`
+> [!note] Contenido de `Notes to do.txt`
 >
 > 1. Change the password for NVMS - Complete
 > 2. Lock down the NSClient Access - Complete
@@ -143,7 +143,7 @@ El ataque fue exitoso, encontrando una credencial válida: **`nadine:L1k3B1gBut7
 
 Una vez dentro como `nadine`, mi primer paso fue enumerar el sistema en busca de vectores de escalada. Descubrí el directorio `C:\Program Files\NSClient++` y, dentro de él, el archivo de configuración `nsclient.ini`. Al leerlo, encontré la contraseña del panel web de NSClient++.
 
-> [!INFO] Credencial Encontrada en nsclient.ini
+> [!info] Credencial Encontrada en nsclient.ini
 > 
 > ew2x6SsGTxjRwXOT
 
@@ -198,9 +198,9 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > f9dcd6faa29be662c8a4e7e78116d616
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

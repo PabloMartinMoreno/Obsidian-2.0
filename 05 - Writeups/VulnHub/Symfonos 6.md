@@ -61,7 +61,7 @@ ___
     "><script>alert('hola');</script>
     ```
     Al visitar el perfil, el script se dispara correctamente.
->[!TIP]
+>[!tip]
 >Al inspeccionar la web veo que estoy en el campo `value="">`, es por eso que tengo que agregar otra comilla, para que cierre la anterior y salir del campo mencionado.
 
 4. **Comentario**: Dejo un comentario para que el admin lo lea y luego se le inyecte el código. 
@@ -183,7 +183,7 @@ Los archivos más importantes para explotar la vulnerabilidad son los que están
 
 ### Ejecución de código vía API REST
 
->[!TIP]
+>[!tip]
 El `-H "Content-Type: application/json"` puede evitarse en cada uno de los curls, con usar el format `json` es suficiente.
 
 1. **Obtener token JWT**:
@@ -243,6 +243,6 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{Root}`
+> [!flag] `flag{Root}`
 > Congrats on rooting symfonos:6!
 ^bandera

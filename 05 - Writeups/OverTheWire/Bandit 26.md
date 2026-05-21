@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 >Buen trabajo consiguiendo un caparazón! ¡Ahora date prisa y consigue la contraseña para bandido27!
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > [[ls]], [[SUID]]
 ^recursos
 
@@ -30,5 +30,5 @@ Usando uno de los archivos que está en la carpeta de origen, se puede conseguir
 
 # Bandera(s)
 
-> [!FLAG] `upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB`
+> [!flag] `upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB`
 ^bandera

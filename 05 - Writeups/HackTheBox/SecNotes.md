@@ -163,10 +163,10 @@ La ejecución fue exitosa y obtuve una shell interactiva como `NT AUTHORITY\SYST
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 24f917516408feb0e444506c34f7103e
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 92bc1c12dbde4c6c1e46fd5a8f878ce0
-^bandera
+^bandera-root

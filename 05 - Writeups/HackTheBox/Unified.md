@@ -135,7 +135,7 @@ ___
    - **Resultado Esperado:**
      - Observo una conexión entrante en el puerto 389, confirmando que la aplicación es vulnerable.
 
->[!TIP]
+>[!tip]
 >Otra opción para hacer el escaneo es usar [[wireshark]] y poner `tcp.port==389`
 
 ### Obtención de la Reverse Shell
@@ -281,10 +281,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] Usuario
+> [!flag] Usuario
 > 6ced1a6a89e666c0620cdb10262ba127
-^bandera
+^bandera-user
 
-> [!FLAG] Admin
+> [!flag] Admin
 > 
-^bandera
+^bandera-root

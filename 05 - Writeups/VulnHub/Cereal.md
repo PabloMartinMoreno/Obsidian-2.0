@@ -241,13 +241,13 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > aaa87365bf3dc0c1a82aa14b4ce26bbc
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 1aeb5db4e979543cb807cfd90df77763
-^bandera
+^bandera-root
 
 
 

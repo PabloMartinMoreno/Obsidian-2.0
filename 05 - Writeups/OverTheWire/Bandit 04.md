@@ -18,11 +18,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en el único archivo legible por humanos en el directorio `inhere`. Consejo: si su terminal está estropeada, pruebe el comando "reset".
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos**
 > - [ls](https://man7.org/linux/man-pages/man1/ls.1.html)
 > - [cd](https://man7.org/linux/man-pages/man1/cd.1.html)
@@ -75,7 +75,7 @@ file ./*
 
 Ahí ya puedo hacer un `cat ./-filename07` al archivo de texto leible y obtener la contraseña.
 
->[!TIP] Otras formas más avanzadas podrían ser:
+>[!tip] Otras formas más avanzadas podrían ser:
 >```bash
 > find . | grep '\-file' | xargs file | grep 'ASCII text' | awk -F: '{print $1}' | xargs cat
 > # o
@@ -93,5 +93,5 @@ La mayor diferencia entre los primeros dos ejemplos, repercute en que el primero
 
 # Bandera
 
-> [!FLAG] `2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ`
+> [!flag] `2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ`
 ^bandera

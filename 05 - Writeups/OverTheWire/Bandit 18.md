@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en un archivo readme en el homedirectory. Desafortunadamente, alguien ha modificado .bashrc para cerrar la sesión cuando te conectas con SSH.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos:**
 > ssh, ls, cat
 ^recursos
@@ -54,5 +54,5 @@ sshpass -f bandit18 ssh bandit18@bandit.labs.overthewire.org -p 2220 'cat readme
 
 # Bandera(s)
 
-> [!FLAG] `cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8`
+> [!flag] `cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8`
 ^bandera

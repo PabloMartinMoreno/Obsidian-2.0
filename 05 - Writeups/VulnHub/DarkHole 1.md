@@ -167,10 +167,10 @@ DarkHole{You_Are_Legend}
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > DarkHole{You_Can_DO_It}
 bandera
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > DarkHole{You_Are_Legend}
 ^bandera

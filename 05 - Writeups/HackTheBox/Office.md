@@ -420,7 +420,7 @@ Global Group memberships *Domain Users     *Registry Editors
 ...
 ```
 
-> [!TIP]
+> [!tip]
 > 
 > ¡tstark estaba en el grupo Registry Editors! Este grupo tiene privilegios para modificar claves del registro en HKEY_LOCAL_MACHINE (HKLM), lo que me permitía cambiar la política de seguridad de macros para toda la máquina.
 
@@ -552,8 +552,8 @@ Este _writeup_ cubrió una amplia gama de técnicas y vulnerabilidades:
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
-^bandera
+> [!flag] `flag{user}`
+^bandera-user
 
-> [!FLAG] `flag{root}`
-^bandera
+> [!flag] `flag{root}`
+^bandera-root

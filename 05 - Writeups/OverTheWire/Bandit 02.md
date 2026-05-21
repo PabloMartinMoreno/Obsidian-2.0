@@ -12,11 +12,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en un archivo llamado `spaces in this filename` ubicado en el directorio raíz
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos**
 > - [ls](https://man7.org/linux/man-pages/man1/ls.1.html)
 > - [cd](https://man7.org/linux/man-pages/man1/cd.1.html)
@@ -34,7 +34,7 @@ relacionados:
 
 Al querer hacer un `cat` con espacios, no funciona porque piensa que son distintos archivos. 
 
-> [!INFO] La terminal interpreta los espacios como **separadores de argumentos en los comandos**
+> [!info] La terminal interpreta los espacios como **separadores de argumentos en los comandos**
 > El siguiente comando [[cat]] se ejecutaría 4 veces: una para un fichero *spaces*, otra para *in*, otra para *this* y otra para *filename*:
 > ```shell
 > cat spaces in this filename
@@ -54,5 +54,5 @@ cat 'spaces in this filename'
 
 # Bandera
 
-> [!FLAG] `263JGJPfgU6LtdEvgfWU1XP5yac29mFx`
+> [!flag] `263JGJPfgU6LtdEvgfWU1XP5yac29mFx`
 ^bandera

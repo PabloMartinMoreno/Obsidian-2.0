@@ -13,13 +13,13 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Hay un repositorio git en ssh://bandit28-git@localhost/home/bandit28-git/repo a través del puerto 2220. La contraseña para el usuario bandit28-git es la misma que para el usuario bandit28.
 > 
 Clona el repositorio y encuentra la contraseña para el siguiente nivel.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > git
 ^recursos
 
@@ -62,7 +62,7 @@ git checkout 73f5d0435070c8922da12177dc93f40b2285e22a
 
 la contraseña está a la vista.
 
->[!TIP]
+>[!tip]
 >Otra alternativa es usar `git show` en el commit que dice `fix info leak` para ver los cambios
 >```bash
 >git show 8cbd1e08d1879415541ba19ddee3579e80e3f61a
@@ -89,5 +89,5 @@ la contraseña está a la vista.
 
 # Bandera(s)
 
-> [!FLAG] `4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7`
+> [!flag] `4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7`
 ^bandera

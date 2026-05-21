@@ -112,7 +112,7 @@ smb: \> get "Notice from HR.txt"
 
 Al revisar el archivo, descubrí una contraseña por defecto proporcionada a los nuevos empleados.
 
-> [!NOTE] Contraseña por Defecto Descubierta
+> [!note] Contraseña por Defecto Descubierta
 > 
 > El archivo contenía una contraseña genérica: Cicada$M6Corpb*@Lp#nZp!8. Este es un hallazgo crítico, ya que es común que estas contraseñas no se cambien.
 
@@ -182,7 +182,7 @@ smb: \> get Backup_script.ps1
 
 Al analizar el script, encontré otro par de credenciales codificadas en texto plano.
 
-> [!NOTE] Credenciales Expuestas en Script
+> [!note] Credenciales Expuestas en Script
 > 
 > El script contenía el usuario emily.oscars y su contraseña Q!3@Lp#M6b*7t*Vt. Esta es una mala práctica de seguridad muy común que expone credenciales críticas.
 > 
@@ -277,10 +277,10 @@ El ataque fue exitoso, y obtuve una sesión con privilegios de Administrador. Na
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 1bdbd3ffed7d7cb2416dd5073e4c63e3
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > e123c58bbb91d01f97a8f13fc2907b93
-^bandera
+^bandera-root

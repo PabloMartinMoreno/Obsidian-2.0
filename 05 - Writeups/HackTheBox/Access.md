@@ -227,10 +227,10 @@ Este proceso me reveló la contraseña del usuario `Administrator` en texto plan
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 8975029709d937a4927433f7d6488c1f
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 7582f0a40c11589a76aa124dec9cbc91
-^bandera
+^bandera-root

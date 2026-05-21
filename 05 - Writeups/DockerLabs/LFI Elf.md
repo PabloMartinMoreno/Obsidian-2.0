@@ -82,7 +82,7 @@ lin:x:1001:1001:lin,,,:/home/lin:/bin/bash
      nc -lnvp 443
      ```
 
->[!NOTE] Detalle
+>[!note] Detalle
 > El atajo PHP: "\<?= \`id\` ?>" está usando el tipo de comillas que se usa para separar código. Son estas ``, no estas ''.
 
 
@@ -164,10 +164,10 @@ Password: agentelinsecreto
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > ed87c5c288f4909dde74cd499acbce92
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 2d264e1f92a8230d442750d69fba4cc5
-^bandera
+^bandera-root

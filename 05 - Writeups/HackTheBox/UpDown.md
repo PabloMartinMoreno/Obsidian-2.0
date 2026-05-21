@@ -57,7 +57,7 @@ Sospechando la existencia de otros subdominios, utilicé **Ffuf** para realizar 
 ffuf -u http://siteisup.htb -H "Host: FUZZ.siteisup.htb" -w /usr/share/wordlists/subdomains.txt -fs 1131
 ```
 
-> [!INFO] Nota sobre el filtrado en Ffuf
+> [!info] Nota sobre el filtrado en Ffuf
 > 
 > El servidor respondía con un código 200 OK para cualquier subdominio, pero el tamaño de la respuesta para los subdominios inexistentes era siempre de 1131 bytes. Utilicé el parámetro -fs 1131 para filtrar estas respuestas y concentrarme solo en los resultados válidos.
 
@@ -143,7 +143,7 @@ $websites = explode("\n",file_get_contents($final_path));
 
 El script implementa una **lista negra de extensiones**, pero omite algunas potencialmente peligrosas como `.phar`. Esto me permitiría subir un archivo PHP empaquetado y ejecutarlo a través de la vulnerabilidad LFI.
 
-> [!WARNING] Listas Negras vs. Listas Blancas
+> [!warning] Listas Negras vs. Listas Blancas
 > 
 > Este es un ejemplo clásico de por qué las listas blancas (permitir solo extensiones conocidas y seguras) son mucho más seguras que las listas negras (intentar bloquear todas las extensiones maliciosas). Es casi imposible prever todas las extensiones que podrían ser explotadas.
 
@@ -189,7 +189,7 @@ phpinfo = requests.get(url, headers={"Special-Dev":"only4dev"}).text
 
 Ejecuté el script y descubrí que la función `proc_open()` no estaba deshabilitada.
 
-> [!NOTE] ¿Qué es proc_open()?
+> [!note] ¿Qué es proc_open()?
 > 
 > proc_open() es una función de PHP que ejecuta un comando y proporciona un control detallado sobre los flujos de entrada/salida del proceso. Es muy similar a popen() y puede ser utilizada para ejecutar comandos del sistema y establecer una shell inversa.
 
@@ -237,7 +237,7 @@ else:
 
 El binario SUID ejecutaba este script. El script utilizaba la función `input()` de Python 2, que es notoriamente insegura.
 
-> [!DANGER] Vulnerabilidad de input() en Python 2
+> [!danger] Vulnerabilidad de input() en Python 2
 > 
 > En Python 2, la función input() no trata la entrada como una cadena de texto, sino que la evalúa como código Python. Esto es equivalente a eval(raw_input()) y permite la inyección de código arbitrario.
 
@@ -281,10 +281,10 @@ ___
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 35b233299a66e9e5e7e4743d3f5884bd
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 49920f3829babf1815bbc060d7c56b42
-^bandera
+^bandera-root

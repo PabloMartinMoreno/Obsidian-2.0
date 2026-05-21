@@ -639,7 +639,8 @@
     "vuln/ad-enumeration": 38,
     "meta/ctf": 67,
     "tool/sudo": 111,
-    "tool/perl": 112
+    "tool/perl": 112,
+    "type/sub-note": 16
   },
   "_version": 3
 }

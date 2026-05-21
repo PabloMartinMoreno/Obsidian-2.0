@@ -49,7 +49,7 @@ nmap -p22,80 -sC -sV -oN targeted <IP_MAQUINA>
 
 - Al navegar a `http://searcher.htb`, se encuentra una aplicación simple con una barra de búsqueda. Al interceptar la petición con Burp Suite, se observa una cabecera interesante: `Server: Werkzeug/2.2.2 Python/3.8.10`.
 
-> [!INFO] Observación clave
+> [!info] Observación clave
 > `Werkzeug` es una librería WSGI para Python. Esto indica que el servidor Apache está actuando como un **proxy inverso** hacia una aplicación desarrollada en Python.
 
 - El sitio es un motor de búsqueda unificado. Al seleccionar un motor (ej. GitHub) y un término de búsqueda, genera una URL. Si se marca "Auto redirect", redirige directamente.
@@ -132,7 +132,7 @@ ___
     
 - **Análisis de `000-default.conf`:** Se inspecciona la configuración de Apache en `/etc/apache2/sites-available/000-default.conf`.
     
->[!NOTE] **Hallazgo Clave** 
+>[!note] **Hallazgo Clave** 
 > Se descubre una segunda configuración de Proxy Inverso. Además de la aplicación `searcher`, hay un servicio `gitea` corriendo en el puerto 3000.
 ```Apache
 ProxyPass / http://127.0.0.1:5000/
@@ -149,7 +149,7 @@ ProxyPassReverse / http://127.0.0.1:5000/
     cat .git/config
     ```
     
->[!DANGER] **Hallazgo Crítico** 
+>[!danger] **Hallazgo Crítico** 
 > Dentro de la configuración de `git`, se encuentra una URL remota con credenciales hardcodeadas.
 
 ```TOML
@@ -174,7 +174,7 @@ Intento usar las credenciales encontradas en el servicio Gitea (`http://gitea.se
     sudo -l
     ```
 
->[!NOTE] **Hallazgo Clave**
+>[!note] **Hallazgo Clave**
 > La contraseña del gitea se puede reutilizar para el usuario `svc`
 
 ```bash
@@ -196,7 +196,7 @@ El asterisco (`*`) indica que podemos pasar argumentos al script.
 echo '{"Hostname":"960873171e2e","Domainname":"","User":"","AttachStdin":false,"AttachStdout":false,"AttachStderr":false,"ExposedPorts":{"22/tcp":{},"3000/tcp":{}},"Tty":false,"OpenStdin":false,"StdinOnce":false,"Env":["USER_UID=115","USER_GID=121","GITEA__database__DB_TYPE=mysql","GITEA__database__HOST=db:3306","GITEA__database__NAME=gitea","GITEA__database__USER=gitea","GITEA__database__PASSWD=yuiu1hoiu4i5ho1uh","PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin","USER=git","GITEA_CUSTOM=/data/gitea"],"Cmd":["/bin/s6-svscan","/etc/s6"],"Image":"gitea/gitea:latest","Volumes":{"/data":{},"/etc/localtime":{},"/etc/timezone":{}},"WorkingDir":"","Entrypoint":["/usr/bin/entrypoint"],"OnBuild":null,"Labels":{"com.docker.compose.config-hash":"e9e6ff8e594f3a8c77b688e35f3fe9163fe99c66597b19bdd03f9256d630f515","com.docker.compose.container-number":"1","com.docker.compose.oneoff":"False","com.docker.compose.project":"docker","com.docker.compose.project.config_files":"docker-compose.yml","com.docker.compose.project.working_dir":"/root/scripts/docker","com.docker.compose.service":"server","com.docker.compose.version":"1.29.2","maintainer":"maintainers@gitea.io","org.opencontainers.image.created":"2022-11-24T13:22:00Z","org.opencontainers.image.revision":"9bccc60cf51f3b4070f5506b042a3d9a1442c73d","org.opencontainers.image.source":"https://github.com/go-gitea/gitea.git","org.opencontainers.image.url":"https://github.com/go-gitea/gitea"}}' | jq
 ```
 
->[!WARNING] **Hallazgo Crítico** 
+>[!warning] **Hallazgo Crítico** 
 >- Se extraen las variables de entorno del contenedor de Gitea, revelando la contraseña de la base de datos.
         
 ```JSON
@@ -256,12 +256,12 @@ root
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 34bd023015a91c94cd27e3d56e7a64b9
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 9e7cd2d983130bf4d1db1d63276274e0
-^bandera
+^bandera-root
 
 

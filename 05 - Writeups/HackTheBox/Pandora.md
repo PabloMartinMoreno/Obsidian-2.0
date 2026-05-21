@@ -47,7 +47,7 @@ snmpbulkwalk -v 1 -c public 10.10.11.136
 
 Entre la gran cantidad de información devuelta, encontré una línea que revelaba credenciales en texto plano, probablemente de un script de monitoreo.
 
-> [!WARNING] Credenciales Expuestas
+> [!warning] Credenciales Expuestas
 > 
 > Se encontraron credenciales de usuario en texto plano a través de una consulta SNMP.
 > 
@@ -234,10 +234,10 @@ El binario, ejecutándose como `root`, invocó mi script malicioso en `/tmp/tar`
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 8d8b43753f6734384a68159c701f411a
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > ac699f6e4788aa969562e93fae13422d
-^bandera
+^bandera-root

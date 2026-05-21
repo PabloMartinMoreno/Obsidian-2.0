@@ -14,13 +14,13 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Un programa se está ejecutando automáticamente a intervalos regulares desde cron, el programador de trabajos basado en el tiempo. Busque en /etc/cron.d/ la configuración y vea qué comando se está ejecutando.
 >
 NOTA: Mirar scripts de shell escritos por otras personas es una habilidad muy útil. El script para este nivel está hecho intencionalmente fácil de leer. Si tienes problemas para entender lo que hace, intenta ejecutarlo para ver la información de depuración que imprime.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > cron, crontab, crontab(5) (use “man 5 crontab” to access this)
 ^recursos
 
@@ -68,5 +68,5 @@ Listo.
 
 # Bandera(s)
 
-> [!FLAG] `0Zf11ioIjMVN551jX3CmStKLYqjk54Ga`
+> [!flag] `0Zf11ioIjMVN551jX3CmStKLYqjk54Ga`
 ^bandera

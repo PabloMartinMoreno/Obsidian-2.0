@@ -15,11 +15,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en el archivo `data.txt` en una de las pocas cadenas legibles por humanos, precedida de varios caracteres "=".
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 ^recursos
 
@@ -35,5 +35,5 @@ strings data.txt | grep === | tail -n 1 | awk '{print $NF}'
 
 # Bandera(s)
 
-> [!FLAG] `FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey`
+> [!flag] `FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey`
 ^bandera

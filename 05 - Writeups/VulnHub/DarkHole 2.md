@@ -175,10 +175,10 @@ Con esta acción se logró la escalada final, pasando de un usuario con privileg
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 DarkHole{'This_is_the_life_man_better_than_a_cruise'}
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > DarkHole{'Legend'}
-^bandera
+^bandera-root

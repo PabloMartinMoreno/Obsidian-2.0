@@ -132,11 +132,11 @@ ssh -i id_rsa root@<IP_TARGET>
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 663ba6a402a57536772c6118e8181570
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 
 ```
  _._     _,-'""`-._
@@ -144,4 +144,4 @@ ssh -i id_rsa root@<IP_TARGET>
     `-.-' \ )-`( , o o)
           `-    \`_`"'-
 ```
-^bandera
+^bandera-root

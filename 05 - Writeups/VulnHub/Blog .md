@@ -175,11 +175,11 @@ Uso la maquina para hacer pivoting con [[Gift]]
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 1385bbd4fcdb68d2cc5d5204f97d4a80
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 6c24e7883470e2c1683df7672576a1f7
-^bandera
+^bandera-root
 

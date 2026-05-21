@@ -14,14 +14,14 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 >  La contraseña para el siguiente nivel se almacena en un archivo en algún lugar bajo el directorio inhere y tiene todas las siguientes propiedades:
 >- legible por humanos
 >- 1033 bytes de tamaño
 >- no ejecutable
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > [ls](https://man7.org/linux/man-pages/man1/ls.1.html) , [cd](https://man7.org/linux/man-pages/man1/cd.1p.html) , [cat](https://man7.org/linux/man-pages/man1/cat.1.html) , [file](https://man7.org/linux/man-pages/man1/file.1.html) , [du](https://man7.org/linux/man-pages/man1/du.1.html) , [find](https://man7.org/linux/man-pages/man1/find.1.html)
 ^recursos
 
@@ -40,7 +40,7 @@ find . -readable -size 1033c ! -executable
 
 Ahí está la contraseña.
 
->[!TIP]
+>[!tip]
 >```bash
 >find . -readable -size 1033c ! -executable | xargs cat | xargs
 >```
@@ -48,5 +48,5 @@ El segundo xargs es para eliminar espacios.
 
 # Bandera(s)
 
-> [!FLAG] `4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw`
+> [!flag] `4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw`
 ^bandera

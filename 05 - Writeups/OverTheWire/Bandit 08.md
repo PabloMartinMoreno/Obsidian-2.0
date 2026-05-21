@@ -14,11 +14,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en el archivo data.txt y es la única línea de texto que aparece una sola vez
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 ^recursos
 
@@ -38,5 +38,5 @@ sort data.txt | uniq -u
 
 # Bandera(s)
 
-> [!FLAG] `4CKMh1JI91bUIZZPXDqGanal4xvAg0JM`
+> [!flag] `4CKMh1JI91bUIZZPXDqGanal4xvAg0JM`
 ^bandera

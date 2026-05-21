@@ -208,10 +208,10 @@ Con privilegios de `localadmin`, pude leer la bandera final en el escritorio de 
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > 444cbcb0c77f7cc3d6ff3a1245f0c01b
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 5c79940efa5d7dab23eae2c03bdaf666
-^bandera
+^bandera-root

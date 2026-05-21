@@ -76,7 +76,7 @@ Para confirmar mi sospecha, probé un payload clásico de SQLi basado en boolean
 test' or 1=1;-- -
 ```
 
-> [!NOTE] Explicación del Payload de SQLi
+> [!note] Explicación del Payload de SQLi
 > 
 > La comilla simple (') busca cerrar la cadena de texto esperada por la consulta SQL. La condición OR 1=1 fuerza a que la cláusula WHERE siempre sea verdadera. Finalmente, ;-- - finaliza la consulta y comenta el resto, evitando errores de sintaxis.
 
@@ -193,7 +193,7 @@ Al acceder a la URL correspondiente, recibí una conexión en mi listener, obten
 
 Comencé la enumeración como `dash`. Con `ss -tlpn`, descubrí un servicio llamado `monit` escuchando localmente en el puerto `2812`. Mis intentos de ver procesos de otros usuarios con `ps aux` fallaron, lo que me llevó a revisar `/etc/fstab`.
 
-> [!INFO] Nota sobre hidepid=2
+> [!info] Nota sobre hidepid=2
 > 
 > La opción de montaje hidepid=2 en el sistema de archivos /proc restringe la visibilidad de los procesos. Un usuario normal solo puede ver sus propios procesos, lo que dificulta la enumeración.
 
@@ -233,7 +233,7 @@ Descubrí que podía ejecutar `/usr/bin/usage_management` como `root`. Un análi
 /usr/bin/7za a /var/backups/project.zip -tzip -snl -mmt -- *
 ```
 
-> [!WARNING] Abuso de 7-Zip con Listfiles y Symlinks
+> [!warning] Abuso de 7-Zip con Listfiles y Symlinks
 > 
 > 7-Zip trata los archivos cuyo nombre empieza con @ como un "listfile", leyendo su contenido para saber qué archivos comprimir. Combinando esto con un enlace simbólico, podemos forzar a 7-Zip a leer un archivo privilegiado y mostrar su contenido en la salida.
 
@@ -259,10 +259,10 @@ Con esto, obtuve acceso completo al sistema como `root`.
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > faf0a52a637b8229fb573886670ff87b
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > f719e2380a36dedf5f4ef996bbe8d10b
-^bandera
+^bandera-root

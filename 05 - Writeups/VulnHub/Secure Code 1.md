@@ -25,5 +25,5 @@ relacionados:
 
 ## Bandera(s)
 
-> [!FLAG] `flag{B4nd3r4}`
+> [!flag] `flag{B4nd3r4}`
 ^bandera

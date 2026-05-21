@@ -13,11 +13,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en el archivo `data.txt`, que contiene datos codificados en base64
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos:**
 > grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 > 
@@ -37,5 +37,5 @@ base64 -d data.txt
 
 # Bandera(s)
 
-> [!FLAG] `dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr`
+> [!flag] `dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr`
 ^bandera

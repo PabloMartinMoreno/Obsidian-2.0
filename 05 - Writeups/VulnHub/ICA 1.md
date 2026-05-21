@@ -205,11 +205,11 @@ mysql -u qdpmadmin -h $(cat ip) -p --ssl --ssl-verify-server-cert=FALSE
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > ICA{Secret_Project}
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > ICA{Next_Generation_Self_Renewable_Genetics}
-^bandera
+^bandera-root
 

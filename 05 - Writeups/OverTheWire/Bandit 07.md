@@ -14,11 +14,11 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > La contraseña para el siguiente nivel se almacena en el archivo data.txt junto a la palabra `millionth`
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 > **Comandos**:
 > [man](https://manpages.ubuntu.com/manpages/noble/man1/man.1.html), grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
 ^recursos
@@ -35,5 +35,5 @@ grep millionth data.txt | awk '{print $NF}'
 
 # Bandera(s)
 
-> [!FLAG] `dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc`
+> [!flag] `dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc`
 ^bandera

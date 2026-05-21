@@ -255,10 +255,10 @@ Máquina completada.
 
 ## Bandera(s)
 
-> [!FLAG] `flag{user}`
+> [!flag] `flag{user}`
 > fd8487bf5396718f7ead8351d88e3dbb
-^bandera
+^bandera-user
 
-> [!FLAG] `flag{root}`
+> [!flag] `flag{root}`
 > 1f7ce9bc4e770fbc580199d12e198e4b
-^bandera
+^bandera-root

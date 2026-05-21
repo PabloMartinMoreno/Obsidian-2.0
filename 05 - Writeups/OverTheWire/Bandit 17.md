@@ -13,13 +13,13 @@ relacionados:
 ---
 # Datos
 
-> [!TODO] Objetivo
+> [!todo] Objetivo
 > Hay 2 archivos en el homedirectory: passwords.old y passwords.new. La contraseña para el siguiente nivel está en passwords.new y es la única línea que ha cambiado entre passwords.old y passwords.new.
 >
 NOTA: si has resuelto este nivel y ves "¡Adiós!" cuando intentas entrar en bandit18, esto está relacionado con el siguiente nivel, bandit19.
 ^objetivo
 
-> [!TIP] Recursos
+> [!tip] Recursos
 **Comandos:**
 > cat, grep, ls, diff
 ^recursos
@@ -42,5 +42,5 @@ diff password.old password.new
 
 # Bandera(s)
 
-> [!FLAG] `x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO`
+> [!flag] `x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO`
 ^bandera
