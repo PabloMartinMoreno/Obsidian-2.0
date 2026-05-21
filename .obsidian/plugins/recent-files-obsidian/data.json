@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQLi  - Union based",
+      "path": "04 - Content/Web/Injection/SQLi  - Union based.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
       "basename": "000 - Global Index",
       "path": "000 - Global Index.md"
     },
@@ -15,10 +27,6 @@
     {
       "basename": "Broken autentication",
       "path": "04 - Content/Process/Broken autentication.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Windows Post-Explotación",

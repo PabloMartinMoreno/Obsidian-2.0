@@ -1,53 +1,63 @@
 {
   "collapse-filter": false,
-  "search": "-path:\"00 - Recursos/Plantillas\"  ",
+  "search": "-path:\"00 - Resources/Templates\"",
   "showTags": true,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
+  "collapse-color-groups": false,
   "colorGroups": [
     {
       "query": "tag:#type/moc/primary",
-      "color": {
-        "a": 1,
-        "rgb": 16711680
-      }
+      "color": { "a": 1, "rgb": 16711680 }
     },
     {
       "query": "tag:#type/moc/secondary",
-      "color": {
-        "a": 1,
-        "rgb": 6210815
-      }
+      "color": { "a": 1, "rgb": 5043967 }
     },
     {
       "query": "tag:#type/moc/tertiary",
-      "color": {
-        "a": 1,
-        "rgb": 3735485
-      }
+      "color": { "a": 1, "rgb": 3211172 }
     },
     {
-      "query": "tag:#type/command  ",
-      "color": {
-        "a": 1,
-        "rgb": 16307284
-      }
+      "query": "tag:#type/command",
+      "color": { "a": 1, "rgb": 16763956 }
     },
     {
-      "query": "tag:#type/cheatsheet  ",
-      "color": {
-        "a": 1,
-        "rgb": 14570208
-      }
+      "query": "tag:#type/cheatsheet",
+      "color": { "a": 1, "rgb": 15489750 }
     },
     {
-      "query": "tag:#type/sub-command  ",
-      "color": {
-        "a": 1,
-        "rgb": 16770462
-      }
+      "query": "tag:#type/tool",
+      "color": { "a": 1, "rgb": 4620980 }
+    },
+    {
+      "query": "tag:#type/technique",
+      "color": { "a": 1, "rgb": 9662683 }
+    },
+    {
+      "query": "tag:#type/concept",
+      "color": { "a": 1, "rgb": 49151 }
+    },
+    {
+      "query": "tag:#type/vulnerability",
+      "color": { "a": 1, "rgb": 14423100 }
+    },
+    {
+      "query": "tag:#type/writeup",
+      "color": { "a": 1, "rgb": 10506797 }
+    },
+    {
+      "query": "tag:#type/playbook",
+      "color": { "a": 1, "rgb": 11403055 }
+    },
+    {
+      "query": "tag:#type/payload",
+      "color": { "a": 1, "rgb": 16747520 }
+    },
+    {
+      "query": "tag:#type/ttp",
+      "color": { "a": 1, "rgb": 12211667 }
     }
   ],
   "collapse-display": true,

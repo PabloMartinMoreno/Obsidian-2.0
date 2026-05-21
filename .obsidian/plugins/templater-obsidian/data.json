@@ -7,7 +7,7 @@
       ""
     ]
   ],
-  "trigger_on_file_creation": false,
+  "trigger_on_file_creation": true,
   "auto_jump_to_cursor": false,
   "enable_system_commands": false,
   "shell_path": "",
@@ -15,8 +15,48 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "",
-      "template": ""
+      "folder": "05 - Writeups/HackTheBox",
+      "template": "00 - Resources/Templates/Writeup/_hack the box.md"
+    },
+    {
+      "folder": "05 - Writeups/HackMyVM",
+      "template": "00 - Resources/Templates/Writeup/_hackmyvm.md"
+    },
+    {
+      "folder": "05 - Writeups/OverTheWire",
+      "template": "00 - Resources/Templates/Writeup/_overthewire.md"
+    },
+    {
+      "folder": "05 - Writeups/PortSwigger",
+      "template": "00 - Resources/Templates/Writeup/_portswigger.md"
+    },
+    {
+      "folder": "05 - Writeups/VulnHub",
+      "template": "00 - Resources/Templates/Writeup/_vulnhub.md"
+    },
+    {
+      "folder": "05 - Writeups/VulNyx",
+      "template": "00 - Resources/Templates/Writeup/_vulnyx.md"
+    },
+    {
+      "folder": "05 - Writeups/DockerLabs",
+      "template": "00 - Resources/Templates/Writeup/_dockerlabs.md"
+    },
+    {
+      "folder": "05 - Writeups/TryHackMe",
+      "template": "00 - Resources/Templates/Writeup/_tryhackme.md"
+    },
+    {
+      "folder": "01 - Primary Categories",
+      "template": "00 - Resources/Templates/Category/_primary category.md"
+    },
+    {
+      "folder": "02 - Secondary Categories",
+      "template": "00 - Resources/Templates/Category/_secondary category.md"
+    },
+    {
+      "folder": "03 - Tertiary Categories",
+      "template": "00 - Resources/Templates/Category/_tertiary category.md"
     }
   ],
   "enable_file_templates": false,
