@@ -1,5 +1,5 @@
 ---
-aliases: null
+aliases:
 tags:
   - type/vulnerability
   - vuln/sqli
@@ -7,23 +7,23 @@ tags:
   - asset/database
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[File Inclusion]]'
-  - '[[SQLi  - Union based]]'
-  - '[[SQLi - Error based]]'
-  - '[[SQLi - Boolean based]]'
-  - '[[SQLi - Time based]]'
-  - '[[SQLi - Out of Band]]'
-  - '[[SQLi - Second order]]'
-  - '[[SQLi - Routed]]'
-  - '[[SQLi - Lateral]]'
-  - '[[SQL Commands]]'
+  - "[[File Inclusion]]"
+  - "[[SQLi  - Union based]]"
+  - "[[SQLi - Error based]]"
+  - "[[SQLi - Boolean based]]"
+  - "[[SQLi - Time based]]"
+  - "[[SQLi - Out of Band]]"
+  - "[[SQLi - Second order]]"
+  - "[[SQLi - Routed]]"
+  - "[[SQLi - Lateral]]"
+  - "[[SQL Commands]]"
 ---
 # SQL Injection (SQLi)
 

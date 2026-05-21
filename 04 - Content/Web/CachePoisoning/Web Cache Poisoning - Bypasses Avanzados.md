@@ -9,12 +9,12 @@ tags:
   - vuln/cache-poisoning
   - technique/defense-evasion
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Web Cache Poisoning]]'
+  - "[[Web Cache Poisoning]]"
 ---
 # Web Cache Poisoning - Bypasses Avanzados
 

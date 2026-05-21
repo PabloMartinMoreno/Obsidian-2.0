@@ -9,15 +9,15 @@ tags:
   - vuln/html-injection
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[HTML Injection]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[Server-Side Template Injection (SSTI)]]'
+  - "[[HTML Injection]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[Server-Side Template Injection (SSTI)]]"
 ---
 # HTML Injection - Chains con Otras Vulns
 

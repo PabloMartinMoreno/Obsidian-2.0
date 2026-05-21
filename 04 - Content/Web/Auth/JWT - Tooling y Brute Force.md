@@ -10,14 +10,14 @@ tags:
   - technique/credential-access
   - asset/web-app
   - cred/jwt
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[JWT Attacks]]'
-  - '[[hashcat]]'
-  - '[[john]]'
+  - "[[JWT Attacks]]"
+  - "[[hashcat]]"
+  - "[[john]]"
 ---
 # JWT - Tooling y Brute Force
 

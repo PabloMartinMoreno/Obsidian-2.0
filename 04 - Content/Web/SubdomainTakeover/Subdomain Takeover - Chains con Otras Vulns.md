@@ -9,16 +9,16 @@ tags:
   - vuln/subdomain-takeover
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Subdomain Takeover]]'
-  - '[[Host Header Injection]]'
-  - '[[Open Redirect]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[Subdomain Takeover]]"
+  - "[[Host Header Injection]]"
+  - "[[Open Redirect]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # Subdomain Takeover - Chains con Otras Vulns
 

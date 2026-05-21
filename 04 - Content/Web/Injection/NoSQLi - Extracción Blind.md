@@ -10,12 +10,12 @@ tags:
   - technique/exfiltration
   - asset/database
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[NoSQL Injection]]'
+  - "[[NoSQL Injection]]"
 ---
 # NoSQLi - Extracción Blind
 

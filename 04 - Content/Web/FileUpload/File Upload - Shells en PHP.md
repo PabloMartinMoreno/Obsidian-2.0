@@ -1,5 +1,5 @@
 ---
-aliases: null
+aliases:
 tags:
   - type/technique
   - vuln/file-upload
@@ -7,7 +7,7 @@ tags:
   - asset/web-app
 kind: SubCheatSheet
 linked:
-  - '[[File Upload - Vulnerabilidades]]'
+  - "[[File Upload - Vulnerabilidades]]"
 ---
 # File Upload - Shells en PHP
 

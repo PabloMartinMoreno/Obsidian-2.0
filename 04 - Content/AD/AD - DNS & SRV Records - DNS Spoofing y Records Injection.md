@@ -10,15 +10,15 @@ tags:
   - technique/mitm
   - asset/active-directory
   - asset/dns
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AD - DNS & SRV Records]]'
-  - '[[NTLM Relay]]'
-  - '[[mitm6 - IPv6 DHCP Spoofing]]'
-  - '[[LLMNR & NBT-NS Poisoning]]'
+  - "[[AD - DNS & SRV Records]]"
+  - "[[NTLM Relay]]"
+  - "[[mitm6 - IPv6 DHCP Spoofing]]"
+  - "[[LLMNR & NBT-NS Poisoning]]"
 ---
 # AD - DNS & SRV Records - DNS Spoofing & Records Injection
 

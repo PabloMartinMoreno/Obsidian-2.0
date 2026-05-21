@@ -10,14 +10,14 @@ tags:
   - technique/execution
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Directory Traversal]]'
-  - '[[File Inclusion]]'
-  - '[[Insecure Deserialization]]'
+  - "[[Directory Traversal]]"
+  - "[[File Inclusion]]"
+  - "[[Insecure Deserialization]]"
 ---
 # Directory Traversal - Chains y Variantes
 

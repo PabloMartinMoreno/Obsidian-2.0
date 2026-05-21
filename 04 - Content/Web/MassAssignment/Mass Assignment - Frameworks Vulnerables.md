@@ -9,12 +9,12 @@ tags:
   - type/technique
   - vuln/mass-assignment
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Mass Assignment]]'
+  - "[[Mass Assignment]]"
 ---
 # Mass Assignment - Frameworks Vulnerables
 

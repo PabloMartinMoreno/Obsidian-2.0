@@ -8,12 +8,12 @@ tags:
   - vuln/hpp
   - technique/defense-evasion
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[HTTP Parameter Pollution]]'
+  - "[[HTTP Parameter Pollution]]"
 ---
 # HPP - Bypass de Validación
 

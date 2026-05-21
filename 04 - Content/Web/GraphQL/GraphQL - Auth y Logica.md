@@ -13,14 +13,14 @@ tags:
   - technique/initial-access
   - technique/privilege-escalation
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[GraphQL Injection]]'
-  - '[[Cross-Site Request Forgery (CSRF)]]'
-  - '[[BOLA - IDOR]]'
+  - "[[GraphQL Injection]]"
+  - "[[Cross-Site Request Forgery (CSRF)]]"
+  - "[[BOLA - IDOR]]"
 ---
 # GraphQL - Auth y Lógica
 

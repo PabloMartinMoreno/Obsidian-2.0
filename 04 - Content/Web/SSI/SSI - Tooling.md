@@ -8,13 +8,13 @@ tags:
   - vuln/ssi
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Includes (SSI) Injection]]'
-  - '[[Burp Suite]]'
+  - "[[Server-Side Includes (SSI) Injection]]"
+  - "[[Burp Suite]]"
 ---
 # SSI - Tooling
 

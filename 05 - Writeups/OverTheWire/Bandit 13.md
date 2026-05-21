@@ -5,7 +5,7 @@ tags:
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit13.html
 dificultad: Fácil
-autor: 
+autor:
 relacionados:
   - "[[Pares de claves SSH]]"
   - "[[Bandit 12]]"

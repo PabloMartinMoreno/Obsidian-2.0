@@ -10,12 +10,12 @@ tags:
   - technique/initial-access
   - technique/privilege-escalation
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Race Conditions]]'
+  - "[[Race Conditions]]"
 ---
 # Race Conditions - Vectores Específicos
 

@@ -10,19 +10,19 @@ tags:
   - asset/web-app
   - cert/cbbh
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación|Explotación]]'
+  - "[[Explotación|Explotación]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[SSRF - Mecanismo Lógico]]'
-  - '[[SSRF - Reconocimiento]]'
-  - '[[SSRF - Explotación]]'
-  - '[[SSRF - Gopher]]'
-  - '[[Anatomía de la Construcción de un Payload Gopher]]'
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[SSRF - Mecanismo Lógico]]"
+  - "[[SSRF - Reconocimiento]]"
+  - "[[SSRF - Explotación]]"
+  - "[[SSRF - Gopher]]"
+  - "[[Anatomía de la Construcción de un Payload Gopher]]"
 ---
 # SSRF - CWES
 

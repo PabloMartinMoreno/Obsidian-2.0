@@ -10,12 +10,12 @@ tags:
   - technique/discovery
   - asset/active-directory
   - asset/dns
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AD - DNS & SRV Records]]'
+  - "[[AD - DNS & SRV Records]]"
 ---
 # AD - DNS & SRV Records - Adidnsdump y DNS Authenticated
 

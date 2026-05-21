@@ -9,14 +9,14 @@ tags:
   - vuln/oauth
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[OAuth 2.0 Misconfigurations]]'
-  - '[[Open Redirect]]'
-  - '[[Subdomain Takeover]]'
+  - "[[OAuth 2.0 Misconfigurations]]"
+  - "[[Open Redirect]]"
+  - "[[Subdomain Takeover]]"
 ---
 # OAuth 2.0 - redirect_uri Manipulation
 

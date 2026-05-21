@@ -11,12 +11,12 @@ tags:
   - technique/credential-access
   - technique/initial-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Open Redirect]]'
+  - "[[Open Redirect]]"
 ---
 # Open Redirect - Vectores Específicos
 

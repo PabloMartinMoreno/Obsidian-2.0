@@ -7,12 +7,12 @@ tags:
   - vuln/ssrf
   - technique/initial-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Request Forgery (SSRF)]]'
+  - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 # SSRF - Básico
 

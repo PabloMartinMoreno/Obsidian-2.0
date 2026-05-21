@@ -1,16 +1,16 @@
 ---
-aliases: null
+aliases:
 tags:
   - type/technique
   - vuln/command-injection
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[OS Command Injection]]'
+  - "[[OS Command Injection]]"
 ---
 # Command Injection - Operadores Generales
 

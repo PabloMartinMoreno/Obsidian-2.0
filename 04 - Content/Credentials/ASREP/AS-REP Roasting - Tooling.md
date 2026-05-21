@@ -10,14 +10,14 @@ tags:
   - technique/kerberos
   - asset/active-directory
   - cred/kerberos
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AS-REP Roasting]]'
-  - '[[netexec]]'
-  - '[[Impacket Toolkit]]'
+  - "[[AS-REP Roasting]]"
+  - "[[netexec]]"
+  - "[[Impacket Toolkit]]"
 ---
 # AS-REP Roasting - Tooling
 

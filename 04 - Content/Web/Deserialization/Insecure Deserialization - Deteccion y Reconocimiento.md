@@ -8,12 +8,12 @@ tags:
   - vuln/insecure-deser
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Insecure Deserialization]]'
+  - "[[Insecure Deserialization]]"
 ---
 # Insecure Deserialization - Detección y Reconocimiento
 

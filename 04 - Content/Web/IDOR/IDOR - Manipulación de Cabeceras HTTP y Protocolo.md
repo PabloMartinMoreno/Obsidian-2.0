@@ -1,5 +1,5 @@
 ---
-aliases: null
+aliases:
 tags:
   - type/technique
   - vuln/idor
@@ -7,14 +7,14 @@ tags:
   - asset/api
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
-  - '[[BOLA - IDOR]]'
+  - "[[BOLA - IDOR]]"
 ---
 # IDOR - Manipulación de Cabeceras HTTP y Protocolo
 

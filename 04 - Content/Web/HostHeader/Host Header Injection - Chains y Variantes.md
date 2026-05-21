@@ -8,15 +8,15 @@ tags:
   - vuln/host-header-injection
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Host Header Injection]]'
-  - '[[Web Cache Poisoning]]'
-  - '[[HTTP Request Smuggling]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
+  - "[[Host Header Injection]]"
+  - "[[Web Cache Poisoning]]"
+  - "[[HTTP Request Smuggling]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 # Host Header Injection - Chains y Variantes
 

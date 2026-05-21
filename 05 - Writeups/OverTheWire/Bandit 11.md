@@ -5,7 +5,7 @@ tags:
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit11.html
 dificultad: Fácil
-autor: 
+autor:
 relacionados:
   - "[[tr]]"
   - "[[Bandit 10]]"

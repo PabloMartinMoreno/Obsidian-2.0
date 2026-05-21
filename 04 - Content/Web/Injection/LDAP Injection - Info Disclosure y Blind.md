@@ -9,12 +9,12 @@ tags:
   - technique/exfiltration
   - asset/web-app
   - asset/directory-service
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[LDAP Injection]]'
+  - "[[LDAP Injection]]"
 ---
 # LDAP Injection - Information Disclosure / Blind Extraction
 

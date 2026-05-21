@@ -10,14 +10,14 @@ tags:
   - vuln/brute-force
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[HTTP Brute Forcing]]'
-  - '[[JWT Attacks]]'
-  - '[[WordPress Exploitation]]'
+  - "[[HTTP Brute Forcing]]"
+  - "[[JWT Attacks]]"
+  - "[[WordPress Exploitation]]"
 ---
 # HTTP Brute Forcing - Tipos Especiales
 

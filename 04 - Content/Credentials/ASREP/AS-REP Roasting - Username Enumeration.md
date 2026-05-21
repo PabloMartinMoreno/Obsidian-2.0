@@ -8,12 +8,12 @@ tags:
   - technique/credential-access
   - technique/discovery
   - asset/active-directory
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AS-REP Roasting]]'
+  - "[[AS-REP Roasting]]"
 ---
 # AS-REP Roasting - Username Enumeration
 

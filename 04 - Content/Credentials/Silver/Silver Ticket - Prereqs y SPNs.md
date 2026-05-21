@@ -9,12 +9,12 @@ tags:
   - env/windows
   - env/linux
   - asset/active-directory
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Silver Ticket]]'
+  - "[[Silver Ticket]]"
 ---
 
 # Silver Ticket - Prereqs y SPNs

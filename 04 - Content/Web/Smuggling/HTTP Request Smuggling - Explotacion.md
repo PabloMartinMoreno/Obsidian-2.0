@@ -11,13 +11,13 @@ tags:
   - technique/credential-access
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[HTTP Request Smuggling]]'
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[HTTP Request Smuggling]]"
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # HTTP Request Smuggling - Explotación
 

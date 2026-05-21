@@ -11,12 +11,12 @@ tags:
   - vuln/insecure-deser
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Insecure Deserialization]]'
+  - "[[Insecure Deserialization]]"
 ---
 # Insecure Deserialization - Formatos Estructurados
 

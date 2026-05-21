@@ -12,26 +12,26 @@ tags:
   - asset/active-directory
   - cred/kerberos
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
-  - '[[Active Directory]]'
+  - "[[Explotación]]"
+  - "[[Active Directory]]"
 tertiary categories:
-  - '[[Active Directory Explotación]]'
+  - "[[Active Directory Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[Pass-the-Ticket - Formatos y Conversión]]'
-  - '[[Pass-the-Ticket - Windows Extraction]]'
-  - '[[Pass-the-Ticket - Linux Extraction]]'
-  - '[[Pass-the-Ticket - Inyección y Uso]]'
-  - '[[Pass-the-Ticket - Detection y Mitigations]]'
-  - '[[Pass-the-Ticket - Tooling]]'
-  - '[[Pass-the-Hash]]'
-  - '[[Golden Ticket]]'
-  - '[[Silver Ticket]]'
-  - '[[LSASS Dumping]]'
-  - '[[Rubeus]]'
-  - '[[Impacket Toolkit]]'
+  - "[[Pass-the-Ticket - Formatos y Conversión]]"
+  - "[[Pass-the-Ticket - Windows Extraction]]"
+  - "[[Pass-the-Ticket - Linux Extraction]]"
+  - "[[Pass-the-Ticket - Inyección y Uso]]"
+  - "[[Pass-the-Ticket - Detection y Mitigations]]"
+  - "[[Pass-the-Ticket - Tooling]]"
+  - "[[Pass-the-Hash]]"
+  - "[[Golden Ticket]]"
+  - "[[Silver Ticket]]"
+  - "[[LSASS Dumping]]"
+  - "[[Rubeus]]"
+  - "[[Impacket Toolkit]]"
 ---
 # Pass-the-Ticket
 

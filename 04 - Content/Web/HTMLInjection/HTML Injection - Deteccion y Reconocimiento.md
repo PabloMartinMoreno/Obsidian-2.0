@@ -7,12 +7,12 @@ tags:
   - vuln/html-injection
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[HTML Injection]]'
+  - "[[HTML Injection]]"
 ---
 # HTML Injection - Detección y Reconocimiento
 

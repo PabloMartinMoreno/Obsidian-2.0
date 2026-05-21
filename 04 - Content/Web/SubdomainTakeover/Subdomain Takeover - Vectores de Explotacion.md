@@ -10,12 +10,12 @@ tags:
   - technique/initial-access
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Subdomain Takeover]]'
+  - "[[Subdomain Takeover]]"
 ---
 # Subdomain Takeover - Vectores de Explotación
 

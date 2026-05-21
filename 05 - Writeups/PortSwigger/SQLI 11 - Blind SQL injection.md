@@ -5,7 +5,7 @@ tags:
 plataforma: "[[05 - Mocs/PortSwigger|PortSwigger]]"
 web: https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses
 dificultad: Fácil
-autor: 
+autor:
 relacionados:
   - "[[04 - Códigos/PortSwigger - SQLI 11|PortSwigger - SQLI 11]]"
 ---

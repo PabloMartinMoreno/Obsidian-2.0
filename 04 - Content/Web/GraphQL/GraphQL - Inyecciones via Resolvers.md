@@ -12,15 +12,15 @@ tags:
   - vuln/ssrf
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[GraphQL Injection]]'
-  - '[[SQL Injection (SQLi)]]'
-  - '[[NoSQL Injection]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
+  - "[[GraphQL Injection]]"
+  - "[[SQL Injection (SQLi)]]"
+  - "[[NoSQL Injection]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 # GraphQL - Inyecciones via Resolvers
 

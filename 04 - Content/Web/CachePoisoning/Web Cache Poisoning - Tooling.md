@@ -8,13 +8,13 @@ tags:
   - vuln/cache-poisoning
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Web Cache Poisoning]]'
-  - '[[Burp Suite]]'
+  - "[[Web Cache Poisoning]]"
+  - "[[Burp Suite]]"
 ---
 # Web Cache Poisoning - Tooling
 

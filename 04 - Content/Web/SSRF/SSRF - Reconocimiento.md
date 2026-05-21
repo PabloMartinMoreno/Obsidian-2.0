@@ -1,5 +1,5 @@
 ---
-aliases: null
+aliases:
 tags:
   - type/technique
   - vuln/ssrf
@@ -7,8 +7,8 @@ tags:
   - asset/web-app
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[SSRF - CWES]]'
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[SSRF - CWES]]"
 ---
 # SSRF - Reconocimiento
 

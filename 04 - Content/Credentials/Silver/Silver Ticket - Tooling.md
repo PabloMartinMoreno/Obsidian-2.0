@@ -12,7 +12,7 @@ tags:
   - asset/active-directory
 kind: SubCheatSheet
 linked:
-  - '[[Silver Ticket]]'
+  - "[[Silver Ticket]]"
 ---
 
 # Silver Ticket - Tooling

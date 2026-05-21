@@ -11,8 +11,8 @@ tags:
 kind: SubCheatSheet
 linked:
   - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
-  - '[[XML External Entity (XXE)]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
+  - "[[XML External Entity (XXE)]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
 ---
 
 # XSLT - Bypasses y Evasión

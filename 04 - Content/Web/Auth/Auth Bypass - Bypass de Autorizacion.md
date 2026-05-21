@@ -9,14 +9,14 @@ tags:
   - vuln/auth-bypass
   - technique/privilege-escalation
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Authentication & Authorization Bypass]]'
-  - '[[BOLA - IDOR]]'
-  - '[[Mass Assignment]]'
+  - "[[Authentication & Authorization Bypass]]"
+  - "[[BOLA - IDOR]]"
+  - "[[Mass Assignment]]"
 ---
 # Auth Bypass - Bypass de Autorización
 

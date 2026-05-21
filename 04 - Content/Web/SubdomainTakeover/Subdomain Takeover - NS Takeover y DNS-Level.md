@@ -9,12 +9,12 @@ tags:
   - vuln/subdomain-takeover
   - technique/initial-access
   - asset/dns
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Subdomain Takeover]]'
+  - "[[Subdomain Takeover]]"
 ---
 # Subdomain Takeover - NS Takeover y DNS-Level
 

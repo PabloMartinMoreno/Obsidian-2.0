@@ -10,12 +10,12 @@ tags:
   - vuln/dos
   - technique/impact
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[GraphQL Injection]]'
+  - "[[GraphQL Injection]]"
 ---
 # GraphQL - DoS
 

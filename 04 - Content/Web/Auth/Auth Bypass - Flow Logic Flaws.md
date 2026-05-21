@@ -9,14 +9,14 @@ tags:
   - vuln/auth-bypass
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Authentication & Authorization Bypass]]'
-  - '[[Race Conditions]]'
-  - '[[Host Header Injection]]'
+  - "[[Authentication & Authorization Bypass]]"
+  - "[[Race Conditions]]"
+  - "[[Host Header Injection]]"
 ---
 # Auth Bypass - Flow Logic Flaws
 

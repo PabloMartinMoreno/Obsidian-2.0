@@ -11,13 +11,13 @@ tags:
   - technique/discovery
   - technique/initial-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[GraphQL Injection]]'
-  - '[[Burp Suite]]'
+  - "[[GraphQL Injection]]"
+  - "[[Burp Suite]]"
 ---
 # GraphQL - Tooling
 

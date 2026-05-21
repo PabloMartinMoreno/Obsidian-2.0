@@ -10,20 +10,20 @@ tags:
   - env/active-directory
   - service/ad-cs
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Credential Access]]'
+  - "[[Credential Access]]"
 tertiary categories:
-  - '[[Active Directory Certificate Services]]'
+  - "[[Active Directory Certificate Services]]"
 linked:
-  - '[[AD CS Abuse]]'
-  - '[[Shadow Credentials]]'
-  - '[[NTLM Relay]]'
-  - '[[Kerberoasting]]'
-  - '[[Pass-the-Ticket]]'
-  - '[[Impacket Toolkit]]'
-  - '[[Rubeus]]'
-  - '[[Active Directory Explotación]]'
+  - "[[AD CS Abuse]]"
+  - "[[Shadow Credentials]]"
+  - "[[NTLM Relay]]"
+  - "[[Kerberoasting]]"
+  - "[[Pass-the-Ticket]]"
+  - "[[Impacket Toolkit]]"
+  - "[[Rubeus]]"
+  - "[[Active Directory Explotación]]"
 ---
 # Certipy
 

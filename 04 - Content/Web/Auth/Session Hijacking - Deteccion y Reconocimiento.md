@@ -8,12 +8,12 @@ tags:
   - vuln/session-hijacking
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Session Hijacking]]'
+  - "[[Session Hijacking]]"
 ---
 # Session Hijacking - Detección y Reconocimiento
 

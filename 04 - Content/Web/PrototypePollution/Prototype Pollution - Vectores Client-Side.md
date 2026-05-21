@@ -9,13 +9,13 @@ tags:
   - technique/initial-access
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Prototype Pollution]]'
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[Prototype Pollution]]"
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # Prototype Pollution - Vectores Client-Side
 

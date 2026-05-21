@@ -8,13 +8,13 @@ tags:
   - vuln/rfi
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Remote File Inclusion (RFI)]]'
-  - '[[Burp Suite]]'
+  - "[[Remote File Inclusion (RFI)]]"
+  - "[[Burp Suite]]"
 ---
 # RFI - Tooling
 

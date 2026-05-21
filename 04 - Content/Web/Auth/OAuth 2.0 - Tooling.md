@@ -9,14 +9,14 @@ tags:
   - vuln/oauth
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[OAuth 2.0 Misconfigurations]]'
-  - '[[Burp Suite]]'
-  - '[[JWT Attacks]]'
+  - "[[OAuth 2.0 Misconfigurations]]"
+  - "[[Burp Suite]]"
+  - "[[JWT Attacks]]"
 ---
 # OAuth 2.0 - Tooling
 

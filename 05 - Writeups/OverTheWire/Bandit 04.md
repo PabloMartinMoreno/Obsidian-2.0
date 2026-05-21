@@ -5,7 +5,7 @@ tags:
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit4.html
 dificultad: Fácil
-autor: 
+autor:
 relacionados:
   - "[[file]]"
   - "[[xargs]]"

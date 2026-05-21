@@ -9,12 +9,12 @@ tags:
   - technique/privilege-escalation
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Mass Assignment]]'
+  - "[[Mass Assignment]]"
 ---
 # Mass Assignment - Vectores Comunes
 

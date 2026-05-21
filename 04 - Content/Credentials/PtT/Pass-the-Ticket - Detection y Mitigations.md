@@ -8,12 +8,12 @@ tags:
   - technique/credential-access
   - env/windows
   - asset/active-directory
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Pass-the-Ticket]]'
+  - "[[Pass-the-Ticket]]"
 ---
 # Pass-the-Ticket - Detection y Mitigations
 

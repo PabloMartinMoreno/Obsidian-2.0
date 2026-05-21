@@ -8,13 +8,13 @@ tags:
   - vuln/crlf-injection
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[CRLF Injection]]'
-  - '[[Burp Suite]]'
+  - "[[CRLF Injection]]"
+  - "[[Burp Suite]]"
 ---
 # CRLF Injection - Tooling
 

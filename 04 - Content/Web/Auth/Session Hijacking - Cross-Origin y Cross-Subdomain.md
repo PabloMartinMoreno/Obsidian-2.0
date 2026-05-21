@@ -9,14 +9,14 @@ tags:
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Session Hijacking]]'
-  - '[[Cross-Site Request Forgery (CSRF)]]'
-  - '[[Subdomain Takeover]]'
+  - "[[Session Hijacking]]"
+  - "[[Cross-Site Request Forgery (CSRF)]]"
+  - "[[Subdomain Takeover]]"
 ---
 # Session Hijacking - Cross-Origin y Cross-Subdomain
 

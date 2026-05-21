@@ -9,13 +9,13 @@ tags:
   - vuln/oauth
   - technique/privilege-escalation
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[OAuth 2.0 Misconfigurations]]'
-  - '[[Phishing]]'
+  - "[[OAuth 2.0 Misconfigurations]]"
+  - "[[Phishing]]"
 ---
 # OAuth 2.0 - Scope, Consent & Flow Abuse
 

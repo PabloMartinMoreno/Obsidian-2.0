@@ -8,13 +8,13 @@ tags:
   - vuln/race-condition
   - technique/initial-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Race Conditions]]'
-  - '[[Burp Suite]]'
+  - "[[Race Conditions]]"
+  - "[[Burp Suite]]"
 ---
 # Race Conditions - Tooling
 

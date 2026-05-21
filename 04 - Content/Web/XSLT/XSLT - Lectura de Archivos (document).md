@@ -9,13 +9,13 @@ tags:
   - vuln/lfi
   - technique/collection
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
-  - '[[XML External Entity (XXE)]]'
+  - "[[XML External Entity (XXE)]]"
 ---
 # XSLT - Lectura de Archivos (document)
 

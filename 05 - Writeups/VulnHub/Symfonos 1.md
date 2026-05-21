@@ -3,7 +3,7 @@ tags:
   - type/writeup
   - estado/completo
 plataforma: "[[VulnHub]]"
-web: 
+web:
 dificultad: Fácil
 os: Linux
 relacionados:

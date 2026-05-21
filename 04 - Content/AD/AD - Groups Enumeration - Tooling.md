@@ -9,14 +9,14 @@ tags:
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AD - Groups Enumeration]]'
-  - '[[netexec]]'
-  - '[[BloodHound & SharpHound]]'
+  - "[[AD - Groups Enumeration]]"
+  - "[[netexec]]"
+  - "[[BloodHound & SharpHound]]"
 ---
 # AD - Groups Enumeration - Tooling
 

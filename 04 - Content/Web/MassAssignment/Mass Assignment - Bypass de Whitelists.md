@@ -8,12 +8,12 @@ tags:
   - vuln/mass-assignment
   - technique/defense-evasion
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Mass Assignment]]'
+  - "[[Mass Assignment]]"
 ---
 # Mass Assignment - Bypass de Whitelists
 

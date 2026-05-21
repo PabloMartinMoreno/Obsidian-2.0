@@ -10,13 +10,13 @@ tags:
   - technique/initial-access
   - technique/impact
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Web Cache Poisoning]]'
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[Web Cache Poisoning]]"
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # Web Cache Poisoning - Vectores de Poisoning
 

@@ -7,12 +7,12 @@ tags:
   - vuln/prototype-pollution
   - technique/defense-evasion
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Prototype Pollution]]'
+  - "[[Prototype Pollution]]"
 ---
 # Prototype Pollution - Bypasses y Filter Evasion
 

@@ -5,7 +5,7 @@ tags:
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit24.html
 dificultad: Fácil
-autor: 
+autor:
 relacionados:
   - "[[grep]]"
   - "[[nc]]"

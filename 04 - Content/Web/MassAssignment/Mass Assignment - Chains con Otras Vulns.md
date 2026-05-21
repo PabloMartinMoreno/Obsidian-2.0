@@ -8,16 +8,16 @@ tags:
   - vuln/mass-assignment
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Mass Assignment]]'
-  - '[[BOLA - IDOR]]'
-  - '[[Prototype Pollution]]'
-  - '[[GraphQL Injection]]'
-  - '[[JWT Attacks]]'
+  - "[[Mass Assignment]]"
+  - "[[BOLA - IDOR]]"
+  - "[[Prototype Pollution]]"
+  - "[[GraphQL Injection]]"
+  - "[[JWT Attacks]]"
 ---
 # Mass Assignment - Chains con Otras Vulns
 

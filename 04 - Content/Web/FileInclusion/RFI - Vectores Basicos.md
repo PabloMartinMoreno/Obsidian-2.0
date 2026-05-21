@@ -9,12 +9,12 @@ tags:
   - vuln/rfi
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Remote File Inclusion (RFI)]]'
+  - "[[Remote File Inclusion (RFI)]]"
 ---
 # RFI - Vectores Básicos
 

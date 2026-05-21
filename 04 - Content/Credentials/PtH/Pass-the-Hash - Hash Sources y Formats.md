@@ -10,12 +10,12 @@ tags:
   - technique/lateral-movement
   - asset/active-directory
   - cred/ntlm
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Pass-the-Hash]]'
+  - "[[Pass-the-Hash]]"
 ---
 # Pass-the-Hash - Hash Sources & Formats
 

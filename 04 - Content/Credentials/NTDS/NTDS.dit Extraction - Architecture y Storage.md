@@ -10,12 +10,12 @@ tags:
   - asset/active-directory
   - cred/ntlm
   - cred/kerberos
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[NTDS.dit Extraction]]'
+  - "[[NTDS.dit Extraction]]"
 ---
 # NTDS.dit Extraction - Architecture & Storage
 

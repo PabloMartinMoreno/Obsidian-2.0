@@ -8,13 +8,13 @@ tags:
   - vuln/host-header-injection
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Host Header Injection]]'
-  - '[[Burp Suite]]'
+  - "[[Host Header Injection]]"
+  - "[[Burp Suite]]"
 ---
 # Host Header Injection - Tooling
 

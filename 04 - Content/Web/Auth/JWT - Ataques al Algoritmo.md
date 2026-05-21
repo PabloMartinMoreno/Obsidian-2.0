@@ -11,12 +11,12 @@ tags:
   - technique/defense-evasion
   - asset/web-app
   - cred/jwt
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[JWT Attacks]]'
+  - "[[JWT Attacks]]"
 ---
 # JWT - Ataques al Algoritmo
 

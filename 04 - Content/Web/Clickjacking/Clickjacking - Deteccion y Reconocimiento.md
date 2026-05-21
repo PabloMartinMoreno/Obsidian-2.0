@@ -8,12 +8,12 @@ tags:
   - vuln/clickjacking
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Clickjacking]]'
+  - "[[Clickjacking]]"
 ---
 # Clickjacking - Detección y Reconocimiento
 

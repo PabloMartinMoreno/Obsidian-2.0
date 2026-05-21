@@ -9,12 +9,12 @@ tags:
   - technique/discovery
   - asset/web-app
   - cred/jwt
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[JWT Attacks]]'
+  - "[[JWT Attacks]]"
 ---
 # JWT - Detección y Reconocimiento
 

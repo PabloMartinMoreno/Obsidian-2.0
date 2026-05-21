@@ -9,13 +9,13 @@ tags:
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AD - ADCS Enumeration]]'
-  - '[[netexec]]'
+  - "[[AD - ADCS Enumeration]]"
+  - "[[netexec]]"
 ---
 # AD - ADCS Enumeration - Tooling
 

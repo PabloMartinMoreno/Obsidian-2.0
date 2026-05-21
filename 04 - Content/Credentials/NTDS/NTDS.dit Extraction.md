@@ -11,24 +11,24 @@ tags:
   - cred/ntlm
   - cred/kerberos
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
-  - '[[Active Directory]]'
+  - "[[Explotación]]"
+  - "[[Active Directory]]"
 tertiary categories:
-  - '[[Active Directory Explotación]]'
+  - "[[Active Directory Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[NTDS.dit Extraction - Architecture y Storage]]'
-  - '[[NTDS.dit Extraction - VSS y ntdsutil Methods]]'
-  - '[[NTDS.dit Extraction - Remote Extraction]]'
-  - '[[NTDS.dit Extraction - Offline Parsing]]'
-  - '[[NTDS.dit Extraction - Detection y Mitigations]]'
-  - '[[NTDS.dit Extraction - Tooling]]'
-  - '[[DCSync]]'
-  - '[[LSASS Dumping]]'
-  - '[[Golden Ticket]]'
-  - '[[Pass-the-Hash]]'
+  - "[[NTDS.dit Extraction - Architecture y Storage]]"
+  - "[[NTDS.dit Extraction - VSS y ntdsutil Methods]]"
+  - "[[NTDS.dit Extraction - Remote Extraction]]"
+  - "[[NTDS.dit Extraction - Offline Parsing]]"
+  - "[[NTDS.dit Extraction - Detection y Mitigations]]"
+  - "[[NTDS.dit Extraction - Tooling]]"
+  - "[[DCSync]]"
+  - "[[LSASS Dumping]]"
+  - "[[Golden Ticket]]"
+  - "[[Pass-the-Hash]]"
 ---
 # NTDS.dit Extraction
 

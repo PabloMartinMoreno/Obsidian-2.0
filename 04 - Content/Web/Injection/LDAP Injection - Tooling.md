@@ -10,13 +10,13 @@ tags:
   - technique/discovery
   - asset/web-app
   - asset/directory-service
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[LDAP Injection]]'
-  - '[[Burp Suite]]'
+  - "[[LDAP Injection]]"
+  - "[[Burp Suite]]"
 ---
 # LDAP Injection - Tooling
 

@@ -1,30 +1,30 @@
 ---
-aliases: null
+aliases:
 tags:
   - type/vulnerability
   - vuln/xss
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[XSS - HTML Básico]]'
-  - '[[XSS - Etiqueta <script> Estándar]]'
-  - '[[XSS - Manejadores de Eventos HTML]]'
-  - '[[XSS - Pseudo-protocolos]]'
-  - '[[XSS - Manipulación de Sources y Sinks (DOM-based)]]'
-  - '[[XSS - Payloads Polyglot]]'
-  - '[[XSS - Explotación Out-of-Band (Blind XSS)]]'
-  - '[[XSS - Explotación de Mutaciones del Navegador (mXSS)]]'
-  - '[[XSS - Escape de Contexto en Atributos]]'
-  - '[[XSS - Filtros XSS y WAF mediante Codificaciones Múltiples]]'
-  - '[[XSS - CWES]]'
-  - '[[Burp Suite]]'
+  - "[[XSS - HTML Básico]]"
+  - "[[XSS - Etiqueta <script> Estándar]]"
+  - "[[XSS - Manejadores de Eventos HTML]]"
+  - "[[XSS - Pseudo-protocolos]]"
+  - "[[XSS - Manipulación de Sources y Sinks (DOM-based)]]"
+  - "[[XSS - Payloads Polyglot]]"
+  - "[[XSS - Explotación Out-of-Band (Blind XSS)]]"
+  - "[[XSS - Explotación de Mutaciones del Navegador (mXSS)]]"
+  - "[[XSS - Escape de Contexto en Atributos]]"
+  - "[[XSS - Filtros XSS y WAF mediante Codificaciones Múltiples]]"
+  - "[[XSS - CWES]]"
+  - "[[Burp Suite]]"
 ---
 # Cross-Site Scripting (XSS) 
 

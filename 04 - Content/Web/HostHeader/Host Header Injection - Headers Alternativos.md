@@ -9,12 +9,12 @@ tags:
   - vuln/host-header-injection
   - technique/initial-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Host Header Injection]]'
+  - "[[Host Header Injection]]"
 ---
 # Host Header Injection - Headers Alternativos
 

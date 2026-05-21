@@ -5,7 +5,7 @@ tags:
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit3.html
 dificultad: Fácil
-autor: 
+autor:
 relacionados:
   - "[[Bandit 02]]"
   - "[[Bandit 04]]"

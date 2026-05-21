@@ -9,13 +9,13 @@ tags:
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AD - LAPS Enumeration]]'
-  - '[[netexec]]'
+  - "[[AD - LAPS Enumeration]]"
+  - "[[netexec]]"
 ---
 # AD - LAPS Enumeration - Tooling
 

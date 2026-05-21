@@ -7,12 +7,12 @@ tags:
   - vuln/prototype-pollution
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Prototype Pollution]]'
+  - "[[Prototype Pollution]]"
 ---
 # Prototype Pollution - Detección y Reconocimiento
 

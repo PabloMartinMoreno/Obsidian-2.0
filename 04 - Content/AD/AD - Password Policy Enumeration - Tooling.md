@@ -8,13 +8,13 @@ tags:
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[AD - Password Policy Enumeration]]'
-  - '[[netexec]]'
+  - "[[AD - Password Policy Enumeration]]"
+  - "[[netexec]]"
 ---
 # AD - Password Policy Enumeration - Tooling
 

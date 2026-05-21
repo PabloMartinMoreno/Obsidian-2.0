@@ -9,13 +9,13 @@ tags:
   - technique/discovery
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Template Injection (SSTI)]]'
-  - '[[Burp Suite]]'
+  - "[[Server-Side Template Injection (SSTI)]]"
+  - "[[Burp Suite]]"
 ---
 # SSTI - Tooling
 

@@ -8,12 +8,12 @@ tags:
   - vuln/csrf
   - technique/defense-evasion
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Cross-Site Request Forgery (CSRF)]]'
+  - "[[Cross-Site Request Forgery (CSRF)]]"
 ---
 # CSRF - Bypass de SameSite y Referer
 

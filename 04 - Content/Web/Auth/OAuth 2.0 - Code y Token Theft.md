@@ -9,14 +9,14 @@ tags:
   - vuln/oauth
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[OAuth 2.0 Misconfigurations]]'
-  - '[[JWT Attacks]]'
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[OAuth 2.0 Misconfigurations]]"
+  - "[[JWT Attacks]]"
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # OAuth 2.0 - Code & Token Theft
 

@@ -15,7 +15,7 @@ relacionados:
   - "[[Information Leakage]]"
   - "[[Abusing Umbraco Admin Panel]]"
   - "[[Remote Code Execution|RCE]]"
-  - '[[Abuso de SeImpersonatePrivilege (Ataques "Potato")]]'
+  - "[[Abuso de SeImpersonatePrivilege (Ataques "Potato")]]"
   - "[[TeamViewer - Escalada de Privilegios - Descifrado de Contraseñas (CVE-2019-18988)]]"
   - "[[Password Reuse]]"
 ---

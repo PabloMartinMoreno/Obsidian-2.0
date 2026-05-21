@@ -8,13 +8,13 @@ tags:
   - vuln/hpp
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[HTTP Parameter Pollution]]'
-  - '[[Burp Suite]]'
+  - "[[HTTP Parameter Pollution]]"
+  - "[[Burp Suite]]"
 ---
 # HPP - Tooling
 

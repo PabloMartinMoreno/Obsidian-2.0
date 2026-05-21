@@ -1,19 +1,19 @@
 ---
-aliases: null
+aliases:
 tags:
   - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
-  - '[[XML External Entity (XXE)]]'
+  - "[[XML External Entity (XXE)]]"
 ---
 # XXE - Blind Basado en Errores
 

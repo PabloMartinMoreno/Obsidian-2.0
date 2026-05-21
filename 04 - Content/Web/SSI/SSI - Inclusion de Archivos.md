@@ -9,12 +9,12 @@ tags:
   - vuln/lfi
   - technique/collection
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Includes (SSI) Injection]]'
+  - "[[Server-Side Includes (SSI) Injection]]"
 ---
 # SSI - Inclusión de Archivos
 

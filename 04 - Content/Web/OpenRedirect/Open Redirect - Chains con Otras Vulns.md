@@ -10,15 +10,15 @@ tags:
   - technique/lateral-movement
   - technique/credential-access
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Open Redirect]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[Web Cache Poisoning]]'
+  - "[[Open Redirect]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[Web Cache Poisoning]]"
 ---
 # Open Redirect - Chains con Otras Vulns
 

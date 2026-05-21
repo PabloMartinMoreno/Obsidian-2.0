@@ -9,13 +9,13 @@ tags:
   - vuln/brute-force
   - technique/discovery
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[HTTP Brute Forcing]]'
-  - '[[Burp Suite]]'
+  - "[[HTTP Brute Forcing]]"
+  - "[[Burp Suite]]"
 ---
 # HTTP Brute Forcing - Detección y Reconocimiento
 
