@@ -16,7 +16,8 @@
     "keyboard-keys",
     "notebook-backgrounds",
     "supercharged-links-gen",
-    "titulo-link"
+    "titulo-link",
+    "type-colors"
   ],
   "nativeMenus": false,
   "theme": "obsidian"

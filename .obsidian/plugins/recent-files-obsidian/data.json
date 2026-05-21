@@ -9,20 +9,20 @@
       "path": "04 - Content/Web/Injection/SQLi  - Union based.md"
     },
     {
+      "basename": "SQLi - Error based",
+      "path": "04 - Content/Web/Injection/SQLi - Error based.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "Process",
-      "path": "04 - Content/Process.md"
-    },
-    {
       "basename": "Incompletos",
       "path": "04 - Content/Process/Incompletos.md"
+    },
+    {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
     },
     {
       "basename": "Broken autentication",

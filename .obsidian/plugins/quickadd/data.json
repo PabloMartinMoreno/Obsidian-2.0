@@ -12,10 +12,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_hack the box.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/HackTheBox"],
+            "folders": [
+              "05 - Writeups/HackTheBox"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -25,7 +30,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         },
         {
           "id": "45aec3b2-ee53-4bc6-8bba-1c2a130aa398",
@@ -33,10 +43,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_hackmyvm.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/HackMyVM"],
+            "folders": [
+              "05 - Writeups/HackMyVM"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -46,7 +61,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         },
         {
           "id": "bb415e1c-9059-4d37-a875-76b6b67e2645",
@@ -54,10 +74,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_overthewire.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/OverTheWire"],
+            "folders": [
+              "05 - Writeups/OverTheWire"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -67,7 +92,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         },
         {
           "id": "a7d76bbe-ab2d-454c-8561-d9512571ccb0",
@@ -75,10 +105,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_tryhackme.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/TryHackMe"],
+            "folders": [
+              "05 - Writeups/TryHackMe"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -88,7 +123,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         },
         {
           "id": "04d6f57d-3b1f-442b-b894-108da36ad565",
@@ -96,10 +136,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_vulnhub.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/VulnHub"],
+            "folders": [
+              "05 - Writeups/VulnHub"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -109,7 +154,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         },
         {
           "id": "1509409a-34bf-45a2-a5a1-1be6100967e1",
@@ -117,10 +167,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_dockerlabs.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/DockerLabs"],
+            "folders": [
+              "05 - Writeups/DockerLabs"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -130,7 +185,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         },
         {
           "id": "e8fded2f-6aa6-432b-8a3e-f74e7323009d",
@@ -138,10 +198,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_vulnyx.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/VulNyx"],
+            "folders": [
+              "05 - Writeups/VulNyx"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -151,7 +216,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         },
         {
           "id": "f1234567-8901-2345-6789-012345678901",
@@ -159,10 +229,15 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Writeup/_portswigger.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["05 - Writeups/PortSwigger"],
+            "folders": [
+              "05 - Writeups/PortSwigger"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
@@ -172,7 +247,12 @@
           "openFileInMode": "default",
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false,
-          "fileOpening": { "location": "tab", "direction": "vertical", "focus": true, "mode": "default" }
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "focus": true,
+            "mode": "default"
+          }
         }
       ],
       "collapsed": false
@@ -189,17 +269,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_concept.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -209,17 +299,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_command.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -229,17 +329,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_sub-command.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -249,17 +359,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_cheatsheet.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -269,17 +389,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_tool.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content/Tools"],
+            "folders": [
+              "04 - Content/Tools"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -289,17 +419,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_technique.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -309,17 +449,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_vulnerability.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content/Web"],
+            "folders": [
+              "04 - Content/Web"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -329,17 +479,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_sub-note.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -349,17 +509,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_playbook.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -369,17 +539,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_payload.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content/Payloads"],
+            "folders": [
+              "04 - Content/Payloads"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -389,17 +569,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_ttp.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["04 - Content"],
+            "folders": [
+              "04 - Content"
+            ],
             "chooseWhenCreatingNote": true,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": true
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         }
@@ -418,17 +608,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Category/_primary category.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["01 - Primary Categories"],
+            "folders": [
+              "01 - Primary Categories"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -438,17 +638,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Category/_secondary category.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["02 - Secondary Categories"],
+            "folders": [
+              "02 - Secondary Categories"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         },
@@ -458,17 +668,27 @@
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Category/_tertiary category.md",
-          "fileNameFormat": { "enabled": false, "format": "" },
+          "fileNameFormat": {
+            "enabled": false,
+            "format": ""
+          },
           "folder": {
             "enabled": true,
-            "folders": ["03 - Tertiary Categories"],
+            "folders": [
+              "03 - Tertiary Categories"
+            ],
             "chooseWhenCreatingNote": false,
             "createInSameFolderAsActiveFile": false,
             "chooseFromSubfolders": false
           },
           "appendLink": false,
           "openFile": true,
-          "fileOpening": { "location": "tab", "direction": "vertical", "mode": "default", "focus": true },
+          "fileOpening": {
+            "location": "tab",
+            "direction": "vertical",
+            "mode": "default",
+            "focus": true
+          },
           "fileExistsMode": "Increment the file name",
           "setFileExistsBehavior": false
         }
@@ -477,15 +697,30 @@
     }
   ],
   "inputPrompt": "single-line",
+  "persistInputPromptDrafts": true,
+  "useSelectionAsCaptureValue": true,
   "devMode": false,
   "templateFolderPath": "00 - Resources/Templates",
-  "announceUpdates": false,
-  "version": "2.4.0",
+  "announceUpdates": "none",
+  "version": "2.12.1",
   "globalVariables": {},
   "onePageInputEnabled": false,
   "disableOnlineFeatures": true,
   "enableRibbonIcon": false,
   "showCaptureNotification": true,
+  "showInputCancellationNotification": false,
+  "enableTemplatePropertyTypes": false,
+  "dateAliases": {
+    "t": "today",
+    "tm": "tomorrow",
+    "yd": "yesterday",
+    "nw": "next week",
+    "nm": "next month",
+    "ny": "next year",
+    "lw": "last week",
+    "lm": "last month",
+    "ly": "last year"
+  },
   "ai": {
     "defaultModel": "Ask me",
     "defaultSystemPrompt": "As an AI assistant within Obsidian, your primary goal is to help users manage their ideas and knowledge more effectively. Format your responses using Markdown syntax. Please use the [[Obsidian]] link format. You can write aliases for the links by writing [[Obsidian|the alias after the pipe symbol]]. To use mathematical notation, use LaTeX syntax. LaTeX syntax for larger equations should be on separate lines, surrounded with double dollar signs ($$). You can also inline math expressions by wrapping it in $ symbols. For example, use $$w_{ij}^{\text{new}}:=w_{ij}^{\text{current}}+etacdotdelta_jcdot x_{ij}$$ on a separate line, but you can write \"($eta$ = learning rate, $delta_j$ = error term, $x_{ij}$ = input)\" inline.",
@@ -497,17 +732,48 @@
         "endpoint": "https://api.openai.com/v1",
         "apiKey": "",
         "models": [
-          { "name": "text-davinci-003", "maxTokens": 4096 },
-          { "name": "gpt-3.5-turbo", "maxTokens": 4096 },
-          { "name": "gpt-3.5-turbo-16k", "maxTokens": 16384 },
-          { "name": "gpt-3.5-turbo-1106", "maxTokens": 16385 },
-          { "name": "gpt-4", "maxTokens": 8192 },
-          { "name": "gpt-4-32k", "maxTokens": 32768 },
-          { "name": "gpt-4-1106-preview", "maxTokens": 128000 },
-          { "name": "gpt-4-turbo", "maxTokens": 128000 },
-          { "name": "gpt-4o", "maxTokens": 128000 },
-          { "name": "gpt-4o-mini", "maxTokens": 128000 }
-        ]
+          {
+            "name": "text-davinci-003",
+            "maxTokens": 4096
+          },
+          {
+            "name": "gpt-3.5-turbo",
+            "maxTokens": 4096
+          },
+          {
+            "name": "gpt-3.5-turbo-16k",
+            "maxTokens": 16384
+          },
+          {
+            "name": "gpt-3.5-turbo-1106",
+            "maxTokens": 16385
+          },
+          {
+            "name": "gpt-4",
+            "maxTokens": 8192
+          },
+          {
+            "name": "gpt-4-32k",
+            "maxTokens": 32768
+          },
+          {
+            "name": "gpt-4-1106-preview",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4-turbo",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4o",
+            "maxTokens": 128000
+          },
+          {
+            "name": "gpt-4o-mini",
+            "maxTokens": 128000
+          }
+        ],
+        "modelSource": "auto"
       }
     ]
   },
@@ -519,6 +785,10 @@
     "setVersionAfterUpdateModalRelease": true,
     "addDefaultAIProviders": true,
     "removeMacroIndirection": true,
-    "migrateFileOpeningSettings": true
+    "migrateFileOpeningSettings": true,
+    "consolidateFileExistsBehavior": true,
+    "backfillFileOpeningDefaults": true,
+    "setProviderModelDiscoveryMode": true,
+    "migrateProviderApiKeysToSecretStorage": true
   }
 }

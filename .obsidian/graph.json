@@ -25,39 +25,47 @@
     },
     {
       "query": "tag:#type/cheatsheet",
-      "color": { "a": 1, "rgb": 15489750 }
+      "color": { "a": 1, "rgb": 1357990 }
     },
     {
       "query": "tag:#type/tool",
-      "color": { "a": 1, "rgb": 4620980 }
+      "color": { "a": 1, "rgb": 16740096 }
     },
     {
       "query": "tag:#type/technique",
-      "color": { "a": 1, "rgb": 9662683 }
+      "color": { "a": 1, "rgb": 13164544 }
     },
     {
       "query": "tag:#type/concept",
-      "color": { "a": 1, "rgb": 49151 }
+      "color": { "a": 1, "rgb": 1982639 }
     },
     {
       "query": "tag:#type/vulnerability",
-      "color": { "a": 1, "rgb": 14423100 }
+      "color": { "a": 1, "rgb": 9109504 }
     },
     {
       "query": "tag:#type/writeup",
-      "color": { "a": 1, "rgb": 10506797 }
+      "color": { "a": 1, "rgb": 12720219 }
     },
     {
       "query": "tag:#type/playbook",
-      "color": { "a": 1, "rgb": 11403055 }
+      "color": { "a": 1, "rgb": 25600 }
     },
     {
       "query": "tag:#type/payload",
-      "color": { "a": 1, "rgb": 16747520 }
+      "color": { "a": 1, "rgb": 6953882 }
     },
     {
       "query": "tag:#type/ttp",
-      "color": { "a": 1, "rgb": 12211667 }
+      "color": { "a": 1, "rgb": 5597999 }
+    },
+    {
+      "query": "tag:#type/sub-command",
+      "color": { "a": 0.5, "rgb": 16763956 }
+    },
+    {
+      "query": "tag:#type/sub-note",
+      "color": { "a": 0.5, "rgb": 9741240 }
     }
   ],
   "collapse-display": true,
