@@ -36,7 +36,7 @@ linked:
 ````tabs
 
 tab: **Union-based**
-![[SQLi  - Union based#^sqli-union]]
+![[SQLi - Union based#^sqli-union]]
 
 tab: **Error-based**
 ![[SQLi - Error based#^sqli-error]]

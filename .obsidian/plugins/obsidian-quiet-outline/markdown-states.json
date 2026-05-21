@@ -3,12 +3,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 27,
-        "ch": 22
+        "line": 33,
+        "ch": 16
       },
       "to": {
-        "line": 27,
-        "ch": 22
+        "line": 33,
+        "ch": 16
       }
     },
     "expandedKeys": []
@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 16.51121794871795,
+    "scroll": 10.779661016949152,
     "cursor": {
       "from": {
         "line": 12,
