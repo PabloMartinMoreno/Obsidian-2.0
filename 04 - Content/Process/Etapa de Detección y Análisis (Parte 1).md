@@ -57,7 +57,7 @@ Tomemos un evento y completemos la tabla de ejemplo de arriba. Se vería así:
 Como puedes inferir, la línea de tiempo se enfoca principalmente en el comportamiento del atacante, por lo que las actividades registradas describen cuándo ocurrió el ataque, cuándo se estableció una conexión de red para acceder a un sistema, cuándo se descargaron archivos, etc. Es importante asegurarse de capturar dónde se detectó o descubrió la actividad y los sistemas asociados con ella.
 
 También podemos ver una alerta relacionada con este registro de eventos en la **Plataforma de Gestión de Casos TheHive**.
-![[Pasted image 20260107080440.png]]
+![[Etapa de Detección y Análisis (Parte 1).png]]
 
 
 Naveguemos hasta la parte inferior de esta sección y hagamos clic en _"Click here to spawn the target system!"_ (Clic aquí para desplegar el sistema objetivo). Luego, abramos la p2ágina web de TheHive en "Target IP:9000" en el puerto 9000 usando las credenciales proporcionadas para ver las alertas.

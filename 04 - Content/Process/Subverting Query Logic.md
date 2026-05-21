@@ -80,7 +80,7 @@ Esto significa lo siguiente:
 - Si 1=1 devuelve verdadero (lo cual siempre devuelve verdadero)
     **AND**
 - Si la contraseña es "something"
-![[Pasted image 20251126135330.png]]
+![[Subverting Query Logic-1.png]]
 
 Desglosémoslo:
 
@@ -99,18 +99,18 @@ Luego, se evalúa el operador `OR`:
 ## Evasión de Autenticación con operador OR
 
 Probemos esto como el nombre de usuario y veamos la respuesta.
-![[Pasted image 20251126135506.png]]
+![[Subverting Query Logic-3.png]]
 
 Pudimos iniciar sesión exitosamente como admin. Sin embargo, ¿qué pasaría si no conociéramos un nombre de usuario válido? Probemos la misma solicitud con un nombre de usuario diferente esta vez.
-![[Pasted image 20251126135512.png]]
+![[Subverting Query Logic-4.png]]
 
 El inicio de sesión falló porque `notAdmin` no existe en la tabla y resultó en una consulta falsa en general.
-![[Pasted image 20251126135454.png]]
+![[Subverting Query Logic-2.png]]
 
 Para iniciar sesión exitosamente una vez más, necesitaremos una consulta que sea verdadera en su totalidad. Esto se puede lograr inyectando una condición `OR` en el campo de contraseña, para que siempre devuelva verdadero. Probemos `something' or '1'='1` como la contraseña.
-![[Pasted image 20251126135557.png]]
+![[Subverting Query Logic-5.png]]
 
 La condición `OR` adicional resultó en una consulta verdadera en general, ya que la cláusula `WHERE` devuelve todo en la tabla, y el usuario presente en la primera fila inicia sesión. En este caso, como ambas condiciones devolverán verdadero, no tenemos que proporcionar un nombre de usuario y contraseña de prueba y podemos comenzar directamente con la inyección `'` e iniciar sesión con solo `' or '1' = '1`.
-![[Pasted image 20251126135617.png]]
+![[Subverting Query Logic-6.png]]
 
 Esto funciona ya que la consulta se evalúa como verdadera independientemente del nombre de usuario o la contraseña.

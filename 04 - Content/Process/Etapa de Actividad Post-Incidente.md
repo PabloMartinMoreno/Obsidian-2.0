@@ -12,7 +12,7 @@ linked:
 ### Etapa de Actividad Post-Incidente
 
 En esta etapa, nuestro objetivo es documentar el incidente y mejorar nuestras capacidades basándonos en las **lecciones aprendidas** del mismo. Esta etapa nos da la oportunidad de reflexionar sobre la amenaza entendiendo qué ocurrió, qué hicimos y cómo resultaron nuestras acciones y actividades. Esta información se recopila y analiza mejor en una reunión con todas las **partes interesadas (_stakeholders_)** que estuvieron involucradas durante el incidente. Generalmente tiene lugar unos días después del incidente, cuando el informe del incidente se ha finalizado.
-![[Pasted image 20260107154343.png]]
+![[Etapa de Actividad Post-Incidente.png]]
 #### Reporte (Informe)
 
 El reporte final es una parte crucial de todo el proceso. Un reporte completo contendrá respuestas a preguntas tales como:

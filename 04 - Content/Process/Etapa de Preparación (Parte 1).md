@@ -22,7 +22,7 @@ Durante la etapa de preparación, necesitamos asegurarnos de tener:
 - **Políticas y documentación claras.*    
 - **Herramientas** (software y hardware).
 
-![[Pasted image 20260107075839.png]]
+![[Etapa de Preparación (Parte 1).png]]
 
 
 #### Políticas Claras y Documentación

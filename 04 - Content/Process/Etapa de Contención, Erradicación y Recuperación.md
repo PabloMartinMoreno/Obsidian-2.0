@@ -12,7 +12,7 @@ linked:
 ### Etapa de Contención, Erradicación y Recuperación
 
 Cuando la investigación está completa y hemos comprendido el tipo de incidente y el impacto en el negocio (basado en todas las pistas reunidas y la información ensamblada en la línea de tiempo), es hora de entrar en la etapa de contención para evitar que el incidente cause más daños.
-![[Pasted image 20260107153745.png]]
+![[Etapa de Contención, Erradicación y Recuperación.png]]
 #### Contención
 
 En esta etapa, tomamos medidas para prevenir la propagación del incidente. Dividimos las acciones en **contención a corto plazo** y **contención a largo plazo**. Es importante que las acciones de contención se coordinen y ejecuten en todos los sistemas simultáneamente. De lo contrario, corremos el riesgo de notificar a los atacantes que vamos tras ellos, en cuyo caso podrían cambiar sus técnicas y herramientas para persistir en el entorno.

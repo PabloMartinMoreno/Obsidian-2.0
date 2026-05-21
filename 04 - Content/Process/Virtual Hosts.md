@@ -53,7 +53,7 @@ En este caso, `example1.com`, `example2.org` y `another-example.net` son dominio
 
 ## Búsqueda de VHosts por parte del servidor
 
-![[Pasted image 20251101152905.png]]
+![[Virtual Hosts.png]]
 
 Proceso simplificado de cómo el servidor determina qué contenido servir según el header `Host`:
 

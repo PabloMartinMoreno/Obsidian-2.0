@@ -246,5 +246,5 @@ Con permisos elevados, se accede al archivo `proof.txt` ubicado en `/root`.
 ## Bandera(s)
 
 > [!flag] `flag{root}`
-> ![[Pasted image 20250128155735.png]]
+> ![[Symfonos 2.png]]
 ^bandera

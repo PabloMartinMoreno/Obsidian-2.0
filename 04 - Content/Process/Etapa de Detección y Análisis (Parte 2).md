@@ -23,7 +23,7 @@ La investigación comienza basándose en la información recopilada inicialmente
 2. Identificación de nuevas pistas y sistemas impactados.
 3. Recopilación y análisis de datos de las nuevas pistas y sistemas impactados.
 
-![[Pasted image 20260107081810.png]]
+![[Etapa de Detección y Análisis (Parte 2)-1.png]]
 
 Permítenos ahora elaborar más sobre el proceso representado arriba.
 
@@ -66,7 +66,7 @@ Como ejemplo, en este reporte, podemos verificar la sección "Downloadable copy 
 ```
 
 En **TheHive**, podemos agregar IOCs en la sección de _observables_ de una alerta.
-![[Pasted image 20260107081836.png]]
+![[Etapa de Detección y Análisis (Parte 2)-2.png]]
 
 Para aprovechar los IOCs, tendremos que implementar una herramienta de obtención/búsqueda de IOCs (nativa o de terceros y posiblemente a escala). Un enfoque común es utilizar **WMI** o **PowerShell** para operaciones relacionadas con IOCs en entornos Windows.
 
@@ -93,7 +93,7 @@ La Inteligencia Artificial (IA) está transformando la forma en que las organiza
 Por ejemplo: La función "Attack Discovery" de **Elastic Security** utiliza IA generativa para analizar eventos de miles de detecciones, resumiendo y agrupando alertas relacionadas en una historia de ataque.
 
 _AI Attack Discovery_ aprovecha los LLMs (Grandes Modelos de Lenguaje) para analizar alertas en un entorno e identificar amenazas. El resumen representa un ataque y muestra las relaciones entre múltiples alertas para ayudarnos a identificar qué usuarios y hosts están involucrados. Esto también muestra mapeos de **MITRE ATT&CK**. Aquí hay un ejemplo de cómo se ve el descubrimiento de ataques:
-![[Pasted image 20260107090509.png]]
+![[Etapa de Detección y Análisis (Parte 2)-3.png]]
 
 En este descubrimiento, la IA ayudó revisando múltiples alertas y generó una visión general completa del ataque, identificando las actividades clave que ocurrieron durante el incidente. La IA también puede ayudar en la respuesta a incidentes. Algunos de los casos de uso incluyen:
 

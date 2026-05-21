@@ -18,7 +18,7 @@ ___
 
 ## Pasos del Flujo HTTP
 
-![[Pasted image 20251225153503.png]]
+![[http-flow.png]]
 
 ### Resolución DNS
 

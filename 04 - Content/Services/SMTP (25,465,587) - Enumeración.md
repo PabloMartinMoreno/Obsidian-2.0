@@ -64,7 +64,7 @@ El puerto por defecto para SMTP es TCP **25**; los puertos seguros más usados s
 
 ## Diagrama
 
-![[Pasted image 20251022140815.png]]
+![[SMTP (25,465,587) - Enumeración.png]]
 
 ***
 

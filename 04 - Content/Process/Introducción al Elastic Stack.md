@@ -15,10 +15,10 @@ linked:
 #### ¿Qué es el Elastic Stack?
 
 El **Elastic Stack** (anteriormente conocido como ELK Stack), creado por Elastic, es una colección de código abierto de principalmente tres aplicaciones (**Elasticsearch**, **Logstash** y **Kibana**) que trabajan en armonía para ofrecer a los usuarios capacidades integrales de búsqueda y visualización para el análisis y la exploración en tiempo real de fuentes de archivos de registro (_logs_).
-![[Pasted image 20260108144708.png]]
+![[Introducción al Elastic Stack-1.png]]
 
 La arquitectura de alto nivel del Elastic Stack puede mejorarse en entornos intensivos en recursos con la adición de **Kafka**, **RabbitMQ** y **Redis** para el almacenamiento en búfer (_buffering_) y la resiliencia, y **nginx** para la seguridad.
-![[Pasted image 20260108144725.png]]
+![[Introducción al Elastic Stack-2.png]]
 
 El flujo de datos típico es: Los **Beats** recopilan datos de fuentes (como Filebeat y Metricbeat), los envían a **Logstash** o a una Cola de Mensajería (Kafka, Redis), luego a **Elasticsearch** para su procesamiento (nodos Maestros, de Ingesta, de Datos), y finalmente a **Kibana** para su visualización.
 
@@ -39,9 +39,9 @@ Profundicemos en cada componente del Elastic Stack:
 **Flujos de datos comunes:**
 
 - _Beats -> Logstash -> Elasticsearch -> Kibana_ (Para procesamiento/transformación compleja).
-    ![[Pasted image 20260108144749.png]]
+    ![[Introducción al Elastic Stack-3.png]]
 - _Beats -> Elasticsearch -> Kibana_ (Para ingestión directa y rápida).
-    ![[Pasted image 20260108144758.png]]
+    ![[Introducción al Elastic Stack-4.png]]
 
 ---
 
@@ -49,7 +49,7 @@ Profundicemos en cada componente del Elastic Stack:
 
 El Elastic Stack se puede utilizar como una solución de **Gestión de Eventos e Información de Seguridad (SIEM)** para recopilar, almacenar, analizar y visualizar datos relacionados con la seguridad de varias fuentes (firewalls, IDS/IPS, endpoints).
 
-![[Pasted image 20260108144836.png]]
+![[Introducción al Elastic Stack-5.png]]
 
 Para detectar incidentes de seguridad, Elasticsearch se utiliza para realizar búsquedas y correlaciones en los datos recopilados. Como analistas del Centro de Operaciones de Seguridad (SOC), es probable que usemos **Kibana** extensivamente como nuestra interfaz principal.
 
@@ -131,9 +131,9 @@ Usando la función **Discover** de Kibana:
 3. En los resultados devueltos, observamos los campos disponibles:
     - `event.code` (relacionado con ECS).
     - `winlog.event_id` (relacionado con Winlogbeat).
-![[Pasted image 20260108144903.png]]
+![[Introducción al Elastic Stack-6.png]]
 4. Para cuentas deshabilitadas, buscamos `"0xC0000072"` y descubrimos el campo `winlog.event_data.SubStatus`.
-![[Pasted image 20260108144918.png]]
+![[Introducción al Elastic Stack-7.png]]
 
 #### Enfoque 2: Aprovechar la documentación de Elastic
 

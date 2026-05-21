@@ -14,7 +14,7 @@ linked:
 Ahora que estamos familiarizados con la **Cyber Kill Chain** (Cadena de Muerte Cibernética) y sus etapas, podemos predecir y anticipar mejor los siguientes pasos en un ataque y también sugerir medidas apropiadas contra ellos.
 
 Al igual que la Cyber Kill Chain, existen diferentes etapas al responder a un incidente, definidas como el **Proceso de Gestión de Incidentes** (Incident Handling Process). El Proceso de Gestión de Incidentes define una capacidad para que las organizaciones se preparen, detecten y respondan a eventos maliciosos. Ten en cuenta que este proceso es adecuado para responder a eventos de seguridad de TI, pero sus etapas no corresponden a las etapas de la Cyber Kill Chain de manera uno a uno.
-![[Pasted image 20260107075611.png]]
+![[Resumen del Proceso de Gestión de Incidentes.png]]
 
 Según lo definido por el **NIST**, el proceso de gestión de incidentes consta de las siguientes cuatro etapas distintas:
 - **Preparación**

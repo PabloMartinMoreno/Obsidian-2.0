@@ -18,12 +18,12 @@ ___
 Antes de empezar a hablar sobre la gestión de incidentes, necesitamos entender el ciclo de vida del ataque (también conocido como **Cyber Kill Chain**). Este ciclo de vida describe cómo se manifiestan los ataques. Comprender este ciclo nos proporcionará información valiosa sobre qué tan lejos ha llegado un atacante en la red y a qué puede tener acceso durante la fase de investigación de un incidente.
 
 La Cyber Kill Chain consta de siete etapas diferentes, como se muestra en la imagen a continuación: 
-![[Pasted image 20260106161913.png]]
+![[Cyber Kill Chain y MITRE ATT&CK-1.png]]
 
 ## Etapas de la Cyber Kill Chain
 
 La etapa de **Reconocimiento (Recon)** es la etapa inicial e involucra la parte donde un atacante elige su objetivo. Además, el atacante realiza una recopilación de información para familiarizarse más con el objetivo y reúne tantos datos útiles como sea posible, los cuales pueden usarse no solo en esta etapa sino también en otras etapas de esta cadena. Algunos atacantes prefieren realizar una recopilación de información pasiva a partir de fuentes web como LinkedIn e Instagram, pero también de la documentación en las páginas web de la organización objetivo. Los anuncios de trabajo y los socios de la empresa a menudo revelan información sobre la tecnología utilizada en la organización objetivo. Pueden proporcionar información extremadamente específica sobre herramientas antivirus, sistemas operativos y tecnologías de red. Otros atacantes van un paso más allá; comienzan a "tantear" y escanean activamente aplicaciones web externas y direcciones IP que pertenecen a la organización objetivo.
-![[Pasted image 20260106161922.png]]
+![[Cyber Kill Chain y MITRE ATT&CK-2.png]]
 
 En la etapa de **Armamento (Weaponize)**, se desarrolla el malware que se utilizará para el acceso inicial y se incrusta en algún tipo de exploit o carga útil (payload) entregable. Este malware está diseñado para ser extremadamente ligero e indetectable por herramientas antivirus y de detección. Es probable que el atacante haya recopilado información para identificar la tecnología antivirus o EDR presente en la organización objetivo. A gran escala, el único propósito de esta etapa inicial es proporcionar acceso remoto a una máquina comprometida en el entorno objetivo, la cual también tiene la capacidad de persistir a través de reinicios de la máquina y la habilidad de desplegar herramientas y funcionalidades adicionales bajo demanda.
 
@@ -53,7 +53,7 @@ Nuestro objetivo es detener a un atacante para que no progrese más en la cadena
 Otro marco para entender el comportamiento del adversario es el marco **MITRE ATT&CK**. Es una base de conocimientos más granular y basada en matrices de tácticas y técnicas adversarias utilizadas para lograr objetivos específicos. Los profesionales de la ciberseguridad utilizan ambos marcos para comprender y defenderse contra los ciberataques.
 
 La Matriz Empresarial MITRE ATT&CK es una base de conocimientos que documenta el comportamiento del adversario observado en la vida real contra entornos de TI empresariales (Windows, Linux, macOS, nube, red, móvil, etc.). Se presenta como una matriz donde las columnas representan los objetivos del adversario (**tácticas**), y las cel1das son **técnicas** que los atacantes utilizan para lograr esos objetivos. El marco ayuda a los defensores a entender, modelar, detectar y responder al comportamiento del atacante de una manera estructurada.
-![[Pasted image 20260106161936.png]]
+![[Cyber Kill Chain y MITRE ATT&CK-3.png]]
 
 ### Táctica (Tactic)
 
@@ -81,7 +81,7 @@ Esto permite una detección, atribución e informes precisos (podemos decir "Det
 ## Pirámide del Dolor (Pyramid of Pain)
 
 En el diagrama a continuación, la Pirámide del Dolor ilustra cuánto esfuerzo le toma a un adversario cambiar sus tácticas cuando los defensores detectan y bloquean diferentes tipos de indicadores. En la base de la pirámide hay indicadores simples como valores hash, direcciones IP y nombres de dominio — estos son fácilmente cambiados por los atacantes (bajo dolor).
-![[Pasted image 20260106161953.png]]
+![[Cyber Kill Chain y MITRE ATT&CK-4.png]]
 
 Por ejemplo, bloquear una IP maliciosa en un escenario de "Comando y Control" (T1071) de MITRE ATT&CK solo ralentizará ligeramente al adversario, ya que pueden cambiar rápidamente a un nuevo servidor C2. Moviéndose hacia arriba, los artefactos de red y host (como claves de registro, nombres de mutex o nombres de archivos) corresponden a técnicas específicas en ATT&CK (por ejemplo, T1547.001 – Claves de Ejecución de Registro/Carpeta de Inicio). Estos requieren más esfuerzo para cambiar y son indicadores más resistentes para los defensores.
 

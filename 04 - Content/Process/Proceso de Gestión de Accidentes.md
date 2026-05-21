@@ -33,7 +33,7 @@ No existe una única definición de lo que es un incidente de seguridad de TI, y
 
 La **gestión de incidentes** es un conjunto claramente definido de procedimientos para gestionar y responder a incidentes de seguridad en un entorno informático o de red.
 
-![[Pasted image 20260106145405.png]]
+![[Proceso de Gestión de Accidentes-1.png]]
 
 Es importante notar que la gestión de incidentes no se limita solo a incidentes de intrusión.
 
@@ -98,7 +98,7 @@ Un ejemplo de un informe de incidente de DFIR Labs es el siguiente:
 Este informe documenta los hallazgos del incidente de manera secuencial. Cada sección representa una fase distinta de la operación del adversario, es decir, desde el Acceso Inicial y Ejecución hasta la Exfiltración e Impacto. Esto ilustra cómo progresó el ataque a través del entorno.
 
 La plataforma DFIR Labs contiene muchos más informes de incidentes. Puedes verlos aquí.
-![[Pasted image 20260106145457.png]]
+![[Proceso de Gestión de Accidentes-2.png]]
 
 Página de inicio del Informe DFIR mostrando tres artículos destacados en una cuadrícula debajo de un encabezado rojo con navegación.
 
@@ -121,6 +121,6 @@ Un informe de PaloAlto Unit42 que cubre incidentes globales es el siguiente:
 A lo largo de este módulo, nos referiremos a un escenario de incidente para comprender algunos desafíos que enfrentan los gestores de incidentes. Este incidente muestra un ejemplo de los patrones observados repetidamente en incidentes del mundo real. La víctima en este escenario es **Insight Nexus**, una firma global de investigación de mercado que maneja datos competitivos sensibles para clientes de alto perfil en el sector de TI. La firma se convierte en el objetivo de dos grupos de amenazas distintos que operan simultáneamente dentro de su entorno.
 
 El diagrama a continuación muestra una visión general de la víctima y los actores de amenazas.
-![[Pasted image 20260106145522.png]]
+![[Proceso de Gestión de Accidentes-3.png]]
 
 Basado en la información que hemos recopilado, el primer actor de amenaza ganó entrada cuando los administradores del sistema olvidaron cambiar la contraseña predeterminada admin/admin en una aplicación orientada a Internet, es decir, **ManageEngine ADManager Plus**, después de una actualización del producto. Aprovechando esto, los atacantes iniciaron sesión con éxito, realizaron reconocimiento, mapearon usuarios y máquinas, y finalmente crearon nuevas cuentas privilegiadas de Active Directory. Usando una de las cuentas recién creadas, los adversarios pivotaron (se movieron lateralmente) más adentro en el entorno, identificando un servicio RDP externo expuesto por una mala configuración. Explotando ese punto de entrada, escalaron su control y finalmente usaron Objetos de Política de Grupo (GPOs) para desplegar spyware utilizando un paquete MSI en múltiples endpoints.

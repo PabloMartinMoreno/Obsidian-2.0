@@ -17,7 +17,7 @@ Su objetivo principal es garantizar la **redundancia y la disponibilidad**: si u
 
 **Es un método menos invasivo y potencialmente más eficiente para descubrir subdominios de la zona DNS.**
 
-![[Pasted image 20251230174414.png]]
+![[Transferencia de Zona DNS.png]]
 
 ---
 

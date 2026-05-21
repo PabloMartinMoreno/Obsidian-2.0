@@ -28,7 +28,7 @@ Permite a los usuarios “viajar al pasado” y ver capturas de sitios web tal c
 La Wayback Machine funciona mediante el uso de rastreadores web (web crawlers) que capturan instantáneas de los sitios a intervalos regulares de forma automatizada. Estos rastreadores navegan por la web siguiendo enlaces e indexando páginas, de manera similar a los rastreadores de los motores de búsqueda. Sin embargo, en lugar de limitarse a indexar la información para búsquedas, la Wayback Machine guarda el contenido completo de las páginas, incluyendo HTML, CSS, JavaScript, imágenes y otros recursos.
 
 La operación de la Wayback Machine puede visualizarse en tres pasos:
-![[Pasted image 20251103123601.png]]
+![[Web Archives.png]]
 
 * **Crawling (rastreo):** La Wayback Machine emplea rastreadores automatizados, a menudo llamados “bots”, para navegar sistemáticamente por Internet. Estos bots siguen enlaces de una página a otra, como haría una persona al hacer clic en hipervínculos, pero además descargan copias de las páginas que encuentran.
 * **Archiving (archivo):** Las páginas descargadas, junto con sus recursos asociados como imágenes, hojas de estilos y scripts, se almacenan en el vasto archivo de la Wayback Machine. Cada página capturada se asocia a una fecha y hora específicas, creando una instantánea histórica del sitio en ese momento. Este proceso de archivado ocurre a intervalos regulares —a veces diarios, semanales o mensuales— según la popularidad del sitio y la frecuencia de sus actualizaciones.

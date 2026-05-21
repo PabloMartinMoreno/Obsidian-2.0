@@ -15,7 +15,7 @@ linked:
 #### ¿Qué es un Caso de Uso de SIEM?
 
 Utilizar casos de uso de SIEM es un aspecto fundamental para elaborar una estrategia de ciberseguridad robusta, ya que permiten la identificación y detección efectiva de posibles incidentes de seguridad. Los casos de uso están diseñados para ilustrar situaciones específicas donde un producto o servicio puede aplicarse, y pueden ir desde escenarios generales, como intentos fallidos de inicio de sesión, hasta otros más complejos como la detección de un brote de ransomware.
-![[Pasted image 20260108170214.png]]
+![[Desarrollo de Casos de Uso de SIEM-1.png]]
 
 Por ejemplo, considera una situación donde un usuario llamado Rob experimenta **10 intentos de autenticación fallidos consecutivos**. Estos eventos podrían originarse del usuario real que olvidó sus credenciales o de un actor malicioso tratando de aplicar fuerza bruta para entrar a la cuenta. En cualquier caso, estos 10 eventos se envían al sistema SIEM, el cual los **correlaciona** en un solo evento y desencadena una alerta para el equipo del SOC bajo la categoría de caso de uso de "fuerza bruta".
 
@@ -24,7 +24,7 @@ Basado en los datos de registro generados dentro del SIEM, el equipo del SOC es 
 #### Ciclo de Vida del Desarrollo de Casos de Uso de SIEM
 
 Las siguientes etapas críticas deben considerarse al desarrollar cualquier caso de uso:
-![[Pasted image 20260108170231.png]]
+![[Desarrollo de Casos de Uso de SIEM-2.png]]
 
 1. **Requerimientos:** Comprender el propósito o la necesidad del caso de uso, señalando el escenario específico para el cual se necesita una alerta o notificación. Los requisitos pueden ser propuestos por clientes, analistas o empleados. Por ejemplo, el objetivo podría ser diseñar un caso de uso de detección para un ataque de fuerza bruta que active una alerta después de 10 fallos de inicio de sesión consecutivos en 4 minutos.
     
@@ -67,7 +67,7 @@ Las siguientes etapas críticas deben considerarse al desarrollar cualquier caso
 ### Ejemplo 1 (Microsoft Build Engine Iniciado por una Aplicación de Office)
 
 Ahora, exploremos un ejemplo práctico usando el **Elastic Stack** como solución SIEM para ayudar a entender cómo mapear cada uno de los puntos anteriores.
-![[Pasted image 20260108170301.png]]
+![[Desarrollo de Casos de Uso de SIEM-3.png]]
 
 En la instantánea proporcionada (caso de uso de detección), necesitamos determinar nuestro riesgo y el objetivo de nuestros esfuerzos de monitoreo.
 
@@ -97,7 +97,7 @@ Para el ajuste fino de la regla, es esencial entender las condiciones que pueden
 ### Ejemplo 2 (MSBuild Realizando Conexiones de Red)
 
 El Ejemplo 1 discutió un caso de uso y regla de detección de alta severidad. Ahora, examinemos un caso de uso de **severidad media** usando una solución SIEM.
-![[Pasted image 20260108170324.png]]
+![[Desarrollo de Casos de Uso de SIEM-4.png]]
 
 En la instantánea dada, necesitamos determinar nuestro riesgo y lo que estamos tratando de monitorear.
 

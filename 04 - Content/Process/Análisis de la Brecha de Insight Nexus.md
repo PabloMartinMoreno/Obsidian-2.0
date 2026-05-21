@@ -16,7 +16,7 @@ linked:
 La víctima en este incidente es **Insight Nexus**, una empresa mediana de investigación de mercado y análisis de datos con sede en Singapur. Proporcionan inteligencia competitiva y conocimientos del consumidor para clientes globales, incluidas empresas de Fortune 500 en los sectores de TI y finanzas. Su infraestructura incluye muchas aplicaciones, servidores y hosts, pero nos centraremos en los importantes, como una pila de aplicaciones orientada a Internet para clientes, un servidor ManageEngine para administración de TI y un portal de informes de clientes basado en PHP. Debido a la naturaleza de su trabajo, se convirtieron en un objetivo atractivo para adversarios interesados en el robo de datos de clientes.
 
 Echemos un vistazo al incidente para comprender algunos desafíos que enfrentan los gestores de incidentes. Este incidente muestra un ejemplo de los patrones observados repetidamente en incidentes del mundo real. La víctima en este escenario es Insight Nexus, una firma global de investigación de mercado que maneja datos competitivos sensibles para clientes de alto perfil en el sector de TI. La firma se convierte en el objetivo de dos grupos de amenazas distintos operando simultáneamente dentro de su entorno. El primer actor de amenazas ganó acceso cuando los administradores del sistema olvidaron cambiar la contraseña predeterminada _admin/admin_ en una aplicación orientada a Internet, es decir, **ManageEngine ADManager Plus**, después de una actualización del producto. Aprovechando esto, los atacantes iniciaron sesión con éxito, realizaron reconocimiento, mapearon usuarios y máquinas, y finalmente crearon nuevas cuentas privilegiadas de Active Directory. Usando una de las cuentas recién creadas, los adversarios pivotaron más profundamente en el entorno, identificando un servicio RDP externo expuesto por una mala configuración. Explotando ese punto de entrada, escalaron su control y finalmente usaron Objetos de Política de Grupo (GPOs) para desplegar spyware usando un paquete MSI en múltiples endpoints.
-![[Pasted image 20260107155721.png]]
+![[Análisis de la Brecha de Insight Nexus-1.png]]
 
 Durante días, estas actividades pasaron desapercibidas. El incidente fue descubierto por primera vez un día cuando un analista del equipo SOC investigó una alerta en **TheHive** (Plataforma de Respuesta a Incidentes de Seguridad) relacionada con la creación de un archivo sospechoso llamado `checkme.txt` en la raíz de un servidor web. Tras la investigación, descubrieron que fue colocado deliberadamente allí como una firma: _"SilentJackal estuvo aquí"_. Este artefacto inusual desencadenó una investigación más profunda. Lo que hizo la situación más compleja fue que el equipo SOC se dio cuenta entonces de que dos grupos de actores de amenazas diferentes estaban activos en el mismo entorno. Mientras el primer grupo todavía estaba explorando y desplegando mecanismos de persistencia, un segundo actor ya había comprometido una aplicación PHP vulnerable anteriormente, exfiltrado datos sensibles de investigación de mercado y reducido significativamente su actividad después de lograr su objetivo, dejando solo conexiones ocasionales a una IP externa.
 
@@ -56,12 +56,12 @@ Un administrador del sistema notó conexiones salientes inusuales desde el servi
 **Brecha de Detección:** Hubo demasiadas alertas sobre la creación de nuevos archivos en los servidores, y esta alerta no se escaló debido a la fatiga de alertas. Necesitan reducir algunos falsos positivos y agregar más filtros.
 
 El equipo SOC comenzó a investigar este incidente y encontró muchos intentos de reconocimiento en las aplicaciones web externas.
-![[Pasted image 20260107155741.png]]
+![[Análisis de la Brecha de Insight Nexus-2.png]]
 
 Tras una investigación más profunda, los respondedores encontraron que el **2025-10-01 03:12:02**, el actor de amenazas Crimson Fox obtuvo acceso inicial vía ManageEngine. Inicialmente, realizaron intentos de inicio de sesión dirigidos contra `manage.insightnexus.com`. Encontraron que las credenciales predeterminadas (es decir, _admin/admin_) funcionaban, lo que significa que o bien los administradores del sistema olvidaron cambiar las credenciales predeterminadas después de una actualización o dejaron la aplicación web accesible a todos en el internet público. El resultado fue desafortunado para la organización, y los actores de amenazas realizaron un inicio de sesión web interactivo vía HTTPS. El informe de auditoría de inicio de sesión muestra esta actividad de inicio de sesión exitosa.
 
 **Descuido Organizacional:** A pesar de los avisos del proveedor, las credenciales predeterminadas nunca se cambiaron. La autenticación multifactor no se aplicó, y no hubo inspección de WAF en el endpoint. Los eventos de inicio de sesión de la aplicación web no se enviaban a un SIEM centralizado.
-![[Pasted image 20260107155756.png]]
+![[Análisis de la Brecha de Insight Nexus-3.png]]
 
 Hubo una vulnerabilidad web de Java relacionada con el producto ManageEngine ADManager Plus donde la ejecución remota de código sin autenticación era posible. El actor utilizó esto y estableció un C2 saliente sobre HTTPS hacia `103.112.60.117` (un host controlado por el atacante en la nube), haciéndose pasar por tráfico de actualización. Se registró el siguiente **Sysmon Event ID 3** (Conexión de Red detectada):
 
@@ -77,7 +77,7 @@ DestinationPort: 443
 ```
 
 El **2025-10-02 04:02:11**, los atacantes enumeraron usuarios y computadoras del dominio a través de consultas desde la consola de ManageEngine. Usando el punto de apoyo en ManageEngine, también crearon una nueva cuenta de Administrador de Dominio. Durante la enumeración de Active Directory, encontraron que una máquina Windows 10 (`DEV-021`) tenía un puerto RDP expuesto públicamente. Esta máquina de escritorio es utilizada ocasionalmente por desarrolladores para realizar tareas de desarrollo y lanzamiento tomando RDP directamente en su IP pública mientras trabajan desde casa. El atacante tomó RDP directamente hacia esta máquina usando la cuenta de Administrador de Dominio recién creada.
-![[Pasted image 20260107155808.png]]
+![[Análisis de la Brecha de Insight Nexus-4.png]]
 
 Para esta actividad, se creó el siguiente registro de eventos en los Registros de Eventos de Windows con **Event ID 4624**.
 
@@ -104,7 +104,7 @@ An account was successfully logged on.
 ```
 
 Después de un inicio de sesión exitoso, los atacantes realizaron algún reconocimiento del dominio. Encontraron algunos recursos compartidos de archivos interesantes en el servidor de archivos, a los cuales intentaron acceder varias veces. En el servidor de archivos, localizaron carpetas de proyectos de clientes que contenían borradores de informes, datos de encuestas y pronósticos de mercado.
-![[Pasted image 20260107155822.png]]
+![[Análisis de la Brecha de Insight Nexus-5.png]]
 
 En el servidor de archivos, se crearon múltiples registros de eventos, como **5140(S, F):** Se accedió a un objeto de recurso compartido de red. Sin embargo, no se crearon reglas para generar alertas específicamente para estos eventos RDP desde IPs públicas.
 
@@ -155,7 +155,7 @@ level: medium
 ```
 
 Después de explorar y observar durante una semana, comenzaron a comprimir y exfiltrar datos seleccionados. Los atacantes empaquetaron materiales robados de clientes en un archivo llamado `diagnostics_data.zip`, un nombre de archivo elegido para parecer telemetría de rutina. El archivo comprimido fue luego subido al host controlado por el atacante a través de HTTPS. Debido a que el nombre del archivo se parecía a datos de diagnóstico legítimos y la carga utilizaba HTTPS estándar, no levantó alarmas inmediatamente. Esta táctica aumenta la probabilidad de los atacantes de exfiltrar datos antes de que los defensores escalen el incidente.
-![[Pasted image 20260107155836.png]]
+![[Análisis de la Brecha de Insight Nexus-6.png]]
 
 Luego, el **2025-10-04 02:10:45**, desde `DEV-021`, ejecutaron algunos scripts de PowerShell que usaban credenciales de administrador de dominio para crear un Objeto de Política de Grupo (GPO) que empuja un paquete MSI (`java-update.msi`) a través del dominio. Este paquete MSI creó una tarea programada para ejecutar un proceso que realiza espionaje y exfiltración de datos en las máquinas.
 
@@ -174,10 +174,10 @@ Sysmon Event 1: Image: C:\Windows\System32\msiexec.exe CommandLine: "msiexec /i 
 ```
 
 Este malware, con capacidades de espionaje y exfiltración de datos, se despliega en todas las máquinas del dominio usando GPO.
-![[Pasted image 20260107155847.png]]
+![[Análisis de la Brecha de Insight Nexus-7.png]]
 
 Aproximadamente al mismo tiempo, otro actor de amenazas, **Silent Jackal**, también realizó algunas actividades en un portal de informes separado basado en PHP. Este servidor tenía una vulnerabilidad de carga de archivos sin parchear, que fue explotada por el actor de amenazas para ganar acceso a este servidor. Silent Jackal subió un archivo en el directorio raíz del servidor web. Sus actividades parecieron limitarse a dejar el archivo marcador `checkme.txt`. Esto creó ruido en el entorno y proporcionó a los defensores la primera pista del compromiso.
-![[Pasted image 20260107155856.png]]
+![[Análisis de la Brecha de Insight Nexus-8.png]]
 
 Sin embargo, el actor de amenazas no procedió más allá de su acceso inicial. Esto fue probablemente una intrusión de baja habilidad destinada a señalar presencia en lugar de causar daño inmediato.
 
