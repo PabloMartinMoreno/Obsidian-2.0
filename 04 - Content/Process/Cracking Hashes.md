@@ -1,5 +1,19 @@
 ---
 aliases:
+  - "Hash-Identifier"
+  - "Identifying Hash Formats"
+  - "Cracking with Hashcat"
+  - "Cracking with John the Ripper"
+  - "Cracking with Ophcrack"
+  - "Cracking Archives & Documents"
+  - "Cracking SSH Keys & Keyfiles"
+  - "Cracking Wireless Handshakes"
+  - "Cracking Wallet Files"
+  - "Online Cracking with Hydra"
+  - "Online Cracking with Medusa"
+  - "Wordlists Management"
+  - "Mutating Wordlists with Rules"
+  - "Generating Custom Wordlists"
   - "Password Cracking"
   - Hash Cracking
 tags:

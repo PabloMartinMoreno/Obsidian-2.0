@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Shellcode Runners & Loaders"
+  - "Process Injection Techniques"
   - run.ps1
 tags:
   - type/payload

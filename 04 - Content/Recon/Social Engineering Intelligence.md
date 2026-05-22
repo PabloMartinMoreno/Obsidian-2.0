@@ -1,5 +1,12 @@
 ---
 aliases:
+  - "Drive-by Download Attacks"
+  - "Browser Exploitation Frameworks (BeEF)"
+  - "Browser Zero-Day Exploits"
+  - "PDF Reader Exploits"
+  - "Media Player Exploits"
+  - "VPN Client Exploits"
+  - "SCADA & Industrial Control System Exploits"
   - "Phishing Campaigns"
   - "Credential Harvesting Websites"
   - "Malicious Browser Extensions"

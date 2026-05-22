@@ -1,5 +1,10 @@
 ---
 aliases:
+  - "Generating Payloads with Msfvenom"
+  - "Creating Staged vs Stageless Payloads"
+  - "Web Shell Generation"
+  - "Compiling Exploits from Source"
+  - "Cross-Compilation Techniques"
   - msfvenom
   - Metasploit Payload Generator
 tags:

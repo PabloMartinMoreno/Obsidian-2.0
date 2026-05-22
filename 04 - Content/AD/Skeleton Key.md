@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "DSRM Administrator"
   - "Custom SSP"
   - "DSRM Backdoor"
 tags:

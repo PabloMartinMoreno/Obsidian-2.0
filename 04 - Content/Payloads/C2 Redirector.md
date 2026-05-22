@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Sliver C2"
   - "Setting up C2 Redirectors"
   - "Domain Fronting & Hiding"
   - "C2 Profiles & Malleability"

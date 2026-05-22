@@ -1,5 +1,12 @@
 ---
 aliases:
+  - ".bashrc & Profile Files"
+  - "SSH Authorized_keys"
+  - "Systemd Services"
+  - "Registry Keys (Run, RunOnce)"
+  - "Scheduled Tasks"
+  - "Startup Folders"
+  - "WMI Events"
   - "GPO Abuse"
   - "GPO y SYSVOL"
   - AD GPO Enumeration

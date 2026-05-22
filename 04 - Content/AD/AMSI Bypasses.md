@@ -1,5 +1,11 @@
 ---
 aliases:
+  - "Modifying Exploit Signatures"
+  - "Using Packers & Crypters"
+  - "Obfuscating PowerShell Scripts"
+  - "Obfuscating Bash & Python"
+  - "Sandbox Detection Techniques"
+  - "Encoding & Encryption"
   - AMSI Bypass
   - AMSI Patching
   - AMSI Evasion

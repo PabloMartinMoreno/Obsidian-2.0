@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "OWASP ZAP"
   - Burp
   - BurpSuite
 tags:

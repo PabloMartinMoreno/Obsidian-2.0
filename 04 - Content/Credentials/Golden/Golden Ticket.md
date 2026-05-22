@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Golden Tickets"
   - "Diamond Ticket"
   - "Sapphire Ticket"
   - "Golden Certificate"
