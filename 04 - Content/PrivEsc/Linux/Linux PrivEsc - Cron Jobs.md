@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Cron"
+  - "Cron Jobs"
   - Cron
   - Crontab
   - Cron Jobs

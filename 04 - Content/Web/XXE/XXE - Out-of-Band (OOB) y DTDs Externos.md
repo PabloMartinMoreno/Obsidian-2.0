@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "XXE Out-of-Band (OOB)"
+  - "XXE OOB"
 tags:
   - type/technique
   - vuln/xxe

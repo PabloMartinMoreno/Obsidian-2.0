@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Blind XXE"
 tags:
   - type/technique
   - vuln/xxe

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "PATH Hijacking"
   - PATH Hijacking
   - PATH Injection
 tags:

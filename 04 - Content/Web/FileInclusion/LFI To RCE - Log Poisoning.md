@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Log Poisoning"
 tags:
   - type/technique
   - vuln/lfi

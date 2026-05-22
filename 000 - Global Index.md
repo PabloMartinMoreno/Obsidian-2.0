@@ -16,18 +16,22 @@ cssclasses:
 
 ### Dashboards
 - [[Incompletos]] — MOC pendientes por dominio
+- [[Todo Round-Up]] — callouts [!todo] activos
 - [[Hack the Box]] — dashboard HTB
+- [[Tools]] — MOC herramientas
+- [[CheatSheets]] — MOC cheatsheets por dominio
 
 ### Web
 - [[Web Enumeración]] — MOC web recon
 - [[Web Explotación]] — MOC web exploit
 
 ### Active Directory
-- [[Active Directory]] — MOC AD
+- [[Active Directory]] — MOC AD (con mindmap)
 - [[Active Directory Enumeración]] — MOC AD enum
 - [[Active Directory Explotación]] — MOC AD exploit
 
 ### Process
+- [[Vault Administration]] — convenciones del vault
 - [04 - Content/Process/](04%20-%20Content/Process/) — meta-notas y workflows
 
 ***

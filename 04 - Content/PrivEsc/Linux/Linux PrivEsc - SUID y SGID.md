@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "SUID"
+  - "SGID"
   - SUID
   - SGID
   - Linux SUID
