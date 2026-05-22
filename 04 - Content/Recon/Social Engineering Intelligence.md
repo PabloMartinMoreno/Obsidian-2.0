@@ -1,5 +1,11 @@
 ---
 aliases:
+  - "Phishing Campaigns"
+  - "Credential Harvesting Websites"
+  - "Malicious Browser Extensions"
+  - "Malicious LNK Files"
+  - "Malicious PDF Files"
+  - "Capturing Hashes with LNK & SCF Files"
 tags:
   - type/cheatsheet
   - technique/recon/passive

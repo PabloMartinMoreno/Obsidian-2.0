@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "WinRM (PSRemoting)"
+  - "WMI y DCOM Lateral"
   - WMI Lateral Movement
   - WinRM Lateral Movement
   - wmiexec

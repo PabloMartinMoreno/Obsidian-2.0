@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "PsExec y SMBExec"
+  - "SCM Service Lateral"
   - PtH SMB
   - psexec PtH
   - wmiexec PtH

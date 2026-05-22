@@ -1,5 +1,15 @@
 ---
 aliases:
+  - "Setting up C2 Redirectors"
+  - "Domain Fronting & Hiding"
+  - "C2 Profiles & Malleability"
+  - "Managing Jitter & Beacons"
+  - "Setting up Metasploit Listeners"
+  - "Setting up Sliver C2"
+  - "Setting up Covenant"
+  - "Cobalt Strike"
+  - "Empire (PowerShell & Python)"
+  - "Havoc C2"
 tags:
   - type/concept
   - asset/infrastructure

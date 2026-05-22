@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "SAM y SECURITY Hive Dump"
+  - "Cached Credentials (mscash)"
   - "Dumping SAM & LSA Secrets"
   - Secrets Dumping
   - Credential Dumping

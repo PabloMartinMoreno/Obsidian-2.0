@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "AdminSDHolder Abuse"
   - Active Directory Certificate Services Abuse
   - ADCS Abuse
   - Certipy

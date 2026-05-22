@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Custom SSP"
+  - "DSRM Backdoor"
 tags:
   - estado/completo
   - asset/active-directory
