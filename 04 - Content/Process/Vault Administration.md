@@ -1,21 +1,138 @@
 ---
 aliases:
 tags:
-  - estado/incompleto
+  - estado/completo
+  - meta/vault
 kind: Concept
 linked:
+  - "[[Obsidian - Custom CSS]]"
+  - "[[Obsidian - Plugins]]"
+  - "[[Vault Structure and Note Creation]]"
 ---
 # Vault Administration
 
-> [!todo]
-> Stub creado para resolver wikilinks rotos. Notas meta sobre administración del vault Obsidian.
+> [!info]
+> Convenciones, configuración y mantenimiento del vault Obsidian Hack.
 
 ***
 
-## Resumen
+## Estructura
 
+```
+Hack/
+├── 00 - Resources/     ← imágenes, templates, Templater scripts
+├── 01 - Primary Categories/    ← MOCs nivel 1 (Red Team, Blue Team, etc.)
+├── 02 - Secondary Categories/  ← MOCs nivel 2 (Active Directory, OffSec, etc.)
+├── 03 - Tertiary Categories/   ← MOCs nivel 3 (Enumeración, Explotación, etc.)
+├── 04 - Content/       ← notas técnicas (AD, Web, Recon, Tools, etc.)
+├── 05 - Writeups/      ← writeups por plataforma (HTB, HMV, OTW, etc.)
+└── 06 - Daily/         ← daily notes (templated)
+```
 
-## Convenciones
+***
 
+## Frontmatter canonical
+
+```yaml
+---
+aliases:
+tags:
+  - estado/completo  # o estado/incompleto
+  - asset/<dominio>  # web-app, active-directory, network, etc.
+  - <otros tags taxonómicos>
+kind: <Kind>         # CheatSheet, Tool, Technique, Concept, Vulnerability, etc.
+linked:
+  - "[[Nota Relacionada]]"
+---
+```
+
+***
+
+## Sistema `kind:`
+
+Property que define la **función/base** de la nota. Determina color en graph + file explorer.
+
+Valores canónicos:
+- **CheatSheet** — referencia rápida de comandos/sintaxis
+- **SubCheatSheet** — sub-cheatsheet temática
+- **Tool** — herramienta específica (nmap, ffuf, BloodHound, etc.)
+- **Technique** — técnica abstracta de ataque/defensa
+- **Concept** — concepto teórico
+- **Command** — comando individual destacado
+- **Sub-Command** — variante/flag de comando
+- **Sub-Note** — nota auxiliar
+- **Vulnerability** — vulnerabilidad clásica
+- **Writeup** — writeup CTF/lab
+- **Playbook** — secuencia paso-a-paso
+- **Payload** — payload reutilizable
+- **TTP** — táctica-técnica-procedimiento (MITRE)
+- **Primary / Secondary / Tertiary Category** — MOCs
+
+***
+
+## Tags taxonómicos
+
+Prefijos en uso:
+- `type/*` — taxonomía técnica (paralela a kind, vestigial)
+- `asset/*` — dominio (web-app, active-directory, network, db, etc.)
+- `technique/*` — MITRE ATT&CK táctica (discovery, execution, lateral-movement, etc.)
+- `vuln/*` — vulnerabilidad específica (sqli, xss, xxe, etc.)
+- `service/*` — servicio (smb, http, ldap, etc.)
+- `cred/*` — tipo de credencial (kerberos, ntlm, jwt)
+- `env/*` — entorno (windows, linux, active-directory, cloud-aws)
+- `tool/*` — herramienta puntual
+- `cert/*` — certificación (oscp, cbbh, etc.)
+- `meta/*` — tags del propio vault (index, ctf, daily, vault)
+- `estado/*` — completo / incompleto
+
+***
+
+## Plugins clave
+
+- **Templater** — templates con JS dinámico (folder_templates auto-aplican)
+- **QuickAdd** — quick-create vía hotkeys (Alt+W writeup, Alt+T type, Alt+C category)
+- **Dataview** — queries en Markdown
+- **Supercharged Links** — colorea links según `kind:`
+- **Style Settings** — UI para CSS variables
+- **Obsidian Git** — auto-backup commit cada ~30min
+- **Colored Tags** — colorea tag pills
+- **Omnisearch** — search avanzado (Alt+S)
+
+Ver [[Obsidian - Plugins]].
+
+***
+
+## Snippets CSS activos
+
+`.obsidian/snippets/`:
+- `type-colors.css` — colorea links + tabs por kind
+- `supercharged-links-gen.css` — generado por plugin
+- `custom-callouts.css` — callouts personalizados ([!flag], [!like])
+- `colored-sidebar-items.css` — folders coloreados por prefix numérico
+
+***
+
+## Dashboards
+
+- [[000 - Global Index|Global Index]] — entrada principal
+- [[Hack the Box]] — HTB stats + máquinas
+- [[Incompletos]] — pendientes por dominio
+- [[Todo Round-Up]] — callouts `[!todo]` activos
+- [[Tools]] — MOC de herramientas
+
+***
+
+## Backup
+
+- **Obsidian Git plugin** — commits automáticos cada ~30min con mensaje `vault backup: TIMESTAMP`.
+- Remote: GitHub `PabloMartinMoreno/Obsidian-2.0`. `git push` manual o auto-push del plugin.
+- Backup tarball ad-hoc: `tar -czf /tmp/hack-backup-$(date +%F).tar.gz --exclude='.git' --exclude='00 - Resources/Images' .`
+
+***
 
 ## Notas Relacionadas
+
+- [[Vault Structure and Note Creation]]
+- [[Obsidian - Custom CSS]]
+- [[Obsidian - Plugins]]
+- [[Obsidian Git]]
