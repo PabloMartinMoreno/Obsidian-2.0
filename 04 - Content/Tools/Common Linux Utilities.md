@@ -1,5 +1,9 @@
 ---
 aliases:
+  - "shred"
+  - "alias"
+  - "readpst"
+  - "mdb-tools"
   - cat
   - sort
   - uniq

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "API Enumeration"
   - API REST
   - REST API Security
 tags:

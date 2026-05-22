@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Kerberoasting Attack (GetUserSPNs.py)"
   - "Roasting Internal Kerberos"
   - "Timeroasting"
   - Kerberos Kerberoasting

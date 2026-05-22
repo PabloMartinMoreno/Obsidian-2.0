@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Abusing GPP Passwords"
+  - "Decrypting GPP Passwords - gpp-decrypt"
   - "SYSVOL y GPP cpassword"
   - "GPP cpassword"
   - GPP cpassword

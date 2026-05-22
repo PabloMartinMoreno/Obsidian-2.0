@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Database Service Exploitation"
 tags:
   - estado/completo
   - service/mysql

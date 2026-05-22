@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Source Code Disclosure"
+  - ".ds_store"
   - Info Disclosure
   - Information Disclosure
 tags:

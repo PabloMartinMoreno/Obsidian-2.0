@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Telnet Exploitation"
 tags:
   - estado/completo
   - tool/telnet

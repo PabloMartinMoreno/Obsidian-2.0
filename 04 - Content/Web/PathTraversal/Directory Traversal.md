@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Directory Traversal Vulnerability"
   - Path Traversal
   - Directory Traversal
   - Dot Dot Slash

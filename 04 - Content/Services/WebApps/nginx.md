@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Nginx & Apache Enumeration"
   - Nginx
 tags:
   - estado/completo

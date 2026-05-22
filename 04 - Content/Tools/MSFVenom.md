@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Msfvenom Payload Generation"
   - "Generating Payloads with Msfvenom"
   - "Creating Staged vs Stageless Payloads"
   - "Web Shell Generation"

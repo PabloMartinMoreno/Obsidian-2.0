@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "EternalBlue (SMB Vulnerability)"
+  - "PrintNightmare (SMB Vulnerability)"
+  - "Zerologon (SMB Vulnerability)"
   - Samba
 tags:
   - estado/completo

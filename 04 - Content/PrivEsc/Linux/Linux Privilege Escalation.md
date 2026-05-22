@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Checklist - Linux Enumeration & Privilege Escalation"
   - "Linux PrivEsc"
   - "LPE"
   - "Abusing Sudo Rights"

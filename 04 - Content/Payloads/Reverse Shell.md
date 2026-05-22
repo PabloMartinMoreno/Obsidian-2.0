@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Reverse Shells"
+  - "Reverse Shell One-Liners"
+  - "Upgrading Simple Shells to Fully Interactive TTY"
   - "Bind Shells"
   - "Mejora de terminal interactiva"
   - "TTY Upgrade"

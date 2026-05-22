@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Unauthenticated File Upload"
   - "Arbitrary File Upload"
   - "Bypass de Subida de Archivos"
 tags:

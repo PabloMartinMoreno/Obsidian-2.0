@@ -1,5 +1,11 @@
 ---
 aliases:
+  - "Setting up Phishing Domains"
+  - "Cloning Login Portals"
+  - "HTA & Web Payloads"
+  - "OLE Object Embedding"
+  - "Creating Malicious Office Macros"
+  - "HTML Smuggling"
   - "Drive-by Download Attacks"
   - "Browser Exploitation Frameworks (BeEF)"
   - "Browser Zero-Day Exploits"

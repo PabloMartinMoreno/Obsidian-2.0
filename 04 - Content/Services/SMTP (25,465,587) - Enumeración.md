@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "SMTP Exploitation Techniques"
+  - "Email Spoofing Techniques"
   - "SMTP"
 tags:
   - type/cheatsheet

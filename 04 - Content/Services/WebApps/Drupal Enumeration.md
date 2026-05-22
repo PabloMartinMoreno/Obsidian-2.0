@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Drupal Exploitation"
 tags:
   - type/cheatsheet
   - technique/recon/active

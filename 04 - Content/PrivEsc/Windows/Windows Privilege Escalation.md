@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Abusing Scheduled Tasks"
+  - "Windows-Exploit-Suggester"
+  - "Checklist - Windows Enumeration & Privilege Escalation"
   - "Windows PrivEsc"
   - "WinPE"
   - "WPE"

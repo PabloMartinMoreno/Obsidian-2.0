@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Joomla Exploitation"
 tags:
   - type/cheatsheet
   - technique/recon/active

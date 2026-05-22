@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "SSH Exploitation Techniques"
 tags:
   - type/cheatsheet
   - technique/recon/active

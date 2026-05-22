@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "pipelines"
   - Apache ActiveMQ
   - CVE-2023-46604
 tags:

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Adobe ColdFusion 8 Exploitation"
 tags:
   - type/cheatsheet
   - technique/recon/active
