@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "SYSVOL y GPP cpassword"
+  - "GPP cpassword"
   - GPP cpassword
   - Group Policy Preferences
   - MS14-025

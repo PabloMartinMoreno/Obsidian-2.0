@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "SMTP"
 tags:
   - type/cheatsheet
   - technique/recon/active

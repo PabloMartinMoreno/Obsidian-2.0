@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "PassTheHash"
+  - "PtH"
   - PtH
   - NTLM Pass-the-Hash
   - Hash Spray

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "WordPress"
 tags:
   - type/cheatsheet
   - technique/recon/active

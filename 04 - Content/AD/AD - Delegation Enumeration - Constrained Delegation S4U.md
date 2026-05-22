@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Constrained Delegation (S4U)"
+  - "Constrained Delegation"
   - Constrained Delegation
   - S4U2Self
   - S4U2Proxy

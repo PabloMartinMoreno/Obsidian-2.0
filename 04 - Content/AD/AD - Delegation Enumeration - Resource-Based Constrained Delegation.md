@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Resource-Based Constrained Delegation (RBCD)"
+  - "RBCD"
   - RBCD
   - Resource-Based Constrained Delegation
   - msDS-AllowedToActOnBehalfOfOtherIdentity

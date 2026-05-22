@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "GPO Abuse"
+  - "GPO y SYSVOL"
   - AD GPO Enumeration
   - SYSVOL Recon
   - GPP cpassword Hunt
