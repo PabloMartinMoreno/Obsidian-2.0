@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "OOB SQLi"
+  - "Out-of-Band SQLi"
 tags:
   - type/technique
   - vuln/sqli

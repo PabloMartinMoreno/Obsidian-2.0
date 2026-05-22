@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Enumeration"
   - Recopilación de información
 tags:
   - type/moc/secondary

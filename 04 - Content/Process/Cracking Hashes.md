@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Password Cracking"
   - Hash Cracking
 tags:
   - estado/completo

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Web Enumeration"
   - Enumeración Web
 tags:
   - type/moc/tertiary

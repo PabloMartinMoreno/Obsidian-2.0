@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Active Directory Enumeration"
+  - "AD Enumeration"
   - Enumeración de Active Directory
   - AD Enumeration
 tags:

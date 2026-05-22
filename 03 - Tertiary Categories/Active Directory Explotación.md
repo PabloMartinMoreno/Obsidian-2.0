@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Active Directory Exploitation"
+  - "AD Exploitation"
   - Explotación de Active Directory
   - AD Exploitation
   - ADX

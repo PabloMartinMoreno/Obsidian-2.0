@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Error-based SQLi"
 tags:
   - type/technique
   - vuln/sqli

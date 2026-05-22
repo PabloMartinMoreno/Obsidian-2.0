@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "sudo"
   - "Sudo abuse"
   - "Sudoers Abuse"
   - Abusing Sudoers Privilege

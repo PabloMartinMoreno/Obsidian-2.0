@@ -77,5 +77,5 @@ SELECT @@version, current_user(), @@datadir, @@secure_file_priv;
 
 - [[MySQL (3306) - Enumeración]]
 - [[SQL Injection (SQLi)]]
-- [[SQLi  - Union based]]
+- [[SQLi - Union based]]
 - [[sqlmap]]
