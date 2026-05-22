@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "LFI2RCE"
+  - "LFI to RCE"
 tags:
   - type/vulnerability
   - vuln/lfi

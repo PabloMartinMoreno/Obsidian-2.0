@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Tokens"
   - JSON Web Token Attacks
   - JWT Abuse
   - JWT Tampering

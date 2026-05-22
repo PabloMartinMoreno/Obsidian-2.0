@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Cookies"
   - "Manipulación de Cookies"
   - "Cookie Tampering"
   - Session Hijacking
