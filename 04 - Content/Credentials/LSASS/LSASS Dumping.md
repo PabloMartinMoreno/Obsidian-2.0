@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Dumping LSASS Memory"
   - LSASS
   - LSASS Dump
   - Local Security Authority Subsystem

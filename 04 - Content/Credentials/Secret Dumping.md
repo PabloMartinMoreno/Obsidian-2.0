@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Dumping SAM & LSA Secrets"
   - Secrets Dumping
   - Credential Dumping
   - Hash Dumping

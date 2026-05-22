@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Port Scanning & Service Discovery"
+  - "IPv6 Enumeration"
   - Service Enumeration
   - Port Enum MOC
 tags:

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Network Device Fingerprinting"
   - AD Hosts Enumeration
   - AD Host Discovery
   - DC Discovery

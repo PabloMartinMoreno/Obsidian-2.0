@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Roasting Internal Kerberos"
+  - "Timeroasting"
   - Kerberos Kerberoasting
   - Kerberoast
   - SPN Roasting

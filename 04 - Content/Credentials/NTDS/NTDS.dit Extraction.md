@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Extracting NTDS.dit"
   - NTDS.dit
   - NTDS Dump
   - AD Database Extraction
