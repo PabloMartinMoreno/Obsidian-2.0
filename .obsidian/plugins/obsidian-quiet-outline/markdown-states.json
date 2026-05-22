@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 10.779661016949152,
+    "scroll": 0.6779661016949152,
     "cursor": {
       "from": {
         "line": 12,
@@ -78,6 +78,62 @@
       },
       "to": {
         "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "01 - Primary Categories/Red Team.md": {
+    "scroll": 5.391304347826087,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Explotación.md": {
+    "scroll": 9.212483399734396,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Active Directory Explotación.md": {
+    "scroll": 11.389830508474576,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Service Exploitation.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
         "ch": 0
       }
     },

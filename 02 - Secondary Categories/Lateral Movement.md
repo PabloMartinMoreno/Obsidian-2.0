@@ -11,6 +11,42 @@ kind: Secondary Category
 
 ***
 
+## Mapa Mental
+
+```mermaid
+mindmap
+  root((Lateral))
+    Auth_Abuse
+      Pass_the_Hash
+      Pass_the_Ticket
+      Overpass_the_Hash
+      Silver_Ticket
+    Management_Protocols
+      WMI
+      WinRM
+      PsExec
+      evil-winrm
+      RDP
+      SSH
+    Relay
+      NTLM_Relay
+      LDAP_Relay
+      SMB_Relay
+    Pivoting
+      SSH_Tunnel
+      Chisel
+      Ligolo
+      Proxychains
+      Socks_Proxy
+    AD_Specific
+      DCSync
+      Golden_Ticket
+      Constrained_Delegation
+      RBCD
+```
+
+***
+
 ## [[Windows & Active Directory Lateral Movement]]
 
 

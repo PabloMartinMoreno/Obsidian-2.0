@@ -17,9 +17,17 @@ cssclasses:
 ### Dashboards
 - [[Incompletos]] — MOC pendientes por dominio
 - [[Todo Round-Up]] — callouts [!todo] activos
-- [[Hack the Box]] — dashboard HTB
 - [[Tools]] — MOC herramientas
 - [[CheatSheets]] — MOC cheatsheets por dominio
+
+### Writeups (por plataforma)
+- [[Hack the Box]] — HTB
+- [[HackMyVM]] — HMV
+- [[OverTheWire]] — OTW wargames
+- [[VulnHub]] — VulnHub
+- [[VulNyx]] — VulNyx
+- [[DockerLabs]] — DockerLabs
+- [[PortSwigger]] — PortSwigger Academy
 
 ### Web
 - [[Web Enumeración]] — MOC web recon

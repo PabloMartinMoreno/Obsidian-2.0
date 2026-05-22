@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "03 - Tertiary Categories/Service Exploitation.md"
+    },
+    {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
     },
     {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "NoSQL Injection",
@@ -43,18 +59,6 @@
     {
       "basename": "Privilege Escalation",
       "path": "04 - Content/Process/Privilege Escalation.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
     },
     {
       "basename": "Bandit 09",
