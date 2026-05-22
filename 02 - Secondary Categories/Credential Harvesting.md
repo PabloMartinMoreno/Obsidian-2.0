@@ -12,6 +12,39 @@ kind: Secondary Category
 
 ***
 
+## Mapa Mental
+
+```mermaid
+mindmap
+  root((Credentials))
+    Network_Coercion
+      LLMNR_NBT-NS
+      Responder
+      NTLM_Relay
+      PetitPotam
+      DFSCoerce
+    Kerberos_Offline
+      Kerberoasting
+      AS_REP_Roasting
+    Memory_Disk
+      LSASS_Dumping
+      DCSync
+      NTDS_dit
+      SAM_SECURITY
+      Mimikatz
+      DPAPI
+    Cracking
+      hashcat
+      john
+    Reuse_Direct
+      Pass_the_Hash
+      Pass_the_Ticket
+      Password_Reuse
+      Password_Spray
+```
+
+***
+
 ## Overview
 
 Extracción y captura de credenciales — hashes, tickets, cleartext, tokens — para cracking offline, reuso directo (PtH/PtT), o escalación.
