@@ -11,10 +11,15 @@
             "id": "d95f3945bcd80304",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "03 - Tertiary Categories/Web Explotación.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "Web Explotación"
             }
           }
         ],
@@ -260,8 +265,18 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "af77475b0bc9914d",
+  "active": "d95f3945bcd80304",
   "lastOpenFiles": [
+    "04 - Content/PrivEsc/Windows/AppLocker evasion.md",
+    "04 - Content/PrivEsc/Windows/AppLocker evasion.md.tmp.5724.b6327349513e",
+    "04 - Content/Process/Arbitrary File Read.md",
+    "04 - Content/Process/Arbitrary File Read.md.tmp.5724.aeae50f5e1fe",
+    "04 - Content/Process/Sanitización.md",
+    "04 - Content/Process/Sanitización.md.tmp.5724.b08ad4bb8bad",
+    "04 - Content/Process/API Security.md",
+    "04 - Content/Process/API Security.md.tmp.5724.612034a85835",
+    "04 - Content/Web/Injection/NoSQL Injection.md",
+    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Payloads/Buffer Overflow.md",
     "04 - Content/Payloads/Buffer Overflow.md.tmp.5724.fae219903535",
     "04 - Content/AD/mitm6 - IPv6 DHCP Spoofing.md",
@@ -275,13 +290,9 @@
     "04 - Content/Process/WebSockets.md",
     "04 - Content/Process/WebSockets.md.tmp.5724.f9859c4b86af",
     "04 - Content/PrivEsc/Windows/Abuso de SeImpersonatePrivilege.md",
-    "04 - Content/PrivEsc/Windows/Abuso de SeImpersonatePrivilege.md.tmp.5724.33b611161c91",
     "04 - Content/AD/DPAPI Abuse.md",
-    "04 - Content/AD/DPAPI Abuse.md.tmp.5724.c2a4de1b784d",
     "04 - Content/AD/Skeleton Key.md",
-    "04 - Content/AD/Skeleton Key.md.tmp.5724.5b803250162c",
     "04 - Content/Tools/xargs.md",
-    "04 - Content/Tools/xargs.md.tmp.5724.e6113c3bad8b",
     "04 - Content/Tools/awk.md",
     "04 - Content/Tools/Recon/smbmap.md",
     "04 - Content/Tools/docker.md",
@@ -292,12 +303,6 @@
     "04 - Content/Process/Pre-Exploitation.md",
     "04 - Content/Process/Pares de claves SSH.md",
     "05 - Writeups/HackTheBox/Access.md",
-    "04 - Content/Process/WAF.md",
-    "04 - Content/Process/SSL - TLS.md",
-    "04 - Content/AD/ACL Abuse.md",
-    "04 - Content/Process/Default credentials.md",
-    "04 - Content/Obsidian/Drawbacks of Traditional Note-Taking Systems.md",
-    "02 - Secondary Categories/Explotación.md",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
     "00 - Resources/Images/SNMP (161,162,10161,10162) - Enumeración.png",
     "00 - Resources/Images/SMTP (25,465,587) - Enumeración.png",

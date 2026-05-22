@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Bind Shells"
+  - "Mejora de terminal interactiva"
+  - "TTY Upgrade"
 tags:
   - type/concept
   - technique/execution

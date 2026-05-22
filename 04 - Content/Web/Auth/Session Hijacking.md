@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Manipulación de Cookies"
+  - "Cookie Tampering"
   - Session Hijacking
   - Cookie Hijacking
   - Token Theft

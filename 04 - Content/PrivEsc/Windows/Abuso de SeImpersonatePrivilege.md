@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Abuso de SeImpersonatePrivilege (Ataques "Potato")"
   - "Abuso de SeImpersonatePrivilege (Ataques \"Potato\")"
   - Potato Attacks
   - SeImpersonatePrivilege
