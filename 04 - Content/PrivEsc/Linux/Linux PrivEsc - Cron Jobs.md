@@ -1,5 +1,9 @@
 ---
 aliases:
+  - "Cron"
+  - "Cron Jobs"
+  - "Abusing Cron Job"
+  - "Exploiting Cron Jobs"
   - "Abusing Cron Job"
   - "Cron"
   - "Cron Jobs"

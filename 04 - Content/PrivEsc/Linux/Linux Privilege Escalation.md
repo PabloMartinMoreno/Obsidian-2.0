@@ -1,5 +1,29 @@
 ---
 aliases:
+  - "Linux PrivEsc"
+  - "LPE"
+  - "Abusing Sudo Rights"
+  - "Exploiting LD_PRELOAD & LD_LIBRARY_PATH"
+  - "Exploiting Vulnerable Sudo Versions"
+  - "Abusing Linux Capabilities"
+  - "Abusing Weak File Permissions"
+  - "Exploiting Writeable etc-passwd"
+  - "Exploiting Writeable etc-shadow"
+  - "Exploiting Shared Object Injection"
+  - "Exploiting Python Library Hijacking"
+  - "Abusing Dangerous Groups"
+  - "Abusing Docker Group"
+  - "Abusing LXC-LXD Group"
+  - "Abusing Disk Group"
+  - "Abusing Shadow Group"
+  - "Abusing Adm Group"
+  - "Exploiting NFS Misconfigurations"
+  - "Abusing Tmux Sessions"
+  - "Linux Kernel Exploits"
+  - "Exploiting PwnKit (CVE-2021-4034)"
+  - "Linux PrivEsc Payloads"
+  - "Linux Credential Hunting"
+  - "Extracting & Cracking Shadow Hashes"
   - Linux PrivEsc
   - LPE
 tags:

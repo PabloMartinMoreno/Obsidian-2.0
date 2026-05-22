@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Exploiting Wildcard Injection"
 tags:
   - estado/completo
   - env/linux

@@ -2,6 +2,9 @@
 aliases:
   - "SUID"
   - "SGID"
+  - "Abusing SUID & SGID Binaries"
+  - "SUID"
+  - "SGID"
   - SUID
   - SGID
   - Linux SUID
