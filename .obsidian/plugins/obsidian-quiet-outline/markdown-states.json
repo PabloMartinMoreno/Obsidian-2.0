@@ -1,6 +1,6 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 0,
+    "scroll": 27.573705179282868,
     "cursor": {
       "from": {
         "line": 33,
@@ -64,6 +64,20 @@
       },
       "to": {
         "line": 26,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "06 - Daily/2026-05-21.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
         "ch": 0
       }
     },

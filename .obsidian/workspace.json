@@ -4,17 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "76c4f28367fc79fe",
+        "id": "9fe976f70a8959d8",
         "type": "tabs",
         "children": [
           {
-            "id": "11322202f9e7d882",
+            "id": "694ac9a8a4c0ab82",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Vista gráfica"
+              "type": "markdown",
+              "state": {
+                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -120,8 +125,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 231.51103591918945,
-    "collapsed": true
+    "width": 231.51103591918945
   },
   "right": {
     "id": "802be9fb7af15fc2",
@@ -261,8 +265,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "11322202f9e7d882",
+  "active": "694ac9a8a4c0ab82",
   "lastOpenFiles": [
+    "06 - Daily/2026-05-21.md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
     "00 - Resources/Images/SNMP (161,162,10161,10162) - Enumeración.png",
