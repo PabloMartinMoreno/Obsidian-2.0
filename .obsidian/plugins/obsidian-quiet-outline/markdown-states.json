@@ -98,7 +98,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/Explotación.md": {
-    "scroll": 9.212483399734396,
+    "scroll": 3.7453416149068324,
     "cursor": {
       "from": {
         "line": 9,
@@ -112,7 +112,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Active Directory Explotación.md": {
-    "scroll": 11.389830508474576,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 18,
@@ -134,6 +134,34 @@
       },
       "to": {
         "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Obsidian/Drawbacks of Traditional Note-Taking Systems.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/HackTheBox/Access.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
         "ch": 0
       }
     },

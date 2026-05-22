@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Local Port Forwarding"
+  - "Remote Port Forwarding"
+  - "Pivoting"
   - Pivoting
   - Port Forwarding
   - Tunneling

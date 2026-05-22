@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Virtual Hosting"
 tags:
   - type/concept
   - technique/recon/active

@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Sudo abuse"
+  - "Sudoers Abuse"
   - Abusing Sudoers Privilege
   - Sudo PrivEsc
 tags:

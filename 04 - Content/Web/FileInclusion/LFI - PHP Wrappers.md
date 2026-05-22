@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Wrappers"
 tags:
   - type/technique
   - vuln/lfi

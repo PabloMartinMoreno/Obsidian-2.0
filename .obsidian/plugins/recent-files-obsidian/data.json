@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "Access",
+      "path": "05 - Writeups/HackTheBox/Access.md"
+    },
+    {
+      "basename": "Drawbacks of Traditional Note-Taking Systems",
+      "path": "04 - Content/Obsidian/Drawbacks of Traditional Note-Taking Systems.md"
+    },
+    {
       "basename": "Explotación",
       "path": "02 - Secondary Categories/Explotación.md"
     },
     {
-      "basename": "Service Exploitation",
-      "path": "03 - Tertiary Categories/Service Exploitation.md"
-    },
-    {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "Service Exploitation",
+      "path": "03 - Tertiary Categories/Service Exploitation.md"
     },
     {
       "basename": "Web Explotación",

@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Arbitrary File Upload"
+  - "Bypass de Subida de Archivos"
 tags:
   - type/vulnerability
   - vuln/file-upload

@@ -1,5 +1,7 @@
 ---
 aliases:
+  - ".git Exposure"
+  - "Git Exposure"
 tags:
   - type/tool
   - technique/recon/active
