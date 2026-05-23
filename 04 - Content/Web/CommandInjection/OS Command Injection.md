@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Eval Injection"
 tags:
   - type/vulnerability
   - vuln/command-injection
