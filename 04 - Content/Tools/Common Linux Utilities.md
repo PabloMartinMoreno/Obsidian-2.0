@@ -1,5 +1,17 @@
 ---
 aliases:
+  - "tail"
+  - "ROT13"
+  - "xxd"
+  - "Hex dump"
+  - "7z"
+  - "mktemp"
+  - "watch"
+  - "ls"
+  - "tar"
+  - "netstat"
+  - "ps"
+  - "Listfiles"
   - "shred"
   - "alias"
   - "readpst"

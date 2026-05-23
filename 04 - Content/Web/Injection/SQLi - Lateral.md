@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Lateral SQL Injection"
 tags:
   - type/technique
   - vuln/sqli

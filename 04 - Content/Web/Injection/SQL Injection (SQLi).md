@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "SQL Injection"
+  - "SQLi to RCE"
 tags:
   - type/vulnerability
   - vuln/sqli

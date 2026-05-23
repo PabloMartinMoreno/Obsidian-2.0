@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Second-order SQLi"
 tags:
   - type/technique
   - vuln/sqli

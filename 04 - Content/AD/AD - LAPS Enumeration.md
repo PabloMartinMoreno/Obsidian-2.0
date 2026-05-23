@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Escalada de Privilegios mediante LAPS"
   - AD LAPS Enumeration
   - LAPS Discovery
   - Local Admin Password Solution Recon

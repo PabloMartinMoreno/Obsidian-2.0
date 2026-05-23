@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Web Exploitation"
   - Explotación Web
 tags:
   - type/moc/tertiary

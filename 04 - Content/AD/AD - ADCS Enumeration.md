@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Active Directory Certificate Services"
   - AD ADCS Enumeration
   - Certificate Services Recon
   - PKI Discovery

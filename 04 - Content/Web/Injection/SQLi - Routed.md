@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Routed SQLi"
 tags:
   - type/technique
   - vuln/sqli

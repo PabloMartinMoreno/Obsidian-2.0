@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "C2 Frameworks Overview"
   - "Sliver C2"
   - "Setting up C2 Redirectors"
   - "Domain Fronting & Hiding"

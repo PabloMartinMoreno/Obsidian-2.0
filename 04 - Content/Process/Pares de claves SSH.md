@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Symfonos 2.png"
   - "putty"
   - "puttygen"
   - "Putty2SSH"

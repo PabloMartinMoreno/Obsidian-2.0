@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Boundary"
   - "Virtual Hosting"
 tags:
   - type/concept

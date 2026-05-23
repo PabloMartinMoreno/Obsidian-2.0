@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Persistence"
 tags:
   - type/cheatsheet
   - technique/recon/passive

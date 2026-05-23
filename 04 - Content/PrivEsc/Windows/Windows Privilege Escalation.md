@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Reading the user's Powershell history"
+  - "reuse credentials"
   - "AutoLogon Credentials"
   - "Abusing Server Operators Group"
   - "Service Binary Path Hijacking"

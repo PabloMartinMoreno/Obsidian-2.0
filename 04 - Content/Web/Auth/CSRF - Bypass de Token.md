@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "CSRF token theft"
   - CSRF Token Bypass
   - Synchronizer Token Bypass
 tags:

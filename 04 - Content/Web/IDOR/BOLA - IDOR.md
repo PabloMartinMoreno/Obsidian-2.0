@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Insecure Direct Object References (IDOR)"
 tags:
   - type/vulnerability
   - vuln/idor

@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "SSH (22) Exploitation Techniques"
+  - "SSH"
   - "SSH Exploitation Techniques"
 tags:
   - type/cheatsheet

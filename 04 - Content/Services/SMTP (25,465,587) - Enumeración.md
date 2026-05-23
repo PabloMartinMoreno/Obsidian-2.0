@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "SPF"
+  - "DKIM"
+  - "Phishing"
   - "swaks"
   - "SMTP Exploitation Techniques"
   - "Email Spoofing Techniques"

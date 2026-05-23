@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "JWT Authentication Abuse"
   - "Tokens"
   - JSON Web Token Attacks
   - JWT Abuse

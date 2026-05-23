@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "MariaDB"
+  - "Oracle"
+  - "phpmyadmin"
   - "Database Service Exploitation"
 tags:
   - estado/completo

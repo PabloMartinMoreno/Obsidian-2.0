@@ -1,5 +1,9 @@
 ---
 aliases:
+  - "Codificación"
+  - "Bypass por Contaminación de Parámetros"
+  - "Bypass de Restricciones"
+  - "Expresiones regulares"
   - "Bypass de Funciones Deshabilitadas"
   - "Bypass de Filtros con Wrappers PHP"
   - "preg_match"

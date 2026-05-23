@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Boolean-based Blind SQLi"
   - "SQL Injection Boolean"
   - "SQLi Boolean-Based"
   - "Boolean-Based SQLi"

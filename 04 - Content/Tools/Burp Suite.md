@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Proxy Tools"
   - "OWASP ZAP"
   - Burp
   - BurpSuite

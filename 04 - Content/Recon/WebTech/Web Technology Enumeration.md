@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "whatweb"
   - Web Tech Enumeration
 tags:
   - type/moc

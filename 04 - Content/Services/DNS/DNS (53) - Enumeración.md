@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "DNS: El listín telefónico de Internet"
+  - "Servidores Web"
+  - "Direccion IP"
   - "DNS Service Exploitation"
 tags:
   - type/cheatsheet

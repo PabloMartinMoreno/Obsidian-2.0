@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Shellshock"
+  - "cgi-bin"
   - "Web Vulnerability Scanning"
   - Nikto
 tags:

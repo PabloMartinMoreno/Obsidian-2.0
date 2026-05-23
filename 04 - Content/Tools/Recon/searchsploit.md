@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Exploitation Tools"
   - "Exploit-DB"
   - "Packet Storm Security"
   - SearchSploit

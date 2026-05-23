@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Secure Code - SQLI"
+  - "js-beautify"
   - "PHP Source Analysis"
   - "Binary Analysis"
   - "olevab"

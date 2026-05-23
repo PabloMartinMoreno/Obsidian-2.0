@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Serialización"
+  - "Deserialización"
   - Insecure Deserialization
   - Deserialization Vulnerability
   - Object Injection

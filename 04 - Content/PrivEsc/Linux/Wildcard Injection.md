@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Symbolic Link Exploitation"
   - "Symlinks"
   - "symlink atack"
   - "Listfiles"

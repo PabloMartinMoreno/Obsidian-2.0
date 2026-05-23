@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Enum4linux"
   - "RID Brute Force"
   - "SMB Enumeration"
   - "RID Brute with Netexec for Potential User Discovery"

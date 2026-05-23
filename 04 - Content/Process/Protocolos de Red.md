@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Seguridad Web"
   - "UDP"
   - Network Protocols
 tags:

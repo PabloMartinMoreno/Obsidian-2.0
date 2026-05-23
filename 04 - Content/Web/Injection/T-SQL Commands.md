@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "T-SQL Command"
 tags:
   - type/cheatsheet
   - technique/recon/active
