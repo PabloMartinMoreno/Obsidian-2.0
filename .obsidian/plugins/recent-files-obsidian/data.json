@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
@@ -31,10 +35,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "Broken autentication",

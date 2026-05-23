@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Web Explotación.md",
+                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Explotación"
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -267,6 +267,7 @@
   },
   "active": "d95f3945bcd80304",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Recon/OSINT Methods.md",
     "04 - Content/Recon/OSINT Methods.md.tmp.5724.0718298152da",
     "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",
@@ -302,7 +303,6 @@
     "04 - Content/Services/RDP Exploitation.md",
     "04 - Content/Tools/Recon/githack.md",
     "04 - Content/Tools/Recon/samba.md",
-    "04 - Content/PrivEsc/Linux/doas.md",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
     "00 - Resources/Images/SNMP (161,162,10161,10162) - Enumeración.png",
     "00 - Resources/Images/SMTP (25,465,587) - Enumeración.png",
