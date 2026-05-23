@@ -42,21 +42,21 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 63.07182872039492,
+    "scroll": 83.92369727047146,
     "cursor": {
       "from": {
-        "line": 12,
+        "line": 13,
         "ch": 0
       },
       "to": {
-        "line": 12,
+        "line": 13,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/Injection/NoSQL Injection.md": {
-    "scroll": 4.882352941176471,
+    "scroll": 54.97816095499553,
     "cursor": {
       "from": {
         "line": 26,
@@ -176,6 +176,76 @@
       },
       "to": {
         "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/LDAP Injection.md": {
+    "scroll": 104.76604462759606,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/CommandInjection/OS Command Injection.md": {
+    "scroll": 77.755859375,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 0
+      },
+      "to": {
+        "line": 25,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
+    "scroll": 67.9762226752518,
+    "cursor": {
+      "from": {
+        "line": 29,
+        "ch": 0
+      },
+      "to": {
+        "line": 29,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md": {
+    "scroll": 89.51932773109243,
+    "cursor": {
+      "from": {
+        "line": 27,
+        "ch": 0
+      },
+      "to": {
+        "line": 27,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/CRLF/CRLF Injection.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
         "ch": 0
       }
     },

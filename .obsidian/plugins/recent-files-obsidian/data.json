@@ -1,20 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "SQLi - Union based",
-      "path": "04 - Content/Web/Injection/SQLi - Union based.md"
+      "basename": "CRLF Injection",
+      "path": "04 - Content/Web/CRLF/CRLF Injection.md"
     },
     {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
+      "basename": "Server-Side Includes (SSI) Injection",
+      "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
+    },
+    {
+      "basename": "OS Command Injection",
+      "path": "04 - Content/Web/CommandInjection/OS Command Injection.md"
+    },
+    {
+      "basename": "LDAP Injection",
+      "path": "04 - Content/Web/Injection/LDAP Injection.md"
+    },
+    {
       "basename": "NoSQL Injection",
       "path": "04 - Content/Web/Injection/NoSQL Injection.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQLi - Union based",
+      "path": "04 - Content/Web/Injection/SQLi - Union based.md"
     },
     {
       "basename": "Access",
