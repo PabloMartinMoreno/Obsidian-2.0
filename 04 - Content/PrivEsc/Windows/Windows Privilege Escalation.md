@@ -1,5 +1,13 @@
 ---
 aliases:
+  - "Lolbins Binary"
+  - "Icacls Abuse"
+  - "runas savecred"
+  - "Abusing SeBackupPrivilege"
+  - "PowerShell Download Cradle"
+  - "Powershell Credentials Manipulation"
+  - "Process execution as another user"
+  - "Windows Defender Evasion"
   - "Abusing Scheduled Tasks"
   - "Windows-Exploit-Suggester"
   - "Checklist - Windows Enumeration & Privilege Escalation"

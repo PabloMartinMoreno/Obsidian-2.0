@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "CORS Misconfiguration Enumeration"
   - "API Enumeration"
   - API REST
   - REST API Security

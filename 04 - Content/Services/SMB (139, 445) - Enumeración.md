@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "SMB Enumeration"
+  - "RID Brute with Netexec for Potential User Discovery"
 tags:
   - type/cheatsheet
   - technique/recon/active

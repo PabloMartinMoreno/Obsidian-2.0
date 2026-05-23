@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Internal Port Discovery"
+  - "Puerto interno"
   - "Local Port Forwarding"
   - "Remote Port Forwarding"
   - "Pivoting"

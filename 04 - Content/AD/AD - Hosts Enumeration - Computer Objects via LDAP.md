@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Abusing Account Operators Group - Creating a new user"
+  - "Abusing Account Operators Group - Assigning a group to the newly created user"
   - Computer Objects Enumeration
   - LDAP Computer Filter
   - Servers Enumeration

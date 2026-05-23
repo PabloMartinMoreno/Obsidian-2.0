@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Cisco Password Cracker (password7)"
   - "Hash-Identifier"
   - "Identifying Hash Formats"
   - "Cracking with Hashcat"

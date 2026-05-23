@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "BloodHound Enumeration"
   - BloodHound
   - SharpHound
   - bloodhound-python

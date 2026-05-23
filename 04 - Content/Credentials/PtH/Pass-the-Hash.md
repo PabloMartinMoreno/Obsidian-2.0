@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Pass-the-Hash Atack"
   - "PassTheHash"
   - "PtH"
   - PtH

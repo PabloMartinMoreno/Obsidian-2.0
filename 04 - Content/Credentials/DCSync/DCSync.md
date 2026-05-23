@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "DCSync Exploitation - Secretsdump.py"
+  - "Abusing WriteDacl in the domain - Granting DCSync Privileges"
   - DC Sync
   - DCSync Attack
   - Directory Replication Attack

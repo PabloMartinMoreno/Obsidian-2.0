@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Information Leakage through Rpcclient (querydispinfo)"
+  - "RPC Enumeration"
 tags:
   - type/tool
   - technique/lateral-movement

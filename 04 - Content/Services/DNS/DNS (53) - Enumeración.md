@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "DNS Service Exploitation"
 tags:
   - type/cheatsheet
   - technique/recon/active

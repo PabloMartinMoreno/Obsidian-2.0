@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "procdump64.exe (Windows Sysinternals)"
+  - "dump password"
   - "Dumping LSASS Memory"
   - LSASS
   - LSASS Dump

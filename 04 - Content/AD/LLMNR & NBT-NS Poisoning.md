@@ -1,5 +1,9 @@
 ---
 aliases:
+  - "Net-NTLMv2 Hash"
+  - "NTLMv2"
+  - "SMB Authentication Leak"
+  - "SCF Malicious File"
   - LLMNR Poisoning
   - NBT-NS Poisoning
   - mDNS Poisoning

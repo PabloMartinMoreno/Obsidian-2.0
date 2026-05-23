@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Web Vulnerability Scanning"
   - Nikto
 tags:
   - type/tool

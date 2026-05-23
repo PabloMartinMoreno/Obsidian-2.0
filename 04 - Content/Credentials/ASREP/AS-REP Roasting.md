@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "AS-RepRoast attack"
   - Kerberos AS-REP Roasting
   - AS-REP Roast
   - ASREP Roasting
