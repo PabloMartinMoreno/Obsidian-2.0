@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "PowerUp Enumeration"
   - LinPEAS
   - WinPEAS
   - PEAS
