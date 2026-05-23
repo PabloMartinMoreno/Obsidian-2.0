@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Cached GPP Files"
   - "Abusing GPP Passwords"
   - "Decrypting GPP Passwords - gpp-decrypt"
   - "SYSVOL y GPP cpassword"

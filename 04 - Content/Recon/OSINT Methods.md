@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Git Hooks"
+  - "Gitea"
+  - "Github Project Enumeration"
   - Shodan & Censys Recon
   - Pastebin & Code Leaks
   - Wayback Machine & Archive Recon

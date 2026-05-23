@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Abusing PRTG Network Monitor"
 tags:
   - type/cheatsheet
   - technique/recon/active

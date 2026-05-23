@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Bypass de Codificación con PowerShell"
   - "Modifying Exploit Signatures"
   - "Using Packers & Crypters"
   - "Obfuscating PowerShell Scripts"

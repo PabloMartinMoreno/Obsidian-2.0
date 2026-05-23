@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Abusing WinRM"
   - "WMI and WinRM for Lateral Movement"
   - "WinRM (PSRemoting)"
   - "WMI y DCOM Lateral"

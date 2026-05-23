@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "FTP Enumeration"
 tags:
   - type/cheatsheet
   - technique/recon/active

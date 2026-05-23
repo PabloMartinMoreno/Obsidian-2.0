@@ -1,5 +1,11 @@
 ---
 aliases:
+  - "PHP"
+  - "PHP Source Code Analysis"
+  - "Python"
+  - "Bash Source Code Analysis"
+  - "Macro Inspection"
+  - "Olevba"
   - Code Review
   - SAST
 tags:

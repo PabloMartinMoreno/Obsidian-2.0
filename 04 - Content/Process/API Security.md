@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "API authentication token"
+  - "Token-based Login"
+  - "API Abuse for User Creation"
   - "CORS Misconfiguration Enumeration"
   - "API Enumeration"
   - API REST

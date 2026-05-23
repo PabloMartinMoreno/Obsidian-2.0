@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "openssl"
   - SSL/TLS
   - TLS
 tags:

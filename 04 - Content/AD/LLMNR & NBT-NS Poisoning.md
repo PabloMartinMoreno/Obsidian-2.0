@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Stealing NetNTLMv2 hash"
+  - "Net-NTLMv2"
   - "Net-NTLMv2 Hash"
   - "NTLMv2"
   - "SMB Authentication Leak"

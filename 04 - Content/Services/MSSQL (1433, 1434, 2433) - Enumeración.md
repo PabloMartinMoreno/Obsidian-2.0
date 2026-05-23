@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Abusing xp_cmdshell"
+  - "MSSQL Hash Stealing"
+  - "Abusing MSSQL"
   - "xp_dirtree"
   - "mssqlclient"
   - Enumeración MSSQL (1433, 1434, 2433)

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Abusing Tomcat"
   - "Apache Tomcat Exploitation"
   - "Tomcat & Jenkins Exploitation"
 tags:

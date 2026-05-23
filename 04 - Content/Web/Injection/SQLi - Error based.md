@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Error-Based SQL Injection"
   - "Error-based SQLi"
 tags:
   - type/technique

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "swaks"
   - "SMTP Exploitation Techniques"
   - "Email Spoofing Techniques"
   - "SMTP"

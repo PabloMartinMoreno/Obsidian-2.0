@@ -1,5 +1,11 @@
 ---
 aliases:
+  - "putty"
+  - "puttygen"
+  - "Putty2SSH"
+  - "SSH Key Manipulation"
+  - "Reading id_rsa"
+  - "SSH Key Exfiltration"
   - SSH Keys
   - SSH Key Pairs
 tags:

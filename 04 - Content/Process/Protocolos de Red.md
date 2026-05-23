@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "UDP"
   - Network Protocols
 tags:
   - estado/completo

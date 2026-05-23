@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "KeePass Memory Dump"
+  - "keepass"
+  - "Memory Dump"
   - DPAPI
 tags:
   - estado/completo
