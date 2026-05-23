@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Double URL Encoding"
 tags:
   - type/technique
   - vuln/xss

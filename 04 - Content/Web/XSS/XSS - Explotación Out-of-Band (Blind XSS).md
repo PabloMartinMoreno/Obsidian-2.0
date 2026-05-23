@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Blind XSS"
+  - "OAST"
 tags:
   - type/technique
   - vuln/xss

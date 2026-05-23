@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "NoSQLi - JavaScript"
   - NoSQL $where injection
   - MongoDB JS injection
   - mapReduce injection

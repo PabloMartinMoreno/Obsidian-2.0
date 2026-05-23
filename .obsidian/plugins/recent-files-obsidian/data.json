@@ -5,6 +5,10 @@
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
+      "basename": "SQLi - Union based",
+      "path": "04 - Content/Web/Injection/SQLi - Union based.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "PostgreSQL"
 tags:
   - type/cheatsheet
   - technique/recon/active

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Fuzzing"
   - Fuzzing de Paginas y Directorios
 tags:
   - type/cheatsheet

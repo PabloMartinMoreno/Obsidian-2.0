@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "JavaScript"
   - Document Object Model
 tags:
   - estado/completo

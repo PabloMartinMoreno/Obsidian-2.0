@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "XSS Basado en DOM"
 tags:
   - type/technique
   - vuln/xss

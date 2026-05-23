@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Escaneo de Puertos Internos"
+  - "Firewall de Salida (Egress)"
   - "ssh tunneling"
   - "Abusing Linux subsystem"
   - "Internal Port Discovery"

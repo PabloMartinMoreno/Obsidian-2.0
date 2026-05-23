@@ -1,5 +1,11 @@
 ---
 aliases:
+  - "API Gateway"
+  - "Zero Trust"
+  - "Control de Acceso"
+  - "Control de Acceso Basado en Roles"
+  - "Defensa en Profundidad"
+  - "UUID"
   - "API authentication token"
   - "Token-based Login"
   - "API Abuse for User Creation"

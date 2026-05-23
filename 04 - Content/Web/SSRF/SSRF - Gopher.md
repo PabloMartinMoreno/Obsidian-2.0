@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Gopher"
 tags:
   - type/concept
   - vuln/ssrf
