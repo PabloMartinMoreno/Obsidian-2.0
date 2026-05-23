@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Abusing Sudoers"
   - "Hardening de Sudo"
   - "sudo"
   - "Sudo abuse"

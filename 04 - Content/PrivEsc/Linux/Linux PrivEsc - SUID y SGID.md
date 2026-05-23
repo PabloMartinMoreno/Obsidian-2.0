@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Abusing SUID Binary"
   - "SUID"
   - "SGID"
   - "Abusing SUID & SGID Binaries"

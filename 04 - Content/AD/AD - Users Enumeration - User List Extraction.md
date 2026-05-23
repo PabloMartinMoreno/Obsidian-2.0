@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Generación de listas de usuarios"
+  - "username-anarchy"
   - User List Dump
   - LDAP User Filter
   - GetADUsers

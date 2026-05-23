@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "DCSync Attack - Secretsdump"
   - DCSync Tools
   - secretsdump dcsync
   - mimikatz dcsync

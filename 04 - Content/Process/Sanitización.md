@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Bypass de Funciones Deshabilitadas"
+  - "Bypass de Filtros con Wrappers PHP"
+  - "preg_match"
   - "Bypass de Restricciones de Filtros"
   - Sanitization
   - Input Validation

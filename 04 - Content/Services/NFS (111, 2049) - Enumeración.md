@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "NFS Enumeration"
+  - "showmount"
 tags:
   - type/cheatsheet
   - technique/recon/active

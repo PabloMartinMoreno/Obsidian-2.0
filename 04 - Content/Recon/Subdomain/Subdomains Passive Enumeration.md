@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Subdomain Discovery"
+  - "vhosts"
   - Enumeración Pasiva de Subdominios
 tags:
   - type/cheatsheet

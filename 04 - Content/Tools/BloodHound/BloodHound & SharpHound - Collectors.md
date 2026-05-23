@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "BloodHound - SharpHound.exe"
   - SharpHound
   - RustHound
   - BloodHound.py

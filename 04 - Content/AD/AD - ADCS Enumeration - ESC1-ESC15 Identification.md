@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Active Directory Certificate Services (ESC1)"
   - ESC1 ESC2 ESC3
   - ADCS Vulnerabilities
   - certipy vulnerable

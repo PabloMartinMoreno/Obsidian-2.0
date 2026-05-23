@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Abusing HTACCESS Policies"
+  - "Abusing File Upload"
   - "Magic Bytes"
   - "Doble extension"
   - "Unauthenticated File Upload"

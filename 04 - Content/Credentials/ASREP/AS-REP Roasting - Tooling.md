@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "ASRepRoast Attack (GetNPUsers)"
   - AS-REP Tooling
   - GetNPUsers
   - Rubeus asreproast

@@ -1,5 +1,11 @@
 ---
 aliases:
+  - "AutoLogon Credentials"
+  - "Abusing Server Operators Group"
+  - "Service Binary Path Hijacking"
+  - "sc.exe"
+  - "Abusing Printer"
+  - "Abusing AlwaysInstallElevated"
   - "Lolbins Binary"
   - "Icacls Abuse"
   - "runas savecred"

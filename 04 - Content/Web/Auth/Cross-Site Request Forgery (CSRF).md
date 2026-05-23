@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Cross-Site Request Forgery (SCRF)"
   - CSRF
   - XSRF
   - Cross Site Request Forgery

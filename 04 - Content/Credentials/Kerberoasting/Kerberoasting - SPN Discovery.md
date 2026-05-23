@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Kerberos User Enumeration - Kerbrute"
   - SPN Discovery
   - servicePrincipalName Filter
   - Kerberoastable Users

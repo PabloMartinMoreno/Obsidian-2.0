@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "PHP Source Analysis"
+  - "Binary Analysis"
+  - "olevab"
   - "PHP"
   - "PHP Source Code Analysis"
   - "Python"

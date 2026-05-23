@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "SQL Injection Boolean"
   - "SQLi Boolean-Based"
   - "Boolean-Based SQLi"
 tags:

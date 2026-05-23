@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "ghidra"
 tags:
   - estado/completo
   - tool/ghidra

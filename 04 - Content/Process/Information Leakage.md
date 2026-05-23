@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Sensitive Information Exposure"
+  - "Finding out the PIN (Werkzeug Debugger)"
   - "Source Code Disclosure"
   - ".ds_store"
   - Info Disclosure

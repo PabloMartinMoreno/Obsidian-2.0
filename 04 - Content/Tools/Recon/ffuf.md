@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "wfuzz"
   - Ffuf
   - Fuff
 tags:

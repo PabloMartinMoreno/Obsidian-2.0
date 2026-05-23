@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "Symlinks"
+  - "symlink atack"
+  - "Listfiles"
   - "Exploiting Wildcard Injection"
 tags:
   - estado/completo

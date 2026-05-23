@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "ssh tunneling"
+  - "Abusing Linux subsystem"
   - "Internal Port Discovery"
   - "Puerto interno"
   - "Local Port Forwarding"
