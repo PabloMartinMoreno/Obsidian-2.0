@@ -7,20 +7,20 @@ tags:
   - technique/execution
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: CheatSheet
 linked:
-  - "[[XXE - Clásico In-band]]"
-  - "[[XXE - Clásico SSRF]]"
-  - "[[XXE - Inyección Mediante XInclude]]"
-  - "[[XXE - Blind Basado en Errores]]"
-  - "[[XXE - Out-of-Band (OOB) y DTDs Externos]]"
-  - "[[XXE - Carga de Archivos (Formatos XML Ocultos)]]"
-  - "[[XXE - DTDs Locales]]"
+  - '[[XXE - Clásico In-band]]'
+  - '[[XXE - Clásico SSRF]]'
+  - '[[XXE - Inyección Mediante XInclude]]'
+  - '[[XXE - Blind Basado en Errores]]'
+  - '[[XXE - Out-of-Band (OOB) y DTDs Externos]]'
+  - '[[XXE - Carga de Archivos (Formatos XML Ocultos)]]'
+  - '[[XXE - DTDs Locales]]'
 ---
 # XML External Entity (XXE)
 
@@ -28,27 +28,37 @@ linked:
 
 ## Cheatsheet
 
+### 1. In-Band (respuesta directa)
+
 ````tabs
-tab: **Clásico In-band**
+tab: **Clásico (file:// + entity reflejada)**
 ![[XXE - Clásico In-band#^xxe-clasico-inband]]
 
-tab: **Clásico SSRF**
+tab: **SSRF (http/https/gopher en entity)**
 ![[XXE - Clásico SSRF#^xxe-clasico-ssrf]]
+````
 
-tab: **XInclude**
-![[XXE - Inyección Mediante XInclude#^xxe-xinclude]]
+### 2. Blind & OOB
 
-tab: **Blind (Errores)**
+````tabs
+tab: **Basado en Errores (parser verbose)**
 ![[XXE - Blind Basado en Errores#^xxe-blind-errores]]
 
-tab: **Out-of-Band (OOB)**
+tab: **OOB DTDs Externos (HTTP/FTP/DNS exfil)**
 ![[XXE - Out-of-Band (OOB) y DTDs Externos#^xxe-oob]]
 
-tab: **Carga de Archivos**
-![[XXE - Carga de Archivos (Formatos XML Ocultos)#^xxe-carga-archivos]]
-
-tab: **DTDs Locales**
+tab: **DTDs Locales (egress filtering bypass)**
 ![[XXE - DTDs Locales#^xxe-dtds-locales]]
+````
+
+### 3. Vectores Indirectos
+
+````tabs
+tab: **XInclude (sin control del DOCTYPE)**
+![[XXE - Inyección Mediante XInclude#^xxe-xinclude]]
+
+tab: **Carga de Archivos (SVG/DOCX/XLSX/XMP)**
+![[XXE - Carga de Archivos (Formatos XML Ocultos)#^xxe-carga-archivos]]
 ````
 
 ---

