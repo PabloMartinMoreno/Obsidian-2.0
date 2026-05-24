@@ -31,7 +31,7 @@ linked:
 
 ***
 
-![[Pasted image 20260524144240.png]]
+![[SSTI reconocimiento.png]]
 
 ## Cheatsheet
 

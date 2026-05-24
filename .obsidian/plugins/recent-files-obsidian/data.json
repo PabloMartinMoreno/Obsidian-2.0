@@ -5,6 +5,10 @@
       "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
     },
     {
+      "basename": "SSTI reconocimiento",
+      "path": "00 - Resources/Images/SSTI reconocimiento.png"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
