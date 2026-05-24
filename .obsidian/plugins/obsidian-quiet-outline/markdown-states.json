@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 49.96122913084475,
+    "scroll": 108.30598958333333,
     "cursor": {
       "from": {
         "line": 74,
@@ -322,7 +322,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md": {
-    "scroll": 0,
+    "scroll": 66.7950954106636,
     "cursor": {
       "from": {
         "line": 28,
@@ -331,6 +331,20 @@
       "to": {
         "line": 28,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/diferencias ataques de servidor.md": {
+    "scroll": 136.0625,
+    "cursor": {
+      "from": {
+        "line": 143,
+        "ch": 603
+      },
+      "to": {
+        "line": 143,
+        "ch": 603
       }
     },
     "expandedKeys": []

