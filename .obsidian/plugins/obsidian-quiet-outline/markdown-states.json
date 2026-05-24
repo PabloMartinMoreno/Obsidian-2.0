@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 108.30598958333333,
+    "scroll": 70.51953125,
     "cursor": {
       "from": {
         "line": 74,
@@ -210,14 +210,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
-    "scroll": 67.9762226752518,
+    "scroll": 23.226244343891402,
     "cursor": {
       "from": {
-        "line": 29,
+        "line": 33,
         "ch": 0
       },
       "to": {
-        "line": 29,
+        "line": 33,
         "ch": 0
       }
     },

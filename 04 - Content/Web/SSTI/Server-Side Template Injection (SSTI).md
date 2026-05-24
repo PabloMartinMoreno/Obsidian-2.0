@@ -31,6 +31,8 @@ linked:
 
 ***
 
+![[Pasted image 20260524144240.png]]
+
 ## Cheatsheet
 
 ### 💉 Ejecución por Engine
@@ -83,19 +85,6 @@ tab: **Filter Abuse para Escape**
 ![[SSTI - Sandbox Escape#^ssti-sandbox-filter-abuse]]
 ````
 
-### 🛠️ Tooling
-
-````tabs
-tab: **tplmap**
-![[SSTI - Tooling#^ssti-tool-tplmap]]
-
-tab: **Burp Extensions**
-![[SSTI - Tooling#^ssti-tool-burp]]
-
-tab: **Wordlists de Payloads**
-![[SSTI - Tooling#^ssti-tool-wordlists]]
-````
-
 ### 🛡️ Bypasses y Filter Evasion
 
 ````tabs
@@ -111,6 +100,20 @@ tab: **Attribute Lookup Chains**
 tab: **Comment / Whitespace Tricks**
 ![[SSTI - Bypasses y Filter Evasion#^ssti-bypass-comment-whitespace]]
 ````
+
+### 🛠️ Tooling
+
+````tabs
+tab: **tplmap**
+![[SSTI - Tooling#^ssti-tool-tplmap]]
+
+tab: **Burp Extensions**
+![[SSTI - Tooling#^ssti-tool-burp]]
+
+tab: **Wordlists de Payloads**
+![[SSTI - Tooling#^ssti-tool-wordlists]]
+````
+
 
 ___
 
@@ -193,14 +196,12 @@ t.process(Map.of("name", userInput), out);
 
 ```bash
 # 1. Probe polyglot
-curl -G "https://target/page" --data-urlencode 'q=${{<%[%`"}}%\'
-
+curl -G "https://target/page" --data-urlencode 'q=${{<\%[%`"}}%\'
 # 2. Probe aritmético rápido (one-liner)
 for p in '{{7*7}}' '${7*7}' '<%= 7*7 %>' '#{7*7}' '@(7*7)' '{7*7}'; do
   R=$(curl -sG "https://target/page" --data-urlencode "q=$p")
   echo "$p" → $(echo "$R" | grep -oE '49|7777777' | head -1)
 done
-
 # 3. Auto-exploit
 python tplmap.py -u "https://target/page?q=test" --level 5
 ```
