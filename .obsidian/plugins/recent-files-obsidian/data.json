@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "XML External Entity (XXE)",
-      "path": "04 - Content/Web/XXE/XML External Entity (XXE).md"
-    },
-    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "XML External Entity (XXE)",
+      "path": "04 - Content/Web/XXE/XML External Entity (XXE).md"
     },
     {
       "basename": "Directory Traversal",

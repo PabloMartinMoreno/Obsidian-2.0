@@ -1,53 +1,91 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/concept
   - vuln/command-injection
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[OS Command Injection]]"
+  - '[[OS Command Injection]]'
 ---
 # Command Injection - Prevención
 
-## Cheatsheet
+***
 
-Estrategias para mitigar la vulnerabilidad en el ciclo de desarrollo y despliegue.
+## Secure Coding (nivel aplicación)
 
-### 1. Secure Coding (Nivel Aplicación)
+| **Código safe** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `subprocess.run(['ping', '-c', '1', host])` (Python, lista de args) | No shell — args pasados como array, no concatenados | Reemplazo de `os.system(f'ping {host}')`. |
+| `child_process.execFile('ping', ['-c', '1', host])` (Node.js) | No shell, args separados | Reemplazo de `exec()` con string. |
+| `Runtime.getRuntime().exec(new String[]{"ping","-c","1",host})` (Java) | Array form — no parsea shell metacharacters | Reemplazo de `exec(stringConcat)`. |
+| `filter_var($ip, FILTER_VALIDATE_IP)` (PHP) | Valida formato IP — devuelve `false` si no es | Validación de input pre-uso. |
+| `if (!preg_match('/^(\d{1,3}\.){3}\d{1,3}$/', $ip)) die();` | Regex strict — solo IPv4 dotted-quad | Whitelist > blacklist. |
+| `preg_replace('/[^A-Za-z0-9.]/', '', $var)` (PHP) | Strip chars no-alfanuméricos | Saneamiento defensivo (última línea). |
+| `fsockopen($host, 80)` en vez de `system("ping $host")` | API nativa que no invoca shell | Replace de uso de shell cuando sea posible. |
+^ci-prev-app
 
-La prioridad es **NO usar comandos del sistema**. Si es obligatorio, se debe validar y sanear.
+## Server Hardening
 
-|                   **Objetivo**                    |       **Estrategia Preferida**        |                                            **Implementación (Ejemplos)**                                            |                              **Nota**                              |
-|:-------------------------------------------------:|:-------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------:|
-|            <br>**Alternativa Segura**             |    <br>**Usar Built-in Functions**    |              <br>**PHP:** `fsockopen()` (para ping/conexión).<br>**Node:** Librerías nativas.<br><br>               |   <br>Evita usar `system()`, `exec()`, `passthru` por completo.    |
-|    <br>**Validación**<br>_(Input Validation)_     |      <br><br>**Filtros Nativos**      |            <br>**PHP:** `filter_var($ip, FILTER_VALIDATE_IP)`<br><br>**Node:** Librería `is-ip`.<br><br>            |     <br>Verifica el formato. Si falla, se descarta el request.     |
-|    <br>**Validación**<br>_(Input Validation)_     |  <br>**Regex Estricto (Whitelist)**   |                                         <br>**JS/PHP:** `/^(25[0-5]...)$/`                                          |  <br>Solo acepta patrones exactos (ej. estructura de IP).<br><br>  |
-| <br><br>**Saneamiento**<br>_(Input Sanitization)_ | <br><br>**Eliminación de Caracteres** | <br>**PHP:** `preg_replace('/[^A-Za-z0-9.]/', '', $var)`<br><br>**JS:** `var.replace(/[^A-Za-z0-9.]/g, '')`<br><br> | <br>**Crucial:** Elimina todo lo que NO sea alfanumérico o puntos. |
-|   <br>**Saneamiento**<br>_(Input Sanitization)_   |     <br>**Librerías de Limpieza**     |                                      <br>**Node:** `DOMPurify.sanitize(input)`                                      |           <br>Más seguro que escribir tus propios Regex.           |
+| **Config** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `User www-data` (Apache/nginx) | Web server corre con privs mínimos | Limita daño post-RCE. |
+| `disable_functions = system,exec,shell_exec,passthru,popen,proc_open` (php.ini) | Bloquea funciones peligrosas a nivel PHP | Defense-in-depth para apps PHP legacy. |
+| `open_basedir = /var/www/html` (php.ini) | Sandbox de filesystem para PHP | Evita lectura de `/etc/passwd` post-RCE. |
+| `seccomp` / AppArmor / SELinux profile | LSM bloquea syscalls/paths a nivel kernel | Hardening profundo. |
+| `chroot` / containerización (Docker) | Isolation del proceso web | Reduce blast radius. |
+| ModSecurity con OWASP CRS | WAF con reglas anti-CI | Detección perimetral. |
+| Reject double-encoding / non-ASCII en URL rules | Bloquea bypasses obvios | Layer adicional sobre WAF. |
+^ci-prev-server
 
-### 2. Server Hardening (Configuración del Servidor)
+### Orden correcto en código
 
-Medidas para contener el daño si el código falla y un atacante logra inyectar comandos.
+```python
+# 1. VALIDAR (¿formato esperado?)
+if not re.match(r'^(\d{1,3}\.){3}\d{1,3}$', host):
+    raise ValueError("Invalid IP format")
 
-|      **Configuración**      |            **Implementación Típica (PHP/Apache)**            |                                                             **Propósito**                                                              |
-| :-------------------------: | :----------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: |
-| <br><br>**Least Privilege** |                   <br><br>User: `www-data`                   | <br>Ejecutar el servicio web con un usuario de privilegios mínimos (nunca root) para limitar el acceso al sistema de archivos.<br><br> |
-|  <br>**Disable Functions**  | <br>`disable_functions = system, exec, shell_exec, passthru` |                             <br>Bloquea la ejecución de funciones peligrosas a nivel de `php.ini`.<br><br>                             |
-|     <br>**Limit Scope**     |              <br>`open_basedir = /var/www/html`              |          <br>Enjaula al script para que no pueda leer archivos fuera de su directorio (ej. evita leer `/etc/passwd`).<br><br>          |
-|         <br>**WAF**         |                 <br>ModSecurity, Cloudflare                  |                            <br>Detecta y bloquea patrones de ataque comunes en las peticiones HTTP.<br><br>                            |
-|      <br>**URL Rules**      |            <br>Reject Double-Encoding / Non-ASCII            |                 <br>Rechazar peticiones con codificación extraña suele bloquear intentos de bypass de filtros.<br><br>                 |
+# 2. SANEAR (defense-in-depth)
+host = re.sub(r'[^0-9.]', '', host)
 
-> [!IMPORTANT] Orden de Factores
-> 
-> El orden correcto en el código es:
-> 
-> 1. **Validar** (¿Es una IP?).
->     
-> 2. **Sanear** (Quitar caracteres malos por si acaso).
->     
-> 3. **Ejecutar** (Usando función nativa, no `system`).
->
+# 3. EJECUTAR con API segura (no shell)
+result = subprocess.run(
+    ['ping', '-c', '1', host],
+    capture_output=True,
+    timeout=5,
+    check=False,
+)
+```
+
+### Antipatrones (NO hacer)
+
+```python
+# ❌ Concatenación + shell
+os.system(f"ping {host}")
+os.system("ping " + host)
+
+# ❌ shell=True con f-string
+subprocess.run(f"ping {host}", shell=True)
+
+# ❌ Blacklist incompleta (siempre bypasseable)
+if ';' in host or '&' in host:
+    pass  # falta `|`, `\n`, $(), backticks, etc.
+
+# ❌ Confiar solo en WAF
+# El WAF puede bypassearse — la validación tiene que estar en backend también.
+```
+
+### Mitigación capa por capa
+
+| Capa | Control |
+|---|---|
+| **Input** | Whitelist (regex strict) + type validation. |
+| **Processing** | API que no use shell (array args, parameterized). |
+| **Runtime** | Least privilege user, disabled dangerous functions. |
+| **Filesystem** | chroot/open_basedir/AppArmor — contener si falla todo lo anterior. |
+| **Network** | WAF con reglas anti-CI + egress filtering (server no debe poder reverse shell). |
+
+---

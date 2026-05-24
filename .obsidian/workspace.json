@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/XXE/XML External Entity (XXE).md",
+                "file": "03 - Tertiary Categories/Web Explotación.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "XML External Entity (XXE)"
+              "title": "Web Explotación"
             }
           }
         ],
@@ -267,11 +267,12 @@
   },
   "active": "d95f3945bcd80304",
   "lastOpenFiles": [
+    "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Web/XXE/XML External Entity (XXE).md",
     "04 - Content/Web/PathTraversal/Directory Traversal.md",
     "04 - Content/Web/FileInclusion/File Inclusion.md",
     "04 - Content/Web/XSLT/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md",
-    "04 - Content/Web/XXE/XML External Entity (XXE).md",
     "04 - Content/Web/HPP/HTTP Parameter Pollution.md",
     "04 - Content/Web/CRLF/CRLF Injection.md",
     "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md",
@@ -300,7 +301,6 @@
     "04 - Content/ReverseEngineering/Decompiling .NET Assemblies.md.tmp.5724.8bc54ed3f7b5",
     "04 - Content/ReverseEngineering/Debugging with x64dbg.md",
     "04 - Content/ReverseEngineering/Debugging with x64dbg.md.tmp.5724.6b11b6ccf7a3",
-    "04 - Content/ReverseEngineering/Debugging with GDB.md",
     "04 - Content/ReverseEngineering/Debugging with GDB.md.tmp.5724.11d71a85373a",
     "04 - Content/ReverseEngineering/Disassembling with Ghidra.md.tmp.5724.60cb40133364",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

