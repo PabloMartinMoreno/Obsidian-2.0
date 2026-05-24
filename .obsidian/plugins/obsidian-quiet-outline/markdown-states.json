@@ -210,28 +210,28 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
-    "scroll": 40.54302323234362,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 33,
-        "ch": 0
+        "line": 41,
+        "ch": 11
       },
       "to": {
-        "line": 33,
+        "line": 41,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md": {
-    "scroll": 89.51932773109243,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 27,
+        "line": 34,
         "ch": 0
       },
       "to": {
-        "line": 27,
+        "line": 34,
         "ch": 0
       }
     },

@@ -43,17 +43,17 @@ tab: **Reverse Shells**
 tab: **OOB Exfil (Blind RCE)**
 ![[SSI - Ejecucion de Comandos#^ssi-exec-oob]]
 
-tab: **Requisitos para `#exec`**
+tab: **Requisitos para exec**
 ![[SSI - Ejecucion de Comandos#^ssi-exec-requirements]]
 ````
 
 ### 📁 Inclusión de Archivos
 
 ````tabs
-tab: **`#include virtual` (URL-Relative)**
+tab: **include virtual (URL-Relative)**
 ![[SSI - Inclusion de Archivos#^ssi-include-virtual]]
 
-tab: **`#include file` (Filesystem-Relative)**
+tab: **include file (Filesystem-Relative)**
 ![[SSI - Inclusion de Archivos#^ssi-include-file]]
 
 tab: **LFI Chain via SSI**
@@ -63,13 +63,13 @@ tab: **LFI Chain via SSI**
 ### 📋 Information Gathering
 
 ````tabs
-tab: **`#echo` Environment Variables**
+tab: **echo Environment Variables**
 ![[SSI - Information Gathering#^ssi-info-echo]]
 
-tab: **`#fsize` y `#flastmod` (Filesystem Enum)**
+tab: **fsize y flastmod (Filesystem Enum)**
 ![[SSI - Information Gathering#^ssi-info-fsize]]
 
-tab: **`#printenv` y `#config`**
+tab: **printenv y config**
 ![[SSI - Information Gathering#^ssi-info-printenv]]
 ````
 
@@ -79,7 +79,7 @@ tab: **`#printenv` y `#config`**
 tab: **Whitespace Tricks**
 ![[SSI - Evasion de Filtros#^ssi-bypass-whitespace]]
 
-tab: **`#set` Concatenation**
+tab: **set Concatenation**
 ![[SSI - Evasion de Filtros#^ssi-bypass-set-concat]]
 
 tab: **Inyección via Filename / Headers**
