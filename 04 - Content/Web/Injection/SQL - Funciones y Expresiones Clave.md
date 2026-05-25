@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/cheatsheet
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: CheatSheet
 linked:
-  - "[[SQL Commands]]"
+  - '[[SQL Commands]]'
 ---
 # SQL - Funciones y Expresiones Clave
 
@@ -19,21 +19,53 @@ linked:
 
 ## Cheatsheet
 
-| **Concepto Clave**                           | **Sintaxis / Ejemplos (Multimotor)**                                                                        | **Ejemplo Práctico**                                                                                     | **Propósito y Comportamiento**                                                                                                                                                                                                                                          |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <br>**Funciones de Información del Sistema** | <br>`CURRENT_USER`, `CURRENT_DATE` *(ANSI)*<br>`VERSION()` *(MySQL/PG)*, `@@version` *(SQL Server)*<br><br> | <br><br>`SELECT CURRENT_USER, CURRENT_TIMESTAMP;`                                                        | <br>Devuelven datos del contexto actual de la sesión, el usuario o el servidor. Son vitales para generar registros de auditoría (saber quién y cuándo insertó un dato), aplicar lógica basada en fechas o validar el entorno.<br><br>                                   |
-| <br>**Casteo y Conversión de Tipos**         | <br>`CAST(col AS tipo)` *(ANSI)*<br>`CONVERT()` *(SQL Server/MySQL)*, `::tipo` *(Postgres)*<br><br>         | <br>`SELECT CAST(precio_texto AS DECIMAL(10,2)) FROM productos;`                                         | <br>Transforman explícitamente un tipo de dato en otro. Esencial para asegurar que las operaciones matemáticas no fallen, para formatear fechas correctamente de cara al usuario, o para concatenar números con texto.<br><br>                                          |
-| <br><br>**Funciones Condicionales**          | <br>`CASE WHEN ... THEN ... ELSE ... END` *(ANSI)*<br>`IF()` *(MySQL)*, `IIF()` *(SQL Server)*<br><br>      | <br>`SELECT nombre, CASE WHEN stock > 0 THEN 'Disponible' ELSE 'Agotado' END AS estado FROM inventario;` | <br>Permiten aplicar lógica de ramificación (if-then-else) directamente dentro de la consulta. Evalúan condiciones lógicas fila por fila y devuelven un valor específico según el resultado, ideal para categorizar datos sobre la marcha.<br><br>                      |
-| <br>**Funciones de Longitud y Subcadenas**   | <br>`SUBSTRING()` / `SUBSTR()`, `LENGTH()` / `LEN()`                                                        | <br>`SELECT SUBSTRING(email, 1, 5) FROM usuarios WHERE LENGTH(password) < 8;`                            | <br>Manipulan y analizan cadenas de texto. Son herramientas obligatorias para limpiar datos sucios (como espacios extra), extraer porciones específicas (ej. el dominio de un email) o validar que los campos cumplan con cierta longitud.<br><br>                      |
-| <br>**Funciones de Tiempo y Retraso**        | <br>`SLEEP()` *(MySQL)*, `pg_sleep()` *(Postgres)*, `WAITFOR DELAY` *(SQL Server)*                          | <br><br>`SELECT SLEEP(2);`                                                                               | <br>Suspenden temporalmente la ejecución de la consulta por la cantidad de segundos indicada. Se utilizan en scripts de mantenimiento para simular latencia, o para espaciar actualizaciones masivas en lotes y evitar bloquear las tablas para otros usuarios.<br><br> |
+| **Función** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `@@version` (MSSQL/MySQL) | Versión del SGBD | Fingerprinting inicial. |
+| `version()` (PostgreSQL/MySQL) | Versión via función | Mismo. |
+| `current_user` (ANSI) o `user()` (MySQL) o `USER` (Oracle) | Usuario actual de la conexión | Post-fingerprint. |
+| `database()` (MySQL) o `current_database()` (PostgreSQL) o `DB_NAME()` (MSSQL) | Database actual | Enum DBs. |
+| `current_timestamp` (ANSI) | Fecha y hora actual | Audit/logs. |
+| `CAST(x AS INTEGER)` | Conversión de tipo | Error-based via type mismatch ([[SQLi - Error based]]). |
+| `CONVERT(int, x)` (MSSQL) | Equivalente MSSQL | Mismo. |
+| `x::INTEGER` (PostgreSQL) | Cast shorthand | Mismo. |
+| `CASE WHEN cond THEN a ELSE b END` (ANSI) | Conditional logic en select | Boolean blind / time-based. |
+| `IF(cond, a, b)` (MySQL) | Conditional MySQL | Inline conditional. |
+| `IIF(cond, a, b)` (MSSQL 2012+) | Conditional MSSQL | Equivalente. |
+| `SUBSTRING(s, pos, len)` (MySQL/MSSQL) | Substring | Char-by-char extraction (blind). |
+| `SUBSTR(s, pos, len)` (Oracle/SQLite) | Equivalente | Mismo. |
+| `LENGTH(s)` o `LEN(s)` (MSSQL) | Largo de string | Pre-extraction — saber cuántos chars. |
+| `ASCII(c)` | Char a número ASCII | Binary search optimization en blind. |
+| `CHAR(83)` (MSSQL) o `CHR(83)` (Oracle) | Número a char | Construir keywords sin literales. |
+| `SLEEP(5)` (MySQL) | Pausa 5 segundos | [[SQLi - Time based]] MySQL. |
+| `pg_sleep(5)` (PostgreSQL) | Pausa PostgreSQL | Mismo. |
+| `WAITFOR DELAY '0:0:5'` (MSSQL) | Pausa MSSQL (en stacked query) | Mismo. |
+| `BENCHMARK(5000000, MD5('a'))` (MySQL) | CPU-heavy delay alt | `SLEEP` filtrado. |
+| `0x68656c6c6f` (hex literal) | String `hello` sin comillas | Bypass quote filter — MySQL/MSSQL. |
 ^sql-expresiones
 
+### Equivalencias críticas multimotor
+
+| Concepto | MySQL | MSSQL | PostgreSQL | Oracle |
+|:---:|:---:|:---:|:---:|:---:|
+| Version | `@@version` o `version()` | `@@version` | `version()` | `SELECT banner FROM v$version` |
+| User | `user()` | `SYSTEM_USER` | `current_user` | `USER` |
+| DB | `database()` | `DB_NAME()` | `current_database()` | `(SELECT instance_name FROM v$instance)` |
+| Sleep | `SLEEP(n)` | `WAITFOR DELAY '0:0:n'` | `pg_sleep(n)` | `DBMS_PIPE.RECEIVE_MESSAGE('a',n)` |
+| Substring | `SUBSTRING(s,p,l)` | `SUBSTRING(s,p,l)` | `SUBSTRING(s,p,l)` | `SUBSTR(s,p,l)` |
+| Concat | `CONCAT(...)` | `+` | `\|\|` | `\|\|` |
+| Comment | `-- ` `#` `/**/` | `--` `/**/` | `--` `/**/` | `--` `/**/` |
 
 ___
 
 ## Overview
 
-Conocer las funciones integradas de los diferentes motores de bases de datos me proporciona un arsenal de herramientas para extraer el contexto del entorno, manipular los tipos de datos devueltos y, fundamentalmente, crear canales laterales de exfiltración. El uso estratégico de expresiones condicionales, funciones de manipulación de cadenas y retrasos temporales es el núcleo operativo de las inyecciones ciegas (Blind SQLi). Estas funciones me permiten formular aserciones binarias al servidor y medir su respuesta a través de cambios sutiles en el comportamiento de la página o en el tiempo de ejecución de la solicitud.
+Funciones built-in son herramientas core de SQLi. Tres categorías clave:
 
+1. **Info functions** (`@@version`, `user()`, `database()`) — fingerprinting + enum.
+2. **String functions** (`SUBSTRING`, `ASCII`, `LENGTH`) — char-by-char extraction en blind.
+3. **Conditional + delay** (`CASE WHEN`, `SLEEP`) — boolean y time-based.
 
-___
+Sintaxis varía por motor — fingerprinting primero, función después. Hex literals (`0x...`) son escape válido cuando quotes filtradas en MySQL/MSSQL.
+
+***

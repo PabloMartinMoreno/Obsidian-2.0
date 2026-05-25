@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/cheatsheet
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: CheatSheet
 linked:
-  - "[[SQL Commands]]"
+  - '[[SQL Commands]]'
 ---
 # SQL - Estructura Básica
 
@@ -19,20 +19,44 @@ linked:
 
 ## Cheatsheet
 
-|           **Concepto Clave**           |  **Sintaxis Básica / Símbolo**  |                                           **Ejemplo Práctico**                                            | **Propósito y Comportamiento**                                                                                                                                                                 |
-| :------------------------------------: | :-----------------------------: | :-------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|       <br>**Declaración SELECT**       | <br>`SELECT columna1, columna2` |                              <br>`SELECT id, nombre, email FROM empleados;`                               | <br>Define qué datos extraer de la base de datos. Constituye la directiva principal para cualquier operación de lectura y exfiltración de información.<br><br>                                 |
-|         <br>**Cláusula FROM**          |     <br>`FROM nombre_tabla`     |                                 <br>`SELECT * FROM inventario.productos;`                                 | <br>Especifica la tabla, vista o esquema de origen de donde se extraerán los datos indicados en la proyección.<br><br>                                                                         |
-|         <br>**Cláusula WHERE**         |  <br>`WHERE condicion_logica`   |                        <br>`SELECT nombre FROM clientes WHERE pais = 'Argentina';`                        | <br>Filtra los registros obtenidos basándose en condiciones booleanas. Es el principal punto de manipulación lógica en inyecciones basadas en errores o booleanas.<br><br>                     |
-| <br>**Sintaxis de Comentarios en SQL** | <br><br>`--` , `#`, `/* ... */` | <br>`SELECT id, estado /*, fecha_baja */ FROM suscripciones; -- Oculto fecha_baja para la prueba`<br><br> | <br>Anula la ejecución del texto subsiguiente o de un bloque específico. Su sintaxis varía según el motor (ej. MySQL, PostgreSQL, MSSQL) y es vital para truncar consultas originales.<br><br> |
-|    <br>**Terminación de Consultas**    |             <br>`;`             |                   <br>`DELETE FROM logs_temporales; SELECT COUNT(*) FROM logs_activos;`                   | <br>Indica al analizador léxico del motor el final absoluto de la instrucción SQL actual. Esencial para apilar consultas en entornos que lo soporten.<br><br>                                  |
+| **Sintaxis** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `SELECT col1, col2 FROM tabla` | Filas con esas columnas | Lectura básica. |
+| `SELECT * FROM esquema.tabla` | Todas las columnas de tabla con esquema explícito | Cuando hay múltiples DBs con misma tabla. |
+| `WHERE columna = 'valor'` | Filtra filas que matchean | Punto de inyección típico — `WHERE id = $input`. |
+| `WHERE 1=1` | Tautología — siempre true | Bypass de auth. |
+| `-- comentario` o `# comentario` (MySQL) o `/* ... */` | Anula resto de query | Truncar query original post-inyección. `--` requiere espacio después en MySQL. |
+| `--+` o `-- -` | Comentario con marker — espacio garantizado | Workaround para MySQL `--` strict. |
+| `;` | Termina sentencia, permite stacked queries | MSSQL/PostgreSQL aceptan stacked. MySQL/PHP típicamente NO. |
+| `SELECT ... ; INSERT INTO logs VALUES ('x')` | Stacked queries — segunda sentencia ejecuta | MSSQL, PostgreSQL con drivers que soporten. |
 ^sql-base
+
+### Sintaxis de comentarios por motor
+
+| Motor | Comentarios soportados |
+|:---:|:---:|
+| MySQL/MariaDB | `-- ` (con espacio), `#`, `/* ... */`, `/*! version */` (executable comment) |
+| PostgreSQL | `-- `, `/* ... */` |
+| MSSQL | `--`, `/* ... */` |
+| Oracle | `--`, `/* ... */` |
+| SQLite | `--`, `/* ... */` |
+
+### Stacked queries support
+
+| Driver | Stacked OK |
+|:---:|:---:|
+| PHP `mysqli_query()` | ❌ (`mysqli_multi_query` sí) |
+| PHP PDO MySQL | ❌ (default) / ✅ con `PDO::ATTR_EMULATE_PREPARES=true` |
+| PHP `mssql_query` | ✅ |
+| Java JDBC | ✅ |
+| .NET SqlCommand | ✅ |
 
 ___
 
 ## Overview
 
-El dominio de los comandos fundamentales de SQL es el cimiento indispensable para interactuar con bases de datos relacionales. Esta nota consolida la anatomía de una consulta estándar, detallando las instrucciones centrales que permiten recuperar y filtrar información, así como los mecanismos sintácticos para comentar o terminar sentencias. Comprender la correcta sintaxis de estas operaciones me permite analizar el comportamiento legítimo del motor de base de datos, paso previo necesario para subvertir su lógica mediante SQL Injection.
+Bloques básicos de SQL — keywords mínimos para construir inyecciones. Stacked queries (varias sentencias separadas por `;`) son letales pero raros en MySQL/PHP por restricciones del driver. MSSQL + Java/.NET típicamente permiten.
 
+Comentarios truncan la query original — necesario después de inyectar payload para evitar errores de sintaxis del resto de la query del backend.
 
-___
+***

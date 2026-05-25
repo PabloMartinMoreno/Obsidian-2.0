@@ -1,17 +1,17 @@
 ---
-aliases:
+aliases: null
 tags:
   - type/cheatsheet
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: CheatSheet
 linked:
-  - "[[SQL Commands]]"
+  - '[[SQL Commands]]'
 ---
 # SQL - Exploración de Metadatos
 
@@ -19,17 +19,47 @@ linked:
 
 ## Cheatsheet
 
-| **Concepto Clave**                                         | **Sintaxis Básica / Ejemplos (Multimotor)**                                                                                     | **Ejemplo Práctico**                                                                                              | **Propósito y Comportamiento (Uso General en SQL)**                                                                                                                                                                                                                                                          |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <br>**Information Schema (Diccionario de Datos Estándar)** | <br><br>`INFORMATION_SCHEMA.TABLES`, `INFORMATION_SCHEMA.COLUMNS`                                                               | <br><br>`SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'public';`                         | <br>Es el **estándar ANSI** para consultar metadatos. Provee vistas de solo lectura sobre la estructura de la base de datos (tablas, columnas, tipos de datos, restricciones). Lo soportan PostgreSQL, MySQL, SQL Server y otros. _(Nota: Oracle usa sus propias vistas como `ALL_TABLES`)._<br><br>         |
-| <br><br>**Catálogos del Sistema (Usuarios y Privilegios)** | <br><br>Varía por motor: `pg_roles` *(Postgres)*, `sys.server_principals` *(SQL Server)*, `mysql.user` *(MySQL)*                | <br><br>`SELECT name, type_desc FROM sys.server_principals;` _(Ej. SQL Server)_                                   | <br>Esquemas físicos y propietarios de cada motor que almacenan cuentas, roles, hashes de contraseñas y la matriz de permisos. **No hay un estándar ANSI estricto** para la administración física de usuarios, por lo que la tabla exacta a consultar depende del motor relacional que estés usando.<br><br> |
-| <br><br>**Configuración y Vistas de Rendimiento**          | <br><br>Varía por motor: `sys.configurations` *(SQL Server)*, `SHOW / current_setting` *(Postgres)*, `V$PARAMETER` *(Oracle)*   | <br><br>`SELECT name, value_in_use FROM sys.configurations WHERE name = 'max worker threads';` _(Ej. SQL Server)_ | <br>Mecanismos para consultar la configuración activa del motor (límites de memoria, timeouts, conexiones máximas). Los sistemas modernos proveen vistas dinámicas (como las DMVs en SQL Server o el esquema `sys` en MySQL) para monitorear el rendimiento y analizar cuellos de botella.<br><br>           |
-| <br>**Monitoreo y Gestión de Sesiones (Procesos)**         | <br>Varía por motor: `pg_stat_activity` / `pg_terminate_backend()` *(Postgres)*, `sys.dm_exec_requests` / `KILL` *(SQL Server)* | <br>`SELECT pid, query FROM pg_stat_activity WHERE state = 'active';` _(Ej. PostgreSQL)_                          | <br>Permite a los administradores ver qué consultas exactas se están ejecutando en tiempo real, qué usuario las lanzó y su estado. Fundamental para diagnosticar lentitud, auditar el servidor o forzar el cierre (matar) transacciones bloqueadas o _deadlocks_.<br><br>                                    |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `SELECT schema_name FROM information_schema.schemata` | Lista de todas las DBs | Enum DBs (MySQL/PostgreSQL/MSSQL). |
+| `SELECT table_name FROM information_schema.tables WHERE table_schema='dev'` | Tablas de DB `dev` | Enum tablas. |
+| `SELECT column_name FROM information_schema.columns WHERE table_name='users'` | Columnas de tabla `users` | Enum columnas. |
+| `SELECT column_name,data_type FROM information_schema.columns WHERE table_schema='dev' AND table_name='users'` | Columnas + tipos | Pre-extracción para CAST correcto. |
+| `SELECT table_name FROM all_tables` (Oracle) | Tablas Oracle | Backend Oracle (no usa information_schema). |
+| `SELECT name FROM sys.databases` (MSSQL) | DBs en MSSQL | Backend MSSQL alt. |
+| `SELECT name FROM sys.tables` (MSSQL) | Tablas en current DB MSSQL | Mismo. |
+| `SELECT name FROM sys.columns WHERE object_id=OBJECT_ID('users')` (MSSQL) | Columnas MSSQL | Equivalente information_schema. |
+| `SELECT user,password FROM mysql.user` (MySQL) | Users + hashes MySQL | Privilege escalation — `mysql.user` requiere SUPER. |
+| `SELECT usename,passwd FROM pg_shadow` (PostgreSQL) | Users + hashes PG | Requiere superuser. |
+| `SELECT username,password FROM sys.syslogins` (MSSQL viejo) o `sys.sql_logins` (moderno) | Users MSSQL | DBA priv. |
+| `SELECT name FROM v$instance` (Oracle) | Hostname + instance Oracle | Recon Oracle. |
+| `SELECT grantee,privilege_type FROM information_schema.user_privileges` | Privilegios del user actual | Pre-RCE — confirmar FILE/SUPER. |
+| `SELECT * FROM information_schema.routines` | Stored procedures/functions | Recon de surface attacking adicional. |
+| `SELECT variable_name,variable_value FROM information_schema.global_variables WHERE variable_name='secure_file_priv'` (MySQL) | Path donde FILE I/O permitido | Pre-RCE via INTO OUTFILE. |
 ^sql-metadatos
 
+### Por motor — equivalencias
+
+| Operación | MySQL/PG/MSSQL (ANSI) | Oracle |
+|:---:|:---:|:---:|
+| Lista DBs | `information_schema.schemata` | `dba_users`/`v$database` |
+| Lista tablas | `information_schema.tables` | `all_tables`/`user_tables` |
+| Lista columnas | `information_schema.columns` | `all_tab_columns`/`user_tab_columns` |
+| Users | `mysql.user`/`pg_shadow`/`sys.sql_logins` | `dba_users`/`all_users` |
+| Privilegios | `information_schema.user_privileges` | `dba_sys_privs`/`user_sys_privs` |
 
 ___
 
 ## Overview
 
-Comprender cómo el motor de base de datos almacena información sobre su propia estructura es el paso que transforma una inyección a ciegas en una extracción dirigida. Los metadatos actúan como el mapa interno del sistema; consultarlos permite descubrir el nombre de otras bases de datos, las tablas que contienen y las columnas específicas donde reside la información sensible o las credenciales objetivo.
+Metadatos = mapa interno del SGBD. `INFORMATION_SCHEMA` es ANSI standard (MySQL/PG/MSSQL), Oracle usa sus propias views (`ALL_*`/`USER_*`/`DBA_*`/`V$*`).
+
+**Workflow estándar:**
+1. Enum DBs → ¿cuál tiene data interesante?
+2. Enum tablas de esa DB → ¿`users`/`credentials`/`accounts`?
+3. Enum columnas → ¿`password`/`api_key`/`token`?
+4. Extraer columnas relevantes.
+
+Algunas tablas requieren privilegios: `mysql.user` necesita SUPER, `pg_shadow` superuser, `sys.sql_logins` DBA. Check privs via `information_schema.user_privileges` antes de intentar.
+
+***

