@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/CommandInjection/OS Command Injection.md",
+                "file": "04 - Content/Tools/Wireshark.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "OS Command Injection"
+              "title": "Wireshark"
             }
           }
         ],
@@ -267,9 +267,12 @@
   },
   "active": "4dbe80bdff8227b2",
   "lastOpenFiles": [
+    "04 - Content/Tools/enum4linux-ng.md",
+    "04 - Content/Tools/kerbrute.md",
+    "04 - Content/Tools/mimikatz.md",
+    "04 - Content/Web/CommandInjection/OS Command Injection.md",
     "04 - Content/Tools/Wireshark.md",
     "04 - Content/Process/diferencias ataques de servidor.md",
-    "04 - Content/Web/CommandInjection/OS Command Injection.md",
     "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md",
     "04 - Content/Web/XSLT/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md",
     "03 - Tertiary Categories/Web Explotación.md",
@@ -294,11 +297,8 @@
     "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md.tmp.5724.465a090f240b",
     "04 - Content/ReverseEngineering/API Monitoring & Hooking.md",
     "04 - Content/ReverseEngineering/API Monitoring & Hooking.md.tmp.5724.42b651210fb7",
-    "04 - Content/ReverseEngineering/iOS App Reversing.md",
     "04 - Content/ReverseEngineering/iOS App Reversing.md.tmp.5724.743e412bbe86",
-    "04 - Content/ReverseEngineering/Android APK Reversing.md",
     "04 - Content/ReverseEngineering/Android APK Reversing.md.tmp.5724.30cba9cccd2e",
-    "04 - Content/ReverseEngineering/Decompiling Java Applications.md",
     "04 - Content/ReverseEngineering/Decompiling Java Applications.md.tmp.5724.525758076813",
     "04 - Content/ReverseEngineering/Decompiling .NET Assemblies.md.tmp.5724.8bc54ed3f7b5",
     "04 - Content/ReverseEngineering/Debugging with x64dbg.md.tmp.5724.6b11b6ccf7a3",

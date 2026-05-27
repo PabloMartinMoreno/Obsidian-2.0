@@ -86,18 +86,18 @@ Lenguaje propio de Wireshark, mucho más expresivo. Aplican sobre la disección,
 
 ### Operadores
 
-| Operador | Equivalente | Ejemplo |
-|---|---|---|
-| `==` / `eq` | igual | `ip.src == 10.10.10.1` |
-| `!=` / `ne` | distinto | `tcp.port != 80` |
-| `>` `<` `>=` `<=` | comparación | `tcp.len > 1000` |
-| `&&` / `and` | AND | `ip.src == 1.1.1.1 && tcp.dstport == 80` |
-| `\|\|` / `or` | OR | `dns or http` |
-| `!` / `not` | NOT | `not arp` |
-| `contains` | substring binario | `http.user_agent contains "sqlmap"` |
-| `matches` | regex (PCRE) | `http.request.uri matches "(?i)admin"` |
-| `in` | set membership | `tcp.port in {80 443 8080}` |
-| `[n:m]` | slice de bytes | `tcp.payload[0:4] == 47:45:54:20` (=`GET `) |
+| Operador          | Equivalente       | Ejemplo                                     |
+| ----------------- | ----------------- | ------------------------------------------- |
+| == / `eq`         | igual             | `ip.src == 10.10.10.1`                      |
+| `!=` / `ne`       | distinto          | `tcp.port != 80`                            |
+| `>` `<` `>=` `<=` | comparación       | `tcp.len > 1000`                            |
+| `&&` / `and`      | AND               | `ip.src == 1.1.1.1 && tcp.dstport == 80`    |
+| `\|\|` / `or`     | OR                | `dns or http`                               |
+| `!` / `not`       | NOT               | `not arp`                                   |
+| `contains`        | substring binario | `http.user_agent contains "sqlmap"`         |
+| `matches`         | regex (PCRE)      | `http.request.uri matches "(?i)admin"`      |
+| `in`              | set membership    | `tcp.port in {80 443 8080}`                 |
+| `[n:m]`           | slice de bytes    | `tcp.payload[0:4] == 47:45:54:20` (=`GET `) |
 
 ### Por protocolo
 

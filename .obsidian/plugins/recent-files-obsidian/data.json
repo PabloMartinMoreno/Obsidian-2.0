@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Wireshark",
+      "path": "04 - Content/Tools/Wireshark.md"
+    },
+    {
       "basename": "OS Command Injection",
       "path": "04 - Content/Web/CommandInjection/OS Command Injection.md"
     },
