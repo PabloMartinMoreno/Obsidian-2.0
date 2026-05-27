@@ -268,6 +268,7 @@
   "active": "4dbe80bdff8227b2",
   "lastOpenFiles": [
     "04 - Content/Process/diferencias ataques de servidor.md",
+    "04 - Content/Web/CommandInjection/OS Command Injection.md",
     "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md",
     "04 - Content/Web/XSLT/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md",
     "03 - Tertiary Categories/Web Explotación.md",
@@ -279,7 +280,6 @@
     "04 - Content/Web/FileInclusion/File Inclusion.md",
     "04 - Content/Web/HPP/HTTP Parameter Pollution.md",
     "04 - Content/Web/CRLF/CRLF Injection.md",
-    "04 - Content/Web/CommandInjection/OS Command Injection.md",
     "04 - Content/Web/Injection/LDAP Injection.md",
     "04 - Content/Web/Injection/NoSQL Injection.md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",

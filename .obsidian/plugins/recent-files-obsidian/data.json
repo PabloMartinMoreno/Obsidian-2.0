@@ -5,10 +5,6 @@
       "path": "04 - Content/Web/CommandInjection/OS Command Injection.md"
     },
     {
-      "basename": "diferencias ataques de servidor",
-      "path": "04 - Content/Process/diferencias ataques de servidor.md"
-    },
-    {
       "basename": "Server-Side Includes (SSI) Injection",
       "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
     },
