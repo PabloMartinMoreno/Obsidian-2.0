@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "XML External Entity (XXE)",
+      "path": "04 - Content/Web/XXE/XML External Entity (XXE).md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
@@ -35,10 +39,6 @@
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "XML External Entity (XXE)",
-      "path": "04 - Content/Web/XXE/XML External Entity (XXE).md"
     },
     {
       "basename": "Directory Traversal",

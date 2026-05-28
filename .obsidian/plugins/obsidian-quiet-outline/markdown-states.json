@@ -269,11 +269,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 24,
+        "line": 23,
         "ch": 0
       },
       "to": {
-        "line": 24,
+        "line": 23,
         "ch": 0
       }
     },

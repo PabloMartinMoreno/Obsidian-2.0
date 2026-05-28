@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+                "file": "04 - Content/Web/XXE/XML External Entity (XXE).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Injection (SQLi)"
+              "title": "XML External Entity (XXE)"
             }
           }
         ],
@@ -267,6 +267,7 @@
   },
   "active": "4dbe80bdff8227b2",
   "lastOpenFiles": [
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
     "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/BlueTeam/Forensics/Metodología Forense.md",
     "04 - Content/BlueTeam/Forensics",
@@ -297,7 +298,6 @@
     "04 - Content/BlueTeam/CDSA.md",
     "04 - Content/BlueTeam",
     "04 - Content/Linux/Linux - Security & AV Identification.md",
-    "04 - Content/Linux/Linux - Installed Software Enumeration.md",
     "04 - Content/Linux",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "04 - Content/Recon/OSINT Methods.md.tmp.5724.0718298152da",
