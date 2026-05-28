@@ -7,15 +7,16 @@ tags:
   - vuln/sqli
   - asset/web-app
   - tool/sqlmap
+  - estado/completo
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Explotación]]"
+  - '[[Explotación]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Explotación]]'
 kind: CheatSheet
 linked:
-  - "[[SQL Injection (SQLi)]]"
+  - '[[SQL Injection (SQLi)]]'
 ---
 # sqlmap
 

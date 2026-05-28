@@ -13,6 +13,7 @@ tags:
   - env/active-directory
   - cred/ntlm
   - cred/kerberos
+  - estado/completo
 primary categories:
   - '[[Red Team]]'
 secondary categories:
