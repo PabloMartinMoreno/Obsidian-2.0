@@ -4,7 +4,6 @@ aliases:
   - polenum
   - samba-tool passwordsettings
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

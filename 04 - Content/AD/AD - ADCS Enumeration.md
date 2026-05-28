@@ -7,7 +7,6 @@ aliases:
   - ESC1-ESC15 Discovery
   - AD - Certificate Services (AD CS) Enumeration
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - technique/credential-access

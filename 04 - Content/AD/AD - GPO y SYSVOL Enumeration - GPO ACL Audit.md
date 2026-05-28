@@ -5,7 +5,6 @@ aliases:
   - WriteGPLink
   - Group Policy Creator Owners
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

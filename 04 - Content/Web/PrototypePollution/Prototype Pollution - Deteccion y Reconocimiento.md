@@ -3,7 +3,6 @@ aliases:
   - PP Detection
   - Prototype Pollution Recon
 tags:
-  - type/technique
   - vuln/prototype-pollution
   - technique/discovery
   - asset/web-app

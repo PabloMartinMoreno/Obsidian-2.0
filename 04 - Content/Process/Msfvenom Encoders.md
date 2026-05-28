@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/tool
   - technique/execution
   - tool/msfvenom
   - estado/incompleto

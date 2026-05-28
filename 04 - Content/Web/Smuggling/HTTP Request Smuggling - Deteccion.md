@@ -3,7 +3,6 @@ aliases:
   - HRS Detection
   - Smuggling Probes
 tags:
-  - type/technique
   - vuln/http-smuggling
   - technique/discovery
   - asset/web-app

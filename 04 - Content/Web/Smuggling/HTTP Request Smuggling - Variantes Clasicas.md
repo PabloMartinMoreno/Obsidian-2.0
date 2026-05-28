@@ -6,7 +6,6 @@ aliases:
   - CL.CL
   - Classic Smuggling
 tags:
-  - type/technique
   - vuln/http-smuggling
   - technique/initial-access
   - asset/web-app

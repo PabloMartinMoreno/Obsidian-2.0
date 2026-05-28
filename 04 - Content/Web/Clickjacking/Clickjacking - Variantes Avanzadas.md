@@ -5,7 +5,6 @@ aliases:
   - Scroll-Jacking
   - Touch-Jacking
 tags:
-  - type/technique
   - vuln/clickjacking
   - technique/initial-access
   - asset/web-app

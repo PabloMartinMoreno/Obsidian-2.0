@@ -4,7 +4,6 @@ aliases:
   - mitmproxy Cookie
   - Wireshark Cookie Capture
 tags:
-  - type/tool
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app

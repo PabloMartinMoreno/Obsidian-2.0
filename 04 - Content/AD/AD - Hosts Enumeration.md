@@ -6,7 +6,6 @@ aliases:
   - DC Discovery
   - Computer Objects Recon
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

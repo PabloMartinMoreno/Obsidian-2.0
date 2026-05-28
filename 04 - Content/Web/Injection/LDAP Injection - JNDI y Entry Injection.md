@@ -5,7 +5,6 @@ aliases:
   - LDAP Entry Poisoning
   - LDAP Referral
 tags:
-  - type/technique
   - vuln/ldap-injection
   - vuln/jndi-injection
   - technique/execution

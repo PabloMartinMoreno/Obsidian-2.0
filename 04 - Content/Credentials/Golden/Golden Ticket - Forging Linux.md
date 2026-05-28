@@ -3,7 +3,6 @@ aliases:
   - Golden Ticket Linux
   - impacket-ticketer golden
 tags:
-  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/linux

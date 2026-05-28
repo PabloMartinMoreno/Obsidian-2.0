@@ -4,7 +4,6 @@ aliases:
   - race-the-web
   - asyncio race
 tags:
-  - type/tool
   - vuln/race-condition
   - technique/initial-access
   - asset/web-app

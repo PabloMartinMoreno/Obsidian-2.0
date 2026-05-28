@@ -6,7 +6,6 @@ aliases:
   - SMB Brute
   - WordPress Brute
 tags:
-  - type/technique
   - vuln/brute-force
   - technique/credential-access
   - asset/web-app

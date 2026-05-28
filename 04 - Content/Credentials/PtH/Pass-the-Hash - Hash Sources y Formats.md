@@ -5,7 +5,6 @@ aliases:
   - LM Hash
   - NTLM Hash Format
 tags:
-  - type/technique
   - technique/credential-access
   - technique/lateral-movement
   - asset/active-directory

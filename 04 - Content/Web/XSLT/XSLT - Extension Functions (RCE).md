@@ -5,7 +5,6 @@ aliases:
   - 'XSLT php:function'
   - XSLT Java reflection
 tags:
-  - type/technique
   - vuln/xslt-injection
   - technique/execution
   - asset/web-app

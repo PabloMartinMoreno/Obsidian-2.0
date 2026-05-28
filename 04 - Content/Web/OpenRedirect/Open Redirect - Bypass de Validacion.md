@@ -4,7 +4,6 @@ aliases:
   - Whitelist Bypass
   - URL Parser Confusion
 tags:
-  - type/technique
   - vuln/open-redirect
   - technique/defense-evasion
   - asset/web-app

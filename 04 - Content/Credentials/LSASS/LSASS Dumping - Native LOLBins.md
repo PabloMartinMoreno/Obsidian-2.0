@@ -5,7 +5,6 @@ aliases:
   - taskmgr lsass
   - LOLBins LSASS
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

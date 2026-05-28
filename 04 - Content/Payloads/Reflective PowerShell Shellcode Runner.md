@@ -4,7 +4,6 @@ aliases:
   - "Process Injection Techniques"
   - run.ps1
 tags:
-  - type/payload
 primary categories:
   - "[[Development]]"
   - "[[Red Team]]"

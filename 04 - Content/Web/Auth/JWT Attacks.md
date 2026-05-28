@@ -7,7 +7,6 @@ aliases:
   - JWT Tampering
   - JWT Exploitation
 tags:
-  - type/vulnerability
   - vuln/jwt
   - vuln/auth-bypass
   - technique/credential-access

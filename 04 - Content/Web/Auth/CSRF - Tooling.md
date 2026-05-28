@@ -4,7 +4,6 @@ aliases:
   - Burp CSRF
   - CSWSH PoC
 tags:
-  - type/tool
   - vuln/csrf
   - technique/discovery
   - technique/initial-access

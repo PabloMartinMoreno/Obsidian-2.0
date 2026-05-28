@@ -4,7 +4,6 @@ aliases:
   - impacket-ticketer
   - Rubeus golden
 tags:
-  - type/tool
   - technique/persistence
   - technique/kerberos
   - env/windows

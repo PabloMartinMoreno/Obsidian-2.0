@@ -4,7 +4,6 @@ aliases:
   - Gopher SSRF
   - File Protocol SSRF
 tags:
-  - type/technique
   - vuln/ssrf
   - technique/execution
   - asset/web-app

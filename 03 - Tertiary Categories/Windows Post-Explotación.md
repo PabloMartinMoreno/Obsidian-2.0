@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/moc/tertiary
   - env/windows
 primary categories:
   - "[[Red Team]]"

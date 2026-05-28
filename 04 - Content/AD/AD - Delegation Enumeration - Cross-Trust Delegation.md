@@ -4,7 +4,6 @@ aliases:
   - TGT Delegation Trust
   - CVE-2019-1040
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

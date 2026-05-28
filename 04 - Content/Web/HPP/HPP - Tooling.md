@@ -4,7 +4,6 @@ aliases:
   - Param Miner HPP
   - Burp HPP
 tags:
-  - type/tool
   - vuln/hpp
   - technique/discovery
   - asset/web-app

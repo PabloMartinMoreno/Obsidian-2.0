@@ -4,7 +4,6 @@ aliases:
   - Subdomain Enumeration
   - Dangling DNS
 tags:
-  - type/technique
   - vuln/subdomain-takeover
   - technique/discovery
   - asset/web-app

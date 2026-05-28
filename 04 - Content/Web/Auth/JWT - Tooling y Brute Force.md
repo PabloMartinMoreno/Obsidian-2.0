@@ -5,7 +5,6 @@ aliases:
   - JWT Hashcat
   - JWT Bruteforce Tools
 tags:
-  - type/tool
   - vuln/jwt
   - technique/credential-access
   - asset/web-app

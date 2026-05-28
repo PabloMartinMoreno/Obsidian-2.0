@@ -72,8 +72,11 @@ Valores canónicos:
 
 ## Tags taxonómicos
 
+> [!warning] `type/*` deprecado
+> `kind:` (property) es la **única fuente de verdad** para la función de la nota. `type/*` quedó como tag paralelo vestigial — NO usar en notas nuevas. Migración pendiente: ver § Migración `type/*` → `kind:`.
+
 Prefijos en uso:
-- `type/*` — taxonomía técnica (paralela a kind, vestigial)
+- ~~`type/*`~~ — **deprecado**, reemplazado por `kind:`
 - `asset/*` — dominio (web-app, active-directory, network, db, etc.)
 - `technique/*` — MITRE ATT&CK táctica (discovery, execution, lateral-movement, etc.)
 - `vuln/*` — vulnerabilidad específica (sqli, xss, xxe, etc.)
@@ -82,8 +85,45 @@ Prefijos en uso:
 - `env/*` — entorno (windows, linux, active-directory, cloud-aws)
 - `tool/*` — herramienta puntual
 - `cert/*` — certificación (oscp, cbbh, etc.)
+- `topic/*` — tema transversal cuando no encaja en `asset/*` (forensics, network). Uso acotado.
 - `meta/*` — tags del propio vault (index, ctf, daily, vault)
 - `estado/*` — completo / incompleto
+
+> [!tip] Falsos positivos en el tag pane
+> Strings con `#` dentro de code fences / inline-code / callouts (hex CSS `#CF4747`, directivas SSI `<!--#exec -->`, ColdFusion `#var#`) NO son tags reales — Obsidian los ignora. Si una tool MCP los lista como tags, es artefacto del parser, no requiere limpieza.
+
+***
+
+## Convenciones de naming
+
+- **Sub-cheatsheets**: `Hub - Subtema.md` (guion-espacio). Ej: `SQLi - Union based.md`, `XSS - Payloads Polyglot.md`, `AD - ACL Enumeration - Tooling.md`. El hub embebe sub-notas vía `![[Sub#^anchor]]` en tabs.
+- **Enumeración de servicios**: `Servicio (puertos) - Enumeración.md` en `Services/`. Ej: `SMB (139, 445) - Enumeración.md`.
+- **Carpetas Web**: una por vuln en CamelCase (`FileUpload/`, `SSRF/`), hub con nombre completo + sigla dentro (`Server-Side Request Forgery (SSRF).md`).
+- **Tools**: nombre del binario en minúscula tal cual se invoca (`nmap.md`, `evil-winrm.md`), excepto productos con nombre propio (`Burp Suite.md`, `Wireshark.md`).
+
+***
+
+## Migración `type/*` → `kind:`
+
+Mapeo para limpiar el tag vestigial. Si la nota ya tiene `kind:` correcto, solo borrar el `type/*`; si difieren, gana el más específico (`kind:` describe función, no contenido).
+
+| Tag viejo | `kind:` |
+|---|---|
+| `type/cheatsheet` | CheatSheet |
+| `type/tool` | Tool |
+| `type/concept` | Concept |
+| `type/technique` | Technique |
+| `type/vulnerability` | Vulnerability |
+| `type/writeup` | Writeup |
+| `type/playbook` | Playbook |
+| `type/command` | Command |
+| `type/sub-command` | Sub-Command |
+| `type/sub-note` | Sub-Note |
+| `type/payload` | Payload |
+| `type/ttp` | TTP |
+| `type/moc/primary` | Primary Category |
+| `type/moc/secondary` | Secondary Category |
+| `type/moc/tertiary` | Tertiary Category |
 
 ***
 

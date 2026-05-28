@@ -3,7 +3,6 @@ aliases:
   - Rutas principales en un LFI
   - proc self fd
 tags:
-  - type/technique
   - vuln/lfi
   - technique/execution
   - asset/web-app

@@ -1,7 +1,6 @@
 ---
 aliases: null
 tags:
-  - type/technique
   - vuln/idor
   - technique/discovery
   - asset/api

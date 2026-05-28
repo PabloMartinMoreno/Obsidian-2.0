@@ -4,7 +4,6 @@ aliases:
   - kerbrute userenum
   - Pre-Auth Username Validation
 tags:
-  - type/technique
   - technique/credential-access
   - technique/discovery
   - asset/active-directory

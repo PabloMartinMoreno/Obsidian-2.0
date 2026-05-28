@@ -5,7 +5,6 @@ aliases:
   - .well-known Discovery
   - Client ID Enum
 tags:
-  - type/technique
   - vuln/oauth
   - technique/discovery
   - asset/web-app

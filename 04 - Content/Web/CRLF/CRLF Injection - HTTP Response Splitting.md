@@ -4,7 +4,6 @@ aliases:
   - Response Splitting XSS
   - Body Injection via CRLF
 tags:
-  - type/technique
   - vuln/crlf-injection
   - technique/initial-access
   - asset/web-app

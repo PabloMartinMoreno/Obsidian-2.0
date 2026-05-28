@@ -1,15 +1,15 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - technique/recon/active
-  - asset/network
-  - service/vpn
+  - asset/endpoint
+  - service/telnet
   - estado/incompleto
 primary categories:
 secondary categories:
 tertiary categories:
 linked:
+  - "[[Port Enumeration]]"
 ---
 > [!todo]
 > Pendiente completar.

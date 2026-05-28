@@ -5,7 +5,6 @@ aliases:
   - Multi-CDN Cache
   - Fat GET
 tags:
-  - type/technique
   - vuln/cache-poisoning
   - technique/defense-evasion
   - asset/web-app

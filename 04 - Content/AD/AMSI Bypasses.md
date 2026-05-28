@@ -12,7 +12,6 @@ aliases:
   - AMSI Evasion
   - Defender Bypass
 tags:
-  - type/technique
   - technique/defense-evasion
   - technique/execution
   - env/windows

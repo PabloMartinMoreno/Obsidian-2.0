@@ -6,7 +6,6 @@ aliases:
   - Credential Stuffing
   - Password Spray
 tags:
-  - type/vulnerability
   - vuln/brute-force
   - technique/credential-access
   - technique/account-takeover

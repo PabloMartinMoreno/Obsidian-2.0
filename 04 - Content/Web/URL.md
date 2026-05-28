@@ -2,7 +2,6 @@
 aliases:
   - Uniform Resource Locator
 tags:
-  - type/concept
 primary categories:
 secondary categories:
 tertiary categories:

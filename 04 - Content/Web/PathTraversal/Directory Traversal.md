@@ -6,7 +6,6 @@ aliases:
   - Dot Dot Slash
   - ../ Attack
 tags:
-  - type/vulnerability
   - vuln/path-traversal
   - vuln/lfi
   - technique/initial-access

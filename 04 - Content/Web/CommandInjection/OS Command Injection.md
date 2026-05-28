@@ -2,7 +2,6 @@
 aliases:
   - "Eval Injection"
 tags:
-  - type/vulnerability
   - vuln/command-injection
   - technique/execution
   - asset/web-app

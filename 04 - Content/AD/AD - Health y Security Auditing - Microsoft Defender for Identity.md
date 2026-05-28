@@ -5,7 +5,6 @@ aliases:
   - Azure ATP
   - MDI Sensors
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

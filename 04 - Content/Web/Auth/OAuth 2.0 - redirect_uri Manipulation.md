@@ -5,7 +5,6 @@ aliases:
   - URL Parser Differential
   - OAuth Open Redirect Chain
 tags:
-  - type/technique
   - vuln/oauth
   - technique/credential-access
   - asset/web-app

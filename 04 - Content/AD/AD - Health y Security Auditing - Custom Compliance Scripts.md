@@ -5,7 +5,6 @@ aliases:
   - RSAT compliance
   - AD baseline scripts
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

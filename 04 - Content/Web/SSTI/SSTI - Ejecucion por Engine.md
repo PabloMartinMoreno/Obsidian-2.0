@@ -4,7 +4,6 @@ aliases:
   - Template Engine RCE
   - SSTI Execution
 tags:
-  - type/technique
   - vuln/ssti
   - technique/execution
   - asset/web-app

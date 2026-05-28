@@ -4,7 +4,6 @@ aliases:
   - NTDS Mitigations
   - DCSync Detection
 tags:
-  - type/concept
   - technique/credential-access
   - env/windows
   - asset/active-directory

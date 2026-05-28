@@ -4,7 +4,6 @@ aliases:
   - Template Injection
   - Server-Side Template Injection
 tags:
-  - type/vulnerability
   - vuln/ssti
   - technique/execution
   - technique/initial-access

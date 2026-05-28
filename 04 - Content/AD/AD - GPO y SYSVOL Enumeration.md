@@ -15,7 +15,6 @@ aliases:
   - Group Policy Discovery
   - AD - GPO & SYSVOL Enumeration
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - technique/credential-access

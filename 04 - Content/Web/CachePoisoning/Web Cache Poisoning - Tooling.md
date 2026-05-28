@@ -4,7 +4,6 @@ aliases:
   - WCVS
   - Web Cache Vulnerability Scanner
 tags:
-  - type/tool
   - vuln/cache-poisoning
   - technique/discovery
   - asset/web-app

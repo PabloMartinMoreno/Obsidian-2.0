@@ -4,7 +4,6 @@ aliases:
   - Shadow Creds
   - KeyCredentialLink Attack
 tags:
-  - type/technique
   - technique/privilege-escalation
   - technique/credential-access
   - env/windows

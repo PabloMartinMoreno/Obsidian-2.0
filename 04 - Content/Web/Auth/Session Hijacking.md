@@ -8,7 +8,6 @@ aliases:
   - Token Theft
   - Session Stealing
 tags:
-  - type/vulnerability
   - vuln/session-hijacking
   - vuln/auth-bypass
   - technique/credential-access

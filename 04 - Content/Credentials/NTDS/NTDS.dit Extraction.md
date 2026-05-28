@@ -5,7 +5,6 @@ aliases:
   - NTDS Dump
   - AD Database Extraction
 tags:
-  - type/vulnerability
   - technique/credential-access
   - env/windows
   - asset/active-directory

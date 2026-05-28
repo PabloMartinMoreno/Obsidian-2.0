@@ -2,7 +2,6 @@
 aliases:
   - RustScan
 tags:
-  - type/tool
   - tool/rustscan
   - technique/recon/active
   - technique/enumeration

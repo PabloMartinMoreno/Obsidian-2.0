@@ -5,7 +5,6 @@ aliases:
   - Whisker
   - certipy shadow
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

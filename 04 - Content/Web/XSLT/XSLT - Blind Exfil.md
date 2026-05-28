@@ -4,7 +4,6 @@ aliases:
   - XSLT OOB
   - XSLT Out-of-Band Exfil
 tags:
-  - type/technique
   - vuln/xslt-injection
   - technique/exfiltration
   - asset/web-app

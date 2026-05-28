@@ -5,7 +5,6 @@ aliases:
   - Legacy LAPS
   - Microsoft LAPS legacy
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

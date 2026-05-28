@@ -5,7 +5,6 @@ aliases:
   - SSI Reverse Shell
   - SSI OOB
 tags:
-  - type/technique
   - vuln/ssi
   - technique/execution
   - asset/web-app

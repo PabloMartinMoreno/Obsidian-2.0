@@ -5,7 +5,6 @@ aliases:
   - ESC8 NTLM Relay
   - NDES SCEP
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

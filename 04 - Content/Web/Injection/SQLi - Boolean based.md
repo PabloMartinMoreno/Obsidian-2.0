@@ -5,7 +5,6 @@ aliases:
   - SQLi Boolean-Based
   - Boolean-Based SQLi
 tags:
-  - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database

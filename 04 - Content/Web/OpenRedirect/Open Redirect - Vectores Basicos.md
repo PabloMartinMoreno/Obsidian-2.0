@@ -4,7 +4,6 @@ aliases:
   - Protocol-Relative Redirect
   - Scheme Switching
 tags:
-  - type/technique
   - vuln/open-redirect
   - technique/initial-access
   - asset/web-app

@@ -5,7 +5,6 @@ aliases:
   - External Trust
   - Parent-Child Trust
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -5,7 +5,6 @@ aliases:
   - Manage Certificates
   - EDITF flags
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

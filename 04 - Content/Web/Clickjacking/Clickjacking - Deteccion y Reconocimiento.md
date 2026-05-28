@@ -4,7 +4,6 @@ aliases:
   - X-Frame-Options Check
   - CSP frame-ancestors
 tags:
-  - type/technique
   - vuln/clickjacking
   - technique/discovery
   - asset/web-app

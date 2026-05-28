@@ -2,7 +2,6 @@
 aliases:
   - "Joomla Exploitation"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/web-app
   - service/http

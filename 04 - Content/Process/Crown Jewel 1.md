@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - asset/active-directory
   - estado/incompleto
 primary categories:

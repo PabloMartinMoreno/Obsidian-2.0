@@ -4,7 +4,6 @@ aliases:
   - LSASS Offline Parse
   - lsass.dmp Parse
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

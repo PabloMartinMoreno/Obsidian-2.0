@@ -5,7 +5,6 @@ aliases:
   - NTAuth Store
   - Certificate Templates
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

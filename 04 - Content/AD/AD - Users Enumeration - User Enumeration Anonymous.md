@@ -5,7 +5,6 @@ aliases:
   - Pre-Auth User Enum
   - kerbrute Userenum
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

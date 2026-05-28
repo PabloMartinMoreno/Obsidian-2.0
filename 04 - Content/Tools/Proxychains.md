@@ -4,7 +4,6 @@ aliases:
   - proxychains4
   - proxychains-ng
 tags:
-  - type/tool
   - tool/proxychains
   - technique/lateral-movement
   - technique/evasion

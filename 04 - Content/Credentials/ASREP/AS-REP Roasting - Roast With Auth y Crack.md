@@ -5,7 +5,6 @@ aliases:
   - Rubeus asreproast
   - hashcat 18200
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

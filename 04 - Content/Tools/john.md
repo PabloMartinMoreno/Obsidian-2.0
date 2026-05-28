@@ -4,7 +4,6 @@ aliases:
   - JtR
   - john
 tags:
-  - type/tool
   - tool/john
   - technique/credential-access
   - cred/password-cracking

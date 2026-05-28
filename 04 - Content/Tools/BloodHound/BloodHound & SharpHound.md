@@ -7,7 +7,6 @@ aliases:
   - RustHound
   - BloodHound CE
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

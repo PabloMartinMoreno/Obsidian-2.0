@@ -3,7 +3,6 @@ aliases:
   - NoSQL Syntax Injection
   - NoSQL String Injection
 tags:
-  - type/technique
   - vuln/nosqli
   - technique/initial-access
   - asset/database

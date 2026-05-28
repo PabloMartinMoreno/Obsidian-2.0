@@ -5,7 +5,6 @@ aliases:
   - CSS Injection
   - Base href Hijack
 tags:
-  - type/technique
   - vuln/html-injection
   - technique/exfiltration
   - asset/web-app

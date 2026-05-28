@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - asset/network
   - estado/incompleto
 primary categories:

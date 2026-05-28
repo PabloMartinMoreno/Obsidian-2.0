@@ -4,7 +4,6 @@ aliases:
   - IMDS Abuse
   - AWS Metadata SSRF
 tags:
-  - type/technique
   - vuln/ssrf
   - technique/credential-access
   - technique/privilege-escalation

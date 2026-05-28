@@ -5,7 +5,6 @@ aliases:
   - DNS-Level Takeover
   - Expired Domain
 tags:
-  - type/technique
   - vuln/subdomain-takeover
   - technique/initial-access
   - asset/dns

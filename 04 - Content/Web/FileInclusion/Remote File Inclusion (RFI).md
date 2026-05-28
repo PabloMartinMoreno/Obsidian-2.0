@@ -4,7 +4,6 @@ aliases:
   - Remote File Inclusion
   - RFI - Remote File Inclusion
 tags:
-  - type/vulnerability
   - vuln/rfi
   - technique/execution
   - technique/initial-access

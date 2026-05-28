@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/playbook
 primary categories:
   - "[[Red Team]]"
 secondary categories:

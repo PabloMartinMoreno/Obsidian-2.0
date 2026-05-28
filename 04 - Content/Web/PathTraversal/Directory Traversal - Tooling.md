@@ -4,7 +4,6 @@ aliases:
   - LFISuite
   - Path Traversal Wordlists
 tags:
-  - type/tool
   - vuln/path-traversal
   - technique/discovery
   - asset/web-app

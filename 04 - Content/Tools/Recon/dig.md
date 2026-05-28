@@ -2,8 +2,6 @@
 aliases:
   - Domain Information Groper
 tags:
-  - type/command
-  - type/tool
   - technique/recon/active
   - asset/infrastructure
   - asset/network

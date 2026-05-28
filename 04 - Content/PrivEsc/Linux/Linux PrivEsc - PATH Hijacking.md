@@ -6,7 +6,6 @@ aliases:
   - PATH Hijacking
   - PATH Injection
 tags:
-  - type/cheatsheet
   - env/linux
   - technique/privilege-escalation
 primary categories:

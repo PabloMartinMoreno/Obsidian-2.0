@@ -5,7 +5,6 @@ aliases:
   - Authorization Bypass
   - BFLA / BOLA
 tags:
-  - type/vulnerability
   - vuln/auth-bypass
   - technique/initial-access
   - technique/credential-access

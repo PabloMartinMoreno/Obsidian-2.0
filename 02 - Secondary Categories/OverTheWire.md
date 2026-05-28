@@ -2,7 +2,6 @@
 aliases:
   - OTW
 tags:
-  - type/moc/secondary
   - meta/ctf
 kind: Secondary Category
 ---

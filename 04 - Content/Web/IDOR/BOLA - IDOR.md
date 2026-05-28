@@ -4,7 +4,6 @@ aliases:
   - BOLA
   - Broken Object Level Authorization
 tags:
-  - type/vulnerability
   - vuln/idor
   - technique/discovery
   - asset/api

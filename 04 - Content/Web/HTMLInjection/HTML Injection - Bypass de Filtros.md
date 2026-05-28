@@ -4,7 +4,6 @@ aliases:
   - HTML Filter Evasion
   - HTML Entity Bypass
 tags:
-  - type/technique
   - vuln/html-injection
   - technique/defense-evasion
   - asset/web-app

@@ -2,7 +2,6 @@
 aliases:
   - Union-based SQLi
 tags:
-  - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database

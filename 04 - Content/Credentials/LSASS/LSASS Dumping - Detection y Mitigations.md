@@ -5,7 +5,6 @@ aliases:
   - Credential Guard
   - WDigest Disable
 tags:
-  - type/concept
   - technique/credential-access
   - technique/defense-evasion
   - env/windows

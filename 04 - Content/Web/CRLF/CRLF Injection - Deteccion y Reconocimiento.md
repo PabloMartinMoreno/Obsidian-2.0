@@ -4,7 +4,6 @@ aliases:
   - Response Splitting Detection
   - CRLF Recon
 tags:
-  - type/technique
   - vuln/crlf-injection
   - technique/discovery
   - asset/web-app

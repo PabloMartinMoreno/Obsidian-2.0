@@ -5,7 +5,6 @@ aliases:
   - KDS Root Key
   - msDS-ManagedPassword
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -4,7 +4,6 @@ aliases:
   - SSI Wordlists
   - Burp SSI
 tags:
-  - type/tool
   - vuln/ssi
   - technique/discovery
   - asset/web-app

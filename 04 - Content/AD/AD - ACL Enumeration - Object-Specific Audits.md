@@ -4,7 +4,6 @@ aliases:
   - AdminSDHolder Audit
   - DA Group ACL
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

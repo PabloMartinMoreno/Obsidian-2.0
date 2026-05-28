@@ -6,7 +6,6 @@ aliases:
   - Cache Deception
   - WCD
 tags:
-  - type/vulnerability
   - vuln/cache-poisoning
   - technique/initial-access
   - technique/impact

@@ -3,7 +3,6 @@ aliases:
   - Golden Ticket usage
   - Golden Ticket lateral
 tags:
-  - type/technique
   - technique/lateral-movement
   - technique/persistence
   - env/windows

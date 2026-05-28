@@ -4,7 +4,6 @@ aliases:
   - GraphQL Recon
   - GraphQL Endpoint Discovery
 tags:
-  - type/technique
   - vuln/graphql
   - technique/discovery
   - asset/web-app

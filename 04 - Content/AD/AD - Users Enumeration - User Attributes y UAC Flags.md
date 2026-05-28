@@ -5,7 +5,6 @@ aliases:
   - userAccountControl Bitfield
   - User Properties
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

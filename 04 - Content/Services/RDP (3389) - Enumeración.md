@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - technique/credential-access
   - technique/lateral-movement
   - technique/recon/active

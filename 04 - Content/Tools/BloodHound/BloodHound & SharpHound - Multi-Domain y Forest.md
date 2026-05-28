@@ -5,7 +5,6 @@ aliases:
   - Cross-Trust BHCE
   - BHCE Forest Workflow
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

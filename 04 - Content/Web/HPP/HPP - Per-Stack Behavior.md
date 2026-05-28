@@ -6,7 +6,6 @@ aliases:
   - Java HPP
   - Node Express HPP
 tags:
-  - type/technique
   - vuln/hpp
   - asset/web-app
 primary categories:

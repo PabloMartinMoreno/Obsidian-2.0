@@ -5,7 +5,6 @@ aliases:
   - Recursive Group Member
   - Group Expansion
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

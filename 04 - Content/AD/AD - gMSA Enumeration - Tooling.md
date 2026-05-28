@@ -5,7 +5,6 @@ aliases:
   - GoldenGMSA
   - DSInternals gMSA
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

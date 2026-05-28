@@ -3,7 +3,6 @@ aliases:
   - masscan
   - MASSCAN
 tags:
-  - type/tool
   - tool/masscan
   - technique/recon/active
   - technique/enumeration

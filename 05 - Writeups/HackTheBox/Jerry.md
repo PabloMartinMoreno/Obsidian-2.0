@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - env/windows
   - estado/completo
 plataforma: "[[Hack The Box]]"

@@ -5,7 +5,6 @@ aliases:
   - PtH Injection
   - Process Token Injection
 tags:
-  - type/technique
   - technique/lateral-movement
   - technique/credential-access
   - asset/active-directory

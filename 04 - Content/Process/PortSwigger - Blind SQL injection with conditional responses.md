@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/writeup
   - vuln/sqli
   - technique/execution
   - asset/database

@@ -5,7 +5,6 @@ aliases:
   - GraphQL SSRF
   - GraphQL Command Injection
 tags:
-  - type/technique
   - vuln/graphql
   - vuln/sqli
   - vuln/nosqli

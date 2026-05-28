@@ -4,7 +4,6 @@ aliases:
   - SSRF HTB CWES
   - SSRF para CWES
 tags:
-  - type/technique
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app

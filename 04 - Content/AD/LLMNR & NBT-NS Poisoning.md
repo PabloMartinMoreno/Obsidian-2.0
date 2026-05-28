@@ -11,7 +11,6 @@ aliases:
   - mDNS Poisoning
   - Name Resolution Poisoning
 tags:
-  - type/technique
   - technique/credential-access
   - technique/initial-access
   - env/windows

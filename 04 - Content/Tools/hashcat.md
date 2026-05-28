@@ -2,7 +2,6 @@
 aliases:
   - Hashcat
 tags:
-  - type/tool
   - technique/credential-access
   - tool/hashcat
 primary categories:

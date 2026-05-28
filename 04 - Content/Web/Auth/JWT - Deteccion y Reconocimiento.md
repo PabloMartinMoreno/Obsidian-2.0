@@ -4,7 +4,6 @@ aliases:
   - JWT Recon
   - JWT Identification
 tags:
-  - type/technique
   - vuln/jwt
   - technique/discovery
   - asset/web-app

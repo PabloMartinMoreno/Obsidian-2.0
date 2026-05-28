@@ -3,7 +3,6 @@ aliases:
   - Kerbrute
   - kerbrute
 tags:
-  - type/tool
   - tool/kerbrute
   - technique/credential-access
   - technique/recon/active

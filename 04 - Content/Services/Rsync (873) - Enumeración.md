@@ -2,7 +2,6 @@
 aliases:
   - Enumeración Rsync (873)
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/file-share
   - service/rsync

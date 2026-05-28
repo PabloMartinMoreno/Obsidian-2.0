@@ -4,7 +4,6 @@ aliases:
   - CSRF PoC
   - CSRF Payloads
 tags:
-  - type/technique
   - vuln/csrf
   - technique/initial-access
   - technique/execution

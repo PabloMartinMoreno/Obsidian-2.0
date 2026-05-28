@@ -5,7 +5,6 @@ aliases:
   - Self-XSS to Stored
   - SameSite Lax Bypass
 tags:
-  - type/technique
   - vuln/clickjacking
   - technique/lateral-movement
   - asset/web-app

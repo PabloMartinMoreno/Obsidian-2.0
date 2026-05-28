@@ -5,7 +5,6 @@ aliases:
   - PK Audit
   - Purple Knight Indicators
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

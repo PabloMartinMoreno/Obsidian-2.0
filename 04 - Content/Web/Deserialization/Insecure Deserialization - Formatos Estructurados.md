@@ -7,7 +7,6 @@ aliases:
   - JSON.NET TypeNameHandling
   - FastJson
 tags:
-  - type/technique
   - vuln/insecure-deser
   - technique/execution
   - asset/web-app

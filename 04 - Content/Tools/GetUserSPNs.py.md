@@ -2,7 +2,6 @@
 aliases:
   - impacket-GetUserSPNs
 tags:
-  - type/tool
 primary categories:
   - "[[Red Team]]"
   - "[[Red Team]]"

@@ -5,7 +5,6 @@ aliases:
   - Tar Slip
   - Symlink Abuse
 tags:
-  - type/technique
   - vuln/path-traversal
   - technique/execution
   - technique/lateral-movement

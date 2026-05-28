@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - env/windows
   - asset/endpoint
   - technique/discovery

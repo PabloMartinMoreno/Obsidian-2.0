@@ -4,7 +4,6 @@ aliases:
   - XSLT WAF Evasion
   - XSLT Encoding Tricks
 tags:
-  - type/technique
   - vuln/xslt-injection
   - technique/evasion
   - asset/web-app

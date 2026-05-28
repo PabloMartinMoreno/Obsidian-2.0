@@ -4,7 +4,6 @@ aliases:
   - CRLF Wordlists
   - Burp CRLF Injection
 tags:
-  - type/tool
   - vuln/crlf-injection
   - technique/discovery
   - asset/web-app

@@ -4,7 +4,6 @@ aliases:
   - Password Reset Poisoning Chain
   - Host Header HRS Combo
 tags:
-  - type/technique
   - vuln/host-header-injection
   - technique/lateral-movement
   - asset/web-app

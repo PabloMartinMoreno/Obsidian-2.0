@@ -3,7 +3,6 @@ aliases:
   - RFI Detection
   - Remote File Inclusion Recon
 tags:
-  - type/technique
   - vuln/rfi
   - technique/discovery
   - asset/web-app

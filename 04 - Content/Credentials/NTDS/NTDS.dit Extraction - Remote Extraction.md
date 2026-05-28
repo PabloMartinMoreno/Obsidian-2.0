@@ -4,7 +4,6 @@ aliases:
   - secretsdump DA
   - DCSync Remote
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

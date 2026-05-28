@@ -3,7 +3,6 @@ aliases:
   - "Fuzzing"
   - Fuzzing de Paginas y Directorios
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/web-app
   - service/http

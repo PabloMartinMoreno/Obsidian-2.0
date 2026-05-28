@@ -5,7 +5,6 @@ aliases:
   - PowerView ACL
   - bloodyAD
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

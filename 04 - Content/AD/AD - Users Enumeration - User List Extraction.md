@@ -7,7 +7,6 @@ aliases:
   - GetADUsers
   - SAMR enumdomusers
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

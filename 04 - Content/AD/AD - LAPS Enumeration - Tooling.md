@@ -5,7 +5,6 @@ aliases:
   - LAPSToolkit
   - pyLAPS
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

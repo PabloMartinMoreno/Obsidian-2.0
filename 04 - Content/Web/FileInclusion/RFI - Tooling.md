@@ -4,7 +4,6 @@ aliases:
   - LFISuite RFI
   - Burp RFI
 tags:
-  - type/tool
   - vuln/rfi
   - technique/discovery
   - asset/web-app

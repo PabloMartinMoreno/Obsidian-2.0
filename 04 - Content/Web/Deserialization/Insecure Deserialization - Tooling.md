@@ -6,7 +6,6 @@ aliases:
   - fickling
   - marshalsec
 tags:
-  - type/tool
   - vuln/insecure-deser
   - technique/execution
   - asset/web-app

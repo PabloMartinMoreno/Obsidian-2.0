@@ -2,7 +2,6 @@
 aliases:
   - Time-based Blind SQLi
 tags:
-  - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database

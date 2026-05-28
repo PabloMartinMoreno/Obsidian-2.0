@@ -5,7 +5,6 @@ aliases:
   - LDAP Filter Injection
   - LDAP Bind Injection
 tags:
-  - type/vulnerability
   - vuln/ldap-injection
   - technique/initial-access
   - technique/credential-access

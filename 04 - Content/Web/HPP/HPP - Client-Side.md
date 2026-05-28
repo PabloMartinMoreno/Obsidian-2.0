@@ -4,7 +4,6 @@ aliases:
   - DOM HPP
   - URL Manipulation
 tags:
-  - type/technique
   - vuln/hpp
   - technique/initial-access
   - asset/web-app

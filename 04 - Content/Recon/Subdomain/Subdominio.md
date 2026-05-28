@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
 kind: Concept
 linked:
   - "[[Virtual Host|Virtual Host]]"

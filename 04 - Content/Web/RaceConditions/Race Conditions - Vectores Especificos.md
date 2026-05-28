@@ -5,7 +5,6 @@ aliases:
   - Voting Race
   - Password Reset Race
 tags:
-  - type/technique
   - vuln/race-condition
   - technique/initial-access
   - technique/privilege-escalation

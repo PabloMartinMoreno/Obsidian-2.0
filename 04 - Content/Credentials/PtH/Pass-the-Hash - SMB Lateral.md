@@ -8,7 +8,6 @@ aliases:
   - smbexec PtH
   - dcomexec PtH
 tags:
-  - type/technique
   - technique/lateral-movement
   - technique/credential-access
   - asset/active-directory

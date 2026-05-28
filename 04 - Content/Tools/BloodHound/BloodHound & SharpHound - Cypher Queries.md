@@ -5,7 +5,6 @@ aliases:
   - Custom Queries
   - Neo4j Cypher
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

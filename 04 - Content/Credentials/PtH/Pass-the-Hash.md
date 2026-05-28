@@ -8,7 +8,6 @@ aliases:
   - NTLM Pass-the-Hash
   - Hash Spray
 tags:
-  - type/vulnerability
   - technique/lateral-movement
   - technique/credential-access
   - env/windows

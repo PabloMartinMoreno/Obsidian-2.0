@@ -5,7 +5,6 @@ aliases:
   - Windows LAPS
   - DPAPI-NG LAPS
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

@@ -5,7 +5,6 @@ aliases:
   - AD DNS Dump
   - dnsRecord blob
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

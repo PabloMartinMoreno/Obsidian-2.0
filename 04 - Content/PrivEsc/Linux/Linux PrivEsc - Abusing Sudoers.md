@@ -8,7 +8,6 @@ aliases:
   - Abusing Sudoers Privilege
   - Sudo PrivEsc
 tags:
-  - type/cheatsheet
   - env/linux
   - technique/privilege-escalation
 primary categories:

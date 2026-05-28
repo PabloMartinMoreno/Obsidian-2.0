@@ -4,7 +4,6 @@ aliases:
   - SSI file include
   - SSI LFI
 tags:
-  - type/technique
   - vuln/ssi
   - vuln/lfi
   - technique/collection

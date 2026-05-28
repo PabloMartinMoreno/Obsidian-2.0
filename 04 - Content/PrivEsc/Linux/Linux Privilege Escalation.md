@@ -28,7 +28,6 @@ aliases:
   - Linux PrivEsc
   - LPE
 tags:
-  - type/moc
   - env/linux
   - technique/privilege-escalation
 primary categories:

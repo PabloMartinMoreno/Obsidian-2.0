@@ -2,7 +2,6 @@
 aliases:
   - URL Encode - Caracteres
 tags:
-  - type/concept
 primary categories:
 secondary categories:
 tertiary categories:

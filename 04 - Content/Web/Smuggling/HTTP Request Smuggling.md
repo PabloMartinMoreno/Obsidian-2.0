@@ -6,7 +6,6 @@ aliases:
   - Request Smuggling
   - Response Queue Poisoning
 tags:
-  - type/vulnerability
   - vuln/http-smuggling
   - technique/initial-access
   - technique/credential-access

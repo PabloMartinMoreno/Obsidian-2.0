@@ -6,7 +6,6 @@ aliases:
   - PingCastle Purple Knight ADRecon
   - AD - Health & Security Auditing
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

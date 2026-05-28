@@ -4,7 +4,6 @@ aliases:
   - LDAP Recon
   - LDAP Fingerprint
 tags:
-  - type/technique
   - vuln/ldap-injection
   - technique/discovery
   - asset/web-app

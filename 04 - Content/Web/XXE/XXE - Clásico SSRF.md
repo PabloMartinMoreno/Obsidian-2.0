@@ -1,7 +1,6 @@
 ---
 aliases: null
 tags:
-  - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app

@@ -4,7 +4,6 @@ aliases:
   - DB Isolation Race
   - Distributed Race
 tags:
-  - type/technique
   - vuln/race-condition
   - technique/defense-evasion
   - asset/web-app

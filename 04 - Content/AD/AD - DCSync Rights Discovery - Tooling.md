@@ -5,7 +5,6 @@ aliases:
   - Mimikatz dcsync
   - lsadump dcsync
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

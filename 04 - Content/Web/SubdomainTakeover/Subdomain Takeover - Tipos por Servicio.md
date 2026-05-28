@@ -6,7 +6,6 @@ aliases:
   - Azure Takeover
   - CloudFront Takeover
 tags:
-  - type/technique
   - vuln/subdomain-takeover
   - technique/initial-access
   - asset/cloud

@@ -5,7 +5,6 @@ aliases:
   - SSI Filesystem Enum
   - SSI printenv
 tags:
-  - type/technique
   - vuln/ssi
   - technique/discovery
   - asset/web-app

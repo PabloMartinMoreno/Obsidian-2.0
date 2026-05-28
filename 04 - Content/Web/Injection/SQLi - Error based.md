@@ -3,7 +3,6 @@ aliases:
   - Error-Based SQL Injection
   - Error-based SQLi
 tags:
-  - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database

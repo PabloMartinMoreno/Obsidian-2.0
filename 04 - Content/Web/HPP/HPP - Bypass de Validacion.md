@@ -4,7 +4,6 @@ aliases:
   - Filter Evasion HPP
   - Multi-Source HPP
 tags:
-  - type/technique
   - vuln/hpp
   - technique/defense-evasion
   - asset/web-app

@@ -4,7 +4,6 @@ aliases:
   - SSI Recon
   - SSI Probe
 tags:
-  - type/technique
   - vuln/ssi
   - technique/discovery
   - asset/web-app

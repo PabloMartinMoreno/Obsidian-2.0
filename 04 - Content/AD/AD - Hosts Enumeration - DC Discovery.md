@@ -5,7 +5,6 @@ aliases:
   - DNS SRV Records AD
   - LDAP namingContexts
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

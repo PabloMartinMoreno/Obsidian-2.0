@@ -7,7 +7,6 @@ aliases:
   - Object Injection
   - Untrusted Deserialization
 tags:
-  - type/vulnerability
   - vuln/insecure-deser
   - technique/execution
   - technique/initial-access

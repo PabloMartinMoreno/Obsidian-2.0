@@ -5,7 +5,6 @@ aliases:
   - Account Binding Attack
   - Pre-Account Takeover
 tags:
-  - type/technique
   - vuln/oauth
   - vuln/csrf
   - asset/web-app

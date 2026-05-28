@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - asset/web-app
   - estado/incompleto
 primary categories:

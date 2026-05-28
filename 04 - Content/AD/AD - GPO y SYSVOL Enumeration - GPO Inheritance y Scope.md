@@ -5,7 +5,6 @@ aliases:
   - Enforced GPO
   - RSoP
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

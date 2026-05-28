@@ -3,7 +3,6 @@ aliases:
   - Golden Ticket Detection
   - Golden Ticket Mitigations
 tags:
-  - type/concept
   - technique/persistence
   - technique/kerberos
   - env/windows

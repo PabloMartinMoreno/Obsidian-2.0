@@ -2,7 +2,6 @@
 aliases:
   - Second-order SQLi
 tags:
-  - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database

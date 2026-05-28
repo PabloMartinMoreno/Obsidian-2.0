@@ -4,7 +4,6 @@ aliases:
   - Replication GUID Filter
   - DCSync ACL Discovery
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

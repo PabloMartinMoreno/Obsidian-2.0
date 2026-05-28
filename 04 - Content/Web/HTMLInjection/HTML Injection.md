@@ -5,7 +5,6 @@ aliases:
   - HTML Markup Injection
   - Scriptless HTML Injection
 tags:
-  - type/vulnerability
   - vuln/html-injection
   - technique/initial-access
   - technique/exfiltration

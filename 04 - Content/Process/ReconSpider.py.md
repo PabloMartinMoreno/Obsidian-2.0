@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/tool
   - technique/recon/active
   - estado/incompleto
 primary categories:

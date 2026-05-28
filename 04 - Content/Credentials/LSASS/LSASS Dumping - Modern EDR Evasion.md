@@ -5,7 +5,6 @@ aliases:
   - EDR Evasion LSASS
   - Custom LSASS Dumper
 tags:
-  - type/technique
   - technique/credential-access
   - technique/defense-evasion
   - env/windows

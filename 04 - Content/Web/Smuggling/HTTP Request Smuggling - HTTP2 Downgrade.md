@@ -6,7 +6,6 @@ aliases:
   - H2 Desync
   - h2cSmuggling
 tags:
-  - type/technique
   - vuln/http-smuggling
   - technique/initial-access
   - asset/web-app

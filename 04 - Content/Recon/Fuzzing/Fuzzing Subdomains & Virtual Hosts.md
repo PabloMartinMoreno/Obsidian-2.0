@@ -2,7 +2,6 @@
 aliases:
   - Fuzzing de Subdominios y Hosts Virtuales
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/dns
   - asset/web-app

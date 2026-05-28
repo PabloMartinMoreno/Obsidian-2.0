@@ -5,7 +5,6 @@ aliases:
   - Dangling DNS
   - DNS Takeover
 tags:
-  - type/vulnerability
   - vuln/subdomain-takeover
   - technique/initial-access
   - technique/credential-access

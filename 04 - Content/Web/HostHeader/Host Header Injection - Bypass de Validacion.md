@@ -4,7 +4,6 @@ aliases:
   - Host Header Validation Bypass
   - Multiple Host Headers
 tags:
-  - type/technique
   - vuln/host-header-injection
   - technique/defense-evasion
   - asset/web-app

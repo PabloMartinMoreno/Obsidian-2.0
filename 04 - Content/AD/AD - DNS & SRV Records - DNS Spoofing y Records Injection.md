@@ -5,7 +5,6 @@ aliases:
   - DNS Records Injection
   - mitm6 DNS
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/mitm
   - asset/active-directory

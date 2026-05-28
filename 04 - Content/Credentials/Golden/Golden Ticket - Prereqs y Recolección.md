@@ -3,7 +3,6 @@ aliases:
   - Golden Ticket prereqs
   - krbtgt hash extraction
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - env/windows

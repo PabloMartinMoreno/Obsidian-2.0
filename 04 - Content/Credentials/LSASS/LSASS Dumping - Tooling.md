@@ -5,7 +5,6 @@ aliases:
   - pypykatz
   - nanodump
 tags:
-  - type/tool
   - technique/credential-access
   - env/windows
   - asset/active-directory

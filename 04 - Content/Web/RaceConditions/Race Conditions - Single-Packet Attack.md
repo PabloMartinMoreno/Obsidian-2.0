@@ -4,7 +4,6 @@ aliases:
   - Last-Byte Sync
   - HTTP/2 Race
 tags:
-  - type/technique
   - vuln/race-condition
   - technique/initial-access
   - asset/web-app

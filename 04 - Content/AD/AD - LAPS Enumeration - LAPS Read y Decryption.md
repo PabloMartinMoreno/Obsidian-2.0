@@ -5,7 +5,6 @@ aliases:
   - Get-LapsADPassword
   - LAPS Decryption
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

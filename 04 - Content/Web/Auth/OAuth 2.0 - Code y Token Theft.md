@@ -5,7 +5,6 @@ aliases:
   - postMessage Hijack
   - Mix-Up Attack
 tags:
-  - type/technique
   - vuln/oauth
   - technique/credential-access
   - asset/web-app

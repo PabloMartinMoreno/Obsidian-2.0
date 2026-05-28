@@ -4,7 +4,6 @@ aliases:
   - GetChanges Edge
   - GetChangesAll Edge
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

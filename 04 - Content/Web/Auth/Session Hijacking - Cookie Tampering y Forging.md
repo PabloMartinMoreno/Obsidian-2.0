@@ -5,7 +5,6 @@ aliases:
   - HttpOnly Bypass
   - Predictable Session ID
 tags:
-  - type/technique
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app

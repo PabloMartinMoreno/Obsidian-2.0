@@ -5,7 +5,6 @@ aliases:
   - Lockout Policy Recon
   - User Enumeration
 tags:
-  - type/technique
   - vuln/brute-force
   - technique/discovery
   - asset/web-app

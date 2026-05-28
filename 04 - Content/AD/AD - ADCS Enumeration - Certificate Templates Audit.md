@@ -5,7 +5,6 @@ aliases:
   - Template ACL
   - msPKI-Certificate-Name-Flag
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

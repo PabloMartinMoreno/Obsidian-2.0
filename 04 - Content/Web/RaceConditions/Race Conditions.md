@@ -5,7 +5,6 @@ aliases:
   - Time-of-Check Time-of-Use
   - Concurrency Bug
 tags:
-  - type/vulnerability
   - vuln/race-condition
   - technique/initial-access
   - technique/privilege-escalation

@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - technique/credential-access
   - service/ipmi
 primary categories:

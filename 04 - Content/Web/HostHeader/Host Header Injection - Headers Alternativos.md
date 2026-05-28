@@ -5,7 +5,6 @@ aliases:
   - Forwarded RFC 7239
   - X-HTTP-Host-Override
 tags:
-  - type/technique
   - vuln/host-header-injection
   - technique/initial-access
   - asset/web-app

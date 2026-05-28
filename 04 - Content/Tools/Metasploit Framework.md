@@ -4,7 +4,6 @@ aliases:
   - MSF
   - msfconsole
 tags:
-  - type/tool
   - tool/metasploit
   - technique/exploitation
   - technique/post-exploitation

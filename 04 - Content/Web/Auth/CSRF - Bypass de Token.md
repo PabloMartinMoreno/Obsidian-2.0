@@ -4,7 +4,6 @@ aliases:
   - CSRF Token Bypass
   - Synchronizer Token Bypass
 tags:
-  - type/technique
   - vuln/csrf
   - technique/defense-evasion
   - asset/web-app

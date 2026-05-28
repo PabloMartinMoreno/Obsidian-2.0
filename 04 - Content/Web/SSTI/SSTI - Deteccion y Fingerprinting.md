@@ -4,7 +4,6 @@ aliases:
   - SSTI Fingerprint
   - Template Injection Detection
 tags:
-  - type/technique
   - vuln/ssti
   - technique/discovery
   - asset/web-app

@@ -5,7 +5,6 @@ aliases:
   - NBT-NS Poisoning
   - mDNS Poisoning
 tags:
-  - type/tool
   - technique/credential-access
   - technique/mitm
   - env/windows

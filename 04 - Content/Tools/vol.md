@@ -2,7 +2,6 @@
 aliases:
   - volatility
 tags:
-  - type/command
 primary categories:
 secondary categories:
 tertiary categories:

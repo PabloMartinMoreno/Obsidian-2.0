@@ -8,7 +8,6 @@ aliases:
   - Hash Dumping
   - DCSync
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

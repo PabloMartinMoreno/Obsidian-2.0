@@ -5,7 +5,6 @@ aliases:
   - Long-lived Sessions
   - Refresh Token Replay
 tags:
-  - type/technique
   - vuln/session-hijacking
   - technique/initial-access
   - asset/web-app

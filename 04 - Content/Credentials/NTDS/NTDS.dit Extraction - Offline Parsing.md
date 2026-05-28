@@ -4,7 +4,6 @@ aliases:
   - secretsdump LOCAL
   - DSInternals
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

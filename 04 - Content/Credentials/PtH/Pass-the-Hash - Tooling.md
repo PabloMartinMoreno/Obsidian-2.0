@@ -5,7 +5,6 @@ aliases:
   - Impacket PtH
   - Rubeus PtH
 tags:
-  - type/tool
   - technique/lateral-movement
   - technique/credential-access
   - asset/active-directory

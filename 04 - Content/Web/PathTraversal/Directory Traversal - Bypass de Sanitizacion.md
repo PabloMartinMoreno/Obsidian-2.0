@@ -4,7 +4,6 @@ aliases:
   - Null Byte Bypass
   - Filter Strip Bypass
 tags:
-  - type/technique
   - vuln/path-traversal
   - technique/defense-evasion
   - asset/web-app

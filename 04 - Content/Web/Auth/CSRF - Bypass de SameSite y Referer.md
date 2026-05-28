@@ -4,7 +4,6 @@ aliases:
   - Referer Bypass
   - Cookie SameSite Lax
 tags:
-  - type/technique
   - vuln/csrf
   - technique/defense-evasion
   - asset/web-app

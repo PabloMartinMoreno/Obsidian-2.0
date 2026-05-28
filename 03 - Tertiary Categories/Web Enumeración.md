@@ -3,7 +3,6 @@ aliases:
   - "Web Enumeration"
   - Enumeración Web
 tags:
-  - type/moc/tertiary
   - technique/recon/active
   - asset/web-app
 primary categories:

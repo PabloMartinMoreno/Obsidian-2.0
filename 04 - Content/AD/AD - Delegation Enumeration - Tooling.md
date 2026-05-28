@@ -5,7 +5,6 @@ aliases:
   - certipy shadow
   - Rubeus s4u
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

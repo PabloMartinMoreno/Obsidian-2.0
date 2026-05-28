@@ -2,7 +2,6 @@
 aliases:
   - GoBuster
 tags:
-  - type/tool
   - tool/gobuster
   - technique/enumeration
   - asset/web-app

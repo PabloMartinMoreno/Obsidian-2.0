@@ -3,7 +3,6 @@ aliases:
   - "NFS Enumeration"
   - "showmount"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/file-share
   - service/nfs

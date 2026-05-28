@@ -5,7 +5,6 @@ aliases:
   - Find-AdmPwdExtendedRights
   - Find-LapsADExtendedRights
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

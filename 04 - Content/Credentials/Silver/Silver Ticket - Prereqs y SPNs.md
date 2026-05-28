@@ -3,7 +3,6 @@ aliases:
   - Silver Ticket Prerequisites
   - Silver Ticket SPN discovery
 tags:
-  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/windows

@@ -5,7 +5,6 @@ aliases:
   - HPP
   - Parameter Pollution
 tags:
-  - type/vulnerability
   - vuln/hpp
   - technique/initial-access
   - technique/defense-evasion

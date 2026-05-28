@@ -4,7 +4,6 @@ aliases:
   - Nested Object Injection
   - Snake Camel Bypass
 tags:
-  - type/technique
   - vuln/mass-assignment
   - technique/defense-evasion
   - asset/web-app

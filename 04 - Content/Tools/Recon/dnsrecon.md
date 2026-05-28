@@ -2,7 +2,6 @@
 aliases:
   - dnsrecon
 tags:
-  - type/tool
   - tool/dnsrecon
   - technique/recon/passive
   - technique/recon/active

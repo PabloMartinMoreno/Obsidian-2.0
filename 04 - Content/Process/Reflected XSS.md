@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - vuln/xss
   - technique/execution
   - asset/web-app

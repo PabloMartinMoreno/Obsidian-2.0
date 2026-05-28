@@ -3,7 +3,6 @@ aliases:
   - CSRF Detection
   - CSRF Recon
 tags:
-  - type/technique
   - vuln/csrf
   - technique/discovery
   - asset/web-app

@@ -5,7 +5,6 @@ aliases:
   - X-Forwarded-For Spoof
   - Lockout Evasion
 tags:
-  - type/technique
   - vuln/brute-force
   - technique/defense-evasion
   - asset/web-app

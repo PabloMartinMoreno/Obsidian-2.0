@@ -4,7 +4,6 @@ aliases:
   - SSTI Burp Extensions
   - SSTI Wordlists
 tags:
-  - type/tool
   - vuln/ssti
   - technique/discovery
   - technique/execution

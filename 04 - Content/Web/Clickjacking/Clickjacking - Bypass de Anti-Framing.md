@@ -4,7 +4,6 @@ aliases:
   - Sandbox Bypass
   - X-Frame-Options Bypass
 tags:
-  - type/technique
   - vuln/clickjacking
   - technique/defense-evasion
   - asset/web-app

@@ -5,7 +5,6 @@ aliases:
   - Kerberos SRV
   - DC SRV Lookup
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

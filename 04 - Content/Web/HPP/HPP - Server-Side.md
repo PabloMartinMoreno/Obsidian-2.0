@@ -4,7 +4,6 @@ aliases:
   - WAF Bypass HPP
   - HPP SQLi
 tags:
-  - type/technique
   - vuln/hpp
   - technique/initial-access
   - technique/defense-evasion

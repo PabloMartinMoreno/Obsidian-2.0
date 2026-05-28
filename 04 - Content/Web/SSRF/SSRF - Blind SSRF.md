@@ -4,7 +4,6 @@ aliases:
   - Out-of-Band SSRF
   - Time-based SSRF
 tags:
-  - type/technique
   - vuln/ssrf
   - technique/exfiltration
   - asset/web-app

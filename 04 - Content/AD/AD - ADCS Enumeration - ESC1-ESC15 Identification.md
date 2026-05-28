@@ -6,7 +6,6 @@ aliases:
   - certipy vulnerable
   - ESC chain
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

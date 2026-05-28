@@ -5,7 +5,6 @@ aliases:
   - Verb Tampering
   - Forced Browsing
 tags:
-  - type/technique
   - vuln/auth-bypass
   - technique/initial-access
   - asset/web-app

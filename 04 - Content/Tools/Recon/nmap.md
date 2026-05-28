@@ -3,8 +3,6 @@ aliases:
   - Nmap
   - Network Mapper
 tags:
-  - type/tool
-  - type/tool
   - tool/nmap
   - technique/recon/active
 primary categories:

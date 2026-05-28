@@ -5,7 +5,6 @@ aliases:
   - postMessage Abuse
   - CORS Credential Leak
 tags:
-  - type/technique
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app

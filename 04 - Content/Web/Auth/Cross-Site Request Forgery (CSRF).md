@@ -6,7 +6,6 @@ aliases:
   - Cross Site Request Forgery
   - Session Riding
 tags:
-  - type/vulnerability
   - vuln/csrf
   - technique/initial-access
   - technique/execution

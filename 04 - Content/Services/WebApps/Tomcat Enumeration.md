@@ -4,7 +4,6 @@ aliases:
   - "Apache Tomcat Exploitation"
   - "Tomcat & Jenkins Exploitation"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/web-app
   - service/http

@@ -5,7 +5,6 @@ aliases:
   - Get-ADTrust
   - LDAP trustedDomain
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

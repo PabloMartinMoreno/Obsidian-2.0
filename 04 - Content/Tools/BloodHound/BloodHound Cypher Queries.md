@@ -3,7 +3,6 @@ aliases:
   - Cypher Queries Cheatsheet
   - BloodHound Cypher
 tags:
-  - type/tool
   - technique/enumeration
   - env/windows
   - asset/active-directory

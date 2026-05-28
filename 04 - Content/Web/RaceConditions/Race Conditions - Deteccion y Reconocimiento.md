@@ -3,7 +3,6 @@ aliases:
   - Race Detection
   - TOCTOU Detection
 tags:
-  - type/technique
   - vuln/race-condition
   - technique/discovery
   - asset/web-app

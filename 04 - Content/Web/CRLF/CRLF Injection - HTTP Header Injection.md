@@ -4,7 +4,6 @@ aliases:
   - Cache Poisoning Header
   - CSP Bypass via Header
 tags:
-  - type/technique
   - vuln/crlf-injection
   - technique/initial-access
   - asset/web-app

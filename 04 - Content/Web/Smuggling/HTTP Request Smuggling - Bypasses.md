@@ -4,7 +4,6 @@ aliases:
   - Header Obfuscation
   - Smuggling Evasion
 tags:
-  - type/technique
   - vuln/http-smuggling
   - technique/defense-evasion
   - asset/web-app

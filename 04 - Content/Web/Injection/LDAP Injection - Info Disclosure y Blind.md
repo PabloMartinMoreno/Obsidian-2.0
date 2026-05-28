@@ -4,7 +4,6 @@ aliases:
   - LDAP Boolean Extraction
   - LDAP Time-based
 tags:
-  - type/technique
   - vuln/ldap-injection
   - technique/exfiltration
   - asset/web-app

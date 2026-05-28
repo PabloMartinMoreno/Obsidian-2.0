@@ -4,7 +4,6 @@ aliases:
   - Auth Recon
   - Username Enum
 tags:
-  - type/technique
   - vuln/auth-bypass
   - technique/discovery
   - asset/web-app

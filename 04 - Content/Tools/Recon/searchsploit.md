@@ -7,7 +7,6 @@ aliases:
   - Exploit-DB CLI
   - exploitdb
 tags:
-  - type/tool
   - technique/initial-access
   - tool/searchsploit
   - tool/exploit-db

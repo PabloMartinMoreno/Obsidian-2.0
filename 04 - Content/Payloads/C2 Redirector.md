@@ -13,7 +13,6 @@ aliases:
   - "Empire (PowerShell & Python)"
   - "Havoc C2"
 tags:
-  - type/concept
   - asset/infrastructure
 primary categories:
   - "[[Red Team]]"

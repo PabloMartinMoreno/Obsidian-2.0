@@ -2,7 +2,6 @@
 aliases:
   - "Abusing PRTG Network Monitor"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/web-app
   - service/http

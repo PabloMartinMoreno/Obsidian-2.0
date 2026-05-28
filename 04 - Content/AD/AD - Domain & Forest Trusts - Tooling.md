@@ -6,7 +6,6 @@ aliases:
   - PowerView Trusts
   - BloodHound Trusts
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

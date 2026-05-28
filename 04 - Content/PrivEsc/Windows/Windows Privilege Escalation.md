@@ -53,7 +53,6 @@ aliases:
   - WinPE
   - WPE
 tags:
-  - type/moc
   - env/windows
   - technique/privilege-escalation
 primary categories:

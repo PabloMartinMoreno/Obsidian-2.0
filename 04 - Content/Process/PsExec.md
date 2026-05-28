@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - technique/lateral-movement
   - env/windows
   - estado/incompleto

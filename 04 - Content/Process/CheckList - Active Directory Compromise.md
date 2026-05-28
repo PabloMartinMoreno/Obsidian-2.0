@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/playbook
   - asset/active-directory
   - estado/incompleto
 primary categories:

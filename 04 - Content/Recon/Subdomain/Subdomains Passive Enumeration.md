@@ -4,7 +4,6 @@ aliases:
   - "vhosts"
   - Enumeración Pasiva de Subdominios
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - technique/recon/passive
   - asset/domain

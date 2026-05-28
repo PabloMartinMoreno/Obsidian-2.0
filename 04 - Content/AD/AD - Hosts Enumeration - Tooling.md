@@ -6,7 +6,6 @@ aliases:
   - ldapsearch AD
   - SharpHound Collector
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

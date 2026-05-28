@@ -4,7 +4,6 @@ aliases:
   - CRLF Encoding
   - Filter Evasion CRLF
 tags:
-  - type/technique
   - vuln/crlf-injection
   - technique/defense-evasion
   - asset/web-app

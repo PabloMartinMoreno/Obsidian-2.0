@@ -4,7 +4,6 @@ aliases:
   - SSTI Filter Evasion
   - SSTI WAF Bypass
 tags:
-  - type/technique
   - vuln/ssti
   - technique/defense-evasion
   - asset/web-app

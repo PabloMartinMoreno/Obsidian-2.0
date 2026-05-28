@@ -4,7 +4,6 @@ aliases:
   - AD Audit Ecosystem
   - Audit tools comparison
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

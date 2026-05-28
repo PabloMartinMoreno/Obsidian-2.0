@@ -1,7 +1,6 @@
 ---
 aliases: null
 tags:
-  - type/cheatsheet
   - vuln/sqli
   - technique/execution
   - asset/database

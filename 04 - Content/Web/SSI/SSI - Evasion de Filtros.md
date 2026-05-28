@@ -4,7 +4,6 @@ aliases:
   - SSI WAF Bypass
   - SSI Encoding
 tags:
-  - type/technique
   - vuln/ssi
   - technique/defense-evasion
   - asset/web-app

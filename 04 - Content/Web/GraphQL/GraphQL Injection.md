@@ -5,7 +5,6 @@ aliases:
   - GraphQL Attacks
   - GraphQL Pentesting
 tags:
-  - type/vulnerability
   - vuln/graphql
   - technique/execution
   - asset/web-app

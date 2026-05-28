@@ -4,7 +4,6 @@ aliases:
   - Null Session Policy
   - Pre-Auth Policy Recon
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -4,7 +4,6 @@ aliases:
   - ESE Database
   - JET Engine
 tags:
-  - type/concept
   - technique/credential-access
   - env/windows
   - asset/active-directory

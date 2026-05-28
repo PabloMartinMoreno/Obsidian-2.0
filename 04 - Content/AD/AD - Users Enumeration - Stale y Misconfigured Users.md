@@ -5,7 +5,6 @@ aliases:
   - DONT_EXPIRE_PASSWORD
   - Reversible Encryption
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

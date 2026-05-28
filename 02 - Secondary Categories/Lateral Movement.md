@@ -2,7 +2,6 @@
 aliases:
   - Movimiento Lateral
 tags:
-  - type/moc/secondary
 primary categories:
   - "[[Red Team]]"
 kind: Secondary Category

@@ -4,7 +4,6 @@ aliases:
   - WriteSPN Abuse
   - servicePrincipalName ACL Abuse
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

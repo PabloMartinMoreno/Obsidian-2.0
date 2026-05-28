@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - vuln/lfi
   - technique/execution
   - asset/web-app

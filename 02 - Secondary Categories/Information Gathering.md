@@ -3,7 +3,6 @@ aliases:
   - "Enumeration"
   - Recopilación de información
 tags:
-  - type/moc/secondary
 primary categories:
   - "[[Red Team]]"
 kind: Secondary Category

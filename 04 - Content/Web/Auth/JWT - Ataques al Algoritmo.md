@@ -4,7 +4,6 @@ aliases:
   - JWT Algorithm Confusion
   - JWT Weak Secret
 tags:
-  - type/technique
   - vuln/jwt
   - vuln/auth-bypass
   - technique/credential-access

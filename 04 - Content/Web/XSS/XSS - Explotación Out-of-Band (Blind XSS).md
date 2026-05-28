@@ -3,7 +3,6 @@ aliases:
   - Blind XSS
   - OAST
 tags:
-  - type/technique
   - vuln/xss
   - technique/execution
   - asset/web-app

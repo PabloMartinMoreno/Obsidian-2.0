@@ -4,7 +4,6 @@ aliases:
   - XSLT Fingerprint
   - XSLT Version Detection
 tags:
-  - type/technique
   - vuln/xslt-injection
   - technique/discovery
   - asset/web-app

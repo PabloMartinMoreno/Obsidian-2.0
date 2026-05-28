@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - asset/web-app
   - technique/credential-access
   - estado/incompleto

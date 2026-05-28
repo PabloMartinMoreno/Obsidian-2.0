@@ -3,7 +3,6 @@ aliases:
   - PtT Detection
   - Kerberos ticket detection
 tags:
-  - type/concept
   - technique/lateral-movement
   - technique/credential-access
   - env/windows

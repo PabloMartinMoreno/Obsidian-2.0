@@ -4,7 +4,6 @@ aliases:
   - gMSA in DA
   - Kerberoastable gMSA
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

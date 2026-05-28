@@ -5,7 +5,6 @@ aliases:
   - msDS-GroupManagedServiceAccount
   - gMSA Recon
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - technique/credential-access

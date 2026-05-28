@@ -2,7 +2,6 @@
 aliases:
   - "Drupal Exploitation"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/web-app
   - service/drupal

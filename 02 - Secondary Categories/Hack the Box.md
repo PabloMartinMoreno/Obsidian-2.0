@@ -2,7 +2,6 @@
 aliases:
   - HTB
 tags:
-  - type/moc/secondary
 primary categories:
 kind: Secondary Category
 ---

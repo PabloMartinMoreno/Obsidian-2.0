@@ -5,7 +5,6 @@ aliases:
   - AD bulk reports
   - PowerShell AD audit
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

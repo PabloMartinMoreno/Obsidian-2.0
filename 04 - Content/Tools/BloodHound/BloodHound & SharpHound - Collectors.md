@@ -6,7 +6,6 @@ aliases:
   - BloodHound.py
   - AzureHound
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -5,7 +5,6 @@ aliases:
   - Host Header Attack
   - Password Reset Poisoning
 tags:
-  - type/vulnerability
   - vuln/host-header-injection
   - technique/initial-access
   - technique/credential-access

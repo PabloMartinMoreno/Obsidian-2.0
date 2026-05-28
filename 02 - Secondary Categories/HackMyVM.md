@@ -2,7 +2,6 @@
 aliases:
   - HMV
 tags:
-  - type/moc/secondary
   - meta/ctf
 kind: Secondary Category
 ---

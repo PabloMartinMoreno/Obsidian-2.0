@@ -3,7 +3,6 @@ aliases:
   - "Packet Capture & Analysis"
   - "Packet Capture for Credentials"
 tags:
-  - type/tool
   - tool/tcpdump
 primary categories:
   - "[[Red Team]]"

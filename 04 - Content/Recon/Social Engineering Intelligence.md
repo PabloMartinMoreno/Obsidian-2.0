@@ -20,7 +20,6 @@ aliases:
   - "Malicious PDF Files"
   - "Capturing Hashes with LNK & SCF Files"
 tags:
-  - type/cheatsheet
   - technique/recon/passive
   - asset/organization
   - asset/personnel

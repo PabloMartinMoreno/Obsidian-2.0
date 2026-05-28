@@ -3,7 +3,6 @@ aliases:
   - PP Bypass
   - Prototype Pollution Filter Evasion
 tags:
-  - type/technique
   - vuln/prototype-pollution
   - technique/defense-evasion
   - asset/web-app

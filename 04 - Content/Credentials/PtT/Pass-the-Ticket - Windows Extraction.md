@@ -4,7 +4,6 @@ aliases:
   - Rubeus dump tickets
   - mimikatz tickets
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

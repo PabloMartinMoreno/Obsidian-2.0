@@ -5,7 +5,6 @@ aliases:
   - "Web Vulnerability Scanning"
   - Nikto
 tags:
-  - type/tool
   - tool/nikto
   - technique/recon/active
   - asset/web-app

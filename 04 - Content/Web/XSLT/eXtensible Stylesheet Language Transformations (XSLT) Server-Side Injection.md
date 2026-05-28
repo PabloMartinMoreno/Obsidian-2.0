@@ -5,7 +5,6 @@ aliases:
   - XSLTi
   - XSL Injection
 tags:
-  - type/vulnerability
   - vuln/xslt-injection
   - technique/initial-access
   - technique/execution

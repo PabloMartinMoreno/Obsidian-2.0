@@ -2,7 +2,6 @@
 aliases:
   - Enumeración de Hosts y Redes
 tags:
-  - type/moc/tertiary
   - technique/recon/active
   - asset/network
   - meta/index

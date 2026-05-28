@@ -4,7 +4,6 @@ aliases:
   - kerberos ptt
   - ticket injection
 tags:
-  - type/technique
   - technique/lateral-movement
   - env/windows
   - env/linux

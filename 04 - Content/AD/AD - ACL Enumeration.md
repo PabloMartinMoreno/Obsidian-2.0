@@ -5,7 +5,6 @@ aliases:
   - ACL Recon AD
   - Dangerous ACE Discovery
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - technique/privilege-escalation

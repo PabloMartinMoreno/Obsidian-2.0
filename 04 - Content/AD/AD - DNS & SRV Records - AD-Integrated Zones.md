@@ -5,7 +5,6 @@ aliases:
   - ForestDnsZones
   - MicrosoftDNS Partition
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

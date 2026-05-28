@@ -5,7 +5,6 @@ aliases:
   - Hashcat Auth
   - Hydra
 tags:
-  - type/technique
   - vuln/auth-bypass
   - technique/credential-access
   - asset/web-app

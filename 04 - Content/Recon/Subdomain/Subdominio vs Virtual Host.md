@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - technique/recon/active
   - asset/web-app
 kind: Concept

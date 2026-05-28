@@ -4,7 +4,6 @@ aliases:
   - Param Miner Host Header
   - Host Header Wordlists
 tags:
-  - type/tool
   - vuln/host-header-injection
   - technique/discovery
   - asset/web-app

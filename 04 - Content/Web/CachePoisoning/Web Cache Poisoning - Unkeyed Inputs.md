@@ -5,7 +5,6 @@ aliases:
   - Unkeyed Method
   - Param Miner Workflow
 tags:
-  - type/technique
   - vuln/cache-poisoning
   - technique/discovery
   - asset/web-app

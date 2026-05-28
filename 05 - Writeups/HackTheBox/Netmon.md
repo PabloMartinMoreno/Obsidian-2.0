@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - env/windows
   - estado/completo
   - cert/oscp

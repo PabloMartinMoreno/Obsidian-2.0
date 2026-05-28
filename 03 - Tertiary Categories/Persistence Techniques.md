@@ -2,7 +2,6 @@
 aliases:
   - Técnicas de Persistencia
 tags:
-  - type/moc/tertiary
 primary categories:
   - "[[Red Team]]"
 secondary categories:

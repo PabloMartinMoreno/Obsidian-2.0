@@ -4,7 +4,6 @@ aliases:
   - tshark
   - PCAP Analysis
 tags:
-  - type/tool
   - tool/wireshark
   - tool/tshark
   - topic/network

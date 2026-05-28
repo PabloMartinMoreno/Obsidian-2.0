@@ -1,7 +1,6 @@
 ---
 aliases: null
 tags:
-  - type/technique
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app

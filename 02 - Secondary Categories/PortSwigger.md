@@ -2,7 +2,6 @@
 aliases:
   - PortSwigger Academy
 tags:
-  - type/moc/secondary
   - meta/ctf
   - asset/web-app
 kind: Secondary Category

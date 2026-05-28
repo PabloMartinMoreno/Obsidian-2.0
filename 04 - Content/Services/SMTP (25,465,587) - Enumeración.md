@@ -8,7 +8,6 @@ aliases:
   - "Email Spoofing Techniques"
   - "SMTP"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/mail-server
   - service/smtp

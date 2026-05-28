@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
 kind: Concept
 linked:
   - "[[PortSwigger - XSS - 6) DOM XSS in jQuery selector sink using a hashchange event]]"

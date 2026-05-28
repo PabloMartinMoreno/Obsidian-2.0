@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - estado/completo
 plataforma: "[[HackMyVM]]"
 web: https://hackmyvm.eu/machines/machine.php?vm=Doc

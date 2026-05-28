@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - technique/recon/passive
   - asset/repository
 primary categories:

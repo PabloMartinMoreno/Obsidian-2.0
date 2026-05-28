@@ -5,7 +5,6 @@ aliases:
   - XSS via Redirect
   - OAuth Code Theft
 tags:
-  - type/technique
   - vuln/open-redirect
   - technique/lateral-movement
   - technique/credential-access

@@ -4,7 +4,6 @@ aliases:
   - Open Redirect Scanner
   - ffuf Redirect
 tags:
-  - type/tool
   - vuln/open-redirect
   - technique/discovery
   - asset/web-app

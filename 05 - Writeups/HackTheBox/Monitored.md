@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - env/linux
   - estado/completo
   - cert/oscp

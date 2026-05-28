@@ -5,7 +5,6 @@ aliases:
   - File Download
   - Data Exfil
 tags:
-  - type/technique
   - technique/command-and-control
   - technique/exfiltration
   - env/linux

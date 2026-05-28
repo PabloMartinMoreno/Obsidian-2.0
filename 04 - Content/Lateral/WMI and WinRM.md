@@ -9,7 +9,6 @@ aliases:
   - wmiexec
   - PS Remoting
 tags:
-  - type/technique
   - technique/lateral-movement
   - technique/execution
   - env/windows

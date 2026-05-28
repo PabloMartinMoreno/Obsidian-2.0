@@ -4,7 +4,6 @@ aliases:
   - Rubeus
   - mimikatz kerberos
 tags:
-  - type/tool
   - technique/lateral-movement
   - technique/credential-access
   - env/windows

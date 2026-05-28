@@ -4,7 +4,6 @@ aliases:
   - MongoDB Auth Bypass
   - $ne bypass
 tags:
-  - type/technique
   - vuln/nosqli
   - technique/initial-access
   - asset/database

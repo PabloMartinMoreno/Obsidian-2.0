@@ -4,7 +4,6 @@ aliases:
   - HTML Injection Wordlists
   - Burp DOM Invader
 tags:
-  - type/tool
   - vuln/html-injection
   - technique/discovery
   - asset/web-app

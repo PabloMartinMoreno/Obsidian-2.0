@@ -5,7 +5,6 @@ aliases:
   - UD CD RBCD Discovery
   - Shadow Credentials Enum
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - technique/privilege-escalation

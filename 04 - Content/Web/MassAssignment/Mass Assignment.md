@@ -5,7 +5,6 @@ aliases:
   - Object Injection (Mass Assignment)
   - Unsafe Mass Assignment
 tags:
-  - type/vulnerability
   - vuln/mass-assignment
   - technique/privilege-escalation
   - technique/credential-access

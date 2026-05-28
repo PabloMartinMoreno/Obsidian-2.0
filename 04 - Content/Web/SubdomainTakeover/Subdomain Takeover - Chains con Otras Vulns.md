@@ -5,7 +5,6 @@ aliases:
   - HHI + Subdomain Takeover
   - Cookie Takeover Chain
 tags:
-  - type/technique
   - vuln/subdomain-takeover
   - technique/lateral-movement
   - asset/web-app

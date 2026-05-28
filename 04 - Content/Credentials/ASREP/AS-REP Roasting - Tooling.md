@@ -6,7 +6,6 @@ aliases:
   - Rubeus asreproast
   - kerbrute userenum
 tags:
-  - type/tool
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

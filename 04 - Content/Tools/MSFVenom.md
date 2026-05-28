@@ -9,7 +9,6 @@ aliases:
   - msfvenom
   - Metasploit Payload Generator
 tags:
-  - type/tool
   - technique/execution
   - technique/defense-evasion
   - tool/msfvenom

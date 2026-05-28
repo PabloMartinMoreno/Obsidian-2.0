@@ -7,7 +7,6 @@ aliases:
   - amass
   - dnsx
 tags:
-  - type/tool
   - vuln/subdomain-takeover
   - technique/discovery
   - asset/dns

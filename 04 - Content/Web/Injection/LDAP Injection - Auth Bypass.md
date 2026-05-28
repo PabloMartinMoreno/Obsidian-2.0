@@ -4,7 +4,6 @@ aliases:
   - LDAP Login Bypass
   - LDAP Empty Bind
 tags:
-  - type/technique
   - vuln/ldap-injection
   - vuln/auth-bypass
   - technique/initial-access

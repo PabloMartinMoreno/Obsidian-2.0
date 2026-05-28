@@ -5,7 +5,6 @@ aliases:
   - jwt_tool
   - Keycloak Test
 tags:
-  - type/tool
   - vuln/oauth
   - technique/discovery
   - asset/web-app

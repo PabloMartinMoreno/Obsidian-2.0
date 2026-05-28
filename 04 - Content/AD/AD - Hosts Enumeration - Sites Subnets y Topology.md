@@ -5,7 +5,6 @@ aliases:
   - AD Subnets
   - Site Links
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

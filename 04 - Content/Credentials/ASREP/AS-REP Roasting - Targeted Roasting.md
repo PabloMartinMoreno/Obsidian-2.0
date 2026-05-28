@@ -4,7 +4,6 @@ aliases:
   - UAC XOR Attack
   - DONT_REQ_PREAUTH ACL Abuse
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

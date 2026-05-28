@@ -3,7 +3,6 @@ aliases:
   - Exfiltración Basada en Errores
   - Blind XXE
 tags:
-  - type/technique
   - vuln/xxe
   - technique/execution
   - asset/web-app

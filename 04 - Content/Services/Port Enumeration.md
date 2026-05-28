@@ -5,7 +5,6 @@ aliases:
   - Service Enumeration
   - Port Enum MOC
 tags:
-  - type/moc
   - technique/recon/active
 primary categories:
   - "[[Red Team]]"

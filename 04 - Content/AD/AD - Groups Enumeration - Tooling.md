@@ -5,7 +5,6 @@ aliases:
   - Get-DomainGroup
   - BloodHound Groups
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

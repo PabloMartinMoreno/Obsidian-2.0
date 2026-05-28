@@ -5,7 +5,6 @@ aliases:
   - Magic Link Reuse
   - OAuth State Missing
 tags:
-  - type/technique
   - vuln/auth-bypass
   - technique/credential-access
   - asset/web-app

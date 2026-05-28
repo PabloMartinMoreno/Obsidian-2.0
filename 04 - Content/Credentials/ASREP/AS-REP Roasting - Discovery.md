@@ -4,7 +4,6 @@ aliases:
   - DONT_REQ_PREAUTH
   - PreAuth Disabled
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

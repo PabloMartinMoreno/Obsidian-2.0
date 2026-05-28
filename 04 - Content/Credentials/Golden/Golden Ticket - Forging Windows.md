@@ -4,7 +4,6 @@ aliases:
   - Rubeus golden
   - mimikatz golden
 tags:
-  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/windows

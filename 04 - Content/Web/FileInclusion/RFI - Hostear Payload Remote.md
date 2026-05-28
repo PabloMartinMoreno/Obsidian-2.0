@@ -4,7 +4,6 @@ aliases:
   - Polyglot Files RFI
   - Public Payload Servers
 tags:
-  - type/technique
   - vuln/rfi
   - technique/execution
   - asset/web-app

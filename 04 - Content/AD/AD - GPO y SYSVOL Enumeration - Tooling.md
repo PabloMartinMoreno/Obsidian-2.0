@@ -5,7 +5,6 @@ aliases:
   - Get-GPPPassword
   - Snaffler
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

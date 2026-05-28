@@ -2,7 +2,6 @@
 aliases:
   - "Visual Reconnaissance with EyeWitness"
 tags:
-  - type/tool
   - technique/recon/active
   - asset/web-app
   - service/http

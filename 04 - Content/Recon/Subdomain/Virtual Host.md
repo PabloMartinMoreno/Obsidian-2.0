@@ -3,7 +3,6 @@ aliases:
   - "Boundary"
   - "Virtual Hosting"
 tags:
-  - type/concept
   - technique/recon/active
   - asset/web-app
 kind: Concept

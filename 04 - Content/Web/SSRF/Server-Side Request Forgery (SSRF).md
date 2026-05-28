@@ -3,7 +3,6 @@ aliases:
   - SSRF
   - Server-Side Request Forgery
 tags:
-  - type/vulnerability
   - vuln/ssrf
   - technique/initial-access
   - technique/discovery

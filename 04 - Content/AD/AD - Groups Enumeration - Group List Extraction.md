@@ -5,7 +5,6 @@ aliases:
   - enumdomgroups
   - Get-ADGroup
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

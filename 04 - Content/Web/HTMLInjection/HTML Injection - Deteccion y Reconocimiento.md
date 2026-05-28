@@ -3,7 +3,6 @@ aliases:
   - HTML Injection Detection
   - HTML Injection Recon
 tags:
-  - type/technique
   - vuln/html-injection
   - technique/discovery
   - asset/web-app

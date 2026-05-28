@@ -4,7 +4,6 @@ aliases:
   - Jinja2 Sandbox Escape
   - Twig Sandbox Bypass
 tags:
-  - type/technique
   - vuln/ssti
   - technique/defense-evasion
   - asset/web-app

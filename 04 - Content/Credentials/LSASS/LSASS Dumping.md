@@ -7,7 +7,6 @@ aliases:
   - LSASS Dump
   - Local Security Authority Subsystem
 tags:
-  - type/vulnerability
   - technique/credential-access
   - env/windows
   - asset/active-directory

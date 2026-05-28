@@ -4,7 +4,6 @@ aliases:
   - Ffuf
   - Fuff
 tags:
-  - type/tool
   - tool/ffuf
   - technique/recon/active
   - asset/web-app

@@ -4,7 +4,6 @@ aliases:
   - DCSync delegation
   - dacledit DCSync
 tags:
-  - type/technique
   - technique/privilege-escalation
   - technique/credential-access
   - env/windows

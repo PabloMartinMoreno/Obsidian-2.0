@@ -2,7 +2,6 @@
 aliases:
   - Enumeración de Usuarios y Grupos (AD)
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/active-directory
 primary categories:

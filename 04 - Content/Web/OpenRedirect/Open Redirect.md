@@ -5,7 +5,6 @@ aliases:
   - URL Redirection
   - Forward Vulnerability
 tags:
-  - type/vulnerability
   - vuln/open-redirect
   - technique/initial-access
   - technique/credential-access

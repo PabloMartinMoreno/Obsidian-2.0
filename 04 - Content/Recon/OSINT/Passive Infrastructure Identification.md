@@ -2,7 +2,6 @@
 aliases:
   - Identificación Pasiva de Infraestructura
 tags:
-  - type/cheatsheet
   - technique/recon/passive
   - asset/infrastructure
   - meta/reference

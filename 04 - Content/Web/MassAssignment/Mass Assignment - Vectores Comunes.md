@@ -4,7 +4,6 @@ aliases:
   - Mass Assignment ATO
   - Mass Assignment Financial
 tags:
-  - type/technique
   - vuln/mass-assignment
   - technique/privilege-escalation
   - technique/credential-access

@@ -5,7 +5,6 @@ aliases:
   - AD-Integrated DNS
   - DNS Records Recon
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

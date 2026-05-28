@@ -7,7 +7,6 @@ aliases:
   - "Mejora de terminal interactiva"
   - "TTY Upgrade"
 tags:
-  - type/concept
   - technique/execution
 kind: Concept
 linked:

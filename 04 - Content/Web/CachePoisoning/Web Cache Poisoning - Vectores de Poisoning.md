@@ -5,7 +5,6 @@ aliases:
   - Open Redirect Cache
   - Cookie Injection Cache
 tags:
-  - type/technique
   - vuln/cache-poisoning
   - technique/initial-access
   - technique/impact

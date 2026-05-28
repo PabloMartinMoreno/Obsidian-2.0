@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
 primary categories:
   - "[[Red Team]]"
 secondary categories:

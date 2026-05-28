@@ -1,8 +1,6 @@
 ---
 aliases:
 tags:
-  - type/command
-  - type/tool
   - technique/recon/passive
   - asset/infrastructure
   - tool/whois

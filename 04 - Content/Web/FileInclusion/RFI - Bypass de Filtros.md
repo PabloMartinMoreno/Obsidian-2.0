@@ -4,7 +4,6 @@ aliases:
   - Whitelist Bypass RFI
   - Null Byte RFI
 tags:
-  - type/technique
   - vuln/rfi
   - technique/defense-evasion
   - asset/web-app

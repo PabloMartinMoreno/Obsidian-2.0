@@ -2,7 +2,6 @@
 aliases:
   - "WordPress"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/web-app
   - service/http

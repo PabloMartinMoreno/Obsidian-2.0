@@ -5,7 +5,6 @@ aliases:
   - rpcclient AD
   - enum4linux-ng
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

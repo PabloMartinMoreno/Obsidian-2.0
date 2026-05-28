@@ -5,7 +5,6 @@ aliases:
   - PKCE Downgrade
   - Device Code Phishing
 tags:
-  - type/technique
   - vuln/oauth
   - technique/privilege-escalation
   - asset/web-app

@@ -3,7 +3,6 @@ aliases:
   - Bypass del PATH en ejecución de binarios SUID
   - Hexadecimal a Decimal
 tags:
-  - type/technique
   - vuln/lfi
   - technique/execution
   - asset/web-app

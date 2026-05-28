@@ -5,7 +5,6 @@ aliases:
   - Replication Rights Recon
   - GetChanges GetChangesAll
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - technique/credential-access

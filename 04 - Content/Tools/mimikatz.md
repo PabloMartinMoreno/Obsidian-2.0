@@ -5,7 +5,6 @@ aliases:
   - mimikatz.exe
   - kiwi
 tags:
-  - type/tool
   - tool/mimikatz
   - technique/credential-access
   - technique/lateral-movement

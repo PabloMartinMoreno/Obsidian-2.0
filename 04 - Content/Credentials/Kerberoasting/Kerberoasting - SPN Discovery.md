@@ -5,7 +5,6 @@ aliases:
   - servicePrincipalName Filter
   - Kerberoastable Users
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

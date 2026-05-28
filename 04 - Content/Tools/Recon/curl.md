@@ -1,8 +1,6 @@
 ---
 aliases:
 tags:
-  - type/command
-  - type/tool
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -5,7 +5,6 @@ aliases:
   - OAuth redirect_uri
   - Predictable Tokens
 tags:
-  - type/technique
   - vuln/auth-bypass
   - technique/credential-access
   - asset/web-app

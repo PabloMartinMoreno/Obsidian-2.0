@@ -5,7 +5,6 @@ aliases:
   - linkedin2username
   - GetADUsers
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -5,7 +5,6 @@ aliases:
   - Decoy Button
   - Double Iframe
 tags:
-  - type/technique
   - vuln/clickjacking
   - technique/initial-access
   - asset/web-app

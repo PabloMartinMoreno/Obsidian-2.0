@@ -3,7 +3,6 @@ aliases:
   - Incompletos
   - Pendientes
 tags:
-  - type/moc/tertiary
   - meta/index
 cssclasses:
   - dashboard
@@ -54,15 +53,14 @@ SORT length(rows) DESC
 
 ***
 
-## Por Tipo (`type/*`)
+## Por Tipo (`kind`)
 
 ```dataview
 TABLE WITHOUT ID
   length(rows) as "Cantidad"
 FROM #estado/incompleto
 WHERE !contains(file.path, "00 - Resources/Templates")
-FLATTEN filter(file.tags, (t) => startswith(t, "#type/")) as tipo
-GROUP BY tipo as "Tipo"
+GROUP BY kind as "Tipo"
 SORT length(rows) DESC
 ```
 

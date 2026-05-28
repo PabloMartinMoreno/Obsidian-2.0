@@ -5,7 +5,6 @@ aliases:
   - ForceChangePassword
   - DCSync ACE
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -3,7 +3,6 @@ aliases:
   - "Web Exploitation"
   - Explotación Web
 tags:
-  - type/moc/tertiary
 primary categories:
   - "[[Red Team]]"
 secondary categories:

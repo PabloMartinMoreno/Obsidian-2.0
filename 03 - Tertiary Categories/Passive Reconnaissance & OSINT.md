@@ -2,7 +2,6 @@
 aliases:
   - Reconocimiento Pasivo
 tags:
-  - type/moc/tertiary
   - technique/recon/passive
 primary categories:
   - "[[Red Team]]"

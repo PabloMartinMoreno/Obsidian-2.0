@@ -5,7 +5,6 @@ aliases:
   - JEP 290 Bypass
   - Filter Bypass
 tags:
-  - type/technique
   - vuln/insecure-deser
   - technique/defense-evasion
   - asset/web-app

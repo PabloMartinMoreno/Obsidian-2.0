@@ -6,7 +6,6 @@ aliases:
   - graphql-cop
   - GraphiQL
 tags:
-  - type/tool
   - vuln/graphql
   - technique/discovery
   - technique/initial-access

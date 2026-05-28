@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - technique/recon/passive
 kind: Concept
 linked:

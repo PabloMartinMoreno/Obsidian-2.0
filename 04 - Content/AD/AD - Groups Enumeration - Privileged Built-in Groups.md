@@ -5,7 +5,6 @@ aliases:
   - Enterprise Admins
   - Tier 0 Groups
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

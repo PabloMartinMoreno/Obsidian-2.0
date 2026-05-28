@@ -5,7 +5,6 @@ aliases:
   - GetUserSPNs
   - hashcat 13100
 tags:
-  - type/tool
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

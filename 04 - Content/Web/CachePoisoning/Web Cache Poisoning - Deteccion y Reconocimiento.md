@@ -4,7 +4,6 @@ aliases:
   - Cache Detection
   - Cache Hit Miss
 tags:
-  - type/technique
   - vuln/cache-poisoning
   - technique/discovery
   - asset/web-app

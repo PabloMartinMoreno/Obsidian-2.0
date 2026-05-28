@@ -3,7 +3,6 @@ aliases:
   - HHI Detection
   - Host Header Recon
 tags:
-  - type/technique
   - vuln/host-header-injection
   - technique/discovery
   - asset/web-app

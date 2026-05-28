@@ -10,7 +10,6 @@ aliases:
   - MS14-025
   - gpp-decrypt
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

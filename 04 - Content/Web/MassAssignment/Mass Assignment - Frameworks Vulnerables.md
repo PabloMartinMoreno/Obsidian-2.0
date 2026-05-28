@@ -6,7 +6,6 @@ aliases:
   - Laravel Fillable
   - Mongoose Strict
 tags:
-  - type/technique
   - vuln/mass-assignment
   - asset/web-app
 primary categories:

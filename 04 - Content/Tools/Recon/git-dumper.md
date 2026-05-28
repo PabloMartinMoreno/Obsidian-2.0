@@ -3,7 +3,6 @@ aliases:
   - ".git Exposure"
   - "Git Exposure"
 tags:
-  - type/tool
   - technique/recon/active
   - asset/source-code
   - asset/web-app

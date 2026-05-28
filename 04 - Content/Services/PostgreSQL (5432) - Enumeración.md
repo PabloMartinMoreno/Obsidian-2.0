@@ -1,14 +1,16 @@
 ---
 aliases:
+  - "PostgreSQL"
 tags:
-  - type/cheatsheet
-  - env/linux
-  - technique/discovery
+  - technique/recon/active
+  - asset/database
+  - service/postgresql
   - estado/incompleto
 primary categories:
 secondary categories:
 tertiary categories:
 linked:
+  - "[[Port Enumeration]]"
 ---
 > [!todo]
 > Pendiente completar.

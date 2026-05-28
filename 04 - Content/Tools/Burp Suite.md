@@ -5,7 +5,6 @@ aliases:
   - Burp
   - BurpSuite
 tags:
-  - type/tool
   - tool/burpsuite
   - technique/recon/active
   - asset/web-app

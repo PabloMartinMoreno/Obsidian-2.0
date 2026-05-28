@@ -5,7 +5,6 @@ aliases:
   - Fine-Grained Policy Discovery
   - Lockout Policy Recon
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

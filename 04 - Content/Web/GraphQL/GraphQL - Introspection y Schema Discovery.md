@@ -4,7 +4,6 @@ aliases:
   - GraphQL Schema Recovery
   - clairvoyance
 tags:
-  - type/technique
   - vuln/graphql
   - technique/discovery
   - asset/web-app

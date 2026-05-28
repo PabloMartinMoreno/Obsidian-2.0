@@ -2,7 +2,6 @@
 aliases:
   - SQLmap
 tags:
-  - type/tool
   - technique/execution
   - vuln/sqli
   - asset/web-app

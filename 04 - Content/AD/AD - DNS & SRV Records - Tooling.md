@@ -6,7 +6,6 @@ aliases:
   - adidnsdump
   - krbrelayx dnstool
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

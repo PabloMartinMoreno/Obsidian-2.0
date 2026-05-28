@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - asset/active-directory
   - env/windows
   - estado/completo

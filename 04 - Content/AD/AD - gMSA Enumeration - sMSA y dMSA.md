@@ -5,7 +5,6 @@ aliases:
   - dMSA
   - msDS-DelegatedManagedServiceAccount
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

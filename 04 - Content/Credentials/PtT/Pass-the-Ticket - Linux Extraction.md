@@ -4,7 +4,6 @@ aliases:
   - ccache theft
   - Kerberos Linux
 tags:
-  - type/technique
   - technique/credential-access
   - env/linux
   - asset/active-directory

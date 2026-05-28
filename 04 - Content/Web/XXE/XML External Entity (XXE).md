@@ -2,7 +2,6 @@
 aliases:
   - XXE
 tags:
-  - type/vulnerability
   - vuln/xxe
   - technique/execution
   - asset/web-app

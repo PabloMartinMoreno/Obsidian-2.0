@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/playbook
   - cert/cbbh
   - estado/incompleto
 primary categories:

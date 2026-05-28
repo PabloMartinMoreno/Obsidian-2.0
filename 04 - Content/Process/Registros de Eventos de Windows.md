@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - env/windows
   - estado/incompleto
 primary categories:

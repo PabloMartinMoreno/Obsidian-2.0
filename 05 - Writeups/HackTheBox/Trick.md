@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - estado/completo
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/477

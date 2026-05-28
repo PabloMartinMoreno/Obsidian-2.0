@@ -3,7 +3,6 @@ aliases:
   - FeroxBuster
   - ferox
 tags:
-  - type/tool
   - tool/feroxbuster
   - technique/enumeration
   - asset/web-app

@@ -5,7 +5,6 @@ aliases:
   - dig AXFR
   - dnsrecon zone
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

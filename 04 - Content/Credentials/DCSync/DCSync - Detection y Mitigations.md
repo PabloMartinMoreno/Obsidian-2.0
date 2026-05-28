@@ -4,7 +4,6 @@ aliases:
   - DCSync Mitigations
   - 4662 DCSync
 tags:
-  - type/concept
   - technique/credential-access
   - env/windows
   - asset/active-directory

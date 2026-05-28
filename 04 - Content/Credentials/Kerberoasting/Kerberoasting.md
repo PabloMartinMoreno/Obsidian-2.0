@@ -8,7 +8,6 @@ aliases:
   - Kerberoast
   - SPN Roasting
 tags:
-  - type/vulnerability
   - technique/credential-access
   - technique/kerberos
   - env/windows

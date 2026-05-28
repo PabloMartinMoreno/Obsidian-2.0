@@ -5,7 +5,6 @@ aliases:
   - User Recon AD
   - LDAP User Filter
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

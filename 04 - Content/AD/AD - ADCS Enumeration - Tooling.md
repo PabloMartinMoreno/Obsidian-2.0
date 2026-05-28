@@ -5,7 +5,6 @@ aliases:
   - PSPKIAudit
   - Locksmith
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

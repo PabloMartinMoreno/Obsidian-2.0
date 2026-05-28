@@ -2,7 +2,6 @@
 aliases:
   - Silver Ticket Hash Sources
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - env/windows

@@ -4,7 +4,6 @@ aliases:
   - ntdsutil IFM
   - Shadow Copy NTDS
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

@@ -7,7 +7,6 @@ aliases:
   - PrivEsc Enum
   - Privilege Escalation Enumeration
 tags:
-  - type/tool
   - tool/linpeas
   - tool/winpeas
   - tool/pspy

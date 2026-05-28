@@ -5,7 +5,6 @@ aliases:
   - Clickjacker
   - UI Redress Tooling
 tags:
-  - type/tool
   - vuln/clickjacking
   - technique/discovery
   - asset/web-app

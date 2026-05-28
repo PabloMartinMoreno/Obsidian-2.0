@@ -5,7 +5,6 @@ aliases:
   - Privileged Accounts
   - Service Accounts
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

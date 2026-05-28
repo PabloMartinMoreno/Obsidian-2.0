@@ -5,7 +5,6 @@ aliases:
   - TOCTOU Race
   - State Machine Race
 tags:
-  - type/technique
   - vuln/race-condition
   - technique/initial-access
   - technique/privilege-escalation

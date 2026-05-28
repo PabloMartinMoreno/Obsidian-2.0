@@ -1,7 +1,6 @@
 ---
 aliases: null
 tags:
-  - type/technique
   - vuln/command-injection
   - technique/execution
   - asset/web-app

@@ -14,7 +14,6 @@ aliases:
   - Tunneling
   - Pivoteo
 tags:
-  - type/technique
   - technique/lateral-movement
   - technique/pivoting
   - technique/tunneling

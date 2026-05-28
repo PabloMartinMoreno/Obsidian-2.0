@@ -4,7 +4,6 @@ aliases:
   - Param Miner
   - API Discovery
 tags:
-  - type/tool
   - vuln/mass-assignment
   - technique/discovery
   - asset/web-app

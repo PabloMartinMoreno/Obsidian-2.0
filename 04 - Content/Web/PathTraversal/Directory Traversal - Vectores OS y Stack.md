@@ -4,7 +4,6 @@ aliases:
   - Path Traversal Windows Targets
   - PHP Wrappers
 tags:
-  - type/technique
   - vuln/path-traversal
   - vuln/lfi
   - asset/web-app

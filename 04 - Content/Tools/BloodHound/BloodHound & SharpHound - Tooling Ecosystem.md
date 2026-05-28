@@ -5,7 +5,6 @@ aliases:
   - BHCE Integrations
   - bloodhound-cli
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

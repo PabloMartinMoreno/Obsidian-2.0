@@ -5,7 +5,6 @@ aliases:
   - msDS-PasswordSettings
   - Password Settings Container
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -6,7 +6,6 @@ aliases:
   - Local Admin Password Solution Recon
   - msLAPS-Password
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - technique/credential-access

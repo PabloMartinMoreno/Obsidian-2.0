@@ -3,7 +3,6 @@ aliases:
   - Taxonomía
   - Tag Schema
 tags:
-  - type/concept
   - meta/reference
 ---
 

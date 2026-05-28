@@ -4,7 +4,6 @@ aliases:
   - Server-Side Includes Injection
   - SSI
 tags:
-  - type/vulnerability
   - vuln/ssi
   - technique/execution
   - technique/collection

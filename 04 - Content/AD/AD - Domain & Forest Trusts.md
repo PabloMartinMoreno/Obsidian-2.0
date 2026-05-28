@@ -5,7 +5,6 @@ aliases:
   - Forest Trusts
   - Trust Discovery
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

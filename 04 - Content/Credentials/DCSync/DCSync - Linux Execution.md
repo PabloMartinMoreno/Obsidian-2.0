@@ -4,7 +4,6 @@ aliases:
   - secretsdump DCSync
   - impacket dcsync
 tags:
-  - type/technique
   - technique/credential-access
   - env/linux
   - asset/active-directory

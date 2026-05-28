@@ -5,7 +5,6 @@ aliases:
   - JNDI Exploit Kit
   - LDAP wordlists
 tags:
-  - type/tool
   - vuln/ldap-injection
   - technique/discovery
   - asset/web-app

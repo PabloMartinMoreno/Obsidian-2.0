@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - estado/incompleto
 plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/securecode1

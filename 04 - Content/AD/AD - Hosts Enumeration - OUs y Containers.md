@@ -5,7 +5,6 @@ aliases:
   - Default Containers
   - Tier 0 OU Discovery
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

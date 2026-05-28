@@ -5,7 +5,6 @@ aliases:
   - UD Discovery
   - TGT Capture
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

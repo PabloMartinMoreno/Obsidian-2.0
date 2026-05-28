@@ -4,7 +4,6 @@ aliases:
   - DOM Prototype Pollution
   - DOM PP
 tags:
-  - type/technique
   - vuln/prototype-pollution
   - technique/initial-access
   - technique/execution

@@ -5,7 +5,6 @@ aliases:
   - AS-REP Roast
   - ASREP Roasting
 tags:
-  - type/vulnerability
   - technique/credential-access
   - technique/kerberos
   - env/windows

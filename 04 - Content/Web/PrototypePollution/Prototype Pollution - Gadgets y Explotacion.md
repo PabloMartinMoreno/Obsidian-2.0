@@ -5,7 +5,6 @@ aliases:
   - PP Auth Bypass
   - PP XSS
 tags:
-  - type/technique
   - vuln/prototype-pollution
   - technique/execution
   - technique/privilege-escalation

@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - estado/completo
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit09.html

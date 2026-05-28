@@ -4,7 +4,6 @@ aliases:
   - impacket-ticketer silver
   - Rubeus silver
 tags:
-  - type/tool
   - technique/persistence
   - technique/kerberos
   - env/windows

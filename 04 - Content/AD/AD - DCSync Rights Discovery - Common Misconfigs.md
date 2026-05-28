@@ -4,7 +4,6 @@ aliases:
   - Service Account DCSync
   - Authenticated Users DCSync
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

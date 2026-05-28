@@ -6,7 +6,6 @@ aliases:
   - Burp Intruder
   - hashcat
 tags:
-  - type/tool
   - vuln/brute-force
   - technique/credential-access
   - asset/web-app

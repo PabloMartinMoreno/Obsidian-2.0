@@ -5,7 +5,6 @@ aliases:
   - Time-based NoSQLi
   - NoSQL Char-by-char exfil
 tags:
-  - type/technique
   - vuln/nosqli
   - technique/exfiltration
   - asset/database

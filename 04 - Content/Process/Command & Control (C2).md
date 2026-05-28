@@ -2,7 +2,6 @@
 aliases:
   - Comandos & Control (C2)
 tags:
-  - type/moc/tertiary
 primary categories:
   - "[[Red Team]]"
 secondary categories:

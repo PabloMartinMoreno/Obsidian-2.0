@@ -5,7 +5,6 @@ aliases:
   - "Direccion IP"
   - "DNS Service Exploitation"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/network
   - service/dns

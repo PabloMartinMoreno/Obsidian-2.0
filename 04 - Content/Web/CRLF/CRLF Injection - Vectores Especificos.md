@@ -5,7 +5,6 @@ aliases:
   - Log Poisoning CRLF
   - Memcached Injection
 tags:
-  - type/technique
   - vuln/crlf-injection
   - technique/initial-access
   - technique/lateral-movement

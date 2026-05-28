@@ -6,7 +6,6 @@ aliases:
   - OIDC Attacks
   - OAuth Account Takeover
 tags:
-  - type/vulnerability
   - vuln/oauth
   - technique/credential-access
   - technique/account-takeover

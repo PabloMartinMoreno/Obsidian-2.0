@@ -2,7 +2,6 @@
 aliases:
   - Lateral SQL Injection
 tags:
-  - type/technique
   - vuln/sqli
   - technique/execution
   - asset/database

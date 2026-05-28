@@ -7,7 +7,6 @@ aliases:
   - S4U2Proxy
   - msDS-AllowedToDelegateTo
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

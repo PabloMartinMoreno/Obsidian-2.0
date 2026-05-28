@@ -2,7 +2,6 @@
 aliases:
   - Enumeración de Permisos de Objetos (AD)
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/active-directory
 primary categories:

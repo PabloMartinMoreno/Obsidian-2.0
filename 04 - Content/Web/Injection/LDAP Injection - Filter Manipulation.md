@@ -4,7 +4,6 @@ aliases:
   - AND OR Injection
   - LDAP Comments
 tags:
-  - type/technique
   - vuln/ldap-injection
   - technique/initial-access
   - asset/web-app

@@ -5,7 +5,6 @@ aliases:
   - h2cSmuggler
   - Turbo Intruder
 tags:
-  - type/tool
   - vuln/http-smuggling
   - technique/discovery
   - technique/initial-access

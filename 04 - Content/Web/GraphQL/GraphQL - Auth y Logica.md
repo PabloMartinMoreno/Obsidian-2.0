@@ -5,7 +5,6 @@ aliases:
   - GraphQL IDOR
   - GraphQL Mass Assignment
 tags:
-  - type/technique
   - vuln/graphql
   - vuln/auth-bypass
   - vuln/csrf

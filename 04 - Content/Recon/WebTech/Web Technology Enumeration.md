@@ -3,7 +3,6 @@ aliases:
   - "whatweb"
   - Web Tech Enumeration
 tags:
-  - type/moc
   - asset/web-app
   - technique/recon/active
 primary categories:

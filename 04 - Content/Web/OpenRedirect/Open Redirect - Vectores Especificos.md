@@ -5,7 +5,6 @@ aliases:
   - Login Redirect
   - Magic Link Redirect
 tags:
-  - type/technique
   - vuln/open-redirect
   - vuln/auth-bypass
   - technique/credential-access

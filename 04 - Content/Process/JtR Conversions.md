@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/tool
   - tool/john
   - technique/credential-access
   - estado/incompleto

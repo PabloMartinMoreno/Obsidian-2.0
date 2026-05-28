@@ -3,7 +3,6 @@ aliases:
   - Silver Ticket Linux
   - impacket-ticketer silver
 tags:
-  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/linux

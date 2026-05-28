@@ -3,7 +3,6 @@ aliases:
   - HPP Detection
   - Parameter Pollution Recon
 tags:
-  - type/technique
   - vuln/hpp
   - technique/discovery
   - asset/web-app

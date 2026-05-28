@@ -3,7 +3,6 @@ aliases:
   - Payloads
   - Weaponization
 tags:
-  - type/moc/secondary
   - technique/execution
   - technique/defense-evasion
 primary categories:

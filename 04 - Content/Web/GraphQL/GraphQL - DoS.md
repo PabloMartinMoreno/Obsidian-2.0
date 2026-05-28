@@ -5,7 +5,6 @@ aliases:
   - Aliases Overload
   - Circular Fragments
 tags:
-  - type/technique
   - vuln/graphql
   - vuln/dos
   - technique/impact

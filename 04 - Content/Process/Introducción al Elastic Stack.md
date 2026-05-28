@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - tool/elasticsearch
   - estado/incompleto
 primary categories:

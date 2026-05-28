@@ -4,7 +4,6 @@ aliases:
   - DCSync Audit
   - Service Accounts DCSync
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

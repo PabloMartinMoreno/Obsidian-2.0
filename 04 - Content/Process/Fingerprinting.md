@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - technique/recon/passive
   - asset/web-app

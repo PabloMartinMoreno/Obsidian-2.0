@@ -4,7 +4,6 @@ aliases:
   - Deserialization Recon
   - Serialization Fingerprint
 tags:
-  - type/technique
   - vuln/insecure-deser
   - technique/discovery
   - asset/web-app

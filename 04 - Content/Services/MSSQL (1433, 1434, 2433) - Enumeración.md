@@ -7,7 +7,6 @@ aliases:
   - "mssqlclient"
   - Enumeración MSSQL (1433, 1434, 2433)
 tags:
-  - type/cheatsheet
   - technique/credential-access
   - technique/recon/active
   - asset/database

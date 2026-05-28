@@ -4,7 +4,6 @@ aliases:
   - Node.js Prototype Pollution
   - Lodash PP
 tags:
-  - type/technique
   - vuln/prototype-pollution
   - technique/initial-access
   - technique/execution

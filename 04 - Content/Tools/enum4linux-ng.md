@@ -4,7 +4,6 @@ aliases:
   - enum4linux
   - e4lng
 tags:
-  - type/tool
   - tool/enum4linux
   - technique/recon/active
   - technique/enumeration

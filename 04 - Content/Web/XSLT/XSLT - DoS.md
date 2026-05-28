@@ -4,7 +4,6 @@ aliases:
   - XSLT Billion Laughs
   - XSLT Recursion DoS
 tags:
-  - type/technique
   - vuln/xslt-injection
   - vuln/dos
   - technique/impact

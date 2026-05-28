@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/tool
   - tool/chainsaw
   - env/windows
   - estado/incompleto

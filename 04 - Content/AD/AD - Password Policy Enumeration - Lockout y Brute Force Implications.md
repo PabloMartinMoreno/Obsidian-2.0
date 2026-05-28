@@ -5,7 +5,6 @@ aliases:
   - Bad Password Count
   - Reverse Spray
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

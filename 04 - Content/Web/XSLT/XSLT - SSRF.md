@@ -3,7 +3,6 @@ aliases:
   - XSLT SSRF
   - XSLT document HTTP
 tags:
-  - type/technique
   - vuln/xslt-injection
   - vuln/ssrf
   - technique/discovery

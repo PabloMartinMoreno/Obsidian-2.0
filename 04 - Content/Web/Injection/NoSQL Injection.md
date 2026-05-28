@@ -4,7 +4,6 @@ aliases:
   - NoSQL Injection
   - MongoDB Injection
 tags:
-  - type/vulnerability
   - vuln/nosqli
   - technique/initial-access
   - technique/execution

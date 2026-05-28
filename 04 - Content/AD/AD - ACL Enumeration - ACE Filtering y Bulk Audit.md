@@ -4,7 +4,6 @@ aliases:
   - Bulk ACL Audit
   - ACE Filtering
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

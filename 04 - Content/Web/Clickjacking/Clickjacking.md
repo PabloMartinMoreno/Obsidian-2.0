@@ -4,7 +4,6 @@ aliases:
   - Clickjacking
   - UI Redressing
 tags:
-  - type/vulnerability
   - vuln/clickjacking
   - technique/initial-access
   - technique/social-engineering

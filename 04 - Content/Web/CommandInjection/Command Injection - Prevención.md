@@ -1,7 +1,6 @@
 ---
 aliases: null
 tags:
-  - type/concept
   - vuln/command-injection
   - asset/web-app
 primary categories: null

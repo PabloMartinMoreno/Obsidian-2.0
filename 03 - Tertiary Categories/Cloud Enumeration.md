@@ -2,7 +2,6 @@
 aliases:
   - Enumeración de la Nube
 tags:
-  - type/moc/tertiary
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -3,7 +3,6 @@ aliases:
   - Silver Ticket Attack
   - Forged TGS
 tags:
-  - type/concept
   - technique/persistence
   - technique/lateral-movement
   - technique/kerberos

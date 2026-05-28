@@ -3,7 +3,6 @@ aliases:
   - Path Traversal Detection
   - Directory Traversal Recon
 tags:
-  - type/technique
   - vuln/path-traversal
   - technique/discovery
   - asset/web-app

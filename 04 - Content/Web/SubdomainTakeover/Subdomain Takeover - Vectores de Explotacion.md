@@ -5,7 +5,6 @@ aliases:
   - OAuth Trust Transfer
   - CSP Subdomain Bypass
 tags:
-  - type/technique
   - vuln/subdomain-takeover
   - technique/initial-access
   - technique/credential-access

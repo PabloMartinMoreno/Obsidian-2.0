@@ -3,7 +3,6 @@ aliases:
   - Basic SSRF
   - SSRF In-Band
 tags:
-  - type/technique
   - vuln/ssrf
   - technique/initial-access
   - asset/web-app

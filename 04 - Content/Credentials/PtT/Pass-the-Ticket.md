@@ -4,7 +4,6 @@ aliases:
   - Kerberos Pass-the-Ticket
   - Ticket Injection
 tags:
-  - type/vulnerability
   - technique/lateral-movement
   - technique/credential-access
   - technique/kerberos

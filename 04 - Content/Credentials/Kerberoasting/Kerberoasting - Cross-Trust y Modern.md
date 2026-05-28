@@ -5,7 +5,6 @@ aliases:
   - gMSA Kerberoast
   - Protected Users Kerberoast
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

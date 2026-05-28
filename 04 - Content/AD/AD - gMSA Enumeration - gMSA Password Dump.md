@@ -5,7 +5,6 @@ aliases:
   - msDS-ManagedPassword
   - gMSA Hash Dump
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

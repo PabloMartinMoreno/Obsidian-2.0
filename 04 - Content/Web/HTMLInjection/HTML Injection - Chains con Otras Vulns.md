@@ -5,7 +5,6 @@ aliases:
   - HTML Email Injection
   - PDF Template Injection
 tags:
-  - type/technique
   - vuln/html-injection
   - technique/lateral-movement
   - asset/web-app

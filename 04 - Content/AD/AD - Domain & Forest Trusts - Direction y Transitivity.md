@@ -5,7 +5,6 @@ aliases:
   - One-Way Trust
   - Two-Way Trust
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

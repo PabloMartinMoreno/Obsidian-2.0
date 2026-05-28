@@ -2,7 +2,6 @@
 aliases:
   - Double URL Encoding
 tags:
-  - type/technique
   - vuln/xss
   - technique/execution
   - asset/web-app

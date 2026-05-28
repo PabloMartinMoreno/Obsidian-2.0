@@ -4,7 +4,6 @@ aliases:
   - Rubeus silver
   - mimikatz silver
 tags:
-  - type/technique
   - technique/persistence
   - technique/kerberos
   - env/windows

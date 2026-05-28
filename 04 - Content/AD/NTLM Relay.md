@@ -5,7 +5,6 @@ aliases:
   - SMB Net-NTLM Relay
   - NTLM Relay Attack
 tags:
-  - type/technique
   - technique/credential-access
   - technique/lateral-movement
   - env/windows

@@ -4,7 +4,6 @@ aliases:
   - Mass Assignment Recon
   - Hidden Field Discovery
 tags:
-  - type/technique
   - vuln/mass-assignment
   - technique/discovery
   - asset/web-app

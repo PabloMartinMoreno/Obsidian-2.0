@@ -4,7 +4,6 @@ aliases:
   - John Kerberos
   - krb5tgs Crack
 tags:
-  - type/technique
   - technique/credential-access
   - technique/kerberos
   - asset/active-directory

@@ -4,7 +4,6 @@ aliases:
   - "SSH"
   - "SSH Exploitation Techniques"
 tags:
-  - type/cheatsheet
   - technique/recon/active
   - asset/endpoint
   - service/ssh

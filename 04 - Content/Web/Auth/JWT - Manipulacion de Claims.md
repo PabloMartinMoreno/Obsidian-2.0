@@ -4,7 +4,6 @@ aliases:
   - JWT Privilege Escalation
   - JWT Account Takeover
 tags:
-  - type/technique
   - vuln/jwt
   - vuln/auth-bypass
   - technique/privilege-escalation

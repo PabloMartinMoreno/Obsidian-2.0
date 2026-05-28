@@ -5,7 +5,6 @@ aliases:
   - Privilege Escalation Web
   - RBAC Bypass
 tags:
-  - type/technique
   - vuln/auth-bypass
   - technique/privilege-escalation
   - asset/web-app

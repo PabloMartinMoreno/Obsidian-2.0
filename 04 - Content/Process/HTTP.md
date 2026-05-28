@@ -2,7 +2,6 @@
 aliases:
   - Hypertext Transfer Protocol
 tags:
-  - type/concept
 primary categories:
 secondary categories:
 tertiary categories:

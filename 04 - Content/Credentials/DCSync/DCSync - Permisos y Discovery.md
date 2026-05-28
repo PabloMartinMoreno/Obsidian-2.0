@@ -4,7 +4,6 @@ aliases:
   - Replication Rights
   - GetChangesAll
 tags:
-  - type/technique
   - technique/credential-access
   - env/windows
   - asset/active-directory

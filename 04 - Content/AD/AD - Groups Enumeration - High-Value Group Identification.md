@@ -5,7 +5,6 @@ aliases:
   - Backup Operators
   - Privileged Identity Groups
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

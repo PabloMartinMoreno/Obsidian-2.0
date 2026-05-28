@@ -2,7 +2,6 @@
 aliases:
   - Wrappers
 tags:
-  - type/technique
   - vuln/lfi
   - technique/execution
   - asset/web-app

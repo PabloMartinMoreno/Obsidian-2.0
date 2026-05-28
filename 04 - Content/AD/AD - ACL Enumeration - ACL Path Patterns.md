@@ -4,7 +4,6 @@ aliases:
   - BloodHound Paths
   - Privesc Path Patterns
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

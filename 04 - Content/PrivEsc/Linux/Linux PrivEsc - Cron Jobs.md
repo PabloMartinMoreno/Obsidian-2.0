@@ -11,7 +11,6 @@ aliases:
   - Crontab
   - Cron Jobs
 tags:
-  - type/cheatsheet
   - env/linux
   - technique/privilege-escalation
 primary categories:

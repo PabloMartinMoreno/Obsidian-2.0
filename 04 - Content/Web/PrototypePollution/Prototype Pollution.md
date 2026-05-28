@@ -4,7 +4,6 @@ aliases:
   - JavaScript Prototype Pollution
   - Object Prototype Pollution
 tags:
-  - type/vulnerability
   - vuln/prototype-pollution
   - technique/initial-access
   - technique/execution

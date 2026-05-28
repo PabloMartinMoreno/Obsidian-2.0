@@ -5,7 +5,6 @@ aliases:
   - HTTP Response Splitting
   - Header Injection
 tags:
-  - type/vulnerability
   - vuln/crlf-injection
   - technique/initial-access
   - technique/exfiltration

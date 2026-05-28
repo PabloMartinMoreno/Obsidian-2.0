@@ -5,7 +5,6 @@ aliases:
   - Get-Acl AD
   - Get-DomainObjectAcl
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

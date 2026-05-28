@@ -4,7 +4,6 @@ aliases:
   - HTML Defacement
   - HTML SEO
 tags:
-  - type/technique
   - vuln/html-injection
   - technique/initial-access
   - technique/impact

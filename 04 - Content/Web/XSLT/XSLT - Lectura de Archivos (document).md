@@ -4,7 +4,6 @@ aliases:
   - XSLT File Read
   - XSLT LFI
 tags:
-  - type/technique
   - vuln/xslt-injection
   - vuln/lfi
   - technique/collection

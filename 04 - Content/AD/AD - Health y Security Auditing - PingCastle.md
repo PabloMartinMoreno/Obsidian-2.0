@@ -5,7 +5,6 @@ aliases:
   - PingCastle Audit
   - PingCastle Modes
 tags:
-  - type/tool
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

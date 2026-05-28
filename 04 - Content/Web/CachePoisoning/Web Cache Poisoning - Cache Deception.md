@@ -4,7 +4,6 @@ aliases:
   - WCD
   - Path Confusion Cache
 tags:
-  - type/technique
   - vuln/cache-poisoning
   - technique/credential-access
   - asset/web-app

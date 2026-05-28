@@ -2,7 +2,6 @@
 aliases:
   - Evasion Defensiva
 tags:
-  - type/moc/tertiary
 primary categories:
   - "[[Red Team]]"
 secondary categories:

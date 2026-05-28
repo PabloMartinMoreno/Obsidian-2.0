@@ -2,7 +2,6 @@
 aliases:
   - "Persistence"
 tags:
-  - type/cheatsheet
   - technique/recon/passive
   - asset/honeypot
 primary categories:

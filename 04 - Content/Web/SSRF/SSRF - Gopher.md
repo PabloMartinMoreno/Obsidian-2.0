@@ -2,7 +2,6 @@
 aliases:
   - "Gopher"
 tags:
-  - type/concept
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app

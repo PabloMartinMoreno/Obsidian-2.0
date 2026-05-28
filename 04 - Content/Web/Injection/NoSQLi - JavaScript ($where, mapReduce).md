@@ -5,7 +5,6 @@ aliases:
   - MongoDB JS injection
   - mapReduce injection
 tags:
-  - type/technique
   - vuln/nosqli
   - technique/execution
   - asset/database

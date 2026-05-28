@@ -5,7 +5,6 @@ aliases:
   - Mangling Rules
   - Targeted Wordlists
 tags:
-  - type/technique
   - vuln/brute-force
   - technique/credential-access
   - asset/web-app

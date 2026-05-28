@@ -3,7 +3,6 @@ aliases:
   - Silver Ticket Detection
   - Silver Ticket Mitigations
 tags:
-  - type/concept
   - technique/persistence
   - technique/kerberos
   - env/windows

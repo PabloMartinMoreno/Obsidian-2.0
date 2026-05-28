@@ -5,7 +5,6 @@ aliases:
   - RFI FTP
   - RFI Schemes
 tags:
-  - type/technique
   - vuln/rfi
   - technique/execution
   - asset/web-app

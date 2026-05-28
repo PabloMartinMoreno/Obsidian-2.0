@@ -5,7 +5,6 @@ aliases:
   - SID History
   - Trust Authentication
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

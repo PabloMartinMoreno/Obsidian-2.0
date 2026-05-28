@@ -5,7 +5,6 @@ aliases:
   - Privileged Group Recon
   - Group Membership Analysis
 tags:
-  - type/vulnerability
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -5,7 +5,6 @@ aliases:
   - Cross-Trust Group
   - FSP Audit
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

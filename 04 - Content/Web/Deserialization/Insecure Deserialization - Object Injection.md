@@ -5,7 +5,6 @@ aliases:
   - Deserialization Gadgets
   - Magic Method Abuse
 tags:
-  - type/technique
   - vuln/insecure-deser
   - technique/execution
   - asset/web-app

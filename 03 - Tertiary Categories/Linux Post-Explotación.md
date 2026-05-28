@@ -2,7 +2,6 @@
 aliases:
   - Linux Post-Explotación
 tags:
-  - type/moc/tertiary
   - env/linux
 primary categories:
   - "[[Red Team]]"

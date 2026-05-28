@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
   - cert/cdsa
   - estado/incompleto
 primary categories:

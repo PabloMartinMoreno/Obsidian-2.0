@@ -5,7 +5,6 @@ aliases:
   - Cache Poisoning Smuggle
   - Queue Poisoning
 tags:
-  - type/technique
   - vuln/http-smuggling
   - technique/initial-access
   - technique/credential-access

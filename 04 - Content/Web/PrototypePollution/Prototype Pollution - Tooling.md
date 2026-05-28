@@ -5,7 +5,6 @@ aliases:
   - PPScan
   - ppfuzz
 tags:
-  - type/tool
   - vuln/prototype-pollution
   - technique/discovery
   - asset/web-app

@@ -5,7 +5,6 @@ aliases:
   - JWT Secret Crack
   - OTP Brute
 tags:
-  - type/technique
   - vuln/brute-force
   - technique/credential-access
   - asset/web-app

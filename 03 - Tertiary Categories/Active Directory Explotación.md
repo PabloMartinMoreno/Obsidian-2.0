@@ -6,7 +6,6 @@ aliases:
   - AD Exploitation
   - ADX
 tags:
-  - type/moc/tertiary
   - asset/active-directory
   - env/windows
   - technique/lateral-movement

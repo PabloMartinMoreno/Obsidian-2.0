@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/cheatsheet
   - env/linux
   - technique/discovery
   - estado/incompleto

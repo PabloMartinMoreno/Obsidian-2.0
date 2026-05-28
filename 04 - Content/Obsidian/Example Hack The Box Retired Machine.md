@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/concept
 primary categories:
   - "[[Training]]"
 secondary categories:

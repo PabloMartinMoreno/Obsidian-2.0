@@ -5,7 +5,6 @@ aliases:
   - SYSVOL Search
   - NETLOGON
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

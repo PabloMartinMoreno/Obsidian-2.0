@@ -2,7 +2,6 @@
 aliases:
   - Credential Access
 tags:
-  - type/moc/secondary
   - technique/credential-access
 primary categories:
   - "[[Red Team]]"

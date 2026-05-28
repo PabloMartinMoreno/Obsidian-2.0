@@ -3,7 +3,6 @@ aliases:
   - Kerberos Ticket Formats
   - kirbi ccache
 tags:
-  - type/technique
   - technique/lateral-movement
   - technique/credential-access
   - env/windows

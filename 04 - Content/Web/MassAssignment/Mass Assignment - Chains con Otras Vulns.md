@@ -4,7 +4,6 @@ aliases:
   - IDOR Mass Assignment
   - GraphQL Mass Assignment
 tags:
-  - type/technique
   - vuln/mass-assignment
   - technique/lateral-movement
   - asset/web-app

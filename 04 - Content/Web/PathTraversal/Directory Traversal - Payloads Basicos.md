@@ -4,7 +4,6 @@ aliases:
   - DotDot Payloads
   - Absolute Path Payloads
 tags:
-  - type/technique
   - vuln/path-traversal
   - technique/initial-access
   - asset/web-app

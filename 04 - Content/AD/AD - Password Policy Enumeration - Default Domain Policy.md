@@ -5,7 +5,6 @@ aliases:
   - getdompwinfo
   - Get-ADDefaultDomainPasswordPolicy
 tags:
-  - type/concept
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

@@ -2,7 +2,6 @@
 aliases:
   - XSS Basado en DOM
 tags:
-  - type/technique
   - vuln/xss
   - technique/execution
   - asset/web-app

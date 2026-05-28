@@ -6,7 +6,6 @@ aliases:
   - Resource-Based Constrained Delegation
   - msDS-AllowedToActOnBehalfOfOtherIdentity
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/credential-access
   - asset/active-directory

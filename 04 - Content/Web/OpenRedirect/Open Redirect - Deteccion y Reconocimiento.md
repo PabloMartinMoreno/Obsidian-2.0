@@ -3,7 +3,6 @@ aliases:
   - Open Redirect Detection
   - Redirect Recon
 tags:
-  - type/technique
   - vuln/open-redirect
   - technique/discovery
   - asset/web-app

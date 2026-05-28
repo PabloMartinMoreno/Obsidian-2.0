@@ -4,7 +4,6 @@ aliases:
   - Session Recon
   - Cookie Attribute Analysis
 tags:
-  - type/technique
   - vuln/session-hijacking
   - technique/discovery
   - asset/web-app

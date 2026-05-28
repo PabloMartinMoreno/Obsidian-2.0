@@ -4,7 +4,6 @@ aliases:
   - MITM Session
   - Network Sniffing
 tags:
-  - type/technique
   - vuln/session-hijacking
   - technique/credential-access
   - asset/web-app

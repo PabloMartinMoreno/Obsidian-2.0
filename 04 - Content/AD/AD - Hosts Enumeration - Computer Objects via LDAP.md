@@ -7,7 +7,6 @@ aliases:
   - Servers Enumeration
   - High-Value Computer Targets
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory

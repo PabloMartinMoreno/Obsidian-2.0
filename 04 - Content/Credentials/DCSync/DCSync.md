@@ -6,7 +6,6 @@ aliases:
   - DCSync Attack
   - Directory Replication Attack
 tags:
-  - type/vulnerability
   - technique/credential-access
   - technique/persistence
   - env/windows

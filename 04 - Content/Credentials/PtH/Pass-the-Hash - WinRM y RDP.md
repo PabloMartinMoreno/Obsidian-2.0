@@ -7,7 +7,6 @@ aliases:
   - xfreerdp pth
   - RestrictedAdmin
 tags:
-  - type/technique
   - technique/lateral-movement
   - technique/credential-access
   - asset/active-directory

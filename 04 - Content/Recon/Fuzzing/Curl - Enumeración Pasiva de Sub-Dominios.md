@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/sub-command
   - technique/recon/active
   - asset/web-app
 kind: Sub-Command

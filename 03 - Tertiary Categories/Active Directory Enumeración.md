@@ -5,7 +5,6 @@ aliases:
   - Enumeración de Active Directory
   - AD Enumeration
 tags:
-  - type/moc/tertiary
   - asset/active-directory
   - technique/recon/active
 primary categories:

@@ -4,7 +4,6 @@ aliases:
   - gMSA Password Readers
   - PrincipalsAllowedToRetrieveManagedPassword
 tags:
-  - type/technique
   - vuln/ad-enumeration
   - technique/discovery
   - asset/active-directory
