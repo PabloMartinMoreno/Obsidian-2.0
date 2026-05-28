@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/sub-note
 primary categories:
 secondary categories:
 tertiary categories:

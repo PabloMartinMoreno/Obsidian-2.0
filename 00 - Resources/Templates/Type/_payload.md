@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/payload
 primary categories:
 secondary categories:
 tertiary categories:

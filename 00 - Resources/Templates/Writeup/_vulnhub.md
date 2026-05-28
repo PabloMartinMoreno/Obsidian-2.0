@@ -1,6 +1,5 @@
 ---
 tags:
-  - type/writeup
   - meta/ctf
   - estado/incompleto
   - asset/

@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/technique
 primary categories:
 secondary categories:
 tertiary categories:

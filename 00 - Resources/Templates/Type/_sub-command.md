@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - type/sub-command
 primary categories:
 secondary categories:
 tertiary categories:
