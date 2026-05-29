@@ -25,12 +25,12 @@ linked:
 
 ***
 
-## [[Cross-Site Scripting (XSS) moc]]
+## [[Cross-Site Scripting (XSS)]]
 
 
 ***
 
-## [[SQL Injection Fundamentals]]
+## [[SQL Injection (SQLi)]]
 
 
 ***

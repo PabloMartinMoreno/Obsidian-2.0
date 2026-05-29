@@ -23,6 +23,10 @@ linked:
   - "[[XSS - Escape de Contexto en Atributos]]"
   - "[[XSS - Filtros XSS y WAF mediante Codificaciones Múltiples]]"
   - "[[XSS - CWES]]"
+  - "[[XSS - Discovery (Detección)]]"
+  - "[[XSS - Prevención (Defensa)]]"
+  - "[[XSS - Session Hijacking (Cookie Stealing)]]"
+  - "[[XSS alert 1 vs window.origin]]"
   - "[[Burp Suite]]"
 ---
 # Cross-Site Scripting (XSS) 
