@@ -42,14 +42,14 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 36.8917854567641,
+    "scroll": 15.872395833333334,
     "cursor": {
       "from": {
-        "line": 73,
+        "line": 15,
         "ch": 0
       },
       "to": {
-        "line": 73,
+        "line": 15,
         "ch": 0
       }
     },
@@ -359,6 +359,48 @@
       "to": {
         "line": 86,
         "ch": 14
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Injection.md": {
+    "scroll": 27.687782805429865,
+    "cursor": {
+      "from": {
+        "line": 29,
+        "ch": 0
+      },
+      "to": {
+        "line": 29,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Crypto/Certificados SSL-TLS.md": {
+    "scroll": 1.722488038277512,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md": {
+    "scroll": 43.81547832318166,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
       }
     },
     "expandedKeys": []

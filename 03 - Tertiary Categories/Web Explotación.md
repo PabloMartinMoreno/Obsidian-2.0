@@ -14,61 +14,6 @@ kind: Tertiary Category
 
 ***
 
-## Mapa Mental
-
-```mermaid
-mindmap
-  root((Web Explotación))
-    Injection
-      SQLi
-      NoSQLi
-      LDAPi
-      CMDi
-      SSTI
-      SSI
-      CRLF
-      HPP
-      XXE
-      XSLT
-      GraphQL
-    File_System
-      LFI
-      RFI
-      Directory_Traversal
-      File_Upload
-    Auth_Access
-      Auth_Bypass
-      JWT
-      OAuth
-      Brute_Force
-      IDOR
-      Session_Hijacking
-    Client_Side
-      XSS
-      CSRF
-      Clickjacking
-      HTML_Injection
-    Server_Logic
-      SSRF
-      Deserialization
-      Prototype_Pollution
-      Race_Conditions
-      Open_Redirect
-      Mass_Assignment
-      Cache_Poisoning
-      Smuggling
-      Host_Header
-      Subdomain_Takeover
-    Specific
-      WordPress
-      IIS
-      Drupal
-      Joomla
-      Tomcat
-```
-
-***
-
  ## 💉 Injection Attacks
   Ataques que inyectan datos maliciosos para engañar al intérprete y ejecutar comandos no autorizados.
 

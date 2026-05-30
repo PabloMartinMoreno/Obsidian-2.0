@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/XXE/XML External Entity (XXE).md",
+                "file": "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "XML External Entity (XXE)"
+              "title": "Escalada de Privilegios - Comandos Comunes"
             }
           }
         ],
@@ -267,6 +267,10 @@
   },
   "active": "4dbe80bdff8227b2",
   "lastOpenFiles": [
+    "04 - Content/Crypto/Certificados SSL-TLS.md",
+    "04 - Content/Web/GraphQL/GraphQL Injection.md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Web/XXE/XML External Entity (XXE).md",
     "04 - Content/Recon/Pre-Exploitation.md",
     "04 - Content/Web/Fundamentals/API Security.md",
     "04 - Content/Web/Fundamentals/Source Code Review.md",
@@ -289,10 +293,6 @@
     "04 - Content/Recon/Fuzzing/Web Fuzzing.md",
     "04 - Content/Web/CommandInjection/Remote Code Execution.md",
     "04 - Content/Web/FileUpload/File Upload - XSS y XXE.md",
-    "04 - Content/Web/XSS/XSS PortSwigger.md",
-    "04 - Content/Web/XSS/Defacement.md",
-    "04 - Content/Web/Fundamentals/Information Leakage.md",
-    "04 - Content/Web/Fundamentals/DOM.md",
     "04 - Content/Crypto",
     "04 - Content/Web/Fundamentals",
     "04 - Content/BlueTeam/Forensics",

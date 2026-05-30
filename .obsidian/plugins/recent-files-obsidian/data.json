@@ -1,16 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "Escalada de Privilegios - Comandos Comunes",
+      "path": "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md"
+    },
+    {
+      "basename": "Certificados SSL-TLS",
+      "path": "04 - Content/Crypto/Certificados SSL-TLS.md"
+    },
+    {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
       "basename": "XML External Entity (XXE)",
       "path": "04 - Content/Web/XXE/XML External Entity (XXE).md"
     },
     {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Wireshark",
@@ -187,14 +199,6 @@
     {
       "basename": "OverTheWire",
       "path": "04 - Content/Process/OverTheWire.md"
-    },
-    {
-      "basename": "Bandit 24",
-      "path": "05 - Writeups/OverTheWire/Bandit 24.md"
-    },
-    {
-      "basename": "Bandit 25",
-      "path": "05 - Writeups/OverTheWire/Bandit 25.md"
     }
   ],
   "omittedPaths": [],
