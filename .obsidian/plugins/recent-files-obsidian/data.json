@@ -195,10 +195,6 @@
     {
       "basename": "Bandit 25",
       "path": "05 - Writeups/OverTheWire/Bandit 25.md"
-    },
-    {
-      "basename": "WordPress Exploitation",
-      "path": "04 - Content/Process/WordPress Exploitation.md"
     }
   ],
   "omittedPaths": [],
