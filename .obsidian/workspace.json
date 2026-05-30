@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md",
+                "file": "04 - Content/Web/GraphQL/GraphQL Injection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Escalada de Privilegios - Comandos Comunes"
+              "title": "GraphQL Injection"
             }
           }
         ],
@@ -267,14 +267,17 @@
   },
   "active": "4dbe80bdff8227b2",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Web/Auth/Auth Bypass - Brute Force y Credential Stuffing.md",
+    "04 - Content/Web/URL.md",
+    "04 - Content/Web/Server-Side Attacks.md",
+    "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md",
     "04 - Content/Crypto/Certificados SSL-TLS.md",
     "04 - Content/Web/GraphQL/GraphQL Injection.md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/XXE/XML External Entity (XXE).md",
     "04 - Content/Recon/Pre-Exploitation.md",
     "04 - Content/Web/Fundamentals/API Security.md",
     "04 - Content/Web/Fundamentals/Source Code Review.md",
-    "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md",
     "04 - Content/Payloads/Web Shells.md",
     "04 - Content/Tools/JavaScript Deobfuscation.md",
     "04 - Content/Tools/deobfuscation simple.md",
@@ -290,9 +293,6 @@
     "04 - Content/Linux/Obtener login en os linux sin contraseña.md",
     "04 - Content/Recon/Fuzzing/Filtrado de salida de fuzzing.md",
     "04 - Content/Recon/Fuzzing/API Fuzzing.md",
-    "04 - Content/Recon/Fuzzing/Web Fuzzing.md",
-    "04 - Content/Web/CommandInjection/Remote Code Execution.md",
-    "04 - Content/Web/FileUpload/File Upload - XSS y XXE.md",
     "04 - Content/Crypto",
     "04 - Content/Web/Fundamentals",
     "04 - Content/BlueTeam/Forensics",

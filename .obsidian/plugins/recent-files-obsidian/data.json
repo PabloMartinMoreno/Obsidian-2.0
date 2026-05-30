@@ -1,20 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Escalada de Privilegios - Comandos Comunes",
-      "path": "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md"
-    },
-    {
-      "basename": "Certificados SSL-TLS",
-      "path": "04 - Content/Crypto/Certificados SSL-TLS.md"
-    },
-    {
       "basename": "GraphQL Injection",
       "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Auth Bypass - Brute Force y Credential Stuffing",
+      "path": "04 - Content/Web/Auth/Auth Bypass - Brute Force y Credential Stuffing.md"
+    },
+    {
+      "basename": "URL",
+      "path": "04 - Content/Web/URL.md"
+    },
+    {
+      "basename": "Server-Side Attacks",
+      "path": "04 - Content/Web/Server-Side Attacks.md"
+    },
+    {
+      "basename": "Escalada de Privilegios - Comandos Comunes",
+      "path": "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md"
+    },
+    {
+      "basename": "Certificados SSL-TLS",
+      "path": "04 - Content/Crypto/Certificados SSL-TLS.md"
     },
     {
       "basename": "XML External Entity (XXE)",
@@ -187,18 +199,6 @@
     {
       "basename": "Bandit 21",
       "path": "05 - Writeups/OverTheWire/Bandit 21.md"
-    },
-    {
-      "basename": "Bandit 22",
-      "path": "05 - Writeups/OverTheWire/Bandit 22.md"
-    },
-    {
-      "basename": "Bandit 23",
-      "path": "05 - Writeups/OverTheWire/Bandit 23.md"
-    },
-    {
-      "basename": "OverTheWire",
-      "path": "04 - Content/Process/OverTheWire.md"
     }
   ],
   "omittedPaths": [],
