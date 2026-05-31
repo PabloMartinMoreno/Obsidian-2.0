@@ -1,32 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "Flujo de Comunicación HTTPS",
-      "path": "04 - Content/Process/Flujo de Comunicación HTTPS.md"
+      "basename": "GET",
+      "path": "04 - Content/Web/Fundamentals/GET.md"
     },
     {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
     },
     {
-      "basename": "Web Content Types",
-      "path": "04 - Content/Web/Fundamentals/Web Content Types.md"
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
     {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
+      "basename": "HTTP - Basic Auth",
+      "path": "04 - Content/Web/Auth/HTTP - Basic Auth.md"
     },
     {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Web",
+      "path": "04 - Content/Web/Fundamentals/Web.md"
+    },
+    {
+      "basename": "HTTP - Métodos",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
     },
     {
       "basename": "Flujo de Comunicación HTTP",
       "path": "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md"
     },
     {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+      "basename": "Flujo de Comunicación HTTPS",
+      "path": "04 - Content/Process/Flujo de Comunicación HTTPS.md"
+    },
+    {
+      "basename": "Web Content Types",
+      "path": "04 - Content/Web/Fundamentals/Web Content Types.md"
+    },
+    {
+      "basename": "HTTPS",
+      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
     },
     {
       "basename": "Protocolos de Red",
@@ -35,10 +55,6 @@
     {
       "basename": "HTTP - Cookies y Sesiones",
       "path": "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md"
-    },
-    {
-      "basename": "HTTP - Métodos",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
     },
     {
       "basename": "HTTP - Headers",
@@ -83,14 +99,6 @@
     {
       "basename": "URL Encode - Characters",
       "path": "04 - Content/Web/Fundamentals/URL Encode - Characters.md"
-    },
-    {
-      "basename": "Web",
-      "path": "04 - Content/Web/Fundamentals/Web.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "gobuster",
@@ -191,14 +199,6 @@
     {
       "basename": "Todo Round-Up",
       "path": "04 - Content/Process/Todo Round-Up.md"
-    },
-    {
-      "basename": "Templates",
-      "path": "04 - Content/Process/Templates.md"
-    },
-    {
-      "basename": "tags",
-      "path": "04 - Content/Process/tags.md"
     }
   ],
   "omittedPaths": [],

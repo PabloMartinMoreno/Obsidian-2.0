@@ -18,8 +18,7 @@ linked:
   - "[[HTTP - Códigos de Estado]]"
   - "[[HTTP - Headers]]"
   - "[[HTTP - Cookies y Sesiones]]"
-  - "[[Protocolos de Red]]"
-  - "[[API Security|API REST]]"
+  - "[[HTTP - Basic Auth]]"
 ---
 # HTTP: Hypertext Transfer Protocol
 

@@ -1,6 +1,6 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 7.728506787330317,
+    "scroll": 3.083710407239819,
     "cursor": {
       "from": {
         "line": 44,
@@ -574,21 +574,21 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/GET.md": {
-    "scroll": 0.861244019138756,
+    "scroll": 0.5741626794258373,
     "cursor": {
       "from": {
-        "line": 27,
+        "line": 101,
         "ch": 0
       },
       "to": {
-        "line": 27,
+        "line": 101,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 13.080729166666666,
+    "scroll": 14.0390625,
     "cursor": {
       "from": {
         "line": 20,
@@ -1162,14 +1162,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md": {
-    "scroll": 0,
+    "scroll": 0.3444976076555024,
     "cursor": {
       "from": {
-        "line": 12,
+        "line": 131,
         "ch": 0
       },
       "to": {
-        "line": 12,
+        "line": 131,
         "ch": 0
       }
     },
@@ -1526,14 +1526,28 @@
     "expandedKeys": []
   },
   "04 - Content/Process/Flujo de Comunicación HTTPS.md": {
+    "scroll": 0.023923444976076555,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 3
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/HTTP Basic Auth.md": {
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 0,
+        "line": 23,
         "ch": 0
       },
       "to": {
-        "line": 0,
+        "line": 23,
         "ch": 0
       }
     },
