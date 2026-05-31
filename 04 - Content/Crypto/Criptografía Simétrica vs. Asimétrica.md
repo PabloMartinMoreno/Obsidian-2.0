@@ -47,6 +47,8 @@ Utiliza un par de claves matemáticamente relacionadas: una **Clave Pública** y
 |**Uso Principal**|Transferencia masiva de datos|Intercambio de claves y firmas|
 |**Ejemplos**|AES, ChaCha20|RSA, Diffie-Hellman, ECC|
 
+^cripto-comparativa
+
 ---
 
 ## ¿Cómo trabajan juntas en HTTPS?

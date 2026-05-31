@@ -26,6 +26,8 @@ Un certificado no es solo una clave; es un paquete de datos que incluye:
 - **Fechas de validez:** Cuándo expira (suelen durar entre 90 días y 1 año).
 - **Firma Digital:** Una prueba matemática de que el certificado no ha sido alterado.
 
+^cert-contiene
+
 ---
 
 ## La Cadena de Confianza (Chain of Trust)

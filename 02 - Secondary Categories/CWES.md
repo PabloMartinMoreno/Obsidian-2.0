@@ -22,7 +22,7 @@ Cómo viaja una petición y cómo manipularla. Base de todo lo demás.
 - [[HTTP]] · [[HTTPS]]
 - [[Flujo de Comunicación HTTP]]
 - [[Métodos HTTP]] · [[Códigos de Estado HTTP]]
-- [[GET]] (requests, Basic Auth, header Authorization, parámetros GET)
+- [[GET]] (requests, parámetros) · [[HTTP Basic Auth]]
 - [[HTTP Headers]] · [[Cookies y Sesiones]]
 - [[Web Content Types]] · [[URL Encode - Characters]]
 - Herramienta: [[curl]]
@@ -40,6 +40,7 @@ Identificar servidor, stack, CMS y contenido estándar antes de atacar.
 ### 3. 🔑 Gestión de Identidad, Autenticación y Sesiones
 
 - [[Authentication & Authorization Bypass]]
+- [[HTTP Basic Auth]]
 - [[HTTP Brute Forcing]]
 - [[Default credentials]] · [[Password Reuse]]
 - [[Session Hijacking]]

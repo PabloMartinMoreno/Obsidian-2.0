@@ -28,12 +28,26 @@ Los métodos HTTP indican la acción que se desea realizar sobre un recurso dete
 
 ___
 
+## Resumen
+
+|**Método**|**Acción**|**Seguro**|**Idempotente**|
+|---|---|:---:|:---:|
+|`GET`|Recuperar un recurso|✅|✅|
+|`POST`|Crear / enviar datos|❌|❌|
+|`PUT`|Reemplazar o crear|❌|✅|
+|`PATCH`|Modificación parcial|❌|❌|
+|`DELETE`|Eliminar un recurso|❌|✅|
+|`HEAD`|Headers de un `GET` (sin body)|✅|✅|
+|`OPTIONS`|Métodos permitidos|✅|✅|
+^http-metodos
+
+---
+
 ## Métodos Principales
 
 ### GET
 
 Se utiliza únicamente para **recuperar** datos del servidor.
-
 - **Seguro:** No modifica el estado del servidor.
 - **Idempotente:** Hacer la misma petición varias veces siempre da el mismo resultado.
 - **Cuerpo:** No debe enviar datos en el cuerpo (body); usa la [[URL#Parámetros de Consulta|Query String]].
@@ -41,7 +55,6 @@ Se utiliza únicamente para **recuperar** datos del servidor.
 ### POST
 
 Se utiliza para **enviar** datos al servidor para crear un nuevo recurso.
-
 - **No seguro:** Modifica el estado del servidor (crea registros).
 - **No Idempotente:** Si repites la petición, podrías crear el mismo recurso dos veces (ej. dos comentarios iguales).
 - **Uso común:** Formularios de registro, subir fotos, realizar pedidos.
@@ -49,20 +62,17 @@ Se utiliza para **enviar** datos al servidor para crear un nuevo recurso.
 ### PUT
 
 Se utiliza para **actualizar** un recurso existente o crearlo si no existe.
-
 - **Reemplazo total:** Envía la entidad completa para sustituir la versión anterior.
 - **Idempotente:** Si envías el mismo recurso 10 veces, el resultado final en el servidor es el mismo que si lo enviaras una.
 
 ### PATCH
 
 Similar a `PUT`, pero para **actualizaciones parciales**.
-
 - **Uso:** Si solo quieres cambiar el "precio" de un producto sin enviar todos los demás campos.
 
 ### DELETE
 
 Se utiliza para **eliminar** un recurso específico del servidor.
-
 - **Idempotente:** Si borras un recurso, la primera vez se borra; las siguientes veces el resultado es que el recurso sigue sin existir.
 
 ---

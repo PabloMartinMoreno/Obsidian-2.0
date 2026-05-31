@@ -22,6 +22,19 @@ Los códigos de estado son la forma en que el [[Servidores|servidor]] le dice al
 
 ---
 
+## Resumen por Clase
+
+|**Rango**|**Significado**|**Ejemplo común**|
+|---|---|---|
+|**1xx**|Informativo|`101 Switching Protocols`|
+|**2xx**|Éxito|`200 OK`|
+|**3xx**|Redirección|`301 Moved Permanently`|
+|**4xx**|Error del Cliente|`404 Not Found`|
+|**5xx**|Error del Servidor|`500 Internal Server Error`|
+^http-estado
+
+---
+
 ## 1xx: Informativos
 
 Indican que la petición fue recibida y el proceso continúa.

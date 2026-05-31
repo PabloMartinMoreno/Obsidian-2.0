@@ -7,21 +7,20 @@ tags:
   - cert/cwes
   - estado/completo
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Web]]"
-tertiary categories:
+  - '[[Web]]'
+tertiary categories: null
 kind: Concept
 linked:
-  - "[[Códigos de Estado HTTP]]"
-  - "[[Cookies y Sesiones]]"
-  - "[[Flujo de Comunicación HTTP]]"
-  - "[[URL]]"
-  - "[[curl]]"
-  - "[[HTTPS]]"
-  - "[[Protocolos de Red]]"
-  - "[[HTTP Headers]]"
-  - "[[Métodos HTTP]]"
+  - '[[Métodos HTTP]]'
+  - '[[Códigos de Estado HTTP]]'
+  - '[[HTTP Headers]]'
+  - '[[Cookies y Sesiones]]'
+  - '[[HTTPS]]'
+  - '[[URL]]'
+  - '[[curl]]'
+  - '[[Protocolos de Red]]'
 ---
 # HTTP: Hypertext Transfer Protocol
 
@@ -33,67 +32,45 @@ El protocolo **HTTP** es el estándar de comunicación que permite la transferen
 
 HTTP se basa en un ciclo de **Solicitud (Request)** y **Respuesta (Response)**.
 
-- **Cliente:** El navegador que solicita un recurso.
-- **Servidor:** La computadora que almacena el recurso y lo entrega.
+- **Cliente:** el navegador que solicita un recurso.
+- **Servidor:** la computadora que almacena el recurso y lo entrega.
+
+El ciclo completo request → response paso a paso: [[Flujo de Comunicación HTTP]].
 
 > [!INFO] Stateless (Sin estado)
-> 
-> HTTP es un protocolo stateless. Esto significa que el servidor no guarda datos entre distintas peticiones. Para "recordar" a un usuario (como mantener una sesión iniciada), se utilizan [[Cookies]] o [[Tokens]].
-
+> HTTP no guarda datos entre peticiones. Para "recordar" a un usuario (mantener la sesión iniciada) se usan [[Cookies y Sesiones|cookies o sesiones]].
 
 ---
 
 ## Anatomía de una Petición (Request)
 
-Cuando el cliente solicita algo, envía:
+- **Método:** la acción a realizar (ver abajo).
+- **Path:** la ubicación del recurso dentro del dominio (ej. `/blog/articulo-1`). Ver [[URL]].
+- **Headers:** metadatos (navegador, formatos aceptados, autenticación). Ver [[HTTP Headers]].
+- **Body:** datos enviados al servidor (en `POST`/`PUT`).
 
-- **Métodos HTTP:** Definen la acción a realizar.
-    - `GET`: Recuperar datos.
-    - `POST`: Enviar datos nuevos al servidor.
-    - `PUT`: Reemplazar o actualizar datos.
-    - `DELETE`: Eliminar un recurso.
-
-- **Path:** La ubicación del recurso (ej. `/blog/articulo-1`).
-
-- **Headers:** Metadatos como el tipo de navegador o el formato de archivo aceptado.
-
+![[Métodos HTTP#^http-metodos]]
 
 ---
 
 ## Anatomía de una Respuesta (Response)
 
-El servidor responde con:
-- **Código de Estado:** Indica el resultado de la petición.
-- **Headers:** Información sobre el contenido enviado (tamaño, tipo de archivo).
-- **Body:** El contenido solicitado (HTML, JSON, Imágenes).
+- **Código de Estado:** el resultado de la petición.
+- **Headers:** información sobre el contenido devuelto. Ver [[HTTP Headers]].
+- **Body:** el contenido solicitado (HTML, JSON, imágenes).
 
-
----
-
-## Códigos de Estado Comunes
-
-Los códigos se agrupan por su primer dígito:
-
-|**Rango**|**Significado**|**Ejemplo común**|
-|---|---|---|
-|**2xx**|Éxito|`200 OK`|
-|**3xx**|Redirección|`301 Moved Permanently`|
-|**4xx**|Error del Cliente|`404 Not Found`|
-|**5xx**|Error del Servidor|`500 Internal Server Error`|
+![[Códigos de Estado HTTP#^http-estado]]
 
 ---
 
 ## HTTP vs HTTPS
 
-La diferencia fundamental es la seguridad:
+HTTP viaja en **texto plano**; [[HTTPS]] envuelve la misma comunicación en cifrado TLS.
 
-- **HTTP:** Los datos viajan en texto plano.
-- **HTTPS:** Utiliza un certificado [[SSL/TLS]] para cifrar la conexión. Es el estándar actual para proteger la privacidad del usuario.
-
+![[HTTPS#^https-comparativa]]
 
 ---
 
 **Notas relacionadas:**
-- [[Protocolos de Red]]
-- [[API REST]]
-- [[Seguridad Web]]
+- [[Métodos HTTP]] · [[Códigos de Estado HTTP]] · [[HTTP Headers]] · [[Cookies y Sesiones]]
+- [[HTTPS]] · [[Protocolos de Red]] · [[API REST]]

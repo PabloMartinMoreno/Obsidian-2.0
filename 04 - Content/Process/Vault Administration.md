@@ -101,6 +101,15 @@ Prefijos en uso:
 - **Carpetas Web**: una por vuln en CamelCase (`FileUpload/`, `SSRF/`), hub con nombre completo + sigla dentro (`Server-Side Request Forgery (SSRF).md`).
 - **Tools**: nombre del binario en minúscula tal cual se invoca (`nmap.md`, `evil-winrm.md`), excepto productos con nombre propio (`Burp Suite.md`, `Wireshark.md`).
 
+## Principios de contenido
+
+> [!important] Atomicidad y cero duplicación
+> - **Una idea = una nota.** Cuanto más atómica, mejor. Si un concepto ya existe, NO se re-explica en otra nota.
+> - **Nunca duplicar contenido.** La info vive en un solo lugar (su nota atómica). Las demás notas la **transcluyen** (`![[ ]]`), no la copian.
+> - **Referenciar secciones por block-id `^`, no por heading.** Agregar `^nombre` al bloque destino (tabla, lista, párrafo) y llamarlo con `![[Nota#^nombre]]` (embed) o `[[Nota#^nombre]]` (link). Los `^id` sobreviven a cambios de título; los `#Heading` se rompen.
+>
+> Ej: `HTTP` y `HTTPS` embeben `![[Métodos HTTP#^http-metodos]]` y `![[Códigos de Estado HTTP#^http-estado]]` en vez de repetir las tablas.
+
 ***
 
 ## Migración `type/*` → `kind:`

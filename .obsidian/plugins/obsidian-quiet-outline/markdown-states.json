@@ -518,28 +518,28 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md": {
-    "scroll": 1.076555023923445,
+    "scroll": 24.730929264909847,
     "cursor": {
       "from": {
-        "line": 18,
+        "line": 34,
         "ch": 0
       },
       "to": {
-        "line": 18,
+        "line": 34,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Métodos HTTP.md": {
-    "scroll": 0,
+    "scroll": 6.076555023923445,
     "cursor": {
       "from": {
-        "line": 17,
+        "line": 41,
         "ch": 0
       },
       "to": {
-        "line": 17,
+        "line": 41,
         "ch": 0
       }
     },
@@ -588,28 +588,28 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 15.042995839112344,
+    "scroll": 17.347443650357338,
     "cursor": {
       "from": {
-        "line": 28,
+        "line": 24,
         "ch": 0
       },
       "to": {
-        "line": 28,
+        "line": 24,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 0,
+    "scroll": 12.17224880382775,
     "cursor": {
       "from": {
-        "line": 25,
-        "ch": 33
+        "line": 64,
+        "ch": 0
       },
       "to": {
-        "line": 25,
+        "line": 64,
         "ch": 0
       }
     },
@@ -644,14 +644,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/HTTPS.md": {
-    "scroll": 0,
+    "scroll": 78.306640625,
     "cursor": {
       "from": {
-        "line": 26,
+        "line": 77,
         "ch": 0
       },
       "to": {
-        "line": 26,
+        "line": 77,
         "ch": 0
       }
     },
@@ -1036,7 +1036,7 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/curl.md": {
-    "scroll": 1.330316742081448,
+    "scroll": 14.538461538461538,
     "cursor": {
       "from": {
         "line": 21,
@@ -1400,7 +1400,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/HTMLInjection/HTML Injection.md": {
-    "scroll": 36.840021990104454,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 30,
@@ -1408,6 +1408,62 @@
       },
       "to": {
         "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Crypto/Criptografía Simétrica vs. Asimétrica.md": {
+    "scroll": 4.019138755980861,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Crypto/SSL - TLS.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT/Certificate Transparency Logs.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Subdomain/Subdomains Passive Enumeration.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 24,
+        "ch": 0
+      },
+      "to": {
+        "line": 24,
         "ch": 0
       }
     },
