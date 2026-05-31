@@ -1,8 +1,52 @@
 {
   "recentFiles": [
     {
+      "basename": "Flujo de Comunicación HTTPS",
+      "path": "04 - Content/Process/Flujo de Comunicación HTTPS.md"
+    },
+    {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "Web Content Types",
+      "path": "04 - Content/Web/Fundamentals/Web Content Types.md"
+    },
+    {
+      "basename": "GET",
+      "path": "04 - Content/Web/Fundamentals/GET.md"
+    },
+    {
+      "basename": "HTTPS",
+      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
+    },
+    {
+      "basename": "Flujo de Comunicación HTTP",
+      "path": "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
+      "basename": "Protocolos de Red",
+      "path": "04 - Content/Process/Protocolos de Red.md"
+    },
+    {
+      "basename": "HTTP - Cookies y Sesiones",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md"
+    },
+    {
+      "basename": "HTTP - Métodos",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
+    },
+    {
+      "basename": "HTTP - Headers",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Headers.md"
+    },
+    {
+      "basename": "HTTP - Códigos de Estado",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Códigos de Estado.md"
     },
     {
       "basename": "SSL - TLS",
@@ -21,28 +65,8 @@
       "path": "04 - Content/Recon/OSINT/Certificate Transparency Logs.md"
     },
     {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
-    },
-    {
       "basename": "Criptografía Simétrica vs. Asimétrica",
       "path": "04 - Content/Crypto/Criptografía Simétrica vs. Asimétrica.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
-    },
-    {
-      "basename": "Métodos HTTP",
-      "path": "04 - Content/Web/Fundamentals/Métodos HTTP.md"
-    },
-    {
-      "basename": "Códigos de Estado HTTP",
-      "path": "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md"
-    },
-    {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
     },
     {
       "basename": "curl",
@@ -125,16 +149,8 @@
       "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md"
     },
     {
-      "basename": "Flujo de Comunicación HTTP",
-      "path": "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md"
-    },
-    {
       "basename": "DOM",
       "path": "04 - Content/Web/Fundamentals/DOM.md"
-    },
-    {
-      "basename": "Cookies y Sesiones",
-      "path": "04 - Content/Web/Fundamentals/Cookies y Sesiones.md"
     },
     {
       "basename": "API Security",
@@ -183,22 +199,6 @@
     {
       "basename": "tags",
       "path": "04 - Content/Process/tags.md"
-    },
-    {
-      "basename": "sherlocks",
-      "path": "04 - Content/Process/sherlocks.md"
-    },
-    {
-      "basename": "Recollection",
-      "path": "04 - Content/Process/Recollection.md"
-    },
-    {
-      "basename": "Crown Jewel 1",
-      "path": "05 - Writeups/HackTheBox/Crown Jewel 1.md"
-    },
-    {
-      "basename": "Privilege Escalation",
-      "path": "04 - Content/Process/Privilege Escalation.md"
     }
   ],
   "omittedPaths": [],

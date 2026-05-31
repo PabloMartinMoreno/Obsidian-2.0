@@ -8,18 +8,18 @@ tags:
   - cert/cwes
   - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 kind: Concept
 linked:
-  - '[[GET]]'
-  - '[[HTTP Headers]]'
-  - '[[base64]]'
-  - '[[HTTP Brute Forcing]]'
-  - '[[Authentication & Authorization Bypass]]'
-  - '[[JWT Attacks]]'
+  - "[[GET]]"
+  - "[[HTTP - Headers]]"
+  - "[[base64]]"
+  - "[[HTTP Brute Forcing]]"
+  - "[[Authentication & Authorization Bypass]]"
+  - "[[JWT Attacks]]"
 ---
 # HTTP Basic Auth
 
@@ -29,7 +29,7 @@ A diferencia de los formularios de login habituales (que validan credenciales v�
 
 ## Flujo
 
-Al pedir un recurso protegido **sin** credenciales, el servidor responde `401` con el header `WWW-Authenticate` (ver [[HTTP Headers]]):
+Al pedir un recurso protegido **sin** credenciales, el servidor responde `401` con el header `WWW-Authenticate` (ver [[HTTP - Headers]]):
 
 ```bash
 curl -i http://<SERVER_IP>:<PORT>/
@@ -101,5 +101,5 @@ curl -v http://admin:admin@<SERVER_IP>:<PORT>/
 ---
 
 **Notas relacionadas:**
-- [[GET]] · [[HTTP Headers]] · [[base64]]
+- [[GET]] · [[HTTP - Headers]] · [[base64]]
 - [[HTTP Brute Forcing]] · [[Authentication & Authorization Bypass]] · [[JWT Attacks]]

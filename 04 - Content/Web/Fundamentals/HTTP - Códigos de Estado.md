@@ -7,14 +7,14 @@ tags:
   - cert/cwes
   - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 kind: Concept
 linked:
-  - '[[HTTP]]'
-  - '[[Métodos HTTP]]'
+  - "[[HTTP]]"
+  - "[[HTTP - Métodos]]"
 ---
 # Códigos de Estado HTTP
 
@@ -77,7 +77,7 @@ El servidor falló al intentar cumplir una petición válida.
 > - `200` / `301` / `302` → recurso válido o redirección útil (login OK, endpoint existente).
 > - `401` / `403` → el recurso **existe** pero está protegido; vale la pena buscar bypass.
 > - `404` → ruta inexistente (baseline para filtrar ruido).
-> - `405 Method Not Allowed` → el verbo no aplica; probá otros métodos ([[Métodos HTTP]]).
+> - `405 Method Not Allowed` → el verbo no aplica; probá otros métodos ([[HTTP - Métodos]]).
 > - `500` → input no manejado; suele delatar inyección ([[SQL Injection (SQLI)|SQLi]], [[Server-Side Template Injection (SSTI)|SSTI]]) o error explotable.
 
 Filtrá por código de estado al fuzzear — ver [[Filtrado de salida de fuzzing]].
@@ -86,5 +86,5 @@ Filtrá por código de estado al fuzzear — ver [[Filtrado de salida de fuzzing
 
 **Notas relacionadas:**
 - [[HTTP]]
-- [[Métodos HTTP]]
+- [[HTTP - Métodos]]
 - [[Filtrado de salida de fuzzing]]

@@ -17,9 +17,9 @@ linked:
   - "[[SSL - TLS]]"
   - "[[Certificados SSL-TLS]]"
   - "[[Criptografía Simétrica vs. Asimétrica]]"
-  - "[[Flujo de Comunicación HTTP]]"
-  - "[[HTTP Headers]]"
-  - "[[Cookies y Sesiones]]"
+  - "[[HTTP - Headers]]"
+  - "[[HTTP - Cookies y Sesiones]]"
+  - "[[Flujo de Comunicación HTTPS]]"
 ---
 # HTTPS: Hypertext Transfer Protocol Secure
 
@@ -73,11 +73,11 @@ HTTPS transporta mensajes HTTP idénticos: mismos métodos y códigos de estado 
 
 ### Métodos 
 
-![[Métodos HTTP#^http-metodos]]
+![[HTTP - Métodos#^http-metodos]]
 
 ### Códigos 
 
-![[Códigos de Estado HTTP#^http-estado]]
+![[HTTP - Códigos de Estado#^http-estado]]
 
 ---
 
@@ -89,4 +89,4 @@ Recon de versiones, ciphers y certificados (TLS 1.0/SSLv3, weak ciphers, Heartbl
 
 **Notas relacionadas:**
 - [[HTTP]] · [[SSL - TLS]] · [[Certificados SSL-TLS]] · [[Criptografía Simétrica vs. Asimétrica]]
-- [[Flujo de Comunicación HTTP|Flujo HTTP]]
+- [[Flujo de Comunicación HTTPS|Flujo HTTPS]]

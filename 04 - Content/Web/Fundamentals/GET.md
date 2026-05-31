@@ -8,23 +8,23 @@ tags:
   - cert/cwes
   - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-  - '[[Information Gathering]]'
+  - "[[Web]]"
+  - "[[Information Gathering]]"
 tertiary categories:
-  - '[[Web Enumeración]]'
+  - "[[Web Enumeración]]"
 kind: Concept
 linked:
-  - '[[HTTP]]'
-  - '[[Métodos HTTP]]'
-  - '[[HTTP Basic Auth]]'
-  - '[[HTTP Headers]]'
-  - '[[curl]]'
+  - "[[HTTP]]"
+  - "[[HTTP - Métodos]]"
+  - "[[HTTP Basic Auth]]"
+  - "[[HTTP - Headers]]"
+  - "[[curl]]"
 ---
 # GET
 
-Al visitar cualquier URL, el navegador hace por defecto una petición **GET** para obtener el recurso remoto. Recibida la página inicial, puede disparar más peticiones con distintos [[Métodos HTTP|métodos]]. Todo esto se observa en la pestaña **Network** de las DevTools del navegador.
+Al visitar cualquier URL, el navegador hace por defecto una petición **GET** para obtener el recurso remoto. Recibida la página inicial, puede disparar más peticiones con distintos [[HTTP - Métodos|métodos]]. Todo esto se observa en la pestaña **Network** de las DevTools del navegador.
 
 > [!TIP] Reconocimiento pasivo del frontend
 > Abrí la pestaña Network mientras navegás un sitio para ver cómo la aplicación interactúa con su backend (endpoints, parámetros, formatos). Es un paso esencial en cualquier assessment web o bug bounty antes de tocar nada.
@@ -66,4 +66,4 @@ Leicester (UK)
 ---
 
 **Notas relacionadas:**
-- [[HTTP]] · [[Métodos HTTP]] · [[HTTP Basic Auth]] · [[curl]]
+- [[HTTP]] · [[HTTP - Métodos]] · [[HTTP Basic Auth]] · [[curl]]

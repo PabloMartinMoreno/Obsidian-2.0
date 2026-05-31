@@ -82,5 +82,5 @@ ___
 **Notas relacionadas:**
 
 - [[HTTP]]
-- [[Códigos de Estado HTTP]]
+- [[HTTP - Códigos de Estado]]
 - [[DNS: El listín telefónico de Internet]]

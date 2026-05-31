@@ -1,6 +1,6 @@
 ---
 aliases:
-  - "Cross-Site Request Forgery (SCRF)"
+  - Cross-Site Request Forgery (SCRF)
   - CSRF
   - XSRF
   - Cross Site Request Forgery
@@ -27,7 +27,7 @@ linked:
   - "[[Clickjacking]]"
   - "[[Authentication & Authorization Bypass]]"
   - "[[Cross-Site Scripting (XSS)]]"
-  - "[[Cookies y Sesiones]]"
+  - "[[HTTP - Cookies y Sesiones]]"
   - "[[Burp Suite]]"
 ---
 # Cross-Site Request Forgery (CSRF)

@@ -1,22 +1,22 @@
 ---
-aliases: null
+aliases:
 tags:
   - service/http
   - asset/web-app
   - cert/cwes
   - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 kind: Concept
 linked:
-  - '[[HTTP]]'
-  - '[[HTTPS]]'
-  - '[[API REST]]'
-  - '[[Códigos de Estado HTTP]]'
-  - '[[GET]]'
+  - "[[HTTP]]"
+  - "[[HTTPS]]"
+  - "[[API REST]]"
+  - "[[HTTP - Códigos de Estado]]"
+  - "[[GET]]"
 ---
 
 # Métodos HTTP
@@ -81,7 +81,7 @@ Se utiliza para **eliminar** un recurso específico del servidor.
 
 |**Método**|**Descripción**|
 |---|---|
-|**HEAD**|Igual que `GET`, pero el servidor solo devuelve los [[HTTP Headers\|headers]] (sin body). Útil para comprobar tamaño o existencia de un recurso antes de descargarlo.|
+|**HEAD**|Igual que `GET`, pero el servidor solo devuelve los [[HTTP - Headers\|headers]] (sin body). Útil para comprobar tamaño o existencia de un recurso antes de descargarlo.|
 |**OPTIONS**|El cliente pregunta qué métodos están permitidos para un recurso. Fundamental para el [[CORS]].|
 |**CONNECT**|Establece un túnel hacia el servidor (usado en Proxies y [[HTTPS]]).|
 
@@ -141,6 +141,6 @@ Si tuviéramos un recurso de `usuarios`:
 **Notas relacionadas:**
 
 - [[HTTP]]
-- [[Códigos de Estado HTTP]]
+- [[HTTP - Códigos de Estado]]
 - [[Flujo de Comunicación HTTP|Flujo HTTP]]
 - [[API REST]]

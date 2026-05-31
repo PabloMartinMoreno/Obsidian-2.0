@@ -15,7 +15,7 @@ linked:
   - "[[HTTP]]"
   - "[[HTTPS]]"
   - "[[Flujo de Comunicación HTTP|Flujo HTTP]]"
-  - "[[Cookies y Sesiones]]"
+  - "[[HTTP - Cookies y Sesiones]]"
 ---
 # HTTP Headers
 
@@ -96,4 +96,4 @@ Cache-Control: public, max-age=86400
 
 - [[HTTP]]
 - [[Flujo de Comunicación HTTP|Flujo HTTP]]
-- [[Cookies y Sesiones]]
+- [[HTTP - Cookies y Sesiones]]

@@ -21,9 +21,10 @@ Cómo viaja una petición y cómo manipularla. Base de todo lo demás.
 
 - [[HTTP]] · [[HTTPS]]
 - [[Flujo de Comunicación HTTP]]
-- [[Métodos HTTP]] · [[Códigos de Estado HTTP]]
-- [[GET]] (requests, parámetros) · [[HTTP Basic Auth]]
-- [[HTTP Headers]] · [[Cookies y Sesiones]]
+- [[Flujo de Comunicación HTTPS]]
+- [[HTTP - Métodos]] · [[HTTP - Códigos de Estado]]
+- [[GET]]  · [[HTTP Basic Auth]]
+- [[HTTP - Headers]] · [[HTTP - Cookies y Sesiones]]
 - [[Web Content Types]] · [[URL Encode - Characters]]
 - Herramienta: [[curl]]
 

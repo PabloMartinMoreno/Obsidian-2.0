@@ -518,7 +518,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md": {
-    "scroll": 24.730929264909847,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 34,
@@ -532,7 +532,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Métodos HTTP.md": {
-    "scroll": 6.076555023923445,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 41,
@@ -574,7 +574,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/GET.md": {
-    "scroll": 0,
+    "scroll": 0.861244019138756,
     "cursor": {
       "from": {
         "line": 27,
@@ -588,28 +588,28 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 17.347443650357338,
+    "scroll": 13.080729166666666,
     "cursor": {
       "from": {
-        "line": 24,
+        "line": 20,
         "ch": 0
       },
       "to": {
-        "line": 24,
+        "line": 20,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 12.17224880382775,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 64,
+        "line": 71,
         "ch": 0
       },
       "to": {
-        "line": 64,
+        "line": 71,
         "ch": 0
       }
     },
@@ -644,15 +644,15 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/HTTPS.md": {
-    "scroll": 78.306640625,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 77,
-        "ch": 0
+        "line": 90,
+        "ch": 97
       },
       "to": {
-        "line": 77,
-        "ch": 0
+        "line": 90,
+        "ch": 97
       }
     },
     "expandedKeys": []
@@ -1134,7 +1134,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Cookies y Sesiones.md": {
-    "scroll": 14.679946879150066,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 14,
@@ -1162,7 +1162,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md": {
-    "scroll": 20.17995028004912,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 12,
@@ -1464,6 +1464,76 @@
       },
       "to": {
         "line": 24,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP Headers.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP - Métodos.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP y HTTPS - Métodos.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Web Content Types.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Flujo de Comunicación HTTPS.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
         "ch": 0
       }
     },

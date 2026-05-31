@@ -1,7 +1,7 @@
 ---
 aliases:
-  - "JWT Authentication Abuse"
-  - "Tokens"
+  - JWT Authentication Abuse
+  - Tokens
   - JSON Web Token Attacks
   - JWT Abuse
   - JWT Tampering
@@ -27,7 +27,7 @@ linked:
   - "[[JWT - Manipulacion de Claims]]"
   - "[[JWT - Tooling y Brute Force]]"
   - "[[Authentication & Authorization Bypass]]"
-  - "[[Cookies y Sesiones]]"
+  - "[[HTTP - Cookies y Sesiones]]"
   - "[[Burp Suite]]"
 ---
 # JWT Attacks
