@@ -1,8 +1,64 @@
 {
   "recentFiles": [
     {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
       "basename": "CWES",
-      "path": "04 - Content/Process/CWES.md"
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
+    },
+    {
+      "basename": "CWES - Maquinas",
+      "path": "04 - Content/Process/CWES - Maquinas.md"
+    },
+    {
+      "basename": "AWS Enumeration",
+      "path": "04 - Content/Process/AWS Enumeration.md"
+    },
+    {
+      "basename": "Abusing PHP Filters",
+      "path": "04 - Content/Process/Abusing PHP Filters.md"
+    },
+    {
+      "basename": "AD Enumeration",
+      "path": "04 - Content/Process/AD Enumeration.md"
+    },
+    {
+      "basename": "HTTPS",
+      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
+    },
+    {
+      "basename": "Web",
+      "path": "04 - Content/Web/Fundamentals/Web.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "GET",
+      "path": "04 - Content/Web/Fundamentals/GET.md"
     },
     {
       "basename": "Códigos de Estado HTTP",
@@ -33,10 +89,6 @@
       "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
       "basename": "Auth Bypass - Brute Force y Credential Stuffing",
       "path": "04 - Content/Web/Auth/Auth Bypass - Brute Force y Credential Stuffing.md"
     },
@@ -59,10 +111,6 @@
     {
       "basename": "XML External Entity (XXE)",
       "path": "04 - Content/Web/XXE/XML External Entity (XXE).md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "Wireshark",
@@ -129,20 +177,12 @@
       "path": "04 - Content/Obsidian/Drawbacks of Traditional Note-Taking Systems.md"
     },
     {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
     },
     {
       "basename": "Service Exploitation",
       "path": "03 - Tertiary Categories/Service Exploitation.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "Broken autentication",
@@ -155,50 +195,6 @@
     {
       "basename": "Incompletos",
       "path": "04 - Content/Process/Incompletos.md"
-    },
-    {
-      "basename": "Windows Post-Explotación",
-      "path": "03 - Tertiary Categories/Windows Post-Explotación.md"
-    },
-    {
-      "basename": "Post-Explotación",
-      "path": "02 - Secondary Categories/Post-Explotación.md"
-    },
-    {
-      "basename": "Linux Post-Explotación",
-      "path": "03 - Tertiary Categories/Linux Post-Explotación.md"
-    },
-    {
-      "basename": "Privilege Escalation",
-      "path": "04 - Content/Process/Privilege Escalation.md"
-    },
-    {
-      "basename": "Bandit 09",
-      "path": "05 - Writeups/OverTheWire/Bandit 09.md"
-    },
-    {
-      "basename": "Bandit 10",
-      "path": "05 - Writeups/OverTheWire/Bandit 10.md"
-    },
-    {
-      "basename": "Bandit 11",
-      "path": "05 - Writeups/OverTheWire/Bandit 11.md"
-    },
-    {
-      "basename": "Bandit 12",
-      "path": "05 - Writeups/OverTheWire/Bandit 12.md"
-    },
-    {
-      "basename": "Bandit 13",
-      "path": "05 - Writeups/OverTheWire/Bandit 13.md"
-    },
-    {
-      "basename": "Bandit 14",
-      "path": "05 - Writeups/OverTheWire/Bandit 14.md"
-    },
-    {
-      "basename": "Bandit 15",
-      "path": "05 - Writeups/OverTheWire/Bandit 15.md"
     }
   ],
   "omittedPaths": [],

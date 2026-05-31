@@ -7,16 +7,17 @@ tags:
   - technique/enumeration
   - asset/web-app
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Recon]]"
+  - '[[Information Gathering]]'
+  - '[[Web]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Enumeración]]'
 kind: Tool
 linked:
-  - "[[Fuzzing Directories & Pages]]"
-  - "[[ffuf]]"
-  - "[[gobuster]]"
+  - '[[Fuzzing Directories & Pages]]'
+  - '[[ffuf]]'
+  - '[[gobuster]]'
 ---
 # feroxbuster
 

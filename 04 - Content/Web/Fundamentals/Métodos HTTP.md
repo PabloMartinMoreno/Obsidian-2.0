@@ -3,9 +3,12 @@ aliases: null
 tags:
   - service/http
   - asset/web-app
+  - cert/cwes
   - estado/completo
-primary categories: null
-secondary categories: null
+primary categories:
+  - '[[Red Team]]'
+secondary categories:
+  - '[[Web]]'
 tertiary categories: null
 kind: Concept
 linked:
@@ -13,6 +16,7 @@ linked:
   - '[[HTTPS]]'
   - '[[API REST]]'
   - '[[Códigos de Estado HTTP]]'
+  - '[[GET]]'
 ---
 
 # Métodos HTTP

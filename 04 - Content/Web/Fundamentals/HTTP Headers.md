@@ -1,15 +1,21 @@
 ---
-aliases:
+aliases: null
 tags:
+  - service/http
+  - asset/web-app
+  - cert/cwes
+  - estado/completo
 primary categories:
+  - '[[Red Team]]'
 secondary categories:
-tertiary categories:
+  - '[[Web]]'
+tertiary categories: null
 kind: Concept
 linked:
-  - "[[HTTP]]"
-  - "[[HTTPS]]"
-  - "[[http-flow|Flujo HTTP]]"
-  - "[[Cookies y Sesiones]]"
+  - '[[HTTP]]'
+  - '[[HTTPS]]'
+  - '[[http-flow|Flujo HTTP]]'
+  - '[[Cookies y Sesiones]]'
 ---
 # HTTP Headers
 

@@ -13,7 +13,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 kind: CheatSheet
 linked:
-- "[[Creds]]"
+  - "[[Creds]]"
   - "[[Port Enumeration]]"
 ---
 # FTP Enumeration (21)

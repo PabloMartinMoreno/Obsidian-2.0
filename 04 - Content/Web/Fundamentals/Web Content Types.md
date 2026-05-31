@@ -1,3 +1,15 @@
+---
+tags:
+  - service/http
+  - asset/web-app
+  - cert/cwes
+  - estado/completo
+primary categories:
+  - '[[Red Team]]'
+secondary categories:
+  - '[[Web]]'
+tertiary categories: null
+---
 https://github.com/danielmiessler/SecLists/raw/master/Discovery/Web-Content/web-all-content-types.txt
 
 ```

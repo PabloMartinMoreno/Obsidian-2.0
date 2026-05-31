@@ -7,16 +7,16 @@ tags:
   - technique/recon/active
   - technique/enumeration
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Recon]]"
+  - '[[Information Gathering]]'
 tertiary categories:
-  - "[[Information Gathering]]"
+  - '[[Host & Network Enumeration]]'
 kind: Tool
 linked:
-  - "[[nmap]]"
-  - "[[rustscan]]"
-  - "[[Port Enumeration]]"
+  - '[[nmap]]'
+  - '[[rustscan]]'
+  - '[[Port Enumeration]]'
 ---
 # masscan
 

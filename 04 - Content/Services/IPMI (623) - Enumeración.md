@@ -11,7 +11,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 kind: CheatSheet
 linked:
-- "[[Creds]]"
+  - "[[Creds]]"
   - "[[Port Enumeration]]"
 ---
 # IPMI Enumeration (623)

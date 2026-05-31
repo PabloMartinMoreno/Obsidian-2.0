@@ -16,7 +16,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 kind: CheatSheet
 linked:
-- "[[dig]]"
+  - "[[dig]]"
   - "[[dnsenum]]"
   - "[[host]]"
   - "[[nslookup]]"

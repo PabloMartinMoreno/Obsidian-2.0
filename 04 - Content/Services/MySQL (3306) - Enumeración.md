@@ -13,7 +13,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 kind: CheatSheet
 linked:
-- "[[SQL Commands]]"
+  - "[[SQL Commands]]"
   - "[[Port Enumeration]]"
 ---
 # MySQL Enumeration (3306)

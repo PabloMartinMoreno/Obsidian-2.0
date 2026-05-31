@@ -1,4 +1,14 @@
 ---
+secondary categories:
+  - '[[Information Gathering]]'
+  - '[[Web]]'
+tertiary categories:
+  - '[[Web Enumeración]]'
+linked:
+  - '[[WordPress Exploitation]]'
+  - '[[Web Technology Enumeration]]'
+---
+---
 aliases:
   - "WordPress"
 tags:

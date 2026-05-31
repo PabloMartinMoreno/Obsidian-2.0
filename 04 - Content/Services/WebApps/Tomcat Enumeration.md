@@ -1,4 +1,14 @@
 ---
+secondary categories:
+  - '[[Information Gathering]]'
+  - '[[Web]]'
+tertiary categories:
+  - '[[Web Enumeración]]'
+linked:
+  - '[[Fingerprinting Web Technologies]]'
+  - '[[Web Technology Enumeration]]'
+---
+---
 aliases:
   - "Abusing Tomcat"
   - "Apache Tomcat Exploitation"

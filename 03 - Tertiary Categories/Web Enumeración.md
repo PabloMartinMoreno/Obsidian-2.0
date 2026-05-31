@@ -16,48 +16,6 @@ kind: Tertiary Category
 
 ***
 
-## Mapa Mental
-
-```mermaid
-mindmap
-  root((Web Enum))
-    Fingerprinting
-      Stack_Detection
-      Headers_Cookies
-      EyeWitness
-    Content_Discovery
-      Fuzzing_Dirs
-      Fuzzing_Params
-      Fuzzing_VHosts
-      Crawling
-      robots_txt
-      API_Enum
-    Vuln_Leak_Scan
-      Nuclei
-      nikto
-      Source_Disclosure
-      git-dumper
-      CORS_Misconf
-    Targeted_Tech
-      CMS
-        WordPress
-        Joomla
-        Drupal
-        Magento
-      CI_CD
-        Jenkins
-        GitLab
-        Splunk
-      Web_Servers
-        IIS
-        Tomcat
-        Apache
-        Nginx
-        ColdFusion
-```
-
-***
-
 ## 🆔 Fingerprinting & Technology Analysis
   Identificación de tecnologías, frameworks y CMS utilizados.
 

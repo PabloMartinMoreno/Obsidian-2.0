@@ -1,7 +1,7 @@
 ---
 aliases:
-  - "Proxy Tools"
-  - "OWASP ZAP"
+  - Proxy Tools
+  - OWASP ZAP
   - Burp
   - BurpSuite
 tags:
@@ -10,20 +10,22 @@ tags:
   - asset/web-app
   - technique/exploitation/web
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Web Exploitation]]"
+  - '[[Explotación]]'
+  - '[[Web]]'
 tertiary categories:
-  - "[[Proxy Tools]]"
+  - '[[Web Explotación]]'
 linked:
-  - "[[Web Fuzzing]]"
-  - "[[Crawling]]"
-  - "[[Cross-Site Scripting (XSS)]]"
-  - "[[SQL Injection]]"
-  - "[[Server-Side Request Forgery (SSRF)]]"
-  - "[[Insecure Direct Object References (IDOR)]]"
-  - "[[Cross-Site Request Forgery (CSRF)]]"
-  - "[[JWT Attacks]]"
+  - '[[Web Fuzzing]]'
+  - '[[Crawling]]'
+  - '[[Cross-Site Scripting (XSS)]]'
+  - '[[SQL Injection]]'
+  - '[[Server-Side Request Forgery (SSRF)]]'
+  - '[[Insecure Direct Object References (IDOR)]]'
+  - '[[Cross-Site Request Forgery (CSRF)]]'
+  - '[[JWT Attacks]]'
+kind: Tool
 ---
 # Burp Suite
 

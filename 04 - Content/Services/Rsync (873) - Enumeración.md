@@ -13,7 +13,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 kind: CheatSheet
 linked:
-- "[[SSH (22) - Enumeración]]"
+  - "[[SSH (22) - Enumeración]]"
   - "[[FTP (21) - Enumeración]]"
   - "[[Port Enumeration]]"
 ---

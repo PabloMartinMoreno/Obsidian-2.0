@@ -1,11 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
+  - asset/web-app
+  - cert/cwes
+  - estado/completo
 primary categories:
+  - '[[Red Team]]'
 secondary categories:
-tertiary categories:
+  - '[[Web]]'
+tertiary categories: null
 kind: Concept
-linked:
+linked: null
 ---
 # Cookies y Sesiones
 

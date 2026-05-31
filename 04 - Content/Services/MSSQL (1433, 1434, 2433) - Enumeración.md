@@ -20,7 +20,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 kind: CheatSheet
 linked:
-- "[[T-SQL Command]]"
+  - "[[T-SQL Command]]"
   - "[[SQLi to RCE]]"
   - "[[Port Enumeration]]"
 ---

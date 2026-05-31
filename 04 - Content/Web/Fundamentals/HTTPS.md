@@ -2,21 +2,27 @@
 aliases:
   - Hypertext Transfer Protocol Secure
 tags:
+  - service/http
+  - asset/web-app
+  - cert/cwes
+  - estado/completo
 primary categories:
+  - '[[Red Team]]'
 secondary categories:
-tertiary categories:
+  - '[[Web]]'
+tertiary categories: null
 kind: Concept
 linked:
-  - "[[HTTP]]"
-  - "[[http-flow]]"
-  - "[[Criptografía Simétrica vs. Asimétrica]]"
-  - "[[curl]]"
-  - "[[URL]]"
-  - "[[Códigos de Estado HTTP]]"
-  - "[[Cookies y Sesiones]]"
-  - "[[Protocolos de Red]]"
-  - "[[HTTP Headers]]"
-  - "[[Métodos HTTP]]"
+  - '[[HTTP]]'
+  - '[[http-flow]]'
+  - '[[Criptografía Simétrica vs. Asimétrica]]'
+  - '[[curl]]'
+  - '[[URL]]'
+  - '[[Códigos de Estado HTTP]]'
+  - '[[Cookies y Sesiones]]'
+  - '[[Protocolos de Red]]'
+  - '[[HTTP Headers]]'
+  - '[[Métodos HTTP]]'
 ---
 # HTTPS: Hypertext Transfer Protocol Secure
 

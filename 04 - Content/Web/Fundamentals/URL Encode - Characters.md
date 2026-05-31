@@ -2,11 +2,16 @@
 aliases:
   - URL Encode - Caracteres
 tags:
+  - asset/web-app
+  - cert/cwes
+  - estado/incompleto
 primary categories:
+  - '[[Red Team]]'
 secondary categories:
-tertiary categories:
+  - '[[Web]]'
+tertiary categories: null
 kind: Concept
-linked:
+linked: null
 ---
 # URL Encode
 

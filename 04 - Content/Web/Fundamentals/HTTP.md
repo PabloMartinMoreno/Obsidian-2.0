@@ -2,20 +2,26 @@
 aliases:
   - Hypertext Transfer Protocol
 tags:
+  - service/http
+  - asset/web-app
+  - cert/cwes
+  - estado/completo
 primary categories:
+  - '[[Red Team]]'
 secondary categories:
-tertiary categories:
+  - '[[Web]]'
+tertiary categories: null
 kind: Concept
 linked:
-  - "[[Códigos de Estado HTTP]]"
-  - "[[Cookies y Sesiones]]"
-  - "[[http-flow]]"
-  - "[[URL]]"
-  - "[[curl]]"
-  - "[[HTTPS]]"
-  - "[[Protocolos de Red]]"
-  - "[[HTTP Headers]]"
-  - "[[Métodos HTTP]]"
+  - '[[Códigos de Estado HTTP]]'
+  - '[[Cookies y Sesiones]]'
+  - '[[http-flow]]'
+  - '[[URL]]'
+  - '[[curl]]'
+  - '[[HTTPS]]'
+  - '[[Protocolos de Red]]'
+  - '[[HTTP Headers]]'
+  - '[[Métodos HTTP]]'
 ---
 # HTTP: Hypertext Transfer Protocol
 

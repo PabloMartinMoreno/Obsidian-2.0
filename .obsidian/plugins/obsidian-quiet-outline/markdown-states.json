@@ -1,6 +1,6 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 19.257918552036198,
+    "scroll": 7.728506787330317,
     "cursor": {
       "from": {
         "line": 44,
@@ -42,14 +42,14 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 15.872395833333334,
+    "scroll": 5.864406779661017,
     "cursor": {
       "from": {
-        "line": 15,
+        "line": 12,
         "ch": 0
       },
       "to": {
-        "line": 15,
+        "line": 12,
         "ch": 0
       }
     },
@@ -84,7 +84,7 @@
     "expandedKeys": []
   },
   "01 - Primary Categories/Red Team.md": {
-    "scroll": 5.391304347826087,
+    "scroll": 7.616201859229748,
     "cursor": {
       "from": {
         "line": 8,
@@ -535,18 +535,18 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 16,
+        "line": 17,
         "ch": 0
       },
       "to": {
-        "line": 16,
+        "line": 17,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Process/CWES.md": {
-    "scroll": 6.551813471502591,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 9,
@@ -554,6 +554,174 @@
       },
       "to": {
         "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Web Requests.md": {
+    "scroll": 25.205729166666668,
+    "cursor": {
+      "from": {
+        "line": 37,
+        "ch": 0
+      },
+      "to": {
+        "line": 37,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/GET.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/CWES.md": {
+    "scroll": 12.622395833333334,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP.md": {
+    "scroll": 3.648325358851675,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 33
+      },
+      "to": {
+        "line": 25,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Web Enumeración.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Web.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTPS.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 0
+      },
+      "to": {
+        "line": 26,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/AD Enumeration.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 4,
+        "ch": 0
+      },
+      "to": {
+        "line": 4,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Abusing PHP Filters.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/AWS Enumeration.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Maquinas.md": {
+    "scroll": 0.01,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Checklists.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
         "ch": 0
       }
     },

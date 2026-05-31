@@ -1,8 +1,8 @@
 ---
 aliases:
-  - "Shellshock"
-  - "cgi-bin"
-  - "Web Vulnerability Scanning"
+  - Shellshock
+  - cgi-bin
+  - Web Vulnerability Scanning
   - Nikto
 tags:
   - tool/nikto
@@ -10,17 +10,18 @@ tags:
   - asset/web-app
   - service/http
 primary categories:
-  - "[[Red Team]]"
+  - '[[Red Team]]'
 secondary categories:
-  - "[[Recon]]"
+  - '[[Information Gathering]]'
+  - '[[Web]]'
 tertiary categories:
-  - "[[Web Explotación]]"
+  - '[[Web Enumeración]]'
 kind: Tool
 linked:
-  - "[[Web Enumeración]]"
-  - "[[Fingerprinting]]"
-  - "[[Burp Suite]]"
-  - "[[nmap]]"
+  - '[[Web Enumeración]]'
+  - '[[Fingerprinting]]'
+  - '[[Burp Suite]]'
+  - '[[nmap]]'
 ---
 # nikto
 

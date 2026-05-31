@@ -1,11 +1,16 @@
 ---
-aliases:
+aliases: null
 tags:
-primary categories:
+  - cert/cwes
+  - asset/web-app
+  - estado/completo
+primary categories: null
 secondary categories:
-tertiary categories:
+  - '[[CWES]]'
+tertiary categories: null
 kind: CheatSheet
 linked:
+  - '[[CWES]]'
 ---
 # CWES - Checklists
 

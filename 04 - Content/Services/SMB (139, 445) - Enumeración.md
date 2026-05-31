@@ -16,7 +16,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
 kind: CheatSheet
 linked:
-- "[[Spidering SMB Shares]]"
+  - "[[Spidering SMB Shares]]"
   - "[[RpcClient]]"
   - "[[Interacting with SMB from Windows]]"
   - "[[Port Enumeration]]"
