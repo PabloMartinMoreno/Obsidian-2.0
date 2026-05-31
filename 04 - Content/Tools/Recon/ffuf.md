@@ -1,6 +1,6 @@
 ---
 aliases:
-  - "wfuzz"
+  - wfuzz
   - Ffuf
   - Fuff
 tags:
@@ -13,6 +13,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Web Fuzzing]]"
+kind: Tool
 linked:
   - "[[Web Fuzzing]]"
   - "[[Crawling]]"

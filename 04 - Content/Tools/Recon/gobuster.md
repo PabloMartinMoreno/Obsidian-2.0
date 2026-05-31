@@ -44,7 +44,6 @@ Brute-forcer Go — rápido, single-binary, no recursivo (usar [[feroxbuster]] s
 Modos: `dir` (paths HTTP), `vhost` (Host header), `dns` (subdomains), `fuzz` (FUZZ genérico), `s3`/`gcs` (buckets).
 
 ## 1. Fuzzing de directorios y archivos
-^gobuster-fuzzing-directorios
 
 | Comando | Descripción |
 | --- | --- |
@@ -58,11 +57,11 @@ Modos: `dir` (paths HTTP), `vhost` (Host header), `dns` (subdomains), `fuzz` (FU
 | `gobuster dir -u http://host/ -w w.txt -H 'Authorization: Bearer X'` | Header custom. |
 | `gobuster dir -u http://host/ -w w.txt -U user -P pass` | Basic auth. |
 | `gobuster dir -u http://host/ -w w.txt -e` | Expanded mode — print full URL. |
+^gobuster-fuzzing-directorios
 
 gobuster no recurse por defecto. Para recursión → [[feroxbuster]] o script chain.
 
 ## 2. Fuzzing de parámetros
-^gobuster-fuzzing-parametros
 
 | Comando | Contexto |
 | --- | --- |
@@ -70,11 +69,11 @@ gobuster no recurse por defecto. Para recursión → [[feroxbuster]] o script ch
 | `gobuster fuzz -u 'http://host/admin.php' -w params.txt --method POST --data 'FUZZ=test' -H 'Content-Type: application/x-www-form-urlencoded' -t 50` | POST — body param name. |
 | `gobuster fuzz -u 'http://host/page.php?id=FUZZ' -w values.txt -b 0` | Value fuzzing — baseline filter con `-b` (exclude size). |
 | `gobuster fuzz -u 'http://host/FUZZ' -w paths.txt --exclude-length 1234` | Exclude length-filter manual. |
+^gobuster-fuzzing-parametros
 
 Filtros (flags `-b length,length2`) son críticos — sin ellos, output trivial.
 
 ## 3. Virtual host discovery
-^gobuster-enum-vhost
 
 ```bash
 gobuster vhost -u http://target.com -w vhosts.txt --append-domain -t 200
@@ -86,6 +85,7 @@ gobuster vhost -u http://target.com -w vhosts.txt --append-domain -t 200
 | `--append-domain` | `{word}.target.com` en vez de solo `{word}`. |
 | `--exclude-length 1234` | Filtrar respuestas de ese size (wildcard default). |
 | `--domain target.com` | Baseline domain explícito. |
+^gobuster-enum-vhost
 
 ## 4. DNS subdomain enum
 

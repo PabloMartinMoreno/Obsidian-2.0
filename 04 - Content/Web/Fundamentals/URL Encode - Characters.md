@@ -4,14 +4,16 @@ aliases:
 tags:
   - asset/web-app
   - cert/cwes
-  - estado/incompleto
+  - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
+  - "[[Web Enumeración]]"
+  - "[[Web Explotación]]"
 kind: Concept
-linked: null
+linked:
 ---
 # URL Encode
 

@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 5.864406779661017,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 12,
@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 14.455729166666666,
+    "scroll": 15.042995839112344,
     "cursor": {
       "from": {
         "line": 28,
@@ -616,7 +616,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 0,
+    "scroll": 18.220527045769764,
     "cursor": {
       "from": {
         "line": 17,
@@ -633,11 +633,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 6,
+        "line": 7,
         "ch": 0
       },
       "to": {
-        "line": 6,
+        "line": 7,
         "ch": 0
       }
     },
@@ -1036,14 +1036,14 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/curl.md": {
-    "scroll": 5.049773755656108,
+    "scroll": 1.330316742081448,
     "cursor": {
       "from": {
-        "line": 29,
+        "line": 21,
         "ch": 0
       },
       "to": {
-        "line": 29,
+        "line": 21,
         "ch": 0
       }
     },
@@ -1176,7 +1176,7 @@
     "expandedKeys": []
   },
   "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md": {
-    "scroll": 1.3695652173913044,
+    "scroll": 1.1180124223602483,
     "cursor": {
       "from": {
         "line": 9,
@@ -1241,6 +1241,174 @@
       "to": {
         "line": 23,
         "ch": 9
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/Curl - Acronimos.md": {
+    "scroll": 16.786458333333332,
+    "cursor": {
+      "from": {
+        "line": 36,
+        "ch": 15
+      },
+      "to": {
+        "line": 36,
+        "ch": 15
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Information Gathering.md": {
+    "scroll": 6.987577639751553,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Fuzzing Directories & Pages.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 42,
+        "ch": 0
+      },
+      "to": {
+        "line": 42,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Fuzzing Parameters & Values.md": {
+    "scroll": 9.14354066985646,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Fuzzing Subdomains & Virtual Hosts.md": {
+    "scroll": 20,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Fingerprinting Web Technologies.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/gobuster.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 88,
+        "ch": 0
+      },
+      "to": {
+        "line": 88,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/feroxbuster.md": {
+    "scroll": 148.84580197727607,
+    "cursor": {
+      "from": {
+        "line": 60,
+        "ch": 0
+      },
+      "to": {
+        "line": 60,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/ffuf.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 24,
+        "ch": 6
+      },
+      "to": {
+        "line": 24,
+        "ch": 6
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/URL Encoding.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 7
+      },
+      "to": {
+        "line": 11,
+        "ch": 7
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/URL Encode - Characters.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 12
+      },
+      "to": {
+        "line": 17,
+        "ch": 12
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/HTMLInjection/HTML Injection.md": {
+    "scroll": 36.840021990104454,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
       }
     },
     "expandedKeys": []

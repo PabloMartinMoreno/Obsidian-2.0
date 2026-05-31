@@ -1,16 +1,80 @@
 {
   "recentFiles": [
     {
+      "basename": "HTML Injection",
+      "path": "04 - Content/Web/HTMLInjection/HTML Injection.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
+    },
+    {
+      "basename": "URL Encode - Characters",
+      "path": "04 - Content/Web/Fundamentals/URL Encode - Characters.md"
+    },
+    {
+      "basename": "Web",
+      "path": "04 - Content/Web/Fundamentals/Web.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "gobuster",
+      "path": "04 - Content/Tools/Recon/gobuster.md"
+    },
+    {
+      "basename": "Fuzzing Directories & Pages",
+      "path": "04 - Content/Recon/Fuzzing/Fuzzing Directories & Pages.md"
+    },
+    {
       "basename": "curl",
       "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
-      "basename": "Curl - APIs",
-      "path": "04 - Content/Tools/Recon/Curl - APIs.md"
+      "basename": "ffuf",
+      "path": "04 - Content/Tools/Recon/ffuf.md"
+    },
+    {
+      "basename": "feroxbuster",
+      "path": "04 - Content/Tools/Recon/feroxbuster.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "Fingerprinting Web Technologies",
+      "path": "04 - Content/Recon/WebTech/Fingerprinting Web Technologies.md"
+    },
+    {
+      "basename": "Fuzzing Subdomains & Virtual Hosts",
+      "path": "04 - Content/Recon/Fuzzing/Fuzzing Subdomains & Virtual Hosts.md"
+    },
+    {
+      "basename": "Fuzzing Parameters & Values",
+      "path": "04 - Content/Recon/Fuzzing/Fuzzing Parameters & Values.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Curl - Fuzzing Parámetros y Valores",
       "path": "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md"
+    },
+    {
+      "basename": "Curl - Acronimos",
+      "path": "04 - Content/Tools/Recon/Curl - Acronimos.md"
+    },
+    {
+      "basename": "Curl - APIs",
+      "path": "04 - Content/Tools/Recon/Curl - APIs.md"
     },
     {
       "basename": "Curl - Web",
@@ -23,10 +87,6 @@
     {
       "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
       "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
     },
     {
       "basename": "GET",
@@ -137,68 +197,8 @@
       "path": "04 - Content/Process/Honeytokens & Tracking Pixels.md"
     },
     {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
       "basename": "CheatSheets",
       "path": "04 - Content/Process/CheatSheets.md"
-    },
-    {
-      "basename": "Broken autentication",
-      "path": "04 - Content/Process/Broken autentication.md"
-    },
-    {
-      "basename": "Blockchain",
-      "path": "04 - Content/Process/Blockchain.md"
-    },
-    {
-      "basename": "AWS Enumeration",
-      "path": "04 - Content/Process/AWS Enumeration.md"
-    },
-    {
-      "basename": "AD Enumeration",
-      "path": "04 - Content/Process/AD Enumeration.md"
-    },
-    {
-      "basename": "Abusing PHP Filters",
-      "path": "04 - Content/Process/Abusing PHP Filters.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
-    },
-    {
-      "basename": "CWES - Maquinas",
-      "path": "04 - Content/Process/CWES - Maquinas.md"
-    },
-    {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
-    },
-    {
-      "basename": "Web",
-      "path": "04 - Content/Web/Fundamentals/Web.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Métodos HTTP",
-      "path": "04 - Content/Web/Fundamentals/Métodos HTTP.md"
     }
   ],
   "omittedPaths": [],

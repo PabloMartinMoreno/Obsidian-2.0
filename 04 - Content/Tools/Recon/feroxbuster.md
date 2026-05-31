@@ -44,7 +44,6 @@ Content-discovery tool en Rust con **recursión automática** por default. Más 
 Fuerte cuando hay directories listables en cadena — gobuster requiere scripting manual para eso.
 
 ## 1. Fuzzing de directorios y archivos
-^feroxbuster-fuzzing-directorios
 
 | Acción | Comando |
 | --- | --- |
@@ -58,6 +57,7 @@ Fuerte cuando hay directories listables en cadena — gobuster requiere scriptin
 | Filter words | `feroxbuster -u http://host/ -w w.txt -W 50` |
 | Filter regex | `feroxbuster -u http://host/ -w w.txt --filter-regex 'Not Found'` |
 | Silent (scripts) | `feroxbuster -u http://host/ -w w.txt -q` |
+^feroxbuster-fuzzing-directorios
 
 ## 2. Auto-filter modes
 

@@ -2,6 +2,7 @@
 aliases:
 tags:
 primary categories:
+  - "[[Red Team]]"
 kind: Secondary Category
 ---
 # Web
