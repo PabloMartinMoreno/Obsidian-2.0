@@ -5,6 +5,26 @@
       "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
+      "basename": "Curl - APIs",
+      "path": "04 - Content/Tools/Recon/Curl - APIs.md"
+    },
+    {
+      "basename": "Curl - Fuzzing Parámetros y Valores",
+      "path": "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md"
+    },
+    {
+      "basename": "Curl - Web",
+      "path": "04 - Content/Tools/Recon/Curl - Web.md"
+    },
+    {
+      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
+      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md"
+    },
+    {
+      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
+      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md"
+    },
+    {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
     },
@@ -179,26 +199,6 @@
     {
       "basename": "Métodos HTTP",
       "path": "04 - Content/Web/Fundamentals/Métodos HTTP.md"
-    },
-    {
-      "basename": "03 - DOM XSS document.write (location.search)",
-      "path": "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md"
-    },
-    {
-      "basename": "PortSwigger",
-      "path": "02 - Secondary Categories/PortSwigger.md"
-    },
-    {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     }
   ],
   "omittedPaths": [],

@@ -1036,14 +1036,14 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/curl.md": {
-    "scroll": 44.150789750789755,
+    "scroll": 5.049773755656108,
     "cursor": {
       "from": {
-        "line": 19,
+        "line": 29,
         "ch": 0
       },
       "to": {
-        "line": 19,
+        "line": 29,
         "ch": 0
       }
     },
@@ -1171,6 +1171,76 @@
       "to": {
         "line": 12,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md": {
+    "scroll": 1.3695652173913044,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md": {
+    "scroll": 4.667701863354037,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md": {
+    "scroll": 2.0683229813664594,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/Curl - Web.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 9
+      },
+      "to": {
+        "line": 32,
+        "ch": 9
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/Curl - APIs.md": {
+    "scroll": 0.8851674641148325,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 9
+      },
+      "to": {
+        "line": 23,
+        "ch": 9
       }
     },
     "expandedKeys": []
