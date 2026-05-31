@@ -2,8 +2,7 @@
 tags:
   - meta/ctf
   - estado/incompleto
-  - asset/
-  - env/
+kind: Writeup
 plataforma: "[[HackMyVM]]"
 web: https://hackmyvm.eu/machines/machine.php?vm=<% tp.file.title.replace(/ /g, '') %>
 dificultad:

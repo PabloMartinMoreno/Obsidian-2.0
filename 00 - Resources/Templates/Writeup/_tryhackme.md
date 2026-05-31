@@ -2,8 +2,7 @@
 tags:
   - meta/ctf
   - estado/incompleto
-  - asset/
-  - env/
+kind: Writeup
 plataforma: "[[TryHackMe]]"
 web: https://tryhackme.com/room/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
 dificultad:

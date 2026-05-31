@@ -2,8 +2,7 @@
 tags:
   - meta/ctf
   - estado/incompleto
-  - asset/
-  - env/
+kind: Writeup
 plataforma: "[[DockerLabs]]"
 web: https://www.dockerlabs.com/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
 dificultad:

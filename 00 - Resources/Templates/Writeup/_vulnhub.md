@@ -2,8 +2,7 @@
 tags:
   - meta/ctf
   - estado/incompleto
-  - asset/
-  - env/
+kind: Writeup
 plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
 dificultad:

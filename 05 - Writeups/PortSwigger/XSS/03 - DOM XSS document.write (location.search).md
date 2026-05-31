@@ -3,7 +3,7 @@ aliases:
 tags:
 kind: Concept
 linked:
-  - "[[PortSwigger - XSS - 4) DOM XSS in innerHTML sink using source location.search]]"
+  - "[[04 - DOM XSS innerHTML (location.search)]]"
 ---
 # PortSwigger - XSS - DOM XSS in document.write sink using source location.search
 

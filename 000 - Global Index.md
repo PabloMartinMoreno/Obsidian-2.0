@@ -15,32 +15,19 @@ cssclasses:
 ## Atajos
 
 ### Dashboards
-- [[Incompletos]] — MOC pendientes por dominio
-- [[Todo Round-Up]] — callouts [!todo] activos
-- [[Tools]] — MOC herramientas
-- [[CheatSheets]] — MOC cheatsheets por dominio
-
-### Writeups (por plataforma)
-- [[Hack the Box]] — HTB
-- [[HackMyVM]] — HMV
-- [[OverTheWire]] — OTW wargames
-- [[VulnHub]] — VulnHub
-- [[VulNyx]] — VulNyx
-- [[DockerLabs]] — DockerLabs
-- [[PortSwigger]] — PortSwigger Academy
-
-### Web
-- [[Web Enumeración]] — MOC web recon
-- [[Web Explotación]] — MOC web exploit
-
-### Active Directory
-- [[Active Directory]] — MOC AD (con mindmap)
-- [[Active Directory Enumeración]] — MOC AD enum
-- [[Active Directory Explotación]] — MOC AD exploit
-
-### Process
+- [[Incompletos]] — pendientes por dominio
+- [[Todo Round-Up]] — callouts `[!todo]`
+- [[Tools]] — herramientas
+- [[CheatSheets]] — cheatsheets por dominio
 - [[Vault Administration]] — convenciones del vault
-- [04 - Content/Process/](04%20-%20Content/Process/) — meta-notas y workflows
+
+### Hubs
+- [[Web Enumeración]] · [[Web Explotación]]
+- [[Active Directory]] (con mindmap)
+- [[Blue Team]] (SOC, SIEM, IR, Forensics)
+
+### Carpetas
+- [BlueTeam/](04%20-%20Content/BlueTeam/) · [Linux/](04%20-%20Content/Linux/) · [Crypto/](04%20-%20Content/Crypto/) · [Web/Fundamentals/](04%20-%20Content/Web/Fundamentals/)
 
 ***
 

@@ -2,9 +2,9 @@
 tags:
   - meta/ctf
   - estado/incompleto
-  - asset/
   - env/linux
 wargame:
+kind: Writeup
 plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/
 dificultad:

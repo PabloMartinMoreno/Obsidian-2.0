@@ -7,9 +7,10 @@ tags:
   - asset/web-app
   - estado/incompleto
   - cert/cbbh
-primary categories:
-secondary categories:
-tertiary categories:
+kind: Writeup
+plataforma: "[[PortSwigger]]"
+web: https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses
+dificultad: Fácil
 linked:
 ---
 

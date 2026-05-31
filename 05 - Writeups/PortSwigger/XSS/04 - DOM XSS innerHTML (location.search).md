@@ -3,7 +3,7 @@ aliases:
 tags:
 kind: Concept
 linked:
-  - "[[PortSwigger - XSS - 5) DOM XSS in jQuery anchor href attribute sink using location.search source]]"
+  - "[[05 - DOM XSS jQuery anchor href]]"
 ---
 # PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search
 

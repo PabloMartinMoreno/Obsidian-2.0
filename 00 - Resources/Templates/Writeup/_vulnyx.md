@@ -2,8 +2,7 @@
 tags:
   - meta/ctf
   - estado/incompleto
-  - asset/
-  - env/
+kind: Writeup
 plataforma: "[[VulNyx]]"
 web: https://vulnyx.com/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
 dificultad:

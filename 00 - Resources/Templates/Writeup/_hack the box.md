@@ -2,9 +2,7 @@
 tags:
   - meta/ctf
   - estado/incompleto
-  - asset/
-  - env/
-  - cert/
+kind: Writeup
 plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/<% tp.file.title.replace(/ /g, '') %>
 dificultad:

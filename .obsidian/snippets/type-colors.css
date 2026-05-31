@@ -17,7 +17,7 @@ body [data-link-kind="Command" i] { color: #FFCC34 !important; }
 /* Paleta alto contraste */
 body [data-link-kind="Tool" i] { color: #FF6F00 !important; }
 body [data-link-kind="Technique" i] { color: #C8E000 !important; }
-body [data-link-kind="Concept" i] { color: #1E40AF !important; }
+body [data-link-kind="Concept" i] { color: #A78BFA !important; }
 body [data-link-kind="Vulnerability" i] { color: #8B0000 !important; }
 body [data-link-kind="Writeup" i] { color: #C2185B !important; }
 body [data-link-kind="Playbook" i] { color: #006400 !important; }
@@ -40,7 +40,7 @@ body .workspace-tab-header[data-link-kind="Command" i] { border-left: 3px solid 
 
 body .workspace-tab-header[data-link-kind="Tool" i] { border-left: 3px solid #FF6F00 !important; }
 body .workspace-tab-header[data-link-kind="Technique" i] { border-left: 3px solid #C8E000 !important; }
-body .workspace-tab-header[data-link-kind="Concept" i] { border-left: 3px solid #1E40AF !important; }
+body .workspace-tab-header[data-link-kind="Concept" i] { border-left: 3px solid #A78BFA !important; }
 body .workspace-tab-header[data-link-kind="Vulnerability" i] { border-left: 3px solid #8B0000 !important; }
 body .workspace-tab-header[data-link-kind="Writeup" i] { border-left: 3px solid #C2185B !important; }
 body .workspace-tab-header[data-link-kind="Playbook" i] { border-left: 3px solid #006400 !important; }

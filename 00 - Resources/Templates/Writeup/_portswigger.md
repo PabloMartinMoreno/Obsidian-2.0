@@ -3,7 +3,7 @@ tags:
   - meta/ctf
   - estado/incompleto
   - asset/web-app
-  - vuln/
+kind: Writeup
 plataforma: "[[PortSwigger]]"
 web: https://portswigger.net/web-security/
 dificultad:
