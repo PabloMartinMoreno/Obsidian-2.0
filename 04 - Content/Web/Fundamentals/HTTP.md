@@ -19,6 +19,7 @@ linked:
   - "[[HTTP - Headers]]"
   - "[[HTTP - Cookies y Sesiones]]"
   - "[[HTTP - Basic Auth]]"
+  - "[[URL Encode - Characters]]"
 ---
 # HTTP: Hypertext Transfer Protocol
 

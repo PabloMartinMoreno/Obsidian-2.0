@@ -84,7 +84,7 @@ Dado que GET no debe modificar recursos, los criterios de búsqueda, filtros o i
 - **Historial y Logs:** Al ir los datos en la URL, estos quedan registrados en el historial del navegador, en los marcadores del usuario y en los logs de acceso de los servidores web.
 - **Prohibición para Datos Sensibles:** Nunca se deben utilizar peticiones GET para enviar contraseñas, tokens de autenticación o datos personales, ya que quedarían expuestos fácilmente a través de la URL.
 
-### Idempotencia vs. Mutabilidad en el Mundo Real
+#### Idempotencia vs. Mutabilidad en el Mundo Real
 
 Por definición, GET es idempotente y seguro. Sin embargo, esto depende enteramente de la implementación en el backend:
 - **Mala Práctica:** Diseñar un endpoint de tipo GET que altere la base de datos (por ejemplo, `/eliminar-usuario?id=5`).
@@ -99,6 +99,7 @@ Por definición, GET es idempotente y seguro. Sin embargo, esto depende enterame
 - [[Estrategias de Caché con Cache-Control y ETag]]
 - [[Diferencias Técnicas entre GET y POST]]
 - [[Codificación URL (URL Encoding)]]
+
 
 **Notas relacionadas:**
 - [[HTTP]] · [[HTTP - Métodos]] · [[HTTP - Basic Auth]] · [[curl]]

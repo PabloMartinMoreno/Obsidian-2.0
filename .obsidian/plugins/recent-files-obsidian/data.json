@@ -1,16 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
+      "basename": "Curl - Web",
+      "path": "04 - Content/Tools/Recon/Curl - Web.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
     },
     {
+      "basename": "HTTPS",
+      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
+    },
+    {
       "basename": "HTTP",
       "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
+      "basename": "POST",
+      "path": "04 - Content/Process/POST.md"
+    },
+    {
+      "basename": "HTTP - Métodos",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
+    },
+    {
+      "basename": "GET",
+      "path": "04 - Content/Web/Fundamentals/GET.md"
     },
     {
       "basename": "HTTP - Basic Auth",
@@ -29,10 +49,6 @@
       "path": "04 - Content/Web/Fundamentals/Web.md"
     },
     {
-      "basename": "HTTP - Métodos",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
-    },
-    {
       "basename": "Flujo de Comunicación HTTP",
       "path": "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md"
     },
@@ -43,10 +59,6 @@
     {
       "basename": "Web Content Types",
       "path": "04 - Content/Web/Fundamentals/Web Content Types.md"
-    },
-    {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
     },
     {
       "basename": "Protocolos de Red",
@@ -83,10 +95,6 @@
     {
       "basename": "Criptografía Simétrica vs. Asimétrica",
       "path": "04 - Content/Crypto/Criptografía Simétrica vs. Asimétrica.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
       "basename": "HTML Injection",
@@ -145,10 +153,6 @@
       "path": "04 - Content/Tools/Recon/Curl - APIs.md"
     },
     {
-      "basename": "Curl - Web",
-      "path": "04 - Content/Tools/Recon/Curl - Web.md"
-    },
-    {
       "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
       "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md"
     },
@@ -191,14 +195,6 @@
     {
       "basename": "Vault Administration",
       "path": "04 - Content/Process/Vault Administration.md"
-    },
-    {
-      "basename": "User Privileges",
-      "path": "04 - Content/Process/User Privileges.md"
-    },
-    {
-      "basename": "Todo Round-Up",
-      "path": "04 - Content/Process/Todo Round-Up.md"
     }
   ],
   "omittedPaths": [],

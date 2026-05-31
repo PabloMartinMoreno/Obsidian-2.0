@@ -29,5 +29,6 @@ linked:
 | `curl 'http://<SERVER_IP>:<PORT>/search.php?search=le'`                                                          | Envía parámetros mediante GET                                        |
 | `curl -X POST -d 'username=admin&password=admin' http://<SERVER_IP>:<PORT>/`                                     | Envía una solicitud POST con datos de formulario                     |
 | `curl -b 'PHPSESSID=c1nsa6op7vtk7kdis7bcnbadf1' http://<SERVER_IP>:<PORT>/`                                      | Envía cookies en la solicitud                                        |
+| `curl -c cookie.txt http://<user>:<pass>@<SERVER_IP>:<PORT>/`                                                    | Guarda la cookie en un archivo                                       |
 | `curl -X POST -d '{"search":"london"}' -H 'Content-Type: application/json' http://<SERVER_IP>:<PORT>/search.php` | Envía una solicitud POST con datos en formato JSON                   |
 ^curl-web

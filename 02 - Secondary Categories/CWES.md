@@ -19,10 +19,9 @@ kind: Secondary Category
 
 Cómo viaja una petición y cómo manipularla. Base de todo lo demás.
 
-- [[HTTP]] · [[HTTPS]]
-- [[GET]] · [[POST]]
+- [[HTTP]] · [[HTTPS]] 
 - [[HTTP - Basic Auth]]
-- [[HTTP - Headers]] · [[HTTP - Cookies y Sesiones]]
+- [[GET]] · [[POST]]
 - [[Web Content Types]] · [[URL Encode - Characters]]
 - Herramienta: [[curl]]
 

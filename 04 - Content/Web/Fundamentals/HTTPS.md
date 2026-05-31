@@ -20,6 +20,7 @@ linked:
   - "[[HTTP - Headers]]"
   - "[[HTTP - Cookies y Sesiones]]"
   - "[[Flujo de Comunicación HTTPS]]"
+  - "[[URL Encode - Characters]]"
 ---
 # HTTPS: Hypertext Transfer Protocol Secure
 

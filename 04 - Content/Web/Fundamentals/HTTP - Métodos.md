@@ -14,9 +14,8 @@ kind: Concept
 linked:
   - "[[HTTP]]"
   - "[[HTTPS]]"
-  - "[[API REST]]"
-  - "[[HTTP - Códigos de Estado]]"
   - "[[GET]]"
+  - "[[POST]]"
 ---
 
 # Métodos HTTP
@@ -110,10 +109,10 @@ Para entender mejor cómo usarlos, los clasificamos según dos propiedades:
 > [!WARNING] Verbos peligrosos expuestos
 > La disponibilidad de cada método depende de la configuración del servidor. Verbos de escritura habilitados sin control son superficie de ataque directa:
 >
-> - **`PUT`** sin controles → subida de recursos maliciosos (ej. [[Webshells\|webshell]]).
-> - **`DELETE`** sin protección → **[[Denial of Service (DoS)\|DoS]]** borrando archivos críticos del servidor.
-> - **`OPTIONS`** → enumeración: revela qué verbos están habilitados antes de atacarlos.
-> - **`TRACE`** → potencial **Cross-Site Tracing (XST)** para robar cookies vía reflejo de headers.
+> - **PUT** sin controles → subida de recursos maliciosos (ej. [[Webshells\|webshell]]).
+> - **DELETE** sin protección → **[[Denial of Service (DoS)\|DoS]]** borrando archivos críticos del servidor.
+> - **OPTIONS** → enumeración: revela qué verbos están habilitados antes de atacarlos.
+> - **TRACE** → potencial **Cross-Site Tracing (XST)** para robar cookies vía reflejo de headers.
 
 Enumerá los métodos permitidos sobre un recurso:
 
