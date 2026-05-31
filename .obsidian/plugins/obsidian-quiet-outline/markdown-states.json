@@ -516,5 +516,47 @@
       }
     },
     "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md": {
+    "scroll": 1.076555023923445,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Métodos HTTP.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES.md": {
+    "scroll": 6.551813471502591,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
   }
 }

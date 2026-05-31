@@ -1,11 +1,17 @@
 ---
 aliases:
+  - HTTP Status Codes
 tags:
-primary categories:
-secondary categories:
-tertiary categories:
+  - service/http
+  - asset/web-app
+  - estado/completo
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: Concept
 linked:
+  - '[[HTTP]]'
+  - '[[Métodos HTTP]]'
 ---
 # Códigos de Estado HTTP
 
@@ -21,7 +27,7 @@ Indican que la petición fue recibida y el proceso continúa.
 ## 2xx: Éxito
 
 La acción se completó correctamente.
-- `200 OK`: Todo salió bien.
+- `200 OK`: Todo salió bien; el body suele contener el recurso solicitado.
 - `201 Created`: La petición tuvo éxito y se creó un nuevo recurso (común en `POST`).
 - `204 No Content`: Éxito, pero no hay nada que enviar de vuelta.
 
@@ -29,14 +35,14 @@ La acción se completó correctamente.
 
 El cliente necesita realizar una acción adicional.
 - `301 Moved Permanently`: La URL cambió para siempre.
-- `302 Found`: Redirección temporal.
+- `302 Found`: Redirección temporal (ej. enviar al usuario a su panel tras un login exitoso).
 
 ## 4xx: Errores del Cliente
 
 Hubo un problema con la petición enviada.
-- `400 Bad Request`: El servidor no entiende la petición por sintaxis inválida.
+- `400 Bad Request`: El servidor no entiende la petición por sintaxis inválida (ej. terminadores de línea faltantes).
 - `401 Unauthorized`: Se requiere autenticación.
-- `403 Forbidden`: No tienes permiso para ver esto.
+- `403 Forbidden`: No tienes permiso para ver esto. También puede aparecer cuando el servidor detecta **entrada maliciosa** (WAF/filtro).
 - `404 Not Found`: El recurso no existe.
 
 ## 5xx: Errores del Servidor
@@ -47,3 +53,22 @@ El servidor falló al intentar cumplir una petición válida.
 
 ---
 
+## Uso Ofensivo
+
+> [!TIP] Señal en enumeración y fuzzing
+> Los códigos de estado son la principal señal al fuzzear rutas, parámetros o credenciales:
+>
+> - `200` / `301` / `302` → recurso válido o redirección útil (login OK, endpoint existente).
+> - `401` / `403` → el recurso **existe** pero está protegido; vale la pena buscar bypass.
+> - `404` → ruta inexistente (baseline para filtrar ruido).
+> - `405 Method Not Allowed` → el verbo no aplica; probá otros métodos ([[Métodos HTTP]]).
+> - `500` → input no manejado; suele delatar inyección ([[SQL Injection (SQLI)|SQLi]], [[Server-Side Template Injection (SSTI)|SSTI]]) o error explotable.
+
+Filtrá por código de estado al fuzzear — ver [[Filtrado de salida de fuzzing]].
+
+---
+
+**Notas relacionadas:**
+- [[HTTP]]
+- [[Métodos HTTP]]
+- [[Filtrado de salida de fuzzing]]

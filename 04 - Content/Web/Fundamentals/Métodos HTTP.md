@@ -1,18 +1,26 @@
 ---
-aliases:
+aliases: null
 tags:
-primary categories:
-secondary categories:
-tertiary categories:
+  - service/http
+  - asset/web-app
+  - estado/completo
+primary categories: null
+secondary categories: null
+tertiary categories: null
 kind: Concept
 linked:
-  - "[[HTTP]]"
-  - "[[HTTPS]]"
+  - '[[HTTP]]'
+  - '[[HTTPS]]'
+  - '[[API REST]]'
+  - '[[Códigos de Estado HTTP]]'
 ---
 
 # Métodos HTTP
 
 Los métodos HTTP indican la acción que se desea realizar sobre un recurso determinado. En una [[API REST]], estos métodos se mapean directamente a las operaciones **CRUD** (Create, Read, Update, Delete).
+
+> [!TIP] Ver el método de una petición
+> Con `curl -v` se previsualiza la petición completa; la primera línea contiene el método (`GET / HTTP/1.1`). En las DevTools del navegador aparece en la columna `Method`.
 
 ___
 
@@ -59,7 +67,7 @@ Se utiliza para **eliminar** un recurso específico del servidor.
 
 |**Método**|**Descripción**|
 |---|---|
-|**HEAD**|Igual que `GET`, pero el servidor solo devuelve los [[HTTP headers|
+|**HEAD**|Igual que `GET`, pero el servidor solo devuelve los [[HTTP Headers\|headers]] (sin body). Útil para comprobar tamaño o existencia de un recurso antes de descargarlo.|
 |**OPTIONS**|El cliente pregunta qué métodos están permitidos para un recurso. Fundamental para el [[CORS]].|
 |**CONNECT**|Establece un túnel hacia el servidor (usado en Proxies y [[HTTPS]]).|
 
@@ -70,18 +78,35 @@ Se utiliza para **eliminar** un recurso específico del servidor.
 Para entender mejor cómo usarlos, los clasificamos según dos propiedades:
 
 > [!CHECK] Métodos Seguros
-> 
+>
 > Aquellos que no alteran el estado del servidor (solo lectura).
-> 
+>
 > - **GET, HEAD, OPTIONS.**
->     
 
 > [!RECYCLE] Métodos Idempotentes
-> 
+>
 > Aquellos que producen el mismo resultado sin importar cuántas veces se ejecuten.
-> 
+>
 > - **GET, HEAD, PUT, DELETE, OPTIONS.**
->     
+
+---
+
+## Implicancias de Seguridad
+
+> [!WARNING] Verbos peligrosos expuestos
+> La disponibilidad de cada método depende de la configuración del servidor. Verbos de escritura habilitados sin control son superficie de ataque directa:
+>
+> - **`PUT`** sin controles → subida de recursos maliciosos (ej. [[Webshells\|webshell]]).
+> - **`DELETE`** sin protección → **[[Denial of Service (DoS)\|DoS]]** borrando archivos críticos del servidor.
+> - **`OPTIONS`** → enumeración: revela qué verbos están habilitados antes de atacarlos.
+> - **`TRACE`** → potencial **Cross-Site Tracing (XST)** para robar cookies vía reflejo de headers.
+
+Enumerá los métodos permitidos sobre un recurso:
+
+```bash
+curl -i -X OPTIONS http://target/
+# Respuesta -> Allow: GET, POST, PUT, DELETE, OPTIONS
+```
 
 ---
 
@@ -94,12 +119,14 @@ Si tuviéramos un recurso de `usuarios`:
 - `PUT /usuarios/123` → Actualiza todos los datos del usuario 123.
 - `DELETE /usuarios/123` → Borra al usuario 123.
 
+> [!NOTE]
+> La mayoría de aplicaciones web modernas se basan en `GET` y `POST`. Las que usan **[[API REST]]** dependen también de `PUT` y `DELETE` para actualizar y eliminar datos en el endpoint.
+
 ---
 
 **Notas relacionadas:**
 
 - [[HTTP]]
+- [[Códigos de Estado HTTP]]
 - [[http-flow|Flujo HTTP]]
-- [[API REST]]# Métodos HTTP
-
-***
+- [[API REST]]

@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES",
+      "path": "04 - Content/Process/CWES.md"
+    },
+    {
+      "basename": "Códigos de Estado HTTP",
+      "path": "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md"
+    },
+    {
+      "basename": "Métodos HTTP",
+      "path": "04 - Content/Web/Fundamentals/Métodos HTTP.md"
+    },
+    {
       "basename": "03 - DOM XSS document.write (location.search)",
       "path": "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Bandit 15",
       "path": "05 - Writeups/OverTheWire/Bandit 15.md"
-    },
-    {
-      "basename": "Bandit 16",
-      "path": "05 - Writeups/OverTheWire/Bandit 16.md"
-    },
-    {
-      "basename": "Bandit 17",
-      "path": "05 - Writeups/OverTheWire/Bandit 17.md"
-    },
-    {
-      "basename": "Bandit 18",
-      "path": "05 - Writeups/OverTheWire/Bandit 18.md"
     }
   ],
   "omittedPaths": [],
