@@ -1,36 +1,156 @@
 {
   "recentFiles": [
     {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+      "basename": "curl",
+      "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
     },
     {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
+      "basename": "GET",
+      "path": "04 - Content/Web/Fundamentals/GET.md"
+    },
+    {
+      "basename": "Flujo de Comunicación HTTP",
+      "path": "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md"
+    },
+    {
+      "basename": "DOM",
+      "path": "04 - Content/Web/Fundamentals/DOM.md"
+    },
+    {
+      "basename": "Cookies y Sesiones",
+      "path": "04 - Content/Web/Fundamentals/Cookies y Sesiones.md"
+    },
+    {
+      "basename": "Códigos de Estado HTTP",
+      "path": "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md"
+    },
+    {
+      "basename": "API Security",
+      "path": "04 - Content/Web/Fundamentals/API Security.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
+      "basename": "Subdomain Takeover",
+      "path": "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md"
+    },
+    {
+      "basename": "Default credentials",
+      "path": "04 - Content/Web/Auth/Default credentials.md"
+    },
+    {
+      "basename": "Clickjacking - Bypass de Anti-Framing",
+      "path": "04 - Content/Web/Clickjacking/Clickjacking - Bypass de Anti-Framing.md"
+    },
+    {
+      "basename": "Incompletos",
+      "path": "04 - Content/Process/Incompletos.md"
+    },
+    {
+      "basename": "objetivos",
+      "path": "04 - Content/Process/objetivos.md"
+    },
+    {
+      "basename": "VMDK, VHD and VHDX files",
+      "path": "04 - Content/Process/VMDK, VHD and VHDX files.md"
+    },
+    {
+      "basename": "Vault Administration",
+      "path": "04 - Content/Process/Vault Administration.md"
+    },
+    {
+      "basename": "User Privileges",
+      "path": "04 - Content/Process/User Privileges.md"
+    },
+    {
+      "basename": "Todo Round-Up",
+      "path": "04 - Content/Process/Todo Round-Up.md"
+    },
+    {
+      "basename": "Templates",
+      "path": "04 - Content/Process/Templates.md"
+    },
+    {
+      "basename": "tags",
+      "path": "04 - Content/Process/tags.md"
+    },
+    {
+      "basename": "sherlocks",
+      "path": "04 - Content/Process/sherlocks.md"
+    },
+    {
+      "basename": "Recollection",
+      "path": "04 - Content/Process/Recollection.md"
+    },
+    {
+      "basename": "Crown Jewel 1",
+      "path": "05 - Writeups/HackTheBox/Crown Jewel 1.md"
+    },
+    {
+      "basename": "Privilege Escalation",
+      "path": "04 - Content/Process/Privilege Escalation.md"
+    },
+    {
+      "basename": "Protocolos de Red",
+      "path": "04 - Content/Process/Protocolos de Red.md"
+    },
+    {
+      "basename": "OverTheWire",
+      "path": "04 - Content/Process/OverTheWire.md"
+    },
+    {
+      "basename": "Mangobleed",
+      "path": "04 - Content/Process/Mangobleed.md"
+    },
+    {
+      "basename": "HTTP Brute Forcing",
+      "path": "04 - Content/Process/HTTP Brute Forcing.md"
+    },
+    {
+      "basename": "Honeytokens & Tracking Pixels",
+      "path": "04 - Content/Process/Honeytokens & Tracking Pixels.md"
     },
     {
       "basename": "CWES - Checklists",
       "path": "04 - Content/Process/CWES - Checklists.md"
     },
     {
-      "basename": "CWES - Maquinas",
-      "path": "04 - Content/Process/CWES - Maquinas.md"
+      "basename": "CheatSheets",
+      "path": "04 - Content/Process/CheatSheets.md"
+    },
+    {
+      "basename": "Broken autentication",
+      "path": "04 - Content/Process/Broken autentication.md"
+    },
+    {
+      "basename": "Blockchain",
+      "path": "04 - Content/Process/Blockchain.md"
     },
     {
       "basename": "AWS Enumeration",
       "path": "04 - Content/Process/AWS Enumeration.md"
     },
     {
+      "basename": "AD Enumeration",
+      "path": "04 - Content/Process/AD Enumeration.md"
+    },
+    {
       "basename": "Abusing PHP Filters",
       "path": "04 - Content/Process/Abusing PHP Filters.md"
     },
     {
-      "basename": "AD Enumeration",
-      "path": "04 - Content/Process/AD Enumeration.md"
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "CWES - Maquinas",
+      "path": "04 - Content/Process/CWES - Maquinas.md"
     },
     {
       "basename": "HTTPS",
@@ -57,14 +177,6 @@
       "path": "01 - Primary Categories/Red Team.md"
     },
     {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
-    },
-    {
-      "basename": "Códigos de Estado HTTP",
-      "path": "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md"
-    },
-    {
       "basename": "Métodos HTTP",
       "path": "04 - Content/Web/Fundamentals/Métodos HTTP.md"
     },
@@ -87,114 +199,6 @@
     {
       "basename": "GraphQL Injection",
       "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
-    },
-    {
-      "basename": "Auth Bypass - Brute Force y Credential Stuffing",
-      "path": "04 - Content/Web/Auth/Auth Bypass - Brute Force y Credential Stuffing.md"
-    },
-    {
-      "basename": "URL",
-      "path": "04 - Content/Web/URL.md"
-    },
-    {
-      "basename": "Server-Side Attacks",
-      "path": "04 - Content/Web/Server-Side Attacks.md"
-    },
-    {
-      "basename": "Escalada de Privilegios - Comandos Comunes",
-      "path": "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md"
-    },
-    {
-      "basename": "Certificados SSL-TLS",
-      "path": "04 - Content/Crypto/Certificados SSL-TLS.md"
-    },
-    {
-      "basename": "XML External Entity (XXE)",
-      "path": "04 - Content/Web/XXE/XML External Entity (XXE).md"
-    },
-    {
-      "basename": "Wireshark",
-      "path": "04 - Content/Tools/Wireshark.md"
-    },
-    {
-      "basename": "OS Command Injection",
-      "path": "04 - Content/Web/CommandInjection/OS Command Injection.md"
-    },
-    {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
-    },
-    {
-      "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
-      "path": "04 - Content/Web/XSLT/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "SSTI reconocimiento",
-      "path": "00 - Resources/Images/SSTI reconocimiento.png"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "Directory Traversal",
-      "path": "04 - Content/Web/PathTraversal/Directory Traversal.md"
-    },
-    {
-      "basename": "File Inclusion",
-      "path": "04 - Content/Web/FileInclusion/File Inclusion.md"
-    },
-    {
-      "basename": "HTTP Parameter Pollution",
-      "path": "04 - Content/Web/HPP/HTTP Parameter Pollution.md"
-    },
-    {
-      "basename": "CRLF Injection",
-      "path": "04 - Content/Web/CRLF/CRLF Injection.md"
-    },
-    {
-      "basename": "LDAP Injection",
-      "path": "04 - Content/Web/Injection/LDAP Injection.md"
-    },
-    {
-      "basename": "NoSQL Injection",
-      "path": "04 - Content/Web/Injection/NoSQL Injection.md"
-    },
-    {
-      "basename": "SQLi - Union based",
-      "path": "04 - Content/Web/Injection/SQLi - Union based.md"
-    },
-    {
-      "basename": "Access",
-      "path": "05 - Writeups/HackTheBox/Access.md"
-    },
-    {
-      "basename": "Drawbacks of Traditional Note-Taking Systems",
-      "path": "04 - Content/Obsidian/Drawbacks of Traditional Note-Taking Systems.md"
-    },
-    {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "Service Exploitation",
-      "path": "03 - Tertiary Categories/Service Exploitation.md"
-    },
-    {
-      "basename": "Broken autentication",
-      "path": "04 - Content/Process/Broken autentication.md"
-    },
-    {
-      "basename": "SQLi - Error based",
-      "path": "04 - Content/Web/Injection/SQLi - Error based.md"
-    },
-    {
-      "basename": "Incompletos",
-      "path": "04 - Content/Process/Incompletos.md"
     }
   ],
   "omittedPaths": [],

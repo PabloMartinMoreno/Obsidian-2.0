@@ -1,21 +1,21 @@
 ---
-aliases: null
+aliases:
 tags:
   - service/http
   - asset/web-app
   - cert/cwes
   - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 kind: Concept
 linked:
-  - '[[HTTP]]'
-  - '[[HTTPS]]'
-  - '[[http-flow|Flujo HTTP]]'
-  - '[[Cookies y Sesiones]]'
+  - "[[HTTP]]"
+  - "[[HTTPS]]"
+  - "[[Flujo de Comunicación HTTP|Flujo HTTP]]"
+  - "[[Cookies y Sesiones]]"
 ---
 # HTTP Headers
 
@@ -95,5 +95,5 @@ Cache-Control: public, max-age=86400
 **Notas relacionadas:**
 
 - [[HTTP]]
-- [[http-flow|Flujo HTTP]]
+- [[Flujo de Comunicación HTTP|Flujo HTTP]]
 - [[Cookies y Sesiones]]

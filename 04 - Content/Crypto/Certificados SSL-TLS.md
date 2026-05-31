@@ -8,7 +8,7 @@ kind: Concept
 linked:
   - "[[HTTPS]]"
   - "[[Criptografía Simétrica vs. Asimétrica]]"
-  - "[[http-flow]]"
+  - "[[Flujo de Comunicación HTTP]]"
 ---
 # Certificados SSL/TLS
 
@@ -69,4 +69,4 @@ Cuando entras a una web por [[HTTPS]]:
 
 - [[HTTPS]]
 - [[Criptografía Simétrica vs. Asimétrica]]
-- [[http-flow|Flujo HTTP]]
+- [[Flujo de Comunicación HTTP|Flujo HTTP]]

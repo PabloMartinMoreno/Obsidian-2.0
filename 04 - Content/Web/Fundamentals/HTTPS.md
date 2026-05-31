@@ -7,26 +7,26 @@ tags:
   - cert/cwes
   - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 kind: Concept
 linked:
-  - '[[HTTP]]'
-  - '[[http-flow]]'
-  - '[[Criptografía Simétrica vs. Asimétrica]]'
-  - '[[curl]]'
-  - '[[URL]]'
-  - '[[Códigos de Estado HTTP]]'
-  - '[[Cookies y Sesiones]]'
-  - '[[Protocolos de Red]]'
-  - '[[HTTP Headers]]'
-  - '[[Métodos HTTP]]'
+  - "[[HTTP]]"
+  - "[[Flujo de Comunicación HTTP]]"
+  - "[[Criptografía Simétrica vs. Asimétrica]]"
+  - "[[curl]]"
+  - "[[URL]]"
+  - "[[Códigos de Estado HTTP]]"
+  - "[[Cookies y Sesiones]]"
+  - "[[Protocolos de Red]]"
+  - "[[HTTP Headers]]"
+  - "[[Métodos HTTP]]"
 ---
 # HTTPS: Hypertext Transfer Protocol Secure
 
-**HTTPS** es la versión segura de [[HTTP]]. Es el mismo protocolo, pero envuelto en una capa de cifrado llamada **SSL/TLS**. Su objetivo es proteger la confidencialidad e integridad de los datos durante el [[http-flow]].
+**HTTPS** es la versión segura de [[HTTP]]. Es el mismo protocolo, pero envuelto en una capa de cifrado llamada **SSL/TLS**. Su objetivo es proteger la confidencialidad e integridad de los datos durante el [[Flujo de Comunicación HTTP]].
 
 ___
 
@@ -85,5 +85,5 @@ ___
 
 **Notas relacionadas:**
 - [[HTTP]]
-- [[http-flow|Flujo HTTP]]
+- [[Flujo de Comunicación HTTP|Flujo HTTP]]
 - [[Certificados SSL/TLS]]

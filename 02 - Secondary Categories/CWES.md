@@ -20,6 +20,7 @@ kind: Secondary Category
 Cómo viaja una petición y cómo manipularla. Base de todo lo demás.
 
 - [[HTTP]] · [[HTTPS]]
+- [[Flujo de Comunicación HTTP]]
 - [[Métodos HTTP]] · [[Códigos de Estado HTTP]]
 - [[GET]] (requests, Basic Auth, header Authorization, parámetros GET)
 - [[HTTP Headers]] · [[Cookies y Sesiones]]

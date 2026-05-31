@@ -7,7 +7,7 @@ tertiary categories:
 kind: Concept
 linked:
   - "[[HTTPS]]"
-  - "[[http-flow]]"
+  - "[[Flujo de Comunicación HTTP]]"
   - "[[Certificados SSL-TLS]]"
 ---
 # Criptografía Simétrica vs. Asimétrica
@@ -68,4 +68,4 @@ HTTPS combina lo mejor de ambos mundos:
 
 - [[HTTPS]]
 - [[Certificados SSL-TLS]]
--  [[http-flow]]
+-  [[Flujo de Comunicación HTTP]]

@@ -1,6 +1,7 @@
 ---
 aliases:
   - Flujo HTTP
+  - HTTP Flow
 tags:
 primary categories:
 secondary categories:

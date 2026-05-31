@@ -132,5 +132,5 @@ Si tuviéramos un recurso de `usuarios`:
 
 - [[HTTP]]
 - [[Códigos de Estado HTTP]]
-- [[http-flow|Flujo HTTP]]
+- [[Flujo de Comunicación HTTP|Flujo HTTP]]
 - [[API REST]]

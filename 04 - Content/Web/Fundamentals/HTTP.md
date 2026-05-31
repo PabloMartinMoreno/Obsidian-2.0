@@ -7,21 +7,21 @@ tags:
   - cert/cwes
   - estado/completo
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 kind: Concept
 linked:
-  - '[[Códigos de Estado HTTP]]'
-  - '[[Cookies y Sesiones]]'
-  - '[[http-flow]]'
-  - '[[URL]]'
-  - '[[curl]]'
-  - '[[HTTPS]]'
-  - '[[Protocolos de Red]]'
-  - '[[HTTP Headers]]'
-  - '[[Métodos HTTP]]'
+  - "[[Códigos de Estado HTTP]]"
+  - "[[Cookies y Sesiones]]"
+  - "[[Flujo de Comunicación HTTP]]"
+  - "[[URL]]"
+  - "[[curl]]"
+  - "[[HTTPS]]"
+  - "[[Protocolos de Red]]"
+  - "[[HTTP Headers]]"
+  - "[[Métodos HTTP]]"
 ---
 # HTTP: Hypertext Transfer Protocol
 
