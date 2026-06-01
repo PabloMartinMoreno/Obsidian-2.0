@@ -115,11 +115,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 18,
+        "line": 19,
         "ch": 0
       },
       "to": {
-        "line": 18,
+        "line": 19,
         "ch": 0
       }
     },
@@ -574,35 +574,38 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/GET.md": {
-    "scroll": 7.043062200956938,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 85,
+        "line": 87,
         "ch": 0
       },
       "to": {
-        "line": 85,
+        "line": 87,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 12.122395833333334,
+    "scroll": 13.205729166666666,
     "cursor": {
       "from": {
-        "line": 30,
+        "line": 26,
         "ch": 0
       },
       "to": {
-        "line": 30,
+        "line": 26,
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-2-1",
+      "item-1-0"
+    ]
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 8.262443438914028,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 71,
@@ -613,7 +616,9 @@
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0"
+    ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
     "scroll": 18.220527045769764,
@@ -633,15 +638,17 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 7,
+        "line": 12,
         "ch": 0
       },
       "to": {
-        "line": 7,
+        "line": 12,
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0"
+    ]
   },
   "04 - Content/Web/Fundamentals/HTTPS.md": {
     "scroll": 0,
@@ -728,7 +735,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/Blockchain.md": {
-    "scroll": 42.37677725118483,
+    "scroll": 29.5703125,
     "cursor": {
       "from": {
         "line": 9,
@@ -1036,7 +1043,7 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/curl.md": {
-    "scroll": 7.221719457013575,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 21,
@@ -1047,7 +1054,9 @@
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0"
+    ]
   },
   "04 - Content/Web/Clickjacking/Clickjacking - Bypass de Anti-Framing.md": {
     "scroll": 0,
@@ -1187,10 +1196,12 @@
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0"
+    ]
   },
   "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md": {
-    "scroll": 4.667701863354037,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 9,
@@ -1201,21 +1212,25 @@
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0"
+    ]
   },
   "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md": {
-    "scroll": 2.0683229813664594,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 9,
+        "line": 12,
         "ch": 0
       },
       "to": {
-        "line": 9,
+        "line": 12,
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0"
+    ]
   },
   "04 - Content/Tools/Recon/Curl - Web.md": {
     "scroll": 0,
@@ -1229,7 +1244,9 @@
         "ch": 9
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0"
+    ]
   },
   "04 - Content/Tools/Recon/Curl - APIs.md": {
     "scroll": 0.8851674641148325,
@@ -1563,6 +1580,66 @@
       "to": {
         "line": 91,
         "ch": 41
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/POST.md": {
+    "scroll": 0.7535885167464115,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0",
+      "item-3-3",
+      "item-2-2"
+    ]
+  },
+  "00 - Resources/Templates/Type/_sub-command.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "00 - Resources/Templates/Type/_payload.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "00 - Resources/Templates/Type/_cheatsheet.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
       }
     },
     "expandedKeys": []

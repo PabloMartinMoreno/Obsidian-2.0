@@ -145,6 +145,7 @@
     "tool/certipy": 94,
     "tool/chainsaw": 88,
     "tool/chisel": 120,
+    "tool/curl": 139,
     "tool/dig": 82,
     "tool/dnsenum": 83,
     "tool/dnsrecon": 36,

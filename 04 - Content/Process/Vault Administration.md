@@ -54,10 +54,10 @@ Property que define la **función/base** de la nota. Determina color en graph + 
 Valores canónicos:
 - **CheatSheet** — referencia rápida de comandos/sintaxis
 - **SubCheatSheet** — sub-cheatsheet temática
-- **Tool** — herramienta específica (nmap, ffuf, BloodHound, etc.)
+- **Tool** — programa/binario que se ejecuta como utilidad, con su cheatsheet de uso (`curl`, `nmap`, `dig`, `gobuster`, `ffuf`, `BloodHound`, `Wireshark`, `Bash`…)
 - **Technique** — técnica abstracta de ataque/defensa
 - **Concept** — concepto teórico
-- **Command** — comando individual destacado
+- **Command** — nota sobre UN comando/one-liner o setting puntual, NO un programa entero (ej. `PowerShell - FormatEnumerationLimit`)
 - **Sub-Command** — variante/flag de comando
 - **Sub-Note** — nota auxiliar
 - **Vulnerability** — vulnerabilidad clásica

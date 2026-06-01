@@ -3,7 +3,7 @@ aliases:
 tags:
   - technique/recon/active
   - asset/web-app
-kind: Sub-Command
+kind: SubCheatSheet
 linked:
   - "[[curl]]"
 ---

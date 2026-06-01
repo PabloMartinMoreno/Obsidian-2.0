@@ -1,12 +1,17 @@
 ---
 aliases:
 tags:
-  - estado/incompleto
+  - tool/curl
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-kind: Sub-Command
+  - "[[Web Enumeración]]"
+kind: SubCheatSheet
 linked:
+  - "[[curl]]"
 ---
 # Curl - Acronimos
 

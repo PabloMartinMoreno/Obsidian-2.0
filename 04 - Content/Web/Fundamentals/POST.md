@@ -21,8 +21,6 @@ linked:
 ---
 # POST
 
-El método **POST** envía datos en el **cuerpo** de la petición para crear o procesar un recurso. Modifica el estado del servidor: no es seguro ni idempotente.
-
 ---
 
 ## Cheatsheet
@@ -33,14 +31,13 @@ El método **POST** envía datos en el **cuerpo** de la petición para crear o p
 - **Transmisión de datos:** Principalmente a través del cuerpo de la petición (_Request Body_).
 - **Caché:** No por defecto. Las respuestas solo se almacenan en caché si se configuran cabeceras explícitas y el servidor lo permite de forma extraordinaria.
 - **Límite de tamaño:** Prácticamente ilimitado, restringido únicamente por la configuración de capacidad máxima del servidor web (ej. `client_max_body_size` en [[Nginx]]).
-
 ^post-cheatsheet
 
 ---
 
 ## Overview
 
-El método **POST** es uno de los pilares del [[HTTP]] para la interacción dinámica y la manipulación de datos en la web. A diferencia de [[GET]], que se limita a la lectura, POST se utiliza para enviar datos estructurados al servidor con el fin de que un recurso subordinado los procese. Es el método estándar para la creación de nuevos registros en bases de datos, el envío de formularios de registro, la subida de archivos y la ejecución de acciones que alteran irreversiblemente el estado del sistema.
+POST es donde ocurren las **mutaciones**: login, registro, subida de archivos, creación de registros. Por eso es la superficie primaria de ataque — su **cuerpo es punto de inyección** ([[SQL Injection (SQLi)|SQLi]], [[NoSQL Injection|NoSQLi]], [[OS Command Injection|command injection]]) y habilita [[File Upload - Vulnerabilidades|file upload]], [[Mass Assignment]], [[Cross-Site Request Forgery (CSRF)|CSRF]] y abuso de [[Race Conditions|race conditions]].
 
 ### Mecánica y Tipos de Contenido (Content-Type)
 
@@ -59,6 +56,11 @@ Utilizado cuando el formulario requiere el envío de archivos binarios (imágene
 
 El estándar de facto para la comunicación en [[API REST]] modernas y aplicaciones SPA (Single Page Applications).
 - Transporta estructuras de datos complejas, anidadas y tipadas directamente en formato JSON.
+
+> [!TIP] Relevancia ofensiva del Content-Type
+> - `multipart/form-data` → [[File Upload - Vulnerabilidades|file upload]] (webshell).
+> - `application/json` → [[Mass Assignment]], [[NoSQL Injection|NoSQLi]].
+> - Cambiar el `Content-Type` (ej. JSON ↔ urlencoded) puede saltear validaciones, WAF o protecciones CSRF.
 
 ### Anatomía de una Petición POST
 
@@ -94,19 +96,13 @@ Content-Length: 43
 }
 ```
 
-### El Problema de la No Idempotencia
+### No idempotencia → Race Conditions
 
-Dado que POST no es idempotente, repetir la petición tiene consecuencias multiplicativas:
-- **El escenario clásico:** Si un usuario envía un formulario de pago con POST y la red sufre un retraso, el usuario podría hacer clic de nuevo en el botón "Pagar". Si el cliente reenvía la petición POST idéntica, el servidor procesará un segundo cobro.
-- **Mitigación:** Para solucionar esto en arquitecturas web se implementan patrones como [[Idempotency Keys]] (Tokens de Idempotencia) en cabeceras o el patrón de diseño [[Post/Redirect/Get (PRG)]] en aplicaciones web tradicionales para evitar que el usuario refresque la página y reenvíe los datos.
-    
+Que POST no sea idempotente es explotable: enviar **N peticiones en paralelo** antes de que el servidor actualice el estado puede multiplicar la acción — doble retiro de saldo, reusar un cupón de un solo uso, exceder un límite de stock. Ver [[Race Conditions]].
 
-### Conceptos Relacionados para Expandir
+> [!NOTE] Defensa del lado servidor
+> Los devs lo mitigan con [[Idempotency Keys]] o el patrón [[Post/Redirect/Get (PRG)]]; su **ausencia** es justamente lo que se ataca.
 
-- [[Diferencias Técnicas entre GET y POST]]
-- [[Elección de Métodos HTTP: POST vs PUT vs PATCH]]
-- [[Mapeo de Métodos HTTP e Idempotencia]]
-- [[Cross-Site Request Forgery (CSRF)]]
 
 ---
 

@@ -8,7 +8,7 @@ secondary categories:
   - "[[Web]]"
 tertiary categories:
   - "[[Web Enumeración]]"
-kind: Command
+kind: Tool
 linked:
   - "[[Curl - Fuzzing Parámetros y Valores]]"
   - "[[Curl - Enumeración Pasiva de Sub-Dominios]]"

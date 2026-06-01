@@ -4,7 +4,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-kind: Command
+kind: Tool
 linked:
 ---
 # nslookup

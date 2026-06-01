@@ -112,7 +112,7 @@ PoC: deploy pod malicioso
 
 ```yaml
 apiVersion: v1
-kind: Pod
+kind: CheatSheet
 metadata:
   name: pwn
 spec:

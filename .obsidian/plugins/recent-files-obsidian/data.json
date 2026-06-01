@@ -1,32 +1,76 @@
 {
   "recentFiles": [
     {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
     {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
     },
     {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
-    },
-    {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
-    },
-    {
-      "basename": "Curl - Web",
-      "path": "04 - Content/Tools/Recon/Curl - Web.md"
+      "basename": "POST",
+      "path": "04 - Content/Web/Fundamentals/POST.md"
     },
     {
       "basename": "curl",
       "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
+      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
+      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md"
+    },
+    {
+      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
+      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md"
+    },
+    {
+      "basename": "Curl - Fuzzing Parámetros y Valores",
+      "path": "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md"
+    },
+    {
+      "basename": "Curl - Web",
+      "path": "04 - Content/Tools/Recon/Curl - Web.md"
+    },
+    {
+      "basename": "Web",
+      "path": "04 - Content/Web/Fundamentals/Web.md"
+    },
+    {
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
+    },
+    {
+      "basename": "_cheatsheet",
+      "path": "00 - Resources/Templates/Type/_cheatsheet.md"
+    },
+    {
+      "basename": "_payload",
+      "path": "00 - Resources/Templates/Type/_payload.md"
+    },
+    {
+      "basename": "_sub-command",
+      "path": "00 - Resources/Templates/Type/_sub-command.md"
+    },
+    {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "Blockchain",
+      "path": "04 - Content/Process/Blockchain.md"
+    },
+    {
       "basename": "HTTP - Métodos",
       "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
+    },
+    {
+      "basename": "GET",
+      "path": "04 - Content/Web/Fundamentals/GET.md"
+    },
+    {
+      "basename": "HTTPS",
+      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
     },
     {
       "basename": "HTTP - Basic Auth",
@@ -39,10 +83,6 @@
     {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Web",
-      "path": "04 - Content/Web/Fundamentals/Web.md"
     },
     {
       "basename": "Flujo de Comunicación HTTP",
@@ -97,10 +137,6 @@
       "path": "04 - Content/Web/HTMLInjection/HTML Injection.md"
     },
     {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
       "basename": "URL Encode - Characters",
       "path": "04 - Content/Web/Fundamentals/URL Encode - Characters.md"
     },
@@ -137,24 +173,12 @@
       "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
-      "basename": "Curl - Fuzzing Parámetros y Valores",
-      "path": "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md"
-    },
-    {
       "basename": "Curl - Acronimos",
       "path": "04 - Content/Tools/Recon/Curl - Acronimos.md"
     },
     {
       "basename": "Curl - APIs",
       "path": "04 - Content/Tools/Recon/Curl - APIs.md"
-    },
-    {
-      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
-      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md"
-    },
-    {
-      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
-      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md"
     },
     {
       "basename": "DOM",
@@ -175,22 +199,6 @@
     {
       "basename": "Clickjacking - Bypass de Anti-Framing",
       "path": "04 - Content/Web/Clickjacking/Clickjacking - Bypass de Anti-Framing.md"
-    },
-    {
-      "basename": "Incompletos",
-      "path": "04 - Content/Process/Incompletos.md"
-    },
-    {
-      "basename": "objetivos",
-      "path": "04 - Content/Process/objetivos.md"
-    },
-    {
-      "basename": "VMDK, VHD and VHDX files",
-      "path": "04 - Content/Process/VMDK, VHD and VHDX files.md"
-    },
-    {
-      "basename": "Vault Administration",
-      "path": "04 - Content/Process/Vault Administration.md"
     }
   ],
   "omittedPaths": [],

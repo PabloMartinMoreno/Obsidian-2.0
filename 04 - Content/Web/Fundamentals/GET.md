@@ -35,21 +35,20 @@ El método **GET** recupera un recurso del servidor **sin modificar su estado**.
 - **Transmisión de datos:** Exclusivamente a través de la URL utilizando [[Query Parameters]].
 - **Caché:** Sí. Las respuestas son altamente almacenables en caché por navegadores y [[Servidores Proxy]].
 - **Límite de tamaño:** Restringido por el límite de caracteres de la URL en navegadores y servidores (históricamente ~2048 caracteres).
-
 ^get-cheatsheet
 
 ---
 
 ## Overview
 
-El método **GET** es el método más fundamental e utilizado dentro del [[HTTP]]. Su función principal es recuperar información de un servidor web sin causar efectos secundarios en el sistema. Al ser un **método seguro**, sus respuestas son cacheables ([[CDN]], proxies, navegador), lo que reduce la carga en el servidor de origen.
+Es el método más usado: cada navegación es un GET. En pentest, sus **parámetros en la URL son superficie de inyección directa** (SQLi, XSS, LFI, IDOR) y, al viajar en la URL, quedan expuestos en logs, historial y la cabecera `Referer`.
 
 > [!TIP] Reconocimiento pasivo del frontend
 > Abrí la pestaña Network mientras navegás un sitio para ver cómo la aplicación interactúa con su backend (endpoints, parámetros, formatos). Es un paso esencial en cualquier assessment web o bug bounty antes de tocar nada.
 
 ### Petición GET
 
-Las peticiones GET colocan sus parámetros en la **URL** (query string), después del `?`. Una función de búsqueda que consulta el backend genera una petición como:
+Las peticiones GET colocan sus parámetros en la **URL** (query string): tras el `?`, pares `clave=valor` separados por `&` (ej. `?categoria=libros&orden=precio`). Una función de búsqueda que consulta el backend genera una petición como:
 ```
 GET /search.php?search=le
 ```
@@ -73,35 +72,18 @@ Leicester (UK)
 
 ### Comportamiento y Características Técnicas
 
-#### Envío de Parámetros en la URL
-Dado que GET no debe modificar recursos, los criterios de búsqueda, filtros o identificadores se envían incrustados directamente en la estructura de la [[URL]]:
-- Se utiliza el símbolo `?` para iniciar la cadena de consulta (_query string_).
-- Los pares clave-valor se separan mediante el símbolo `&`.
-- _Ejemplo:_ `/buscar?categoria=libros&orden=precio`
-
-#### Ausencia de Cuerpo (Request Body)
-- Aunque la especificación técnica de HTTP no prohíbe explícitamente que una petición GET incluya un cuerpo, en la práctica **se desaconseja y muchos servidores o proxies lo ignoran o rechazan**.
-- Toda la información necesaria para procesar la petición debe existir en la línea de solicitud y las cabeceras.
-
 #### Seguridad y Visibilidad de Datos
 - **Historial y Logs:** Al ir los datos en la URL, estos quedan registrados en el historial del navegador, en los marcadores del usuario y en los logs de acceso de los servidores web.
 - **Prohibición para Datos Sensibles:** Nunca se deben utilizar peticiones GET para enviar contraseñas, tokens de autenticación o datos personales, ya que quedarían expuestos fácilmente a través de la URL.
 
-#### Idempotencia vs. Mutabilidad en el Mundo Real
+#### GET que muta estado → vector
 
-Por definición, GET es idempotente y seguro. Sin embargo, esto depende enteramente de la implementación en el backend:
-- **Mala Práctica:** Diseñar un endpoint de tipo GET que altere la base de datos (por ejemplo, `/eliminar-usuario?id=5`).
-- **Consecuencia:** Los rastreadores de motores de búsqueda (web crawlers) o los sistemas de pre-carga de los navegadores podrían seguir ese enlace automáticamente, ejecutando la acción destructiva de forma imprevista.
+GET *debería* ser de solo lectura, pero depende del backend. Un endpoint GET que altera estado (ej. `/eliminar-usuario?id=5`) es explotable:
+- **[[Cross-Site Request Forgery (CSRF)]]:** un simple `<img src="https://target/eliminar-usuario?id=5">` en una página controlada dispara la acción con la sesión de la víctima — sin formularios ni tokens que esquivar.
+- **Disparo accidental:** crawlers y prefetch del navegador siguen esos links solos, ejecutando la acción destructiva.
 
 
 ---
-
-### Conceptos Relacionados para Expandir
-
-- [[Mapeo de Métodos HTTP e Idempotencia]]
-- [[Estrategias de Caché con Cache-Control y ETag]]
-- [[Diferencias Técnicas entre GET y POST]]
-- [[URL Encode - Characters]]
 
 
 **Notas relacionadas:**

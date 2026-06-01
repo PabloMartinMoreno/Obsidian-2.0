@@ -1,12 +1,19 @@
 ---
 aliases:
 tags:
-  - estado/incompleto
+  - tool/curl
+  - service/http
+  - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-kind: Sub-Command
+  - "[[Web Enumeración]]"
+kind: SubCheatSheet
 linked:
+  - "[[curl]]"
 ---
 # Curl - Web
 
