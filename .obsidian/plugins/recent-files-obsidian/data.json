@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Bandit 03",
+      "path": "05 - Writeups/OverTheWire/Bandit 03.md"
+    },
+    {
       "basename": "HTTP",
       "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Default credentials",
       "path": "04 - Content/Web/Auth/Default credentials.md"
-    },
-    {
-      "basename": "Clickjacking - Bypass de Anti-Framing",
-      "path": "04 - Content/Web/Clickjacking/Clickjacking - Bypass de Anti-Framing.md"
     }
   ],
   "omittedPaths": [],

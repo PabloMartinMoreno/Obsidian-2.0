@@ -1643,5 +1643,19 @@
       }
     },
     "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 03.md": {
+    "scroll": 22.003720238095237,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
   }
 }
