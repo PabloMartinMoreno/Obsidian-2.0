@@ -2,7 +2,6 @@
 aliases:
   - ACL Abuse
 tags:
-  - estado/completo
   - asset/active-directory
   - technique/privilege-escalation
 kind: Technique

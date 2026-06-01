@@ -22,14 +22,13 @@ Cómo viaja una petición y cómo manipularla. Base de todo lo demás.
 - [[HTTP]] · [[HTTPS]] 
 - [[HTTP - Basic Auth]]
 - [[GET]] · [[POST]]
-- [[Web Content Types]] · [[URL Encode - Characters]]
+- Extras: [[Web Content Types]] · [[URL Encode - Characters]]
 - Herramienta: [[curl]]
 
 ### 2. 🆔 Footprinting & Fingerprinting
 
 Identificar servidor, stack, CMS y contenido estándar antes de atacar.
 
-- Hub: [[Web Enumeración]]
 - [[Fingerprinting Web Technologies]]
 - [[robots.txt]] · [[Well-Known URIs]]
 - [[Source Code Disclosure]] · [[Information Leakage]]

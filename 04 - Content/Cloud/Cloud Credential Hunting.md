@@ -2,7 +2,6 @@
 aliases:
   - "Cloud Enumeration for Web Assets"
 tags:
-  - estado/completo
   - asset/cloud
   - technique/credential-access
 kind: Technique

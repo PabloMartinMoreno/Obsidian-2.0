@@ -4,7 +4,6 @@ aliases:
   - "UDP"
   - Network Protocols
 tags:
-  - estado/completo
   - asset/network
 kind: Concept
 linked:

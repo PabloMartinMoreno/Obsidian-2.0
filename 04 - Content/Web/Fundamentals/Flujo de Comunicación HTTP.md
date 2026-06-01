@@ -19,7 +19,7 @@ ___
 ## Cheatsheet
 
 - **Puerto por defecto:** TCP 80.
-- **Componentes clave:** [[Modelo Cliente-Servidor]], [[Protocolo TCP]], [[Mensajes HTTP]] (Request/Response), [[Métodos HTTP]], [[Códigos de Estado]].
+- **Componentes clave:** [[Modelo Cliente-Servidor]], [[Protocolo TCP]], [[Mensajes HTTP]] (Request/Response), [[HTTP - Métodos]], [[HTTP - Códigos de Estado]].
 - **Fases principales:**
     1. _Resolución DNS:_ Traducción del dominio a dirección IP.
     2. _Handshake TCP:_ Establecimiento de la conexión de transporte.
@@ -51,7 +51,7 @@ HTTP depende de un protocolo de transporte confiable para asegurar que los paque
 #### Solicitud HTTP (HTTP Request)
 
 Con la conexión establecida, el cliente envía un mensaje estructurado en texto plano. Una solicitud típica contiene:
-- **Línea de Petición:** Incluye el [[Métodos HTTP|Método HTTP]] (GET, POST, PUT, DELETE), la URI del recurso y la versión del protocolo (ej. `HTTP/1.1`).
+- **Línea de Petición:** Incluye el [[HTTP - Métodos|Método HTTP]] (GET, POST, PUT, DELETE), la URI del recurso y la versión del protocolo (ej. `HTTP/1.1`).
 - **Cabeceras (Headers):** Metadatos como `Host`, `User-Agent`, `Accept-Language` y directivas de almacenamiento en caché.
 - **Cuerpo (Body):** Opcional. Contiene los datos enviados al servidor (común en métodos POST o PUT, como formularios o JSON).
 
@@ -64,7 +64,7 @@ El servidor web (ej. [[Nginx]], [[Apache]]) recibe el mensaje.
 #### Respuesta HTTP (HTTP Response)
 
 El servidor devuelve un mensaje estructurado de vuelta al cliente:
-- **Línea de Estado:** Incluye la versión del protocolo y el [[Códigos de Estado HTTP|Código de Estado]] (ej. `200 OK`, `404 Not Found`, `500 Internal Server Error`).
+- **Línea de Estado:** Incluye la versión del protocolo y el [[HTTP - Códigos de Estado|Código de Estado]] (ej. `200 OK`, `404 Not Found`, `500 Internal Server Error`).
 - **Cabeceras:** Metadatos del servidor como `Content-Type` (ej. `text/html`, `application/json`), `Content-Length`, `Set-Cookie` y directivas de servidor.
 - **Cuerpo:** El contenido del recurso solicitado (el documento HTML, una imagen, datos JSON, etc.).
 

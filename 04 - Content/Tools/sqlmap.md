@@ -6,7 +6,6 @@ tags:
   - vuln/sqli
   - asset/web-app
   - tool/sqlmap
-  - estado/completo
 primary categories:
   - '[[Red Team]]'
 secondary categories:

@@ -5,7 +5,6 @@ aliases:
   - "Memory Dump"
   - DPAPI
 tags:
-  - estado/completo
   - asset/active-directory
   - technique/credential-access
   - env/windows

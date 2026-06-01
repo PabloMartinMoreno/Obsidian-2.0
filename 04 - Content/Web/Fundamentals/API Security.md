@@ -14,7 +14,6 @@ aliases:
   - API REST
   - REST API Security
 tags:
-  - estado/completo
   - asset/api
   - asset/web-app
 kind: Concept

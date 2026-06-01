@@ -7,7 +7,6 @@ aliases:
   - Info Disclosure
   - Information Disclosure
 tags:
-  - estado/completo
   - asset/web-app
   - technique/discovery
 kind: Concept

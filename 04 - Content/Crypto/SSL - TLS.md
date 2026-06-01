@@ -4,7 +4,6 @@ aliases:
   - SSL/TLS
   - TLS
 tags:
-  - estado/completo
   - service/http
 kind: Concept
 linked:

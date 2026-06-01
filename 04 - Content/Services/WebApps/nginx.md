@@ -3,7 +3,6 @@ aliases:
   - "Nginx & Apache Enumeration"
   - Nginx
 tags:
-  - estado/completo
   - service/nginx
   - asset/web-server
 kind: Tool

@@ -3,7 +3,6 @@ aliases:
   - "Docker Escape"
   - "Docker Enumeration"
 tags:
-  - estado/completo
   - tool/docker
   - service/docker
 kind: Tool

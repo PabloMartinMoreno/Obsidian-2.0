@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Tools/Recon/Curl - Web.md",
+                "file": "04 - Content/Web/Fundamentals/GET.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Curl - Web"
+              "title": "GET"
             }
           }
         ],
@@ -267,10 +267,14 @@
   },
   "active": "c8b69479e32499da",
   "lastOpenFiles": [
-    "04 - Content/Tools/Recon/curl.md",
     "02 - Secondary Categories/CWES.md",
-    "04 - Content/Web/Fundamentals/HTTPS.md",
     "04 - Content/Web/Fundamentals/HTTP.md",
+    "04 - Content/Web/Fundamentals/HTTPS.md",
+    "04 - Content/Web/Fundamentals/POST.md",
+    "04 - Content/Recon/Sniffing & MITM.md",
+    "04 - Content/Web/Fundamentals/API REST.md",
+    "04 - Content/Tools/Recon/Curl - Web.md",
+    "04 - Content/Tools/Recon/curl.md",
     "04 - Content/Process/POST.md",
     "04 - Content/Web/Fundamentals/HTTP - Métodos.md",
     "04 - Content/Process/Métodos HTTP.md",
@@ -290,10 +294,6 @@
     "04 - Content/Crypto/SSL - TLS.md",
     "04 - Content/Recon/WebTech/Fingerprinting Web Technologies.md",
     "04 - Content/Recon/Subdomain/Subdomains Passive Enumeration.md",
-    "04 - Content/Recon/OSINT/Certificate Transparency Logs.md",
-    "04 - Content/Crypto/Criptografía Simétrica vs. Asimétrica.md",
-    "04 - Content/Web/HTMLInjection/HTML Injection.md",
-    "04 - Content/Process/CWES - Checklists.md",
     "05 - Writeups/PortSwigger/XSS",
     "05 - Writeups/PortSwigger/SQLi",
     "04 - Content/Crypto",

@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - meta/vault
 kind: Concept
 linked:
@@ -37,7 +36,7 @@ Hack/
 ---
 aliases:
 tags:
-  - estado/completo  # o estado/incompleto
+  - estado/incompleto  # SOLO si sigue en construcción; completo va únicamente en writeups
   - asset/<dominio>  # web-app, active-directory, network, etc.
   - <otros tags taxonómicos>
 kind: <Kind>         # CheatSheet, Tool, Technique, Concept, Vulnerability, etc.
@@ -87,7 +86,7 @@ Prefijos en uso:
 - `cert/*` — certificación (oscp, cbbh, etc.)
 - `topic/*` — tema transversal cuando no encaja en `asset/*` (forensics, network). Uso acotado.
 - `meta/*` — tags del propio vault (index, ctf, daily, vault)
-- `estado/*` — completo / incompleto
+- `estado/*` — `completo` va **solo en writeups** (`05 - Writeups/`). En notas de contenido la completitud se señala **saliendo de `Process/`** (no se taggea). `incompleto` opcional para work-in-progress en Process.
 
 > [!tip] Falsos positivos en el tag pane
 > Strings con `#` dentro de code fences / inline-code / callouts (hex CSS `#CF4747`, directivas SSI `<!--#exec -->`, ColdFusion `#var#`) NO son tags reales — Obsidian los ignora. Si una tool MCP los lista como tags, es artefacto del parser, no requiere limpieza.
@@ -108,7 +107,7 @@ Prefijos en uso:
 > - **Nunca duplicar contenido.** La info vive en un solo lugar (su nota atómica). Las demás notas la **transcluyen** (`![[ ]]`), no la copian.
 > - **Referenciar secciones por block-id `^`, no por heading.** Agregar `^nombre` al bloque destino (tabla, lista, párrafo) y llamarlo con `![[Nota#^nombre]]` (embed) o `[[Nota#^nombre]]` (link). Los `^id` sobreviven a cambios de título; los `#Heading` se rompen.
 >
-> Ej: `HTTP` y `HTTPS` embeben `![[Métodos HTTP#^http-metodos]]` y `![[Códigos de Estado HTTP#^http-estado]]` en vez de repetir las tablas.
+> Ej: `HTTP` y `HTTPS` embeben `![[HTTP - Métodos#^http-metodos]]` y `![[HTTP - Códigos de Estado#^http-estado]]` en vez de repetir las tablas.
 
 ***
 

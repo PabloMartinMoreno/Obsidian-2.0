@@ -5,7 +5,6 @@ aliases:
   - AWS IAM Enumeration
   - AWS Lambda & Serverless Enum
 tags:
-  - estado/completo
   - asset/cloud
   - env/cloud-aws
 kind: CheatSheet

@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - tool/base64
 kind: Tool
 linked:

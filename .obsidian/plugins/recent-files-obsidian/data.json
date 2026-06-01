@@ -1,6 +1,22 @@
 {
   "recentFiles": [
     {
+      "basename": "GET",
+      "path": "04 - Content/Web/Fundamentals/GET.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
+      "basename": "HTTPS",
+      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
+    },
+    {
       "basename": "Curl - Web",
       "path": "04 - Content/Tools/Recon/Curl - Web.md"
     },
@@ -9,28 +25,8 @@
       "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
-    },
-    {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
-    },
-    {
-      "basename": "POST",
-      "path": "04 - Content/Process/POST.md"
-    },
-    {
       "basename": "HTTP - Métodos",
       "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
-    },
-    {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
     },
     {
       "basename": "HTTP - Basic Auth",

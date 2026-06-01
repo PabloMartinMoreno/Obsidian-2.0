@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - tool/smbmap
   - service/smb
 kind: Tool

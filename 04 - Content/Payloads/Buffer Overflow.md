@@ -3,7 +3,6 @@ aliases:
   - BoF
   - Stack Buffer Overflow
 tags:
-  - estado/completo
   - technique/exploitation
 kind: Concept
 linked:

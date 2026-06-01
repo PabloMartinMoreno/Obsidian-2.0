@@ -2,7 +2,6 @@
 aliases:
   - "ghidra"
 tags:
-  - estado/completo
   - tool/ghidra
   - technique/discovery
 kind: Tool

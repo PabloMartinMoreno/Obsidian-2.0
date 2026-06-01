@@ -5,7 +5,6 @@ tags:
   - service/http
   - asset/web-app
   - cert/cwes
-  - estado/completo
 primary categories:
   - "[[Red Team]]"
 secondary categories:
@@ -23,7 +22,7 @@ linked:
 ---
 # HTTP: Hypertext Transfer Protocol
 
-El protocolo **HTTP** es el estándar de comunicación que permite la transferencia de información en la World Wide Web. Es el lenguaje que utilizan los [[Clientes]] (navegadores) y [[Servidores]] para entenderse.
+El protocolo **HTTP** es el estándar de comunicación que permite la transferencia de información en la World Wide Web. Es el lenguaje que utilizan los **clientes** (navegadores) y **servidores** para entenderse.
 
 ---
 

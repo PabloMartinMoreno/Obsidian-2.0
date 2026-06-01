@@ -33,7 +33,6 @@ aliases:
   - dev null
   - "/dev/null"
 tags:
-  - estado/completo
   - tool/linux-utils
 kind: CheatSheet
 linked:

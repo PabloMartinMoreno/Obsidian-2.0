@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - tool/pspy
 kind: Tool
 linked:

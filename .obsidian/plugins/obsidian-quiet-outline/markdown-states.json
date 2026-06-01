@@ -574,7 +574,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/GET.md": {
-    "scroll": 0,
+    "scroll": 7.043062200956938,
     "cursor": {
       "from": {
         "line": 85,
@@ -588,21 +588,21 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 15.264909847434119,
+    "scroll": 12.122395833333334,
     "cursor": {
       "from": {
-        "line": 26,
+        "line": 30,
         "ch": 0
       },
       "to": {
-        "line": 26,
+        "line": 30,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 0,
+    "scroll": 8.262443438914028,
     "cursor": {
       "from": {
         "line": 71,
@@ -647,12 +647,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 90,
-        "ch": 97
+        "line": 91,
+        "ch": 73
       },
       "to": {
-        "line": 90,
-        "ch": 97
+        "line": 91,
+        "ch": 73
       }
     },
     "expandedKeys": []
@@ -1218,7 +1218,7 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/Curl - Web.md": {
-    "scroll": 12.747395833333334,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 33,

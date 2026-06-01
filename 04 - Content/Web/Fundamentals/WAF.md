@@ -2,7 +2,6 @@
 aliases:
   - Web Application Firewall
 tags:
-  - estado/completo
   - asset/web-app
 kind: Concept
 linked:

@@ -6,7 +6,6 @@ tags:
   - tool/hydra
   - technique/credential-access
   - cred/brute-force
-  - estado/completo
 primary categories:
   - '[[Red Team]]'
 secondary categories:

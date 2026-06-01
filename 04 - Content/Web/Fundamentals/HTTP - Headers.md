@@ -4,7 +4,6 @@ tags:
   - service/http
   - asset/web-app
   - cert/cwes
-  - estado/completo
 primary categories:
   - "[[Red Team]]"
 secondary categories:

@@ -5,7 +5,6 @@ aliases:
   - "Zerologon (SMB Vulnerability)"
   - Samba
 tags:
-  - estado/completo
   - tool/samba
   - service/smb
 kind: Concept

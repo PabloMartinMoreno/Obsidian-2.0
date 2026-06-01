@@ -5,7 +5,6 @@ tags:
   - service/http
   - asset/web-app
   - cert/cwes
-  - estado/completo
 primary categories:
   - "[[Red Team]]"
 secondary categories:
@@ -18,7 +17,7 @@ linked:
 ---
 # Códigos de Estado HTTP
 
-Los códigos de estado son la forma en que el [[Servidores|servidor]] le dice al [[Clientes|cliente]] qué pasó con su petición. Se dividen en 5 categorías principales:
+Los códigos de estado son la forma en que el **servidor** le dice al **cliente** qué pasó con su petición. Se dividen en 5 categorías principales:
 
 ---
 

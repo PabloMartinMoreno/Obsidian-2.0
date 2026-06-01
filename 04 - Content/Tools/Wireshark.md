@@ -8,7 +8,6 @@ tags:
   - tool/tshark
   - topic/network
   - topic/forensics
-  - estado/completo
 primary categories:
   - '[[Red Team]]'
   - '[[Blue Team]]'

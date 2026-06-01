@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - tool/smbclient
   - service/smb
 kind: Tool

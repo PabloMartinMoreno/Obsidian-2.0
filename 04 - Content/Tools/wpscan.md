@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - tool/wpscan
   - service/wordpress
 kind: Tool

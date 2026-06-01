@@ -3,7 +3,6 @@ aliases:
   - mitm6
   - IPv6 DHCP Spoofing
 tags:
-  - estado/completo
   - asset/active-directory
   - technique/credential-access
   - cred/ntlm

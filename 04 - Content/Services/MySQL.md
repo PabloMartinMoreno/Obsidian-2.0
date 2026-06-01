@@ -5,7 +5,6 @@ aliases:
   - "phpmyadmin"
   - "Database Service Exploitation"
 tags:
-  - estado/completo
   - service/mysql
   - asset/database
 kind: Concept

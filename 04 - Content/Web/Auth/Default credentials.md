@@ -3,7 +3,6 @@ aliases:
   - Default Credentials
   - Credenciales por defecto
 tags:
-  - estado/completo
   - technique/credential-access
   - cred/brute-force
 kind: Technique

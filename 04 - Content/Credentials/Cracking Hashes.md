@@ -19,7 +19,6 @@ aliases:
   - "Password Cracking"
   - Hash Cracking
 tags:
-  - estado/completo
   - technique/credential-access
   - cred/password-cracking
 kind: Technique

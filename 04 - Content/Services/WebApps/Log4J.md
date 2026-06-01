@@ -4,7 +4,6 @@ aliases:
   - Log4Shell
   - CVE-2021-44228
 tags:
-  - estado/completo
   - asset/web-app
   - technique/execution
   - vuln/jndi-injection

@@ -1,19 +1,29 @@
 ---
 aliases:
+  - POST Requests
 tags:
-  - estado/incompleto
+  - service/http
+  - asset/web-app
+  - cert/cwes
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Web]]"
 tertiary categories:
 kind: Concept
 linked:
   - "[[HTTP]]"
   - "[[HTTPS]]"
   - "[[HTTP - Métodos]]"
+  - "[[GET]]"
+  - "[[API REST]]"
+  - "[[Cross-Site Request Forgery (CSRF)]]"
 ---
 # POST
 
-***
+El método **POST** envía datos en el **cuerpo** de la petición para crear o procesar un recurso. Modifica el estado del servidor: no es seguro ni idempotente.
+
+---
 
 ## Cheatsheet
 
@@ -24,9 +34,13 @@ linked:
 - **Caché:** No por defecto. Las respuestas solo se almacenan en caché si se configuran cabeceras explícitas y el servidor lo permite de forma extraordinaria.
 - **Límite de tamaño:** Prácticamente ilimitado, restringido únicamente por la configuración de capacidad máxima del servidor web (ej. `client_max_body_size` en [[Nginx]]).
 
+^post-cheatsheet
+
+---
+
 ## Overview
 
-El método **POST** es uno de los pilares del [[Protocolo HTTP]] para la interacción dinámica y la manipulación de datos en la web. A diferencia de [[Método HTTP GET|GET]], que se limita a la lectura, POST se utiliza para enviar datos estructurados al servidor con el fin de que un recurso subordinado los procese. Es el método estándar para la creación de nuevos registros en bases de datos, el envío de formularios de registro, la subida de archivos y la ejecución de acciones que alteran irreversiblemente el estado del sistema.
+El método **POST** es uno de los pilares del [[HTTP]] para la interacción dinámica y la manipulación de datos en la web. A diferencia de [[GET]], que se limita a la lectura, POST se utiliza para enviar datos estructurados al servidor con el fin de que un recurso subordinado los procese. Es el método estándar para la creación de nuevos registros en bases de datos, el envío de formularios de registro, la subida de archivos y la ejecución de acciones que alteran irreversiblemente el estado del sistema.
 
 ### Mecánica y Tipos de Contenido (Content-Type)
 
@@ -43,7 +57,7 @@ Utilizado cuando el formulario requiere el envío de archivos binarios (imágene
 
 #### application/json
 
-El estándar de facto para la comunicación en [[APIs REST]] modernas y aplicaciones SPA (Single Page Applications).
+El estándar de facto para la comunicación en [[API REST]] modernas y aplicaciones SPA (Single Page Applications).
 - Transporta estructuras de datos complejas, anidadas y tipadas directamente en formato JSON.
 
 ### Anatomía de una Petición POST
@@ -92,4 +106,9 @@ Dado que POST no es idempotente, repetir la petición tiene consecuencias multip
 - [[Diferencias Técnicas entre GET y POST]]
 - [[Elección de Métodos HTTP: POST vs PUT vs PATCH]]
 - [[Mapeo de Métodos HTTP e Idempotencia]]
-- [[Seguridad en Formularios: Ataques CSRF y cómo prevenirlos]]
+- [[Cross-Site Request Forgery (CSRF)]]
+
+---
+
+**Notas relacionadas:**
+- [[HTTP]] · [[HTTP - Métodos]] · [[GET]] · [[API REST]] · [[Cross-Site Request Forgery (CSRF)]]

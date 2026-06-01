@@ -3,7 +3,6 @@ aliases:
   - K8s Enumeration
   - K8s Recon
 tags:
-  - estado/completo
   - asset/cloud
   - service/kubernetes
 kind: CheatSheet

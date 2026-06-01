@@ -6,7 +6,6 @@ aliases:
   - "Listfiles"
   - "Exploiting Wildcard Injection"
 tags:
-  - estado/completo
   - env/linux
   - technique/privilege-escalation
 kind: Technique

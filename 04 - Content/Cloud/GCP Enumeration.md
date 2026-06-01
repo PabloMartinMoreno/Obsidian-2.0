@@ -3,7 +3,6 @@ aliases:
   - GCP Recon
   - GCP Storage Buckets Enumeration
 tags:
-  - estado/completo
   - asset/cloud
   - env/cloud-gcp
 kind: CheatSheet

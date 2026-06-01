@@ -10,7 +10,6 @@ aliases:
   - SSH Keys
   - SSH Key Pairs
 tags:
-  - estado/completo
   - service/ssh
   - cred/ssh
 kind: Concept

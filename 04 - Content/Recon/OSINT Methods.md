@@ -12,7 +12,6 @@ aliases:
   - Performing Whois Lookup
   - Honeytokens & Tracking Pixels
 tags:
-  - estado/completo
   - technique/recon/passive
 kind: CheatSheet
 linked:

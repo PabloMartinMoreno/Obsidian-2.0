@@ -5,7 +5,6 @@ tags:
   - service/http
   - asset/web-app
   - cert/cwes
-  - estado/completo
 primary categories:
   - "[[Red Team]]"
 secondary categories:
@@ -24,7 +23,7 @@ linked:
 ---
 # HTTPS: Hypertext Transfer Protocol Secure
 
-**HTTPS** es [[HTTP]] envuelto en una capa de cifrado **[[SSL - TLS|TLS]]**. Mismo protocolo, pero protege la confidencialidad e integridad de los datos durante el [[Flujo de Comunicación HTTP|flujo]].
+**HTTPS** es [[HTTP]] envuelto en una capa de cifrado **[[SSL - TLS|TLS]]**. Mismo protocolo, pero protege la confidencialidad e integridad de los datos durante el [[Flujo de Comunicación HTTPS|flujo]].
 
 ---
 
@@ -72,11 +71,7 @@ El servidor prueba su identidad con un **[[Certificados SSL-TLS|certificado SSL/
 
 HTTPS transporta mensajes HTTP idénticos: mismos métodos y códigos de estado que [[HTTP]].
 
-### Métodos 
-
 ![[HTTP - Métodos#^http-metodos]]
-
-### Códigos 
 
 ![[HTTP - Códigos de Estado#^http-estado]]
 

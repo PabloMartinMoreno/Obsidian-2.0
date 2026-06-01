@@ -4,7 +4,6 @@ aliases:
   - Apache ActiveMQ
   - CVE-2023-46604
 tags:
-  - estado/completo
   - asset/web-app
   - technique/execution
 kind: Vulnerability

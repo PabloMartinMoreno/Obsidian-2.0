@@ -3,7 +3,6 @@ aliases: null
 tags:
   - cert/cwes
   - asset/web-app
-  - estado/completo
 primary categories: null
 secondary categories:
   - '[[CWES]]'

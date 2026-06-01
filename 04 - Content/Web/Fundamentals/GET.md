@@ -6,7 +6,6 @@ tags:
   - asset/web-app
   - technique/recon/active
   - cert/cwes
-  - estado/completo
 primary categories:
   - "[[Red Team]]"
 secondary categories:
@@ -24,6 +23,8 @@ linked:
 ---
 # GET
 
+El método **GET** recupera un recurso del servidor **sin modificar su estado**. Es seguro e idempotente; sus parámetros viajan en la [[URL]].
+
 ---
 
 ## Cheatsheet
@@ -35,11 +36,13 @@ linked:
 - **Caché:** Sí. Las respuestas son altamente almacenables en caché por navegadores y [[Servidores Proxy]].
 - **Límite de tamaño:** Restringido por el límite de caracteres de la URL en navegadores y servidores (históricamente ~2048 caracteres).
 
-___
+^get-cheatsheet
+
+---
 
 ## Overview
 
-El método **GET** es el método más fundamental e utilizado dentro del [[Protocolo HTTP]]. Su función principal es recuperar información de un servidor web sin causar efectos secundarios en el sistema. Al ser clasificado como un **método seguro**, se asume que las peticiones GET son operaciones de consulta pura. Esto permite que la infraestructura de la red (como sistemas de [[CDN]] y cachés locales) optimice el rendimiento almacenando las respuestas para peticiones idénticas, reduciendo la carga en el servidor de origen.
+El método **GET** es el método más fundamental e utilizado dentro del [[HTTP]]. Su función principal es recuperar información de un servidor web sin causar efectos secundarios en el sistema. Al ser un **método seguro**, sus respuestas son cacheables ([[CDN]], proxies, navegador), lo que reduce la carga en el servidor de origen.
 
 > [!TIP] Reconocimiento pasivo del frontend
 > Abrí la pestaña Network mientras navegás un sitio para ver cómo la aplicación interactúa con su backend (endpoints, parámetros, formatos). Es un paso esencial en cualquier assessment web o bug bounty antes de tocar nada.
@@ -71,7 +74,7 @@ Leicester (UK)
 ### Comportamiento y Características Técnicas
 
 #### Envío de Parámetros en la URL
-Dado que GET no debe modificar recursos, los criterios de búsqueda, filtros o identificadores se envían incrustados directamente en la estructura de la [[URI]]:
+Dado que GET no debe modificar recursos, los criterios de búsqueda, filtros o identificadores se envían incrustados directamente en la estructura de la [[URL]]:
 - Se utiliza el símbolo `?` para iniciar la cadena de consulta (_query string_).
 - Los pares clave-valor se separan mediante el símbolo `&`.
 - _Ejemplo:_ `/buscar?categoria=libros&orden=precio`
@@ -98,7 +101,7 @@ Por definición, GET es idempotente y seguro. Sin embargo, esto depende enterame
 - [[Mapeo de Métodos HTTP e Idempotencia]]
 - [[Estrategias de Caché con Cache-Control y ETag]]
 - [[Diferencias Técnicas entre GET y POST]]
-- [[Codificación URL (URL Encoding)]]
+- [[URL Encode - Characters]]
 
 
 **Notas relacionadas:**

@@ -2,7 +2,6 @@
 aliases:
   - netcat
 tags:
-  - estado/completo
   - tool/netcat
 kind: Tool
 linked:

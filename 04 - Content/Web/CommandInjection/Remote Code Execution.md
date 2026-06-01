@@ -2,7 +2,6 @@
 aliases:
   - RCE
 tags:
-  - estado/completo
   - asset/web-app
   - technique/execution
 kind: Concept

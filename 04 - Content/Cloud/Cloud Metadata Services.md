@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - asset/cloud
   - technique/credential-access
 kind: Technique

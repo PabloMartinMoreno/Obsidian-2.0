@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - asset/web-app
   - technique/discovery
 kind: Concept

@@ -4,7 +4,6 @@ aliases:
   - "ProFTPD 1.3.3c Exploit"
   - "vsftpd 2.3.4 Exploit"
 tags:
-  - estado/completo
   - tool/ftp
   - service/ftp
 kind: Tool

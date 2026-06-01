@@ -11,7 +11,6 @@ aliases:
   - Sanitization
   - Input Validation
 tags:
-  - estado/completo
   - asset/web-app
 kind: Concept
 linked:

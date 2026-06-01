@@ -6,7 +6,6 @@ aliases:
   - Microsoft 365 Enumeration
   - Entra ID Enumeration
 tags:
-  - estado/completo
   - asset/cloud
   - env/cloud-azure
 kind: CheatSheet

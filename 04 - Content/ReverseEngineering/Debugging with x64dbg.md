@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - tool/x64dbg
   - env/windows
   - technique/discovery

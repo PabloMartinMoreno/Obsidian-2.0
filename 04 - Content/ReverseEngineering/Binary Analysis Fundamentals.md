@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - technique/discovery
 kind: Concept
 linked:

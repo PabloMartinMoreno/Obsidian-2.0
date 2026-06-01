@@ -4,7 +4,6 @@ aliases:
   - Potato Attacks
   - SeImpersonatePrivilege
 tags:
-  - estado/completo
   - asset/active-directory
   - env/windows
   - technique/privilege-escalation

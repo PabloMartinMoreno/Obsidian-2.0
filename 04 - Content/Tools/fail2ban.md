@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - env/linux
 kind: Concept
 linked:

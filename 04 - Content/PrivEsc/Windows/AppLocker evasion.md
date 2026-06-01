@@ -2,7 +2,6 @@
 aliases:
   - AppLocker Bypass
 tags:
-  - estado/completo
   - env/windows
   - technique/defense-evasion
 kind: Technique

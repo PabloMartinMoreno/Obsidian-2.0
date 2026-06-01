@@ -14,7 +14,6 @@ aliases:
   - Code Review
   - SAST
 tags:
-  - estado/completo
   - asset/source-code
   - technique/discovery
 kind: Concept

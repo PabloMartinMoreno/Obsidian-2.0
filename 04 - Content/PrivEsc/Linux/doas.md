@@ -1,7 +1,6 @@
 ---
 aliases:
 tags:
-  - estado/completo
   - env/linux
   - technique/privilege-escalation
   - tool/doas

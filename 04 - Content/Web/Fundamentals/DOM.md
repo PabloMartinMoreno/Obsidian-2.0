@@ -3,7 +3,6 @@ aliases:
   - "JavaScript"
   - Document Object Model
 tags:
-  - estado/completo
   - asset/web-app
 kind: Concept
 linked:

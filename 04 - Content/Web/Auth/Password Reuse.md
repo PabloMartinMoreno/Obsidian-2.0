@@ -3,7 +3,6 @@ aliases:
   - Credential Stuffing
   - Password Spray
 tags:
-  - estado/completo
   - technique/credential-access
   - cred/brute-force
 kind: Technique

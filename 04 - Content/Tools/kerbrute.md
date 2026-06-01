@@ -9,7 +9,6 @@ tags:
   - env/active-directory
   - service/kerberos
   - cred/spray
-  - estado/completo
 primary categories:
   - '[[Red Team]]'
 secondary categories:

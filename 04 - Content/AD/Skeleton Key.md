@@ -4,7 +4,6 @@ aliases:
   - "Custom SSP"
   - "DSRM Backdoor"
 tags:
-  - estado/completo
   - asset/active-directory
   - technique/persistence
   - cred/ntlm

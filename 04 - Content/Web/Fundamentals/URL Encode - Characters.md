@@ -4,7 +4,6 @@ aliases:
 tags:
   - asset/web-app
   - cert/cwes
-  - estado/completo
 primary categories:
   - "[[Red Team]]"
 secondary categories:
