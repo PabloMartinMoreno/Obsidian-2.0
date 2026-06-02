@@ -7,15 +7,15 @@ tags:
   - asset/web-app
   - tool/sqlmap
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
   - "[[Web]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[SQL Injection (SQLi)]]'
+  - "[[SQL Injection (SQLi)]]"
 ---
 # sqlmap
 

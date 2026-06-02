@@ -7,19 +7,19 @@ tags:
   - technique/credential-access
   - cred/brute-force
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Credential Access]]'
+  - "[[Credential Access]]"
 tertiary categories:
-  - '[[Password Cracking]]'
+  - "[[Password Cracking]]"
 linked:
-  - '[[netexec]]'
-  - '[[ffuf]]'
-  - '[[Authentication & Authorization Bypass]]'
-  - '[[SSH (22) - Enumeración]]'
-  - '[[FTP (21) - Enumeración]]'
-  - '[[SMB (139, 445) - Enumeración]]'
-  - '[[RDP (3389) - Enumeración]]'
+  - "[[netexec]]"
+  - "[[ffuf]]"
+  - "[[Authentication & Authorization Bypass]]"
+  - "[[SSH (22) - Enumeración]]"
+  - "[[FTP (21) - Enumeración]]"
+  - "[[SMB (139, 445) - Enumeración]]"
+  - "[[RDP (3389) - Enumeración]]"
 ---
 # Hydra
 

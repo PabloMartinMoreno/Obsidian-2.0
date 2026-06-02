@@ -4,10 +4,10 @@ tags:
   - asset/web-app
   - cert/cwes
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 ---
 https://github.com/danielmiessler/SecLists/raw/master/Discovery/Web-Content/web-all-content-types.txt
 

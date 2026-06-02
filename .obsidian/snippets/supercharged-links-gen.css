@@ -251,13 +251,13 @@ div[data-id="kind-0006"] div.setting-item-description::after,
 }
 
 div[data-id="kind-0007"] div.setting-item-description,
-[data-link-kind="Sub-Command"  i] {
+[data-link-kind="SubCommand"  i] {
     color: var(--kind-0007-color) !important;
     font-weight: var(--kind-0007-weight);
 }
 
 .c-kind-0007-use-background div[data-id="kind-0007"] div.setting-item-description,
-.c-kind-0007-use-background .data-link-text[data-link-kind="Sub-Command"  i] {
+.c-kind-0007-use-background .data-link-text[data-link-kind="SubCommand"  i] {
     background-color: var(--kind-0007-background-color) !important;
     border-radius: 5px;
     padding-left: 2px;
@@ -266,23 +266,23 @@ div[data-id="kind-0007"] div.setting-item-description,
 }
 
 div[data-id="kind-0007"] div.setting-item-description::before,
-.data-link-icon[data-link-kind="Sub-Command"  i]::before {
+.data-link-icon[data-link-kind="SubCommand"  i]::before {
     content: var(--kind-0007-before);
 }
 
 div[data-id="kind-0007"] div.setting-item-description::after,
-.data-link-icon-after[data-link-kind="Sub-Command"  i]::after {
+.data-link-icon-after[data-link-kind="SubCommand"  i]::after {
     content: var(--kind-0007-after);
 }
 
 div[data-id="kind-0008"] div.setting-item-description,
-[data-link-kind="Sub-Note"  i] {
+[data-link-kind="SubNote"  i] {
     color: var(--kind-0008-color) !important;
     font-weight: var(--kind-0008-weight);
 }
 
 .c-kind-0008-use-background div[data-id="kind-0008"] div.setting-item-description,
-.c-kind-0008-use-background .data-link-text[data-link-kind="Sub-Note"  i] {
+.c-kind-0008-use-background .data-link-text[data-link-kind="SubNote"  i] {
     background-color: var(--kind-0008-background-color) !important;
     border-radius: 5px;
     padding-left: 2px;
@@ -291,12 +291,12 @@ div[data-id="kind-0008"] div.setting-item-description,
 }
 
 div[data-id="kind-0008"] div.setting-item-description::before,
-.data-link-icon[data-link-kind="Sub-Note"  i]::before {
+.data-link-icon[data-link-kind="SubNote"  i]::before {
     content: var(--kind-0008-before);
 }
 
 div[data-id="kind-0008"] div.setting-item-description::after,
-.data-link-icon-after[data-link-kind="Sub-Note"  i]::after {
+.data-link-icon-after[data-link-kind="SubNote"  i]::after {
     content: var(--kind-0008-after);
 }
 
@@ -859,7 +859,7 @@ settings:
         default: '#ffffff'
     - 
         id: kind-0007
-        title: kind is Sub-Command
+        title: kind is SubCommand
         description: Example note
         type: heading
         collapsed: true
@@ -918,7 +918,7 @@ settings:
         default: '#ffffff'
     - 
         id: kind-0008
-        title: kind is Sub-Note
+        title: kind is SubNote
         description: Example note
         type: heading
         collapsed: true

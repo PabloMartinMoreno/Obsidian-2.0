@@ -1,16 +1,16 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/command-injection
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[OS Command Injection]]'
-  - '[[Generación de Base64 para Windows (desde Linux)]]'
+  - "[[OS Command Injection]]"
+  - "[[Generación de Base64 para Windows (desde Linux)]]"
 ---
 # Command Injection - Ofuscación Avanzada
 

@@ -7,17 +7,17 @@ tags:
   - technique/recon/active
   - service/dns
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Information Gathering]]'
+  - "[[Information Gathering]]"
 tertiary categories:
-  - '[[Host & Network Enumeration]]'
+  - "[[Host & Network Enumeration]]"
 kind: Tool
 linked:
-  - '[[DNS - Herramientas]]'
-  - '[[DNS (53) - Enumeración]]'
-  - '[[Subdomain Bruteforcing]]'
-  - '[[gobuster]]'
+  - "[[DNS - Herramientas]]"
+  - "[[DNS (53) - Enumeración]]"
+  - "[[Subdomain Bruteforcing]]"
+  - "[[gobuster]]"
 ---
 # dnsrecon
 

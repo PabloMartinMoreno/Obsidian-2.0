@@ -325,7 +325,7 @@
         },
         {
           "id": "38332391-a335-4957-aa36-eb2b866a38ed",
-          "name": "Sub-Command",
+          "name": "SubCommand",
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_sub-command.md",
@@ -475,7 +475,7 @@
         },
         {
           "id": "a4444444-4444-4444-4444-444444444444",
-          "name": "Sub-Note",
+          "name": "SubNote",
           "type": "Template",
           "command": true,
           "templatePath": "00 - Resources/Templates/Type/_sub-note.md",

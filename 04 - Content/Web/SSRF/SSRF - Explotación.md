@@ -1,18 +1,18 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[SSRF - CWES]]'
-  - '[[SSRF - Gopher]]'
-  - '[[Anatomía de la Construcción de un Payload Gopher]]'
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[SSRF - CWES]]"
+  - "[[SSRF - Gopher]]"
+  - "[[Anatomía de la Construcción de un Payload Gopher]]"
 ---
 # SSRF - Explotación
 

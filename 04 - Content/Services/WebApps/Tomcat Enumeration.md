@@ -1,12 +1,12 @@
 ---
 secondary categories:
-  - '[[Information Gathering]]'
-  - '[[Web]]'
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-  - '[[Web Enumeración]]'
+  - "[[Web Enumeración]]"
 linked:
-  - '[[Fingerprinting Web Technologies]]'
-  - '[[Web Technology Enumeration]]'
+  - "[[Fingerprinting Web Technologies]]"
+  - "[[Web Technology Enumeration]]"
 ---
 ---
 aliases:

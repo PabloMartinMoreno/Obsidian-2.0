@@ -12,18 +12,18 @@ tags:
   - env/windows
   - env/active-directory
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Information Gathering]]'
+  - "[[Information Gathering]]"
 tertiary categories:
-  - '[[Host & Network Enumeration]]'
+  - "[[Host & Network Enumeration]]"
 kind: Tool
 linked:
-  - '[[SMB (139, 445) - Enumeración]]'
-  - '[[smbclient]]'
-  - '[[smbmap]]'
-  - '[[RpcClient]]'
-  - '[[netexec]]'
+  - "[[SMB (139, 445) - Enumeración]]"
+  - "[[smbclient]]"
+  - "[[smbmap]]"
+  - "[[RpcClient]]"
+  - "[[netexec]]"
 ---
 
 # enum4linux-ng

@@ -10,21 +10,21 @@ tags:
   - asset/web-app
   - technique/exploitation/web
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
-  - '[[Web]]'
+  - "[[Explotación]]"
+  - "[[Web]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 linked:
-  - '[[Web Fuzzing]]'
-  - '[[Crawling]]'
-  - '[[Cross-Site Scripting (XSS)]]'
-  - '[[SQL Injection]]'
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[Insecure Direct Object References (IDOR)]]'
-  - '[[Cross-Site Request Forgery (CSRF)]]'
-  - '[[JWT Attacks]]'
+  - "[[Web Fuzzing]]"
+  - "[[Crawling]]"
+  - "[[Cross-Site Scripting (XSS)]]"
+  - "[[SQL Injection]]"
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[Insecure Direct Object References (IDOR)]]"
+  - "[[Cross-Site Request Forgery (CSRF)]]"
+  - "[[JWT Attacks]]"
 kind: Tool
 ---
 # Burp Suite

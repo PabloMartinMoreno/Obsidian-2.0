@@ -1,12 +1,12 @@
 ---
 secondary categories:
-  - '[[Information Gathering]]'
-  - '[[Web]]'
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-  - '[[Web Enumeración]]'
+  - "[[Web Enumeración]]"
 linked:
-  - '[[WordPress Exploitation]]'
-  - '[[Web Technology Enumeration]]'
+  - "[[WordPress Exploitation]]"
+  - "[[Web Technology Enumeration]]"
 ---
 ---
 aliases:

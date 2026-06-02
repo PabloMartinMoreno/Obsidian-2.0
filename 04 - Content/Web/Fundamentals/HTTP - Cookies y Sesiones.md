@@ -1,13 +1,13 @@
 ---
-aliases: null
+aliases:
 tags:
   - asset/web-app
   - cert/cwes
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Web]]'
-tertiary categories: null
+  - "[[Web]]"
+tertiary categories:
 kind: Concept
 linked: null
 ---

@@ -6,7 +6,7 @@ tags:
   - cert/cwes
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 kind: Secondary Category
 ---
 # CWES

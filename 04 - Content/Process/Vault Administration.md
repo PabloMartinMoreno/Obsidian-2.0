@@ -58,8 +58,8 @@ Valores canónicos:
 - **Technique** — técnica abstracta de ataque/defensa
 - **Concept** — concepto teórico
 - **Command** — nota sobre UN comando/one-liner o setting puntual, NO un programa entero (ej. `PowerShell - FormatEnumerationLimit`)
-- **Sub-Command** — variante/flag de comando
-- **Sub-Note** — nota auxiliar
+- **SubCommand** — variante/flag de comando
+- **SubNote** — nota auxiliar
 - **Vulnerability** — vulnerabilidad clásica
 - **Writeup** — writeup CTF/lab
 - **Playbook** — secuencia paso-a-paso
@@ -125,8 +125,8 @@ Mapeo para limpiar el tag vestigial. Si la nota ya tiene `kind:` correcto, solo 
 | `type/writeup` | Writeup |
 | `type/playbook` | Playbook |
 | `type/command` | Command |
-| `type/sub-command` | Sub-Command |
-| `type/sub-note` | Sub-Note |
+| `type/sub-command` | SubCommand |
+| `type/sub-note` | SubNote |
 | `type/payload` | Payload |
 | `type/ttp` | TTP |
 | `type/moc/primary` | Primary Category |

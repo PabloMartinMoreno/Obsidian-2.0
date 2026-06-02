@@ -1,15 +1,15 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/lfi
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[File Inclusion]]'
+  - "[[File Inclusion]]"
 ---
 # LFI To RCE - File Upload + LFI
 

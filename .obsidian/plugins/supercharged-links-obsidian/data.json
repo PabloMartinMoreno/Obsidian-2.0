@@ -86,7 +86,7 @@
     {
       "type": "attribute",
       "name": "kind",
-      "value": "Sub-Command",
+      "value": "SubCommand",
       "matchCaseSensitive": false,
       "match": "exact",
       "uid": "kind-0007",
@@ -98,7 +98,7 @@
     {
       "type": "attribute",
       "name": "kind",
-      "value": "Sub-Note",
+      "value": "SubNote",
       "matchCaseSensitive": false,
       "match": "exact",
       "uid": "kind-0008",

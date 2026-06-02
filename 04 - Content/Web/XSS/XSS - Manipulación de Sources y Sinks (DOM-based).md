@@ -5,12 +5,12 @@ tags:
   - vuln/xss
   - technique/execution
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # XSS - Manipulación de Sources y Sinks (DOM-based)
 

@@ -9,13 +9,13 @@ tags:
   - technique/initial-access
   - technique/lateral-movement
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: SubCheatSheet
 linked:
-  - '[[CRLF Injection]]'
-  - '[[HTTP Request Smuggling]]'
+  - "[[CRLF Injection]]"
+  - "[[HTTP Request Smuggling]]"
 ---
 # CRLF Injection - Vectores Específicos
 

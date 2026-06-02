@@ -6,19 +6,19 @@ tags:
   - technique/enumeration
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Information Gathering]]'
-  - '[[Web]]'
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-  - '[[Web Enumeración]]'
+  - "[[Web Enumeración]]"
 kind: Tool
 linked:
-  - '[[Fuzzing Directories & Pages]]'
-  - '[[Fuzzing Subdomains & Virtual Hosts]]'
-  - '[[Fuzzing Parameters & Values]]'
-  - '[[ffuf]]'
-  - '[[feroxbuster]]'
+  - "[[Fuzzing Directories & Pages]]"
+  - "[[Fuzzing Subdomains & Virtual Hosts]]"
+  - "[[Fuzzing Parameters & Values]]"
+  - "[[ffuf]]"
+  - "[[feroxbuster]]"
 ---
 # gobuster
 

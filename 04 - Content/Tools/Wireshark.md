@@ -9,14 +9,14 @@ tags:
   - topic/network
   - topic/forensics
 primary categories:
-  - '[[Red Team]]'
-  - '[[Blue Team]]'
+  - "[[Red Team]]"
+  - "[[Blue Team]]"
 secondary categories:
-  - '[[Information Gathering]]'
-  - '[[Digital Forensics]]'
+  - "[[Information Gathering]]"
+  - "[[Digital Forensics]]"
 tertiary categories:
-  - '[[Host & Network Enumeration]]'
-  - '[[Packet Capture & Analysis]]'
+  - "[[Host & Network Enumeration]]"
+  - "[[Packet Capture & Analysis]]"
 kind: CheatSheet
 linked: null
 ---

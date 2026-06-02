@@ -26,8 +26,8 @@ body [data-link-kind="TTP" i] { color: #556B2F !important; }
 
 /* Sub-types faded */
 body [data-link-kind="SubCheatSheet" i] { color: rgba(103, 232, 249, 0.6) !important; }
-body [data-link-kind="Sub-Command" i] { color: rgba(255, 204, 52, 0.5) !important; }
-body [data-link-kind="Sub-Note" i] { color: rgba(148, 163, 184, 0.5) !important; }
+body [data-link-kind="SubCommand" i] { color: rgba(255, 204, 52, 0.5) !important; }
+body [data-link-kind="SubNote" i] { color: rgba(148, 163, 184, 0.5) !important; }
 
 /* === Tab header coloring (left border) === */
 
@@ -48,5 +48,5 @@ body .workspace-tab-header[data-link-kind="Payload" i] { border-left: 3px solid 
 body .workspace-tab-header[data-link-kind="TTP" i] { border-left: 3px solid #556B2F !important; }
 
 body .workspace-tab-header[data-link-kind="SubCheatSheet" i] { border-left: 3px solid rgba(103, 232, 249, 0.6) !important; }
-body .workspace-tab-header[data-link-kind="Sub-Command" i] { border-left: 3px solid rgba(255, 204, 52, 0.5) !important; }
-body .workspace-tab-header[data-link-kind="Sub-Note" i] { border-left: 3px solid rgba(148, 163, 184, 0.5) !important; }
+body .workspace-tab-header[data-link-kind="SubCommand" i] { border-left: 3px solid rgba(255, 204, 52, 0.5) !important; }
+body .workspace-tab-header[data-link-kind="SubNote" i] { border-left: 3px solid rgba(148, 163, 184, 0.5) !important; }

@@ -1,19 +1,19 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/xxe
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
   - "[[Web]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
-  - '[[XML External Entity (XXE)]]'
+  - "[[XML External Entity (XXE)]]"
 ---
 # XXE - Clásico In-band
 

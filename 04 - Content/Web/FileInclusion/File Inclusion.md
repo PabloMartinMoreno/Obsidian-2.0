@@ -7,25 +7,25 @@ tags:
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
   - "[[Web]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[LFI - Básico]]'
-  - '[[LFI - Path Traversal y Bypass de Filtros]]'
-  - '[[LFI - Null Byte Injection]]'
-  - '[[LFI - PHP Wrappers]]'
-  - '[[LFI To RCE - Log Poisoning]]'
-  - '[[LFI To RCE - proc self environ]]'
-  - '[[LFI To RCE - Session File Poisoning]]'
-  - '[[LFI To RCE - File Upload + LFI]]'
-  - '[[LFI To RCE - PHP Filter Chains]]'
-  - '[[LFI To RCE - Phar Deserialization]]'
-  - '[[Remote File Inclusion (RFI)]]'
+  - "[[LFI - Básico]]"
+  - "[[LFI - Path Traversal y Bypass de Filtros]]"
+  - "[[LFI - Null Byte Injection]]"
+  - "[[LFI - PHP Wrappers]]"
+  - "[[LFI To RCE - Log Poisoning]]"
+  - "[[LFI To RCE - proc self environ]]"
+  - "[[LFI To RCE - Session File Poisoning]]"
+  - "[[LFI To RCE - File Upload + LFI]]"
+  - "[[LFI To RCE - PHP Filter Chains]]"
+  - "[[LFI To RCE - Phar Deserialization]]"
+  - "[[Remote File Inclusion (RFI)]]"
 ---
 # File Inclusion
 

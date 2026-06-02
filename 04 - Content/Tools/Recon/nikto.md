@@ -10,18 +10,18 @@ tags:
   - asset/web-app
   - service/http
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Information Gathering]]'
-  - '[[Web]]'
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-  - '[[Web Enumeración]]'
+  - "[[Web Enumeración]]"
 kind: Tool
 linked:
-  - '[[Web Enumeración]]'
-  - '[[Fingerprinting]]'
-  - '[[Burp Suite]]'
-  - '[[nmap]]'
+  - "[[Web Enumeración]]"
+  - "[[Fingerprinting]]"
+  - "[[Burp Suite]]"
+  - "[[nmap]]"
 ---
 # nikto
 

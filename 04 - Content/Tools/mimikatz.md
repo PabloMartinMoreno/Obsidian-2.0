@@ -13,24 +13,24 @@ tags:
   - cred/ntlm
   - cred/kerberos
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Credential Access]]'
+  - "[[Credential Access]]"
 tertiary categories:
-  - '[[LSASS Dumping]]'
-  - '[[Kerberos]]'
+  - "[[LSASS Dumping]]"
+  - "[[Kerberos]]"
 kind: Tool
 linked:
-  - '[[LSASS Dumping - Mimikatz Methods]]'
-  - '[[Pass-the-Hash]]'
-  - '[[Pass-the-Ticket]]'
-  - '[[Golden Ticket]]'
-  - '[[Silver Ticket]]'
-  - '[[DCSync]]'
-  - '[[Skeleton Key]]'
-  - '[[Rubeus]]'
-  - '[[Impacket Toolkit]]'
-  - '[[evil-winrm]]'
+  - "[[LSASS Dumping - Mimikatz Methods]]"
+  - "[[Pass-the-Hash]]"
+  - "[[Pass-the-Ticket]]"
+  - "[[Golden Ticket]]"
+  - "[[Silver Ticket]]"
+  - "[[DCSync]]"
+  - "[[Skeleton Key]]"
+  - "[[Rubeus]]"
+  - "[[Impacket Toolkit]]"
+  - "[[evil-winrm]]"
 ---
 
 # Mimikatz

@@ -5,7 +5,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
-kind: Sub-Command
+kind: SubCommand
 linked:
 ---
 # <% tp.file.title %>

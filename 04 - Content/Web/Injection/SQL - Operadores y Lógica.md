@@ -1,16 +1,16 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/sqli
   - technique/execution
   - asset/database
   - asset/web-app
-primary categories: null
-secondary categories: null
-tertiary categories: null
+primary categories:
+secondary categories:
+tertiary categories:
 kind: CheatSheet
 linked:
-  - '[[SQL Commands]]'
+  - "[[SQL Commands]]"
 ---
 # SQL - Operadores y Lógica
 

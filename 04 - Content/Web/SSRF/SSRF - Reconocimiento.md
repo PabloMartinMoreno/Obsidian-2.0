@@ -1,13 +1,13 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/ssrf
   - technique/lateral-movement
   - asset/web-app
 kind: SubCheatSheet
 linked:
-  - '[[Server-Side Request Forgery (SSRF)]]'
-  - '[[SSRF - CWES]]'
+  - "[[Server-Side Request Forgery (SSRF)]]"
+  - "[[SSRF - CWES]]"
 ---
 # SSRF - Reconocimiento
 

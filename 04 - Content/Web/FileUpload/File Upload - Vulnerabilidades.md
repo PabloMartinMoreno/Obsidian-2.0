@@ -12,22 +12,22 @@ tags:
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
   - "[[Web]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[File Upload - Reconocimiento de Filtros]]'
-  - '[[File Upload - Bypass de Filtros de Lista Negra]]'
-  - '[[File Upload - Bypass de Filtros de Lista Blanca]]'
-  - '[[File Upload - Bypass de Sobrescritura de Configuración]]'
-  - '[[File Upload - Bypass de Contenido]]'
-  - '[[File Upload - Bypass por Confusión y Desincronización]]'
-  - '[[File Upload - Shells en PHP]]'
-  - '[[File Upload - Desactivación de Validación Front-end]]'
+  - "[[File Upload - Reconocimiento de Filtros]]"
+  - "[[File Upload - Bypass de Filtros de Lista Negra]]"
+  - "[[File Upload - Bypass de Filtros de Lista Blanca]]"
+  - "[[File Upload - Bypass de Sobrescritura de Configuración]]"
+  - "[[File Upload - Bypass de Contenido]]"
+  - "[[File Upload - Bypass por Confusión y Desincronización]]"
+  - "[[File Upload - Shells en PHP]]"
+  - "[[File Upload - Desactivación de Validación Front-end]]"
 ---
 # File Upload - Vulnerabilidades
 

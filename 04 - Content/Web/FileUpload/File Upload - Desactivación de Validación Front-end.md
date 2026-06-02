@@ -1,12 +1,12 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/file-upload
   - technique/execution
   - asset/web-app
 kind: SubCheatSheet
 linked:
-  - '[[File Upload - Vulnerabilidades]]'
+  - "[[File Upload - Vulnerabilidades]]"
 ---
 # File Upload - Desactivación de Validación Front-end
 

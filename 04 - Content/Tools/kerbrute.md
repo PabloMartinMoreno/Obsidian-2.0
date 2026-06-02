@@ -10,19 +10,19 @@ tags:
   - service/kerberos
   - cred/spray
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Credential Access]]'
-  - '[[Information Gathering]]'
+  - "[[Credential Access]]"
+  - "[[Information Gathering]]"
 tertiary categories:
-  - '[[Active Directory Enumeración]]'
+  - "[[Active Directory Enumeración]]"
 kind: Tool
 linked:
-  - '[[AS-REP Roasting]]'
-  - '[[Password Spraying]]'
-  - '[[netexec]]'
-  - '[[Rubeus]]'
-  - '[[Impacket Toolkit]]'
+  - "[[AS-REP Roasting]]"
+  - "[[Password Spraying]]"
+  - "[[netexec]]"
+  - "[[Rubeus]]"
+  - "[[Impacket Toolkit]]"
 ---
 
 # kerbrute

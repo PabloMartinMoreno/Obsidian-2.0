@@ -9,19 +9,19 @@ tags:
   - asset/api
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
   - "[[Web]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
-  - '[[IDOR - Manipulación de Parámetros y Rutas]]'
-  - '[[IDOR - Manipulación del Cuerpo de la Petición]]'
-  - '[[IDOR - Manipulación de Cabeceras HTTP y Protocolo]]'
-  - '[[IDOR - Técnicas de Evasión y Bypass de Filtros]]'
-  - '[[IDOR - Explotación Indirecta y Lógica de Negocio]]'
+  - "[[IDOR - Manipulación de Parámetros y Rutas]]"
+  - "[[IDOR - Manipulación del Cuerpo de la Petición]]"
+  - "[[IDOR - Manipulación de Cabeceras HTTP y Protocolo]]"
+  - "[[IDOR - Técnicas de Evasión y Bypass de Filtros]]"
+  - "[[IDOR - Explotación Indirecta y Lógica de Negocio]]"
 ---
 # BOLA - IDOR
 

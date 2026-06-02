@@ -1,19 +1,19 @@
 ---
-aliases: null
+aliases:
 tags:
   - vuln/xss
   - technique/execution
   - asset/web-app
 primary categories:
-  - '[[Red Team]]'
+  - "[[Red Team]]"
 secondary categories:
-  - '[[Explotación]]'
+  - "[[Explotación]]"
   - "[[Web]]"
 tertiary categories:
-  - '[[Web Explotación]]'
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
-  - '[[Cross-Site Scripting (XSS)]]'
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 # XSS - Escape de Contexto en Atributos
 
