@@ -29,7 +29,7 @@ linked:
 ---
 # AD - Health & Security Auditing
 
-***
+---
 
 ## Cheatsheet
 
@@ -189,7 +189,7 @@ tab: **Recursos**
 ![[AD - Health y Security Auditing - Tooling Ecosystem#^ad-tooling-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -207,7 +207,7 @@ ___
 | Compliance scripts custom | RSAT + PowerShell |
 | Tier 0 attack paths | BloodHound + Forest Druid |
 
-___
+---
 
 ## Workflow
 
@@ -249,7 +249,7 @@ ___
    - Findings priorizados High/Critical primero
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -276,7 +276,7 @@ PurpleKnight.exe
 certipy find -u auditor@corp.local -p pass -dc-ip 10.10.10.10 -vulnerable -stdout
 ```
 
-___
+---
 
 ## Impacto del audit
 
@@ -291,7 +291,7 @@ ___
 - **MDI honey-token hit** → IR escalation.
 - **AdminSDHolder modificado <30d** → persistence backdoor.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -322,7 +322,7 @@ Set-ADDomain -Identity corp.local -Replace @{"ms-DS-MachineAccountQuota"="0"}
 - **Audit Subcategory `Directory Service Access` verbose** → catch bulk LDAP.
 - **Honey-token deploy** → tripwire para discovery.
 
-___
+---
 
 ## Para entender el ecosistema
 
@@ -362,7 +362,7 @@ ESC6 = flag global del CA permitiendo SAN injection en cualquier template. ESC1 
 
 Patch impide CREAR nuevos GPP con cpassword. XMLs viejos en SYSVOL persisten hasta cleanup manual. PingCastle + Purple Knight detectan ambos.
 
-___
+---
 
 ## Recursos
 
@@ -381,4 +381,4 @@ ___
 - [GOAD lab](https://github.com/Orange-Cyberdefense/GOAD) — practice.
 - [`awesome-active-directory`](https://github.com/Orange-Cyberdefense/awesome-activedirectory) — curated.
 
-***
+---

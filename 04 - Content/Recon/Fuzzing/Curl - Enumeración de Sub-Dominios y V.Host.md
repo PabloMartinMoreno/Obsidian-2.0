@@ -9,7 +9,7 @@ linked:
 ---
 # Curl - Enumeración de Sub-Dominios y V.Host
 
-***
+---
 
 ## Cheatsheet
 
@@ -19,4 +19,4 @@ linked:
 ^curl-enum-subdominios-vhost
 
 
-***
+---

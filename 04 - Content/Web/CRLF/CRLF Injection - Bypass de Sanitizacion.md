@@ -16,7 +16,7 @@ linked:
 ---
 # CRLF Injection - Bypass de Sanitización
 
-***
+---
 
 ## URL Encoding Variants
 
@@ -32,7 +32,7 @@ linked:
 | `\\r\\n` | Doble-escape | Pipeline JSON→string→header. |
 ^crlfi-bypass-url
 
-___
+---
 
 ## Double Encoding
 
@@ -45,7 +45,7 @@ ___
 | `+%0d%0a` | `+` se decodifica como espacio + CRLF | Form-encoded con `application/x-www-form-urlencoded`. |
 ^crlfi-bypass-double
 
-___
+---
 
 ## Unicode / Charset Variants
 
@@ -59,7 +59,7 @@ ___
 | `+ADw-+AGEA-` | UTF-7 encoding | IE legacy, parsers sin charset enforcement. |
 ^crlfi-bypass-unicode
 
-___
+---
 
 ## Server-Specific Quirks
 
@@ -82,7 +82,7 @@ ___
 | PHP `header()` pre-5.4 | `%0a` solo |
 | Custom CGI | Doble encoding `%250d%250a` |
 
-___
+---
 
 ## Header Folding (Obsolete pero edge)
 
@@ -120,4 +120,4 @@ for enc in "${ENCODINGS[@]}"; do
 done
 ```
 
-***
+---

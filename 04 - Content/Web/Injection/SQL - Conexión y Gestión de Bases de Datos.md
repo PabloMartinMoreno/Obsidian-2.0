@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Conexión y Gestión de Bases de Datos
 
-***
+---
 
 ## Cheatsheet
 
@@ -69,7 +69,7 @@ linked:
 | Oracle | `sys` | `change_on_install` |
 | MongoDB | (no auth default) | n/a |
 
-___
+---
 
 ## Overview
 
@@ -83,4 +83,4 @@ Comandos cliente cuando ya tenés credenciales (post-SQLi recovery, exposed serv
 
 Diferencias cliente importantes: `\` commands en psql (`\l`/`\dt`/`\c`) vs `SHOW`/`USE` en MySQL vs `EXEC sp_*` en MSSQL.
 
-***
+---

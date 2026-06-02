@@ -31,7 +31,7 @@ linked:
 ---
 # Directory Traversal
 
-***
+---
 
 ## Cheatsheet
 
@@ -124,7 +124,7 @@ tab: **Custom Scripts**
 ![[Directory Traversal - Tooling#^pt-tool-custom]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -144,7 +144,7 @@ OWASP Top 10 — A05 (2021) Security Misconfiguration / A04 (2017) XML External 
 
 Path Traversal es vector **agnóstico al lenguaje** — afecta cualquier app que concatene paths. LFI es subset PHP-specific cuando file leído también se ejecuta.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -185,7 +185,7 @@ ___
    - Pivot to other vulns (LFI to RCE, webshell).
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -260,7 +260,7 @@ curl 'https://target/api/file?path=php://filter/convert.base64-encode/resource=i
 dotdotpwn.pl -m http -h target.com -f /etc/passwd -k 'root:'
 ```
 
-___
+---
 
 ## Impacto
 
@@ -274,7 +274,7 @@ ___
 - **Container escape** — read host files via mounted paths.
 - **DoS** — read special files (`/dev/zero`, `/dev/random`).
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -308,7 +308,7 @@ ___
 - **Logging + alerting** — suspicious paths en logs.
 - **Updated software** — newer versions patch null byte issues.
 
-___
+---
 
 ## Para entender Path Traversal
 
@@ -344,7 +344,7 @@ PHP `include()` ejecuta el archivo como código PHP. Si atacante puede:
 
 Result: `<?php system($_GET['c']); ?>` ejecuta. Stack PHP es notable por este chain.
 
-___
+---
 
 ## Recursos
 
@@ -358,4 +358,4 @@ ___
 - [Snyk - ZIP Slip Vulnerability](https://snyk.io/research/zip-slip-vulnerability) — paper original.
 - [Orange Tsai - URL Parser Inconsistencies](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf) — paper.
 
-***
+---

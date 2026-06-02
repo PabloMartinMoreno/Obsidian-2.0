@@ -18,7 +18,7 @@ linked:
 ---
 # Prototype Pollution - Tooling
 
-***
+---
 
 ## Burp DOM Invader
 
@@ -33,7 +33,7 @@ linked:
 | DOM Invader → "Augmented DOM" tab → ver props añadidas | Inspect prototype state | Post-attack analysis. |
 ^pp-tool-burp-dom
 
-___
+---
 
 ## ppmap
 
@@ -47,7 +47,7 @@ ___
 | `python proto-find.py -u https://target/ --collaborator http://oast.fun` | OOB confirmation via Collaborator | Blind detection. |
 ^pp-tool-ppmap
 
-___
+---
 
 ## PPScan / ppfuzz
 
@@ -82,7 +82,7 @@ for p in "${PAYLOADS[@]}"; do
 done
 ```
 
-___
+---
 
 ## Custom Payloads y Wordlists
 
@@ -109,4 +109,4 @@ const test = {};
 console.log(test.polluted);  // si 'yes' → vulnerable
 ```
 
-***
+---

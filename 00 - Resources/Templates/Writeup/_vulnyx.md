@@ -8,7 +8,7 @@ web: https://vulnyx.com/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
 dificultad:
 ip:
 os:
-relacionados:
+linked:
 ---
 # VulNyx - <% tp.file.title %>
 

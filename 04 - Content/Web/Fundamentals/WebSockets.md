@@ -10,7 +10,7 @@ linked:
 > [!info]
 > Protocolo bidireccional sobre TCP (puerto 80/443) que mantiene conexión persistente cliente-server. Pentest: inspección de mensajes, manipulación inputs, CSWSH, hijacking de sesión.
 
-***
+---
 
 ## Handshake básico
 
@@ -25,7 +25,7 @@ Sec-WebSocket-Version: 13
 
 Respuesta 101 → conexión upgraded.
 
-***
+---
 
 ## Vectores
 
@@ -37,7 +37,7 @@ Respuesta 101 → conexión upgraded.
 | **DoS** | Abrir miles de conexiones long-lived |
 | **Encoding bypass** | WAF que filtra HTTP no inspecciona payloads WS |
 
-***
+---
 
 ## Tools
 
@@ -45,7 +45,7 @@ Respuesta 101 → conexión upgraded.
 - **wsrepl** (Doyensec) — CLI WS REPL para fuzzing
 - **wscat** — cliente WS general
 
-***
+---
 
 ## Testing flow
 
@@ -60,7 +60,7 @@ wscat -c wss://target.com/chat -H 'Cookie: session=...'
 # Proxy → WebSockets history pane
 ```
 
-***
+---
 
 ## CSWSH PoC
 
@@ -74,7 +74,7 @@ wscat -c wss://target.com/chat -H 'Cookie: session=...'
 
 Si víctima visita esto autenticada y server no valida Origin → leak conversaciones.
 
-***
+---
 
 ## Notas Relacionadas
 

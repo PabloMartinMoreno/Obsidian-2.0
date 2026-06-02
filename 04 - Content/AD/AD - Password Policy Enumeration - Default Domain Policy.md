@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Password Policy Enumeration - Default Domain Policy
 
-***
+---
 
 ## Native Windows Tools
 
@@ -41,7 +41,7 @@ net accounts /domain
 :: Lockout observation window (minutes):                 30
 ```
 
-___
+---
 
 ## netexec / crackmapexec
 
@@ -62,7 +62,7 @@ nxc smb <DC> -u user -p pass --pass-pol
 # Reset Account Lockout Counter: 30 minutes
 ```
 
-___
+---
 
 ## RPC Anonymous Discovery
 
@@ -81,7 +81,7 @@ rpcclient -U "" <DC> -N -c 'getdompwinfo'
 # password_properties: 0x00000001
 ```
 
-___
+---
 
 ## LDAP Direct Query
 
@@ -99,7 +99,7 @@ ___
 - `pwdHistoryLength` — int.
 - `pwdProperties` — bitfield.
 
-___
+---
 
 ## pwdProperties Bitfield
 
@@ -127,7 +127,7 @@ $pol = Get-ADDefaultDomainPasswordPolicy
 }
 ```
 
-___
+---
 
 ## krbtgt Password Age
 
@@ -148,7 +148,7 @@ $age = (Get-Date) - $k.PasswordLastSet
 if ($age.Days -gt 180) { Write-Warning "krbtgt stale — rotate 2× con 24h gap" }
 ```
 
-___
+---
 
 ## Multi-Domain Forest-Wide
 
@@ -173,4 +173,4 @@ foreach ($d in (Get-ADForest).Domains) {
 }
 ```
 
-***
+---

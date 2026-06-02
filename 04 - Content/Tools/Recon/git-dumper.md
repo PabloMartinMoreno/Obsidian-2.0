@@ -21,7 +21,7 @@ linked:
 ---
 # Git-Dumper
 
-***
+---
 
 ## Cheatsheet
 

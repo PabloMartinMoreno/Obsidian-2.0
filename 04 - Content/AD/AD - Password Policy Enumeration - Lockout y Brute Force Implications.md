@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Password Policy Enumeration - Lockout & Brute Force Implications
 
-***
+---
 
 ## Lockout Mechanics
 
@@ -39,7 +39,7 @@ $p = Get-ADDefaultDomainPasswordPolicy
 "Threshold: $($p.LockoutThreshold) | Duration: $($p.LockoutDuration) | Window: $($p.LockoutObservationWindow)"
 ```
 
-___
+---
 
 ## Spray Window Calculation
 
@@ -65,7 +65,7 @@ while read u; do
 done < users.txt
 ```
 
-___
+---
 
 ## Reverse Spray (1 password × N users)
 
@@ -89,7 +89,7 @@ for w in "Spring2026!" "Summer2026!" "Welcome2026!" "Password1" "Changeme1!" "<C
 done
 ```
 
-___
+---
 
 ## Bad Password Count Tracking
 
@@ -116,7 +116,7 @@ $safeUsers = Get-ADUser -Filter {Enabled -eq $true} -Properties badPwdCount,lock
 $safeUsers | Out-File safe_targets.txt
 ```
 
-___
+---
 
 ## Pre-Spray Validation
 
@@ -136,7 +136,7 @@ ___
 4. Identify honeypots (siguiente).
 5. Spray con `(threshold - 2)` attempts max + pacing.
 
-___
+---
 
 ## Honeypot Account Detection
 
@@ -158,7 +158,7 @@ Get-ADUser -Filter {Enabled -eq $true -and AdminCount -eq 1} `
   Select Name,SamAccountName,whenCreated,Description,LogonCount
 ```
 
-___
+---
 
 ## Per-User Lockout Variations
 
@@ -192,4 +192,4 @@ $Skip += (Get-ADUser -Filter {Enabled -eq $true} -Pr badPwdCount | ? badPwdCount
 $Skip | Sort -Unique | Out-File spray_skip.txt
 ```
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # Open Redirect - Vectores Básicos
 
-***
+---
 
 ## URL Absoluta Completa
 
@@ -45,7 +45,7 @@ for p in 'https://attacker.com' 'http://attacker.com' '//attacker.com' '\\\\atta
 done
 ```
 
-___
+---
 
 ## Protocol-Relative URLs
 
@@ -69,7 +69,7 @@ ___
 | Firefox | Redirects | Treats as path | Redirects |
 | Safari | Redirects | Treats as path | Redirects |
 
-___
+---
 
 ## Scheme Switching
 
@@ -87,7 +87,7 @@ ___
 | `for s in javascript JaVaScRiPt 'java%09script' 'java%0Ascript' 'java\tscript' data file vbscript livescript; do curl -sI "https://target/redir?url=${s}:alert(1)" \| grep -i location; done` | Bulk scheme probe | Discovery. |
 ^or-vector-scheme
 
-___
+---
 
 ## Backslash / Control Char Tricks
 
@@ -105,4 +105,4 @@ ___
 | `curl -sI "https://target/login?next=https://target.com%00@attacker.com"` | Null byte truncation | Parser que trunca en null. |
 ^or-vector-control
 
-***
+---

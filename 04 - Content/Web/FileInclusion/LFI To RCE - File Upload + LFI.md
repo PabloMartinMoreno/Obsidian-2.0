@@ -13,7 +13,7 @@ linked:
 ---
 # LFI To RCE - File Upload + LFI
 
-***
+---
 
 ## Cheatsheet
 
@@ -105,7 +105,7 @@ done
 wait
 ```
 
-___
+---
 
 ## Overview
 
@@ -124,4 +124,4 @@ Vector más versátil de LFI → RCE. Combina upload (con o sin validaciones) + 
 
 Ver [[File Upload - Bypass de Filtros de Lista Negra]] / [[File Upload - Bypass de Filtros de Lista Blanca]] / [[File Upload - Bypass de Contenido]] para más bypasses de upload.
 
-***
+---

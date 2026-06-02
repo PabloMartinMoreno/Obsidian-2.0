@@ -7,7 +7,7 @@ kind: Secondary Category
 ---
 # HackMyVM
 
-***
+---
 
 ## Overview
 
@@ -43,7 +43,7 @@ GROUP BY os
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Máquinas
 
@@ -57,7 +57,7 @@ FROM "05 - Writeups/HackMyVM"
 SORT dificultad ASC, file.name ASC
 ```
 
-***
+---
 
 ## Recursos
 

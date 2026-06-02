@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit22.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[crontab]]"
   - "[[md5sum]]"
   - "[[Bandit 21]]"

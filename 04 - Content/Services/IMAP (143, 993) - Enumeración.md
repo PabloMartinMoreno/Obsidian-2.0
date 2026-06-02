@@ -17,7 +17,7 @@ linked:
 ---
 # Enumeración IMAP (143, 993)
 
-***
+---
 
 ## Cheatsheet
 
@@ -28,7 +28,7 @@ linked:
 |`openssl s_client -connect <target>:993`|Se conecta al servicio IMAPS cifrado usando SSL.|
 **Nota:** Si tienes problemas al interactuar con IMAP desde la línea de comandos, considera usar el cliente de correo **Evolution**.
 
-***
+---
 
 ## Overview
 

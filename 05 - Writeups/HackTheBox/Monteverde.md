@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/223
 dificultad: Media
 ip: 10.10.10.172
 os: Windows
-relacionados:
+linked:
 ---
 # HackTheBox - Monteverde
 

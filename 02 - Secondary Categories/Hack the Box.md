@@ -7,7 +7,7 @@ kind: Secondary Category
 ---
 # Hack the Box
 
-***
+---
 
 ## Overview
 
@@ -53,7 +53,7 @@ FROM "05 - Writeups/HackTheBox"
 GROUP BY dificultad
 ```
 
-***
+---
 
 ## Máquinas
 
@@ -67,11 +67,11 @@ FROM "05 - Writeups/HackTheBox"
 SORT dificultad ASC, file.name ASC
 ```
 
-***
+---
 
 ## Recursos
 
 - [HTB Labs](https://app.hackthebox.com/)
 - Template: [_hack the box](00%20-%20Resources/Templates/Writeup/_hack%20the%20box.md)
 
-***
+---

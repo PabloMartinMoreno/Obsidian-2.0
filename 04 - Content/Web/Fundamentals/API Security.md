@@ -29,7 +29,7 @@ linked:
 > [!info]
 > Pentest de APIs (REST/GraphQL/SOAP). Surface attack incluye auth/authz, BOLA, injection, mass assignment, rate limit. OWASP API Top 10.
 
-***
+---
 
 ## OWASP API Top 10 (2023)
 
@@ -46,7 +46,7 @@ linked:
 | API9 | **Improper Inventory Management** | Old API versions con vulns |
 | API10 | **Unsafe Consumption of APIs** | Trust third-party API responses |
 
-***
+---
 
 ## Discovery
 
@@ -68,7 +68,7 @@ linked:
 ffuf -w SecLists/Discovery/Web-Content/api/api-endpoints.txt -u https://target/FUZZ
 ```
 
-***
+---
 
 ## Auth analysis
 
@@ -81,7 +81,7 @@ ffuf -w SecLists/Discovery/Web-Content/api/api-endpoints.txt -u https://target/F
 
 Ver [[JWT Attacks]], [[OAuth 2.0 Misconfigurations]].
 
-***
+---
 
 ## BOLA / IDOR
 
@@ -94,7 +94,7 @@ Si responde sin error → BOLA.
 
 Ver [[BOLA - IDOR]].
 
-***
+---
 
 ## Mass Assignment
 
@@ -105,7 +105,7 @@ PATCH /api/users/me
 
 Ver [[Mass Assignment]].
 
-***
+---
 
 ## Tools
 
@@ -116,7 +116,7 @@ Ver [[Mass Assignment]].
 - **GraphQL specific**: GraphCrawler, InQL, graphql-cop
 - **OWASP ZAP** — scanner
 
-***
+---
 
 ## Notas Relacionadas
 

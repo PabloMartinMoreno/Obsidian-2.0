@@ -30,7 +30,7 @@ linked:
 ---
 # Race Conditions
 
-***
+---
 
 ## Cheatsheet
 
@@ -129,7 +129,7 @@ tab: **Edge Cases (HTTP/3, WS, GraphQL)**
 ![[Race Conditions - Bypasses y Edge Cases#^race-bypass-edge]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -167,7 +167,7 @@ HTTP/2 single-packet attack (Kettle 2023) eliminó la última excusa: ahora clie
 | Vector | Multi-request burst | Single request | Single request |
 | Impact | State inconsistency | Action on user behalf | All users affected |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -205,7 +205,7 @@ ___
    - Final state vs expected state
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -275,7 +275,7 @@ curl -s -H "Cookie: session=..." https://target/api/balance
 # Send group → in single connection (con HTTP/2)
 ```
 
-___
+---
 
 ## Impacto
 
@@ -288,7 +288,7 @@ ___
 - **Fraud at scale** — referral / cashback / loyalty point inflation.
 - **Compliance violation** — bypass de audit trails / approvals.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -306,7 +306,7 @@ ___
 - **Prevent HTTP/2 if not needed** — algunas apps don't need H2 — disable mitigates single-packet.
 - **Resource quotas** — backend enforces hard limits independent de check.
 
-___
+---
 
 ## Para entender Race Conditions
 
@@ -331,7 +331,7 @@ Devs piensan en código secuencial: "leer balance, restar, escribir". Concurrenc
 
 Single-thread bugs son determinísticos. Race conditions requieren timing — pueden ser inreproducibles en testing (test loops sin concurrencia). Por eso escapan a QA y aparecen en prod bajo carga.
 
-___
+---
 
 ## Recursos
 
@@ -345,4 +345,4 @@ ___
 - [TOCTOU - Wikipedia](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use) — concept.
 - [Defcon 31 - Web Race Conditions (James Kettle)](https://www.youtube.com/watch?v=bouCwiQa6yU) — talk video.
 
-***
+---

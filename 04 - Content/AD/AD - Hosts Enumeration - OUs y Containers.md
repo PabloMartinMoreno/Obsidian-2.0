@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Hosts Enumeration - OUs & Containers
 
-***
+---
 
 ## OU Tree Discovery
 
@@ -40,7 +40,7 @@ Get-ADOrganizationalUnit -Filter * |
   }
 ```
 
-___
+---
 
 ## Default Containers (Built-in)
 
@@ -73,7 +73,7 @@ Get-Acl "AD:CN=AdminSDHolder,CN=System,DC=corp,DC=local" |
   Select IdentityReference,ActiveDirectoryRights
 ```
 
-___
+---
 
 ## OU Contents Enumeration
 
@@ -99,7 +99,7 @@ Get-ADUser -SearchBase $OU -Filter * -Properties MemberOf,Description |
   Select Name,Description,@{n='Groups';e={ ($_.MemberOf -replace 'CN=([^,]+).*','$1') -join ', ' }}
 ```
 
-___
+---
 
 ## OU Permissions & GPO Inheritance
 
@@ -137,7 +137,7 @@ Get-ADOrganizationalUnit -Filter * | % {
 }
 ```
 
-___
+---
 
 ## Naming Conventions / Fingerprint
 
@@ -166,4 +166,4 @@ Get-ADOrganizationalUnit -Filter * -SearchScope OneLevel |
 Get-ADOrganizationalUnit -Filter "Name -like '*Tier*' -or Name -like '*T0*' -or Name -like '*Admin*' -or Name -like '*Privileged*'"
 ```
 
-***
+---

@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit25.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[more]]"
   - "[[Bandit 24]]"
   - "[[Bandit 26]]"

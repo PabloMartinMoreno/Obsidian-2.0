@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/240
 dificultad: Media
 ip: 10.10.10.184
 os: Windows
-relacionados:
+linked:
   - "[[NVMS-1000 Exploitation]]"
   - "[[Directory Traversal]]"
   - "[[File Inclusion|Local FIle Inclusion]]"
@@ -193,7 +193,7 @@ Para obtener una shell reversa como `SYSTEM`, seguí estos pasos:
 Inmediatamente, recibí una conexión en mi listener de Metasploit con una sesión de `NT AUTHORITY\SYSTEM`. Con estos privilegios, pude leer la bandera final en `C:\Users\Administrator\Desktop\root.txt`.
 
 
-___
+---
 
 ## Bandera(s)
 

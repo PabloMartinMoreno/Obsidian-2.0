@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web:
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[gobuster]]"
   - "[[File Inclusion|LFI]]"
   - "[[Log Poisoning]]"
@@ -196,7 +196,7 @@ whoami
 cat /root/proof.txt
 ```
 
-___
+---
 
 ## Bandera(s)
 

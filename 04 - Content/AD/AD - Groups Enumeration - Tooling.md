@@ -19,7 +19,7 @@ linked:
 ---
 # AD - Groups Enumeration - Tooling
 
-***
+---
 
 ## netexec
 
@@ -46,7 +46,7 @@ for g in "Domain Admins" "Enterprise Admins" "Schema Admins" "Backup Operators" 
 done
 ```
 
-___
+---
 
 ## RSAT / PowerShell
 
@@ -74,7 +74,7 @@ $T0 | % {
 } | Export-Csv tier0_audit.csv -NoTypeInformation
 ```
 
-___
+---
 
 ## PowerView / pywerview
 
@@ -95,7 +95,7 @@ ___
 | `pywerview get-netgroupmember -u u -p pass -d corp.local --dc-ip <DC> --groupname "Domain Admins"` | Linux members | Linux. |
 ^ad-grouptool-powerview
 
-___
+---
 
 ## BloodHound / SharpHound
 
@@ -118,7 +118,7 @@ for d in corp.local partner.com; do
 done
 ```
 
-___
+---
 
 ## Impacket / Linux LDAP
 
@@ -144,7 +144,7 @@ ldapdomaindump "corp\\$USER:$PASS"@$DC -o report/
 enum4linux-ng -G -A $DC -u $USER -p $PASS -oJ enum.json
 ```
 
-___
+---
 
 ## Recursos
 
@@ -160,4 +160,4 @@ ___
 | PowerView Cheat Sheet | `https://github.com/HarmJ0y/CheatSheets/blob/master/PowerView.pdf` |
 ^ad-grouptool-resources
 
-***
+---

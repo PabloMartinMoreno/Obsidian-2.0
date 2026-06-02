@@ -11,7 +11,7 @@ linked:
 > [!info]
 > Interceptar llamadas a API (OS/library/app) en runtime para entender comportamiento, modificar valores, bypass de checks. Útil cuando estático es complejo (obfuscated) o para identificar IOCs (malware analysis).
 
-***
+---
 
 ## Conceptos
 
@@ -19,7 +19,7 @@ linked:
 - **Hooking**: interceptar + modificar args/return value
 - **Instrumentation**: inject code para profiling/coverage
 
-***
+---
 
 ## Tools por OS
 
@@ -35,7 +35,7 @@ linked:
 | **Android** | Frida + Objection | Method hook |
 | **iOS** | Frida (jailbreak required) | Idem |
 
-***
+---
 
 ## strace / ltrace (Linux)
 
@@ -53,7 +53,7 @@ ltrace -l libssl* ./binary      # Solo libssl
 
 Output útil para entender qué hace un binary sin decompilarlo.
 
-***
+---
 
 ## Frida (cross-platform)
 
@@ -94,7 +94,7 @@ Interceptor.attach(Module.findExportByName("libc.so", "open"), {
 });
 ```
 
-***
+---
 
 ## Process Monitor (Windows)
 
@@ -112,7 +112,7 @@ Interceptor.attach(Module.findExportByName("libc.so", "open"), {
 - Errores silentes
 - Files temporales con secrets
 
-***
+---
 
 ## API Monitor (Windows)
 
@@ -125,7 +125,7 @@ GUI rich con args decoded (e.g., HKEY values for registry APIs, file path string
 4. Análisis del log
 ```
 
-***
+---
 
 ## Microsoft Detours (programmatic hook)
 
@@ -147,7 +147,7 @@ DetourAttach((PVOID*)&Real_MessageBoxA, Hook_MessageBoxA);
 DetourTransactionCommit();
 ```
 
-***
+---
 
 ## eBPF (Linux moderno)
 
@@ -161,7 +161,7 @@ bpftrace -e 'tracepoint:syscalls:sys_enter_openat /comm == "myapp"/ { printf("%s
 opensnoop-bpfcc
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

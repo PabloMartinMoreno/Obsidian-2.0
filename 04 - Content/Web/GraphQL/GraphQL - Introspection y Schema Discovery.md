@@ -16,7 +16,7 @@ linked:
 ---
 # GraphQL - Introspection y Schema Discovery
 
-***
+---
 
 ## Introspection Query Completa
 
@@ -101,7 +101,7 @@ curl -X POST -H "Content-Type: application/json" \
   -d "$INTROSPECTION" https://target/graphql | jq .
 ```
 
-___
+---
 
 ## Field Suggestions (Typo Trick)
 
@@ -131,7 +131,7 @@ clairvoyance -o schema.json https://target/graphql
 # Output: schema.json con todo lo que se pudo recuperar via suggestions
 ```
 
-___
+---
 
 ## Schema Recovery con Tools
 
@@ -164,4 +164,4 @@ ___
 5. Convertir a SDL con utilities → review manual.
 ```
 
-***
+---

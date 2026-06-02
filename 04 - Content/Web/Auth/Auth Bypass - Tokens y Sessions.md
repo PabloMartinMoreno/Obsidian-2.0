@@ -18,7 +18,7 @@ linked:
 ---
 # Auth Bypass - Tokens y Sessions
 
-***
+---
 
 ## JWT Bypass (Quick Reference)
 
@@ -36,7 +36,7 @@ linked:
 | `curl -s https://target/.well-known/jwks.json \| jq` | Obtener pública para alg confusion | Discovery. |
 ^auth-tokens-jwt
 
-___
+---
 
 ## Session Fixation
 
@@ -51,7 +51,7 @@ ___
 | Inspect `curl -sI https://target/login` y verificar si Set-Cookie cambia post-login | Confirm fixation vulnerable | Pre-attack check. |
 ^auth-tokens-fixation
 
-___
+---
 
 ## Predictable Tokens
 
@@ -67,7 +67,7 @@ ___
 | `entropy < captured_tokens.txt` | Statistical entropy analysis | Bulk token analysis. |
 ^auth-tokens-predictable
 
-___
+---
 
 ## Cookie Tampering
 
@@ -85,7 +85,7 @@ ___
 | Inspect `curl -sI https://target/login \| grep -i 'set-cookie'` para Secure/HttpOnly/SameSite | Cookie security attribute check | Pre-attack. |
 ^auth-tokens-cookie
 
-___
+---
 
 ## OAuth `redirect_uri` Manipulation
 
@@ -103,4 +103,4 @@ ___
 | `curl -H "Authorization: Bearer $TOKEN" https://api.target.com/me` | Use access_token como victim | Final ATO step. |
 ^auth-tokens-oauth
 
-***
+---

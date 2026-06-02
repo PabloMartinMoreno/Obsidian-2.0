@@ -35,7 +35,7 @@ linked:
 
 # DCSync
 
-***
+---
 
 ## Cheatsheet
 
@@ -171,7 +171,7 @@ tab: **Recursos**
 ![[DCSync - Tooling#^dcsync-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -190,7 +190,7 @@ Requiere dos ACEs sobre el naming context del dominio: `DS-Replication-Get-Chang
 | MDI evasion | No (source IP no-DC = alert) | Sí (si método file en DC local) |
 | Sin RCE en DC | Sí | No |
 
-___
+---
 
 ## Workflow
 
@@ -219,7 +219,7 @@ ___
    - dacledit remove / Remove-DomainObjectAcl.
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -240,7 +240,7 @@ mimikatz # privilege::debug
 mimikatz # lsadump::dcsync /domain:corp.local /user:krbtgt
 ```
 
-___
+---
 
 ## Impacto
 
@@ -252,7 +252,7 @@ ___
 - **Password history** → patrones organizacionales, spray contra otros sistemas.
 - **DPAPI keys** → browser passwords, certificate private keys.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -265,7 +265,7 @@ ___
 - **Monitorear Event 4662** con GetChangesAll GUID en SIEM.
 - **Monitorear Event 5136** — DACL change en domain root (grant DCSync via ACL abuse).
 
-___
+---
 
 ## Para entender DCSync
 
@@ -277,7 +277,7 @@ ___
 
 **Por qué MDI detecta DCSync tan bien:** MDI analiza tráfico DRSUAPI en el wire (sensor en DCs). Cualquier GetChangesAll desde una IP que no es un DC conocido = alert inmediato. No hay forma de evadir esto con DCSync network-based si MDI está activo. La única alternativa: usar método file-based (ntdsutil/VSS) directamente en el DC, que no usa DRSUAPI.
 
-___
+---
 
 ## Recursos
 
@@ -288,4 +288,4 @@ ___
 - [ADSecurity — DCSync](https://adsecurity.org/?p=1729) — detection deep-dive.
 - [MITRE ATT&CK T1003.006](https://attack.mitre.org/techniques/T1003/006/) — DCSync.
 
-***
+---

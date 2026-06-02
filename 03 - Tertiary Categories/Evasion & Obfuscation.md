@@ -7,7 +7,7 @@ kind: Tertiary Category
 ---
 # Evasion & Obfuscation
 
-***
+---
 
 ## 🛡 Static Analysis Evasion
   Técnicas para evadir la detección basada en firmas de archivos.
@@ -28,4 +28,4 @@ kind: Tertiary Category
    - [[Sandbox Detection Techniques]] (Verificar dominio, memoria RAM, movimientos del ratón o tiempo de actividad.)
    - [[AMSI Bypass]] (Métodos para deshabilitar el Antimalware Scan Interface en Windows.)
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # POP3 Enumeration (110, 995)
 
-***
+---
 ## Cheatsheet
 
 |Acción|Descripción|
@@ -34,7 +34,7 @@ linked:
 
 - [[Common POP3 Commands]]: Comandos que se deben utilizar al interactuar con el servicio manualmente.
 
-***
+---
 
 ## Overview
 

@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/symfonos3
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[pspy]]"
   - "[[cgi-bin]]"
   - "[[tcpdump]]"

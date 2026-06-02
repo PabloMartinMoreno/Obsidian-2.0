@@ -18,7 +18,7 @@ linked:
 > [!info]
 > **Data Protection API** — Windows API que cifra secrets (browser passwords, RDP creds, Chrome cookies, vaults). Cada user tiene su master key derivado de su password. Decryption requiere: master key o domain backup key.
 
-***
+---
 
 ## Targets típicos
 
@@ -34,7 +34,7 @@ linked:
 | **Wi-Fi profiles** | `%PROGRAMDATA%\Microsoft\Wlansvc\Profiles\Interfaces\*\` |
 | **VaultCli (BrowserBased)** | `%LOCALAPPDATA%\Microsoft\Vault\` |
 
-***
+---
 
 ## Master Keys
 
@@ -47,7 +47,7 @@ Cifradas con SHA1(user password) + salt. Decryption requiere:
 2. **NTLM hash** (parcial — solo para current user), O
 3. **Domain DPAPI backup key** (master en DC, decrypta TODOS los DPAPI del dominio).
 
-***
+---
 
 ## Workflow
 
@@ -78,7 +78,7 @@ dpapi-dump.py -pvk <backup-key.pvk> ...
 SharpChrome.exe cookies /unprotect
 ```
 
-***
+---
 
 ## Tools
 
@@ -88,7 +88,7 @@ SharpChrome.exe cookies /unprotect
 - **dpapick**: Python offline parser
 - **impacket-dpapi.py**
 
-***
+---
 
 ## Notas Relacionadas
 

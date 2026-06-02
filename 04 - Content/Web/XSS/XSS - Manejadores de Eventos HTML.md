@@ -13,7 +13,7 @@ linked:
 ---
 # XSS - Manejadores de Eventos HTML
 
-***
+---
 
 ## Cheatsheet
 
@@ -54,7 +54,7 @@ linked:
 | `<svg onload="alert(1)">` | Unicode escape en JS dentro de event handler | Filtro bloquea `alert` pero deja `\u`. |
 ^xss-eventos-bypass
 
-___
+---
 
 ## Overview
 
@@ -66,4 +66,4 @@ Cuando `<script>` está blacklisted, event handlers permiten ejecutar JS via atr
 
 Para escapar atributo sin disparar `<`/`>` filter → ver tabla `escape de atributo` arriba.
 
-***
+---

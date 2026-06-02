@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/123
 dificultad: Media
 ip: 10.10.10.74
 os: Windows
-relacionados:
+linked:
   - "[[Achat]]"
   - "[[Buffer Overflow]]"
   - "[[Icacls Abuse]]"
@@ -159,7 +159,7 @@ Confirmé que la contraseña `Welcome1!` era válida para el usuario `Administra
 Inmediatamente, recibí una conexión en mi segundo listener, esta vez con una shell con privilegios de `NT AUTHORITY\SYSTEM`, completando así la escalada de privilegios.
 
 
-___
+---
 
 ## Bandera(s)
 

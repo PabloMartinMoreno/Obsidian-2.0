@@ -18,7 +18,7 @@ linked:
 ---
 # Open Redirect - Tooling
 
-***
+---
 
 ## OpenRedireX
 
@@ -33,7 +33,7 @@ linked:
 | `python openredirex.py -u "..." -p payloads.txt -H "Cookie: session=$T"` | Authenticated fuzz | Endpoint detrás de auth. |
 ^or-tool-openredirex
 
-___
+---
 
 ## Burp Active Scanner + Param Miner
 
@@ -48,7 +48,7 @@ ___
 | Burp → Logger++ → filter `response.status >= 300 && response.status < 400` | Solo respuestas 3xx | Visual review redirects. |
 ^or-tool-burp
 
-___
+---
 
 ## Wordlists
 
@@ -62,7 +62,7 @@ ___
 | `cat custom.txt PayloadsAllTheThings.txt OpenRedireX.txt \| sort -u > combined.txt` | Combined deduplicado | Bulk fuzz custom. |
 ^or-tool-wordlists
 
-___
+---
 
 ## Manual curl / Custom Scripts
 
@@ -105,4 +105,4 @@ for p in "${PAYLOADS[@]}"; do
 done
 ```
 
-***
+---

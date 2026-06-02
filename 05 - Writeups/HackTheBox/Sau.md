@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/551
 dificultad: Fácil
 ip: 10.10.11.224
 os: Linux
-relacionados:
+linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[CVE-2023-27163]]"
   - "[[Remote Code Execution|RCE]]"
@@ -239,7 +239,7 @@ LinPEAS resalta un permiso de `sudo` interesante para el usuario `puma`.
 > ```
 
 
-___
+---
 
 ## Bandera(s)
 

@@ -12,7 +12,7 @@ linked:
 > [!info]
 > Tool Python para reconstruir source code desde `.git/` directory expuesto. Alternativa a git-dumper, soporta múltiples threads.
 
-***
+---
 
 ## Uso
 
@@ -32,7 +32,7 @@ Reconstruye:
 - Commit history
 - Config + remote URLs
 
-***
+---
 
 ## Workflow post-dump
 
@@ -55,7 +55,7 @@ git stash show -p
 git log --all --diff-filter=D --name-only
 ```
 
-***
+---
 
 ## Alternativas
 
@@ -63,7 +63,7 @@ git log --all --diff-filter=D --name-only
 - `dumper` (Ruby)
 - Manual via curl: `curl -s http://target/.git/HEAD` + reconstruct refs
 
-***
+---
 
 ## Notas Relacionadas
 

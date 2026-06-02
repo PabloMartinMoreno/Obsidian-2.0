@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit07.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[grep]]"
   - "[[awk]]"
   - "[[Bandit 06]]"

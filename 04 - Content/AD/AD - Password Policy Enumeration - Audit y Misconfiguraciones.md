@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Password Policy Enumeration - Audit & Misconfiguraciones
 
-***
+---
 
 ## Weak Min Length / No Complexity
 
@@ -49,7 +49,7 @@ Get-ADFineGrainedPasswordPolicy -Filter * | % {
 $Issues
 ```
 
-___
+---
 
 ## Reversible Encryption
 
@@ -72,7 +72,7 @@ $rev = Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true} -Propert
 "Users con reversible: $($rev.Count) (priv: $($rev.Where({$_.AdminCount -eq 1}).Count))"
 ```
 
-___
+---
 
 ## krbtgt Stale Password
 
@@ -103,7 +103,7 @@ foreach ($d in (Get-ADForest).Domains) {
 }
 ```
 
-___
+---
 
 ## No-Lockout / Lockout=0
 
@@ -116,7 +116,7 @@ ___
 
 **Trade-off:** threshold=0 → vulnerable a spray. threshold=1 → vulnerable a DOS (lockout intencional). Sweet spot: 5-10 con observation window 30min.
 
-___
+---
 
 ## Compliance Standards
 
@@ -143,7 +143,7 @@ $cis = @{
 $cis
 ```
 
-___
+---
 
 ## Custom PSO Audit
 
@@ -165,7 +165,7 @@ Get-ADFineGrainedPasswordPolicy -Filter * -Properties * |
   Sort Precedence
 ```
 
-___
+---
 
 ## PingCastle / Purple Knight
 
@@ -190,4 +190,4 @@ PingCastle.exe --healthcheck --server dc01 --no-enum-limit
 :: - S-PwdNotRequired (PASSWD_NOTREQD users)
 ```
 
-***
+---

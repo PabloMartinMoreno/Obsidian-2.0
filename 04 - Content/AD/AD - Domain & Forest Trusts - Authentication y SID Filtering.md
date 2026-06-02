@@ -18,7 +18,7 @@ linked:
 ---
 # AD - Domain & Forest Trusts - Authentication & SID Filtering
 
-***
+---
 
 ## Authentication Types Cross-Trust
 
@@ -46,7 +46,7 @@ klist
 :: Ticket "krbtgt/PARTNER.COM@CORP.LOCAL" = inter-realm TGT
 ```
 
-___
+---
 
 ## Selective Authentication (Hardening)
 
@@ -78,7 +78,7 @@ Get-ADComputer -Filter * | % {
 }
 ```
 
-___
+---
 
 ## SID Filtering
 
@@ -109,7 +109,7 @@ Get-ADTrust -Filter * -Properties trustAttributes |
   }}
 ```
 
-___
+---
 
 ## SID History
 
@@ -133,7 +133,7 @@ Get-ADUser -Filter * -Properties sIDHistory,whenCreated |
   Select Name,SamAccountName,whenCreated,@{n='SIDs';e={$_.sIDHistory -join '; '}}
 ```
 
-___
+---
 
 ## Forging Inter-Realm TGT
 
@@ -167,7 +167,7 @@ export KRB5CCNAME=Administrator.ccache
 secretsdump.py -k -no-pass partner-dc.partner.com
 ```
 
-___
+---
 
 ## Trust Account Compromise Chain
 
@@ -187,4 +187,4 @@ ___
 nltest /domain_trusts /v | grep -A2 "partner.com"
 ```
 
-***
+---

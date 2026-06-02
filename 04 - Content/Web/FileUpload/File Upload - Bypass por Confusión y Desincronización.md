@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Bypass por Confusión y Desincronización
 
-***
+---
 
 ## Cheatsheet
 
@@ -87,7 +87,7 @@ curl -sI https://target/upload | grep -iE 'server|x-powered-by'
 # Express/Node → multer parsing quirks
 ```
 
-___
+---
 
 ## Overview
 
@@ -102,4 +102,4 @@ Técnicas que aprovechan **diferencias de parsing** entre componentes (WAF vs ba
 
 Más efectivo cuanto más distantes los componentes (WAF cloud + backend on-prem = grandes diferencias de parsing).
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # Web Cache Poisoning - Bypasses Avanzados
 
-***
+---
 
 ## Cache Key Normalization Tricks
 
@@ -51,7 +51,7 @@ for s in "/page" "/page/" "/PAGE"; do
 done
 ```
 
-___
+---
 
 ## Race Conditions en Cache Fill
 
@@ -89,7 +89,7 @@ Host: target.com
         engine.queue(legit_req)
 ```
 
-___
+---
 
 ## Multi-CDN Chains
 
@@ -104,7 +104,7 @@ ___
 | `curl -sI -H "X-Forwarded-Host: x" "https://static.target.com/?cb=$RANDOM"` y same en `target.com` | Subdomain CDN switch (CF static, Akamai apex) | Different per-subdomain config. |
 ^wcp-bypass-multicdn
 
-___
+---
 
 ## Fat GET / Fat POST
 
@@ -132,4 +132,4 @@ action=delete&id=1
 
 Cache treats as standard GET (ignores body). Backend procesa body como form-urlencoded → ejecuta delete. Response cached como `/admin/user-data` para todos los users.
 
-***
+---

@@ -14,7 +14,7 @@ linked:
 > [!info]
 > **Document Object Model** — representación en árbol de un documento HTML/XML. APIs JS para leer/modificar nodos. En seguridad web: fuente de DOM-based XSS, sinks peligrosos, Prototype Pollution, mXSS.
 
-***
+---
 
 ## Sources peligrosos (input)
 
@@ -30,13 +30,13 @@ linked:
 | `localStorage` / `sessionStorage` | Persistencia client-side |
 | `WebSocket` data | Cliente |
 
-***
+---
 
 ## Sinks peligrosos
 
 Sinks documentados en [[XSS - Manipulación de Sources y Sinks (DOM-based)]]: HTML write APIs, string-based timers, `location` reassign, jQuery wrappers, contextual HTML parsing.
 
-***
+---
 
 ## Detección
 
@@ -44,7 +44,7 @@ Sinks documentados en [[XSS - Manipulación de Sources y Sinks (DOM-based)]]: HT
 - Browser DevTools → Sources → buscar sinks.
 - Static analysis: grep en JS bundles.
 
-***
+---
 
 ## Notas Relacionadas
 

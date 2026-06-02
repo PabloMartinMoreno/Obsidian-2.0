@@ -26,7 +26,7 @@ linked:
 ---
 # Responder
 
-***
+---
 
 ## Cheatsheet
 ^responder-cheatsheet
@@ -41,7 +41,7 @@ linked:
 | **WPAD only** | `sudo responder -I eth0 -w` | Solo WPAD (proxy) |
 | **Hashes capturados** | `/usr/share/responder/logs/` | NetNTLMv2 → hashcat -m 5600 |
 
-***
+---
 
 ## Concepto
 
@@ -293,4 +293,4 @@ Hace NetNTLMv2 ligeramente más débil — marginal.
 - [Inveigh - Windows equivalent](https://github.com/Kevin-Robertson/Inveigh)
 - [mitm6](https://github.com/dirkjanm/mitm6)
 
-***
+---

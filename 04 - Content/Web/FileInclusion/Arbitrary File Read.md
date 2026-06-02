@@ -16,7 +16,7 @@ linked:
 > [!info]
 > Vulnerabilidad que permite leer cualquier archivo del filesystem del server. Usualmente subset de LFI o subset de XXE/SSRF. Impacto: leak de credenciales, source code, configs, claves privadas.
 
-***
+---
 
 ## Vectores típicos
 
@@ -31,7 +31,7 @@ linked:
 | **API endpoint** | `/api/download?file=../../../etc/passwd` | Backend file ops sin sandbox |
 | **Excel/CSV formula** | `=cmd('cat /etc/passwd')` en spreadsheet apps | DDE / Formula injection |
 
-***
+---
 
 ## Archivos high-value (Linux)
 
@@ -46,7 +46,7 @@ linked:
 - `/var/www/html/.env` — env vars de la app
 - Webapp source files (`.php`, `.py`) via PHP filter chains
 
-***
+---
 
 ## Archivos high-value (Windows)
 
@@ -58,14 +58,14 @@ linked:
 - `C:\Windows\Panther\Unattend.xml` (cleartext creds setup)
 - IIS logs: `C:\inetpub\logs\LogFiles\W3SVC*\*.log`
 
-***
+---
 
 ## Escalation paths
 
 AFR → cred leak → reuse → shell → privesc.
 AFR → source disclosure → encontrar otra vuln → RCE.
 
-***
+---
 
 ## Notas Relacionadas
 

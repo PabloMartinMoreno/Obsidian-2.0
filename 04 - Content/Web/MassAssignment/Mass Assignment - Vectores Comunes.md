@@ -17,7 +17,7 @@ linked:
 ---
 # Mass Assignment - Vectores Comunes
 
-***
+---
 
 ## Privilege Escalation
 
@@ -52,7 +52,7 @@ curl https://target/api/admin/users -H "Authorization: Bearer $TOKEN"
 # 200 OK → privesc successful
 ```
 
-___
+---
 
 ## Account Takeover
 
@@ -86,7 +86,7 @@ curl -X PUT https://target/api/profile \
 # Trigger password reset → reset link va al email "victim@target.com" que ahora es mío
 ```
 
-___
+---
 
 ## Financial / Quota Fields
 
@@ -104,7 +104,7 @@ ___
 | Inject `"referral_credit": 99999999` | Forge referral credits | Referral abuse. |
 ^ma-vector-financial
 
-___
+---
 
 ## Status Flags
 
@@ -120,7 +120,7 @@ ___
 | Inject `"is_locked": false` en order/transaction | Re-abrir transaction cerrada | Lock flag mutable. |
 ^ma-vector-status
 
-___
+---
 
 ## Audit Fields (Backdating / Cover Tracks)
 
@@ -137,4 +137,4 @@ ___
 | Inject `"user_agent": "Mozilla/5.0 ..."` | Forge UA en logs | Forensics evasion. |
 ^ma-vector-audit
 
-***
+---

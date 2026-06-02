@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Resumen de protocolos comunes en pentest, por capa OSI/TCP-IP. Cada uno con puertos + uso típico + atacks.
 
-***
+---
 
 ## Capa 7 (Application)
 
@@ -50,7 +50,7 @@ linked:
 | Finger | 79 | Legacy user enum | User existence |
 | VNC | 5900 | Remote desktop | Brute, no auth, weak DES |
 
-***
+---
 
 ## Capa 4 (Transport)
 
@@ -59,7 +59,7 @@ linked:
 | TCP | Connection-oriented, handshake 3-way |
 | UDP | Connectionless, fire-and-forget |
 
-***
+---
 
 ## Capa 3 (Network)
 
@@ -70,7 +70,7 @@ linked:
 | IPv6 | Windows prioriza — mitm6 spoofing |
 | ARP | LAN MAC↔IP — ARP spoofing/poisoning |
 
-***
+---
 
 ## Capa 2 (Data Link)
 
@@ -82,7 +82,7 @@ linked:
 | LLDP / CDP | Discovery — info leak |
 | WPA2/WPA3 | Wireless |
 
-***
+---
 
 ## Notas Relacionadas
 

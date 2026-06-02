@@ -11,7 +11,7 @@ kind: Tool
 > [!info]
 > Cliente Telnet (cleartext, deprecated pero presente). En pentest: banner grab, interacción manual con servicios TCP (SMTP, HTTP, POP3), CLI directa a equipos legacy.
 
-***
+---
 
 ## Uso
 
@@ -26,7 +26,7 @@ telnet <target> 110        # POP3
 telnet <target> 6379       # Redis
 ```
 
-***
+---
 
 ## SMTP via telnet (manual)
 
@@ -45,7 +45,7 @@ body
 
 Ver [[SMTP (25,465,587) - Enumeración]].
 
-***
+---
 
 ## HTTP via telnet
 
@@ -57,7 +57,7 @@ telnet target 80
 (double newline)
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -17,7 +17,7 @@ linked:
 ---
 # AD - ADCS Enumeration - ADCS Discovery
 
-***
+---
 
 ## Architecture Overview
 
@@ -31,7 +31,7 @@ linked:
 | Certifried (CVE-2022-26923) | KDC validation patch | Modern requirement. |
 ^ad-adcs-architecture
 
-___
+---
 
 ## Enterprise CA Discovery
 
@@ -53,7 +53,7 @@ certipy find -u auditor@corp.local -p 'Pass!' -dc-ip <DC> -text -stdout
 # Output: CAs, templates, ACLs, vulnerabilities
 ```
 
-___
+---
 
 ## Certificate Templates Discovery
 
@@ -66,7 +66,7 @@ ___
 | `ldapsearch ... -b "CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=corp,DC=local" "(objectClass=pKICertificateTemplate)" cn pkiExtendedKeyUsage msPKI-Certificate-Name-Flag` | LDAP raw | Linux. |
 ^ad-adcs-templates
 
-___
+---
 
 ## NTAuth Store
 
@@ -80,7 +80,7 @@ ___
 
 **Por qué crítico:** NTAuth Store contiene certs de CAs **trusted para Kerberos auth (PKINIT)**. Cert emitido por CA en NTAuth + EKU Client Auth → autenticación válida como cualquier user (con SAN = victim UPN). Cualquier CA agregada al NTAuth Store = forest auth bypass.
 
-___
+---
 
 ## Web Enrollment / NDES Discovery
 
@@ -101,7 +101,7 @@ for url in "/certsrv/" "/certsrv/certfnsh.asp" "/certsrv/mscep/mscep.dll" "/cert
 done
 ```
 
-___
+---
 
 ## Anonymous ADCS Discovery (Limited)
 
@@ -113,7 +113,7 @@ ___
 
 **Realidad:** Configuration NC anónimo casi siempre bloqueado. Auth obligatoria para enum templates/CAs.
 
-___
+---
 
 ## Cross-Domain / Forest-Wide ADCS
 
@@ -125,7 +125,7 @@ ___
 
 **Key fact:** ADCS storage es en **Configuration NC** (forest-wide), no en domain-specific containers. Una sola query desde cualquier domain del forest captura todos los templates.
 
-___
+---
 
 ## Modern Best Practices
 
@@ -138,4 +138,4 @@ ___
 | Quarterly `certipy find -vulnerable` audit | Compliance | Standard. |
 ^ad-adcs-bestpractice
 
-***
+---

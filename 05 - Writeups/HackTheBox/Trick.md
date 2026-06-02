@@ -6,7 +6,7 @@ web: https://app.hackthebox.com/machines/477
 dificultad: Media
 ip: 10.10.11.166
 os: Linux
-relacionados:
+linked:
   - "[[Notas/Procesar/nslookup|nslookup]]"
   - "[[Notas/Procesar/dig|dig]]"
   - "[[File Inclusion]]"
@@ -342,7 +342,7 @@ actionban = chmod u+s /bin/bash
 > [!success] ¡Escalada de Privilegios Completada!
 
 
-___
+---
 
 ## Bandera(s)
 

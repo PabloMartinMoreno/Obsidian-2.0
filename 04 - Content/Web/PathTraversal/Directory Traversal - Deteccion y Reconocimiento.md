@@ -15,7 +15,7 @@ linked:
 ---
 # Directory Traversal - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints con File Params
 
@@ -45,7 +45,7 @@ linked:
 | Headers `X-Path:` | Custom header | Edge case. |
 ^pt-detect-params
 
-___
+---
 
 ## Probes Iniciales
 
@@ -81,7 +81,7 @@ for p in '../etc/passwd' '../../etc/passwd' '../../../etc/passwd' \
 done
 ```
 
-___
+---
 
 ## Detectar OS y Stack
 
@@ -120,4 +120,4 @@ curl 'https://target/api/file?path=../../../proc/self/cmdline'
 # Returns process command line
 ```
 
-***
+---

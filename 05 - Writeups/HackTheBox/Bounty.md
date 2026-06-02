@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/142
 dificultad: Fácil
 ip: 10.10.10.93
 os: Windows
-relacionados:
+linked:
   - "[[IIS Enumeration]]"
   - "[[IIS Exploitation]]"
   - "[[Abuso de SeImpersonatePrivilege (Ataques \"Potato\")]]"
@@ -56,7 +56,7 @@ Con las pistas obtenidas del escaneo de nombres cortos, pude acotar significativ
 - El archivo `/transfer.aspx`
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -71,7 +71,7 @@ Para identificar qué extensiones _sí_ estaban permitidas, decidí realizar un 
 > [!note] El descubrimiento clave fue que los archivos con la extensión `.config` se subían correctamente, a diferencia de otros. Esto lo noté por la diferencia en la longitud de la respuesta del servidor, que indicaba que el archivo había sido aceptado y guardado.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -125,7 +125,7 @@ Subí mi `web.config` modificado a través de `transfer.aspx`. El servidor lo gu
 Al hacerlo, IIS ejecutó el código VBScript incrustado, lo que a su vez lanzó mi reverse shell de PowerShell. Recibí una conexión en mi listener, obteniendo acceso inicial al sistema como el usuario del pool de aplicaciones de IIS.
 
 
-___
+---
 
 ## Escalada de privilegios
 

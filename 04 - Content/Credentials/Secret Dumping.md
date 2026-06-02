@@ -32,7 +32,7 @@ linked:
 ---
 # Secret Dumping
 
-***
+---
 
 ## Cheatsheet
 ^secret-dumping
@@ -48,7 +48,7 @@ linked:
 | **Kerberos tickets** | LUID access | `mimikatz sekurlsa::tickets /export` |
 | **Cached creds** | Admin local | `impacket-secretsdump -security SECURITY -system SYSTEM LOCAL` |
 
-***
+---
 
 ## Concepto
 
@@ -321,4 +321,4 @@ hashcat -m 18200 asrep.txt rockyou.txt
 - [ADSecurity - DCSync](https://adsecurity.org/?p=1729)
 - [Mimikatz wiki](https://github.com/gentilkiwi/mimikatz/wiki)
 
-***
+---

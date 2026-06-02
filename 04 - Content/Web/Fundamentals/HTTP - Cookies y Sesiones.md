@@ -15,7 +15,7 @@ linked: null
 
 Como [[HTTP]] es un protocolo **sin estado (stateless)**, estas herramientas permiten que la web "recuerde" al usuario.
 
-***
+---
 
 ## Cookies
 

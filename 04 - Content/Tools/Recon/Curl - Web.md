@@ -17,7 +17,7 @@ linked:
 ---
 # Curl - Web
 
-***
+---
 
 ## Cheatsheet
 

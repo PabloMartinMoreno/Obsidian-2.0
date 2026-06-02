@@ -18,7 +18,7 @@ linked:
 ---
 # OAuth 2.0 - Detección y Reconocimiento
 
-***
+---
 
 ## Discovery via .well-known
 
@@ -66,7 +66,7 @@ curl -s https://target/.well-known/openid-configuration | jq '{
 # - registration_endpoint sin auth → dynamic client registration abierta
 ```
 
-___
+---
 
 ## Identificación de Flow Type
 
@@ -103,7 +103,7 @@ ___
 # - prompt, display
 ```
 
-___
+---
 
 ## Client ID Enumeration
 
@@ -141,7 +141,7 @@ curl -X POST https://target/oauth/register \
 # Si returns client_id/client_secret sin auth → critical misconfig
 ```
 
-___
+---
 
 ## Response Type & Scope Discovery
 
@@ -178,7 +178,7 @@ for scope in openid profile email admin internal user.read offline_access write 
 done
 ```
 
-___
+---
 
 ## Redirect URI Validation Type
 
@@ -227,4 +227,4 @@ for uri in \
 done
 ```
 
-***
+---

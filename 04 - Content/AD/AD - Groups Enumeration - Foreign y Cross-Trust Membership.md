@@ -18,7 +18,7 @@ linked:
 ---
 # AD - Groups Enumeration - Foreign / Cross-Trust Membership
 
-***
+---
 
 ## Foreign Security Principals (FSP)
 
@@ -43,7 +43,7 @@ Get-ADObject -SearchBase "CN=ForeignSecurityPrincipals,DC=corp,DC=local" -Filter
   }
 ```
 
-___
+---
 
 ## Find-ForeignUser / Find-ForeignGroup (PowerView)
 
@@ -64,7 +64,7 @@ Find-ForeignGroup
 Find-ForeignUser -Recurse  # walk all reachable forests
 ```
 
-___
+---
 
 ## Cross-Domain Group Membership
 
@@ -97,7 +97,7 @@ foreach ($d in (Get-ADForest).Domains) {
 }
 ```
 
-___
+---
 
 ## Authenticated Users / Everyone Implicit
 
@@ -137,7 +137,7 @@ foreach ($sid in $Dangerous.Keys) {
 }
 ```
 
-___
+---
 
 ## Trust Account Group Membership
 
@@ -150,7 +150,7 @@ ___
 
 **Por qué importa:** trust accounts (`INTERDOMAIN_TRUST_ACCOUNT` UAC flag 2048) en priv groups = compromiso del trust account = forest takeover via inter-realm TGT forge. **Should never** estar en priv groups.
 
-___
+---
 
 ## sIDHistory Cross-Trust Patterns
 
@@ -177,4 +177,4 @@ Get-ADUser -Filter * -Properties sIDHistory | Where sIDHistory | % {
 }
 ```
 
-***
+---

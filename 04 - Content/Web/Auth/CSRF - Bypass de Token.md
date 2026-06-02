@@ -16,7 +16,7 @@ linked:
 ---
 # CSRF - Bypass de Token
 
-***
+---
 
 ## Token No Validado (Remove)
 
@@ -31,7 +31,7 @@ linked:
 | `for h in 'X-CSRF-Token' 'X-CSRFToken' 'X-XSRF-Token' 'CSRF-Token' 'csrf-token'; do curl ... -H "$h:" ...; done` | Probe variantes de header empty | Multiple header naming. |
 ^csrf-bypass-token-remove
 
-___
+---
 
 ## Token Validado Solo Si Presente
 
@@ -47,7 +47,7 @@ ___
 | `curl -X POST -H "X-CSRF-Token: valid" -d "csrf_token=garbage&k=v"` | Header válido + body garbage | Backend acepta cualquiera. |
 ^csrf-bypass-token-presence
 
-___
+---
 
 ## Token Reuse / Fixed Value
 
@@ -62,7 +62,7 @@ ___
 | `grep -rE 'csrf.*=.*['\''\"][a-zA-Z0-9]{8,}['\''\"]' static/js/` | Hardcoded default token en JS | Disclosure de defaults. |
 ^csrf-bypass-token-reuse
 
-___
+---
 
 ## Token Tied to Non-Session
 
@@ -77,7 +77,7 @@ ___
 | `grep -rE 'csrf.*secret.*=' src/` | HMAC secret hardcoded en repo público | Universal forge. |
 ^csrf-bypass-token-tied
 
-___
+---
 
 ## Token Leak (Referer / URL)
 
@@ -107,4 +107,4 @@ ___
 </script>
 ```
 
-***
+---

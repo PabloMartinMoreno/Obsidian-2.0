@@ -17,7 +17,7 @@ linked:
 ---
 # Pass-the-Ticket - Formatos y Conversión
 
-***
+---
 
 ## .kirbi (Windows native)
 
@@ -30,7 +30,7 @@ linked:
 | Convertir a ccache | `impacket-ticketConverter in.kirbi out.ccache` | Para usar en Linux. |
 ^ptt-fmt-kirbi
 
-___
+---
 
 ## .ccache (MIT / Linux)
 
@@ -43,7 +43,7 @@ ___
 | Variable env | `export KRB5CCNAME=/path/ticket.ccache` | Activa el ccache. |
 ^ptt-fmt-ccache
 
-___
+---
 
 ## Base64 (Rubeus output)
 
@@ -60,7 +60,7 @@ $b64 = "doIFqjCCBaag..."
 [Convert]::FromBase64String($b64) | Set-Content -Path .\ticket.kirbi -Encoding Byte
 ```
 
-___
+---
 
 ## ticketConverter (impacket)
 
@@ -79,7 +79,7 @@ export KRB5CCNAME=administrator.ccache
 impacket-ticketConverter administrator@cifs_target.ccache ticket.kirbi
 ```
 
-___
+---
 
 ## klist — verificar tickets
 
@@ -105,7 +105,7 @@ klist
 # Debe mostrar: Credentials cache: FILE:/tmp/administrator.ccache
 ```
 
-___
+---
 
 ## Purge tickets
 
@@ -117,4 +117,4 @@ ___
 | `Rubeus.exe purge /luid:<LUID>` | Purge sesión específica | Targeted cleanup. |
 ^ptt-fmt-purge
 
-***
+---

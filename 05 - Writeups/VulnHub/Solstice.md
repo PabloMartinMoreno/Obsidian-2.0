@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/solstice
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[servidor php]]"
   - "[[File Inclusion|LFI]]"
   - "[[Log Poisoning]]"

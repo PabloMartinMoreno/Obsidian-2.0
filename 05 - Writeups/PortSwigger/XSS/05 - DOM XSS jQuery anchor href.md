@@ -7,7 +7,7 @@ linked:
 ---
 # PortSwigger - XSS - DOM XSS in jQuery anchor href attribute sink using location.search source
 
-***
+---
 
 ## Explicación
 
@@ -89,7 +89,7 @@ Se ejecuta el JS y se exponen las cookies 💥
 > - `document.cookie` simula el robo real de sesión, que es el objetivo final de XSS en la vida real
 
 
-___
+---
 
 ## Solución
 

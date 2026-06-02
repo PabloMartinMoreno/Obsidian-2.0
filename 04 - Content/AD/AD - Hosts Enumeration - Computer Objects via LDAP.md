@@ -20,7 +20,7 @@ linked:
 ---
 # AD - Hosts Enumeration - Computer Objects via LDAP
 
-***
+---
 
 ## Bulk Computer Listing
 
@@ -54,7 +54,7 @@ Get-ADComputer -Filter * -Properties OperatingSystem,OperatingSystemVersion,Last
   Export-Csv computers.csv -NoTypeInformation
 ```
 
-___
+---
 
 ## Critical Computer Attributes
 
@@ -97,7 +97,7 @@ ldapsearch -h <DC> -D u -w p -b "DC=corp,DC=local" \
   cn dNSHostName msDS-AllowedToDelegateTo
 ```
 
-___
+---
 
 ## High-Value Targets Identification
 
@@ -125,7 +125,7 @@ Get-ADComputer -Filter {Enabled -eq $true} `
     @{n='RBCD';e={[bool]$_.'msDS-AllowedToActOnBehalfOfOtherIdentity'}}
 ```
 
-___
+---
 
 ## Stale Computer Accounts
 
@@ -149,7 +149,7 @@ Get-ADComputer -Filter {LastLogonDate -lt $Stale -and Enabled -eq $true} `
   Export-Csv stale-computers.csv -NoTypeInformation
 ```
 
-___
+---
 
 ## Bulk Profile Live Targets
 
@@ -184,4 +184,4 @@ nxc smb servers.txt -u user -p pass --laps
 #   LAPS readable    = direct local admin password
 ```
 
-***
+---

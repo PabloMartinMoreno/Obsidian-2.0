@@ -31,7 +31,7 @@ linked:
 ---
 # Insecure Deserialization
 
-***
+---
 
 ## Cheatsheet
 
@@ -105,7 +105,7 @@ tab: **Deser Encadenada (multi-hop)**
 ![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-chained]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -131,7 +131,7 @@ Vector clase A — **OWASP Top 10** desde 2013. CVE históricos masivos: Jenkins
 | **Code Injection** | String código (`eval`) | Eval directo | Inmediata |
 | **Prototype Pollution** | JSON `__proto__` / `constructor.prototype` | Merge / extend | Solo JS, post-explotación |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -152,7 +152,7 @@ ___
 7. Forge payload con cmd → enviar → recibir reverse shell o exec output.
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -217,7 +217,7 @@ print(base64.b64encode(pickle.dumps(C())).decode())" \
 | curl -X POST --data @- target/
 ```
 
-___
+---
 
 ## Impacto
 
@@ -228,7 +228,7 @@ ___
 - **DoS** — billion-laughs equivalentes en serialización.
 - **Persistencia** — drop de webshell vía gadget de file write.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -246,7 +246,7 @@ ___
 - **Sandbox del proceso deserializador** — si imposible parar deser, correrla en proceso aislado sin credentials ni red.
 - **Mantener libs actualizadas** — Jackson, FastJson, XStream tienen CVE críticos cada pocos meses.
 
-___
+---
 
 ## Para entender Insecure Deserialization
 
@@ -272,7 +272,7 @@ Tools como ysoserial / phpggc tienen catálogos pre-armados de chains conocidas.
 - **Binario** (pickle, BinaryFormatter, Marshal) — el formato encapsula tipos. La superficie de ataque es default.
 - **JSON polimórfico** (Jackson `@class`, JSON.NET `$type`, FastJson `@type`) — formato es JSON pero el deserializer respeta hints de tipo del input. Mismo problema con sintaxis distinta.
 
-___
+---
 
 ## Recursos
 
@@ -288,4 +288,4 @@ ___
 - [awesome-fastjson](https://github.com/safe6Sec/Fastjson) — FastJson chains.
 - [Frohoff - Java Deser BlackHat 2015](https://www.youtube.com/watch?v=VviY3O-euVQ) — paper original que popularizó la clase.
 
-***
+---

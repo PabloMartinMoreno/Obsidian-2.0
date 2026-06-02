@@ -17,7 +17,7 @@ linked:
 ---
 # AD - DCSync Rights Discovery - BloodHound DCSync Edges
 
-***
+---
 
 ## DCSync-Related Edges
 
@@ -31,7 +31,7 @@ linked:
 
 **BHCE 4.x+** crea edge sintético `DCSync` cuando un principal tiene ambos rights. Pre-4.x: query manual con dos MATCH.
 
-___
+---
 
 ## Shortest Path Queries
 
@@ -42,7 +42,7 @@ ___
 | `MATCH (u {owned:true})-[r1:GetChanges]->(d:Domain) MATCH (u)-[r2:GetChangesAll]->(d) RETURN u.name,d.name` | Combo manual | Pre-BHCE 4.x. |
 ^ad-dcsyncbh-paths
 
-___
+---
 
 ## Cross-Correlate Priv
 
@@ -53,7 +53,7 @@ ___
 | `MATCH (u)-[:DCSync]->(d:Domain) WHERE u.domain <> d.name RETURN u.name,u.domain,d.name` | Cross-domain DCSync | Cross-trust. |
 ^ad-dcsyncbh-correlate
 
-___
+---
 
 ## Pre-Built BHCE Queries
 
@@ -64,7 +64,7 @@ ___
 | "Find non-default DCSync principals" | `MATCH (u)-[r:GetChanges\|GetChangesAll\|DCSync]->(d) WHERE NOT u.objectid ENDS WITH "-512" AND NOT u.objectid ENDS WITH "-519" AND NOT u.objectid ENDS WITH "-516" RETURN u.name` | Audit. |
 ^ad-dcsyncbh-prebuilt
 
-___
+---
 
 ## Collection Considerations
 
@@ -78,7 +78,7 @@ ___
 
 **Stealth tip:** `DCOnly` collection captura DCSync ACEs sin queries per-host = mucho menos noisy en SIEM.
 
-___
+---
 
 ## Custom Cypher (Compliance)
 
@@ -111,4 +111,4 @@ RETURN DISTINCT u.name,g.name
 ```
 ^ad-dcsyncbh-compliance
 
-***
+---

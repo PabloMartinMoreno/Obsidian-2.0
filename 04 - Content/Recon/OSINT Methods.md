@@ -24,7 +24,7 @@ linked:
 > [!info]
 > Cheatsheet de fuentes pasivas para recopilar información sin tocar target. Cubre dorking en motores especializados, breach DBs, archive sites, social, métodos honeypot.
 
-***
+---
 
 ## Search engines / dorking
 
@@ -39,7 +39,7 @@ linked:
 | Hunter.how | Asset discovery | `hunter.how` |
 | Netlas.io | Modern + UI rich | `netlas.io` |
 
-***
+---
 
 ## Shodan / Censys recon
 
@@ -62,7 +62,7 @@ censys search '"target.com"' --index-type=hosts
 censys view 1.2.3.4
 ```
 
-***
+---
 
 ## Pastebin & code leaks
 
@@ -83,7 +83,7 @@ git clone https://github.com/kevthehermit/PasteHunter
 # Configurar regex rules + Slack/Elasticsearch sink
 ```
 
-***
+---
 
 ## Wayback Machine & Archive Recon
 
@@ -108,7 +108,7 @@ Otros archive sites:
 - `archive.today` / `archive.ph` — single-page captures
 - `cache.google.com` — Google cache (limitado moderno)
 
-***
+---
 
 ## Cloud Buckets & Blobs Discovery (passive)
 
@@ -130,7 +130,7 @@ cloudenum --keyword target
 
 Ver [[AWS Enumeration]], [[Azure Enumeration]], [[GCP Enumeration]].
 
-***
+---
 
 ## Email Harvesting
 
@@ -154,7 +154,7 @@ cat empleados.txt | awk '{print tolower(substr($1,1,1))$2 "@target.com"}'
 linkedin2username -c "Target Inc" -d target.com
 ```
 
-***
+---
 
 ## Breach Data Search
 
@@ -180,7 +180,7 @@ SUFFIX="${SHA1:5}"
 curl -s "https://api.pwnedpasswords.com/range/$PREFIX" | grep -i "$SUFFIX"
 ```
 
-***
+---
 
 ## Performing Whois Lookup
 
@@ -203,7 +203,7 @@ whois 1.2.3.4
 whois -h whois.cymru.com " -v 1.2.3.4"
 ```
 
-***
+---
 
 ## Honeytokens & Tracking Pixels
 
@@ -231,7 +231,7 @@ Defensa:
 - Strip metadata de archivos antes de enviar (exiftool).
 - Use VPN/Tor para abrir docs sospechosos.
 
-***
+---
 
 ## Notas Relacionadas
 

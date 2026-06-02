@@ -30,7 +30,7 @@ linked:
 ---
 # AD - ACL Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -202,7 +202,7 @@ tab: **Wordlists & Recursos**
 ![[AD - ACL Enumeration - Tooling#^ad-acl-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -244,7 +244,7 @@ ACEs típicamente otorgadas para administración legítima pero misconfiguration
 - **GPO ACL** — mass compromise via GPO Abuse.
 - **ADCS template ACL** — ESC4 / ESC7 attacks.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -301,7 +301,7 @@ ___
    - Document changes for compliance
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -327,7 +327,7 @@ bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
 # Get-DomainObjectAcl ... | Where IdentityReferenceDomain -ne $localDomain
 ```
 
-___
+---
 
 ## Impacto
 
@@ -345,7 +345,7 @@ ___
 - **Helpdesk Tier 0** — cross-tier conflation.
 - **Service account in priv ACL** — common audit finding.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -380,7 +380,7 @@ ___
 - **Just Enough Administration (JEA)** — modern role-based.
 - **Microsoft tiered admin reference** — adsecurity.org guidance.
 
-___
+---
 
 ## Para entender ACL Enumeration
 
@@ -420,7 +420,7 @@ Microsoft Tier model: helpdesk = Tier 2 admin. If helpdesk has ACL on Tier 0 obj
 
 Cross-trust users with ACL on local objects = forest-wide privesc paths. Common via mergers (cleanup forgotten). With SID Filtering disabled, atacante can forge inter-realm TGT with foreign SID → use foreign principal's ACL on local. Critical to audit.
 
-___
+---
 
 ## Recursos
 
@@ -440,4 +440,4 @@ ___
 - [DSInternals](https://github.com/MichaelGrafnetter/DSInternals) — PowerShell tool.
 - [MITRE ATT&CK T1098 - Account Manipulation](https://attack.mitre.org/techniques/T1098/) — framework.
 
-***
+---

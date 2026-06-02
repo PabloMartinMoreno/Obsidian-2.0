@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/corrosion2
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[john]]"
   - "[[PATH Hijacking]]"
   - "[[msfvenom]]"

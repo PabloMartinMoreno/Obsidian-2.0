@@ -15,7 +15,7 @@ linked:
 ---
 # Finger Enumeration (79)
 
-***
+---
 ## Cheatsheet
 
 | **Acción**                                                  | **Descripción**                                                                                                      |

@@ -30,7 +30,7 @@ linked:
 ---
 # CRLF Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -123,7 +123,7 @@ tab: **Otros Tools**
 ![[CRLF Injection - Tooling#^crlfi-tool-others]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -149,7 +149,7 @@ Otros protocolos también: SMTP, IMAP, POP3, FTP, IRC, Redis (RESP), Memcached. 
 | Atacante controls | Specific headers / body | Entire smuggled request | Specific cached headers/body |
 | Common chain | Combine with cache, XSS, HRS | Cache poison combo | Combine with HHI / CRLF |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -189,7 +189,7 @@ ___
    - Memcached/Redis injection: cache hijack (High).
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -255,7 +255,7 @@ crlfuzz -u "https://target/redirect" -X "test"
 # 5. Burp Active Scan covers CRLF
 ```
 
-___
+---
 
 ## Impacto
 
@@ -271,7 +271,7 @@ ___
 - **HRS combo** — bypass front-end validation, smuggle requests.
 - **Compound chains** — combine con HHI / Cache / OR / XSS = high CVSS.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -299,7 +299,7 @@ ___
 - **Separate atomic actions** — Per-line logs ensure atomic write.
 - **Audit en CI/CD** — automated CRLF tests.
 
-___
+---
 
 ## Para entender CRLF Injection
 
@@ -327,7 +327,7 @@ HTTP/2 uses binary framing — headers are HPACK-encoded structured data, not te
 
 Frameworks (Express, Flask, Django, Spring, etc.) all validate header values for CRLF en their APIs. Custom apps con manual header construction (CGI, raw HTTP) more vulnerable. Same with email APIs (`mail()` PHP pre-5.1.2 vulnerable, modern OK).
 
-___
+---
 
 ## Recursos
 
@@ -343,4 +343,4 @@ ___
 - [Spanning Tree Explorer - CRLF](https://github.com/EdOverflow/can-i-take-over-xyz) — adjacent reference.
 - [PHP `header()` security note](https://www.php.net/manual/en/function.header.php) — PHP docs CRLF protection.
 
-***
+---

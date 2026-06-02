@@ -36,7 +36,7 @@ linked:
 ---
 # Authentication & Authorization Bypass
 
-***
+---
 
 ## Cheatsheet
 
@@ -144,7 +144,7 @@ tab: **Bypass Rate Limiting / Lockout**
 ![[Auth Bypass - Brute Force y Credential Stuffing#^auth-brute-bypass]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -173,7 +173,7 @@ Auth fails → atacante = different user. Authz fails → atacante = same user c
 | Necesita victim | NO (atacante actúa solo) | SÍ (logged-in victim) | SÍ (victim renders payload) |
 | Defense | Strong auth + token validation | CSRF token + SameSite | Output encode + CSP |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -213,7 +213,7 @@ ___
    - Offline crack (hashcat) si hashes obtenidos
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -290,7 +290,7 @@ curl -H "X-Forwarded-For: 127.0.0.1" -H "X-Original-URL: /admin" \
 python3 jwt_tool.py <token> -M pb
 ```
 
-___
+---
 
 ## Impacto
 
@@ -305,7 +305,7 @@ ___
 - **Lateral movement** — auth bypass en internal systems.
 - **Supply chain compromise** — auth bypass en CI/CD admin.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -330,7 +330,7 @@ ___
 - **Penetration testing periódico** — dedicated auth/authz testing.
 - **OWASP ASVS compliance** — comprehensive checklist.
 
-___
+---
 
 ## Para entender Auth Bypass
 
@@ -363,7 +363,7 @@ App vulnerable typically falla en uno o ambos: weak password policy + IDOR = pre
 
 Cada step bajo CVSS pero combined = catastrófico. Pen-testers raramente paran en un step.
 
-___
+---
 
 ## Recursos
 
@@ -379,4 +379,4 @@ ___
 - [HackerOne - Top OWASP](https://hackerone.com/top-10-vulnerabilities) — bug bounty insight.
 - [Have I Been Pwned API](https://haveibeenpwned.com/API/v3) — breach data.
 
-***
+---

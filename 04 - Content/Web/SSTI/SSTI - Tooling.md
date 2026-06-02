@@ -18,7 +18,7 @@ linked:
 ---
 # SSTI - Tooling
 
-***
+---
 
 ## tplmap
 
@@ -36,7 +36,7 @@ linked:
 | `python tplmap.py -u "..." --cookie "auth=$T" --auth "user:pass"` | Authenticated SSTI | Endpoint detrás de login. |
 ^ssti-tool-tplmap
 
-___
+---
 
 ## Burp Extensions
 
@@ -52,7 +52,7 @@ ___
 | Burp → Logger++ → filter `request.body contains "7*7"` | Buscar request históricos con probes | Post-test review. |
 ^ssti-tool-burp
 
-___
+---
 
 ## Wordlists de Payloads
 
@@ -78,4 +78,4 @@ for p in '{{7*7}}' '${7*7}' '<%= 7*7 %>' '#{7*7}' '@(7*7)' '{7*7}' '*{7*7}' '${{
 done
 ```
 
-***
+---

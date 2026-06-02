@@ -19,7 +19,7 @@ linked:
 ---
 # OAuth 2.0 - Code & Token Theft
 
-***
+---
 
 ## Referer Header Leak
 
@@ -41,7 +41,7 @@ Referrer-Policy: unsafe-url                           # ← VULN: leakea full UR
 Referrer-Policy: no-referrer-when-downgrade           # ← default browsers (vuln)
 ```
 
-___
+---
 
 ## postMessage / window.opener
 
@@ -81,7 +81,7 @@ Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
 
-___
+---
 
 ## Code Reuse / Substitution
 
@@ -120,7 +120,7 @@ for client_id in APP_A APP_B APP_C; do
 done
 ```
 
-___
+---
 
 ## Implicit Flow Token en Fragment
 
@@ -161,7 +161,7 @@ const tokens = await fetch(TOKEN, {
 }).then(r => r.json());
 ```
 
-___
+---
 
 ## Mix-Up Attack (Multi-IdP)
 
@@ -189,4 +189,4 @@ if id_token['iss'] != expected_iss or id_token['aud'] != CLIENT_ID:
     abort(400, 'invalid token')
 ```
 
-***
+---

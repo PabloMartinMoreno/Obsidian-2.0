@@ -18,7 +18,7 @@ linked:
 ---
 # MySQL Enumeration (3306)
 
-***
+---
 
 ## Cheatsheet
 

@@ -21,7 +21,7 @@ kind: Tertiary Category
 
 Roadmap post-foothold inicial: credential access → privilege escalation → dominance & persistence.
 
-***
+---
 
 ## 🔑 Kerberos / NTLM Authentication Attacks
 Ataques contra mecanismos de autenticación AD para obtener credentials offline-crackeables o reusables.
@@ -108,4 +108,4 @@ Movimiento a través del dominio post-credential access.
 - [[SCM Service Lateral]] (Service Control Manager remoto — sc create/start, modify binPath, payload SYSTEM.)
 
 
-***
+---

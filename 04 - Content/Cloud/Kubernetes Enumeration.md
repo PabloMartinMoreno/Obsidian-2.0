@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Recon de Kubernetes desde dentro de un pod (compromise inicial) o externamente (API server expuesto). Tools: `kubectl`, kubehunter, peirates, kube-bench.
 
-***
+---
 
 ## Recon externo (sin auth)
 
@@ -31,7 +31,7 @@ curl -k https://<target>:10250/pods/
 etcdctl --endpoints=https://<target>:2379 get / --prefix --keys-only
 ```
 
-***
+---
 
 ## Desde dentro de un pod
 
@@ -54,7 +54,7 @@ curl -k -H "Authorization: Bearer $TOKEN" \
 kubectl auth can-i --list
 ```
 
-***
+---
 
 ## kubectl básico
 
@@ -78,7 +78,7 @@ kubectl logs <pod> -n <ns>
 kubectl exec -it <pod> -n <ns> -- /bin/sh
 ```
 
-***
+---
 
 ## Secrets enum
 
@@ -94,7 +94,7 @@ kubectl get secret <name> -n <ns> -o jsonpath='{.data.password}' | base64 -d
 kubectl get secrets --all-namespaces | grep token
 ```
 
-***
+---
 
 ## Privesc paths
 
@@ -138,7 +138,7 @@ kubectl exec -it pwn -- /bin/sh
 # → root en node
 ```
 
-***
+---
 
 ## Tools
 
@@ -150,7 +150,7 @@ kubectl exec -it pwn -- /bin/sh
 - **MKAT** — managed Kubernetes audit (EKS/AKS/GKE)
 - **Krew** — kubectl plugin manager (botkube, view-utilization, etc.)
 
-***
+---
 
 ## Notas Relacionadas
 

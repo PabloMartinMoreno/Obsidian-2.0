@@ -30,7 +30,7 @@ linked:
 ---
 # WMI and WinRM
 
-***
+---
 
 ## Cheatsheet
 ^wmi-winrm
@@ -47,7 +47,7 @@ linked:
 | **WMIC remoto (CLI)** | `wmic /node:target /user:dom\user process call create "cmd.exe /c ..."` | 135 |
 | **WMI via PS** | `Invoke-WmiMethod -Class Win32_Process -Name Create -ArgumentList "cmd /c ..." -ComputerName target` | 135 |
 
-***
+---
 
 ## Concepto
 
@@ -255,4 +255,4 @@ Detectable via Sysmon Event ID 19/20/21 (WMIEventSubscription).
 - [evil-winrm GitHub](https://github.com/Hackplayers/evil-winrm)
 - [Matt Nelson - WMI Tradecraft](https://www.specterops.io/blog/wmi)
 
-***
+---

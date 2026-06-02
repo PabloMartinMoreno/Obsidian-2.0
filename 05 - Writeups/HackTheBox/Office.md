@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/588
 dificultad: Dificil
 ip: 10.10.11.3
 os: Windows
-relacionados:
+linked:
 ---
 # HackTheBox - Office
 

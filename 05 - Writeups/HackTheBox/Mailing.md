@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/600
 dificultad: Media
 ip: 10.10.11.14
 os: Windows
-relacionados:
+linked:
   - "[[swaks]]"
   - "[[Information Leakage]]"
   - "[[Cracking Hashes]]"

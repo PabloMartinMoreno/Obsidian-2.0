@@ -17,7 +17,7 @@ linked:
 ---
 # BloodHound & SharpHound - Cypher Queries
 
-***
+---
 
 ## Cypher Syntax Basics
 
@@ -40,7 +40,7 @@ WHERE u.adminCount = true
 RETURN u.name,u.serviceprincipalnames
 ```
 
-___
+---
 
 ## Path Queries
 
@@ -52,7 +52,7 @@ ___
 | `MATCH p=(u {owned:true})-[*1..3]->(t {highvalue:true}) RETURN p` | All paths up to 3 hops | Detail. |
 ^ad-cypher-paths
 
-___
+---
 
 ## Common Edge Filters
 
@@ -67,7 +67,7 @@ ___
 | Trust | `[:Trusts]` | Cross-domain. |
 ^ad-cypher-edges
 
-___
+---
 
 ## Privesc Path Queries
 
@@ -91,7 +91,7 @@ RETURN p LIMIT 50
 ```
 ^ad-cypher-privesc
 
-___
+---
 
 ## Lateral Movement Queries
 
@@ -110,7 +110,7 @@ RETURN c.name,u.name
 ```
 ^ad-cypher-lateral
 
-___
+---
 
 ## Kerberoast / AS-REP Queries
 
@@ -135,7 +135,7 @@ RETURN u.name
 ```
 ^ad-cypher-kerberoast
 
-___
+---
 
 ## DCSync Queries
 
@@ -158,7 +158,7 @@ RETURN u.name,u.domain
 ```
 ^ad-cypher-dcsync
 
-___
+---
 
 ## Delegation Queries
 
@@ -186,7 +186,7 @@ RETURN p
 ```
 ^ad-cypher-deleg
 
-___
+---
 
 ## ADCS Queries (BHCE 5.x+)
 
@@ -210,7 +210,7 @@ RETURN p
 ```
 ^ad-cypher-adcs
 
-___
+---
 
 ## Custom Reporting
 
@@ -236,7 +236,7 @@ RETURN u.name,exposure ORDER BY exposure DESC LIMIT 20
 ```
 ^ad-cypher-reporting
 
-___
+---
 
 ## Cypher Performance Tips
 
@@ -251,4 +251,4 @@ ___
 | Use `EXPLAIN`/`PROFILE` para debug | Neo4j tools. |
 ^ad-cypher-perf
 
-***
+---

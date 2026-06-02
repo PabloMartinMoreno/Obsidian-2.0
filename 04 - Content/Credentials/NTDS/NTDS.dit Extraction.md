@@ -32,7 +32,7 @@ linked:
 ---
 # NTDS.dit Extraction
 
-***
+---
 
 ## Cheatsheet
 
@@ -168,7 +168,7 @@ tab: **Recursos**
 ![[NTDS.dit Extraction - Tooling#^ntds-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -191,7 +191,7 @@ Requiere: DA, Backup Operators, o cuenta con `SeBackupPrivilege`. Post-extracci�
 | Detection | File access events | Event 4662 + MDI | Sysmon Event 10 |
 | MDI | "NTDS.dit steal" | "DCSync attempt" | "Credential theft" |
 
-___
+---
 
 ## Workflow
 
@@ -223,7 +223,7 @@ ___
    - Crack offline con hashcat -m 1000.
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -247,7 +247,7 @@ copy "\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SY
 impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL -just-dc-ntlm
 ```
 
-___
+---
 
 ## Impacto
 
@@ -260,7 +260,7 @@ ___
 - **Password analysis** — history + hashes → patrones organizacionales, spray contra otros sistemas.
 - **Offline crack** — ataques de diccionario sin lockout → passwords reales descubiertos.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -274,7 +274,7 @@ ___
 - **krbtgt double reset:** Post-incident — reset krbtgt password dos veces con 12h entre resets (invalida Golden Tickets).
 - **SACL en ntds.dit:** `Everyone: ReadData Audit` → Event 4663 para cualquier lectura del archivo.
 
-___
+---
 
 ## Para entender NTDS.dit
 
@@ -293,7 +293,7 @@ MDI (ex Azure ATP) monitorea DRSUAPI calls — cualquier DRSUAPI request desde u
 **Por qué krbtgt hash es el target más crítico:**
 krbtgt es la cuenta KDC (Key Distribution Center). Su hash firma todos los TGTs del dominio. Con ese hash, mimikatz `kerberos::golden` forge un TGT completamente válido para cualquier user, cualquier grupo, duración ilimitada — el "Golden Ticket". Solo se invalida con doble reset del password de krbtgt (primer reset invalida tickets existentes, segundo invalida los forjados con el primer hash).
 
-___
+---
 
 ## Recursos
 
@@ -306,4 +306,4 @@ ___
 - [ired.team — NTDS.dit](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/dump-password-hashes-from-domain-controller-with-dcsync) — practical.
 - [Microsoft — Backup Operators attack path](https://learn.microsoft.com/security/compass/privileged-access-security-levels) — Tier 0 implications.
 
-***
+---

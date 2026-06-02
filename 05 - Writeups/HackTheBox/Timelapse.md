@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/452
 dificultad: Media
 ip: 10.10.11.152
 os: Windows
-relacionados:
+linked:
   - "[[Cracking .PFX File]]"
   - "[[Reading .PFX File]]"
   - "[[Reading the user's Powershell history]]"

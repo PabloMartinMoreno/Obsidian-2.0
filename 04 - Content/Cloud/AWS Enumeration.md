@@ -17,7 +17,7 @@ linked:
 > [!info]
 > Recon de Amazon Web Services post-cred-leak o externo (S3 público, anon endpoints). CLI principal: `aws`. Pacu (toolkit), ScoutSuite (audit), enumerate-iam, S3Scanner.
 
-***
+---
 
 ## Setup AWS CLI
 
@@ -38,7 +38,7 @@ export AWS_DEFAULT_REGION=us-east-1
 aws sts get-caller-identity
 ```
 
-***
+---
 
 ## IAM Enumeration
 
@@ -65,7 +65,7 @@ enumerate-iam --access-key AKIAxxx --secret-key xxx
 
 PrivEsc paths comunes: `iam:CreateAccessKey`, `iam:AttachUserPolicy`, `iam:PassRole + ec2:RunInstances`, `iam:CreatePolicyVersion`.
 
-***
+---
 
 ## S3 Bucket Enumeration
 
@@ -92,7 +92,7 @@ S3Scanner scan -f buckets.txt
 Bucket naming conventions útiles para guessing:
 - `<company>-backup`, `<company>-dev`, `<company>-logs`, `<company>-static`, etc.
 
-***
+---
 
 ## Lambda & Serverless
 
@@ -111,7 +111,7 @@ aws lambda get-function --function-name <fn> --query 'Code.Location' --output te
 aws lambda invoke --function-name <fn> --payload '{"key":"value"}' out.json
 ```
 
-***
+---
 
 ## Otros servicios útiles
 
@@ -135,7 +135,7 @@ aws rds describe-db-instances
 aws cloudtrail describe-trails
 ```
 
-***
+---
 
 ## Tools
 
@@ -148,7 +148,7 @@ aws cloudtrail describe-trails
 - **S3Scanner** — bucket enum
 - **aws_consoler** — creds CLI → web console URL
 
-***
+---
 
 ## Notas Relacionadas
 

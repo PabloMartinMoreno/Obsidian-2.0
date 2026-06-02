@@ -21,7 +21,7 @@ linked:
 ---
 # Clickjacking - Chains con Otras Vulns
 
-***
+---
 
 ## Self-XSS → Stored XSS
 
@@ -58,7 +58,7 @@ linked:
 </html>
 ```
 
-___
+---
 
 ## SameSite=Lax CSRF Bypass
 
@@ -90,7 +90,7 @@ ___
 </script>
 ```
 
-___
+---
 
 ## OAuth Consent Hijacking
 
@@ -108,7 +108,7 @@ ___
 | `nuclei -t http/misconfiguration/oauth-clickjacking.yaml -u https://victim.com` | Nuclei OAuth XFO probe | Auto detect. |
 ^cj-chain-oauth
 
-___
+---
 
 ## WebRTC getUserMedia Hijack
 
@@ -127,7 +127,7 @@ ___
 | `<iframe src="https://victim.com/check-mic" allow="microphone" style="opacity:0.0001"></iframe>` | Mic-only iframe permission | Mic-only. |
 ^cj-chain-webrtc
 
-___
+---
 
 ## Subdomain Takeover Trust Transfer
 
@@ -148,4 +148,4 @@ ___
 | `<form action="https://dangling.victim.com/log" method="POST">...</form>` (host en claimed sub) | Form action sub-trust | Form trust. |
 ^cj-chain-subtakeover
 
-***
+---

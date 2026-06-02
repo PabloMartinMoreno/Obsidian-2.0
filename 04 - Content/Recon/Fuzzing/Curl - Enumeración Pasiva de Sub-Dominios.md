@@ -9,7 +9,7 @@ linked:
 ---
 # Curl - Enumeración Pasiva de Sub-Dominios
 
-***
+---
 
 ## Cheatsheet
 

@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/148
 dificultad: Fácil
 ip: 10.10.10.100
 os: Windows
-relacionados:
+linked:
   - "[[Abusing GPP Passwords]]"
   - "[[Decrypting GPP Passwords - gpp-decrypt]]"
   - "[[Kerberoasting Attack (GetUserSPNs.py)]]"
@@ -280,7 +280,7 @@ active\administrator
 Con privilegios de administrador, navegué hasta `C:\Users\Administrator\Desktop` y obtuve la bandera `root.txt`.
 
 
-___
+---
 
 ## Bandera(s)
 

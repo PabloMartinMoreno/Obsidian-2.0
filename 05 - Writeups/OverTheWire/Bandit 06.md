@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit06.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[find]]"
   - "[[xargs]]"
   - "[[dev null]]"

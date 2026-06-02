@@ -15,7 +15,7 @@ linked:
 ---
 # XSS - Explotación Out-of-Band (Blind XSS)
 
-***
+---
 
 ## Cheatsheet
 
@@ -73,7 +73,7 @@ done
 | Search queries logged | Admin viendo analytics. |
 | Error logs reflejando input | Admin debuggeando. |
 
-___
+---
 
 ## Overview
 
@@ -86,4 +86,4 @@ ___
 - **Interactsh** (`interactsh-client`) — ProjectDiscovery, alternativa gratuita.
 - **Burp Collaborator** — built-in Burp Pro.
 
-***
+---

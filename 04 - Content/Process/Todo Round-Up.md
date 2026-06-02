@@ -13,7 +13,7 @@ cssclasses:
 
 Notas con callout `> [!todo]` activo. Útil para encontrar todo pendiente disperso, complementario a `[[Incompletos]]` (que filtra por tag).
 
-***
+---
 
 ## Notas con `[!todo]`
 
@@ -28,7 +28,7 @@ WHERE !contains(file.path, "00 - Resources/Templates")
 SORT file.mtime DESC
 ```
 
-***
+---
 
 ## Por Carpeta
 
@@ -43,7 +43,7 @@ GROUP BY file.folder
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Notas
 

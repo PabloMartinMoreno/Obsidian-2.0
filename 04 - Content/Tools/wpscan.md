@@ -12,7 +12,7 @@ linked:
 > [!info]
 > Scanner especializado WordPress. Enum users, plugins, themes, vuln plugins/themes/versions con base de datos WPScan (API key gratuita para usar).
 
-***
+---
 
 ## Cheatsheet
 
@@ -28,7 +28,7 @@ linked:
 | `wpscan --url http://<target> --api-token <KEY>` | Vuln DB lookup | Recomendado |
 | `wpscan --url http://<target> -U admin -P rockyou.txt` | Brute force /wp-login.php | Auth attack |
 
-***
+---
 
 ## Workflow típico
 
@@ -45,7 +45,7 @@ wpscan --url http://target/ -U <user> -P /usr/share/wordlists/rockyou.txt --max-
 # 4. Post-auth: shell via theme/plugin editor (manual)
 ```
 
-***
+---
 
 ## API token
 
@@ -55,7 +55,7 @@ Free tier en https://wpscan.com — 25 req/día. Sin token, plugin DB no se cons
 wpscan --url http://target/ --api-token <YOUR_KEY>
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

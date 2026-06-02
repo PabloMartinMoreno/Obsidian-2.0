@@ -17,7 +17,7 @@ linked:
 
 # Golden Ticket - Detection y Mitigations
 
-***
+---
 
 ## Detection Events
 
@@ -36,7 +36,7 @@ linked:
 - RID/SID mismatch en PAC vs AD
 - TGS request desde IP que nunca solicitó AS-REQ (4768)
 
-___
+---
 
 ## MDI Alerts
 
@@ -49,7 +49,7 @@ ___
 
 **MDI bypass:** Diamond Ticket y Sapphire Ticket tienen PAC legítimo → MDI no puede detectar inconsistencia PAC.
 
-___
+---
 
 ## KQL / Sentinel Hunt
 
@@ -71,7 +71,7 @@ SecurityEvent
 | order by TimeGenerated desc
 ```
 
-___
+---
 
 ## OPSEC Tips (Red Team)
 
@@ -86,7 +86,7 @@ ___
 | Sapphire si PAC validation activo | PAC 100% real | `Rubeus.exe sapphire ...` |
 ^gt-detect-opsec
 
-___
+---
 
 ## Invalidación (Blue Team)
 
@@ -110,7 +110,7 @@ ___
 
 **Key:** Un solo reset NO es suficiente. krbtgt retiene el password anterior (N-1) para compatibilidad de replicación. El segundo reset elimina el N-1.
 
-___
+---
 
 ## Hardening Checklist
 
@@ -125,4 +125,4 @@ ___
 | Monitor Event 4769 RC4 | Detection de downgrade | SIEM alert |
 ^gt-detect-checklist
 
-***
+---

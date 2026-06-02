@@ -16,7 +16,7 @@ linked:
 ---
 # HTTP Request Smuggling - Bypasses
 
-***
+---
 
 ## TE Obfuscation (Transfer-Encoding)
 
@@ -36,7 +36,7 @@ linked:
 | Burp HTTP Request Smuggler → "TE.TE detect" → tool prueba todas las variantes | Auto-discovery TE obfuscation | Tool-driven. |
 ^hrs-bypass-te
 
-___
+---
 
 ## CL Obfuscation (Content-Length)
 
@@ -53,7 +53,7 @@ ___
 | `printf '...\r\nContent_Length: 10\r\n...' \| ncat target 80` (underscore) | Header name normalization differential | Some normalize, otros no. |
 ^hrs-bypass-cl
 
-___
+---
 
 ## Whitespace Tricks
 
@@ -69,7 +69,7 @@ ___
 | `printf '...\r\nHeader: value \r\n...' \| ncat target 80` (trailing space en value) | Trailing whitespace conservation | Parsers conservan vs strip. |
 ^hrs-bypass-whitespace
 
-___
+---
 
 ## Connection: close Abuse
 
@@ -82,4 +82,4 @@ ___
 | Burp Repeater → "Send group → in single connection" → toggle Connection header values | Test connection behaviors | Manual exploration. |
 ^hrs-bypass-connection
 
-***
+---

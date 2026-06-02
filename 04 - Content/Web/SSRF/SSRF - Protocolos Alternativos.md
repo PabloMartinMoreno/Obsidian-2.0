@@ -16,7 +16,7 @@ linked:
 ---
 # SSRF - Protocolos Alternativos
 
-***
+---
 
 ## Cheatsheet
 
@@ -34,7 +34,7 @@ linked:
 |   **`php://filter`**   | `php://filter/convert.base64-encode/resource=index.php` | Solo si backend es PHP con `allow_url_include`.      |
 ^ssrf-protocols
 
-___
+---
 
 ## Overview
 
@@ -57,4 +57,4 @@ Cuando la URL passada al backend se procesa con una lib HTTP genérica (curl, li
 | Scheme whitelist `http(s)` | Redirect 302 desde server atacante a `file://` / `gopher://` (sigue redirect, cambia scheme). |
 | DNS-based blacklist | URL parsers distintos del DNS resolver — `http://attacker.com#@127.0.0.1/` (fragment abuse). |
 
-***
+---

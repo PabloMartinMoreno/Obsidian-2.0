@@ -30,7 +30,7 @@ linked:
 ---
 # HTTP Parameter Pollution
 
-***
+---
 
 ## Cheatsheet
 
@@ -123,7 +123,7 @@ tab: **Per-Stack Test Harness**
 ![[HPP - Tooling#^hpp-tool-harness]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -155,7 +155,7 @@ Si frontend (WAF) y backend implementan distinto → atacante exploita different
 | Bypass | WAF param-level | Header injection | Smuggle requests |
 | Impact | Logic / SQLi / WAF bypass | Cookie / cache / XSS | Mass cache poison |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -194,7 +194,7 @@ ___
    - HPP + auth bypass
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -246,7 +246,7 @@ curl -s 'https://target/?a[]=1&a[]=2'
 # 6. Burp Param Miner: Right-click → Guess JSON parameters
 ```
 
-___
+---
 
 ## Impacto
 
@@ -261,7 +261,7 @@ ___
 - **DoS** — many duplicate params exhaust parser.
 - **Edge: HTTP smuggling combo** — Multi-vector compound.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -287,7 +287,7 @@ ___
 - **WAF rules anti-HPP** — ModSecurity OWASP CRS includes some.
 - **Type validation Joi/Zod/Yup** — schema-based.
 
-___
+---
 
 ## Para entender HPP
 
@@ -324,7 +324,7 @@ Both are parsing-level bypasses, distinct mechanisms.
 5. Inject malicious payload split across duplicates.
 6. Backend reassembles → executes.
 
-___
+---
 
 ## Recursos
 
@@ -337,4 +337,4 @@ ___
 - [Param Miner](https://github.com/PortSwigger/param-miner) — Burp extension.
 - [CWE-235 - Improper Handling of Extra Parameters](https://cwe.mitre.org/data/definitions/235.html) — MITRE.
 
-***
+---

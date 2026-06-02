@@ -26,7 +26,7 @@ linked:
 ---
 # SMTP Enumeration (25,465,587)
 
-***
+---
 
 ## Cheatsheet
 
@@ -42,13 +42,13 @@ linked:
 - `/usr/share/wordlists/seclists/Usernames/top-usernames-shortlist.txt` (Corto, bueno para la primera ronda).
 - `/usr/share/wordlists/seclists/Usernames/xato-net-10-million-usernames.txt` (Muy largo).
 
-*** 
+---
 
 ## Artículos Relacionados
 
 - [[Common SMTP Commands]]: comandos útiles para interactuar manualmente con el servicio.
 
-***
+---
 
 ## Overview
 
@@ -66,13 +66,13 @@ La mayoría de servidores modernos soportan **ESMTP** (Extended SMTP), que inclu
 Para cifrar las comunicaciones de correo se usan variantes como **SMTPS** (SSL/TLS).  
 El puerto por defecto para SMTP es TCP **25**; los puertos seguros más usados son **465** y **587**.
 
-***
+---
 
 ## Diagrama
 
 ![[SMTP (25,465,587) - Enumeración.png]]
 
-***
+---
 
 ## Componentes del sistema de correo
 

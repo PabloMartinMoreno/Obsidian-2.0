@@ -35,7 +35,7 @@ linked:
 ---
 # Kerberoasting
 
-***
+---
 
 ## Cheatsheet
 
@@ -222,7 +222,7 @@ tab: **Recursos**
 ![[Kerberoasting - Tooling#^kerb-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -252,7 +252,7 @@ ___
 | Common targets | Service accounts | Legacy users / misconfigured |
 | Detection | Event 4769 (TGS) | Event 4768 (AS-REQ) |
 
-___
+---
 
 ## Workflow
 
@@ -295,7 +295,7 @@ ___
    - klist purge
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -318,7 +318,7 @@ hashcat -m 13100 roast.hash rockyou.txt -r /usr/share/hashcat/rules/best64.rule 
 hashcat -m 13100 roast.hash --show
 ```
 
-___
+---
 
 ## Impacto
 
@@ -329,7 +329,7 @@ ___
 - **Cross-trust kerberoast** = cred extraction cross-forest.
 - **Multiple cracked accounts** = cred chain via reuse / shared service infra.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -346,7 +346,7 @@ ___
 - **PingCastle audit** rule `T1-Kerberoast` indicators.
 - **MDI alert** `Suspected Kerberoasting`.
 
-___
+---
 
 ## Para entender Kerberoasting
 
@@ -374,7 +374,7 @@ Kerberoast technically funciona pero crack mucho más caro.
 
 **Por qué RC4 downgrade existe:** atacantes prefieren RC4 (m13100) sobre AES (m19700) porque crack ~70x más rápido. Rubeus `/tgtdeleg` request TGS con flag indicando solo RC4 support → KDC complies si account permite RC4. Modern domains = audit `msDS-SupportedEncryptionTypes` para forzar AES-only y matar downgrade.
 
-___
+---
 
 ## Recursos
 
@@ -389,4 +389,4 @@ ___
 - [OneRuleToRuleThemAll](https://github.com/NotSoSecure/password_cracking_rules) — comprehensive cracking rules.
 - [MITRE ATT&CK T1558.003](https://attack.mitre.org/techniques/T1558/003/) — Kerberoasting.
 
-***
+---

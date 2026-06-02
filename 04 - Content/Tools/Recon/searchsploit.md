@@ -23,7 +23,7 @@ linked:
 ---
 # searchsploit
 
-***
+---
 
 ## Cheatsheet
 ^searchsploit
@@ -43,7 +43,7 @@ linked:
 | **Exclude terms** | `searchsploit linux kernel --exclude="(PoC)\|/dos/"` |
 | **Papers mode** | `searchsploit -p apache` |
 
-***
+---
 
 ## Concepto
 
@@ -214,4 +214,4 @@ searchsploit sudo privilege escalation
 - [exploitdb GitLab](https://gitlab.com/exploit-database/exploitdb)
 - [searchsploit wiki](https://www.exploit-db.com/searchsploit)
 
-***
+---

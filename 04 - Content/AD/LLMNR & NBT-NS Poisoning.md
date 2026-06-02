@@ -32,7 +32,7 @@ linked:
 ---
 # LLMNR & NBT-NS Poisoning
 
-***
+---
 
 ## Cheatsheet
 ^llmnr-poisoning
@@ -46,7 +46,7 @@ linked:
 | **Disable WPAD** | `responder.conf`: `WPAD = On` para capturar `http://wpad/wpad.dat` |
 | **Coerce via smbclient** | `smbclient -N \\\\NONEXISTENT\\share` → triggers LLMNR |
 
-***
+---
 
 ## Concepto
 
@@ -250,4 +250,4 @@ Ventaja: **Windows prefiere IPv6 sobre IPv4**, y IPv6 está casi siempre enabled
 - [mitm6](https://github.com/dirkjanm/mitm6)
 - [HackTricks - LLMNR](https://book.hacktricks.xyz/generic-methodologies-and-resources/pentesting-network/spoofing-llmnr-nbt-ns-mdns-dns-and-wpad-and-relay-attacks)
 
-***
+---

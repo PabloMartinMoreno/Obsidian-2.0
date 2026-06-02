@@ -8,7 +8,7 @@ linked:
 ---
 # Transferencia de Zona
 
-***
+---
 
 Una **transferencia de zona DNS** (también conocida por el nombre de su protocolo, **AXFR**) es un mecanismo crítico que permite replicar las bases de datos de registros DNS entre diferentes servidores de nombres.
 

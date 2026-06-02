@@ -9,7 +9,7 @@ kind: Tool
 ---
 # [[Emoji Toolbar]]
 
-***
+---
 
 ## Description
 
@@ -82,7 +82,7 @@ The following emojis are always reserved for vault administration and cannot be 
 
 Although the note creation workflow script automatically prohibits this behavior, users must avoid manually introducing search tags using these emojis. Failure to do so may result in unexpected behavior from the Obsidian search tag feature.
 
-***
+---
 
 ## Resources
 
@@ -91,7 +91,7 @@ Although the note creation workflow script automatically prohibits this behavior
 | [Obsidian, Taming a Collective Consciousness; Sam Link](https://trustedsec.com/blog/obsidian-taming-a-collective-consciousness) | Example implementation of Zettelkasten using Obsidian; discusses the importance of "special tags" |
 | [Dataview, GitHub](https://github.com/blacksmithgu/obsidian-dataview)                                                           | Main repository for the Dataview community plugin for Obsidian                                    |
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

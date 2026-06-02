@@ -12,7 +12,7 @@ linked:
 ---
 # SSRF - Mecanismo Lógico
 
-***
+---
 
 ## Cheatsheet
 
@@ -26,7 +26,7 @@ linked:
 | **Escenarios reales** | Avatar URL → banner grab SSH interno. Webhook → DB interna. PDF → SSRF+LFI con `file:///etc/passwd`. |
 ^ssrf-mecanismo-logico
 
-___
+---
 
 ## Mecanismo Lógico del SSRF
 

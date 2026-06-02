@@ -49,7 +49,7 @@ linked:
 ---
 # Linux Privilege Escalation
 
-***
+---
 
 ## Cheatsheet
 
@@ -67,7 +67,7 @@ tab: **Sudoers**
 ![[Linux PrivEsc - Abusing Sudoers#^linux-privesc-sudoers]]
 ````
 
-***
+---
 
 ## Overview
 
@@ -75,7 +75,7 @@ Roadmap de vectores de escalada en Linux. Cada sección apunta al concepto y al 
 
 > Regla: antes de ejecutar exploits, leer `sudo -l`, `id`, `uname -a`, `cat /etc/os-release`, `ls -la /root/ 2>/dev/null`.
 
-***
+---
 
 ## 1. Enumeración automatizada
 
@@ -145,7 +145,7 @@ Roadmap de vectores de escalada en Linux. Cada sección apunta al concepto y al 
 - `/etc/sudoers` o `/etc/sudoers.d/*` escribible.
 - Backups de estos files sin proteger (`passwd-`, `shadow-`).
 
-***
+---
 
 ## Checklist de triage inicial
 
@@ -165,7 +165,7 @@ ps auxf | grep root
 netstat -tulnp 2>/dev/null || ss -tulnp
 ```
 
-***
+---
 
 ## Recursos
 
@@ -173,4 +173,4 @@ netstat -tulnp 2>/dev/null || ss -tulnp
 - [HackTricks - Linux PrivEsc](https://book.hacktricks.xyz/linux-hardening/privilege-escalation) — referencia exhaustiva.
 - [PayloadsAllTheThings - Linux Priv Esc](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md).
 
-***
+---

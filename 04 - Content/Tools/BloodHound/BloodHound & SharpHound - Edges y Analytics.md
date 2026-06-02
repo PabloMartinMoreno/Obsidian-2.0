@@ -16,7 +16,7 @@ linked:
 ---
 # BloodHound & SharpHound - Edges & Analytics
 
-***
+---
 
 ## ACL Edges
 
@@ -34,7 +34,7 @@ linked:
 | `ReadGMSAPassword` | gMSA pwd read | Service hash. |
 ^ad-edges-acl
 
-___
+---
 
 ## DCSync Edges
 
@@ -46,7 +46,7 @@ ___
 | `GetChangesInFilteredSet` | RODC scope | Edge. |
 ^ad-edges-dcsync
 
-___
+---
 
 ## Lateral Movement Edges
 
@@ -61,7 +61,7 @@ ___
 | `SQLAdmin` | SQL Server sysadmin | xp_cmdshell. |
 ^ad-edges-lateral
 
-___
+---
 
 ## Delegation Edges
 
@@ -73,7 +73,7 @@ ___
 | Computer node con `unconstraineddelegation:true` | UD flag | TGT capture chain. |
 ^ad-edges-deleg
 
-___
+---
 
 ## ADCS Edges
 
@@ -89,7 +89,7 @@ ___
 | Template con `hasAuthenticationEKU:true` | Auth-capable | Pre-attack filter. |
 ^ad-edges-adcs
 
-___
+---
 
 ## Trust Edges
 
@@ -101,7 +101,7 @@ ___
 | Cross-trust ACL edges (cross-domain) | Foreign principals | Audit. |
 ^ad-edges-trust
 
-___
+---
 
 ## GPO Edges
 
@@ -112,7 +112,7 @@ ___
 | Modify GPO (vía ACL edges) | Privesc surface mass-compromise | Standard. |
 ^ad-edges-gpo
 
-___
+---
 
 ## Container Edges
 
@@ -123,7 +123,7 @@ ___
 | `Owns` | Object ownership | Implicit modify. |
 ^ad-edges-container
 
-___
+---
 
 ## Common Analytics Patterns
 
@@ -155,7 +155,7 @@ RETURN p LIMIT 20
 ```
 ^ad-edges-patterns
 
-___
+---
 
 ## BHCE 6.x Performance
 
@@ -169,4 +169,4 @@ ___
 | ADCS edges expandidos | ESC9-ESC15 native | Modern. |
 ^ad-edges-bhce6
 
-***
+---

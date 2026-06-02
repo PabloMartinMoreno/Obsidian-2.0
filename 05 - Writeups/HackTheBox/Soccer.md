@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/519
 dificultad: Fácil
 ip: 10.10.11.194
 os: Linux
-relacionados:
+linked:
   - "[[WebSockets]]"
   - "[[doas]]"
   - "[[dstat]]"

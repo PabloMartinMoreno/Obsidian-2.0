@@ -16,7 +16,7 @@ linked:
 ---
 # T-SQL Commands
 
-***
+---
 
 ## Cheatsheet
 

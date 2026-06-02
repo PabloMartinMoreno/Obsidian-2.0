@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/344
 dificultad: Fácil
 ip: 10.10.10.239
 os: Windows
-relacionados:
+linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[Exploiting Voting System]]"
   - "[[Abusing AlwaysInstallElevated]]"
@@ -50,7 +50,7 @@ echo "10.10.10.239 www.love.htb staging.love.htb" | sudo tee -a /etc/hosts
 Al navegar a `http://www.love.htb`, encontré una aplicación web llamada "Voting System". Por otro lado, `http://staging.love.htb` me presentó una herramienta que afirmaba escanear archivos en busca de malware, con una opción "beta".
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -71,7 +71,7 @@ Introduje la URL `http://127.0.0.1:5000` en el campo de escaneo. ¡Funcionó! La
 - **Contraseña:** `@LoveIsInTheAir!!!!`
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -106,7 +106,7 @@ python3 49445.py
 El exploit funcionó a la perfección, y obtuve una shell inversa en mi listener como el usuario `phoebe`. Ya tenía mi punto de entrada al sistema.
 
 
-___
+---
 
 ## Escalada de privilegios
 

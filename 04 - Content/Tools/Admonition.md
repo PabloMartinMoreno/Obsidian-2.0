@@ -9,7 +9,7 @@ kind: Tool
 ---
 # [[Admonition]]
 
-***
+---
 
 ## Description
 
@@ -148,7 +148,7 @@ However, embedded hyperlinks do appear to work, like [this one](https://google.c
 
 It is therefore recommended to avoid embedding footnotes in Admonition code blocks and to use inline hyperlinks instead.
 
-___
+---
 
 ## Resources
 
@@ -160,7 +160,7 @@ ___
 [^1]: Admonition Plugin, Jeremy Valentine, https://github.com/javalent/admonitions
 [^2]: Example Page, Google, https://google.com/example
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

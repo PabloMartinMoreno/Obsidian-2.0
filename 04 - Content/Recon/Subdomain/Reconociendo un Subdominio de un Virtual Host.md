@@ -11,7 +11,7 @@ linked:
 ---
 # Reconocimiento - Subdominios vs Virtual Hosts
 
-***
+---
 
 ## El Subdominio (Nivel DNS)
 

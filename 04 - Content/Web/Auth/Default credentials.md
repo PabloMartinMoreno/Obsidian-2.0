@@ -15,7 +15,7 @@ linked:
 > [!info]
 > Credenciales de fábrica/instalación que admins no cambian. Primer check rápido contra cualquier servicio expuesto. Listas públicas extensas — checkeo low-cost, high-reward.
 
-***
+---
 
 ## Targets típicos
 
@@ -38,7 +38,7 @@ linked:
 | **IPMI/iLO/iDRAC** | `ADMIN:ADMIN`, `root:calvin` | RAKP hash, IPMI 2.0 anon |
 | **SSH** | `root:root`, `root:toor`, `pi:raspberry` | Pi/IoT |
 
-***
+---
 
 ## Tools
 
@@ -54,7 +54,7 @@ nmap --script=ssh-brute --script-args userdb=users.txt,passdb=passwords.txt <tar
 hydra -C SecLists/Passwords/Default-Credentials/<vendor>.txt <target> <service>
 ```
 
-***
+---
 
 ## Wordlists
 
@@ -63,7 +63,7 @@ hydra -C SecLists/Passwords/Default-Credentials/<vendor>.txt <target> <service>
 - DefaultCreds-cheat-sheet (GitHub)
 - CIRT.net database
 
-***
+---
 
 ## Notas Relacionadas
 

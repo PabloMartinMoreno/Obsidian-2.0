@@ -17,7 +17,7 @@ linked:
 ---
 # HPP - Tooling
 
-***
+---
 
 ## Burp Intruder + Param Miner
 
@@ -34,7 +34,7 @@ linked:
 | Burp Active Scan habilitado en endpoint | Built-in HPP detection | Automated scan. |
 ^hpp-tool-burp
 
-___
+---
 
 ## Custom curl Scripts
 
@@ -72,7 +72,7 @@ echo "=== Body + query ==="
 curl -s -X POST -d "${PARAM}=BOB" "${TARGET}?${PARAM}=ALICE" | head -c 200
 ```
 
-___
+---
 
 ## Wordlists
 
@@ -86,7 +86,7 @@ ___
 | `cat <<EOF > hpp-wordlist.txt\nadmin\nuser\nrole\naction\nstatus\nemail\npassword\nid\nrole\nEOF` | Custom wordlist params sensibles | Targeted fuzzing. |
 ^hpp-tool-wordlists
 
-___
+---
 
 ## Per-Stack Test Harness
 
@@ -125,4 +125,4 @@ def echo():
 # Flask Werkzeug → first wins
 ```
 
-***
+---

@@ -18,7 +18,7 @@ linked:
 ---
 # JWT - Manipulación de Claims
 
-***
+---
 
 ## Privilege Escalation
 
@@ -46,7 +46,7 @@ echo "$JWT" | cut -d. -f2 | base64 -d 2>/dev/null | jq 'keys'
 echo "$JWT" | cut -d. -f2 | base64 -d 2>/dev/null | jq | grep -iE 'admin|role|priv|scope|perm|access|tier|plan|tenant'
 ```
 
-___
+---
 
 ## Account Takeover
 
@@ -72,7 +72,7 @@ for i in 1 2 3 1000 1337 admin root administrator; do
 done
 ```
 
-___
+---
 
 ## Bypass de Validación Temporal
 
@@ -108,7 +108,7 @@ print(jwt.encode({
 "
 ```
 
-___
+---
 
 ## Bypass iss / aud
 
@@ -133,4 +133,4 @@ ___
 | `nbf` | Compara con now() | Ignora |
 | `jti` | DB tracking (replay protection) | No hay tracking |
 
-***
+---

@@ -19,7 +19,7 @@ linked:
 ---
 # ColdFusion Enumeration
 
-***
+---
 
 ## CheatSheet
 

@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Users Enumeration - Anonymous Discovery
 
-***
+---
 
 ## Null Session SAMR
 
@@ -41,7 +41,7 @@ nxc smb 10.0.0.0/24 -u '' -p '' --users 2>&1 | tee null_test.txt
 enum4linux-ng -U -A <DC> -oJ enum_anon.json
 ```
 
-___
+---
 
 ## Anonymous LDAP
 
@@ -72,7 +72,7 @@ ldapsearch -x -h <DC> -s base -b "" \
 ldapsearch -x -h <DC> -b "DC=corp,DC=local" "(objectCategory=user)" samAccountName 2>&1 | head -5
 ```
 
-___
+---
 
 ## Kerberos Pre-Auth Username Validation (kerbrute)
 
@@ -99,7 +99,7 @@ git clone https://github.com/urbanadventurer/username-anarchy
 kerbrute userenum --dc <DC> -d corp.local usernames.txt -o valid.txt
 ```
 
-___
+---
 
 ## RID Cycling (Anonymous)
 
@@ -121,7 +121,7 @@ impacket-lookupsid 'corp.local/'@<DC> 10000 |
   cut -d'\\' -f2 > users_anon.txt
 ```
 
-___
+---
 
 ## OSINT-Based Username Discovery
 
@@ -148,7 +148,7 @@ python3 linkedin2username.py -c "Target Company" -u atacante -p pass -n corp.loc
 kerbrute userenum --dc <DC> -d corp.local linkedin_users.txt -o valid.txt
 ```
 
-___
+---
 
 ## Common Naming Patterns
 
@@ -182,4 +182,4 @@ done | sort -u > usernames.txt
 ./username-anarchy -i names.txt > usernames.txt
 ```
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # IPMI Enumeration (623)
 
-***
+---
 
 ## Cheatsheet
 
@@ -28,7 +28,7 @@ linked:
 | `root:calvin``ADMIN:ADMIN`                                                              | Probar las siguientes credenciales por defecto.                |
 **Nota:** Usar el modo **Hashcat 7300** para crackear hashes RAKP. **TODO:** enlazar a hashcat.
 
-***
+---
 
 ## Overview
 

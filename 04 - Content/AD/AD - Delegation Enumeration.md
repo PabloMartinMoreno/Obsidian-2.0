@@ -32,7 +32,7 @@ linked:
 ---
 # AD - Delegation Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -204,7 +204,7 @@ tab: **Wordlists & Recursos**
 ![[AD - Delegation Enumeration - Tooling#^ad-deleg-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -237,7 +237,7 @@ Each delegation type has distinct attack patterns. UD = passive TGT capture (com
 | Critical attrs | UAC flags, msDS-AllowedToDelegateTo, KeyCredentialLink | nTSecurityDescriptor |
 | Patches: 2019 KB4490425 | Cross-forest | Adjacent |
 
-___
+---
 
 ## Workflow
 
@@ -288,7 +288,7 @@ ___
    - Remove Shadow Cred entries
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -319,7 +319,7 @@ Get-ADUser -Filter * -Properties msDS-KeyCredentialLink |
 bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
 ```
 
-___
+---
 
 ## Impacto
 
@@ -335,7 +335,7 @@ ___
 - **Stale delegation** — cleanup hygiene risk.
 - **ms-DS-MachineAccountQuota = 10** — RBCD default risk.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -378,7 +378,7 @@ ___
 - **Credential Guard on Tier 0** — modern protection.
 - **Modern: RBCD preferred over CD with protocol transition** — granular.
 
-___
+---
 
 ## Para entender Delegation
 
@@ -410,7 +410,7 @@ Default value 10 = any authenticated user can create 10 computers. Atacante crea
 
 Pre-2019: TGT delegation across forest = cross-forest UD. Compromise foreign forest UD host = capture local domain TGTs = local domain compromise. KB4490425 disabled default. Modern: explicitly re-enable required.
 
-___
+---
 
 ## Recursos
 
@@ -430,4 +430,4 @@ ___
 - [KB4490425 - TGT Delegation Patch](https://support.microsoft.com/en-us/topic/managing-deployment-of-kerberos-protocol-secure-updates-related-to-cve-2020-17049) — Microsoft KB.
 - [CVE-2019-1040 NetLogon](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2019-1040) — patch reference.
 
-***
+---

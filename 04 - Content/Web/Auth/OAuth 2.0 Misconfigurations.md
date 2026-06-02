@@ -32,7 +32,7 @@ linked:
 ---
 # OAuth 2.0 Misconfigurations
 
-***
+---
 
 ## Cheatsheet
 
@@ -131,7 +131,7 @@ tab: **Wordlists & Payload Repos**
 ![[OAuth 2.0 - Tooling#^oauth-tool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -170,7 +170,7 @@ OAuth = framework, no protocol — cada provider implementa diferente. Los bugs 
 - PKCE opcional en muchos servers legacy.
 - "Sign in with X" flows mezclan signup + login + account binding sin separación clara.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -223,7 +223,7 @@ ___
    - Final state (logged as victim, escalated scope, etc.)
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -310,7 +310,7 @@ curl -X POST https://target/oauth/register \
   -d '{"client_name":"test","redirect_uris":["https://attacker.com/cb"]}'
 ```
 
-___
+---
 
 ## Impacto
 
@@ -326,7 +326,7 @@ ___
 - **Dynamic registration abuse** — atacante registra client malicioso → todo trivial.
 - **Mobile app token theft** — implicit + custom scheme + intent picker.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -363,7 +363,7 @@ ___
   - Reject `alg=none`.
 - **Audit linked accounts** + alertas user-facing on new bind.
 
-___
+---
 
 ## Para entender OAuth 2.0 Misconfigurations
 
@@ -395,7 +395,7 @@ Atacante crea cuenta con email víctima en service usando OAuth (Google que no v
 
 OIDC añade `id_token` (JWT) + userinfo endpoint. JWT introduces JWT-specific bugs: alg=none, HMAC confusion, missing claims validation. Plus OIDC-specific: nonce vs state, issuer validation, audience claim, jwks rotation. Apps OIDC heredan TODA la attack surface OAuth + JWT issues.
 
-___
+---
 
 ## Recursos
 
@@ -413,4 +413,4 @@ ___
 - [Daniel Fett - OAuth Security Best Practices](https://danielfett.de/) — academic deep dives.
 - [Orange Tsai - URL Parser SSRF Paper](https://www.blackhat.com/docs/us-17/thursday/us-17-Tsai-A-New-Era-Of-SSRF-Exploiting-URL-Parser-In-Trending-Programming-Languages.pdf) — parser tricks (aplicable a redirect_uri).
 
-***
+---

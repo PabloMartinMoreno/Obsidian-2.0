@@ -19,7 +19,7 @@ linked:
 ---
 # Kerberoasting - Cross-Trust & Modern
 
-***
+---
 
 ## Cross-Domain Kerberoast (Intra-Forest)
 
@@ -39,7 +39,7 @@ impacket-GetUserSPNs -target-domain partner.com corp.local/auditor:'Pass!' \
   -dc-ip <DC-corp> -request -outputfile partner_roast.hash
 ```
 
-___
+---
 
 ## Cross-Forest Kerberoast
 
@@ -52,7 +52,7 @@ ___
 
 **Caveat:** modern forest trusts pueden tener Selective Auth → solo principals con `Allowed-To-Authenticate` ACE pueden auth a foreign SPNs. Roast falla si no autorizado.
 
-___
+---
 
 ## gMSA NO es Kerberoasteable
 
@@ -71,7 +71,7 @@ nxc ldap <DC> -u user -p pass --gmsa
 # Output: NT hash + AES keys directo
 ```
 
-___
+---
 
 ## Computer Accounts
 
@@ -84,7 +84,7 @@ ___
 
 **Filter LDAP correcto:** `(&(objectCategory=user)(servicePrincipalName=*))` excluye `objectCategory=computer`. Standard impacket-GetUserSPNs ya filtra automáticamente.
 
-___
+---
 
 ## Protected Users Group Impact
 
@@ -104,7 +104,7 @@ Get-ADUser -Filter {ServicePrincipalName -like "*" -and AdminCount -eq 1} -Prope
   Select Name,SamAccountName,@{n='SPNs';e={$_.ServicePrincipalName -join ';'}}
 ```
 
-___
+---
 
 ## msDS-SupportedEncryptionTypes
 
@@ -128,7 +128,7 @@ Get-ADUser -Filter {ServicePrincipalName -like "*"} \
   Select Name,SamAccountName,@{n='EncTypes';e={'0x{0:X}' -f $_.'msDS-SupportedEncryptionTypes'}}
 ```
 
-___
+---
 
 ## RC4 Downgrade Attack (Rubeus tgtdeleg)
 
@@ -142,7 +142,7 @@ ___
 
 **Recomendación:** `/rc4opsec` filter-only sin force. `/tgtdeleg` solo si crack offline crítico y aceptás detection.
 
-___
+---
 
 ## Cross-Trust Tooling
 
@@ -154,7 +154,7 @@ ___
 | `setspn -T partner.com -Q */*` | Native enum cross-domain | Discovery. |
 ^kerb-cross-tools
 
-___
+---
 
 ## Mitigations
 
@@ -176,4 +176,4 @@ Set-ADUser <svc-account> -Replace @{"msDS-SupportedEncryptionTypes"=0x18}
 :: 0x18 = AES128 (0x8) + AES256 (0x10), sin RC4
 ```
 
-***
+---

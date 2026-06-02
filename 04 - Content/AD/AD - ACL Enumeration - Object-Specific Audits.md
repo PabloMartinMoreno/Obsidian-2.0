@@ -16,7 +16,7 @@ linked:
 ---
 # AD - ACL Enumeration - Object-Specific Audits
 
-***
+---
 
 ## Domain Root Object
 
@@ -40,7 +40,7 @@ Get-Acl "AD:$((Get-ADDomain).DistinguishedName)" |
   Select IdentityReference,ActiveDirectoryRights,ObjectType
 ```
 
-___
+---
 
 ## Privileged Groups (DA, EA, Schema)
 
@@ -73,7 +73,7 @@ foreach ($g in $Priv) {
 }
 ```
 
-___
+---
 
 ## AdminSDHolder Object
 
@@ -98,7 +98,7 @@ Get-Acl "AD:CN=AdminSDHolder,CN=System,$((Get-ADDomain).DistinguishedName)" |
   Select IdentityReference,ActiveDirectoryRights,ObjectType
 ```
 
-___
+---
 
 ## Computer Objects
 
@@ -110,7 +110,7 @@ ___
 | `Get-ADComputer -Filter * -Pr msDS-AllowedToActOnBehalfOfOtherIdentity \| ? msDS-AllowedToActOnBehalfOfOtherIdentity` | RBCD configurado | Audit. |
 ^ad-objspec-computers
 
-___
+---
 
 ## OU Objects
 
@@ -137,7 +137,7 @@ foreach ($ou in $Tier0OUs) {
 }
 ```
 
-___
+---
 
 ## Group Policy Objects (GPOs)
 
@@ -166,7 +166,7 @@ Get-GPO -All | % {
 }
 ```
 
-___
+---
 
 ## ADCS Templates & CA
 
@@ -179,7 +179,7 @@ ___
 | `Certify.exe find /vulnerable` | Windows | Standard. |
 ^ad-objspec-adcs
 
-___
+---
 
 ## Bulk Forest-Wide Audit
 
@@ -191,4 +191,4 @@ ___
 | BloodHound multi-domain ingest + Cypher `MATCH p=...->(:Domain) WHERE u.domain <> domain.name` | Cross-domain via BH | Visual. |
 ^ad-objspec-bulk
 
-***
+---

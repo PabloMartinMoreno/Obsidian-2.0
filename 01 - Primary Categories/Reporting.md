@@ -7,9 +7,9 @@ kind: Primary Category
 ---
 # [[Reporting]]
 
-***
+---
 
 * Add link(s) [[]] to related SECONDARY categories
 
-***
+---
 

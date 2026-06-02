@@ -30,7 +30,7 @@ linked:
 ---
 # Open Redirect
 
-***
+---
 
 ## Cheatsheet
 
@@ -120,7 +120,7 @@ tab: **Manual curl / Custom Scripts**
 ![[Open Redirect - Tooling#^or-tool-manual]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -146,7 +146,7 @@ OWASP Top 10 históricamente — A10 en 2013, removed después por considerarse 
 | Impacto inicial | Phishing destino | Internal access |
 | Combine | OAuth, XSS, Referer leak | Cloud metadata, port scan |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -187,7 +187,7 @@ ___
    - Final state (ATO, RCE, etc).
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -252,7 +252,7 @@ curl -s 'https://target/login?next=javascript:alert(1)' | \
 python openredirex.py -u "https://target/login?next=FUZZ" -p payloads.txt
 ```
 
-___
+---
 
 ## Impacto
 
@@ -266,7 +266,7 @@ ___
 - **MFA / 2FA bypass via flow manipulation** — redirect skips check.
 - **Brand reputation damage** — atacante usa target as redirect platform.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -303,7 +303,7 @@ ___
 - **Browser CSP** — restrict frame-ancestors / script-src.
 - **HSTS** — force HTTPS, prevent downgrade.
 
-___
+---
 
 ## Para entender Open Redirect
 
@@ -338,7 +338,7 @@ Authorization Code grant flow:
 
 Si atacante puede inyectar `redirect_uri=https://attacker.com/cb`, recibe el `code`. Si client_secret es público (mobile apps, public clients) o atacante lo conoce, puede exchange el code → access_token → ATO completo.
 
-___
+---
 
 ## Recursos
 
@@ -352,4 +352,4 @@ ___
 - [URL Living Standard (WHATWG)](https://url.spec.whatwg.org/) — spec referencia.
 - [Single Sign-On Security (Aaron Parecki)](https://aaronparecki.com/oauth-2-simplified/) — OAuth 2.0 deep dive.
 
-***
+---

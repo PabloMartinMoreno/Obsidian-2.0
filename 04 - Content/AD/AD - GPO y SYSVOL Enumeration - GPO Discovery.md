@@ -17,7 +17,7 @@ linked:
 ---
 # AD - GPO y SYSVOL Enumeration - GPO Discovery
 
-***
+---
 
 ## GPO Inventory
 
@@ -43,7 +43,7 @@ Get-GPO -All |
   Export-Csv gpos.csv -NoTypeInformation
 ```
 
-___
+---
 
 ## Per-GPO Content via XML Report
 
@@ -66,7 +66,7 @@ $Report = Get-GPOReport -All -ReportType Xml
 $Report -split "`n" | Select-String -Pattern "(?i)password=" | Select Line
 ```
 
-___
+---
 
 ## Linked OUs Discovery
 
@@ -91,7 +91,7 @@ Get-GPO -All | % {
 }
 ```
 
-___
+---
 
 ## SYSVOL Storage Path
 
@@ -117,7 +117,7 @@ ___
     └── Scripts\
 ```
 
-___
+---
 
 ## GPO Status & Settings
 
@@ -134,7 +134,7 @@ ___
 Get-GPO -All | Where { $_.GpoStatus -eq "AllSettingsDisabled" } | Select DisplayName,Id
 ```
 
-___
+---
 
 ## WMI Filters
 
@@ -145,7 +145,7 @@ ___
 | `(Get-ADObject "<wmi-filter-DN>" -Pr msWMI-Parm2).'msWMI-Parm2'` | Query WQL del filter | Detail. |
 ^ad-gpo-wmi
 
-___
+---
 
 ## Cross-Domain GPO
 
@@ -155,7 +155,7 @@ ___
 | `Get-GPInheritance -Target "<cross-domain-OU-DN>"` | Cross-domain GPO inheritance | Edge. |
 ^ad-gpo-multidomain
 
-___
+---
 
 ## Privileged GPO Identification
 
@@ -181,4 +181,4 @@ foreach ($ou in $T0OUs) {
 }
 ```
 
-***
+---

@@ -20,7 +20,7 @@ linked:
 ---
 # masscan
 
-***
+---
 
 ## Cheatsheet
 
@@ -34,7 +34,7 @@ linked:
 | **Resume** | `masscan --resume paused.conf` |
 | **Excluir rangos** | `masscan -p443 10.0.0.0/8 --excludefile exclude.txt` |
 
-***
+---
 
 ## Concepto
 
@@ -200,4 +200,4 @@ Regla: **masscan** para discover ports en escala; **nmap** para profundidad en h
 - [masscan GitHub](https://github.com/robertdavidgraham/masscan)
 - [Masscan paper (Robert Graham)](https://github.com/robertdavidgraham/masscan/blob/master/doc/masscan.8.markdown)
 
-***
+---

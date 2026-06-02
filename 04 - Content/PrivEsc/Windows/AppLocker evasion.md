@@ -13,7 +13,7 @@ linked:
 > [!info]
 > AppLocker = Windows feature que restringe ejecución de binarios a allowlist (path/publisher/hash). Bypass: ejecutar desde directorios permitidos, abuse de LOLBins firmados por MS, DLL hijacking en path allowed.
 
-***
+---
 
 ## Enum reglas
 
@@ -26,7 +26,7 @@ $rules = Get-AppLockerPolicy -Effective
 $rules.RuleCollections | ForEach-Object { $_.Conditions }
 ```
 
-***
+---
 
 ## Path bypass
 
@@ -46,7 +46,7 @@ copy attacker.exe C:\Windows\Tasks\
 C:\Windows\Tasks\attacker.exe
 ```
 
-***
+---
 
 ## LOLBins (Living Off The Land Binaries)
 
@@ -63,7 +63,7 @@ Binarios firmados por MS que ejecutan código:
 
 Lista completa: https://lolbas-project.github.io/
 
-***
+---
 
 ## PowerShell ConstrainedLanguage Mode bypass
 
@@ -78,7 +78,7 @@ powershell -version 2
 # Ver [[AMSI Bypasses]]
 ```
 
-***
+---
 
 ## DLL Hijacking en path allowed
 
@@ -89,7 +89,7 @@ Encontrar app que carga DLL sin path completo y replace con malicious DLL en cur
 :: Plantar DLL malicioso firmado (si publisher rule) o en path allowed
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

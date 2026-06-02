@@ -17,7 +17,7 @@ linked:
 ---
 # AD - ACL Enumeration - ACL Inspection Tools
 
-***
+---
 
 ## RSAT / PowerShell Native
 
@@ -43,7 +43,7 @@ Get-Acl "AD:CN=Domain Admins,CN=Users,DC=corp,DC=local" |
   Select IdentityReference,ActiveDirectoryRights,ObjectType
 ```
 
-___
+---
 
 ## PowerView (Adversary)
 
@@ -66,7 +66,7 @@ Find-InterestingDomainAcl -ResolveGUIDs |
   Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
 ```
 
-___
+---
 
 ## BloodHound (Visual)
 
@@ -85,7 +85,7 @@ ___
 bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip
 ```
 
-___
+---
 
 ## dsacls (Native Windows)
 
@@ -106,7 +106,7 @@ dsacls "DC=corp,DC=local" | findstr /i "Authenticated Users\|Everyone\|Domain Us
 dsacls "CN=victim,CN=Users,DC=corp,DC=local" /G "corp\atacante:GA"
 ```
 
-___
+---
 
 ## ldapsearch / Linux
 
@@ -131,7 +131,7 @@ python3 dacledit.py corp.local/auditor:'Pass!' -dc-ip <DC> \
   -principal atacante -target Administrator -action read
 ```
 
-___
+---
 
 ## ADRecon / Bulk Reports
 
@@ -154,4 +154,4 @@ Import-Csv .\report\CSV-Files\ACLs.csv |
   }
 ```
 
-***
+---

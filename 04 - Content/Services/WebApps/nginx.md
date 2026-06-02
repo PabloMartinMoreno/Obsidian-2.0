@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Reverse proxy + web server async. Pentest: misconfigs comunes (alias traversal, off-by-slash, header injection), file disclosure, SSRF via proxy_pass.
 
-***
+---
 
 ## Recon
 
@@ -29,7 +29,7 @@ curl http://target/nonexistent
 curl http://target/nginx_status
 ```
 
-***
+---
 
 ## Misconfigs comunes
 
@@ -77,7 +77,7 @@ GET /proxy/internal-host:8080/admin
 
 Variables `$uri` injected en headers → CRLF si nginx no sanitiza.
 
-***
+---
 
 ## Tools
 
@@ -85,7 +85,7 @@ Variables `$uri` injected en headers → CRLF si nginx no sanitiza.
 - **gixy** — static analyzer de configs
 - **Nuclei templates** — `nginx-*`
 
-***
+---
 
 ## Notas Relacionadas
 

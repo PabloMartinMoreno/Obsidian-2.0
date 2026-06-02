@@ -14,7 +14,7 @@ linked:
 > [!info]
 > Búsqueda de API keys cloud (AWS, Azure, GCP) en código, repos, metadata, env vars, configs. High-impact: una key leaked = compromiso completo de la cloud account.
 
-***
+---
 
 ## Patrones de keys
 
@@ -30,7 +30,7 @@ linked:
 | **Slack Token** | `xox[abp]-[0-9A-Za-z-]+` | Bonus |
 | **GitHub Token** | `ghp_[A-Za-z0-9]{36}` | Classic; `ghs_`, `gho_` también |
 
-***
+---
 
 ## Fuentes
 
@@ -103,7 +103,7 @@ cat /proc/<pid>/environ | tr '\0' '\n'
 - iOS plist
 - Electron app `app.asar`
 
-***
+---
 
 ## Validation
 
@@ -120,7 +120,7 @@ gcloud auth activate-service-account --key-file=key.json
 gcloud projects list
 ```
 
-***
+---
 
 ## Tools
 
@@ -131,7 +131,7 @@ gcloud projects list
 - **SecretFinder** — JS secrets in browser
 - **mantra** — JS file mining
 
-***
+---
 
 ## Notas Relacionadas
 

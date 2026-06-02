@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/578
 dificultad: Fácil
 ip: 10.10.11.243
 os: Linux
-relacionados:
+linked:
   - "[[Default credentials]]"
   - "[[Remote Code Execution|RCE]]"
   - "[[CVE-2023-46604]]"
@@ -340,7 +340,7 @@ root
 ```
 
 
-___
+---
 
 ## Bandera(s)
 

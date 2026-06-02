@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Bypass por Sobrescritura de Configuración
 
-***
+---
 
 ## Cheatsheet
 
@@ -90,7 +90,7 @@ curl 'https://target/uploads/shell.jpg?cmd=id'
 - Uploads en S3 / fuera del webroot → configs son texto muerto.
 - Filtro bloquea `.htaccess`/`.user.ini`/`web.config` por nombre → renombrar con tricks de OS (`.htaccess.` en Windows trim).
 
-___
+---
 
 ## Overview
 
@@ -103,4 +103,4 @@ Cuando ningún bypass de extensión funciona, **subir un archivo de config** red
 
 Combo: subir config + subir payload "permitido" = RCE.
 
-***
+---

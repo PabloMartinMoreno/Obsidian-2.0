@@ -16,7 +16,7 @@ linked:
 ---
 # URL Encode
 
-***
+---
 
 ## Cheatsheet
 

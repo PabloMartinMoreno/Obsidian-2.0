@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/608
 dificultad: Fácil
 ip: 10.10.11.20
 os: Linux
-relacionados:
+linked:
   - "[[Virtual Hosting]]"
   - "[[Arbitrary File Upload]]"
   - "[[Server-Side Request Forgery (SSRF)]]"
@@ -65,7 +65,7 @@ El servidor web intentaba redirigirme al dominio `editorial.htb`, así que lo ag
 Al navegar a `http://editorial.htb`, me encontré con un sitio web de una editorial. Explorando las distintas secciones, una página llamada **"Publish with us"** llamó mi atención, ya que contenía un formulario para subir información de libros, incluyendo un campo para la **URL de la portada ("cover URL")**. Este tipo de campo es un punto clásico para probar vulnerabilidades de **Server-Side Request Forgery (SSRF)**.
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -121,7 +121,7 @@ Puerto 5000 --- static/uploads/85389d97-3812-4851-b49e-1f843f356e45
 Esto indicaba la presencia de un servicio interno en `http://127.0.0.1:5000`.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -182,7 +182,7 @@ c8a990f2e0d936ec96c3fa680e3e91a8
 ```
 
 
-___
+---
 
 ## Escalada de privilegios
 

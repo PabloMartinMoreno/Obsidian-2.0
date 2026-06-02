@@ -18,7 +18,7 @@ linked:
 ---
 # Session Hijacking - Tooling
 
-***
+---
 
 ## Burp Session Handling Rules
 
@@ -51,7 +51,7 @@ linked:
 5. If entropy < 64 bits → vulnerable
 ```
 
-___
+---
 
 ## mitmproxy / Wireshark
 
@@ -74,7 +74,7 @@ ___
 | `zaproxy -port 8080 -config api.disablekey=true` | OWASP ZAP proxy | Free alt to Burp. |
 ^sh-tool-mitm
 
-___
+---
 
 ## Custom JS Exfil Payloads
 
@@ -112,7 +112,7 @@ ___
 6. Replay captured cookies en Burp
 ```
 
-___
+---
 
 ## cookie-monster / Local Cookie Extract
 
@@ -151,7 +151,7 @@ print(s.dumps({'_user_id': 1, 'is_admin': True}))
 "
 ```
 
-___
+---
 
 ## Hashcat para Signed Cookies
 
@@ -175,4 +175,4 @@ ___
 | `python3 jwt_tool.py "$JWT" -C -d rockyou.txt -t 200` | jwt_tool 200-thread brute | Python brute. |
 ^sh-tool-hashcat
 
-***
+---

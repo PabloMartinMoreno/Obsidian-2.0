@@ -21,7 +21,7 @@ linked:
 ---
 # RDP Enumeration (3389)
 
-***
+---
 
 ## Cheatsheet
 
@@ -48,7 +48,7 @@ El puerto por defecto para RDP es **3389**. Las versiones antiguas de RDP usan s
 
 ****Consejo:**** al realizar pruebas, empezar por identificar si **NLA** está activo y qué versión de RDP corre el servicio antes de intentar conexiones interactivas.
 
-***
+---
 
 ## Artículos relacionados
 

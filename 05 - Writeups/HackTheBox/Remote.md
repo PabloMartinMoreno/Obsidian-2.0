@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/234
 dificultad: Fácil
 ip: 10.10.10.180
 os: Windows
-relacionados:
+linked:
   - "[[NFS Enumeration]]"
   - "[[showmount]]"
   - "[[Information Leakage]]"
@@ -65,7 +65,7 @@ sudo mount -t nfs 10.10.10.180:/site_backups /mnt/backups/
 Al listar el contenido del directorio montado, encontré una copia de seguridad completa del sitio web de Umbraco.
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -81,7 +81,7 @@ strings /mnt/backups/Umbraco/App_Data/Umbraco.sdf | grep admin
 Este comando reveló un usuario, `admin@htb.local`, y lo que parecía ser su hash de contraseña: `b8be16afba8c314ad33d812f22a04991b90e2aaa`. El formato del hash correspondía a **SHA1**.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -144,7 +144,7 @@ python2 46153.py
 Obtengo una shell en la maquina vicima.
 
 
-___
+---
 
 ## Escalada de privilegios
 
@@ -235,7 +235,7 @@ Respuesta: `!R3m0te!`
 Tengo la contraseña para el usuario Administrator. La flag está en el mismo lugar de siempre.
 
 
-___
+---
 
 ## Bandera(s)
 

@@ -18,7 +18,7 @@ linked:
 ---
 # FTP Enumeration (21)
 
-***
+---
 
 ## Cheatsheet
 

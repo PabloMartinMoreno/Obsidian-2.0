@@ -43,7 +43,7 @@ Con el NT hash (o AES key) de **krbtgt** se puede forjar un TGT arbitrario. Como
 
 **Requiere**: krbtgt hash (vía [[DCSync]]) + Domain SID + FQDN. No es vector de escalación inicial.
 
-***
+---
 
 ## Prereqs y Recolección
 
@@ -67,7 +67,7 @@ tab: **OPSEC checklist**
 ![[Golden Ticket - Prereqs y Recolección#^gt-pre-opsec]]
 ````
 
-___
+---
 
 ## Forging Linux
 
@@ -91,7 +91,7 @@ tab: **Output / conversión**
 ![[Golden Ticket - Forging Linux#^gt-forge-output]]
 ````
 
-___
+---
 
 ## Forging Windows
 
@@ -115,7 +115,7 @@ tab: **Sapphire Ticket**
 ![[Golden Ticket - Forging Windows#^gt-forge-sapphire]]
 ````
 
-___
+---
 
 ## Uso y Lateral Movement
 
@@ -139,7 +139,7 @@ tab: **Persistencia**
 ![[Golden Ticket - Uso y Lateral Movement#^gt-uso-persist]]
 ````
 
-___
+---
 
 ## Detection y Mitigations
 
@@ -163,7 +163,7 @@ tab: **Hardening Checklist**
 ![[Golden Ticket - Detection y Mitigations#^gt-detect-checklist]]
 ````
 
-___
+---
 
 ## Tooling
 
@@ -187,4 +187,4 @@ tab: **Recursos**
 ![[Golden Ticket - Tooling#^gt-tool-resources]]
 ````
 
-***
+---

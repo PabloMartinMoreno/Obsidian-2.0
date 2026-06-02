@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/entry/ica-1,748/
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[whatweb]]"
   - "[[MariaDB]]"
   - "[[PATH Hijacking]]"

@@ -19,7 +19,7 @@ linked:
 ---
 # Open Redirect - Vectores Específicos
 
-***
+---
 
 ## OAuth `redirect_uri` Injection
 
@@ -58,7 +58,7 @@ curl -X POST https://idp.target.com/oauth/token \
 curl -H "Authorization: Bearer $TOKEN" https://api.target.com/me
 ```
 
-___
+---
 
 ## SAML Response Redirect
 
@@ -72,7 +72,7 @@ ___
 | Listener `nc -lvnp 80` para capturar SAML response | Steal SAML assertion → replay | Post-redirect intercept. |
 ^or-specific-saml
 
-___
+---
 
 ## Login / Logout Flow Redirect
 
@@ -88,7 +88,7 @@ ___
 | `for ep in login logout signup reset email-confirm 2fa/setup billing checkout; do curl -sI "https://target/$ep?next=https://attacker.com" \| grep -i location; done` | Bulk endpoint probe | Discovery. |
 ^or-specific-login
 
-___
+---
 
 ## Email Magic Link Redirect
 
@@ -103,7 +103,7 @@ ___
 | `curl -sI "https://target.com/auth?token=any&next=https://attacker.com"` | Probe sin token válido (testing) | Pre-PoC validation. |
 ^or-specific-magiclink
 
-___
+---
 
 ## JS-Based Client-Side Redirect
 
@@ -135,4 +135,4 @@ const ALLOWED = ['/dashboard', '/profile', '/settings'];
 if (ALLOWED.includes(next)) location.href = next;
 ```
 
-***
+---

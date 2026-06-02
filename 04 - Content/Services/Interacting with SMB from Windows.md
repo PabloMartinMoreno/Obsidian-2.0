@@ -16,7 +16,7 @@ linked:
 ---
 # Interacting from Windows
 
-***
+---
 
 ## Cheatsheet
 

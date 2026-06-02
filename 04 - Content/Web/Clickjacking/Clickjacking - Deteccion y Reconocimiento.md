@@ -16,7 +16,7 @@ linked:
 ---
 # Clickjacking - Detección y Reconocimiento
 
-***
+---
 
 ## Headers Check
 
@@ -62,7 +62,7 @@ for path in / /login /admin /transfer /settings; do
 done
 ```
 
-___
+---
 
 ## CSP Analysis
 
@@ -85,7 +85,7 @@ ___
 | Browser support | Modern browsers all support | Universal. |
 ^cj-detect-csp
 
-___
+---
 
 ## Framing Test
 
@@ -129,4 +129,4 @@ ___
 
 Save as `test.html`, open en browser. If iframe renders target's content → vulnerable.
 
-***
+---

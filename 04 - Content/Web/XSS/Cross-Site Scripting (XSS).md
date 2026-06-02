@@ -199,7 +199,7 @@ Lo que define si es DOM, Reflejado o Almacenado es **qué parte del sistema come
 - Redirección a sitios maliciosos
 - CSRF forzado desde XSS
 
-___
+---
 
 # Ejercicio Phishing HTB
 ## Los pasos explicados

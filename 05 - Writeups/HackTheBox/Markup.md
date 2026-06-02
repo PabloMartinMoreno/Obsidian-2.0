@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/Markup
 dificultad: Fácil
 ip:
 os: Windows
-relacionados:
+linked:
   - "[[XML External Entity (XXE)]]"
   - "[[Default credentials]]"
 ---
@@ -211,7 +211,7 @@ Con privilegios de Administrador, pude leer la bandera final desde `C:\Users\Adm
 - **Credenciales por Defecto:** El acceso inicial se obtuvo gracias a una contraseña débil y común (`admin:password`) en el panel de administración web.
 
 
-___
+---
 
 ## Bandera(s)
 

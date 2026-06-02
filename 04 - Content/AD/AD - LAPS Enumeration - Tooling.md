@@ -18,7 +18,7 @@ linked:
 ---
 # AD - LAPS Enumeration - Tooling
 
-***
+---
 
 ## netexec / crackmapexec
 
@@ -30,7 +30,7 @@ linked:
 | `nxc smb <DC> -u '' -p '' --laps` | Anonymous attempt | Rare misconfig. |
 ^ad-laps-tool-netexec
 
-___
+---
 
 ## PowerShell Native LAPS
 
@@ -49,7 +49,7 @@ ___
 | `Set-LapsADComputerSelfPermission -Identity <OU>` | Self-write setup | Deploy. |
 ^ad-laps-tool-pwsh
 
-___
+---
 
 ## ldapsearch / Linux LDAP
 
@@ -61,7 +61,7 @@ ___
 | `ldapsearch ... -b "CN=Schema,..." "(\|(name=ms-Mcs-AdmPwd*)(name=msLAPS-*))"` | Schema check | Detection. |
 ^ad-laps-tool-ldapsearch
 
-___
+---
 
 ## BloodHound LAPS
 
@@ -75,7 +75,7 @@ ___
 | `bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip` | Linux collection con LAPS | Standard. |
 ^ad-laps-tool-bh
 
-___
+---
 
 ## LAPSToolkit (Community)
 
@@ -98,7 +98,7 @@ Find-LAPSDelegatedGroups
 Find-LAPSExtendedRights
 ```
 
-___
+---
 
 ## Impacket / Linux Helpers
 
@@ -116,7 +116,7 @@ git clone https://github.com/p0dalirius/pyLAPS
 python3 pyLAPS/pyLAPS.py -d corp.local -u auditor -p 'Pass!' --action get-all --dc-ip <DC>
 ```
 
-___
+---
 
 ## Recursos
 
@@ -132,4 +132,4 @@ ___
 | MITRE ATT&CK T1555.005 | `https://attack.mitre.org/techniques/T1555/005/` |
 ^ad-laps-tool-resources
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # Race Conditions - Single-Packet Attack
 
-***
+---
 
 ## HTTP/2 Single-Packet Technique
 
@@ -53,7 +53,7 @@ def handleResponse(req, interesting):
     table.add(req)
 ```
 
-___
+---
 
 ## Last-Byte Sync (HTTP/1.1)
 
@@ -66,7 +66,7 @@ ___
 | Comparar `time` de 1 request vs N concurrent | Detectar race timing window | Calibration. |
 ^race-single-lastbyte
 
-___
+---
 
 ## Pre-Loading Delays
 
@@ -80,7 +80,7 @@ ___
 | TLS session resumption: usar mismo curl session con `--cookie-jar /tmp/c -b /tmp/c` | TLS reuse reduce handshake time | Connection-level prep. |
 ^race-single-prewarm
 
-___
+---
 
 ## Sleep Gadget Probe
 
@@ -119,4 +119,4 @@ content-type: application/json
         engine.queue(race_req)
 ```
 
-***
+---

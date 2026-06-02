@@ -12,7 +12,7 @@ kind: Tertiary Category
 ---
 # Explotación Web
 
-***
+---
 
  ## 💉 Injection Attacks
   Ataques que inyectan datos maliciosos para engañar al intérprete y ejecutar comandos no autorizados.
@@ -86,4 +86,4 @@ kind: Tertiary Category
 
 
 
-***
+---

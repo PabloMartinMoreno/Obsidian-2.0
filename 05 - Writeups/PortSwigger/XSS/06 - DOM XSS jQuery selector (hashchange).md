@@ -6,7 +6,7 @@ linked:
 ---
 # PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event
 
-***
+---
 ## Explicación
 
 ### Lo nuevo: Source es `location.hash`
@@ -110,7 +110,7 @@ Víctima visita tu exploit server
 > - Cuando hay que atacar a una víctima, el truco del **`iframe` + `onload`** fuerza el disparo del evento
 
 
-___
+---
 
 
 ## ¿Qué es un `iframe`?
@@ -173,7 +173,7 @@ Básicamente el iframe te da **control de timing**: sabés exactamente cuándo l
 > Un `iframe` es una página dentro de otra página. En el contexto del lab, lo usás como "contenedor controlado" para cargar la página vulnerable y manipularla en el momento exacto que necesitás.
 
 
-___
+---
 
 ## Solución
 

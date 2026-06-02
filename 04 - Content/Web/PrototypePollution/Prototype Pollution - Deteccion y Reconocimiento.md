@@ -15,7 +15,7 @@ linked:
 ---
 # Prototype Pollution - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Sinks Vulnerables
 
@@ -60,7 +60,7 @@ npm audit
 yarn audit
 ```
 
-___
+---
 
 ## Probes en Endpoints
 
@@ -101,7 +101,7 @@ curl -X POST https://target/api/profile \
   -d '{"constructor":{"prototype":{"polluted":"yes"}}}'
 ```
 
-___
+---
 
 ## Análisis Estático de Código JS
 
@@ -138,4 +138,4 @@ ___
 6. Si pollution confirmed → buscar gadget para escalar.
 ```
 
-***
+---

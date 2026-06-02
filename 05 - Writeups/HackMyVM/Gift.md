@@ -5,7 +5,7 @@ plataforma: "[[HackMyVM]]"
 web: https://hackmyvm.eu/machines/machine.php?vm=gift
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[hydra]]"
   - "[[msfconsole]]"
   - "[[SSH (22) - Enumeración|ssh]]"

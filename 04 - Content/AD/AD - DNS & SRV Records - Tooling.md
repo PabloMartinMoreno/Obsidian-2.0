@@ -19,7 +19,7 @@ linked:
 ---
 # AD - DNS & SRV Records - Tooling
 
-***
+---
 
 ## dig (BIND DNS Lookup)
 
@@ -55,7 +55,7 @@ for dc in $(dig +short NS "$DOM"); do
 done
 ```
 
-___
+---
 
 ## dnsrecon / dnsenum / fierce
 
@@ -81,7 +81,7 @@ dnsrecon -d corp.local -n <DC-IP> -t std,axfr,srv,brt \
 jq '.[] | select(.type=="A") | {name, address}' corp_dns.json
 ```
 
-___
+---
 
 ## adidnsdump (DNS via LDAP)
 
@@ -106,7 +106,7 @@ adidnsdump -u 'corp\auditor' -p pass <DC> -r > records.csv
 grep -E "wpad|isatap|^_kerberos|^_ldap|^\*" records.csv
 ```
 
-___
+---
 
 ## dnstool.py (krbrelayx — DNS Manipulation)
 
@@ -139,7 +139,7 @@ python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad <DC>
 python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad --remove-tombstone <DC>
 ```
 
-___
+---
 
 ## OSINT / External DNS Recon
 
@@ -170,7 +170,7 @@ cat unique.txt | dnsx -resp-only -silent > live.txt
 cat unique.txt | httpx -title -web-server -tech-detect -silent
 ```
 
-___
+---
 
 ## Wordlists & Recursos
 
@@ -188,4 +188,4 @@ ___
 | `awesome-active-directory` | `https://github.com/Orange-Cyberdefense/awesome-activedirectory` |
 ^ad-tool-wordlists
 
-***
+---

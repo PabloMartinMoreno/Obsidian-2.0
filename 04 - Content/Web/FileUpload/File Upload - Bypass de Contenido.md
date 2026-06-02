@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Bypass de Contenido (Magic Bytes + Ofuscación)
 
-***
+---
 
 ## Cheatsheet
 
@@ -78,7 +78,7 @@ WAF puede bloquear no solo la subida sino la **request al shell** (filtra `?cmd=
 curl 'https://target/uploads/shell.php' -H 'X-CMD: id'
 ```
 
-___
+---
 
 ## Overview
 
@@ -91,4 +91,4 @@ Bypass de contenido = sortear validaciones del **archivo en sí** (no solo exten
 
 Más estricto el filtro → más ofuscación necesitás. Tabla XOR/alphanumerical bypass es último recurso contra WAF agresivo.
 
-***
+---

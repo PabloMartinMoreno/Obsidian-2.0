@@ -18,7 +18,7 @@ linked:
 ---
 # Oracle TNS Enumeration (1521)
 
-***
+---
 
 ## Cheatsheet
 

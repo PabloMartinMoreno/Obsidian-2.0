@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Convenciones, configuración y mantenimiento del vault Obsidian Hack.
 
-***
+---
 
 ## Estructura
 
@@ -28,7 +28,7 @@ Hack/
 └── 06 - Daily/         ← daily notes (templated)
 ```
 
-***
+---
 
 ## Frontmatter canonical
 
@@ -45,7 +45,14 @@ linked:
 ---
 ```
 
-***
+**Reglas de estilo (no divergir):**
+- **Wikilinks en frontmatter siempre entre comillas dobles**: `"[[Nota]]"` (nunca `'[[Nota]]'`).
+- **Key de relaciones = `linked`** (nunca `relacionados`, key legacy ya migrada).
+- **Campos vacíos van vacíos, no `null`**: `aliases:` / `tertiary categories:` (sin la palabra `null`).
+- **`kind` en camelCase pegado** (`CheatSheet`, `SubCheatSheet`, `SubCommand`, `SubNote`); excepción: los 3 `Primary/Secondary/Tertiary Category` (con espacio).
+- **Separador de body = `---`** (no `***` ni `___`).
+
+---
 
 ## Sistema `kind:`
 
@@ -67,7 +74,7 @@ Valores canónicos:
 - **TTP** — táctica-técnica-procedimiento (MITRE)
 - **Primary / Secondary / Tertiary Category** — MOCs
 
-***
+---
 
 ## Tags taxonómicos
 
@@ -91,7 +98,7 @@ Prefijos en uso:
 > [!tip] Falsos positivos en el tag pane
 > Strings con `#` dentro de code fences / inline-code / callouts (hex CSS `#CF4747`, directivas SSI `<!--#exec -->`, ColdFusion `#var#`) NO son tags reales — Obsidian los ignora. Si una tool MCP los lista como tags, es artefacto del parser, no requiere limpieza.
 
-***
+---
 
 ## Convenciones de naming
 
@@ -109,7 +116,7 @@ Prefijos en uso:
 >
 > Ej: `HTTP` y `HTTPS` embeben `![[HTTP - Métodos#^http-metodos]]` y `![[HTTP - Códigos de Estado#^http-estado]]` en vez de repetir las tablas.
 
-***
+---
 
 ## Migración `type/*` → `kind:`
 
@@ -133,7 +140,7 @@ Mapeo para limpiar el tag vestigial. Si la nota ya tiene `kind:` correcto, solo 
 | `type/moc/secondary` | Secondary Category |
 | `type/moc/tertiary` | Tertiary Category |
 
-***
+---
 
 ## Plugins clave
 
@@ -148,7 +155,7 @@ Mapeo para limpiar el tag vestigial. Si la nota ya tiene `kind:` correcto, solo 
 
 Ver [[Obsidian - Plugins]].
 
-***
+---
 
 ## Snippets CSS activos
 
@@ -158,7 +165,7 @@ Ver [[Obsidian - Plugins]].
 - `custom-callouts.css` — callouts personalizados ([!flag], [!like])
 - `colored-sidebar-items.css` — folders coloreados por prefix numérico
 
-***
+---
 
 ## Dashboards
 
@@ -168,7 +175,7 @@ Ver [[Obsidian - Plugins]].
 - [[Todo Round-Up]] — callouts `[!todo]` activos
 - [[Tools]] — MOC de herramientas
 
-***
+---
 
 ## Backup
 
@@ -176,7 +183,7 @@ Ver [[Obsidian - Plugins]].
 - Remote: GitHub `PabloMartinMoreno/Obsidian-2.0`. `git push` manual o auto-push del plugin.
 - Backup tarball ad-hoc: `tar -czf /tmp/hack-backup-$(date +%F).tar.gz --exclude='.git' --exclude='00 - Resources/Images' .`
 
-***
+---
 
 ## Notas Relacionadas
 

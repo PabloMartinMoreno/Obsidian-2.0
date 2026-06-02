@@ -31,7 +31,7 @@ linked:
 ---
 # AD - gMSA Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -182,7 +182,7 @@ tab: **Wordlists & Recursos**
 ![[AD - gMSA Enumeration - Tooling#^ad-gmsa-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -223,7 +223,7 @@ LAPSv1/v2 = local admin password mgmt. gMSA = service account password mgmt. Bot
 - **Kerberoastable gMSA** — service account hashes (long pwds usually safe).
 - **Cross-correlate with priv** — service account misconfigured in DA = critical.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -276,7 +276,7 @@ ___
    - msDS-ManagedPassword read events
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -315,7 +315,7 @@ Get-ADServiceAccount -Filter * `
 python3 gMSADumper.py -u $USER -p $PASS -d dom.local
 ```
 
-___
+---
 
 ## Impacto
 
@@ -332,7 +332,7 @@ ___
 - **Service account in priv group** — common misconfig.
 - **Cross-correlate with delegation** — gMSA + UD = critical.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -372,7 +372,7 @@ ___
 - **Compliance: documented gMSA inventory** — per-org baseline.
 - **Modern: dMSA migration** — Server 2025+.
 
-___
+---
 
 ## Para entender gMSA
 
@@ -412,7 +412,7 @@ Server 2025 introduces dMSA (Delegated MSA). Combines best of sMSA + gMSA: per-c
 
 Single highest-impact finding: gMSA member of Domain Admins with Authenticated Users in PrincipalsAllowedToRetrieveManagedPassword. Result: any domain user reads gMSA password → DA. Critical audit.
 
-___
+---
 
 ## Recursos
 
@@ -432,4 +432,4 @@ ___
 - [MITRE ATT&CK T1003](https://attack.mitre.org/techniques/T1003/) — Credential Access.
 - [Microsoft - Server 2025 dMSA](https://learn.microsoft.com/en-us/windows-server/) — modern.
 
-***
+---

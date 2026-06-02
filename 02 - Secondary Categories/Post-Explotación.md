@@ -7,7 +7,7 @@ kind: Secondary Category
 ---
 # Post-Exploitation
 
-***
+---
 
 ## Mapa Mental
 
@@ -47,15 +47,15 @@ mindmap
       SMB_Exfil
 ```
 
-***
+---
 
 ## [[Linux Post-Explotación]]
 
 
-***
+---
 
 ## [[Windows Post-Explotación]]
 
 
-***
+---
 

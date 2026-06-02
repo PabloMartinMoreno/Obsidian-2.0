@@ -20,7 +20,7 @@ linked:
 > [!info]
 > Limpieza/transformación de input antes de usarlo en operación crítica. Diferencia con **validación** (decisión accept/reject). Falla de sanitización = vector de injection.
 
-***
+---
 
 ## Sanitización vs Validación vs Encoding
 
@@ -32,7 +32,7 @@ linked:
 
 Buena defensa = contextual escaping al usar, NO sanitización temprana.
 
-***
+---
 
 ## Vectores de bypass común
 
@@ -55,7 +55,7 @@ Buena defensa = contextual escaping al usar, NO sanitización temprana.
 
 Ver [[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)]], [[XSS - Filtros XSS y WAF mediante Codificaciones Múltiples]].
 
-***
+---
 
 ## Sanitización lib bypasses comunes
 
@@ -68,7 +68,7 @@ Ver [[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)]], [[XS
 
 Buscar issues/CVEs específicos del lib + version.
 
-***
+---
 
 ## Defensa correcta
 
@@ -78,7 +78,7 @@ Buscar issues/CVEs específicos del lib + version.
 4. **CSP** para defense-in-depth XSS
 5. **Type system fuerte** (TypeScript, etc.) limita inputs raros
 
-***
+---
 
 ## Notas Relacionadas
 

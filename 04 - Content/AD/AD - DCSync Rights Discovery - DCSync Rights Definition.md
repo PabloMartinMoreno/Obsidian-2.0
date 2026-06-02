@@ -17,7 +17,7 @@ linked:
 ---
 # AD - DCSync Rights Discovery - DCSync Rights Definition
 
-***
+---
 
 ## Replication Extended Rights
 
@@ -39,7 +39,7 @@ linked:
 # RETURN u.name
 ```
 
-___
+---
 
 ## DCSync Mechanism
 
@@ -73,7 +73,7 @@ lsadump::dcsync /domain:corp.local /user:krbtgt
 lsadump::dcsync /domain:corp.local /all /csv
 ```
 
-___
+---
 
 ## Default DCSync Holders
 
@@ -89,7 +89,7 @@ ___
 
 **Audit principle:** cualquier principal **fuera de esa lista** con DCSync rights = audit finding crítico. Common attack persistence.
 
-___
+---
 
 ## Storage Location
 
@@ -102,7 +102,7 @@ ___
 
 **DACL location:** ACEs viven en `nTSecurityDescriptor` del domain root object (`DC=corp,DC=local`). No en otros lados (no en Configuration NC, no en Schema NC para domain DCSync).
 
-___
+---
 
 ## Detection Considerations
 
@@ -121,7 +121,7 @@ $sd = (Get-ADObject "DC=corp,DC=local" -Properties nTSecurityDescriptor).nTSecur
 $sd.Audit | Where { $_.ObjectType -in (DCSync GUIDs) }
 ```
 
-___
+---
 
 ## RODC Filtered Set
 
@@ -135,7 +135,7 @@ ___
 
 **RODC scope:** RODCs solo replican passwords de `Allowed RODC Password Replication Group` members. `Denied` group (Tier 0 — DA, EA, etc) **nunca** replicado a RODC. RODC compromise = solo creds de Tier 1/2 expuestos.
 
-___
+---
 
 ## DCSync vs DC Replication
 
@@ -151,4 +151,4 @@ ___
 
 **Defender SIEM rule:** alert on `4662` con DCSync GUIDs **donde source IP no es un DC**. Reduce false positives.
 
-***
+---

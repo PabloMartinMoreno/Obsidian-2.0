@@ -17,7 +17,7 @@ linked:
 ---
 # Clickjacking - Variantes Avanzadas
 
-***
+---
 
 ## Drag-and-Drop Clickjacking
 
@@ -70,7 +70,7 @@ function captureDrop(e) {
 </html>
 ```
 
-___
+---
 
 ## Cursor-Jacking
 
@@ -122,7 +122,7 @@ document.addEventListener('mousemove', (e) => {
 </html>
 ```
 
-___
+---
 
 ## Scroll-Jacking
 
@@ -142,7 +142,7 @@ ___
 | `<style>iframe{transform:scale(2);transform-origin:0 0}</style>` | Zoom iframe to show only button | Zoom-clip. |
 ^cj-advanced-scrolljacking
 
-___
+---
 
 ## Touch-Jacking (Mobile)
 
@@ -162,7 +162,7 @@ ___
 | `<a href="https://target.com/admin/x">tap</a><script>document.querySelector('a').click()</script>` (auto-tap) | Programmatic mobile tap | Auto-tap. |
 ^cj-advanced-touchjacking
 
-___
+---
 
 ## Strokejacking (Keyboard)
 
@@ -182,4 +182,4 @@ ___
 | `<input dir="rtl"><script>...</script>` (bidirectional script confusion) | RTL text confusion | Bidi edge. |
 ^cj-advanced-strokejacking
 
-***
+---

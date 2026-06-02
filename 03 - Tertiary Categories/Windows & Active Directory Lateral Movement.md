@@ -11,7 +11,7 @@ kind: Tertiary Category
 ---
 # Movimiento Lateral de Windows y AD
 
-***
+---
 
 ## ♻ Credential Replay & Reuse
   Técnicas que utilizan credenciales (hashes o tickets) robadas para autenticarse en otros sistemas.
@@ -31,4 +31,4 @@ kind: Tertiary Category
    - [[PsExec]] (Ejecución remota de comandos o programas utilizando recursos compartidos administrativos.)
    - [[WMI and WinRM for Lateral Movement]] (Uso de Windows Management Instrumentation y Windows Remote Management para ejecución remota.)
 
-***
+---

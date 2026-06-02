@@ -17,7 +17,7 @@ linked:
 ---
 # Detección de Tecnologías Web
 
-***
+---
 
 ## Cheatsheet
 

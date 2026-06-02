@@ -10,19 +10,19 @@ linked:
 ---
 # <% tp.file.title %>
 
-***
+---
 
 ## Cheatsheet
 
 
-***
+---
 
 ## Overview
 
 
-***
+---
 
 ## Notas Relacionadas
 
 
-***
+---

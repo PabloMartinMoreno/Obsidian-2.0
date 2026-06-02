@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Password Policy Enumeration - Tooling
 
-***
+---
 
 ## netexec / crackmapexec
 
@@ -30,7 +30,7 @@ linked:
 | `nxc ldap <DC> -u u -p p --query "(samAccountName=krbtgt)" "PasswordLastSet,msDS-KeyVersionNumber"` | krbtgt age | Audit. |
 ^ad-pwdpol-tool-netexec
 
-___
+---
 
 ## RSAT / PowerShell
 
@@ -47,7 +47,7 @@ ___
 | `(Get-ADForest).Domains \| % { Get-ADDefaultDomainPasswordPolicy -Server $_ }` | Forest-wide DDP | Multi-domain. |
 ^ad-pwdpol-tool-rsat
 
-___
+---
 
 ## rpcclient / Native Linux
 
@@ -72,7 +72,7 @@ polenum -d corp.local -u auditor -p 'Pass!' <DC>
 # Account Lockout Threshold: 5
 ```
 
-___
+---
 
 ## enum4linux / enum4linux-ng
 
@@ -84,7 +84,7 @@ ___
 | `enum4linux -P <DC>` | Legacy fallback | Sin -ng. |
 ^ad-pwdpol-tool-enum4linux
 
-___
+---
 
 ## PingCastle / Purple Knight / ADRecon
 
@@ -105,7 +105,7 @@ ___
 # report\CSV-Files\FineGrainedPasswordPolicy.csv
 ```
 
-___
+---
 
 ## Custom Audit Scripts
 
@@ -127,7 +127,7 @@ $accts | Test-PasswordQuality `
   -WeakPasswordHashesSortedFile pwned-passwords-ntlm-sorted.txt
 ```
 
-___
+---
 
 ## Recursos
 
@@ -144,4 +144,4 @@ ___
 | HackTricks Password Policy | `https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/password-spraying` |
 ^ad-pwdpol-tool-resources
 
-***
+---

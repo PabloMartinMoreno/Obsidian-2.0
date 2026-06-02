@@ -31,7 +31,7 @@ linked:
 ---
 # BloodHound & SharpHound
 
-***
+---
 
 ## Cheatsheet
 
@@ -221,7 +221,7 @@ tab: **Wordlists & Recursos**
 ![[BloodHound & SharpHound - Tooling Ecosystem#^ad-bhtool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -254,7 +254,7 @@ Pre-BloodHound: red team manual ACL audit + correlate. Post-BloodHound: automate
 | Combine con | All AD attacks | Per-attack specific |
 | Modern: industry standard | Standard | Adjacent |
 
-___
+---
 
 ## Workflow
 
@@ -309,7 +309,7 @@ ___
    - Per-engagement reports
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -340,7 +340,7 @@ SharpHound.exe -c Default
 # - Find ESC1 vulnerable templates
 ```
 
-___
+---
 
 ## Impacto
 
@@ -358,7 +358,7 @@ ___
 - **BHCE 6.x: ADCS + LAPSv2 + gMSA** — modern coverage.
 - **OpenGraph custom data** — hybrid identity.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -386,7 +386,7 @@ ___
 - **Cross-correlate with engagement** — known scope.
 - **Adjacent: All enum hubs** — cross-ref.
 
-___
+---
 
 ## Para entender BloodHound
 
@@ -418,7 +418,7 @@ Forest = multiple domains. Cross-domain paths = forest-wide privesc. BHCE auto-c
 
 Custom node/edge ingest beyond AD. Hybrid identity (Azure AD), custom integrations, per-org context. BHCE 6.x feature. Standard format JSON. Extensible.
 
-___
+---
 
 ## Recursos
 
@@ -439,4 +439,4 @@ ___
 - [The Hacker Recipes](https://www.thehacker.recipes/ad/recon) — reference.
 - [`awesome-active-directory`](https://github.com/Orange-Cyberdefense/awesome-active-directory) — curated.
 
-***
+---

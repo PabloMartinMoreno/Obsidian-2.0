@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/556
 dificultad: Fácil
 ip: 10.10.11.227
 os: Linux
-relacionados:
+linked:
   - "[[Default credentials]]"
   - "[[Sensitive Information Exposure]]"
   - "[[KeePass Memory Dump]]"
@@ -69,7 +69,7 @@ Una búsqueda rápida en Google sobre "Request Tracker default credentials" reve
 Logramos iniciar sesión exitosamente y aterrizamos en el panel de control de RT.
 
 
-___
+---
 
 ## Acceso Inicial (Foothold)
 
@@ -95,7 +95,7 @@ cat /home/lnorgaard/user.txt
 ```
 
 
-___
+---
 
 ## Escalada de Privilegios
 
@@ -206,7 +206,7 @@ Obtenemos una shell como `root` y podemos leer la flag final en `/root/root.txt`
 Se establecerá una shell como `root` en la máquina víctima. La flag se encuentra en `/root/root.txt`.
 
 
-___
+---
 
 ## Bandera(s)
 

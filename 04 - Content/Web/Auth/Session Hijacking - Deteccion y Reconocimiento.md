@@ -16,7 +16,7 @@ linked:
 ---
 # Session Hijacking - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Mecanismos de Session
 
@@ -40,7 +40,7 @@ linked:
 | Refresh-only token | Long-lived refresh + short access | Standard OAuth. |
 ^sh-detect-mechanism
 
-___
+---
 
 ## Analizar Atributos de Cookie
 
@@ -79,7 +79,7 @@ COOKIE=$(curl -sI -X POST -d 'user=x&pass=y' https://target/login | grep -i set-
 echo "$COOKIE" | grep -oiE 'HttpOnly|Secure|SameSite=[^;]*|Domain=[^;]*|Path=[^;]*|Max-Age=[^;]*|Expires=[^;]*'
 ```
 
-___
+---
 
 ## Mapear Session Lifecycle
 
@@ -127,4 +127,4 @@ if echo "$RESULT" | grep -q "Welcome\|dashboard"; then
 fi
 ```
 
-***
+---

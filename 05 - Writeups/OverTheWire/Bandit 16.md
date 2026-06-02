@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit16.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[nmap]]"
   - "[[ncat]]"
   - "[[SSL - TLS]]"

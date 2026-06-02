@@ -18,7 +18,7 @@ linked:
 ---
 # HTTP Request Smuggling - Variantes Clásicas
 
-***
+---
 
 ## CL.TE (Front Content-Length, Back Transfer-Encoding)
 
@@ -48,7 +48,7 @@ SMUGGLED
 
 Frontend ve POST con body de 13 bytes. Backend lee `0\r\n\r\n` (terminador chunked) → considera body terminado → trata `SMUGGLED` como inicio de próxima request.
 
-___
+---
 
 ## TE.CL (Front Transfer-Encoding, Back Content-Length)
 
@@ -82,7 +82,7 @@ x=1
 
 Frontend ve chunked completo. Backend lee CL=4 → considera body = `5c\r\n` (4 chars) → resto queda como nueva request `GPOST /...`.
 
-___
+---
 
 ## TE.TE (Header Obfuscation)
 
@@ -97,7 +97,7 @@ ___
 | `for ob in 'xchunked' ' chunked' '\tchunked' 'chunked, identity' 'gzip, chunked'; do printf "POST / HTTP/1.1\r\nHost: target\r\nTransfer-Encoding: $ob\r\nContent-Length: 4\r\n\r\n0\r\n\r\nX" \| ncat target 80; done` | Bulk obfuscation probe | Discovery loop. |
 ^hrs-te-te
 
-___
+---
 
 ## CL.CL (Header Doubling)
 
@@ -109,4 +109,4 @@ ___
 | Burp → Smuggler → "CL.CL detect" mode | Auto-detect doble CL acceptance | Test. |
 ^hrs-cl-cl
 
-***
+---

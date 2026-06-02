@@ -25,7 +25,7 @@ linked:
 ---
 # SSRF (Server-Side Request Forgery)
 
-***
+---
 
 ## Cheatsheet
 
@@ -53,11 +53,11 @@ tab: **Cloud Metadata (AWS/GCP/Azure)**
 ![[SSRF - Cloud Metadata#^ssrf-cloud]]
 ````
 
-___
+---
 
 > **Flujo examen HTB CWES/CBBH** → ver [[SSRF - CWES]] (índice linealizado: mecanismo lógico → reconocimiento → explotación → gopher smuggling, orientado al lab).
 
-___
+---
 
 ## Overview
 
@@ -86,7 +86,7 @@ El backend se convierte en **proxy no intencional** — el atacante hereda la pe
 - **Pivot**: server víctima se vuelve pivote a otros hosts inalcanzables.
 - **Bypass de WAF/FW**: traffic originado internamente no pasa por controles perimetrales.
 
-___
+---
 
 ## Detection workflow
 
@@ -100,7 +100,7 @@ ___
 5. **Si solo DNS**: pasar a [[SSRF - Blind SSRF]] playbook.
 6. **Escalación**: probar loopback, LAN, metadata endpoints.
 
-___
+---
 
 ## Filtros comunes y evasión
 
@@ -117,7 +117,7 @@ ___
 
 Truco clásico: el atacante controla `rebind.evil.com` con TTL=0. Primera resolución → IP pública whitelisted. Segunda (desde el fetch) → `127.0.0.1`. Vulnerable solo si la validación y el fetch resuelven DNS por separado.
 
-___
+---
 
 ## Para entender SSRF
 
@@ -138,7 +138,7 @@ ___
 - Metadata endpoints = IAM tokens = full cloud compromise.
 - IMDSv2 mitigó muchos, pero IMDSv1 aún común en VMs legacy.
 
-___
+---
 
 ## Recursos
 
@@ -147,4 +147,4 @@ ___
 - [HackTricks - SSRF](https://book.hacktricks.xyz/pentesting-web/ssrf-server-side-request-forgery)
 - [OWASP - SSRF Prevention](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html)
 
-***
+---

@@ -36,7 +36,7 @@ linked:
 ---
 # Session Hijacking
 
-***
+---
 
 ## Cheatsheet
 
@@ -135,7 +135,7 @@ tab: **Hashcat para Signed Cookies**
 ![[Session Hijacking - Tooling#^sh-tool-hashcat]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -165,7 +165,7 @@ OWASP Top 10 — A01:2021 Broken Access Control + A07:2021 Identification and Au
 | **Server-side (opaque ID)** | Backend store | Predictable IDs, replay |
 | **JWT (stateless)** | Token-based | JWT bypasses, cracking |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -213,7 +213,7 @@ ___
    - Stay under rate limit thresholds
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -284,7 +284,7 @@ curl -b "$COOKIE_POST" https://target/dashboard | grep -q 'Welcome' && \
 echo "$JWT" | python3 -c "import jwt; print(jwt.decode(input(), options={'verify_signature':False}))"
 ```
 
-___
+---
 
 ## Impacto
 
@@ -299,7 +299,7 @@ ___
 - **Combine con XSS** — typical chain, multiplies impact.
 - **Combine con Subdomain Takeover** — cross-sub session theft.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -328,7 +328,7 @@ ___
 - **Concurrent session limit** — one device per user (UX trade-off).
 - **Logout other devices** — feature for users.
 
-___
+---
 
 ## Para entender Session Hijacking
 
@@ -369,7 +369,7 @@ Subdomain Takeover allows atacante to:
 
 = Permanent persistent session hijacking infrastructure.
 
-___
+---
 
 ## Recursos
 
@@ -386,4 +386,4 @@ ___
 - [RFC 6265 - HTTP State Management](https://datatracker.ietf.org/doc/html/rfc6265) — Cookie spec.
 - [RFC 6265bis - SameSite](https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis) — modern.
 
-***
+---

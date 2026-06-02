@@ -13,7 +13,7 @@ linked:
 ---
 # XSS - Explotación de Mutaciones del Navegador (mXSS)
 
-***
+---
 
 ## Cheatsheet
 
@@ -59,7 +59,7 @@ document.body.innerHTML = clean;  // Si dispara alert → mXSS
 | Ruby Sanitize (Loofah) | <2.21.x |
 | Bleach (Python) | <6.x |
 
-___
+---
 
 ## Overview
 
@@ -73,4 +73,4 @@ Sanitizer trabaja sobre string. Browser parser trabaja sobre tree con correcció
 - Sanitizer al día (DOMPurify ≥3.2.4).
 - Re-sanitizar post-mutación si la app extrae content de templates.
 
-***
+---

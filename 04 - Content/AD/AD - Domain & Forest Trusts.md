@@ -28,7 +28,7 @@ linked:
 ---
 # AD - Domain & Forest Trusts
 
-***
+---
 
 ## Cheatsheet
 
@@ -161,7 +161,7 @@ tab: **Wordlists & Recursos**
 ![[AD - Domain & Forest Trusts - Tooling#^ad-trusttool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -202,7 +202,7 @@ Para atacantes: trusts expanden la superficie de ataque. Identificar todos los t
 - **SID History abuse** — bypass SID Filtering para forest compromise.
 - **Selective Auth misconfig** — too permissive = cross-trust lateral.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -250,7 +250,7 @@ ___
    - Cleanup tickets after operations
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -278,7 +278,7 @@ foreach ($g in @("Domain Admins","Enterprise Admins","Schema Admins")) {
 # MATCH p=shortestPath((u:User {owned:true})-[*1..]->(g:Group {name:"DOMAIN ADMINS@FOREIGN-DOM"}))
 ```
 
-___
+---
 
 ## Impacto
 
@@ -294,7 +294,7 @@ ___
 - **Persistence via trust** — long-lived if not rotated.
 - **Detection blind spots** — cross-domain logs harder to correlate.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -333,7 +333,7 @@ ___
 - **Document and review all trusts annually** — compliance.
 - **Remove ANONYMOUS LOGON from foreign auth pathways** — restrict.
 
-___
+---
 
 ## Para entender Trusts
 
@@ -369,7 +369,7 @@ When foreign user added to local group, their SID is stored in `CN=ForeignSecuri
 
 Realm trusts allow Windows to trust non-Windows Kerberos realms (Linux MIT KDC, Heimdal). Common in mixed-OS enterprises. Trust password = krbtgt of foreign realm. Cross-realm Kerberos works similarly but tooling differs.
 
-___
+---
 
 ## Recursos
 
@@ -387,4 +387,4 @@ ___
 - [PingCastle](https://www.pingcastle.com/) — trust audit.
 - [MITRE ATT&CK T1482 - Domain Trust Discovery](https://attack.mitre.org/techniques/T1482/) — framework.
 
-***
+---

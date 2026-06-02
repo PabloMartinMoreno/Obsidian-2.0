@@ -28,7 +28,7 @@ linked:
 ---
 # Remote File Inclusion (RFI)
 
-***
+---
 
 ## Cheatsheet
 
@@ -121,7 +121,7 @@ tab: **Otros Tools**
 ![[RFI - Tooling#^rfi-tool-others]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -163,7 +163,7 @@ Encontrado mostly en:
 | Required | `allow_url_include = On` | `Options +Includes` |
 | Vector | URL parameter | Reflected SSI directives |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -207,7 +207,7 @@ ___
    d. Combine con DNS rebinding for filter bypass
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -262,7 +262,7 @@ curl -X POST -d '<?php phpinfo(); ?>' \
 python LFISuite.py -u "${TARGET}?${PARAM}=" --auto-rfi
 ```
 
-___
+---
 
 ## Impacto
 
@@ -279,7 +279,7 @@ ___
 - **Combine con DNS rebinding** — filter bypass.
 - **Combine con `phar://`** — even sin URL fetch, deserialization gadgets.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -317,7 +317,7 @@ ___
 - **Static analysis** — Phan, Psalm, RIPS detect this pattern.
 - **Web server hardening** — separate users, SELinux/AppArmor, sandboxing.
 
-___
+---
 
 ## Para entender RFI
 
@@ -349,7 +349,7 @@ Each chain reaches RCE through different mechanisms.
 
 PHP es el primary stack. Java `getResource()`, Python `import` con dynamic strings, Node `require()` con user input — adjacent vulns but different flag names. Concept of "remote include = RCE" generalizes.
 
-___
+---
 
 ## Recursos
 
@@ -363,4 +363,4 @@ ___
 - [CWE-98 - Improper Control of Filename for Include/Require](https://cwe.mitre.org/data/definitions/98.html) — MITRE.
 - [PHP Security - Filesystem](https://www.php.net/manual/en/security.filesystem.php) — official guide.
 
-***
+---

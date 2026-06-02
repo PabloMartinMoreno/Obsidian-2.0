@@ -15,7 +15,7 @@ linked:
 ---
 # CanaryTokens
 
-***
+---
 
 ## CheatSheet
 

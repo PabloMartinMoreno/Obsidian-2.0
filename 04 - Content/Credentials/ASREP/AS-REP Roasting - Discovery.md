@@ -17,7 +17,7 @@ linked:
 ---
 # AS-REP Roasting - Discovery
 
-***
+---
 
 ## LDAP Filter (UAC bit 4194304)
 
@@ -42,7 +42,7 @@ nxc ldap <DC> -u user -p pass --asreproastable
 # helpdesk_old
 ```
 
-___
+---
 
 ## Privileged AS-REP Roastable
 
@@ -55,7 +55,7 @@ ___
 
 **Por qué priority:** AS-REP roast user normal = lateral foothold. AS-REP roast user en `Domain Admins` con password débil = direct DA.
 
-___
+---
 
 ## BloodHound Query
 
@@ -66,7 +66,7 @@ ___
 | `MATCH (u:User {dontreqpreauth:true, enabled:true}) WHERE u.lastlogon < timestamp() / 1000 - 15552000 RETURN u.name` | Stale + AS-REP (often weak pwd) | High-value. |
 ^asrep-discovery-bh
 
-___
+---
 
 ## UAC Bitfield Context
 
@@ -86,7 +86,7 @@ nxc ldap <DC> -u u -p p --query \
   "samAccountName,pwdLastSet"
 ```
 
-___
+---
 
 ## Cross-Trust AS-REP Discovery
 
@@ -97,7 +97,7 @@ ___
 | `Rubeus.exe asreproast /domain:partner.com /dc:<foreign-DC>` | Cross-domain Windows | Cross-trust. |
 ^asrep-discovery-cross
 
-___
+---
 
 ## Pre-Attack Validation
 
@@ -115,7 +115,7 @@ Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true -and Enabled -eq $true} `
   Export-Csv asrep_targets.csv -NoTypeInformation
 ```
 
-___
+---
 
 ## Auditoría Defender
 
@@ -128,4 +128,4 @@ ___
 
 **Defender ideal:** **0 users con `DONT_REQ_PREAUTH`** en domain. Cualquier presencia = audit finding. Common legacy: cuentas pre-Win2008 migradas con flag heredado.
 
-***
+---

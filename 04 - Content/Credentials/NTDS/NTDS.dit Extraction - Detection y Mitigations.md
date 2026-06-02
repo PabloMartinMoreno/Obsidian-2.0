@@ -16,7 +16,7 @@ linked:
 ---
 # NTDS.dit Extraction - Detection y Mitigations
 
-***
+---
 
 ## Detection Events (Windows Logs)
 
@@ -41,7 +41,7 @@ Get-WinEvent -FilterHashtable @{LogName='Security';Id=4662} |
   Select-Object TimeCreated, Message | Format-List
 ```
 
-___
+---
 
 ## MDI (Microsoft Defender for Identity) Alerts
 
@@ -56,7 +56,7 @@ ___
 
 **MDI detection hardness:** DCSync desde non-DC es casi imposible de evadir si MDI está activo en todos los DCs. VSS method en DC local puede evadir DCSync alert pero genera file access alert.
 
-___
+---
 
 ## MDE / Defender for Endpoint
 
@@ -79,7 +79,7 @@ SecurityEvent
 | project TimeGenerated, SubjectUserName, Computer, Properties
 ```
 
-___
+---
 
 ## Mitigations (Defensa)
 
@@ -94,7 +94,7 @@ ___
 | Audit object access en ntds.dit | Log 4663 para ntds.dit | SACL en `C:\Windows\NTDS\ntds.dit` |
 ^ntds-detect-mitigations
 
-___
+---
 
 ## Hardening Checklist
 
@@ -108,7 +108,7 @@ ___
 | ¿SACL en ntds.dit? | `Get-Acl C:\Windows\NTDS\ntds.dit` | Audit Everyone ReadData |
 ^ntds-detect-checklist
 
-___
+---
 
 ## Bypass Comparison (Red Team)
 
@@ -121,4 +121,4 @@ ___
 | Robocopy /b (Backup Ops) | Sí | Parcial | Backup Operators path |
 ^ntds-detect-bypass
 
-***
+---

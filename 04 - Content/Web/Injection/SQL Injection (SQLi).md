@@ -29,7 +29,7 @@ linked:
 ---
 # SQL Injection (SQLi)
 
-***
+---
 
 ## Cheatsheet
 
@@ -75,7 +75,7 @@ tab: **Lateral**
 ````
 
 
-___
+---
 
 ## Paso a paso
 
@@ -196,7 +196,7 @@ Referencia rápida de cómo el navegador/WAF interpreta los caracteres que rompe
 |`)` (Paréntesis)|`%29`|Equilibrio de sintaxis; permite cerrar funciones previas.|
 
 
-***
+---
 
 ## Overview
 
@@ -209,7 +209,7 @@ Referencia rápida de cómo el navegador/WAF interpreta los caracteres que rompe
 
 
 
-***
+---
 
 -- Rutas típicas para revisar configuraciones
 -- /etc/nginx/sites-enabled/default

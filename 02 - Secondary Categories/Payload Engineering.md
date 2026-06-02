@@ -11,13 +11,13 @@ kind: Secondary Category
 ---
 # [[Payload Engineering]]
 
-***
+---
 
 ## Overview
 
 Desarrollo, entrega, y evasión de payloads — desde reverse shells hasta implants avanzados. Intersección con Defense Evasion cuando el payload necesita esquivar AV/EDR/AMSI.
 
-***
+---
 
 ## 1. Shells & loaders
 
@@ -36,4 +36,4 @@ Desarrollo, entrega, y evasión de payloads — desde reverse shells hasta impla
 - [[Metasploit]] — framework + msfvenom para shellcode.
 - [[Impacket Toolkit]] — Python clients con payloads (psexec, wmiexec).
 
-***
+---

@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit08.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[sort]]"
   - "[[uniq]]"
   - "[[Bandit 07]]"

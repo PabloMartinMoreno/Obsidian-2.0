@@ -8,7 +8,7 @@ web: https://hackmyvm.eu/machines/machine.php?vm=<% tp.file.title.replace(/ /g, 
 dificultad:
 ip:
 os:
-relacionados:
+linked:
 ---
 # HackMyVM - <% tp.file.title %>
 

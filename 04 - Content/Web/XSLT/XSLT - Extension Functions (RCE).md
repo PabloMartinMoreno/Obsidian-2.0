@@ -17,7 +17,7 @@ linked:
 ---
 # XSLT - Extension Functions (RCE)
 
-***
+---
 
 Workflow: el payload XSLT se envía como cuerpo de la request `curl -X POST -H "Content-Type: application/xml" --data @payload.xsl https://target/transform`. Col 1 abajo es el contenido del archivo `payload.xsl` (sólo el body relevante; el header `<?xml ?><xsl:stylesheet ...>` está implícito).
 
@@ -47,7 +47,7 @@ $xsl->importStyleSheet(DOMDocument::loadXML($user_xsl));
 echo $xsl->transformToXML(new DOMDocument());
 ```
 
-___
+---
 
 ## Java / Saxon
 
@@ -85,7 +85,7 @@ ___
 </xsl:stylesheet>
 ```
 
-___
+---
 
 ## Microsoft / MSXML
 
@@ -126,4 +126,4 @@ ___
 </xsl:stylesheet>
 ```
 
-***
+---

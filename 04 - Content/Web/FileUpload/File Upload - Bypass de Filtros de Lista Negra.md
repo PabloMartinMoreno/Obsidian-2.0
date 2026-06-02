@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Bypass de Filtros de Lista Negra
 
-***
+---
 
 ## Cheatsheet
 
@@ -60,7 +60,7 @@ wc -l fileupload-wordlist.txt
 | Python/CGI | `.py`, `.cgi` |
 ^fu-blacklist-ext
 
-___
+---
 
 ## Overview
 
@@ -75,4 +75,4 @@ Blacklist = filtro bloquea lista de extensiones peligrosas conocidas. Bypass = e
 
 Combinar con [[File Upload - Bypass de Contenido]] para sortear magic byte checks.
 
-***
+---

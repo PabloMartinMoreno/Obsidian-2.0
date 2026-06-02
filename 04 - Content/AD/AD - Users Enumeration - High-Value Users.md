@@ -18,7 +18,7 @@ linked:
 ---
 # AD - Users Enumeration - High-Value Users
 
-***
+---
 
 ## Privileged Group Members
 
@@ -53,7 +53,7 @@ foreach ($g in $Tier0) {
 }
 ```
 
-___
+---
 
 ## adminCount Indicator
 
@@ -76,7 +76,7 @@ Get-ADUser -Filter {AdminCount -eq 1} -Properties AdminCount,MemberOf,LastLogonD
   Select Name,SamAccountName,LastLogonDate,@{n='Groups';e={($_.MemberOf -replace 'CN=([^,]+).*','$1') -join ', '}}
 ```
 
-___
+---
 
 ## Service Accounts
 
@@ -100,7 +100,7 @@ Get-ADUser -Filter {ServicePrincipalName -like "*"} `
   Sort AdminCount -Descending
 ```
 
-___
+---
 
 ## Delegation Targets
 
@@ -120,7 +120,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" \
   samAccountName userAccountControl msDS-AllowedToDelegateTo memberOf
 ```
 
-___
+---
 
 ## sIDHistory Users (Migration Leftover)
 
@@ -147,7 +147,7 @@ Get-ADUser -Filter * -Properties sIDHistory | Where sIDHistory | % {
 }
 ```
 
-___
+---
 
 ## gMSA / MSA / dMSA
 
@@ -176,7 +176,7 @@ nxc ldap <DC> -u user -p pass --gmsa
 nxc smb <target> -u 'SQL_gMSA$' -H aabbccdd...
 ```
 
-___
+---
 
 ## BloodHound High-Value Cypher
 
@@ -190,4 +190,4 @@ ___
 | `MATCH (u:User)-[:HasSIDHistory]->(d:Domain) RETURN u.name,d.name` | sIDHistory edges | Cross-trust. |
 ^ad-hv-bloodhound
 
-***
+---

@@ -11,7 +11,7 @@ linked:
 > [!info]
 > Análisis automatizado de postura de seguridad de cuenta cloud: misconfigs, public exposure, IAM overpriv, encryption gaps. Tools multi-cloud reduce manual recon.
 
-***
+---
 
 ## Tools principales
 
@@ -27,7 +27,7 @@ linked:
 | **CloudFox** | AWS, Azure | Recon attacker perspective |
 | **Pacu** | AWS | Exploitation framework |
 
-***
+---
 
 ## Workflow típico
 
@@ -47,7 +47,7 @@ pmapper graph create
 pmapper query "preset privesc *"
 ```
 
-***
+---
 
 ## Findings categories típicas
 
@@ -61,7 +61,7 @@ pmapper query "preset privesc *"
 | **Identity** | Inactive users, viejos access keys (>90 days), no MFA |
 | **Compliance** | GDPR/HIPAA/PCI específicos |
 
-***
+---
 
 ## Tradeoffs
 
@@ -69,7 +69,7 @@ pmapper query "preset privesc *"
 - **Graph tools** (Cartography, PMapper) — útiles para attack path discovery
 - **Pacu** — modifica state, evita en prod
 
-***
+---
 
 ## Notas Relacionadas
 

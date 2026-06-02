@@ -15,7 +15,7 @@ linked:
 ---
 # TFTP Enumeration (69)
 
-***
+---
 
 ## Cheatsheet
 

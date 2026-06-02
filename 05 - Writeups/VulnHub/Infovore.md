@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/infovore
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[Race Condition]]"
   - "[[File Inclusion]]"
   - "[[LFI2RCE]]"

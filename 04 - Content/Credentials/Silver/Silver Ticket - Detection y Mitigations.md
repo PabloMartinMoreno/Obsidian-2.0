@@ -17,7 +17,7 @@ linked:
 
 # Silver Ticket - Detection y Mitigations
 
-***
+---
 
 ## Detection Events
 
@@ -36,7 +36,7 @@ linked:
 - SPN en ticket no corresponde con SPNs registrados en AD
 - Username en ticket no existe o RID incorrecto
 
-___
+---
 
 ## MDI Alerts
 
@@ -48,7 +48,7 @@ ___
 
 **Limitación MDI:** Silver Ticket no pasa por DC → MDI no ve el TGS. Solo detecta anomalías cuando analiza tráfico entre target y otros servicios, o via PAC validation.
 
-___
+---
 
 ## KQL / Sentinel Hunt
 
@@ -73,7 +73,7 @@ SecurityEvent
 | order by TimeGenerated desc
 ```
 
-___
+---
 
 ## OPSEC Tips (Red Team)
 
@@ -87,7 +87,7 @@ ___
 | Target host con SPN real | SPN debe existir en AD | Verificar con GetUserSPNs |
 ^st-detect-opsec
 
-___
+---
 
 ## Invalidación (Blue Team)
 
@@ -99,7 +99,7 @@ ___
 | Monitorear 4624 sin 4769 correlacionado | Detección de uso de silver tickets | SIEM correlation rule. |
 ^st-detect-invalidate
 
-___
+---
 
 ## Hardening Checklist
 
@@ -113,4 +113,4 @@ ___
 | Correlación SIEM 4624 + 4769 | Detecta silver tickets sin TGS DC-side | Alert rule en SIEM |
 ^st-detect-checklist
 
-***
+---

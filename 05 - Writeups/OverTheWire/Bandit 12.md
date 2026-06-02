@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit12.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[Descompresor (Bandit 12)]]"
   - "[[xxd]]"
   - "[[Hex dump]]"

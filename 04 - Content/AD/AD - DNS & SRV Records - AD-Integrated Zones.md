@@ -18,7 +18,7 @@ linked:
 ---
 # AD - DNS & SRV Records - AD-Integrated DNS Zones
 
-***
+---
 
 ## DNS Storage Architecture
 
@@ -38,7 +38,7 @@ linked:
 ldapsearch -x -h <DC> -s base -b "" namingContexts | grep -i "dns"
 ```
 
-___
+---
 
 ## Zone Enumeration via LDAP
 
@@ -66,7 +66,7 @@ Get-DnsServerZone -ComputerName <DC> |
   Select ZoneName,ZoneType,ReplicationScope,IsAutoCreated,DynamicUpdate
 ```
 
-___
+---
 
 ## Records Discovery (dnsNode Objects)
 
@@ -95,7 +95,7 @@ Get-DnsServerResourceRecord -ZoneName "corp.local" -ComputerName <DC> |
   Sort RecordType,HostName
 ```
 
-___
+---
 
 ## Replication Scope Implications
 
@@ -114,7 +114,7 @@ Get-DnsServerZone -ComputerName <DC> |
   Select ZoneName,ReplicationScope,DynamicUpdate
 ```
 
-___
+---
 
 ## DNS-related Privileged Groups
 
@@ -133,7 +133,7 @@ ___
 Get-ADGroupMember "DnsAdmins" -Recursive | Select Name,SamAccountName,objectClass
 ```
 
-___
+---
 
 ## DNS-Specific Misconfigs
 
@@ -162,4 +162,4 @@ send
 EOF
 ```
 
-***
+---

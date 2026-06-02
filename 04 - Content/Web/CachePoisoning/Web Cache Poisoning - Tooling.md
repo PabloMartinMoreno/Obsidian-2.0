@@ -17,7 +17,7 @@ linked:
 ---
 # Web Cache Poisoning - Tooling
 
-***
+---
 
 ## Param Miner (Burp Extension)
 
@@ -34,7 +34,7 @@ linked:
 | Burp Active Scan + Param Miner enabled | Comprehensive cache poison detection | Full audit. |
 ^wcp-tool-param-miner
 
-___
+---
 
 ## HTTP Request Smuggler (Combo)
 
@@ -63,7 +63,7 @@ curl -sI https://target.com/static/x.css | grep -i x-cache
 # 4. Verifica response cacheada con Host attacker
 ```
 
-___
+---
 
 ## Web Cache Vulnerability Scanner (WCVS)
 
@@ -80,7 +80,7 @@ ___
 | `./wcvs -uri-list urls.txt -t 20` | Bulk multiple URLs | Volume scan. |
 ^wcp-tool-wcvs
 
-___
+---
 
 ## Manual curl / Burp Repeater
 
@@ -133,4 +133,4 @@ for h in "${HEADERS[@]}"; do
 done
 ```
 
-***
+---

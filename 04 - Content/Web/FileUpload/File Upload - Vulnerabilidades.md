@@ -31,7 +31,7 @@ linked:
 ---
 # File Upload - Vulnerabilidades
 
-***
+---
 
 ## Cheatsheet
 
@@ -75,7 +75,7 @@ tab: **Shells PHP / ASP / reverse**
 ![[File Upload - Shells en PHP#^fu-shells]]
 ````
 
-***
+---
 
 ## Overview
 
@@ -114,4 +114,4 @@ tab: **Shells PHP / ASP / reverse**
 - Lista de extensiones PHP: [extensions.lst](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20PHP/extensions.lst)
 - Lista MIME types: [seclists web-all-content-types](https://github.com/danielmiessler/SecLists/raw/master/Discovery/Web-Content/web-all-content-types.txt)
 
-***
+---

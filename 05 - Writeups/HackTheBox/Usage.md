@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/597
 dificultad: Fácil
 ip: 10.10.11.18
 os: Linux
-relacionados:
+linked:
   - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[Cracking Hashes]]"
   - "[[Arbitrary File Upload]]"

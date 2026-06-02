@@ -20,7 +20,7 @@ linked:
 ---
 # HTTP Brute Forcing - Tooling
 
-***
+---
 
 ## Hydra (THC-Hydra)
 
@@ -66,7 +66,7 @@ hydra -l admin -P passwords.txt \
   "/login:user=^USER^&pass=^PASS^&csrf=$TOKEN:H=Cookie\: PHPSESSID=$SESS:F=Invalid"
 ```
 
-___
+---
 
 ## Burp Suite Intruder + Turbo Intruder
 
@@ -110,7 +110,7 @@ def handleResponse(req, interesting):
         table.add(req)
 ```
 
-___
+---
 
 ## Medusa, Patator, Ncrack
 
@@ -144,7 +144,7 @@ patator http_fuzz \
   --threads=10
 ```
 
-___
+---
 
 ## ffuf, wfuzz (Fast Fuzzers)
 
@@ -180,7 +180,7 @@ ffuf -u https://target/api/v1/login \
   -o results.json
 ```
 
-___
+---
 
 ## Hashcat / John (Hash Crack)
 
@@ -225,7 +225,7 @@ hashcat -m 3200 hashes.txt --show
 hashcat --restore
 ```
 
-___
+---
 
 ## Wordlists & Anti-Captcha
 
@@ -248,4 +248,4 @@ ___
 | `pip install undetected-chromedriver && python3 -c "import undetected_chromedriver as uc; d=uc.Chrome(); d.get('https://target')"` | undetected-chromedriver Selenium evolved | JS challenge solve. |
 ^bf-tool-wordlists
 
-***
+---

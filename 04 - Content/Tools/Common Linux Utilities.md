@@ -46,7 +46,7 @@ linked:
 > [!info]
 > Cheatsheet de utilidades básicas Linux usadas en pentest workflows. Ver notas dedicadas para [[grep]], [[find]], [[awk]], [[xargs]].
 
-***
+---
 
 ## File / text
 
@@ -66,7 +66,7 @@ linked:
 | `file unknown.bin` | Identify file type (ELF, PE, image, etc.) |
 | `xxd` / `hexdump -C` | Hex dump |
 
-***
+---
 
 ## Hashing / crypto
 
@@ -83,7 +83,7 @@ linked:
 echo "backdoor:$(mkpasswd -m sha-512 Pwn1!):0:0:root:/root:/bin/bash" >> /etc/passwd
 ```
 
-***
+---
 
 ## Permissions / capabilities
 
@@ -96,7 +96,7 @@ echo "backdoor:$(mkpasswd -m sha-512 Pwn1!):0:0:root:/root:/bin/bash" >> /etc/pa
 | `setcap cap_setuid+ep /tmp/binary` | Set capability |
 | `umask` | Default permission mask |
 
-***
+---
 
 ## Process / system
 
@@ -109,7 +109,7 @@ echo "backdoor:$(mkpasswd -m sha-512 Pwn1!):0:0:root:/root:/bin/bash" >> /etc/pa
 | `lsof -i :4444` | Process listening on port |
 | `netstat -tlnp` (legacy) / `ss -tlnp` | Listening sockets |
 
-***
+---
 
 ## I/O / redirection
 
@@ -124,7 +124,7 @@ echo "backdoor:$(mkpasswd -m sha-512 Pwn1!):0:0:root:/root:/bin/bash" >> /etc/pa
 | `cmd \| tee file` | Stdout → terminal AND file |
 | `cmd < file` | File → stdin |
 
-***
+---
 
 ## Echo / print
 
@@ -134,7 +134,7 @@ echo -e 'a\nb'           # Escape sequences habilitadas
 printf '%s\n' "${arr[@]}"  # Print array
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

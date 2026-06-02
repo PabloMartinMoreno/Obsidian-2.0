@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/darkhole2
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[SSH (22) - Enumeración|SSH]]"
   - "[[SQL Injection (SQLi)]]"
   - "[[Puerto interno]]"

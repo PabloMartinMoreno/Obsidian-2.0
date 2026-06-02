@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Funciones y Expresiones Clave
 
-***
+---
 
 ## Cheatsheet
 
@@ -55,7 +55,7 @@ linked:
 | Concat | `CONCAT(...)` | `+` | `\|\|` | `\|\|` |
 | Comment | `-- ` `#` `/**/` | `--` `/**/` | `--` `/**/` | `--` `/**/` |
 
-___
+---
 
 ## Overview
 
@@ -67,4 +67,4 @@ Funciones built-in son herramientas core de SQLi. Tres categorías clave:
 
 Sintaxis varía por motor — fingerprinting primero, función después. Hex literals (`0x...`) son escape válido cuando quotes filtradas en MySQL/MSSQL.
 
-***
+---

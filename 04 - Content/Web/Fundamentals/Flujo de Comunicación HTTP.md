@@ -14,7 +14,7 @@ linked:
 ---
 # Flujo de Comunicación HTTP
 
-___
+---
 
 ## Cheatsheet
 
@@ -121,7 +121,7 @@ Connection: keep-alive
 > 
 > Un solo sitio web moderno puede disparar entre 50 y 100 flujos HTTP individuales para cargar todos los scripts, anuncios, imágenes y fuentes que contiene.
 
-___
+---
 
 ### Conceptos Relacionados para Expandir
 
@@ -130,7 +130,7 @@ ___
 - [[Gestión de Caché en HTTP (Cache-Control)]]
 - [[Vulnerabilidades por falta de cifrado en HTTP]]
 
-___
+---
 
 **Notas relacionadas:**
 - [[HTTP]]

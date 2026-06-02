@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/634
 dificultad: Media
 ip: 10.10.11.42
 os: Windows
-relacionados:
+linked:
 ---
 # HackTheBox - Administrator
 

@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/638
 dificultad: Fácil
 ip: 10.10.11.47
 os: Linux
-relacionados:
+linked:
   - "[[Subdomain Enumeration]]"
   - "[[.git Exposure]]"
   - "[[Information Leakage]]"

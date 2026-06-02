@@ -5,7 +5,7 @@ plataforma: "[[HackMyVM]]"
 web: https://hackmyvm.eu/machines/machine.php?vm=Doc
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[sqlmap]]"
   - "[[Arbitrary File Upload]]"
   - "[[chisel]]"
@@ -79,7 +79,7 @@ Ahora si nos redirige correctamente hacia el directorio **/admin** y vemos que e
 
 ![](https://0xjotarosecure.gitbook.io/~gitbook/image?url=https%3A%2F%2F3685264991-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F7ncxznQcS5nOCGtgTnGH%252Fuploads%252FwGYpdczWDr6fhvLEg4Wl%252Flogin.png%3Falt%3Dmedia%26token%3D9f381198-0bb1-4fe1-ac97-73b448459faa&width=768&dpr=4&quality=100&sign=4937fddd&sv=2)
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -427,7 +427,7 @@ Listo ya tenemos acceso **root** y podemos obtener la **flag** de **root**.
 HMVfinallyroot
 ```
 
-___
+---
 
 ## Limpiando Rastros y Huellas (opcional)
 

@@ -16,7 +16,7 @@ linked:
 ---
 # LSASS Dumping - Offline Parsing
 
-***
+---
 
 ## pypykatz (Python — Linux/Mac)
 
@@ -50,7 +50,7 @@ ls tickets/
 # Output: <user>@<service>.kirbi files
 ```
 
-___
+---
 
 ## Mimikatz Offline Mode (Windows)
 
@@ -72,7 +72,7 @@ mimikatz # sekurlsa::logonpasswords full
 mimikatz # sekurlsa::tickets /export
 ```
 
-___
+---
 
 ## Output Inspection
 
@@ -88,7 +88,7 @@ ___
 | `cloudap` | Azure AD / cloud credentials | Hybrid envs. |
 ^lsass-offline-output
 
-___
+---
 
 ## Per-Session Filtering
 
@@ -105,7 +105,7 @@ pypykatz lsa minidump lsass.dmp -o creds.txt
 grep -A 20 "Administrator" creds.txt
 ```
 
-___
+---
 
 ## Per-Package Extraction
 
@@ -116,7 +116,7 @@ ___
 | `pypykatz lsa minidump lsass.dmp --json \| jq '.[].wdigest_creds'` | Cleartext (legacy) | Direct. |
 ^lsass-offline-package
 
-___
+---
 
 ## DPAPI Master Key Extraction
 
@@ -140,7 +140,7 @@ pypykatz lsa minidump lsass.dmp | grep -A 5 "DPAPI"
 impacket-dpapi masterkey -file <encrypted-master> -mkfile <key>
 ```
 
-___
+---
 
 ## Cross-Reference: SAM + LSASS
 
@@ -163,7 +163,7 @@ pypykatz registry --system SYSTEM SAM -o sam_creds.txt
 pypykatz registry --system SYSTEM SECURITY -o lsa_creds.txt
 ```
 
-___
+---
 
 ## Common Errors
 
@@ -176,7 +176,7 @@ ___
 | `pypykatz: command not found` | Not installed | `pip install pypykatz`. |
 ^lsass-offline-errors
 
-___
+---
 
 ## Output Format Examples
 
@@ -206,4 +206,4 @@ luid 12345
         AESKey: 9988aabb...
 ```
 
-***
+---

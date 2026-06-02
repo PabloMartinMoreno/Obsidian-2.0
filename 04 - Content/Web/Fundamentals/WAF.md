@@ -11,7 +11,7 @@ linked:
 > [!info]
 > **Web Application Firewall** — filtro entre cliente y app que bloquea payloads conocidos. Detectar tipo + bypass via encoding, fragmentation, parser confusion.
 
-***
+---
 
 ## Detección
 
@@ -32,7 +32,7 @@ Headers/responses indicativos:
 - `X-WAF: ModSecurity` → ModSec
 - Response 403 con título "Request blocked", "Access denied" → varios
 
-***
+---
 
 ## Bypass techniques
 
@@ -54,7 +54,7 @@ Headers/responses indicativos:
 
 Ver [[HTTP Request Smuggling]], [[HTTP Parameter Pollution]], [[CRLF Injection]].
 
-***
+---
 
 ## Origin discovery (bypass via direct)
 
@@ -74,7 +74,7 @@ shodan search 'ssl:"<target>"'
 # 5. SSRF leak interno
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

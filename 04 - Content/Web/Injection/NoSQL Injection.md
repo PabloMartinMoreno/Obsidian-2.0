@@ -26,7 +26,7 @@ linked:
 ---
 # NoSQL Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -54,7 +54,7 @@ tab: **Extracción char-by-char ($regex, time-based)**
 ![[NoSQLi - Extracción Blind#^nosqli-blind]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -98,7 +98,7 @@ Diferencia vs SQLi clásico: NoSQL usa **objetos JSON** y **operadores** (`$ne`,
 | **Password reset / OTP** | [[NoSQLi - Extracción Blind]] — char-by-char del token. |
 | **API que acepta query DSL** | [[NoSQLi - Inyección Sintáctica]] — raw query construction. |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -113,7 +113,7 @@ ___
 7. Exfil por chars con $regex^ boolean oracle.
 ```
 
-___
+---
 
 ## Detección rápida con herramientas
 
@@ -135,7 +135,7 @@ ffuf -w /usr/share/seclists/Fuzzing/NoSQL-Payloads.txt \
 # Lista PayloadsAllTheThings/NoSQL Injection/Intruder/
 ```
 
-___
+---
 
 ## Impacto
 
@@ -145,7 +145,7 @@ ___
 - **DoS** — loops infinitos en `$where` / `$function`.
 - **Horizontal privesc** — IDOR-style accediendo a docs de otros users.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -157,7 +157,7 @@ ___
 - **Type coercion**: `String(req.body.username)` antes de pasar a query.
 - **WAF**: reglas para operadores NoSQL en request body.
 
-___
+---
 
 ## Para entender NoSQL Injection
 
@@ -178,7 +178,7 @@ ___
 - Sandbox V8 pero sin Node APIs → no filesystem, no network directo.
 - Aún así permite: loops (DoS), acceso a TODOS los fields de TODOS los docs, boolean oracle.
 
-___
+---
 
 ## Recursos
 
@@ -188,4 +188,4 @@ ___
 - [NoSQLMap](https://github.com/codingo/NoSQLMap) — tool automática.
 - [OWASP Testing Guide - NoSQL](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05.6-Testing_for_NoSQL_Injection)
 
-***
+---

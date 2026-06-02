@@ -15,7 +15,7 @@ linked:
 ---
 # SSRF - Básico
 
-***
+---
 
 ## Cheatsheet
 
@@ -29,7 +29,7 @@ linked:
 |  **Reflexión de error**  |               `http://internal-only/existe` vs `http://internal-only/404`                | Fingerprinting por response diff cuando servicio interno no responde con 200. |
 ^ssrf-basico
 
-___
+---
 
 ## Overview
 
@@ -49,4 +49,4 @@ Vectores típicos de inyección:
 - **Port scanning**: diferencias en response (timing, body, status code) permiten mapear qué puertos están abiertos en un host interno.
 - **Cloud metadata**: redirect a endpoints especiales (`169.254.169.254`) — ver [[SSRF - Cloud Metadata]].
 
-***
+---

@@ -31,7 +31,7 @@ linked:
 ---
 # Web Cache Poisoning
 
-***
+---
 
 ## Cheatsheet
 
@@ -115,7 +115,7 @@ tab: **Fat GET / Fat POST**
 ![[Web Cache Poisoning - Bypasses Avanzados#^wcp-bypass-fat]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -147,7 +147,7 @@ Vector clase A — descubierto por James Kettle (PortSwigger, 2018-2020). CVEs m
 | **Apache mod_cache** | mod_cache_disk con TTL agresivo |
 | **Squid** | Reverse proxy en deploys legacy |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -185,7 +185,7 @@ ___
    - Affected users (cookie-keyed cache subset?).
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -222,7 +222,7 @@ echo "$RESP2" | grep -i "PROBE-MARKER"
 # Param Miner → Right-click → Guess headers
 ```
 
-___
+---
 
 ## Impacto
 
@@ -235,7 +235,7 @@ ___
 - **CSRF token leak** — cached form con fixed token → predictable.
 - **Internal endpoint disclosure** — cache poison redirect a internal admin.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -252,7 +252,7 @@ ___
 - **Monitor cache anomalies** — alertas en HIT rate sudden spike.
 - **Audit con Param Miner / WCVS en CI/CD**.
 
-___
+---
 
 ## Para entender Web Cache Poisoning
 
@@ -279,7 +279,7 @@ Cache poisoning conocido desde 2008 (Carlos Bueno). Pero infraestructura moderna
 - WCP: cache key incompleto → poison response.
 - Combinables: HRS para inyectar response que cache stores como otro path.
 
-___
+---
 
 ## Recursos
 
@@ -293,4 +293,4 @@ ___
 - [Web Cache Vulnerability Scanner](https://github.com/Hackmanit/Web-Cache-Vulnerability-Scanner) — CLI scanner.
 - [OWASP - Cache Poisoning](https://owasp.org/www-community/attacks/Cache_Poisoning) — overview.
 
-***
+---

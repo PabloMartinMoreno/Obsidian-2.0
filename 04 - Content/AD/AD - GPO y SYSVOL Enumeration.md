@@ -41,7 +41,7 @@ linked:
 ---
 # AD - GPO & SYSVOL Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -216,7 +216,7 @@ tab: **Wordlists & Recursos**
 ![[AD - GPO y SYSVOL Enumeration - Tooling#^ad-gpotool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -248,7 +248,7 @@ GPOs control machine + user configurations vía SYSVOL files. Modify permissions
 | Critical attrs | gPLink, gpcFileSysPath, cpassword | nTSecurityDescriptor |
 | Patches: MS14-025 | GPP cpassword removed | Adjacent |
 
-___
+---
 
 ## Workflow
 
@@ -305,7 +305,7 @@ ___
    - Document changes
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -342,7 +342,7 @@ Get-GPO -All | ForEach-Object {
 bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
 ```
 
-___
+---
 
 ## Impacto
 
@@ -360,7 +360,7 @@ ___
 - **Service account with GPO modify** — common audit finding.
 - **NETLOGON scripts with creds** — adjacent vector.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -393,7 +393,7 @@ ___
 - **Cross-correlate priv tier** — standard audit.
 - **Modern: continuous monitoring** — defender.
 
-___
+---
 
 ## Para entender GPO/SYSVOL
 
@@ -441,7 +441,7 @@ Pre-BHCE: manual GPO ACL + linked OU correlation. Post-BHCE 5.x: GpLink edge + a
 
 MS14-025 patches GPP cpassword in NEW GPOs. Pre-2014 XMLs persist in SYSVOL until manually cleaned. Many environments never audited + cleaned. Atacante finds cpassword XMLs from 2010-2013 era still in SYSVOL.
 
-___
+---
 
 ## Recursos
 
@@ -463,4 +463,4 @@ ___
 - [MITRE ATT&CK T1552.006](https://attack.mitre.org/techniques/T1552/006/) — Group Policy Preferences.
 - [`awesome-active-directory`](https://github.com/Orange-Cyberdefense/awesome-active-directory) — curated.
 
-***
+---

@@ -22,7 +22,7 @@ linked:
 ---
 # Linux PrivEsc - PATH Hijacking
 
-***
+---
 
 ## Cheatsheet
 
@@ -106,4 +106,4 @@ PATH=/tmp:$PATH sudo /opt/admin.sh
 - Revisar siempre `strings`, `ltrace`, `strace` antes de asumir que un binario es hijackeable.
 - Búsqueda de dirs escribibles en PATH: `for d in $(echo $PATH | tr ':' ' '); do [ -w "$d" ] && echo "writable: $d"; done`.
 
-***
+---

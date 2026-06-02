@@ -5,7 +5,7 @@ plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/387
 dificultad: Fácil
 os: Windows
-relacionados:
+linked:
   - "[[evil-winrm]]"
   - "[[crackmapexec]]"
   - "[[SCF Malicious File]]"
@@ -260,7 +260,7 @@ dc413510b078b501b04e7d672d0739cd
 ```
 
 
-___
+---
 
 ## Bandera(s)
 

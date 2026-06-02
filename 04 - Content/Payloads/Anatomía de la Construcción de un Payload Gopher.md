@@ -10,7 +10,7 @@ linked:
 ---
 # Anatomía de la Construcción de un Payload Gopher
 
-___
+---
 
 El proceso consta de 3 fases: **Diseño de la Petición**, **Codificación (Encoding)** y **Ensamblaje**.
 

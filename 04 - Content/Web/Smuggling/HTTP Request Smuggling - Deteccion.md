@@ -15,7 +15,7 @@ linked:
 ---
 # HTTP Request Smuggling - Detección
 
-***
+---
 
 ## Probes Timing-based
 
@@ -49,7 +49,7 @@ curl -v --http1.1 --max-time 5 \
   https://target/
 ```
 
-___
+---
 
 ## Differential Response Detection
 
@@ -76,7 +76,7 @@ Burp → HTTP Request Smuggler (extension):
 4. "Smuggle attack" panel para crafting manual después
 ```
 
-___
+---
 
 ## HTTP/2 Endpoint Detection
 
@@ -106,4 +106,4 @@ ___
    - Frontend que forwarda → back-end H1 procesa TE → desync H2.TE
 ```
 
-***
+---

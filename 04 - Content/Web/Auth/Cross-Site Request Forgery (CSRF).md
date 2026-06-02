@@ -32,7 +32,7 @@ linked:
 ---
 # Cross-Site Request Forgery (CSRF)
 
-***
+---
 
 ## Cheatsheet
 
@@ -119,7 +119,7 @@ tab: **CSWSH PoC Builder**
 ![[CSRF - Tooling#^csrf-tool-cswsh]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -153,7 +153,7 @@ Vector clase A — OWASP Top 10 desde 2007. Mitigado en muchos casos por SameSit
 
 XSS frecuentemente "rompe" CSRF defenses porque XSS puede leer el token → forjar request válida.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -179,7 +179,7 @@ ___
 7. Acción ejecutada en target con cookies victim.
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -245,7 +245,7 @@ curl -X POST -b "session=ABC" -H "Origin: null" \
      -d "csrf_token=valid&action=transfer" https://target/api/transfer
 ```
 
-___
+---
 
 ## Impacto
 
@@ -258,7 +258,7 @@ ___
 - **Persistence chain** — file upload CSRF para drop de webshell / persistent XSS.
 - **WebSocket hijack (CSWSH)** — control de canal duplex con cookies victim.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -287,7 +287,7 @@ ___
 - **Auth re-confirmation** para acciones críticas (re-enter password antes de cambiar email).
 - **CAPTCHA / rate limit** en endpoints sensibles — no para CSRF directamente, mitigatorio.
 
-___
+---
 
 ## Para entender CSRF
 
@@ -310,7 +310,7 @@ Backwards compat. Cambiar default rompe miles de apps OAuth / SSO / embeds. Chro
 
 CSRF token sigue siendo defensa fundamental, **además** de SameSite.
 
-___
+---
 
 ## Recursos
 
@@ -323,4 +323,4 @@ ___
 - [BlackHat 2008 - The CSRF Threat](https://www.blackhat.com/presentations/bh-usa-08/Zeller_Felten/BHUSA08-Zeller-CSRF-slides.pdf) — paper que popularizó.
 - [Cross-Site WebSocket Hijacking - Christian Schneider](http://www.christian-schneider.net/CrossSiteWebSocketHijacking.html) — origen del término CSWSH.
 
-***
+---

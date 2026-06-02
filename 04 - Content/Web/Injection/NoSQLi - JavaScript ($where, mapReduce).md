@@ -18,7 +18,7 @@ linked:
 ---
 # NoSQLi - JavaScript ($where, mapReduce)
 
-***
+---
 
 ## Cheatsheet
 
@@ -36,7 +36,7 @@ linked:
 | **$function (MongoDB 4.4+)** | `{"$function":{"body":"function(){return this.role}","args":[],"lang":"js"}}` | Ejecuta JS arbitrario en pipeline. |
 ^nosqli-js
 
-___
+---
 
 ## Overview
 
@@ -138,4 +138,4 @@ Si el backend permite pasar `body` del user → JS arbitrario en DB. Sandbox blo
 - Usar parametrized queries en ORMs (Mongoose schemas, TypeORM).
 - WAF con reglas para `$where`, `$function`, `$accumulator`, `mapReduce` en request body.
 
-***
+---

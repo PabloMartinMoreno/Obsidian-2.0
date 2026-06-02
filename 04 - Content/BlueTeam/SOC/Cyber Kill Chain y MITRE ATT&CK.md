@@ -10,7 +10,7 @@ linked:
 
 # Cyber Kill Chain
 
-___
+---
 
 ## ¿Qué es la Cyber Kill Chain?
 

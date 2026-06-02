@@ -16,7 +16,7 @@ linked:
 ---
 # Mass Assignment - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints
 
@@ -39,7 +39,7 @@ linked:
 | Export/Import | `POST /import` con JSON dump | Bypass per-field validation. |
 ^ma-detect-endpoints
 
-___
+---
 
 ## Descubrir Hidden Fields
 
@@ -87,7 +87,7 @@ curl -X POST -H "Content-Type: application/json" \
 curl 'https://target/api/users/me' | jq 'keys'
 ```
 
-___
+---
 
 ## Inferir Model via Response
 
@@ -137,4 +137,4 @@ for f in "${SUSPICIOUS_FIELDS[@]}"; do
 done
 ```
 
-***
+---

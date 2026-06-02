@@ -17,7 +17,7 @@ linked:
 ---
 # HPP - Per-Stack Behavior
 
-***
+---
 
 ## PHP (Last Value Wins)
 
@@ -31,7 +31,7 @@ linked:
 | `curl "https://target/?a=safe&a=evil"` (last wins) | Backend procesa `evil` | Authentication bypass vector. |
 ^hpp-stack-php
 
-___
+---
 
 ## ASP.NET (Concatenation con Coma)
 
@@ -45,7 +45,7 @@ ___
 | `curl "https://target/cmd?c=ls&c=;&c=cat&c=/etc/passwd"` | Command injection fragmented | Same idea. |
 ^hpp-stack-aspnet
 
-___
+---
 
 ## Java (First Wins / Array)
 
@@ -60,7 +60,7 @@ ___
 | `curl -X POST -d "a=1&a=2" https://target/` | `request.getParameter` first wins en POST también | Same behavior. |
 ^hpp-stack-java
 
-___
+---
 
 ## Python / Flask / Django
 
@@ -74,7 +74,7 @@ ___
 | Combine con `request.values` Flask (query + form combined) | First-wins multi-source | Multi-source confusion. |
 ^hpp-stack-python
 
-___
+---
 
 ## Node.js / Express
 
@@ -89,7 +89,7 @@ ___
 | `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "a=1&a=2" https://target/` | Body parsing same as query (con body-parser) | POST same behavior. |
 ^hpp-stack-node
 
-___
+---
 
 ## Ruby on Rails (Last Wins)
 
@@ -118,4 +118,4 @@ ___
 | Go            | YES     | -            | -         | Query()["a"] → array |
 ```
 
-***
+---

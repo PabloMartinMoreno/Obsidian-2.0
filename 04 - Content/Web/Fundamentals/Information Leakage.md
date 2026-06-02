@@ -21,7 +21,7 @@ linked:
 > [!info]
 > Exposición no intencional de información sensible que asiste al atacante en fase de recon o explotación. Rara vez crítica por sí sola — combustible para otros ataques.
 
-***
+---
 
 ## Resumen
 
@@ -30,7 +30,7 @@ Cualquier output del sistema que revele detalles sobre stack, paths internos, ve
 - Identificar CVEs conocidos.
 - Bypass de validaciones via conocimiento del backend.
 
-***
+---
 
 ## Vectores comunes
 
@@ -49,7 +49,7 @@ Cualquier output del sistema que revele detalles sobre stack, paths internos, ve
 | **Banner grabbing** | Service version | nmap `-sV`, [[netexec]] |
 | **JWT alg/header** | Algoritmo, kid → ataque | [[JWT - Deteccion y Reconocimiento]] |
 
-***
+---
 
 ## Impacto downstream
 
@@ -58,7 +58,7 @@ Cualquier output del sistema que revele detalles sobre stack, paths internos, ve
 - Identificación de tech stack para SSTI engine ([[SSTI - Ejecucion por Engine]]).
 - Mapeo de attack surface oculto.
 
-***
+---
 
 ## Notas Relacionadas
 

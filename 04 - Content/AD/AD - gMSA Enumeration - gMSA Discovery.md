@@ -17,7 +17,7 @@ linked:
 ---
 # AD - gMSA Enumeration - gMSA Discovery
 
-***
+---
 
 ## Schema Detection
 
@@ -33,7 +33,7 @@ linked:
 - KDS Root Key creado (10h delay para propagación inicial).
 - Schema con `msDS-GroupManagedServiceAccount` class.
 
-___
+---
 
 ## gMSA Account Discovery
 
@@ -55,7 +55,7 @@ nxc ldap <DC> -u user -p pass --gmsa
 # Account: WEB_gMSA$        NTLM: 11223344...
 ```
 
-___
+---
 
 ## gMSA Critical Attributes
 
@@ -81,7 +81,7 @@ Get-ADServiceAccount -Filter * -Properties * |
          @{n='Groups';e={$_.MemberOf -join '; '}}
 ```
 
-___
+---
 
 ## KDS Root Key
 
@@ -103,7 +103,7 @@ ___
 Get-KdsRootKey | Select KeyId,EffectiveTime,@{n='AgeDays';e={((Get-Date) - $_.EffectiveTime).Days}}
 ```
 
-___
+---
 
 ## Container Storage
 
@@ -116,7 +116,7 @@ ___
 
 **Default DN:** `CN=Managed Service Accounts,DC=corp,DC=local`. Custom locations = OUs delegadas.
 
-___
+---
 
 ## Anonymous Discovery (Limited)
 
@@ -128,7 +128,7 @@ ___
 
 **Realidad:** anonymous LDAP read sobre gMSAs casi siempre bloqueado. Auth obligatoria.
 
-___
+---
 
 ## Forest-Wide gMSA
 
@@ -149,4 +149,4 @@ foreach ($d in (Get-ADForest).Domains) {
 }
 ```
 
-***
+---

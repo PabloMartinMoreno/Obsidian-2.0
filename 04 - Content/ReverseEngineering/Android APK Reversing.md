@@ -11,7 +11,7 @@ linked:
 > [!info]
 > APK = ZIP container con DEX bytecode (Dalvik), resources, AndroidManifest.xml. Decompile a Java/Smali. Tools clave: jadx, apktool, dex2jar.
 
-***
+---
 
 ## Estructura APK
 
@@ -27,7 +27,7 @@ app.apk (ZIP)
 └── assets/                  # arbitrary files
 ```
 
-***
+---
 
 ## Workflow básico
 
@@ -47,7 +47,7 @@ d2j-dex2jar.sh app.apk
 # Resulting jar abrible con JD-GUI o CFR
 ```
 
-***
+---
 
 ## AndroidManifest.xml — qué buscar
 
@@ -70,7 +70,7 @@ d2j-dex2jar.sh app.apk
 <application android:networkSecurityConfig="@xml/network_security_config">
 ```
 
-***
+---
 
 ## Hunt en Java decompiled (jadx-out/)
 
@@ -97,7 +97,7 @@ grep -rIn 'addJavascriptInterface\|loadUrl' jadx-out/ --include='*.java'
 grep -rIn 'MODE_WORLD_READABLE\|MODE_WORLD_WRITEABLE' jadx-out/
 ```
 
-***
+---
 
 ## Re-pack & sign
 
@@ -115,7 +115,7 @@ jarsigner -keystore key.jks patched.apk k
 apksigner sign --ks key.jks patched.apk
 ```
 
-***
+---
 
 ## Dynamic analysis
 
@@ -132,7 +132,7 @@ Frida ejemplo (bypass cert pinning):
 frida -U -f com.app -l unpinning.js
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

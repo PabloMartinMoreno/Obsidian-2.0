@@ -32,7 +32,7 @@ linked:
 ---
 # AD - ADCS Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -225,7 +225,7 @@ tab: **Wordlists & Recursos**
 ![[AD - ADCS Enumeration - Tooling#^ad-adcstool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -257,7 +257,7 @@ ADCS = Microsoft PKI integrado con AD. Vulnerabilities ESC1-ESC15 son foundation
 | Critical attrs | Template flags, EKU, EDITF | nTSecurityDescriptor |
 | Modern: extensive ADCS research | Specter Ops "Certified Pre-Owned" | Adjacent |
 
-___
+---
 
 ## Workflow
 
@@ -316,7 +316,7 @@ ___
    - Document changes
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -346,7 +346,7 @@ for ca in $CAS; do
 done
 ```
 
-___
+---
 
 ## Impacto
 
@@ -363,7 +363,7 @@ ___
 - **Web Enrollment without EPA** — vulnerable to ESC8.
 - **NDES exposed** — adjacent vector.
 
-___
+---
 
 ## Mitigación
 
@@ -398,7 +398,7 @@ ___
 - **Cleanup: stale templates** — hygiene.
 - **AES-only Kerberos** for cert auth.
 
-___
+---
 
 ## Para entender ADCS
 
@@ -430,7 +430,7 @@ Pre-BHCE 5.x: manual ESC analysis per template. Post-BHCE 5.x: automated graph +
 
 CVE-2022-26923 (Certifried) introduced StrongCertificateBindingEnforcement. ESC9/10 patched in mode 2. Legacy environments with mode 0 (compatibility) still vulnerable. Modern: enforce strong mode.
 
-___
+---
 
 ## Recursos
 
@@ -450,4 +450,4 @@ ___
 - [MITRE ATT&CK T1649](https://attack.mitre.org/techniques/T1649/) — Steal or Forge Authentication Certificates.
 - [`awesome-active-directory`](https://github.com/Orange-Cyberdefense/awesome-active-directory) — curated.
 
-***
+---

@@ -10,7 +10,7 @@ kind: Primary Category
 > [!info]
 > Contenido en [04 - Content/BlueTeam/](04%20-%20Content/BlueTeam/) — organizado en SOC, SIEM, IR, Forensics.
 
-***
+---
 
 ## CDSA
 
@@ -52,4 +52,4 @@ kind: Primary Category
 
 [[Metodología Forense]]
 
-***
+---

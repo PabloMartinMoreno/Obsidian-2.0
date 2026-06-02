@@ -13,7 +13,7 @@ linked:
 ---
 # Flujo de Comunicación HTTPS
 
-***
+---
 
 ## Cheatsheet
 

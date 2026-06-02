@@ -30,7 +30,7 @@ linked:
 ---
 # AD - Groups Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -175,7 +175,7 @@ tab: **Wordlists & Recursos**
 ![[AD - Groups Enumeration - Tooling#^ad-grouptool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -219,7 +219,7 @@ Foundation crítica para BloodHound attack path mapping, ACL abuse, privilege es
 - **AdminSDHolder propagation** — Tier 0 pattern recognition.
 - **Service accounts in Tier 0** — Kerberoast ATO chain.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -273,7 +273,7 @@ ___
    f. ACL chain via group ACEs → BloodHound path
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -305,7 +305,7 @@ bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
 # Ingest in BloodHound CE → analyze paths
 ```
 
-___
+---
 
 ## Impacto
 
@@ -324,7 +324,7 @@ ___
 - **Stale privileged users** — spray candidates.
 - **Custom privileged groups** — per-org Tier 0 markers.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -364,7 +364,7 @@ ___
 - **PingCastle / Purple Knight audits** — automated checks.
 - **Microsoft Defender for Identity** — anomalous group membership detection.
 
-___
+---
 
 ## Para entender Groups Enumeration
 
@@ -404,7 +404,7 @@ Cross-trust users added to local groups create FSP entries. FSP DN = `CN=<foreig
 
 Pre-BloodHound: manual recursive queries + correlation. BloodHound: automated graph + Cypher queries + visual paths. "Find all paths from owned principals to Tier 0" = single query. Foreign principals + cross-domain = visualized. ACL paths via groups = mapped. Game-changer for AD attacking.
 
-___
+---
 
 ## Recursos
 
@@ -424,4 +424,4 @@ ___
 - [LDAP Filter Syntax](https://learn.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax) — bitwise.
 - [MITRE ATT&CK T1069.002 - Domain Group Discovery](https://attack.mitre.org/techniques/T1069/002/) — framework.
 
-***
+---

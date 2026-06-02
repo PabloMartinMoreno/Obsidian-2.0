@@ -15,7 +15,7 @@ linked:
 ---
 # CSRF - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints State-Changing
 
@@ -35,7 +35,7 @@ linked:
 | GraphQL mutations | `POST /graphql` con `mutation { ... }` | Igual que REST POST. |
 ^csrf-detect-endpoints
 
-___
+---
 
 ## Análisis de Tokens Existentes
 
@@ -73,7 +73,7 @@ for i in 1 2 3; do
 done
 ```
 
-___
+---
 
 ## Verificar SameSite / Referer Protections
 
@@ -107,4 +107,4 @@ ___
 | Custom header (`X-Requested-With`) | ✓ (con CORS strict) | ✓ | CORS misconfig |
 | HMAC firmado body | ✓ | ✓ | Secret leak |
 
-***
+---

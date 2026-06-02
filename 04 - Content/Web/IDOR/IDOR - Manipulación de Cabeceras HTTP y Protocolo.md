@@ -18,7 +18,7 @@ linked:
 ---
 # IDOR - Manipulación de Cabeceras HTTP y Protocolo
 
-***
+---
 
 ## Cheatsheet
 
@@ -68,4 +68,4 @@ curl https://target/api/admin/users \
 
 Reverse proxy / API gateway elimina headers internos (`X-User-Id`, `X-Forwarded-For`, `X-Internal-*`) en el border. Backend establece identidad **solo** del JWT validado, nunca del header crudo.
 
-***
+---

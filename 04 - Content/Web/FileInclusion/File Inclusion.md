@@ -29,7 +29,7 @@ linked:
 ---
 # File Inclusion
 
-***
+---
 
 ## Cheatsheet
 
@@ -79,7 +79,7 @@ tab: **Phar Deserialization**
 ![[LFI To RCE - Phar Deserialization#^lfi-deserialization]]
 ````
 
-***
+---
 
 ## Overview
 
@@ -141,4 +141,4 @@ Parámetros sospechosos: `page`, `file`, `language`, `lang`, `view`, `template`,
 - [PayloadsAllTheThings - File Inclusion](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion)
 - [HackTricks - LFI / RFI](https://book.hacktricks.xyz/pentesting-web/file-inclusion)
 
-***
+---

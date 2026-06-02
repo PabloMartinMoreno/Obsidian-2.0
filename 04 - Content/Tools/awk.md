@@ -9,7 +9,7 @@ kind: Tool
 > [!info]
 > Procesador de texto basado en patterns + acciones por línea. En pentest: parsing de output (nmap, logs), extracción de campos específicos, transformación de listas.
 
-***
+---
 
 ## Cheatsheet
 
@@ -25,7 +25,7 @@ kind: Tool
 | `awk -F: '{print $1}' /etc/passwd` | Users del sistema | Linux enum |
 | `awk '{print $NF}' file` | Última columna | Variable |
 
-***
+---
 
 ## Patterns útiles en pentest
 
@@ -46,7 +46,7 @@ find / -type f -size +10M | xargs ls -lh 2>/dev/null | awk '{print $5, $9}'
 find / -perm -4000 2>/dev/null | awk -F/ '{print $NF}'
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

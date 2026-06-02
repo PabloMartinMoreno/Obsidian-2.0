@@ -13,7 +13,7 @@ linked:
 ---
 # Command Injection - Generación de Caracteres Bloqueados
 
-***
+---
 
 ## Cheatsheet
 

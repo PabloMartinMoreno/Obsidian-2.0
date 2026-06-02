@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Password Policy Enumeration - Fine-Grained Password Policies (PSO)
 
-***
+---
 
 ## PSO Overview
 
@@ -39,7 +39,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass \
   cn msDS-PasswordSettingsPrecedence msDS-PSOAppliesTo
 ```
 
-___
+---
 
 ## PSO Critical Attributes
 
@@ -66,7 +66,7 @@ Get-ADFineGrainedPasswordPolicy -Filter * -Properties * |
          @{n='Applies';e={$_.AppliesTo -join '; '}}
 ```
 
-___
+---
 
 ## PSO Scope (msDS-PSOAppliesTo)
 
@@ -98,7 +98,7 @@ Get-ADFineGrainedPasswordPolicy -Filter * | % {
 }
 ```
 
-___
+---
 
 ## Resultant Password Policy
 
@@ -124,7 +124,7 @@ if ($pso) {
 }
 ```
 
-___
+---
 
 ## PSO Misconfigurations
 
@@ -156,7 +156,7 @@ Get-ADFineGrainedPasswordPolicy -Filter * -Properties * | % {
 }
 ```
 
-___
+---
 
 ## PSO Read Permission ACL
 
@@ -169,7 +169,7 @@ ___
 
 **Default:** solo Domain Admins / Enterprise Admins / SYSTEM pueden leer PSOs. Usuarios normales sin permisos = no ven PSOs aunque les apliquen. Modificación DACL para extender visibility = audit finding.
 
-___
+---
 
 ## Anonymous PSO Discovery
 
@@ -181,4 +181,4 @@ ___
 
 **Casi siempre bloqueado** — PSOs requieren auth. Si pega anónimo = misconfig grave.
 
-***
+---

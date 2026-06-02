@@ -15,7 +15,7 @@ linked:
 ---
 # LFI - Path Traversal y Bypass de Filtros
 
-***
+---
 
 ## Cheatsheet
 
@@ -76,7 +76,7 @@ done
 | Bloquea `..` literal | UTF-8 overlong `..%c0%ae%c0%ae` |
 | Solo permite chars `[a-zA-Z0-9]` | Wrapper-based no ayuda — buscar otro endpoint |
 
-___
+---
 
 ## Overview
 
@@ -91,4 +91,4 @@ Cuando filtros bloquean LFI básico (`../`), se aprovechan diferencias entre có
 
 Probar de menos a más invasivo — el filtro más laxo te dice qué cambiar.
 
-***
+---

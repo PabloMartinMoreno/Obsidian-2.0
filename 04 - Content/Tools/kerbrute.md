@@ -27,7 +27,7 @@ linked:
 
 # kerbrute
 
-***
+---
 
 ## Overview
 
@@ -37,7 +37,7 @@ Install: binarios precompilados https://github.com/ropnop/kerbrute/releases. Sin
 
 > Regla: kerbrute es **default** para username enum + password spray pre-creds en AD. Más rápido que nxc/Impacket, y menos noisy que NTLM-based spray (no 4625 por user invalid).
 
-***
+---
 
 ## Sintaxis base
 
@@ -60,7 +60,7 @@ Flags globales:
 | `--safe` | Stop spray al detectar lockout candidate. |
 | `--downgrade` | Forzar RC4 enctype (más rápido, menos signal). |
 
-***
+---
 
 ## userenum — enumeración de usuarios
 
@@ -95,7 +95,7 @@ git clone https://github.com/urbanadventurer/username-anarchy
 ./username-anarchy/username-anarchy firstname lastname > users.txt
 ```
 
-***
+---
 
 ## passwordspray — single password × many users
 
@@ -134,7 +134,7 @@ P@ssw0rd
 <MonthYear>!
 ```
 
-***
+---
 
 ## bruteuser — many passwords × 1 user
 
@@ -144,7 +144,7 @@ kerbrute bruteuser -d domain.local --dc <DC> passwords.txt alice
 
 Usar solo si NO hay lockout policy o cuenta sin lockout (service accounts often). Más ruidoso.
 
-***
+---
 
 ## bruteforce — combo file
 
@@ -155,7 +155,7 @@ kerbrute bruteforce -d domain.local --dc <DC> combos.txt
 
 Combos típicamente de DB leaks (HIBP, COMB, etc.).
 
-***
+---
 
 ## userenum desde stdin / con stdin pipe
 
@@ -170,7 +170,7 @@ awk '{print $NF}' valid.txt > valid_only.txt
 kerbrute passwordspray -d dom.local --dc <DC> valid_only.txt 'Welcome1!' --safe
 ```
 
-***
+---
 
 ## Detección de AS-REP roasteable
 
@@ -184,7 +184,7 @@ $krb5asrep$23$alice@DOMAIN.LOCAL:abc123...hash
 
 Hash directamente compatible con hashcat `-m 18200`. Ver [[AS-REP Roasting]].
 
-***
+---
 
 ## OPSEC
 
@@ -201,7 +201,7 @@ Hash directamente compatible con hashcat `-m 18200`. Ver [[AS-REP Roasting]].
 - `--downgrade` → 4768 con `Ticket Encryption Type: 0x17` cuando default es 0x12 (AES256).
 - Honey user / honey password → cualquier hit dispara alert (PingCastle / Defender for Identity).
 
-***
+---
 
 ## Comparación
 
@@ -215,7 +215,7 @@ Hash directamente compatible con hashcat `-m 18200`. Ver [[AS-REP Roasting]].
 
 Default: **kerbrute userenum** primero (pre-creds) → si genera lista grande, spray con creds default. Ver [[Password Spraying]].
 
-***
+---
 
 ## Workflows típicos
 
@@ -255,7 +255,7 @@ kerbrute userenum -d domain.local --dc <DC> users.txt 2>&1 | grep asrep | tee as
 hashcat -m 18200 asrep.hashes rockyou.txt
 ```
 
-***
+---
 
 ## Referencias
 

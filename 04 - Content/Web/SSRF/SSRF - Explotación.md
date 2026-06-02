@@ -16,7 +16,7 @@ linked:
 ---
 # SSRF - Explotación
 
-***
+---
 
 ## Cheatsheet
 
@@ -87,4 +87,4 @@ gopher://target:80/_POST%2520/admin.php%2520HTTP/1.1%250d%250aHost:%2520target%2
 
 `gopherus.py` ya genera con encoding correcto para CLI directo; si lo metés en burp/form-data, agregar encode extra.
 
-***
+---

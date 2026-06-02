@@ -87,7 +87,7 @@ Descarga una VM de **FlareVM** (es un script gratuito que instala todas las herr
 4. Acostúmbrate a **documentar** todo lo que encuentras.
 
 
-___
+---
 
 # Canales de YouTube
 ### 1. Para entender las Bases (Redes y Teoría)
@@ -129,7 +129,7 @@ El problema del español en ciberseguridad es que el 90% es "Hacking Ofensivo" (
 
 - **Curso de Redes desde Cero (Cualquier canal educativo serio):** Busca listas de reproducción de "Fundamentos de Redes" en español si el inglés de NetworkChuck se te hace pesado.
 
-___
+---
 
 ## Recomendación estratégica para la ruta "Pobreza Zero":
 
@@ -137,7 +137,7 @@ ___
 2. **Tardes (Dudas):** Si no entendiste un concepto (ej: DNS), búscalo en **Professor Messer** o **NetworkChuck**.
 3. **Fines de Semana (Práctica):** Mira un video de **MyDFIR** y trata de copiar lo que hace en tu computadora (instalar un SIEM, configurar una alerta).
 
-___
+---
 
 # Arquitectura hibrida
 

@@ -18,7 +18,7 @@ linked:
 ---
 # EyeWitness
 
-***
+---
 
 ## Cheatsheet
 

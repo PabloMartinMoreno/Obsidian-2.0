@@ -18,7 +18,7 @@ linked:
 ---
 # Race Conditions - Tipos
 
-***
+---
 
 ## Limit Overrun
 
@@ -54,7 +54,7 @@ async def main():
 asyncio.run(main())
 ```
 
-___
+---
 
 ## Multi-Step State Machine
 
@@ -87,7 +87,7 @@ Race: A+B simultaneously
     → B puede leer 'reviewed' como input pero update a 'shipped' después
 ```
 
-___
+---
 
 ## Confirmation Step Bypass
 
@@ -101,7 +101,7 @@ ___
 | Burp parallel: `DELETE /audit/logs` + `POST /confirm` | Cover tracks sin admin confirm | Forensic evasion. |
 ^race-type-confirm
 
-___
+---
 
 ## 2FA / OTP Race
 
@@ -115,7 +115,7 @@ ___
 | Send same magic link N veces concurrent: `for i in {1..50}; do curl https://target/login?token=$T &; done; wait` | Magic link reuse | Single-use enforcement race. |
 ^race-type-2fa
 
-___
+---
 
 ## File Upload Race
 
@@ -129,7 +129,7 @@ ___
 | Image processing race: upload + access mid-resize | Half-processed access | resize() pipeline. |
 ^race-type-fileupload
 
-___
+---
 
 ## TOCTOU Filesystem
 
@@ -143,4 +143,4 @@ ___
 | Trigger via curl + parallel symlink swap: `(curl https://target/process-file?path=/tmp/x &); ln -sf /etc/shadow /tmp/x` | Pipeline TOCTOU | Server-side process race. |
 ^race-type-toctou-fs
 
-***
+---

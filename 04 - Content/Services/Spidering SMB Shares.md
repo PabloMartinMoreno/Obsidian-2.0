@@ -15,7 +15,7 @@ linked:
 ---
 # Spidering SMB Shares
 
-***
+---
 
 ## Cheatsheet
 

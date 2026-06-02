@@ -16,7 +16,7 @@ linked:
 ---
 # Web Cache Poisoning - Cache Deception
 
-***
+---
 
 ## Path Confusion (.css / .js Extension Trick)
 
@@ -49,7 +49,7 @@ curl -s "$PAYLOAD_URL"
 # → Cache HIT → respuesta contiene data privada víctima
 ```
 
-___
+---
 
 ## Path Normalization Differences
 
@@ -66,7 +66,7 @@ ___
 | `curl -sI -X POST -H "X-HTTP-Method-Override: GET" "https://target/api/me"` | POST con method override → backend GET, cache stores POST | Method override + cache combo. |
 ^wcp-deception-normalization
 
-___
+---
 
 ## Static Prefix Abuse
 
@@ -82,7 +82,7 @@ ___
 | `for prefix in static assets images cdn public; do curl -sI "https://target/$prefix/../admin" \| grep -iE 'x-cache\|age:'; done` | Bulk static-prefix probe | Discovery. |
 ^wcp-deception-prefix
 
-___
+---
 
 ## Encoded Slashes y Variantes
 
@@ -108,4 +108,4 @@ ___
 | Víctima | Recibe contenido atacante | Genera contenido cacheado |
 | Atacante | Sends headers malignos | Trick víctima a visit URL → refetch |
 
-***
+---

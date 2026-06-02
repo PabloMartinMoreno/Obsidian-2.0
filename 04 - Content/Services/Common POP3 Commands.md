@@ -15,7 +15,7 @@ linked:
 ---
 # Comandos POP3 Comunes
 
-***
+---
 
 ## Cheatsheet
 

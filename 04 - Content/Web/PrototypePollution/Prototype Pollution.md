@@ -29,7 +29,7 @@ linked:
 ---
 # Prototype Pollution
 
-***
+---
 
 ## Cheatsheet
 
@@ -122,7 +122,7 @@ tab: **Header / Cookie Smuggling**
 ![[Prototype Pollution - Bypasses y Filter Evasion#^pp-bypass-header]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -158,7 +158,7 @@ Atacante NO necesita acceso directo a Object.prototype — basta con inyectar la
 | Defense | No iterar `__proto__` keys | Output encoding | Type validation |
 | Lenguaje | Solo JS | Any (via JS) | Any con NoSQL |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -193,7 +193,7 @@ ___
    - dot notation → bracket / array notation
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -247,7 +247,7 @@ curl "https://target/?__proto__[polluted]=yes"
 # Then in console: ({}).polluted  → "yes" si vulnerable
 ```
 
-___
+---
 
 ## Impacto
 
@@ -259,7 +259,7 @@ ___
 - **Data leak** — pollute para forzar logging / debug mode → secrets exposed.
 - **CSRF token bypass** — si validation lee de objeto con prototype polluted.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -287,7 +287,7 @@ ___
 - **Type validation** — TypeScript strict mode + runtime checks.
 - **Audit deps** — `npm audit` / `yarn audit` regular + Dependabot.
 
-___
+---
 
 ## Para entender Prototype Pollution
 
@@ -314,7 +314,7 @@ Cada función tiene `.prototype` que se usa para `new`. `Object.constructor` apu
 - **Client-side**: pollution afecta solo la pestaña del usuario. Útil para XSS chains, bypass de validations cliente, hijack de SPAs.
 - **Server-side**: pollution afecta a TODOS los requests subsecuentes en el mismo proceso Node. Persistencia + impacto en otros usuarios.
 
-___
+---
 
 ## Recursos
 
@@ -327,4 +327,4 @@ ___
 - [GitHub Snyk Vulnerability DB - PP CVEs](https://security.snyk.io/vuln?type=npm&search=prototype%20pollution) — CVE list.
 - [Burp DOM Invader docs](https://portswigger.net/burp/documentation/desktop/tools/dom-invader/prototype-pollution) — tool oficial.
 
-***
+---

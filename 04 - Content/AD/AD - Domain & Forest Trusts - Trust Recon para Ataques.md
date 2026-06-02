@@ -22,7 +22,7 @@ linked:
 ---
 # AD - Domain & Forest Trusts - Trust Recon para Ataques
 
-***
+---
 
 ## Identificar Trust Surfaces Atacables
 
@@ -57,7 +57,7 @@ Get-ADTrust -Filter * -Properties * | % {
 } | Sort Risk -Descending
 ```
 
-___
+---
 
 ## Foreign Group Membership Audit
 
@@ -90,7 +90,7 @@ foreach ($g in "Domain Admins","Enterprise Admins","Schema Admins","Administrato
 }
 ```
 
-___
+---
 
 ## Cross-Trust Reachability Mapping (BloodHound)
 
@@ -115,7 +115,7 @@ done
 # Drag-drop ZIPs en BHCE → cross-domain auto-correlate
 ```
 
-___
+---
 
 ## Trust Account Discovery (DCSync Targets)
 
@@ -140,7 +140,7 @@ Get-ADUser -Filter {UserAccountControl -band 2048} `
   Select SamAccountName,Description,whenCreated
 ```
 
-___
+---
 
 ## Cross-Trust Kerberoast / AS-REP Roast
 
@@ -170,7 +170,7 @@ GetUserSPNs.py -target-domain "$TARGET" \
 hashcat -m 13100 cross_kerb.hash /usr/share/wordlists/rockyou.txt
 ```
 
-___
+---
 
 ## Trust Password Brute / Stale Detection
 
@@ -190,4 +190,4 @@ Get-ADUser -Filter {UserAccountControl -band 2048} -Properties PasswordLastSet |
   Select SamAccountName,PasswordLastSet
 ```
 
-***
+---

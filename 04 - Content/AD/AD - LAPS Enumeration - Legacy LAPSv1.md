@@ -17,7 +17,7 @@ linked:
 ---
 # AD - LAPS Enumeration - Legacy LAPSv1
 
-***
+---
 
 ## LAPSv1 Architecture
 
@@ -37,7 +37,7 @@ linked:
 4. Pwd se almacena en `ms-Mcs-AdmPwd` (plain text LDAP).
 5. Computer self-rotate cada `ms-Mcs-AdmPwdExpirationTime`.
 
-___
+---
 
 ## LAPSv1 Read via LDAP
 
@@ -67,7 +67,7 @@ Get-ADComputer -Filter * -Properties ms-Mcs-AdmPwd,ms-Mcs-AdmPwdExpirationTime |
          @{n='Expires';e={[datetime]::FromFileTime($_.'ms-Mcs-AdmPwdExpirationTime')}}
 ```
 
-___
+---
 
 ## LAPSv1 ACL Audit
 
@@ -90,7 +90,7 @@ Find-AdmPwdExtendedRights -Identity "OU=Servers,DC=corp,DC=local" |
   Select ObjectDN,@{n='Readers';e={$_.ExtendedRightHolders -join '; '}}
 ```
 
-___
+---
 
 ## LAPSv1 Misconfigurations
 
@@ -103,7 +103,7 @@ ___
 | Compare GPO scope vs computer scope | Mismatch | Audit deployment. |
 ^ad-lapsv1-misconfig
 
-___
+---
 
 ## LAPSv1 Read Permissions
 
@@ -116,7 +116,7 @@ ___
 
 **Default readers** después de install LAPS GPO: solo `Domain Admins` (vía herencia). Hardening = grant read a tier-specific groups (e.g., `T1 Server Admins` para Server OU, no flat `Domain Admins`).
 
-___
+---
 
 ## LAPSv1 Replacement (Migration to LAPSv2)
 
@@ -136,4 +136,4 @@ ___
 4. Force rotation: clients usan LAPSv2 attrs.
 5. Cleanup `ms-Mcs-AdmPwd*` viejo via `Set-ADObject -Clear`.
 
-***
+---

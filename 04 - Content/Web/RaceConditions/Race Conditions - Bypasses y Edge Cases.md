@@ -16,7 +16,7 @@ linked:
 ---
 # Race Conditions - Bypasses y Edge Cases
 
-***
+---
 
 ## Lock Contention Abuse
 
@@ -35,7 +35,7 @@ linked:
 | Wireshark filter `tcp.port==6379` capture Redis SETNX traffic | Capture lock state for analysis | Redis-specific debug. |
 ^race-bypass-lock
 
-___
+---
 
 ## Database Isolation Level Abuse
 
@@ -75,7 +75,7 @@ COMMIT;
 -- Final: balance = 70 (NOT 20 expected) — lost the 50 deduction
 ```
 
-___
+---
 
 ## Compensation Transaction Bypass
 
@@ -94,7 +94,7 @@ ___
 | `curl -X POST -b "session=X" -d "action=submit" https://target/api/order` con DB rollback race | Pre-commit event publish race | Outbox pre-commit. |
 ^race-bypass-compensation
 
-___
+---
 
 ## Distributed System Races
 
@@ -114,7 +114,7 @@ ___
 | `istioctl proxy-status` (capture mesh state during race) | Istio proxy state debug during race | Service mesh debug. |
 ^race-bypass-distributed
 
-___
+---
 
 ## Edge Cases
 
@@ -135,4 +135,4 @@ ___
 | `curl -X POST -b "session=X" -d "amount=100" https://target/api/transfer` from web + `curl ... mobile.target.com` simultáneo | Web vs mobile concurrent race | Multi-platform race. |
 ^race-bypass-edge
 
-***
+---

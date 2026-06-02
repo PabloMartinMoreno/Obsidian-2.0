@@ -16,7 +16,7 @@ linked:
 ---
 # SSTI - Detección y Fingerprinting
 
-***
+---
 
 ## Probes Polyglot
 
@@ -34,7 +34,7 @@ linked:
 | Trigger en User-Agent | `User-Agent: {{7*7}}` | Logging dashboards renderizan UA. |
 ^ssti-detect-polyglot
 
-___
+---
 
 ## Identificación por Delimitador
 
@@ -65,7 +65,7 @@ ___
 | `${7*7}` → `49` | FreeMarker / Velocity / Mako / Thymeleaf |
 | `${T(java.lang).getRuntime}` → string raw (Thymeleaf) o resolves (FreeMarker) | Spring Thymeleaf vs FreeMarker |
 
-___
+---
 
 ## Confirmación con Expresión Aritmética
 
@@ -101,4 +101,4 @@ ___
 5. Escalar a RCE según engine (ver SSTI - Ejecución por Engine).
 ```
 
-***
+---

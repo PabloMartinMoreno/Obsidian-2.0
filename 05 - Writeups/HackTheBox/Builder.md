@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/591
 dificultad: Media
 ip: 10.10.11.10
 os: Linux
-relacionados:
+linked:
   - "[[Jenkins Exploitation]]"
   - "[[CVE-2024-23897]]"
   - "[[Remote Code Execution|RCE]]"
@@ -203,7 +203,7 @@ println( hudson.util.Secret.decrypt("{AQAAABAAAAowLrf...aKSM=}"))
 La consola me devolvió la clave SSH privada en texto plano. A partir de aquí, los pasos para obtener acceso root son idénticos a los del primer método.
 
 
-___
+---
 
 ## Bandera(s)
 

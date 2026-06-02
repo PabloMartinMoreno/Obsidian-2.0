@@ -13,7 +13,7 @@ linked:
 ---
 # LFI To RCE - Session File Poisoning
 
-***
+---
 
 ## Cheatsheet
 
@@ -77,7 +77,7 @@ for path in '/etc/php/7.4/apache2/php.ini' '/etc/php/8.0/apache2/php.ini' '/etc/
 done
 ```
 
-___
+---
 
 ## Overview
 
@@ -101,4 +101,4 @@ Cuando la app guarda input en `$_SESSION['x']`, PHP lo serializa al archivo de s
 - macOS/BSD: `/tmp/`
 - Windows: `C:\Windows\Temp\`
 
-***
+---

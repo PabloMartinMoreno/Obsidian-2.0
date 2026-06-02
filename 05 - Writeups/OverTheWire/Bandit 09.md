@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit09.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[strings]]"
   - "[[awk]]"
   - "[[tail]]"

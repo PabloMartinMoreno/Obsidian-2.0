@@ -13,7 +13,7 @@ linked:
 ---
 # Command Injection - Herramientas de Ofuscación Automática
 
-***
+---
 
 ## Bashfuscator (Linux)
 
@@ -28,7 +28,7 @@ linked:
 | `bash -c 'PAYLOAD_GENERADO'` | Verificación local del payload | Antes de inyectar — confirma que ejecuta. |
 ^ci-herramienta-linux
 
-___
+---
 
 ## DOSfuscation (Windows)
 
@@ -45,7 +45,7 @@ Tool interactiva — PowerShell module. Funciona en Linux con `pwsh`.
 | `sudo apt install powershell && pwsh` | Ejecutar DOSfuscation en Kali | Sin VM Windows a mano. |
 ^ci-herramienta-windows
 
-___
+---
 
 ## Otras tools rápidas
 

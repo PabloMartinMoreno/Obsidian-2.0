@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/651
 dificultad: Fácil
 ip: 10.10.11.58
 os: Linux
-relacionados:
+linked:
   - "[[Information Disclosure]]"
   - "[[Information Leakage]]"
   - "[[Remote Code Execution|RCE]]"

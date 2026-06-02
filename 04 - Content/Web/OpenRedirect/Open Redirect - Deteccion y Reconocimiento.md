@@ -15,7 +15,7 @@ linked:
 ---
 # Open Redirect - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Parámetros de Redirect
 
@@ -57,7 +57,7 @@ curl -sI 'https://target/login?next=/dashboard' | grep -i location
 curl -s 'https://target/login?next=/dashboard' | grep -oE 'location\s*=\s*["\047][^"\047]+'
 ```
 
-___
+---
 
 ## Endpoints Comunes
 
@@ -85,7 +85,7 @@ ___
 | `/_next/redirect` | Next.js framework | SSR. |
 ^or-detect-endpoints
 
-___
+---
 
 ## Detectar 301/302 / JS-Based Redirects
 
@@ -124,4 +124,4 @@ curl -s 'https://target/login?next=https://attacker.com' | grep -oE 'location\s*
 # OpenRedireX -l urls.txt -p payloads.txt
 ```
 
-***
+---

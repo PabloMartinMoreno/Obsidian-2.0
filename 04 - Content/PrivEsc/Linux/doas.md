@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Reemplazo de sudo simpler/security-focused de OpenBSD. También presente en Alpine, Arch, *BSD. Si configurado mal — privesc igual que sudo.
 
-***
+---
 
 ## Config file
 
@@ -28,7 +28,7 @@ permit keepenv <user> as root
 
 Análogo a sudoers pero parser distinto.
 
-***
+---
 
 ## Common misconfigs
 
@@ -39,7 +39,7 @@ Análogo a sudoers pero parser distinto.
 | `permit keepenv` | LD_PRELOAD abuse igual que sudo |
 | Wildcard en cmd | Igual sudoers `*` |
 
-***
+---
 
 ## Enum
 
@@ -54,7 +54,7 @@ cat /etc/doas.conf
 doas -u root id   # ¿prompt pwd o passa?
 ```
 
-***
+---
 
 ## Explotación común
 
@@ -72,7 +72,7 @@ LD_PRELOAD=/tmp/evil.so doas ls
 
 Misma lista GTFOBins aplica.
 
-***
+---
 
 ## Notas Relacionadas
 

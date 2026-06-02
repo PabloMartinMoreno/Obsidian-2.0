@@ -29,7 +29,7 @@ linked:
 ---
 # Server-Side Template Injection (SSTI)
 
-***
+---
 
 ![[SSTI reconocimiento.png]]
 
@@ -123,7 +123,7 @@ tab: **Wordlists de Payloads**
 ````
 
 
-___
+---
 
 ## Overview
 
@@ -145,7 +145,7 @@ Vector clase A — backends modernos lo introducen sin darse cuenta porque las A
 
 SSTI es subcase de code injection — pero específico al lenguaje del template engine, no al runtime general. Un template engine bien configurado limita lo que puede ejecutar (sandbox). Code injection clásico (`eval(input)`) no tiene sandbox.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -167,7 +167,7 @@ ___
 8. Si filtro WAF: encoding / concat / attr chain (ver Bypasses).
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -214,7 +214,7 @@ done
 python tplmap.py -u "https://target/page?q=test" --level 5
 ```
 
-___
+---
 
 ## Impacto
 
@@ -226,7 +226,7 @@ ___
 - **DoS** — recursión infinita / loops gigantes en template syntax.
 - **Lateral via gadget chains** — combinar SSTI + Insecure Deserialization si engine permite.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -247,7 +247,7 @@ ___
 - **CSP** — NO ayuda (SSTI es server-side; CSP es cliente).
 - **Code review automatizado** — Semgrep / CodeQL tienen reglas para `render_template_string` con f-strings.
 
-___
+---
 
 ## Para entender SSTI
 
@@ -270,7 +270,7 @@ Ningún sandbox reemplaza "no concatenar input en template".
 
 Algunos engines corren en cliente (Vue, Angular, Handlebars en navegador). Inyección ahí = XSS, no RCE — el engine corre en el browser sandbox. CSTI es categoría aparte con vectores propios (Angular sandbox bypass, Vue.js mustaches).
 
-___
+---
 
 ## Recursos
 
@@ -282,4 +282,4 @@ ___
 - [OWASP Testing - Template Injection](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/18-Testing_for_Server-side_Template_Injection) — metodología.
 - [Black Hat Asia 2018 - SSTI](https://www.blackhat.com/docs/asia-18/asia-18-Sukhonin-Why-Modern-Apps-Are-Vulnerable-to-SSTI-Attacks.pdf) — survey de vectores.
 
-***
+---

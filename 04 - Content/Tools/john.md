@@ -21,7 +21,7 @@ linked:
 ---
 # john (JtR)
 
-***
+---
 
 ## Overview
 
@@ -31,7 +31,7 @@ Install: `apt install john` → version core. Para modes avanzados y formatos mo
 
 > Regla: si tenés GPU → hashcat. Si no hay GPU o el formato no está en hashcat → john. Mucho de `*2john` es exclusivo de john.
 
-***
+---
 
 ## Sintaxis base
 
@@ -44,7 +44,7 @@ john --show --format=<fmt> <hashfile>
 
 El estado se guarda en `~/.john/john.pot`. Para empezar de cero: `rm ~/.john/john.pot`.
 
-***
+---
 
 ## Formatos clave
 
@@ -78,7 +78,7 @@ El estado se guarda en `~/.john/john.pot`. Para empezar de cero: `rm ~/.john/joh
 
 Forzar formato: `--format=<name>`.
 
-***
+---
 
 ## Modes
 
@@ -121,7 +121,7 @@ john --mask='?w?d?d?d' --wordlist=rockyou.txt hashes.txt   # hybrid: word + 3 di
 john --external=Filter_Alpha hashes.txt
 ```
 
-***
+---
 
 ## Rules
 
@@ -146,7 +146,7 @@ Stack de rules:
 john --wordlist=rockyou.txt --rules=Jumbo --rules-stack=KoreLogic hashes.txt
 ```
 
-***
+---
 
 ## `*2john` helpers (Jumbo)
 
@@ -231,7 +231,7 @@ ldif2john.pl dump.ldif > ldif.john                 # LDAP attr hashes
 1password2john.py 1password.opvault > 1p.john
 ```
 
-***
+---
 
 ## Control + checkpoint
 
@@ -250,7 +250,7 @@ Parar limpio: `q`/`Ctrl+C` (graba pot + state).
 john --wordlist=rockyou.txt --max-run-time=3600 hashes.txt    # 1h
 ```
 
-***
+---
 
 ## Workflows frecuentes
 
@@ -294,7 +294,7 @@ zip2john secret.zip > s.john
 john --wordlist=rockyou.txt --rules=Jumbo s.john
 ```
 
-***
+---
 
 ## Benchmark
 
@@ -303,7 +303,7 @@ john --test=10                   # benchmark todos formatos (10s c/u)
 john --test --format=NT
 ```
 
-***
+---
 
 ## Configuración
 
@@ -324,7 +324,7 @@ sa@                     # Replace a with @
 $1$2$3                  # Append 1,2,3
 ```
 
-***
+---
 
 ## Tips
 
@@ -336,7 +336,7 @@ $1$2$3                  # Append 1,2,3
 - `--prince` (Jumbo) — PRINCE attack, combina palabras de wordlist en chains.
 - `--markov` — markov chains con stats de tasas.
 
-***
+---
 
 ## Referencias
 

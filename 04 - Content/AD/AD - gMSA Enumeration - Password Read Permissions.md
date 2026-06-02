@@ -16,7 +16,7 @@ linked:
 ---
 # AD - gMSA Enumeration - Password Read Permissions
 
-***
+---
 
 ## msDS-GroupMSAMembership
 
@@ -39,7 +39,7 @@ Get-ADServiceAccount -Filter * -Properties PrincipalsAllowedToRetrieveManagedPas
          }}
 ```
 
-___
+---
 
 ## Recursive Group Expansion
 
@@ -68,7 +68,7 @@ function Get-EffectiveGMSAReaders {
 Get-EffectiveGMSAReaders -gMSAName "SQL_gMSA"
 ```
 
-___
+---
 
 ## ACL on gMSA Object
 
@@ -84,7 +84,7 @@ ___
 - `GenericWrite` / `GenericAll` → todo (incluye add membership).
 - `WriteOwner` → take ownership → grant self.
 
-___
+---
 
 ## Computer Accounts as Readers
 
@@ -111,7 +111,7 @@ Get-ADServiceAccount -Filter * -Properties PrincipalsAllowedToRetrieveManagedPas
 }
 ```
 
-___
+---
 
 ## Privileged gMSA Identification
 
@@ -122,7 +122,7 @@ ___
 | `Get-ADGroupMember "Domain Admins" -Recursive \| ? objectClass -eq "msDS-GroupManagedServiceAccount"` | gMSA effective DA member | Critical priv. |
 ^ad-gmsa-perm-privileged
 
-___
+---
 
 ## BloodHound gMSA Edges
 
@@ -134,7 +134,7 @@ ___
 | `MATCH (s {gmsa:true})-[:MemberOf*1..]->(g:Group {highvalue:true}) RETURN s.name,g.name` | gMSAs en Tier 0 | Critical. |
 ^ad-gmsa-perm-bh
 
-___
+---
 
 ## Common Misconfigurations
 
@@ -147,4 +147,4 @@ ___
 | gMSA con `PasswordNotRequired` UAC | Anomaly | Investigate. |
 ^ad-gmsa-perm-misconfig
 
-***
+---

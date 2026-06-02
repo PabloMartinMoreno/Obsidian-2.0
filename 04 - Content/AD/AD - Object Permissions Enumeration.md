@@ -18,7 +18,7 @@ linked:
 ---
 # Enumeración de Permisos de Objetos
 
-***
+---
 
 ## Cheatsheet
 
@@ -43,7 +43,7 @@ Enumerar los shares del dominio revela dónde pueden estar almacenados archivos 
 
 Combinadas, estas técnicas forman la base para una enumeración efectiva de AD y estrategias de escalada de privilegios durante evaluaciones internas.
 
-***
+---
 
 ## Artículos relacionados
 

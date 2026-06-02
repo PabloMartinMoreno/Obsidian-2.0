@@ -14,7 +14,7 @@ linked:
 ---
 # El Protocolo Gopher en SSRF
 
-***
+---
 
 ## Cheatsheet
 
@@ -29,7 +29,7 @@ linked:
 | **Ejemplo POST** | `gopher://host:80/_POST%20/admin.php%20HTTP/1.1%0D%0AHost:%20host%0D%0AContent-Length:%2010%0D%0A%0D%0Auser=admin` |
 ^ssrf-gopher
 
-___
+---
 
 ## ¿Qué es Gopher?
 
@@ -102,7 +102,7 @@ Gracias a esta capacidad de enviar texto crudo, Gopher es la "navaja suiza" para
 |**FastCGI**|9000|Ejecutar código PHP arbitrario (`RCE`).|
 |**Memcached**|11211|Extraer o envenenar datos de caché.|
 
-___
+---
 
 Gopher funciona como un **túnel**. Se meten datos (HTTP, SQL, Redis) dentro de la URL de Gopher, y el servidor vulnerable "vomita" esos datos tal cual en el puerto interno que se elija.
 

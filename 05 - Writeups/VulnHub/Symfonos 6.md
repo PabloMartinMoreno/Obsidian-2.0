@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/symfonos6
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[curl]]"
   - "[[Cross-Site Scripting (XSS)]]"
   - "[[CSRF token theft]]"
@@ -45,7 +45,7 @@ Hallazgos:
 - `/flyspray` → Flyspray con un reporte de bug y comentario apuntando al “Achilles’ heel”.
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -77,7 +77,7 @@ preg_replace('/.*/e', $content, "Win");
 La bandera `/e` evalúa PHP en el contenido, permitiendo ejecución remota de código si se burla `htmlspecialchars()`.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -210,7 +210,7 @@ El `-H "Content-Type: application/json"` puede evitarse en cada uno de los curls
     ```
     
 
-___
+---
 
 ## Escalada de privilegios
 

@@ -18,7 +18,7 @@ linked:
 
 # Golden Ticket - Forging Windows
 
-***
+---
 
 ## Rubeus golden — RC4
 
@@ -41,7 +41,7 @@ klist
 dir \\dc01.corp.local\c$
 ```
 
-___
+---
 
 ## Rubeus golden — AES256 (OPSEC)
 
@@ -62,7 +62,7 @@ ___
   /opsec
 ```
 
-___
+---
 
 ## Rubeus golden — flags avanzados
 
@@ -90,7 +90,7 @@ ___
   /ptt /opsec
 ```
 
-___
+---
 
 ## mimikatz kerberos::golden
 
@@ -110,7 +110,7 @@ mimikatz # misc::cmd
 dir \\dc01.corp.local\c$
 ```
 
-___
+---
 
 ## Diamond Ticket (PAC legítimo)
 
@@ -132,7 +132,7 @@ ___
 
 **Key:** Diamond usa S4U2Self para obtener PAC real del KDC, luego lo modifica mínimamente. Evita detecciones que buscan PACs forjados.
 
-___
+---
 
 ## Sapphire Ticket
 
@@ -147,4 +147,4 @@ ___
 
 **Key:** Sapphire obtiene TGS real con PAC real del target user. No genera PAC forjado — ticket es 100% legítimo en contenido.
 
-***
+---

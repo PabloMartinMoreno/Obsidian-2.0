@@ -7,7 +7,7 @@ kind: Writeup
 plataforma: "[[PortSwigger]]"
 web: https://portswigger.net/web-security/
 dificultad:
-relacionados:
+linked:
 ---
 # <% tp.file.title %>
 

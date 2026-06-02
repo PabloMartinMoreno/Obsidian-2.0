@@ -32,7 +32,7 @@ linked:
 ---
 # JWT Attacks
 
-***
+---
 
 ## Cheatsheet
 
@@ -97,7 +97,7 @@ tab: **jwtcrack y John**
 ![[JWT - Tooling y Brute Force#^jwt-tool-jwtcrack]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -142,7 +142,7 @@ xxxxxxxxxxx.yyyyyyyyyyy.zzzzzzzzzzz
 | `auth0/jwks-rsa` | CVE-2018-0114 | jku no valida origen |
 | `node-jsonwebtoken` (Auth0) | CVE-2022-23529 | RCE via verify() con keyType inválido |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -164,7 +164,7 @@ ___
 7. Validar autenticado al endpoint privilegiado.
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -209,7 +209,7 @@ npm install -g jwt-cli              # decode + sign rápido
 pip install pyjwt                   # forge programático
 ```
 
-___
+---
 
 ## Impacto
 
@@ -221,7 +221,7 @@ ___
 - **SSRF** — `jku` / `x5u` apuntando a interno fetcha URL del backend.
 - **RCE** — combinado con vulns en lib (CVE-2022-23529 en jsonwebtoken).
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -236,7 +236,7 @@ ___
 - **Clock skew tolerance ≤ 60s**.
 - **No firmar y cifrar con la misma key**: separar.
 
-___
+---
 
 ## Para entender JWT
 
@@ -261,7 +261,7 @@ ___
 - JWT firmado (JWS) — contenido visible, firma protege integridad.
 - JWE encriptado — contenido cifrado. Mucho menos común. No confundir.
 
-___
+---
 
 ## Recursos
 
@@ -274,4 +274,4 @@ ___
 - [Auth0 - JWT Handbook](https://auth0.com/resources/ebooks/jwt-handbook) — guía completa.
 - [jwt.io](https://jwt.io) — debugger online + libs por lenguaje.
 
-***
+---

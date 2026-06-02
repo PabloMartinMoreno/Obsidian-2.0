@@ -15,7 +15,7 @@ linked:
 > [!info]
 > Abuso de ACEs (Access Control Entries) en AD para escalar privilegios o tomar control de objetos. BloodHound es la herramienta principal para mapear edges abusables.
 
-***
+---
 
 ## ACEs peligrosos (orden de impacto)
 
@@ -31,7 +31,7 @@ linked:
 | **AddKeyCredentialLink** | Shadow Credentials (PKI) |
 | **GetChanges + GetChangesAll** | DCSync |
 
-***
+---
 
 ## Discovery
 
@@ -48,7 +48,7 @@ findDelegation.py -dc-ip <DC> <DOMAIN>/<USER>
 
 Ver [[AD - ACL Enumeration]] para detalles.
 
-***
+---
 
 ## Explotación común
 
@@ -80,7 +80,7 @@ Set-DomainObject -Identity <victim> -Clear serviceprincipalname
 net rpc group addmem "<priv-group>" "<your-user>" -U "<DOMAIN>"/"<USER>"%"<PASS>" -S <DC>
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

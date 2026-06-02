@@ -9,7 +9,7 @@ kind: Tool
 ---
 # [[Dataview]]
 
-***
+---
 
 ## Description
 
@@ -97,7 +97,7 @@ FROM "01 - Primary Categories"
 SORT file.ctime DESC
 ```
 
-***
+---
 
 ## Resources
 
@@ -108,7 +108,7 @@ SORT file.ctime DESC
 
 [^1]: Dataview Plugin, Michael Brenan, https://github.com/blacksmithgu/obsidian-dataview
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

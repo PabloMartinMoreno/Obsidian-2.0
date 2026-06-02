@@ -16,7 +16,7 @@ linked:
 ---
 # GraphQL - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints
 
@@ -57,7 +57,7 @@ for p in /graphql /api/graphql /v1/graphql /query /api/query; do
 done
 ```
 
-___
+---
 
 ## Fingerprint del Engine
 
@@ -96,7 +96,7 @@ python main.py -t https://target -d
 # - Detected behavior: introspection enabled, suggestions on, debug mode on
 ```
 
-___
+---
 
 ## Probes Básicos
 
@@ -144,4 +144,4 @@ curl -X POST -H "Content-Type: application/json" \
 # "Did you mean user?" → suggestions on
 ```
 
-***
+---

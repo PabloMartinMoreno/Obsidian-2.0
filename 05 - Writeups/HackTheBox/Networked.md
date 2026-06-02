@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/203
 dificultad: Media
 ip: 10.10.10.146
 os: Linux
-relacionados:
+linked:
   - "[[Information Leakage]]"
   - "[[PHP Source Code Analysis]]"
   - "[[PHP]]"

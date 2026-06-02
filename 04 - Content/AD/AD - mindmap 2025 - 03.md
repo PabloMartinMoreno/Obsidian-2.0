@@ -11,7 +11,7 @@ kind: Concept
 ---
 # [[AD - mindmap 2025 - 03]]
 
-***
+---
 
 ## Overview
 
@@ -21,7 +21,7 @@ kind: Concept
 
 ![|2775](https://orange-cyberdefense.github.io/ocd-mindmaps/img/mindmap_ad_dark_classic_2025.03.excalidraw.svg)
 
-***
+---
 
 ## Resources
 
@@ -31,4 +31,4 @@ kind: Concept
 
 [^1]: AD - mindmap 2025 - 03, Orange CyberDefense, https://orange-cyberdefense.github.io/ocd-mindmaps/img/mindmap_ad_dark_classic_2025.03.excalidraw.svg
 
-***
+---

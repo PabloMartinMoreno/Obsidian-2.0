@@ -11,7 +11,7 @@ linked:
 > [!info]
 > iOS apps = `.ipa` (ZIP) con Mach-O binary + plists + resources. Encrypted por Apple FairPlay DRM en App Store builds — requiere device jailbroken para decrypt. Tools: Hopper, otool, class-dump, Frida, Ghidra.
 
-***
+---
 
 ## Estructura IPA
 
@@ -26,7 +26,7 @@ app.ipa (ZIP)
         └── assets, *.nib, *.plist, etc.
 ```
 
-***
+---
 
 ## Decrypt FairPlay-protected binary
 
@@ -41,7 +41,7 @@ Apple cifra binarios distribuidos por App Store. Para análisis estático comple
 
 Requiere device jailbroken.
 
-***
+---
 
 ## Análisis estático
 
@@ -65,7 +65,7 @@ otool -tV App | less
 ghidraRun → Import → App → analyze
 ```
 
-***
+---
 
 ## Common findings
 
@@ -87,7 +87,7 @@ strings App | grep -iE 'AES|DES|RSA|SHA256'
 strings App | grep -iE 'NSUserDefaults|Documents|tmp'
 ```
 
-***
+---
 
 ## Decompilation Swift/Obj-C
 
@@ -98,7 +98,7 @@ strings App | grep -iE 'NSUserDefaults|Documents|tmp'
 
 Swift Stripping = nombres de funciones perdidos al strip. Class-dump no funciona en Swift puro (solo Obj-C).
 
-***
+---
 
 ## Dynamic analysis
 
@@ -115,7 +115,7 @@ Frida bypass SSL pinning:
 frida -U -f com.app -l ios-pinning-bypass.js
 ```
 
-***
+---
 
 ## Jailbreak detection bypass
 
@@ -128,7 +128,7 @@ Apps verifican jailbreak via:
 
 Bypass: Frida script hookea these checks y retorna falsedad.
 
-***
+---
 
 ## Privacy / Sensitive APIs
 
@@ -140,7 +140,7 @@ class-dump App | grep -iE 'CLLocationManager|CMMotion|AVAudioRecorder|AVCaptureS
 plutil -p Info.plist | grep -iE 'UsageDescription'
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

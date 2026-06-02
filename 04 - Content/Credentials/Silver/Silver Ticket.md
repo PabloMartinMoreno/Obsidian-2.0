@@ -39,7 +39,7 @@ Con NT hash (o AES key) de **service/computer account** se forja un TGS arbitrar
 
 **Requiere**: hash del service/computer account + Domain SID + SPN del servicio + FQDN target.
 
-***
+---
 
 ## Prereqs y SPNs
 
@@ -63,7 +63,7 @@ tab: **OPSEC pre-attack**
 ![[Silver Ticket - Prereqs y SPNs#^st-pre-opsec]]
 ````
 
-___
+---
 
 ## Hash Collection
 
@@ -84,7 +84,7 @@ tab: **Verify hash**
 ![[Silver Ticket - Hash Collection#^st-hash-verify]]
 ````
 
-___
+---
 
 ## Forging Linux
 
@@ -105,7 +105,7 @@ tab: **Verify y usar**
 ![[Silver Ticket - Forging Linux#^st-forge-linux-verify]]
 ````
 
-___
+---
 
 ## Forging Windows
 
@@ -126,7 +126,7 @@ tab: **DCSync via silver (LDAP)**
 ![[Silver Ticket - Forging Windows#^st-forge-win-dcsync]]
 ````
 
-___
+---
 
 ## Detection y Mitigations
 
@@ -150,7 +150,7 @@ tab: **Hardening Checklist**
 ![[Silver Ticket - Detection y Mitigations#^st-detect-checklist]]
 ````
 
-___
+---
 
 ## Tooling
 
@@ -174,4 +174,4 @@ tab: **Recursos**
 ![[Silver Ticket - Tooling#^st-tool-resources]]
 ````
 
-***
+---

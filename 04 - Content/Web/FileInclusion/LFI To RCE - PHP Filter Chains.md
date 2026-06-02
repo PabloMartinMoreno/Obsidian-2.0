@@ -13,7 +13,7 @@ linked:
 ---
 # LFI To RCE - PHP Filter Chains
 
-***
+---
 
 ## Cheatsheet
 
@@ -70,7 +70,7 @@ curl -s "${TARGET}$(python3 -c "import urllib.parse;print(urllib.parse.quote('$C
 - PHP ≥7.0 con iconv extension (default en la mayoría de builds).
 - **NO** requiere: `allow_url_include`, escritura, archivos accesibles, log poisoning, file upload.
 
-___
+---
 
 ## Overview
 
@@ -90,4 +90,4 @@ Técnica más limpia y autocontenida para LFI → RCE. Cambió el threat model d
 - [Synacktiv blog](https://www.synacktiv.com/publications/php-filter-chains-file-read-from-error-based-oracle.html)
 - [php_filter_chain_generator](https://github.com/synacktiv/php_filter_chain_generator)
 
-***
+---

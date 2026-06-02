@@ -13,7 +13,7 @@ linked:
 ---
 # Command Injection - Lista Negra de Comandos (Ofuscación de Keywords)
 
-***
+---
 
 ## Cheatsheet
 

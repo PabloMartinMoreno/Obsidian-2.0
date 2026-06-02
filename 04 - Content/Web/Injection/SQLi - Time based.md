@@ -15,7 +15,7 @@ linked:
 ---
 # SQLi - Time based
 
-***
+---
 
 ## Cheatsheet
 
@@ -91,7 +91,7 @@ echo "SLEEP(3): ${T}s"
 # Threshold = baseline_p99 + SLEEP * 0.8 (margen para fluctuación de red)
 ```
 
-___
+---
 
 ## Overview
 
@@ -109,4 +109,4 @@ ___
 - **MSSQL**: `WAITFOR DELAY '0:0:n'` (requiere stacked queries).
 - **Oracle**: `DBMS_PIPE.RECEIVE_MESSAGE('a', n)` sin DBA priv; `dbms_lock.sleep(n)` con DBA.
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # AD - DCSync Rights Discovery - Common Misconfigs
 
-***
+---
 
 ## Authenticated Users / Domain Users
 
@@ -27,7 +27,7 @@ linked:
 
 **Si pega:** cualquier user del domain puede DCSync = full hash dump trivial. Game over instantáneo.
 
-___
+---
 
 ## Service Accounts
 
@@ -40,7 +40,7 @@ ___
 
 **Common pattern:** backup software, monitoring tools, AD migration agents (ADMT) requieren DCSync. Frecuentemente over-privileged. Audit + scope minimum.
 
-___
+---
 
 ## Exchange Legacy (CVE-2019-1040)
 
@@ -53,7 +53,7 @@ ___
 
 **Status:** patched 2019 con `Exchange Split Permissions Model`. Deploy moderno = sin DCSync directo. Environments unpatched o con custom ACEs siguen vulnerables.
 
-___
+---
 
 ## Cross-Trust Foreign Principals
 
@@ -65,7 +65,7 @@ ___
 
 **Por qué importa:** atacante con DCSync rights cross-trust + SID Filter OFF = forest takeover via inter-realm TGT forge.
 
-___
+---
 
 ## Stale / Disabled Principals
 
@@ -75,7 +75,7 @@ ___
 | Cross-ref con `LastLogonDate -lt 180d` | Stale priv | Audit. |
 ^ad-dcsyncmisc-stale
 
-___
+---
 
 ## Recursive Group Membership
 
@@ -87,7 +87,7 @@ ___
 
 **Common pattern:** ACE granted a group → group contiene otros groups → effective members crece con cada nesting. Audit recursive.
 
-___
+---
 
 ## AdminSDHolder Modify
 
@@ -99,7 +99,7 @@ ___
 
 **Por qué importa:** ACE en AdminSDHolder se propaga via SDProp cada 60min a todos Tier 0 objects. Backdoor self-restoring incluso si lo limpian del priv group.
 
-___
+---
 
 ## Per-Trust Audit
 
@@ -126,4 +126,4 @@ foreach ($d in (Get-ADForest).Domains) {
 }
 ```
 
-***
+---

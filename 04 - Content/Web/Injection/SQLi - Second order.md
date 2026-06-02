@@ -15,7 +15,7 @@ linked:
 ---
 # SQLi - Second order
 
-***
+---
 
 ## Cheatsheet
 
@@ -77,7 +77,7 @@ $pdo->query($query);
 //                                                                  ^^^^^^^^^^^^^ admin's password reseteado
 ```
 
-___
+---
 
 ## Overview
 
@@ -90,4 +90,4 @@ ___
 
 **Indicador clave**: app trusts data "from own DB" como segura. Vector típico en passwords reset, admin panels, scheduled jobs, reporting.
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # NoSQLi - Inyección Sintáctica
 
-***
+---
 
 ## Cheatsheet
 
@@ -33,7 +33,7 @@ linked:
 | **Cassandra CQL-like** | `admin' OR 1=1 --` | CQL tiene SQLi-like syntax (semi-relacional). |
 ^nosqli-syntax
 
-___
+---
 
 ## Overview
 
@@ -127,4 +127,4 @@ Payload (si bien CQL tiene protecciones):
 2. Probar `{"$where":"..."}` si JSON body → si no rechaza sintaxis = parsing liberal.
 3. Fuzzear con chars especiales: `'`, `"`, `\`, ` `, `\n`, `\r`.
 
-***
+---

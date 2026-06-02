@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/423
 dificultad: Media
 ip: 10.10.11.136
 os: Linux
-relacionados:
+linked:
   - "[[SNMP]]"
   - "[[Information Leakage]]"
   - "[[Local Port Forwarding]]"

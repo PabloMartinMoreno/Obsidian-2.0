@@ -18,7 +18,7 @@ linked:
 ---
 # OAuth 2.0 - State / CSRF / Login CSRF
 
-***
+---
 
 ## State Ausente
 
@@ -47,7 +47,7 @@ curl -sI "https://target/cb?code=AAA"  # sin state
 # User2 callback con state_1 → si acepta = no bound a session
 ```
 
-___
+---
 
 ## State Predecible o Reusable
 
@@ -80,7 +80,7 @@ session['oauth_state'] = state
 session['oauth_state_created'] = time.time()
 ```
 
-___
+---
 
 ## Account Binding Pre-Takeover
 
@@ -109,7 +109,7 @@ def google_cb():
 # Atacante PoC: phishing link a /auth/google/callback?code=$ATTACKER_CODE
 ```
 
-___
+---
 
 ## Pre-Account Takeover via Email
 
@@ -139,7 +139,7 @@ def signup_oauth(google_token):
         abort(400, 'invalid issuer')
 ```
 
-___
+---
 
 ## Session Fixation via OAuth
 
@@ -152,4 +152,4 @@ ___
 | Post-fixation: monitorear cuenta "atacante" para ver actividad víctima | Data exfil silent | Persistent watch. |
 ^oauth-state-fixation
 
-***
+---

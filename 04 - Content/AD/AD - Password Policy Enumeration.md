@@ -29,7 +29,7 @@ linked:
 ---
 # AD - Password Policy Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -183,7 +183,7 @@ tab: **Wordlists & Recursos**
 ![[AD - Password Policy Enumeration - Tooling#^ad-pwdpol-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -225,7 +225,7 @@ Sin este enum, password spray es ciego: ¿cuántos intentos antes de lockout? ¿
 - **Compliance audit** — defender baseline.
 - **Honeypot detection** — avoid OPSEC failure during spray.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -275,7 +275,7 @@ ___
    - Periodic re-audit
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -309,7 +309,7 @@ Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true}
 PingCastle.exe --healthcheck --server $DC
 ```
 
-___
+---
 
 ## Impacto
 
@@ -326,7 +326,7 @@ ___
 - **Multi-domain forest-wide variation** — weakest domain = pivot.
 - **Cross-correlate with priv groups** — critical privileged + weak.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -364,7 +364,7 @@ ___
 - **Continuous monitoring** — bad password count, locked accounts, policy changes.
 - **Privileged Access Workstations (PAWs)** — Tier 0 isolation.
 
-___
+---
 
 ## Para entender Password Policy Enumeration
 
@@ -400,7 +400,7 @@ Pre-credentials, anonymous RPC `getdompwinfo` may reveal default policy without 
 
 Single highest-impact finding: Tier 0 user (DA, EA) with weak PSO override (e.g., service account user in DA group with no-lockout PSO). Result: free brute force on direct privesc target. Critical audit task.
 
-___
+---
 
 ## Recursos
 
@@ -420,4 +420,4 @@ ___
 - [HaveIBeenPwned API](https://haveibeenpwned.com/Passwords) — breach DB integration.
 - [PCI-DSS v4 Requirements](https://www.pcisecuritystandards.org/) — compliance.
 
-***
+---

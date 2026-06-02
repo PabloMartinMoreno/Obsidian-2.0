@@ -5,7 +5,7 @@ plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/starting-point
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[PATH Hijacking]]"
   - "[[gobuster]]"
   - "[[BOLA - IDOR]]"

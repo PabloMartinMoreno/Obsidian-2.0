@@ -20,7 +20,7 @@ linked:
 ---
 # BloodHound Cypher Queries
 
-***
+---
 
 ## Cheatsheet
 ^bh-cypher
@@ -37,7 +37,7 @@ linked:
 
 Correr en web UI (antigua Neo4j browser o BloodHound CE) pegando en la Raw Query box.
 
-***
+---
 
 ## Marcar nodos owned
 
@@ -218,7 +218,7 @@ WHERE g.name IN ["ACCOUNT OPERATORS@DOM.LOCAL", "SERVER OPERATORS@DOM.LOCAL", "B
 RETURN g
 ```
 
-***
+---
 
 ## Custom prebuilt queries
 
@@ -256,4 +256,4 @@ Para BH CE: Explore → Saved queries → Custom.
 - [hausec - Cypher for Bloodhound](https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/)
 - [CompassSecurity - Custom queries](https://github.com/CompassSecurity/BloodHoundQueries)
 
-***
+---

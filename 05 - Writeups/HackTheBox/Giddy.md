@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/153
 dificultad: Media
 ip: 10.10.10.104
 os: Windows
-relacionados:
+linked:
   - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[xp_dirtree]]"
   - "[[Net-NTLMv2 Hash]]"
@@ -47,7 +47,7 @@ El escaneo reveló dos directorios clave:
 - `/mvc`: Este directorio albergaba una aplicación web personalizada que mostraba una lista de productos y un buscador.
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -63,7 +63,7 @@ https://10.10.10.104/mvc/Product.aspx?ProductSubCategoryId=19 order by 1
 Haciendo pruebas pude llegar a enumerar 25 columnas, pero ninguna parece visible. Por otro lado inyecciones como `1=1` funcionan y también lo hacen inyecciones a ciegas.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -137,7 +137,7 @@ cmd /c REG QUERY HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
 Revisando la larga lista de software, una entrada me llamó la atención: **"Ubiquiti UniFi Video"**. El software de terceros es a menudo una fuente de vulnerabilidades de escalada de privilegios.
 
 
-___
+---
 
 ## Escalada de privilegios
 

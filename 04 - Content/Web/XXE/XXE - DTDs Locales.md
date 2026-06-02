@@ -17,7 +17,7 @@ linked:
 ---
 # XXE - DTDs Locales
 
-***
+---
 
 ## Cheatsheet
 
@@ -70,7 +70,7 @@ curl -X POST https://target/api -H 'Content-Type: application/xml' --data @local
 
 Ver [GTFOXXE](https://github.com/GoSecure/dtd-finder) — `dtd-finder` enumera DTDs en imágenes Docker y devuelve entity-parameter candidates.
 
-___
+---
 
 ## Overview
 
@@ -92,4 +92,4 @@ La especificación XML prohíbe entity-defining-entity en el subset DTD **intern
 - **Errores verbose obligatorios:** sin reflejo del error de parser → no hay exfil (mismo problema que [[XXE - Blind Basado en Errores]]).
 - **Encoding correcto:** `%` debe ser `&#x25;`, `&` debe ser `&#x26;`, `'` debe ser `&#x27;` dentro de la entidad redefinida.
 
-***
+---

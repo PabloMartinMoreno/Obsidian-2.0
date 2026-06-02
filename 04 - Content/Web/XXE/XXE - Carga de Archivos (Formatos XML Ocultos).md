@@ -17,7 +17,7 @@ linked:
 ---
 # XXE - Carga de Archivos (Formatos XML Ocultos)
 
-***
+---
 
 ## Cheatsheet
 
@@ -73,7 +73,7 @@ file photo.jpg  # sigue siendo JPEG válido
 # Subir a backend que extrae XMP
 ```
 
-___
+---
 
 ## Overview
 
@@ -95,4 +95,4 @@ La mayoría de estos endpoints **no devuelven el resultado del parse** — sólo
 - **No-parse storage:** si el archivo se guarda en S3/disk sin procesar → no hay vector. Confirmar que el backend efectivamente abre y parsea.
 - **Zip estructura:** DOCX/XLSX necesitan que `[Content_Types].xml` no rompa la spec OOXML — modificar sin tocar relationships.
 
-***
+---

@@ -21,7 +21,7 @@ linked:
 ---
 # SSRF - Cloud Metadata
 
-***
+---
 
 ## Cheatsheet
 
@@ -39,7 +39,7 @@ linked:
 | **Oracle Cloud** | `http://192.0.0.192/latest/` | Instance metadata. |
 ^ssrf-cloud
 
-___
+---
 
 ## Overview
 
@@ -82,4 +82,4 @@ scout suite  # Multi-cloud audit
 - **Network segmentation**: block egress a 169.254.x.x desde app tier.
 - **SSRF hardening en app**: validar scheme + host pre-fetch, no seguir redirects a RFC1918 / link-local.
 
-***
+---

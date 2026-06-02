@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Subconsultas y Estructuras Avanzadas
 
-***
+---
 
 ## Cheatsheet
 
@@ -61,7 +61,7 @@ WHERE id = (SELECT id FROM users LIMIT 0,1)
 | Node mysql2 | ❌ (default), ✅ con `multipleStatements: true` |
 | Python `mysql.connector` | ❌ |
 
-___
+---
 
 ## Overview
 
@@ -76,4 +76,4 @@ ___
 
 Identificar driver del backend determina si stacked es viable. Si no, todo va via UNION/subquery en single SELECT.
 
-***
+---

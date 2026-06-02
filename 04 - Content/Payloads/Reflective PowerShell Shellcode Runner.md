@@ -16,7 +16,7 @@ kind: Payload
 ---
 # [[Reflective PowerShell Shellcode Runner]]
 
-***
+---
 
 ## Overview
 
@@ -180,7 +180,7 @@ $hThread = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPoint
 [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll WaitForSingleObject), (getDelegateType @([IntPtr], [Int32]) ([Int]))).Invoke($hThread, 0xFFFFFFFF)
 ```
 
-***
+---
 
 ## Resources
 
@@ -188,7 +188,7 @@ $hThread = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPoint
 | ------------------------------------------------------------------------------------ | -------------------------------------------------- |
 | [run.ps1, braaaax](https://gist.github.com/braaaax/41789bad5d07b8ba236299047a774ffa) | GitHub Gist page for reflective PowerShell payload |
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

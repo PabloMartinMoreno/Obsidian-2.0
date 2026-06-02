@@ -17,7 +17,7 @@ linked:
 > [!info]
 > Recon de Microsoft Azure / Entra ID (Azure AD) / M365. Tools: `az` CLI, AzureHound, ROADtools, MicroBurst, Stormspotter.
 
-***
+---
 
 ## Setup
 
@@ -35,7 +35,7 @@ az account show
 
 PowerShell modules: `Az`, `AzureAD`, `MSOnline`.
 
-***
+---
 
 ## Tenant / Org recon (sin auth)
 
@@ -50,7 +50,7 @@ curl 'https://login.microsoftonline.com/getuserrealm.srf?login=<email>'
 curl 'https://login.microsoftonline.com/<domain>/v2.0/.well-known/openid-configuration' | jq .issuer
 ```
 
-***
+---
 
 ## Entra ID (Azure AD) Enumeration
 
@@ -75,7 +75,7 @@ az role definition list
 Get-AzureADDirectoryRole | Get-AzureADDirectoryRoleMember
 ```
 
-***
+---
 
 ## Subscription / Resource Group recon
 
@@ -93,7 +93,7 @@ az resource list
 az role assignment list --resource-group <rg>
 ```
 
-***
+---
 
 ## Azure Storage / Blob
 
@@ -113,7 +113,7 @@ MicroBurst Invoke-EnumerateAzureBlobs -Base <company>
 
 Naming convention para guessing: `<company>data`, `<company>backup`, `<company>files`, `dev-<company>`, etc.
 
-***
+---
 
 ## Key Vault (Secrets)
 
@@ -128,7 +128,7 @@ az keyvault secret list --vault-name <vault>
 az keyvault secret show --vault-name <vault> --name <secret-name>
 ```
 
-***
+---
 
 ## VM Enum
 
@@ -142,7 +142,7 @@ az vm run-command invoke -g <rg> -n <vm> --command-id RunShellScript --scripts "
 
 VM Extensions = vector RCE post-compromise común (CustomScriptExtension).
 
-***
+---
 
 ## M365 Enumeration
 
@@ -164,7 +164,7 @@ Connect-SPOService -Url https://<tenant>-admin.sharepoint.com
 Get-SPOSite
 ```
 
-***
+---
 
 ## Tools
 
@@ -176,7 +176,7 @@ Get-SPOSite
 - **PowerZure** — PowerShell ofensivo
 - **MFASweep** — detectar MFA configs
 
-***
+---
 
 ## Notas Relacionadas
 

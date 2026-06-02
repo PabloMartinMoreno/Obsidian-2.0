@@ -30,7 +30,7 @@ linked:
 ---
 # HTML Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -132,7 +132,7 @@ tab: **Otros Tools y Scripts**
 ![[HTML Injection - Tooling#^htmli-tool-others]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -155,7 +155,7 @@ Frecuentemente subestimada como "low severity", pero permite **phishing persiste
 
 HTML Injection puede **escalar a XSS** si filtros incompletos permiten event handlers (`onerror`, `onload`) en tags allowed.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -202,7 +202,7 @@ ___
    - HTML inject + CSRF = action automation.
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -256,7 +256,7 @@ curl -X POST 'https://target/comments' -d 'text=<b>STORED-MARKER</b>'
 curl 'https://target/comments' | grep STORED-MARKER
 ```
 
-___
+---
 
 ## Impacto
 
@@ -272,7 +272,7 @@ ___
 - **CSRF automation** — auto-submit forms en authenticated context.
 - **Upgrade to XSS** si event handlers allowed → script execution → full compromise.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -304,7 +304,7 @@ ___
 - **PDF generation** — render con sandboxed engine (puppeteer-no-sandbox dangerous).
 - **Audit con automated tools** — Burp Active Scan + DOM Invader.
 
-___
+---
 
 ## Para entender HTML Injection
 
@@ -336,7 +336,7 @@ XSS necesita ejecutar JS — filter strict de `<script>`, event handlers, eval-l
 
 Reflected HTML inj requiere atacante envíe link al victim. Stored persists across all visits. Stored phishing form en comments público = víctimas constantes.
 
-___
+---
 
 ## Recursos
 
@@ -351,4 +351,4 @@ ___
 - [JSFuck](https://jsfuck.com/) — JS-only obfuscation (related).
 - [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) — SRI.
 
-***
+---

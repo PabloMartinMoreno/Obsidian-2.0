@@ -12,7 +12,7 @@ linked:
 ---
 # Creds
 
-***
+---
 
 ## Cheatsheet
 

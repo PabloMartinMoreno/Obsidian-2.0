@@ -16,7 +16,7 @@ linked:
 > [!info]
 > User con `SeImpersonatePrivilege` (típico en service accounts: IIS AppPool, SQL Server, etc.) puede escalar a SYSTEM via la familia de exploits "Potato" que abusan NTLM relay local.
 
-***
+---
 
 ## Detección del privilegio
 
@@ -32,7 +32,7 @@ Common service accounts con SeImpersonate:
 - `NT AUTHORITY\NETWORK SERVICE`
 - `NT AUTHORITY\LOCAL SERVICE`
 
-***
+---
 
 ## Familia "Potato"
 
@@ -49,7 +49,7 @@ Common service accounts con SeImpersonate:
 | **Print Spoofer** | 2020 | Print Spooler + OXID | Win 10 1809+, Server 2019/2022 |
 | **EFS Potato (PetitPotam local)** | 2021 | EFSRPC | Modern |
 
-***
+---
 
 ## Ejecución típica
 
@@ -66,7 +66,7 @@ JuicyPotato.exe -l 1337 -p c:\windows\system32\cmd.exe -t * -c <CLSID>
 
 CLSIDs útiles JuicyPotato: https://ohpe.it/juicy-potato/CLSID/
 
-***
+---
 
 ## Mitigación
 
@@ -74,7 +74,7 @@ CLSIDs útiles JuicyPotato: https://ohpe.it/juicy-potato/CLSID/
 - PrintSpoofer requiere Print Spooler enabled.
 - Modern variants siguen funcionando en Server 2022 sin parches específicos.
 
-***
+---
 
 ## Notas Relacionadas
 

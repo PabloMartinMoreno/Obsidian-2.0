@@ -21,7 +21,7 @@ linked:
 ---
 # AD - Hosts Enumeration - Tooling
 
-***
+---
 
 ## netexec (nxc) — Multi-Protocol
 
@@ -58,7 +58,7 @@ nxc ldap $DC -u "$USER" -p "$PASS" --computers > computers.txt
 nxc smb computers.txt -u "$USER" -p "$PASS" --gen-relay-list relay.txt
 ```
 
-___
+---
 
 ## ldapsearch / Linux LDAP
 
@@ -99,7 +99,7 @@ $LS "(&(objectCategory=user)(servicePrincipalName=*))" samAccountName servicePri
 $LS "(&(objectCategory=computer)(userAccountControl:1.2.840.113556.1.4.803:=524288))" cn dNSHostName
 ```
 
-___
+---
 
 ## PowerView / pywerview
 
@@ -133,7 +133,7 @@ Get-DomainComputer -Properties Name,OperatingSystem,LastLogonTimestamp,Descripti
 Find-LocalAdminAccess
 ```
 
-___
+---
 
 ## ADRecon / ADCollector / Bulk Reports
 
@@ -160,7 +160,7 @@ python3 windapsearch.py -d corp.local -u auditor -p 'Pass!' --dc <DC> -m all
 .\ADCollector.exe --Ldaps
 ```
 
-___
+---
 
 ## SharpHound / RustHound / BloodHound.py
 
@@ -186,7 +186,7 @@ bloodhound-python -d corp.local -u user -p pass -ns 10.10.10.10 -c All --zip -o 
 .\SharpHound.exe -c DCOnly --OutputDirectory C:\loot
 ```
 
-___
+---
 
 ## Recursos
 
@@ -204,4 +204,4 @@ ___
 | ldapdomaindump | `https://github.com/dirkjanm/ldapdomaindump` |
 ^ad-tool-wordlists
 
-***
+---

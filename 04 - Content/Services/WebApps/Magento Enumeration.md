@@ -18,7 +18,7 @@ linked:
 ---
 # Magento Enumeration
 
-***
+---
 
 ## CheatSheet
 

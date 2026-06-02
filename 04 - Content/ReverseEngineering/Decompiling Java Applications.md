@@ -11,7 +11,7 @@ linked:
 > [!info]
 > Java compila a **bytecode** (.class files) que JVM ejecuta. JAR = ZIP con .class files. Bytecode trivialmente decompilable. Para Android (DEX), ver [[Android APK Reversing]].
 
-***
+---
 
 ## Tools
 
@@ -25,7 +25,7 @@ linked:
 | **Recaf** | Edit + recompile bytecode |
 | **javap** | JDK stdlib — bytecode disassembly (no decompile) |
 
-***
+---
 
 ## Workflow CLI
 
@@ -46,7 +46,7 @@ javap -p -c -v com/example/MyClass
 jadx app.jar -d jadx-out/
 ```
 
-***
+---
 
 ## Búsqueda en source decompiled
 
@@ -76,7 +76,7 @@ grep -rIn 'Runtime\.getRuntime\(\)\.exec\|ProcessBuilder' --include='*.java'
 grep -rIn 'ObjectInputStream\|readObject' --include='*.java'
 ```
 
-***
+---
 
 ## JAR Manifest
 
@@ -86,7 +86,7 @@ unzip -p app.jar META-INF/MANIFEST.MF
 
 Muestra Main-Class, classpath, signing. `Main-Class` indica entry point.
 
-***
+---
 
 ## Obfuscation
 
@@ -100,7 +100,7 @@ Deobf:
 - **java-deobfuscator** (github.com/java-deobfuscator/deobfuscator)
 - Recaf — manual rename via Lookup tables
 
-***
+---
 
 ## Bytecode editing
 
@@ -114,7 +114,7 @@ xxd app.class | head
 # patch + reZIP
 ```
 
-***
+---
 
 ## Java Web Apps (WAR)
 
@@ -127,7 +127,7 @@ unzip app.war -d war-extracted/
 # Config en WEB-INF/web.xml
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

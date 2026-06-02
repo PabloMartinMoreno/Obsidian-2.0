@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Groups Enumeration - Recursive Membership
 
-***
+---
 
 ## Direct vs Recursive
 
@@ -49,7 +49,7 @@ $u.tokenGroups | % {
 }
 ```
 
-___
+---
 
 ## Nested Group Patterns
 
@@ -82,7 +82,7 @@ function Get-RecursiveMembership {
 Get-RecursiveMembership -User jsmith
 ```
 
-___
+---
 
 ## Foreign Security Principals
 
@@ -114,7 +114,7 @@ foreach ($g in "Domain Admins","Enterprise Admins","Schema Admins","Administrato
 }
 ```
 
-___
+---
 
 ## tokenGroups Calculation
 
@@ -144,7 +144,7 @@ $tg = Get-ADUser $u -Properties tokenGroups,tokenGroupsGlobalAndUniversal
 }
 ```
 
-___
+---
 
 ## primaryGroupID Edge Cases
 
@@ -165,7 +165,7 @@ Get-ADUser -Filter {PrimaryGroupID -in 512,519,518,544} -Pr PrimaryGroupID,whenC
   Select Name,SamAccountName,PrimaryGroupID,whenChanged
 ```
 
-___
+---
 
 ## Group Membership Audit (Bulk)
 
@@ -201,4 +201,4 @@ $Report = foreach ($g in $Priv) {
 $Report | Export-Csv priv_audit.csv -NoTypeInformation
 ```
 
-***
+---

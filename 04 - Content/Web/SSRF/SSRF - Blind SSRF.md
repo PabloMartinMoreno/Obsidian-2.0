@@ -16,7 +16,7 @@ linked:
 ---
 # SSRF - Blind SSRF
 
-***
+---
 
 ## Cheatsheet
 
@@ -30,7 +30,7 @@ linked:
 | **Interactsh** | `http://abc.oast.me/` | Server-side interactsh listener (alternativa a Collaborator). |
 ^ssrf-blind
 
-___
+---
 
 ## Overview
 
@@ -67,4 +67,4 @@ Detection checklist:
 | **Smuggler** | HTTP smuggling detection. |
 | **SSRFmap** | Auto-explota SSRF detectados (gopher + fingerprint). |
 
-***
+---

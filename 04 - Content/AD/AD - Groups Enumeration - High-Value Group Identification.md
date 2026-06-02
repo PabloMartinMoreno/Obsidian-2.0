@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Groups Enumeration - High-Value Group Identification
 
-***
+---
 
 ## Tier 0 (Forest/Domain Critical)
 
@@ -52,7 +52,7 @@ foreach ($g in $Tier0) {
 }
 ```
 
-___
+---
 
 ## Backup Operators (NTDS Dump Path)
 
@@ -80,7 +80,7 @@ ntdsutil "activate instance ntds" "ifm" "create full C:\dump" "quit" "quit"
 impacket-secretsdump -ntds 'ntds.dit' -system 'SYSTEM' LOCAL
 ```
 
-___
+---
 
 ## Server Operators (DC Logon Path)
 
@@ -93,7 +93,7 @@ ___
 
 **Privileges:** logon local DC + modify services + modify registry. Combo `sc config` + restart = SYSTEM RCE en DC = path a DA.
 
-___
+---
 
 ## Account Operators
 
@@ -107,7 +107,7 @@ ___
 
 **Limitations:** AO **no puede** modificar `adminCount=1` users (AdminSDHolder protege). Pero puede modificar service accounts, helpdesk users, otros Tier 1 = privesc lateral.
 
-___
+---
 
 ## Group Policy Creator Owners
 
@@ -121,7 +121,7 @@ ___
 
 **Por qué importa:** miembros pueden crear GPOs nuevos. Si combinás con `WriteProperty` sobre `gPLink` de OU = link malicious GPO a Tier 0 OU = mass compromise.
 
-___
+---
 
 ## DnsAdmins (Legacy CVE-2021-40469)
 
@@ -134,7 +134,7 @@ ___
 
 **Status:** patched **CVE-2021-40469** (Sept 2021). Modern DCs requieren local admin. Environments legacy unpatched siguen vulnerables. **Default empty = best practice**.
 
-___
+---
 
 ## Cert Publishers (ADCS Adjacent)
 
@@ -147,7 +147,7 @@ ___
 
 **Members default:** computer accounts de CAs. Users/groups inusuales = audit finding. Privilegio: añadir CA certs al **NTAuth Store** (cualquier cert emitido por esos CAs es válido para Kerberos auth).
 
-___
+---
 
 ## Custom Privileged Groups
 
@@ -174,4 +174,4 @@ Get-ADGroup -Filter * -Properties Members | Where {
 } | Select Name,DistinguishedName
 ```
 
-***
+---

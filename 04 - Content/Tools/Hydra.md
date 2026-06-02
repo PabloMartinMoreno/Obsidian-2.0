@@ -23,7 +23,7 @@ linked:
 ---
 # Hydra
 
-***
+---
 
 ## Overview
 
@@ -33,7 +33,7 @@ Install: `apt install hydra` / `brew install hydra`.
 
 > Regla: Hydra es ruido puro — bloqueos, lockouts, flood de logs. Verificar antes la política (`nxc smb <dc> --pass-pol`). Para AD preferir [[netexec]] spray (1 password × muchos users).
 
-***
+---
 
 ## Sintaxis base
 

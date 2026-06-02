@@ -19,7 +19,7 @@ linked:
 ---
 # Insecure Deserialization - Formatos Estructurados
 
-***
+---
 
 ## JSON Polymorphic
 
@@ -55,7 +55,7 @@ ysoserial.net.exe -g ObjectDataProvider -f Json.Net -c "calc"
 # Resultado: JSON con $type que ejecuta calc.exe al deser
 ```
 
-___
+---
 
 ## YAML Eval
 
@@ -95,7 +95,7 @@ yaml.load(payload, Loader=yaml.Loader)  # RCE
 yaml.safe_load(payload)  # Raises ConstructorError
 ```
 
-___
+---
 
 ## XML Deserialization
 
@@ -146,4 +146,4 @@ ___
 
 (Generar con `marshalsec` para versiones específicas.)
 
-***
+---

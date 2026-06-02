@@ -20,7 +20,7 @@ linked:
 
 Los **Headers** son campos de texto en formato `Clave: Valor` que permiten al cliente y al servidor enviar información adicional en una transacción [[HTTP]]. Son esenciales para la seguridad, el rendimiento (cache) y la negociación de contenido.
 
-___
+---
 
 ## Tipos de Cabeceras
 

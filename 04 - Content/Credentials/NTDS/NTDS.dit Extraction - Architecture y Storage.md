@@ -18,7 +18,7 @@ linked:
 ---
 # NTDS.dit Extraction - Architecture & Storage
 
-***
+---
 
 ## NTDS.dit Architecture
 
@@ -33,7 +33,7 @@ linked:
 | Replication granularity | Full domain partition (per-DC) |
 ^ntds-arch-overview
 
-___
+---
 
 ## File Locations on DC
 
@@ -49,7 +49,7 @@ ___
 
 **Key fact:** NTDS.dit es **inútil sin SYSTEM hive**. PEK encrypted con BootKey del SYSTEM. Must dump both.
 
-___
+---
 
 ## What's Inside (Object Types)
 
@@ -64,7 +64,7 @@ ___
 | Cleartext passwords | Solo si `ENCRYPTED_TEXT_PWD_ALLOWED` UAC bit set (reversible encryption) |
 ^ntds-arch-objects
 
-___
+---
 
 ## Password Encryption Layers
 
@@ -83,7 +83,7 @@ SYSTEM hive → BootKey (4 scattered keys) → PEK → NT hashes en NTDS.dit
 
 Sin SYSTEM hive = NTDS.dit data encrypted = no recovery.
 
-___
+---
 
 ## Replication vs File Access
 
@@ -95,7 +95,7 @@ ___
 | **ntdsutil ifm** | DA / Domain Controllers group | Built-in backup mechanism |
 ^ntds-arch-methods
 
-___
+---
 
 ## Why Both DCSync AND File Methods Exist
 
@@ -109,7 +109,7 @@ ___
 | OPSEC sensitive | Audit Event 4662 + MDI alert | File access events (less granular) |
 ^ntds-arch-comparison
 
-___
+---
 
 ## NTDS Database Schema (Selected)
 
@@ -125,7 +125,7 @@ ___
 | `userAccountControl` | UAC bitfield | Flags. |
 ^ntds-arch-schema
 
-___
+---
 
 ## Pre-Attack Recon
 
@@ -138,7 +138,7 @@ ___
 | `Get-ADUser krbtgt -Pr PasswordLastSet` | krbtgt age (Golden Ticket viability) | Privesc planning. |
 ^ntds-arch-recon
 
-___
+---
 
 ## File Size Estimation
 

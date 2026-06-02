@@ -9,7 +9,7 @@ linked:
 ---
 # Curl - Fuzzing Parámetros y Valores
 
-***
+---
 
 ## Cheatsheet
 

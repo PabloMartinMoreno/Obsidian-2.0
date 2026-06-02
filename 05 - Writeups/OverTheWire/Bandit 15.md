@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit15.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[ncat]]"
   - "[[SSL - TLS]]"
   - "[[Bandit 14]]"

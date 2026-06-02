@@ -9,7 +9,7 @@ linked:
 ---
 # Subdominio
 
-___
+---
 
 ## El Subdominio (Capa de red / DNS)
 

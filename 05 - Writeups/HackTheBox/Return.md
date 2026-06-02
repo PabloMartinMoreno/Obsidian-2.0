@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/401
 dificultad: Fácil
 ip: 10.10.11.108
 os: Windows
-relacionados:
+linked:
   - "[[sc.exe]]"
   - "[[Abusing Printer]]"
   - "[[Abusing Server Operators Group]]"

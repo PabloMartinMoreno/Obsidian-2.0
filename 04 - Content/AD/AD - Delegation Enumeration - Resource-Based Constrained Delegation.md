@@ -18,7 +18,7 @@ linked:
 ---
 # AD - Delegation Enumeration - Resource-Based Constrained Delegation (RBCD)
 
-***
+---
 
 ## Concept Overview
 
@@ -31,7 +31,7 @@ linked:
 | Atacante setup | Necesita computer account control (default `MachineAccountQuota=10`) | Self-service. |
 ^ad-rbcd-concept
 
-___
+---
 
 ## RBCD vs Classic CD
 
@@ -45,7 +45,7 @@ ___
 | Ataque base | S4U2Self + S4U2Proxy | Mismo S4U chain |
 ^ad-rbcd-vs-cd
 
-___
+---
 
 ## ms-DS-MachineAccountQuota Default
 
@@ -64,7 +64,7 @@ $maq = (Get-ADDomain).'ms-DS-MachineAccountQuota'
 if ($maq -gt 0) { Write-Warning "MAQ = $maq (RBCD attack viable)" }
 ```
 
-___
+---
 
 ## RBCD Attack Chain
 
@@ -121,7 +121,7 @@ Rubeus.exe s4u /user:evil$ /rc4:<NT-hash-evil> /impersonateuser:Administrator /m
 dir \\websrv01\C$
 ```
 
-___
+---
 
 ## RBCD ACL Audit
 
@@ -142,7 +142,7 @@ Find-InterestingDomainAcl -ResolveGUIDs |
   Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
 ```
 
-___
+---
 
 ## BloodHound RBCD Edges
 
@@ -153,7 +153,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(c:Computer {highvalue:true})) WHERE any(r IN relationships(p) WHERE type(r) IN ["GenericAll","GenericWrite","AddAllowedToAct","AllowedToAct"]) RETURN p` | Path RBCD privesc | Standard. |
 ^ad-rbcd-bh
 
-___
+---
 
 ## Cross-Trust RBCD
 
@@ -164,7 +164,7 @@ ___
 | `Get-ADTrust -Filter * -Pr trustAttributes \| ? {$_.trustAttributes -band 0x800}` | Trusts con TGT Delegation re-enabled (RBCD cross-forest viable) | Critical audit. |
 ^ad-rbcd-crosstrust
 
-___
+---
 
 ## Mitigations
 
@@ -177,4 +177,4 @@ ___
 | Restrict `WriteProperty msDS-AllowedToActOnBehalfOfOtherIdentity` ACEs | Granular control | Hardening. |
 ^ad-rbcd-mitigations
 
-***
+---

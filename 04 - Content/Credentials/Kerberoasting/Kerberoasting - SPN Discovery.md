@@ -18,7 +18,7 @@ linked:
 ---
 # Kerberoasting - SPN Discovery
 
-***
+---
 
 ## LDAP Filter Discovery
 
@@ -41,7 +41,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" \
   samAccountName servicePrincipalName adminCount
 ```
 
-___
+---
 
 ## setspn (Native Windows)
 
@@ -64,7 +64,7 @@ setspn -Q HTTP/*
 setspn -Q TERMSRV/*
 ```
 
-___
+---
 
 ## SPN Class Filtering
 
@@ -89,7 +89,7 @@ ldapsearch ... "(&(objectCategory=user)(servicePrincipalName=MSSQLSvc/*))" samAc
 ldapsearch ... "(&(objectCategory=user)(servicePrincipalName=HTTP/*))" samAccountName servicePrincipalName
 ```
 
-___
+---
 
 ## Privileged Kerberoastable
 
@@ -103,7 +103,7 @@ ___
 
 **Por qué priority:** kerberoast user normal = lateral foothold. Kerberoast user en `Domain Admins` con SPN + password débil = direct DA via crack offline.
 
-___
+---
 
 ## BloodHound Kerberoastable Query
 
@@ -115,7 +115,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(t:User {hasspn:true, adminCount:true})) RETURN p` | Path a kerberoastable priv | Pre-attack. |
 ^kerb-spn-bh
 
-___
+---
 
 ## Kerberoastable Computer Accounts
 
@@ -128,7 +128,7 @@ ___
 
 Excepción: cuentas creadas con `addcomputer.py` por atacante (RBCD setup) tienen passwords humanas.
 
-___
+---
 
 ## Hidden SPNs (Edge)
 
@@ -139,7 +139,7 @@ ___
 | `Get-ADUser -Filter * -Pr ServicePrincipalName \| ? {$_.ServicePrincipalName.Count -gt 5}` | Users con muchos SPNs (anomaly) | Hunt. |
 ^kerb-spn-hidden
 
-___
+---
 
 ## Pre-Attack Validation
 
@@ -162,4 +162,4 @@ Get-ADUser -Filter {ServicePrincipalName -like "*" -and Enabled -eq $true} `
   Export-Csv kerberoastable.csv -NoTypeInformation
 ```
 
-***
+---

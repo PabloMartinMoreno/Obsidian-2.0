@@ -9,7 +9,7 @@ kind: Tool
 > [!info]
 > Construye y ejecuta comandos pasando stdin como argumentos. Esencial para chains: `find | xargs grep`, `cat list | xargs nmap`, etc.
 
-***
+---
 
 ## Cheatsheet
 
@@ -24,7 +24,7 @@ kind: Tool
 | `echo 'one two three' \| xargs -n 1` | Split args | Convertir args en lines |
 | `cat creds.txt \| xargs -I{} sh -c 'curl -u {} http://target/'` | Shell wrap | Multi-arg compleja |
 
-***
+---
 
 ## Patterns útiles
 
@@ -45,7 +45,7 @@ find . -name '*.tmp' -print0 | xargs -0 rm -v
 cat list.txt | xargs -I {} sh -c 'echo -n "{}" | base64'
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

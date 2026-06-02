@@ -16,7 +16,7 @@ linked:
 ---
 # SQLi - Error based
 
-***
+---
 
 ## Cheatsheet
 
@@ -62,7 +62,7 @@ for i in 1 33 65 97; do
 done
 ```
 
-___
+---
 
 ## Overview
 
@@ -76,4 +76,4 @@ ___
 - **PostgreSQL**: `CAST as numeric` con string.
 - **Oracle**: `UTL_INADDR.get_host_address` o `xmltype`.
 
-***
+---

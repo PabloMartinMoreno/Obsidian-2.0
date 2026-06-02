@@ -16,7 +16,7 @@ linked:
 ---
 # AD - DCSync Rights Discovery - Default vs Non-Default Holders
 
-***
+---
 
 ## Expected Default Holders
 
@@ -35,7 +35,7 @@ linked:
 - `NT AUTHORITY\SYSTEM`
 - `NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS` (S-1-5-9)
 
-___
+---
 
 ## Common Misconfigurations
 
@@ -62,7 +62,7 @@ $Whitelist = "Domain Admins|Enterprise Admins|Schema Admins|Administrators|Domai
   Select IdentityReference,ActiveDirectoryRights,ObjectType
 ```
 
-___
+---
 
 ## Exchange Legacy DCSync
 
@@ -85,7 +85,7 @@ ___
   }
 ```
 
-___
+---
 
 ## Custom Tier 0 Groups
 
@@ -97,7 +97,7 @@ ___
 
 **Common pattern:** orgs crean custom group "AD Recovery" o "Tier0 Backup" con DCSync rights → cleanup post-DR exercise. Audit estos como secondary tier 0.
 
-___
+---
 
 ## Cross-Trust DCSync
 
@@ -108,7 +108,7 @@ ___
 | `Find-InterestingDomainAcl -Domain <other> -ResolveGUIDs \| ? ActiveDirectoryRights -match "GetChanges"` | Cross-domain hunt | Cross-trust. |
 ^ad-dcsyncdef-crosstrust
 
-___
+---
 
 ## Stale ACE Detection
 
@@ -119,7 +119,7 @@ ___
 | Empty groups con DCSync ACE | `Get-ADGroup -Filter * \| ? Members.Count -eq 0` cross-ref | Orphaned ACE. |
 ^ad-dcsyncdef-stale
 
-___
+---
 
 ## Continuous Audit
 
@@ -155,4 +155,4 @@ Compare-Object (Import-Csv "C:\dcsync-audits\2026-Q1.csv") (Import-Csv $Out) `
   Where SideIndicator -eq "=>"  # nuevos
 ```
 
-***
+---

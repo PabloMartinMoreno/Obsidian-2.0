@@ -17,7 +17,7 @@ linked:
 ---
 # DCSync - ACL Abuse (Grant DCSync)
 
-***
+---
 
 ## Requisito — GenericAll / WriteDACL en domain root
 
@@ -30,7 +30,7 @@ linked:
 
 Con cualquiera de los primeros dos → podés agregar GetChanges + GetChangesAll a tu cuenta.
 
-___
+---
 
 ## dacledit (impacket — Linux)
 
@@ -62,7 +62,7 @@ dacledit.py \
   corp.local/administrator:'P@ssw0rd'@dc01.corp.local
 ```
 
-___
+---
 
 ## PowerView / PowerSploit (Windows)
 
@@ -91,7 +91,7 @@ Remove-DomainObjectAcl `
   -Rights DCSync
 ```
 
-___
+---
 
 ## BloodHound — paths a DCSync
 
@@ -110,7 +110,7 @@ WHERE any(r in relationships(p) WHERE type(r) IN ['DCSync','GetChangesAll','Writ
 RETURN p
 ```
 
-___
+---
 
 ## Cleanup
 
@@ -121,7 +121,7 @@ ___
 | Verificar ACL limpia | `Get-ObjectAcl -DistinguishedName "DC=corp,DC=local" -ResolveGUIDs \| ? IdentityReference -match attacker` | Confirmar cleanup. |
 ^dcsync-acl-cleanup
 
-___
+---
 
 ## Detection de ACL changes
 
@@ -132,4 +132,4 @@ ___
 | MDI: "DCSync attack" | Execution detection | No detecta el grant en sí |
 ^dcsync-acl-detection
 
-***
+---

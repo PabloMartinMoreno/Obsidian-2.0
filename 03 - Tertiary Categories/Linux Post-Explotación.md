@@ -10,7 +10,7 @@ secondary categories:
   - "[[Linux]]"
 kind: Tertiary Category
 ---
-***
+---
 # Linux Post-Explotación
 Enumeración inicial y Conciencia Situacional.
 
@@ -27,7 +27,7 @@ Enumeración inicial y Conciencia Situacional.
    - [[Linux - Process & Service Enumeration]]
    - [[Linux - User & Group Enumeration]]
 
-***
+---
 
 # ⬆ Linux Privilege Escalation
 Técnicas de elevación de privilegios.
@@ -84,4 +84,4 @@ Robo de secretos.
    - [[Linux Credential Hunting]]
    - [[Extracting & Cracking Shadow Hashes]]
 
-***
+---

@@ -18,7 +18,7 @@ linked:
 ---
 # Users & Groups Enumeration (AD)
 
-***
+---
 
 ## Cheatsheet
 

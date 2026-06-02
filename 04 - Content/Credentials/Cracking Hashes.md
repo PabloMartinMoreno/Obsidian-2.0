@@ -31,7 +31,7 @@ linked:
 > [!info]
 > Recuperar texto plano desde hash via dictionary/brute-force/rule-based attacks. Pre-requisito: identificar algoritmo + obtener wordlist + tener hashes.
 
-***
+---
 
 ## Identificar hash
 
@@ -51,7 +51,7 @@ Longitud + formato dan pistas:
 - `$krb5asrep$23$` → AS-REP Roasting
 - `aad3b435...` → NTLM (Net-NTLMv1/v2)
 
-***
+---
 
 ## Hashcat — referencia rápida
 
@@ -88,7 +88,7 @@ Modos comunes:
 
 Ver [[hashcat]] para detalle.
 
-***
+---
 
 ## John the Ripper — referencia rápida
 
@@ -111,7 +111,7 @@ Tools `*2john` para preparar hashes:
 
 Ver [[john]].
 
-***
+---
 
 ## Wordlists comunes
 
@@ -120,7 +120,7 @@ Ver [[john]].
 - `crackstation.txt` — 15GB, muy completo
 - Custom: `cewl <url>` (palabras del sitio), `cupp` (perfiles)
 
-***
+---
 
 ## Reglas (mutations)
 
@@ -129,7 +129,7 @@ Ver [[john]].
 - `OneRuleToRuleThemAll.rule` — combinada popular
 - Custom rules: `wordlist + año`, `Capital + número`, etc.
 
-***
+---
 
 ## Optimización
 
@@ -137,7 +137,7 @@ Ver [[john]].
 - Pause/resume: `--session=name --restore`.
 - Distribución: `hashtopolis` para multi-host.
 
-***
+---
 
 ## Notas Relacionadas
 

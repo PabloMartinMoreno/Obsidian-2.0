@@ -12,7 +12,7 @@ linked:
 > [!info]
 > GNU Debugger — Linux estándar de facto. Extensiones pwndbg / GEF / peda agregan UI mejorada para exploitation. Para Windows usar [[Debugging with x64dbg]].
 
-***
+---
 
 ## Setup recomendado
 
@@ -29,7 +29,7 @@ git clone https://github.com/longld/peda.git ~/peda
 echo "source ~/peda/peda.py" >> ~/.gdbinit
 ```
 
-***
+---
 
 ## Comandos esenciales
 
@@ -53,7 +53,7 @@ echo "source ~/peda/peda.py" >> ~/.gdbinit
 | `info functions` | List functions |
 | `info proc mappings` | Memory map |
 
-***
+---
 
 ## Examine memory formats
 
@@ -71,7 +71,7 @@ x/s 0x400600         # string en addr
 x/10i $rip           # 10 instructions desde EIP/RIP
 ```
 
-***
+---
 
 ## Exploit dev (pwndbg highlights)
 
@@ -94,7 +94,7 @@ rop --grep "pop rdi; ret"
 checksec
 ```
 
-***
+---
 
 ## Attach a process running
 
@@ -107,7 +107,7 @@ gdb
 
 Requires `ptrace_scope=0` o root.
 
-***
+---
 
 ## Reverse shell / remote debug
 
@@ -120,7 +120,7 @@ gdb ./binary
 (gdb) target remote <target>:1234
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

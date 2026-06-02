@@ -8,7 +8,7 @@ web: https://www.dockerlabs.com/<% tp.file.title.toLowerCase().replace(/ /g, '')
 dificultad:
 ip:
 os:
-relacionados:
+linked:
 ---
 # DockerLabs - <% tp.file.title %>
 

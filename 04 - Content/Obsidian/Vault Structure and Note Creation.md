@@ -9,7 +9,7 @@ kind: Concept
 ---
 # [[Vault Structure and Note Creation]]
 
-***
+---
 
 ## Overview
 
@@ -231,7 +231,7 @@ A structured approach ensures your Adversary Simulation vault scales effectively
 * Use **wiki-link relationships** for knowledge graph navigation
 * Maintain **consistent naming conventions** across categories and content
 
-***
+---
 
 ## Resources
 
@@ -241,7 +241,7 @@ A structured approach ensures your Adversary Simulation vault scales effectively
 
 [^1]: Templater Plugin, SilentVoid13, https://github.com/SilentVoid13/Templater
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

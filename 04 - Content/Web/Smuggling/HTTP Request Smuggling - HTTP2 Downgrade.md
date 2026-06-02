@@ -18,7 +18,7 @@ linked:
 ---
 # HTTP Request Smuggling - HTTP/2 Downgrade
 
-***
+---
 
 ## H2.CL (HTTP/2 → HTTP/1.1 + Content-Length)
 
@@ -52,7 +52,7 @@ x=evilbody
 
 Frontend reescribe a H1 con `Content-Length: 0`. Backend H1 procesa request principal con body vacío. Bytes posteriores quedan en queue → próxima request del back es la smuggled `GPOST /admin`.
 
-___
+---
 
 ## H2.TE (HTTP/2 → HTTP/1.1 + Transfer-Encoding)
 
@@ -66,7 +66,7 @@ ___
 | Burp HTTP Request Smuggler → H2.TE detect | Auto-detect | Pre-attack. |
 ^hrs-h2-te
 
-___
+---
 
 ## H2 Request Line Injection (CRLF en pseudo-headers)
 
@@ -103,7 +103,7 @@ Host: target.com
 
 Backend recibe 2 requests — segunda es la smuggleada.
 
-___
+---
 
 ## H2 Pseudo-Header Injection / h2c Smuggling
 
@@ -136,4 +136,4 @@ python3 h2csmuggler.py -x https://target/ -X /admin
 python3 h2csmuggler.py -x https://target/ -X /api/internal/users
 ```
 
-***
+---

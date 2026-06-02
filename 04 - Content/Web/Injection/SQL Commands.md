@@ -28,7 +28,7 @@ linked:
 ---
 # Comandos SQL
 
-***
+---
 
 ## Cheatsheet
 
@@ -48,7 +48,7 @@ tab: **Expresiones Clave**
 ![[SQL - Funciones y Expresiones Clave#^sql-expresiones]]
 ````
 
-___
+---
 
 ### Arquitectura de Consultas Complejas
 

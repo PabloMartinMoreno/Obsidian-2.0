@@ -19,7 +19,7 @@ linked:
 ---
 # OAuth 2.0 - Tooling
 
-***
+---
 
 ## Burp Suite + Extensions
 
@@ -36,7 +36,7 @@ linked:
 | Burp Pro → Authentication Recorder → grabar full OAuth flow como macro | Replay flows complejos | Multi-step automation. |
 ^oauth-tool-burp
 
-___
+---
 
 ## CLI y Discovery
 
@@ -74,7 +74,7 @@ subfinder -d known.com -silent | \
   done
 ```
 
-___
+---
 
 ## JWT-specific Tools
 
@@ -107,7 +107,7 @@ python3 jwt_tool.py "$JWT" -C -d /usr/share/wordlists/rockyou.txt
 python3 jwt_tool.py "$JWT" -X k -pk pubkey.pem
 ```
 
-___
+---
 
 ## Test Servers / Sandboxes
 
@@ -137,7 +137,7 @@ docker run --rm -p 8080:8080 \
 # 3. Test attacks: redirect_uri parser, state replay, scope upgrade
 ```
 
-___
+---
 
 ## Wordlists & Payload Repos
 
@@ -152,4 +152,4 @@ ___
 | Browser → https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html | OWASP defense reference | Mitigations. |
 ^oauth-tool-wordlists
 
-***
+---

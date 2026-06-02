@@ -18,7 +18,7 @@ linked:
 ---
 # SQLi - Boolean based
 
-***
+---
 
 ## Cheatsheet
 
@@ -93,7 +93,7 @@ echo "FALSE length: $(echo -n "$FALSE_RESP" | wc -c)"
 # Variar el indicador en el script según qué cambia (length, status, body string)
 ```
 
-___
+---
 
 ## Overview
 
@@ -109,4 +109,4 @@ ___
 
 Si la app responde idéntica TRUE/FALSE → pivotar a [[SQLi - Time based]].
 
-***
+---

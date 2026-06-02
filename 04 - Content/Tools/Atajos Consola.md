@@ -6,7 +6,7 @@ linked:
 ---
 # Atajos Consola
 
-***
+---
 
 ### Repetir el último comando
 - **`!!`**: Ejecuta el último comando. Por ejemplo, si acabas de ejecutar `ls`, escribir `!!` ejecutará nuevamente `ls`.

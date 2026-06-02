@@ -16,7 +16,7 @@ linked:
 ---
 # Auth Bypass - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints Auth / Authz
 
@@ -43,7 +43,7 @@ linked:
 | WebSocket auth | WS handshake con Authorization | Real-time. |
 ^auth-detect-endpoints
 
-___
+---
 
 ## Username Enumeration
 
@@ -92,7 +92,7 @@ done
 # Valid usernames consistently slower → enum confirmed
 ```
 
-___
+---
 
 ## Logic Flaw Recon
 
@@ -142,4 +142,4 @@ ___
    - OAuth state missing = CSRF + token theft
 ```
 
-***
+---

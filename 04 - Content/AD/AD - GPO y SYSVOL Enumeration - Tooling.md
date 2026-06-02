@@ -18,7 +18,7 @@ linked:
 ---
 # AD - GPO y SYSVOL Enumeration - Tooling
 
-***
+---
 
 ## RSAT / PowerShell
 
@@ -34,7 +34,7 @@ linked:
 | `gpresult /H rsop.html` | RSoP per-host | Standard. |
 ^ad-gpotool-rsat
 
-___
+---
 
 ## PowerView (Adversary)
 
@@ -49,7 +49,7 @@ ___
 | `Get-DomainPolicy -Source DC` | DC default policy | Adjacent. |
 ^ad-gpotool-powerview
 
-___
+---
 
 ## BloodHound / SharpHound
 
@@ -62,7 +62,7 @@ ___
 | `MATCH p=(u {owned:true})-[*1..]->(g:GPO)-[:GpLink]->(o:OU)-[:Contains]->(c:Computer {highvalue:true}) RETURN p` | Mass compromise path | Critical. |
 ^ad-gpotool-bh
 
-___
+---
 
 ## SharpGPOAbuse (Privesc)
 
@@ -86,7 +86,7 @@ gpupdate /force
 nxc smb <target> -u corp\atacante -p pass --local-auth
 ```
 
-___
+---
 
 ## netexec / crackmapexec
 
@@ -98,7 +98,7 @@ ___
 | `nxc smb <DC> -u u -p p -M spider_plus -o INTERESTING_EXTENSIONS=xml,ini,bat,ps1,vbs` | Spider SYSVOL | Cred hunt. |
 ^ad-gpotool-netexec
 
-___
+---
 
 ## Get-GPPPassword (PowerSploit)
 
@@ -109,7 +109,7 @@ ___
 | `Get-GPPAutologon` | Auto-login GPP creds | Adjacent. |
 ^ad-gpotool-getgpp
 
-___
+---
 
 ## Snaffler (Auto-Discovery)
 
@@ -127,7 +127,7 @@ Snaffler.exe -s -u -t \\<DC>\sysvol -o snaffler.log
 :: Output: matches por categoría (cpassword, secrets, configs, etc)
 ```
 
-___
+---
 
 ## bloodyAD (Linux)
 
@@ -138,7 +138,7 @@ ___
 | `bloodyAD ... set object <OU-DN> gPLink "[LDAP://CN={GUID},...;0]"` | Link malicious GPO | Mass compromise. |
 ^ad-gpotool-bloodyad
 
-___
+---
 
 ## Linux SMB Tools
 
@@ -151,7 +151,7 @@ ___
 | `manspider /mnt/sysvol --search "password|cpassword" --content` | Linux Snaffler-like | Comprehensive. |
 ^ad-gpotool-linuxsmb
 
-___
+---
 
 ## Recursos
 
@@ -168,4 +168,4 @@ ___
 | MITRE ATT&CK T1552.006 (GPP) | `https://attack.mitre.org/techniques/T1552/006/` |
 ^ad-gpotool-resources
 
-***
+---

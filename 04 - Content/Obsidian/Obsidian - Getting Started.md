@@ -9,7 +9,7 @@ kind: Concept
 ---
 # [[Obsidian - Getting Started]]  
 
-***
+---
 
 ## Welcome to Anam0x's Obsidian Zettelkasten!
 
@@ -33,7 +33,7 @@ For instructions on how to add your own content and categories, navigate to the 
 
 Everyone's learning style is different. It is therefore encouraged that you make your own changes to this vault to best accommodate your preferences and workflow.
 
-___
+---
 
 ## Resources
 
@@ -44,7 +44,7 @@ ___
 [^1]: Obsidian, Obsidian, https://obsidian.md/
 [^2]: Obsidian, Taming a Collective Consciousness; Sam Link; https://trustedsec.com/blog/obsidian-taming-a-collective-consciousness
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

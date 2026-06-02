@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/603
 dificultad: Fácil
 ip: 10.10.11.11
 os: Linux
-relacionados:
+linked:
   - "[[Default credentials]]"
   - "[[enlightenment]]"
   - "[[Virtual Hosting]]"

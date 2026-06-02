@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Health & Security Auditing - Purple Knight
 
-***
+---
 
 ## Ejecución
 
@@ -33,7 +33,7 @@ linked:
 | Export XLSX | GUI → Export Data | Parseo programático. |
 ^ad-pk-exec
 
-___
+---
 
 ## Indicators of Exposure (IoE) — pre-attack
 
@@ -53,7 +53,7 @@ ___
 | `Cross-trust SID Filtering off` | `Get-ADTrust -Pr SIDFilteringQuarantined` | `netdom trust /quarantine:yes`. |
 ^ad-pk-ioe
 
-___
+---
 
 ## Indicators of Compromise (IoC) — post-attack
 
@@ -71,7 +71,7 @@ ___
 | `New DA <30d` | `Get-ADGroupMember "Domain Admins"` | Validar legitimidad. |
 ^ad-pk-ioc
 
-___
+---
 
 ## Cross-correlate con PingCastle
 
@@ -101,7 +101,7 @@ Read-Host "ENTER cuando PK termine y exportes XLSX a $Out"
 .\compare-audits.ps1 -PCXml "$Out\ad_hc_corp.local.xml" -PKXlsx "$Out\PK_Report.xlsx"
 ```
 
-___
+---
 
 ## PK vs PingCastle (cuándo usar cada uno)
 
@@ -117,7 +117,7 @@ ___
 | MITRE ATT&CK mapping | Por regla | No. |
 ^ad-pk-vs-pc
 
-___
+---
 
 ## Recursos
 
@@ -129,4 +129,4 @@ ___
 | Forest Druid (companion tool) | `https://www.semperis.com/forest-druid/` |
 ^ad-pk-resources
 
-***
+---

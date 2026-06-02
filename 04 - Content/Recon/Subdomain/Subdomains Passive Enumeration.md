@@ -24,7 +24,7 @@ linked:
 ---
 # Enumeración Pasiva de Sub-dominios
 
-***
+---
 
 ## Cheatsheet
 
@@ -49,7 +49,7 @@ tab: **Paginas**
 ````
 
 
-***
+---
 
 ## Overview
 

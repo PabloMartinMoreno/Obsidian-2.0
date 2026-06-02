@@ -9,7 +9,7 @@ linked:
 ---
 # Bash
 
-***
+---
 
 ## Cheatsheet
 
@@ -21,7 +21,7 @@ linked:
 ^bash-enum-pasiva-subdominios
 
 
-***
+---
 
 
 ## Overview

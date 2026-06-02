@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/symfonos2
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[02 - Herramientas/ftp|ftp]]"
   - "[[smbclient]]"
   - "[[john]]"
@@ -134,7 +134,7 @@ sudo hydra -l aeolus -P /ruta/a/rockyou.txt ftp://IPVICTIMA -V
 Usuario: `aeolus`  
 Contraseña: `sergioteamo`  
 
-___
+---
 
 ### Conexión por SSH  
 

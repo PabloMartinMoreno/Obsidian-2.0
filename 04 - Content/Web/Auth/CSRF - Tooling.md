@@ -18,7 +18,7 @@ linked:
 ---
 # CSRF - Tooling
 
-***
+---
 
 ## Burp PoC Generator
 
@@ -33,7 +33,7 @@ linked:
 | Save PoC as `poc.html` con `Ctrl+S` | Reportable artifact | Bug bounty submission. |
 ^csrf-tool-burp
 
-___
+---
 
 ## Custom HTML PoCs
 
@@ -50,7 +50,7 @@ ___
 | `<meta http-equiv="refresh" content="0;url=https://target/api/x?id=42">` | Auto-redirect GET | SameSite Lax bypass. |
 ^csrf-tool-html-poc
 
-___
+---
 
 ## CSWSH PoC Builder
 
@@ -88,4 +88,4 @@ ___
 </html>
 ```
 
-***
+---

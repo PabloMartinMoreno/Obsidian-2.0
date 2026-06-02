@@ -6,7 +6,7 @@ kind: Secondary Category
 ---
 # VulNyx
 
-***
+---
 
 ## Overview
 
@@ -31,7 +31,7 @@ FROM "05 - Writeups/VulNyx"
 GROUP BY choice(contains(file.tags, "estado/completo"), "✅ Completo", "🔴 Incompleto")
 ```
 
-***
+---
 
 ## Máquinas
 
@@ -45,7 +45,7 @@ FROM "05 - Writeups/VulNyx"
 SORT dificultad ASC, file.name ASC
 ```
 
-***
+---
 
 ## Recursos
 

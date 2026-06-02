@@ -17,7 +17,7 @@ linked:
 ---
 # HTTP Brute Forcing - Wordlists y Strategy
 
-***
+---
 
 ## Credential Stuffing vs Password Spray
 
@@ -33,7 +33,7 @@ linked:
 | `for ip_proxy in $(cat proxies.txt); do curl --proxy "$ip_proxy" -d "user=$u&pass=$p" ...; done` | Geo-distributed via proxies | Per-IP rate bypass. |
 ^bf-strategy-stuffing-spray
 
-___
+---
 
 ## Leaked Databases
 
@@ -64,7 +64,7 @@ ls SecLists/Passwords/  # Common-Credentials, Leaked-Databases, etc
 # Download from haveibeenpwned.com/Passwords (8.7GB)
 ```
 
-___
+---
 
 ## Targeted Wordlists (CeWL, CUPP, Wordlister)
 
@@ -82,7 +82,7 @@ ___
 | `for y in 2023 2024 2025; do for s in '!' '@' '#' '$'; do echo "Target${y}${s}"; done; done` | Pattern-based generation seasonal | Default org patterns. |
 ^bf-strategy-targeted
 
-___
+---
 
 ## Mangling Rules
 
@@ -98,7 +98,7 @@ ___
 | `cat wordlist.txt \| while read w; do echo "${w}"; echo "${w}1"; echo "${w}!"; echo "${w}2025"; done > expanded.txt` | Bash multi-mutation | Manual. |
 ^bf-strategy-rules
 
-___
+---
 
 ## Pattern-Based Strategy
 
@@ -114,4 +114,4 @@ ___
 | `for d in 19{50..99} 20{00..15}; do for m in {01..12}; do for dd in {01..31}; do echo "${d}${m}${dd}"; done; done; done` (birthdays) | Birthday-format brute | OSINT birthday. |
 ^bf-strategy-patterns
 
-***
+---

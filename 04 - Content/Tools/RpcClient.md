@@ -22,7 +22,7 @@ linked:
 ---
 # RpcClient
 
-***
+---
 
 ## Cheatsheet
 

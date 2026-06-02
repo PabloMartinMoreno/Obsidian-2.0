@@ -17,7 +17,7 @@ linked:
 ---
 # AD - ADCS Enumeration - Certificate Templates Audit
 
-***
+---
 
 ## Template Object Class
 
@@ -29,7 +29,7 @@ linked:
 | `certipy find -u u -p pass -dc-ip <DC> -text` | Templates parseados Linux | Standard Linux. |
 ^ad-tmpl-class
 
-___
+---
 
 ## Critical Template Attributes
 
@@ -56,7 +56,7 @@ Get-CertificateTemplate | Select Name,DisplayName,
   @{n='Approvals';e={$_.RASignature}}
 ```
 
-___
+---
 
 ## msPKI-Certificate-Name-Flag
 
@@ -84,7 +84,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass \
   cn pkiExtendedKeyUsage
 ```
 
-___
+---
 
 ## EKU (Extended Key Usage)
 
@@ -111,7 +111,7 @@ ___
 certipy find -u u -p pass -dc-ip <DC> -text | grep -E "Client Authentication|Smart Card|Any Purpose|Certificate Request Agent"
 ```
 
-___
+---
 
 ## msPKI-RA-Signature
 
@@ -123,7 +123,7 @@ ___
 
 **Mitigation indicator:** templates con `msPKI-RA-Signature > 0` requieren approval manual = atacante no puede auto-enrollar. Default ESC1-style templates suelen tener `0`.
 
-___
+---
 
 ## Template Enrollment ACL
 
@@ -152,7 +152,7 @@ foreach ($t in $Templates) {
 }
 ```
 
-___
+---
 
 ## Per-Template Vulnerability
 
@@ -166,7 +166,7 @@ ___
 | ESC10 | Cert mapping weak en DC registry | KDC config. |
 ^ad-tmpl-vulns
 
-___
+---
 
 ## Default vs Custom Templates
 
@@ -178,7 +178,7 @@ ___
 | **Custom org-specific** | Variable | Audit always. |
 ^ad-tmpl-default
 
-___
+---
 
 ## Modern Best Practices
 
@@ -192,4 +192,4 @@ ___
 | `EnrollmentFlag NO_SECURITY_EXTENSION` = OFF | Per-template | ESC9 fix. |
 ^ad-tmpl-bestpractice
 
-***
+---

@@ -14,7 +14,7 @@ kind: Tertiary Category
 ---
 # Enumeración de Hosts y Redes
 
-***
+---
 
  ## 🌐 Network Scanning & Discovery
  Identificación de hosts activos, puertos abiertos y servicios básicos en la red.
@@ -71,4 +71,4 @@ kind: Tertiary Category
 - [[ICS - Enumeración]] (Técnicas para descubrir sistemas de control industrial.)
 
 
-***
+---

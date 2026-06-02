@@ -8,7 +8,7 @@ kind: Secondary Category
 ---
 # PortSwigger
 
-***
+---
 
 ## Overview
 
@@ -45,7 +45,7 @@ GROUP BY vuln
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Labs
 
@@ -57,7 +57,7 @@ FROM "05 - Writeups/PortSwigger"
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Recursos
 

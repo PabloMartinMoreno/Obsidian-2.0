@@ -19,7 +19,7 @@ linked:
 ---
 # CSRF - Tipos Especiales
 
-***
+---
 
 ## Login CSRF
 
@@ -32,7 +32,7 @@ linked:
 | `curl -X POST -d "user=attacker&pass=$ATK" https://target/login` (replay manual desde IP víctima emulada) | Confirma endpoint sin CSRF | Pre-PoC validation. |
 ^csrf-special-login
 
-___
+---
 
 ## Logout CSRF
 
@@ -45,7 +45,7 @@ ___
 | Combine logout + atacante set new cookie domain-scoped | Session fixation chain | Subdomain takeover combo. |
 ^csrf-special-logout
 
-___
+---
 
 ## JSON CSRF
 
@@ -70,7 +70,7 @@ ___
 
 Body literal enviado: `{"email":"attacker@evil.com","x":"=" }`. Server parsea JSON con tolerancia → email actualizado.
 
-___
+---
 
 ## WebSocket CSRF (CSWSH)
 
@@ -102,7 +102,7 @@ ___
 </html>
 ```
 
-___
+---
 
 ## File Upload CSRF
 
@@ -116,4 +116,4 @@ ___
 | `curl -X POST -b "$COOKIE" -F "file=@evil.php" https://target/upload` (replay manual) | Pre-PoC validation | Confirm endpoint vulnerable. |
 ^csrf-special-upload
 
-***
+---

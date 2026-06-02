@@ -25,7 +25,7 @@ linked:
 ---
 # Linux PrivEsc - Cron Jobs
 
-***
+---
 
 ## Cheatsheet
 
@@ -104,4 +104,4 @@ chmod +x /tmp/pspy64
 - **Systemd timers** (`systemctl list-timers`) son alternativa moderna a cron — mismos principios de abuso sobre unit files escribibles.
 - `pspy` no requiere root ni privilegios especiales — funciona vía `inotify` sobre `/proc`.
 
-***
+---

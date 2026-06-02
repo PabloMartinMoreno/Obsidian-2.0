@@ -29,7 +29,7 @@ linked:
 ---
 # AD - DNS & SRV Records
 
-***
+---
 
 ## Cheatsheet
 
@@ -159,7 +159,7 @@ tab: **Wordlists & Recursos**
 ![[AD - DNS & SRV Records - Tooling#^ad-tool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -199,7 +199,7 @@ Como atacante: DNS expone topología (DCs, sites, FSMO holders), permite enumera
 - **Default Authenticated Users CreateChild** — anyone in domain can add records.
 - **WPAD + mitm6** — combine for non-targeted mass MitM via DNS spoofing.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -245,7 +245,7 @@ ___
    - Restore originals from backup
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -290,7 +290,7 @@ EOF
 dig +short A "testxxx.$DOM" @DC
 ```
 
-___
+---
 
 ## Impacto
 
@@ -306,7 +306,7 @@ ___
 - **DNS-based persistence** — ANY records + static records hard to detect.
 - **Conditional forwarder hijack** — redirect entire zone queries.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -345,7 +345,7 @@ ___
 - **DNSSEC** — sign zones to prevent on-path spoofing (heavy operationally).
 - **Internal DNS not public** — split-horizon DNS, don't expose internal records.
 
-___
+---
 
 ## Para entender AD DNS
 
@@ -410,7 +410,7 @@ Windows Vista+ enables IPv6 by default. Even on IPv4-only networks, hosts attemp
 
 Attack is mass — affects all IPv6-enabled hosts on segment. Defense: disable IPv6 (aggressive) or RA Guard (network-level).
 
-___
+---
 
 ## Recursos
 
@@ -430,4 +430,4 @@ ___
 - [DnsAdmins privesc CVE-2017-7299](https://adsecurity.org/?p=4064) — historical.
 - [BloodHound custom DNS edges](https://github.com/SpecterOps/BloodHound/issues) — community.
 
-***
+---

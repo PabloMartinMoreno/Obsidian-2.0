@@ -9,7 +9,7 @@ linked:
 ---
 # host
 
-***
+---
 
 ## Cheatsheet
 
@@ -21,14 +21,14 @@ linked:
 | <pre><code>`host -v ...`</code></pre>                                          | <br>Resultados más fáciles de entender para los humanos                   |
 ^host-enum
 
-***
+---
 
 ## Overview
 
 
-***
+---
 
 ## Notas Relacionadas
 
 
-***
+---

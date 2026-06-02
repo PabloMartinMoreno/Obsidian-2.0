@@ -17,7 +17,7 @@ linked:
 ---
 # SSI - Information Gathering
 
-***
+---
 
 ## `#echo` Environment Variables
 
@@ -46,7 +46,7 @@ linked:
 | Custom var (set first) | `<!--#set var="x" value="hello" --><!--#echo var="x" -->` | Variables definidas. |
 ^ssi-info-echo
 
-___
+---
 
 ## `#fsize` y `#flastmod` (Filesystem Enum)
 
@@ -83,7 +83,7 @@ ___
 <!--#flastmod file="/var/log/auth.log" --> <!-- Recent → activity hint -->
 ```
 
-___
+---
 
 ## `#printenv` y `#config`
 
@@ -128,4 +128,4 @@ ___
 <!--# $cmd_action cmd="$target" -->
 ```
 
-***
+---

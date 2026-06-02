@@ -29,7 +29,7 @@ kind: Tool
 ---
 # Burp Suite
 
-***
+---
 
 ## Overview
 
@@ -37,7 +37,7 @@ Proxy de interceptación web. Editions: **Community** (gratis, limitada — sin 
 
 > Regla: Burp se usa en background durante toda la sesión de pentest web. Cualquier request que pasa por el browser debe quedar en History.
 
-***
+---
 
 ## Setup inicial
 
@@ -53,7 +53,7 @@ Proxy de interceptación web. Editions: **Community** (gratis, limitada — sin 
 - Temporary project para tests rápidos; **Disk project** para engagements largos (backup automático).
 - `Project options → Sessions`: macros para relogins automáticos si sesión expira.
 
-***
+---
 
 ## Módulos principales
 
@@ -139,7 +139,7 @@ BApps imprescindibles:
 - **CO2** — SQLMapper, tools misc.
 - **Reshaper** — regex-driven response rewriter.
 
-***
+---
 
 ## Workflows
 
@@ -184,7 +184,7 @@ Click derecho request → `Engagement tools → Generate CSRF PoC` → HTML list
 
 Click derecho → `Engagement tools → Generate clickjacking PoC`.
 
-***
+---
 
 ## Atajos
 
@@ -202,7 +202,7 @@ Click derecho → `Engagement tools → Generate clickjacking PoC`.
 | `Ctrl+/` | URL bar |
 | `Ctrl+=` / `Ctrl+-` | Zoom |
 
-***
+---
 
 ## Tips operativos
 
@@ -213,7 +213,7 @@ Click derecho → `Engagement tools → Generate clickjacking PoC`.
 - **Comments + colors** en History: marcar requests interesantes (`Ctrl+Click` → Highlight).
 - **Save selected items**: exportar subset de requests como `.burp` file.
 
-***
+---
 
 ## Integración con otras herramientas
 
@@ -222,7 +222,7 @@ Click derecho → `Engagement tools → Generate clickjacking PoC`.
 - **nuclei**: `-H "Cookie: ..."` desde request capturado.
 - **Upstream proxy a mitmproxy** para scripting avanzado.
 
-***
+---
 
 ## Referencias
 

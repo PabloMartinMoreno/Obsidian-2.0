@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/9
 dificultad: Fácil
 ip: 10.10.10.11
 os: Windows
-relacionados:
+linked:
   - "[[Adobe ColdFusion 8 Exploitation]]"
   - "[[Directory Traversal Vulnerability]]"
   - "[[Cracking Hashes]]"

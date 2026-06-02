@@ -6,7 +6,7 @@ kind: Secondary Category
 ---
 # DockerLabs
 
-***
+---
 
 ## Overview
 
@@ -31,7 +31,7 @@ FROM "05 - Writeups/DockerLabs"
 GROUP BY choice(contains(file.tags, "estado/completo"), "✅ Completo", "🔴 Incompleto")
 ```
 
-***
+---
 
 ## Máquinas
 
@@ -44,7 +44,7 @@ FROM "05 - Writeups/DockerLabs"
 SORT dificultad ASC, file.name ASC
 ```
 
-***
+---
 
 ## Recursos
 

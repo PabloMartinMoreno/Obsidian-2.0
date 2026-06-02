@@ -10,7 +10,7 @@ kind: Tertiary Category
 ---
 # Enumeración de la Nube
 
-***
+---
 
 
  ## 🔑 Initial Access & Credential Discovery
@@ -57,4 +57,4 @@ Análisis automatizado de la postura de seguridad.
 - [[Cloud Configuration Auditing]] (Herramientas: ScoutSuite, CloudSploit, Prowler.)
 
 
-___
+---

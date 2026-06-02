@@ -7,9 +7,9 @@ kind: Tertiary Category
 ---
 # <% tp.file.title %>
 
-***
+---
 
 ## Subsection 1
 
 
-***
+---

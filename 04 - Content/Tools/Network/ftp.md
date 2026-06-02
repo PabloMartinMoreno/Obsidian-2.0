@@ -15,7 +15,7 @@ linked:
 > [!info]
 > Cliente FTP CLI. En pentest: dump anonymous shares, upload de webshells, recon de filesystem expuesto. Puerto default 21 (control), 20 (data).
 
-***
+---
 
 ## Conexión
 
@@ -28,7 +28,7 @@ ftp <target>
 ftp -u <user> <target>
 ```
 
-***
+---
 
 ## Comandos intra-sesión
 
@@ -48,7 +48,7 @@ recv <remote> <local>  # download con rename
 quit              # exit
 ```
 
-***
+---
 
 ## Wget/curl alternatives
 
@@ -66,7 +66,7 @@ curl -O ftp://<target>/file.txt -u anonymous:anon
 curl -T file.txt ftp://<target>/ -u user:pass
 ```
 
-***
+---
 
 ## Vectores típicos
 
@@ -76,7 +76,7 @@ curl -T file.txt ftp://<target>/ -u user:pass
 - **Bounce attack**: PORT command para scan via FTP server
 - **Brute force**: hydra, medusa contra `21/tcp`
 
-***
+---
 
 ## Notas Relacionadas
 

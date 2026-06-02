@@ -32,7 +32,7 @@ linked:
 ---
 # Subdomain Takeover
 
-***
+---
 
 ## Cheatsheet
 
@@ -134,7 +134,7 @@ tab: **Wordlists Comprehensivas**
 ![[Subdomain Takeover - Tooling y Wordlists#^sdt-tool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -161,7 +161,7 @@ Vector clase A en bug bounty — high-paid (HackerOne / Bugcrowd $500-$10000+). 
 | Impact | Full subdomain control | Reset poisoning, cache | Phishing redirect |
 | Defense | Monitor DNS + cleanup | Hardcode URLs | Whitelist redirects |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -210,7 +210,7 @@ ___
    - Coordinate disclosure
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -244,7 +244,7 @@ dig +short CNAME "$SUB"
 nuclei -t takeovers/ -l subs.txt
 ```
 
-___
+---
 
 ## Impacto
 
@@ -259,7 +259,7 @@ ___
 - **Persistencia de larga duración** — until DNS fixed.
 - **Combinable con HHI / Cache / OR** — compound chains High CVSS.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -283,7 +283,7 @@ ___
 - **Subdomain expiration monitoring** — track lifecycle.
 - **Common service deletion procedures** — checklist.
 
-___
+---
 
 ## Para entender Subdomain Takeover
 
@@ -320,7 +320,7 @@ CVSS often 7-9 (High). Bug bounty pays $500-$10000+.
 
 XSS / OR / HHI son transient — atacante exploits per-request. Takeover es persistent — atacante owns subdomain hasta defender lo arregla. Persistence + trust = unique impact.
 
-___
+---
 
 ## Recursos
 
@@ -337,4 +337,4 @@ ___
 - [Patrik Hudak - Subdomain Takeover Series](https://0xpatrik.com/) — modern research.
 - [DNS Hijacking case studies](https://blog.detectify.com/) — real-world examples.
 
-***
+---

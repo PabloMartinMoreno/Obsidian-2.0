@@ -9,7 +9,7 @@ kind: Tertiary Category
 ---
 # Shells
 
-***
+---
 
 ## 🐚 Access Shell Types
   Diferentes métodos para establecer y mantener un canal de comandos.
@@ -30,4 +30,4 @@ kind: Tertiary Category
    - [[Msfvenom Payload Generation]] (Creación de ejecutables y shellcodes maliciosos con Metasploit.)
 
 
-***
+---

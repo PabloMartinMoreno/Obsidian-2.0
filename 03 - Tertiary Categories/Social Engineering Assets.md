@@ -7,7 +7,7 @@ kind: Tertiary Category
 ---
 # Social Engineering Assets
 
-***
+---
 
 ## 📄 Weaponized Documents
   Documentos ofimáticos diseñados para ejecutar código al abrirse.
@@ -28,4 +28,4 @@ kind: Tertiary Category
    - [[Cloning Login Portals]] (Creación de páginas de login falsas para robo de credenciales.)
    - [[HTA & Web Payloads]] (Uso de aplicaciones HTML (.hta) para ejecución de código vía web.)
 
-***
+---

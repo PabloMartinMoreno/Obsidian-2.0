@@ -16,7 +16,7 @@ linked:
 ---
 # XSLT - Blind Exfil
 
-***
+---
 
 ## Exfiltración vía HTTP (URLs)
 
@@ -47,7 +47,7 @@ linked:
 </xsl:stylesheet>
 ```
 
-___
+---
 
 ## Exfiltración vía DNS
 
@@ -80,4 +80,4 @@ ___
 - Logs deja menos huella DNS que HTTP en muchas orgs.
 - HTTP permite payloads grandes sin chunking.
 
-***
+---

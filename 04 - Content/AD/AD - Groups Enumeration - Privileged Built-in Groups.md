@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Groups Enumeration - Privileged Built-in Groups
 
-***
+---
 
 ## Tier 0 Domain-Level Groups
 
@@ -51,7 +51,7 @@ foreach ($g in $Tier0) {
 }
 ```
 
-___
+---
 
 ## Domain Admins (DA)
 
@@ -74,7 +74,7 @@ Get-ADGroupMember "Domain Admins" -Recursive |
   Select Name,SamAccountName,@{n='SPN';e={[bool]$_.ServicePrincipalName}},PasswordNeverExpires,LastLogonDate,PasswordLastSet
 ```
 
-___
+---
 
 ## Enterprise Admins (EA)
 
@@ -95,7 +95,7 @@ foreach ($d in (Get-ADForest).Domains) {
 }
 ```
 
-___
+---
 
 ## Schema Admins
 
@@ -117,7 +117,7 @@ if ($Schema) {
 }
 ```
 
-___
+---
 
 ## Built-in Groups (Domain Local)
 
@@ -151,7 +151,7 @@ foreach ($g in (Get-ADGroup -Filter * -SearchBase "CN=Builtin,DC=corp,DC=local")
 rpcclient -U 'corp\u%pass' <DC> -c 'enumalsgroups builtin'
 ```
 
-___
+---
 
 ## DnsAdmins (Legacy RCE Path)
 
@@ -164,7 +164,7 @@ ___
 
 **Por qué importa:** miembros pueden registrar DLL como plugin DNS. Reload service = ejecuta como SYSTEM en DC. Patched **CVE-2021-40469** pero environments legacy siguen vivos. Default DnsAdmins debe estar vacío.
 
-___
+---
 
 ## Exchange-Related Groups (Legacy DCSync Path)
 
@@ -188,4 +188,4 @@ foreach ($g in $Ex) {
 }
 ```
 
-***
+---

@@ -14,7 +14,7 @@ linked:
 ---
 # GitHub Dorking
 
-***
+---
 
 ## CheatSheet
 

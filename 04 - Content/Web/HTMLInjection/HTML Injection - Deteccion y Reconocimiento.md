@@ -15,7 +15,7 @@ linked:
 ---
 # HTML Injection - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Puntos Reflejados
 
@@ -40,7 +40,7 @@ linked:
 | Chat messages | Real-time + stored | High visibility. |
 ^htmli-detect-points
 
-___
+---
 
 ## Probes con Tags Básicos
 
@@ -77,7 +77,7 @@ curl 'https://target/search?q=<img src="https://canary.oast.fun/x">'
 # Verify request reaches Collaborator → confirms HTML injection + outbound
 ```
 
-___
+---
 
 ## Diferenciar HTML Injection vs XSS
 
@@ -119,4 +119,4 @@ Reflection confirmed → ¿qué se renderiza?
 | Sanitize libs (DOMPurify) | Strip scripts + events | XSS hard, HTML injection partial. |
 | Markdown render | `[link](url)` allowed → atacante uses MD | Markdown injection variant. |
 
-***
+---

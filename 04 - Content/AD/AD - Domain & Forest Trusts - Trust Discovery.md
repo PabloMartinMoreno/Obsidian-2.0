@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Domain & Forest Trusts - Trust Discovery
 
-***
+---
 
 ## Native Windows Tools
 
@@ -56,7 +56,7 @@ Get-ADTrust -Filter * -Properties * |
 nltest /domain_trusts /all_trusts /v
 ```
 
-___
+---
 
 ## LDAP Trust Discovery
 
@@ -84,7 +84,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass \
   securityIdentifier whenCreated whenChanged
 ```
 
-___
+---
 
 ## PowerView / pywerview
 
@@ -110,7 +110,7 @@ Find-ForeignUser
 Find-ForeignGroup
 ```
 
-___
+---
 
 ## BloodHound Trust Edges
 
@@ -130,7 +130,7 @@ SharpHound.exe -c Trusts,ACL,ObjectProps,Container,LocalGroup --Stealth
 bloodhound-python -d corp.local -u u -p p -ns <DC> -c Trusts --zip
 ```
 
-___
+---
 
 ## Cross-Forest / Forest Discovery
 
@@ -156,7 +156,7 @@ foreach ($d in (Get-ADForest).Domains) {
 }
 ```
 
-___
+---
 
 ## Anonymous / Pre-Auth Trust Discovery
 
@@ -179,4 +179,4 @@ for fd in partner.com vendor.local; do
 done
 ```
 
-***
+---

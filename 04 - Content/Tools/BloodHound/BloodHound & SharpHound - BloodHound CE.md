@@ -17,7 +17,7 @@ linked:
 ---
 # BloodHound & SharpHound - BloodHound CE
 
-***
+---
 
 ## Installation
 
@@ -42,7 +42,7 @@ docker compose logs bloodhound 2>&1 | grep "Initial Password Set"
 xdg-open http://localhost:8080
 ```
 
-___
+---
 
 ## Ingest Collection ZIPs
 
@@ -54,7 +54,7 @@ ___
 | Reset DB pre-ingest | Settings → Database Management → Reset DB | Fresh start. |
 ^ad-bhce-ingest
 
-___
+---
 
 ## Web UI Navigation
 
@@ -69,7 +69,7 @@ ___
 | **Settings → Manage Collections** | Ingest history + reset | Management. |
 ^ad-bhce-ui
 
-___
+---
 
 ## Mark Owned + High Value
 
@@ -92,7 +92,7 @@ SET g.highvalue = true
 RETURN g.name
 ```
 
-___
+---
 
 ## Pre-Built Queries
 
@@ -106,7 +106,7 @@ ___
 | **Shortest Paths** | From Owned to Domain Admins, To High Value. |
 ^ad-bhce-prebuilt
 
-___
+---
 
 ## API Access
 
@@ -130,7 +130,7 @@ curl -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" \
   -X POST -d '{"query":"MATCH (u:User {owned:true}) RETURN u.name"}'
 ```
 
-___
+---
 
 ## Multi-User / Team Setup
 
@@ -141,7 +141,7 @@ ___
 | Single shared instance + multiple operators | Standard team setup | Engagement. |
 ^ad-bhce-multiuser
 
-___
+---
 
 ## Backup + Restore
 
@@ -158,7 +158,7 @@ docker compose exec graph-db neo4j-admin database dump --to-path=/tmp neo4j
 docker cp $(docker compose ps -q graph-db):/tmp/neo4j.dump ./bhce-backup-$(date +%F).dump
 ```
 
-___
+---
 
 ## BHCE 6.x New Features
 
@@ -172,4 +172,4 @@ ___
 | API v2 maduro | Automation-friendly | Pipeline. |
 ^ad-bhce-6x
 
-***
+---

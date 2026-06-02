@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Health & Security Auditing - ADRecon & ADCollector
 
-***
+---
 
 ## ADRecon — ejecución básica
 
@@ -44,7 +44,7 @@ linked:
 #   CSV-Files\*.csv (por sección)
 ```
 
-___
+---
 
 ## ADRecon — secciones del reporte
 
@@ -77,7 +77,7 @@ ___
 | `GPOReport` | HTML por GPO | Settings inspection. |
 ^ad-adrecon-sheets
 
-___
+---
 
 ## ADCollector — ejecución
 
@@ -98,7 +98,7 @@ ___
 .\ADCollector.exe --Domain corp.local --Ldaps --Server dc01 > C:\audit\adcollector.log
 ```
 
-___
+---
 
 ## ADRecon vs ADCollector
 
@@ -114,7 +114,7 @@ ___
 | Auth flexibility | RSAT / LDAP | LDAP / LDAPS |
 ^ad-adrecon-vs-adcoll
 
-___
+---
 
 ## Parseo del output
 
@@ -127,7 +127,7 @@ ___
 | Trust con SID Filter off | `Import-Csv Trusts.csv \| ? { $_.SIDFilteringQuarantined -eq 'FALSE' }` | Cross-trust risk. |
 ^ad-adrecon-parse
 
-___
+---
 
 ## Recursos
 
@@ -139,4 +139,4 @@ ___
 | ADRecon-ADCS | `https://github.com/adrecon/ADRecon-ADCS` |
 ^ad-adrecon-resources
 
-***
+---

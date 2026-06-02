@@ -16,7 +16,7 @@ linked:
 ---
 # AD - Health & Security Auditing - Tooling Ecosystem
 
-***
+---
 
 ## Comparativa por uso
 
@@ -34,7 +34,7 @@ linked:
 | ADSecurityScanner (commercial) | Compliance frameworks | Dashboard |
 ^ad-tooling-compare
 
-___
+---
 
 ## ADCS-specific tooling
 
@@ -54,7 +54,7 @@ certipy find -u auditor@corp.local -p 'pass' -dc-ip 10.10.10.10 \
     -output corp.local -text -stdout -vulnerable
 ```
 
-___
+---
 
 ## Forest Druid (Tier 0 paths)
 
@@ -66,7 +66,7 @@ ___
 | Cross-correlate BloodHound | Importar mismo data | Validation. |
 ^ad-tooling-druid
 
-___
+---
 
 ## Forensic / IR tools
 
@@ -89,7 +89,7 @@ $NTDS = Get-ADDBAccount -All -DBPath 'C:\IFM\Active Directory\ntds.dit' -BootKey
 $NTDS | Test-PasswordQuality -WeakPasswordHashesSortedFile pwned-hashes.txt
 ```
 
-___
+---
 
 ## Cloud / Hybrid tools
 
@@ -110,7 +110,7 @@ roadrecon gather
 roadrecon gui  # http://localhost:5000
 ```
 
-___
+---
 
 ## Free vs commercial
 
@@ -124,7 +124,7 @@ ___
 | Netwrix Auditor | Trial 20d | Change auditing |
 ^ad-tooling-license
 
-___
+---
 
 ## Pipeline recomendado por engagement
 
@@ -139,7 +139,7 @@ ___
 | Compliance handoff | PingCastle PDF | Purple Knight PDF |
 ^ad-tooling-pipeline
 
-___
+---
 
 ## Recursos
 
@@ -153,4 +153,4 @@ ___
 | Specter Ops blog | `https://posts.specterops.io` |
 ^ad-tooling-resources
 
-***
+---

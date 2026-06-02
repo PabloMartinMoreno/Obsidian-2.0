@@ -17,7 +17,7 @@ linked:
 ---
 # AD - LAPS Enumeration - Windows LAPSv2
 
-***
+---
 
 ## LAPSv2 Architecture
 
@@ -38,7 +38,7 @@ linked:
 - Native Windows (no MSI).
 - DSRM password support en DCs.
 
-___
+---
 
 ## Cleartext vs Encrypted
 
@@ -52,7 +52,7 @@ ___
 
 **Caveat decryption:** DPAPI-NG keys derivan de un AD security principal (group o user). Solo principals listados en GPO `EncryptionPrincipal` pueden decrypt. ACL LDAP read != decrypt capability.
 
-___
+---
 
 ## LAPSv2 Read & Decrypt
 
@@ -81,7 +81,7 @@ Get-LapsADPassword DC01 -AsPlainText -IncludeHistory
 nxc smb hosts.txt -u user -p pass --laps
 ```
 
-___
+---
 
 ## Azure AD Backup Mode
 
@@ -94,7 +94,7 @@ ___
 
 **Cuando:** GPO `BackupDirectory = "Azure AD"`. Useful para Entra-joined devices sin AD on-prem. Atacante con `User.Read.All` + `Device.Read.All` + `LapsAdmin` puede leer.
 
-___
+---
 
 ## LAPSv2 ACL & Permissions
 
@@ -118,7 +118,7 @@ Find-LapsADExtendedRights -Identity (Get-ADDomain).DistinguishedName |
   Select ObjectDN,@{n='Readers';e={$_.ExtendedRightHolders -join '; '}}
 ```
 
-___
+---
 
 ## LAPSv2 GPO Settings
 
@@ -149,7 +149,7 @@ Get-GPO -All | % {
 }
 ```
 
-___
+---
 
 ## LAPSv2 Misconfigurations
 
@@ -162,4 +162,4 @@ ___
 | Computers sin LAPSv1 ni LAPSv2 | Coverage gap | Audit. |
 ^ad-lapsv2-misconfig
 
-***
+---

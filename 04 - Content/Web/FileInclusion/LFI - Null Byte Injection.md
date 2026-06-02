@@ -13,7 +13,7 @@ linked:
 ---
 # LFI - Null Byte Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -49,7 +49,7 @@ curl -s "${TARGET//PAYLOAD/..%2F..%2F..%2F..%2Fetc%2Fpasswd%2500}"
 - **Java/Node/.NET** — null byte no terminator nativo, no truncación.
 - **Apps con whitelist de extensiones** (Sin append) — no hay nada que truncar.
 
-___
+---
 
 ## Overview
 
@@ -61,4 +61,4 @@ Caso clásico: `include($_GET['p'] . '.php')`:
 
 Técnica **legacy**. Probable en CTFs, sistemas no actualizados, embedded devices. En stacks modernos pivotar a [[LFI - PHP Wrappers]] (`php://filter`) que tampoco depende de la extensión.
 
-***
+---

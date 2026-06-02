@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit19.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[Bandit 18]]"
   - "[[Bandit 20]]"
   - "[[SUID]]"

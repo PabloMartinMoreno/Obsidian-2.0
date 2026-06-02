@@ -32,7 +32,7 @@ linked:
 ---
 # AS-REP Roasting
 
-***
+---
 
 ## Cheatsheet
 
@@ -198,7 +198,7 @@ tab: **Recursos**
 ![[AS-REP Roasting - Tooling#^asrep-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -228,7 +228,7 @@ ___
 | Detection | Event 4768 con pre-auth=0 | Event 4769 (TGS) |
 | Modern frequency | Rare (default disabled) | Common (service accounts) |
 
-___
+---
 
 ## Workflow
 
@@ -269,7 +269,7 @@ ___
    - klist purge
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -292,7 +292,7 @@ hashcat -m 18200 asrep.hash /usr/share/wordlists/rockyou.txt -O
 hashcat -m 18200 asrep.hash --show
 ```
 
-___
+---
 
 ## Impacto
 
@@ -302,7 +302,7 @@ ___
 - **Pre-foothold vector** = AS-REP standalone sin creds del domain.
 - **Cross-trust roast** = foreign cred extraction.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -317,7 +317,7 @@ ___
 - **PingCastle** rule `T1-PreAuth` indicators.
 - **MDI alert** `Suspected AS-REP roasting`.
 
-___
+---
 
 ## Para entender AS-REP Roasting
 
@@ -333,7 +333,7 @@ ___
 
 **Por qué hashcat 18200 (no 19700/19600):** AS-REP standard usa etype 23 (RC4-HMAC) por compatibility. AES variants raros (account UAC `USE_DES_KEY_ONLY` o `msDS-SupportedEncryptionTypes` específicos). Default = m18200.
 
-___
+---
 
 ## Recursos
 
@@ -347,4 +347,4 @@ ___
 - [Hashcat modes](https://hashcat.net/wiki/doku.php?id=example_hashes) — reference.
 - [MITRE ATT&CK T1558.004](https://attack.mitre.org/techniques/T1558/004/) — AS-REP Roasting.
 
-***
+---

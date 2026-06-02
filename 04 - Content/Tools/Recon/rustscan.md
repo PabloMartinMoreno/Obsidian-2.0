@@ -19,7 +19,7 @@ linked:
 ---
 # rustscan
 
-***
+---
 
 ## Cheatsheet
 
@@ -33,7 +33,7 @@ linked:
 | **Sin nmap** | `rustscan -a target --no-nmap -g` |
 | **CIDR** | `rustscan -a 10.10.10.0/24 --ulimit 5000` |
 
-***
+---
 
 ## Concepto
 
@@ -174,4 +174,4 @@ Regla: rustscan para **TTP inicial** (ports), nmap para **profundidad** (servici
 
 - [rustscan GitHub](https://github.com/RustScan/RustScan)
 
-***
+---

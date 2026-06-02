@@ -14,7 +14,7 @@ linked:
 ---
 # XSS - Etiqueta `<script>` Estándar
 
-***
+---
 
 ## Cheatsheet
 
@@ -42,7 +42,7 @@ linked:
 | `';}</script><script>alert(1)</script>` | Cierra string JS + bloque script + abre nuevo | Reflejo DENTRO de `<script>var x='INYECCIÓN';</script>`. |
 ^xss-script-escapes
 
-___
+---
 
 ## Overview
 
@@ -52,4 +52,4 @@ Tag `<script>` = vector más directo de XSS. Asume que la app refleja input en D
 
 Si `<script>` filtrado → pivotar a [[XSS - Manejadores de Eventos HTML]] (event handlers) o [[XSS - Pseudo-protocolos]] (`javascript:`).
 
-***
+---

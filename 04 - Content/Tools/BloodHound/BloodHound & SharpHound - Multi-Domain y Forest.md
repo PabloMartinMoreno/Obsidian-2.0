@@ -17,7 +17,7 @@ linked:
 ---
 # BloodHound & SharpHound - Multi-Domain & Forest
 
-***
+---
 
 ## Multi-Domain Workflow
 
@@ -41,7 +41,7 @@ done
 # Drag todos los ZIPs en BHCE → auto-correlate
 ```
 
-___
+---
 
 ## Cross-Domain Cypher Queries
 
@@ -73,7 +73,7 @@ RETURN u.name,u.domain,exposure ORDER BY exposure DESC LIMIT 20
 ```
 ^ad-multidom-cypher
 
-___
+---
 
 ## Cross-Trust Authentication
 
@@ -85,7 +85,7 @@ ___
 | Inter-realm TGT forge (con trust hash) | `ticketer.py -nthash <hash> -domain-sid ... -extra-sid ... -spn krbtgt/partner.com Administrator` | Cross-forest pivot. |
 ^ad-multidom-auth
 
-___
+---
 
 ## SID Filtering Considerations
 
@@ -99,7 +99,7 @@ ___
 
 **Por qué importa:** SID Filter ON cross-forest = bloquea SID History injection ataques. SID Filter OFF + DCSync local = forest takeover via inter-realm TGT forge con `ExtraSids`.
 
-___
+---
 
 ## Modern BHCE 6.x Forest Support
 
@@ -113,7 +113,7 @@ ___
 | Cross-correlate AzureHound | Hybrid identity paths | Cloud + on-prem. |
 ^ad-multidom-bhce6
 
-___
+---
 
 ## OPSEC Multi-Domain
 
@@ -127,4 +127,4 @@ ___
 | Targeted en vez de bulk forest sweep | Reduce signature | Stealth. |
 ^ad-multidom-opsec
 
-***
+---

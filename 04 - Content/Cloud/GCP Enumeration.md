@@ -14,7 +14,7 @@ linked:
 > [!info]
 > Recon de Google Cloud Platform. CLI: `gcloud`. Tools: GCPBucketBrute, hayat, ScoutSuite.
 
-***
+---
 
 ## Setup
 
@@ -33,7 +33,7 @@ gcloud auth list
 gcloud config list
 ```
 
-***
+---
 
 ## Project / IAM Enumeration
 
@@ -55,7 +55,7 @@ gcloud projects get-iam-policy <project> --format=json | \
   jq '.bindings[] | select(.members[] | contains("<user>"))'
 ```
 
-***
+---
 
 ## Compute Engine (VMs)
 
@@ -70,7 +70,7 @@ gcloud compute ssh <instance> --zone <zone>
 gcloud compute instances describe <instance> --zone <zone> --format='value(metadata)'
 ```
 
-***
+---
 
 ## Storage Buckets
 
@@ -100,7 +100,7 @@ Bucket name brute:
 GCPBucketBrute -k <project>-keyword -u user@org.gserviceaccount.com
 ```
 
-***
+---
 
 ## Cloud Functions / Run
 
@@ -115,7 +115,7 @@ gcloud functions describe <fn>
 gcloud run services list
 ```
 
-***
+---
 
 ## Secrets Manager
 
@@ -127,7 +127,7 @@ gcloud secrets list
 gcloud secrets versions access latest --secret <name>
 ```
 
-***
+---
 
 ## PrivEsc patterns
 
@@ -139,7 +139,7 @@ gcloud secrets versions access latest --secret <name>
 
 Ver `gcp_scanner`, `GCP-IAM-Privilege-Escalation` (rhino-security).
 
-***
+---
 
 ## Tools
 
@@ -150,7 +150,7 @@ Ver `gcp_scanner`, `GCP-IAM-Privilege-Escalation` (rhino-security).
 - **ScoutSuite** — multi-cloud audit
 - **gcp_scanner** — privesc finder
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -7,9 +7,9 @@ kind: Primary Category
 ---
 # [[Cloud Security]]
 
-***
+---
 
 * Add link(s) [[]] to related SECONDARY categories
 
-***
+---
 

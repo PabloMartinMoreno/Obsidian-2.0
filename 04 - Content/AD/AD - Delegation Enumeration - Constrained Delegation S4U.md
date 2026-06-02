@@ -19,7 +19,7 @@ linked:
 ---
 # AD - Delegation Enumeration - Constrained Delegation (S4U)
 
-***
+---
 
 ## Concept Overview
 
@@ -32,7 +32,7 @@ linked:
 | Default | Off — debe configurarse explícito | Audit. |
 ^ad-cd-concept
 
-___
+---
 
 ## msDS-AllowedToDelegateTo Attribute
 
@@ -56,7 +56,7 @@ Get-ADObject -LDAPFilter "(msDS-AllowedToDelegateTo=*)" \
          }}
 ```
 
-___
+---
 
 ## Use Kerberos Only vs Protocol Transition
 
@@ -75,7 +75,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass -b "DC=corp,DC=local" \
   samAccountName msDS-AllowedToDelegateTo
 ```
 
-___
+---
 
 ## S4U2Self + S4U2Proxy Chain
 
@@ -114,7 +114,7 @@ Rubeus.exe s4u /user:svc-iis /rc4:<NT-hash> ^
 dir \\dc01\C$
 ```
 
-___
+---
 
 ## Privileged CD Identification
 
@@ -134,7 +134,7 @@ Get-ADObject -LDAPFilter "(msDS-AllowedToDelegateTo=*)" -Properties msDS-Allowed
   Select Name,@{n='Targets';e={$_.'msDS-AllowedToDelegateTo' -join '; '}}
 ```
 
-___
+---
 
 ## BloodHound CD Visualization
 
@@ -145,7 +145,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(c:Computer {highvalue:true})) WHERE any(r IN relationships(p) WHERE type(r) = "AllowedToDelegate") RETURN p` | Privesc paths via CD | Path. |
 ^ad-cd-bh
 
-___
+---
 
 ## Common Misconfigurations
 
@@ -157,7 +157,7 @@ ___
 | CD + protocol transition + non-Tier-0 service | Wide attack surface | Audit. |
 ^ad-cd-misconfig
 
-___
+---
 
 ## Mitigations
 
@@ -170,4 +170,4 @@ ___
 | Use gMSA en lugar de user-style service account | Auto-rotate pwd | Reduce hash exposure. |
 ^ad-cd-mitigations
 
-***
+---

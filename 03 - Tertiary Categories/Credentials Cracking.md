@@ -9,7 +9,7 @@ kind: Tertiary Category
 ---
 # Credentials Cracking
 
-***
+---
 
 ## 🕵 Hash Identification & Analysis
 El primer paso es saber qué estamos atacando.
@@ -45,4 +45,4 @@ La "munición" necesaria para los ataques.
  - [[Mutating Wordlists with Rules]] (Uso de reglas (OneRuleToRuleThemAll, Best64) para generar variaciones de contraseñas.)
  - [[Generating Custom Wordlists]] (Uso de `cewl` o `crunch` para crear diccionarios basados en el objetivo.)
 
-***
+---

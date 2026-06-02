@@ -13,7 +13,7 @@ linked:
 ---
 # LFI To RCE - Phar Deserialization
 
-***
+---
 
 ## Cheatsheet
 
@@ -104,7 +104,7 @@ Cualquier función filesystem PHP que reciba `phar://` la deserializa:
 - **PHP 8.0+** — algunas gadget chains de phpggc rotas. `phpggc -l --new-only` filtra las compatibles.
 - **`disable_classes` agresivo** — bloquea instanciación de gadgets.
 
-___
+---
 
 ## Overview
 
@@ -124,4 +124,4 @@ Si la app tiene clases con métodos `__wakeup`/`__destruct`/`__toString` que ter
 
 [phpggc repo](https://github.com/ambionics/phpggc) — generador de chains para frameworks populares.
 
-***
+---

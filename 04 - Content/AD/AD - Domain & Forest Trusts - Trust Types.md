@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Domain & Forest Trusts - Trust Types
 
-***
+---
 
 ## Intra-Forest Trusts (Within Forest)
 
@@ -46,7 +46,7 @@ Get-ADTrust -Filter * |
   Select Name,TrustType,Direction,IsTransitive,trustAttributes
 ```
 
-___
+---
 
 ## Inter-Forest Trusts (Cross-Forest)
 
@@ -75,7 +75,7 @@ Get-ADTrust -Filter * -Properties * |
          SIDFilteringForestAware,SIDFilteringQuarantined,TGTDelegation
 ```
 
-___
+---
 
 ## Trust Type Decoded (LDAP `trustType`)
 
@@ -95,7 +95,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass \
   cn trustType trustDirection trustAttributes
 ```
 
-___
+---
 
 ## Trust Attributes Flags Decoded
 
@@ -136,7 +136,7 @@ print(decode_trust_attributes(0x20))  # ['WITHIN_FOREST']
 print(decode_trust_attributes(0xC))   # ['QUARANTINED', 'FOREST_TRANSITIVE']
 ```
 
-___
+---
 
 ## Trust Account Objects (TDO)
 
@@ -167,7 +167,7 @@ secretsdump.py 'corp/auditor:Pass!'@<DC> -just-dc-user 'PARTNER$'
 # PARTNER$:<RID>:aad3b435...:<NTLM-hash>:::
 ```
 
-___
+---
 
 ## Trust Operational Tests
 
@@ -195,4 +195,4 @@ nltest /server:partner-dc /trusted_domains
 klist
 ```
 
-***
+---

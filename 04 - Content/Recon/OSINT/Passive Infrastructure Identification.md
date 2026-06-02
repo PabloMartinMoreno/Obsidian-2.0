@@ -17,7 +17,7 @@ linked:
 ---
 # Identificación Pasiva de Infraestructura
 
-***
+---
 ## CheatSheet
 
 | **Acción**                       | **Descripción**                                                                                             |

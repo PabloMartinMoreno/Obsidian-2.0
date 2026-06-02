@@ -25,7 +25,7 @@ linked:
 > [!info]
 > Análisis estático de source code para identificar vulnerabilidades. Manual + assisted con linters/SAST. Disponible cuando se logra disclosure (.git exposed, decompilación) o en whitebox engagement.
 
-***
+---
 
 ## Patterns de hunt (grep-based)
 
@@ -54,7 +54,7 @@ grep -rIn 'process\\.env|os\\.environ' .
 find . -name '*.env*' -o -name 'config*.yml' -o -name '.npmrc'
 ```
 
-***
+---
 
 ## Tools SAST
 
@@ -81,7 +81,7 @@ trufflehog filesystem --directory=./repo
 gitleaks detect --source=./repo
 ```
 
-***
+---
 
 ## Decompiling cuando no hay source
 
@@ -93,7 +93,7 @@ gitleaks detect --source=./repo
 | **iOS IPA** | otool, class-dump, Hopper |
 | **Native binaries** | Ghidra, IDA Free, radare2, Binary Ninja |
 
-***
+---
 
 ## Notas Relacionadas
 

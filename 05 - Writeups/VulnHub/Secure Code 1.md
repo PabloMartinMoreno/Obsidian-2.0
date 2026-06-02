@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/securecode1
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[Secure Code - SQLI]]"
 ---
 #  VulnHub - Secure Code 1

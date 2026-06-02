@@ -11,7 +11,7 @@ kind: Tertiary Category
 ---
 # Reconocimiento Pasivo
 
-***
+---
 
 ##  🕸 Public Data Mining (Dorking)
   Uso de motores de búsqueda y repositorios públicos para encontrar información expuesta.
@@ -46,4 +46,4 @@ Técnicas para monitorizar accesos o identificar si estamos siendo investigados.
 - [[Honeytokens & Tracking Pixels]] (Uso de tokens como CanaryTokens para rastrear apertura de correos o documentos.)
 
 
-***
+---

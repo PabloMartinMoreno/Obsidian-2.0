@@ -18,7 +18,7 @@ linked:
 ---
 # osTicket Enumeration
 
-***
+---
 
 ## CheatSheet
 

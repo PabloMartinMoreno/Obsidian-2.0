@@ -7,7 +7,7 @@ kind: Tertiary Category
 ---
 # C2 Infrastructure
 
-***
+---
 
 ## 📡 C2 Design & Architecture
   Diseño de la red de ataque para proteger al operador.
@@ -28,4 +28,4 @@ kind: Tertiary Category
    - [[Setting up Sliver C2]] (Configuración básica de Sliver: listeners, profiles, implants.)
    - [[Setting up Covenant]] (Configuración de Covenant C2 en .NET.)
 
-***
+---

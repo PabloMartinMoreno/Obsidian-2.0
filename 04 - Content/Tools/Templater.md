@@ -9,7 +9,7 @@ kind: Tool
 ---
 # [[Templater]]
 
-***
+---
 
 ## Description:
 
@@ -46,7 +46,7 @@ kind: Tool
 
 To help manage **incomplete**, **NULL**, or **'Untitled'** notes, it can  be helpful to assign `Settings > Files & Links > Folder to Create New Notes in` to `.trash`. Since our **0400 - Gen_Note** template handles moving successfully created notes to their appropriate folders, the categories listed above will automatically end up in trash. 
 
-___
+---
 
 # Resources
 
@@ -57,7 +57,7 @@ ___
 
 [^1]: Templater Plugin, SilentVoid13, https://github.com/SilentVoid13/Templater
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

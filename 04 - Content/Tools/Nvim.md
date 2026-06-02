@@ -191,7 +191,7 @@ linked:
 - **Uso:** Repite la última acción de cambio, facilitando la edición repetitiva.
 
 
-___
+---
 
 # Vim-Surround (plugin)
 
@@ -236,7 +236,7 @@ ___
         - **Resultado:**  
             El bloque seleccionado se encierra entre `(` y `)`.
 
-___
+---
 
 # Tecla G
 
@@ -271,7 +271,7 @@ ___
    - `gJ`: Une líneas sin insertar espacios adicionales.
    - `gQ`: Formatea el texto seleccionado usando el formateador predeterminado.
 
-___
+---
 
 # Comando de sustitución
 
@@ -433,7 +433,7 @@ La sintaxis básica del comando de sustitución es:
 - **Uso:**  
     Muestra el contenido de todos los registros, lo que te permite revisar qué texto contiene cada uno.
 
-___
+---
 
 En **Neovim** (nvim) las marcas (o _marks_) son una herramienta muy útil para **navegar rápidamente** por tus archivos. Permiten **guardar posiciones específicas** dentro de un archivo y regresar a ellas en cualquier momento sin tener que desplazarte manualmente. Aquí te explico en detalle cómo funcionan:
 

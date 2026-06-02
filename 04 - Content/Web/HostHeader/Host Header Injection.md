@@ -30,7 +30,7 @@ linked:
 ---
 # Host Header Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -132,7 +132,7 @@ tab: **Otros Tools y Scripts**
 ![[Host Header Injection - Tooling#^hhi-tool-others]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -151,7 +151,7 @@ Vector clase A — descubierto en práctica masiva post-2014 (PortSwigger James 
 
 HHI es vector base, frecuentemente combinable con cache poisoning para amplificar impact.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -195,7 +195,7 @@ ___
    - HHI + Open Redirect = chained redirect chain
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -267,7 +267,7 @@ for vh in 'localhost' 'admin' 'internal' 'jenkins' '127.0.0.1'; do
 done
 ```
 
-___
+---
 
 ## Impacto
 
@@ -282,7 +282,7 @@ ___
 - **CSRF bypass via routing** — internal vhost CSRF accepted.
 - **Compound impact via chains** — HHI + cache + HRS = high CVSS.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -312,7 +312,7 @@ ___
 - **HSTS + scheme verification** — force HTTPS, prevent downgrade.
 - **Monitor email link domains** — alert si reset email contains non-canonical domain.
 
-___
+---
 
 ## Para entender Host Header Injection
 
@@ -341,7 +341,7 @@ Reset emails are out-of-band (atacante must intercept o ver email). Solutions:
 - Burp Collaborator OOB confirms backend fetched attacker URL.
 - Check email link domain post-poisoning.
 
-___
+---
 
 ## Recursos
 
@@ -356,4 +356,4 @@ ___
 - [Nginx security advisory - Host header](https://nginx.org/en/security_advisories.html) — server-specific.
 - [Cache poisoning + HHI labs (PortSwigger)](https://portswigger.net/web-security/web-cache-poisoning) — practical chains.
 
-***
+---

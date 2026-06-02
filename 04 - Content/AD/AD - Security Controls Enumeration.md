@@ -16,4 +16,4 @@ linked:
 > [!todo]
 > Pendiente completar.
 
-***
+---

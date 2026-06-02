@@ -16,7 +16,7 @@ linked:
 ---
 # AD - ACL Enumeration - ACE Filtering & Bulk Audit
 
-***
+---
 
 ## Find-InterestingDomainAcl
 
@@ -42,7 +42,7 @@ Find-InterestingDomainAcl -ResolveGUIDs |
   Export-Csv interesting_acls.csv -NoTypeInformation
 ```
 
-___
+---
 
 ## Custom Bulk Audit Scripts
 
@@ -76,7 +76,7 @@ $Acls = foreach ($t in $Targets) {
 $Acls | Group IdentityReference | Sort Count -Descending
 ```
 
-___
+---
 
 ## BloodHound Bulk Cypher
 
@@ -99,7 +99,7 @@ RETURN p
 ```
 ^ad-bulk-bhcypher
 
-___
+---
 
 ## Foreign Principal Audit
 
@@ -110,7 +110,7 @@ ___
 | BloodHound `MATCH (u)-[r:GenericAll]->(t) WHERE u.domain <> t.domain RETURN u,t,r` | Cross-domain ACL paths | Visual. |
 ^ad-bulk-foreign
 
-___
+---
 
 ## Stale / Old ACE Detection
 
@@ -121,7 +121,7 @@ ___
 | `Find-InterestingDomainAcl -ResolveGUIDs \| ? {(Get-ADUser $_.IdentityReferenceName -EA Silent).Enabled -eq $false}` | ACEs de disabled accounts | Audit. |
 ^ad-bulk-stale
 
-___
+---
 
 ## Per-Quarter Compliance
 
@@ -148,7 +148,7 @@ Compare-Object (Import-Csv "C:\acl-audits\2026-Q1.csv") (Import-Csv $Out) `
   Where SideIndicator -eq "=>"  # nuevos en Q2
 ```
 
-___
+---
 
 ## OPSEC Considerations
 
@@ -162,4 +162,4 @@ ___
 | BloodHound collection vez de bulk LDAP | Single ingest = less LDAP storm | Standard. |
 ^ad-bulk-opsec
 
-***
+---

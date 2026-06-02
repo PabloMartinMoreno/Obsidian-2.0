@@ -14,7 +14,7 @@ linked:
 ---
 # IDOR - Explotación Indirecta y Lógica de Negocio
 
-***
+---
 
 ## Cheatsheet
 
@@ -70,4 +70,4 @@ wait
 
 Cada microservicio / async job revalida autz de manera autónoma — nada de "trust inherited from previous step". Estado del flow server-side acoplado al session token. One-time tokens para acciones críticas (export, role change). Confused-deputy fix: ignorar `actor_id`/`from_id` del body, derivar siempre del token.
 
-***
+---

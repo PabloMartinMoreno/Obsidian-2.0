@@ -14,7 +14,7 @@ linked:
 ---
 # IDOR - Manipulación de Parámetros y Rutas
 
-***
+---
 
 ## Cheatsheet
 
@@ -57,4 +57,4 @@ done
 
 Validación de autorización a nivel modelo: el usuario autenticado (del token, no del request) debe tener permiso explícito sobre el objeto referenciado. RBAC/ABAC > ofuscar IDs.
 
-***
+---

@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Recopilación de información sobre target previo al ataque. Dos fases: **passive** (sin contacto directo) y **active** (envío de paquetes al target).
 
-***
+---
 
 ## Passive (sin tocar target)
 
@@ -26,7 +26,7 @@ linked:
 
 Ver [[Passive Reconnaissance & OSINT]].
 
-***
+---
 
 ## Active (envía paquetes)
 
@@ -39,7 +39,7 @@ Ver [[Passive Reconnaissance & OSINT]].
 | **CMS specific** | wpscan, droopescan, joomscan |
 | **AD** | nmap scripts, ldapsearch, BloodHound |
 
-***
+---
 
 ## MOCs relacionados
 
@@ -49,7 +49,7 @@ Ver [[Passive Reconnaissance & OSINT]].
 - [[Host & Network Enumeration]] — tertiary
 - [[Cloud Enumeration]] — tertiary
 
-***
+---
 
 ## Recursos
 

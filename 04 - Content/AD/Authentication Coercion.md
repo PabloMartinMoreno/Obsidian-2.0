@@ -28,7 +28,7 @@ linked:
 ---
 # Authentication Coercion
 
-***
+---
 
 ## Cheatsheet
 ^auth-coercion
@@ -42,7 +42,7 @@ linked:
 | **WSP Coerce** | MS-WSP (Windows Search Protocol) | `coercer` | N/A | N/A |
 | **Coercer** (meta-tool) | Todos los anteriores | `coercer coerce` | | |
 
-***
+---
 
 ## Concepto
 
@@ -241,4 +241,4 @@ done
 - [HackTricks - Printers Spooler Service](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/printers-spooler-service-abuse)
 - [Microsoft KB5005413 (PetitPotam)](https://support.microsoft.com/en-us/topic/kb5005413-mitigating-ntlm-relay-attacks-on-active-directory-certificate-services-ad-cs-3612b773-4043-4aa9-b23d-b87afb77f758)
 
-***
+---

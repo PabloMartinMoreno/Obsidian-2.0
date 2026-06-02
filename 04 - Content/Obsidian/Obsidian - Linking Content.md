@@ -9,7 +9,7 @@ kind: Concept
 ---
 # [[Obsidian - Linking Content]]  
 
-***
+---
 
 ## Description
 
@@ -57,7 +57,7 @@ If you're using included CSS snippets nonexistent nodes become a bit more visabl
 
 5. If you're using templates when creating new notes, the hierarchical folder structure above your new note is automatically applied to the note a series of links. Unlike [[Tagging Content|Tags]], several *links* should be added to new notes with the idea that more meaningful links creates more relationships/opportunity for relationships between notes. This process should ultimately lead to a natural distillation of categorical knowledge and thus a new category and MOC.
 
-***
+---
 
 ## Resources
 
@@ -65,7 +65,7 @@ If you're using included CSS snippets nonexistent nodes become a bit more visabl
 | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | [Obsidian, Taming a Collective Consciousness; Sam Link](https://trustedsec.com/blog/obsidian-taming-a-collective-consciousness) | Example implementation of Zettelkasten using Obsidian |
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

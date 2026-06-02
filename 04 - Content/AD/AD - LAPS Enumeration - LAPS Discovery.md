@@ -17,7 +17,7 @@ linked:
 ---
 # AD - LAPS Enumeration - LAPS Discovery
 
-***
+---
 
 ## Schema Detection
 
@@ -43,7 +43,7 @@ $Schema = (Get-ADRootDSE).SchemaNamingContext
 }
 ```
 
-___
+---
 
 ## LAPS Deployment Detection
 
@@ -69,7 +69,7 @@ $V2 = (Get-ADComputer -Filter * -Pr msLAPS-PasswordExpirationTime | Where 'msLAP
 }
 ```
 
-___
+---
 
 ## GPO LAPS Configuration
 
@@ -95,7 +95,7 @@ Get-GPO -All | Where DisplayName -match "(?i)laps" | % {
 }
 ```
 
-___
+---
 
 ## OU Scope of LAPS
 
@@ -123,7 +123,7 @@ Get-ADOrganizationalUnit -Filter * | % {
 } | Sort Pct
 ```
 
-___
+---
 
 ## LAPSv1 vs LAPSv2 Comparison
 
@@ -139,7 +139,7 @@ ___
 | Permission attr | `Self+ExtendedRight ms-Mcs-AdmPwd` | `Self+ExtendedRight msLAPS-Password` |
 ^ad-laps-comparison
 
-___
+---
 
 ## Anonymous LAPS Discovery
 
@@ -151,4 +151,4 @@ ___
 
 **Realidad:** schema query anonymous casi siempre bloqueado Win2019+. Auth obligatoria. Si pega = misconfig grave.
 
-***
+---

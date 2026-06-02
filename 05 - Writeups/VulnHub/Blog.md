@@ -5,7 +5,7 @@ plataforma: "[[VulNyx]]"
 web: https://www.vulnhub.com/blog
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[hydra]]"
 ---
 #  VulNyx - Blog 

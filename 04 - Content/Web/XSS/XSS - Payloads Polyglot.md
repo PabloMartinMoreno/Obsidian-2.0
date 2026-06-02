@@ -13,7 +13,7 @@ linked:
 ---
 # XSS - Payloads Polyglot
 
-***
+---
 
 ## Cheatsheet
 
@@ -64,7 +64,7 @@ done
 # 2. Polyglot via Burp Intruder — list payloads → mark position → match grep
 ```
 
-___
+---
 
 ## Overview
 
@@ -76,4 +76,4 @@ ___
 - [0xsobky polyglot](https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot)
 - [PortSwigger XSS Cheat Sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 
-***
+---

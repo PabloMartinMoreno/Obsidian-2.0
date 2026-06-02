@@ -24,7 +24,7 @@ linked:
 ---
 # XML External Entity (XXE)
 
-***
+---
 
 ## Cheatsheet
 
@@ -95,7 +95,7 @@ tab: **Carga de Archivos (SVG/DOCX/XLSX/XMP)**
 - .NET: `XmlReaderSettings { DtdProcessing = Prohibit }`.
 - Preferir formatos alternativos (JSON) cuando sea posible.
 
-***
+---
 
 ## Notas Relacionadas
 
@@ -103,4 +103,4 @@ tab: **Carga de Archivos (SVG/DOCX/XLSX/XMP)**
 - [[File Inclusion]] — técnica complementaria de lectura de archivos.
 - [[Insecure Deserialization]] — mismo nivel de abuso de parsers.
 
-***
+---

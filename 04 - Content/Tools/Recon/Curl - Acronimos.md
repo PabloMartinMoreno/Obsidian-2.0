@@ -15,7 +15,7 @@ linked:
 ---
 # Curl - Acronimos
 
-***
+---
 
 ## Cheatsheet
 

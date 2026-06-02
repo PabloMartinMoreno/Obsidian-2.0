@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Cliente SMB CLI estilo FTP. Listar shares, navegar, download/upload, ejecución de comandos. Bundle Samba.
 
-***
+---
 
 ## Cheatsheet
 
@@ -26,7 +26,7 @@ linked:
 | `smbclient //<target>/<share> -U <user> --pw-nt-hash <NThash>` | Pass-the-Hash | [[Pass-the-Hash - SMB Lateral]] |
 | `smbclient //<target>/IPC$ -U <user>%<pass>` | Acceso IPC | Enum/ataques RPC |
 
-***
+---
 
 ## Sesión interactiva (comandos)
 
@@ -41,7 +41,7 @@ smb: \> recurse ON   # modo recursivo
 smb: \> prompt OFF   # no prompt en mget/mput
 ```
 
-***
+---
 
 ## Recon flow
 
@@ -60,7 +60,7 @@ done
 smbclient //<target>/share -N -c 'recurse;prompt;mget *'
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

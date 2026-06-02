@@ -32,7 +32,7 @@ linked:
 ---
 # AD - Users Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -168,7 +168,7 @@ tab: **linkedin2username / Wordlists**
 ![[AD - Users Enumeration - Tooling#^ad-tool-wordlists-users]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -209,7 +209,7 @@ Foundation crítica para la mayoría de ataques AD: Kerberoasting (necesita SPN-
 - **Stale accounts** — likely weak passwords (spray-friendly).
 - **Delegation enumeration** — privesc paths via UD/CD/RBCD.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -264,7 +264,7 @@ ___
    e. Shadow Credentials add → impersonation
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -300,7 +300,7 @@ Get-ADUser -Filter {LastLogonDate -lt (Get-Date).AddDays(-180) -and AdminCount -
   -Properties LastLogonDate
 ```
 
-___
+---
 
 ## Impacto
 
@@ -319,7 +319,7 @@ ___
 - **OSINT enumeration** — no auth needed for kerbrute validation.
 - **Account lockout DoS** — bulk wrong passwords = mass lockout (avoid).
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -364,7 +364,7 @@ ___
 - **Microsoft Defender for Identity** — anomalous user enum detection.
 - **Honeypot accounts** — alert on access attempts.
 
-___
+---
 
 ## Para entender Users Enumeration
 
@@ -404,7 +404,7 @@ Old service accounts created years ago with simple passwords (`Service1`, `Pa$$w
 
 Brute force locks out accounts. Spray = 1 password × N users. No per-user lockout triggered (unless aggressive). Reverse spray (1 pass, many users) avoids domain-wide lockout. Sprayable wordlist: SeasonYear+!, Companyname2024+!, common defaults.
 
-___
+---
 
 ## Recursos
 
@@ -425,4 +425,4 @@ ___
 - [LDAP Filter Syntax](https://learn.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax) — filter spec.
 - [MITRE ATT&CK T1087](https://attack.mitre.org/techniques/T1087/) — Account Discovery.
 
-***
+---

@@ -11,7 +11,7 @@ linked:
 > [!info]
 > Process snooper sin root para Linux. Detecta procesos arrancando + cmdlines via `procfs` polling, sin `ptrace`. Esencial para detectar cron jobs y scripts triggered por otros users.
 
-***
+---
 
 ## Uso
 
@@ -30,7 +30,7 @@ chmod +x pspy64
 ./pspy64 -f
 ```
 
-***
+---
 
 ## Output típico
 
@@ -41,7 +41,7 @@ chmod +x pspy64
 
 → Cron como root ejecuta `/opt/backup.sh` cada minuto. Si writable → PrivEsc.
 
-***
+---
 
 ## Workflow privesc
 
@@ -58,7 +58,7 @@ grep 'UID=0' /tmp/pspy.log | sort -u
 ls -la /opt/backup.sh
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

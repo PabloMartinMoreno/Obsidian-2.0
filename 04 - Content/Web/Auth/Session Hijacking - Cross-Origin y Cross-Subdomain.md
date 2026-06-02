@@ -19,7 +19,7 @@ linked:
 ---
 # Session Hijacking - Cross-Origin y Cross-Subdomain
 
-***
+---
 
 ## Same-Origin Policy (SOP) Bypass
 
@@ -39,7 +39,7 @@ linked:
 | Burp `Match and Replace` rule add `Origin: https://attacker.com` | Manual Origin manipulation | Manual probe. |
 ^sh-cross-sop
 
-___
+---
 
 ## Subdomain Takeover Combo
 
@@ -60,7 +60,7 @@ ___
 | `certbot certonly --standalone -d forgotten.target.com` | Generate valid TLS cert for claimed sub | Cert legitimization. |
 ^sh-cross-subdomain-takeover
 
-___
+---
 
 ## postMessage Handler Abuse
 
@@ -98,7 +98,7 @@ ___
 </script>
 ```
 
-___
+---
 
 ## CORS Misconfig Credential Leak
 
@@ -136,7 +136,7 @@ ___
 </script>
 ```
 
-___
+---
 
 ## WebSocket Hijacking (CSWSH)
 
@@ -173,4 +173,4 @@ ___
 </script>
 ```
 
-***
+---

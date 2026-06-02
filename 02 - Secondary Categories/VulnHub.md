@@ -6,7 +6,7 @@ kind: Secondary Category
 ---
 # VulnHub
 
-***
+---
 
 ## Overview
 
@@ -42,7 +42,7 @@ GROUP BY os
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Máquinas
 
@@ -56,7 +56,7 @@ FROM "05 - Writeups/VulnHub"
 SORT dificultad ASC, file.name ASC
 ```
 
-***
+---
 
 ## Recursos
 

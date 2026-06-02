@@ -17,7 +17,7 @@ linked:
 ---
 # dnsenum
 
-***
+---
 
 ## Cheatsheet
 
@@ -39,7 +39,7 @@ linked:
 **AXFR:** La herramienta intenta automáticamente una **Transferencia de Zona (AXFR)** en todos los Nameservers (NS) que encuentre. Si tiene éxito, obtendrá todos los subdominios sin necesidad de fuerza bruta.
 ```
 
-***
+---
 
 ## Overview
 
@@ -66,11 +66,11 @@ DNSenum no se limita a buscar la IP de un sitio; realiza una serie de pasos lóg
 > Nota de Seguridad: Realizar transferencias de zona o fuerza bruta agresiva puede ser detectado por sistemas de prevención de intrusos (IPS). Asegúrate de tener autorización antes de usar esta herramienta contra dominios que no te pertenecen.
 
 
-***
+---
 
 ## Notas Relacionadas
 
 - [[DNS (53) - Enumeración]]
 
 
-***
+---

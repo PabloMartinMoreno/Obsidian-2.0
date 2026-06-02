@@ -16,7 +16,7 @@ linked:
 ---
 # NTDS.dit Extraction - Offline Parsing
 
-***
+---
 
 ## impacket-secretsdump LOCAL
 
@@ -43,7 +43,7 @@ impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL -just-dc-ntlm 2>/dev/nu
   | grep ":::" | cut -d: -f4 | sort -u > nt_only.txt
 ```
 
-___
+---
 
 ## DSInternals (PowerShell)
 
@@ -76,7 +76,7 @@ Get-ADDBAccount -All -DatabasePath '.\ntds.dit' -BootKey $key |
   Select-Object SamAccountName, DistinguishedName, NTHash, PasswordLastSet, Enabled
 ```
 
-___
+---
 
 ## NTDSDumpEx
 
@@ -92,7 +92,7 @@ ___
 NTDSDumpEx.exe -d ntds.dit -s SYSTEM -o hashes.txt
 ```
 
-___
+---
 
 ## pypykatz registry (SAM/SECURITY)
 
@@ -111,7 +111,7 @@ pypykatz registry --system SYSTEM --sam SAM --security SECURITY
 pip install pypykatz
 ```
 
-___
+---
 
 ## Output Filtering
 
@@ -136,7 +136,7 @@ grep -i "admin\|krbtgt\|svc_" hashes.ntds | cut -d: -f1,4
 grep ":500:" hashes.ntds
 ```
 
-___
+---
 
 ## Hash Formats en Output
 
@@ -158,4 +158,4 @@ hashcat -m 1000 nt_hashes.txt /usr/share/wordlists/rockyou.txt
 hashcat -m 1000 nt_hashes.txt /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule
 ```
 
-***
+---

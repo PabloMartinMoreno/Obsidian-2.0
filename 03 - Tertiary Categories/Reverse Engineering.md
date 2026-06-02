@@ -10,7 +10,7 @@ kind: Tertiary Category
 ---
 # Ingeniería Inversa
 
-***
+---
 
 ## 📜 Code Analysis & Deobfuscation
 Análisis de código fuente o scripts interpretados.
@@ -42,4 +42,4 @@ Análisis de código fuente o scripts interpretados.
    - [[Android APK Reversing]] (Descompilación de APKs, análisis de Manifest, smali y código Java/Kotlin.)
    - [[iOS App Reversing]] (Análisis de aplicaciones iOS (IPA), descriptado de binarios.)
 
-***
+---

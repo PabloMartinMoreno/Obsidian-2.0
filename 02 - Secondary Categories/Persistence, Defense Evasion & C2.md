@@ -7,7 +7,7 @@ kind: Secondary Category
 ---
 # Persistence, Defense Evasion & C2
 
-***
+---
 
 ## Mapa Mental
 
@@ -50,19 +50,19 @@ mindmap
       Malleable_Profiles
 ```
 
-***
+---
 
 ## [[Persistence Techniques]]
 
 
-***
+---
 
 ## [[Defense Evasion]]
 
 
-***
+---
 
 ## [[Command & Control (C2)]]
 
 
-***
+---

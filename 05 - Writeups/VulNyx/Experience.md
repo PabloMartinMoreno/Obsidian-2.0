@@ -4,7 +4,7 @@ tags:
 plataforma: "[[VulNyx]]"
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[msfconsole]]"
 ---
 #  VulNix - Experience
@@ -124,7 +124,7 @@ Host script results:
 |_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-425
 ```
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -145,7 +145,7 @@ Matching Modules
    4  exploit/windows/smb/smb_doublepulsar_rce  2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
 ```
 
-___
+---
 
 
 

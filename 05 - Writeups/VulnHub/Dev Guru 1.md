@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/devguru1
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[githack]]"
   - "[[gitea]]"
   - "[[sudo]]"
@@ -31,7 +31,7 @@ nmap -p- -Pn -oN nmapFullTCP.txt 1 <IP-VICTIMA>
   - `/backend` (login de October CMS).  
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 

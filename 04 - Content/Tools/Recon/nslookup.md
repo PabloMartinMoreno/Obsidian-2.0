@@ -9,7 +9,7 @@ linked:
 ---
 # nslookup
 
-***
+---
 
 ## Cheatsheet
 
@@ -25,15 +25,15 @@ linked:
 
 
 
-***
+---
 
 ## Overview
 
 
-***
+---
 
 ## Notas Relacionadas
 
 
-***
+---
 

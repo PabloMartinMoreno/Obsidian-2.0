@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Manipulación de Resultados
 
-***
+---
 
 ## Cheatsheet
 
@@ -54,7 +54,7 @@ linked:
 -- 0x3a = ':', 0x0a = '\n' (separadores en hex para evitar quote escape)
 ```
 
-___
+---
 
 ## Overview
 
@@ -68,4 +68,4 @@ Manipulación de resultados = control de **qué** y **cómo** se devuelve. Clave
 
 Diferencias de sintaxis críticas: `LIMIT` (MySQL/PG) vs `TOP` (MSSQL) vs `ROWNUM` (Oracle) vs `FETCH FIRST` (ANSI moderno).
 
-***
+---

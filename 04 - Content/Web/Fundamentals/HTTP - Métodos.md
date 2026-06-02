@@ -24,7 +24,7 @@ Los métodos HTTP indican la acción que se desea realizar sobre un recurso dete
 > [!TIP] Ver el método de una petición
 > Con `curl -v` se previsualiza la petición completa; la primera línea contiene el método (`GET / HTTP/1.1`). En las DevTools del navegador aparece en la columna `Method`.
 
-___
+---
 
 ## Resumen
 

@@ -30,7 +30,7 @@ linked:
 ---
 # Clickjacking
 
-***
+---
 
 ## Cheatsheet
 
@@ -126,7 +126,7 @@ tab: **Wordlists & Repos**
 ![[Clickjacking - Tooling#^cj-tool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -162,7 +162,7 @@ Vector existe desde 2008 (Hansen + Grossman). Defensa moderna: `X-Frame-Options`
 - Mobile webviews + touchjacking variants emergentes.
 - OAuth `/authorize` endpoints frecuentemente frameables.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -211,7 +211,7 @@ ___
    - Final state (account modified, etc).
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -283,7 +283,7 @@ curl -s "$PoC_URL" -o /dev/null -w '%{http_code}\n'  # confirm endpoint
 # luego construir HTML con iframe + decoy
 ```
 
-___
+---
 
 ## Impacto
 
@@ -299,7 +299,7 @@ ___
 - **Subdomain takeover combo** — bypass CSP `frame-ancestors 'self'`.
 - **Touch jacking mobile** — variants en webviews / PWAs.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -331,7 +331,7 @@ ___
 - **Reporting** — `Content-Security-Policy-Report-Only` para detectar framing attempts.
 - **Pruebas regulares** — nuclei templates + Clickbandit en QA.
 
-___
+---
 
 ## Para entender Clickjacking
 
@@ -365,7 +365,7 @@ Touchjacking abusa diferencias entre touch/mouse events en webviews. Tap delay, 
 
 XFO = single value, no multi-origin, no path-level. CSP `frame-ancestors` soporta source-list completa, integra con CSP general, deprecates XFO en spec moderna. Modern browsers leen ambos pero CSP wins en conflict.
 
-___
+---
 
 ## Recursos
 
@@ -379,4 +379,4 @@ ___
 - [Clickjacking original paper - Hansen & Grossman 2008](https://www.sectheory.com/clickjacking.htm) — foundational research.
 - [UI Redressing Attacks (Marcus Niemietz)](https://www.nds.rub.de/research/publications/ui-redressing/) — academic deep dive.
 
-***
+---

@@ -9,7 +9,7 @@ linked:
 ---
 # airmon-ng
 
-***
+---
 
 ### Activar el Modo Monitor
 
@@ -71,4 +71,4 @@ sudo aircrack-ng -w /ruta/a/tu/diccionario.txt -b [MAC_del_router] captura_red-0
 Si la contraseña real de la red está dentro de tu archivo de diccionario, Aircrack-ng la encontrará y te mostrará el mensaje **KEY FOUND!**.
 
 
-***
+---

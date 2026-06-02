@@ -16,7 +16,7 @@ linked:
 ---
 # CRLF Injection - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Puntos de Header Reflexion
 
@@ -31,7 +31,7 @@ linked:
 | `httpx -l urls.txt -include-response-headers -mc 30x` | Bulk filter de redirects (30x) | Recon scale. |
 ^crlfi-detect-points
 
-___
+---
 
 ## Probes con CR/LF
 
@@ -64,7 +64,7 @@ for field in url next return goto continue redirect path; do
 done
 ```
 
-___
+---
 
 ## Detectar Response Splitting Potencial
 
@@ -106,4 +106,4 @@ for enc in '%0d%0a' '%0a' '%0d' '%250d%250a' '%E5%98%8A%E5%98%8D' '%c2%85'; do
 done
 ```
 
-***
+---

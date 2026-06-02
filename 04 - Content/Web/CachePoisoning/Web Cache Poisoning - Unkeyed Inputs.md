@@ -17,7 +17,7 @@ linked:
 ---
 # Web Cache Poisoning - Unkeyed Inputs
 
-***
+---
 
 ## Headers No Incluidos en Cache Key
 
@@ -52,7 +52,7 @@ curl -sI "$URL2" | grep -i x-cache  # Sin el header
 # Si segundo request HIT con response del primero (con header) → header UNKEYED
 ```
 
-___
+---
 
 ## Param Miner Workflow
 
@@ -69,7 +69,7 @@ ___
 | Burp → BApp Store → "Reflection" → install | Highlight reflected inputs en historial | Pre-survey. |
 ^wcp-unkeyed-paramminer
 
-___
+---
 
 ## Method / Path Normalization Differences
 
@@ -102,4 +102,4 @@ done
 # Si todos return same content pero distinct cache HIT → cache key differential
 ```
 
-***
+---

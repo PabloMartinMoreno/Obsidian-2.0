@@ -21,7 +21,7 @@ linked:
 ---
 # AD - Users Enumeration - User List Extraction
 
-***
+---
 
 ## netexec — User Dumps
 
@@ -50,7 +50,7 @@ nxc ldap $DC -u user -p pass --kerberoasting kerb.hash
 nxc ldap $DC -u user -p pass --admin-count > admins.txt
 ```
 
-___
+---
 
 ## Impacket — User Enumeration
 
@@ -77,7 +77,7 @@ impacket-lookupsid 'corp.local/auditor:Pass!'@<DC> 10000 |
   awk '{print $2}' | cut -d'\\' -f2 > users_clean.txt
 ```
 
-___
+---
 
 ## LDAP Direct (ldapsearch)
 
@@ -112,7 +112,7 @@ ldapsearch -h <DC> -p 3268 -D 'corp\\u' -w pass -b "" \
   "(&(objectCategory=user)(!(objectClass=computer)))" samAccountName
 ```
 
-___
+---
 
 ## RPC / SAMR Enumeration
 
@@ -140,7 +140,7 @@ rpcclient -U 'corp\u%pass' <DC> -c 'enumdomusers' |
   done
 ```
 
-___
+---
 
 ## Kerberos User Enumeration (kerbrute)
 
@@ -171,7 +171,7 @@ cp /usr/share/seclists/Usernames/Names/names.txt usernames.txt
 kerbrute userenum --dc <DC> -d corp.local usernames.txt -o valid_users.txt
 ```
 
-___
+---
 
 ## OSINT-Based User Discovery
 
@@ -198,4 +198,4 @@ python3 linkedin2username.py -c "Target Company" -u atacante -p pass -n corp.loc
 kerbrute userenum --dc <DC> -d corp.local linkedin_users.txt -o valid.txt
 ```
 
-***
+---

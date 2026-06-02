@@ -36,7 +36,7 @@ linked:
 ---
 # Pass-the-Hash
 
-***
+---
 
 ## Cheatsheet
 
@@ -205,7 +205,7 @@ tab: **Recursos**
 ![[Pass-the-Hash - Tooling#^pth-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -234,7 +234,7 @@ ___
 | Target accepts | Windows NTLM-aware | Kerberos-aware | Kerberos-aware |
 | Detection | NTLM events (4624 type 3) | Less detection | Bypass NTLM detection |
 
-___
+---
 
 ## Workflow
 
@@ -274,7 +274,7 @@ ___
    - Close injected processes
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -297,7 +297,7 @@ export KRB5CCNAME=atacante.ccache
 impacket-secretsdump corp.local/atacante@10.10.10.10 -hashes :$NT -just-dc
 ```
 
-___
+---
 
 ## Impacto
 
@@ -311,7 +311,7 @@ ___
 - **Backup Operators member hash** — NTDS.dit dump path.
 - **Trust account hash** — cross-trust forge (inter-realm TGT).
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -331,7 +331,7 @@ ___
   - `Suspicious authentication failures (Honeytoken activity)`
 - **PingCastle audit** rule `S-PwdLastSet-Reversible` + `T1-Pth` indicators.
 
-___
+---
 
 ## Para entender PtH
 
@@ -355,7 +355,7 @@ ___
 
 Tier 0 admins en Protected Users = inmunes a PtH/Overpass/Kerberoast clásico.
 
-___
+---
 
 ## Recursos
 
@@ -371,4 +371,4 @@ ___
 - [MITRE ATT&CK T1550.002](https://attack.mitre.org/techniques/T1550/002/) — Pass the Hash.
 - [MITRE ATT&CK T1003](https://attack.mitre.org/techniques/T1003/) — OS Credential Dumping (sources).
 
-***
+---

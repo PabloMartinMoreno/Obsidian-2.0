@@ -18,7 +18,7 @@ linked:
 ---
 # AD - DNS & SRV Records - SRV Records Estándar AD
 
-***
+---
 
 ## SRV Records Globales (Domain-Wide)
 
@@ -47,7 +47,7 @@ for r in "_ldap._tcp.dc._msdcs.$DOM" "_kerberos._tcp.dc._msdcs.$DOM" \
 done
 ```
 
-___
+---
 
 ## SRV Records por Site (Site-Aware Discovery)
 
@@ -70,7 +70,7 @@ for site in $(nxc ldap <DC> -u u -p p --query "(objectClass=site)" "cn" 2>/dev/n
 done
 ```
 
-___
+---
 
 ## msDCS Subdomains (_msdcs Hierarchy)
 
@@ -95,7 +95,7 @@ dig AXFR "_msdcs.$DOM" @<DC>
 dig +short ANY "_msdcs.$DOM" @<DC>
 ```
 
-___
+---
 
 ## SRV Selection: Priority y Weight
 
@@ -122,7 +122,7 @@ dig SRV _ldap._tcp.dc._msdcs.corp.local +noall +answer
 #                                              priority
 ```
 
-___
+---
 
 ## SRV Discovery Errors / Misconfigs
 
@@ -148,4 +148,4 @@ for dc in $DCS; do
 done
 ```
 
-***
+---

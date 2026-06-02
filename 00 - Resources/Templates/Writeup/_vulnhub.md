@@ -8,7 +8,7 @@ web: https://www.vulnhub.com/<% tp.file.title.toLowerCase().replace(/ /g, '') %>
 dificultad:
 ip:
 os:
-relacionados:
+linked:
 ---
 # VulnHub - <% tp.file.title %>
 

@@ -14,7 +14,7 @@ linked:
 
 Estas son las dos tecnologías que utiliza el protocolo [[HTTPS]] durante el **TLS Handshake** para proteger la información.
 
-___
+---
 
 ## Cifrado Simétrico
 

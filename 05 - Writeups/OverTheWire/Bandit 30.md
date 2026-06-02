@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit30.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[git]]"
   - "[[Bandit 29]]"
   - "[[Bandit 31]]"

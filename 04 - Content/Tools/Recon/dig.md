@@ -22,7 +22,7 @@ linked:
 ---
 # Dig - Domain Information Groper
 
-***
+---
 
 ## Cheatsheet
 
@@ -40,7 +40,7 @@ linked:
 | <pre><code>dig example.com ANY +noall +answer</code></pre>                                    | <br>Intenta pedir "todo" lo que tenga (ANY) y formatea la salida limpia mostrando solo la respuesta.           |
 ^dig-enum
 
-***
+---
 
 ## Overview
 
@@ -66,4 +66,4 @@ Es el sucesor moderno de herramientas más antiguas como `nslookup` y es la opci
 ```
 
 
-___
+---

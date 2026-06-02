@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Reconocimiento del Filtro
 
-***
+---
 
 ## Cheatsheet
 
@@ -56,7 +56,7 @@ curl -F 'file=@unique_marker.png' https://target/upload -v | grep -iE 'location:
 # Buscar en response HTML: <img src="...">
 ```
 
-___
+---
 
 ## Overview
 
@@ -71,4 +71,4 @@ Recon **antes** de bypass = decide la estrategia. Si probás bypass + content al
 6. WAF de contenido — inyectar `<?php` en metadata de imagen real.
 7. Path de upload — necesario para ejecutar.
 
-***
+---

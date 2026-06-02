@@ -17,7 +17,7 @@ linked:
 ---
 # Mass Assignment - Tooling
 
-***
+---
 
 ## Param Miner (Burp)
 
@@ -33,7 +33,7 @@ linked:
 | Output panel → "Param Miner" tab | Findings + reflection markers | Post-scan review. |
 ^ma-tool-paramminer
 
-___
+---
 
 ## Source Map / JS Bundle Review
 
@@ -49,7 +49,7 @@ ___
 | Chrome DevTools → Sources → ver original | Manual source review | Live debug. |
 ^ma-tool-sourcemap
 
-___
+---
 
 ## API Documentation Discovery
 
@@ -83,7 +83,7 @@ jq -r '.definitions // .components.schemas | to_entries[] | "\(.key): \(.value.p
 jq -r '.paths | to_entries[] | select(.value.put or .value.patch) | .key' openapi.json
 ```
 
-___
+---
 
 ## ffuf con Field Wordlists
 
@@ -98,7 +98,7 @@ ___
 | `ffuf ... -o results.json` | Output JSON reportable | Post-run review. |
 ^ma-tool-ffuf
 
-___
+---
 
 ## Wordlist custom para field discovery
 
@@ -170,4 +170,4 @@ secret
 metadata
 ```
 
-***
+---

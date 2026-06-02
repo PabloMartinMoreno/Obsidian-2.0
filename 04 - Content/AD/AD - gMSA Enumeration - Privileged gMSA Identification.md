@@ -16,7 +16,7 @@ linked:
 ---
 # AD - gMSA Enumeration - Privileged gMSA Identification
 
-***
+---
 
 ## gMSA in Privileged Groups
 
@@ -40,7 +40,7 @@ foreach ($g in $Priv) {
 }
 ```
 
-___
+---
 
 ## Kerberoastable gMSAs
 
@@ -54,7 +54,7 @@ ___
 
 **Caveat:** kerberoasting un gMSA da TGS hash, **pero password real es 240 chars random** = imposible crack offline. Solo útil si gMSA tiene ACE `WriteProperty msDS-GroupMSAMembership` y podés agregar self → leer pwd directamente.
 
-___
+---
 
 ## gMSA with Delegation Flags
 
@@ -66,7 +66,7 @@ ___
 | `Get-ADComputer -Filter * -Pr msDS-AllowedToActOnBehalfOfOtherIdentity \| ? {$_.'msDS-AllowedToActOnBehalfOfOtherIdentity' -match "<gmsa-SID>"}` | gMSA usado como RBCD principal | Edge. |
 ^ad-gmsapriv-delegation
 
-___
+---
 
 ## Password Read Cross-Correlation
 
@@ -94,7 +94,7 @@ Get-ADServiceAccount -Filter * -Properties PrincipalsAllowedToRetrieveManagedPas
 }
 ```
 
-___
+---
 
 ## gMSA Naming Patterns
 
@@ -114,7 +114,7 @@ Get-ADServiceAccount -Filter * |
   Select Name,SamAccountName
 ```
 
-___
+---
 
 ## High-Value Summary
 
@@ -156,4 +156,4 @@ Get-ADServiceAccount -Filter * -Properties * | % {
 $Priorities | Sort Score -Descending
 ```
 
-***
+---

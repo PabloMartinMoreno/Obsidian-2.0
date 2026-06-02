@@ -17,7 +17,7 @@ linked:
 ---
 # Subdomain Takeover - NS Takeover y DNS-Level
 
-***
+---
 
 ## Nameserver Takeover (NS Records)
 
@@ -52,7 +52,7 @@ aws route53 create-hosted-zone --name "$SUB" --caller-reference "$(date +%s)"
 # Post-claim: DNS responses controlled
 ```
 
-___
+---
 
 ## Expired Domain Reclaim
 
@@ -82,7 +82,7 @@ for sub in $(cat subs.txt); do
 done
 ```
 
-___
+---
 
 ## SOA / NS Misconfig
 
@@ -98,7 +98,7 @@ ___
 | `dnsrecon -d target.com -t axfr` | Auto AXFR + bruteforce | Combined recon. |
 ^sdt-ns-misconfig
 
-___
+---
 
 ## DNS Provider Account Orphan
 
@@ -113,4 +113,4 @@ ___
 | `theHarvester -d target.com -b all` | OSINT extra emails | Account discovery. |
 ^sdt-ns-account-orphan
 
-***
+---

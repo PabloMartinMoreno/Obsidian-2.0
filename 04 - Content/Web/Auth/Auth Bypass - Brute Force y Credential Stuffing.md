@@ -20,7 +20,7 @@ linked:
 ---
 # Auth Bypass - Brute Force y Credential Stuffing
 
-***
+---
 
 ## Default Credential Wordlists
 
@@ -35,7 +35,7 @@ linked:
 | `git clone https://github.com/iotpolice/iot_default_passwords` | IoT-focused defaults | IoT target. |
 ^auth-brute-defaults
 
-___
+---
 
 ## Password Spraying
 
@@ -51,7 +51,7 @@ ___
 | Throttle: `--threads 1 --jitter 5s` (kerbrute) | Slow distribuído | Avoid lockout. |
 ^auth-brute-spraying
 
-___
+---
 
 ## Username Enum + Targeted Brute
 
@@ -67,7 +67,7 @@ ___
 | `grep -i 'victim@target.com' breach.txt` | Local breach DB lookup | Stuffing prep. |
 ^auth-brute-targeted
 
-___
+---
 
 ## Offline Crack (Hashcat / John)
 
@@ -90,7 +90,7 @@ ___
 | `hashcat -m <mode> hash.txt --show` | Ver cracked previo | Post-run. |
 ^auth-brute-hashcat
 
-___
+---
 
 ## Online (Hydra / Medusa / Crackmapexec)
 
@@ -109,7 +109,7 @@ ___
 | Burp Intruder → Sniper con position en password | UI-based brute | GUI workflow. |
 ^auth-brute-online
 
-___
+---
 
 ## Bypass Rate Limiting / Lockout
 
@@ -128,4 +128,4 @@ ___
 | `python3 turbo_intruder_script.py` con `concurrentConnections=1, requestsPerConnection=100` | Volume single-packet attack | Turbo Intruder. |
 ^auth-brute-bypass
 
-***
+---

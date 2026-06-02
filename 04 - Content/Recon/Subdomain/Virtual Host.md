@@ -13,7 +13,7 @@ linked:
 ---
 es una etiqueta en el sistema de direcciones (DNS) de internet.# Virtual Hosts
 
-***
+---
 
 ## El Virtual Host (Capa de aplicación / HTTP)
 
@@ -27,7 +27,7 @@ Es una **directiva de filtrado**. Es una instrucción dentro del software del se
 - **Protocolo:** TCP 80 / 443.
 - **Me doy cuenta de que existe porque:** Al enviar una petición a la IP y cambiar manualmente el valor de la cabecera `Host`, el servidor me responde con contenido distinto.
 
-___
+---
 
 ## Tipos de Virtual Hosting
 

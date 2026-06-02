@@ -18,7 +18,7 @@ linked:
 ---
 # GitLab Enumeration
 
-***
+---
 
 ## CheatSheet
 

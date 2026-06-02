@@ -18,7 +18,7 @@ linked:
 > [!info]
 > Suite SMB/CIFS open-source. En pentest: cliente (`smbclient`, `smbmap`) + server-side enum (RID brute, anonymous null sessions). En Linux PrivEsc: misconfigurations de shares server-side.
 
-***
+---
 
 ## Componentes
 
@@ -33,7 +33,7 @@ linked:
 | `samba-tool` | Admin Samba AD DC |
 | `pdbedit` | Manage local SAM database |
 
-***
+---
 
 ## Recon server-side
 
@@ -53,7 +53,7 @@ rpcclient -U "" <target>
 > netshareenumall
 ```
 
-***
+---
 
 ## CVEs históricos
 
@@ -64,7 +64,7 @@ rpcclient -U "" <target>
 | **CVE-2021-44142** | Samba 4.0-4.13 — VFS module heap overflow |
 | **CVE-2022-32744** | Kerberos password change auth bypass |
 
-***
+---
 
 ## Server-side misconfigs (Linux Samba PrivEsc)
 
@@ -79,7 +79,7 @@ rpcclient -U "" <target>
 
 Si guest tiene write a `[homes]` con tu user → upload SSH keys, etc.
 
-***
+---
 
 ## Notas Relacionadas
 

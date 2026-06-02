@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit20.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[nc]]"
   - "[[Bandit 19]]"
   - "[[Bandit 21]]"

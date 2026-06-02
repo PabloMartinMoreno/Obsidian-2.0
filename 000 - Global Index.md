@@ -10,7 +10,7 @@ cssclasses:
 
 # Global Index
 
-***
+---
 
 ## Atajos
 
@@ -29,7 +29,7 @@ cssclasses:
 ### Carpetas
 - [BlueTeam/](04%20-%20Content/BlueTeam/) · [Linux/](04%20-%20Content/Linux/) · [Crypto/](04%20-%20Content/Crypto/) · [Web/Fundamentals/](04%20-%20Content/Web/Fundamentals/)
 
-***
+---
 
 ## Actividad Reciente
 
@@ -43,7 +43,7 @@ SORT file.mtime DESC
 LIMIT 15
 ```
 
-***
+---
 
 ## Incompletos — Teaser
 
@@ -60,7 +60,7 @@ SORT file.mtime DESC
 LIMIT 5
 ```
 
-***
+---
 
 ## Writeups por Plataforma
 
@@ -77,7 +77,7 @@ GROUP BY plataforma
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Notas por Dominio (`asset/*`)
 

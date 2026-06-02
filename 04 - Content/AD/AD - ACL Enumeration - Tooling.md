@@ -18,7 +18,7 @@ linked:
 ---
 # AD - ACL Enumeration - Tooling
 
-***
+---
 
 ## BloodHound / SharpHound
 
@@ -32,7 +32,7 @@ linked:
 | `MATCH (u)-[r:GetChanges\|GetChangesAll]->(d:Domain) RETURN u,d` | DCSync rights | Critical. |
 ^ad-acl-tool-bh
 
-___
+---
 
 ## PowerView (Adversary)
 
@@ -46,7 +46,7 @@ ___
 | `Set-DomainObjectOwner -TargetIdentity <victim> -PrincipalIdentity <atacante>` | Take ownership (priv) | WriteOwner abuse. |
 ^ad-acl-tool-powerview
 
-___
+---
 
 ## RSAT / PowerShell
 
@@ -59,7 +59,7 @@ ___
 | `Get-ADObject -Filter * -Pr nTSecurityDescriptor` | Bulk objects con SD | Custom audit. |
 ^ad-acl-tool-rsat
 
-___
+---
 
 ## bloodyAD (Linux)
 
@@ -80,7 +80,7 @@ bloodyAD --host <DC> -d corp -u auditor -p 'Pass!' \
   --base "CN=Domain Admins,CN=Users,DC=corp,DC=local"
 ```
 
-___
+---
 
 ## ldapsearch / Linux
 
@@ -92,7 +92,7 @@ ___
 | `net rpc rights list -U 'corp/u%pass' -S <DC>` | RPC rights list | Adjacent. |
 ^ad-acl-tool-ldapsearch
 
-___
+---
 
 ## ADRecon / Bulk Reports
 
@@ -104,7 +104,7 @@ ___
 | `ldapdomaindump 'corp\u:p'@<DC>` | HTML/JSON con ACL | Linux equivalent. |
 ^ad-acl-tool-adrecon
 
-___
+---
 
 ## Custom Audit Tools
 
@@ -119,7 +119,7 @@ ___
 | Purple Knight | IoE ACL | Cross-tool. |
 ^ad-acl-tool-custom
 
-___
+---
 
 ## Recursos
 
@@ -136,4 +136,4 @@ ___
 | `awesome-active-directory` | `https://github.com/Orange-Cyberdefense/awesome-activedirectory` |
 ^ad-acl-tool-resources
 
-***
+---

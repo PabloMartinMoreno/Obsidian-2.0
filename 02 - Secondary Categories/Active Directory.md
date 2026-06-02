@@ -7,7 +7,7 @@ kind: Secondary Category
 ---
 # Active Directory
 
-***
+---
 
 ## Mapa Mental
 
@@ -51,19 +51,19 @@ mindmap
       Mimikatz
 ```
 
-***
+---
 
 ## [[Active Directory Enumeración]]
 
 
-***
+---
 
 ## [[Active Directory Explotación]]
 
 
-***
+---
 
 ## [[Windows & Active Directory Lateral Movement]]
 
 
-***
+---

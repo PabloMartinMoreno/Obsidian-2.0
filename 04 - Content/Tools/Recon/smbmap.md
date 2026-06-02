@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Enum SMB shares + permisos + spider. Alternativa más conveniente que smbclient para recon masivo.
 
-***
+---
 
 ## Cheatsheet
 
@@ -29,7 +29,7 @@ linked:
 | `smbmap -H <target> -u <user> --pw-nt-hash <NThash>` | Pass-the-Hash | Lateral movement |
 | `smbmap -u <user> -p <pass> -d <domain> --host-file targets.txt` | Múltiples targets | Spray |
 
-***
+---
 
 ## Permission strings
 
@@ -38,7 +38,7 @@ linked:
 - `NO ACCESS` — sin permisos
 - `(none)` — share oculto / sin acceso conocido
 
-***
+---
 
 ## Workflow típico
 
@@ -56,7 +56,7 @@ smbmap -H <target> -u 'guest' -p '' -R <share> -A '.*\\.(conf|cfg|ini|txt|xml|sq
 smbmap -H <target> -u 'guest' -p '' --download '<share>/path/file.txt'
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

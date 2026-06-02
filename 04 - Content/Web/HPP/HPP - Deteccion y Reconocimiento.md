@@ -15,7 +15,7 @@ linked:
 ---
 # HPP - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints con Multiple Params
 
@@ -38,7 +38,7 @@ linked:
 | Configuration endpoints | `?key=X&value=Y` | Edge. |
 ^hpp-detect-endpoints
 
-___
+---
 
 ## Probes con Duplicate Params
 
@@ -85,7 +85,7 @@ curl -s "$TARGET?q[]=A&q[]=B"
 # Edit headers en Burp Repeater
 ```
 
-___
+---
 
 ## Detectar Parser Behavior por Stack
 
@@ -129,4 +129,4 @@ echo "$RESPONSE" | head
 # - Error 400        → strict app
 ```
 
-***
+---

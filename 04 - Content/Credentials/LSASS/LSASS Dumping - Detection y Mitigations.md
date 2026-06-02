@@ -18,7 +18,7 @@ linked:
 ---
 # LSASS Dumping - Detection & Mitigations
 
-***
+---
 
 ## Detection Events
 
@@ -42,7 +42,7 @@ Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational |
   }
 ```
 
-___
+---
 
 ## RunAsPPL (LSA Protection)
 
@@ -67,7 +67,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v RunAsPPL /t REG_DWORD /d 
 shutdown /r /t 0
 ```
 
-___
+---
 
 ## Credential Guard (VBS)
 
@@ -91,7 +91,7 @@ ___
 - UEFI bootkit (very advanced).
 - Disable VBS via registry post-DA + reboot (loud).
 
-___
+---
 
 ## WDigest Disable
 
@@ -112,7 +112,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" /v Use
 
 **Defender hardening:** force `UseLogonCredential = 0` via GPO + audit cualquier modify event 4657 (registry change).
 
-___
+---
 
 ## Defender for Endpoint (MDE)
 
@@ -129,7 +129,7 @@ ___
 Set-MpPreference -AttackSurfaceReductionRules_Ids 9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2 -AttackSurfaceReductionRules_Actions Enabled
 ```
 
-___
+---
 
 ## Honeytokens / Fake LSASS Triggers
 
@@ -140,7 +140,7 @@ ___
 | Defender for Identity honeypots | LSASS-derived auth attempts alerta | MDI integration. |
 ^lsass-detect-honey
 
-___
+---
 
 ## Hardening Checklist
 
@@ -155,7 +155,7 @@ ___
 | Tier 0 admins en Protected Users | Members | NTLM disabled + AES + 4h TGT. |
 ^lsass-detect-checklist
 
-___
+---
 
 ## Bypass Comparison
 
@@ -171,7 +171,7 @@ ___
 | Disable VBS post-DA + reboot | Bypasses VBS | Aggressive (audit). |
 ^lsass-detect-bypass
 
-___
+---
 
 ## Common Errors (Defender Side)
 
@@ -184,4 +184,4 @@ ___
 | MDI alerts noise | False positives legacy auth | Tune filters. |
 ^lsass-detect-errors
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # Race Conditions - Tooling
 
-***
+---
 
 ## Turbo Intruder (Burp)
 
@@ -59,7 +59,7 @@ def handleResponse(req, interesting):
     table.add(req)
 ```
 
-___
+---
 
 ## Burp Repeater "Send Group → Single Connection"
 
@@ -77,7 +77,7 @@ ___
 | Burp Macros → Sessions → setup pre-auth refresh | Pre-auth before race | Auth required. |
 ^race-tool-burp-repeater
 
-___
+---
 
 ## race-the-web
 
@@ -95,7 +95,7 @@ ___
 | TOML `[[requests]] cookie = "session=ABC"` | Auth header inject | Auth required. |
 ^race-tool-rtw
 
-___
+---
 
 ## Python asyncio / aiohttp / httpx
 
@@ -161,7 +161,7 @@ async def race():
 asyncio.run(race())
 ```
 
-___
+---
 
 ## Otros Tools y Scripts
 
@@ -181,4 +181,4 @@ ___
 | `apt install apache2-utils && ab -n 30 -c 30 -p body.json -T 'application/json' -C 'session=X' https://target/api/transfer` | Apache Bench | Concurrent baseline. |
 ^race-tool-others
 
-***
+---

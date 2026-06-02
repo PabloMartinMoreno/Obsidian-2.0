@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/Netmon
 dificultad: Fácil
 ip: 10.10.10.152
 os: Windows
-relacionados:
+linked:
   - "[[FTP Enumeration]]"
   - "[[Information Leakage]]"
   - "[[Abusing PRTG Network Monitor]]"
@@ -140,7 +140,7 @@ El desafío de este método es que la interfaz web de PRTG codifica en HTML much
 Tras activar la notificación, recibí una conexión en mi listener, obteniendo nuevamente una shell como `NT AUTHORITY\SYSTEM`.
 
 
-___
+---
 
 ## Bandera(s)
 

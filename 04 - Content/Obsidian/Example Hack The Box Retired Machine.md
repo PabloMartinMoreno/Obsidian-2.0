@@ -9,7 +9,7 @@ kind: Writeup
 ---
 # [[Example Hack The Box Retired Machine]]
 
-***
+---
 
 ## Overview
 
@@ -69,7 +69,7 @@ Initial access was achieved by exploiting a vulnerable WordPress plugin that per
 * [x] Explore automation for plugin-specific enumeration post-WPScan
 * [x] Add SSH lateral movement checklist to internal Playbook template
 
-***
+---
 
 ## Resources
 
@@ -78,7 +78,7 @@ Initial access was achieved by exploiting a vulnerable WordPress plugin that per
 | [MITRE ATT&CK Framework, MITRE](https://attack.mitre.org/)                      | MITRE ATT&CK Framework           |
 | [Example Machine, Hack The Box](https://www.hackthebox.com/hacker/hacking-labs) | Hack The Box online lab platform |
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

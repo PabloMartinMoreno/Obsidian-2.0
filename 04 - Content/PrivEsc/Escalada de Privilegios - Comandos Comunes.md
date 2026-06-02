@@ -6,7 +6,7 @@ linked:
 ---
 # Comandos más Usados para la Escalada de Privilegios
 
-___
+---
 
 #### Búsqueda de binarios SUID/SGID
 

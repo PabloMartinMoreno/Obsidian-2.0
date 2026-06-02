@@ -13,7 +13,7 @@ linked:
 ---
 # Command Injection - Operadores Generales
 
-***
+---
 
 ## Cheatsheet
 

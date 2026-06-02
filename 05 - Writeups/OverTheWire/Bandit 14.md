@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit14.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[nc]]"
   - "[[Bandit 13]]"
   - "[[Bandit 15]]"

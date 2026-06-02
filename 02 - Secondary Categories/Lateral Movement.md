@@ -8,7 +8,7 @@ kind: Secondary Category
 ---
 # Movimiento Lateral
 
-***
+---
 
 ## Mapa Mental
 
@@ -44,12 +44,12 @@ mindmap
       RBCD
 ```
 
-***
+---
 
 ## [[Windows & Active Directory Lateral Movement]]
 
 
-***
+---
 
 ## Vectores específicos
 
@@ -58,9 +58,9 @@ mindmap
 - [[Pass-the-Ticket]] — Kerberos ticket injection.
 - [[evil-winrm]] — cliente Ruby WinRM con Invoke-Binary.
 
-***
+---
 
 ## [[Pivoting & Port Forwarding]]
 
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Health & Security Auditing - Custom Compliance Scripts
 
-***
+---
 
 ## Stale accounts
 
@@ -39,7 +39,7 @@ $Stale | Disable-ADAccount -WhatIf  # quitar -WhatIf cuando OK
 $Stale | Export-Csv "stale-disabled-$(Get-Date -F yyyy-MM-dd).csv" -NoTypeInformation
 ```
 
-___
+---
 
 ## Privileged audit
 
@@ -65,7 +65,7 @@ foreach ($g in $Priv) {
 }
 ```
 
-___
+---
 
 ## Password policy
 
@@ -77,7 +77,7 @@ ___
 | `Get-ADDomain \| Select PasswordPolicy*,LockoutPolicy*` | Lockout policy | Threshold ≥5. |
 ^ad-custom-pwpolicy
 
-___
+---
 
 ## Kerberos health
 
@@ -99,7 +99,7 @@ ___
 .\New-KrbtgtKeys.ps1 -OperationalMode -Confirm:$false -OneStep
 ```
 
-___
+---
 
 ## Delegation audit
 
@@ -111,7 +111,7 @@ ___
 | `Get-ADComputer -Filter * -Pr msDS-AllowedToActOnBehalfOfOtherIdentity \| ? {$_.'msDS-AllowedToActOnBehalfOfOtherIdentity'}` | RBCD | Audit. |
 ^ad-custom-deleg
 
-___
+---
 
 ## ADCS audit
 
@@ -124,7 +124,7 @@ ___
 | `Get-CertificateTemplate \| Get-CertificateTemplateAcl` | DACLs templates | ESC4 check. |
 ^ad-custom-adcs
 
-___
+---
 
 ## ACL anomalies
 
@@ -135,7 +135,7 @@ ___
 | `Import-Module ActiveDirectoryRights; Get-ADObjectAcl` | DACLs por objeto | Audit. |
 ^ad-custom-acl
 
-___
+---
 
 ## GPO audit
 
@@ -147,7 +147,7 @@ ___
 | `Get-GPO -All \| % { Get-GPPermission -Guid $_.Id -All }` | DACLs per-GPO | ACL audit. |
 ^ad-custom-gpo
 
-___
+---
 
 ## LAPS audit
 
@@ -158,7 +158,7 @@ ___
 | `Get-LapsADExtendedRights -Identity "OU=Servers,DC=corp,DC=local"` | Quien puede leer LAPS | Audit ACL. |
 ^ad-custom-laps
 
-___
+---
 
 ## Trust audit
 
@@ -169,7 +169,7 @@ ___
 | `Get-ADTrust -Filter * \| ? { $_.TGTDelegation -eq $true }` | TGT Delegation on | Crítico (CVE-2019-0683). |
 ^ad-custom-trust
 
-___
+---
 
 ## Recursos
 
@@ -182,4 +182,4 @@ ___
 | GPRegistryPolicy | `https://github.com/PowerShell/GPRegistryPolicy` |
 ^ad-custom-resources
 
-***
+---

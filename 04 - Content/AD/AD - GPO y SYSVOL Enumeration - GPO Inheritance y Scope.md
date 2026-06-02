@@ -17,7 +17,7 @@ linked:
 ---
 # AD - GPO y SYSVOL Enumeration - GPO Inheritance & Scope
 
-***
+---
 
 ## GPO Application Order
 
@@ -37,7 +37,7 @@ linked:
 | `Get-GPResultantSetOfPolicy -ReportType Html -Path rsop.html -User <user> -Computer <host>` | Modeling sin estar logueado | Predict impact. |
 ^ad-gpo-order
 
-___
+---
 
 ## Per-OU gPLink Discovery
 
@@ -59,7 +59,7 @@ $ou.gPLink -split '\]\[' | % {
 }
 ```
 
-___
+---
 
 ## Block Inheritance
 
@@ -70,7 +70,7 @@ ___
 | `Set-GPInheritance -Target "<OU-DN>" -IsBlocked Yes` (priv) | Habilitar block | Hardening. |
 ^ad-gpo-blockinherit
 
-___
+---
 
 ## Enforced GPO Links
 
@@ -82,7 +82,7 @@ ___
 
 **Por qué importa:** Enforced GPOs **NO pueden ser overridden** por OUs descendientes con Block Inheritance. Tier 0 GPOs deberían ser Enforced para garantizar aplicación.
 
-___
+---
 
 ## RSoP (Resultant Set of Policy)
 
@@ -104,7 +104,7 @@ Get-GPResultantSetOfPolicy -ReportType Html -Path C:\rsop.html `
 # Inspect HTML para ver effective policy
 ```
 
-___
+---
 
 ## Site-Linked GPOs
 
@@ -117,7 +117,7 @@ ___
 
 **Site-linked GPOs aplican antes que Domain/OU GPOs** (orden LSDOU). Less common pero impactante para roaming users.
 
-___
+---
 
 ## Cross-Correlate Privileged OUs
 
@@ -128,7 +128,7 @@ ___
 | `Get-GPInheritance -Target "<T0-OU-DN>" \| Select -Expand GpoLinks` | GPOs efectivos Tier 0 | Privesc surface. |
 ^ad-gpo-privou
 
-___
+---
 
 ## BloodHound Cypher
 
@@ -140,4 +140,4 @@ ___
 | `MATCH (u {owned:true})-[:WriteProperty]->(o:OU)-[:Contains]->(c:Computer {highvalue:true}) RETURN p` | WriteGPLink path | Adjacent. |
 ^ad-gpo-bh
 
-***
+---

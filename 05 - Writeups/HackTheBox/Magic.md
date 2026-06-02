@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/241
 dificultad: Media
 ip: 10.10.10.185
 os: Linux
-relacionados:
+linked:
   - "[[SQL Injection (SQLi)|SQLI]]"
   - "[[Port Forwarding]]"
   - "[[Magic Bytes]]"
@@ -245,7 +245,7 @@ cat /root/root.txt
 ```
 
 
-___
+---
 
 ## Bandera(s)
 

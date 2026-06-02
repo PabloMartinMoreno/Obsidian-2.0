@@ -24,7 +24,7 @@ linked:
 ---
 # ffuf
 
-***
+---
 
 ## Overview
 
@@ -34,7 +34,7 @@ Install: `go install github.com/ffuf/ffuf/v2@latest` / `apt install ffuf`.
 
 > Regla: `ffuf` reemplaza a `dirb`/`gobuster` en casi todo. Más rápido, más flexible, mejor filtering.
 
-***
+---
 
 ## Sintaxis base
 
@@ -97,7 +97,7 @@ Workflow: 1) request baseline → 2) `-fs <size>` / `-fc 404` para descartar rui
 -v                                     # verbose
 ```
 
-***
+---
 
 ## Fuzzing de directorios y archivos
 
@@ -131,7 +131,7 @@ ffuf -c -w <wordlist> -u http://<IP>:<port>/FUZZ \
   - Tecnología-específica: `/usr/share/seclists/Discovery/Web-Content/CMS/`
   - Backup/archive: `/usr/share/seclists/Discovery/Web-Content/backup-files-only.txt`
 
-***
+---
 
 ## Fuzzing de parámetros
 
@@ -169,7 +169,7 @@ ffuf -c -w sqli-payloads.txt -u 'http://t/x?id=FUZZ' -mr 'SQL syntax'
 ffuf -c -w lfi-payloads.txt -u 'http://t/x?file=FUZZ' -mr 'root:'
 ```
 
-***
+---
 
 ## Subdominios y Virtual Hosts
 
@@ -193,7 +193,7 @@ ffuf -c -w <wordlist> -u http://FUZZ.<domain>/
 
 Validar manualmente con `curl -H "Host: found.domain" http://<IP>` antes de añadir a `/etc/hosts`.
 
-***
+---
 
 ## HTTP auth / cookies / headers
 
@@ -215,7 +215,7 @@ ffuf -u http://t/FUZZ -w w.txt -H "User-Agent: Mozilla/5.0 ..."
 ffuf -request req.txt -w w.txt -request-proto http
 ```
 
-***
+---
 
 ## Request desde archivo (Burp export)
 
@@ -226,7 +226,7 @@ ffuf -request req.txt -request-proto https -w w.txt -mc 200
 
 Mantiene headers, cookies, método, body.
 
-***
+---
 
 ## Recetas frecuentes
 
@@ -290,7 +290,7 @@ ffuf -u http://t/graphql \
      -fr 'Cannot query field'
 ```
 
-***
+---
 
 ## Config file
 
@@ -306,7 +306,7 @@ header = "User-Agent: Mozilla/5.0 (compatible; Bot/1.0)"
 timeout = 10
 ```
 
-***
+---
 
 ## Tips
 
@@ -317,7 +317,7 @@ timeout = 10
 - `-recursion-strategy greedy` vs `default` — greedy entra a cualquier dir encontrado.
 - Para WAF: `-p 2-8 -t 1 -H 'User-Agent: ...'` + proxy SOCKS.
 
-***
+---
 
 ## Comparación rápida
 
@@ -329,7 +329,7 @@ timeout = 10
 | **dirsearch** | Dir brute opinionado, buenas defaults |
 | **feroxbuster** | Rust, muy rápido, recursion agresiva |
 
-***
+---
 
 ## Referencias
 

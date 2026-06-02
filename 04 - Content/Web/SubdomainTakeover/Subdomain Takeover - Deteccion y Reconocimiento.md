@@ -17,7 +17,7 @@ linked:
 ---
 # Subdomain Takeover - Detección y Reconocimiento
 
-***
+---
 
 ## Subdomain Enumeration
 
@@ -62,7 +62,7 @@ dnsx -l subs.txt -cname -resp -silent > cnames.txt
 httpx -l resolved.txt -silent > alive.txt
 ```
 
-___
+---
 
 ## DNS Records Analysis
 
@@ -107,7 +107,7 @@ for sub in $(cat subs.txt); do
 done
 ```
 
-___
+---
 
 ## Identificar Dangling Pointers
 
@@ -154,7 +154,7 @@ JetBrains:    "is not a registered InCloud YouTrack."
 Aha:          "There is no portal here ... sending you back to Aha!"
 ```
 
-___
+---
 
 ## Fingerprint del Tipo de Servicio
 
@@ -207,4 +207,4 @@ elif echo "$RESP" | grep -q "NoSuchBucket"; then
 fi
 ```
 
-***
+---

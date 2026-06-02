@@ -12,7 +12,7 @@ linked:
 
 Índice de herramientas del vault. Auto-poblado vía Dataview por categoría.
 
-***
+---
 
 ## Stats
 
@@ -24,7 +24,7 @@ WHERE file.name != this.file.name
 GROUP BY true
 ```
 
-***
+---
 
 ## Recon / OSINT
 
@@ -36,7 +36,7 @@ FROM "04 - Content/Tools/Recon"
 SORT file.name ASC
 ```
 
-***
+---
 
 ## AD / Credenciales
 
@@ -47,7 +47,7 @@ WHERE contains(file.name, "BloodHound") OR contains(file.name, "Rubeus") OR cont
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Web / Exploit
 
@@ -58,7 +58,7 @@ WHERE contains(file.name, "Burp") OR contains(file.name, "sqlmap") OR contains(f
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Cracking
 
@@ -69,7 +69,7 @@ WHERE contains(file.name, "hashcat") OR contains(file.name, "john")
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Network / Pivoting
 
@@ -80,7 +80,7 @@ WHERE contains(file.name, "Proxychains") OR contains(file.name, "TcpDump")
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Payloads / Frameworks
 
@@ -91,7 +91,7 @@ WHERE contains(file.name, "Metasploit") OR contains(file.name, "MSFVenom") OR co
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Obsidian (meta)
 
@@ -102,7 +102,7 @@ WHERE contains(file.name, "Templater") OR contains(file.name, "Dataview") OR con
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Todos (vista plana)
 

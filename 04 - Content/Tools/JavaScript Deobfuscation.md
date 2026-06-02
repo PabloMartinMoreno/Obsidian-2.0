@@ -12,7 +12,7 @@ linked:
 ---
 # JavaScript Deobfuscation
 
-***
+---
 
 ## Overview
 

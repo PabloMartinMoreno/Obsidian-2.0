@@ -22,7 +22,7 @@ linked:
 ---
 # Fuzzing de Subdominios y Hosts Virtuales
 
-***
+---
 
 ## Cheatsheet
 
@@ -42,7 +42,7 @@ tab: **Wordlists**
 
 ````
 
-***
+---
 
 ## Overview
 
@@ -53,7 +53,7 @@ El recuento de caracteres de una página de subdominio o host virtual inexistent
 Estos métodos son particularmente útiles para revelar otras partes de una infraestructura web, como dominios ocultos o servicios que se ejecutan en el mismo servidor.
 
 
-***
+---
 
 ## Notas Relacionadas
 

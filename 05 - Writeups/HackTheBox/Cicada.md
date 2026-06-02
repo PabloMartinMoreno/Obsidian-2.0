@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/627
 dificultad: Fácil
 ip: 10.10.11.35
 os: Windows
-relacionados:
+linked:
   - "[[SMB Enumeration]]"
   - "[[RID Brute with Netexec for Potential User Discovery]]"
   - "[[Information Leakage through Rpcclient (querydispinfo)]]"

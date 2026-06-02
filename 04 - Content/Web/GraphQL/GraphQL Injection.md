@@ -31,7 +31,7 @@ linked:
 
 # GraphQL Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -93,7 +93,7 @@ tab: **GraphiQL / Altair / Postman**
 ![[GraphQL - Tooling#^graphql-tool-clients]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -113,7 +113,7 @@ GraphQL elimina algunos vectores REST (overfetching, multi-endpoint enum) pero i
 | Mass assignment | Field whitelist | Input type — full schema |
 | DoS | Per endpoint | Nested queries / aliases |
 
-___
+---
 
 ## Impacto
 
@@ -124,7 +124,7 @@ ___
 - **CSRF** — engines laxos con form-urlencoded → mutations forzadas.
 - **DoS** — single query exponencialmente costosa → service degradation.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -142,7 +142,7 @@ ___
 - **Mass assignment defense** — input types whitelist explícita, no exponer model directo.
 - **Verbose errors off en prod** — generic error messages.
 
-___
+---
 
 ## Para entender GraphQL
 
@@ -157,7 +157,7 @@ GraphQL no protege de SQLi. Engine solo enruta args al resolver — la responsab
 
 **Diferencia con REST en CSRF:** REST APIs JSON requieren preflight CORS para POST cross-origin con JSON. GraphQL hereda el mismo, PERO si engine acepta `application/x-www-form-urlencoded` o `text/plain` o GET method → CSRF posible. Apollo v3+ patched, pero engines custom o configs viejas siguen vulnerables.
 
-___
+---
 
 ## Recursos
 
@@ -170,4 +170,4 @@ ___
 - [GraphQL Voyager](https://graphql-kit.com/graphql-voyager/) — schema visualizer.
 - [GraphQL spec](https://spec.graphql.org/) — oficial.
 
-***
+---

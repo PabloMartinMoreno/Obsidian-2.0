@@ -14,7 +14,7 @@ linked:
 ---
 # IDOR - Técnicas de Evasión y Bypass de Filtros
 
-***
+---
 
 ## Cheatsheet
 
@@ -61,4 +61,4 @@ ffuf -w payloads.txt -u "https://target/api?id=105&id=FUZZ" -H 'Cookie: ...'
 
 Normalización pre-validación obligatoria (URL decode + Unicode normalize + type cast strict). Allowlist > blacklist. **Defensa en profundidad** — WAF no debe ser único control, autz a nivel modelo es la verdad.
 
-***
+---

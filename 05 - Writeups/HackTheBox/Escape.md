@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/531
 dificultad: Media
 ip: 10.10.11.202
 os: Windows
-relacionados:
+linked:
   - "[[Hash NTLM]]"
   - "[[Active Directory Certificate Services (ESC1)]]"
   - "[[Pass-the-Hash (PtH)]]"

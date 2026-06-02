@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Exploración de Metadatos
 
-***
+---
 
 ## Cheatsheet
 
@@ -47,7 +47,7 @@ linked:
 | Users | `mysql.user`/`pg_shadow`/`sys.sql_logins` | `dba_users`/`all_users` |
 | Privilegios | `information_schema.user_privileges` | `dba_sys_privs`/`user_sys_privs` |
 
-___
+---
 
 ## Overview
 
@@ -61,4 +61,4 @@ Metadatos = mapa interno del SGBD. `INFORMATION_SCHEMA` es ANSI standard (MySQL/
 
 Algunas tablas requieren privilegios: `mysql.user` necesita SUPER, `pg_shadow` superuser, `sys.sql_logins` DBA. Check privs via `information_schema.user_privileges` antes de intentar.
 
-***
+---

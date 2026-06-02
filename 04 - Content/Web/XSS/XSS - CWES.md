@@ -13,7 +13,7 @@ linked:
 ---
 # XSS - CWES
 
-***
+---
 
 ## Cheatsheet
 

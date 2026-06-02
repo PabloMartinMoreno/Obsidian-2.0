@@ -14,7 +14,7 @@ kind: Playbook
 ---
 # [[AD Initial Enumeration Playbook]]
 
-***
+---
 
 ## Overview
 
@@ -47,7 +47,7 @@ This playbook provides a structured approach for initial Active Directory (AD) e
 	 * [ ] Note any misconfigurations or weaknesses
 	 * [ ] Plan next enumeration phase based on discoveries
 
-***
+---
 
 ## Resources
 
@@ -58,7 +58,7 @@ This playbook provides a structured approach for initial Active Directory (AD) e
 | [PowerView-3.0 tips and tricks, HarmJ0y](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993)             | PowerView 3.0 sample commands by PowerSploit co-creator      |
 | [PowerView, PowerSploit](https://powersploit.readthedocs.io/en/latest/Recon/)                                          | PowerView documentation                                      |
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

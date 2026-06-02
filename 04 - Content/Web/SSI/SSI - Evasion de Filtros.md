@@ -16,7 +16,7 @@ linked:
 ---
 # SSI - Evasión de Filtros
 
-***
+---
 
 ## Whitespace Tricks
 
@@ -34,7 +34,7 @@ linked:
 | IIS variants | Different whitespace tolerance | Per-server. |
 ^ssi-bypass-whitespace
 
-___
+---
 
 ## `#set` Concatenation
 
@@ -52,7 +52,7 @@ ___
 | Combine con `#if` | Conditional logic con vars | Edge. |
 ^ssi-bypass-set-concat
 
-___
+---
 
 ## Inyección via Filename / Headers
 
@@ -74,7 +74,7 @@ ___
 | Combine con stored XSS | XSS + SSI compound | Multi-vector. |
 ^ssi-bypass-filename-headers
 
-___
+---
 
 ## Encoding y CGI Fallback
 
@@ -118,4 +118,4 @@ ___
 <!--#include virtual="/cgi-bin/old-script.cgi?cmd=$(id)" -->
 ```
 
-***
+---

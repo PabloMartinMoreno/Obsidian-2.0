@@ -27,7 +27,7 @@ linked:
 ---
 # DNS Enumeration (53)
 
-***
+---
 
 ## Cheatsheet
 

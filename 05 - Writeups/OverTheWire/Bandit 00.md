@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit0.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[Pares de claves SSH]]"
   - "[[Bandit 01]]"
   - "[[SSH (22) - Enumeración|ssh]]"

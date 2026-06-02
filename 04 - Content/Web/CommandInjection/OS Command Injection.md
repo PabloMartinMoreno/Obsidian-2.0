@@ -25,7 +25,7 @@ linked:
 ---
 # OS Command Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -39,7 +39,7 @@ tab: **Operadores Especificos**
 ![[Command Injection - Operadores Especificos#^ci-operadores-especificos]]
 ````
 
-___
+---
 
 ### Evasión de Filtros
 
@@ -54,7 +54,7 @@ tab: **Lista Negra de Comandos**
 ![[Command Injection - Lista Negra de Comandos#^ci-blacklist-comandos]]
 ````
 
-___
+---
 
 ### Obfuscación
 
@@ -70,7 +70,7 @@ tab: **Comandos Codificados**
 
 ````
 
-***
+---
 
 ## Ejemplos 
 

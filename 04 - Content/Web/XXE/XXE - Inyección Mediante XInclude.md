@@ -17,7 +17,7 @@ linked:
 ---
 # XXE - Inyección Mediante XInclude
 
-***
+---
 
 ## Cheatsheet
 
@@ -45,7 +45,7 @@ curl -X POST https://target/api -H 'Content-Type: application/xml' \
 # 3. Si XInclude está bloqueado pero hay control de DOCTYPE → usar [[XXE - Clásico In-band]]
 ```
 
-___
+---
 
 ## Overview
 
@@ -63,4 +63,4 @@ XInclude se usa cuando el atacante **no controla el inicio del documento XML** n
 - **Ausencia de reflejo:** si la app procesa pero no devuelve el resultado → pivotar a [[XXE - Out-of-Band (OOB) y DTDs Externos]] con callback HTTP.
 - **No hay DOCTYPE:** las defensas que sólo bloquean `<!DOCTYPE` no aplican — XInclude es alternativa directa.
 
-***
+---

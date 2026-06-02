@@ -26,7 +26,7 @@ linked:
 ---
 # Mimikatz Cheatsheet
 
-***
+---
 
 ## Cheatsheet
 ^mimikatz-cheatsheet
@@ -48,7 +48,7 @@ linked:
 | **misc** | `misc::skeleton` | Skeleton Key (patch LSASS del DC) |
 | **token** | `token::elevate` | Elevate a SYSTEM via token impersonation |
 
-***
+---
 
 ## Setup
 
@@ -292,4 +292,4 @@ mimikatz # sekurlsa::logonpasswords
 - [HackTricks - Mimikatz](https://book.hacktricks.xyz/windows-hardening/stealing-credentials/credentials-protections)
 - [pypykatz](https://github.com/skelsec/pypykatz)
 
-***
+---

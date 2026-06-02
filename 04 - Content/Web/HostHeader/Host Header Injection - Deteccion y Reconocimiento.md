@@ -15,7 +15,7 @@ linked:
 ---
 # Host Header Injection - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints que Reflejan / Dependen de Host
 
@@ -40,7 +40,7 @@ linked:
 | Host-based virtual host | App routes by `Host` header | Multi-tenant routing. |
 ^hhi-detect-endpoints
 
-___
+---
 
 ## Probes con Valores Arbitrarios
 
@@ -80,7 +80,7 @@ curl -X POST -H "Host: attacker.com" \
 # Check if email arrives con reset link a attacker.com
 ```
 
-___
+---
 
 ## Test Multi-Header Behavior
 
@@ -135,4 +135,4 @@ curl -X POST \
   https://target.com/forgot
 ```
 
-***
+---

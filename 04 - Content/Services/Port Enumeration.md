@@ -42,7 +42,7 @@ linked:
 ---
 # Port Enumeration
 
-***
+---
 
 ## Overview
 
@@ -50,7 +50,7 @@ linked:
 
 Cada atómica cubre banner grabbing, enum activa, default creds, CVEs históricos y rutas de escalada.
 
-***
+---
 
 ## Web Adjacent
 
@@ -95,7 +95,7 @@ Cada atómica cubre banner grabbing, enum activa, default creds, CVEs histórico
 - [[SNMP (161,162,10161,10162) - Enumeración]] — `snmpwalk`, community strings.
 - [[IPMI (623) - Enumeración]] — hash dump pre-auth (CVE-2013-4786).
 
-***
+---
 
 ## Flujo típico
 
@@ -111,4 +111,4 @@ Cada atómica cubre banner grabbing, enum activa, default creds, CVEs histórico
 - [[Metasploit Framework]] — módulos `auxiliary/scanner/*`.
 - [[netexec]] — SMB/LDAP/WinRM/SSH brute + enum unificada.
 
-***
+---

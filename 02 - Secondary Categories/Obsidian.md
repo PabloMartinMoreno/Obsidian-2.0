@@ -8,7 +8,7 @@ kind: Secondary Category
 ---
 # [[Obsidian]]  
 
-***
+---
 
 ## Getting Started
 
@@ -30,5 +30,5 @@ kind: Secondary Category
 * [[Obsidian Git]]
 * [[Emoji Toolbar]]
 
-***
+---
 

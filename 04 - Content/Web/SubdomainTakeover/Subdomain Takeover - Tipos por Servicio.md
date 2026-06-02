@@ -19,7 +19,7 @@ linked:
 ---
 # Subdomain Takeover - Tipos por Servicio
 
-***
+---
 
 ## Cloud Storage (S3 / Azure Blob / GCS)
 
@@ -53,7 +53,7 @@ aws s3 cp index.html "s3://$BUCKET/" --acl public-read
 curl -s "https://$SUB"  # → atacante's content
 ```
 
-___
+---
 
 ## PaaS (Heroku / Netlify / Vercel / Fastly)
 
@@ -88,7 +88,7 @@ git push heroku main
 curl -s "https://$SUB"
 ```
 
-___
+---
 
 ## SaaS (GitHub Pages / Tumblr / Shopify / Zendesk)
 
@@ -106,7 +106,7 @@ ___
 | `for s in github.io tumblr.com myshopify.com zendesk.com wordpress.com tilda.ws strikingly.com webflow.com readme.io statuspage.io; do dig +short CNAME victim.target.com \| grep -i "$s"; done` | Probe SaaS providers | Bulk discovery. |
 ^sdt-types-saas
 
-___
+---
 
 ## CDN Dangling (CloudFront / Cloudflare)
 
@@ -122,7 +122,7 @@ ___
 | `for s in cloudfront.net workers.dev pages.dev fastly.net azureedge.net akamaihd.net kxcdn.com; do dig +short CNAME victim.target.com \| grep -i "$s"; done` | Probe CDN providers | Bulk discovery. |
 ^sdt-types-cdn
 
-___
+---
 
 ## Email / Domain Providers
 
@@ -138,4 +138,4 @@ ___
 | `nslookup -type=mx target.com` | Quick MX lookup | Recon. |
 ^sdt-types-email
 
-***
+---

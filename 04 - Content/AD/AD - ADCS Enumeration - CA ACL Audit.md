@@ -17,7 +17,7 @@ linked:
 ---
 # AD - ADCS Enumeration - CA ACL Audit
 
-***
+---
 
 ## CA Object DACL
 
@@ -30,7 +30,7 @@ linked:
 | `certutil -getreg ca\Security` (en CA host) | Manage CA / Manage Certs ACEs | Local check. |
 ^ad-caacl-rights
 
-___
+---
 
 ## ESC7: Manage CA / Certs
 
@@ -53,7 +53,7 @@ certipy ca -u atacante -p pass -ca <CA-name> -issue-request <req-ID>
 certipy req -u u@corp.local -p pass -ca <CA-name> -retrieve <req-ID>
 ```
 
-___
+---
 
 ## EDITF Flags Audit
 
@@ -81,7 +81,7 @@ net stop certsvc && net start certsvc
 certipy find -u u -p pass -dc-ip <DC> -text | grep -i "EDITF_ATTRIBUTESUBJECTALTNAME2"
 ```
 
-___
+---
 
 ## Web Enrollment ACL
 
@@ -93,7 +93,7 @@ ___
 | `Channel Binding (EPA)` enabled? | Modern hardening | ESC8 mitigation. |
 ^ad-caacl-webenroll
 
-___
+---
 
 ## CA Modification Rights
 
@@ -103,7 +103,7 @@ ___
 | `Find-InterestingDomainAcl -ResolveGUIDs \| ? {$_.ObjectDN -match "Public Key Services"}` | Bulk hunt PKI ACEs | Forest-wide. |
 ^ad-caacl-modify
 
-___
+---
 
 ## NTAuthCertificates Modify
 
@@ -126,7 +126,7 @@ Get-Acl "AD:CN=NTAuthCertificates,CN=Public Key Services,CN=Services,CN=Configur
   }
 ```
 
-___
+---
 
 ## Per-CA Configuration
 
@@ -138,7 +138,7 @@ ___
 | `certutil -getreg ca\CACertPublicationURLs` | AIA URLs | Adjacent. |
 ^ad-caacl-config
 
-___
+---
 
 ## Authenticated Users / Domain Users
 
@@ -148,7 +148,7 @@ ___
 | Templates Enroll con Authenticated Users + ESC1-style flags | Universal exploitable | Critical. |
 ^ad-caacl-authusers
 
-___
+---
 
 ## BloodHound CA ACL Edges
 
@@ -160,7 +160,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..]->(d:Domain)) WHERE any(n IN nodes(p) WHERE n:CertTemplate OR n:EnterpriseCA) RETURN p` | Path via ADCS | Privesc. |
 ^ad-caacl-bh
 
-___
+---
 
 ## Mitigations
 
@@ -174,4 +174,4 @@ ___
 | Quarterly `certipy find -vulnerable` | Compliance | Trimestral. |
 ^ad-caacl-mitigations
 
-***
+---

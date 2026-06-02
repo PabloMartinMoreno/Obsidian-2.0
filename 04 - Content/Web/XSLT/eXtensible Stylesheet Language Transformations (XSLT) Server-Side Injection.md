@@ -31,7 +31,7 @@ linked:
 ---
 1# eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -116,7 +116,7 @@ tab: **HTTP Transport**
 ![[XSLT - Bypasses y Evasion#^xslt-bypass-transport]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -146,7 +146,7 @@ Si la app acepta XML pero las entidades externas están deshabilitadas → puede
 | **MSXML** | .NET / COM | 1.0 / 2.0 | `msxsl:script` (JScript / VBScript / C#) |
 | **BaseX / eXist-DB** | Java | 3.0 | Java extension functions + `proc:system` |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -171,7 +171,7 @@ ___
 8. Si nada funciona → DoS para impacto reportable (billion laughs, recursión).
 
 
-___
+---
 
 ## Detección rápida
 
@@ -217,7 +217,7 @@ interactsh-client -v
 python3 -m http.server 8080
 ```
 
-___
+---
 
 ## Impacto
 
@@ -228,7 +228,7 @@ ___
 - **DoS** — billion laughs, recursión infinita, loops gigantes — derriba el servicio.
 - **OOB exfiltration** — egress HTTP/DNS sin necesidad de output reflejado.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -259,7 +259,7 @@ ___
 - **Disable DTDs** — `feature: disallow-doctype-decl = true` (bloquea XXE + billion laughs).
 - **Timeout** — limitar tiempo de transformación a 1-5s (bloquea DoS por loops).
 
-___
+---
 
 ## Para entender XSLT injection
 
@@ -279,7 +279,7 @@ XSLT se diseñó para procesar feeds en sistemas trusted (RSS aggregators, batch
 - SSTI Jinja2/Twig → escapa al lenguaje host vía `__class__.__bases__` etc.
 - XSLT → el lenguaje host **ya está expuesto** vía namespace `java:` / `php:` cuando hay extensions.
 
-___
+---
 
 ## Recursos
 
@@ -290,4 +290,4 @@ ___
 - [Saxon documentation - extension functions](https://www.saxonica.com/documentation12/index.html#!extensibility) — reference oficial Java reflection.
 - [Black Hat 2015 - XSLT Worm](https://www.blackhat.com/docs/eu-15/materials/eu-15-Arnaboldi-Abusing-XSLT-For-Practical-Attacks-wp.pdf) — paper de Arnaboldi (NCC Group).
 
-***
+---

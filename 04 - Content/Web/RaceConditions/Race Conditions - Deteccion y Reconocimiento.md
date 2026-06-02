@@ -15,7 +15,7 @@ linked:
 ---
 # Race Conditions - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints State-Changing
 
@@ -39,7 +39,7 @@ linked:
 | API key generation | Rate-limited | Generate multiple. |
 ^race-detect-endpoints
 
-___
+---
 
 ## TOCTOU Patterns
 
@@ -59,7 +59,7 @@ ___
 | Optimistic concurrency | Version-based update | Stale version race. |
 ^race-detect-toctou
 
-___
+---
 
 ## Atomicity / Locking Issues
 
@@ -77,7 +77,7 @@ ___
 | Eventual consistency assumption | App assumes synchronous | Distributed race. |
 ^race-detect-atomicity
 
-___
+---
 
 ## Window de Exploit
 
@@ -115,4 +115,4 @@ seq 10 | xargs -P 10 -I {} curl -s -X POST \
 # - Si decrementó 10 veces → atomic correctly handled
 ```
 
-***
+---

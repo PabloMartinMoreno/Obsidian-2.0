@@ -9,7 +9,7 @@ linked:
 ---
 # Seclists
 
-***
+---
 
 ## Cheatsheet
 
@@ -21,7 +21,7 @@ linked:
 ^wordlists-fuzzing-directorios
 
 
-***
+---
 
 ### Parametros y Valores
 
@@ -33,7 +33,7 @@ linked:
 ^wordlists-fuzzing-parametros
 
 
-***
+---
 
 ### Sub-Dominios, VHost y DNS
 
@@ -42,4 +42,4 @@ linked:
 ^wordlists-subdominios-vhost
 
 
-***
+---

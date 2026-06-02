@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Health & Security Auditing - Microsoft Defender for Identity
 
-***
+---
 
 ## Detección desde el lado atacante
 
@@ -39,7 +39,7 @@ linked:
 | DCShadow | `Suspected DCShadow attack` | No usar. |
 ^ad-mdi-detect
 
-___
+---
 
 ## Identificar MDI desde el atacante
 
@@ -61,7 +61,7 @@ Invoke-Command -ComputerName dc01 -ScriptBlock {
 }
 ```
 
-___
+---
 
 ## Honey-tokens identification
 
@@ -81,7 +81,7 @@ Get-ADUser -Filter "adminCount -eq 1" -Properties lastLogon,whenCreated,descript
     Select-Object SamAccountName,whenCreated,description
 ```
 
-___
+---
 
 ## MDI desde el lado defensor
 
@@ -97,7 +97,7 @@ ___
 | LDAP audit | Subcategory 14080 verbose | Catch bulk LDAP. |
 ^ad-mdi-defender
 
-___
+---
 
 ## OPSEC durante red team
 
@@ -115,7 +115,7 @@ ___
 | No RC4 en Kerberos | AES256 only para Golden/Silver. |
 ^ad-mdi-opsec
 
-___
+---
 
 ## Recursos
 
@@ -127,4 +127,4 @@ ___
 | Security Operations Guide | `https://learn.microsoft.com/defender-for-identity/security-operations-guide` |
 ^ad-mdi-resources
 
-***
+---

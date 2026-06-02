@@ -30,7 +30,7 @@ linked:
 ---
 # HTTP Request Smuggling
 
-***
+---
 
 ## Cheatsheet
 
@@ -117,7 +117,7 @@ tab: **Connection: close Abuse**
 ![[HTTP Request Smuggling - Bypasses#^hrs-bypass-connection]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -142,7 +142,7 @@ ___
 | **H2.CL** | HTTP/2 | HTTP/1.1 + CL del request H2 | Frontend pasa CL de cliente sin recalcular |
 | **H2.TE** | HTTP/2 | HTTP/1.1 + TE | Frontend forwarda TE prohibido en H2 al backend H1 |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -176,7 +176,7 @@ ___
 7. Validar impacto: cookies de víctima, contenido cacheado, endpoints internos accedidos.
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -213,7 +213,7 @@ curl -v --max-time 5 --http1.1 \
 # HTTP Request Smuggler → Right-click → Smuggle Probe
 ```
 
-___
+---
 
 ## Impacto
 
@@ -225,7 +225,7 @@ ___
 - **Stored XSS sin storage** — smuggle inyecta script en response cacheada.
 - **Account takeover automatizado** — capture de creds de victims sin user interaction.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -241,7 +241,7 @@ ___
 - **WAF actualizado** con reglas anti-HRS (ModSecurity OWASP CRS lo tiene).
 - **Monitoreo**: requests con `GPOST` o paths raros en logs del backend = signal de smuggle.
 
-___
+---
 
 ## Para entender HRS
 
@@ -270,7 +270,7 @@ H2 fixea HRS-clásica (binary framing tiene length explícito en cada frame). PE
 
 El paper "HTTP/2: The Sequel is Always Worse" de James Kettle (2021) cataloga estos vectors.
 
-___
+---
 
 ## Recursos
 
@@ -284,4 +284,4 @@ ___
 - [h2cSmuggler (BishopFox)](https://github.com/BishopFox/h2csmuggler) — h2c upgrade.
 - [The Tale of Disappearing Length](https://i.blackhat.com/USA-19/Wednesday/us-19-Kettle-HTTP-Desync-Attacks-Smashing-Into-The-Cell-Next-Door-wp.pdf) — Kettle BlackHat paper.
 
-***
+---

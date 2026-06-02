@@ -9,7 +9,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/
 dificultad:
 os: Linux
-relacionados:
+linked:
 ---
 # <% tp.file.title %>
 

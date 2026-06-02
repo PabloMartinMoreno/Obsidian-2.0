@@ -30,7 +30,7 @@ linked:
 ---
 # AD - DCSync Rights Discovery
 
-***
+---
 
 ## Cheatsheet
 
@@ -184,7 +184,7 @@ tab: **Wordlists & Recursos**
 ![[AD - DCSync Rights Discovery - Tooling#^ad-dcsynctool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -216,7 +216,7 @@ DCSync = single-shot domain compromise. Sin enum de DCSync rights, no se sabe qu
 | Combine con | DCSync execution, Golden Ticket | Privesc planning, BloodHound |
 | Compliance: per-quarter | Standard | Standard |
 
-___
+---
 
 ## Workflow
 
@@ -263,7 +263,7 @@ ___
    - Document changes
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -299,7 +299,7 @@ bloodyAD --host $DC -d dom -u $USER -p $PASS \
   get object "DC=dom,DC=local" --resolve-sd
 ```
 
-___
+---
 
 ## Impacto
 
@@ -315,7 +315,7 @@ ___
 - **Service accounts as holders** — common misconfig.
 - **Recursive group membership hidden** — DCSync via nested groups.
 
-___
+---
 
 ## Mitigación
 
@@ -341,7 +341,7 @@ ___
 - **krbtgt rotation** — every 180 days twice consecutively.
 - **Compliance: documented baseline** — per-org standard.
 
-___
+---
 
 ## Para entender DCSync Rights
 
@@ -369,7 +369,7 @@ Pre-2019, Exchange Trusted Subsystem + Exchange Windows Permissions had WriteDAC
 
 Pre-BloodHound: manual ACL queries + correlate group nesting in spreadsheets. BloodHound: automated graph + Cypher path queries. "Find all paths to DCSync from non-Tier 0" = single query. Game-changer for offensive + defensive audit.
 
-___
+---
 
 ## Recursos
 
@@ -389,4 +389,4 @@ ___
 - [bloodyAD](https://github.com/CravateRouge/bloodyAD) — Linux ACL tool.
 - [`awesome-active-directory`](https://github.com/Orange-Cyberdefense/awesome-active-directory) — curated.
 
-***
+---

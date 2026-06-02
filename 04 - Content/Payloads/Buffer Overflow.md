@@ -12,7 +12,7 @@ linked:
 > [!info]
 > Escritura más allá del buffer asignado en stack/heap, sobreescribiendo memoria adyacente. Vector clásico para hijack control de ejecución (EIP/RIP). OSCP-relevant aunque legacy en modern targets con mitigations.
 
-***
+---
 
 ## Stack overflow flow (clásico)
 
@@ -25,7 +25,7 @@ linked:
 7. **Build exploit** → `padding + JMP_ESP_addr + NOPs + shellcode`
 8. **Pwn**
 
-***
+---
 
 ## Mitigations modernas
 
@@ -37,7 +37,7 @@ linked:
 | **CFG / CET** | Hard bypass; requiere chains específicos |
 | **SafeSEH / SEHOP** (Win) | Overwrite handler en chain validation gap |
 
-***
+---
 
 ## Tools
 
@@ -48,7 +48,7 @@ linked:
 - **msfvenom** — shellcode gen
 - **AFL/AFL++** — fuzzing
 
-***
+---
 
 ## Patterns relevantes
 
@@ -62,7 +62,7 @@ p.sendline(payload)
 p.interactive()
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -20,7 +20,7 @@ linked:
 ---
 # JWT - Tooling y Brute Force
 
-***
+---
 
 ## jwt_tool (All-in-One)
 
@@ -55,7 +55,7 @@ linked:
 | `-pk <file>` | Privkey para RS256/ES256 |
 | `-rh "Header: value"` | Headers extra para requests |
 
-___
+---
 
 ## Hashcat HS256
 
@@ -98,7 +98,7 @@ cat defaults.txt /usr/share/wordlists/rockyou.txt jwt.secrets.list | sort -u > c
 hashcat -m 16500 jwt.txt combo.txt -r /usr/share/hashcat/rules/best64.rule
 ```
 
-___
+---
 
 ## jwtcrack y John the Ripper
 
@@ -122,4 +122,4 @@ ___
 | **jwtcrack** | Lento (JS) | Charset chico (≤5 chars) |
 | **jwt_tool -C** | Wrapper conveniente | Recon rápido + crack mode |
 
-***
+---

@@ -14,7 +14,7 @@ kind: Tertiary Category
 ---
 # Enumeración Web
 
-***
+---
 
 ## 🆔 Fingerprinting & Technology Analysis
   Identificación de tecnologías, frameworks y CMS utilizados.
@@ -66,4 +66,4 @@ Búsqueda automatizada de fallos conocidos y exposiciones.
 - [[Nginx & Apache Enumeration]] (Enumeración específica para los servidores web más comunes.)
 
 
-***
+---

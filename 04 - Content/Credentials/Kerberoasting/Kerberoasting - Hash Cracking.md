@@ -17,7 +17,7 @@ linked:
 ---
 # Kerberoasting - Hash Cracking
 
-***
+---
 
 ## Hashcat Modes
 
@@ -28,7 +28,7 @@ linked:
 | `19600` | AES128-CTS-HMAC-SHA1-96 (etype 17) | `$krb5tgs$17$...` |
 ^kerb-crack-hashcat-modes
 
-___
+---
 
 ## Hashcat Standard
 
@@ -56,7 +56,7 @@ wget https://github.com/NotSoSecure/password_cracking_rules/raw/master/OneRuleTo
 hashcat -m 13100 roast.hash rockyou.txt -r OneRuleToRuleThemAll.rule -O
 ```
 
-___
+---
 
 ## John the Ripper
 
@@ -68,7 +68,7 @@ ___
 | `john --format=krb5tgs --show hashes.txt` | Show cracked | Post-run. |
 ^kerb-crack-john
 
-___
+---
 
 ## Wordlists Recomendadas
 
@@ -92,7 +92,7 @@ cewl https://corp.com -d 3 -m 5 -w cewl_corp.txt
 hashcat -m 13100 roast.hash cewl_corp.txt -r best64.rule -O
 ```
 
-___
+---
 
 ## Rules Comparison
 
@@ -105,7 +105,7 @@ ___
 | `Hob0Rules` (`hob064`, `d3adhob0`) | GitHub | Medium | Common patterns. |
 ^kerb-crack-rules
 
-___
+---
 
 ## Mask Attack (Custom Patterns)
 
@@ -125,7 +125,7 @@ hashcat -m 13100 roast.hash rockyou.txt -a 6 ?d?d?d?s -O
 hashcat -m 13100 roast.hash -a 3 'Corp?d?d?d?d!' -O
 ```
 
-___
+---
 
 ## GPU Acceleration
 
@@ -147,7 +147,7 @@ hashcat -m 13100 roast.hash rockyou.txt -r OneRuleToRuleThemAll.rule -O \
 hashcat --restore --session=kerberoast_<timestamp>
 ```
 
-___
+---
 
 ## Post-Crack Verification
 
@@ -172,7 +172,7 @@ while read pwd; do
 done < passwords.txt
 ```
 
-___
+---
 
 ## Rate / Time Estimation
 
@@ -186,7 +186,7 @@ ___
 
 **Implicación:** RC4 ~70x más rápido que AES en mismo hardware. Modern domains AES-only = crack mucho más caro. Wordlist + rules realistic para passwords <12 chars en RC4. AES = solo para passwords realmente débiles o targeted.
 
-___
+---
 
 ## Common Errors
 
@@ -199,4 +199,4 @@ ___
 | Output sin password | Hash no crackeable con wordlist | Larger wordlist + rules + mask. |
 ^kerb-crack-errors
 
-***
+---

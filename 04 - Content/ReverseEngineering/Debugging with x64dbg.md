@@ -13,7 +13,7 @@ linked:
 > [!info]
 > Open-source debugger Windows x86/x64. GUI moderna, scripting integrado, plugin ecosystem. Reemplazo libre de OllyDbg/IDA debugger.
 
-***
+---
 
 ## Layout principal
 
@@ -25,7 +25,7 @@ linked:
 - **Symbols** — exports/imports/labels
 - **Source** — source view si PDB available
 
-***
+---
 
 ## Atajos clave
 
@@ -42,7 +42,7 @@ linked:
 | `Ctrl+B` | Search bytes |
 | `Ctrl+N` | Search referenced strings |
 
-***
+---
 
 ## Breakpoint types
 
@@ -58,7 +58,7 @@ bphws 0x401000 r                  ; HW read bp
 bpm 0x402000 w                    ; Memory write bp
 ```
 
-***
+---
 
 ## Scripting
 
@@ -79,7 +79,7 @@ dump_when_oep:
 
 PyCommand plugin permite Python directo.
 
-***
+---
 
 ## Plugins esenciales
 
@@ -89,7 +89,7 @@ PyCommand plugin permite Python directo.
 - **SwissArmyKnife** — multi-utility (hash, base64, etc.)
 - **OllyMacro** — record/replay macros
 
-***
+---
 
 ## Common workflow: unpack packed binary
 
@@ -100,7 +100,7 @@ PyCommand plugin permite Python directo.
 5. Use Scylla → IAT autosearch + Get Imports + Dump + Fix Dump
 6. Resultado: unpacked.exe analizable estáticamente
 
-***
+---
 
 ## Anti-debug evasion
 
@@ -114,7 +114,7 @@ Bypass:
 - **ScyllaHide** plugin — patcha estas checks
 - Rename `x64dbg.exe` → otro nombre
 
-***
+---
 
 ## Notas Relacionadas
 

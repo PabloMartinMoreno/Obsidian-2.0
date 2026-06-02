@@ -129,20 +129,20 @@ En el 90% de los casos, tu secuencia será esta:
 4. `vol -f imagen.mem windows.pslist --pid <PID_SOSPECHOSO> --dump` (Extraer muestra)
 
 
-***
+---
 
 ## Cheatsheet
 
 
-***
+---
 
 ## Overview
 
 
-***
+---
 
 ## Notas Relacionadas
 
 
-***
+---
 

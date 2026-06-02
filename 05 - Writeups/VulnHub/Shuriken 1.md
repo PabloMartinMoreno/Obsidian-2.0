@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/shuriken1
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[LFI2RCE]]"
   - "[[Wrappers]]"
   - "[[js-beautify]]"
@@ -42,7 +42,7 @@ gobuster dir -u 'http://<IP-Victima>/' -w /usr/share/wordlists/dirbuster/directo
 - `/js`: Archivos `index__d8338055.js` y `login.js` revelan:
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -70,7 +70,7 @@ http://broadcast.shuriken.local tiene un login al cual no tengo credenciales.
 Encuentro un lfi en uno de los archivos del `/js`: http://shuriken.local/index.php?referer= (el LFI solo se ve en el código fuente).
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -135,7 +135,7 @@ curl -G 'http://broadcast.shuriken.local/actions/CB_BEATS_UPLOAD_DIR/17456789705
   ```
 
 
-___
+---
 
 ## Escalada de Privilegios
 ### De www-data a server-management
@@ -212,7 +212,7 @@ touch -- "--checkpoint-action=exec=sh demo.sh"
   ```
 
 
-___
+---
 
 ## Bandera(s)
 

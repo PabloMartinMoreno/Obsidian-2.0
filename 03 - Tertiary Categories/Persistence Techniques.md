@@ -10,7 +10,7 @@ kind: Tertiary Category
 ---
 # Técnicas de Persistencia
 
-***
+---
 
 ## Linux
 
@@ -34,4 +34,4 @@ kind: Tertiary Category
 - [[Skeleton Key]]
 
 
-***
+---

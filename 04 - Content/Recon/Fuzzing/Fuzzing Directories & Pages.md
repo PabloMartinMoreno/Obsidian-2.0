@@ -22,7 +22,7 @@ linked:
 ---
 # Fuzzing de Paginas y Directorios
 
-***
+---
 
 ## Cheatsheet
 

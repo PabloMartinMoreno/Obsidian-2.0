@@ -7,7 +7,7 @@ web: https://app.hackthebox.com/machines/144
 dificultad: Muy fácil
 ip: 10.10.10.95
 os: Windows
-relacionados:
+linked:
   - "[[Information Leakage]]"
   - "[[Abusing Tomcat]]"
   - "[[msfvenom]]"

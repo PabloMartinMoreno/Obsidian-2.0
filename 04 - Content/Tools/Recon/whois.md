@@ -16,7 +16,7 @@ linked:
 ---
 # Whois
 
-***
+---
 
 ## Cheatsheet
 
@@ -26,7 +26,7 @@ linked:
 | <pre><code>`whois -h <whois-server> <domain>`</code></pre>                       | <br>Realiza una búsqueda WHOIS utilizando un servidor WHOIS específico.                               |
 ^whois-enum-pasiva-subdominios
 
-***
+---
 
 ## Overview
 

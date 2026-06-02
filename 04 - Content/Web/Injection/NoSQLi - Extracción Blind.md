@@ -18,7 +18,7 @@ linked:
 ---
 # NoSQLi - Extracción Blind
 
-***
+---
 
 ## Cheatsheet
 
@@ -34,7 +34,7 @@ linked:
 | **String length via $where** | `{"$where":"this.secret.length > 10"}` | Binary search de longitud. |
 ^nosqli-blind
 
-___
+---
 
 ## Overview
 
@@ -139,4 +139,4 @@ Blind extraction = cientos de requests. Considerar:
 - Usar `time.sleep(0.1)` entre requests si el server se protege.
 - Cambiar User-Agent / IP rotation si hay ban.
 
-***
+---

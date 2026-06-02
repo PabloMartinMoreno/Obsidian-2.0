@@ -19,7 +19,7 @@ linked:
 ---
 # Subdomain Takeover - Tooling y Wordlists
 
-***
+---
 
 ## subjack / subzy / takeover (Detection)
 
@@ -58,7 +58,7 @@ for sub in $(grep VULNERABLE results.txt | awk '{print $2}'); do
 done
 ```
 
-___
+---
 
 ## Subdomain Enumeration Tools
 
@@ -76,7 +76,7 @@ ___
 | `dnsx -l subs.txt -resp -silent` | Filter live (resolvable) subs | Validation post-enum. |
 ^sdt-tool-enum
 
-___
+---
 
 ## DNS Probing y Resolution
 
@@ -114,7 +114,7 @@ grep -E 's3\.amazonaws\.com|herokuapp|github\.io|cloudfront|azurewebsites' cname
 subjack -w candidates.txt -ssl -t 100 -timeout 30
 ```
 
-___
+---
 
 ## can-i-take-over-xyz (Reference)
 
@@ -128,7 +128,7 @@ ___
 | `gowitness file -f subs.txt --threads 10` | Modern alt screenshot tool | Same. |
 ^sdt-tool-canitakeover
 
-___
+---
 
 ## Manual Verification
 
@@ -144,7 +144,7 @@ ___
 | `asciinema rec poc.cast` | Grabar full takeover process | Video PoC. |
 ^sdt-tool-manual
 
-___
+---
 
 ## Wordlists Comprehensivas
 
@@ -159,4 +159,4 @@ ___
 | `cat seclists.txt assetnote.txt custom.txt \| sort -u > combined.txt` | Combinar + dedupe | Bulk wordlist. |
 ^sdt-tool-wordlists
 
-***
+---

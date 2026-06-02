@@ -19,7 +19,7 @@ linked:
 ---
 # JWT - Ataques al Algoritmo
 
-***
+---
 
 ## alg=none Bypass
 
@@ -45,7 +45,7 @@ token = f"{header.decode()}.{payload.decode()}."
 print(token)
 ```
 
-___
+---
 
 ## Algorithm Confusion (HS256 ↔ RS256)
 
@@ -78,7 +78,7 @@ print(key.export_to_pem().decode())
 python3 jwt_tool.py "$JWT" -X k -pk public.pem
 ```
 
-___
+---
 
 ## Weak Secret Bruteforce (HS256)
 
@@ -106,4 +106,4 @@ ___
 
 Si secret > 32 bytes random → enfocarse en otros vectores (alg confusion / kid injection / leak).
 
-***
+---

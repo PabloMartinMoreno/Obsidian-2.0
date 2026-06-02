@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/175
 dificultad: Media
 ip: 10.10.10.125
 os: Windows
-relacionados:
+linked:
   - "[[Macro Inspection]]"
   - "[[Olevba]]"
   - "[[MSSQL Hash Stealing]]"
@@ -273,7 +273,7 @@ impacket-psexec.py Administrator:'MyUnclesAreMarioAndLuigi!!1!'@10.10.10.125
 Este comando me proporcionó una shell interactiva con los máximos privilegios, completando así el compromiso total de la máquina.
 
 
-___
+---
 
 ## Bandera(s)
 

@@ -23,7 +23,7 @@ kind: Concept
 ---
 # [[C2 Redirector]]
 
-***
+---
 
 ## Overview
 
@@ -75,7 +75,7 @@ Operators can also deploy chained redirectors to further obscure the true C2 inf
 
 Redirectors, like most C2 infrastructure, should be treated as disposable assets. After an operation, securely destroy redirectors, keys, client data, and configurations[^16]. Automating the creation and teardown of redirectors via [Infrastructure as Code (IaC)](https://csrc.nist.gov/glossary/term/infrastructure_as_code) or cloud automation tools reduces the risk of leftover assets that defenders might later discover and lowers hosting costs.
 
-***
+---
 
 ## Resources
 
@@ -101,7 +101,7 @@ Redirectors, like most C2 infrastructure, should be treated as disposable assets
 [^15]: Slack, Slack Technologies, https://slack.com/
 [^16]: Red Team Assessment Phases: Completing Objectives, InfoSec Institute, https://www.infosecinstitute.com/resources/penetration-testing/red-team-assessment-phases-completing-objectives/
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

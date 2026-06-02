@@ -72,7 +72,7 @@ _Orden lógico para investigar artefactos en Windows:_
 - **Imagen:** Guymager (Linux), FTK Imager (Win).
 
 
-___
+---
 
 # Orden de Comandos (Forensia & Respuesta a Incidentes)
 

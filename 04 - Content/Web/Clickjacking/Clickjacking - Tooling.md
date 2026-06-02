@@ -19,7 +19,7 @@ linked:
 ---
 # Clickjacking - Tooling
 
-***
+---
 
 ## Burp Clickbandit
 
@@ -51,7 +51,7 @@ linked:
 7. Serve HTML from atacante server → repro chain
 ```
 
-___
+---
 
 ## PoC Generators y Templates
 
@@ -108,7 +108,7 @@ EOF` | Cursor-jacking template | Cursor template. |
 </html>
 ```
 
-___
+---
 
 ## Scanners y Bulk Recon
 
@@ -145,7 +145,7 @@ subfinder -d target.com -silent | \
 nuclei -l urls.txt -t http/misconfiguration/clickjacking/ -severity medium,high
 ```
 
-___
+---
 
 ## Browser DevTools y Frame Testing
 
@@ -165,7 +165,7 @@ ___
 | DevTools → Performance → record clicks → analyze timing | Timing analysis touch | Performance. |
 ^cj-tool-devtools
 
-___
+---
 
 ## Wordlists y Repos
 
@@ -185,4 +185,4 @@ ___
 | `curl -s https://portswigger.net/web-security/clickjacking` | PortSwigger labs reference | PortSwigger. |
 ^cj-tool-wordlists
 
-***
+---

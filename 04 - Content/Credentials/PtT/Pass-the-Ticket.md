@@ -34,7 +34,7 @@ linked:
 ---
 # Pass-the-Ticket
 
-***
+---
 
 ## Cheatsheet
 
@@ -170,7 +170,7 @@ tab: **Recursos**
 ![[Pass-the-Ticket - Tooling#^ptt-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -194,7 +194,7 @@ ___
 | Evasion potencial | Evita Kerberos-focused alerts | Evita NTLM-focused alerts |
 | Tiempo de vida | Indefinido (hash no expira) | Lifetime del ticket (default 10h TGT) |
 
-___
+---
 
 ## Workflow
 
@@ -224,7 +224,7 @@ ___
 6. Cleanup: Rubeus.exe purge / klist purge / kdestroy
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -245,7 +245,7 @@ export KRB5CCNAME=administrator@cifs_target.corp.local.ccache
 impacket-psexec -k -no-pass corp.local/administrator@target.corp.local
 ```
 
-___
+---
 
 ## Impacto
 
@@ -257,7 +257,7 @@ ___
 - **Golden Ticket post-dump** → persistencia post-DA via krbtgt hash.
 - **Lateral movement encadenado** → TGT robado → nuevas máquinas → más TGTs → escalada progresiva.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -270,7 +270,7 @@ ___
 - **Short TGT lifetime** — reducir default 10h a 4h via GPO (Default Domain Policy).
 - **Auditoría de delegation** — revisar cuentas con `TRUSTED_FOR_DELEGATION` (unconstrained).
 
-___
+---
 
 ## Para entender Pass-the-Ticket
 
@@ -289,7 +289,7 @@ Unconstrained Delegation abuse: si comprometés un server con `TRUSTED_FOR_DELEG
 **Por qué credential guard no siempre es suficiente:**
 Bloquea extracción desde LSASS memoria — Rubeus dump y mimikatz sekurlsa fallan. Pero: ccache files en disco (Linux hosts), getTGT con credenciales válidas, getST con delegation abuse — ninguno requiere tocar LSASS. Credential Guard protege un vector específico, no todos.
 
-___
+---
 
 ## Recursos
 
@@ -300,4 +300,4 @@ ___
 - [ired.team — PtT](https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/pass-the-ticket) — practical.
 - [MITRE ATT&CK T1550.003](https://attack.mitre.org/techniques/T1550/003/) — Use Alternate Authentication Material: Pass the Ticket.
 
-***
+---

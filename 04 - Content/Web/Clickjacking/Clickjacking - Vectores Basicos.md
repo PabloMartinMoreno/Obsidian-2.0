@@ -17,7 +17,7 @@ linked:
 ---
 # Clickjacking - Vectores Básicos
 
-***
+---
 
 ## Iframe Overlay con Opacity
 
@@ -82,7 +82,7 @@ linked:
 </html>
 ```
 
-___
+---
 
 ## Decoy Button Placement
 
@@ -101,7 +101,7 @@ ___
 | `<button style="...;cursor:pointer;background:linear-gradient(...)">PLAY NOW</button>` | Game-style high-engagement decoy | High engagement. |
 ^cj-vector-decoy
 
-___
+---
 
 ## Double Iframe
 
@@ -131,7 +131,7 @@ ___
 ' style="width:100%;height:100vh"></iframe>
 ```
 
-___
+---
 
 ## Fullscreen Mode Abuse
 
@@ -178,4 +178,4 @@ function goFullscreen() {
 </html>
 ```
 
-***
+---

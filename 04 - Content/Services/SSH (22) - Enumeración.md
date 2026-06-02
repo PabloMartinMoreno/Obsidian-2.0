@@ -19,7 +19,7 @@ linked:
 ---
 # SSH Enumeration (22)
 
-***
+---
 
 ## CheatSheet
 

@@ -20,7 +20,7 @@ linked:
 ---
 # GraphQL - Tooling
 
-***
+---
 
 ## graphw00f (Engine Fingerprint)
 
@@ -35,7 +35,7 @@ linked:
 | `python main.py -t https://target -d -v` | Verbose con todos los probes | Debug fingerprinting. |
 ^graphql-tool-graphw00f
 
-___
+---
 
 ## InQL (Burp Extension)
 
@@ -51,7 +51,7 @@ ___
 | InQL tab → "Cycles" panel | Detecta type cycles | DoS pre-check. |
 ^graphql-tool-inql
 
-___
+---
 
 ## clairvoyance (Schema Recovery sin Introspection)
 
@@ -66,7 +66,7 @@ ___
 | Cargar `schema.json` en https://graphql-kit.com/graphql-voyager/ | Visualización del schema | Manual review. |
 ^graphql-tool-clairvoyance
 
-___
+---
 
 ## graphql-cop (Security Audit)
 
@@ -94,7 +94,7 @@ graphql-cop -t https://target/graphql -v
 [INFO] Aliases limit OK (max 15)
 ```
 
-___
+---
 
 ## GraphiQL / Altair / Postman (Clients Manuales)
 
@@ -130,4 +130,4 @@ curl -X POST -H "Content-Type: application/json" \
   https://target/graphql
 ```
 
-***
+---

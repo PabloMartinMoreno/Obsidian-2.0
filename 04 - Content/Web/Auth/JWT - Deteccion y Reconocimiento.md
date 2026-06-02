@@ -17,7 +17,7 @@ linked:
 ---
 # JWT - Detección y Reconocimiento
 
-***
+---
 
 ## Identificación en Request
 
@@ -35,7 +35,7 @@ linked:
 | Burp regex search | Buscar tokens en historial | `eyJ[\w-]+\.eyJ[\w-]+\.[\w-]+` |
 ^jwt-detect-request
 
-___
+---
 
 ## Decodificación y Análisis
 
@@ -69,4 +69,4 @@ header.payload.signature
 
 Los segmentos están en **base64url** (no base64 estándar — usa `-` y `_` en vez de `+` y `/`, sin `=` padding).
 
-***
+---

@@ -7,7 +7,7 @@ linked:
 ---
 # PortSwigger - XSS - DOM XSS in innerHTML sink using source location.search
 
-***
+---
 
 ## Explicación 
 

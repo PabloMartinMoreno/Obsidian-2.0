@@ -15,7 +15,7 @@ linked:
 ---
 #  Comandos IMAP Comunes
 
-***
+---
 
 ## Overview
 

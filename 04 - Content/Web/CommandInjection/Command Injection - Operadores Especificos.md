@@ -13,7 +13,7 @@ linked:
 ---
 # Command Injection - Operadores Específicos por Tipo de Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -58,4 +58,4 @@ curl -X POST https://target/login \
   -d '{"user":"admin","pass":{"$ne":"x"}}'
 ```
 
-***
+---

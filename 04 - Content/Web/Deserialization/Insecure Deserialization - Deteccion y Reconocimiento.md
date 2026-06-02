@@ -16,7 +16,7 @@ linked:
 ---
 # Insecure Deserialization - Detección y Reconocimiento
 
-***
+---
 
 ## Identificación de Formatos Serializados
 
@@ -61,7 +61,7 @@ ruby -rbase64 -e 'p Marshal.load(Base64.decode64(STDIN.read))' <<< "$value"
 echo "$json" | jq 'keys' | grep -iE '\\$type|@class|__type__'
 ```
 
-___
+---
 
 ## Fingerprint del Stack
 
@@ -120,4 +120,4 @@ ysoserial.net.exe -g ActivitySurrogateSelectorFromFile -f BinaryFormatter \
   -c "ExploitClass.cs;System.Windows.Forms.dll" -o base64
 ```
 
-***
+---

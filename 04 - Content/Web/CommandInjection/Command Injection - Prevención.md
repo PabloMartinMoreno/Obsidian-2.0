@@ -12,7 +12,7 @@ linked:
 ---
 # Command Injection - Prevención
 
-***
+---
 
 ## Secure Coding (nivel aplicación)
 

@@ -28,7 +28,7 @@ linked:
 
 # enum4linux-ng
 
-***
+---
 
 ## Overview
 
@@ -38,7 +38,7 @@ Install: `pipx install enum4linux-ng` / `git clone https://github.com/cddmp/enum
 
 > Regla: enum4linux-ng es el **primer command** post-port scan en cualquier host Windows/AD con SMB abierto. Rápido para baseline. Cubre null session, guest, y auth.
 
-***
+---
 
 ## Sintaxis base
 
@@ -51,7 +51,7 @@ enum4linux-ng -u <user> -H <NThash> <target>      # Pass-the-Hash
 
 `-A` = all enum standard. `-As` = all + share check (más lento, más completo).
 
-***
+---
 
 ## Flags principales
 
@@ -81,7 +81,7 @@ enum4linux-ng -u <user> -H <NThash> <target>      # Pass-the-Hash
 | `-t <sec>` | Timeout per check. |
 | `-r N` | Retries. |
 
-***
+---
 
 ## Null session (pre-creds)
 
@@ -94,7 +94,7 @@ enum4linux-ng -N 10.10.10.10                    # solo null checks
 
 Si null funciona: enum users, groups, shares, password policy **sin** creds. Win win.
 
-***
+---
 
 ## Auth (post-creds)
 
@@ -106,7 +106,7 @@ enum4linux-ng -A -u alice -H ':<NThash>' 10.10.10.10        # PtH
 
 Con creds: full enum incluso si null disabled.
 
-***
+---
 
 ## RID cycling
 
@@ -120,7 +120,7 @@ enum4linux-ng -R 1000-50000 -u alice -p p 10.10.10.10
 
 Output: `S-1-5-21-...-500 = Administrator (User)`, `S-1-5-21-...-1104 = j.smith (User)`, etc.
 
-***
+---
 
 ## Workflow típico
 
@@ -160,7 +160,7 @@ enum4linux-ng -S -u alice -p p <target>
 enum4linux-ng -P -u alice -p p <DC>
 ```
 
-***
+---
 
 ## Output
 
@@ -191,7 +191,7 @@ Sections típicas en JSON:
 
 Parse con `jq` o Python para integrar a otros tools.
 
-***
+---
 
 ## Comparación con alternativas
 
@@ -206,7 +206,7 @@ Parse con `jq` o Python para integrar a otros tools.
 
 Default: **enum4linux-ng -As** primero → si necesitás profundizar en algo específico → tool dedicada (`smbmap` para spider, `bloodhound-python` para AD graph, `ldapsearch` para queries custom).
 
-***
+---
 
 ## Tips
 
@@ -216,7 +216,7 @@ Default: **enum4linux-ng -As** primero → si necesitás profundizar en algo esp
 - **Falsos negativos en shares**: enum4linux a veces marca "ACCESS DENIED" cuando el user igual puede acceder vía path completo. Confirmar con `smbclient` directo.
 - **Combinar con nxc**: enum4linux-ng para deep + nxc para múltiples targets en paralelo (`-tf hosts.txt`).
 
-***
+---
 
 ## OPSEC
 
@@ -226,7 +226,7 @@ Default: **enum4linux-ng -As** primero → si necesitás profundizar en algo esp
 - LDAP queries con base completa → 4662 LDAP search events.
 - Para stealth: usar nxc con `--continue-on-success` y solo módulos específicos, en vez de `-A` masivo.
 
-***
+---
 
 ## Referencias
 

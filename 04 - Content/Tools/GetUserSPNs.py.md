@@ -14,7 +14,7 @@ kind: Tool
 ---
 # [[GetUserSPNs.py]]
 
-***
+---
 
 ## Overview
 
@@ -144,7 +144,7 @@ connection:
   -dc-host hostname     Hostname of the domain controller to use. If ommited, the domain part (FQDN) specified in the account parameter will be used
 ```
 
-***
+---
 
 ## Resources
 
@@ -165,7 +165,7 @@ connection:
 [^10]: Windows Event ID 4769 Kerberos Service Ticket Request, Splunk, https://research.splunk.com/endpoint/eb3e6702-8936-11ec-98fe-acde48001122/
 [^11]: BloodHound, SpecterOps, https://github.com/SpecterOps/BloodHound
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

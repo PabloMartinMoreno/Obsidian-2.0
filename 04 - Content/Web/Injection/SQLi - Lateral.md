@@ -15,7 +15,7 @@ linked:
 ---
 # SQLi - Lateral (Oracle)
 
-***
+---
 
 ## Cheatsheet
 
@@ -61,7 +61,7 @@ SELECT TO_CHAR(SYSDATE) FROM dual
 -- → ejecuta el ' AND 1=1-- como código SQL en el contexto
 ```
 
-___
+---
 
 ## Overview
 
@@ -81,4 +81,4 @@ ___
 
 Documentado por David Litchfield (2008) — más teórico que común, pero severo cuando aplica.
 
-***
+---

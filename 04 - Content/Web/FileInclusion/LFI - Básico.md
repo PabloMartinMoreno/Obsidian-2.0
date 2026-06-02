@@ -15,7 +15,7 @@ linked:
 ---
 # LFI - Básico
 
-***
+---
 
 ## Cheatsheet
 
@@ -75,7 +75,7 @@ done
 /home/*/.ssh/id_rsa /home/*/.bash_history /root/.ssh/id_rsa
 ```
 
-___
+---
 
 ## Overview
 
@@ -83,4 +83,4 @@ LFI básico = `include(user_input)` sin sanitizar permite leer cualquier archivo
 
 Si el filtro reemplaza `../` por vacío → probar variantes en [[LFI - Path Traversal y Bypass de Filtros]]. Si append automático de `.php` corta el path → usar null byte ([[LFI - Null Byte Injection]]) o wrapper `php://filter`.
 
-***
+---

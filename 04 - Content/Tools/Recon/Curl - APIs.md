@@ -19,7 +19,7 @@ linked:
 ---
 # Curl - APIs
 
-***
+---
 
 ## Cheatsheet
 

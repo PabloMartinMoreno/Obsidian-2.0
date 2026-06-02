@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/583
 dificultad: Media
 ip: 10.10.11.248
 os: Linux
-relacionados:
+linked:
   - "[[openssl]]"
   - "[[onesixtyone]]"
   - "[[SNMP]]"
@@ -372,7 +372,7 @@ ssh root@nagios.monitored.htb -i id_rsa_root
 Con esto, obtenego acceso como `root` y puedo leer la bandera final en `/root/root.txt`. 🚩
 
 
-___
+---
 
 ## Bandera(s)
 

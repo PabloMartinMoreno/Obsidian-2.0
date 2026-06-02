@@ -10,7 +10,7 @@ linked:
 ---
 # <% tp.file.title %>
 
-***
+---
 
 ## Resumen
 

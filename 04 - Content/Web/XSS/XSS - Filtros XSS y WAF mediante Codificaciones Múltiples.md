@@ -14,7 +14,7 @@ linked:
 ---
 # XSS - Evasión de Filtros XSS y WAF mediante Codificaciones Múltiples
 
-***
+---
 
 ## Cheatsheet
 
@@ -70,7 +70,7 @@ echo -n '<svg onload=alert(1)>' | jq -sRr @uri | jq -sRr @uri  # URL twice
 # - dalfox — fuzzer XSS con WAF bypass built-in
 ```
 
-___
+---
 
 ## Overview
 
@@ -83,4 +83,4 @@ WAFs y sanitizers usan regex/blacklists sobre el string crudo. Browsers/parsers 
 
 Doble URL encoding = caso clásico — proxy `%25` → `%` → app `%xx` → real char.
 
-***
+---

@@ -23,7 +23,7 @@ linked:
 ---
 # Linux PrivEsc - Abusing Sudoers
 
-***
+---
 
 ## Cheatsheet
 
@@ -122,4 +122,4 @@ make
 - En contextos con MFA en sudo (pam_google_authenticator, pam_u2f), el bypass por CVEs kernel sigue siendo opción (ver MOC).
 - **Sudo tokens**: si un usuario ejecutó sudo recientemente en misma sesión TTY, el token cacheado puede reusarse. Post-exploit enum: `sudo -n true 2>/dev/null && echo "sudo sin password"`.
 
-***
+---

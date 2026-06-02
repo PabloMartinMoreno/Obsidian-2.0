@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/aragog
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[nikto]]"
   - "[[wpscan]]"
   - "[[Arbitrary File Upload]]"

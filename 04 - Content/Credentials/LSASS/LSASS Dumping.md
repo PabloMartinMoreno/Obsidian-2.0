@@ -34,7 +34,7 @@ linked:
 ---
 # LSASS Dumping
 
-***
+---
 
 ## Cheatsheet
 
@@ -218,7 +218,7 @@ tab: **Recursos**
 ![[LSASS Dumping - Tooling#^lsass-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -246,7 +246,7 @@ ___
 | Output | Active session creds | Full domain hashes | Full domain hashes |
 | Detection | Sysmon Event 10 (LSASS read) | File access events | Event 4662 (DCSync GUIDs) |
 
-___
+---
 
 ## Workflow
 
@@ -287,7 +287,7 @@ ___
    - Mimikatz/procdump file removal
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -312,7 +312,7 @@ nxc smb <target> -u admin -H <NT> --local-auth -M lsassy
 pypykatz lsa minidump lsass.dmp
 ```
 
-___
+---
 
 ## Impacto
 
@@ -324,7 +324,7 @@ ___
 - **Hybrid env: PRT (Primary Refresh Token)** = Azure AD cloud lateral.
 - **Workstation con cached Tier 0** = critical privesc from low-priv host.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -342,7 +342,7 @@ ___
 - **Honey-token sessions** en host — trip atacante.
 - **Sysmon SACL** custom en `lsass.exe` — granular logging.
 
-___
+---
 
 ## Para entender LSASS
 
@@ -360,7 +360,7 @@ ___
 
 **Por qué nanodump exists:** standard `MiniDumpWriteDump` API hooked by EDRs. nanodump implements custom MiniDump from scratch — bypasses API hooks. Multiple methods (fork, snapshot, duplicate handle) = different syscall patterns = harder universal detection.
 
-___
+---
 
 ## Recursos
 
@@ -374,4 +374,4 @@ ___
 - [SpecterOps - Mimikatz Internals](https://posts.specterops.io/credential-extraction-from-lsass-the-modern-way) — research.
 - [MITRE ATT&CK T1003.001](https://attack.mitre.org/techniques/T1003/001/) — LSASS Memory.
 
-***
+---

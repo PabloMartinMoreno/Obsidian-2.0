@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/Access
 dificultad: Media
 ip: 10.10.10.98
 os: Windows
-relacionados:
+linked:
   - "[[Password Reuse]]"
   - "[[02 - Herramientas/ftp|ftp]]"
   - "[[runas savecred]]"

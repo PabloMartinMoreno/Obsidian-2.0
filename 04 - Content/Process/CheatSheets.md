@@ -11,7 +11,7 @@ cssclasses:
 
 Índice de todas las notas `kind: CheatSheet` agrupadas por dominio.
 
-***
+---
 
 ## Stats
 
@@ -23,7 +23,7 @@ WHERE kind = "CheatSheet"
 GROUP BY true
 ```
 
-***
+---
 
 ## AD
 
@@ -36,7 +36,7 @@ WHERE kind = "CheatSheet"
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Web
 
@@ -49,7 +49,7 @@ WHERE kind = "CheatSheet"
 SORT file.folder ASC, file.name ASC
 ```
 
-***
+---
 
 ## Credentials
 
@@ -62,7 +62,7 @@ WHERE kind = "CheatSheet"
 SORT file.folder ASC, file.name ASC
 ```
 
-***
+---
 
 ## Services
 
@@ -74,7 +74,7 @@ WHERE kind = "CheatSheet"
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Tools
 
@@ -86,7 +86,7 @@ WHERE kind = "CheatSheet"
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Recon / PrivEsc / Lateral / Payloads
 
@@ -99,7 +99,7 @@ WHERE kind = "CheatSheet"
 SORT file.folder ASC, file.name ASC
 ```
 
-***
+---
 
 ## Sin clasificar
 

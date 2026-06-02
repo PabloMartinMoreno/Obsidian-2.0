@@ -22,7 +22,7 @@ linked:
 ---
 # Proxychains
 
-***
+---
 
 ## Cheatsheet
 
@@ -35,7 +35,7 @@ linked:
 | **SOCKS via SSH** | `ssh -D 1080 user@pivot` |
 | **SOCKS via chisel** | `chisel server --reverse -p 443` → `chisel client atk:443 R:socks` |
 
-***
+---
 
 ## Concepto
 
@@ -194,4 +194,4 @@ Proxychains sigue útil como fallback universal y para tools puntuales (impacket
 - [ligolo-ng](https://github.com/nicocha30/ligolo-ng)
 - [chisel](https://github.com/jpillora/chisel)
 
-***
+---

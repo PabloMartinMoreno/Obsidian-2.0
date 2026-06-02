@@ -6,7 +6,7 @@ linked:
 ---
 # Obtener login en os linux sin contraseña
 
-***
+---
 
 
 1. En el menu donde se elije el OS tocar la `e` y en la linea donde dice `ro quiet` borrarlo y poner:

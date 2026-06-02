@@ -33,7 +33,7 @@ linked:
 ---
 # HTTP Brute Forcing
 
-***
+---
 
 ## Cheatsheet
 
@@ -135,7 +135,7 @@ tab: **Wordlists & Anti-Captcha**
 ![[HTTP Brute Forcing - Tooling#^bf-tool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -177,7 +177,7 @@ Brute force es **bug bounty bread-and-butter** — incluso con defensas modernas
 | Hit rate | ~0.1-1% (high-value) | ~0.01-0.1% (vol-based) |
 | Tooling | Sentry MBA, OpenBullet | Burp + custom |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -232,7 +232,7 @@ ___
    - Recommended remediation
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -333,7 +333,7 @@ echo "$JWT" | jwt-cli decode  # check alg
 hashcat -a 0 -m 16500 jwt.txt rockyou.txt
 ```
 
-___
+---
 
 ## Impacto
 
@@ -350,7 +350,7 @@ ___
 - **Persistence via OAuth grants** — atacante crea OAuth token post-login.
 - **Data exfiltration** — accesso usuario = data export endpoints.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -389,7 +389,7 @@ ___
 - **Zero-trust** — re-auth para sensitive actions even with valid session.
 - **Hardware tokens** for high-privilege users — YubiKey FIDO2.
 
-___
+---
 
 ## Para entender HTTP Brute Forcing
 
@@ -430,7 +430,7 @@ Devs piensan: "es random, no es bruteable". Pero short numeric (4-6 digit), pred
 
 Defensa naïve: limita /login pero no /api/v1/login (alias backend), no /oauth/token, no /forgot-password counters. Atacante pivota endpoint → hits same backend con counter resetted. Discovery de endpoints es first step.
 
-___
+---
 
 ## Recursos
 
@@ -447,4 +447,4 @@ ___
 - [Burp Turbo Intruder](https://portswigger.net/research/turbo-intruder-embracing-the-billion-request-attack) — high-speed brute.
 - [Single-Packet Attack (James Kettle, 2023)](https://portswigger.net/research/smashing-the-state-machine) — race-based brute.
 
-***
+---

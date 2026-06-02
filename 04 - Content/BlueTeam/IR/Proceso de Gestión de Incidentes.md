@@ -84,7 +84,7 @@ Uno de los recursos más utilizados sobre gestión de incidentes es la **Guía d
 
 - **SolarWinds Orion (2020):** Actores de estado-nación comprometieron el entorno de construcción/lanzamiento de SolarWinds e inyectaron una puerta trasera (backdoor) maliciosa en las actualizaciones de Orion, que se distribuyeron a miles de clientes. Esto causó espionaje de gran alcance y acceso no autorizado en sectores gubernamentales y privados, lo que llevó a esfuerzos prolongados de detección y remediación.
 
-___
+---
 
 ## Ejemplo de Informes de Incidentes
 

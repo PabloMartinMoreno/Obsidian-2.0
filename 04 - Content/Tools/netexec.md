@@ -30,7 +30,7 @@ linked:
 ---
 # netexec (nxc)
 
-***
+---
 
 ## Overview
 
@@ -38,7 +38,7 @@ Successor de **CrackMapExec** (CME). Swiss army knife para enum + lateral moveme
 
 > Regla: `nxc` reemplaza `crackmapexec`. Legacy CME no se mantiene desde 2023.
 
-***
+---
 
 ## Sintaxis base
 
@@ -51,7 +51,7 @@ nxc <protocol> <target> -u <user> -p <pass|hash> [opciones]
 - Null session: `-u '' -p ''` / Guest: `-u guest -p ''`.
 - Local auth: `--local-auth`.
 
-***
+---
 
 ## Protocolo SMB
 
@@ -134,7 +134,7 @@ nxc smb 10.10.10.0/24 --gen-relay-list relay_targets.txt
 
 Input directo para `ntlmrelayx -tf relay_targets.txt`.
 
-***
+---
 
 ## Protocolo LDAP
 
@@ -161,7 +161,7 @@ Query custom:
 nxc ldap <dc> -u u -p p --query "(objectclass=user)" ""
 ```
 
-***
+---
 
 ## Protocolo WinRM
 
@@ -176,7 +176,7 @@ nxc winrm <t> -u u -p p -X '$PSVersionTable'
 
 Si `Pwn3d!` → `evil-winrm -i <t> -u u -p p`.
 
-***
+---
 
 ## Protocolo MSSQL
 
@@ -195,7 +195,7 @@ Windows auth + PtH:
 nxc mssql <t> -u Admin -H <hash> -d <domain> -q 'EXEC sp_linkedservers'
 ```
 
-***
+---
 
 ## Protocolo RDP
 
@@ -205,7 +205,7 @@ nxc rdp <t> -u u -p p --screenshot    # screenshot del login (NLA off)
 nxc rdp <t> -u u -p p --nla-screenshot
 ```
 
-***
+---
 
 ## Protocolo SSH
 
@@ -215,7 +215,7 @@ nxc ssh <t> -u u -i id_rsa            # key
 nxc ssh <t> -u u -p p -x 'id'
 ```
 
-***
+---
 
 ## Otros protocolos
 
@@ -226,7 +226,7 @@ nxc wmi <t> -u u -p p -x 'whoami'
 nxc nfs <t>                           # enum mounts + ver si no_root_squash
 ```
 
-***
+---
 
 ## Módulos (`-M`)
 
@@ -261,7 +261,7 @@ nxc smb <t> -u u -p p -M <module> -o KEY=val
 | `zerologon` | smb | CVE-2020-1472 |
 | `pso` | ldap | Password Settings Objects |
 
-***
+---
 
 ## Kerberos
 
@@ -274,7 +274,7 @@ nxc smb <t> -k -u user
 nxc smb <t> -u u -a <aeskey> -d domain.local --use-kcache
 ```
 
-***
+---
 
 ## Logging / opsec
 
@@ -294,7 +294,7 @@ nxcdb
 > hosts
 ```
 
-***
+---
 
 ## Workflows típicos
 
@@ -327,7 +327,7 @@ nxc smb <pwn_list> -u $U -H <hash> -M lsassy
 nxc smb <dc> -u $U -p $P -M bloodhound -o COLLECTIONMETHOD=All
 ```
 
-***
+---
 
 ## Referencias
 

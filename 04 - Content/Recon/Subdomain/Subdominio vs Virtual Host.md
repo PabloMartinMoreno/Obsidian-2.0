@@ -11,7 +11,7 @@ linked:
 ---
 # Subdominio vs Virtual Host
 
-___
+---
 
 ![[Subdominio#El Subdominio (Capa de red / DNS)]]
 
@@ -41,7 +41,7 @@ Esta es la parte más importante para entender que **no son lo mismo**:
 
 La distinción real no está en el nombre (que puede ser el mismo, ej. `dev.ejemplo.htb`), sino en **quién procesa la información** y **en qué momento de la conexión** ocurre.
 
-___
+---
 
 ## Cuadro comparativo 
 

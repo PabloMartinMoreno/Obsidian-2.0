@@ -8,7 +8,7 @@ web: https://tryhackme.com/room/<% tp.file.title.toLowerCase().replace(/ /g, '')
 dificultad:
 ip:
 os:
-relacionados:
+linked:
 ---
 # TryHackMe - <% tp.file.title %>
 

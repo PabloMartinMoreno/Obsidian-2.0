@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/559
 dificultad: Fácil
 ip: 10.10.11.230
 os: Linux
-relacionados:
+linked:
   - "[[Spring Boot]]"
   - "[[Information Leakage]]"
   - "[[Cookie Hijacking]]"
@@ -55,7 +55,7 @@ gobuster dir -w /usr/share/wordlists/seclists/Discovery/Web-Content/Programming-
 Este escaneo fue exitoso y reveló el endpoint `/actuator`, que en las aplicaciones Spring Boot se utiliza para monitorizar y gestionar la aplicación en producción.
 
 
-___
+---
 
 ## Análisis de vulnerabilidades
 
@@ -82,7 +82,7 @@ ssh -i id_rsa username@hostname
 La validación estricta en el campo del hostname me llevó a probar una **inyección de comandos** en el campo del nombre de usuario. Dado que los espacios en blanco no eran permitidos, utilicé la variable de entorno `${IFS}` (Internal Field Separator) como separador, una técnica común para evadir filtros de espacios.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -146,7 +146,7 @@ Ejecuto la reverse shell en base64, la decodifico y ejecuta una bash
 > Tanto el tip anterior como el uso de `${IPS}` funciona en bash, pero no en `zsh`
 
 
-___
+---
 
 ## Escalada de privilegios
 
@@ -218,7 +218,7 @@ sudo /usr/bin/ssh -o PermitLocalCommand=yes -o 'LocalCommand=/bin/bash' josh@127
 Al ejecutar el comando contra localhost, `ssh` establece la conexión, e inmediatamente después ejecuta el `LocalCommand` con los privilegios del usuario especificado en el comando `sudo`, que en este caso es `root`. Esto me proporcionó una shell de `root`, completando la escalada de privilegios.
 
 
-___
+---
 
 ## Bandera(s)
 

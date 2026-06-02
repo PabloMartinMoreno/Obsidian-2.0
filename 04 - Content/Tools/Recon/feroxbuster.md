@@ -21,7 +21,7 @@ linked:
 ---
 # feroxbuster
 
-***
+---
 
 ## Cheatsheet
 
@@ -35,7 +35,7 @@ linked:
 | **Desde config** | `feroxbuster --resume-from state.ferox` |
 | **Auto-filter** | `feroxbuster -u http://host/ -w w.txt --auto-tune --smart` |
 
-***
+---
 
 ## Concepto
 
@@ -157,4 +157,4 @@ feroxbuster -u http://host/ -w w.txt --silent -o urls.txt
 
 - [feroxbuster GitHub](https://github.com/epi052/feroxbuster)
 
-***
+---

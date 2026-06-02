@@ -11,7 +11,7 @@ linked:
 > [!info]
 > Binaries .NET (C#, VB.NET, F#) compilan a **IL (Intermediate Language)** ejecutado por CLR. IL es trivialmente decompilable a near-original source. Tools: dnSpy, ILSpy, dotPeek.
 
-***
+---
 
 ## Tools
 
@@ -24,7 +24,7 @@ linked:
 | **JustDecompile** | Telerik |
 | **de4dot** | De-obfuscator pre-decompile (Confuser, Eazfuscator, etc.) |
 
-***
+---
 
 ## dnSpy workflow
 
@@ -42,7 +42,7 @@ Edit-in-place permite:
 - Add backdoor methods
 - Modify constants
 
-***
+---
 
 ## Búsqueda en código
 
@@ -63,7 +63,7 @@ Marshal.PtrToString
 LoadLibrary
 ```
 
-***
+---
 
 ## Common findings
 
@@ -75,7 +75,7 @@ LoadLibrary
 | **Cmd execution** | `Process.Start("cmd.exe /c " + userInput)` → CMDi |
 | **Web.config encryption keys** | machineKey leak → ViewState forging |
 
-***
+---
 
 ## Obfuscation
 
@@ -95,7 +95,7 @@ Workflow contra obf:
 de4dot --un-name '!^<>[a-z\d]+|^_+$' obfuscated.exe
 ```
 
-***
+---
 
 ## CLR Internals útiles
 
@@ -104,7 +104,7 @@ de4dot --un-name '!^<>[a-z\d]+|^_+$' obfuscated.exe
 Mono.Cecil → librería para programmatic IL manipulation
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

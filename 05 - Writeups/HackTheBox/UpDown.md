@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/493
 dificultad: Fácil
 ip: 10.10.11.177
 os: Linux
-relacionados:
+linked:
   - "[[Subdomain Discovery]]"
   - "[[.git Exposure]]"
   - "[[PHP Source Analysis]]"
@@ -276,7 +276,7 @@ sudo /usr/bin/easy_install $TF
 Al ejecutar el último comando, el payload se activó y obtuve una shell interactiva como **root**. Finalmente, pude leer la bandera en `/root/root.txt`.
 
 
-___
+---
 
 ## Bandera(s)
 

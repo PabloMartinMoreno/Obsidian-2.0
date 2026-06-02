@@ -10,7 +10,7 @@ linked:
 > [!info]
 > Búsqueda por regex en texto. En pentest: filtrar output, hunt credenciales en filesystem, parse logs, extraer patrones.
 
-***
+---
 
 ## Cheatsheet
 
@@ -25,7 +25,7 @@ linked:
 | `grep -l 'pattern' *.md` | Solo nombres de archivo matched | Filtrar archivos |
 | `grep -c 'pattern' file` | Contar matches | Stats |
 
-***
+---
 
 ## Recon patterns útiles
 
@@ -43,7 +43,7 @@ grep -oE '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b' file
 grep -rE 'curl|wget|ssh|nc' ~/.bash_history /root/.bash_history 2>/dev/null
 ```
 
-***
+---
 
 ## Notas Relacionadas
 

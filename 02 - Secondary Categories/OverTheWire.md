@@ -7,7 +7,7 @@ kind: Secondary Category
 ---
 # OverTheWire
 
-***
+---
 
 ## Overview
 
@@ -32,7 +32,7 @@ FROM "05 - Writeups/OverTheWire"
 GROUP BY choice(contains(file.tags, "estado/completo"), "✅ Completo", "🔴 Incompleto")
 ```
 
-***
+---
 
 ## Wargames
 
@@ -45,7 +45,7 @@ FROM "05 - Writeups/OverTheWire"
 SORT file.name ASC
 ```
 
-***
+---
 
 ## Recursos
 

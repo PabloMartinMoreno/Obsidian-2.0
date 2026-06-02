@@ -17,7 +17,7 @@ linked:
 ---
 # AD - GPO y SYSVOL Enumeration - GPO ACL Audit
 
-***
+---
 
 ## GPO Object DACL
 
@@ -41,7 +41,7 @@ Get-GPO -All | % {
 }
 ```
 
-___
+---
 
 ## GPO Owner
 
@@ -53,7 +53,7 @@ ___
 
 **Por qué importa:** owner tiene **implicit Modify Permissions** = puede grant self GenericAll. Audit owners non-default.
 
-___
+---
 
 ## WriteGPLink ACE
 
@@ -65,7 +65,7 @@ ___
 
 **Por qué importa:** `WriteProperty gPLink` sobre OU = atacante puede **link malicious GPO** a la OU. Combinado con `Group Policy Creator Owners` (crear GPO) = mass compromise OU.
 
-___
+---
 
 ## Group Policy Creator Owners
 
@@ -81,7 +81,7 @@ ___
 3. GPO contiene scheduled task / startup script malicious.
 4. `gpupdate /force` en victims → ejecuta como SYSTEM.
 
-___
+---
 
 ## ACL Inheritance from Domain Root
 
@@ -91,7 +91,7 @@ ___
 | `Get-GPInheritance -Target "$((Get-ADDomain).DistinguishedName)"` | GPOs aplicados a domain root | Top-level. |
 ^ad-gpoacl-inherit
 
-___
+---
 
 ## SYSVOL File Permissions
 
@@ -108,7 +108,7 @@ ___
 
 Ambos deben matchear. Mismatch = privesc surface.
 
-___
+---
 
 ## Cross-Correlate Tier 0
 
@@ -118,7 +118,7 @@ ___
 | `Get-GPInheritance -Target "OU=Domain Controllers,..." \| % { Get-GPPermission -Guid $_.GpoLinks.GpoId -All }` | Permisos de GPOs en DC OU | ACL audit. |
 ^ad-gpoacl-tier0
 
-___
+---
 
 ## BloodHound GPO Edges
 
@@ -130,7 +130,7 @@ ___
 | `MATCH (u {owned:true})-[*1..]->(g:GPO)-[:GpLink]->(o:OU)-[:Contains]->(c:Computer) RETURN p` | Mass compromise paths | Critical. |
 ^ad-gpoacl-bh
 
-___
+---
 
 ## Mitigations
 
@@ -143,4 +143,4 @@ ___
 | Match AD + SYSVOL DACLs | Eliminate mismatches | Audit. |
 ^ad-gpoacl-mitigations
 
-***
+---

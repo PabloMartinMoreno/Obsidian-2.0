@@ -13,7 +13,7 @@ linked:
 ---
 # XSS - Pseudo-protocolos (`javascript:`)
 
-***
+---
 
 ## Cheatsheet
 
@@ -49,7 +49,7 @@ linked:
 | `\tjavascript:alert(1)` | Whitespace literal antes del scheme | Algunos browsers toleran leading whitespace. |
 ^xss-pseudo-bypass
 
-___
+---
 
 ## Overview
 
@@ -62,4 +62,4 @@ ___
 
 **Limitación clave:** `javascript:` debe estar al inicio absoluto del value. Si app prefija con path (`<a href="/redirect/INYECCIÓN">`), no funciona — hay que escapar comillas primero o pivotar a otro vector.
 
-***
+---

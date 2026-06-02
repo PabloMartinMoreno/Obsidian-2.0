@@ -25,7 +25,7 @@ linked:
 ---
 # NTLM Relay
 
-***
+---
 
 ## Cheatsheet
 ^ntlm-relay
@@ -40,7 +40,7 @@ linked:
 | **RPC (ESC11)** | Cert via ICPR | `ntlmrelayx.py -t rpc://CA -rpc-mode ICPR -icpr-ca-name CA` |
 | **WinRM** | Shell | `ntlmrelayx.py -t http://host:5985/wsman` |
 
-***
+---
 
 ## Concepto
 
@@ -233,4 +233,4 @@ ntlmrelayx.py -t http://host:5985/wsman -smb2support
 - [HackTricks - NTLM Relay](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ntlm-relay)
 - [Certified Pre-Owned - ADCS Relay](https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf)
 
-***
+---

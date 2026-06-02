@@ -17,14 +17,14 @@ linked:
 > [!info]
 > Patch en LSASS del DC que inyecta una master password aceptada por TODOS los usuarios del dominio. Persistencia silenciosa con backdoor universal.
 
-***
+---
 
 ## Prerrequisitos
 
 - **DA o equivalente** en el DC (NT AUTHORITY\SYSTEM en lsass).
 - Mimikatz / Rubeus / Impacket con módulo de Skeleton Key.
 
-***
+---
 
 ## Inyección
 
@@ -40,7 +40,7 @@ Resultado:
 - User existente con su pwd → sigue funcionando
 - Mismo user con pwd `mimikatz` → funciona también
 
-***
+---
 
 ## Uso post-injection
 
@@ -50,7 +50,7 @@ psexec.py 'domain.local/admin:mimikatz'@<dc>
 evil-winrm -i <dc> -u admin -p mimikatz
 ```
 
-***
+---
 
 ## Persistencia
 
@@ -58,7 +58,7 @@ evil-winrm -i <dc> -u admin -p mimikatz
 
 Para persistencia real: combinar con [[Golden Ticket]] o [[DCSync]] + planted scheduled task.
 
-***
+---
 
 ## Detección
 
@@ -66,7 +66,7 @@ Para persistencia real: combinar con [[Golden Ticket]] o [[DCSync]] + planted sc
 - AV/EDR signatures conocidas (Mimikatz IOC).
 - Diff hash de lsass.exe en memoria.
 
-***
+---
 
 ## Notas Relacionadas
 

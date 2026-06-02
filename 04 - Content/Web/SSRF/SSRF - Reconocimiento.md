@@ -11,7 +11,7 @@ linked:
 ---
 # SSRF - Reconocimiento
 
-***
+---
 
 ## Cheatsheet
 
@@ -63,7 +63,7 @@ for p in 22 80 3306 6379 8080 11211; do
 done
 ```
 
-___
+---
 
 ## Overview
 
@@ -74,4 +74,4 @@ Reconocimiento SSRF = 3 etapas:
 
 Resultados comunes en port enum: 80 (web interno), 3306 (MySQL), 6379 (Redis), 8080 (admin), 11211 (Memcached), 8500 (Consul), 9200 (Elasticsearch).
 
-***
+---

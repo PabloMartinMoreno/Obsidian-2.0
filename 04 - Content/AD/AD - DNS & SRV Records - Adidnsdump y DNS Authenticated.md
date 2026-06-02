@@ -18,7 +18,7 @@ linked:
 ---
 # AD - DNS & SRV Records - Adidnsdump y DNS Authenticated
 
-***
+---
 
 ## Por qué DNS via LDAP
 
@@ -43,7 +43,7 @@ DC=ForestDnsZones,DC=corp,DC=local
   └── DC=_msdcs.corp.local
 ```
 
-___
+---
 
 ## adidnsdump
 
@@ -73,7 +73,7 @@ adidnsdump -u 'corp\auditor' -p pass <DC> -r > records.csv
 # *,A,10.0.0.200      ← wildcard catch-all
 ```
 
-___
+---
 
 ## ANY Records / Default Visibility
 
@@ -97,7 +97,7 @@ while IFS=',' read name type addr; do
 done < all_ldap.csv
 ```
 
-___
+---
 
 ## DNS Permissions Audit
 
@@ -131,7 +131,7 @@ Get-ChildItem "AD:DC=DomainDnsZones,DC=corp,DC=local" | % {
 }
 ```
 
-___
+---
 
 ## Records Manipulation
 
@@ -166,7 +166,7 @@ dig +short A wpad.corp.local @<DC>
 python3 dnstool.py -u 'corp\u' -p pass -a remove -r wpad <DC>
 ```
 
-___
+---
 
 ## DNS-Based Persistence
 
@@ -200,4 +200,4 @@ Get-DnsServerResourceRecord -ZoneName $Zone -ComputerName $DC |
   Select RecordType,HostName,RecordData,Timestamp
 ```
 
-***
+---

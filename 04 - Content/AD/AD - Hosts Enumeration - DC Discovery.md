@@ -19,7 +19,7 @@ linked:
 ---
 # AD - Hosts Enumeration - DC Discovery
 
-***
+---
 
 ## DNS SRV Records
 
@@ -49,7 +49,7 @@ done
 dig AXFR "$DOM" @<DC-IP>
 ```
 
-___
+---
 
 ## NetBIOS / nbtscan / Broadcast
 
@@ -77,7 +77,7 @@ ___
 nbtscan -v 10.0.0.0/24 | grep -E '<1C>|<1B>'
 ```
 
-___
+---
 
 ## LDAP namingContexts (Anonymous)
 
@@ -109,7 +109,7 @@ ldapsearch -x -h <DC> -s base -b "" \
 nxc ldap <DC> -u '' -p '' --get-domain-info
 ```
 
-___
+---
 
 ## SMB Banner / Signing Discovery
 
@@ -138,7 +138,7 @@ nxc smb <DC> -u '' -p '' --shares
 rpcclient -U "" <DC> -N -c 'srvinfo;getdompwinfo;enumdomains;lsaquery'
 ```
 
-___
+---
 
 ## DC Locator Service / nltest
 
@@ -170,4 +170,4 @@ Get-ADDomainController -Filter * |
     Select Name,IPv4Address,Site,IsGlobalCatalog,IsReadOnly,OperatingSystem,OperationMasterRoles
 ```
 
-***
+---

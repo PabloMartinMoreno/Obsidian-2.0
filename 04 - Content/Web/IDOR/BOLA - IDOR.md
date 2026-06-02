@@ -25,7 +25,7 @@ linked:
 ---
 # BOLA - IDOR
 
-***
+---
 
 ## Cheatsheet
 
@@ -56,7 +56,7 @@ tab: **Blind, Stored, Multi-step, Async**
 ![[IDOR - Explotación Indirecta y Lógica de Negocio#^idor-indirecta]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -92,7 +92,7 @@ ___
 
 Validación de autorización a nivel **modelo/controller**, NO a nivel ruta o WAF. Identidad del actor extraída del JWT verificado server-side, nunca del request. RBAC/ABAC con verificación explícita de relación `usuario ↔ objeto` en cada query/mutation.
 
-***
+---
 
 ## Recursos
 
@@ -100,4 +100,4 @@ Validación de autorización a nivel **modelo/controller**, NO a nivel ruta o WA
 - [PortSwigger - Access Control](https://portswigger.net/web-security/access-control)
 - [HackTricks - IDOR](https://book.hacktricks.xyz/pentesting-web/idor)
 
-***
+---

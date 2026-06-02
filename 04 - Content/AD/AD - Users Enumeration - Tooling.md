@@ -19,7 +19,7 @@ linked:
 ---
 # AD - Users Enumeration - Tooling
 
-***
+---
 
 ## netexec
 
@@ -51,7 +51,7 @@ nxc ldap $DC -u $USER -p $PASS --password-not-required > vuln.txt
 nxc ldap $DC -u $USER -p $PASS --trusted-for-delegation > deleg.txt
 ```
 
-___
+---
 
 ## Impacket
 
@@ -76,7 +76,7 @@ impacket-lookupsid 'corp.local/auditor:Pass!'@<DC> 10000 |
   cut -d'\\' -f2 > users.txt
 ```
 
-___
+---
 
 ## kerbrute
 
@@ -102,7 +102,7 @@ chmod +x kerbrute_linux_amd64
 ./kerbrute_linux_amd64 userenum --dc <DC> -d corp.local usernames.txt -o valid.txt -t 100
 ```
 
-___
+---
 
 ## PowerView / pywerview
 
@@ -133,7 +133,7 @@ Get-DomainUser -AllowDelegation
 Find-DomainUserLocation -UserIdentity "Administrator"
 ```
 
-___
+---
 
 ## ldapsearch / Linux LDAP
 
@@ -171,7 +171,7 @@ $LS "(&(objectCategory=user)(|(description=*pass*)(description=*pwd*)))" samAcco
 ldapsearch -h <DC> -p 3268 -D 'corp\\u' -w pass -b "" "(objectCategory=user)" samAccountName
 ```
 
-___
+---
 
 ## linkedin2username / Wordlist Generators
 
@@ -200,7 +200,7 @@ kerbrute userenum --dc <DC> -d corp.local all_users.txt -o valid.txt
 kerbrute passwordspray --dc <DC> -d corp.local valid.txt 'Spring2026!'
 ```
 
-___
+---
 
 ## Recursos
 
@@ -220,4 +220,4 @@ ___
 | linkedin2username | `https://github.com/initstring/linkedin2username` |
 ^ad-tool-resources-users
 
-***
+---

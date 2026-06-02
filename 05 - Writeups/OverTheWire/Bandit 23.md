@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit23.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[mktemp]]"
   - "[[chmod]]"
   - "[[watch]]"

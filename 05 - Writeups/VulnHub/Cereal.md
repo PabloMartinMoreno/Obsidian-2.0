@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/cereal
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[Serialización]]"
   - "[[Deserialización]]"
   - "[[Remote Code Execution]]"
@@ -236,7 +236,7 @@ su root
 ```  
 
 
-___
+---
 
 ## Bandera(s)
 

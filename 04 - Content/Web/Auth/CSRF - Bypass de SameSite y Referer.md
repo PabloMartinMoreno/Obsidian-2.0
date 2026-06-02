@@ -16,7 +16,7 @@ linked:
 ---
 # CSRF - Bypass de SameSite y Referer
 
-***
+---
 
 ## SameSite=Lax GET-based
 
@@ -31,7 +31,7 @@ linked:
 | `curl -X POST -b "cookie" https://target/api/x` desde origen distinto + verificar si llega cookie | Test SameSite enforcement | Defense check. |
 ^csrf-bypass-samesite-lax
 
-___
+---
 
 ## Method Override
 
@@ -57,7 +57,7 @@ ___
 
 GET top-level con cookie → backend convierte a DELETE → cuenta borrada.
 
-___
+---
 
 ## Subdomain Abuse
 
@@ -72,7 +72,7 @@ ___
 | `nuclei -t http/takeovers/ -u https://*.target.com` | Templates específicos de takeover | Bulk vuln scan. |
 ^csrf-bypass-subdomain
 
-___
+---
 
 ## Referer Strip / Referrer-Policy
 
@@ -107,4 +107,4 @@ ___
 </html>
 ```
 
-***
+---

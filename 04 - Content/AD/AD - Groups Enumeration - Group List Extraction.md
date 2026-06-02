@@ -18,7 +18,7 @@ linked:
 ---
 # AD - Groups Enumeration - Group List Extraction
 
-***
+---
 
 ## Bulk Group Listing
 
@@ -45,7 +45,7 @@ Get-ADGroup -Filter * -Properties Description,GroupCategory,GroupScope,Members |
   Export-Csv groups.csv -NoTypeInformation
 ```
 
-___
+---
 
 ## Group Properties & Attributes
 
@@ -82,7 +82,7 @@ ldapsearch ... "(&(objectCategory=group)(groupType:1.2.840.113556.1.4.803:=21474
 ldapsearch ... "(&(objectCategory=group)(groupType:1.2.840.113556.1.4.803:=8))" cn
 ```
 
-___
+---
 
 ## Direct Members Query
 
@@ -110,7 +110,7 @@ $g = "Domain Admins"
 }
 ```
 
-___
+---
 
 ## Groups by Scope
 
@@ -130,7 +130,7 @@ ___
 - **Universal** → miembros de cualquier domain. Visible forest-wide (almacenado en GC).
 - Tier 0 forest-wide (Schema Admins, Enterprise Admins) son **Universal**.
 
-___
+---
 
 ## Anonymous Group Enumeration
 
@@ -150,7 +150,7 @@ nxc smb 10.0.0.0/24 -u '' -p '' --groups
 enum4linux-ng -G -A <DC> -oJ enum_anon.json
 ```
 
-___
+---
 
 ## Cross-Domain (Forest-Wide)
 
@@ -170,4 +170,4 @@ for d in corp.local partner.com; do
 done
 ```
 
-***
+---

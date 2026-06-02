@@ -16,7 +16,7 @@ linked:
 ---
 # AD - Password Policy Enumeration - Anonymous Policy Discovery
 
-***
+---
 
 ## RPC Anonymous (rpcclient)
 
@@ -38,7 +38,7 @@ for dc in $(dig +short SRV "_ldap._tcp.dc._msdcs.corp.local" | awk '{print $4}' 
 done
 ```
 
-___
+---
 
 ## netexec / crackmapexec Anonymous
 
@@ -54,7 +54,7 @@ ___
 nxc smb 10.0.0.0/24 -u '' -p '' --pass-pol 2>&1 | grep -E "Minimum|Lockout"
 ```
 
-___
+---
 
 ## enum4linux-ng
 
@@ -70,7 +70,7 @@ ___
 enum4linux-ng -P <DC> 2>&1 | grep -A 20 "Password Policy"
 ```
 
-___
+---
 
 ## LDAP Anonymous (Limited)
 
@@ -82,7 +82,7 @@ ___
 
 **Realidad:** anonymous LDAP read sobre password policy attrs casi siempre bloqueado Win2019+. RPC vía SAMR es path más probable si null permitido.
 
-___
+---
 
 ## OPSEC Considerations
 
@@ -96,7 +96,7 @@ ___
 
 **Detection:** anonymous SAMR queries logean Event 4661 (Object Access). MDI flag bulk anonymous como recon. Limit a 1 query por DC.
 
-___
+---
 
 ## Cross-Correlation with Spray Results
 
@@ -118,7 +118,7 @@ kerbrute passwordspray --dc <DC> -d corp.local users.txt 'Spring2026!' \
   --delay $(((WINDOW + 1) * 60 * 1000 / (TH - 1)))
 ```
 
-___
+---
 
 ## Defender Hardening Indicators
 
@@ -138,4 +138,4 @@ ___
 - LDAP signing/binding required.
 - Remove `Pre-Windows 2000 Compatible Access` group members (legacy compat).
 
-***
+---

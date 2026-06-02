@@ -17,7 +17,7 @@ linked:
 ---
 # Mass Assignment - Frameworks Vulnerables
 
-***
+---
 
 ## Rails
 
@@ -44,7 +44,7 @@ linked:
 PATCH /users/1 con body: {"user":{"name":"x","is_admin":true}}
 ```
 
-___
+---
 
 ## Django
 
@@ -73,7 +73,7 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['is_superuser', 'is_staff']
 ```
 
-___
+---
 
 ## Spring (Java)
 
@@ -86,7 +86,7 @@ ___
 | Lombok `@Data` model + endpoint POST con todos los fields del entity | Auto-generated setters explotables | Lombok sin `@JsonIgnore`. |
 ^ma-fw-spring
 
-___
+---
 
 ## Laravel (PHP)
 
@@ -114,7 +114,7 @@ class User extends Model {
 }
 ```
 
-___
+---
 
 ## Mongoose / NoSQL ORMs
 
@@ -128,7 +128,7 @@ ___
 | `curl ... -d '{"createdAt":{"$gt":"..."}}'` | Filter inject + Mass Assign combo | NoSQL filter + body ambos atacables. |
 ^ma-fw-mongoose
 
-___
+---
 
 ## GraphQL Input Types
 
@@ -157,4 +157,4 @@ curl -X POST -H "Content-Type: application/json" \
   https://target/graphql
 ```
 
-***
+---

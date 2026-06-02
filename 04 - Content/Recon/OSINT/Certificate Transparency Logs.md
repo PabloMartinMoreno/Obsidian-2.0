@@ -6,7 +6,7 @@ linked:
 ---
 # Certificate Transparency Logs
 
-***
+---
 
 ## Cheatsheet
 

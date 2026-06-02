@@ -17,7 +17,7 @@ linked:
 ---
 # CSRF - Vectores de Ataque
 
-***
+---
 
 ## HTML Form Auto-Submit (POST)
 
@@ -47,7 +47,7 @@ linked:
 </html>
 ```
 
-___
+---
 
 ## Image / Link (GET-based)
 
@@ -65,7 +65,7 @@ ___
 | `<video src="https://target/api/...">` o `<audio src="...">` | GET via media tags | Otros tags con GET. |
 ^csrf-vector-image
 
-___
+---
 
 ## JavaScript fetch / XHR
 
@@ -93,7 +93,7 @@ fetch('https://target.com/api/transfer', {
 });
 ```
 
-___
+---
 
 ## JSON / Multipart Content-Type Bypass
 
@@ -124,4 +124,4 @@ ___
 
 Body literal enviado: `{"email":"attacker@evil.com","_dummy":"=" }`. Backend con JSON parser tolerante → email cambiado.
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # Pass-the-Ticket - Detection y Mitigations
 
-***
+---
 
 ## Detection Events (Windows Logs)
 
@@ -37,7 +37,7 @@ Get-WinEvent -FilterHashtable @{LogName='Security';Id=4769} |
   Select-Object TimeCreated, Message | Format-List
 ```
 
-___
+---
 
 ## MDI (Microsoft Defender for Identity) Alerts
 
@@ -52,7 +52,7 @@ ___
 
 **Key:** MDI correlaciona IP origen del ticket vs IP donde se usó — core detection logic.
 
-___
+---
 
 ## Anomaly Indicators (manual hunt)
 
@@ -74,7 +74,7 @@ SecurityEvent
 | project TimeGenerated, AccountName, IpAddress, ServiceName
 ```
 
-___
+---
 
 ## Protected Users Group
 
@@ -95,7 +95,7 @@ Add-ADGroupMember -Identity "Protected Users" -Members "DomainAdmin1","DomainAdm
 Get-ADGroupMember "Protected Users"
 ```
 
-___
+---
 
 ## Credential Guard (VBS)
 
@@ -114,7 +114,7 @@ Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\Microsoft\Windows\D
 # 1 = Credential Guard running
 ```
 
-___
+---
 
 ## Hardening Checklist
 
@@ -129,4 +129,4 @@ ___
 | Short ticket lifetime policy | Limita ventana de abuso | Default 10h TGT — reducir a 4h via GPO |
 ^ptt-detect-checklist
 
-***
+---

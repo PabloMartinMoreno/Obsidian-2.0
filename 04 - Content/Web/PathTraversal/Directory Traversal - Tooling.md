@@ -17,7 +17,7 @@ linked:
 ---
 # Directory Traversal - Tooling
 
-***
+---
 
 ## dotdotpwn
 
@@ -37,7 +37,7 @@ linked:
 | `git clone https://github.com/wireghoul/dotdotpwn && cd dotdotpwn && perl dotdotpwn.pl -h` | Install + help | Setup. |
 ^pt-tool-dotdotpwn
 
-___
+---
 
 ## LFISuite
 
@@ -55,7 +55,7 @@ ___
 | `python LFISuite.py -t target.com -P /list.php -m` | Multi-payload comprehensive probe | Heavy scan. |
 ^pt-tool-lfisuite
 
-___
+---
 
 ## Burp Intruder + Wordlists
 
@@ -76,7 +76,7 @@ ___
 | Burp BApp Store → "LFI scanner" extension | Built-in LFI auto scan | LFI-specific. |
 ^pt-tool-burp
 
-___
+---
 
 ## Wordlists Recomendadas
 
@@ -117,7 +117,7 @@ while read p; do
 done < paths.txt
 ```
 
-___
+---
 
 ## Custom Scripts
 
@@ -137,4 +137,4 @@ ___
 | `python3 kadimus.py -u "https://target/?file=test"` | kadimus C-based LFI scanner | Fast scanner. |
 ^pt-tool-custom
 
-***
+---

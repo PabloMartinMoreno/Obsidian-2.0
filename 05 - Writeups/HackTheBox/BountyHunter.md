@@ -12,7 +12,7 @@ linked:
 ---
 # HackTheBox - BountyHunter
 
-___
+---
 
 ## Enumeración
 

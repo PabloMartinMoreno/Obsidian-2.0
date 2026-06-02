@@ -16,7 +16,7 @@ linked:
 ---
 # Web Cache Poisoning - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Capa de Caché
 
@@ -56,7 +56,7 @@ done
 # Si Age incrementa cada request → cache misma copia
 ```
 
-___
+---
 
 ## Análisis del Cache Key
 
@@ -101,7 +101,7 @@ for h in X-Forwarded-Host X-Original-Url X-Forwarded-Proto X-Forwarded-Scheme \
 done
 ```
 
-___
+---
 
 ## Probes Hit/Miss
 
@@ -142,4 +142,4 @@ curl -sI "$URL" | grep -i x-cache
 curl -sI "$URL" | grep -i x-cache
 ```
 
-***
+---

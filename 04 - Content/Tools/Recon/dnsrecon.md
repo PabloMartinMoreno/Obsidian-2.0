@@ -21,7 +21,7 @@ linked:
 ---
 # dnsrecon
 
-***
+---
 
 ## Cheatsheet
 ^dnsrecon-enum
@@ -37,7 +37,7 @@ linked:
 | **NS específico** | `dnsrecon -d dom.com -n 1.1.1.1` |
 | **JSON output** | `dnsrecon -d dom.com -j out.json` |
 
-***
+---
 
 ## Concepto
 
@@ -161,4 +161,4 @@ dnsrecon -d target.com -j out.json && jq -r '.[] | .address' out.json | sort -u
 
 - [dnsrecon GitHub](https://github.com/darkoperator/dnsrecon)
 
-***
+---

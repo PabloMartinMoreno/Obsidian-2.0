@@ -14,7 +14,7 @@ linked:
 
 Una **URL** es la dirección específica que se utiliza para localizar un recurso en Internet (una página web, una imagen, un archivo). Es, en esencia, la "dirección postal" de un archivo en la red.
 
-___
+---
 
 
 ## Anatomía completa de una URL

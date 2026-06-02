@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/myexpense
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[Cross-Site Scripting (XSS)]]"
   - "[[Cookie Hijacking]]"
   - "[[SQL Injection (SQLi)]]"

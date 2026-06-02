@@ -18,7 +18,7 @@ linked:
 ---
 # BloodHound & SharpHound - Collectors
 
-***
+---
 
 ## SharpHound (Default Windows)
 
@@ -42,7 +42,7 @@ linked:
 .\SharpHound.exe -c DCOnly --OutputDirectory C:\loot
 ```
 
-___
+---
 
 ## SharpHound Collection Methods
 
@@ -64,7 +64,7 @@ ___
 | `CertServices` | ADCS templates + CAs (BHCE 5.x+) | ADCS audit. |
 ^ad-bh-methods
 
-___
+---
 
 ## RustHound (Cross-Platform)
 
@@ -78,7 +78,7 @@ ___
 
 **Por qué RustHound:** Rust performance, single binary cross-platform (Win/Linux/Mac), no .NET dependency. Útil cuando SharpHound es bloqueado por AV.
 
-___
+---
 
 ## BloodHound.py (Linux)
 
@@ -98,7 +98,7 @@ pip install bloodhound  # o `apt install bloodhound.py`
 bloodhound-python -d corp.local -u auditor -p 'Pass!' -ns 10.10.10.10 -c All --zip -o ./loot/
 ```
 
-___
+---
 
 ## AzureHound (Cloud)
 
@@ -116,7 +116,7 @@ azurehound list -u admin@tenant.onmicrosoft.com -p 'Pass!' -t <tenant-uuid> -o a
 # Ingest en BHCE (drag-drop azure.json)
 ```
 
-___
+---
 
 ## Comparison
 
@@ -128,7 +128,7 @@ ___
 | AzureHound | Cross-platform | Medium | High | Cloud-only. |
 ^ad-bh-comparison
 
-___
+---
 
 ## Collection OPSEC
 
@@ -143,7 +143,7 @@ ___
 | Time-of-day matching | Match legit recon patterns | Stealth. |
 ^ad-bh-opsec
 
-___
+---
 
 ## Cross-Domain Collection
 
@@ -162,7 +162,7 @@ for d in corp.local partner.com vendor.local; do
 done
 ```
 
-___
+---
 
 ## Continuous Loop Mode
 
@@ -174,4 +174,4 @@ ___
 
 **Por qué:** sessions cambian. Single snapshot = miss many sessions. Loop captura sessions sobre tiempo = mejor visibility de Tier 0 logins.
 
-***
+---

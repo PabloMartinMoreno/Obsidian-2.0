@@ -19,7 +19,7 @@ linked:
 ---
 # Enumeración Rsync (873)
 
-***
+---
 ## Cheatsheet
 
 | **Acción**                                                                            | **Descripción**                                                             |
@@ -32,7 +32,7 @@ linked:
 **Nota:** Se indica usar la sintaxis `rsync://<user>@<target>/<module>` para especificar un usuario en la CLI de Rsync.
 **Nota:** Para transferir archivos con cifrado SSH, añadir `-e ssh`. Para puertos SSH no estándar, usar `-e "ssh -p <port>"`.
 
-***
+---
 
 ## Overview
 

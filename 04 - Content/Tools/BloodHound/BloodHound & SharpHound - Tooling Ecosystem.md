@@ -17,7 +17,7 @@ linked:
 ---
 # BloodHound & SharpHound - Tooling Ecosystem
 
-***
+---
 
 ## Custom Query Repos
 
@@ -35,7 +35,7 @@ git clone https://github.com/SpecterOps/BloodHoundQueries
 # UI → Cypher panel → Import → seleccionar JSON con queries
 ```
 
-___
+---
 
 ## bloodhound-cli (Modern)
 
@@ -56,7 +56,7 @@ bloodhound-cli config
 bloodhound-cli cypher "MATCH (u:User {owned:true}) RETURN u.name"
 ```
 
-___
+---
 
 ## SOAPHound (Stealth)
 
@@ -75,7 +75,7 @@ SOAPHound.exe -c All --buildcache --cachefilename cache.bin
 SOAPHound.exe -c All --bhdump --cachefilename cache.bin --output bhdata.zip
 ```
 
-___
+---
 
 ## ldeep (Linux LDAP Dump)
 
@@ -93,7 +93,7 @@ pip install ldeep
 ldeep ldap -u auditor -p 'Pass!' -d corp.local -s ldap://<DC> all output -o ./loot/
 ```
 
-___
+---
 
 ## ADRecon Bulk Reports
 
@@ -104,7 +104,7 @@ ___
 | Cross-correlate ADRecon CSVs con BHCE Cypher | Bidirectional analysis | Comprehensive. |
 ^ad-bhtool-adrecon
 
-___
+---
 
 ## OpenGraph (BHCE 6.x)
 
@@ -116,7 +116,7 @@ ___
 | Required: AzureHound + SharpHound ZIPs | Both ingested | Setup. |
 ^ad-bhtool-opengraph
 
-___
+---
 
 ## BHCE Integrations
 
@@ -129,7 +129,7 @@ ___
 | Excel export | UI → table view → export | Reportable. |
 ^ad-bhtool-integrations
 
-___
+---
 
 ## Specter Ops Tools
 
@@ -143,7 +143,7 @@ ___
 | Forest Druid (Semperis) | `https://www.semperis.com/forest-druid/` | Tier 0 paths visual alt. |
 ^ad-bhtool-specterops
 
-___
+---
 
 ## Recursos
 
@@ -160,4 +160,4 @@ ___
 | GOAD lab (practice) | `https://github.com/Orange-Cyberdefense/GOAD` |
 ^ad-bhtool-resources
 
-***
+---

@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/darkhole1
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[Contaminación de Parámetros]]"
   - "[[SUID]]"
   - "[[ffuf]]"

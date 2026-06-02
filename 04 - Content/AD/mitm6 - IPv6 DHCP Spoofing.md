@@ -17,7 +17,7 @@ linked:
 > [!info]
 > Windows prioriza IPv6 sobre IPv4 por default. Atacante hace DHCPv6 spoofing → se vuelve DNS server IPv6 del segmento → captura/relay autenticación.
 
-***
+---
 
 ## Mecánica
 
@@ -27,7 +27,7 @@ linked:
 4. Cuando intentan resolver WPAD u otros names → atacante responde
 5. Auth NTLM dirigida a atacante → relay (con `ntlmrelayx`) o captura
 
-***
+---
 
 ## Setup
 
@@ -42,7 +42,7 @@ ntlmrelayx.py -6 -wh attacker-wpad -t ldaps://dc.domain.local --escalate-user lo
 responder -I eth0 -wb
 ```
 
-***
+---
 
 ## Targets / chains comunes
 
@@ -53,7 +53,7 @@ responder -I eth0 -wb
 | `smb://target` | Acceso a share |
 | `http://target` con session theft | Auth web NTLM |
 
-***
+---
 
 ## Defensa
 
@@ -62,7 +62,7 @@ responder -I eth0 -wb
 - LDAP signing + LDAPS Channel Binding (impide relay).
 - SMB signing required.
 
-***
+---
 
 ## Notas Relacionadas
 

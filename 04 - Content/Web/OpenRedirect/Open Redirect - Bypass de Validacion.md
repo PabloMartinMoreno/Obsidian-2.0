@@ -16,7 +16,7 @@ linked:
 ---
 # Open Redirect - Bypass de Validación
 
-***
+---
 
 ## Whitelist Domain Match
 
@@ -33,7 +33,7 @@ linked:
 | `curl -sI "https://target/login?next=javascript:alert(1)"` | Scheme bypass | Validator solo chequea http/https. |
 ^or-bypass-whitelist
 
-___
+---
 
 ## URL Parser Confusion (`@`, `#`, `?`)
 
@@ -59,7 +59,7 @@ ___
 | `https://a\\b` | Chrome=host=a, FF=path `\\b` | varies |
 | `https://a#b@c` | host=a, fragment `b@c` | varies (some strip fragment) |
 
-___
+---
 
 ## Subdomain Prefix/Suffix Abuse
 
@@ -74,7 +74,7 @@ ___
 | Si `*.target.com` allowed: tomar control de subdomain dangling con subjack/nuclei → setear redirect | Subdomain takeover chain | Wildcard whitelist + dangling subdomain. |
 ^or-bypass-subdomain
 
-___
+---
 
 ## Encoding Tricks (URL / Unicode)
 
@@ -109,4 +109,4 @@ for p in '//target.com.attacker.com' \
 done
 ```
 
-***
+---

@@ -5,7 +5,7 @@ plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/starting-point
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[john]]"
   - "[[hashcat]]"
   - "[[sqlmap]]"
@@ -42,7 +42,7 @@ sudo nmap -sS -sV -sC -Pn -T4 --open -vv 10.129.95.174 -oA /nmap/vaccine
 - Puerto 22/tcp: SSH
 - Puerto 80/tcp: HTTP
 
-___
+---
 
 ## Enumeración de Servicios
 
@@ -58,7 +58,7 @@ Descargo el archivo `backup.zip` que encontré en el directorio FTP.
 get backup.zip
 ```
 
-___
+---
 
 ## Cracking de Contraseñas
 
@@ -92,7 +92,7 @@ Descomprimo el archivo `backup.zip` con la contraseña.
 unzip backup.zip
 ```
 
-___
+---
 
 ## Análisis del Código Fuente
 
@@ -140,7 +140,7 @@ Guardo las credenciales completas:
 echo "admin:qwerty789" > credsMegacorpFinal
 ```
 
-___
+---
 
 ## Acceso Inicial
 
@@ -150,7 +150,7 @@ Accedo al sitio web en `http://10.129.95.174` y utilizamos las credenciales obte
 
 Al ingresar, encuentro un panel que permite realizar búsquedas en una base de datos.
 
-___
+---
 
 ## Explotación de Vulnerabilidades
 
@@ -223,7 +223,7 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
   - `import pty`: Importa el módulo `pty` (pseudo-terminal) de Python, que permite manipular terminales tipo TTY.
   - `pty.spawn("/bin/bash")`: Utiliza la función `spawn()` del módulo `pty` para ejecutar el shell `/bin/bash` en una terminal pseudo-TTY. Esto es útil, por ejemplo, cuando deseas obtener una terminal interactiva dentro de otro proceso.
 
-___
+---
 
 ## Escalada de Privilegios
 
@@ -289,7 +289,7 @@ o
 ```
 Estos comandos dan una shell con privilegios de root.
 
-___
+---
 
 ## Bandera(s)
 

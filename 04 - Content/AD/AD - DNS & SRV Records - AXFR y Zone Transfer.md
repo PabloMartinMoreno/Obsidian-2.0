@@ -18,7 +18,7 @@ linked:
 ---
 # AD - DNS & SRV Records - AXFR / Zone Transfer
 
-***
+---
 
 ## AXFR Quick Test
 
@@ -44,7 +44,7 @@ for dc in $(dig +short SRV "_ldap._tcp.dc._msdcs.$DOM" | awk '{print $4}' | sed 
 done
 ```
 
-___
+---
 
 ## AXFR Attack — todas las zonas a probar
 
@@ -75,7 +75,7 @@ for dc in $DCS; do
 done
 ```
 
-___
+---
 
 ## dnsrecon / dnsenum / fierce
 
@@ -99,7 +99,7 @@ dnsrecon -d corp.local -n <DC-IP> \
   -j dns_recon.json
 ```
 
-___
+---
 
 ## Reverse Zone Enumeration (PTR)
 
@@ -122,7 +122,7 @@ for net in $(seq 0 255); do
 done
 ```
 
-___
+---
 
 ## Subdomain Brute (sin AXFR)
 
@@ -152,7 +152,7 @@ for sub in dc dc01 dc02 dns mail exchange smtp ldap ldaps gc \
 done
 ```
 
-___
+---
 
 ## Public DNS Leak (External Recon)
 
@@ -179,4 +179,4 @@ curl -s "https://crt.sh/?q=%25.$DOM&output=json" | jq -r '.[].name_value' >> sub
 sort -u subs.txt | httpx -title -web-server -tech-detect
 ```
 
-***
+---

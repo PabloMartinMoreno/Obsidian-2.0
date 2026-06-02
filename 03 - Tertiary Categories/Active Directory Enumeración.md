@@ -18,7 +18,7 @@ kind: Tertiary Category
 
 Discovery → Identities → Permissions → Attack Paths.
 
-***
+---
 
 ## 🗺 Domain & Network Discovery
 Identificación de hosts, topología y características generales del dominio.
@@ -55,4 +55,4 @@ Mapeo visual de relaciones y búsqueda automatizada de debilidades estructurales
 - [[AD - Health y Security Auditing|AD - Health & Security Auditing]] (PingCastle, Purple Knight, ADRecon — auditorías automatizadas de configuraciones riesgosas.)
 
 
-***
+---

@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit2.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[Bandit 01]]"
   - "[[Bandit 03]]"
 ---

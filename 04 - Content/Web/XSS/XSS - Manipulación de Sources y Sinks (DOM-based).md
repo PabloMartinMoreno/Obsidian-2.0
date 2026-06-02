@@ -14,7 +14,7 @@ linked:
 ---
 # XSS - Manipulación de Sources y Sinks (DOM-based)
 
-***
+---
 
 ## Cheatsheet
 
@@ -88,7 +88,7 @@ grep -E 'innerHTML|document\.write|eval\(|setTimeout\(.*[\'"]|Function\(' app.js
 # Burp → Extender → DOM Invader → habilitar
 ```
 
-___
+---
 
 ## Overview
 
@@ -98,4 +98,4 @@ ___
 
 **Mitigación:** sustituir `innerHTML`→`textContent`, eliminar `eval`/`Function`/`setTimeout`-string, validar/sanitizar en el flow source→sink, Trusted Types API.
 
-***
+---

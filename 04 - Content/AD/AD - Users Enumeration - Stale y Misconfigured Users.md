@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Users Enumeration - Stale & Misconfigured Users
 
-***
+---
 
 ## Stale Accounts
 
@@ -42,7 +42,7 @@ Get-ADUser -Filter {LastLogonDate -lt $Stale -and Enabled -eq $true} `
   Sort LastLogonDate
 ```
 
-___
+---
 
 ## PASSWD_NOTREQD (No Password Required)
 
@@ -63,7 +63,7 @@ Get-ADUser -Filter {PasswordNotRequired -eq $true -and Enabled -eq $true} `
   Where { $_.objectClass -eq 'user' }
 ```
 
-___
+---
 
 ## DONT_EXPIRE_PASSWORD
 
@@ -84,7 +84,7 @@ Get-ADUser -Filter {PasswordNeverExpires -eq $true -and ServicePrincipalName -li
   Sort PasswordLastSet
 ```
 
-___
+---
 
 ## ENCRYPTED_TEXT_PWD_ALLOWED (Reversible Encryption)
 
@@ -109,7 +109,7 @@ secretsdump.py 'corp.local/admin:pass'@<DC> -just-dc-user victim
 # victim:CLEARTEXT_PASSWORD:RealPasswordInClear!
 ```
 
-___
+---
 
 ## Description / Comment Field Leakage
 
@@ -133,7 +133,7 @@ Get-ADUser -Filter * -Properties Description,Comment,Info,AdminCount |
   Sort AdminCount -Descending
 ```
 
-___
+---
 
 ## Other Misconfig Patterns
 
@@ -160,4 +160,4 @@ $Recent = (Get-Date).AddDays(-30)
 }
 ```
 
-***
+---

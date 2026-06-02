@@ -31,7 +31,7 @@ linked:
 ---
 # AD - Hosts Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -155,7 +155,7 @@ tab: **Wordlists & Recursos**
 ![[AD - Hosts Enumeration - Tooling#^ad-tool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -193,7 +193,7 @@ Sin esta fase, ataques posteriores (Kerberoasting, NTLM Relay, ACL abuse, latera
 - OU mapping → understand tier model + GPO scope.
 - FSMO holders → high-value targets per role.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -240,7 +240,7 @@ ___
    - Identify lateral foothold candidates
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -283,7 +283,7 @@ nxc smb computers.txt --gen-relay-list relay.txt
 nxc smb computers.txt -u user -p pass --shares --sessions --loggedon-users
 ```
 
-___
+---
 
 ## Impacto
 
@@ -299,7 +299,7 @@ ___
 - **Anonymous null session** — sometimes still reveals users + policy on legacy.
 - **GC enumeration** — forest-wide data via single GC query.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -327,7 +327,7 @@ ___
 - **PingCastle / Purple Knight** — periodic health audits.
 - **Microsoft ATA / Defender for Identity** — anomalous enumeration detection.
 
-___
+---
 
 ## Para entender AD Hosts Enumeration
 
@@ -359,7 +359,7 @@ OUs reflect organizational design. "Tier 0 Admins" / "Servers" / "Workstations" 
 
 Bulk `(objectCategory=computer)` query returns all computers — defender SIEM flags large queries (Event 1644). Trade-off: speed vs stealth. Stealthier: paged queries, targeted filters, DC-only collection (BloodHound `-c DCOnly`). Operational discipline: only query what's needed when needed.
 
-___
+---
 
 ## Recursos
 
@@ -378,4 +378,4 @@ ___
 - [windapsearch repo](https://github.com/ropnop/windapsearch) — Linux wrapper.
 - [LDAP Domain Dump](https://github.com/dirkjanm/ldapdomaindump) — HTML reports.
 
-***
+---

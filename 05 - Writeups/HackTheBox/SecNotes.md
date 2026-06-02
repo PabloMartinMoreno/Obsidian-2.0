@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/151
 dificultad: Media
 ip: 10.10.10.97
 os: Windows
-relacionados:
+linked:
   - "[[Cross-Site Request Forgery (SCRF)]]"
   - "[[Cross-Site Scripting (XSS)]]"
   - "[[SQL Injection (SQLi)|SQLI]]"
@@ -46,7 +46,7 @@ Al inspeccionar los servicios web, encontré una aplicación PHP personalizada e
 Decidí centrarme en la aplicación del puerto 80. Creé una cuenta de usuario para explorar la funcionalidad interna. Dentro, descubrí opciones para crear notas, cambiar la contraseña y un formulario de contacto que, curiosamente, mencionaba que los mensajes se enviarían a un usuario llamado **tyler**.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -113,7 +113,7 @@ powershell -ep bypass .\\Invoke-PowerShellTcp.ps1
 Tras enviar la petición, recibí una conexión inversa en mi listener, obteniendo una shell interactiva como el usuario `secnotes\tyler`.
 
 
-___
+---
 
 ## Escalada de privilegios
 

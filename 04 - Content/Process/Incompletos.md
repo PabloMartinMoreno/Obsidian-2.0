@@ -12,7 +12,7 @@ cssclasses:
 
 Notas con `estado/incompleto`. Priorizar por dominio (`asset/*`), luego por antigüedad.
 
-***
+---
 
 ## Resumen
 
@@ -24,7 +24,7 @@ WHERE !contains(file.path, "00 - Resources/Templates")
 GROUP BY true
 ```
 
-***
+---
 
 ## Por Dominio (`asset/*`)
 
@@ -38,7 +38,7 @@ GROUP BY dominio as "Dominio"
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Por Carpeta
 
@@ -51,7 +51,7 @@ GROUP BY file.folder as "Carpeta"
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Por Tipo (`kind`)
 
@@ -64,7 +64,7 @@ GROUP BY kind as "Tipo"
 SORT length(rows) DESC
 ```
 
-***
+---
 
 ## Todas las Incompletas (ordenadas por antigüedad)
 
@@ -78,7 +78,7 @@ WHERE !contains(file.path, "00 - Resources/Templates")
 SORT file.mtime ASC
 ```
 
-***
+---
 
 ## Sin Dominio (asset/*)
 

@@ -17,7 +17,7 @@ linked:
 ---
 # AD - Hosts Enumeration - Sites, Subnets & Topology
 
-***
+---
 
 ## Sites Discovery
 
@@ -44,7 +44,7 @@ ldapsearch -h <DC> -D 'corp\user' -w pass \
   "(objectClass=site)" cn description
 ```
 
-___
+---
 
 ## Subnets per Site
 
@@ -65,7 +65,7 @@ Get-ADReplicationSubnet -Filter * -Properties * |
   Sort Site,Name
 ```
 
-___
+---
 
 ## Site Links & Replication Topology
 
@@ -86,7 +86,7 @@ Get-ADReplicationSiteLink -Filter * -Properties * |
   Select Name,Cost,ReplicationFrequencyInMinutes,@{n='Sites';e={$_.SitesIncluded -join ', '}}
 ```
 
-___
+---
 
 ## DC Roles & FSMO Discovery
 
@@ -118,7 +118,7 @@ $d = Get-ADDomain; $f = Get-ADForest
 }
 ```
 
-___
+---
 
 ## Global Catalog & Read-Only DCs
 
@@ -142,4 +142,4 @@ Get-ADDomainController -Filter * |
   Sort Site,Name
 ```
 
-***
+---

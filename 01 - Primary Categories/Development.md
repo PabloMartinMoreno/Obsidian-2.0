@@ -7,9 +7,9 @@ kind: Primary Category
 ---
 # [[Development]]
 
-***
+---
 
 * Add link(s) [[]] to related SECONDARY categories
 
-***
+---
 

@@ -9,7 +9,7 @@ kind: Secondary Category
 ---
 # [[Credential Harvesting]]
 
-***
+---
 
 ## Mapa Mental
 
@@ -42,13 +42,13 @@ mindmap
       Password_Spray
 ```
 
-***
+---
 
 ## Overview
 
 Extracción y captura de credenciales — hashes, tickets, cleartext, tokens — para cracking offline, reuso directo (PtH/PtT), o escalación.
 
-***
+---
 
 ## 1. Network coercion / poisoning
 
@@ -78,4 +78,4 @@ Extracción y captura de credenciales — hashes, tickets, cleartext, tokens —
 - [[Pass-the-Hash]] — NT hash → SMB/WMI/PsExec.
 - [[Pass-the-Ticket]] — ccache/kirbi → ticket injection.
 
-***
+---

@@ -22,7 +22,7 @@ linked:
 ---
 # gobuster
 
-***
+---
 
 ## Cheatsheet
 
@@ -35,7 +35,7 @@ linked:
 | **s3** | `gobuster s3 -w bucketnames.txt` |
 | **gcs** | `gobuster gcs -w bucketnames.txt` |
 
-***
+---
 
 ## Concepto
 
@@ -140,4 +140,4 @@ Output incluye status (public/forbidden/not-found).
 
 - [gobuster GitHub](https://github.com/OJ/gobuster)
 
-***
+---

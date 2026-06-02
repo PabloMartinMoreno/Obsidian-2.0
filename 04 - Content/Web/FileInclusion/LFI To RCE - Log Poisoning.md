@@ -14,7 +14,7 @@ linked:
 ---
 # LFI To RCE - Log Poisoning
 
-***
+---
 
 ## Cheatsheet
 
@@ -81,7 +81,7 @@ curl "https://target/?page=/var/log/auth.log&cmd=id"
 | Sys | `/var/log/syslog`, `/var/log/messages` |
 | File descriptors | `/proc/self/fd/0`, `1`, `2` (stdin/stdout/stderr) |
 
-___
+---
 
 ## Overview
 
@@ -94,4 +94,4 @@ Log poisoning convierte LFI en RCE inyectando PHP en cualquier file que el webse
 
 **Si el log rota o es muy grande**, el PHP puede quedar en una rotación previa o ser fuera de la primera 1MB de read — usar payloads cortos y específicos.
 
-***
+---

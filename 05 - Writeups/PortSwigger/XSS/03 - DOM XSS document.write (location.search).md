@@ -7,7 +7,7 @@ linked:
 ---
 # PortSwigger - XSS - DOM XSS in document.write sink using source location.search
 
-***
+---
 
 ## Explicación 
 
@@ -80,7 +80,7 @@ alert() se ejecuta 💥
 | **`location.search`** | La query string de la URL (`?q=algo`) |
 | **`document.write`** | Función JS que escribe HTML crudo en la página |
 
-___
+---
 
 ## Respuesta
 

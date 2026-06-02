@@ -5,7 +5,7 @@ plataforma: "[[docker labs]]"
 web: https://www.dockerlabs.com/lfielf
 dificultad: Media
 os: Linux
-relacionados:
+linked:
   - "[[Wrappers]]"
   - "[[LFI2RCE]]"
   - "[[alias]]"

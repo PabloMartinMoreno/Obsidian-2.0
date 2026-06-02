@@ -10,7 +10,7 @@ kind: Tertiary Category
 ---
 # Evasion Defensiva
 
-***
+---
 
 ## Técnicas 
 
@@ -19,4 +19,4 @@ kind: Tertiary Category
 - [[Living Off The Land (LOLBAS, GTFOBins)]]
 
 
-***
+---

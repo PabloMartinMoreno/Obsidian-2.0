@@ -26,7 +26,7 @@ linked: null
 > [!abstract] TL;DR
 > Analizador de protocolos. GUI (`wireshark`) para inspección interactiva, CLI (`tshark`) para automatización, `dumpcap` para captura pura. Dos lenguajes de filtro distintos: **capture filters** (BPF, kernel-level) y **display filters** (post-captura, mucho más expresivos).
 
-***
+---
 
 ## Overview
 
@@ -36,7 +36,7 @@ Wireshark disecciona ~3000 protocolos. Trabaja sobre interfaces vivas o archivos
 2. **Forensics / DFIR** sobre PCAPs entregados (CTFs, sherlocks, post-incident triage).
 3. **Troubleshooting** (handshakes incompletos, retransmits, RSTs, MTU, TLS errors).
 
-***
+---
 
 ## Captura — Lanzar Wireshark / tshark / dumpcap
 
@@ -56,7 +56,7 @@ Wireshark disecciona ~3000 protocolos. Trabaja sobre interfaces vivas o archivos
 > [!tip] Interfaz `any` (Linux)
 > `tshark -i any` agrega todas las interfaces. Útil cuando no sabés por dónde sale el tráfico; combinar con filtros de display para reducir.
 
-***
+---
 
 ## Capture Filters (BPF) — pre-captura
 
@@ -77,7 +77,7 @@ Sintaxis BPF estilo `tcpdump`. Se aplican en kernel **antes** de la captura, por
 > [!warning] Capture vs display
 > Si capturás con `-f "tcp port 443"`, **perdés** el handshake TCP de otros puertos para siempre. Para análisis exploratorio: capturar todo y filtrar después con display filters.
 
-***
+---
 
 ## Display Filters — post-captura
 
@@ -114,7 +114,7 @@ Lenguaje propio de Wireshark, mucho más expresivo. Aplican sobre la disección,
 | `eth.addr == aa:bb:cc:dd:ee:ff` | Por MAC | Identificar dispositivo. |
 | `!(arp or dns or icmp)` | Quitar ruido común | Limpiar vista exploratoria. |
 
-***
+---
 
 ## Statistics & Navegación
 
@@ -131,7 +131,7 @@ Lenguaje propio de Wireshark, mucho más expresivo. Aplican sobre la disección,
 | `Ctrl+G` | Ir a paquete N | Saltar a número exacto. |
 | `Ctrl+M` | Marcar paquete | Bookmark durante triage. |
 
-***
+---
 
 ## Follow Stream & Export Objects
 
@@ -145,7 +145,7 @@ Lenguaje propio de Wireshark, mucho más expresivo. Aplican sobre la disección,
 | `File → Export Objects → DICOM/FTP/TFTP` | Otros protocolos | Depende del PCAP. |
 | `File → Export Packet Bytes` (`Ctrl+Shift+X`) | Dump binario del payload seleccionado | Extraer un blob específico (shellcode, archivo). |
 
-***
+---
 
 ## TLS Decryption
 
@@ -171,7 +171,7 @@ Luego en Wireshark: `Edit → Preferences → Protocols → TLS → (Pre)-Master
 | Captura legacy con RSA key estática | Importar `.pem`, suite debe ser RSA (sin ECDHE). |
 | Captura de tráfico ajeno con PFS | Indescifrable sin las keys de sesión. |
 
-***
+---
 
 ## Patrones por protocolo
 
@@ -250,7 +250,7 @@ Luego en Wireshark: `Edit → Preferences → Protocols → TLS → (Pre)-Master
 | `data.len > 50 and icmp` | Pings grandes | ICMP tunneling / exfil. |
 | `icmp.type == 3` | Destination unreachable | Firewall / routing issues. |
 
-***
+---
 
 ## tshark — One-liners CLI
 
@@ -271,7 +271,7 @@ Luego en Wireshark: `Edit → Preferences → Protocols → TLS → (Pre)-Master
 | `mergecap -w merged.pcap a.pcap b.pcap` | Merge PCAPs preservando timestamps | Combinar capturas de varios nodos. |
 | `capinfos f.pcap` | Resumen: duración, paquetes, bytes, encap | Metadata rápida pre-análisis. |
 
-***
+---
 
 ## Workflows
 
@@ -328,7 +328,7 @@ Luego en Wireshark: `Edit → Preferences → Protocols → TLS → (Pre)-Master
 4. file <output> + strings + binwalk → identificar tipo
 ```
 
-***
+---
 
 ## Detección de patrones ofensivos
 
@@ -345,7 +345,7 @@ Luego en Wireshark: `Edit → Preferences → Protocols → TLS → (Pre)-Master
 | SMB enumeration | `smb2.cmd == 3` (Tree Connect) masivos | Lateral recon. |
 | Mimikatz over WMI/RPC | `dcerpc and dcerpc.cn_call_id` con `epm` + `lsarpc` + `samr` | Credential dumping remoto. |
 
-***
+---
 
 ## Tips operacionales
 
@@ -367,7 +367,7 @@ Luego en Wireshark: `Edit → Preferences → Protocols → TLS → (Pre)-Master
 > [!info] PCAPNG vs PCAP
 > `.pcapng` permite múltiples interfaces, comentarios por paquete, metadatos enriquecidos. Default desde Wireshark 1.8. Convertir a `.pcap` con `editcap -F pcap in.pcapng out.pcap` si una herramienta vieja no lo soporta.
 
-***
+---
 
 ## Relacionados
 

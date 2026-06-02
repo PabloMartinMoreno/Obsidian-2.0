@@ -18,7 +18,7 @@ linked:
 ---
 # Prototype Pollution - Vectores Client-Side
 
-***
+---
 
 ## URL Hash / Search Injection
 
@@ -52,7 +52,7 @@ function parseHash() {
 // All objects ahora tienen .polluted = "yes"
 ```
 
-___
+---
 
 ## JSON.parse + Merge
 
@@ -66,7 +66,7 @@ ___
 | Inspect JS: `grep -E 'JSON\\.parse.*merge\|fetch.*merge' main.js` | Identify JSON merge sinks | Source review. |
 ^pp-client-json
 
-___
+---
 
 ## DOM-based Pollution
 
@@ -80,7 +80,7 @@ ___
 | Browser console: `Object.prototype.hasOwnProperty=...` (test if Object.prototype mutable) | Confirm Object.prototype writable | Pre-attack. |
 ^pp-client-dom
 
-___
+---
 
 ## postMessage Abuse
 
@@ -119,4 +119,4 @@ window.addEventListener('message', e => {
 
 → Pollution global en window target.
 
-***
+---

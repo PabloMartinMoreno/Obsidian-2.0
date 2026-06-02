@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/212
 dificultad: Media
 ip: 10.10.10.161
 os: Windows
-relacionados:
+linked:
   - "[[RPC Enumeration]]"
   - "[[AS-RepRoast attack]]"
   - "[[BloodHound Enumeration]]"
@@ -263,7 +263,7 @@ impacket-psexec administrator@10.10.10.161 -hashes aad3b435b51404eeaad3b435b5140
 Una vez en la shell como `nt authority\system`, pude leer la bandera de root y completar el compromiso total de la máquina.
 
 
-___
+---
 
 ## Bandera(s)
 

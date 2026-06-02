@@ -9,7 +9,7 @@ kind: Concept
 ---
 # Obsidian - Custom CSS
 
-***
+---
 
 ## Enabling Custom CSS Snippets
 
@@ -247,7 +247,7 @@ Attempt to make externally embedded content  more responsive
 
 ![[responsive_yt.gif]]
 
-___
+---
 
 ## Resources
 
@@ -255,7 +255,7 @@ ___
 | ---------------------------------------------------------------------------------- | -------------------------------------------- |
 | [Obsidian Forums Showcase, Obsidian](https://forum.obsidian.md/c/share-showcase/9) | The source for several of the above snippets |
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

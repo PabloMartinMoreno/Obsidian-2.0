@@ -16,7 +16,7 @@ linked:
 ---
 # XSLT - Fingerprinting
 
-***
+---
 
 ## Detección Básica
 
@@ -32,7 +32,7 @@ linked:
 | XPath type error | `<xsl:value-of select="1 div 0"/>` | Error con código XPath estándar. |
 ^xslt-fp-detection
 
-___
+---
 
 ## Fingerprinting de Motores
 
@@ -63,4 +63,4 @@ ___
 | `Apache Software Foundation` | 1.0 | `java.lang.Runtime` static |
 | `Microsoft` | 1.0 / 2.0 | `msxsl:script` (legacy) |
 
-***
+---

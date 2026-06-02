@@ -17,7 +17,7 @@ linked:
 ---
 # LDAP Injection - Detección y Reconocimiento
 
-***
+---
 
 ## Identificar Endpoints con LDAP Backend
 
@@ -40,7 +40,7 @@ linked:
 | Specific errors | `Bad search filter`, `Filter syntax error` | Direct evidence. |
 ^ldap-detect-endpoints
 
-___
+---
 
 ## Probes de Inyección
 
@@ -79,7 +79,7 @@ curl -d "username=*)(uid=*&password=any" https://target/login
 # Si 2 y 3 dan errores ≠ 1 → vulnerable a LDAP injection
 ```
 
-___
+---
 
 ## Fingerprint del Directory Server
 
@@ -118,4 +118,4 @@ ldapsearch -H ldap://target.com -x -s base -b "" \
 # vendorVersion: Apache Directory Server 2.0.0
 ```
 
-***
+---

@@ -21,7 +21,7 @@ linked:
 ---
 # Fuzzing de Parámetros y Valores
 
-***
+---
 
 ## Cheatsheet
 

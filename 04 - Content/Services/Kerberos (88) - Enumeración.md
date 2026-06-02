@@ -18,7 +18,7 @@ linked:
 ---
 # Kerberos Enumeration (88)
 
-***
+---
 
 ## Cheatsheet
 

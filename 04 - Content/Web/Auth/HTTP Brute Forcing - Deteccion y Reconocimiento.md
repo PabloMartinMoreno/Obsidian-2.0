@@ -18,7 +18,7 @@ linked:
 ---
 # HTTP Brute Forcing - Detección y Reconocimiento
 
-***
+---
 
 ## Login Form Discovery
 
@@ -57,7 +57,7 @@ curl -s https://target/static/js/main.js | \
   grep -oE '(login|auth|signin|/api/v[0-9]+/[a-z]+)' | sort -u
 ```
 
-___
+---
 
 ## Response Differential Success/Fail
 
@@ -97,7 +97,7 @@ curl -s -X POST https://target/login \
 diff fail.html success.html
 ```
 
-___
+---
 
 ## Rate Limit Detection
 
@@ -137,7 +137,7 @@ done
 # Wait + retry to find lockout window
 ```
 
-___
+---
 
 ## Lockout Policy Probing
 
@@ -161,7 +161,7 @@ ___
 | WAF-level vs app-level | Different bypass strategies | Detection. |
 ^bf-detect-lockout
 
-___
+---
 
 ## User Enumeration via Errors
 
@@ -198,4 +198,4 @@ done
 # Look for diff timing or response body
 ```
 
-***
+---

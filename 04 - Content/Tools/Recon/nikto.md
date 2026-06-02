@@ -25,7 +25,7 @@ linked:
 ---
 # nikto
 
-***
+---
 
 ## Cheatsheet
 
@@ -41,7 +41,7 @@ linked:
 | **Tuning categorías** | `nikto -h target -Tuning 4` |
 | **Multi-target** | `nikto -h targets.txt` |
 
-***
+---
 
 ## Concepto
 
@@ -169,4 +169,4 @@ feroxbuster -u http://target -w raft-medium.txt --smart
 
 - [nikto GitHub](https://github.com/sullo/nikto)
 
-***
+---

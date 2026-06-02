@@ -9,7 +9,7 @@ kind: Concept
 ---
 # [[Obsidian Git]]
 
-***
+---
 
 ## Description
 
@@ -40,7 +40,7 @@ These commands can be added to hotkey combinations which greatly simply the addo
 
 ![[Pasted image 20210907112642.png]]
 
-___
+---
 
 ## Resources
 
@@ -49,7 +49,7 @@ ___
 | [Obsidian, Taming a Collective Consciousness; Sam Link](https://trustedsec.com/blog/obsidian-taming-a-collective-consciousness)                                    | Example implementation of Zettelkasten using Obsidian; demonstrates how Obsidian Git can be leveraged for vault team collaboration |
 | [The Easiest Way to Setup Obsidian Git (to backup notes), Obsidian Forum](https://forum.obsidian.md/t/the-easiest-way-to-setup-obsidian-git-to-backup-notes/51429) | Example implementation of setting up an Obsidian GitHub repository and automating source control with Obsidian Git                 |
 
-***
+---
 
 *Created Date*: October 19th 2025 (01:22 am)  
 *Last Modified Date*: April 21st 2026 (05:30 pm)

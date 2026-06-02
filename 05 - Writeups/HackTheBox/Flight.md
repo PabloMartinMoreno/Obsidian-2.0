@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/510
 dificultad: Dificil
 ip: 10.10.11.187
 os: Windows
-relacionados:
+linked:
 ---
 # HackTheBox - Flight
 

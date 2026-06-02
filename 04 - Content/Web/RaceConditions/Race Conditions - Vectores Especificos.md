@@ -18,7 +18,7 @@ linked:
 ---
 # Race Conditions - Vectores Específicos
 
-***
+---
 
 ## Multi-Endpoint Races (Chains)
 
@@ -34,7 +34,7 @@ linked:
 | Generic A→B chain en Turbo Intruder: `engine.queue(setStateA); engine.queue(readStateA)` × N | Universal pattern | Cross-endpoint state share. |
 ^race-vector-multi-endpoint
 
-___
+---
 
 ## Promo Code / Voucher Redemption
 
@@ -48,7 +48,7 @@ ___
 | `for i in {1..50}; do curl -X POST -b "$C" -d '{"action":"earn"}' https://target/api/loyalty/points & done; wait` | Loyalty point overrun | Point earn race. |
 ^race-vector-voucher
 
-___
+---
 
 ## Voting / Rating Manipulation
 
@@ -62,7 +62,7 @@ ___
 | Burp parallel: `POST /api/follow {"user":"X"}` × 100 | Follower count manipulation | Follow race. |
 ^race-vector-voting
 
-___
+---
 
 ## Account Takeover via Password Reset Race
 
@@ -97,7 +97,7 @@ ___
 6. Atacante login con attacker_pass → ATO
 ```
 
-___
+---
 
 ## Cache Fill Race
 
@@ -110,4 +110,4 @@ ___
 | Burp parallel: `PURGE /api/x` + `GET /api/x` (read inmediato post-purge) | Read stale post-invalidation | Cache invalidation race. |
 ^race-vector-cache
 
-***
+---

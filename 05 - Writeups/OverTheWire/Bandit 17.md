@@ -5,7 +5,7 @@ plataforma: "[[OverTheWire]]"
 web: https://overthewire.org/wargames/bandit/bandit17.html
 dificultad: Fácil
 autor:
-relacionados:
+linked:
   - "[[diff]]"
   - "[[Bandit 16]]"
   - "[[Bandit 18]]"

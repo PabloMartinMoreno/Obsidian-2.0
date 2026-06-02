@@ -9,7 +9,7 @@ kind: Concept
 ---
 # [[Obsidian - Plugins]]  
 
-***
+---
 
 This vault uses [Obsidian Community Plugins](https://help.obsidian.md/community-plugins) to automate the process of note creation, source control, data querying, and other essential functions.
 
@@ -61,7 +61,7 @@ No plugins are considered optional at this time.
 Experiment more with suggested plugins and add to this section as-needed.
 ```
 
-___
+---
 
 ## Resources
 
@@ -80,4 +80,4 @@ ___
 [^4]: Admonition Plugin, Jeremy Valentine, https://github.com/javalent/admonitions
 [^5]: Emoji Toolbar Plugin, oliveryh, https://github.com/oliveryh/obsidian-emoji-toolbar
 
-***
+---

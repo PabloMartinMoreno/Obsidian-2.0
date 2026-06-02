@@ -16,7 +16,7 @@ linked:
 ---
 # DCSync - Detection y Mitigations
 
-***
+---
 
 ## Detection Events
 
@@ -40,7 +40,7 @@ Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4662} |
   Select-Object TimeCreated, Message | Format-List
 ```
 
-___
+---
 
 ## MDI Alerts
 
@@ -53,7 +53,7 @@ ___
 
 **MDI FP notable:** `MSOL_*` y `AAD_*` accounts de Azure AD Connect realizan DCSync legítimamente → excluded normalmente en MDI. Si comprometés esa cuenta, el DCSync parece legítimo para MDI.
 
-___
+---
 
 ## KQL / Sentinel Hunt
 
@@ -75,7 +75,7 @@ SecurityEvent
 | order by TimeGenerated desc
 ```
 
-___
+---
 
 ## Mitigations
 
@@ -89,7 +89,7 @@ ___
 | krbtgt password reset x2 | Invalida Golden Tickets post-incident | Rotation cada 6 meses + post-breach |
 ^dcsync-detect-mitigations
 
-___
+---
 
 ## Hardening Checklist
 
@@ -102,7 +102,7 @@ ___
 | ¿DA en Protected Users? | `Get-ADGroupMember "Protected Users"` | Todos los DA |
 ^dcsync-detect-checklist
 
-___
+---
 
 ## Bypass Notes (Red Team)
 
@@ -115,4 +115,4 @@ ___
 | DCSync desde DC comprometido (self-sync) | Potencial blind-spot | On-DC execution |
 ^dcsync-detect-bypass
 
-***
+---

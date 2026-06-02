@@ -8,7 +8,7 @@ web: https://app.hackthebox.com/machines/537
 dificultad: Fácil
 ip: 10.10.11.208
 os: Linux
-relacionados:
+linked:
   - "[[PATH Hijacking]]"
   - "[[Eval Injection]]"
   - "[[Password Reuse]]"
@@ -55,7 +55,7 @@ nmap -p22,80 -sC -sV -oN targeted <IP_MAQUINA>
 - Las cabeceras HTTP y el pie de página confirman que la aplicación utiliza **Flask** y una librería llamada **Searchor**.
 
 
-___
+---
 
 ## Explotación de vulnerabilidades
 
@@ -123,7 +123,7 @@ Ahora que tenemos RCE, el siguiente paso es establecer una shell interactiva.
 - **Resultado:** Se recibe una conexión en el listener de Netcat, obteniendo una shell como el usuario `svc`.
 
 
-___
+---
 
 ## Escalada de Privilegios
 

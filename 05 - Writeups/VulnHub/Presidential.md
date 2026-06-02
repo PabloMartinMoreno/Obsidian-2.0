@@ -5,7 +5,7 @@ plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/presidential
 dificultad: Fácil
 os: Linux
-relacionados:
+linked:
   - "[[SSH (22) - Enumeración|ssh]]"
   - "[[john]]"
   - "[[phpmyadmin]]"

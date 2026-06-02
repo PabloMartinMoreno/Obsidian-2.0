@@ -21,7 +21,7 @@ linked:
 ---
 # Curl
 
-***
+---
 
 ## Cheatsheet
 
@@ -38,7 +38,7 @@ tab: Acrónimos
 ````
 ^curl-general
 
-***
+---
 
 ## Overview
 

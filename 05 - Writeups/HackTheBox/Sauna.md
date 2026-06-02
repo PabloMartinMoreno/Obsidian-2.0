@@ -9,7 +9,7 @@ web: https://app.hackthebox.com/machines/229
 dificultad: Media
 ip: 10.10.10.175
 os: Windows
-relacionados:
+linked:
   - "[[Ldap Enumeration]]"
   - "[[Kerberos User Enumeration - Kerbrute]]"
   - "[[ASRepRoast Attack (GetNPUsers)]]"

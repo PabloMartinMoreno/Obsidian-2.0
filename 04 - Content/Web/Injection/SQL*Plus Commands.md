@@ -15,7 +15,7 @@ linked:
 ---
 # SQL*Plus Commands
 
-***
+---
 
 ## Cheatsheet
 

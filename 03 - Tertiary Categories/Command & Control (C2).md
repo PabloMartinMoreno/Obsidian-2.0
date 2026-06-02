@@ -10,11 +10,11 @@ kind: Tertiary Category
 ---
 # Comandos & Control (C2)
 
-***
+---
 
 ## C2
 
 - [[C2 Frameworks Overview]]
 - [[C2 Infrastructure]]
 
-***
+---

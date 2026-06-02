@@ -17,7 +17,7 @@ linked:
 ---
 # AD - GPO y SYSVOL Enumeration - SYSVOL Content Discovery
 
-***
+---
 
 ## SYSVOL Mount + Browse
 
@@ -44,7 +44,7 @@ ls -la /mnt/sysvol/corp.local/
 # └── scripts/    (NETLOGON)
 ```
 
-___
+---
 
 ## GPP Files
 
@@ -69,7 +69,7 @@ ___
 grep -r "cpassword" /mnt/sysvol --include="*.xml"
 ```
 
-___
+---
 
 ## SYSVOL Scripts Discovery
 
@@ -81,7 +81,7 @@ ___
 | `nxc smb <DC> -u u -p p -M spider_plus -o INTERESTING_EXTENSIONS=ps1,bat,vbs,cmd` | Auto spider | Quick. |
 ^ad-sysvol-scripts
 
-___
+---
 
 ## Embedded Credentials Hunt
 
@@ -100,7 +100,7 @@ grep -rEi "(password|pwd|secret|cred)\s*[=:]\s*['\"]" /mnt/sysvol \
   --include="*.cmd" --include="*.xml" --include="*.ini"
 ```
 
-___
+---
 
 ## Logon Script Modification
 
@@ -114,7 +114,7 @@ ___
 
 **Por qué importa:** logon scripts en SYSVOL ejecutan en cada user logon. Modify script malicioso = persistencia. ACE `WRITE` sobre script = privesc directo.
 
-___
+---
 
 ## NETLOGON Share
 
@@ -127,7 +127,7 @@ ___
 
 **NETLOGON = subset of SYSVOL.** Replica `\\<DC>\sysvol\corp.local\scripts\` como share separado. Common location para org-wide login scripts. Audit junto con SYSVOL.
 
-___
+---
 
 ## Modern Best Practices
 
@@ -148,4 +148,4 @@ findstr /S /I "cpassword" \\<DC>\sysvol\*.xml
 :: Cualquier match = legacy cpassword XML que debe eliminarse
 ```
 
-***
+---

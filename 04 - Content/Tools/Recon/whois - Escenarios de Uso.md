@@ -9,7 +9,7 @@ linked:
 
 # whois - Escenarios de Uso
 
-___
+---
 
 ## Escenario 1: Investigación de phishing
 

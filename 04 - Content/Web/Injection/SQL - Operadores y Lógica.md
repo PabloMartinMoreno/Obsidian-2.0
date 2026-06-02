@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Operadores y Lógica
 
-***
+---
 
 ## Cheatsheet
 
@@ -50,7 +50,7 @@ linked:
 | `BETWEEN x AND y` | Rango inclusive | `WHERE age BETWEEN 18 AND 65` |
 | `IS NULL` / `IS NOT NULL` | Check NULL | `WHERE password IS NULL` (creds vacías). |
 
-___
+---
 
 ## Overview
 
@@ -58,4 +58,4 @@ Operadores forman el "código" de las inyecciones. Tautologías (`OR 1=1`) y con
 
 WAF bypass: si dígitos filtrados → `'a'='a'`. Si `=` filtrado → `LIKE`. Si `AND`/`OR` filtrados → `&&`/`||` (MySQL).
 
-***
+---

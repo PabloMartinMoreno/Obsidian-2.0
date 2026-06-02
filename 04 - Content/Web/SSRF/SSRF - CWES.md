@@ -26,7 +26,7 @@ linked:
 ---
 # SSRF - CWES
 
-***
+---
 
 > Nota principal orientada a **HTB CWES / CBBH**. Agrupa el flujo de SSRF tal como se pide en el examen: identificar → reconocer → explotar (incluyendo Gopher smuggling). Para coverage general y casos modernos (cloud metadata, IMDSv2, DNS rebinding), ver [[Server-Side Request Forgery (SSRF)]].
 
@@ -52,7 +52,7 @@ tab: **Protocolo Gopher (smuggling)**
 ![[SSRF - Gopher#^ssrf-gopher]]
 ````
 
-___
+---
 
 ## Workflow CWES
 
@@ -86,7 +86,7 @@ ___
 | FastCGI | 9000 | Ejecución PHP arbitraria |
 | Memcached | 11211 | Cache poison / data dump |
 
-___
+---
 
 ## Notas
 
@@ -100,4 +100,4 @@ El hub general [[Server-Side Request Forgery (SSRF)]] amplía este flujo con vec
 - [PortSwigger - SSRF](https://portswigger.net/web-security/ssrf)
 - [gopherus GitHub](https://github.com/tarunkant/Gopherus)
 
-***
+---

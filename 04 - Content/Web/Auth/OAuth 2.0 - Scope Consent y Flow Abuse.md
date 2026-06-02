@@ -18,7 +18,7 @@ linked:
 ---
 # OAuth 2.0 - Scope, Consent & Flow Abuse
 
-***
+---
 
 ## Scope Upgrade / Silent Re-Consent
 
@@ -47,7 +47,7 @@ curl -s -X POST https://target/oauth/token \
 # Si returns access_token con scope=admin (no granted by user) → vuln
 ```
 
-___
+---
 
 ## Dynamic Client Registration
 
@@ -77,7 +77,7 @@ curl -s -X POST https://target/oauth/register \
 # Returns client_id (+ client_secret) → registration abierto
 ```
 
-___
+---
 
 ## Device Code Phishing
 
@@ -118,7 +118,7 @@ while true; do
 done
 ```
 
-___
+---
 
 ## PKCE Downgrade
 
@@ -150,7 +150,7 @@ curl -s -X POST https://target/oauth/token \
 # Si returns access_token → PKCE no enforced
 ```
 
-___
+---
 
 ## Implicit Flow Forced
 
@@ -188,4 +188,4 @@ if response_type not in ALLOWED_RESPONSE_TYPES_PER_CLIENT.get(client_id, []):
     abort(400, 'response_type not allowed for this client')
 ```
 
-***
+---

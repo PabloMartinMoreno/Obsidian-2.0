@@ -16,7 +16,7 @@ linked:
 ---
 # AD - DCSync Rights Discovery - ACL Audit on Domain Root
 
-***
+---
 
 ## PowerShell DCSync Audit
 
@@ -46,7 +46,7 @@ $DCSync = @(
          }}
 ```
 
-___
+---
 
 ## PowerView DCSync ACL
 
@@ -67,7 +67,7 @@ Get-DomainObjectAcl -Identity (Get-ADDomain).DistinguishedName -ResolveGUIDs |
          AccessControlType
 ```
 
-___
+---
 
 ## Linux DCSync ACL
 
@@ -84,7 +84,7 @@ bloodyAD --host <DC> -d corp -u auditor -p 'Pass!' \
   grep -E "GetChanges|Replication"
 ```
 
-___
+---
 
 ## BloodHound DCSync Edges
 
@@ -96,7 +96,7 @@ ___
 | `MATCH (u)-[r:GetChanges\|GetChangesAll]->(d) WHERE NOT u.objectid ENDS WITH '-512' AND NOT u.objectid ENDS WITH '-519' RETURN u.name` | Non-default holders | Audit. |
 ^ad-dcsyncacl-bh
 
-___
+---
 
 ## Native dsacls
 
@@ -113,7 +113,7 @@ ___
 dsacls "DC=corp,DC=local" | findstr /i "Replicating Directory Changes"
 ```
 
-___
+---
 
 ## Per-Quarter Compliance
 
@@ -148,4 +148,4 @@ Compare-Object (Import-Csv $Prev) (Import-Csv $Snap) -Property IdentityReference
   Format-Table
 ```
 
-***
+---

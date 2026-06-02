@@ -14,7 +14,7 @@ linked:
 ---
 # IDOR - Manipulación del Cuerpo de la Petición
 
-***
+---
 
 ## Cheatsheet
 
@@ -66,4 +66,4 @@ curl -X POST https://target/api/transfer \
 
 Extraer identidad del JWT verificado server-side, **no** del body. DTO estricto que ignora campos no declarados (`@JsonIgnoreProperties(ignoreUnknown=true)` + lista blanca explícita).
 
-***
+---

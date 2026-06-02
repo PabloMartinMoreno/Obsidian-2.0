@@ -17,7 +17,7 @@ linked:
 ---
 # AD - LAPS Enumeration - LAPS Permission Audit
 
-***
+---
 
 ## Required Permissions
 
@@ -32,7 +32,7 @@ linked:
 
 **Decryption capability ≠ LDAP read** en LAPSv2. Podés leer `msLAPS-EncryptedPassword` blob pero sin decrypt key = inútil.
 
-___
+---
 
 ## Per-Computer ACL Audit
 
@@ -59,7 +59,7 @@ function Get-LapsReaders {
 Get-ADComputer -Filter * | % { Get-LapsReaders -ComputerDN $_.DistinguishedName }
 ```
 
-___
+---
 
 ## Native LAPS Helper Tools
 
@@ -81,7 +81,7 @@ Import-Module LAPS
 Find-LapsADExtendedRights -Identity "OU=Servers,DC=corp,DC=local"
 ```
 
-___
+---
 
 ## Recursive Group Membership
 
@@ -92,7 +92,7 @@ ___
 | BloodHound `MATCH p=(u:User)-[:MemberOf*1..]->(g:Group)-[:ReadLAPSPassword]->(c:Computer) RETURN p` | Recursive paths to LAPS | Visual. |
 ^ad-laps-perm-recursive
 
-___
+---
 
 ## BloodHound LAPS Edges
 
@@ -111,7 +111,7 @@ ___
 bloodhound-python -d corp.local -u u -p p -ns <DC> -c All --zip
 ```
 
-___
+---
 
 ## Permission Misconfigurations
 
@@ -123,7 +123,7 @@ ___
 | Same group reads Tier 0 + Tier 2 | Flat tiering | Audit. |
 ^ad-laps-perm-misconfig
 
-___
+---
 
 ## LAPS Read Detection
 
@@ -143,7 +143,7 @@ Get-ADObject -SearchBase $schema -Filter {Name -eq "msLAPS-Password"} -Propertie
   Select -Expand Audit
 ```
 
-___
+---
 
 ## Audit Best Practices
 
@@ -156,4 +156,4 @@ ___
 | Monitor 4662 con LAPS attr GUID filter | SIEM rule | Detection. |
 ^ad-laps-perm-audit
 
-***
+---

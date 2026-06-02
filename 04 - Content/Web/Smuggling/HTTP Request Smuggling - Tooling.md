@@ -19,7 +19,7 @@ linked:
 ---
 # HTTP Request Smuggling - Tooling
 
-***
+---
 
 ## HTTP Request Smuggler (Burp Extension)
 
@@ -35,7 +35,7 @@ linked:
 | Burp Smuggler → "Cache poisoning via smuggling" mode | Auto-setup cache poison combo | Specific chain. |
 ^hrs-tool-burp
 
-___
+---
 
 ## smuggler.py (defparam)
 
@@ -51,7 +51,7 @@ ___
 | `python3 smuggler.py -u https://target/ --timeout 10` | Aumentar timeout | Slow targets. |
 ^hrs-tool-smuggler-py
 
-___
+---
 
 ## h2cSmuggler (BishopFox)
 
@@ -85,7 +85,7 @@ python3 h2csmuggler.py -x https://target/ \
   -X "GET /api/proxy?url=http://127.0.0.1:8080/admin"
 ```
 
-___
+---
 
 ## Turbo Intruder Scripts
 
@@ -128,4 +128,4 @@ def handleResponse(req, interesting):
         table.add(req)
 ```
 
-***
+---

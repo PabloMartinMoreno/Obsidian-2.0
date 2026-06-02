@@ -20,7 +20,7 @@ linked:
 ---
 # AD - Domain & Forest Trusts - Tooling
 
-***
+---
 
 ## nltest (Native Windows)
 
@@ -53,7 +53,7 @@ linked:
 for /f "skip=2 tokens=2 delims=:" %d in ('nltest /domain_trusts ^| findstr /i "Trusted DNS"') do nltest /sc_verify:%d
 ```
 
-___
+---
 
 ## RSAT / PowerShell
 
@@ -79,7 +79,7 @@ Get-ADTrust -Filter * -Properties * |
          SelectiveAuthentication,SIDFilteringForestAware,SIDFilteringQuarantined,TGTDelegation
 ```
 
-___
+---
 
 ## PowerView / pywerview
 
@@ -98,7 +98,7 @@ ___
 | `pywerview get-domaintrust-mapping -u u -p p -d corp.local --dc-ip <DC>` | Forest mapping Linux | Linux. |
 ^ad-trusttool-powerview
 
-___
+---
 
 ## BloodHound / SharpHound / RustHound
 
@@ -124,7 +124,7 @@ done
 # Drag ZIPs en BHCE → cross-domain auto-correlate
 ```
 
-___
+---
 
 ## Impacket / Linux Trust Tools
 
@@ -164,7 +164,7 @@ export KRB5CCNAME=Administrator.ccache
 impacket-secretsdump -k -no-pass "$DC_FOREIGN"
 ```
 
-___
+---
 
 ## Recursos
 
@@ -181,4 +181,4 @@ ___
 | `awesome-active-directory` | `https://github.com/Orange-Cyberdefense/awesome-activedirectory` |
 ^ad-trusttool-wordlists
 
-***
+---

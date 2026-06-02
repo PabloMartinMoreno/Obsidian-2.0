@@ -14,7 +14,7 @@ linked:
 ---
 # LFI - PHP Wrappers
 
-***
+---
 
 ## Cheatsheet
 
@@ -82,7 +82,7 @@ curl -X POST "${TARGET//PAYLOAD/php%3A%2F%2Finput}&cmd=id" \
 | `zip://` / `phar://` | No requiere | Archivo subido al server. |
 | `file://` | No requiere | Equivalente a path plain. |
 
-___
+---
 
 ## Overview
 
@@ -93,4 +93,4 @@ PHP stream wrappers permiten acceder a recursos como si fueran archivos. `php://
 2. `data://` o `php://input` para EJECUTAR (requiere `allow_url_include=On`).
 3. Si `allow_url_include=Off` y necesitás RCE → [[LFI To RCE - PHP Filter Chains]] (sin requisitos), [[LFI To RCE - Log Poisoning]], o [[LFI To RCE - Session File Poisoning]].
 
-***
+---

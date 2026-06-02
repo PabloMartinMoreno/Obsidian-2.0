@@ -16,7 +16,7 @@ linked:
 ---
 # Clickjacking - Bypass de Anti-Framing
 
-***
+---
 
 ## JS Frame-Busting Bypass
 
@@ -44,7 +44,7 @@ linked:
         style="opacity:0.001;width:100%;height:100%"></iframe>
 ```
 
-___
+---
 
 ## Sandbox Attribute Tricks
 
@@ -64,7 +64,7 @@ ___
 | `<iframe sandbox="allow-forms allow-presentation" src="..."></iframe>` | Presentation API allowed | Presentation. |
 ^cj-bypass-sandbox
 
-___
+---
 
 ## X-Frame-Options Bypass
 
@@ -85,7 +85,7 @@ ___
 | `curl -I -H "Host: target.com" https://CDN_IP/admin` (CDN strip headers) | CDN strip XFO probe | CDN misconfig. |
 ^cj-bypass-xfo
 
-___
+---
 
 ## CSP frame-ancestors Bypass
 
@@ -105,7 +105,7 @@ ___
 | `nuclei -t http/misconfiguration/csp-misconfiguration.yaml -u https://target.com` | Nuclei CSP misconfig scan | Auto scan. |
 ^cj-bypass-csp
 
-___
+---
 
 ## Browser Quirks y Edge Cases
 
@@ -128,4 +128,4 @@ ___
 | `<object data="https://target.com/admin"></object>` (object tag XFO check) | Object tag XFO check | Edge object. |
 ^cj-bypass-quirks
 
-***
+---

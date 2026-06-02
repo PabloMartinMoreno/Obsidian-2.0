@@ -11,7 +11,7 @@ kind: Secondary Category
 ---
 # CWES
 
-***
+---
 
 ## Temario
 
@@ -79,7 +79,7 @@ Identificar servidor, stack, CMS y contenido estándar antes de atacar.
 - [[WordPress Enumeration]]
 - [[WordPress Exploitation]]
 
-***
+---
 
 ## Recursos
 

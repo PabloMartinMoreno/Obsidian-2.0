@@ -31,7 +31,7 @@ linked:
 ---
 # AD - LAPS Enumeration
 
-***
+---
 
 ## Cheatsheet
 
@@ -185,7 +185,7 @@ tab: **Wordlists & Recursos**
 ![[AD - LAPS Enumeration - Tooling#^ad-laps-tool-resources]]
 ````
 
-___
+---
 
 ## Overview
 
@@ -229,7 +229,7 @@ LAPSv1 (legacy) usa `ms-Mcs-AdmPwd` cleartext. LAPSv2 (modern, Server 2022+, Win
 - **Encryption principal broad** — many can decrypt.
 - **Cross-trust LAPS read** — cross-forest privesc path.
 
-___
+---
 
 ## Workflow de explotación
 
@@ -279,7 +279,7 @@ ___
    - Detection: bulk LAPS reads
 ```
 
-___
+---
 
 ## Detección rápida
 
@@ -314,7 +314,7 @@ Get-ADComputer -Filter * | ForEach-Object {
 }
 ```
 
-___
+---
 
 ## Impacto
 
@@ -332,7 +332,7 @@ ___
 - **Compliance violation** — many regulations require LAPS minimal readers.
 - **Persistence: store LAPS passwords** — read once, use until rotation.
 
-___
+---
 
 ## Mitigación (defender)
 
@@ -379,7 +379,7 @@ ___
 - **Modern: passwordless local admin** — Azure AD-joined + Just-in-Time admin.
 - **Migration LAPSv1 → LAPSv2** — modern best practice.
 
-___
+---
 
 ## Para entender LAPS
 
@@ -415,7 +415,7 @@ Hybrid identity scenarios: Azure AD-joined devices may not have on-prem AD prese
 
 Pre-BloodHound: manual ACL audit per host. BloodHound 5.x+: `ReadLAPSPassword` edge automatically computed. Visualize entire LAPS reader hierarchy + cross-correlate with privilege paths. Modern audit standard.
 
-___
+---
 
 ## Recursos
 
@@ -435,4 +435,4 @@ ___
 - [MITRE ATT&CK T1003.008](https://attack.mitre.org/techniques/T1003/008/) — adjacent.
 - [`awesome-active-directory`](https://github.com/Orange-Cyberdefense/awesome-active-directory) — curated.
 
-***
+---
