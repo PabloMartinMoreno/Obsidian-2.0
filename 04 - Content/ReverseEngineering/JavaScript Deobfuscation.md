@@ -38,6 +38,11 @@ js-beautify minified.js > pretty.js
 
 ## Deobfuscation tools
 
+[UnPacker](https://matthewfl.com/unPacker.html)
+[BeautifyTools](https://beautifytools.com/javascript-obfuscator.php)
+[Prettier](https://prettier.io/playground/)
+[Beautifier](https://beautifier.io/)
+
 | Tool | Targets |
 |---|---|
 | **de4js** (`https://lelinhtinh.github.io/de4js/`) | Web-based, popular obfuscator.io patterns |
