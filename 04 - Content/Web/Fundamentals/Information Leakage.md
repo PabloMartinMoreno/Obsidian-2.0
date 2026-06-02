@@ -11,7 +11,7 @@ tags:
   - technique/discovery
 kind: Concept
 linked:
-  - "[[Fingerprinting Web Technologies]]"
+  - "[[Web Fingerprinting]]"
   - "[[GitHub Dorking]]"
   - "[[Google Dorking]]"
   - "[[LDAP Injection - Info Disclosure y Blind]]"
@@ -37,12 +37,12 @@ Cualquier output del sistema que revele detalles sobre stack, paths internos, ve
 | Fuente | Qué se filtra | Notas |
 |---|---|---|
 | **Error messages** | Stack trace, paths, queries SQL | [[SSTI - Deteccion y Fingerprinting]] |
-| **HTTP headers** | Server, X-Powered-By, framework versions | [[Fingerprinting Web Technologies]] |
-| **robots.txt / sitemap.xml** | Endpoints ocultos | [[Fuzzing Directories & Pages]] |
+| **HTTP headers** | Server, X-Powered-By, framework versions | [[Web Fingerprinting]] |
+| **robots.txt / sitemap.xml** | Endpoints ocultos | [[Directory Fuzzing]] |
 | **`.git/`, `.svn/`, `.env`** | Source code + credenciales | [[git-dumper]] |
 | **API verbose** | Trace IDs, internal IPs | [[GraphQL - Introspection y Schema Discovery]] |
 | **OSINT / dorking** | Credentials in pastes/repos | [[GitHub Dorking]], [[Google Dorking]] |
-| **Directory listing** | Backup files, dev artifacts | [[Fuzzing Directories & Pages]] |
+| **Directory listing** | Backup files, dev artifacts | [[Directory Fuzzing]] |
 | **Comments HTML/JS** | Dev notes, TODOs, credentials | view-source |
 | **LDAP attributes** | User enumeration, email patterns | [[LDAP Injection - Info Disclosure y Blind]] |
 | **Cache headers** | Last-Modified, ETag → version inference | manual |

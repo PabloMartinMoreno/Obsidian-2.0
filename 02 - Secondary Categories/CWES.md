@@ -33,7 +33,7 @@ Cómo viaja una petición y cómo manipularla. Base de todo lo demás.
 
 Identificar servidor, stack, CMS y contenido estándar antes de atacar.
 
-- [[Fingerprinting Web Technologies]]
+- [[Web Fingerprinting]]
 - [[robots.txt]] · [[Well-Known URIs]]
 - [[Source Code Disclosure]] · [[Information Leakage]]
 - [[Source Code Review]]

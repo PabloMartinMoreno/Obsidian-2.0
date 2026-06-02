@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Secondary Categories/CWES.md",
+                "file": "04 - Content/Recon/WebTech/Web Technology Enumeration.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "CWES"
+              "title": "Web Technology Enumeration"
             }
           }
         ],
@@ -265,13 +265,22 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "af77475b0bc9914d",
+  "active": "c8b69479e32499da",
   "lastOpenFiles": [
-    "04 - Content/Process/CWES - Checklists.md",
-    "02 - Secondary Categories/CWES.md",
     "03 - Tertiary Categories/Web Enumeración.md",
-    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+    "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
+    "04 - Content/Crypto/SSL - TLS.md",
+    "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Recon/WebTech/Web Fingerprinting.md",
+    "04 - Content/Recon/Fuzzing/Subdomain & VHost Fuzzing.md",
+    "04 - Content/Recon/Fuzzing/Parameter Fuzzing.md",
+    "04 - Content/Recon/Fuzzing/Directory Fuzzing.md",
+    "04 - Content/Web/Fundamentals/Web.md",
+    "04 - Content/Tools/Recon/curl.md",
+    "02 - Secondary Categories/CWES.md",
+    "04 - Content/Process/CWES - Checklists.md",
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
     "04 - Content/Web/Fundamentals/HTTP.md",
@@ -279,20 +288,11 @@
     "05 - Writeups/OverTheWire/Bandit 04.md",
     "05 - Writeups/OverTheWire/Bandit 03.md",
     "04 - Content/Web/Fundamentals/POST.md",
-    "04 - Content/Tools/Recon/curl.md",
     "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md",
     "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md",
     "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md",
     "04 - Content/Tools/Recon/Curl - Web.md",
-    "04 - Content/Web/Fundamentals/Web.md",
     "00 - Resources/Templates/Type/_cheatsheet.md",
-    "00 - Resources/Templates/Type/_payload.md",
-    "00 - Resources/Templates/Type/_sub-command.md",
-    "03 - Tertiary Categories/Active Directory Explotación.md",
-    "04 - Content/Process/Blockchain.md",
-    "04 - Content/Web/Fundamentals/HTTP - Métodos.md",
-    "04 - Content/Web/Fundamentals/GET.md",
-    "04 - Content/Web/Fundamentals/HTTPS.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "05 - Writeups/PortSwigger/XSS",
     "05 - Writeups/PortSwigger/SQLi",

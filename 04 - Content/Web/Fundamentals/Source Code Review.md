@@ -98,6 +98,6 @@ gitleaks detect --source=./repo
 ## Notas Relacionadas
 
 - [[GitHub Dorking]]
-- [[Fingerprinting Web Technologies]]
+- [[Web Fingerprinting]]
 - [[git-dumper]]
 - [[githack]]

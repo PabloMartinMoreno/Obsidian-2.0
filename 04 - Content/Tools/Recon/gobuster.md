@@ -14,9 +14,9 @@ tertiary categories:
   - "[[Web Enumeración]]"
 kind: Tool
 linked:
-  - "[[Fuzzing Directories & Pages]]"
-  - "[[Fuzzing Subdomains & Virtual Hosts]]"
-  - "[[Fuzzing Parameters & Values]]"
+  - "[[Directory Fuzzing]]"
+  - "[[Subdomain & VHost Fuzzing]]"
+  - "[[Parameter Fuzzing]]"
   - "[[ffuf]]"
   - "[[feroxbuster]]"
 ---

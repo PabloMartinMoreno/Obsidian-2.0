@@ -42,14 +42,14 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 10.576271186440678,
+    "scroll": 54.16035980148883,
     "cursor": {
       "from": {
-        "line": 12,
+        "line": 16,
         "ch": 0
       },
       "to": {
-        "line": 12,
+        "line": 16,
         "ch": 0
       }
     },
@@ -322,14 +322,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md": {
-    "scroll": 66.7950954106636,
+    "scroll": 7.719844357976654,
     "cursor": {
       "from": {
-        "line": 28,
+        "line": 31,
         "ch": 0
       },
       "to": {
-        "line": 28,
+        "line": 31,
         "ch": 0
       }
     },
@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 4.1525423728813555,
+    "scroll": 19.50901525658807,
     "cursor": {
       "from": {
         "line": 19,
@@ -624,11 +624,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 17,
+        "line": 19,
         "ch": 0
       },
       "to": {
-        "line": 17,
+        "line": 19,
         "ch": 0
       }
     },
@@ -1445,7 +1445,7 @@
     "expandedKeys": []
   },
   "04 - Content/Crypto/SSL - TLS.md": {
-    "scroll": 0,
+    "scroll": 13.086012374135631,
     "cursor": {
       "from": {
         "line": 11,
@@ -1681,6 +1681,48 @@
       },
       "to": {
         "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Web Fingerprinting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md": {
+    "scroll": 2.0508474576271185,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Web Technology Enumeration.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
         "ch": 0
       }
     },

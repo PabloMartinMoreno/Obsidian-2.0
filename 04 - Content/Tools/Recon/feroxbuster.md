@@ -15,7 +15,7 @@ tertiary categories:
   - "[[Web Enumeración]]"
 kind: Tool
 linked:
-  - "[[Fuzzing Directories & Pages]]"
+  - "[[Directory Fuzzing]]"
   - "[[ffuf]]"
   - "[[gobuster]]"
 ---

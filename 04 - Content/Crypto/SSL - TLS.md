@@ -75,4 +75,4 @@ curl -s "https://crt.sh/?q=<domain>&output=json" | jq -r '.[].name_value'
 
 - [[Certificate Transparency Logs]]
 - [[Subdomains Passive Enumeration]]
-- [[Fingerprinting Web Technologies]]
+- [[Web Fingerprinting]]

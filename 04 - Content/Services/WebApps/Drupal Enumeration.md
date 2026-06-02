@@ -27,7 +27,7 @@ linked:
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | <br>`curl -s http://<drupal-root>/CHANGELOG.txt \| grep -m2 ""`<br><br> | Revela la versión de Drupal obteniendo el archivo `CHANGELOG.txt`. Las instalaciones más nuevas pueden devolver un error 404. |
 | <br>`droopescan scan drupal --url http://<drupal-root>`<br><br>         | <br>Realiza un escaneo automatizado para detectar la versión de Drupal y los plugins activos.                                 |
-| <br>[[Fingerprinting Web Technologies]]                                          | Herramientas como Wappalyzer y WhatWeb suelen identificar Drupal, aunque pueden no precisar la versión exacta.                |
+| <br>[[Web Fingerprinting]]                                          | Herramientas como Wappalyzer y WhatWeb suelen identificar Drupal, aunque pueden no precisar la versión exacta.                |
 
 ## Descripción general
 

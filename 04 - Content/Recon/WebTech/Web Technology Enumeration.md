@@ -5,12 +5,14 @@ aliases:
 tags:
   - asset/web-app
   - technique/recon/active
+  - meta/index
 primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-  - "[[Enumeration]]"
+  - "[[Web Enumeración]]"
 kind: Concept
 linked:
   - "[[ColdFusion Enumeration]]"
@@ -25,7 +27,7 @@ linked:
   - "[[Tomcat Enumeration]]"
   - "[[WordPress Enumeration]]"
   - "[[osTicket Enumeration]]"
-  - "[[Fingerprinting Web Technologies]]"
+  - "[[Web Fingerprinting]]"
 ---
 # Web Technology Enumeration
 
@@ -70,7 +72,7 @@ El workflow general es: **fingerprinting → enumeración específica → búsqu
 
 ## Recursos relacionados
 
-- [[Fingerprinting Web Technologies]] — identificación inicial antes de enum específica.
+- [[Web Fingerprinting]] — identificación inicial antes de enum específica.
 - [[Crawling]] — descubrir endpoints administrativos.
 - [[Web Fuzzing]] — fuerza bruta de paths cuando fingerprinting no revela.
 

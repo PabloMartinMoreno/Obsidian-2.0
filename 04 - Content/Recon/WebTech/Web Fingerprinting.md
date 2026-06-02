@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Fingerprinting Web Technologies"
 tags:
   - technique/recon/active
   - technique/recon/passive

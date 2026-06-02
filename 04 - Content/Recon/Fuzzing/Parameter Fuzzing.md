@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Fuzzing Parameters & Values"
   - Fuzzing de Parámetros y Valores
 tags:
   - technique/recon/active

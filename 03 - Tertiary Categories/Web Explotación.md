@@ -1,20 +1,24 @@
 ---
 aliases:
-  - "Web Exploitation"
+  - Web Exploitation
   - Explotación Web
 tags:
+  - technique/exploitation/web
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Explotación]]"
   - "[[Web]]"
 kind: Tertiary Category
+linked:
+  - "[[Web Enumeración]]"
 ---
 # Explotación Web
 
 ---
 
- ## 💉 Injection Attacks
+## 💉 Injection Attacks
   Ataques que inyectan datos maliciosos para engañar al intérprete y ejecutar comandos no autorizados.
 
 - [[SQL Injection (SQLi)]]
@@ -26,12 +30,12 @@ kind: Tertiary Category
 - [[Server-Side Includes (SSI) Injection]] (Server-Side Includes: Inyección de directivas en servidores web para RCE.)
 - [[CRLF Injection]] (Inyección de caracteres `\r\n` en headers/body/protocolos: header injection (Set-Cookie/CSP bypass), HTTP response splitting + XSS, cache poisoning, SMTP email injection, log forgery, HRS combo, Memcached/Redis injection.)
 - [[HTTP Parameter Pollution]] (Multiple values del mismo parameter explotando differential entre stacks: WAF bypass via param split, auth bypass front/back diferencial, SQLi en ASP.NET concat, Mass Assignment combo, logic flow manipulation.)
-- XML Attacks
-	- [[XML External Entity (XXE)]] (Abuso del procesamiento XML para leer archivos o realizar SSRF.)
-	- [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]] (Inyección de transformaciones maliciosas para RCE o lectura de archivos.)
+### XML Attacks
+- [[XML External Entity (XXE)]] (Abuso del procesamiento XML para leer archivos o realizar SSRF.)
+- [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]] (Inyección de transformaciones maliciosas para RCE o lectura de archivos.)
 
 
-  ## 📂 File System & Inclusion
+## 📂 File System & Inclusion
   Manipulación de la entrada para acceder, leer o subir archivos en el servidor.
 
 - [[File Inclusion]] (Inclusión de archivos locales del servidor en la respuesta web.)
@@ -40,7 +44,7 @@ kind: Tertiary Category
 - [[File Upload - Vulnerabilidades]] (Subida de archivos maliciosos para obtener ejecución de código.)
 
 
-  ## 🛡 Access Control & Authentication
+## 🛡 Access Control & Authentication
   Fallos en la verificación de identidad o en los permisos de acceso a recursos.
 
 - [[Authentication & Authorization Bypass]] (Evasión de mecanismos de login o restricciones de acceso.)
@@ -51,7 +55,7 @@ kind: Tertiary Category
 - [[Session Hijacking]] (Robo o forge de sesión authenticated: cookie theft via XSS / MITM / sniffing, weak HMAC crack, JWT manipulation, fixation pre-auth, replay long-lived tokens, CSWSH, cookie tossing cross-subdomain.)
 
 
-  ## 🎭 Client-Side Attacks
+## 🎭 Client-Side Attacks
   Ataques que apuntan a los usuarios de la aplicación web.
 
 - [[Cross-Site Scripting (XSS)]] (Ejecución de scripts maliciosos en el navegador de la víctima.)
@@ -60,7 +64,7 @@ kind: Tertiary Category
 - [[HTML Injection]] (Inyección de etiquetas HTML para phishing o desfiguración del sitio.)
 
 
- ## 🔌 Server-Side Logic Flaws
+## 🔌 Server-Side Logic Flaws
  Vulnerabilidades en la lógica de procesamiento del lado del servidor.
 
 - [[Server-Side Request Forgery (SSRF)]] (Forzar al servidor a realizar peticiones a recursos internos o externos.)
@@ -75,7 +79,7 @@ kind: Tertiary Category
 - [[Subdomain Takeover]] (Reclamo de subdomains con DNS dangling: CNAME a third-party services deleted (S3/Heroku/GitHub Pages), NS takeover, expired domain reclaim — chains con cookie scope, OAuth redirect_uri, CSP bypass, email spoofing.)
 
 
- ## 🎯 Specific Application Exploitation
+## 🎯 Specific Application Exploitation
  Guías de explotación para software web común.
 
 - [[WordPress Exploitation]]

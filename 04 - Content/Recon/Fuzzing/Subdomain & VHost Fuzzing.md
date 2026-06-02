@@ -1,5 +1,6 @@
 ---
 aliases:
+  - "Fuzzing Subdomains & Virtual Hosts"
   - Fuzzing de Subdominios y Hosts Virtuales
 tags:
   - technique/recon/active

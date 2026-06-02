@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Crawling & Spidering"
+  - Spidering
 tags:
   - asset/web-app
   - technique/recon/active

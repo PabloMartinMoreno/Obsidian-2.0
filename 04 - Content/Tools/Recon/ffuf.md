@@ -17,9 +17,9 @@ kind: Tool
 linked:
   - "[[Web Fuzzing]]"
   - "[[Crawling]]"
-  - "[[Fuzzing Directories & Pages]]"
-  - "[[Fuzzing Parameters & Values]]"
-  - "[[Fuzzing Subdomains & Virtual Hosts]]"
+  - "[[Directory Fuzzing]]"
+  - "[[Parameter Fuzzing]]"
+  - "[[Subdomain & VHost Fuzzing]]"
   - "[[Burp Suite]]"
 ---
 # ffuf
