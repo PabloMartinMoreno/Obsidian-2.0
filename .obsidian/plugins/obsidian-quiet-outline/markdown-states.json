@@ -42,14 +42,14 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 0,
+    "scroll": 12.72538860103627,
     "cursor": {
       "from": {
-        "line": 16,
+        "line": 23,
         "ch": 0
       },
       "to": {
-        "line": 16,
+        "line": 23,
         "ch": 0
       }
     },
@@ -364,14 +364,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Injection.md": {
-    "scroll": 27.687782805429865,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 29,
+        "line": 30,
         "ch": 0
       },
       "to": {
-        "line": 29,
+        "line": 30,
         "ch": 0
       }
     },
@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 9.957627118644067,
+    "scroll": 0.7627118644067796,
     "cursor": {
       "from": {
         "line": 15,
@@ -1774,26 +1774,26 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 20,
-        "ch": 0
+        "line": 29,
+        "ch": 64
       },
       "to": {
-        "line": 20,
-        "ch": 0
+        "line": 29,
+        "ch": 64
       }
     },
     "expandedKeys": []
   },
   "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md": {
-    "scroll": 26.401525658807213,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 40,
-        "ch": 28
+        "line": 39,
+        "ch": 0
       },
       "to": {
-        "line": 40,
-        "ch": 28
+        "line": 39,
+        "ch": 0
       }
     },
     "expandedKeys": []

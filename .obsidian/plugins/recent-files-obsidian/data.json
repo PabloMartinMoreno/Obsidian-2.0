@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "JavaScript Deobfuscation",
-      "path": "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md"
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Checklists - CWES",
+      "path": "04 - Content/Process/Checklists - CWES.md"
     },
     {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
     },
     {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
     {
       "basename": "Web Enumeración",
