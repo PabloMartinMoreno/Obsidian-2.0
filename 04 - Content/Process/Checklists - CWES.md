@@ -7,7 +7,11 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[CWES]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Enumeración]]"
+  - "[[Web Explotación]]"
+  - "[[Procedures & Methodologies]]"
 kind: CheatSheet
 linked:
   - "[[CWES]]"

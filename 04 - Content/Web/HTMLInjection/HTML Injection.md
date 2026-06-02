@@ -16,7 +16,7 @@ secondary categories:
   - "[[Web]]"
 tertiary categories:
   - "[[Web Explotación]]"
-kind: Vulnerability
+kind: CheatSheet
 linked:
   - "[[HTML Injection - Vectores Comunes]]"
   - "[[HTML Injection - Inyeccion Sin Script]]"
@@ -26,7 +26,6 @@ linked:
   - "[[Cross-Site Scripting (XSS)]]"
   - "[[Web Cache Poisoning]]"
   - "[[Server-Side Template Injection (SSTI)]]"
-  - "[[Burp Suite]]"
 ---
 # HTML Injection
 
@@ -56,7 +55,7 @@ tab: **Hidden Elements / Iframe Abuse**
 ### 🚫 Inyección Sin Script (no-JS)
 
 ````tabs
-tab: **Image `src` Exfil (Referer Leak)**
+tab: **Image src Exfil (Referer Leak)**
 ![[HTML Injection - Inyeccion Sin Script#^htmli-noscript-image]]
 
 tab: **Form Action Redirect**
@@ -65,10 +64,10 @@ tab: **Form Action Redirect**
 tab: **Meta Refresh**
 ![[HTML Injection - Inyeccion Sin Script#^htmli-noscript-meta]]
 
-tab: **`<base href>` Hijacking**
+tab: **<base href> Hijacking**
 ![[HTML Injection - Inyeccion Sin Script#^htmli-noscript-base]]
 
-tab: **`<link rel>` Manipulation**
+tab: **<link rel> Manipulation**
 ![[HTML Injection - Inyeccion Sin Script#^htmli-noscript-linkrel]]
 
 tab: **CSS-Only Attacks**

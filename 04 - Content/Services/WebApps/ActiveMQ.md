@@ -6,7 +6,7 @@ aliases:
 tags:
   - asset/web-app
   - technique/execution
-kind: Vulnerability
+kind: CheatSheet
 linked:
 ---
 # ActiveMQ

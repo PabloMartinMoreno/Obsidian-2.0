@@ -15,7 +15,7 @@ secondary categories:
   - "[[Web]]"
 tertiary categories:
   - "[[Web Explotación]]"
-kind: Vulnerability
+kind: CheatSheet
 linked:
   - "[[Clickjacking - Vectores Basicos]]"
   - "[[Clickjacking - Variantes Avanzadas]]"

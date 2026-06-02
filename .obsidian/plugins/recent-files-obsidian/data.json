@@ -1,24 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Technology Enumeration",
-      "path": "04 - Content/Recon/WebTech/Web Technology Enumeration.md"
+      "basename": "Checklists - CWES",
+      "path": "04 - Content/Process/Checklists - CWES.md"
+    },
+    {
+      "basename": "Procedures & Methodologies",
+      "path": "03 - Tertiary Categories/Procedures & Methodologies.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Post-Explotación",
+      "path": "02 - Secondary Categories/Post-Explotación.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
     },
     {
       "basename": "Web Enumeración",
       "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
     {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "SSL - TLS",
-      "path": "04 - Content/Crypto/SSL - TLS.md"
+      "basename": "HTML Injection",
+      "path": "04 - Content/Web/HTMLInjection/HTML Injection.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
       "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "HTML Injection - Vectores Comunes",
+      "path": "04 - Content/Web/HTMLInjection/HTML Injection - Vectores Comunes.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
     },
     {
       "basename": "Web Explotación",
@@ -29,6 +53,18 @@
       "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
     },
     {
+      "basename": "Web Technology Enumeration",
+      "path": "04 - Content/Recon/WebTech/Web Technology Enumeration.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "SSL - TLS",
+      "path": "04 - Content/Crypto/SSL - TLS.md"
+    },
+    {
       "basename": "Web",
       "path": "04 - Content/Web/Fundamentals/Web.md"
     },
@@ -37,24 +73,12 @@
       "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
-    },
-    {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
-    },
-    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "Explotación",
       "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "HTTP",
@@ -169,36 +193,12 @@
       "path": "04 - Content/Crypto/Criptografía Simétrica vs. Asimétrica.md"
     },
     {
-      "basename": "HTML Injection",
-      "path": "04 - Content/Web/HTMLInjection/HTML Injection.md"
-    },
-    {
       "basename": "URL Encode - Characters",
       "path": "04 - Content/Web/Fundamentals/URL Encode - Characters.md"
     },
     {
       "basename": "gobuster",
       "path": "04 - Content/Tools/Recon/gobuster.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/Tools/Recon/ffuf.md"
-    },
-    {
-      "basename": "feroxbuster",
-      "path": "04 - Content/Tools/Recon/feroxbuster.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Curl - Acronimos",
-      "path": "04 - Content/Tools/Recon/Curl - Acronimos.md"
-    },
-    {
-      "basename": "Curl - APIs",
-      "path": "04 - Content/Tools/Recon/Curl - APIs.md"
     }
   ],
   "omittedPaths": [],

@@ -7,7 +7,7 @@ tags:
   - asset/web-app
   - technique/execution
   - vuln/jndi-injection
-kind: Vulnerability
+kind: CheatSheet
 linked:
 ---
 # Log4J

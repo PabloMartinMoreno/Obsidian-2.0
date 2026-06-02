@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 54.16035980148883,
+    "scroll": 18.1640625,
     "cursor": {
       "from": {
         "line": 16,
@@ -84,7 +84,7 @@
     "expandedKeys": []
   },
   "01 - Primary Categories/Red Team.md": {
-    "scroll": 8.705729166666666,
+    "scroll": 0.13043478260869565,
     "cursor": {
       "from": {
         "line": 8,
@@ -210,7 +210,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
-    "scroll": 0,
+    "scroll": 29.127490039840637,
     "cursor": {
       "from": {
         "line": 41,
@@ -322,7 +322,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md": {
-    "scroll": 7.719844357976654,
+    "scroll": 0.603112840466926,
     "cursor": {
       "from": {
         "line": 31,
@@ -588,14 +588,14 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 19.50901525658807,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 19,
+        "line": 15,
         "ch": 0
       },
       "to": {
-        "line": 19,
+        "line": 15,
         "ch": 0
       }
     },
@@ -1277,7 +1277,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/Information Gathering.md": {
-    "scroll": 6.987577639751553,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 12,
@@ -1417,14 +1417,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/HTMLInjection/HTML Injection.md": {
-    "scroll": 0,
+    "scroll": 95.73126978543792,
     "cursor": {
       "from": {
-        "line": 30,
+        "line": 55,
         "ch": 0
       },
       "to": {
-        "line": 30,
+        "line": 55,
         "ch": 0
       }
     },
@@ -1715,15 +1715,71 @@
     "expandedKeys": []
   },
   "04 - Content/Recon/WebTech/Web Technology Enumeration.md": {
-    "scroll": 0,
+    "scroll": 2.5944206008583692,
     "cursor": {
       "from": {
-        "line": 30,
+        "line": 32,
         "ch": 0
       },
       "to": {
-        "line": 30,
+        "line": 32,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/HTMLInjection/HTML Injection - Vectores Comunes.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Post-Explotación.md": {
+    "scroll": 0.2826086956521739,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Procedures & Methodologies.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 30
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Checklists - CWES.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 19
+      },
+      "to": {
+        "line": 18,
+        "ch": 19
       }
     },
     "expandedKeys": []
