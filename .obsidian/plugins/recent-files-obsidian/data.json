@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "CWES - Checklists",
+      "path": "04 - Content/Process/CWES - Checklists.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
@@ -33,10 +45,6 @@
       "path": "05 - Writeups/OverTheWire/Bandit 03.md"
     },
     {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
-    },
-    {
       "basename": "POST",
       "path": "04 - Content/Web/Fundamentals/POST.md"
     },
@@ -63,10 +71,6 @@
     {
       "basename": "Web",
       "path": "04 - Content/Web/Fundamentals/Web.md"
-    },
-    {
-      "basename": "CWES - Checklists",
-      "path": "04 - Content/Process/CWES - Checklists.md"
     },
     {
       "basename": "_cheatsheet",
@@ -175,10 +179,6 @@
     {
       "basename": "feroxbuster",
       "path": "04 - Content/Tools/Recon/feroxbuster.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
     {
       "basename": "Fuzzing Subdomains & Virtual Hosts",

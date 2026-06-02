@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+                "file": "02 - Secondary Categories/CWES.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Injection (SQLi)"
+              "title": "CWES"
             }
           }
         ],
@@ -265,8 +265,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c8b69479e32499da",
+  "active": "af77475b0bc9914d",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES - Checklists.md",
+    "02 - Secondary Categories/CWES.md",
+    "03 - Tertiary Categories/Web Enumeración.md",
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
     "03 - Tertiary Categories/Web Explotación.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
@@ -274,7 +278,6 @@
     "05 - Writeups/OverTheWire/Bandit 05.md",
     "05 - Writeups/OverTheWire/Bandit 04.md",
     "05 - Writeups/OverTheWire/Bandit 03.md",
-    "02 - Secondary Categories/CWES.md",
     "04 - Content/Web/Fundamentals/POST.md",
     "04 - Content/Tools/Recon/curl.md",
     "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md",
@@ -282,7 +285,6 @@
     "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md",
     "04 - Content/Tools/Recon/Curl - Web.md",
     "04 - Content/Web/Fundamentals/Web.md",
-    "04 - Content/Process/CWES - Checklists.md",
     "00 - Resources/Templates/Type/_cheatsheet.md",
     "00 - Resources/Templates/Type/_payload.md",
     "00 - Resources/Templates/Type/_sub-command.md",
@@ -291,8 +293,6 @@
     "04 - Content/Web/Fundamentals/HTTP - Métodos.md",
     "04 - Content/Web/Fundamentals/GET.md",
     "04 - Content/Web/Fundamentals/HTTPS.md",
-    "04 - Content/Recon/Sniffing & MITM.md",
-    "04 - Content/Web/Fundamentals/API REST.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "05 - Writeups/PortSwigger/XSS",
     "05 - Writeups/PortSwigger/SQLi",

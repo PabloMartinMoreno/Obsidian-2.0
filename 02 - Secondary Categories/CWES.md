@@ -8,6 +8,10 @@ tags:
 primary categories:
   - "[[Red Team]]"
 kind: Secondary Category
+linked:
+  - "[[CWES - Checklists]]"
+  - "[[Web Enumeración]]"
+  - "[[Web Explotación]]"
 ---
 # CWES
 

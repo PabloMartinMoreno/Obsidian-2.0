@@ -4,6 +4,7 @@ tags:
   - cert/cwes
   - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
   - "[[CWES]]"
 tertiary categories:

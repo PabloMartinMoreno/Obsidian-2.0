@@ -1,13 +1,13 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 5.708144796380091,
+    "scroll": 0.26244343891402716,
     "cursor": {
       "from": {
-        "line": 31,
+        "line": 30,
         "ch": 0
       },
       "to": {
-        "line": 31,
+        "line": 30,
         "ch": 0
       }
     },
@@ -588,14 +588,14 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 13.205729166666666,
+    "scroll": 4.1525423728813555,
     "cursor": {
       "from": {
-        "line": 26,
+        "line": 19,
         "ch": 0
       },
       "to": {
-        "line": 26,
+        "line": 19,
         "ch": 0
       }
     },
@@ -621,7 +621,7 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 18.220527045769764,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 17,
@@ -725,11 +725,11 @@
     "cursor": {
       "from": {
         "line": 14,
-        "ch": 0
+        "ch": 19
       },
       "to": {
         "line": 14,
-        "ch": 0
+        "ch": 19
       }
     },
     "expandedKeys": []
