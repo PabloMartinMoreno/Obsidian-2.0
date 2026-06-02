@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
       "basename": "Bandit 05",
       "path": "05 - Writeups/OverTheWire/Bandit 05.md"
     },
@@ -11,10 +31,6 @@
     {
       "basename": "Bandit 03",
       "path": "05 - Writeups/OverTheWire/Bandit 03.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
     {
       "basename": "CWES",
@@ -87,14 +103,6 @@
     {
       "basename": "HTTP - Basic Auth",
       "path": "04 - Content/Web/Auth/HTTP - Basic Auth.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "Flujo de Comunicación HTTP",
@@ -191,14 +199,6 @@
     {
       "basename": "Curl - APIs",
       "path": "04 - Content/Tools/Recon/Curl - APIs.md"
-    },
-    {
-      "basename": "DOM",
-      "path": "04 - Content/Web/Fundamentals/DOM.md"
-    },
-    {
-      "basename": "API Security",
-      "path": "04 - Content/Web/Fundamentals/API Security.md"
     }
   ],
   "omittedPaths": [],
