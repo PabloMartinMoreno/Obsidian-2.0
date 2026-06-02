@@ -1,204 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Checklists - CWES",
-      "path": "04 - Content/Process/Checklists - CWES.md"
-    },
-    {
-      "basename": "Procedures & Methodologies",
-      "path": "03 - Tertiary Categories/Procedures & Methodologies.md"
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
     {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
     },
     {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Post-Explotación",
-      "path": "02 - Secondary Categories/Post-Explotación.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Web Enumeración",
       "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
     {
-      "basename": "HTML Injection",
-      "path": "04 - Content/Web/HTMLInjection/HTML Injection.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "HTML Injection - Vectores Comunes",
-      "path": "04 - Content/Web/HTMLInjection/HTML Injection - Vectores Comunes.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
-      "basename": "Web Fingerprinting",
-      "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
-    },
-    {
-      "basename": "Web Technology Enumeration",
-      "path": "04 - Content/Recon/WebTech/Web Technology Enumeration.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "SSL - TLS",
-      "path": "04 - Content/Crypto/SSL - TLS.md"
-    },
-    {
-      "basename": "Web",
-      "path": "04 - Content/Web/Fundamentals/Web.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/Tools/Recon/curl.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
-    },
-    {
-      "basename": "Bandit 05",
-      "path": "05 - Writeups/OverTheWire/Bandit 05.md"
-    },
-    {
-      "basename": "Bandit 04",
-      "path": "05 - Writeups/OverTheWire/Bandit 04.md"
-    },
-    {
-      "basename": "Bandit 03",
-      "path": "05 - Writeups/OverTheWire/Bandit 03.md"
-    },
-    {
-      "basename": "POST",
-      "path": "04 - Content/Web/Fundamentals/POST.md"
-    },
-    {
-      "basename": "Curl - Enumeración de Sub-Dominios y V.Host",
-      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md"
-    },
-    {
-      "basename": "Curl - Enumeración Pasiva de Sub-Dominios",
-      "path": "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md"
-    },
-    {
-      "basename": "Curl - Fuzzing Parámetros y Valores",
-      "path": "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md"
-    },
-    {
-      "basename": "Curl - Web",
-      "path": "04 - Content/Tools/Recon/Curl - Web.md"
-    },
-    {
-      "basename": "_cheatsheet",
-      "path": "00 - Resources/Templates/Type/_cheatsheet.md"
-    },
-    {
-      "basename": "_payload",
-      "path": "00 - Resources/Templates/Type/_payload.md"
-    },
-    {
-      "basename": "_sub-command",
-      "path": "00 - Resources/Templates/Type/_sub-command.md"
-    },
-    {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "Blockchain",
-      "path": "04 - Content/Process/Blockchain.md"
-    },
-    {
-      "basename": "HTTP - Métodos",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Métodos.md"
-    },
-    {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
-    },
-    {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
-    },
-    {
-      "basename": "HTTP - Basic Auth",
-      "path": "04 - Content/Web/Auth/HTTP - Basic Auth.md"
-    },
-    {
-      "basename": "Flujo de Comunicación HTTP",
-      "path": "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md"
-    },
-    {
-      "basename": "Flujo de Comunicación HTTPS",
-      "path": "04 - Content/Process/Flujo de Comunicación HTTPS.md"
-    },
-    {
-      "basename": "Web Content Types",
-      "path": "04 - Content/Web/Fundamentals/Web Content Types.md"
-    },
-    {
-      "basename": "Protocolos de Red",
-      "path": "04 - Content/Process/Protocolos de Red.md"
-    },
-    {
-      "basename": "HTTP - Cookies y Sesiones",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md"
-    },
-    {
-      "basename": "HTTP - Headers",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Headers.md"
-    },
-    {
-      "basename": "HTTP - Códigos de Estado",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Códigos de Estado.md"
-    },
-    {
-      "basename": "Subdomains Passive Enumeration",
-      "path": "04 - Content/Recon/Subdomain/Subdomains Passive Enumeration.md"
-    },
-    {
-      "basename": "Certificate Transparency Logs",
-      "path": "04 - Content/Recon/OSINT/Certificate Transparency Logs.md"
-    },
-    {
-      "basename": "Criptografía Simétrica vs. Asimétrica",
-      "path": "04 - Content/Crypto/Criptografía Simétrica vs. Asimétrica.md"
-    },
-    {
-      "basename": "URL Encode - Characters",
-      "path": "04 - Content/Web/Fundamentals/URL Encode - Characters.md"
-    },
-    {
-      "basename": "gobuster",
-      "path": "04 - Content/Tools/Recon/gobuster.md"
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
     }
   ],
   "omittedPaths": [],

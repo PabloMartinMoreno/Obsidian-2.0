@@ -9,8 +9,6 @@ primary categories:
 secondary categories:
   - "[[Web]]"
 tertiary categories:
-  - "[[Web Enumeración]]"
-  - "[[Web Explotación]]"
 kind: Concept
 linked:
 ---

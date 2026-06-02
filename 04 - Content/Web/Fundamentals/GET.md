@@ -10,9 +10,7 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Web]]"
-  - "[[Information Gathering]]"
 tertiary categories:
-  - "[[Web Enumeración]]"
 kind: Concept
 linked:
   - "[[HTTP]]"

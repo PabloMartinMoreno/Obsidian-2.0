@@ -2,6 +2,7 @@
 aliases:
 tags:
 primary categories:
+  - "[[Cryptography]]"
 secondary categories:
 tertiary categories:
 kind: Concept

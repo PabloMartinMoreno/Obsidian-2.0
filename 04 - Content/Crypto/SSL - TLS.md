@@ -5,6 +5,13 @@ aliases:
   - TLS
 tags:
   - service/http
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
+tertiary categories:
+  - "[[Web Enumeración]]"
 kind: Concept
 linked:
 ---

@@ -7,24 +7,30 @@ secondary categories:
   - "[[Operational Tasks]]"
 kind: Tertiary Category
 ---
-#   Procedures & Methodologies
-
+# Procedures & Methodologies
 
 ---
- ## 📋 Operational Checklists
- Listas de verificación paso a paso para asegurar una cobertura metódica en cada fase del pentest.
 
- ### Infrastructure & System
-  - [[Checklist - Windows Enumeration & Privilege Escalation]] (Guía exhaustiva para revisar sistemas Windows comprometidos.)
-  - [[Checklist - Linux Enumeration & Privilege Escalation]] (Pasos críticos para enumerar y elevar privilegios en Linux.)
+## 🧭 Methodologies & Process
+Marcos y flujos de trabajo que ordenan cada engagement.
 
- ### Network & Domain
-  - [[Checklist - Active Directory Compromise]] (Flujo de trabajo para auditar y comprometer entornos de Directorio Activo.)
+- [[Penetration Testing Process]] (Fases: Pre-Engagement → Information Gathering → Vulnerability Assessment → Exploitation → Post-Exploitation → Lateral Movement → PoC → Post-Engagement.)
+- [[Web Enumeración]] · [[Web Explotación]] (flujos web por fase.)
 
- ### Application Security
-  - [[Checklist - Web Pentesting]] (Verificaciones estándar OWASP y pruebas de lógica para aplicaciones web.)
+---
 
+## 📋 Operational Checklists
+Listas de verificación paso a paso para cobertura metódica en cada fase.
 
+### Infrastructure & System
+- [[Checklist - Windows Enumeration & Privilege Escalation]] (Revisión exhaustiva de sistemas Windows comprometidos.)
+- [[Checklist - Linux Enumeration & Privilege Escalation]] (Pasos críticos para enumerar y elevar privilegios en Linux.)
 
+### Network & Domain
+- [[CheckList - Active Directory Compromise]] (Flujo para auditar y comprometer entornos de Directorio Activo.)
+
+### Application Security
+- [[Checklists - CWES]] (Checklist del examen CWES: footprinting → injection → file upload → server-side → API → WordPress.)
+- [[Checklist - Web Pentesting]] (Verificaciones OWASP + pruebas de lógica para apps web.)
 
 ---

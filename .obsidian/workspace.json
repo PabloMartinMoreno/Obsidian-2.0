@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Checklists - CWES.md",
+                "file": "04 - Content/Web/Fundamentals/HTTP.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Checklists - CWES"
+              "title": "HTTP"
             }
           }
         ],
@@ -267,19 +267,22 @@
   },
   "active": "c8b69479e32499da",
   "lastOpenFiles": [
-    "03 - Tertiary Categories/Procedures & Methodologies.md",
-    "04 - Content/Process/Checklists - CWES.md",
     "02 - Secondary Categories/CWES.md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "03 - Tertiary Categories/Web Enumeración.md",
     "01 - Primary Categories/Red Team.md",
+    "04 - Content/Tools/JavaScript Deobfuscation.md",
+    "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",
+    "04 - Content/Web/Fundamentals/HTTP.md",
+    "04 - Content/Process/Checklists - CWES.md",
+    "03 - Tertiary Categories/Procedures & Methodologies.md",
     "02 - Secondary Categories/Post-Explotación.md",
     "02 - Secondary Categories/Information Gathering.md",
-    "03 - Tertiary Categories/Web Enumeración.md",
     "00 - Resources/Templates/Type/_vulnerability.md",
     "04 - Content/Web/HTMLInjection/HTML Injection.md",
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "04 - Content/Web/HTMLInjection/HTML Injection - Vectores Comunes.md",
     "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Recon/WebTech/Web Fingerprinting.md",
     "04 - Content/Recon/WebTech/Web Technology Enumeration.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
@@ -290,9 +293,6 @@
     "04 - Content/Web/Fundamentals/Web.md",
     "04 - Content/Tools/Recon/curl.md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",
-    "02 - Secondary Categories/Explotación.md",
-    "04 - Content/Web/Fundamentals/HTTP.md",
-    "05 - Writeups/OverTheWire/Bandit 05.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "05 - Writeups/PortSwigger/XSS",
     "05 - Writeups/PortSwigger/SQLi",

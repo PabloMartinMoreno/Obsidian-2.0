@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 18.1640625,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 16,
@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 0,
+    "scroll": 9.957627118644067,
     "cursor": {
       "from": {
         "line": 15,
@@ -1764,8 +1764,8 @@
         "ch": 0
       },
       "to": {
-        "line": 9,
-        "ch": 30
+        "line": 11,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -1774,12 +1774,40 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 18,
-        "ch": 19
+        "line": 20,
+        "ch": 0
       },
       "to": {
-        "line": 18,
-        "ch": 19
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 26
+      },
+      "to": {
+        "line": 8,
+        "ch": 26
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/JavaScript Deobfuscation.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
       }
     },
     "expandedKeys": []

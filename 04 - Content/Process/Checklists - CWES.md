@@ -6,8 +6,9 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[CWES]]"
   - "[[Web]]"
+  - "[[Information Gathering]]"
+  - "[[Explotación]]"
 tertiary categories:
   - "[[Web Enumeración]]"
   - "[[Web Explotación]]"

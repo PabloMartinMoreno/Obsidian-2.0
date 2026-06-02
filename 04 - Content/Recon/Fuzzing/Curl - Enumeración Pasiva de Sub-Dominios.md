@@ -3,6 +3,13 @@ aliases:
 tags:
   - technique/recon/active
   - asset/web-app
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
+tertiary categories:
+  - "[[Web Enumeración]]"
 kind: SubCheatSheet
 linked:
   - "[[curl]]"
