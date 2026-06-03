@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "OSINT",
+      "path": "04 - Content/Process/OSINT.md"
+    },
+    {
       "basename": "Server-Side Includes (SSI) Injection",
       "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
     },

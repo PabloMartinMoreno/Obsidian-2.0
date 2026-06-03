@@ -23,7 +23,6 @@ linked:
   - "[[SSI - Evasion de Filtros]]"
   - "[[SSI - Tooling]]"
   - "[[File Inclusion]]"
-  - "[[Burp Suite]]"
 ---
 # Server-Side Includes (SSI) Injection
 

