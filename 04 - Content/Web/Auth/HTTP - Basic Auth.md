@@ -11,6 +11,7 @@ primary categories:
 secondary categories:
   - "[[Web]]"
 tertiary categories:
+  - "[[Web Fundamentals]]"
 kind: Concept
 linked:
   - "[[GET]]"

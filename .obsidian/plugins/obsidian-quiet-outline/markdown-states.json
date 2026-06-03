@@ -266,7 +266,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/XXE/XML External Entity (XXE).md": {
-    "scroll": 17.15837104072398,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 24,
@@ -1807,6 +1807,20 @@
       },
       "to": {
         "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Web Fundamentals.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
         "ch": 0
       }
     },

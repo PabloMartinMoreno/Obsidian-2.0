@@ -4,13 +4,13 @@ aliases:
 tags:
   - service/http
   - asset/web-app
-  - technique/recon/active
   - cert/cwes
 primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Web]]"
 tertiary categories:
+  - "[[Web Fundamentals]]"
 kind: Concept
 linked:
   - "[[HTTP]]"

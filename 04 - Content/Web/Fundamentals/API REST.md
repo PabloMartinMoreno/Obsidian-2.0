@@ -12,6 +12,7 @@ primary categories:
 secondary categories:
   - "[[Web]]"
 tertiary categories:
+  - "[[Web Fundamentals]]"
 kind: Concept
 linked:
   - "[[HTTP - Métodos]]"
