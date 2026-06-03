@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Tertiary Categories/Web Fundamentals.md",
+                "file": "02 - Secondary Categories/CWES.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Web Fundamentals"
+              "title": "CWES"
             }
           }
         ],
@@ -268,15 +268,16 @@
   "active": "9a90734da7e51579",
   "lastOpenFiles": [
     "04 - Content/Web/Fundamentals/GET.md",
-    "03 - Tertiary Categories/Web Fundamentals.md",
     "02 - Secondary Categories/CWES.md",
+    "04 - Content/Web/Fundamentals/HTTPS.md",
+    "04 - Content/Web/Fundamentals/HTTP.md",
+    "03 - Tertiary Categories/Web Fundamentals.md",
     "04 - Content/Web/XXE/XML External Entity (XXE).md",
     "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/XSLT/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md",
     "04 - Content/Web/GraphQL/GraphQL Injection.md",
     "04 - Content/Process/Checklists - CWES.md",
     "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",
-    "04 - Content/Web/Fundamentals/HTTP.md",
     "03 - Tertiary Categories/Web Enumeración.md",
     "01 - Primary Categories/Red Team.md",
     "04 - Content/Tools/JavaScript Deobfuscation.md",
@@ -292,7 +293,6 @@
     "04 - Content/Recon/WebTech/Web Technology Enumeration.md",
     "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md",
     "04 - Content/Crypto/SSL - TLS.md",
-    "04 - Content/Recon/Fuzzing/Subdomain & VHost Fuzzing.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "05 - Writeups/PortSwigger/XSS",
     "05 - Writeups/PortSwigger/SQLi",

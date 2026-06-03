@@ -574,7 +574,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/GET.md": {
-    "scroll": 0,
+    "scroll": 1.7583732057416268,
     "cursor": {
       "from": {
         "line": 87,
@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 0.7627118644067796,
+    "scroll": 20.619791666666668,
     "cursor": {
       "from": {
         "line": 15,
@@ -605,7 +605,7 @@
     ]
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 0,
+    "scroll": 3.2782805429864252,
     "cursor": {
       "from": {
         "line": 71,
@@ -654,12 +654,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 91,
-        "ch": 73
+        "line": 89,
+        "ch": 0
       },
       "to": {
-        "line": 91,
-        "ch": 73
+        "line": 89,
+        "ch": 0
       }
     },
     "expandedKeys": []

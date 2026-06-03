@@ -1,16 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Web Fundamentals",
-      "path": "03 - Tertiary Categories/Web Fundamentals.md"
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
     },
     {
       "basename": "GET",
       "path": "04 - Content/Web/Fundamentals/GET.md"
     },
     {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
+      "basename": "HTTPS",
+      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
+      "basename": "Web Fundamentals",
+      "path": "03 - Tertiary Categories/Web Fundamentals.md"
     },
     {
       "basename": "XML External Entity (XXE)",
@@ -31,10 +39,6 @@
     {
       "basename": "Checklists - CWES",
       "path": "04 - Content/Process/Checklists - CWES.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
     {
       "basename": "Web Enumeración",
