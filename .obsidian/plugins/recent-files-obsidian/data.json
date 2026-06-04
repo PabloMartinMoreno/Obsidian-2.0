@@ -9,16 +9,28 @@
       "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
     },
     {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
+      "basename": "Server-Side Includes (SSI) Injection",
+      "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
+    },
+    {
+      "basename": "SSI - Ejecucion de Comandos",
+      "path": "04 - Content/Web/SSI/SSI - Ejecucion de Comandos.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "GraphQL Voyager",
+      "path": "04 - Content/Process/GraphQL Voyager.md"
     },
     {
       "basename": "GraphQL Injection",
       "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
     {
       "basename": "Clickjacking",
@@ -47,10 +59,6 @@
     {
       "basename": "OSINT",
       "path": "04 - Content/Process/OSINT.md"
-    },
-    {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
     },
     {
       "basename": "Server-Side Template Injection (SSTI)",

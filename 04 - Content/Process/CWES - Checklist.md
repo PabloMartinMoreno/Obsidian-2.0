@@ -205,7 +205,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] **Revisión General de Peticiones/Respuestas:**
     - [ ] Usar DevTools del navegador y Burp Suite/OWASP ZAP para inspeccionar todo el tráfico.
 - [ ] **Cabeceras HTTP y Cookies:**
-    - [ ] **Cabeceras de Seguridad:**
+    - [ ] **Cabeceras de Seguridad:** → `curl -I <URL>` o Burp; cualquiera ausente = hallazgo
         - [ ] `Strict-Transport-Security (HSTS)`: ¿Presente? ¿`max-age` adecuado? ¿`includeSubDomains`? ¿`preload`?
         - [ ] `Content-Security-Policy (CSP)`: ¿Presente? ¿Políticas restrictivas y efectivas?
         - [ ] `X-Frame-Options`: ¿`DENY` o `SAMEORIGIN` para prevenir Clickjacking?
@@ -215,7 +215,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] `Cache-Control` / `Pragma`: ¿Previene el cacheo de información sensible?
     - [ ] **Cabeceras Informativas:**
         - [ ] `Server`, `X-Powered-By`, `Via`: ¿Revelan demasiada información?
-    - [ ] **Cookies (Atributos):**
+    - [ ] **Cookies (Atributos):** → ver `Set-Cookie` en la response · [[HTTP - Cookies y Sesiones]]
         - [ ] `HttpOnly`: ¿`true` para prevenir acceso por JavaScript?
         - [ ] `Secure`: ¿`true` para transmitir solo sobre HTTPS?
         - [ ] `SameSite`: ¿`Strict` o `Lax` para mitigar CSRF? Evitar `None` sin `Secure`.
@@ -223,7 +223,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] `Expires` / `Max-Age`: ¿Expiración adecuada?
     - [ ] **Contenido de Cookies:**
         - [ ] ¿Información sensible en cookies (roles, IDs)?
-        - [ ] ¿Cifrado débil o predecible? ¿Se puede decodificar (Base64, etc.)?
+        - [ ] ¿Cifrado débil o predecible? ¿Se puede decodificar (Base64, etc.)? → `echo '<cookie>' | base64 -d` / Burp Decoder
         - [ ] ¿Patrones que sugieran MD5 u otros hashes débiles? (ej. ¿longitud correcta pero faltan dígitos para ser un MD5 válido?).
 - [ ] **Métodos HTTP:**
     - [ ] Identificar métodos permitidos (`OPTIONS` request, `nmap --script http-methods <target>`).
@@ -240,7 +240,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] (Para más detalles, ver sección específica de APIs).
 - [ ] **Autocomplete en Formularios:**
     - [ ] ¿`autocomplete` deshabilitado en campos sensibles (contraseñas, emails)? Si está habilitado, ¿filtra datos?
-- [ ] **Arquitectura de la Aplicación Web:**
+- [ ] **Arquitectura de la Aplicación Web:** → inferir de headers (load balancer, `Via`, set-cookie multi-host) y comportamiento
     - [ ] ¿Cliente-Servidor? ¿Un solo servidor? ¿Múltiples servidores - una BD? ¿Múltiples servidores - múltiples BDs?
 
 ## Gestión de Identidad
@@ -250,7 +250,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] **HTTP Verb Tempering (Manipulación de Verbos HTTP):**
     - [ ] Probar si cambiar métodos HTTP (ej. de GET a POST, o usar PUT, DELETE, HEAD, PATCH en endpoints no diseñados para ellos) elude controles de acceso.
     - [ ] ¿Se puede acceder a funcionalidades de administrador usando métodos no estándar en endpoints de usuario?
-- [ ] **IDOR (Insecure Direct Object References):**
+- [ ] **IDOR (Insecure Direct Object References):** → [[BOLA - IDOR]]
     - [ ] **Identificación:**
         - [ ] Buscar parámetros en URL, cuerpo de POST, cabeceras HTTP (incluyendo cookies) que referencien objetos (ej. `?uid=123`, `?filename=doc_A.pdf`, `?order_id=X`).
         - [ ] Analizar llamadas AJAX en el código JavaScript del frontend en busca de endpoints y parámetros de API no documentados.
@@ -282,7 +282,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] Probar `admin:admin`, `admin:password`, etc.
         - [ ] Consultar listas de credenciales por defecto según la tecnología identificada (ej. CIRT.net, SecLists `Passwords/Default-Credentials/`).
         - [ ] Buscar en Google: `<tecnología> default credentials`.
-    - [ ] **Bypass de Login:**
+    - [ ] **Bypass de Login:** → forced browse a `/admin` + SQLi en login · [[Authentication & Authorization Bypass]]
         - [ ] ¿Se puede acceder a dashboards/áreas administrativas sin autenticar (forced Browse)?
         - [ ] Pruebas básicas de SQL Injection en el formulario de login (ej. `' OR '1'='1`).
     - [ ] **Fuerza Bruta de Credenciales:**
@@ -302,7 +302,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
                 - [ ] `hydra -L <user_list> -P <pass_list> <IP> http-post-form "/login.php:username=^USER^&password=^PASS^:F=<string_de_fallo_o_S_de_exito>"`
                 - [ ] Usar wordlists personalizadas si se obtiene información sobre la política de contraseñas o usuarios.
     - [ ] **Tokens de Sesión Predecibles:**
-        - [ ] Analizar la aleatoriedad y complejidad de los IDs de sesión. ¿Se pueden predecir?
+        - [ ] Analizar la aleatoriedad y complejidad de los IDs de sesión. ¿Se pueden predecir? → Burp Sequencer (análisis de entropía)
     - [ ] **Múltiples Logins:**
         - [ ] ¿Se permite el login simultáneo con la misma cuenta desde diferentes IPs/navegadores? ¿Es esperado?
 - [ ] **Funcionalidad "Recordar Contraseña" / Password Reset:**
@@ -312,7 +312,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] ¿Reutilización de tokens? ¿Expiran correctamente?
     - [ ] **Preguntas de Seguridad Adivinables.**
     - [ ] **Manipulación de la Petición de Reset:** ¿Se puede cambiar el email/usuario al que se envía el token?
-    - [ ] ¿Host Header Injection para controlar el enlace de reset?
+    - [ ] ¿Host Header Injection para controlar el enlace de reset? → `Host:` / `X-Forwarded-Host:` malicioso · [[Host Header Injection]]
 - [ ] **Autenticación de Múltiples Factores (2FA/MFA):**
     - [ ] **Bypass de 2FA:** ¿Se puede bypassear el flujo de 2FA? (ej. forzando la navegación a una página post-2FA).
     - [ ] **Fuerza Bruta de Códigos 2FA:** ¿Ausencia de rate limiting en la validación de códigos?
@@ -331,18 +331,18 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] Atributos: `HttpOnly`, `Secure`, `SameSite` (`Strict`/`Lax`), `Path`, `Domain`, `Expires`.
     - [ ] Prefijos de cookie: `__Host-`, `__Secure-`.
     - [ ] Contenido de la cookie: ¿Información sensible? ¿Codificación/cifrado débil?
-- [ ] **Secuestro de Sesión (Session Hijacking):**
+- [ ] **Secuestro de Sesión (Session Hijacking):** → [[Session Hijacking]]
     - [ ] ¿IDs de sesión expuestos en URLs?
     - [ ] ¿IDs de sesión predecibles o de baja entropía?
     - [ ] ¿Susceptible a XSS para robo de cookies (si `HttpOnly` no está)?
     - [ ] ¿Susceptible a sniffing si no se usa HTTPS (y cookie no `Secure`)?
 - [ ] **Fijación de Sesión (Session Fixation):**
-    - [ ] ¿Se regenera el ID de sesión después de un login exitoso?
+    - [ ] ¿Se regenera el ID de sesión después de un login exitoso? → comparar la cookie de sesión antes vs después del login (Burp)
     - [ ] ¿Se puede forzar un ID de sesión conocido a un usuario (ej. vía URL, cookie inyectada por XSS/MITM)?
 - [ ] **Expiración de Sesión:**
     - [ ] ¿Las sesiones expiran después de un periodo de inactividad?
     - [ ] ¿El logout invalida la sesión en el servidor o solo borra la cookie del cliente?
-- [ ] **Cross-Site Request Forgery (CSRF / XSRF):**
+- [ ] **Cross-Site Request Forgery (CSRF / XSRF):** → [[Cross-Site Request Forgery (CSRF)]] (Burp → Engagement tools → Generate CSRF PoC)
     - [ ] **Identificación:**
         - [ ] ¿Peticiones que cambian estado (ej. cambiar email, contraseña, realizar una compra) carecen de tokens anti-CSRF?
         - [ ] Si hay tokens, ¿son validados correctamente?
@@ -356,7 +356,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] ¿Cambiar el método de la petición (POST a GET)?
         - [ ] ¿Bypass de la validación del `Referer` header (ej. eliminándolo, usando subdominios o paths que coincidan con una regex laxa)?
         - [ ] ¿Ataque de Fijación de Sesión para obtener un token CSRF válido? (`double-submit cookie` bypass).
-- [ ] **Open Redirect:**
+- [ ] **Open Redirect:** → [[Open Redirect]]
     - [ ] Identificar parámetros de URL que parezcan controlar redirecciones (ej. `redirect=`, `url=`, `next=`, `returnTo=`, `goto=` y los listados en tu input).
     - [ ] Intentar redirigir a un sitio externo controlado por el atacante.
         - [ ] Ej: `http://vulnerable.com/login?redirect_uri=http://atacante.com`
@@ -621,13 +621,13 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] **Identificación:**
     - [ ] Buscar páginas con extensiones `.shtml`, `.shtm`, `.stm`.
     - [ ] Inyectar directivas SSI en campos de entrada que se reflejen en la página:
-        - [ ] ``
-        - [ ] ``
-        - [ ] `` (Linux)
-        - [ ] `` (Windows)
+        - [ ] `<!--#echo var="DATE_LOCAL" -->` (PoC: ¿renderiza la fecha? → SSI activo)
+        - [ ] `<!--#printenv -->` (volcar variables de entorno del server)
+        - [ ] `<!--#exec cmd="id" -->` (RCE, Linux)
+        - [ ] `<!--#exec cmd="whoami" -->` (RCE, Windows)
 - [ ] **Explotación:**
     - [ ] Ejecutar comandos del OS.
-    - [ ] Leer archivos (`` o `file="key.txt"`).
+    - [ ] Leer archivos: `<!--#include virtual="/etc/passwd" -->` o `<!--#include file="key.txt" -->`.
     - [ ] Obtener información del servidor.
 
 ### Edge Side Includes (ESI) Injection
@@ -766,16 +766,16 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] Analizar el WSDL (con SoapUI, Wsdler, o manualmente) para entender operaciones, tipos de datos, y endpoints.
 - [ ] **GraphQL:**
     - [ ] Endpoint común: `/graphql` o `/graphiql`.
-    - [ ] Verificar si la Introspección está habilitada (permite consultar el schema).
+    - [ ] Verificar si la Introspección está habilitada (permite consultar el schema). → query `{__schema{types{name}}}` · [[GraphQL Injection]]
 
 ### Pruebas de Autenticación y Autorización en APIs
 
 - [ ] **Mecanismos de Autenticación:**
     - [ ] ¿Tokens API (API Keys)? ¿En cabeceras (`Authorization: Bearer <token>`, `X-API-Key`), parámetros URL, cuerpo?
-    - [ ] ¿OAuth 2.0? ¿Implementación correcta de flujos?
-    - [ ] ¿JWT? Validar firma, algoritmos (`none`), información sensible en payload.
+    - [ ] ¿OAuth 2.0? ¿Implementación correcta de flujos? → [[OAuth 2.0 Misconfigurations]]
+    - [ ] ¿JWT? Validar firma, algoritmos (`none`), información sensible en payload. → `jwt_tool <token>` · [[JWT Attacks]]
     - [ ] ¿Autenticación Básica?
-- [ ] **Broken Object Level Authorization (BOLA / IDOR en APIs):**
+- [ ] **Broken Object Level Authorization (BOLA / IDOR en APIs):** → [[BOLA - IDOR]]
     - [ ] Similar a IDOR web: ¿Se puede acceder/modificar objetos de otros usuarios cambiando IDs en la URL o cuerpo de la petición? (API1:2023)
 - [ ] **Broken Function Level Authorization (BFLA):**
     - [ ] ¿Se puede acceder a funciones de administrador siendo un usuario normal, o viceversa? (API5:2023)
@@ -784,7 +784,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
 ### Pruebas de Inyección en APIs
 
 - [ ] **SQL Injection:** En parámetros URL, cuerpo JSON/XML.
-- [ ] **NoSQL Injection:** Si usa MongoDB, etc.
+- [ ] **NoSQL Injection:** Si usa MongoDB, etc. → `{"$ne":null}` / `param[$ne]=x` · [[NoSQL Injection]]
 - [ ] **Command Injection:** En parámetros que puedan ser usados en comandos del sistema.
 - [ ] **XXE Injection:** Si la API acepta XML (SOAP, o REST con XML).
 - [ ] **SSTI:** Si la API genera respuestas a partir de plantillas basadas en la entrada.
@@ -808,7 +808,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
 ### Mala Configuración de Seguridad
 
 - [ ] Cabeceras de seguridad faltantes (HSTS, CSP, etc.).
-- [ ] CORS mal configurado (`Access-Control-Allow-Origin: *` o reflejando el origen).
+- [ ] CORS mal configurado (`Access-Control-Allow-Origin: *` o reflejando el origen). → `curl -H "Origin: https://evil.com" -I <URL>` y ver si lo refleja
 - [ ] Información de versión expuesta.
 - [ ] Endpoints de depuración accesibles.
 
