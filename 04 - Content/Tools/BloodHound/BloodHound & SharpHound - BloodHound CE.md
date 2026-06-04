@@ -26,8 +26,8 @@ linked:
 | `curl -L https://ghst.ly/getbhce \| docker compose -f - up` | Quickstart Docker Compose | Fast install. |
 | `git clone https://github.com/SpecterOps/BloodHound.git && cd BloodHound && docker compose up -d` | Manual Docker | Custom config. |
 | `bloodhound-cli install` | Helper CLI install | Automated. |
-| Default URL | `http://localhost:8080` | UI access. |
-| Default creds | `admin / <generated-on-first-run>` (check container logs) | Initial login. |
+| `http://localhost:8080` | Default URL | UI access. |
+| `admin / <generated-on-first-run>` (check container logs) | Default creds | Initial login. |
 ^ad-bhce-install
 
 ```bash

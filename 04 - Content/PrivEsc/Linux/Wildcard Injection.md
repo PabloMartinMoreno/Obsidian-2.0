@@ -51,14 +51,14 @@ touch -- '--checkpoint-action=exec=sh shell.sh'
 
 | Comando | Flag abusable |
 |---|---|
-| **tar** | `--checkpoint-action=exec=cmd` |
-| **rsync** | `-e` cmd execution |
-| **7z** | `@listfile` para leer files via wildcard |
-| **chown / chmod** | `--reference=<file>` |
-| **wget** | `--use-askpass` |
-| **find** | `-newerXY` con file references |
-| **scp** | `-S` script |
-| **zip** | `-T --unzip-command` |
+| `--checkpoint-action=exec=cmd` | **tar** |
+| `-e` cmd execution | **rsync** |
+| `@listfile` para leer files via wildcard | **7z** |
+| `--reference=<file>` | **chown / chmod** |
+| `--use-askpass` | **wget** |
+| `-newerXY` con file references | **find** |
+| `-S` script | **scp** |
+| `-T --unzip-command` | **zip** |
 
 GTFOBins lista wildcard abuse: https://gtfobins.github.io/
 

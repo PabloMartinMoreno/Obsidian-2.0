@@ -111,7 +111,7 @@ Get-KdsRootKey | Select KeyId,EffectiveTime,@{n='AgeDays';e={((Get-Date) - $_.Ef
 |:---:|:---:|:---:|
 | `Get-ADObject -SearchBase "CN=Managed Service Accounts,DC=corp,DC=local" -Filter *` | Default container gMSA/sMSA | Standard storage. |
 | `ldapsearch ... -b "CN=Managed Service Accounts,DC=corp,DC=local" "(objectClass=msDS-GroupManagedServiceAccount)"` | LDAP raw default container | Linux. |
-| Custom OUs con gMSAs | `Get-ADServiceAccount -Filter * \| Group { ($_.DistinguishedName -split ',OU=')[1] }` | Custom locations. |
+| `Get-ADServiceAccount -Filter * \| Group { ($_.DistinguishedName -split ',OU=')[1] }` | Custom OUs con gMSAs | Custom locations. |
 ^ad-gmsa-container
 
 **Default DN:** `CN=Managed Service Accounts,DC=corp,DC=local`. Custom locations = OUs delegadas.

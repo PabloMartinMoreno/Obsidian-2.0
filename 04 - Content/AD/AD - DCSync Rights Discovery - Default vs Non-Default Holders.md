@@ -116,7 +116,7 @@ $Whitelist = "Domain Admins|Enterprise Admins|Schema Admins|Administrators|Domai
 |:---:|:---:|:---:|
 | `(Get-Acl "AD:<domain-root>").Access \| ? IdentityReference -in (Get-ADUser -Filter {Enabled -eq $false}).SamAccountName` | DCSync ACE de disabled accounts | Cleanup. |
 | `(Get-Acl "AD:<domain-root>").Access \| ? IdentityReference -in (Get-ADUser -Filter {LastLogonDate -lt (Get-Date).AddDays(-180)}).SamAccountName` | Stale users con DCSync | Audit. |
-| Empty groups con DCSync ACE | `Get-ADGroup -Filter * \| ? Members.Count -eq 0` cross-ref | Orphaned ACE. |
+| `Get-ADGroup -Filter * \| ? Members.Count -eq 0` cross-ref | Empty groups con DCSync ACE | Orphaned ACE. |
 ^ad-dcsyncdef-stale
 
 ---

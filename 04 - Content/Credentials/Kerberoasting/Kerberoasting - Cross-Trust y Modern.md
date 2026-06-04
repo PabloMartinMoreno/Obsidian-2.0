@@ -47,7 +47,7 @@ impacket-GetUserSPNs -target-domain partner.com corp.local/auditor:'Pass!' \
 |:---:|:---:|:---:|
 | Same `impacket-GetUserSPNs -target-domain` | Funciona si trust forest existe | Cross-forest. |
 | Referral chain via local DC | DC local resuelve via trust | Auto. |
-| Pre-check: trust direction + auth | `Get-ADTrust` | Pre-attack. |
+| `Get-ADTrust` | Pre-check: trust direction + auth | Pre-attack. |
 ^kerb-cross-forest
 
 **Caveat:** modern forest trusts pueden tener Selective Auth → solo principals con `Allowed-To-Authenticate` ACE pueden auth a foreign SPNs. Roast falla si no autorizado.

