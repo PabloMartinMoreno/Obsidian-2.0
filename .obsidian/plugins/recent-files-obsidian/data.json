@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
       "basename": "OSINT",
       "path": "04 - Content/Process/OSINT.md"
     },
@@ -9,16 +21,8 @@
       "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
     },
     {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
       "basename": "Server-Side Template Injection (SSTI)",
       "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
     },
     {
       "basename": "GET",

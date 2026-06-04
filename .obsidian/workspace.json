@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/OSINT.md",
+                "file": "03 - Tertiary Categories/Web Explotación.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "OSINT"
+              "title": "Web Explotación"
             }
           }
         ],
@@ -267,17 +267,18 @@
   },
   "active": "4e9cda1b8c0d4c2b",
   "lastOpenFiles": [
-    "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md",
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "02 - Secondary Categories/CWES.md",
     "04 - Content/Process/OSINT.md",
+    "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md",
     "04 - Content/Web/SSI/SSI - Tooling.md.tmp.547670.0422c78cfb46",
     "04 - Content/Web/SSI/SSI - Deteccion y Reconocimiento.md.tmp.547670.95c56076d57a",
     "04 - Content/Web/SSI/SSI - Information Gathering.md.tmp.547670.ded62c3505d7",
     "04 - Content/Web/SSI/SSI - Evasion de Filtros.md.tmp.547670.4a18c0a65240",
     "04 - Content/Web/SSI/SSI - Inclusion de Archivos.md.tmp.547670.b6e354908c76",
     "04 - Content/Web/SSI/SSI - Ejecucion de Comandos.md.tmp.547670.9e835a66ff33",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md",
-    "02 - Secondary Categories/CWES.md",
     "04 - Content/Web/Fundamentals/GET.md",
     "04 - Content/Web/Fundamentals/HTTPS.md",
     "04 - Content/Web/Fundamentals/HTTP.md",
@@ -298,7 +299,6 @@
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "04 - Content/Web/HTMLInjection/HTML Injection - Vectores Comunes.md",
     "04 - Content/Recon/WebTech/Web Fingerprinting.md",
-    "04 - Content/Recon/WebTech/Web Technology Enumeration.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "05 - Writeups/PortSwigger/XSS",
     "05 - Writeups/PortSwigger/SQLi",
