@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 20.131761442441054,
+    "scroll": 38.977213541666664,
     "cursor": {
       "from": {
         "line": 22,
@@ -182,7 +182,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Injection/LDAP Injection.md": {
-    "scroll": 104.76604462759606,
+    "scroll": 43.186340184145266,
     "cursor": {
       "from": {
         "line": 31,
@@ -364,14 +364,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Injection.md": {
-    "scroll": 33.872395833333336,
+    "scroll": 277.1659226190476,
     "cursor": {
       "from": {
-        "line": 30,
+        "line": 312,
         "ch": 0
       },
       "to": {
-        "line": 30,
+        "line": 312,
         "ch": 0
       }
     },
@@ -621,7 +621,7 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 0,
+    "scroll": 23.7753120665742,
     "cursor": {
       "from": {
         "line": 19,
@@ -1771,15 +1771,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/Checklists - CWES.md": {
-    "scroll": 0,
+    "scroll": 26.593732820230898,
     "cursor": {
       "from": {
-        "line": 29,
-        "ch": 64
+        "line": 19,
+        "ch": 19
       },
       "to": {
-        "line": 29,
-        "ch": 64
+        "line": 19,
+        "ch": 9
       }
     },
     "expandedKeys": []
@@ -1850,6 +1850,34 @@
       "to": {
         "line": 6,
         "ch": 60
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Clickjacking/Clickjacking.md": {
+    "scroll": 46.03812171851183,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Checklist.md": {
+    "scroll": 26.869791666666668,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 0
+      },
+      "to": {
+        "line": 26,
+        "ch": 0
       }
     },
     "expandedKeys": []

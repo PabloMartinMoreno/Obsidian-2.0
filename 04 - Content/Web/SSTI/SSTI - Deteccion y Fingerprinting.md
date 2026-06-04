@@ -20,7 +20,7 @@ linked:
 
 ## Probes Polyglot
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `${{<%[%'"}}%\` | Polyglot canónico | Cada delimitador rompe alguno de los engines comunes — error revela cuál. |
 | `${{<%[%'"}}%\}}{{` | Polyglot extendido | Más caracteres → más probabilidad de error parser. |

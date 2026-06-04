@@ -48,7 +48,7 @@ linked:
 
 ## Sandbox Attribute Tricks
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<iframe sandbox src="https://target.com/x"></iframe>` | Most restrictive — no scripts/forms/plugins | Most restrictive. |
 | `<iframe sandbox="allow-forms" src="https://target.com/x"></iframe>` | Forms allowed, scripts disabled | Form-based CJ. |

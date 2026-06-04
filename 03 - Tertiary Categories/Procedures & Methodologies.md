@@ -30,7 +30,7 @@ Listas de verificación paso a paso para cobertura metódica en cada fase.
 - [[CheckList - Active Directory Compromise]] (Flujo para auditar y comprometer entornos de Directorio Activo.)
 
 ### Application Security
-- [[Checklists - CWES]] (Checklist del examen CWES: footprinting → injection → file upload → server-side → API → WordPress.)
+- [[CWES - Checklist]] (Checklist del examen CWES: footprinting → injection → file upload → server-side → API → WordPress.)
 - [[Checklist - Web Pentesting]] (Verificaciones OWASP + pruebas de lógica para apps web.)
 
 ---

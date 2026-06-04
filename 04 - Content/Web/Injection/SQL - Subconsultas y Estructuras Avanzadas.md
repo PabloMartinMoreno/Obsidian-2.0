@@ -18,7 +18,7 @@ linked:
 
 ## Cheatsheet
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `SELECT (SELECT password FROM users WHERE id=1)` | Subquery que devuelve 1 valor | Inline value retrieval — base de blind. |
 | `WHERE x = (SELECT MAX(id) FROM users)` | Filtra por resultado de subquery | Dynamic filtering. |

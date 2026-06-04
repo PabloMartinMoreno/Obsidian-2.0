@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Checklist",
+      "path": "04 - Content/Process/CWES - Checklist.md"
+    },
+    {
+      "basename": "Web Fingerprinting",
+      "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
       "basename": "GraphQL Injection",
       "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Clickjacking",
+      "path": "04 - Content/Web/Clickjacking/Clickjacking.md"
+    },
+    {
+      "basename": "LDAP Injection",
+      "path": "04 - Content/Web/Injection/LDAP Injection.md"
     },
     {
       "basename": "Subdomain Takeover",
@@ -59,14 +79,6 @@
     {
       "basename": "eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection",
       "path": "04 - Content/Web/XSLT/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md"
-    },
-    {
-      "basename": "Checklists - CWES",
-      "path": "04 - Content/Process/Checklists - CWES.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
     {
       "basename": "Red Team",

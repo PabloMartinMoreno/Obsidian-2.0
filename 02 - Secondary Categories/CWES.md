@@ -9,7 +9,7 @@ primary categories:
   - "[[Red Team]]"
 kind: Secondary Category
 linked:
-  - "[[Checklists - CWES]]"
+  - "[[CWES - Checklist]]"
   - "[[Web Enumeración]]"
   - "[[Web Explotación]]"
 ---
@@ -87,6 +87,6 @@ Identificar servidor, stack, CMS y contenido estándar antes de atacar.
 
 ## Recursos
 
-- Checklist operativo: [[Checklists - CWES]]
+- Checklist operativo: [[CWES - Checklist]]
 - Hubs base: [[Web Enumeración]] · [[Web Explotación]]
 - Tracker de pendientes global: [[Incompletos]]

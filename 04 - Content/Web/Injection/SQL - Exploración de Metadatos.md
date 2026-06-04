@@ -18,7 +18,7 @@ linked:
 
 ## Cheatsheet
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Payload** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `SELECT schema_name FROM information_schema.schemata` | Lista de todas las DBs | Enum DBs (MySQL/PostgreSQL/MSSQL). |
 | `SELECT table_name FROM information_schema.tables WHERE table_schema='dev'` | Tablas de DB `dev` | Enum tablas. |
