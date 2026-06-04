@@ -10,6 +10,7 @@ tertiary categories:
   - "[[Web Enumeración]]"
 kind: Tool
 linked:
+  - "[[Curl - Fingerprinting]]"
   - "[[Curl - Fuzzing Parámetros y Valores]]"
   - "[[Curl - Enumeración Pasiva de Sub-Dominios]]"
   - "[[Curl - Enumeración de Sub-Dominios y V.Host]]"

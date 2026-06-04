@@ -5,6 +5,7 @@ tags:
   - asset/web-app
 kind: Concept
 linked:
+  - "[[wafw00f]]"
 ---
 # WAF
 

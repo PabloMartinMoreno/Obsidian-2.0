@@ -203,6 +203,8 @@
     "tool/tcpdump": 80,
     "tool/telnet": 124,
     "tool/tshark": 135,
+    "tool/wafw00f": 140,
+    "tool/whatweb": 141,
     "tool/whois": 15,
     "tool/winpeas": 100,
     "tool/wireshark": 136,

@@ -10,7 +10,9 @@ secondary categories:
 tertiary categories:
   - "[[Web Fundamentals]]"
 kind: Concept
-linked: null
+linked:
+  - "[[HTTP]]"
+  - "[[Cookie Fingerprinting]]"
 ---
 # Cookies y Sesiones
 
@@ -25,7 +27,10 @@ Son pequeños fragmentos de texto que el servidor envía al navegador.
 - **Almacenamiento:** Se guardan en el disco local del usuario.
 - **Uso común:** Recordar preferencias, carritos de compra o rastreo publicitario.
 - **Seguridad:** Pueden marcarse como `HttpOnly` para que no sean accesibles vía JavaScript.
-    
+
+> [!tip] Recon
+> El nombre de la cookie de sesión delata el lenguaje/framework del backend → [[Cookie Fingerprinting]].
+
 
 ## Sesiones
 

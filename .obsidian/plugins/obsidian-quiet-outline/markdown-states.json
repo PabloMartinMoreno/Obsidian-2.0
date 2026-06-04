@@ -364,15 +364,15 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Injection.md": {
-    "scroll": 167.47630331753555,
+    "scroll": 168.39336492890996,
     "cursor": {
       "from": {
-        "line": 178,
-        "ch": 3
+        "line": 181,
+        "ch": 1
       },
       "to": {
-        "line": 176,
-        "ch": 0
+        "line": 181,
+        "ch": 1
       }
     },
     "expandedKeys": []
@@ -1046,12 +1046,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 21,
-        "ch": 0
+        "line": 26,
+        "ch": 13
       },
       "to": {
-        "line": 21,
-        "ch": 0
+        "line": 26,
+        "ch": 13
       }
     },
     "expandedKeys": [
@@ -1690,11 +1690,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 130,
+        "line": 62,
         "ch": 0
       },
       "to": {
-        "line": 130,
+        "line": 62,
         "ch": 0
       }
     },
@@ -1906,6 +1906,62 @@
       "to": {
         "line": 25,
         "ch": 26
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP - Headers.md": {
+    "scroll": 5.863636363636363,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/whatweb.md": {
+    "scroll": 16.428229665071772,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Cookie Fingerprinting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
       }
     },
     "expandedKeys": []

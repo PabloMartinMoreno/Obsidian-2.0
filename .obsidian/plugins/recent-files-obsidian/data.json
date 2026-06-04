@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "CWES - Checklist",
-      "path": "04 - Content/Process/CWES - Checklist.md"
+      "basename": "Cookie Fingerprinting",
+      "path": "04 - Content/Recon/WebTech/Cookie Fingerprinting.md"
+    },
+    {
+      "basename": "HTTP - Cookies y Sesiones",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md"
     },
     {
       "basename": "Web Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
+    },
+    {
+      "basename": "whatweb",
+      "path": "04 - Content/Tools/Recon/whatweb.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/Tools/Recon/curl.md"
+    },
+    {
+      "basename": "HTTP - Headers",
+      "path": "04 - Content/Web/Fundamentals/HTTP - Headers.md"
+    },
+    {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
+    },
+    {
+      "basename": "CWES - Checklist",
+      "path": "04 - Content/Process/CWES - Checklist.md"
     },
     {
       "basename": "Server-Side Includes (SSI) Injection",
@@ -23,10 +47,6 @@
     {
       "basename": "GraphQL Voyager",
       "path": "04 - Content/Process/GraphQL Voyager.md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "Web Enumeración",
