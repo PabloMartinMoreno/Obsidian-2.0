@@ -36,10 +36,10 @@ linked:
 | OAuth `/oauth/token` | Token exchange | Code/secret abuse. |
 | SAML `/saml/sso` | SAML flow | Assertion abuse. |
 | `/api/refresh` | Token refresh | Long-lived access. |
-| Endpoints with role check | `if user.role == 'admin'` | Server-side check. |
-| RBAC endpoints | `/team/X/admin/*` | Multi-tenant. |
-| Custom auth headers | `X-API-Key`, `Authorization: Bearer` | Token-based. |
-| Magic link routes | `/auth/magic/{token}` | Token consume. |
+| `if user.role == 'admin'` | Endpoints with role check | Server-side check. |
+| `/team/X/admin/*` | RBAC endpoints | Multi-tenant. |
+| `X-API-Key`, `Authorization: Bearer` | Custom auth headers | Token-based. |
+| `/auth/magic/{token}` | Magic link routes | Token consume. |
 | WebSocket auth | WS handshake con Authorization | Real-time. |
 ^auth-detect-endpoints
 
@@ -49,21 +49,21 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Login response diff | `Invalid user` vs `Invalid password` | Direct enum. |
-| Generic message uniformization | `Invalid credentials` (safe) | Indistinguible — bypass-able via timing. |
+| `Invalid user` vs `Invalid password` | Login response diff | Direct enum. |
+| `Invalid credentials` (safe) | Generic message uniformization | Indistinguible — bypass-able via timing. |
 | Timing attack | Valid user → DB query takes longer | Statistical inference. |
-| Account creation | `Username already taken` error | Direct enum. |
-| Password reset | `Email sent` vs `Email not found` | Standard mistake. |
+| `Username already taken` error | Account creation | Direct enum. |
+| `Email sent` vs `Email not found` | Password reset | Standard mistake. |
 | Forgot password forms | Same idea | Common. |
-| Profile lookup | `/api/users/<email>` returns 200 vs 404 | API leak. |
-| API search | `?email=victim@x.com` returns matching profile | Discovery. |
-| Public profile pages | `/u/username` exists vs 404 | Scraping. |
+| `/api/users/<email>` returns 200 vs 404 | Profile lookup | API leak. |
+| `?email=victim@x.com` returns matching profile | API search | Discovery. |
+| `/u/username` exists vs 404 | Public profile pages | Scraping. |
 | Sitemap leak | If sitemap contains user pages | OSINT. |
 | Social media OSINT | LinkedIn, GitHub for usernames | Pre-attack. |
-| Email pattern guess | `firstname.lastname@target.com` | Common patterns. |
+| `firstname.lastname@target.com` | Email pattern guess | Common patterns. |
 | OAuth redirect to email | Some flows leak email format | Edge. |
-| Password complexity hint | `Password must include username` reveals user | Edge bug. |
-| Avatar URLs | `/avatar/<username>.png` returns 200 | Image-based enum. |
+| `Password must include username` reveals user | Password complexity hint | Edge bug. |
+| `/avatar/<username>.png` returns 200 | Avatar URLs | Image-based enum. |
 | Rate limit per-user | Distinct rate limits hint user existence | Side channel. |
 | 2FA reactions | "Send code to ***@target.com" reveals partial email | Disclosure. |
 ^auth-detect-enum

@@ -34,8 +34,8 @@ linked:
 | `/_api/graphql` | Wix / Headless CMS | CMS specific. |
 | `/admin/api/graphql` | Shopify-style admin | E-commerce. |
 | `/storefront/api/graphql` | Shopify storefront | Public access. |
-| Wordlist directorios GraphQL | `SecLists/Discovery/Web-Content/graphql.txt` | Bulk fuzzing. |
-| Probe alive endpoint | `{__typename}` retorna `{"data":{"__typename":"Query"}}` | Confirma GraphQL alive. |
+| `SecLists/Discovery/Web-Content/graphql.txt` | Wordlist directorios GraphQL | Bulk fuzzing. |
+| `{__typename}` retorna `{"data":{"__typename":"Query"}}` | Probe alive endpoint | Confirma GraphQL alive. |
 ^graphql-detect-endpoints
 
 ### Fuzzing rápido
@@ -76,7 +76,7 @@ done
 | Stepzen | Cloud platform | Specific. |
 | Sangria | Scala | Less common. |
 | Lighthouse | Laravel PHP | Stack PHP popular. |
-| graphw00f | `graphw00f -d -t https://target/graphql` | Auto fingerprint. |
+| `graphw00f -d -t https://target/graphql` | graphw00f | Auto fingerprint. |
 | Error verbosity | Stack trace en errors → engine info | Default dev mode. |
 | `extensions` field | Presencia + content varía por engine | `tracing`, `complexity`, etc. |
 ^graphql-detect-engine

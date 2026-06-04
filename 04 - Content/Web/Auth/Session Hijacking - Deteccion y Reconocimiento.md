@@ -22,17 +22,17 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Cookie session ID | `Set-Cookie: PHPSESSID=...`, `JSESSIONID=...`, `connect.sid=...` | Server-side state. |
-| JWT en cookie | `Set-Cookie: token=eyJ...` | Stateless self-contained. |
+| `Set-Cookie: PHPSESSID=...`, `JSESSIONID=...`, `connect.sid=...` | Cookie session ID | Server-side state. |
+| `Set-Cookie: token=eyJ...` | JWT en cookie | Stateless self-contained. |
 | JWT en localStorage | JS reads `localStorage.getItem('token')` | XSS-vulnerable. |
-| JWT en Authorization header | `Authorization: Bearer eyJ...` | Bearer pattern. |
-| Custom header | `X-Auth-Token`, `X-Session-Token` | App-specific. |
-| Opaque token en URL | `?token=...` (anti-pattern) | Logged. |
+| `Authorization: Bearer eyJ...` | JWT en Authorization header | Bearer pattern. |
+| `X-Auth-Token`, `X-Session-Token` | Custom header | App-specific. |
+| `?token=...` (anti-pattern) | Opaque token en URL | Logged. |
 | Opaque token en body | POST/JSON con auth field | Standard API. |
 | Server-side session storage | Redis, Memcached, DB | Backend lookup. |
 | Stateless JWT | Self-validating | No backend lookup. |
 | Hybrid token | Opaque + JWT mix | Custom. |
-| OAuth bearer + refresh | `Authorization: Bearer` + refresh token | Federation. |
+| `Authorization: Bearer` + refresh token | OAuth bearer + refresh | Federation. |
 | SAML assertion | Form-encoded base64 SAML | Federation. |
 | Persistent cookie | Long-lived (`Max-Age`/`Expires` set) | Persistencia. |
 | Session cookie (transient) | Sin Expires → expires on browser close | Default. |
@@ -88,7 +88,7 @@ echo "$COOKIE" | grep -oiE 'HttpOnly|Secure|SameSite=[^;]*|Domain=[^;]*|Path=[^;
 | Pre-auth state | Cookie issued anonymous? | Session fixation possible if same ID after login. |
 | Login → new cookie | Cookie regenerates post-auth? | Best practice. |
 | Login → same cookie | Session fixation vulnerable | Standard bug. |
-| Logout cookie clear | `Set-Cookie: session=; Max-Age=0` | If not cleared → reuse. |
+| `Set-Cookie: session=; Max-Age=0` | Logout cookie clear | If not cleared → reuse. |
 | Logout server-side invalidation | Cookie still valid after logout? | Logout race / replay. |
 | Multi-device sessions | Multiple concurrent sessions allowed? | Per-device. |
 | Idle timeout | Backend invalidates after N minutes | Without idle timeout = persistencia. |

@@ -22,16 +22,16 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Polyglot canónico | `${{<%[%'"}}%\` | Cada delimitador rompe alguno de los engines comunes — error revela cuál. |
-| Polyglot extendido | `${{<%[%'"}}%\}}{{` | Más caracteres → más probabilidad de error parser. |
-| Polyglot Twig/Jinja2 | `{{1}}{%print(1)%}` | Si refleja `1` o ejecuta `print` → confirma engine. |
-| Polyglot Java engines | `${1}#{1}*{1}@{1}` | FreeMarker/Velocity/Thymeleaf/Razor — cada delimitador. |
-| Polyglot ERB/EJS | `<%= 1 %><%- 1 %>` | Ruby ERB y Node EJS. |
-| Trigger error verbose | `{{badname.invalid}}` o `${broken[}` | Stack trace con engine/lib name. |
+| `${{<%[%'"}}%\` | Polyglot canónico | Cada delimitador rompe alguno de los engines comunes — error revela cuál. |
+| `${{<%[%'"}}%\}}{{` | Polyglot extendido | Más caracteres → más probabilidad de error parser. |
+| `{{1}}{%print(1)%}` | Polyglot Twig/Jinja2 | Si refleja `1` o ejecuta `print` → confirma engine. |
+| `${1}#{1}*{1}@{1}` | Polyglot Java engines | FreeMarker/Velocity/Thymeleaf/Razor — cada delimitador. |
+| `<%= 1 %><%- 1 %>` | Polyglot ERB/EJS | Ruby ERB y Node EJS. |
+| `{{badname.invalid}}` o `${broken[}` | Trigger error verbose | Stack trace con engine/lib name. |
 | Trigger en input reflejado | Cualquier campo que vuelva visible (search, profile, error msg) | Frequent vector. |
 | Trigger en email/PDF | Emails con templates renderizados server-side | SSTI silencioso — feedback indirecto. |
 | Trigger en filename | Upload con nombre `{{7*7}}.txt` | Algunos backends procesan filename como template. |
-| Trigger en User-Agent | `User-Agent: {{7*7}}` | Logging dashboards renderizan UA. |
+| `User-Agent: {{7*7}}` | Trigger en User-Agent | Logging dashboards renderizan UA. |
 ^ssti-detect-polyglot
 
 ---

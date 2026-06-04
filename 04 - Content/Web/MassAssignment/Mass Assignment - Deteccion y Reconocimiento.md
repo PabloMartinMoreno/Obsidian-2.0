@@ -47,13 +47,13 @@ linked:
 |:---:|:---:|:---:|
 | Frontend JS source | View source / DevTools | Form fields hidden o sólo en JS. |
 | Source maps `.map` | Look for `*.js.map` files | Reveals minified code. |
-| API documentation | `/swagger.json`, `/openapi.json`, `/redoc` | Full schema disclosure. |
-| GraphQL introspection | `__schema` query | Direct schema dump. |
+| `/swagger.json`, `/openapi.json`, `/redoc` | API documentation | Full schema disclosure. |
+| `__schema` query | GraphQL introspection | Direct schema dump. |
 | Error messages verbose | Send invalid type → error includes field list | Sometimes reveals fields. |
 | Response shape | GET endpoint response shows model fields | Inferir fields from output. |
 | `OPTIONS` request | Some APIs return allowed methods + fields | RFC. |
 | Snapshot diff | Compare GET before/after PUT to identify mutable fields | Black-box discovery. |
-| Documentation leaks | `/docs`, `/api-docs`, `/redoc`, `/openapi`, `/swagger-ui` | Public docs. |
+| `/docs`, `/api-docs`, `/redoc`, `/openapi`, `/swagger-ui` | Documentation leaks | Public docs. |
 | GitHub repo / leak | Public repo con model definition | OSINT. |
 | Mobile app reverse engineering | APK / IPA con DTO definitions | Mobile recon. |
 | Burp passive scan | Detect comments, hidden fields | Pasivo. |
@@ -93,20 +93,20 @@ curl 'https://target/api/users/me' | jq 'keys'
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Read GET endpoint | `GET /api/users/me` reveals all fields del modelo | Standard. |
+| `GET /api/users/me` reveals all fields del modelo | Read GET endpoint | Standard. |
 | Compare GET con PATCH allowed | Send PATCH con field, observe behavior | Test which fields update. |
 | Test internal fields | Common: `id`, `_id`, `uuid`, `created_at`, `updated_at`, `version`, `deleted_at` | Always present. |
-| Test admin fields | `isAdmin`, `is_admin`, `admin`, `role`, `roles`, `permissions`, `groups` | Common patterns. |
-| Test owner fields | `user_id`, `owner`, `owner_id`, `created_by`, `tenant_id` | Multi-tenant. |
-| Test status flags | `active`, `is_active`, `is_verified`, `email_verified`, `mfa_enabled` | Verification. |
-| Test financial | `balance`, `credits`, `points`, `tier`, `subscription_tier` | Financial vector. |
-| Test audit fields | `created_at`, `updated_at`, `deleted_at` | Backdating. |
-| Test soft delete | `deleted_at`, `is_deleted` | Restore deleted. |
-| Test relationships | `manager_id`, `parent_id`, `team_id` | Org hierarchy. |
-| Test sensitive | `password_hash`, `password_reset_token`, `mfa_secret`, `api_key` | Direct theft. |
+| `isAdmin`, `is_admin`, `admin`, `role`, `roles`, `permissions`, `groups` | Test admin fields | Common patterns. |
+| `user_id`, `owner`, `owner_id`, `created_by`, `tenant_id` | Test owner fields | Multi-tenant. |
+| `active`, `is_active`, `is_verified`, `email_verified`, `mfa_enabled` | Test status flags | Verification. |
+| `balance`, `credits`, `points`, `tier`, `subscription_tier` | Test financial | Financial vector. |
+| `created_at`, `updated_at`, `deleted_at` | Test audit fields | Backdating. |
+| `deleted_at`, `is_deleted` | Test soft delete | Restore deleted. |
+| `manager_id`, `parent_id`, `team_id` | Test relationships | Org hierarchy. |
+| `password_hash`, `password_reset_token`, `mfa_secret`, `api_key` | Test sensitive | Direct theft. |
 | Send field, check 400 vs 200 | Field accepted (200) → suggest mutable | Discovery oracle. |
 | Send invalid type | Field rejected (400) con error → reveals expected type | Schema infer. |
-| Common schema names | `cn=admin,ou=users` LDAP-style en JSON, `type` field | Cross-stack patterns. |
+| `cn=admin,ou=users` LDAP-style en JSON, `type` field | Common schema names | Cross-stack patterns. |
 ^ma-detect-model
 
 ### Probe matrix

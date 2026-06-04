@@ -23,7 +23,7 @@ linked:
 |:---:|:---:|:---:|
 | Multi-input forms | Login, search, profile updates | Standard. |
 | API con many params | REST endpoints con N query params | Common. |
-| Filter/sort endpoints | `?filter=X&sort=Y&page=Z` | Search patterns. |
+| `?filter=X&sort=Y&page=Z` | Filter/sort endpoints | Search patterns. |
 | Multi-step forms | Wizard steps con accumulated params | Edge. |
 | Upload endpoints | Multipart con file + metadata fields | Mixed inputs. |
 | OAuth / federation | Multiple state, code, redirect_uri | Auth flow. |
@@ -33,9 +33,9 @@ linked:
 | Mobile APIs | Often multi-param | Mobile chain. |
 | Hidden params | Use Param Miner to discover | Recon. |
 | Internal admin endpoints | More params typically | High value. |
-| Rate limit / pagination | `?limit=X&offset=Y` | Common. |
+| `?limit=X&offset=Y` | Rate limit / pagination | Common. |
 | State-changing endpoints | POST con multi-field body | High impact. |
-| Configuration endpoints | `?key=X&value=Y` | Edge. |
+| `?key=X&value=Y` | Configuration endpoints | Edge. |
 ^hpp-detect-endpoints
 
 ---
@@ -44,20 +44,20 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Basic duplicate | `?a=1&a=2` → app uses what? | Standard. |
+| `?a=1&a=2` → app uses what? | Basic duplicate | Standard. |
 | First wins | Backend uses `1` | Java common. |
 | Last wins | Backend uses `2` | PHP / Python / Ruby common. |
 | Concatenation | Backend uses `1,2` | ASP.NET. |
 | Array | Backend uses `[1, 2]` | Some PHP / Express qs. |
 | Error | Backend rejects 400 | Strict apps. |
 | Mixed source | Query `?a=1` + body `a=2` → which wins? | Multi-source. |
-| Encoded duplicate | `?a=1&%61=2` (`%61`=`a`) | Encoding trick. |
-| Case difference | `?a=1&A=2` | Case sensitivity. |
-| With array notation | `?a=1&a[]=2` | Mixed types. |
-| With dot notation | `?a=1&a.b=2` | Edge framework. |
+| `?a=1&%61=2` (`%61`=`a`) | Encoded duplicate | Encoding trick. |
+| `?a=1&A=2` | Case difference | Case sensitivity. |
+| `?a=1&a[]=2` | With array notation | Mixed types. |
+| `?a=1&a.b=2` | With dot notation | Edge framework. |
 | Parameter count limit | Some apps limit N params | DoS edge. |
 | HTTP body parsing | POST con `a=1&a=2` | Same params. |
-| JSON body | `{"a":1, "a":2}` (legal en RFC) | Edge per-parser. |
+| `{"a":1, "a":2}` (legal en RFC) | JSON body | Edge per-parser. |
 | Cookie collision | Multi cookie con same name | Cookie tossing. |
 ^hpp-detect-probes
 

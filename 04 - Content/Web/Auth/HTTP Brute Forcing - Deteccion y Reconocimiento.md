@@ -32,14 +32,14 @@ linked:
 | `/manage`, `/console`, `/portal` | Mgmt UIs | Fronts. |
 | `/cgi-bin/login`, `.htpasswd` | Legacy CGI | Old apps. |
 | `/_admin`, `/_login` | Hidden underscore | Convention. |
-| Basic Auth challenge | `WWW-Authenticate: Basic realm="..."` header | Browser prompt. |
-| Digest Auth challenge | `WWW-Authenticate: Digest` | Less common. |
-| NTLM challenge | `WWW-Authenticate: NTLM` | Windows IIS. |
-| Form-based redirects | `/protected` → 302 `/login?return=` | Classic flow. |
+| `WWW-Authenticate: Basic realm="..."` header | Basic Auth challenge | Browser prompt. |
+| `WWW-Authenticate: Digest` | Digest Auth challenge | Less common. |
+| `WWW-Authenticate: NTLM` | NTLM challenge | Windows IIS. |
+| `/protected` → 302 `/login?return=` | Form-based redirects | Classic flow. |
 | Cookie-based session start | Set-Cookie post-login | Session ID. |
-| JWT-based response | `{access_token, refresh_token}` body | Modern API. |
+| `{access_token, refresh_token}` body | JWT-based response | Modern API. |
 | Custom headers `X-Auth-Token` | API token in header | API style. |
-| Mobile OAuth endpoints | `/mobile/auth`, `/api/mobile/login` | Mobile-only. |
+| `/mobile/auth`, `/api/mobile/login` | Mobile OAuth endpoints | Mobile-only. |
 ^bf-detect-endpoints
 
 ### Discovery commands
@@ -64,20 +64,20 @@ curl -s https://target/static/js/main.js | \
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP status code | 200 (success) vs 401/403 (fail) | Standard. |
-| Response length | `Content-Length` differs | Common diff. |
-| Cookie set on success | `Set-Cookie: session=...` only on success | Auth state. |
+| `Content-Length` differs | Response length | Common diff. |
+| `Set-Cookie: session=...` only on success | Cookie set on success | Auth state. |
 | Redirect target diff | 302 `/dashboard` vs 302 `/login?error=1` | Location header. |
-| Body text "Invalid" | `"invalid credentials"` | Error message. |
+| `"invalid credentials"` | Body text "Invalid" | Error message. |
 | Body text "Welcome" | Success greeting | Success indicator. |
 | JSON `{"status":"ok"}` vs `{"error":...}` | API responses | API. |
 | JWT in response | Only on success | Modern. |
 | MFA prompt diff | "Enter OTP" page → user/pass válidos | Two-stage. |
 | CSRF token rotation | New token only on auth state change | Server logic. |
-| Custom header response | `X-Auth-Result: success` | App-specific. |
+| `X-Auth-Result: success` | Custom header response | App-specific. |
 | Empty body 200 | Some apps return empty success | Non-standard. |
 | Redirect chain depth | Success has more redirects | Edge. |
 | Response time differential | Success path slower (DB lookup) | Timing oracle. |
-| Image/asset on dashboard only | `Set-Cookie` triggers dashboard fetch | Indirect. |
+| `Set-Cookie` triggers dashboard fetch | Image/asset on dashboard only | Indirect. |
 | WebSocket upgrade post-auth | WS only after success | Modern apps. |
 ^bf-detect-responsediff
 
@@ -176,7 +176,7 @@ done
 | Login form CSRF token diff | Token rotation only for valid users | Indirect. |
 | OTP send response timing | "Sending..." spinner duration | Timing oracle. |
 | Avatar/profile pic 404 | Username probe via direct asset | URL pattern. |
-| API user existence endpoint | `/api/users/{username}` returns 200/404 | Direct API enum. |
+| `/api/users/{username}` returns 200/404 | API user existence endpoint | Direct API enum. |
 | GraphQL `users(email:...)` query | Returns null vs object | Schema enum. |
 | Forgot password username field | "Send recovery" message diff | Common bug. |
 | Magic link send | "Link sent if exists" vs explicit | UX laziness. |

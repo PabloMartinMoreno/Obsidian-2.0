@@ -45,14 +45,14 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| TOCTOU clásico | `if (balance >= amount) deduct(amount)` — sin lock | Time-of-check vs time-of-use gap. |
+| `if (balance >= amount) deduct(amount)` — sin lock | TOCTOU clásico | Time-of-check vs time-of-use gap. |
 | Auth check + privileged action | Check role at start, action at end (no re-check) | Privesc window. |
-| File system TOCTOU | `if (exists(file)) read(file)` — race con symlink | Local privesc. |
-| Database lookup + insert | `SELECT count + INSERT` non-atomic | Duplicate prevention bypass. |
+| `if (exists(file)) read(file)` — race con symlink | File system TOCTOU | Local privesc. |
+| `SELECT count + INSERT` non-atomic | Database lookup + insert | Duplicate prevention bypass. |
 | Cache check + DB write | Cache says "not exists" → DB insert | Cache stale race. |
-| Quota check + increment | `if quota > 0: quota--; do_action()` | Overrun. |
+| `if quota > 0: quota--; do_action()` | Quota check + increment | Overrun. |
 | Order check + payment | Check item available + capture payment in 2 calls | Inventory race. |
-| Status check + update | `if (status == 'pending') status = 'paid'` | State race. |
+| `if (status == 'pending') status = 'paid'` | Status check + update | State race. |
 | Session check + permission | Auth re-check missing in pipeline | Session race. |
 | Custom lock implementations | DIY mutex con bugs | Race window. |
 | Distributed locks | Redis SETNX, etcd lock | Network race. |

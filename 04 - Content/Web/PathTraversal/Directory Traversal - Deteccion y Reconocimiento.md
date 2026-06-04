@@ -41,7 +41,7 @@ linked:
 | `?module=` / `?mod=` | Module loader | Plugin. |
 | `?show=` / `?display=` | View controller | Display. |
 | Body field `file` | POST body | Same vector. |
-| Path segment | `/file/X.txt` | RESTful. |
+| `/file/X.txt` | Path segment | RESTful. |
 | Headers `X-Path:` | Custom header | Edge case. |
 ^pt-detect-params
 
@@ -51,19 +51,19 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Unix traversal | `../etc/passwd` | Returns `/etc/passwd` content. |
-| Windows traversal | `..\\windows\\win.ini` | Returns Windows ini. |
-| Multi-level | `../../../etc/passwd` | Climb directories. |
-| Absolute path | `/etc/passwd` | Direct path (no traversal). |
-| With `file://` scheme | `file:///etc/passwd` | URL-style. |
-| Null byte truncation | `../etc/passwd%00` | Bypass extension append. |
-| URL-encoded slash | `..%2Fetc%2Fpasswd` | Encoded separator. |
-| Doble URL-encoded | `..%252Fetc%252Fpasswd` | Multi-decode. |
-| Backslash | `..\\etc\\passwd` | Windows-style. |
-| Mixed slash | `../etc\\passwd` | Mixed. |
-| Force include of own file | `../uploads/test.txt` (atacante uploaded) | Prove read works. |
+| `../etc/passwd` | Unix traversal | Returns `/etc/passwd` content. |
+| `..\\windows\\win.ini` | Windows traversal | Returns Windows ini. |
+| `../../../etc/passwd` | Multi-level | Climb directories. |
+| `/etc/passwd` | Absolute path | Direct path (no traversal). |
+| `file:///etc/passwd` | With `file://` scheme | URL-style. |
+| `../etc/passwd%00` | Null byte truncation | Bypass extension append. |
+| `..%2Fetc%2Fpasswd` | URL-encoded slash | Encoded separator. |
+| `..%252Fetc%252Fpasswd` | Doble URL-encoded | Multi-decode. |
+| `..\\etc\\passwd` | Backslash | Windows-style. |
+| `../etc\\passwd` | Mixed slash | Mixed. |
+| `../uploads/test.txt` (atacante uploaded) | Force include of own file | Prove read works. |
 | Length-based diff | Short path → 200, long path → 404 | Status diff. |
-| Error-based | `../../../FAKEFILE` triggers error | Reveals file system structure. |
+| `../../../FAKEFILE` triggers error | Error-based | Reveals file system structure. |
 | Time-based | Slow read → exists, fast deny → not exists | Timing oracle. |
 ^pt-detect-probes
 
@@ -96,11 +96,11 @@ done
 | `Server: Werkzeug` | Python Flask dev | Python. |
 | `Server: gunicorn` / `uvicorn` | Python prod | Same. |
 | `X-Powered-By: Express` | Node.js | Common modern stack. |
-| Cookie patterns | `PHPSESSID`, `JSESSIONID`, `ASP.NET_SessionId`, `connect.sid` | Stack hint. |
-| File extensions | `.php`, `.aspx`, `.jsp`, `.py`, `.rb`, `.go` | Direct. |
+| `PHPSESSID`, `JSESSIONID`, `ASP.NET_SessionId`, `connect.sid` | Cookie patterns | Stack hint. |
+| `.php`, `.aspx`, `.jsp`, `.py`, `.rb`, `.go` | File extensions | Direct. |
 | Error messages | "Cannot find file" patterns | Per-stack. |
 | Path separators | If app accepts `/` or `\\` | OS-dependent. |
-| Environment leak | `/proc/self/environ` reveals OS + stack | Linux specific. |
+| `/proc/self/environ` reveals OS + stack | Environment leak | Linux specific. |
 | Headers leak | Responses include implementation hints | Verbose mode. |
 ^pt-detect-os
 

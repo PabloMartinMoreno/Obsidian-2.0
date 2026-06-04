@@ -41,20 +41,20 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Decode header rápido | `echo "eyJhbGciOi..." \| cut -d. -f1 \| base64 -d` | Padding puede faltar — agregar `==`. |
-| Decode payload | `echo "eyJhbGciOi..." \| cut -d. -f2 \| base64 -d` | Claims en JSON. |
-| Decode con padding fix | `awk -F. '{print $2}' \| base64 -d 2>/dev/null` | Tolerante a padding. |
-| jwt_tool decode | `python3 jwt_tool.py <token>` | Decode + análisis automático. |
+| `echo "eyJhbGciOi..." \| cut -d. -f1 \| base64 -d` | Decode header rápido | Padding puede faltar — agregar `==`. |
+| `echo "eyJhbGciOi..." \| cut -d. -f2 \| base64 -d` | Decode payload | Claims en JSON. |
+| `awk -F. '{print $2}' \| base64 -d 2>/dev/null` | Decode con padding fix | Tolerante a padding. |
+| `python3 jwt_tool.py <token>` | jwt_tool decode | Decode + análisis automático. |
 | jwt.io | Pegar token en https://jwt.io | Visualización + verificación si tenés secret. |
-| pyjwt local | `python3 -c "import jwt; print(jwt.decode('TOKEN', options={'verify_signature':False}))"` | Sin verificar firma. |
-| Decode con jq | `cut -d. -f2 \| base64 -d \| jq .` | Pretty print. |
-| Identificar `alg` | `cut -d. -f1 \| base64 -d \| jq .alg` | Algoritmo declarado: HS256 / RS256 / none / etc. |
-| Identificar `kid` | `cut -d. -f1 \| base64 -d \| jq .kid` | Key ID — vector inyección. |
-| Identificar `jku` / `x5u` | `cut -d. -f1 \| base64 -d \| jq '.jku // .x5u'` | URL externa de claves. |
-| Identificar `jwk` | `cut -d. -f1 \| base64 -d \| jq .jwk` | Clave pública embebida en header. |
-| Listar claims sensibles | `cut -d. -f2 \| base64 -d \| jq 'keys'` | Buscar `role`, `admin`, `sub`, `user_id`, `iss`, `exp`. |
-| Verificar expiración | `cut -d. -f2 \| base64 -d \| jq '.exp \| todate'` | Si exp pasó → backend debe rechazar (verificar). |
-| Detectar issuer | `cut -d. -f2 \| base64 -d \| jq .iss` | Útil para confusion attacks multi-tenant. |
+| `python3 -c "import jwt; print(jwt.decode('TOKEN', options={'verify_signature':False}))"` | pyjwt local | Sin verificar firma. |
+| `cut -d. -f2 \| base64 -d \| jq .` | Decode con jq | Pretty print. |
+| `cut -d. -f1 \| base64 -d \| jq .alg` | Identificar `alg` | Algoritmo declarado: HS256 / RS256 / none / etc. |
+| `cut -d. -f1 \| base64 -d \| jq .kid` | Identificar `kid` | Key ID — vector inyección. |
+| `cut -d. -f1 \| base64 -d \| jq '.jku // .x5u'` | Identificar `jku` / `x5u` | URL externa de claves. |
+| `cut -d. -f1 \| base64 -d \| jq .jwk` | Identificar `jwk` | Clave pública embebida en header. |
+| `cut -d. -f2 \| base64 -d \| jq 'keys'` | Listar claims sensibles | Buscar `role`, `admin`, `sub`, `user_id`, `iss`, `exp`. |
+| `cut -d. -f2 \| base64 -d \| jq '.exp \| todate'` | Verificar expiración | Si exp pasó → backend debe rechazar (verificar). |
+| `cut -d. -f2 \| base64 -d \| jq .iss` | Detectar issuer | Útil para confusion attacks multi-tenant. |
 ^jwt-detect-decode
 
 ### Estructura JWT estándar

@@ -95,8 +95,8 @@ curl -d "username=*)(uid=*&password=any" https://target/login
 | Apache DS errors `org.apache.directory` | Apache Directory Server | Java. |
 | Novell eDirectory `dsRepair`, `ndsRepair` | Novell legacy | Edge. |
 | OpenDJ (formerly OpenDS) | Java LDAP | Open source AD alt. |
-| RootDSE query | `ldapsearch -H ldap://target -x -s base -b "" supportedLDAPVersion namingContexts` | Banner reveals server. |
-| Schema enumeration | `ldapsearch ... -b "cn=schema"` | Schema info. |
+| `ldapsearch -H ldap://target -x -s base -b "" supportedLDAPVersion namingContexts` | RootDSE query | Banner reveals server. |
+| `ldapsearch ... -b "cn=schema"` | Schema enumeration | Schema info. |
 | supportedSASLMechanisms | Reveals auth methods | GSSAPI, DIGEST-MD5, etc. |
 | supportedControl | Server features | OIDs revealing implementation. |
 | Vendor name in RootDSE | Some servers expose vendorName | Direct fingerprint. |

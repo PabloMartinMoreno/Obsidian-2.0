@@ -72,17 +72,17 @@ curl -s https://target/.well-known/openid-configuration | jq '{
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Authorization Code | `response_type=code` | Web apps confidential — most secure. |
-| Auth Code + PKCE | `response_type=code` + `code_challenge=...` | SPA/mobile recommended. |
-| Implicit | `response_type=token` o `id_token` | Legacy SPA — deprecated 2020. |
-| Hybrid | `response_type=code id_token` | OIDC complejo. |
-| Client Credentials | `grant_type=client_credentials` | M2M — no user. |
-| Resource Owner Password | `grant_type=password` | Legacy — credential exposure. |
-| Device Authorization | `grant_type=urn:ietf:params:oauth:grant-type:device_code` | TVs/IoT. |
-| Refresh Token | `grant_type=refresh_token` | Long sessions. |
-| JWT Bearer | `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer` | RFC 7523. |
-| SAML Bearer | `grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer` | Enterprise. |
-| Token Exchange | `grant_type=urn:ietf:params:oauth:grant-type:token-exchange` | RFC 8693. |
+| `response_type=code` | Authorization Code | Web apps confidential — most secure. |
+| `response_type=code` + `code_challenge=...` | Auth Code + PKCE | SPA/mobile recommended. |
+| `response_type=token` o `id_token` | Implicit | Legacy SPA — deprecated 2020. |
+| `response_type=code id_token` | Hybrid | OIDC complejo. |
+| `grant_type=client_credentials` | Client Credentials | M2M — no user. |
+| `grant_type=password` | Resource Owner Password | Legacy — credential exposure. |
+| `grant_type=urn:ietf:params:oauth:grant-type:device_code` | Device Authorization | TVs/IoT. |
+| `grant_type=refresh_token` | Refresh Token | Long sessions. |
+| `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer` | JWT Bearer | RFC 7523. |
+| `grant_type=urn:ietf:params:oauth:grant-type:saml2-bearer` | SAML Bearer | Enterprise. |
+| `grant_type=urn:ietf:params:oauth:grant-type:token-exchange` | Token Exchange | RFC 8693. |
 | `prompt=none` silent | Silent auth si session existe | Combo CSRF. |
 | `prompt=login` force | Force re-auth | Defense. |
 | `display=popup` | Popup modal | Combo `window.opener`. |
@@ -109,20 +109,20 @@ curl -s https://target/.well-known/openid-configuration | jq '{
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Frontend JS recon | `curl -s https://target \| grep -oE 'client_id["\s]*[:=]["\s]*[a-zA-Z0-9-]+'` | Hardcoded common. |
-| JS bundle dump | `wget -r https://target/static/js/ && grep -r 'client_id' .` | Bundles. |
-| Source maps | `*.js.map` files reveal originals | Webpack default. |
-| Mobile APK decompile | `apktool d app.apk && grep -r 'client_id' .` | Android. |
-| Mobile IPA strings | `unzip app.ipa && strings Payload/*.app/* \| grep -i client` | iOS. |
-| GitHub dorks | `"client_id" "victim.com" site:github.com` | Leaked configs. |
+| `curl -s https://target \| grep -oE 'client_id["\s]*[:=]["\s]*[a-zA-Z0-9-]+'` | Frontend JS recon | Hardcoded common. |
+| `wget -r https://target/static/js/ && grep -r 'client_id' .` | JS bundle dump | Bundles. |
+| `*.js.map` files reveal originals | Source maps | Webpack default. |
+| `apktool d app.apk && grep -r 'client_id' .` | Mobile APK decompile | Android. |
+| `unzip app.ipa && strings Payload/*.app/* \| grep -i client` | Mobile IPA strings | iOS. |
+| `"client_id" "victim.com" site:github.com` | GitHub dorks | Leaked configs. |
 | GitLab/Bitbucket dorks | Similar dorks | Adjacent. |
-| Wayback Machine | `web.archive.org/web/*/target/oauth*` | Historical. |
-| Common pattern guess | `web`, `mobile`, `ios`, `android`, `cli`, `desktop` | Default IDs. |
-| Dev/staging prefixes | `dev-clientid`, `staging-`, `test-` | Sibling apps. |
+| `web.archive.org/web/*/target/oauth*` | Wayback Machine | Historical. |
+| `web`, `mobile`, `ios`, `android`, `cli`, `desktop` | Common pattern guess | Default IDs. |
+| `dev-clientid`, `staging-`, `test-` | Dev/staging prefixes | Sibling apps. |
 | Postman/Insomnia leaks | Public collections con tokens | OSINT. |
-| Dynamic Registration | `POST /register` si endpoint expuesto sin auth | Jackpot. |
+| `POST /register` si endpoint expuesto sin auth | Dynamic Registration | Jackpot. |
 | OAuth-error message leak | Error responses reveal valid client_ids | Verbose errors. |
-| Mobile intent filters | `manifest.xml` reveals OAuth schemes | Android. |
+| `manifest.xml` reveals OAuth schemes | Mobile intent filters | Android. |
 | `discovery_endpoint` per-tenant | Multi-tenant providers expose tenant client_ids | SaaS. |
 ^oauth-detect-clientid
 
@@ -147,12 +147,12 @@ curl -X POST https://target/oauth/register \
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Response type fuzz | `?response_type=code` / `token` / `id_token` cada uno | Cuáles acepta. |
-| Combined response types | `?response_type=code id_token token` | Hybrid soportado? |
-| Scope brute común | `openid`, `profile`, `email`, `offline_access` | Standard. |
-| Scope sensitive guess | `admin`, `internal`, `*`, `read:internal`, `user.read` | App-specific. |
+| `?response_type=code` / `token` / `id_token` cada uno | Response type fuzz | Cuáles acepta. |
+| `?response_type=code id_token token` | Combined response types | Hybrid soportado? |
+| `openid`, `profile`, `email`, `offline_access` | Scope brute común | Standard. |
+| `admin`, `internal`, `*`, `read:internal`, `user.read` | Scope sensitive guess | App-specific. |
 | Scope mass list | SecLists `oauth-scopes.txt` | Wordlist. |
-| Custom scope formats | `read:users`, `write:admin`, `org:internal` | Guess by context. |
+| `read:users`, `write:admin`, `org:internal` | Custom scope formats | Guess by context. |
 | `scope=*` wildcard | Some servers return all granted scopes | Greedy. |
 | `prompt=none` silent grant | Si user logged in IdP → silent code | Combo CSRF. |
 | `display=popup` | Popup mode | Combo `window.opener` postMessage. |
@@ -184,22 +184,22 @@ done
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Exact match | `redirect_uri=https://known.com/cb/extra` → error | Solo Open Redirect chain explota. |
-| Prefix match | `redirect_uri=https://known.com/cb.attacker.com` → OK | Suffix abuse posible. |
-| Substring match | `redirect_uri=https://attacker.com/known.com/cb` → OK | Substring smuggle. |
-| Hostname only (no path) | `redirect_uri=https://known.com/anything` → OK | Path attacks. |
-| Domain wildcard | `redirect_uri=https://anything.known.com/cb` → OK | Subdomain takeover combo. |
-| Scheme flexible | `redirect_uri=javascript://known.com/...` → OK | Scheme abuse. |
+| `redirect_uri=https://known.com/cb/extra` → error | Exact match | Solo Open Redirect chain explota. |
+| `redirect_uri=https://known.com/cb.attacker.com` → OK | Prefix match | Suffix abuse posible. |
+| `redirect_uri=https://attacker.com/known.com/cb` → OK | Substring match | Substring smuggle. |
+| `redirect_uri=https://known.com/anything` → OK | Hostname only (no path) | Path attacks. |
+| `redirect_uri=https://anything.known.com/cb` → OK | Domain wildcard | Subdomain takeover combo. |
+| `redirect_uri=javascript://known.com/...` → OK | Scheme flexible | Scheme abuse. |
 | Multiple registered | Probar todos los registered URIs | Pick weakest. |
-| Trailing slash optional | `cb/` vs `cb` distinto | Normalize bug. |
-| Case insensitive | `KNOWN.com` aceptado | Normalize. |
-| Userinfo `@` accepted | `https://known.com@attacker.com/cb` | Parser confusion. |
-| Fragment `#@` trick | `https://attacker.com#@known.com/cb` | Parser confusion. |
-| Unicode IDN | `https://kńown.com/cb` punycode | Homograph. |
+| `cb/` vs `cb` distinto | Trailing slash optional | Normalize bug. |
+| `KNOWN.com` aceptado | Case insensitive | Normalize. |
+| `https://known.com@attacker.com/cb` | Userinfo `@` accepted | Parser confusion. |
+| `https://attacker.com#@known.com/cb` | Fragment `#@` trick | Parser confusion. |
+| `https://kńown.com/cb` punycode | Unicode IDN | Homograph. |
 | `?@` query trick | `https://known.com?@attacker.com/cb` | Parser confusion. |
 | `\` backslash | `https://known.com\.attacker.com/cb` | Parser inconsistent. |
-| Triple slash | `https:///attacker.com/cb` | Edge parser. |
-| Loopback flexibility | `http://127.0.0.1:PORT/cb` | Public client allowed. |
+| `https:///attacker.com/cb` | Triple slash | Edge parser. |
+| `http://127.0.0.1:PORT/cb` | Loopback flexibility | Public client allowed. |
 ^oauth-detect-redirect
 
 ### Test suite redirect_uri

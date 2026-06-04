@@ -64,7 +64,7 @@ done
 |:---:|:---:|:---:|
 | Concepto | Cache key = hash de (method + URL + algunos headers). Inputs no incluidos en key = unkeyed → vector. | Critical concept. |
 | Default cache key | Generalmente método + path + query | Sin headers (default). |
-| Vary header | `Vary: Accept-Encoding, User-Agent` indica qué headers SÍ están en key | Lookup obligatorio. |
+| `Vary: Accept-Encoding, User-Agent` indica qué headers SÍ están en key | Vary header | Lookup obligatorio. |
 | Cache key explícito | Cloudflare Page Rules, Akamai config, etc | Per-platform. |
 | Hidden cache key params | Algunos CDN incluyen ciertas cookies en key | Edge case. |
 | `Cache-Control: private` | NO debería cachear — pero algunos proxies viejos sí | Anomaly. |

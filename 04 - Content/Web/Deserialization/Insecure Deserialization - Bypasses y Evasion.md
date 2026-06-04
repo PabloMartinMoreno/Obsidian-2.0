@@ -31,7 +31,7 @@ linked:
 | Padding manipulation | Agregar bytes basura al final del stream | Algunos parsers ignoran trailing bytes. |
 | Stream offset abuse | Iniciar stream con bytes basura, real data al medio | Parser puede skipear hasta encontrar magic. |
 | Mixed encoding chain | base64(zlib(serialized)) | Múltiples capas. |
-| URL-encode + base64 doble | `urlencode(base64(payload))` y luego `base64(urlencode(...))` | Bypass de regex por orden. |
+| `urlencode(base64(payload))` y luego `base64(urlencode(...))` | URL-encode + base64 doble | Bypass de regex por orden. |
 | Unicode normalization | Char `O` (U+004F) ↔ `Ｏ` (U+FF2F fullwidth) | Algunos parsers normalizan Unicode antes de check. |
 | Compression bombs | Gzip que expande masivamente | DoS + bypass de tamaño. |
 | Truncated stream | Stream incompleto que igual triggerea sink | Algunos parsers procesan partial. |
@@ -48,8 +48,8 @@ linked:
 | .NET SerializationBinder strict | Usar tipos del mscorlib que sí están permitidos como triggers | `System.IO.FileInfo`, `System.Text.RegularExpressions.RegexCompilationInfo`, etc. |
 | Jackson blacklist (`addDeserializationProblemHandler`) | Buscar gadget no listado en blacklist | Cada CVE Jackson agrega una clase, los attackers encuentran nuevas. |
 | FastJson safeMode bypass | Reference notation `L<class>;` | Notación alternativa. |
-| FastJson autoTypeSupport bypass | `@type` con `class.getName()` mangled | URL-encode dentro del nombre. |
-| PHP allow_classes filter | `unserialize($s, ['allowed_classes' => [SafeClass::class]])` | Si lista mal definida o `true`, todas pasan. |
+| `@type` con `class.getName()` mangled | FastJson autoTypeSupport bypass | URL-encode dentro del nombre. |
+| `unserialize($s, ['allowed_classes' => [SafeClass::class]])` | PHP allow_classes filter | Si lista mal definida o `true`, todas pasan. |
 | Pickle restricted unpickler bypass | Subclass `Unpickler.find_class` no estricto | Heredar de StackBased es común. |
 | YAML safe_load permitted_classes | Si lista incluye clase con `__init__` peligroso | Audit lista. |
 | Polymorphism via interface | Si filter chequea por class concreta pero acepta interface, usar gadget que implement la interface. | Common en Java. |
@@ -68,8 +68,8 @@ linked:
 | Java integer overflow en stream length | Length absurdo en serialized field | Algunos parsers mal manejan. |
 | Java `enableResolveObject` confusion | resolveObject hook mal implementado | Bypass de filtros. |
 | .NET Type confusion entre `[Serializable]` y custom | Forge tipo con TypeConfuseDelegate | Gadget oficial ysoserial.net. |
-| PHP type juggling string→object | `"O:8:..."` interpretado como string | Si app `==` compara loosely. |
-| YAML duplicate keys | `key: a\nkey: b` | Backend puede tomar primer o último — race. |
+| `"O:8:..."` interpretado como string | PHP type juggling string→object | Si app `==` compara loosely. |
+| `key: a\nkey: b` | YAML duplicate keys | Backend puede tomar primer o último — race. |
 | JSON duplicate keys | Mismo concepto en JSON | RFC dice undefined — varía por lib. |
 | Pickle proto 0 vs proto 4+ | Mezclar protocolos en mismo stream | Algunos unpicklers no validan. |
 | Length prefix mismatch | Anunciar string de 100 bytes pero pasar 50 | Buffer overrun → behavior raro. |

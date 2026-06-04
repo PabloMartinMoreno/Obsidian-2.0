@@ -22,17 +22,17 @@ linked:
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Endpoints POST/PUT/DELETE en historial Burp | Filtrar `Method:POST,PUT,DELETE` en historial | First step. |
-| Forms en HTML | `grep -E '<form.*method="post"' burp-history.html` | HTML del frontend. |
+| `grep -E '<form.*method="post"' burp-history.html` | Forms en HTML | HTML del frontend. |
 | AJAX state-changing | XHR/fetch en JS files | Buscar `fetch(...{method:'POST'})`. |
-| Endpoints REST API | `/api/v1/users`, `/api/v2/admin` con verbos no-GET | API explorer. |
+| `/api/v1/users`, `/api/v2/admin` con verbos no-GET | Endpoints REST API | API explorer. |
 | Acciones idempotentes "GET" | Anti-pattern: `GET /api/delete?id=42` | Usar GET para state-changing = CSRF trivial. |
-| Endpoints de auth | `/login`, `/logout`, `/password-reset` | Login CSRF + logout CSRF. |
-| Endpoints de cuenta | `/profile`, `/email/change`, `/2fa/disable` | Account takeover via CSRF. |
-| Endpoints admin | `/admin/users`, `/admin/role` | Privesc si admin víctima. |
-| Endpoints transferencias | `/transfer`, `/checkout`, `/buy` | Financial impact. |
+| `/login`, `/logout`, `/password-reset` | Endpoints de auth | Login CSRF + logout CSRF. |
+| `/profile`, `/email/change`, `/2fa/disable` | Endpoints de cuenta | Account takeover via CSRF. |
+| `/admin/users`, `/admin/role` | Endpoints admin | Privesc si admin víctima. |
+| `/transfer`, `/checkout`, `/buy` | Endpoints transferencias | Financial impact. |
 | Webhooks settings | Cambiar URL de webhooks → captura datos | Persistencia. |
 | Verbo "magic" | POST con `_method=PUT` o `_method=DELETE` | Method override. |
-| GraphQL mutations | `POST /graphql` con `mutation { ... }` | Igual que REST POST. |
+| `POST /graphql` con `mutation { ... }` | GraphQL mutations | Igual que REST POST. |
 ^csrf-detect-endpoints
 
 ---
@@ -41,11 +41,11 @@ linked:
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Buscar token en form | `grep -oE 'name="(csrf[_-]?token\|_token\|authenticity_token)"\s+value="[^"]+"'` | Patrones comunes. |
-| Buscar token en headers | `X-CSRF-Token`, `X-XSRF-TOKEN`, `Anti-CSRF-Token` | Headers custom. |
+| `grep -oE 'name="(csrf[_-]?token\|_token\|authenticity_token)"\s+value="[^"]+"'` | Buscar token en form | Patrones comunes. |
+| `X-CSRF-Token`, `X-XSRF-TOKEN`, `Anti-CSRF-Token` | Buscar token en headers | Headers custom. |
 | Buscar en cookies | Cookie con prefix `XSRF-` o `csrf` | Double-submit pattern. |
 | Token presente en GET? | URL params con token | Leak via Referer. |
-| Token presente en URL fragment? | `#token=...` | Solo cliente — útil bypass. |
+| `#token=...` | Token presente en URL fragment? | Solo cliente — útil bypass. |
 | Length del token | Tokens cortos (<16 chars) → posible bruteforce / predicción | Entropy check. |
 | Token entropy | Comparar 10 tokens — patrón? Counter? Timestamp? | Predictabilidad. |
 | Token unique per session | Logout + login → token cambia? | Rotación. |
@@ -79,15 +79,15 @@ done
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Inspect cookies SameSite | `curl -I -b jar.txt https://target/` | Buscar `SameSite=Lax/Strict/None`. |
+| `curl -I -b jar.txt https://target/` | Inspect cookies SameSite | Buscar `SameSite=Lax/Strict/None`. |
 | `SameSite=None` sin `Secure` | Inválido — browser ignora | Deja cookie vulnerable. |
 | `SameSite` ausente | Default Lax (Chrome 80+) o None (browsers viejos) | Comportamiento varía. |
 | `SameSite=Lax` permite GET top-level | Top-level navigation en GET con cookie | GET CSRF aún funcional. |
 | `SameSite=Strict` | Bloquea cross-site totalmente | Más segura, romper con click directo. |
 | Referer header check | Mandar request sin Referer → still works? | Si pasa = no Referer check. |
-| Referer empty allowed | `Referer:` vacío vs ausente | Algunos backends solo validan presencia. |
-| Origin header check | `Origin: https://attacker.com` → rejecta? | Modern protección. |
-| Origin null allowed | `Origin: null` (sandboxed iframe) | Bypass de Origin check. |
+| `Referer:` vacío vs ausente | Referer empty allowed | Algunos backends solo validan presencia. |
+| `Origin: https://attacker.com` → rejecta? | Origin header check | Modern protección. |
+| `Origin: null` (sandboxed iframe) | Origin null allowed | Bypass de Origin check. |
 | Custom anti-CSRF header (Synchronizer) | Header `X-Requested-With: XMLHttpRequest` requerido | XHR-only, easy bypass via fetch. |
 | Double-submit cookie | Token en cookie + body comparado | Subdomain takeover bypass. |
 | Encrypted token | Token cifrado server-side | Más fuerte pero edge cases. |

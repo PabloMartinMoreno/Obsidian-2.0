@@ -29,17 +29,17 @@ linked:
 | Passive — Wayback Machine | archive.org/web/ con `*.target.com/*` | Historical subdomains. |
 | Passive — Shodan / Censys | Direct host search | Active services. |
 | Passive — Subdomainfinder | Web tools | Quick. |
-| Passive — Amass intel | `amass intel -d target.com` | Multi-source. |
-| Active — Subfinder | `subfinder -d target.com -all -recursive` | Modern fast. |
-| Active — Amass enum | `amass enum -d target.com -active` | Comprehensive. |
-| Active — Assetfinder | `assetfinder -subs-only target.com` | Pipeline-friendly. |
+| `amass intel -d target.com` | Passive — Amass intel | Multi-source. |
+| `subfinder -d target.com -all -recursive` | Active — Subfinder | Modern fast. |
+| `amass enum -d target.com -active` | Active — Amass enum | Comprehensive. |
+| `assetfinder -subs-only target.com` | Active — Assetfinder | Pipeline-friendly. |
 | Active — Findomain | Modern alt | Same. |
-| Active — DNSrecon | `dnsrecon -d target.com -t std` | Multi-mode. |
-| Brute force | `subbrute`, `gobuster dns`, `puredns` | Wordlist-based. |
-| Wordlists | `seclists/Discovery/DNS/`, `assetnote/wordlists` | Standard. |
+| `dnsrecon -d target.com -t std` | Active — DNSrecon | Multi-mode. |
+| `subbrute`, `gobuster dns`, `puredns` | Brute force | Wordlist-based. |
+| `seclists/Discovery/DNS/`, `assetnote/wordlists` | Wordlists | Standard. |
 | GitHub recon | Search public repos for subdomains | Source disclosure. |
 | Reverse DNS | PTR records on cloud IP ranges | Cloud-specific. |
-| Permutation generation | `altdns`, `ripgen`, `dnsgen` | Variations. |
+| `altdns`, `ripgen`, `dnsgen` | Permutation generation | Variations. |
 ^sdt-detect-enum
 
 ### Pipeline workflow
@@ -125,7 +125,7 @@ done
 | HTTP 404 con specific service message | Service-specific signature | Match patterns. |
 | `NXDOMAIN` on CNAME target | Domain not resolved at all | Strong takeover candidate. |
 | Recently expired CNAME target | WHOIS check + DNS delete | Time-sensitive opportunity. |
-| Wildcard CNAME stale | `*.target.com` → dangling | Wide takeover surface. |
+| `*.target.com` → dangling | Wildcard CNAME stale | Wide takeover surface. |
 | Multiple subdomains shared CNAME | One claim → multiple subdomains | Bulk takeover. |
 ^sdt-detect-dangling
 

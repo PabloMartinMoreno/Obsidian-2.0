@@ -91,11 +91,11 @@ done
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Inline iframe test | `<iframe src="https://target/"></iframe>` en HTML local | Standard. |
+| `<iframe src="https://target/"></iframe>` en HTML local | Inline iframe test | Standard. |
 | Per-route framing | Test each sensitive route independently | Granular. |
-| Sensitive endpoints | `/admin`, `/transfer`, `/settings`, `/profile` | High-value. |
+| `/admin`, `/transfer`, `/settings`, `/profile` | Sensitive endpoints | High-value. |
 | Authenticated framing | Login first, then frame as victim | Realistic test. |
-| Sandbox attribute | `<iframe sandbox>` removes JS protections | Bypass framebusters. |
+| `<iframe sandbox>` removes JS protections | Sandbox attribute | Bypass framebusters. |
 | Console framing errors | Browser DevTools shows framing block | Direct feedback. |
 | `Refused to display ... in a frame` | Standard error | Indicates protection. |
 | Successful render | Page loads normally en iframe | Vulnerable. |
