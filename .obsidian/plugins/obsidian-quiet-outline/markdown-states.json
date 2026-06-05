@@ -1965,5 +1965,33 @@
       }
     },
     "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 02.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 06.md": {
+    "scroll": 8.55958549222798,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
   }
 }

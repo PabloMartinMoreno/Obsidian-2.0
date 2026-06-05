@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Recon/WebTech/Cookie Fingerprinting.md",
+                "file": "05 - Writeups/OverTheWire/Bandit 06.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Cookie Fingerprinting"
+              "title": "Bandit 06"
             }
           }
         ],
@@ -267,9 +267,13 @@
   },
   "active": "4e9cda1b8c0d4c2b",
   "lastOpenFiles": [
+    "05 - Writeups/OverTheWire/Bandit 05.md",
+    "05 - Writeups/OverTheWire/Bandit 04.md",
+    "05 - Writeups/OverTheWire/Bandit 03.md",
+    "05 - Writeups/OverTheWire/Bandit 02.md",
+    "04 - Content/Recon/WebTech/Cookie Fingerprinting.md",
     "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md",
     "04 - Content/Recon/WebTech/Web Fingerprinting.md",
-    "04 - Content/Recon/WebTech/Cookie Fingerprinting.md",
     "04 - Content/Recon/WebTech/Cookie Fingerprinting.md.tmp.6691.21fbce4039cc",
     "04 - Content/Tools/Recon/whatweb.md",
     "04 - Content/Tools/Recon/curl.md",
@@ -297,12 +301,8 @@
     "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md",
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",
-    "02 - Secondary Categories/CWES.md",
-    "04 - Content/Process/OSINT.md",
     "04 - Content/Web/SSI/SSI - Tooling.md.tmp.547670.0422c78cfb46",
     "04 - Content/Web/SSI/SSI - Deteccion y Reconocimiento.md.tmp.547670.95c56076d57a",
-    "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md",
-    "04 - Content/Web/Fundamentals/GET.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
