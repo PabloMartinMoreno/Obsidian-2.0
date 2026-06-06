@@ -1,16 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
+    },
+    {
       "basename": "GraphQL Voyager",
       "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
     },
     {
       "basename": "Cross-Site Request Forgery (CSRF)",
       "path": "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "Blue Team",
