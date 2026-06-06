@@ -130,7 +130,7 @@ tab: **ffuf con Field Wordlists**
 ![[Mass Assignment - Tooling#^ma-tool-ffuf]]
 
 tab: **Manual Review API Docs**
-![[Mass Assignment - Tooling#^ma-tool-manual]]
+![[Mass Assignment - Tooling#^ma-tool-apidocs]]
 ````
 
 ---

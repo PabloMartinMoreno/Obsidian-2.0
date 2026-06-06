@@ -1,5 +1,8 @@
 ---
 aliases:
+  - "SSL"
+  - "TLS (Transport Layer Security)"
+  - "Protocolo TLS/SSL"
   - "openssl"
   - SSL/TLS
   - TLS

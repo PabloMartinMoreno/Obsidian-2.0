@@ -1,6 +1,7 @@
 ---
 aliases:
   - Domain Name System
+  - Servidor DNS
 tags:
 kind: Concept
 linked:

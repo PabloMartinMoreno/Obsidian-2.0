@@ -26,7 +26,6 @@ linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[Cross-Site Request Forgery (CSRF)]]"
   - "[[BOLA - IDOR]]"
-  - "[[Burp Suite]]"
 ---
 
 # GraphQL Injection

@@ -51,7 +51,7 @@ tab: **Inyección de Manejadores de Eventos HTML**
 ![[XSS - Manejadores de Eventos HTML#^xss-eventos]]
 
 tab: **Inyección de Pseudo-Protocolos**
-![[XSS - Pseudo-protocolos#^xss-pseudoprotocolos]]
+![[XSS - Pseudo-protocolos#^xss-pseudo]]
 
 tab: **Inyección de Escape de Contexto en Atributos**
 ![[XSS - Escape de Contexto en Atributos#^xss-atributos]]

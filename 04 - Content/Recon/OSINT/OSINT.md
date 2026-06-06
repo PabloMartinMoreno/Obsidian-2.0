@@ -1,3 +1,22 @@
+---
+aliases:
+  - Open Source Intelligence
+  - Inteligencia de Fuentes Abiertas
+tags:
+  - technique/recon/passive
+  - asset/network
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Passive Reconnaissance & OSINT]]"
+kind: Concept
+linked:
+  - "[[OSINT Methods]]"
+  - "[[Google Dorking]]"
+  - "[[GitHub Dorking]]"
+---
 # OSINT
 
 ---

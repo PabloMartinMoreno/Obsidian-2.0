@@ -20,7 +20,7 @@ linked:
 ## Cheatsheet
 
 - **Puerto por defecto:** TCP 80.
-- **Componentes clave:** [[Modelo Cliente-Servidor]], [[Protocolo TCP]], [[Mensajes HTTP]] (Request/Response), [[HTTP - Métodos]], [[HTTP - Códigos de Estado]].
+- **Componentes clave:** [[HTTP#El Modelo Cliente-Servidor|Modelo Cliente-Servidor]], [[TCP|Protocolo TCP]], [[HTTP#Anatomía de una Petición (Request)|Mensajes HTTP]] (Request/Response), [[HTTP - Métodos]], [[HTTP - Códigos de Estado]].
 - **Fases principales:**
     1. _Resolución DNS:_ Traducción del dominio a dirección IP.
     2. _Handshake TCP:_ Establecimiento de la conexión de transporte.

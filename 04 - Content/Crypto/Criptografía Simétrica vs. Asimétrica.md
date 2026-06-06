@@ -1,5 +1,7 @@
 ---
 aliases:
+  - "Cifrado Simétrico"
+  - "Cifrado Asimétrico"
 tags:
 primary categories:
   - "[[Cryptography]]"

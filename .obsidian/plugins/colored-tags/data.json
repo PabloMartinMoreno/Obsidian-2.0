@@ -108,6 +108,7 @@
     "service/splunk": 12,
     "service/sql": 33,
     "service/ssh": 17,
+    "service/tcp": 58,
     "service/telnet": 40,
     "service/tftp": 20,
     "service/tns": 57,

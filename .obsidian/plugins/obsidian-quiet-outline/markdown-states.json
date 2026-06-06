@@ -364,15 +364,15 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Injection.md": {
-    "scroll": 168.39336492890996,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 181,
-        "ch": 1
+        "line": 30,
+        "ch": 0
       },
       "to": {
-        "line": 181,
-        "ch": 1
+        "line": 30,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -1883,15 +1883,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/GraphQL Voyager.md": {
-    "scroll": 2.9665071770334928,
+    "scroll": 46.848214285714285,
     "cursor": {
       "from": {
-        "line": 29,
+        "line": 56,
         "ch": 0
       },
       "to": {
-        "line": 29,
-        "ch": 0
+        "line": 56,
+        "ch": 67
       }
     },
     "expandedKeys": []
@@ -1981,7 +1981,7 @@
     "expandedKeys": []
   },
   "05 - Writeups/OverTheWire/Bandit 06.md": {
-    "scroll": 8.55958549222798,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 14,
@@ -1990,6 +1990,34 @@
       "to": {
         "line": 14,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Voyager.md": {
+    "scroll": 62.99107142857143,
+    "cursor": {
+      "from": {
+        "line": 76,
+        "ch": 0
+      },
+      "to": {
+        "line": 76,
+        "ch": 19
       }
     },
     "expandedKeys": []

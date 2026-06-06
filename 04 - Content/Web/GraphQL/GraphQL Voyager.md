@@ -1,12 +1,25 @@
 ---
 aliases:
+  - graphql-voyager
+  - GraphQL Voyager Schema Map
 tags:
-  - estado/incompleto
+  - vuln/graphql
+  - technique/discovery
+  - asset/web-app
+  - service/http
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Enumeración]]"
 kind: Tool
 linked:
+  - "[[GraphQL Injection]]"
+  - "[[GraphQL - Deteccion y Reconocimiento]]"
+  - "[[GraphQL - Introspection y Schema Discovery]]"
+  - "[[GraphQL - Tooling]]"
 ---
 # GraphQL Voyager
 
@@ -15,7 +28,6 @@ linked:
 ## Paso 1: Encontrar el endpoint GraphQL
 
 Por ejemplo:
-
 ```text
 https://victima.com/graphql
 ```
@@ -31,27 +43,22 @@ python3 main.py -d -f -t http://IP/
 ## Paso 2: Verificar si permite introspection
 
 Con curl:
-
 ```bash
 curl -s -X POST https://victima.com/graphql \
 -H "Content-Type: application/json" \
 -d '{"query":"{ __schema { types { name } } }"}'
 ```
-
 Si devuelve tipos (`User`, `Query`, `Mutation`, etc.) entonces la introspection está habilitada. ([Reddit][1])
 
 ## Paso 3: Obtener el schema completo
 
 Podés usar herramientas como:
-
 ```bash
 npx get-graphql-schema https://victima.com/graphql > schema.graphql
 ```
-
 o guardar la introspection en JSON.
 
 Ejemplo:
-
 ```bash
 curl -s -X POST https://victima.com/graphql \
 -H "Content-Type: application/json" \
@@ -62,47 +69,36 @@ curl -s -X POST https://victima.com/graphql \
 ## Paso 4: Levantar GraphQL Voyager
 
 Ejecutá:
-
 ```bash
 graphql-voyager
 ```
-
 o
-
 ```bash
 npx graphql-voyager
 ```
-
 Se abrirá una interfaz web local. GraphQL Voyager está diseñado para representar visualmente el esquema GraphQL como un grafo interactivo. ([GitHub][2])
 
 ## Paso 5: Conectar el endpoint
 
 En la interfaz:
-
 1. Seleccioná "Change Schema".
 2. Elegí "GraphQL Endpoint".
 3. Escribí:
-
 ```text
 https://victima.com/graphql
 ```
-
 4. Si requiere autenticación, agregá headers.
-
 Ejemplo:
-
 ```json
 {
   "Authorization": "Bearer TOKEN"
 }
 ```
-
 Voyager ejecutará automáticamente la introspection y construirá el grafo. ([npmjs.com][3])
 
 ## Paso 6: Interpretar el grafo
 
 Vas a ver algo parecido a:
-
 ```text
 Query
  ├── users
@@ -113,11 +109,9 @@ Mutation
  ├── createUser
  ├── deleteUser
 ```
-
 Las flechas muestran relaciones entre tipos.
 
 Ejemplo:
-
 ```text
 User
  ├── id
@@ -129,7 +123,6 @@ Order
  ├── amount
  └── user
 ```
-
 Así descubrís rápidamente qué objetos están relacionados. ([GitHub][2])
 
 ## Paso 7: Buscar cosas interesantes
@@ -144,7 +137,6 @@ Durante una auditoría suelen llamar la atención:
 * Queries ocultas que no aparecen en la aplicación. ([Reddit][4])
 
 Ejemplo:
-
 ```graphql
 type Mutation {
     deleteUser(id: ID!): Boolean
@@ -156,13 +148,11 @@ Eso ya te da una línea de investigación.
 ## Paso 8: Construir consultas reales
 
 Si Voyager muestra:
-
 ```graphql
 user(id: ID!): User
 ```
 
 y el tipo User tiene:
-
 ```graphql
 id
 username
@@ -171,7 +161,6 @@ role
 ```
 
 podés probar:
-
 ```graphql
 query {
   user(id: 1) {
@@ -184,7 +173,6 @@ query {
 ```
 
 ## Flujo típico de bug bounty
-
 ```text
 /graphql encontrado
         ↓
