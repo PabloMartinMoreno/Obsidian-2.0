@@ -1,6 +1,6 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 6.889140271493213,
+    "scroll": 0.19683257918552036,
     "cursor": {
       "from": {
         "line": 30,
@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 24.13270142180095,
+    "scroll": 13.098445595854923,
     "cursor": {
       "from": {
         "line": 22,
@@ -84,7 +84,7 @@
     "expandedKeys": []
   },
   "01 - Primary Categories/Red Team.md": {
-    "scroll": 0.13043478260869565,
+    "scroll": 7.658698539176627,
     "cursor": {
       "from": {
         "line": 8,
@@ -98,7 +98,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/Explotación.md": {
-    "scroll": 11.70873786407767,
+    "scroll": 8.403718459495352,
     "cursor": {
       "from": {
         "line": 9,
@@ -294,14 +294,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/FileInclusion/File Inclusion.md": {
-    "scroll": 47.19211912442816,
+    "scroll": 21.65665236051502,
     "cursor": {
       "from": {
-        "line": 28,
+        "line": 29,
         "ch": 0
       },
       "to": {
-        "line": 28,
+        "line": 29,
         "ch": 0
       }
     },
@@ -364,7 +364,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Injection.md": {
-    "scroll": 168.46153846153845,
+    "scroll": 126.78461538461538,
     "cursor": {
       "from": {
         "line": 30,
@@ -2018,6 +2018,20 @@
       "to": {
         "line": 76,
         "ch": 19
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 07.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
       }
     },
     "expandedKeys": []

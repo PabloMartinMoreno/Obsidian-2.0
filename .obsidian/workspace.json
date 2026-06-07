@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/GraphQL/GraphQL Injection.md",
-                "mode": "preview",
+                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+                "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "GraphQL Injection"
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -141,7 +141,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "04 - Content/Process/XSS - Explotación de Mutaciones del Navegador (mXSS).md",
+                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -207,12 +207,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.5428156998837801,
+                  "scale": 0.5160918267272131,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Gráfico de XSS - Explotación de Mutaciones del Navegador (mXSS)"
+              "title": "Gráfico de SQL Injection (SQLi)"
             }
           },
           {
@@ -239,8 +239,7 @@
               "title": "Advanced Tables"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -267,19 +266,25 @@
   },
   "active": "4e9cda1b8c0d4c2b",
   "lastOpenFiles": [
+    "03 - Tertiary Categories/Web Explotación.md",
+    "02 - Secondary Categories/Explotación.md",
+    "01 - Primary Categories/Red Team.md",
+    "04 - Content/Web/FileInclusion/File Inclusion.md",
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Web/GraphQL/GraphQL Voyager.md",
+    "05 - Writeups/OverTheWire/Bandit 07.md",
+    "05 - Writeups/OverTheWire/Bandit 06.md",
+    "04 - Content/Web/GraphQL/GraphQL Injection.md",
     "04 - Content/Recon/OSINT/OSINT.md",
     "04 - Content/Process/OSINT.md.tmp.418920.795d6ae1206f",
     "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
-    "04 - Content/Web/GraphQL/GraphQL Injection.md",
     "04 - Content/Process/GraphQL Voyager.md",
     "04 - Content/Process/GraphQL Voyager.md.tmp.418920.54e381f00cf1",
-    "01 - Primary Categories/Blue Team.md",
     "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md.tmp.418920.7b669a4bad2f",
     "04 - Content/Web/Fundamentals/TCP.md",
     "04 - Content/Web/Fundamentals/TCP.md.tmp.418920.6c4646205569",
     "04 - Content/Services/DNS/DNS.md.tmp.418920.c4c3ad87ddef",
-    "05 - Writeups/OverTheWire/Bandit 06.md",
     "05 - Writeups/OverTheWire/Bandit 05.md",
     "05 - Writeups/OverTheWire/Bandit 04.md",
     "05 - Writeups/OverTheWire/Bandit 03.md",
@@ -297,12 +302,6 @@
     "04 - Content/Tools/Recon/Curl - Fingerprinting.md",
     "04 - Content/Tools/Recon/Curl - Fingerprinting.md.tmp.6691.1ce89a72c440",
     "04 - Content/Recon/WebTech/Web Fingerprinting.md.tmp.6691.7ae51835406a",
-    "04 - Content/Tools/Recon/wafw00f.md",
-    "04 - Content/Process/CWES - Checklist.md",
-    "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md",
-    "04 - Content/Web/SSI/SSI - Ejecucion de Comandos.md",
-    "03 - Tertiary Categories/Web Explotación.md",
-    "03 - Tertiary Categories/Web Enumeración.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
