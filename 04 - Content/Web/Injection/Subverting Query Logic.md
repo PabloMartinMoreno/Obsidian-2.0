@@ -5,11 +5,16 @@ tags:
   - technique/execution
   - asset/database
   - asset/web-app
-  - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Explotación]]"
+kind: SubCheatSheet
 linked:
+  - "[[SQL Injection (SQLi)]]"
 ---
 
 ## Subvirtiendo la lógica de la consulta

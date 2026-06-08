@@ -1,6 +1,6 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 0.19683257918552036,
+    "scroll": 2.493212669683258,
     "cursor": {
       "from": {
         "line": 30,
@@ -1690,11 +1690,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 62,
+        "line": 30,
         "ch": 0
       },
       "to": {
-        "line": 62,
+        "line": 30,
         "ch": 0
       }
     },
@@ -1715,7 +1715,7 @@
     "expandedKeys": []
   },
   "04 - Content/Recon/WebTech/Web Technology Enumeration.md": {
-    "scroll": 2.5944206008583692,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 32,
@@ -2031,6 +2031,20 @@
       },
       "to": {
         "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Fingerprinting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
         "ch": 0
       }
     },

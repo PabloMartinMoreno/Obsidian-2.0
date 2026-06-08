@@ -17,6 +17,7 @@ tertiary categories:
 kind: CheatSheet
 linked:
   - "[[File Inclusion]]"
+  - "[[Subverting Query Logic]]"
   - "[[SQLi - Union based]]"
   - "[[SQLi - Error based]]"
   - "[[SQLi - Boolean based]]"

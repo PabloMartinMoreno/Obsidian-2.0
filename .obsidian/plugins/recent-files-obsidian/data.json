@@ -5,6 +5,22 @@
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
+      "basename": "Fingerprinting",
+      "path": "04 - Content/Recon/WebTech/Fingerprinting.md"
+    },
+    {
+      "basename": "Web Technology Enumeration",
+      "path": "04 - Content/Recon/WebTech/Web Technology Enumeration.md"
+    },
+    {
+      "basename": "Web Fingerprinting",
+      "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/Tools/Recon/curl.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
@@ -69,16 +85,8 @@
       "path": "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md"
     },
     {
-      "basename": "Web Fingerprinting",
-      "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
-    },
-    {
       "basename": "whatweb",
       "path": "04 - Content/Tools/Recon/whatweb.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
       "basename": "HTTP - Headers",
