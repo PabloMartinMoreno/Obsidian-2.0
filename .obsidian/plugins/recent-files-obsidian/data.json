@@ -5,6 +5,10 @@
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
+      "basename": "PortSwigger",
+      "path": "02 - Secondary Categories/PortSwigger.md"
+    },
+    {
       "basename": "Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Fingerprinting.md"
     },
