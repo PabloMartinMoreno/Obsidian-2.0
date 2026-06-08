@@ -112,6 +112,7 @@
     "service/telnet": 40,
     "service/tftp": 20,
     "service/tns": 57,
+    "service/tomcat": 59,
     "service/vpn": 41,
     "service/winrm": 47,
     "service/wordpress": 15,

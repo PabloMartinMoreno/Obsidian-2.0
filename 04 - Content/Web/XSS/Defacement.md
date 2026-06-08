@@ -1,12 +1,19 @@
 ---
 aliases:
 tags:
+  - vuln/xss
+  - technique/execution
   - asset/web-app
-  - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Explotación]]"
+kind: SubCheatSheet
 linked:
+  - "[[Cross-Site Scripting (XSS)]]"
 ---
 
 ## Defacement 

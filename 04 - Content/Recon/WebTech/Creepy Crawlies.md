@@ -3,11 +3,16 @@ aliases:
 tags:
   - technique/recon/active
   - asset/web-app
-  - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Enumeración]]"
+kind: CheatSheet
 linked:
+  - "[[Crawling]]"
 ---
 
 # Herramientas de crawling

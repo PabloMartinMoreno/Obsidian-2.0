@@ -1,13 +1,23 @@
 ---
 aliases:
+  - Fuzzing de API
+  - API Endpoint Fuzzing
 tags:
   - asset/web-app
+  - asset/api
   - technique/recon/active
-  - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Enumeración]]"
+kind: Concept
 linked:
+  - "[[Web Fuzzing]]"
+  - "[[API Security]]"
+  - "[[Parameter Fuzzing]]"
 ---
 
 # Fuzzing de API
@@ -65,15 +75,15 @@ Estos endpoints ocultos pueden existir para funciones internas que no están des
 Usaremos un fuzzer que utiliza una wordlist para intentar descubrir estos endpoints no documentados. Ejecuta los comandos para clonar, instalar los requisitos y ejecutar el fuzzer:
 
 ```bash
-vsoci3tyv@htb[/htb]$ git clone https://github.com/PandaSt0rm/webfuzz_api.git
-vsoci3tyv@htb[/htb]$ cd webfuzz_api
-vsoci3tyv@htb[/htb]$ pip3 install -r requirements.txt
+git clone https://github.com/PandaSt0rm/webfuzz_api.git
+cd webfuzz_api
+pip3 install -r requirements.txt
 ```
 
 Luego, ejecuta el fuzzer usando la IP y el PORT del objetivo levantado:
 
 ```bash
-vsoci3tyv@htb[/htb]$ python3 api_fuzzer.py http://IP:PORT
+python3 api_fuzzer.py http://IP:PORT
 ```
 
 Salida de ejemplo:
@@ -107,7 +117,7 @@ Unusual status codes:
 Podemos explorar el endpoint no documentado mediante `curl` y devolverá una flag:
 
 ```bash
-vsoci3tyv@htb[/htb]$ curl http://localhost:8000/cz...
+curl http://localhost:8000/cz...
 
 {"flag":"<snip>"}
 ```

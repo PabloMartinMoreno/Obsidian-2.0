@@ -5,11 +5,18 @@ aliases:
 tags:
   - asset/web-app
   - technique/recon/active
-  - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Enumeración]]"
+kind: Concept
 linked:
+  - "[[Creepy Crawlies]]"
+  - "[[robots.txt]]"
+  - "[[Web Fingerprinting]]"
 ---
 
 # Crawling

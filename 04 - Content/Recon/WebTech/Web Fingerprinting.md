@@ -26,10 +26,11 @@ linked:
   - "[[HTTP - Cookies y Sesiones]]"
   - "[[Certificate Transparency Logs]]"
   - "[[curl]]"
+  - "[[Fingerprinting]]"
 ---
 # Web Fingerprinting
 
-Identificar el **stack** (webserver, lenguaje, framework, CMS, WAF y versiones) antes de atacar, combinando señales **pasivas** (headers, cookies, favicon, certificado) y **activas** (probes, herramientas). El objetivo: mapear la superficie y buscar CVEs de versiones conocidas.
+Identificar el **stack** (webserver, lenguaje, framework, CMS, WAF y versiones) antes de atacar, combinando señales **pasivas** (headers, cookies, favicon, certificado) y **activas** (probes, herramientas). El objetivo: mapear la superficie y buscar CVEs de versiones conocidas. Concepto/teoría en [[Fingerprinting]].
 
 ---
 
