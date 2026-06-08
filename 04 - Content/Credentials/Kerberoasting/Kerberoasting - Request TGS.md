@@ -2,7 +2,6 @@
 aliases:
   - Request TGS
   - Rubeus kerberoast
-  - GetUserSPNs
   - TGS Hash Dump
 tags:
   - technique/credential-access

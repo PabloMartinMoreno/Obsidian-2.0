@@ -2,7 +2,6 @@
 aliases:
   - Trust Enumeration
   - nltest trusts
-  - Get-ADTrust
   - LDAP trustedDomain
 tags:
   - vuln/ad-enumeration

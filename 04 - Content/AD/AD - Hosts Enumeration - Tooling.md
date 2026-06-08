@@ -1,7 +1,6 @@
 ---
 aliases:
   - netexec AD
-  - ADRecon
   - ldapsearch AD
   - SharpHound Collector
 tags:

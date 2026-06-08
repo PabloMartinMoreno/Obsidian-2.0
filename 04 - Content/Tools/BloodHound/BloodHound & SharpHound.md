@@ -2,10 +2,7 @@
 aliases:
   - "BloodHound Enumeration"
   - BloodHound
-  - SharpHound
   - bloodhound-python
-  - RustHound
-  - BloodHound CE
 tags:
   - vuln/ad-enumeration
   - technique/discovery

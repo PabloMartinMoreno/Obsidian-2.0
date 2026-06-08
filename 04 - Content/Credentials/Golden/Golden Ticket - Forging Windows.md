@@ -1,7 +1,6 @@
 ---
 aliases:
   - Golden Ticket Windows
-  - Rubeus golden
   - mimikatz golden
 tags:
   - technique/persistence

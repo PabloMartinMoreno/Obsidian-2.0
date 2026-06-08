@@ -2,6 +2,7 @@
 aliases:
   - "Certificado Digital X.509"
   - "X.509"
+  - "Certificado Digital"
 tags:
 primary categories:
   - "[[Cryptography]]"

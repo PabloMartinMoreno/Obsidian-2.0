@@ -2,7 +2,6 @@
 aliases:
   - OAuth Tooling
   - EsPReSSO
-  - jwt_tool
   - Keycloak Test
 tags:
   - vuln/oauth
@@ -16,6 +15,7 @@ linked:
   - "[[OAuth 2.0 Misconfigurations]]"
   - "[[Burp Suite]]"
   - "[[JWT Attacks]]"
+  - "[[JWT - Tooling y Brute Force]]"
 ---
 # OAuth 2.0 - Tooling
 

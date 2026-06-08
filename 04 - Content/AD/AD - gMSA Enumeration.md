@@ -2,7 +2,6 @@
 aliases:
   - AD gMSA Enumeration
   - Group Managed Service Account
-  - msDS-GroupManagedServiceAccount
   - gMSA Recon
 tags:
   - vuln/ad-enumeration

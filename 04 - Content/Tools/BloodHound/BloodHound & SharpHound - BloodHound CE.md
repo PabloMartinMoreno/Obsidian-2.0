@@ -3,7 +3,6 @@ aliases:
   - BloodHound CE
   - BHCE Install
   - BloodHound Ingest
-  - bloodhound-cli
 tags:
   - vuln/ad-enumeration
   - technique/discovery

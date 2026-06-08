@@ -1,6 +1,5 @@
 ---
 aliases:
-  - nanodump
   - LSASS BOF
   - EDR Evasion LSASS
   - Custom LSASS Dumper

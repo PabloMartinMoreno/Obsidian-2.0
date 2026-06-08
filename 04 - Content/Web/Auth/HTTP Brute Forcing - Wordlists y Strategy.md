@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Credential Stuffing
   - Password Spray
   - Mangling Rules
   - Targeted Wordlists

@@ -3,8 +3,6 @@ aliases:
   - HTTP Brute Forcing
   - Web Brute Force
   - Login Brute Force
-  - Credential Stuffing
-  - Password Spray
 tags:
   - vuln/brute-force
   - technique/credential-access

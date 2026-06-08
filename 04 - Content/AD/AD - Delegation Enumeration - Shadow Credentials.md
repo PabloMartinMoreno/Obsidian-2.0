@@ -3,7 +3,6 @@ aliases:
   - Shadow Credentials
   - msDS-KeyCredentialLink
   - Whisker
-  - certipy shadow
 tags:
   - vuln/ad-enumeration
   - technique/credential-access

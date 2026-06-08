@@ -4,7 +4,6 @@ aliases:
   - AD LAPS Enumeration
   - LAPS Discovery
   - Local Admin Password Solution Recon
-  - msLAPS-Password
 tags:
   - vuln/ad-enumeration
   - technique/discovery

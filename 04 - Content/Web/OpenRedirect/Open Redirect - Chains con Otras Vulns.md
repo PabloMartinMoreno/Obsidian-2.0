@@ -3,7 +3,6 @@ aliases:
   - Open Redirect Chain
   - SSRF via Redirect
   - XSS via Redirect
-  - OAuth Code Theft
 tags:
   - vuln/open-redirect
   - technique/lateral-movement
@@ -18,6 +17,7 @@ linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[Cross-Site Scripting (XSS)]]"
   - "[[Web Cache Poisoning]]"
+  - "[[OAuth 2.0 - Code y Token Theft]]"
 ---
 # Open Redirect - Chains con Otras Vulns
 

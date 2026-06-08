@@ -11,7 +11,6 @@ aliases:
   - "tar"
   - "netstat"
   - "ps"
-  - "Listfiles"
   - "shred"
   - "alias"
   - "readpst"

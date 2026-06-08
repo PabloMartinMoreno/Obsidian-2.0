@@ -1,7 +1,6 @@
 ---
 aliases:
   - NTDS Tooling
-  - secretsdump
   - DSInternals tools
 tags:
   - technique/credential-access
@@ -13,6 +12,7 @@ tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[NTDS.dit Extraction]]"
+  - "[[secretsdump]]"
 ---
 # NTDS.dit Extraction - Tooling
 

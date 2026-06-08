@@ -81,6 +81,22 @@ curl -s "https://crt.sh/?q=<domain>&output=json" | jq -r '.[].name_value'
 
 ---
 
+## Versiones — TLS 1.2 vs 1.3
+
+|  | **TLS 1.2** | **TLS 1.3** |
+|---|---|---|
+| Handshake | 2 RTT | 1 RTT (0-RTT con resumption) |
+| Cipher suites | Muchas, incluye débiles (RC4, CBC, RSA kex) | Solo AEAD (AES-GCM, ChaCha20-Poly1305) |
+| Key exchange | RSA o (EC)DHE | Solo (EC)DHE → **forward secrecy** obligatorio |
+| Negociación | En claro | Cifrada antes → menos info leak |
+| Legacy | Permite SHA-1, MD5, RSA kex, compresión | Eliminados |
+
+**TLS 1.3** (RFC 8446) es más rápido y seguro por diseño: forward secrecy obligatorio, solo AEAD, menos superficie. **TLS 1.0/1.1** deprecated; **1.2** es el mínimo aceptable hoy.
+
+^tls-versiones
+
+---
+
 ## Notas Relacionadas
 
 - [[Certificate Transparency Logs]]

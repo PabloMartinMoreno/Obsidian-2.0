@@ -4,7 +4,6 @@ aliases:
   - "username-anarchy"
   - User List Dump
   - LDAP User Filter
-  - GetADUsers
   - SAMR enumdomusers
 tags:
   - vuln/ad-enumeration

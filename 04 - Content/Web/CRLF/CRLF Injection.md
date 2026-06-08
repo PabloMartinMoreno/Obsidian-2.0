@@ -2,7 +2,6 @@
 aliases:
   - CRLF Injection
   - CRLFi
-  - HTTP Response Splitting
   - Header Injection
 tags:
   - vuln/crlf-injection

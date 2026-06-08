@@ -1,16 +1,6 @@
 ---
-secondary categories:
-  - "[[Information Gathering]]"
-  - "[[Web]]"
-tertiary categories:
-  - "[[Web Enumeración]]"
-linked:
-  - "[[WordPress Exploitation]]"
-  - "[[Web Technology Enumeration]]"
----
----
 aliases:
-  - "WordPress"
+  - WordPress
 tags:
   - technique/recon/active
   - asset/web-app
@@ -20,11 +10,12 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-  - "[[Web Enumeration]]"
+  - "[[Web Enumeración]]"
 kind: CheatSheet
 linked:
-- "[[WordPress Exploitation]]"
+  - "[[WordPress Exploitation]]"
   - "[[Web Technology Enumeration]]"
 ---
 # WordPress Enumeration

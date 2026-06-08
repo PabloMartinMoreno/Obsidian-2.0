@@ -2,7 +2,6 @@
 aliases:
   - NTDS Detection
   - NTDS Mitigations
-  - DCSync Detection
 tags:
   - technique/credential-access
   - env/windows
@@ -13,6 +12,7 @@ tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[NTDS.dit Extraction]]"
+  - "[[DCSync - Detection y Mitigations]]"
 ---
 # NTDS.dit Extraction - Detection y Mitigations
 

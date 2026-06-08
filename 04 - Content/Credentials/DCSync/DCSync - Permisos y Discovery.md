@@ -2,7 +2,6 @@
 aliases:
   - DCSync ACEs
   - Replication Rights
-  - GetChangesAll
 tags:
   - technique/credential-access
   - env/windows
@@ -13,6 +12,7 @@ tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[DCSync]]"
+  - "[[AD - DCSync Rights Discovery - DCSync Rights Definition]]"
 ---
 # DCSync - Permisos y Discovery
 

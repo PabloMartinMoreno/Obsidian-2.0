@@ -3,7 +3,6 @@ aliases:
   - gMSA Discovery
   - msDS-GroupManagedServiceAccount
   - KDS Root Key
-  - msDS-ManagedPassword
 tags:
   - vuln/ad-enumeration
   - technique/discovery
@@ -14,6 +13,7 @@ tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[AD - gMSA Enumeration]]"
+  - "[[AD - gMSA Enumeration - gMSA Password Dump]]"
 ---
 # AD - gMSA Enumeration - gMSA Discovery
 

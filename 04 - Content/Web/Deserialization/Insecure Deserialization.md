@@ -4,7 +4,6 @@ aliases:
   - "Deserialización"
   - Insecure Deserialization
   - Deserialization Vulnerability
-  - Object Injection
   - Untrusted Deserialization
 tags:
   - vuln/insecure-deser

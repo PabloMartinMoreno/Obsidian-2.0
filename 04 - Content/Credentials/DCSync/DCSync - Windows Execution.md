@@ -1,8 +1,6 @@
 ---
 aliases:
   - DCSync Windows
-  - mimikatz dcsync
-  - lsadump dcsync
 tags:
   - technique/credential-access
   - env/windows

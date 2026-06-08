@@ -1,7 +1,6 @@
 ---
 aliases:
   - Mass Assignment Tooling
-  - Param Miner
   - API Discovery
 tags:
   - vuln/mass-assignment
@@ -14,6 +13,7 @@ kind: SubCheatSheet
 linked:
   - "[[Mass Assignment]]"
   - "[[Burp Suite]]"
+  - "[[Param Miner]]"
 ---
 # Mass Assignment - Tooling
 

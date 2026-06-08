@@ -1,7 +1,6 @@
 ---
 aliases:
   - DCSync Tooling
-  - secretsdump
   - Mimikatz dcsync
   - lsadump dcsync
 tags:
@@ -16,6 +15,7 @@ linked:
   - "[[AD - DCSync Rights Discovery]]"
   - "[[netexec]]"
   - "[[Impacket Toolkit]]"
+  - "[[secretsdump]]"
 ---
 # AD - DCSync Rights Discovery - Tooling
 

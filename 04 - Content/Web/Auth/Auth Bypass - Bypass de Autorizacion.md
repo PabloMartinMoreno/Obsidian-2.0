@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Authorization Bypass
   - BFLA
   - Privilege Escalation Web
   - RBAC Bypass

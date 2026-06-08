@@ -1,7 +1,6 @@
 ---
 aliases:
   - Cypher Queries
-  - BloodHound Cypher
   - Custom Queries
   - Neo4j Cypher
 tags:

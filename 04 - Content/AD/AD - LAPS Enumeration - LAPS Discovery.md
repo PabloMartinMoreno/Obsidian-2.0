@@ -3,7 +3,6 @@ aliases:
   - LAPS Detection
   - ms-Mcs-AdmPwd Schema
   - LAPS Deployment Check
-  - msLAPS-Password
 tags:
   - vuln/ad-enumeration
   - technique/discovery
@@ -14,6 +13,7 @@ tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[AD - LAPS Enumeration]]"
+  - "[[AD - LAPS Enumeration - Windows LAPSv2]]"
 ---
 # AD - LAPS Enumeration - LAPS Discovery
 

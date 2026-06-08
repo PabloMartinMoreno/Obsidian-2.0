@@ -1,9 +1,6 @@
 ---
 aliases:
   - Responder.py
-  - LLMNR Poisoning
-  - NBT-NS Poisoning
-  - mDNS Poisoning
 tags:
   - technique/credential-access
   - technique/mitm

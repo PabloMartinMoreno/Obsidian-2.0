@@ -1,7 +1,12 @@
 ---
 aliases:
+  - Flujo HTTPS
+  - HTTPS Flow
+  - TLS Handshake
 tags:
-  - estado/incompleto
+  - service/http
+  - asset/web-app
+  - cert/cwes
 primary categories:
   - "[[Red Team]]"
 secondary categories:
@@ -11,6 +16,12 @@ tertiary categories:
 kind: Concept
 linked:
   - "[[HTTPS]]"
+  - "[[SSL - TLS]]"
+  - "[[Certificados SSL-TLS]]"
+  - "[[Infraestructura de Clave Pública (PKI)]]"
+  - "[[HSTS]]"
+  - "[[Ataques Man-in-the-Middle (MitM)]]"
+  - "[[TCP]]"
 ---
 # Flujo de Comunicación HTTPS
 
@@ -60,7 +71,7 @@ A partir de este momento, el cifrado asimétrico (más costoso a nivel computaci
 
 ### Estructura de una Cipher Suite Común
 
-Durante el flujo se negocian combinaciones específicas de algoritmos. Un estándar moderno en [[TLS 1.3]] simplifica esta estructura:
+Durante el flujo se negocian combinaciones específicas de algoritmos. Un estándar moderno en [[SSL - TLS#^tls-versiones|TLS 1.3]] simplifica esta estructura:
 ```Plaintext
 TLS_AES_256_GCM_SHA384
  └── Protocolo: TLS
@@ -70,7 +81,7 @@ TLS_AES_256_GCM_SHA384
 
 ### Conceptos Relacionados
 
-- [[Mecanismo HSTS (HTTP Strict Transport Security)]]
+- [[HSTS|Mecanismo HSTS (HTTP Strict Transport Security)]]
 - [[Infraestructura de Clave Pública (PKI)]]
-- [[Diferencias entre TLS 1.2 y TLS 1.3]]
+- [[SSL - TLS#^tls-versiones|Diferencias entre TLS 1.2 y TLS 1.3]]
 - [[Ataques Man-in-the-Middle (MitM)]]

@@ -2,7 +2,6 @@
 aliases:
   - Subdomain Takeover
   - SDT
-  - Dangling DNS
   - DNS Takeover
 tags:
   - vuln/subdomain-takeover

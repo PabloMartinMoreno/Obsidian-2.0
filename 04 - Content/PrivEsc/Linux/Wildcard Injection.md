@@ -3,7 +3,6 @@ aliases:
   - "Symbolic Link Exploitation"
   - "Symlinks"
   - "symlink atack"
-  - "Listfiles"
   - "Exploiting Wildcard Injection"
 tags:
   - env/linux

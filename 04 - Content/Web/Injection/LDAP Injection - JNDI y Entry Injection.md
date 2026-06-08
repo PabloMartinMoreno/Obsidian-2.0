@@ -1,7 +1,6 @@
 ---
 aliases:
   - JNDI Injection
-  - Log4Shell
   - LDAP Entry Poisoning
   - LDAP Referral
 tags:
@@ -16,6 +15,7 @@ kind: SubCheatSheet
 linked:
   - "[[LDAP Injection]]"
   - "[[Insecure Deserialization]]"
+  - "[[Log4J]]"
 ---
 # LDAP Injection - JNDI y Entry Injection
 

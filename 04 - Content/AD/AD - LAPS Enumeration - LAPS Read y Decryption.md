@@ -1,7 +1,6 @@
 ---
 aliases:
   - LAPS Bulk Read
-  - Get-AdmPwdPassword
   - Get-LapsADPassword
   - LAPS Decryption
 tags:

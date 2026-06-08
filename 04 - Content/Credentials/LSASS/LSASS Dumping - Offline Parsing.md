@@ -1,6 +1,5 @@
 ---
 aliases:
-  - pypykatz
   - LSASS Offline Parse
   - lsass.dmp Parse
 tags:

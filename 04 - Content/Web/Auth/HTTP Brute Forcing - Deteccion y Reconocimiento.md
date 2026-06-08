@@ -2,7 +2,6 @@
 aliases:
   - Login Form Discovery
   - Rate Limit Detection
-  - Lockout Policy Recon
   - User Enumeration
 tags:
   - vuln/brute-force
@@ -15,6 +14,7 @@ kind: SubCheatSheet
 linked:
   - "[[HTTP Brute Forcing]]"
   - "[[Burp Suite]]"
+  - "[[AD - Password Policy Enumeration]]"
 ---
 # HTTP Brute Forcing - Detección y Reconocimiento
 

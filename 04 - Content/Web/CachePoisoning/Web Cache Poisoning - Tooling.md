@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Param Miner
   - WCVS
   - Web Cache Vulnerability Scanner
 tags:
@@ -14,6 +13,7 @@ kind: SubCheatSheet
 linked:
   - "[[Web Cache Poisoning]]"
   - "[[Burp Suite]]"
+  - "[[Param Miner]]"
 ---
 # Web Cache Poisoning - Tooling
 

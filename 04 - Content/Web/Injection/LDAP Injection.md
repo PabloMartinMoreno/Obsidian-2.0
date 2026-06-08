@@ -2,7 +2,6 @@
 aliases:
   - LDAP Injection
   - LDAPi
-  - LDAP Filter Injection
   - LDAP Bind Injection
 tags:
   - vuln/ldap-injection

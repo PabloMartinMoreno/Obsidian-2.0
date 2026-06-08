@@ -2,7 +2,6 @@
 aliases:
   - Mass Assignment Chains
   - IDOR Mass Assignment
-  - GraphQL Mass Assignment
 tags:
   - vuln/mass-assignment
   - technique/lateral-movement
@@ -17,6 +16,7 @@ linked:
   - "[[Prototype Pollution]]"
   - "[[GraphQL Injection]]"
   - "[[JWT Attacks]]"
+  - "[[GraphQL - Auth y Logica]]"
 ---
 # Mass Assignment - Chains con Otras Vulns
 

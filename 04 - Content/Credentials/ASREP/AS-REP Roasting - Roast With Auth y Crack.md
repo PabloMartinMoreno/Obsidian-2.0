@@ -2,7 +2,6 @@
 aliases:
   - AS-REP Authenticated Roast
   - GetNPUsers Auth
-  - Rubeus asreproast
   - hashcat 18200
 tags:
   - technique/credential-access

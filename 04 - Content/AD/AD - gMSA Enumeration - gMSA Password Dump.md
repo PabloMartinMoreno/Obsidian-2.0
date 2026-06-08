@@ -1,7 +1,5 @@
 ---
 aliases:
-  - gMSADumper
-  - GoldenGMSA
   - msDS-ManagedPassword
   - gMSA Hash Dump
 tags:

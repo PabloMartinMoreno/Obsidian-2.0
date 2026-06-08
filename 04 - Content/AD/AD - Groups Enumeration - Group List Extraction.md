@@ -3,7 +3,6 @@ aliases:
   - Group List Dump
   - LDAP Group Filter
   - enumdomgroups
-  - Get-ADGroup
 tags:
   - vuln/ad-enumeration
   - technique/discovery

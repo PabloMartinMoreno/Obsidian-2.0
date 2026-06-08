@@ -3,7 +3,6 @@ aliases:
   - Password Spraying
   - Credential Stuffing
   - Hashcat Auth
-  - Hydra
 tags:
   - vuln/auth-bypass
   - technique/credential-access

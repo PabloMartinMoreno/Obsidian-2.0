@@ -2,7 +2,6 @@
 aliases:
   - Introspection Query
   - GraphQL Schema Recovery
-  - clairvoyance
 tags:
   - vuln/graphql
   - technique/discovery

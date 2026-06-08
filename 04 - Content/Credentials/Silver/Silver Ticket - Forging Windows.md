@@ -1,7 +1,6 @@
 ---
 aliases:
   - Silver Ticket Windows
-  - Rubeus silver
   - mimikatz silver
 tags:
   - technique/persistence

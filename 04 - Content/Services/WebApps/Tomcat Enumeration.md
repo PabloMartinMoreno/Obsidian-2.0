@@ -1,18 +1,8 @@
 ---
-secondary categories:
-  - "[[Information Gathering]]"
-  - "[[Web]]"
-tertiary categories:
-  - "[[Web Enumeración]]"
-linked:
-  - "[[Web Fingerprinting]]"
-  - "[[Web Technology Enumeration]]"
----
----
 aliases:
-  - "Abusing Tomcat"
-  - "Apache Tomcat Exploitation"
-  - "Tomcat & Jenkins Exploitation"
+  - Abusing Tomcat
+  - Apache Tomcat Exploitation
+  - Tomcat & Jenkins Exploitation
 tags:
   - technique/recon/active
   - asset/web-app
@@ -22,11 +12,12 @@ primary categories:
   - "[[Red Team]]"
 secondary categories:
   - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
-  - "[[Web Enumeration]]"
+  - "[[Web Enumeración]]"
 kind: CheatSheet
 linked:
-- "[[Web Fingerprinting]]"
+  - "[[Web Fingerprinting]]"
   - "[[Web Technology Enumeration]]"
 ---
 # Tomcat Enumeration

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - LFI to RCE
   - ZIP Slip
   - Tar Slip
   - Symlink Abuse

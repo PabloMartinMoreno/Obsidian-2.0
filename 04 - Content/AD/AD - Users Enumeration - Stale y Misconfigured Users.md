@@ -3,7 +3,6 @@ aliases:
   - Stale Users
   - PASSWD_NOTREQD
   - DONT_EXPIRE_PASSWORD
-  - Reversible Encryption
 tags:
   - vuln/ad-enumeration
   - technique/discovery
@@ -14,6 +13,7 @@ tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[AD - Users Enumeration]]"
+  - "[[AD - Password Policy Enumeration - Audit y Misconfiguraciones]]"
 ---
 # AD - Users Enumeration - Stale & Misconfigured Users
 

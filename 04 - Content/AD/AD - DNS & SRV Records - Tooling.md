@@ -2,7 +2,6 @@
 aliases:
   - DNS Tooling AD
   - dig
-  - adidnsdump
   - krbrelayx dnstool
 tags:
   - vuln/ad-enumeration

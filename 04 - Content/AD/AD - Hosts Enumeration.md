@@ -3,7 +3,6 @@ aliases:
   - "Network Device Fingerprinting"
   - AD Hosts Enumeration
   - AD Host Discovery
-  - DC Discovery
   - Computer Objects Recon
 tags:
   - vuln/ad-enumeration

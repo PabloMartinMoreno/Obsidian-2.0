@@ -1,7 +1,6 @@
 ---
 aliases:
   - Username Enum AS-REP
-  - kerbrute userenum
   - Pre-Auth Username Validation
 tags:
   - technique/credential-access

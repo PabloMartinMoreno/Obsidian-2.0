@@ -3,7 +3,6 @@ aliases:
   - AD Users Enumeration
   - AD User Discovery
   - User Recon AD
-  - LDAP User Filter
 tags:
   - vuln/ad-enumeration
   - technique/discovery

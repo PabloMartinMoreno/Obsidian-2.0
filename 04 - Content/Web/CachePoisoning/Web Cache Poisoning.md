@@ -4,7 +4,6 @@ aliases:
   - WCP
   - Cache Poisoning
   - Cache Deception
-  - WCD
 tags:
   - vuln/cache-poisoning
   - technique/initial-access

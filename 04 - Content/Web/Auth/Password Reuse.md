@@ -1,7 +1,5 @@
 ---
 aliases:
-  - Credential Stuffing
-  - Password Spray
 tags:
   - technique/credential-access
   - cred/brute-force
@@ -10,6 +8,7 @@ linked:
   - "[[HTTP Brute Forcing - Tipos Especiales]]"
   - "[[Auth Bypass - Brute Force y Credential Stuffing]]"
   - "[[Pass-the-Hash]]"
+  - "[[HTTP Brute Forcing - Wordlists y Strategy]]"
 ---
 # Password Reuse
 
