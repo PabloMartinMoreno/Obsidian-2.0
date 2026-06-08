@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Mimikatz
   - Mimikatz Commands
 tags:
   - technique/credential-access

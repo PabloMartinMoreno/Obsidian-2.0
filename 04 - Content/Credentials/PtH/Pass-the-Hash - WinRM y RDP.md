@@ -3,7 +3,6 @@ aliases:
   - "RDP con Pass-the-Hash"
   - PtH WinRM
   - PtH RDP
-  - evil-winrm
   - xfreerdp pth
   - RestrictedAdmin
 tags:

@@ -36,7 +36,7 @@ linked:
 
 - ### [[¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?]]
 
-## [[Transferencias de Zona DNS]]
+## [[Transferencia de Zona DNS]]
 
 ## [[Virtual Host]]
 

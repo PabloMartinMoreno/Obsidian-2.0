@@ -1,7 +1,6 @@
 ---
 aliases:
   - netexec AD
-  - PowerView
   - ADRecon
   - ldapsearch AD
   - SharpHound Collector

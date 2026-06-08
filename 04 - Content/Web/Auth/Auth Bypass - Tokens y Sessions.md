@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Session Hijacking
   - JWT Bypass
   - OAuth redirect_uri
   - Predictable Tokens

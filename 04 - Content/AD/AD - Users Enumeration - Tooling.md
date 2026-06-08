@@ -1,7 +1,6 @@
 ---
 aliases:
   - User Enum Tooling
-  - kerbrute
   - linkedin2username
   - GetADUsers
 tags:

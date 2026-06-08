@@ -2,7 +2,6 @@
 aliases:
   - DNS Tooling AD
   - dig
-  - dnsrecon
   - adidnsdump
   - krbrelayx dnstool
 tags:

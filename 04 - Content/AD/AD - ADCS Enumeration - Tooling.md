@@ -1,7 +1,6 @@
 ---
 aliases:
   - ADCS Tooling
-  - certipy
   - PSPKIAudit
   - Locksmith
 tags:

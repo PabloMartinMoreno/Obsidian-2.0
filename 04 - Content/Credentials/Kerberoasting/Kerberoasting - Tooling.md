@@ -1,7 +1,6 @@
 ---
 aliases:
   - Kerberoasting Tooling
-  - Rubeus
   - GetUserSPNs
   - hashcat 13100
 tags:

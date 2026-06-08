@@ -1,7 +1,6 @@
 ---
 aliases:
   - PtT Tools
-  - Rubeus
   - mimikatz kerberos
 tags:
   - technique/lateral-movement

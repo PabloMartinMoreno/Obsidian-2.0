@@ -3,7 +3,6 @@ aliases:
   - RPC Anonymous Enum
   - SMB Null Session
   - rpcclient AD
-  - enum4linux-ng
 tags:
   - vuln/ad-enumeration
   - technique/discovery

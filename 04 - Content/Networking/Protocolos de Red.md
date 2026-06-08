@@ -1,10 +1,14 @@
 ---
 aliases:
-  - "Seguridad Web"
-  - "UDP"
   - Network Protocols
+  - UDP
+  - TCP/IP
 tags:
   - asset/network
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+tertiary categories:
 kind: Concept
 linked:
 ---

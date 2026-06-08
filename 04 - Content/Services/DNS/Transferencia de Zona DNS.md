@@ -1,6 +1,12 @@
 ---
 aliases:
+  - Zone Transfer
+  - AXFR
+  - Transferencias de Zona DNS
 tags:
+  - technique/recon/active
+  - asset/network
+  - service/dns
 kind: Concept
 linked:
   - "[[DNS]]"
@@ -67,5 +73,41 @@ El proceso no ocurre al azar; se rige por el registro **SOA (Start of Authority)
 3. **Respuesta:** El maestro verifica si la IP del secundario está autorizada. Si lo está, comienza a enviar los registros de la zona.
 4. **Finalización:** Una vez recibidos los datos, el secundario actualiza su base de datos local y comienza a servir la nueva información.
 
+
+---
+
+## 🎯 Como Vector de Recon (AXFR no autorizado)
+
+Si el server permite el `AXFR` a **cualquier cliente** (mala config, común en setups viejos), un atacante descarga **toda la zona** sin autenticación → mina de oro de recon:
+
+- **Subdominios:** lista completa, incluidos ocultos (`dev`, `staging`, `admin`).
+- **IPs:** asociadas a cada subdominio → siguiente fase de enumeración.
+- **Registros NS / MX:** servidores de nombres, proveedor de hosting, correo.
+
+Aunque falle, la respuesta puede delatar la postura de seguridad / config DNS del target. Intentar un AXFR (con permiso) sigue siendo recon valioso.
+
+^axfr-recon
+
+### Ejemplo práctico (`dig`)
+
+```bash
+dig axfr @nsztm1.digi.ninja zonetransfer.me
+```
+
+Solicita la transferencia completa al server del dominio. Si está mal configurado, devuelve todos los registros:
+
+```text
+zonetransfer.me.   7200  IN  SOA   nsztm1.digi.ninja. robin.digi.ninja. 2019100801 ...
+zonetransfer.me.   7200  IN  MX    0 ASPMX.L.GOOGLE.COM.
+zonetransfer.me.   7200  IN  A     5.196.105.14
+zonetransfer.me.   7200  IN  NS    nsztm1.digi.ninja.
+;; XFR size: 50 records (messages 1, bytes 2085)
+```
+
+> [!note] `zonetransfer.me` es un lab de _DigiNinja_ para practicar AXFR abierto.
+
+### Remediación
+
+Restringir el `AXFR` solo a secundarios autorizados (allowlist por IP / TSIG). Errores humanos o configs legacy son la causa habitual de exposición.
 
 ---
