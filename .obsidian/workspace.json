@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+                "file": "05 - Writeups/OverTheWire/Bandit 05.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Injection (SQLi)"
+              "title": "Bandit 05"
             }
           }
         ],
@@ -266,8 +266,15 @@
   },
   "active": "4e9cda1b8c0d4c2b",
   "lastOpenFiles": [
-    "02 - Secondary Categories/PortSwigger.md",
+    "05 - Writeups/OverTheWire/Bandit 04.md",
+    "05 - Writeups/OverTheWire/Bandit 05.md",
+    "04 - Content/Tools/find.md",
+    "05 - Writeups/OverTheWire/Bandit 03.md",
+    "05 - Writeups/OverTheWire/Bandit 02.md",
+    "05 - Writeups/OverTheWire/Bandit 01.md",
+    "05 - Writeups/OverTheWire/Bandit 00.md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+    "02 - Secondary Categories/PortSwigger.md",
     "04 - Content/Recon/WebTech/Fingerprinting.md",
     "04 - Content/Recon/WebTech/Web Technology Enumeration.md",
     "04 - Content/Recon/WebTech/Web Fingerprinting.md",
@@ -295,13 +302,6 @@
     "01 - Primary Categories/Red Team.md",
     "04 - Content/Web/FileInclusion/File Inclusion.md",
     "01 - Primary Categories/Blue Team.md",
-    "04 - Content/Web/GraphQL/GraphQL Voyager.md",
-    "05 - Writeups/OverTheWire/Bandit 07.md",
-    "05 - Writeups/OverTheWire/Bandit 06.md",
-    "04 - Content/Web/GraphQL/GraphQL Injection.md",
-    "04 - Content/Recon/OSINT/OSINT.md",
-    "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
-    "04 - Content/Process/GraphQL Voyager.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

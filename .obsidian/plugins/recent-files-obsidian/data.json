@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Bandit 05",
+      "path": "05 - Writeups/OverTheWire/Bandit 05.md"
+    },
+    {
+      "basename": "Bandit 04",
+      "path": "05 - Writeups/OverTheWire/Bandit 04.md"
+    },
+    {
+      "basename": "find",
+      "path": "04 - Content/Tools/find.md"
+    },
+    {
+      "basename": "Bandit 03",
+      "path": "05 - Writeups/OverTheWire/Bandit 03.md"
+    },
+    {
+      "basename": "Bandit 02",
+      "path": "05 - Writeups/OverTheWire/Bandit 02.md"
+    },
+    {
+      "basename": "Bandit 01",
+      "path": "05 - Writeups/OverTheWire/Bandit 01.md"
+    },
+    {
+      "basename": "Bandit 00",
+      "path": "05 - Writeups/OverTheWire/Bandit 00.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
@@ -63,22 +91,6 @@
     {
       "basename": "Cross-Site Request Forgery (CSRF)",
       "path": "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
-      "basename": "Bandit 05",
-      "path": "05 - Writeups/OverTheWire/Bandit 05.md"
-    },
-    {
-      "basename": "Bandit 04",
-      "path": "05 - Writeups/OverTheWire/Bandit 04.md"
-    },
-    {
-      "basename": "Bandit 03",
-      "path": "05 - Writeups/OverTheWire/Bandit 03.md"
-    },
-    {
-      "basename": "Bandit 02",
-      "path": "05 - Writeups/OverTheWire/Bandit 02.md"
     },
     {
       "basename": "Cookie Fingerprinting",
