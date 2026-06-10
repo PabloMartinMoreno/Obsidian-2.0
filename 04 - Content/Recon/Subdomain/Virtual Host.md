@@ -11,7 +11,7 @@ linked:
   - "[[Subdominio vs Virtual Host]]"
   - "[[Reconociendo un Subdominio de un Virtual Host]]"
 ---
-es una etiqueta en el sistema de direcciones (DNS) de internet.# Virtual Hosts
+# Virtual Host
 
 ---
 
@@ -63,6 +63,21 @@ Los sitios se diferencian por el **número de puerto** en lugar del nombre o la 
 |**Facilidad de uso**|Muy alta|Media|Alta|
 |**Uso de Memoria**|Bajo|Alto (por interfaces)|Bajo|
 |**Uso común**|Hosting compartido|Servicios críticos|Desarrollo/Testing|
+
+---
+
+## Cómo enruta el servidor (Host header)
+
+![[Virtual Hosts.png]]
+
+1. El navegador pide un sitio (ej. `www.inlanefreight.com`) → request HTTP a la IP asociada.
+2. El header `Host` lleva el dominio → etiqueta que le dice al server qué sitio se pide.
+3. El server busca en su config de vhosts la entrada que matchee ese dominio.
+4. Identificado el VHost, sirve los archivos del `DocumentRoot` correspondiente.
+
+El header `Host` es el conmutador. Para **descubrir** vhosts ocultos (sin registro DNS) → fuzzing del header, ver [[Subdomain & VHost Fuzzing]].
+
+^vhost-routing
 
 ---
 
