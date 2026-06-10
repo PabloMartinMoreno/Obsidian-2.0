@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
+    },
+    {
+      "basename": "04 - DOM XSS innerHTML (location.search)",
+      "path": "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md"
+    },
+    {
       "basename": "PortSwigger",
       "path": "02 - Secondary Categories/PortSwigger.md"
+    },
+    {
+      "basename": "03 - DOM XSS document.write (location.search)",
+      "path": "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md"
     },
     {
       "basename": "Blind SQL injection with conditional responses tags",
@@ -155,10 +167,6 @@
     {
       "basename": "Subdomain Takeover",
       "path": "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
     },
     {
       "basename": "CWES",

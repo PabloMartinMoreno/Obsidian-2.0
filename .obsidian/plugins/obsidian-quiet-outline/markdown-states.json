@@ -322,15 +322,15 @@
     "expandedKeys": []
   },
   "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md": {
-    "scroll": 30.336575875486382,
+    "scroll": 44.31289156293986,
     "cursor": {
       "from": {
         "line": 31,
-        "ch": 0
+        "ch": 12
       },
       "to": {
         "line": 31,
-        "ch": 0
+        "ch": 2
       }
     },
     "expandedKeys": []
@@ -490,7 +490,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/PortSwigger.md": {
-    "scroll": 44.14511512134412,
+    "scroll": 40.565276913503425,
     "cursor": {
       "from": {
         "line": 8,
@@ -504,14 +504,14 @@
     "expandedKeys": []
   },
   "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md": {
-    "scroll": 0,
+    "scroll": 80.73502604166667,
     "cursor": {
       "from": {
-        "line": 7,
+        "line": 27,
         "ch": 0
       },
       "to": {
-        "line": 7,
+        "line": 27,
         "ch": 0
       }
     },
@@ -2143,6 +2143,20 @@
       },
       "to": {
         "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md": {
+    "scroll": 76.236328125,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
         "ch": 0
       }
     },

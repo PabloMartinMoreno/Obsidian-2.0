@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Secondary Categories/PortSwigger.md",
+                "file": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "PortSwigger"
+              "title": "Cross-Site Scripting (XSS)"
             }
           }
         ],
@@ -266,6 +266,10 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md",
+    "02 - Secondary Categories/PortSwigger.md",
+    "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
+    "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md",
     "04 - Content/Process/Blind SQL injection with conditional responses tags.md",
     "03 - Tertiary Categories/Web Explotación.md",
     "02 - Secondary Categories/Explotación.md",
@@ -298,10 +302,6 @@
     "05 - Writeups/OverTheWire/Bandit 04.md",
     "04 - Content/Tools/find.md",
     "05 - Writeups/OverTheWire/Bandit 03.md",
-    "05 - Writeups/OverTheWire/Bandit 02.md",
-    "05 - Writeups/OverTheWire/Bandit 01.md",
-    "05 - Writeups/OverTheWire/Bandit 00.md",
-    "02 - Secondary Categories/PortSwigger.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
