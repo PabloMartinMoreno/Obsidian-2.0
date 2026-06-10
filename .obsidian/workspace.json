@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/SSRF/SSRF - Básico.md",
+                "file": "000 - Global Index.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SSRF - Básico"
+              "title": "000 - Global Index"
             }
           }
         ],
@@ -266,8 +266,8 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
-    "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md",
     "04 - Content/Web/SSRF/SSRF - Básico.md",
+    "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md",
     "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
     "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md",

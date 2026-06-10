@@ -10,16 +10,33 @@ cssclasses:
 
 # Global Index
 
-> [!tip] Cómo navegar
-> Dominio → categoría → hub → notas. Atajos directos abajo; dashboards de estado al final.
-
 ---
 
-## Dominios
+## Categorías Primarias
 
-- [[Red Team]] — [[Information Gathering]] · [[Resource Development]] · [[Explotación]] · [[Post-Explotación]] · [[Lateral Movement]] · [[Operational Tasks]]
-- [[Blue Team]] — CDSA · SOC · SIEM · Incident Response · Forensics (contenido directo en el MOC)
-- Sin desarrollar: [[Cryptography]] · [[Cloud Security]] · [[Development]] · [[Reporting]]
+### [[Red Team]]
+
+[[Information Gathering]] · [[Resource Development]] · [[Explotación]] · [[Post-Explotación]] · [[Lateral Movement]] · [[Operational Tasks]]
+
+### [[Blue Team]]
+
+CDSA · SOC · SIEM · Incident Response · Forensics
+
+### [[Cryptography]]
+
+*Sin desarrollar — contenido suelto en `04 - Content/Crypto/`*
+
+### [[Cloud Security]]
+
+*Sin desarrollar — hub relacionado: [[Cloud Enumeration]]*
+
+### [[Development]]
+
+*Sin desarrollar*
+
+### [[Reporting]]
+
+*Sin desarrollar*
 
 ---
 

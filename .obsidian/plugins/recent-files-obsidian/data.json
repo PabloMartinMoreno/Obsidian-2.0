@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
+    },
+    {
       "basename": "SSRF - Básico",
       "path": "04 - Content/Web/SSRF/SSRF - Básico.md"
     },
@@ -67,10 +71,6 @@
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
     },
     {
       "basename": "OSINT",
