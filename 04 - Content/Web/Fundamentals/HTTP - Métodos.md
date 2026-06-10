@@ -49,7 +49,7 @@ Los métodos HTTP indican la acción que se desea realizar sobre un recurso dete
 Se utiliza únicamente para **recuperar** datos del servidor.
 - **Seguro:** No modifica el estado del servidor.
 - **Idempotente:** Hacer la misma petición varias veces siempre da el mismo resultado.
-- **Cuerpo:** No debe enviar datos en el cuerpo (body); usa la [[URL#Parámetros de Consulta|Query String]].
+- **Cuerpo:** No debe enviar datos en el cuerpo (body); usa la [[URL#^query-string|Query String]].
 
 ### POST
 

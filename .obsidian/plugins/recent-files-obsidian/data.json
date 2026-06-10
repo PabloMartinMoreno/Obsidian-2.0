@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "OSINT",
+      "path": "04 - Content/Recon/OSINT/OSINT.md"
+    },
+    {
+      "basename": "OSINT Methods",
+      "path": "04 - Content/Recon/OSINT Methods.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Recon/OSINT/Google Dorking.md"
+    },
+    {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },

@@ -104,6 +104,8 @@ params.get('page'); // "2"
 ```
 > ⚠️ **Source muy común en XSS** porque el atacante lo controla desde la URL.
 
+^query-string
+
 
 
 ### 🔷 Hash / Fragment

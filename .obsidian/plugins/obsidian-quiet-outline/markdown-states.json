@@ -2091,5 +2091,47 @@
       }
     },
     "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT/Google Dorking.md": {
+    "scroll": 41.26733703190014,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 47
+      },
+      "to": {
+        "line": 26,
+        "ch": 47
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT/OSINT.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT Methods.md": {
+    "scroll": 19.96820809248555,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 7
+      },
+      "to": {
+        "line": 21,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
   }
 }
