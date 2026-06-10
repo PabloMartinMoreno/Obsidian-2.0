@@ -3,11 +3,18 @@ aliases:
 tags:
   - asset/web-app
   - technique/recon/active
-  - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Enumeración]]"
+kind: CheatSheet
 linked:
+  - "[[Subdomain & VHost Fuzzing]]"
+  - "[[Subdomains Passive Enumeration]]"
+  - "[[dnsenum]]"
 ---
 
 

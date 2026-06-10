@@ -3,6 +3,9 @@ aliases:
   - Domain Name System
   - Servidor DNS
 tags:
+  - service/dns
+  - asset/network
+  - cert/cwes
 kind: Concept
 linked:
   - "[[DNS (53) - Enumeración]]"
@@ -54,6 +57,10 @@ Dentro de la configuración de un dominio, existen diferentes "etiquetas" según
 |**CNAME**|Un alias. Apunta un dominio a otro dominio.|`www.tusitio.com` -> `tusitio.com`|
 |**MX**|Define los servidores de **correo electrónico**.|`aspmx.l.google.com`|
 |**TXT**|Notas de texto (usado para verificar propiedad o seguridad [[SPF]], [[DKIM]]).|`v=spf1 include:_spf...`|
+|**NS**|Delega la zona a los **nameservers** autoritativos.|`example.com NS ns1.example.com`|
+|**SOA**|Info administrativa de la zona (primario, serial, timers).|`ns1.example.com admin... 2024060301`|
+|**SRV**|Host + puerto de un **servicio** específico.|`_sip._udp SRV 10 5 5060 sip.example.com`|
+|**PTR**|**Reverse DNS**: mapea IP → nombre.|`1.2.0.192.in-addr.arpa PTR www.example.com`|
 
 ---
 
@@ -63,6 +70,31 @@ Dentro de la configuración de un dominio, existen diferentes "etiquetas" según
 - **Propagación:** El tiempo que tardan todos los servidores del mundo en actualizar la información de un nuevo registro (puede tardar hasta 48 horas).
 - **DNS Cache Poisoning:** Un ataque donde se introduce información falsa en un resolvedor para redirigir a los usuarios a sitios maliciosos.
 
+
+---
+
+## El archivo Hosts
+
+Resolución **manual y local** que saltea el DNS — mapea hostname→IP en un archivo de texto, y precede al DNS en el orden de resolución.
+
+- **Ubicación:** `/etc/hosts` (Linux/macOS) · `C:\Windows\System32\drivers\etc\hosts` (Windows).
+- **Formato:** `<IP>    <hostname> [alias...]`
+- **Uso ofensivo:** acceder a un **VHost sin registro DNS público** mapeándolo a mano (ej. `10.10.10.5  target.htb`). Ver [[Virtual Host]].
+
+^dns-hosts-file
+
+---
+
+## DNS para Web Recon
+
+Los registros DNS son una mina de info en recon:
+- **Descubrir activos:** subdominios, mail servers (MX), nameservers (NS); un CNAME a un host obsoleto → sistema vulnerable / [[Subdomain Takeover]].
+- **Mapear infraestructura:** NS revela el proveedor de hosting; un A de `loadbalancer.` o `vpn.` señala puntos de entrada.
+- **Monitoreo:** subdominios nuevos = superficie nueva; TXT con `_1password=` / SPF delata stack y vendors (pretexting/phishing).
+
+Comandos → [[DNS - Herramientas]] · [[DNS (53) - Enumeración]]. Replicación abierta → [[Transferencia de Zona DNS]].
+
+^dns-web-recon
 
 ---
 

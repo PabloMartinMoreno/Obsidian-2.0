@@ -28,7 +28,7 @@ linked:
 
 # DNS & Subdomains
 
-## [[DNS - CWES]]
+## [[DNS]]
 
 ## [[Digging DNS — Explorando DNS]]
 
