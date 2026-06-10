@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Writeups/OverTheWire/Bandit 05.md",
+                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Bandit 05"
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -266,6 +266,7 @@
   },
   "active": "4e9cda1b8c0d4c2b",
   "lastOpenFiles": [
+    "05 - Writeups/OverTheWire/Bandit 05.md",
     "04 - Content/Obsidian/CheatSheets.md",
     "04 - Content/Obsidian/Todo Round-Up.md",
     "04 - Content/Obsidian/Incompletos.md",
@@ -286,7 +287,6 @@
     "05 - Writeups/HackTheBox/Bounty.md.tmp.7249.815511aa5745",
     "04 - Content/Process/Broken Authentication.md",
     "05 - Writeups/OverTheWire/Bandit 04.md",
-    "05 - Writeups/OverTheWire/Bandit 05.md",
     "04 - Content/Tools/find.md",
     "05 - Writeups/OverTheWire/Bandit 03.md",
     "05 - Writeups/OverTheWire/Bandit 02.md",

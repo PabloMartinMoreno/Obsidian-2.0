@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
       "basename": "Bandit 05",
       "path": "05 - Writeups/OverTheWire/Bandit 05.md"
     },
@@ -27,10 +31,6 @@
     {
       "basename": "Bandit 00",
       "path": "05 - Writeups/OverTheWire/Bandit 00.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "PortSwigger",
