@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 0,
+    "scroll": 55.477213541666664,
     "cursor": {
       "from": {
         "line": 22,
@@ -490,7 +490,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/PortSwigger.md": {
-    "scroll": 49.891816920943135,
+    "scroll": 45.51163658991911,
     "cursor": {
       "from": {
         "line": 8,
@@ -1995,7 +1995,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md": {
-    "scroll": 0,
+    "scroll": 7.095022624434389,
     "cursor": {
       "from": {
         "line": 32,
@@ -2186,6 +2186,90 @@
       "to": {
         "line": 30,
         "ch": 36
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/PortSwigger/SQLi/Blind - Conditional Responses.md": {
+    "scroll": 33.126953125,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/CSRF - Bypass de Token.md": {
+    "scroll": 95.53183257122758,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/CSRF - Vectores de Ataque.md": {
+    "scroll": 112.17410714285714,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md": {
+    "scroll": 94.90848214285714,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md": {
+    "scroll": 21.5311004784689,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 0
+      },
+      "to": {
+        "line": 25,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSRF/SSRF - Básico.md": {
+    "scroll": 20.994791666666668,
+    "cursor": {
+      "from": {
+        "line": 24,
+        "ch": 86
+      },
+      "to": {
+        "line": 24,
+        "ch": 86
       }
     },
     "expandedKeys": []

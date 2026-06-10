@@ -1,12 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "06 - DOM XSS jQuery selector (hashchange)",
-      "path": "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md"
+      "basename": "SSRF - Básico",
+      "path": "04 - Content/Web/SSRF/SSRF - Básico.md"
+    },
+    {
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md"
+    },
+    {
+      "basename": "CSRF - Bypass de SameSite y Referer",
+      "path": "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md"
+    },
+    {
+      "basename": "CSRF - Vectores de Ataque",
+      "path": "04 - Content/Web/Auth/CSRF - Vectores de Ataque.md"
+    },
+    {
+      "basename": "CSRF - Bypass de Token",
+      "path": "04 - Content/Web/Auth/CSRF - Bypass de Token.md"
+    },
+    {
+      "basename": "Blind - Conditional Responses",
+      "path": "05 - Writeups/PortSwigger/SQLi/Blind - Conditional Responses.md"
     },
     {
       "basename": "PortSwigger",
       "path": "02 - Secondary Categories/PortSwigger.md"
+    },
+    {
+      "basename": "06 - DOM XSS jQuery selector (hashchange)",
+      "path": "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md"
     },
     {
       "basename": "05 - DOM XSS jQuery anchor href",
@@ -27,10 +59,6 @@
     {
       "basename": "Blind SQL injection with conditional responses tags",
       "path": "04 - Content/Process/Blind SQL injection with conditional responses tags.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Explotación",
@@ -129,10 +157,6 @@
       "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
       "basename": "Cookie Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Cookie Fingerprinting.md"
     },
@@ -175,30 +199,6 @@
     {
       "basename": "Subdomain Takeover",
       "path": "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "GET",
-      "path": "04 - Content/Web/Fundamentals/GET.md"
-    },
-    {
-      "basename": "HTTPS",
-      "path": "04 - Content/Web/Fundamentals/HTTPS.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
-    },
-    {
-      "basename": "Web Fundamentals",
-      "path": "03 - Tertiary Categories/Web Fundamentals.md"
     }
   ],
   "omittedPaths": [],

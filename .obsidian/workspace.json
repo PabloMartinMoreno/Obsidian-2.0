@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md",
+                "file": "04 - Content/Web/SSRF/SSRF - Básico.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "06 - DOM XSS jQuery selector (hashchange)"
+              "title": "SSRF - Básico"
             }
           }
         ],
@@ -266,13 +266,21 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md",
+    "04 - Content/Web/SSRF/SSRF - Básico.md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
+    "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md",
+    "04 - Content/Web/Auth/CSRF - Vectores de Ataque.md",
+    "04 - Content/Web/Auth/CSRF - Bypass de Token.md",
+    "05 - Writeups/PortSwigger/SQLi/Blind - Conditional Responses.md",
     "02 - Secondary Categories/PortSwigger.md",
+    "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md",
     "05 - Writeups/PortSwigger/XSS/05 - DOM XSS jQuery anchor href.md",
     "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md",
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md",
     "04 - Content/Process/Blind SQL injection with conditional responses tags.md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
     "000 - Global Index.md",
@@ -287,11 +295,6 @@
     "04 - Content/Obsidian/Todo Round-Up.md",
     "04 - Content/Obsidian/Incompletos.md",
     "04 - Content/Obsidian/tags.md.tmp.7249.0d0cd10f3fd3",
-    "04 - Content/Obsidian/tags.md",
-    "04 - Content/Obsidian/Vault Administration.md",
-    "04 - Content/Services/DNS/Digging DNS.md",
-    "04 - Content/Recon/Por qué usar dnsenum por sobre gobuster o ffuf.md",
-    "04 - Content/Recon/WebTech/Crawling - Tooling.md",
     "04 - Content/Process/tags.md.tmp.7249.2a6e19e4ac1d",
     "04 - Content/Process/Vault Administration.md.tmp.7249.8e5a1e251754",
     "04 - Content/Process/Vault Administration.md.tmp.7249.6989ed6df6f0",
@@ -299,9 +302,6 @@
     "04 - Content/Process/tags.md.tmp.7249.2d8facff00cd",
     "04 - Content/Process/tags.md.tmp.7249.3bd220a3818d",
     "04 - Content/Tools/Wireshark.md.tmp.7249.41cc36d8237e",
-    "04 - Content/Process/Broken Authentication.md",
-    "05 - Writeups/OverTheWire/Bandit 04.md",
-    "04 - Content/Tools/find.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
