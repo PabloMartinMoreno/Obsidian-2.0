@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Sin título.md",
+                "file": "02 - Secondary Categories/PortSwigger.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Sin título"
+              "title": "PortSwigger"
             }
           }
         ],
@@ -266,8 +266,11 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "04 - Content/Process/Blind SQL injection with conditional responses tags.md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "02 - Secondary Categories/Explotación.md",
+    "01 - Primary Categories/Red Team.md",
     "000 - Global Index.md",
-    "04 - Content/Process/Sin título.md",
     "04 - Content/Recon/OSINT/OSINT.md",
     "04 - Content/Web/Fundamentals/HTTP - Métodos.md.tmp.38647.0f3a225c9fd5",
     "04 - Content/Recon/OSINT Methods.md",
@@ -299,9 +302,6 @@
     "05 - Writeups/OverTheWire/Bandit 01.md",
     "05 - Writeups/OverTheWire/Bandit 00.md",
     "02 - Secondary Categories/PortSwigger.md",
-    "04 - Content/Recon/WebTech/Fingerprinting.md",
-    "04 - Content/Recon/WebTech/Web Technology Enumeration.md",
-    "04 - Content/Recon/WebTech/Web Fingerprinting.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

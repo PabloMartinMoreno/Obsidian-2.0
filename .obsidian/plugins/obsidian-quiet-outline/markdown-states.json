@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 13.098445595854923,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 22,
@@ -84,7 +84,7 @@
     "expandedKeys": []
   },
   "01 - Primary Categories/Red Team.md": {
-    "scroll": 7.658698539176627,
+    "scroll": 10.455729166666666,
     "cursor": {
       "from": {
         "line": 8,
@@ -98,7 +98,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/Explotación.md": {
-    "scroll": 8.403718459495352,
+    "scroll": 10.9140625,
     "cursor": {
       "from": {
         "line": 9,
@@ -448,7 +448,7 @@
     "expandedKeys": []
   },
   "000 - Global Index.md": {
-    "scroll": 0,
+    "scroll": 12.53317429551215,
     "cursor": {
       "from": {
         "line": 35,
@@ -490,7 +490,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/PortSwigger.md": {
-    "scroll": 0,
+    "scroll": 44.14511512134412,
     "cursor": {
       "from": {
         "line": 8,
@@ -2130,6 +2130,20 @@
       "to": {
         "line": 21,
         "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Blind SQL injection with conditional responses tags.md": {
+    "scroll": 14.5390625,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
       }
     },
     "expandedKeys": []

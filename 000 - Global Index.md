@@ -10,24 +10,42 @@ cssclasses:
 
 # Global Index
 
+> [!tip] Cómo navegar
+> Dominio → categoría → hub → notas. Atajos directos abajo; dashboards de estado al final.
+
 ---
 
-## Atajos
+## Dominios
 
-### Dashboards
-- [[Incompletos]] — pendientes por dominio
-- [[Todo Round-Up]] — callouts `[!todo]`
-- [[Tools]] — herramientas
-- [[CheatSheets]] — cheatsheets por dominio
-- [[Vault Administration]] — convenciones del vault
+- [[Red Team]] — [[Information Gathering]] · [[Resource Development]] · [[Explotación]] · [[Post-Explotación]] · [[Lateral Movement]] · [[Operational Tasks]]
+- [[Blue Team]] — CDSA · SOC · SIEM · Incident Response · Forensics (contenido directo en el MOC)
+- Sin desarrollar: [[Cryptography]] · [[Cloud Security]] · [[Development]] · [[Reporting]]
 
-### Hubs
-- [[Web Enumeración]] · [[Web Explotación]]
-- [[Active Directory]] (con mindmap)
-- [[Blue Team]] (SOC, SIEM, IR, Forensics)
+---
 
-### Carpetas
-- [BlueTeam/](04%20-%20Content/BlueTeam/) · [Linux/](04%20-%20Content/Linux/) · [Crypto/](04%20-%20Content/Crypto/) · [Web/Fundamentals/](04%20-%20Content/Web/Fundamentals/)
+## Hubs frecuentes
+
+- **Web** — [[Web Fundamentals]] · [[Web Enumeración]] · [[Web Explotación]] · [[Client-Side Exploitation]]
+- **Active Directory** — [[Active Directory]] (mindmap) · [[Active Directory Enumeración]] · [[Active Directory Explotación]] · [[Active Directory Lateral Movement]]
+- **Acceso** — [[Shells]] · [[Service Exploitation]] · [[Credentials Cracking]]
+- **Post-Explotación** — [[Linux Post-Explotación]] · [[Windows Post-Explotación]] · [[Persistence Techniques]] · [[Defense Evasion]]
+- **Payloads y C2** — [[Payload & Malware Engineering]] · [[C2 Infrastructure]] · [[Command & Control (C2)]] · [[Evasion & Obfuscation]]
+- **Tooling** — [[Tools]] · [[Metasploit]] · [[PowerShell]] · [[Common Exploitation Tools]]
+
+---
+
+## Práctica y certs
+
+- **Plataformas** — [[Hack the Box]] · [[PortSwigger]] · [[DockerLabs]] · [[HackMyVM]] · [[VulNyx]] · [[VulnHub]] · [[OverTheWire]]
+- **Certs** — [[CWES]] · [[OffSec]]
+- **Formación** — [[Online Courses]] · [[Learning Techniques]]
+
+---
+
+## Vault
+
+- **Dashboards** — [[Incompletos]] · [[Todo Round-Up]] · [[CheatSheets]]
+- **Meta** — [[Vault Administration]] · [[tags]] · [[Obsidian]]
 
 ---
 

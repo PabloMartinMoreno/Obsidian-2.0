@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "Sin título",
-      "path": "04 - Content/Process/Sin título.md"
+      "basename": "PortSwigger",
+      "path": "02 - Secondary Categories/PortSwigger.md"
+    },
+    {
+      "basename": "Blind SQL injection with conditional responses tags",
+      "path": "04 - Content/Process/Blind SQL injection with conditional responses tags.md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "000 - Global Index",
@@ -53,10 +69,6 @@
       "path": "05 - Writeups/OverTheWire/Bandit 00.md"
     },
     {
-      "basename": "PortSwigger",
-      "path": "02 - Secondary Categories/PortSwigger.md"
-    },
-    {
       "basename": "Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Fingerprinting.md"
     },
@@ -71,18 +83,6 @@
     {
       "basename": "curl",
       "path": "04 - Content/Tools/Recon/curl.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
     },
     {
       "basename": "File Inclusion",
