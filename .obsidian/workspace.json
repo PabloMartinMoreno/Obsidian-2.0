@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
+                "file": "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Cross-Site Scripting (XSS)"
+              "title": "06 - DOM XSS jQuery selector (hashchange)"
             }
           }
         ],
@@ -266,8 +266,9 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
-    "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md",
     "02 - Secondary Categories/PortSwigger.md",
+    "05 - Writeups/PortSwigger/XSS/05 - DOM XSS jQuery anchor href.md",
+    "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md",
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md",
     "04 - Content/Process/Blind SQL injection with conditional responses tags.md",
@@ -301,7 +302,6 @@
     "04 - Content/Process/Broken Authentication.md",
     "05 - Writeups/OverTheWire/Bandit 04.md",
     "04 - Content/Tools/find.md",
-    "05 - Writeups/OverTheWire/Bandit 03.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
