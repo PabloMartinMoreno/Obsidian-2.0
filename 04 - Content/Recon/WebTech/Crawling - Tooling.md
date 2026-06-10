@@ -1,5 +1,7 @@
 ---
 aliases:
+  - Creepy Crawlies
+  - Herramientas de Crawling
 tags:
   - technique/recon/active
   - asset/web-app

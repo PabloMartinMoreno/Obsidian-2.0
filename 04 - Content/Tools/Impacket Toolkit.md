@@ -15,6 +15,7 @@ secondary categories:
 tertiary categories:
   - "[[Credential Access]]"
   - "[[Lateral Movement]]"
+kind: Tool
 linked:
   - "[[Active Directory Explotación]]"
   - "[[Pass-the-Hash]]"

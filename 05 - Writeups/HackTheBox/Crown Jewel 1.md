@@ -1,11 +1,12 @@
 ---
 aliases:
 tags:
+  - meta/ctf
   - asset/active-directory
   - estado/incompleto
-primary categories:
-secondary categories:
-tertiary categories:
+kind: Writeup
+plataforma: "[[Hack The Box]]"
+web: https://app.hackthebox.com/sherlocks/Crown%20Jewel-1
 linked:
 ---
 

@@ -11,7 +11,7 @@ os: Windows
 linked:
   - "[[IIS Enumeration]]"
   - "[[IIS Exploitation]]"
-  - "[[Abuso de SeImpersonatePrivilege (Ataques \"Potato\")]]"
+  - "[[Abuso de SeImpersonatePrivilege]]"
   - "[[Bypass de Subida de Archivos]]"
   - "[[Remote Code Execution|RCE]]"
 ---

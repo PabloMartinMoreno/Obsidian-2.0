@@ -4,30 +4,17 @@ aliases:
   - Tag Schema
 tags:
   - meta/reference
+kind: Concept
 ---
 
 # Categorías y tags canónicos del vault
 
-> Estado: post-cleanup 2026-05-18. Refleja taxonomía real (no aspiracional).
+> Estado: post-migración `type/*` → `kind:` 2026-06-10. Refleja taxonomía real (no aspiracional).
 
-## type/ — Forma de la nota
+## Forma de la nota → property `kind:`
 
-| Tag | Uso |
-|---|---|
-| `type/moc/primary` | Categoría principal (Red Team, Blue Team, Cloud Security, Cryptography, Development, Reporting) |
-| `type/moc/secondary` | Sub-categoría (AD, Information Gathering, Lateral Movement, etc.) |
-| `type/moc/tertiary` | Sub-sub-categoría (Web Explotación, AD Enumeración, etc.) |
-| `type/moc` | MOC nivel-contenido (4th — agrupa sub-notas de un tema, ej: Web Technology Enumeration) |
-| `type/cheatsheet` | Hub con tabs y embeds de sub-notas (patrón SQLi/SSI/etc.) |
-| `type/concept` | Definición/explicación abstracta |
-| `type/technique` | Técnica MITRE-style (Pass-the-Hash, NTLM Relay, AMSI Bypass) |
-| `type/tool` | Herramienta (nmap, ffuf, mimikatz, evil-winrm) |
-| `type/vulnerability` | Clase de vulnerabilidad (SQLi, XSS, SSI) |
-| `type/writeup` | Solución de máquina/lab |
-| `type/playbook` | Procedimiento secuencial (CheckList AD Compromise) |
-| `type/payload` | Payload reutilizable (Evil Macro, PrivEsc Payloads) |
-| `type/command` | Doc de un comando individual (host, nslookup, Bash) |
-| `type/sub-command` | Invocación específica de un comando (Curl - Fuzzing Parámetros) |
+> [!warning] `type/*` eliminado
+> La forma/función de la nota NO se taggea: vive en la property `kind:` (CheatSheet, Tool, Technique, Concept, Writeup, etc.). Migración completada — quedan 0 tags `type/*` en el vault. Valores canónicos y reglas: [[Vault Administration]] § Sistema `kind:`.
 
 ## technique/ — MITRE ATT&CK tactic
 
@@ -78,8 +65,8 @@ tags:
 
 ## estado/ — Estado de completitud
 
-- `estado/completo` — Nota terminada
-- `estado/incompleto` — Nota WIP
+- `estado/completo` — SOLO en writeups (`05 - Writeups/`). En notas de contenido la completitud se señala saliendo de `Process/`, no se taggea.
+- `estado/incompleto` — Nota WIP (alimenta dashboard [[Incompletos]])
 
 ## meta/ — Metadata
 
@@ -91,11 +78,11 @@ tags:
 ## Convenciones
 
 - Tags multi-valor: una nota puede tener múltiples tags de diferentes namespaces.
-- Una nota debería tener UN `type/` principal.
+- Una nota tiene UN `kind:` (property, no tag).
 - Kebab-case: `service/ad-cs` no `service/adcs`.
 - Lowercase: Obsidian normaliza automáticamente.
 - Evitar tags flat sin namespace (ej: `ssh` → `service/ssh`).
 
 ## Templates
 
-Ver [00 - Resources/Templates/Type/](00%20-%20Resources/Templates/Type/) para skeleton de cada `type/`.
+Ver [00 - Resources/Templates/Type/](00%20-%20Resources/Templates/Type/) para skeleton de cada `kind:`.

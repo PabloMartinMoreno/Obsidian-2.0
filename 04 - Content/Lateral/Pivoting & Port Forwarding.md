@@ -23,6 +23,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Lateral Movement]]"
+kind: CheatSheet
 linked:
   - "[[Active Directory Explotación]]"
   - "[[Metasploit Framework]]"

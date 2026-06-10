@@ -78,11 +78,10 @@ Valores canónicos:
 
 ## Tags taxonómicos
 
-> [!warning] `type/*` deprecado
-> `kind:` (property) es la **única fuente de verdad** para la función de la nota. `type/*` quedó como tag paralelo vestigial — NO usar en notas nuevas. Migración pendiente: ver § Migración `type/*` → `kind:`.
+> [!warning] `type/*` eliminado
+> `kind:` (property) es la **única fuente de verdad** para la función de la nota. La migración `type/*` → `kind:` se completó (2026-06): quedan 0 tags `type/*` en el vault. NO reintroducir.
 
 Prefijos en uso:
-- ~~`type/*`~~ — **deprecado**, reemplazado por `kind:`
 - `asset/*` — dominio (web-app, active-directory, network, db, etc.)
 - `technique/*` — MITRE ATT&CK táctica (discovery, execution, lateral-movement, etc.)
 - `vuln/*` — vulnerabilidad específica (sqli, xss, xxe, etc.)
@@ -115,30 +114,6 @@ Prefijos en uso:
 > - **Referenciar secciones por block-id `^`, no por heading.** Agregar `^nombre` al bloque destino (tabla, lista, párrafo) y llamarlo con `![[Nota#^nombre]]` (embed) o `[[Nota#^nombre]]` (link). Los `^id` sobreviven a cambios de título; los `#Heading` se rompen.
 >
 > Ej: `HTTP` y `HTTPS` embeben `![[HTTP - Métodos#^http-metodos]]` y `![[HTTP - Códigos de Estado#^http-estado]]` en vez de repetir las tablas.
-
----
-
-## Migración `type/*` → `kind:`
-
-Mapeo para limpiar el tag vestigial. Si la nota ya tiene `kind:` correcto, solo borrar el `type/*`; si difieren, gana el más específico (`kind:` describe función, no contenido).
-
-| Tag viejo | `kind:` |
-|---|---|
-| `type/cheatsheet` | CheatSheet |
-| `type/tool` | Tool |
-| `type/concept` | Concept |
-| `type/technique` | Technique |
-| `type/vulnerability` | Vulnerability |
-| `type/writeup` | Writeup |
-| `type/playbook` | Playbook |
-| `type/command` | Command |
-| `type/sub-command` | SubCommand |
-| `type/sub-note` | SubNote |
-| `type/payload` | Payload |
-| `type/ttp` | TTP |
-| `type/moc/primary` | Primary Category |
-| `type/moc/secondary` | Secondary Category |
-| `type/moc/tertiary` | Tertiary Category |
 
 ---
 

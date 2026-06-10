@@ -13,6 +13,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Exploitation Tools]]"
+kind: Tool
 linked:
   - "[[Common Exploitation Tools]]"
   - "[[nmap]]"

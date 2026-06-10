@@ -3,6 +3,7 @@ aliases:
   - Checklists - CWES
 tags:
   - cert/cwes
+  - estado/incompleto
   - asset/web-app
 primary categories:
   - "[[Red Team]]"

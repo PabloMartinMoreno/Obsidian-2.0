@@ -1,3 +1,15 @@
+---
+aliases:
+tags:
+  - cert/cwes
+  - meta/ctf
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 1	[[Bashed]]	Linux	Web shell, directory discovery
 2	[[BountyHunter]]	Linux	XXE, Python exploitation
 3	Friendzone	Linux	DNS, LFI

@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Explorando DNS
 tags:
   - technique/recon/active
   - asset/network

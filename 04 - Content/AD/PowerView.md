@@ -15,6 +15,7 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"
+kind: Tool
 linked:
   - "[[Active Directory Explotación]]"
   - "[[BloodHound & SharpHound]]"

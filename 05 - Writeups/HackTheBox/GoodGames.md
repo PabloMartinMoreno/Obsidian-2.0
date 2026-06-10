@@ -2,10 +2,10 @@
 tags:
   - meta/ctf
   - estado/incompleto
-platform: "[[Hack the Box]]"
+plataforma: "[[Hack the Box]]"
 kind: Writeup
 web: https://app.hackthebox.com/machines/GoodGames
-difficulty:
+dificultad:
 ip:
 os:
 linked:

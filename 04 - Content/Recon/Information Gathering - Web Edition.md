@@ -7,6 +7,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
+kind: Concept
 linked:
 ---
 
@@ -30,11 +31,11 @@ linked:
 
 ## [[DNS]]
 
-## [[Digging DNS — Explorando DNS]]
+## [[Digging DNS]]
 
 ## [[Subdomain Bruteforcing]]
 
-- ### [[¿Por qué usar `dnsenum` por sobre `gobuster` o `ffuf`?]]
+- ### [[Por qué usar dnsenum por sobre gobuster o ffuf]]
 
 ## [[Transferencia de Zona DNS]]
 
@@ -60,7 +61,7 @@ linked:
 
 ## [[Well-Known URIs]]
 
-## [[Creepy Crawlies]]
+## [[Crawling - Tooling]]
 
 
 ---

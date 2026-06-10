@@ -14,7 +14,7 @@ tertiary categories:
   - "[[Web Enumeración]]"
 kind: Concept
 linked:
-  - "[[Creepy Crawlies]]"
+  - "[[Crawling - Tooling]]"
   - "[[robots.txt]]"
   - "[[Web Fingerprinting]]"
 ---

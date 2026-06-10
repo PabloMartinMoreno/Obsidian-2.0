@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - asset/web-app
+  - vuln/file-upload
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+kind: Payload
+linked:
+---
+
 ```php
 .jpeg.php
 .jpg.php

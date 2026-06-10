@@ -14,6 +14,7 @@ secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
   - "[[Lateral Movement]]"
+kind: Tool
 linked:
   - "[[Pass-the-Hash]]"
   - "[[Pass-the-Ticket]]"

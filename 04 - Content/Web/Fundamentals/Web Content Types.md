@@ -8,6 +8,7 @@ primary categories:
 secondary categories:
   - "[[Web]]"
 tertiary categories:
+kind: SubNote
 ---
 https://github.com/danielmiessler/SecLists/raw/master/Discovery/Web-Content/web-all-content-types.txt
 

@@ -6,6 +6,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
+kind: Playbook
 linked:
 ---
 > [!todo]

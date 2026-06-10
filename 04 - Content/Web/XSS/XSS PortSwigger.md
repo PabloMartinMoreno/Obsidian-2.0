@@ -8,6 +8,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
+kind: Payload
 linked:
 ---
 

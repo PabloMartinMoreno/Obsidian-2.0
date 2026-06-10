@@ -1,7 +1,14 @@
 ---
 aliases:
 tags:
-kind: Concept
+  - meta/ctf
+  - estado/completo
+  - asset/web-app
+  - vuln/xss
+kind: Writeup
+plataforma: "[[PortSwigger]]"
+web: https://portswigger.net/web-security/cross-site-scripting/dom-based
+dificultad: Apprentice
 linked:
 ---
 # PortSwigger - XSS - DOM XSS in jQuery selector sink using a hashchange event

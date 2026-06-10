@@ -13,6 +13,7 @@ secondary categories:
   - "[[Credential Access]]"
 tertiary categories:
   - "[[Password Cracking]]"
+kind: Tool
 linked:
   - "[[hashcat]]"
   - "[[Kerberoasting]]"

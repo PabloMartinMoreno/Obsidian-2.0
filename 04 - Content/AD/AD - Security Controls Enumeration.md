@@ -1,6 +1,7 @@
 ---
 aliases:
 tags:
+  - estado/incompleto
   - technique/recon/active
   - asset/active-directory
 primary categories:

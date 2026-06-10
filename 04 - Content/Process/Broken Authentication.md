@@ -1,3 +1,16 @@
+---
+aliases:
+tags:
+  - asset/web-app
+  - technique/credential-access
+  - vuln/brute-force
+  - estado/incompleto
+primary categories:
+secondary categories:
+tertiary categories:
+linked:
+---
+
 https://github.com/datasets/world-cities/blob/main/data/world-cities.csv
 ```bash
 cat world-cities.csv | cut -d ',' -f1 > city_wordlist.txt

@@ -29,7 +29,7 @@ Dos técnicas de interceptación de tráfico de red:
 
 ## Por qué importa
 
-Todo lo que viaja en **texto plano** ([[HTTP]] sin TLS, credenciales [[HTTP Basic Auth|Basic Auth]], cookies sin `Secure`) es legible o robable por un sniffer o un MITM: credenciales, cookies de sesión, datos sensibles.
+Todo lo que viaja en **texto plano** ([[HTTP]] sin TLS, credenciales [[HTTP - Basic Auth|Basic Auth]], cookies sin `Secure`) es legible o robable por un sniffer o un MITM: credenciales, cookies de sesión, datos sensibles.
 
 > [!tip] Mitigación
 > [[HTTPS]] (TLS) cifra el canal → el sniffer solo ve bytes cifrados. Por eso Basic Auth o cookies de sesión sobre HTTP plano son críticos.

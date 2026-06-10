@@ -12,6 +12,7 @@ secondary categories:
   - "[[Credential Access]]"
 tertiary categories:
   - "[[Password Cracking]]"
+kind: Tool
 linked:
   - "[[netexec]]"
   - "[[ffuf]]"

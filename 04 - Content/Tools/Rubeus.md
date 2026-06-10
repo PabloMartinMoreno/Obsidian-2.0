@@ -14,6 +14,7 @@ secondary categories:
   - "[[Credential Access]]"
 tertiary categories:
   - "[[Kerberos]]"
+kind: Tool
 linked:
   - "[[Kerberoasting]]"
   - "[[AS-REP Roasting]]"

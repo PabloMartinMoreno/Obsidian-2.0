@@ -7,6 +7,7 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
+kind: SubCheatSheet
 linked:
 ---
 > [!todo]

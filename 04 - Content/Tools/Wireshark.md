@@ -18,7 +18,7 @@ tertiary categories:
   - "[[Host & Network Enumeration]]"
   - "[[Packet Capture & Analysis]]"
 kind: CheatSheet
-linked: null
+linked:
 ---
 
 # Wireshark

@@ -1,14 +1,14 @@
 ---
 tags:
   - estado/completo
-plataforma: "[[VulNyx]]"
+plataforma: "[[VulnHub]]"
 web: https://www.vulnhub.com/blog
 dificultad: Fácil
 os: Linux
 linked:
   - "[[hydra]]"
 ---
-#  VulNyx - Blog 
+#  VulnHub - Blog
 
 ## Reconocimiento
 

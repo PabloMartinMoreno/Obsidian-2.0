@@ -14,6 +14,7 @@ secondary categories:
   - "[[Credential Access]]"
 tertiary categories:
   - "[[Active Directory Certificate Services]]"
+kind: Tool
 linked:
   - "[[AD CS Abuse]]"
   - "[[Shadow Credentials]]"

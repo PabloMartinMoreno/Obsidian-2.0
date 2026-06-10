@@ -1,3 +1,17 @@
+---
+aliases:
+tags:
+  - asset/web-app
+  - vuln/file-upload
+  - vuln/xss
+  - vuln/xxe
+primary categories:
+secondary categories:
+tertiary categories:
+kind: SubCheatSheet
+linked:
+---
+
 ## XSS
 
 ```html
