@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "000 - Global Index.md",
+                "file": "04 - Content/Web/GraphQL/GraphQL Injection.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "000 - Global Index"
+              "title": "GraphQL Injection"
             }
           }
         ],
@@ -266,6 +266,11 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "04 - Content/AD/AD - mindmap 2025 - 03.md.tmp.1275537.208355d35b1e",
+    "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md.tmp.1275537.233c70480af1",
+    "000 - Global Index.md",
+    "04 - Content/Web/Fundamentals/HTTP - Códigos de Estado.md.tmp.1247861.a0f37337f6a9",
+    "04 - Content/Web/GraphQL/GraphQL Injection.md.tmp.1247861.5004864932cc",
     "04 - Content/Web/GraphQL/GraphQL Injection.md.tmp.1247861.dc35c3f77c32",
     "04 - Content/Web/CommandInjection/OS Command Injection.md.tmp.1247861.3d27027bb3a5",
     "04 - Content/Web/CommandInjection/OS Command Injection.md.tmp.1247861.a172669cfc15",
@@ -288,7 +293,6 @@
     "04 - Content/Process/Blind SQL injection with conditional responses tags.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
-    "000 - Global Index.md",
     "04 - Content/Recon/OSINT/OSINT.md",
     "04 - Content/Web/Fundamentals/HTTP - Métodos.md.tmp.38647.0f3a225c9fd5",
     "04 - Content/Recon/OSINT Methods.md",
@@ -298,10 +302,6 @@
     "05 - Writeups/OverTheWire/Bandit 05.md",
     "04 - Content/Obsidian/CheatSheets.md",
     "04 - Content/Obsidian/Todo Round-Up.md",
-    "04 - Content/Obsidian/tags.md.tmp.7249.0d0cd10f3fd3",
-    "04 - Content/Process/tags.md.tmp.7249.2a6e19e4ac1d",
-    "04 - Content/Process/Vault Administration.md.tmp.7249.8e5a1e251754",
-    "04 - Content/Process/Vault Administration.md.tmp.7249.6989ed6df6f0",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

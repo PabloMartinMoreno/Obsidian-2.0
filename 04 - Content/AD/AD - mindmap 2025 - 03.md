@@ -2,14 +2,12 @@
 aliases:
 tags:
 primary categories:
-  - "[[Training]]"
-  - "[[Red Team]]"
   - "[[Red Team]]"
 secondary categories:
   - "[[Active Directory]]"
 kind: Concept
 ---
-# [[AD - mindmap 2025 - 03]]
+# AD - mindmap 2025 - 03
 
 ---
 

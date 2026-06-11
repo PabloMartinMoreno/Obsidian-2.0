@@ -78,7 +78,7 @@ El servidor falló al intentar cumplir una petición válida.
 > - `401` / `403` → el recurso **existe** pero está protegido; vale la pena buscar bypass.
 > - `404` → ruta inexistente (baseline para filtrar ruido).
 > - `405 Method Not Allowed` → el verbo no aplica; probá otros métodos ([[HTTP - Métodos]]).
-> - `500` → input no manejado; suele delatar inyección ([[SQL Injection (SQLI)|SQLi]], [[Server-Side Template Injection (SSTI)|SSTI]]) o error explotable.
+> - `500` → input no manejado; suele delatar inyección ([[SQL Injection (SQLi)|SQLi]], [[Server-Side Template Injection (SSTI)|SSTI]]) o error explotable.
 
 Filtrá por código de estado al fuzzear — ver [[Filtrado de salida de fuzzing]].
 

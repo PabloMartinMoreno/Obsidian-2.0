@@ -211,10 +211,11 @@ Lo que define si es DOM, Reflejado o Almacenado es **qué parte del sistema come
 
 ---
 
-# Ejercicio Phishing HTB
-## Los pasos explicados
+## Ejemplo práctico: Phishing vía XSS (document.write)
 
-### 1. Encontrar el payload XSS
+### Los pasos explicados
+
+#### 1. Encontrar el payload XSS
 Hay un formulario con un campo de URL. Al probar el payload:
 ```
 '><script>alert(1)</script>
@@ -223,7 +224,7 @@ Se confirma que la página es vulnerable a XSS — el `'>`cierra el atributo HTM
 
 ---
 
-### 2. Preparar el ataque de phishing
+#### 2. Preparar el ataque de phishing
 Una vez que sabés que hay XSS, usás `document.write()` para **reemplazar el contenido de la página** con un formulario de login falso que envía las credenciales a **tu propio servidor**.
 
 ```javascript
@@ -232,7 +233,7 @@ Una vez que sabés que hay XSS, usás `document.write()` para **reemplazar el co
 
 ---
 
-### 3. Montar tu servidor receptor
+#### 3. Montar tu servidor receptor
 Creás un archivo `index.php` en tu máquina que **guarda las credenciales** en un archivo de texto cuando alguien las envía, y luego redirige a la página original (para que no parezca sospechoso).
 
 ```
@@ -241,17 +242,17 @@ php -S 0.0.0.0:8080
 
 ---
 
-### 4. Enviar la URL maliciosa a la víctima
+#### 4. Enviar la URL maliciosa a la víctima
 En `/send.php` pegás la URL completa con el payload XSS codificado. La "víctima" visita esa URL, ve el formulario falso, ingresa sus credenciales y **vos las recibís en tu servidor**.
 
 ---
 
-### 5. Resultado
+#### 5. Resultado
 Tu servidor captura: `admin:p1zd0nt57341myp455`, y con eso te logueas en `/login.php` para obtener la flag.
 
 ---
 
-## Resumen del flujo
+### Resumen del flujo
 
 ```
 Tú inyectas URL maliciosa → Víctima ve formulario falso

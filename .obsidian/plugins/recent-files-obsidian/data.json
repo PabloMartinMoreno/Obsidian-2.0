@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
+    },
+    {
       "basename": "000 - Global Index",
       "path": "000 - Global Index.md"
     },
@@ -151,10 +155,6 @@
     {
       "basename": "Bandit 06",
       "path": "05 - Writeups/OverTheWire/Bandit 06.md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "Cookie Fingerprinting",
