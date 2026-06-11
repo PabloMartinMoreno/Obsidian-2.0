@@ -30,7 +30,16 @@ linked:
 
 ## Cheatsheet
 
-### 1. In-Band (respuesta directa)
+### 1. Detección y Reconocimiento
+
+````tabs
+tab: **Probes y Port Enum Interno**
+![[SSRF - Reconocimiento#^ssrf-reconocimiento]]
+````
+
+### 2. Explotación
+
+#### 🎯 In-Band (respuesta directa)
 
 ````tabs
 tab: **Básico (loopback + LAN)**
@@ -40,14 +49,14 @@ tab: **Protocolos Alternativos**
 ![[SSRF - Protocolos Alternativos#^ssrf-protocols]]
 ````
 
-### 2. Blind / Out-of-Band
+#### 🌑 Blind / Out-of-Band
 
 ````tabs
 tab: **Blind SSRF**
 ![[SSRF - Blind SSRF#^ssrf-blind]]
 ````
 
-### 3. Cloud-specific
+#### ☁️ Cloud-specific
 
 ````tabs
 tab: **Cloud Metadata (AWS/GCP/Azure)**
@@ -57,17 +66,6 @@ tab: **Cloud Metadata (AWS/GCP/Azure)**
 ---
 
 > **Flujo examen HTB CWES/CBBH** → ver [[SSRF - CWES]] (índice linealizado: mecanismo lógico → reconocimiento → explotación → gopher smuggling, orientado al lab).
-
----
-
-## Detección y Reconocimiento
-
-### 🔍 Recon Activo
-
-````tabs
-tab: **Probes y Port Enum Interno**
-![[SSRF - Reconocimiento#^ssrf-reconocimiento]]
-````
 
 ---
 

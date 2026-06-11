@@ -15,33 +15,25 @@ linked:
 ---
 # GraphQL - Introspection y Schema Discovery
 
-> [!tip] Comando base
-> Cada `Body (-d)` de las tablas se lanza con:
-> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
-
 ---
 
 ## Introspection Query Completa
 
-| **Body (`-d`)** | **Qué obtenés** | **Cuándo** |
-|:---|:---|:---|
-| `{"query":"{__schema{types{name}}}"}` | Schema básico — lista todos los types | Probe inicial. |
-| `{"query":"{__schema{queryType{name fields{name}}}}"}` | Top-level Query fields | Entrypoints de lectura. |
-| `{"query":"{__schema{mutationType{name fields{name}}}}"}` | Top-level Mutations | Entrypoints de escritura. |
-| `{"query":"{__schema{subscriptionType{name fields{name}}}}"}` | Subscriptions (WS) | Real-time endpoints. |
-| `{"query":"{__type(name:\"User\"){name fields{name type{name}}}}"}` | Detalle de un tipo | Inspección puntual. |
-| `{"query":"{__type(name:\"Role\"){enumValues{name}}}"}` | Enum values | Listar enums. |
-| `{"query":"{__type(name:\"UserInput\"){inputFields{name type{name}}}}"}` | Input fields | Mutation inputs (mass-assignment recon). |
-
-Variantes de bypass (no usan el base POST estándar):
-
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---|:---|:---|
-| `curl -sG --data-urlencode 'query={__schema{types{name}}}' https://target/graphql` | Introspection vía GET | POST bloqueado, engine lax. |
-| `curl -sX POST -H 'Content-Type: application/json' -d '[{"query":"{__schema{types{name}}}"}]' https://target/graphql` | Introspection embebida en batch | Introspection filtrada inline. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__schema{types{name}}}"}' https://target/graphql` | Schema básico — lista todos los types | Probe inicial. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"query{__schema{queryType{name}mutationType{name}types{name kind fields{name type{name kind ofType{name}}}}}}"}' https://target/graphql \| jq .` | **Dump del schema** (types + fields + tipos) one-liner | Dump rápido copy-paste. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__schema{queryType{name fields{name}}}}"}' https://target/graphql` | Top-level Query fields | Entrypoints de lectura. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__schema{mutationType{name fields{name}}}}"}' https://target/graphql` | Top-level Mutations | Entrypoints de escritura. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__schema{subscriptionType{name fields{name}}}}"}' https://target/graphql` | Subscriptions (WS) | Real-time endpoints. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__type(name:\"User\"){name fields{name type{name}}}}"}' https://target/graphql` | Detalle de un tipo | Inspección puntual. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__type(name:\"Role\"){enumValues{name}}}"}' https://target/graphql` | Enum values | Listar enums. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__type(name:\"UserInput\"){inputFields{name type{name}}}}"}' https://target/graphql` | Input fields | Mutation inputs (mass-assignment recon). |
+| `curl -sG --data-urlencode 'query={__schema{types{name}}}' https://target/graphql` | Introspection vía GET (bypass) | POST bloqueado, engine lax. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '[{"query":"{__schema{types{name}}}"}]' https://target/graphql` | Introspection en batch (bypass) | Introspection filtrada inline. |
+^graphql-introspect-query
 
 > Si `__schema` retorna `errors` → introspection deshabilitada, pasar a **Field Suggestions** o **canonical query** (abajo).
-^graphql-introspect-query
 
 ### Introspection canonical query
 
@@ -113,16 +105,15 @@ curl -X POST -H "Content-Type: application/json" \
 
 Con introspection deshabilitada, muchos engines igual **sugieren el field correcto en el mensaje de error** ante un typo ("Did you mean ...?") → permite reconstruir el schema parcialmente. Disabled en Apollo Server v4+.
 
-| **Body (`-d`)** | **Qué obtenés** | **Cuándo** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---|:---|:---|
-| `{"query":"{usr}"}` | Error `Did you mean "user"?` → confirma field | Probe básico single-field. |
-| `{"query":"{abc}"}` | Lista de sugerencias top del root | Multi-field discovery. |
-| `{"query":"{a}"}` … `{"query":"{z}"}` | Itera por prefijo → fields que empiezan con cada letra | Enumeración por fuerza bruta. |
-| `{"query":"{aa}"}`, `{"query":"{ab}"}`… | Itera con 2 chars | Discovery más profundo. |
-| `{"query":"mutation{updateUser(input:{usrnam:\"x\"})}"}` | Error `Did you mean "username"?` → input fields | Input fields (mass-assignment). |
-| `{"query":"{user(idx:1){id}}"}` | Error `Did you mean "id"?` → nombres de argumentos | Argument discovery. |
-| `{"query":"{users(role:ADMI){id}}"}` | Error `Did you mean "ADMIN"?` → enum values | Enum discovery. |
-| `{"query":"query($x:UsrInput){__typename}"}` | Error `Did you mean "UserInput"?` → type names | Type discovery via variable. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{usr}"}' https://target/graphql` | Error `Did you mean "user"?` → confirma field | Probe básico single-field. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{abc}"}' https://target/graphql` | Lista de sugerencias top del root | Multi-field discovery. |
+| `for c in {a..z}; do curl -sX POST -H 'Content-Type: application/json' -d "{\"query\":\"{$c}\"}" https://target/graphql; done` | Itera por prefijo → fields que empiezan con cada letra | Enumeración por fuerza bruta. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{updateUser(input:{usrnam:\"x\"})}"}' https://target/graphql` | Error `Did you mean "username"?` → input fields | Input fields (mass-assignment). |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{user(idx:1){id}}"}' https://target/graphql` | Error `Did you mean "id"?` → nombres de argumentos | Argument discovery. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{users(role:ADMI){id}}"}' https://target/graphql` | Error `Did you mean "ADMIN"?` → enum values | Enum discovery. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"query($x:UsrInput){__typename}"}' https://target/graphql` | Error `Did you mean "UserInput"?` → type names | Type discovery via variable. |
 ^graphql-introspect-suggestions
 
 ### clairvoyance — automatizar suggestions

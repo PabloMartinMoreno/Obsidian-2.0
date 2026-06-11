@@ -36,7 +36,41 @@ linked:
 
 ## Cheatsheet
 
-### 💉 Inyecciones via Resolvers
+### 1. Detección y Reconocimiento
+
+#### 🔍 Recon Activo
+
+````tabs
+tab: **Descubrir Endpoint**
+![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-endpoints]]
+
+tab: **Identificar Engine**
+![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-engine]]
+
+tab: **Probes de Detección**
+![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-probes]]
+````
+
+#### 🗺️ Introspection y Schema Discovery
+
+````tabs
+tab: **Introspection Query**
+![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-query]]
+
+tab: **Field Suggestions (Typo Trick)**
+![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-suggestions]]
+
+tab: **Schema Recovery Tools**
+![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-tools]]
+````
+
+---
+
+### 2. Explotación
+
+> Una vez mapeado el schema (introspection arriba), explotar según los resolvers y la lógica expuesta.
+
+#### 💉 Inyecciones via Resolvers
 
 ````tabs
 tab: **SQLi en Args**
@@ -49,23 +83,23 @@ tab: **Command Injection / SSRF / Path Traversal**
 ![[GraphQL - Inyecciones via Resolvers#^graphql-inj-cmdi-ssrf]]
 ````
 
-### 🔓 Auth y Lógica
+#### 🔓 Auth y Lógica
 
 ````tabs
-tab: **CSRF en GraphQL**
-![[GraphQL - Auth y Logica#^graphql-auth-csrf]]
-
-tab: **Query Batching para Bypass**
-![[GraphQL - Auth y Logica#^graphql-auth-batching]]
-
 tab: **IDOR via Global IDs**
 ![[GraphQL - Auth y Logica#^graphql-auth-idor]]
 
 tab: **Mass Assignment via Mutations**
 ![[GraphQL - Auth y Logica#^graphql-auth-mass-assign]]
+
+tab: **Query Batching (Bypass Rate-Limit / 2FA)**
+![[GraphQL - Auth y Logica#^graphql-auth-batching]]
+
+tab: **CSRF en GraphQL**
+![[GraphQL - Auth y Logica#^graphql-auth-csrf]]
 ````
 
-### 💥 DoS
+#### 💥 DoS
 
 ````tabs
 tab: **Deeply Nested Queries**
@@ -81,53 +115,25 @@ tab: **Circular Fragments**
 ![[GraphQL - DoS#^graphql-dos-circular]]
 ````
 
-### 🛠️ Tooling
+---
+
+### 3. Tooling
 
 ````tabs
+tab: **graphw00f (Engine Fingerprint)**
+![[GraphQL - Tooling#^graphql-tool-graphw00f]]
+
 tab: **InQL (Burp Extension)**
 ![[GraphQL - Tooling#^graphql-tool-inql]]
+
+tab: **clairvoyance (Schema Recovery)**
+![[GraphQL - Tooling#^graphql-tool-clairvoyance]]
 
 tab: **graphql-cop (Security Audit)**
 ![[GraphQL - Tooling#^graphql-tool-cop]]
 
 tab: **GraphiQL / Altair / Postman**
 ![[GraphQL - Tooling#^graphql-tool-clients]]
-
-tab: **graphw00f (Engine Fingerprint)**
-![[GraphQL - Tooling#^graphql-tool-graphw00f]]
-
-tab: **clairvoyance (Schema Recovery)**
-![[GraphQL - Tooling#^graphql-tool-clairvoyance]]
-````
-
----
-
-## Detección y Reconocimiento
-
-### 🔍 Recon Activo
-
-````tabs
-tab: **Descubrir Endpoint**
-![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-endpoints]]
-
-tab: **Identificar Engine**
-![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-engine]]
-
-tab: **Probes de Detección**
-![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-probes]]
-````
-
-### 🗺️ Introspection y Schema Discovery
-
-````tabs
-tab: **Introspection Query**
-![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-query]]
-
-tab: **Field Suggestions (Typo Trick)**
-![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-suggestions]]
-
-tab: **Schema Recovery Tools**
-![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-tools]]
 ````
 
 ---

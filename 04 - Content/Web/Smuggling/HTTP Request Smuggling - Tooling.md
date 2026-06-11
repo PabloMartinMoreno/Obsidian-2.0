@@ -98,7 +98,6 @@ python3 h2csmuggler.py -x https://target/ \
 | `python3 -c "body = '...smuggled...'; print(len(body))"` | Calc CL bytes en script | Manual byte count. |
 | Turbo Intruder script con `requestsPerConnection=100` | Volume race en single conn | Stress test. |
 ^hrs-tool-turbo
-^hrs-tool-turbo
 
 ### Script Turbo Intruder ejemplo (CL.TE smuggle queue)
 
