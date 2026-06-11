@@ -34,7 +34,24 @@ linked:
 
 ## Cheatsheet
 
-### 📋 HTTP Header Injection
+### 1. Detección y Reconocimiento
+
+#### Recon Activo
+
+````tabs
+tab: **Identificar Puntos de Header Reflexion**
+![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-points]]
+
+tab: **Probes con CR/LF**
+![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-probes]]
+
+tab: **Detectar Response Splitting Potencial**
+![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-splitting]]
+````
+
+### 2. Explotación
+
+#### 📋 HTTP Header Injection
 
 ````tabs
 tab: **Set-Cookie Injection**
@@ -50,7 +67,7 @@ tab: **Custom Header Injection (X-*)**
 ![[CRLF Injection - HTTP Header Injection#^crlfi-header-custom]]
 ````
 
-### 💉 HTTP Response Splitting
+#### 💉 HTTP Response Splitting
 
 ````tabs
 tab: **Split Single Response en Two**
@@ -66,7 +83,7 @@ tab: **Cache Poisoning via Splitting**
 ![[CRLF Injection - HTTP Response Splitting#^crlfi-split-cache]]
 ````
 
-### 🔓 Bypass de Sanitización
+#### 🔓 Bypass de Sanitización
 
 ````tabs
 tab: **URL Encoding Variants**
@@ -85,7 +102,7 @@ tab: **Header Folding (Obsolete)**
 ![[CRLF Injection - Bypass de Sanitizacion#^crlfi-bypass-folding]]
 ````
 
-### 🎯 Vectores Específicos
+#### 🎯 Vectores Específicos
 
 ````tabs
 tab: **Email Header Injection (SMTP)**
@@ -104,7 +121,9 @@ tab: **Memcached / Redis / SMTP Newlines**
 ![[CRLF Injection - Vectores Especificos#^crlfi-specific-protocols]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **crlfuzz (Go)**
@@ -191,20 +210,7 @@ Otros protocolos también: SMTP, IMAP, POP3, FTP, IRC, Redis (RESP), Memcached. 
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Puntos de Header Reflexion**
-![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-points]]
-
-tab: **Probes con CR/LF**
-![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-probes]]
-
-tab: **Detectar Response Splitting Potencial**
-![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-splitting]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

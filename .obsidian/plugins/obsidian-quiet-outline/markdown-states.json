@@ -2247,29 +2247,29 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md": {
-    "scroll": 21.5311004784689,
+    "scroll": 63.25492492812267,
     "cursor": {
       "from": {
-        "line": 25,
+        "line": 26,
         "ch": 0
       },
       "to": {
-        "line": 25,
+        "line": 26,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/SSRF/SSRF - Básico.md": {
-    "scroll": 20.994791666666668,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 24,
-        "ch": 86
+        "ch": 85
       },
       "to": {
         "line": 24,
-        "ch": 86
+        "ch": 85
       }
     },
     "expandedKeys": []

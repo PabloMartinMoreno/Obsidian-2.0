@@ -1,20 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
-    },
-    {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
+      "basename": "Server-Side Request Forgery (SSRF)",
+      "path": "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md"
     },
     {
       "basename": "SSRF - Básico",
       "path": "04 - Content/Web/SSRF/SSRF - Básico.md"
     },
     {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md"
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
+    },
+    {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
     },
     {
       "basename": "Web Explotación",
