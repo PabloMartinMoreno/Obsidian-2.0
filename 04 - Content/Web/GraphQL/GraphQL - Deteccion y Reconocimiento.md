@@ -16,25 +16,28 @@ linked:
 ---
 # GraphQL - Detección y Reconocimiento
 
+> [!tip] Comando base
+> Cada `Body (-d)` de las tablas se lanza con:
+> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
+
 ---
 
 ## Identificar Endpoints
 
-Probe a cada path con: `curl -X POST -H "Content-Type: application/json" -d '{"query":"{__typename}"}' https://target<PATH>` → respuesta `{"data":{"__typename":"Query"}}` confirma GraphQL alive.
+Respuesta `{"data":{"__typename":"Query"}}` confirma GraphQL alive en ese path.
 
-| **Path a probar** | **Engine / Contexto** | **Cuándo** |
-|:---:|:---:|:---:|
-| `/graphql` | Genérico | Más común. |
-| `/api/graphql` | SPA backends | Apps modernas. |
-| `/v1/graphql` | Hasura (default) | Postgres-backed. |
-| `/v2/graphql`, `/v3/graphql` | Versionado | Edge cases. |
-| `/query`, `/api/query` | Custom | Apps custom. |
-| `/console/api/graphql` | Hasura console | Dev mode. |
-| `/api` (POST + JSON body) | Catch-all | Routing por content-type. |
-| `/.netlify/functions/graphql` | Netlify Functions | Serverless. |
-| `/_api/graphql` | Wix / Headless CMS | CMS specific. |
-| `/admin/api/graphql` | Shopify admin | E-commerce. |
-| `/storefront/api/graphql` | Shopify storefront | Public access. |
+| **Comando** | **Engine / Contexto** | **Cuándo** |
+|:---|:---|:---|
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/graphql` | Genérico | Más común. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/api/graphql` | SPA backends | Apps modernas. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/v1/graphql` | Hasura (default) | Postgres-backed. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/query` | Custom | Apps custom. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/console/api/graphql` | Hasura console | Dev mode. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/.netlify/functions/graphql` | Netlify Functions | Serverless. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/admin/api/graphql` | Shopify admin | E-commerce. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/storefront/api/graphql` | Shopify storefront | Public access. |
+
+Otros paths a probar con el mismo body: `/v2/graphql`, `/v3/graphql`, `/api/query`, `/api` (catch-all por content-type), `/_api/graphql` (Wix/Headless CMS). Para fuzzear todos de una, usar el loop / `ffuf` de abajo.
 ^graphql-detect-endpoints
 
 ### Fuzzing rápido
@@ -58,24 +61,17 @@ done
 
 ---
 
-Fingerprint automático: `graphw00f -d -t https://target/graphql` (ver workflow abajo). Señales manuales:
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---|:---|:---|
+| `graphw00f -d -t https://target/graphql` | Fingerprint automático del engine | Primera opción siempre. |
+| `curl -sI https://target/graphql \| grep -i 'server\|x-hasura\|x-powered-by'` | Headers que delatan engine (`apollo`, `x-hasura-*`) | Apollo / Hasura. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/graphql \| jq '.extensions'` | Campo `extensions` (`tracing`/`complexity`) varía por engine | Response inspection. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{a}"}' https://target/graphql` | Error con stack trace → delata stack (Django, Flask, Laravel, Scala…) | Verbose errors (dev mode). |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{__typename}"}' https://target/v1/graphql` | `200` en `/v1/graphql` + `x-hasura-*` | Confirma Hasura. |
+| `echo "$TARGET_HOST" \| grep -E 'appsync-api.*amazonaws'` | URL pattern AWS AppSync | AWS managed. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{node(id:\"X\"){id}}"}' https://target/graphql` | `node(id:)` global IDs → cliente Relay | Facebook style. |
 
-| **Engine / Señal** | **Cómo identificarlo** | **Stack** |
-|:---:|:---:|:---:|
-| Apollo Server | Header `Server: apollo` o response con `extensions.tracing` | JS/TS dominante. |
-| Hasura | Path `/v1/graphql` + Header `x-hasura-*` en response | Postgres-backed. |
-| graphene-django | Errores con traza Django/DRF | DRF + GraphQL. |
-| graphene-python | Errores con traza Flask/WSGI | Flask common. |
-| Strawberry | Modern Python, type hints en errores | Python. |
-| Ariadne | Schema-first Python | Less common. |
-| graphql-php | Mensajes de error Webonyx/graphql-php | PHP. |
-| graphql-yoga | Reemplaza middleware Express | JS/TS moderno. |
-| AppSync (AWS) | URL pattern `*.appsync-api.*.amazonaws.com` | AWS managed. |
-| Relay | Cliente usa global IDs `node(id:...)` | Facebook style. |
-| Lighthouse | Errores con traza Laravel | PHP popular. |
-| Sangria | Errores con traza Scala/JVM | Less common. |
-| Error verbosity | Query inválida → stack trace delata engine | Default dev mode. |
-| `extensions` field | Presencia + content varía por engine (`tracing`, `complexity`) | Response inspection. |
+> Engines comunes por señal: **Apollo** (`Server: apollo`, `extensions.tracing`), **Hasura** (`/v1/graphql`, `x-hasura-*`), **graphene-django/python** (traza Django/Flask en error), **graphql-php / Lighthouse** (traza PHP/Laravel), **Sangria** (traza Scala/JVM), **AppSync** (`*.appsync-api.*.amazonaws.com`).
 ^graphql-detect-engine
 
 ### graphw00f workflow
@@ -97,21 +93,27 @@ python main.py -t https://target -d
 
 ## Probes Básicos
 
-| **Probe** | **Query / Comando** | **Resultado esperado** |
-|:---:|:---:|:---:|
-| Confirmar endpoint | `{"query":"{__typename}"}` | `{"data":{"__typename":"Query"}}` confirma GraphQL. |
-| Confirmar mutation support | `{"query":"mutation{__typename}"}` | `{"data":{"__typename":"Mutation"}}` |
-| Confirmar subscription | `{"query":"subscription{__typename}"}` | Si retorna OK = subscriptions habilitadas (WS). |
-| GET method | `curl 'https://target/graphql?query={__typename}'` | Algunos engines aceptan GET — útil para CSRF / cache. |
-| POST con form-urlencoded | `curl -X POST -d 'query={__typename}' https://target/graphql` | Default rejecta (CSRF protection) — pero si acepta = vulnerable. |
-| POST con form en lugar de JSON | `curl -X POST -d '{"query":"{__typename}"}' https://target/graphql` (sin Content-Type JSON) | Bypass CSRF si engine lax. |
-| Verbose errors | Query inválida → ver stack trace | Disclosure del engine. |
-| Operation name | `?operationName=getMe&query={...}` | Multi-op support. |
-| Variables | `{"query":"query($x:Int){...}", "variables":{"x":1}}` | Confirm variables works. |
-| Fragments | `{"query":"{user{...UserFields}} fragment UserFields on User { id name }"}` | Confirm fragments. |
-| Field suggestions | Field con typo → ¿response sugiere alternative? | "Did you mean 'name'?" → suggestions activas. |
-| Aliases | `{"query":"{a:user{id} b:user{id}}"}` | Multiple calls en una query. |
-| Directives | `@skip`, `@include`, `@deprecated` | Schema feature. |
+Probes que usan el base POST — body en col1:
+
+| **Body (`-d`)** | **Qué obtenés** | **Cuándo** |
+|:---|:---|:---|
+| `{"query":"{__typename}"}` | `{"data":{"__typename":"Query"}}` confirma GraphQL | Confirmar endpoint. |
+| `{"query":"mutation{__typename}"}` | `{"data":{"__typename":"Mutation"}}` | Confirmar mutation support. |
+| `{"query":"subscription{__typename}"}` | OK = subscriptions habilitadas (WS) | Confirmar subscription. |
+| `{"query":"{nonexistent}"}` | Stack trace en error → engine disclosure | Verbose errors. |
+| `{"query":"{usr}"}` | `Did you mean "user"?` → suggestions on | Field suggestions. |
+| `{"query":"query($x:Int){__typename}","variables":{"x":1}}` | Confirma soporte de variables | Variables. |
+| `{"query":"{user{...F}} fragment F on User{id name}"}` | Confirma soporte de fragments | Fragments. |
+| `{"query":"{a:__typename b:__typename}"}` | Múltiples calls en una query | Aliases (batching/DoS pre-check). |
+
+Variantes de transporte (no usan el base estándar — comando completo):
+
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---|:---|:---|
+| `curl -sG 'https://target/graphql?query={__typename}'` | GET aceptado → vector CSRF / cache | GET method support. |
+| `curl -sX POST -d 'query={__typename}' https://target/graphql` | form-urlencoded aceptado | CSRF bypass (sin JSON CT). |
+| `curl -sX POST -H 'Content-Type: text/plain' -d '{"query":"{__typename}"}' https://target/graphql` | text/plain parseado | CSRF text/plain. |
+| `curl -sG 'https://target/graphql?operationName=getMe&query=query getMe{__typename}'` | Multi-operation support | operationName. |
 ^graphql-detect-probes
 
 ### Probe set completo

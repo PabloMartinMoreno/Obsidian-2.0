@@ -15,23 +15,32 @@ linked:
 ---
 # GraphQL - Introspection y Schema Discovery
 
+> [!tip] Comando base
+> Cada `Body (-d)` de las tablas se lanza con:
+> `curl -sX POST -H 'Content-Type: application/json' -d '<BODY>' https://target/graphql`
+
 ---
 
 ## Introspection Query Completa
 
-| **Query / Comando** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| `{__schema{types{name}}}` | Schema básico — lista todos los types | Probe inicial. |
-| Query canonical completa (ver abajo) | Dump full schema (types, fields, args, enums) | Dump exhaustivo. |
-| `{__schema{queryType{name fields{name}}}}` | Top-level Query fields | Entrypoints de lectura. |
-| `{__schema{mutationType{name fields{name}}}}` | Top-level Mutations | Entrypoints de escritura. |
-| `{__schema{subscriptionType{name fields{name}}}}` | Subscriptions (WS) | Real-time endpoints. |
-| `{__type(name:"User"){name fields{name type{name}}}}` | Detalle de un tipo | Inspección puntual. |
-| `{__type(name:"Role"){enumValues{name}}}` | Enum values | Listar enums. |
-| `{__type(name:"UserInput"){inputFields{name type{name}}}}` | Input fields | Mutation inputs (mass-assignment recon). |
-| `curl '?query={__schema{types{name}}}'` (GET) | Introspection vía GET | Si POST bloqueado, engine lax. |
-| `[{"query":"{__schema{types{name}}}"}]` (batch) | Introspection embebida en batch | Bypass si introspection filtrada inline. |
-| Si `__schema` → `errors` | Introspection deshabilitada → pasar a suggestions | Detecta defensa activa. |
+| **Body (`-d`)** | **Qué obtenés** | **Cuándo** |
+|:---|:---|:---|
+| `{"query":"{__schema{types{name}}}"}` | Schema básico — lista todos los types | Probe inicial. |
+| `{"query":"{__schema{queryType{name fields{name}}}}"}` | Top-level Query fields | Entrypoints de lectura. |
+| `{"query":"{__schema{mutationType{name fields{name}}}}"}` | Top-level Mutations | Entrypoints de escritura. |
+| `{"query":"{__schema{subscriptionType{name fields{name}}}}"}` | Subscriptions (WS) | Real-time endpoints. |
+| `{"query":"{__type(name:\"User\"){name fields{name type{name}}}}"}` | Detalle de un tipo | Inspección puntual. |
+| `{"query":"{__type(name:\"Role\"){enumValues{name}}}"}` | Enum values | Listar enums. |
+| `{"query":"{__type(name:\"UserInput\"){inputFields{name type{name}}}}"}` | Input fields | Mutation inputs (mass-assignment recon). |
+
+Variantes de bypass (no usan el base POST estándar):
+
+| **Comando** | **Qué obtenés** | **Cuándo** |
+|:---|:---|:---|
+| `curl -sG --data-urlencode 'query={__schema{types{name}}}' https://target/graphql` | Introspection vía GET | POST bloqueado, engine lax. |
+| `curl -sX POST -H 'Content-Type: application/json' -d '[{"query":"{__schema{types{name}}}"}]' https://target/graphql` | Introspection embebida en batch | Introspection filtrada inline. |
+
+> Si `__schema` retorna `errors` → introspection deshabilitada, pasar a **Field Suggestions** o **canonical query** (abajo).
 ^graphql-introspect-query
 
 ### Introspection canonical query
@@ -104,16 +113,16 @@ curl -X POST -H "Content-Type: application/json" \
 
 Con introspection deshabilitada, muchos engines igual **sugieren el field correcto en el mensaje de error** ante un typo ("Did you mean ...?") → permite reconstruir el schema parcialmente. Disabled en Apollo Server v4+.
 
-| **Query (con typo)** | **Qué obtenés** | **Cuándo** |
-|:---:|:---:|:---:|
-| `{usr}` | Error `Did you mean "user"?` → confirma field | Probe básico single-field. |
-| `{abc}` | Lista de sugerencias top del root | Multi-field discovery. |
-| `{a}`, `{b}`, … `{z}` | Itera por prefijo → fields que empiezan con cada letra | Enumeración por fuerza bruta. |
-| `{aa}`, `{ab}`, `{ac}`… | Itera con 2 chars | Discovery más profundo. |
-| `mutation{updateUser(input:{usrnam:"x"})}` | Error `Did you mean "username"?` → input fields | Discover input fields (mass-assignment). |
-| `{user(idx:1)}` | Error `Did you mean "id"?` → nombres de argumentos | Argument discovery. |
-| `{users(role:ADMI)}` | Error `Did you mean "ADMIN"?` → enum values | Enum discovery. |
-| `query($x:UsrInput){...}` | Error `Did you mean "UserInput"?` → type names | Type discovery via variable. |
+| **Body (`-d`)** | **Qué obtenés** | **Cuándo** |
+|:---|:---|:---|
+| `{"query":"{usr}"}` | Error `Did you mean "user"?` → confirma field | Probe básico single-field. |
+| `{"query":"{abc}"}` | Lista de sugerencias top del root | Multi-field discovery. |
+| `{"query":"{a}"}` … `{"query":"{z}"}` | Itera por prefijo → fields que empiezan con cada letra | Enumeración por fuerza bruta. |
+| `{"query":"{aa}"}`, `{"query":"{ab}"}`… | Itera con 2 chars | Discovery más profundo. |
+| `{"query":"mutation{updateUser(input:{usrnam:\"x\"})}"}` | Error `Did you mean "username"?` → input fields | Input fields (mass-assignment). |
+| `{"query":"{user(idx:1){id}}"}` | Error `Did you mean "id"?` → nombres de argumentos | Argument discovery. |
+| `{"query":"{users(role:ADMI){id}}"}` | Error `Did you mean "ADMIN"?` → enum values | Enum discovery. |
+| `{"query":"query($x:UsrInput){__typename}"}` | Error `Did you mean "UserInput"?` → type names | Type discovery via variable. |
 ^graphql-introspect-suggestions
 
 ### clairvoyance — automatizar suggestions
