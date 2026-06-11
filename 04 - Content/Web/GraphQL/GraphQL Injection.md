@@ -17,6 +17,8 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[GraphQL - Introspection y Schema Discovery]]"
+  - "[[GraphQL - Deteccion y Reconocimiento]]"
   - "[[GraphQL - Inyecciones via Resolvers]]"
   - "[[GraphQL - Auth y Logica]]"
   - "[[GraphQL - DoS]]"
@@ -91,6 +93,26 @@ tab: **graphql-cop (Security Audit)**
 tab: **GraphiQL / Altair / Postman**
 ![[GraphQL - Tooling#^graphql-tool-clients]]
 ````
+
+---
+
+## Detección y Reconocimiento
+
+### Recon activo
+
+![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-endpoints]]
+
+![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-engine]]
+
+![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-probes]]
+
+### Introspection y Schema Discovery
+
+![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-query]]
+
+![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-suggestions]]
+
+![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-tools]]
 
 ---
 

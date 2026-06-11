@@ -17,6 +17,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[RFI - Deteccion y Reconocimiento]]"
   - "[[RFI - Vectores Basicos]]"
   - "[[RFI - PHP Wrappers y Schemes]]"
   - "[[RFI - Bypass de Filtros]]"
@@ -210,6 +211,15 @@ Encontrado mostly en:
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[RFI - Deteccion y Reconocimiento#^rfi-detect-endpoints]]
+
+![[RFI - Deteccion y Reconocimiento#^rfi-detect-probes]]
+
+![[RFI - Deteccion y Reconocimiento#^rfi-detect-php]]
+
 
 ### Indicadores en código backend
 

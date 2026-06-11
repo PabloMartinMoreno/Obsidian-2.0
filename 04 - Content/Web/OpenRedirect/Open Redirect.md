@@ -18,6 +18,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Open Redirect - Deteccion y Reconocimiento]]"
   - "[[Open Redirect - Vectores Basicos]]"
   - "[[Open Redirect - Bypass de Validacion]]"
   - "[[Open Redirect - Vectores Especificos]]"
@@ -190,6 +191,15 @@ OWASP Top 10 históricamente — A10 en 2013, removed después por considerarse 
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Open Redirect - Deteccion y Reconocimiento#^or-detect-params]]
+
+![[Open Redirect - Deteccion y Reconocimiento#^or-detect-endpoints]]
+
+![[Open Redirect - Deteccion y Reconocimiento#^or-detect-types]]
+
 
 ### Indicadores en código backend
 

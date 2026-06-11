@@ -18,6 +18,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[HTML Injection - Deteccion y Reconocimiento]]"
   - "[[HTML Injection - Vectores Comunes]]"
   - "[[HTML Injection - Inyeccion Sin Script]]"
   - "[[HTML Injection - Bypass de Filtros]]"
@@ -204,6 +205,15 @@ HTML Injection puede **escalar a XSS** si filtros incompletos permiten event han
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-points]]
+
+![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-probes]]
+
+![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-vs-xss]]
+
 
 ### Indicadores en código backend
 

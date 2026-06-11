@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[LDAP Injection - Deteccion y Reconocimiento]]"
   - "[[LDAP Injection - Auth Bypass]]"
   - "[[LDAP Injection - Info Disclosure y Blind]]"
   - "[[LDAP Injection - Filter Manipulation]]"
@@ -205,6 +206,15 @@ filterlist     = filter+
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-endpoints]]
+
+![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-probes]]
+
+![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-fingerprint]]
+
 
 ### Indicadores en código backend
 

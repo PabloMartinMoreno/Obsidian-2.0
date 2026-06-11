@@ -17,6 +17,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Clickjacking - Deteccion y Reconocimiento]]"
   - "[[Clickjacking - Vectores Basicos]]"
   - "[[Clickjacking - Variantes Avanzadas]]"
   - "[[Clickjacking - Bypass de Anti-Framing]]"
@@ -214,6 +215,15 @@ Vector existe desde 2008 (Hansen + Grossman). Defensa moderna: `X-Frame-Options`
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-headers]]
+
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-csp]]
+
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-framing]]
+
 
 ### Indicadores en código backend
 

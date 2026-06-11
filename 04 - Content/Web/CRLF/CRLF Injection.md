@@ -22,6 +22,7 @@ linked:
   - "[[CRLF Injection - Bypass de Sanitizacion]]"
   - "[[CRLF Injection - Vectores Especificos]]"
   - "[[CRLF Injection - Tooling]]"
+  - "[[CRLF Injection - Deteccion y Reconocimiento]]"
   - "[[HTTP Request Smuggling]]"
   - "[[Web Cache Poisoning]]"
   - "[[Cross-Site Scripting (XSS)]]"
@@ -191,6 +192,14 @@ Otros protocolos también: SMTP, IMAP, POP3, FTP, IRC, Redis (RESP), Memcached. 
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-points]]
+
+![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-probes]]
+
+![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-splitting]]
 
 ### Indicadores en código backend
 

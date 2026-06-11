@@ -22,6 +22,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Session Hijacking - Deteccion y Reconocimiento]]"
   - "[[Session Hijacking - Vectores de Robo]]"
   - "[[Session Hijacking - Cookie Tampering y Forging]]"
   - "[[Session Hijacking - Fixation y Replay]]"
@@ -216,6 +217,15 @@ OWASP Top 10 — A01:2021 Broken Access Control + A07:2021 Identification and Au
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-mechanism]]
+
+![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-cookie-attrs]]
+
+![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-lifecycle]]
+
 
 ### Indicadores en código backend
 

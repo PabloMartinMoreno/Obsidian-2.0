@@ -22,6 +22,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[JWT - Deteccion y Reconocimiento]]"
   - "[[JWT - Ataques al Algoritmo]]"
   - "[[JWT - Inyeccion en Headers]]"
   - "[[JWT - Manipulacion de Claims]]"
@@ -167,6 +168,13 @@ xxxxxxxxxxx.yyyyyyyyyyy.zzzzzzzzzzz
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[JWT - Deteccion y Reconocimiento#^jwt-detect-request]]
+
+![[JWT - Deteccion y Reconocimiento#^jwt-detect-decode]]
+
 
 ### Indicadores en código backend
 

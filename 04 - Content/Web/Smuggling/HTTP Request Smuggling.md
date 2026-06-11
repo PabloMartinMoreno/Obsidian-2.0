@@ -20,6 +20,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[HTTP Request Smuggling - Deteccion]]"
   - "[[HTTP Request Smuggling - Variantes Clasicas]]"
   - "[[HTTP Request Smuggling - HTTP2 Downgrade]]"
   - "[[HTTP Request Smuggling - Explotacion]]"
@@ -179,6 +180,15 @@ tab: **Connection: close Abuse**
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[HTTP Request Smuggling - Deteccion#^hrs-detect-timing]]
+
+![[HTTP Request Smuggling - Deteccion#^hrs-detect-differential]]
+
+![[HTTP Request Smuggling - Deteccion#^hrs-detect-h2]]
+
 
 ### Indicadores arquitecturales
 

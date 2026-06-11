@@ -20,6 +20,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Insecure Deserialization - Deteccion y Reconocimiento]]"
   - "[[Insecure Deserialization - Object Injection]]"
   - "[[Insecure Deserialization - Formatos Estructurados]]"
   - "[[Insecure Deserialization - Tooling]]"
@@ -154,6 +155,13 @@ Vector clase A — **OWASP Top 10** desde 2013. CVE históricos masivos: Jenkins
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-formats]]
+
+![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-fingerprint]]
+
 
 ### Indicadores en código backend
 

@@ -16,6 +16,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[SSRF - Reconocimiento]]"
   - "[[SSRF - Básico]]"
   - "[[SSRF - Protocolos Alternativos]]"
   - "[[SSRF - Blind SSRF]]"
@@ -56,6 +57,14 @@ tab: **Cloud Metadata (AWS/GCP/Azure)**
 ---
 
 > **Flujo examen HTB CWES/CBBH** → ver [[SSRF - CWES]] (índice linealizado: mecanismo lógico → reconocimiento → explotación → gopher smuggling, orientado al lab).
+
+---
+
+## Detección y Reconocimiento
+
+### Recon activo
+
+![[SSRF - Reconocimiento#^ssrf-reconocimiento]]
 
 ---
 

@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[CSRF - Deteccion y Reconocimiento]]"
   - "[[CSRF - Vectores de Ataque]]"
   - "[[CSRF - Bypass de Token]]"
   - "[[CSRF - Bypass de SameSite y Referer]]"
@@ -182,6 +183,15 @@ XSS frecuentemente "rompe" CSRF defenses porque XSS puede leer el token → forj
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[CSRF - Deteccion y Reconocimiento#^csrf-detect-endpoints]]
+
+![[CSRF - Deteccion y Reconocimiento#^csrf-detect-tokens]]
+
+![[CSRF - Deteccion y Reconocimiento#^csrf-detect-protections]]
+
 
 ### Indicadores en código backend
 

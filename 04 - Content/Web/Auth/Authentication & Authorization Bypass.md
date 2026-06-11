@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Auth Bypass - Deteccion y Reconocimiento]]"
   - "[[Auth Bypass - Bypass de Autenticacion]]"
   - "[[Auth Bypass - Bypass de Autorizacion]]"
   - "[[Auth Bypass - Tokens y Sessions]]"
@@ -216,6 +217,15 @@ Auth fails → atacante = different user. Authz fails → atacante = same user c
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-endpoints]]
+
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-enum]]
+
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-flow]]
+
 
 ### Indicadores en código backend
 

@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Subdomain Takeover - Deteccion y Reconocimiento]]"
   - "[[Subdomain Takeover - Tipos por Servicio]]"
   - "[[Subdomain Takeover - NS Takeover y DNS-Level]]"
   - "[[Subdomain Takeover - Vectores de Explotacion]]"
@@ -212,6 +213,17 @@ Vector clase A en bug bounty — high-paid (HackerOne / Bugcrowd $500-$10000+). 
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-enum]]
+
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-records]]
+
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-dangling]]
+
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-fingerprint]]
+
 
 ### Indicadores
 

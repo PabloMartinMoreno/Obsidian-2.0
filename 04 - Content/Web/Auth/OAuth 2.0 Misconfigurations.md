@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[OAuth 2.0 - Deteccion y Reconocimiento]]"
   - "[[OAuth 2.0 - redirect_uri Manipulation]]"
   - "[[OAuth 2.0 - State y CSRF]]"
   - "[[OAuth 2.0 - Code y Token Theft]]"
@@ -226,6 +227,19 @@ OAuth = framework, no protocol — cada provider implementa diferente. Los bugs 
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-wellknown]]
+
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-flow]]
+
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-clientid]]
+
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-response]]
+
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-redirect]]
+
 
 ### Indicadores en código backend
 

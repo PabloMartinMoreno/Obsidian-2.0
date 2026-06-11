@@ -18,6 +18,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[HPP - Deteccion y Reconocimiento]]"
   - "[[HPP - Server-Side]]"
   - "[[HPP - Client-Side]]"
   - "[[HPP - Per-Stack Behavior]]"
@@ -197,6 +198,15 @@ Si frontend (WAF) y backend implementan distinto → atacante exploita different
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[HPP - Deteccion y Reconocimiento#^hpp-detect-endpoints]]
+
+![[HPP - Deteccion y Reconocimiento#^hpp-detect-probes]]
+
+![[HPP - Deteccion y Reconocimiento#^hpp-detect-stack]]
+
 
 ### Indicadores en código backend
 

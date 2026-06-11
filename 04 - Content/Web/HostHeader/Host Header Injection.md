@@ -18,6 +18,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Host Header Injection - Deteccion y Reconocimiento]]"
   - "[[Host Header Injection - Vectores Comunes]]"
   - "[[Host Header Injection - Headers Alternativos]]"
   - "[[Host Header Injection - Bypass de Validacion]]"
@@ -198,6 +199,15 @@ HHI es vector base, frecuentemente combinable con cache poisoning para amplifica
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-endpoints]]
+
+![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-probes]]
+
+![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-multi-header]]
+
 
 ### Indicadores en código backend
 

@@ -18,6 +18,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Prototype Pollution - Deteccion y Reconocimiento]]"
   - "[[Prototype Pollution - Vectores Server-Side]]"
   - "[[Prototype Pollution - Vectores Client-Side]]"
   - "[[Prototype Pollution - Gadgets y Explotacion]]"
@@ -196,6 +197,15 @@ Atacante NO necesita acceso directo a Object.prototype — basta con inyectar la
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-sinks]]
+
+![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-probes]]
+
+![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-static]]
+
 
 ### Indicadores en código backend
 

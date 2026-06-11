@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Web Cache Poisoning - Deteccion y Reconocimiento]]"
   - "[[Web Cache Poisoning - Unkeyed Inputs]]"
   - "[[Web Cache Poisoning - Vectores de Poisoning]]"
   - "[[Web Cache Poisoning - Cache Deception]]"
@@ -187,6 +188,15 @@ Vector clase A — descubierto por James Kettle (PortSwigger, 2018-2020). CVEs m
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-layer]]
+
+![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-cachekey]]
+
+![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-hitmiss]]
+
 
 ### Indicadores de stack vulnerable
 

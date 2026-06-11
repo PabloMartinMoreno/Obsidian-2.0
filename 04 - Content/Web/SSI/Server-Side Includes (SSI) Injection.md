@@ -17,6 +17,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[SSI - Deteccion y Reconocimiento]]"
   - "[[SSI - Ejecucion de Comandos]]"
   - "[[SSI - Inclusion de Archivos]]"
   - "[[SSI - Information Gathering]]"
@@ -176,6 +177,15 @@ OWASP Testing Guide — OTG-INPVAL-009. Vector legacy pero aún encontrado en st
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[SSI - Deteccion y Reconocimiento#^ssi-detect-enabled]]
+
+![[SSI - Deteccion y Reconocimiento#^ssi-detect-probes]]
+
+![[SSI - Deteccion y Reconocimiento#^ssi-detect-fingerprint]]
+
 
 ### Indicadores en código backend
 

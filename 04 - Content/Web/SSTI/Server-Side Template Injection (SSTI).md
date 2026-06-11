@@ -17,6 +17,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[SSTI - Deteccion y Fingerprinting]]"
   - "[[SSTI - Ejecucion por Engine]]"
   - "[[SSTI - Sandbox Escape]]"
   - "[[SSTI - Tooling]]"
@@ -170,6 +171,15 @@ SSTI es subcase de code injection — pero específico al lenguaje del template 
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[SSTI - Deteccion y Fingerprinting#^ssti-detect-polyglot]]
+
+![[SSTI - Deteccion y Fingerprinting#^ssti-detect-delimiters]]
+
+![[SSTI - Deteccion y Fingerprinting#^ssti-detect-confirmacion]]
+
 
 ### Indicadores en código backend
 

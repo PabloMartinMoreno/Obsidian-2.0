@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Mass Assignment - Deteccion y Reconocimiento]]"
   - "[[Mass Assignment - Vectores Comunes]]"
   - "[[Mass Assignment - Frameworks Vulnerables]]"
   - "[[Mass Assignment - Bypass de Whitelists]]"
@@ -209,6 +210,15 @@ Si `request_body` incluye `{"name": "x", "is_admin": true}`, backend asigna `is_
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-endpoints]]
+
+![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-hidden]]
+
+![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-model]]
+
 
 ### Indicadores en código backend
 

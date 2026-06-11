@@ -68,6 +68,15 @@ tab: **Comandos Invertidos**
 tab: **Comandos Codificados**
 ![[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)#^ci-avanzado-comandos-codificados]]
 
+tab: **Herramientas Automáticas (Linux)**
+![[Command Injection - Herramientas de Obfuscación Automática#^ci-herramienta-linux]]
+
+tab: **Herramientas Automáticas (Windows)**
+![[Command Injection - Herramientas de Obfuscación Automática#^ci-herramienta-windows]]
+
+tab: **Otras Herramientas**
+![[Command Injection - Herramientas de Obfuscación Automática#^ci-herramienta-otras]]
+
 ````
 
 ---
@@ -153,5 +162,12 @@ El atacante está sentado en su casa mirando los registros (logs) de su servidor
 `ZmxhZ3tTM3VyM19IYWNrM3J9.atacante.com`
 El atacante solo tiene que tomar ese subdominio, pasarlo por un decodificador Base64 y habrá robado el archivo `/flag.txt` sin que la aplicación haya mostrado un solo error en pantalla, y esquivando un WAF altamente restrictivo.
 
+---
+
+## Prevención
+
+![[Command Injection - Prevención#^ci-prev-app]]
+
+![[Command Injection - Prevención#^ci-prev-server]]
 
 ---

@@ -17,6 +17,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[HTTP Brute Forcing - Deteccion y Reconocimiento]]"
   - "[[HTTP Brute Forcing - Targets de Ataque]]"
   - "[[HTTP Brute Forcing - Wordlists y Strategy]]"
   - "[[HTTP Brute Forcing - Bypass Rate-Limit]]"
@@ -233,6 +234,19 @@ Brute force es **bug bounty bread-and-butter** — incluso con defensas modernas
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-endpoints]]
+
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-responsediff]]
+
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-ratelimit]]
+
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-lockout]]
+
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-enum]]
+
 
 ### Indicadores en código backend
 

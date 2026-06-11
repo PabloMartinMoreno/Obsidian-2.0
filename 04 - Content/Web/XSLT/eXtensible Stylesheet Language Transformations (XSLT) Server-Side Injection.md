@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[XSLT - Fingerprinting]]"
   - "[[XSLT - Lectura de Archivos (document)]]"
   - "[[XSLT - SSRF]]"
   - "[[XSLT - Extension Functions (RCE)]]"
@@ -174,6 +175,13 @@ Si la app acepta XML pero las entidades externas están deshabilitadas → puede
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[XSLT - Fingerprinting#^xslt-fp-detection]]
+
+![[XSLT - Fingerprinting#^xslt-fp-engines]]
+
 
 ### Indicadores de stack XSLT
 

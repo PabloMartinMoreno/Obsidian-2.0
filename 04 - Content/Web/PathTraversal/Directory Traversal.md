@@ -20,6 +20,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Directory Traversal - Deteccion y Reconocimiento]]"
   - "[[Directory Traversal - Payloads Basicos]]"
   - "[[Directory Traversal - Bypass de Sanitizacion]]"
   - "[[Directory Traversal - Vectores OS y Stack]]"
@@ -188,6 +189,15 @@ Path Traversal es vector **agnóstico al lenguaje** — afecta cualquier app que
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-params]]
+
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-probes]]
+
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-os]]
+
 
 ### Indicadores en código backend
 

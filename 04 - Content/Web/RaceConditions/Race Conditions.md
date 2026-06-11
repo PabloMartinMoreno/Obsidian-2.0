@@ -19,6 +19,7 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: CheatSheet
 linked:
+  - "[[Race Conditions - Deteccion y Reconocimiento]]"
   - "[[Race Conditions - Tipos]]"
   - "[[Race Conditions - Single-Packet Attack]]"
   - "[[Race Conditions - Vectores Especificos]]"
@@ -208,6 +209,17 @@ HTTP/2 single-packet attack (Kettle 2023) eliminó la última excusa: ahora clie
 ---
 
 ## Detección rápida
+
+### Recon activo
+
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-endpoints]]
+
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-toctou]]
+
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-atomicity]]
+
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-window]]
+
 
 ### Indicadores en código backend
 
