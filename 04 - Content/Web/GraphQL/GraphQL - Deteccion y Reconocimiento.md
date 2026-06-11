@@ -20,22 +20,21 @@ linked:
 
 ## Identificar Endpoints
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+Probe a cada path con: `curl -X POST -H "Content-Type: application/json" -d '{"query":"{__typename}"}' https://target<PATH>` → respuesta `{"data":{"__typename":"Query"}}` confirma GraphQL alive.
+
+| **Path a probar** | **Engine / Contexto** | **Cuándo** |
 |:---:|:---:|:---:|
-| `/graphql` | `curl -X POST -H "Content-Type: application/json" -d '{"query":"{__typename}"}' https://target/graphql` | Más común. |
-| `/api/graphql` | Mismo probe | Apps modernas. |
-| `/v1/graphql` | Hasura default | Hasura framework. |
+| `/graphql` | Genérico | Más común. |
+| `/api/graphql` | SPA backends | Apps modernas. |
+| `/v1/graphql` | Hasura (default) | Postgres-backed. |
 | `/v2/graphql`, `/v3/graphql` | Versionado | Edge cases. |
-| `/query` | Custom | Algunas apps. |
-| `/api/query` | Custom | Apps custom. |
+| `/query`, `/api/query` | Custom | Apps custom. |
 | `/console/api/graphql` | Hasura console | Dev mode. |
-| `/api` (con POST + JSON body) | Catch-all endpoint | Apps que routing por content-type. |
+| `/api` (POST + JSON body) | Catch-all | Routing por content-type. |
 | `/.netlify/functions/graphql` | Netlify Functions | Serverless. |
 | `/_api/graphql` | Wix / Headless CMS | CMS specific. |
-| `/admin/api/graphql` | Shopify-style admin | E-commerce. |
+| `/admin/api/graphql` | Shopify admin | E-commerce. |
 | `/storefront/api/graphql` | Shopify storefront | Public access. |
-| `SecLists/Discovery/Web-Content/graphql.txt` | Wordlist directorios GraphQL | Bulk fuzzing. |
-| `{__typename}` retorna `{"data":{"__typename":"Query"}}` | Probe alive endpoint | Confirma GraphQL alive. |
 ^graphql-detect-endpoints
 
 ### Fuzzing rápido
@@ -59,26 +58,24 @@ done
 
 ---
 
-## Fingerprint del Engine
+Fingerprint automático: `graphw00f -d -t https://target/graphql` (ver workflow abajo). Señales manuales:
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Engine / Señal** | **Cómo identificarlo** | **Stack** |
 |:---:|:---:|:---:|
 | Apollo Server | Header `Server: apollo` o response con `extensions.tracing` | JS/TS dominante. |
 | Hasura | Path `/v1/graphql` + Header `x-hasura-*` en response | Postgres-backed. |
-| graphene-django | Stack Python con Django | DRF + GraphQL. |
-| graphene-python | Standalone Python | Flask common. |
-| Strawberry | Modern Python | Type hints. |
+| graphene-django | Errores con traza Django/DRF | DRF + GraphQL. |
+| graphene-python | Errores con traza Flask/WSGI | Flask common. |
+| Strawberry | Modern Python, type hints en errores | Python. |
 | Ariadne | Schema-first Python | Less common. |
-| graphql-php | Webonyx/graphql-php | PHP. |
-| graphql-yoga | Modern JS/TS | Replaces Express middleware. |
+| graphql-php | Mensajes de error Webonyx/graphql-php | PHP. |
+| graphql-yoga | Reemplaza middleware Express | JS/TS moderno. |
 | AppSync (AWS) | URL pattern `*.appsync-api.*.amazonaws.com` | AWS managed. |
-| Relay | Cliente — usa global IDs `node(id:...)` | Facebook style. |
-| Stepzen | Cloud platform | Specific. |
-| Sangria | Scala | Less common. |
-| Lighthouse | Laravel PHP | Stack PHP popular. |
-| `graphw00f -d -t https://target/graphql` | graphw00f | Auto fingerprint. |
-| Error verbosity | Stack trace en errors → engine info | Default dev mode. |
-| `extensions` field | Presencia + content varía por engine | `tracing`, `complexity`, etc. |
+| Relay | Cliente usa global IDs `node(id:...)` | Facebook style. |
+| Lighthouse | Errores con traza Laravel | PHP popular. |
+| Sangria | Errores con traza Scala/JVM | Less common. |
+| Error verbosity | Query inválida → stack trace delata engine | Default dev mode. |
+| `extensions` field | Presencia + content varía por engine (`tracing`, `complexity`) | Response inspection. |
 ^graphql-detect-engine
 
 ### graphw00f workflow

@@ -186,12 +186,16 @@ XSS frecuentemente "rompe" CSRF defenses porque XSS puede leer el token → forj
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints State-Changing**
 ![[CSRF - Deteccion y Reconocimiento#^csrf-detect-endpoints]]
 
+tab: **Análisis de Tokens Existentes**
 ![[CSRF - Deteccion y Reconocimiento#^csrf-detect-tokens]]
 
+tab: **Verificar SameSite / Referer Protections**
 ![[CSRF - Deteccion y Reconocimiento#^csrf-detect-protections]]
-
+````
 
 ### Indicadores en código backend
 

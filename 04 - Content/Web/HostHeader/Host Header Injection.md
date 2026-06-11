@@ -202,12 +202,16 @@ HHI es vector base, frecuentemente combinable con cache poisoning para amplifica
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints que Reflejan / Dependen de Host**
 ![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-endpoints]]
 
+tab: **Probes con Valores Arbitrarios**
 ![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-probes]]
 
+tab: **Test Multi-Header Behavior**
 ![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-multi-header]]
-
+````
 
 ### Indicadores en código backend
 

@@ -174,12 +174,16 @@ SSTI es subcase de code injection — pero específico al lenguaje del template 
 
 ### Recon activo
 
+````tabs
+tab: **Probes Polyglot**
 ![[SSTI - Deteccion y Fingerprinting#^ssti-detect-polyglot]]
 
+tab: **Identificación por Delimitador**
 ![[SSTI - Deteccion y Fingerprinting#^ssti-detect-delimiters]]
 
+tab: **Confirmación con Expresión Aritmética**
 ![[SSTI - Deteccion y Fingerprinting#^ssti-detect-confirmacion]]
-
+````
 
 ### Indicadores en código backend
 

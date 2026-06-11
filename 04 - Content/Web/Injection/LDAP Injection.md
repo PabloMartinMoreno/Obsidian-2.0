@@ -209,12 +209,16 @@ filterlist     = filter+
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints con LDAP Backend**
 ![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-endpoints]]
 
+tab: **Probes de Inyección**
 ![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-probes]]
 
+tab: **Fingerprint del Directory Server**
 ![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-fingerprint]]
-
+````
 
 ### Indicadores en código backend
 

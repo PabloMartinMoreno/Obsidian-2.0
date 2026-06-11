@@ -191,12 +191,16 @@ Vector clase A — descubierto por James Kettle (PortSwigger, 2018-2020). CVEs m
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Capa de Caché**
 ![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-layer]]
 
+tab: **Análisis del Cache Key**
 ![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-cachekey]]
 
+tab: **Probes Hit/Miss**
 ![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-hitmiss]]
-
+````
 
 ### Indicadores de stack vulnerable
 

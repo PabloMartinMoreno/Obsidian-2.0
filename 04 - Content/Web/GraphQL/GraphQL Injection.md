@@ -104,21 +104,31 @@ tab: **clairvoyance (Schema Recovery)**
 
 ## Detección y Reconocimiento
 
-### Recon activo
+### 🔍 Recon Activo
 
+````tabs
+tab: **Descubrir Endpoint**
 ![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-endpoints]]
 
+tab: **Identificar Engine**
 ![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-engine]]
 
+tab: **Probes de Detección**
 ![[GraphQL - Deteccion y Reconocimiento#^graphql-detect-probes]]
+````
 
-### Introspection y Schema Discovery
+### 🗺️ Introspection y Schema Discovery
 
+````tabs
+tab: **Introspection Query**
 ![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-query]]
 
+tab: **Field Suggestions (Typo Trick)**
 ![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-suggestions]]
 
+tab: **Schema Recovery Tools**
 ![[GraphQL - Introspection y Schema Discovery#^graphql-introspect-tools]]
+````
 
 ---
 

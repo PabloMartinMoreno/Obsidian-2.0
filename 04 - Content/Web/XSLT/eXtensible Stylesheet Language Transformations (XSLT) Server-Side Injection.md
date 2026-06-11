@@ -178,10 +178,13 @@ Si la app acepta XML pero las entidades externas están deshabilitadas → puede
 
 ### Recon activo
 
+````tabs
+tab: **Detección Básica**
 ![[XSLT - Fingerprinting#^xslt-fp-detection]]
 
+tab: **Fingerprinting de Motores**
 ![[XSLT - Fingerprinting#^xslt-fp-engines]]
-
+````
 
 ### Indicadores de stack XSLT
 

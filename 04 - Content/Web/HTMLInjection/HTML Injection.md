@@ -208,12 +208,16 @@ HTML Injection puede **escalar a XSS** si filtros incompletos permiten event han
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Puntos Reflejados**
 ![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-points]]
 
+tab: **Probes con Tags Básicos**
 ![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-probes]]
 
+tab: **Diferenciar HTML Injection vs XSS**
 ![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-vs-xss]]
-
+````
 
 ### Indicadores en código backend
 

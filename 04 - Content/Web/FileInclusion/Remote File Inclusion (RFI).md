@@ -214,12 +214,16 @@ Encontrado mostly en:
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints Vulnerables**
 ![[RFI - Deteccion y Reconocimiento#^rfi-detect-endpoints]]
 
+tab: **Probes con URL Remota**
 ![[RFI - Deteccion y Reconocimiento#^rfi-detect-probes]]
 
+tab: **Detectar PHP Version + `allow_url_include`**
 ![[RFI - Deteccion y Reconocimiento#^rfi-detect-php]]
-
+````
 
 ### Indicadores en código backend
 

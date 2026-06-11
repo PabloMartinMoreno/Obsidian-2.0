@@ -230,16 +230,22 @@ OAuth = framework, no protocol — cada provider implementa diferente. Los bugs 
 
 ### Recon activo
 
+````tabs
+tab: **Discovery via .well-known**
 ![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-wellknown]]
 
+tab: **Identificación de Flow Type**
 ![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-flow]]
 
+tab: **Client ID Enumeration**
 ![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-clientid]]
 
+tab: **Response Type & Scope Discovery**
 ![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-response]]
 
+tab: **Redirect URI Validation Type**
 ![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-redirect]]
-
+````
 
 ### Indicadores en código backend
 

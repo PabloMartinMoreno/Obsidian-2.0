@@ -192,12 +192,16 @@ Path Traversal es vector **agnóstico al lenguaje** — afecta cualquier app que
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints con File Params**
 ![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-params]]
 
+tab: **Probes Iniciales**
 ![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-probes]]
 
+tab: **Detectar OS y Stack**
 ![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-os]]
-
+````
 
 ### Indicadores en código backend
 

@@ -180,12 +180,16 @@ OWASP Testing Guide — OTG-INPVAL-009. Vector legacy pero aún encontrado en st
 
 ### Recon activo
 
+````tabs
+tab: **Identificar SSI Habilitado**
 ![[SSI - Deteccion y Reconocimiento#^ssi-detect-enabled]]
 
+tab: **Probes Iniciales**
 ![[SSI - Deteccion y Reconocimiento#^ssi-detect-probes]]
 
+tab: **Fingerprint del Server (Recon Profundo)**
 ![[SSI - Deteccion y Reconocimiento#^ssi-detect-fingerprint]]
-
+````
 
 ### Indicadores en código backend
 

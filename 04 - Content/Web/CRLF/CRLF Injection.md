@@ -195,11 +195,16 @@ Otros protocolos también: SMTP, IMAP, POP3, FTP, IRC, Redis (RESP), Memcached. 
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Puntos de Header Reflexion**
 ![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-points]]
 
+tab: **Probes con CR/LF**
 ![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-probes]]
 
+tab: **Detectar Response Splitting Potencial**
 ![[CRLF Injection - Deteccion y Reconocimiento#^crlfi-detect-splitting]]
+````
 
 ### Indicadores en código backend
 

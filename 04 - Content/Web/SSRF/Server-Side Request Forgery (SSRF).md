@@ -62,9 +62,12 @@ tab: **Cloud Metadata (AWS/GCP/Azure)**
 
 ## Detección y Reconocimiento
 
-### Recon activo
+### 🔍 Recon Activo
 
+````tabs
+tab: **Probes y Port Enum Interno**
 ![[SSRF - Reconocimiento#^ssrf-reconocimiento]]
+````
 
 ---
 

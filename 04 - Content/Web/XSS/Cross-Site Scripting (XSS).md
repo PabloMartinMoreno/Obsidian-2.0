@@ -87,12 +87,16 @@ tab: **Explotación mediante mutaciones del navegador (mXSS)**
 
 ## Descubrimiento (Detección)
 
+````tabs
+tab: **Descubrimiento Automatizado**
 ![[XSS - Discovery (Detección)#Descubrimiento Automatizado]]
 
+tab: **Descubrimiento Manual**
 ![[XSS - Discovery (Detección)#Descubrimiento Manual]]
 
+tab: **Revisión de Código**
 ![[XSS - Discovery (Detección)#Revisión de Código]]
-
+````
 ---
 
 ## Overview

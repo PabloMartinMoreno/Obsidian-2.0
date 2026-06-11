@@ -171,10 +171,13 @@ xxxxxxxxxxx.yyyyyyyyyyy.zzzzzzzzzzz
 
 ### Recon activo
 
+````tabs
+tab: **Identificación en Request**
 ![[JWT - Deteccion y Reconocimiento#^jwt-detect-request]]
 
+tab: **Decodificación y Análisis**
 ![[JWT - Deteccion y Reconocimiento#^jwt-detect-decode]]
-
+````
 
 ### Indicadores en código backend
 

@@ -158,10 +158,13 @@ Vector clase A — **OWASP Top 10** desde 2013. CVE históricos masivos: Jenkins
 
 ### Recon activo
 
+````tabs
+tab: **Identificación de Formatos Serializados**
 ![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-formats]]
 
+tab: **Fingerprint del Stack**
 ![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-fingerprint]]
-
+````
 
 ### Indicadores en código backend
 

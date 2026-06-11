@@ -166,8 +166,11 @@ El atacante solo tiene que tomar ese subdominio, pasarlo por un decodificador Ba
 
 ## Prevención
 
+````tabs
+tab: **Secure Coding (nivel aplicación)**
 ![[Command Injection - Prevención#^ci-prev-app]]
 
+tab: **Server Hardening**
 ![[Command Injection - Prevención#^ci-prev-server]]
-
+````
 ---

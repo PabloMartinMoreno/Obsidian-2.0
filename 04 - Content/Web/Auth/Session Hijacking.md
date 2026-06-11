@@ -220,12 +220,16 @@ OWASP Top 10 — A01:2021 Broken Access Control + A07:2021 Identification and Au
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Mecanismos de Session**
 ![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-mechanism]]
 
+tab: **Analizar Atributos de Cookie**
 ![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-cookie-attrs]]
 
+tab: **Mapear Session Lifecycle**
 ![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-lifecycle]]
-
+````
 
 ### Indicadores en código backend
 

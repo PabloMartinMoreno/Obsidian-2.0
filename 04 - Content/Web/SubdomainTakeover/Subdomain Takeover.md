@@ -216,14 +216,19 @@ Vector clase A en bug bounty — high-paid (HackerOne / Bugcrowd $500-$10000+). 
 
 ### Recon activo
 
+````tabs
+tab: **Subdomain Enumeration**
 ![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-enum]]
 
+tab: **DNS Records Analysis**
 ![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-records]]
 
+tab: **Identificar Dangling Pointers**
 ![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-dangling]]
 
+tab: **Fingerprint del Tipo de Servicio**
 ![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-fingerprint]]
-
+````
 
 ### Indicadores
 

@@ -213,12 +213,16 @@ Si `request_body` incluye `{"name": "x", "is_admin": true}`, backend asigna `is_
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints**
 ![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-endpoints]]
 
+tab: **Descubrir Hidden Fields**
 ![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-hidden]]
 
+tab: **Inferir Model via Response**
 ![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-model]]
-
+````
 
 ### Indicadores en código backend
 

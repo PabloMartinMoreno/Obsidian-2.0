@@ -183,12 +183,16 @@ tab: **Connection: close Abuse**
 
 ### Recon activo
 
+````tabs
+tab: **Probes Timing-based**
 ![[HTTP Request Smuggling - Deteccion#^hrs-detect-timing]]
 
+tab: **Differential Response Detection**
 ![[HTTP Request Smuggling - Deteccion#^hrs-detect-differential]]
 
+tab: **HTTP/2 Endpoint Detection**
 ![[HTTP Request Smuggling - Deteccion#^hrs-detect-h2]]
-
+````
 
 ### Indicadores arquitecturales
 

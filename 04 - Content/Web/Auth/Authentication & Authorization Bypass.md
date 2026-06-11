@@ -220,12 +220,16 @@ Auth fails → atacante = different user. Authz fails → atacante = same user c
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints Auth / Authz**
 ![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-endpoints]]
 
+tab: **Username Enumeration**
 ![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-enum]]
 
+tab: **Logic Flaw Recon**
 ![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-flow]]
-
+````
 
 ### Indicadores en código backend
 

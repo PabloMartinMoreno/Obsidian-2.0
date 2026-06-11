@@ -218,12 +218,16 @@ Vector existe desde 2008 (Hansen + Grossman). Defensa moderna: `X-Frame-Options`
 
 ### Recon activo
 
+````tabs
+tab: **Headers Check**
 ![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-headers]]
 
+tab: **CSP Analysis**
 ![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-csp]]
 
+tab: **Framing Test**
 ![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-framing]]
-
+````
 
 ### Indicadores en código backend
 

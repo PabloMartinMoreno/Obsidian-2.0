@@ -19,19 +19,19 @@ linked:
 
 ## Introspection Query Completa
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Query / Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `{__schema{types{name}}}` | Schema básico | Lista todos los types. |
-| Schema completo | Query introspection canonical (ver abajo) | Dump full schema. |
-| `{__schema{queryType{name fields{name}}}}` | Query type | Top-level Query fields. |
-| `{__schema{mutationType{name fields{name}}}}` | Mutation type | Top-level Mutations. |
-| `{__schema{subscriptionType{name fields{name}}}}` | Subscription type | WS subscriptions. |
-| `{__type(name:"User"){name fields{name type{name}}}}` | Type info | Detalle de tipo específico. |
+| `{__schema{types{name}}}` | Schema básico — lista todos los types | Probe inicial. |
+| Query canonical completa (ver abajo) | Dump full schema (types, fields, args, enums) | Dump exhaustivo. |
+| `{__schema{queryType{name fields{name}}}}` | Top-level Query fields | Entrypoints de lectura. |
+| `{__schema{mutationType{name fields{name}}}}` | Top-level Mutations | Entrypoints de escritura. |
+| `{__schema{subscriptionType{name fields{name}}}}` | Subscriptions (WS) | Real-time endpoints. |
+| `{__type(name:"User"){name fields{name type{name}}}}` | Detalle de un tipo | Inspección puntual. |
 | `{__type(name:"Role"){enumValues{name}}}` | Enum values | Listar enums. |
-| `{__type(name:"UserInput"){inputFields{name type{name}}}}` | Input types | Mutation inputs. |
-| Disabled introspection probe | Si `__schema` retorna error → introspection off | Move to suggestions. |
-| Bypass via GET | Si POST bloqueado → `?query={__schema{...}}` | Engine lax. |
-| Bypass via batching | Embed introspection en query batched | Engine confunde. |
+| `{__type(name:"UserInput"){inputFields{name type{name}}}}` | Input fields | Mutation inputs (mass-assignment recon). |
+| `curl '?query={__schema{types{name}}}'` (GET) | Introspection vía GET | Si POST bloqueado, engine lax. |
+| `[{"query":"{__schema{types{name}}}"}]` (batch) | Introspection embebida en batch | Bypass si introspection filtrada inline. |
+| Si `__schema` → `errors` | Introspection deshabilitada → pasar a suggestions | Detecta defensa activa. |
 ^graphql-introspect-query
 
 ### Introspection canonical query
@@ -102,20 +102,18 @@ curl -X POST -H "Content-Type: application/json" \
 
 ---
 
-## Field Suggestions (Typo Trick)
+Con introspection deshabilitada, muchos engines igual **sugieren el field correcto en el mensaje de error** ante un typo ("Did you mean ...?") → permite reconstruir el schema parcialmente. Disabled en Apollo Server v4+.
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Query (con typo)** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| Concepto | Engine acepta typo y sugiere field correcto en error | Disclosure parcial sin introspection. |
-| `{usr}` → "Did you mean user?" | Probe básico | Single field. |
-| `{abc}` → ver lista de sugerencias top | Multi-field probe | Más data. |
-| `{a}`, `{b}`, ... `{z}` | Iteración por prefix | Fuerza fields starting con cada letra. |
-| `{aa}`, `{ab}`... | Iteración con 2 chars | Más profundo. |
-| Suggestions inputs | Mutation con typo en input field | Discover input fields. |
-| `{user(idx: 1)}` → "Did you mean id?" | Suggestions arguments | Argument names. |
-| Suggestions enums | Pasar enum value typo | Discover enum values. |
-| Suggestions types | Reference type typo en variable | Type discovery. |
-| Disabled suggestions | Engines patcheados los desactivan | Apollo Server v4+. |
+| `{usr}` | Error `Did you mean "user"?` → confirma field | Probe básico single-field. |
+| `{abc}` | Lista de sugerencias top del root | Multi-field discovery. |
+| `{a}`, `{b}`, … `{z}` | Itera por prefijo → fields que empiezan con cada letra | Enumeración por fuerza bruta. |
+| `{aa}`, `{ab}`, `{ac}`… | Itera con 2 chars | Discovery más profundo. |
+| `mutation{updateUser(input:{usrnam:"x"})}` | Error `Did you mean "username"?` → input fields | Discover input fields (mass-assignment). |
+| `{user(idx:1)}` | Error `Did you mean "id"?` → nombres de argumentos | Argument discovery. |
+| `{users(role:ADMI)}` | Error `Did you mean "ADMIN"?` → enum values | Enum discovery. |
+| `query($x:UsrInput){...}` | Error `Did you mean "UserInput"?` → type names | Type discovery via variable. |
 ^graphql-introspect-suggestions
 
 ### clairvoyance — automatizar suggestions
@@ -134,20 +132,16 @@ clairvoyance -o schema.json https://target/graphql
 
 ## Schema Recovery con Tools
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Comando / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
-| `clairvoyance https://target/graphql -o schema.json` | clairvoyance | Auto-recover schema sin introspection. |
-| `https://graphql-kit.com/graphql-voyager/` | GraphQL Voyager | Visualizar schema cargando JSON. |
-| InQL Burp | Right-click request → "InQL Scanner" | Burp ext built-in. |
-| `npm install -g graphql-schema-utilities` | graphql-schema-utilities | Convertir formats. |
-| `get-graphql-schema` | `npx get-graphql-schema https://target/graphql > schema.graphql` | Si introspection enabled. |
-| Apollo Studio | Carga schema importado | Visual exploration. |
-| GraphiQL Explorer | UI que muestra schema | Dev mode interactive. |
-| Altair GraphQL Client | UI Mac/Linux/Windows | Manual query building. |
-| Postman GraphQL support | Postman tab para GraphQL | Familiar UI. |
-| Manual recovery | Loop con clairvoyance + manual review | Si tool falla. |
-| `python graphqlmap.py -u https://target/graphql -v --method GET` | graphqlmap | Old but useful. |
-| `gq https://target/graphql --introspect` | graphqurl | CLI Hasura. |
+| `clairvoyance https://target/graphql -o schema.json` | Schema reconstruido sin introspection | Introspection off pero suggestions on. |
+| `npx get-graphql-schema https://target/graphql > schema.graphql` | Dump del schema a SDL | Introspection enabled. |
+| `gq https://target/graphql --introspect` | Dump schema (graphqurl CLI) | CLI rápida. |
+| `python graphqlmap.py -u https://target/graphql -v --method GET` | Schema dump + injection testing | graphqlmap (old but useful). |
+| `npm install -g graphql-schema-utilities` | Convierte entre formatos de schema | Post-procesamiento del dump. |
+| InQL (Burp): right-click request → "InQL Scanner" | Schema dump + auto query/mutation gen | Workflow dentro de Burp. |
+| Cargar `schema.json` en `graphql-kit.com/graphql-voyager` | Visualización gráfica del schema | Review manual del schema. |
+| Importar schema a Apollo Studio / GraphiQL / Altair / Postman | Exploración interactiva, query building | Testing manual con UI. |
 ^graphql-introspect-tools
 
 ### Workflow recovery

@@ -237,16 +237,22 @@ Brute force es **bug bounty bread-and-butter** — incluso con defensas modernas
 
 ### Recon activo
 
+````tabs
+tab: **Login Form Discovery**
 ![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-endpoints]]
 
+tab: **Response Differential Success/Fail**
 ![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-responsediff]]
 
+tab: **Rate Limit Detection**
 ![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-ratelimit]]
 
+tab: **Lockout Policy Probing**
 ![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-lockout]]
 
+tab: **User Enumeration via Errors**
 ![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-enum]]
-
+````
 
 ### Indicadores en código backend
 

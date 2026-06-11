@@ -201,12 +201,16 @@ Si frontend (WAF) y backend implementan distinto → atacante exploita different
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints con Multiple Params**
 ![[HPP - Deteccion y Reconocimiento#^hpp-detect-endpoints]]
 
+tab: **Probes con Duplicate Params**
 ![[HPP - Deteccion y Reconocimiento#^hpp-detect-probes]]
 
+tab: **Detectar Parser Behavior por Stack**
 ![[HPP - Deteccion y Reconocimiento#^hpp-detect-stack]]
-
+````
 
 ### Indicadores en código backend
 

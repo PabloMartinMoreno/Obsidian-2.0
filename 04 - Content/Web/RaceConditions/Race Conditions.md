@@ -212,14 +212,19 @@ HTTP/2 single-packet attack (Kettle 2023) eliminó la última excusa: ahora clie
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Endpoints State-Changing**
 ![[Race Conditions - Deteccion y Reconocimiento#^race-detect-endpoints]]
 
+tab: **TOCTOU Patterns**
 ![[Race Conditions - Deteccion y Reconocimiento#^race-detect-toctou]]
 
+tab: **Atomicity / Locking Issues**
 ![[Race Conditions - Deteccion y Reconocimiento#^race-detect-atomicity]]
 
+tab: **Window de Exploit**
 ![[Race Conditions - Deteccion y Reconocimiento#^race-detect-window]]
-
+````
 
 ### Indicadores en código backend
 

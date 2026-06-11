@@ -200,12 +200,16 @@ Atacante NO necesita acceso directo a Object.prototype — basta con inyectar la
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Sinks Vulnerables**
 ![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-sinks]]
 
+tab: **Probes en Endpoints**
 ![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-probes]]
 
+tab: **Análisis Estático de Código JS**
 ![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-static]]
-
+````
 
 ### Indicadores en código backend
 

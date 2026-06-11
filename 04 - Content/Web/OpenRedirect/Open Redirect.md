@@ -194,12 +194,16 @@ OWASP Top 10 históricamente — A10 en 2013, removed después por considerarse 
 
 ### Recon activo
 
+````tabs
+tab: **Identificar Parámetros de Redirect**
 ![[Open Redirect - Deteccion y Reconocimiento#^or-detect-params]]
 
+tab: **Endpoints Comunes**
 ![[Open Redirect - Deteccion y Reconocimiento#^or-detect-endpoints]]
 
+tab: **Detectar 301/302 / JS-Based Redirects**
 ![[Open Redirect - Deteccion y Reconocimiento#^or-detect-types]]
-
+````
 
 ### Indicadores en código backend
 
