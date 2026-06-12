@@ -33,7 +33,36 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 PingCastle
+### 1. Recon Rápido (Probes)
+
+```cmd
+:: Pipeline trimestral mínimo desde workstation con RSAT
+
+:: PingCastle healthcheck + carto
+PingCastle.exe --healthcheck --server dc01 --no-enum-limit
+PingCastle.exe --carto --explore-trust
+
+:: Coercion + Zerologon
+PingCastle.exe --scanner coercion --server dc01
+PingCastle.exe --scanner zerologon --server dc01
+
+:: Purple Knight (GUI export manual)
+PurpleKnight.exe
+
+:: ADRecon (Excel completo)
+.\ADRecon.ps1 -DomainController dc01 -OutputType Excel
+```
+
+```bash
+# Linux
+certipy find -u auditor@corp.local -p pass -dc-ip 10.10.10.10 -vulnerable -stdout
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 PingCastle
 
 ````tabs
 tab: **Healthcheck completo**
@@ -58,7 +87,7 @@ tab: **Recursos**
 ![[AD - Health y Security Auditing - PingCastle#^ad-pingcastle-resources]]
 ````
 
-### 🛡️ Purple Knight
+#### 🛡️ Purple Knight
 
 ````tabs
 tab: **Ejecución**
@@ -80,7 +109,7 @@ tab: **Recursos**
 ![[AD - Health y Security Auditing - Purple Knight#^ad-pk-resources]]
 ````
 
-### 📋 ADRecon & ADCollector
+#### 📋 ADRecon & ADCollector
 
 ````tabs
 tab: **ADRecon ejecución**
@@ -102,7 +131,7 @@ tab: **Recursos**
 ![[AD - Health y Security Auditing - ADRecon y ADCollector#^ad-adrecon-resources]]
 ````
 
-### 🌐 Microsoft Defender for Identity
+#### 🌐 Microsoft Defender for Identity
 
 ````tabs
 tab: **Detección desde atacante**
@@ -124,7 +153,7 @@ tab: **Recursos**
 ![[AD - Health y Security Auditing - Microsoft Defender for Identity#^ad-mdi-resources]]
 ````
 
-### 💉 Custom Compliance Scripts
+#### 💉 Custom Compliance Scripts
 
 ````tabs
 tab: **Stale accounts**
@@ -161,7 +190,7 @@ tab: **Recursos**
 ![[AD - Health y Security Auditing - Custom Compliance Scripts#^ad-custom-resources]]
 ````
 
-### 🛠️ Tooling Ecosystem
+#### 🛠️ Tooling Ecosystem
 
 ````tabs
 tab: **Comparativa por uso**
@@ -247,33 +276,6 @@ tab: **Recursos**
    - PingCastle HTML + PDF para management
    - Purple Knight PDF
    - Findings priorizados High/Critical primero
-```
-
----
-
-## Detección rápida
-
-```cmd
-:: Pipeline trimestral mínimo desde workstation con RSAT
-
-:: PingCastle healthcheck + carto
-PingCastle.exe --healthcheck --server dc01 --no-enum-limit
-PingCastle.exe --carto --explore-trust
-
-:: Coercion + Zerologon
-PingCastle.exe --scanner coercion --server dc01
-PingCastle.exe --scanner zerologon --server dc01
-
-:: Purple Knight (GUI export manual)
-PurpleKnight.exe
-
-:: ADRecon (Excel completo)
-.\ADRecon.ps1 -DomainController dc01 -OutputType Excel
-```
-
-```bash
-# Linux
-certipy find -u auditor@corp.local -p pass -dc-ip 10.10.10.10 -vulnerable -stdout
 ```
 
 ---

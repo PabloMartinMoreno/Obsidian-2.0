@@ -33,7 +33,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores Básicos
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints Vulnerables**
+![[RFI - Deteccion y Reconocimiento#^rfi-detect-endpoints]]
+
+tab: **Probes con URL Remota**
+![[RFI - Deteccion y Reconocimiento#^rfi-detect-probes]]
+
+tab: **Detectar PHP Version + `allow_url_include`**
+![[RFI - Deteccion y Reconocimiento#^rfi-detect-php]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores Básicos
 
 ````tabs
 tab: **HTTP / HTTPS Remote Inclusion**
@@ -49,7 +66,7 @@ tab: **Combine con Local Upload**
 ![[RFI - Vectores Basicos#^rfi-vector-local-upload]]
 ````
 
-### 📡 PHP Wrappers y Schemes
+#### 📡 PHP Wrappers y Schemes
 
 ````tabs
 tab: **`data://` URI**
@@ -68,7 +85,7 @@ tab: **`ssh2://` y Otros**
 ![[RFI - PHP Wrappers y Schemes#^rfi-wrapper-ssh2]]
 ````
 
-### 🔓 Bypass de Filtros
+#### 🔓 Bypass de Filtros
 
 ````tabs
 tab: **Whitelist Domain Bypass**
@@ -87,7 +104,7 @@ tab: **Open Redirect Chain**
 ![[RFI - Bypass de Filtros#^rfi-bypass-open-redirect]]
 ````
 
-### 🏴 Hostear Payload Remote
+#### 🏴 Hostear Payload Remote
 
 ````tabs
 tab: **Webshell Setup Atacante**
@@ -103,7 +120,9 @@ tab: **DNS Rebinding**
 ![[RFI - Hostear Payload Remote#^rfi-host-dnsrebind]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **LFISuite RFI Mode**
@@ -210,20 +229,7 @@ Encontrado mostly en:
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints Vulnerables**
-![[RFI - Deteccion y Reconocimiento#^rfi-detect-endpoints]]
-
-tab: **Probes con URL Remota**
-![[RFI - Deteccion y Reconocimiento#^rfi-detect-probes]]
-
-tab: **Detectar PHP Version + `allow_url_include`**
-![[RFI - Deteccion y Reconocimiento#^rfi-detect-php]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

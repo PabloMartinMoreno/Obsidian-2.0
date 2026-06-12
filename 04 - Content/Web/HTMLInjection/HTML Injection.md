@@ -34,7 +34,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores Comunes
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Puntos Reflejados**
+![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-points]]
+
+tab: **Probes con Tags Básicos**
+![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-probes]]
+
+tab: **Diferenciar HTML Injection vs XSS**
+![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-vs-xss]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores Comunes
 
 ````tabs
 tab: **Phishing via Fake Form / Login**
@@ -53,7 +70,7 @@ tab: **Hidden Elements / Iframe Abuse**
 ![[HTML Injection - Vectores Comunes#^htmli-vector-hidden]]
 ````
 
-### 🚫 Inyección Sin Script (no-JS)
+#### 🚫 Inyección Sin Script (no-JS)
 
 ````tabs
 tab: **Image src Exfil (Referer Leak)**
@@ -75,7 +92,7 @@ tab: **CSS-Only Attacks**
 ![[HTML Injection - Inyeccion Sin Script#^htmli-noscript-css]]
 ````
 
-### 🔓 Bypass de Filtros
+#### 🔓 Bypass de Filtros
 
 ````tabs
 tab: **HTML Entity Encoding**
@@ -94,7 +111,7 @@ tab: **Comment Injection**
 ![[HTML Injection - Bypass de Filtros#^htmli-bypass-comment]]
 ````
 
-### 🔗 Chains con Otras Vulns
+#### 🔗 Chains con Otras Vulns
 
 ````tabs
 tab: **HTML to XSS Upgrade**
@@ -113,7 +130,9 @@ tab: **CSRF + HTML Injection Chain**
 ![[HTML Injection - Chains con Otras Vulns#^htmli-chain-csrf]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp Intruder con HTML Wordlists**
@@ -204,20 +223,7 @@ HTML Injection puede **escalar a XSS** si filtros incompletos permiten event han
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Puntos Reflejados**
-![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-points]]
-
-tab: **Probes con Tags Básicos**
-![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-probes]]
-
-tab: **Diferenciar HTML Injection vs XSS**
-![[HTML Injection - Deteccion y Reconocimiento#^htmli-detect-vs-xss]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

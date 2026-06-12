@@ -37,7 +37,21 @@ linked:
 
 ## Cheatsheet
 
-### 🔓 Ataques al Algoritmo
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificación en Request**
+![[JWT - Deteccion y Reconocimiento#^jwt-detect-request]]
+
+tab: **Decodificación y Análisis**
+![[JWT - Deteccion y Reconocimiento#^jwt-detect-decode]]
+````
+
+### 2. Explotación
+
+#### 🔓 Ataques al Algoritmo
 
 ````tabs
 tab: **alg=none Bypass**
@@ -50,7 +64,7 @@ tab: **Weak Secret Bruteforce**
 ![[JWT - Ataques al Algoritmo#^jwt-alg-bruteforce]]
 ````
 
-### 🔑 Inyección en Headers (Key Confusion)
+#### 🔑 Inyección en Headers (Key Confusion)
 
 ````tabs
 tab: **kid SQL Injection**
@@ -69,7 +83,7 @@ tab: **x5u / x5c Injection**
 ![[JWT - Inyeccion en Headers#^jwt-key-x5u]]
 ````
 
-### 🎯 Manipulación de Claims
+#### 🎯 Manipulación de Claims
 
 ````tabs
 tab: **Privilege Escalation**
@@ -85,7 +99,9 @@ tab: **Bypass iss / aud**
 ![[JWT - Manipulacion de Claims#^jwt-claims-iss-aud]]
 ````
 
-### 🛠️ Tooling y Brute Force
+### 3. Tooling
+
+#### 🛠️ Tooling y Brute Force
 
 ````tabs
 tab: **jwt_tool (All-in-One)**
@@ -167,17 +183,7 @@ xxxxxxxxxxx.yyyyyyyyyyy.zzzzzzzzzzz
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificación en Request**
-![[JWT - Deteccion y Reconocimiento#^jwt-detect-request]]
-
-tab: **Decodificación y Análisis**
-![[JWT - Deteccion y Reconocimiento#^jwt-detect-decode]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

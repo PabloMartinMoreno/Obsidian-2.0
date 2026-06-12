@@ -34,7 +34,45 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 DCSync Rights Definition
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. RSAT direct
+$dcsyncRights = @(
+  "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2",
+  "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2"
+)
+
+Get-Acl "AD:$((Get-ADDomain).DistinguishedName)" |
+  Select -ExpandProperty Access |
+  Where {$_.ObjectType -in $dcsyncRights} |
+  Select IdentityReference,ObjectType
+
+# 2. Native dsacls
+dsacls "DC=dom,DC=local" | findstr /i "Replicating Directory"
+
+# 3. PowerView
+Get-DomainObjectAcl -DistinguishedName "DC=dom,DC=local" -ResolveGUIDs |
+  Where {$_.ObjectAceType -match "Replicating Directory"}
+
+# 4. BloodHound
+# MATCH (n)-[:GetChanges|GetChangesAll]->(d:Domain) RETURN n.name, type(r), d.name
+
+# 5. Linux bloodyAD
+bloodyAD --host $DC -d dom -u $USER -p $PASS \
+  get object "DC=dom,DC=local" --resolve-sd
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 DCSync Rights Definition
 
 ````tabs
 tab: **Replication Extended Rights**
@@ -59,7 +97,7 @@ tab: **DCSync vs DC Replication**
 ![[AD - DCSync Rights Discovery - DCSync Rights Definition#^ad-dcsync-vs-replication]]
 ````
 
-### 🎯 Default vs Non-Default Holders
+#### 🎯 Default vs Non-Default Holders
 
 ````tabs
 tab: **Expected Default Holders**
@@ -84,7 +122,7 @@ tab: **Continuous Audit**
 ![[AD - DCSync Rights Discovery - Default vs Non-Default Holders#^ad-dcsyncdef-continuous]]
 ````
 
-### 🛡️ ACL Audit on Domain Root
+#### 🛡️ ACL Audit on Domain Root
 
 ````tabs
 tab: **PowerShell DCSync Audit**
@@ -106,7 +144,7 @@ tab: **Per-Quarter Compliance**
 ![[AD - DCSync Rights Discovery - ACL Audit on Domain Root#^ad-dcsyncacl-quarterly]]
 ````
 
-### 💉 Common Misconfigs
+#### 💉 Common Misconfigs
 
 ````tabs
 tab: **Authenticated Users / Domain Users**
@@ -134,7 +172,7 @@ tab: **Per-Trust Audit**
 ![[AD - DCSync Rights Discovery - Common Misconfigs#^ad-dcsyncmisc-pertrust]]
 ````
 
-### 📋 BloodHound DCSync Edges
+#### 📋 BloodHound DCSync Edges
 
 ````tabs
 tab: **DCSync-Related Edges**
@@ -156,7 +194,7 @@ tab: **Custom Cypher (Compliance)**
 ![[AD - DCSync Rights Discovery - BloodHound DCSync Edges#^ad-dcsyncbh-compliance]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **RSAT / PowerShell**
@@ -261,42 +299,6 @@ DCSync = single-shot domain compromise. Sin enum de DCSync rights, no se sabe qu
 8. Cleanup post-engagement:
    - Revert ACL modifications
    - Document changes
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. RSAT direct
-$dcsyncRights = @(
-  "1131f6aa-9c07-11d1-f79f-00c04fc2dcd2",
-  "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2"
-)
-
-Get-Acl "AD:$((Get-ADDomain).DistinguishedName)" |
-  Select -ExpandProperty Access |
-  Where {$_.ObjectType -in $dcsyncRights} |
-  Select IdentityReference,ObjectType
-
-# 2. Native dsacls
-dsacls "DC=dom,DC=local" | findstr /i "Replicating Directory"
-
-# 3. PowerView
-Get-DomainObjectAcl -DistinguishedName "DC=dom,DC=local" -ResolveGUIDs |
-  Where {$_.ObjectAceType -match "Replicating Directory"}
-
-# 4. BloodHound
-# MATCH (n)-[:GetChanges|GetChangesAll]->(d:Domain) RETURN n.name, type(r), d.name
-
-# 5. Linux bloodyAD
-bloodyAD --host $DC -d dom -u $USER -p $PASS \
-  get object "DC=dom,DC=local" --resolve-sd
 ```
 
 ---

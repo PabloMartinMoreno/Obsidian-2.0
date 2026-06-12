@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Endpoints Auth / Authz
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Endpoint** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/login`, `/signin`, `/auth` | Login form | Auth principal. |
 | `/logout`, `/signout` | Logout | Session destroy. |

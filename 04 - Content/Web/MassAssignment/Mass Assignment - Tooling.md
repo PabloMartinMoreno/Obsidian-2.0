@@ -21,7 +21,7 @@ linked:
 
 ## Param Miner (Burp)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
 | Right-click request → "Guess JSON parameters" | Auto-discover JSON keys vía fuzzing | JSON body endpoints. |

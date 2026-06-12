@@ -149,7 +149,7 @@ Get-ADObject -LDAPFilter "(msDS-AllowedToDelegateTo=*)" -Properties msDS-Allowed
 
 ## Common Misconfigurations
 
-| **Comando** | **Qué detecta** | **Riesgo** |
+| **Patrón / Comando** | **Qué detecta** | **Riesgo** |
 |:---:|:---:|:---:|
 | `Get-ADObject -LDAPFilter "(msDS-AllowedToDelegateTo=*)" -Pr msDS-AllowedToDelegateTo \| ? msDS-AllowedToDelegateTo -match "(?i)cifs/.*dc"` | CD a DC SMB (catastrofic) | **CRITICAL**. |
 | Service account con CD + weak password | Crackeable hash → S4U → DA | Critical chain. |

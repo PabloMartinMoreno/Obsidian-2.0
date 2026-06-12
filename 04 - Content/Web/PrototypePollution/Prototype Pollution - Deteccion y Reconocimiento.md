@@ -105,7 +105,7 @@ curl -X POST https://target/api/profile \
 
 ## Análisis Estático de Código JS
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Source code review | Buscar `merge`, `extend`, `set` con user input | Manual code review. |
 | AST analysis | ESLint plugin `eslint-plugin-security` | Detecta patterns automáticamente. |

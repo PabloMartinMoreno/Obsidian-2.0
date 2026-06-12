@@ -56,7 +56,7 @@ curl -sI "$URL2" | grep -i x-cache  # Sin el header
 
 ## Param Miner Workflow
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
 | Right-click cacheable request → "Guess headers" | Auto-discover headers ocultos que afectan response | Single click discovery. |

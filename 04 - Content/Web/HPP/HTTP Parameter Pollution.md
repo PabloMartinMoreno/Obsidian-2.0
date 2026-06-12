@@ -35,7 +35,24 @@ linked:
 
 ## Cheatsheet
 
-### 🌐 Server-Side HPP
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints con Multiple Params**
+![[HPP - Deteccion y Reconocimiento#^hpp-detect-endpoints]]
+
+tab: **Probes con Duplicate Params**
+![[HPP - Deteccion y Reconocimiento#^hpp-detect-probes]]
+
+tab: **Detectar Parser Behavior por Stack**
+![[HPP - Deteccion y Reconocimiento#^hpp-detect-stack]]
+````
+
+### 2. Explotación
+
+#### 🌐 Server-Side HPP
 
 ````tabs
 tab: **Auth / Access Control Bypass**
@@ -54,7 +71,7 @@ tab: **Mass Assignment Combo**
 ![[HPP - Server-Side#^hpp-server-mass-assign]]
 ````
 
-### 💻 Client-Side HPP
+#### 💻 Client-Side HPP
 
 ````tabs
 tab: **URL Manipulation en DOM**
@@ -70,7 +87,7 @@ tab: **JS-Based Parsing Differences**
 ![[HPP - Client-Side#^hpp-client-js]]
 ````
 
-### 🏛️ Per-Stack Behavior
+#### 🏛️ Per-Stack Behavior
 
 ````tabs
 tab: **PHP (Last Wins)**
@@ -92,7 +109,7 @@ tab: **Ruby on Rails**
 ![[HPP - Per-Stack Behavior#^hpp-stack-ruby]]
 ````
 
-### 🔓 Bypass de Validación
+#### 🔓 Bypass de Validación
 
 ````tabs
 tab: **Encoding Tricks**
@@ -108,7 +125,9 @@ tab: **Mixed Input Sources**
 ![[HPP - Bypass de Validacion#^hpp-bypass-multi-source]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp Intruder + Param Miner**
@@ -197,20 +216,7 @@ Si frontend (WAF) y backend implementan distinto → atacante exploita different
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints con Multiple Params**
-![[HPP - Deteccion y Reconocimiento#^hpp-detect-endpoints]]
-
-tab: **Probes con Duplicate Params**
-![[HPP - Deteccion y Reconocimiento#^hpp-detect-probes]]
-
-tab: **Detectar Parser Behavior por Stack**
-![[HPP - Deteccion y Reconocimiento#^hpp-detect-stack]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

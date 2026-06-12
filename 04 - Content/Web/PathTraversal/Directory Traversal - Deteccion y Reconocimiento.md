@@ -19,7 +19,7 @@ linked:
 
 ## Identificar Endpoints con File Params
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Endpoint** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `?file=` | Direct file param | Generic file load. |
 | `?path=` | Path param | Same. |

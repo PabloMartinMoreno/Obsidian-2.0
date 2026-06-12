@@ -37,7 +37,30 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 redirect_uri Manipulation
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Discovery via .well-known**
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-wellknown]]
+
+tab: **Identificación de Flow Type**
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-flow]]
+
+tab: **Client ID Enumeration**
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-clientid]]
+
+tab: **Response Type & Scope Discovery**
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-response]]
+
+tab: **Redirect URI Validation Type**
+![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-redirect]]
+````
+
+### 2. Explotación
+
+#### 🎯 redirect_uri Manipulation
 
 ````tabs
 tab: **Open Redirect Encadenado**
@@ -56,7 +79,7 @@ tab: **Scheme Abuse (`javascript:`, `data:`, custom)**
 ![[OAuth 2.0 - redirect_uri Manipulation#^oauth-redirect-scheme]]
 ````
 
-### 🔗 State / CSRF / Login CSRF
+#### 🔗 State / CSRF / Login CSRF
 
 ````tabs
 tab: **State Ausente**
@@ -75,7 +98,7 @@ tab: **Session Fixation via OAuth**
 ![[OAuth 2.0 - State y CSRF#^oauth-state-fixation]]
 ````
 
-### 💉 Code & Token Theft
+#### 💉 Code & Token Theft
 
 ````tabs
 tab: **Referer Header Leak**
@@ -94,7 +117,7 @@ tab: **Mix-Up Attack (multi-IdP)**
 ![[OAuth 2.0 - Code y Token Theft#^oauth-theft-mixup]]
 ````
 
-### 🔓 Scope, Consent & Flow Abuse
+#### 🔓 Scope, Consent & Flow Abuse
 
 ````tabs
 tab: **Scope Upgrade / Silent Re-Consent**
@@ -113,7 +136,9 @@ tab: **Implicit Flow Forced**
 ![[OAuth 2.0 - Scope Consent y Flow Abuse#^oauth-abuse-implicit]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp + EsPReSSO + Param Miner**
@@ -226,26 +251,7 @@ OAuth = framework, no protocol — cada provider implementa diferente. Los bugs 
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Discovery via .well-known**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-wellknown]]
-
-tab: **Identificación de Flow Type**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-flow]]
-
-tab: **Client ID Enumeration**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-clientid]]
-
-tab: **Response Type & Scope Discovery**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-response]]
-
-tab: **Redirect URI Validation Type**
-![[OAuth 2.0 - Deteccion y Reconocimiento#^oauth-detect-redirect]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

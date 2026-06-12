@@ -35,7 +35,27 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Tipos de Race Conditions
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints State-Changing**
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-endpoints]]
+
+tab: **TOCTOU Patterns**
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-toctou]]
+
+tab: **Atomicity / Locking Issues**
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-atomicity]]
+
+tab: **Window de Exploit**
+![[Race Conditions - Deteccion y Reconocimiento#^race-detect-window]]
+````
+
+### 2. Explotación
+
+#### 🎯 Tipos de Race Conditions
 
 ````tabs
 tab: **Limit Overrun**
@@ -57,7 +77,7 @@ tab: **TOCTOU Filesystem**
 ![[Race Conditions - Tipos#^race-type-toctou-fs]]
 ````
 
-### ⚡ Single-Packet Attack
+#### ⚡ Single-Packet Attack
 
 ````tabs
 tab: **HTTP/2 Single-Packet**
@@ -73,7 +93,7 @@ tab: **Sleep Gadget Probe**
 ![[Race Conditions - Single-Packet Attack#^race-single-sleep]]
 ````
 
-### 💉 Vectores Específicos
+#### 💉 Vectores Específicos
 
 ````tabs
 tab: **Multi-Endpoint Races (Chains)**
@@ -92,26 +112,7 @@ tab: **Cache Fill Race**
 ![[Race Conditions - Vectores Especificos#^race-vector-cache]]
 ````
 
-### 🛠️ Tooling
-
-````tabs
-tab: **Turbo Intruder (Burp)**
-![[Race Conditions - Tooling#^race-tool-turbo]]
-
-tab: **Burp Repeater Single Connection**
-![[Race Conditions - Tooling#^race-tool-burp-repeater]]
-
-tab: **race-the-web (CLI)**
-![[Race Conditions - Tooling#^race-tool-rtw]]
-
-tab: **Python asyncio / aiohttp**
-![[Race Conditions - Tooling#^race-tool-python]]
-
-tab: **Otros Tools y Scripts**
-![[Race Conditions - Tooling#^race-tool-others]]
-````
-
-### 🛡️ Bypasses y Edge Cases
+#### 🛡️ Bypasses y Edge Cases
 
 ````tabs
 tab: **Lock Contention Abuse**
@@ -131,6 +132,27 @@ tab: **Edge Cases (HTTP/3, WS, GraphQL)**
 ````
 
 ---
+
+### 3. Tooling
+
+#### 🛠️ Tooling
+
+````tabs
+tab: **Turbo Intruder (Burp)**
+![[Race Conditions - Tooling#^race-tool-turbo]]
+
+tab: **Burp Repeater Single Connection**
+![[Race Conditions - Tooling#^race-tool-burp-repeater]]
+
+tab: **race-the-web (CLI)**
+![[Race Conditions - Tooling#^race-tool-rtw]]
+
+tab: **Python asyncio / aiohttp**
+![[Race Conditions - Tooling#^race-tool-python]]
+
+tab: **Otros Tools y Scripts**
+![[Race Conditions - Tooling#^race-tool-others]]
+````
 
 ## Overview
 
@@ -208,23 +230,7 @@ HTTP/2 single-packet attack (Kettle 2023) eliminó la última excusa: ahora clie
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints State-Changing**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-endpoints]]
-
-tab: **TOCTOU Patterns**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-toctou]]
-
-tab: **Atomicity / Locking Issues**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-atomicity]]
-
-tab: **Window de Exploit**
-![[Race Conditions - Deteccion y Reconocimiento#^race-detect-window]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

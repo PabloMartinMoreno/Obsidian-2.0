@@ -36,7 +36,27 @@ linked:
 
 ## Cheatsheet
 
-### 🏗️ Tipos por Servicio
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Subdomain Enumeration**
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-enum]]
+
+tab: **DNS Records Analysis**
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-records]]
+
+tab: **Identificar Dangling Pointers**
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-dangling]]
+
+tab: **Fingerprint del Tipo de Servicio**
+![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-fingerprint]]
+````
+
+### 2. Explotación
+
+#### 🏗️ Tipos por Servicio
 
 ````tabs
 tab: **Cloud Storage (S3 / Azure / GCS)**
@@ -55,7 +75,7 @@ tab: **Email / Domain Providers**
 ![[Subdomain Takeover - Tipos por Servicio#^sdt-types-email]]
 ````
 
-### 🌐 NS Takeover y DNS-Level
+#### 🌐 NS Takeover y DNS-Level
 
 ````tabs
 tab: **Nameserver Takeover (NS Records)**
@@ -71,7 +91,7 @@ tab: **DNS Provider Account Orphan**
 ![[Subdomain Takeover - NS Takeover y DNS-Level#^sdt-ns-account-orphan]]
 ````
 
-### 💉 Vectores de Explotación / Impact
+#### 💉 Vectores de Explotación / Impact
 
 ````tabs
 tab: **Phishing con Subdomain Legítimo**
@@ -93,7 +113,7 @@ tab: **CORS Allowlist Abuse**
 ![[Subdomain Takeover - Vectores de Explotacion#^sdt-vector-cors]]
 ````
 
-### 🔗 Chains con Otras Vulns
+#### 🔗 Chains con Otras Vulns
 
 ````tabs
 tab: **ATO via Cookie / OAuth Chain**
@@ -112,7 +132,9 @@ tab: **Combine con HHI / OR / Cache Poisoning**
 ![[Subdomain Takeover - Chains con Otras Vulns#^sdt-chain-combos]]
 ````
 
-### 🛠️ Tooling y Wordlists
+### 3. Tooling
+
+#### 🛠️ Tooling y Wordlists
 
 ````tabs
 tab: **subjack / subzy / takeover (Detection)**
@@ -212,23 +234,7 @@ Vector clase A en bug bounty — high-paid (HackerOne / Bugcrowd $500-$10000+). 
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Subdomain Enumeration**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-enum]]
-
-tab: **DNS Records Analysis**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-records]]
-
-tab: **Identificar Dangling Pointers**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-dangling]]
-
-tab: **Fingerprint del Tipo de Servicio**
-![[Subdomain Takeover - Deteccion y Reconocimiento#^sdt-detect-fingerprint]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores
 

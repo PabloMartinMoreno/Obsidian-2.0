@@ -35,7 +35,24 @@ linked:
 
 ## Cheatsheet
 
-### 🔄 Variantes Clásicas (HTTP/1.1)
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Probes Timing-based**
+![[HTTP Request Smuggling - Deteccion#^hrs-detect-timing]]
+
+tab: **Differential Response Detection**
+![[HTTP Request Smuggling - Deteccion#^hrs-detect-differential]]
+
+tab: **HTTP/2 Endpoint Detection**
+![[HTTP Request Smuggling - Deteccion#^hrs-detect-h2]]
+````
+
+### 2. Explotación
+
+#### 🔄 Variantes Clásicas (HTTP/1.1)
 
 ````tabs
 tab: **CL.TE**
@@ -51,7 +68,7 @@ tab: **CL.CL (Header Doubling)**
 ![[HTTP Request Smuggling - Variantes Clasicas#^hrs-cl-cl]]
 ````
 
-### 🔁 Variantes HTTP/2 (Downgrade)
+#### 🔁 Variantes HTTP/2 (Downgrade)
 
 ````tabs
 tab: **H2.CL**
@@ -67,7 +84,7 @@ tab: **Pseudo-Header / h2c Smuggling**
 ![[HTTP Request Smuggling - HTTP2 Downgrade#^hrs-h2-pseudo-header]]
 ````
 
-### 🎯 Explotación
+#### 🎯 Explotación
 
 ````tabs
 tab: **Bypass Front-end Controls**
@@ -86,23 +103,7 @@ tab: **Reflected XSS Chain**
 ![[HTTP Request Smuggling - Explotacion#^hrs-exploit-xss]]
 ````
 
-### 🛠️ Tooling
-
-````tabs
-tab: **HTTP Request Smuggler (Burp)**
-![[HTTP Request Smuggling - Tooling#^hrs-tool-burp]]
-
-tab: **smuggler.py (defparam)**
-![[HTTP Request Smuggling - Tooling#^hrs-tool-smuggler-py]]
-
-tab: **h2cSmuggler**
-![[HTTP Request Smuggling - Tooling#^hrs-tool-h2csmuggler]]
-
-tab: **Turbo Intruder Scripts**
-![[HTTP Request Smuggling - Tooling#^hrs-tool-turbo]]
-````
-
-### 🛡️ Bypasses y Header Obfuscation
+#### 🛡️ Bypasses y Header Obfuscation
 
 ````tabs
 tab: **TE Obfuscation**
@@ -119,6 +120,24 @@ tab: **Connection: close Abuse**
 ````
 
 ---
+
+### 3. Tooling
+
+#### 🛠️ Tooling
+
+````tabs
+tab: **HTTP Request Smuggler (Burp)**
+![[HTTP Request Smuggling - Tooling#^hrs-tool-burp]]
+
+tab: **smuggler.py (defparam)**
+![[HTTP Request Smuggling - Tooling#^hrs-tool-smuggler-py]]
+
+tab: **h2cSmuggler**
+![[HTTP Request Smuggling - Tooling#^hrs-tool-h2csmuggler]]
+
+tab: **Turbo Intruder Scripts**
+![[HTTP Request Smuggling - Tooling#^hrs-tool-turbo]]
+````
 
 ## Overview
 
@@ -179,20 +198,7 @@ tab: **Connection: close Abuse**
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Probes Timing-based**
-![[HTTP Request Smuggling - Deteccion#^hrs-detect-timing]]
-
-tab: **Differential Response Detection**
-![[HTTP Request Smuggling - Deteccion#^hrs-detect-differential]]
-
-tab: **HTTP/2 Endpoint Detection**
-![[HTTP Request Smuggling - Deteccion#^hrs-detect-h2]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores arquitecturales
 

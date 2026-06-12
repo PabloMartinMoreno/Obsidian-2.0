@@ -45,7 +45,46 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 GPO Discovery
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. GPO inventory
+nxc ldap $DC -u $USER -p $PASS --gpo
+
+# 2. GPP cpassword auto-discover
+nxc smb $DC -u $USER -p $PASS -M gpp_password
+
+# 3. SYSVOL bulk spider
+nxc smb $DC -u $USER -p $PASS -M spider_plus -o INTERESTING_EXTENSIONS=xml,ini,bat,ps1,vbs
+
+# 4. Linux mount + cred hunt
+sudo mount -t cifs //$DC/SYSVOL /mnt/sysvol -o user=$USER,pass=$PASS,domain=dom
+grep -r "cpassword" /mnt/sysvol --include="*.xml"
+grep -ri "password\|secret\|pwd" /mnt/sysvol
+
+# 5. GPO modify ACL audit (Windows)
+Get-GPO -All | ForEach-Object {
+  $aclPath = "AD:CN={$($_.Id)},CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)"
+  Get-Acl $aclPath | Select -ExpandProperty Access | 
+    Where {$_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|SYSTEM" -and 
+           $_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDACL"} |
+    Select @{n='GPO';e={$_.DisplayName}},IdentityReference,ActiveDirectoryRights
+}
+
+# 6. BloodHound full
+bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 GPO Discovery
 
 ````tabs
 tab: **GPO Inventory**
@@ -73,7 +112,7 @@ tab: **Privileged GPO Identification**
 ![[AD - GPO y SYSVOL Enumeration - GPO Discovery#^ad-gpo-privileged]]
 ````
 
-### 🛡️ GPO ACL Audit
+#### 🛡️ GPO ACL Audit
 
 ````tabs
 tab: **GPO Object DACL**
@@ -104,7 +143,7 @@ tab: **Mitigations**
 ![[AD - GPO y SYSVOL Enumeration - GPO ACL Audit#^ad-gpoacl-mitigations]]
 ````
 
-### 📂 SYSVOL Content Discovery
+#### 📂 SYSVOL Content Discovery
 
 ````tabs
 tab: **SYSVOL Mount + Browse**
@@ -129,7 +168,7 @@ tab: **Modern Best Practices**
 ![[AD - GPO y SYSVOL Enumeration - SYSVOL Content Discovery#^ad-sysvol-bestpractice]]
 ````
 
-### 💉 GPP cpassword
+#### 💉 GPP cpassword
 
 ````tabs
 tab: **Find cpassword in SYSVOL**
@@ -154,7 +193,7 @@ tab: **OPSEC**
 ![[AD - GPO y SYSVOL Enumeration - GPP cpassword#^ad-cpassword-opsec]]
 ````
 
-### 🌐 GPO Inheritance & Scope
+#### 🌐 GPO Inheritance & Scope
 
 ````tabs
 tab: **GPO Application Order**
@@ -182,7 +221,7 @@ tab: **BloodHound Cypher**
 ![[AD - GPO y SYSVOL Enumeration - GPO Inheritance y Scope#^ad-gpo-bh]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **RSAT / PowerShell**
@@ -303,43 +342,6 @@ GPOs control machine + user configurations vía SYSVOL files. Modify permissions
    - Revert GPO modifications
    - Remove added scripts/tasks
    - Document changes
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. GPO inventory
-nxc ldap $DC -u $USER -p $PASS --gpo
-
-# 2. GPP cpassword auto-discover
-nxc smb $DC -u $USER -p $PASS -M gpp_password
-
-# 3. SYSVOL bulk spider
-nxc smb $DC -u $USER -p $PASS -M spider_plus -o INTERESTING_EXTENSIONS=xml,ini,bat,ps1,vbs
-
-# 4. Linux mount + cred hunt
-sudo mount -t cifs //$DC/SYSVOL /mnt/sysvol -o user=$USER,pass=$PASS,domain=dom
-grep -r "cpassword" /mnt/sysvol --include="*.xml"
-grep -ri "password\|secret\|pwd" /mnt/sysvol
-
-# 5. GPO modify ACL audit (Windows)
-Get-GPO -All | ForEach-Object {
-  $aclPath = "AD:CN={$($_.Id)},CN=Policies,CN=System,$((Get-ADDomain).DistinguishedName)"
-  Get-Acl $aclPath | Select -ExpandProperty Access | 
-    Where {$_.IdentityReference -notmatch "Domain Admins|Enterprise Admins|SYSTEM" -and 
-           $_.ActiveDirectoryRights -match "GenericAll|GenericWrite|WriteDACL"} |
-    Select @{n='GPO';e={$_.DisplayName}},IdentityReference,ActiveDirectoryRights
-}
-
-# 6. BloodHound full
-bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
 ```
 
 ---

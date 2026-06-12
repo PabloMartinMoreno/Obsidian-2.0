@@ -33,7 +33,54 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 SRV Records Estándar AD
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DOM="dom.local"
+
+# 1. SRV discovery
+for record in \
+  "_ldap._tcp.dc._msdcs.$DOM" \
+  "_kerberos._tcp.dc._msdcs.$DOM" \
+  "_gc._tcp.$DOM"; do
+  echo "=== $record ==="
+  dig +short SRV "$record"
+done
+
+# 2. AXFR test (often misconfig)
+DCS=$(dig +short SRV "_ldap._tcp.dc._msdcs.$DOM" | awk '{print $4}' | sed 's/\.$//')
+for dc in $DCS; do
+  for zone in "$DOM" "_msdcs.$DOM"; do
+    RESULT=$(timeout 5 dig AXFR "$zone" "@$dc" +short 2>&1)
+    if [ -n "$RESULT" ] && [[ "$RESULT" != *"failed"* ]]; then
+      echo "[+] AXFR ok: $zone @ $dc"
+    fi
+  done
+done
+
+# 3. Subdomain brute
+gobuster dns -d "$DOM" -r DC -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+
+# 4. Authenticated zone enum (post-cred)
+adidnsdump -u 'dom\user' --password 'pass' DC
+
+# 5. Insecure DDNS test
+nsupdate <<EOF
+server DC
+zone $DOM.
+update add testxxx.$DOM. 60 A 1.2.3.4
+send
+EOF
+dig +short A "testxxx.$DOM" @DC
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 SRV Records Estándar AD
 
 ````tabs
 tab: **SRV Records Globales**
@@ -52,7 +99,7 @@ tab: **SRV Errors / Misconfigs**
 ![[AD - DNS & SRV Records - SRV Records Estandar#^ad-srv-errors]]
 ````
 
-### 🌐 AD-Integrated DNS Zones
+#### 🌐 AD-Integrated DNS Zones
 
 ````tabs
 tab: **DNS Storage Architecture**
@@ -74,7 +121,7 @@ tab: **DNS-Specific Misconfigs**
 ![[AD - DNS & SRV Records - AD-Integrated Zones#^ad-zones-misconfig]]
 ````
 
-### 📡 AXFR / Zone Transfer
+#### 📡 AXFR / Zone Transfer
 
 ````tabs
 tab: **AXFR Basics**
@@ -96,7 +143,7 @@ tab: **Public DNS Leak**
 ![[AD - DNS & SRV Records - AXFR y Zone Transfer#^ad-axfr-public]]
 ````
 
-### 🔓 Adidnsdump y DNS Authenticated
+#### 🔓 Adidnsdump y DNS Authenticated
 
 ````tabs
 tab: **Why DNS via LDAP**
@@ -118,7 +165,7 @@ tab: **DNS-Based Persistence**
 ![[AD - DNS & SRV Records - Adidnsdump y DNS Authenticated#^ad-adidns-persistence]]
 ````
 
-### 💉 DNS Spoofing & Records Injection
+#### 💉 DNS Spoofing & Records Injection
 
 ````tabs
 tab: **Insecure Dynamic Update**
@@ -137,7 +184,7 @@ tab: **Cleanup y Detection**
 ![[AD - DNS & SRV Records - DNS Spoofing y Records Injection#^ad-spoof-cleanup]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **dig (BIND Lookup)**
@@ -243,51 +290,6 @@ Como atacante: DNS expone topología (DCs, sites, FSMO holders), permite enumera
 8. Cleanup:
    - Remove malicious records (dnstool -a remove)
    - Restore originals from backup
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DOM="dom.local"
-
-# 1. SRV discovery
-for record in \
-  "_ldap._tcp.dc._msdcs.$DOM" \
-  "_kerberos._tcp.dc._msdcs.$DOM" \
-  "_gc._tcp.$DOM"; do
-  echo "=== $record ==="
-  dig +short SRV "$record"
-done
-
-# 2. AXFR test (often misconfig)
-DCS=$(dig +short SRV "_ldap._tcp.dc._msdcs.$DOM" | awk '{print $4}' | sed 's/\.$//')
-for dc in $DCS; do
-  for zone in "$DOM" "_msdcs.$DOM"; do
-    RESULT=$(timeout 5 dig AXFR "$zone" "@$dc" +short 2>&1)
-    if [ -n "$RESULT" ] && [[ "$RESULT" != *"failed"* ]]; then
-      echo "[+] AXFR ok: $zone @ $dc"
-    fi
-  done
-done
-
-# 3. Subdomain brute
-gobuster dns -d "$DOM" -r DC -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
-
-# 4. Authenticated zone enum (post-cred)
-adidnsdump -u 'dom\user' --password 'pass' DC
-
-# 5. Insecure DDNS test
-nsupdate <<EOF
-server DC
-zone $DOM.
-update add testxxx.$DOM. 60 A 1.2.3.4
-send
-EOF
-dig +short A "testxxx.$DOM" @DC
 ```
 
 ---

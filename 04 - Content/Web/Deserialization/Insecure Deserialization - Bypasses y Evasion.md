@@ -41,7 +41,7 @@ linked:
 
 ## Class Allowlist Bypass
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Java JEP 290 (jdk.serialFilter) | Bypass usando classes en pkg permitido pero con efectos secundarios | Buscar gadgets en allowlist. |
 | Java SerializationFilter — chained class | Inner classes / lambdas que evaden check de class name | `Class$Inner` patterns. |
@@ -79,7 +79,7 @@ linked:
 
 ## Deser Encadenada (multi-hop)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Gadget de file write → trigger pickle en `.pyc` | Forge archivo `.pyc` que luego se importa | Multi-stage. |
 | Java URLDNS → JRMP → RCE | Chain de gadgets pequeños | Cuando un solo gadget no llega. |

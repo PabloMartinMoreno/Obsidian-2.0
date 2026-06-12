@@ -37,7 +37,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores de Ataque
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints State-Changing**
+![[CSRF - Deteccion y Reconocimiento#^csrf-detect-endpoints]]
+
+tab: **Análisis de Tokens Existentes**
+![[CSRF - Deteccion y Reconocimiento#^csrf-detect-tokens]]
+
+tab: **Verificar SameSite / Referer Protections**
+![[CSRF - Deteccion y Reconocimiento#^csrf-detect-protections]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores de Ataque
 
 ````tabs
 tab: **HTML Form Auto-Submit (POST)**
@@ -53,7 +70,7 @@ tab: **JSON / Multipart Bypass**
 ![[CSRF - Vectores de Ataque#^csrf-vector-json]]
 ````
 
-### 🔓 Bypass de Token CSRF
+#### 🔓 Bypass de Token CSRF
 
 ````tabs
 tab: **Token No Validado (Remove)**
@@ -72,7 +89,7 @@ tab: **Token Leak (Referer / URL)**
 ![[CSRF - Bypass de Token#^csrf-bypass-token-leak]]
 ````
 
-### 🍪 Bypass de SameSite / Referer
+#### 🍪 Bypass de SameSite / Referer
 
 ````tabs
 tab: **SameSite=Lax GET-based**
@@ -88,7 +105,7 @@ tab: **Referer Strip / Referrer-Policy**
 ![[CSRF - Bypass de SameSite y Referer#^csrf-bypass-referer]]
 ````
 
-### 🌐 Tipos Especiales
+#### 🌐 Tipos Especiales
 
 ````tabs
 tab: **Login CSRF**
@@ -107,7 +124,9 @@ tab: **File Upload CSRF**
 ![[CSRF - Tipos Especiales#^csrf-special-upload]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp PoC Generator**
@@ -182,20 +201,7 @@ XSS frecuentemente "rompe" CSRF defenses porque XSS puede leer el token → forj
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints State-Changing**
-![[CSRF - Deteccion y Reconocimiento#^csrf-detect-endpoints]]
-
-tab: **Análisis de Tokens Existentes**
-![[CSRF - Deteccion y Reconocimiento#^csrf-detect-tokens]]
-
-tab: **Verificar SameSite / Referer Protections**
-![[CSRF - Deteccion y Reconocimiento#^csrf-detect-protections]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

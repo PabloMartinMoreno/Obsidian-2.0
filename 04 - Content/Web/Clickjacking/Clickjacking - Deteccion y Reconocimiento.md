@@ -89,7 +89,7 @@ done
 
 ## Framing Test
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<iframe src="https://target/"></iframe>` en HTML local | Inline iframe test | Standard. |
 | Per-route framing | Test each sensitive route independently | Granular. |

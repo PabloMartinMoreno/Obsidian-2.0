@@ -34,7 +34,52 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 DC Discovery
+### 1. Recon Rápido (Probes)
+
+#### Indicadores en logs / SIEM (defender side)
+
+```text
+# Heavy LDAP queries from non-admin
+Event ID 1644 (Active Directory: Field Engineering log)
+
+# SAMR enum (RID brute, enumdomusers)  
+Event ID 4661 (Object access — SAM)
+
+# SMB share enum
+Event ID 5145 (Network share access)
+
+# Bulk computer enumeration
+Event ID 4662 (Object access — DS)
+```
+
+#### Probes mínimos
+
+```bash
+# 1. Identify DC
+DC_IP=$(dig +short SRV _ldap._tcp.dc._msdcs.dom.local | awk '{print $4}' | head -1 | xargs dig +short A | head -1)
+echo "DC: $DC_IP"
+
+# 2. Anonymous probe
+nxc smb $DC_IP
+nxc smb $DC_IP -u '' -p '' --shares
+rpcclient -U "" $DC_IP -N -c 'lsaquery; getdompwinfo'
+
+# 3. After cred acquisition
+nxc smb $DC_IP -u user -p pass --pass-pol
+nxc ldap $DC_IP -u user -p pass --computers > computers.txt
+
+# 4. Identify relay candidates (signing not required)
+nxc smb computers.txt --gen-relay-list relay.txt
+
+# 5. Bulk profile
+nxc smb computers.txt -u user -p pass --shares --sessions --loggedon-users
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 DC Discovery
 
 ````tabs
 tab: **DNS SRV Records**
@@ -53,7 +98,7 @@ tab: **DC Locator Service / nltest**
 ![[AD - Hosts Enumeration - DC Discovery#^ad-dc-locator]]
 ````
 
-### 🌐 Sites, Subnets & Topology
+#### 🌐 Sites, Subnets & Topology
 
 ````tabs
 tab: **Sites Discovery**
@@ -72,7 +117,7 @@ tab: **Global Catalog & RODCs**
 ![[AD - Hosts Enumeration - Sites Subnets y Topology#^ad-topology-gcrodc]]
 ````
 
-### 🖥️ Computer Objects via LDAP
+#### 🖥️ Computer Objects via LDAP
 
 ````tabs
 tab: **Bulk Computer Listing**
@@ -91,7 +136,7 @@ tab: **Bulk Profile Live Targets**
 ![[AD - Hosts Enumeration - Computer Objects via LDAP#^ad-computers-bulk-profile]]
 ````
 
-### 🏢 OUs & Containers
+#### 🏢 OUs & Containers
 
 ````tabs
 tab: **OU Tree Discovery**
@@ -110,7 +155,7 @@ tab: **Naming Conventions / Fingerprint**
 ![[AD - Hosts Enumeration - OUs y Containers#^ad-ou-naming]]
 ````
 
-### 📡 RPC / SMB / NetBIOS Probing
+#### 📡 RPC / SMB / NetBIOS Probing
 
 ````tabs
 tab: **Anonymous SMB / Null Session**
@@ -132,7 +177,7 @@ tab: **SMB Signing & Relay Prep**
 ![[AD - Hosts Enumeration - RPC SMB y NetBIOS Probing#^ad-rpc-signing]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec (nxc)**
@@ -237,49 +282,6 @@ Sin esta fase, ataques posteriores (Kerberoasting, NTLM Relay, ACL abuse, latera
    - nxc smb hosts.txt -u u -p p (Pwn3d! check)
    - --laps --gmsa --shares
    - Identify lateral foothold candidates
-```
-
----
-
-## Detección rápida
-
-### Indicadores en logs / SIEM (defender side)
-
-```text
-# Heavy LDAP queries from non-admin
-Event ID 1644 (Active Directory: Field Engineering log)
-
-# SAMR enum (RID brute, enumdomusers)  
-Event ID 4661 (Object access — SAM)
-
-# SMB share enum
-Event ID 5145 (Network share access)
-
-# Bulk computer enumeration
-Event ID 4662 (Object access — DS)
-```
-
-### Probes mínimos
-
-```bash
-# 1. Identify DC
-DC_IP=$(dig +short SRV _ldap._tcp.dc._msdcs.dom.local | awk '{print $4}' | head -1 | xargs dig +short A | head -1)
-echo "DC: $DC_IP"
-
-# 2. Anonymous probe
-nxc smb $DC_IP
-nxc smb $DC_IP -u '' -p '' --shares
-rpcclient -U "" $DC_IP -N -c 'lsaquery; getdompwinfo'
-
-# 3. After cred acquisition
-nxc smb $DC_IP -u user -p pass --pass-pol
-nxc ldap $DC_IP -u user -p pass --computers > computers.txt
-
-# 4. Identify relay candidates (signing not required)
-nxc smb computers.txt --gen-relay-list relay.txt
-
-# 5. Bulk profile
-nxc smb computers.txt -u user -p pass --shares --sessions --loggedon-users
 ```
 
 ---

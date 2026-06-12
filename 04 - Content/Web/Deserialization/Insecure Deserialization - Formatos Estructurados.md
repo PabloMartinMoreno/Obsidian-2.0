@@ -98,7 +98,7 @@ yaml.safe_load(payload)  # Raises ConstructorError
 
 ## XML Deserialization
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `<map><entry><java.beans.EventHandler>...</java.beans.EventHandler></entry></map>` | XStream (Java) — clásico | EventHandler-based RCE. |
 | XStream CVE-2021-39139 | Decenas de gadgets — JdkDynamicAggregateTranslator, etc. | Versiones < 1.4.18. |

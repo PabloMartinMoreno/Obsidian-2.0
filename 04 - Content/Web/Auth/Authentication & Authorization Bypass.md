@@ -41,7 +41,24 @@ linked:
 
 ## Cheatsheet
 
-### 🔓 Bypass de Autenticación (login)
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints Auth / Authz**
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-endpoints]]
+
+tab: **Username Enumeration**
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-enum]]
+
+tab: **Logic Flaw Recon**
+![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-flow]]
+````
+
+### 2. Explotación
+
+#### 🔓 Bypass de Autenticación (login)
 
 ````tabs
 tab: **Default Credentials**
@@ -63,7 +80,7 @@ tab: **Truncation Attack**
 ![[Auth Bypass - Bypass de Autenticacion#^auth-bypass-truncation]]
 ````
 
-### 🛡️ Bypass de Autorización (post-auth)
+#### 🛡️ Bypass de Autorización (post-auth)
 
 ````tabs
 tab: **IDOR / BOLA (Object-Level)**
@@ -82,7 +99,7 @@ tab: **Verb-Based Authorization Gaps (BFLA)**
 ![[Auth Bypass - Bypass de Autorizacion#^auth-authz-bfla]]
 ````
 
-### 🎟️ Tokens y Sessions
+#### 🎟️ Tokens y Sessions
 
 ````tabs
 tab: **JWT Bypass (Quick Reference)**
@@ -101,7 +118,7 @@ tab: **OAuth `redirect_uri` Manipulation**
 ![[Auth Bypass - Tokens y Sessions#^auth-tokens-oauth]]
 ````
 
-### 🌀 Flow Logic Flaws
+#### 🌀 Flow Logic Flaws
 
 ````tabs
 tab: **Password Reset Bypass / Token Leak**
@@ -123,7 +140,7 @@ tab: **Race Conditions en Auth**
 ![[Auth Bypass - Flow Logic Flaws#^auth-flow-race]]
 ````
 
-### 💪 Brute Force y Credential Stuffing
+#### 💪 Brute Force y Credential Stuffing
 
 ````tabs
 tab: **Default Credential Wordlists**
@@ -216,20 +233,7 @@ Auth fails → atacante = different user. Authz fails → atacante = same user c
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints Auth / Authz**
-![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-endpoints]]
-
-tab: **Username Enumeration**
-![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-enum]]
-
-tab: **Logic Flaw Recon**
-![[Auth Bypass - Deteccion y Reconocimiento#^auth-detect-flow]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

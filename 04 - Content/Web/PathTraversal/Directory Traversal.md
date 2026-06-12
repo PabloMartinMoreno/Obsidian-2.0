@@ -36,7 +36,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Payloads Básicos
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints con File Params**
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-params]]
+
+tab: **Probes Iniciales**
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-probes]]
+
+tab: **Detectar OS y Stack**
+![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-os]]
+````
+
+### 2. Explotación
+
+#### 🎯 Payloads Básicos
 
 ````tabs
 tab: **Unix `../` Traversal**
@@ -52,7 +69,7 @@ tab: **Absolute Paths**
 ![[Directory Traversal - Payloads Basicos#^pt-payload-absolute]]
 ````
 
-### 🔓 Bypass de Sanitización
+#### 🔓 Bypass de Sanitización
 
 ````tabs
 tab: **URL Encoding Variants**
@@ -68,7 +85,7 @@ tab: **Filter Strip Evasion**
 ![[Directory Traversal - Bypass de Sanitizacion#^pt-bypass-strip]]
 ````
 
-### 💉 Vectores por OS / Stack
+#### 💉 Vectores por OS / Stack
 
 ````tabs
 tab: **Linux Objetivos**
@@ -87,7 +104,7 @@ tab: **Node.js / Express**
 ![[Directory Traversal - Vectores OS y Stack#^pt-stack-node]]
 ````
 
-### 🔗 Chains y Variantes
+#### 🔗 Chains y Variantes
 
 ````tabs
 tab: **LFI to RCE Chain**
@@ -106,7 +123,9 @@ tab: **ImageMagick / File Processors**
 ![[Directory Traversal - Chains y Variantes#^pt-chain-image]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **dotdotpwn**
@@ -188,20 +207,7 @@ Path Traversal es vector **agnóstico al lenguaje** — afecta cualquier app que
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints con File Params**
-![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-params]]
-
-tab: **Probes Iniciales**
-![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-probes]]
-
-tab: **Detectar OS y Stack**
-![[Directory Traversal - Deteccion y Reconocimiento#^pt-detect-os]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

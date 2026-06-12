@@ -35,7 +35,24 @@ linked:
 
 ## Cheatsheet
 
-### 🔓 Auth Bypass
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints con LDAP Backend**
+![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-endpoints]]
+
+tab: **Probes de Inyección**
+![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-probes]]
+
+tab: **Fingerprint del Directory Server**
+![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-fingerprint]]
+````
+
+### 2. Explotación
+
+#### 🔓 Auth Bypass
 
 ````tabs
 tab: **Sub-Filter Injection en Login**
@@ -51,7 +68,7 @@ tab: **Active Directory-Specific Bypass**
 ![[LDAP Injection - Auth Bypass#^ldap-bypass-ad]]
 ````
 
-### 📋 Information Disclosure / Blind Extraction
+#### 📋 Information Disclosure / Blind Extraction
 
 ````tabs
 tab: **Wildcards para Enumeración**
@@ -67,7 +84,7 @@ tab: **Error-Based Leak**
 ![[LDAP Injection - Info Disclosure y Blind#^ldap-disclosure-error]]
 ````
 
-### 💉 Filter Manipulation
+#### 💉 Filter Manipulation
 
 ````tabs
 tab: **AND / OR Injection**
@@ -83,7 +100,7 @@ tab: **LDAP Comments y Null-Byte**
 ![[LDAP Injection - Filter Manipulation#^ldap-filter-comments]]
 ````
 
-### 🔗 JNDI / Entry Injection
+#### 🔗 JNDI / Entry Injection
 
 ````tabs
 tab: **JNDI Lookup (Log4Shell-style)**
@@ -99,7 +116,9 @@ tab: **Schema-Based Gadgets**
 ![[LDAP Injection - JNDI y Entry Injection#^ldap-jndi-schema]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **ldapsearch CLI**
@@ -205,20 +224,7 @@ filterlist     = filter+
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints con LDAP Backend**
-![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-endpoints]]
-
-tab: **Probes de Inyección**
-![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-probes]]
-
-tab: **Fingerprint del Directory Server**
-![[LDAP Injection - Deteccion y Reconocimiento#^ldap-detect-fingerprint]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

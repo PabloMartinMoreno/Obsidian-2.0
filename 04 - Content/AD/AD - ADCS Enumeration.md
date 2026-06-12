@@ -36,7 +36,39 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 ADCS Discovery
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. Comprehensive ADCS recon
+certipy find -u $USER -p $PASS -dc-ip $DC -text -stdout
+
+# 2. Vulnerable templates only
+certipy find -u $USER -p $PASS -dc-ip $DC -vulnerable -stdout
+
+# 3. JSON output for parsing
+certipy find -u $USER -p $PASS -dc-ip $DC -vulnerable -json -output adcs.json
+
+# 4. BloodHound integration
+certipy find -u $USER -p $PASS -dc-ip $DC -bloodhound
+
+# 5. Per-CA endpoint check
+CAS=$(certipy find -u $USER -p $PASS -dc-ip $DC -json | jq -r '.[].CAs[].DNSHostName')
+for ca in $CAS; do
+  echo "=== $ca ==="
+  curl -sI "http://$ca/certsrv/" 2>&1 | head -3
+done
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 ADCS Discovery
 
 ````tabs
 tab: **Architecture Overview**
@@ -64,7 +96,7 @@ tab: **Modern Best Practices**
 ![[AD - ADCS Enumeration - ADCS Discovery#^ad-adcs-bestpractice]]
 ````
 
-### 📋 Certificate Templates Audit
+#### 📋 Certificate Templates Audit
 
 ````tabs
 tab: **Template Object Class**
@@ -95,7 +127,7 @@ tab: **Modern Best Practices**
 ![[AD - ADCS Enumeration - Certificate Templates Audit#^ad-tmpl-bestpractice]]
 ````
 
-### 🛡️ CA ACL Audit
+#### 🛡️ CA ACL Audit
 
 ````tabs
 tab: **CA Object DACL**
@@ -129,7 +161,7 @@ tab: **Mitigations**
 ![[AD - ADCS Enumeration - CA ACL Audit#^ad-caacl-mitigations]]
 ````
 
-### 💉 ESC1-ESC15 Identification
+#### 💉 ESC1-ESC15 Identification
 
 ````tabs
 tab: **ESC1 (SAN + Client Auth)**
@@ -169,7 +201,7 @@ tab: **ESC12-ESC15 (Modern)**
 ![[AD - ADCS Enumeration - ESC1-ESC15 Identification#^ad-esc12-15]]
 ````
 
-### 🌐 Web Enrollment & NTLM Relay
+#### 🌐 Web Enrollment & NTLM Relay
 
 ````tabs
 tab: **Web Enrollment Endpoints**
@@ -197,7 +229,7 @@ tab: **Mitigations**
 ![[AD - ADCS Enumeration - Web Enrollment y Relay#^ad-webenroll-mitigations]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **certipy (Linux)**
@@ -314,36 +346,6 @@ ADCS = Microsoft PKI integrado con AD. Vulnerabilities ESC1-ESC15 son foundation
    - Revoke issued certs
    - Revert template modifications
    - Document changes
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. Comprehensive ADCS recon
-certipy find -u $USER -p $PASS -dc-ip $DC -text -stdout
-
-# 2. Vulnerable templates only
-certipy find -u $USER -p $PASS -dc-ip $DC -vulnerable -stdout
-
-# 3. JSON output for parsing
-certipy find -u $USER -p $PASS -dc-ip $DC -vulnerable -json -output adcs.json
-
-# 4. BloodHound integration
-certipy find -u $USER -p $PASS -dc-ip $DC -bloodhound
-
-# 5. Per-CA endpoint check
-CAS=$(certipy find -u $USER -p $PASS -dc-ip $DC -json | jq -r '.[].CAs[].DNSHostName')
-for ca in $CAS; do
-  echo "=== $ca ==="
-  curl -sI "http://$ca/certsrv/" 2>&1 | head -3
-done
 ```
 
 ---

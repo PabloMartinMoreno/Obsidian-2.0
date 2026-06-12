@@ -35,7 +35,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores Básicos
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Headers Check**
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-headers]]
+
+tab: **CSP Analysis**
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-csp]]
+
+tab: **Framing Test**
+![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-framing]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores Básicos
 
 ````tabs
 tab: **Opacity Overlay**
@@ -51,7 +68,7 @@ tab: **Fullscreen API**
 ![[Clickjacking - Vectores Basicos#^cj-vector-fullscreen]]
 ````
 
-### 💉 Variantes Avanzadas
+#### 💉 Variantes Avanzadas
 
 ````tabs
 tab: **Drag & Drop Jacking**
@@ -70,7 +87,7 @@ tab: **Stroke Jacking (Keyjacking)**
 ![[Clickjacking - Variantes Avanzadas#^cj-advanced-strokejacking]]
 ````
 
-### 🔓 Bypass de Anti-Framing
+#### 🔓 Bypass de Anti-Framing
 
 ````tabs
 tab: **JS Frame-Busting**
@@ -89,7 +106,7 @@ tab: **Browser Quirks**
 ![[Clickjacking - Bypass de Anti-Framing#^cj-bypass-quirks]]
 ````
 
-### 🔗 Chains con Otras Vulns
+#### 🔗 Chains con Otras Vulns
 
 ````tabs
 tab: **Self-XSS → Stored**
@@ -108,7 +125,9 @@ tab: **Subdomain Takeover Trust**
 ![[Clickjacking - Chains con Otras Vulns#^cj-chain-subtakeover]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp + Clickbandit**
@@ -214,20 +233,7 @@ Vector existe desde 2008 (Hansen + Grossman). Defensa moderna: `X-Frame-Options`
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Headers Check**
-![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-headers]]
-
-tab: **CSP Analysis**
-![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-csp]]
-
-tab: **Framing Test**
-![[Clickjacking - Deteccion y Reconocimiento#^cj-detect-framing]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

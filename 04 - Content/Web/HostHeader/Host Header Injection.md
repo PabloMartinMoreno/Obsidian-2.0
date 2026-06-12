@@ -35,7 +35,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores Comunes
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints que Reflejan / Dependen de Host**
+![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-endpoints]]
+
+tab: **Probes con Valores Arbitrarios**
+![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-probes]]
+
+tab: **Test Multi-Header Behavior**
+![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-multi-header]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores Comunes
 
 ````tabs
 tab: **Password Reset Poisoning**
@@ -54,7 +71,7 @@ tab: **Email Link Generation Hijack**
 ![[Host Header Injection - Vectores Comunes#^hhi-vector-email]]
 ````
 
-### 📡 Headers Alternativos
+#### 📡 Headers Alternativos
 
 ````tabs
 tab: **`X-Forwarded-Host` (XFH)**
@@ -76,7 +93,7 @@ tab: **`Forwarded:` (RFC 7239)**
 ![[Host Header Injection - Headers Alternativos#^hhi-altheader-rfc7239]]
 ````
 
-### 🔓 Bypass de Validación
+#### 🔓 Bypass de Validación
 
 ````tabs
 tab: **Multiple Host Headers**
@@ -95,7 +112,7 @@ tab: **Path Injection en Host**
 ![[Host Header Injection - Bypass de Validacion#^hhi-bypass-path]]
 ````
 
-### 🔗 Chains y Variantes
+#### 🔗 Chains y Variantes
 
 ````tabs
 tab: **Password Reset Poisoning Chain**
@@ -114,7 +131,9 @@ tab: **HTTP Request Smuggling Combo**
 ![[Host Header Injection - Chains y Variantes#^hhi-chain-hrs]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp Param Miner**
@@ -198,20 +217,7 @@ HHI es vector base, frecuentemente combinable con cache poisoning para amplifica
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints que Reflejan / Dependen de Host**
-![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-endpoints]]
-
-tab: **Probes con Valores Arbitrarios**
-![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-probes]]
-
-tab: **Test Multi-Header Behavior**
-![[Host Header Injection - Deteccion y Reconocimiento#^hhi-detect-multi-header]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

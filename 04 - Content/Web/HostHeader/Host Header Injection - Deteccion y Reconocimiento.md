@@ -19,7 +19,7 @@ linked:
 
 ## Identificar Endpoints que Reflejan / Dependen de Host
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Endpoint** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `/forgot`, `/reset` — emite link en email | Reset password endpoint | Most common vector. |
 | `/verify`, `/confirm` — enlaces al user | Email confirmation | Same. |

@@ -36,7 +36,40 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 Unconstrained Delegation
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. UD discovery
+nxc ldap $DC -u $USER -p $PASS --trusted-for-delegation
+
+# 2. CD discovery (RSAT)
+Get-ADComputer -Filter {msDS-AllowedToDelegateTo -like "*"} -Properties msDS-AllowedToDelegateTo
+
+# 3. RBCD discovery
+Get-ADComputer -Filter * -Properties msDS-AllowedToActOnBehalfOfOtherIdentity |
+  Where {$_.'msDS-AllowedToActOnBehalfOfOtherIdentity'}
+
+# 4. Shadow Cred candidates
+Get-ADUser -Filter * -Properties msDS-KeyCredentialLink |
+  Where {$_.'msDS-KeyCredentialLink'}
+
+# 5. ms-DS-MachineAccountQuota check
+(Get-ADObject (Get-ADDomain).DistinguishedName -Properties ms-DS-MachineAccountQuota).'ms-DS-MachineAccountQuota'
+
+# 6. BloodHound full
+bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 Unconstrained Delegation
 
 ````tabs
 tab: **Concept Overview**
@@ -67,7 +100,7 @@ tab: **Mitigations & Hardening**
 ![[AD - Delegation Enumeration - Unconstrained Delegation#^ad-ud-mitigations]]
 ````
 
-### 🎭 Constrained Delegation (S4U)
+#### 🎭 Constrained Delegation (S4U)
 
 ````tabs
 tab: **Concept Overview**
@@ -95,7 +128,7 @@ tab: **Mitigations**
 ![[AD - Delegation Enumeration - Constrained Delegation S4U#^ad-cd-mitigations]]
 ````
 
-### 🔄 Resource-Based Constrained Delegation (RBCD)
+#### 🔄 Resource-Based Constrained Delegation (RBCD)
 
 ````tabs
 tab: **Concept Overview**
@@ -123,7 +156,7 @@ tab: **Mitigations**
 ![[AD - Delegation Enumeration - Resource-Based Constrained Delegation#^ad-rbcd-mitigations]]
 ````
 
-### 🔑 Shadow Credentials
+#### 🔑 Shadow Credentials
 
 ````tabs
 tab: **Concept Overview**
@@ -151,7 +184,7 @@ tab: **Modern: NgC = Windows Hello**
 ![[AD - Delegation Enumeration - Shadow Credentials#^ad-shadowcred-ngc]]
 ````
 
-### 📋 Cross-Trust Delegation
+#### 📋 Cross-Trust Delegation
 
 ````tabs
 tab: **TGT Delegation Across Trusts**
@@ -176,7 +209,7 @@ tab: **Mitigations**
 ![[AD - Delegation Enumeration - Cross-Trust Delegation#^ad-crosstrust-mitigations]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -286,37 +319,6 @@ Each delegation type has distinct attack patterns. UD = passive TGT capture (com
    - Remove created computers
    - Revert RBCD modifications
    - Remove Shadow Cred entries
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. UD discovery
-nxc ldap $DC -u $USER -p $PASS --trusted-for-delegation
-
-# 2. CD discovery (RSAT)
-Get-ADComputer -Filter {msDS-AllowedToDelegateTo -like "*"} -Properties msDS-AllowedToDelegateTo
-
-# 3. RBCD discovery
-Get-ADComputer -Filter * -Properties msDS-AllowedToActOnBehalfOfOtherIdentity |
-  Where {$_.'msDS-AllowedToActOnBehalfOfOtherIdentity'}
-
-# 4. Shadow Cred candidates
-Get-ADUser -Filter * -Properties msDS-KeyCredentialLink |
-  Where {$_.'msDS-KeyCredentialLink'}
-
-# 5. ms-DS-MachineAccountQuota check
-(Get-ADObject (Get-ADDomain).DistinguishedName -Properties ms-DS-MachineAccountQuota).'ms-DS-MachineAccountQuota'
-
-# 6. BloodHound full
-bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
 ```
 
 ---

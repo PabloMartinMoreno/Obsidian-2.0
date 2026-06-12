@@ -19,7 +19,7 @@ linked:
 
 ## Identificar Puntos Reflejados
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Punto / Vector** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `?q=USER_INPUT` reflejado en results | Search query | Standard. |
 | Comment / forum post | Body persistido + visible | Stored injection. |

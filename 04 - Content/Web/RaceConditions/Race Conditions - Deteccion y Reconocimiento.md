@@ -63,7 +63,7 @@ linked:
 
 ## Atomicity / Locking Issues
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Transactional `BEGIN/COMMIT` ausente | Multi-statement DB ops | Sin atomicidad → race. |
 | `SELECT ... FOR UPDATE` ausente | Read sin lock | Concurrent reads = race. |

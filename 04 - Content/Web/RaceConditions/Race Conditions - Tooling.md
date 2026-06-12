@@ -63,7 +63,7 @@ def handleResponse(req, interesting):
 
 ## Burp Repeater "Send Group → Single Connection"
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Right-click Repeater tab → "Create tab group" → name "race" | Create tab group for race | Setup. |
 | Drag Repeater tabs into "race" group | Add tabs to group | Group population. |

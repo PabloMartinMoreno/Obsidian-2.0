@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Mecanismos de Session
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `Set-Cookie: PHPSESSID=...`, `JSESSIONID=...`, `connect.sid=...` | Cookie session ID | Server-side state. |
 | `Set-Cookie: token=eyJ...` | JWT en cookie | Stateless self-contained. |
@@ -83,7 +83,7 @@ echo "$COOKIE" | grep -oiE 'HttpOnly|Secure|SameSite=[^;]*|Domain=[^;]*|Path=[^;
 
 ## Mapear Session Lifecycle
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Pre-auth state | Cookie issued anonymous? | Session fixation possible if same ID after login. |
 | Login → new cookie | Cookie regenerates post-auth? | Best practice. |

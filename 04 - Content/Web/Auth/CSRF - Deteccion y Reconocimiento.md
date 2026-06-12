@@ -19,7 +19,7 @@ linked:
 
 ## Identificar Endpoints State-Changing
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Endpoint** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Endpoints POST/PUT/DELETE en historial Burp | Filtrar `Method:POST,PUT,DELETE` en historial | First step. |
 | `grep -E '<form.*method="post"' burp-history.html` | Forms en HTML | HTML del frontend. |
@@ -39,7 +39,7 @@ linked:
 
 ## Análisis de Tokens Existentes
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `grep -oE 'name="(csrf[_-]?token\|_token\|authenticity_token)"\s+value="[^"]+"'` | Buscar token en form | Patrones comunes. |
 | `X-CSRF-Token`, `X-XSRF-TOKEN`, `Anti-CSRF-Token` | Buscar token en headers | Headers custom. |

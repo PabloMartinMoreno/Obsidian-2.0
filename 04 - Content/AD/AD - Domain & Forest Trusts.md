@@ -32,7 +32,37 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 Trust Discovery
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+# 1. Quick trust discovery
+nltest /domain_trusts /all_trusts /v
+
+# 2. Detail per trust
+Get-ADTrust -Filter * -Properties trustAttributes |
+  Select Name,Direction,IsTransitive,@{n='Attrs';e={'0x{0:X}' -f $_.trustAttributes}}
+
+# 3. SID Filtering check (CRITICAL)
+Get-ADTrust -Filter * |
+  Select Name,SIDFilteringForestAware,SIDFilteringQuarantined
+
+# 4. Foreign principals in privileged groups
+foreach ($g in @("Domain Admins","Enterprise Admins","Schema Admins")) {
+  Get-ADGroupMember $g -Recursive |
+    Where {$_.distinguishedName -match "ForeignSecurityPrincipals"}
+}
+
+# 5. BloodHound cross-trust paths
+# MATCH p=shortestPath((u:User {owned:true})-[*1..]->(g:Group {name:"DOMAIN ADMINS@FOREIGN-DOM"}))
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 Trust Discovery
 
 ````tabs
 tab: **Native Windows Tools**
@@ -54,7 +84,7 @@ tab: **Anonymous / Pre-Auth**
 ![[AD - Domain & Forest Trusts - Trust Discovery#^ad-trust-discover-anon]]
 ````
 
-### 🌐 Trust Types
+#### 🌐 Trust Types
 
 ````tabs
 tab: **Intra-Forest Trusts**
@@ -76,7 +106,7 @@ tab: **Trust Operational Tests**
 ![[AD - Domain & Forest Trusts - Trust Types#^ad-types-tests]]
 ````
 
-### ➡️ Direction & Transitivity
+#### ➡️ Direction & Transitivity
 
 ````tabs
 tab: **Trust Direction Decoded**
@@ -98,7 +128,7 @@ tab: **TGT Delegation Across Trusts**
 ![[AD - Domain & Forest Trusts - Direction y Transitivity#^ad-direction-tgtdelegation]]
 ````
 
-### 🔐 Authentication & SID Filtering
+#### 🔐 Authentication & SID Filtering
 
 ````tabs
 tab: **Authentication Types Cross-Trust**
@@ -120,7 +150,7 @@ tab: **Trust Account Compromise Chain**
 ![[AD - Domain & Forest Trusts - Authentication y SID Filtering#^ad-auth-trustchain]]
 ````
 
-### 💉 Trust Recon para Ataques
+#### 💉 Trust Recon para Ataques
 
 ````tabs
 tab: **Identify Attackable Trust Surfaces**
@@ -139,7 +169,7 @@ tab: **Cross-Trust Kerberoast / AS-REP**
 ![[AD - Domain & Forest Trusts - Trust Recon para Ataques#^ad-trustrecon-roast]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **nltest (Native Windows)**
@@ -248,34 +278,6 @@ Para atacantes: trusts expanden la superficie de ataque. Identificar todos los t
    - Trust account hash valid until rotation
    - Multiple trust paths if multi-domain forest
    - Cleanup tickets after operations
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-# 1. Quick trust discovery
-nltest /domain_trusts /all_trusts /v
-
-# 2. Detail per trust
-Get-ADTrust -Filter * -Properties trustAttributes |
-  Select Name,Direction,IsTransitive,@{n='Attrs';e={'0x{0:X}' -f $_.trustAttributes}}
-
-# 3. SID Filtering check (CRITICAL)
-Get-ADTrust -Filter * |
-  Select Name,SIDFilteringForestAware,SIDFilteringQuarantined
-
-# 4. Foreign principals in privileged groups
-foreach ($g in @("Domain Admins","Enterprise Admins","Schema Admins")) {
-  Get-ADGroupMember $g -Recursive |
-    Where {$_.distinguishedName -match "ForeignSecurityPrincipals"}
-}
-
-# 5. BloodHound cross-trust paths
-# MATCH p=shortestPath((u:User {owned:true})-[*1..]->(g:Group {name:"DOMAIN ADMINS@FOREIGN-DOM"}))
 ```
 
 ---

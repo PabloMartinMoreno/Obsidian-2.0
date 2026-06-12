@@ -30,7 +30,29 @@ linked:
 
 ## Cheatsheet
 
-### 1. In-Band (respuesta directa)
+### 1. Detección y Reconocimiento
+
+```bash
+# NoSQLMap (SQLMap-style para NoSQL)
+python NoSQLMap.py
+# Opción 1: Set options → URL http://target/login
+# Opción 2: Scan sites → inyecciones auto
+
+# Ffuf con wordlist de operadores
+ffuf -w /usr/share/seclists/Fuzzing/NoSQL-Payloads.txt \
+     -u "http://target/login" \
+     -X POST \
+     -d "user=admin&pass=FUZZ" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -fc 401
+
+# Burp Suite → Intruder con payloads NoSQLi
+# Lista PayloadsAllTheThings/NoSQL Injection/Intruder/
+```
+
+### 2. Explotación
+
+#### 🎯 In-Band (respuesta directa)
 
 ````tabs
 tab: **Operadores ($ne, $gt, $regex) — Auth Bypass**
@@ -40,14 +62,14 @@ tab: **Inyección Sintáctica (string concat, JSON escape)**
 ![[NoSQLi - Inyección Sintáctica#^nosqli-syntax]]
 ````
 
-### 2. Server-side Code Execution
+#### ⚙️ Server-side Code Execution
 
 ````tabs
 tab: **JavaScript ($where, mapReduce, $function)**
 ![[NoSQLi - JavaScript ($where, mapReduce)#^nosqli-js]]
 ````
 
-### 3. Blind / Inferential
+#### 🌑 Blind / Inferential
 
 ````tabs
 tab: **Extracción char-by-char ($regex, time-based)**
@@ -111,28 +133,6 @@ Diferencia vs SQLi clásico: NoSQL usa **objetos JSON** y **operadores** (`$ne`,
 5. Si acceso DB directo (ej: MongoDB expuesto 27017) → enum collections.
 6. Si versión ≤4.0 → probar db.eval / mapReduce para JS arbitrario.
 7. Exfil por chars con $regex^ boolean oracle.
-```
-
----
-
-## Detección rápida con herramientas
-
-```bash
-# NoSQLMap (SQLMap-style para NoSQL)
-python NoSQLMap.py
-# Opción 1: Set options → URL http://target/login
-# Opción 2: Scan sites → inyecciones auto
-
-# Ffuf con wordlist de operadores
-ffuf -w /usr/share/seclists/Fuzzing/NoSQL-Payloads.txt \
-     -u "http://target/login" \
-     -X POST \
-     -d "user=admin&pass=FUZZ" \
-     -H "Content-Type: application/x-www-form-urlencoded" \
-     -fc 401
-
-# Burp Suite → Intruder con payloads NoSQLi
-# Lista PayloadsAllTheThings/NoSQL Injection/Intruder/
 ```
 
 ---

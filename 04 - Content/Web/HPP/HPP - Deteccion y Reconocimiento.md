@@ -19,7 +19,7 @@ linked:
 
 ## Identificar Endpoints con Multiple Params
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Endpoint** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Multi-input forms | Login, search, profile updates | Standard. |
 | API con many params | REST endpoints con N query params | Common. |

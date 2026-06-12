@@ -32,7 +32,40 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 Collectors
+### 1. Ataque Rápido (TL;DR)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. BloodHound.py default collection (Linux)
+bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
+
+# 2. RustHound (faster)
+rusthound -d dom.local -u $USER -p $PASS --zip
+
+# 3. SharpHound (Windows)
+SharpHound.exe -c Default
+
+# 4. Ingest in BHCE
+# http://localhost:8080 → Settings → File Ingest → drag-and-drop ZIP
+
+# 5. Pre-built queries:
+# - Find all Domain Admins
+# - Find shortest paths to Domain Admins
+# - Find Kerberoastable
+# - Find unconstrained delegation
+# - Find LAPS readers
+# - Find ESC1 vulnerable templates
+```
+
+---
+
+### 2. Explotación
+
+#### 🔍 Collectors
 
 ````tabs
 tab: **SharpHound (Default Windows)**
@@ -63,7 +96,7 @@ tab: **Continuous Loop Mode**
 ![[BloodHound & SharpHound - Collectors#^ad-bh-loop]]
 ````
 
-### 📊 BloodHound CE
+#### 📊 BloodHound CE
 
 ````tabs
 tab: **Installation**
@@ -94,7 +127,7 @@ tab: **BHCE 6.x New Features**
 ![[BloodHound & SharpHound - BloodHound CE#^ad-bhce-6x]]
 ````
 
-### 🎯 Cypher Queries
+#### 🎯 Cypher Queries
 
 ````tabs
 tab: **Cypher Syntax Basics**
@@ -131,7 +164,7 @@ tab: **Cypher Performance Tips**
 ![[BloodHound & SharpHound - Cypher Queries#^ad-cypher-perf]]
 ````
 
-### 📋 Edges & Analytics
+#### 📋 Edges & Analytics
 
 ````tabs
 tab: **ACL Edges**
@@ -165,7 +198,7 @@ tab: **BHCE 6.x Performance**
 ![[BloodHound & SharpHound - Edges y Analytics#^ad-edges-bhce6]]
 ````
 
-### 🔄 Multi-Domain & Forest
+#### 🔄 Multi-Domain & Forest
 
 ````tabs
 tab: **Multi-Domain Workflow**
@@ -187,7 +220,7 @@ tab: **OPSEC Multi-Domain**
 ![[BloodHound & SharpHound - Multi-Domain y Forest#^ad-multidom-opsec]]
 ````
 
-### 🛠️ Tooling Ecosystem
+#### 🛠️ Tooling Ecosystem
 
 ````tabs
 tab: **Custom Query Repos**
@@ -304,37 +337,6 @@ Pre-BloodHound: red team manual ACL audit + correlate. Post-BloodHound: automate
    - BHCE collection ZIPs cleanup
    - Document findings
    - Per-engagement reports
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. BloodHound.py default collection (Linux)
-bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
-
-# 2. RustHound (faster)
-rusthound -d dom.local -u $USER -p $PASS --zip
-
-# 3. SharpHound (Windows)
-SharpHound.exe -c Default
-
-# 4. Ingest in BHCE
-# http://localhost:8080 → Settings → File Ingest → drag-and-drop ZIP
-
-# 5. Pre-built queries:
-# - Find all Domain Admins
-# - Find shortest paths to Domain Admins
-# - Find Kerberoastable
-# - Find unconstrained delegation
-# - Find LAPS readers
-# - Find ESC1 vulnerable templates
 ```
 
 ---

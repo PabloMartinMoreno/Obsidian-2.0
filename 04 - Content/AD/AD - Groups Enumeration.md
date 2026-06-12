@@ -34,7 +34,41 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 Group List Extraction
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+
+# 1. Anonymous (test always)
+nxc smb $DC -u '' -p '' --groups
+rpcclient -U "" $DC -N -c 'enumdomgroups'
+
+# 2. Authenticated bulk
+USER="user"; PASS="pass"
+nxc ldap $DC -u $USER -p $PASS --groups > groups.txt
+
+# 3. Tier 0 enumeration
+for g in "Domain Admins" "Enterprise Admins" "Schema Admins" "Backup Operators" "Server Operators" "Account Operators" "DnsAdmins"; do
+  echo "=== $g ==="
+  nxc smb $DC -u $USER -p $PASS --groups "$g"
+done
+
+# 4. Foreign principals (PowerView Windows)
+Find-ForeignUser
+Find-ForeignGroup
+
+# 5. BloodHound (best for visual)
+bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
+# Ingest in BloodHound CE → analyze paths
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 Group List Extraction
 
 ````tabs
 tab: **Bulk Group Listing**
@@ -56,7 +90,7 @@ tab: **Cross-Domain (Forest-Wide)**
 ![[AD - Groups Enumeration - Group List Extraction#^ad-grouplist-forest]]
 ````
 
-### 🛡️ Privileged Built-in Groups
+#### 🛡️ Privileged Built-in Groups
 
 ````tabs
 tab: **Tier 0 Domain-Level Groups**
@@ -81,7 +115,7 @@ tab: **Exchange-Related Groups (Legacy DCSync)**
 ![[AD - Groups Enumeration - Privileged Built-in Groups#^ad-priv-exchange]]
 ````
 
-### 🔄 Recursive Membership
+#### 🔄 Recursive Membership
 
 ````tabs
 tab: **Direct vs Recursive**
@@ -103,7 +137,7 @@ tab: **Group Membership Audit**
 ![[AD - Groups Enumeration - Recursive Membership#^ad-recursive-audit]]
 ````
 
-### 🌐 Foreign / Cross-Trust Membership
+#### 🌐 Foreign / Cross-Trust Membership
 
 ````tabs
 tab: **Foreign Security Principals (FSP)**
@@ -125,7 +159,7 @@ tab: **sIDHistory Cross-Trust**
 ![[AD - Groups Enumeration - Foreign y Cross-Trust Membership#^ad-foreign-sidhistory]]
 ````
 
-### 🎯 High-Value Group Identification
+#### 🎯 High-Value Group Identification
 
 ````tabs
 tab: **Tier 0 (Forest/Domain Critical)**
@@ -153,7 +187,7 @@ tab: **Custom Privileged Groups**
 ![[AD - Groups Enumeration - High-Value Group Identification#^ad-hvgroup-custom]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -271,38 +305,6 @@ Foundation crítica para BloodHound attack path mapping, ACL abuse, privilege es
    d. DnsAdmins (legacy) → dnscmd plugin → SYSTEM
    e. GPO Creator + linking → GPO Abuse → mass compromise
    f. ACL chain via group ACEs → BloodHound path
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-
-# 1. Anonymous (test always)
-nxc smb $DC -u '' -p '' --groups
-rpcclient -U "" $DC -N -c 'enumdomgroups'
-
-# 2. Authenticated bulk
-USER="user"; PASS="pass"
-nxc ldap $DC -u $USER -p $PASS --groups > groups.txt
-
-# 3. Tier 0 enumeration
-for g in "Domain Admins" "Enterprise Admins" "Schema Admins" "Backup Operators" "Server Operators" "Account Operators" "DnsAdmins"; do
-  echo "=== $g ==="
-  nxc smb $DC -u $USER -p $PASS --groups "$g"
-done
-
-# 4. Foreign principals (PowerView Windows)
-Find-ForeignUser
-Find-ForeignGroup
-
-# 5. BloodHound (best for visual)
-bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
-# Ingest in BloodHound CE → analyze paths
 ```
 
 ---

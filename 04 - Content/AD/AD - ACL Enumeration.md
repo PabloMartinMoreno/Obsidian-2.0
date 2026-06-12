@@ -34,7 +34,35 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 ACL Inspection Tools
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. BloodHound full collection
+bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
+
+# 2. PowerView dangerous ACL filter
+# Find-InterestingDomainAcl -ResolveGUIDs
+
+# 3. Per-object critical audit (RSAT)
+# Domain root, AdminSDHolder, DA group ACL
+
+# 4. Authenticated Users with priv ACE (CRITICAL)
+# Get-DomainObjectAcl ... | Where IdentityReference -match "Authenticated Users"
+
+# 5. Foreign principals with priv ACE
+# Get-DomainObjectAcl ... | Where IdentityReferenceDomain -ne $localDomain
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 ACL Inspection Tools
 
 ````tabs
 tab: **RSAT / PowerShell Native**
@@ -56,7 +84,7 @@ tab: **ADRecon / Bulk Reports**
 ![[AD - ACL Enumeration - ACL Inspection Tools#^ad-acl-tools-bulk]]
 ````
 
-### 🔓 Dangerous ACE Patterns
+#### 🔓 Dangerous ACE Patterns
 
 ````tabs
 tab: **GenericAll (Full Control)**
@@ -90,7 +118,7 @@ tab: **ACE Inheritance**
 ![[AD - ACL Enumeration - Dangerous ACE Patterns#^ad-ace-inheritance]]
 ````
 
-### 🎯 ACL Path Patterns
+#### 🎯 ACL Path Patterns
 
 ````tabs
 tab: **Direct Privesc Paths**
@@ -121,7 +149,7 @@ tab: **Cypher Workhorse Queries**
 ![[AD - ACL Enumeration - ACL Path Patterns#^ad-aclpath-cypher]]
 ````
 
-### 💉 Object-Specific Audits
+#### 💉 Object-Specific Audits
 
 ````tabs
 tab: **Domain Root Object**
@@ -149,7 +177,7 @@ tab: **Bulk Forest-Wide Audit**
 ![[AD - ACL Enumeration - Object-Specific Audits#^ad-objspec-bulk]]
 ````
 
-### 📋 ACE Filtering & Bulk Audit
+#### 📋 ACE Filtering & Bulk Audit
 
 ````tabs
 tab: **Find-InterestingDomainAcl**
@@ -174,7 +202,7 @@ tab: **OPSEC Considerations**
 ![[AD - ACL Enumeration - ACE Filtering y Bulk Audit#^ad-bulk-opsec]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **BloodHound / SharpHound**
@@ -299,32 +327,6 @@ ACEs típicamente otorgadas para administración legítima pero misconfiguration
    - Revert ACL modifications
    - Remove added group members
    - Document changes for compliance
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. BloodHound full collection
-bloodhound-python -d dom.local -u $USER -p $PASS -ns $DC -c All --zip
-
-# 2. PowerView dangerous ACL filter
-# Find-InterestingDomainAcl -ResolveGUIDs
-
-# 3. Per-object critical audit (RSAT)
-# Domain root, AdminSDHolder, DA group ACL
-
-# 4. Authenticated Users with priv ACE (CRITICAL)
-# Get-DomainObjectAcl ... | Where IdentityReference -match "Authenticated Users"
-
-# 5. Foreign principals with priv ACE
-# Get-DomainObjectAcl ... | Where IdentityReferenceDomain -ne $localDomain
 ```
 
 ---

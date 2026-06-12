@@ -35,7 +35,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Identificación de Unkeyed Inputs
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Capa de Caché**
+![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-layer]]
+
+tab: **Análisis del Cache Key**
+![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-cachekey]]
+
+tab: **Probes Hit/Miss**
+![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-hitmiss]]
+````
+
+### 2. Explotación
+
+#### 🎯 Identificación de Unkeyed Inputs
 
 ````tabs
 tab: **Headers No Incluidos en Cache Key**
@@ -48,7 +65,7 @@ tab: **Method / Path Normalization**
 ![[Web Cache Poisoning - Unkeyed Inputs#^wcp-unkeyed-normalization]]
 ````
 
-### 💉 Vectores de Cache Poisoning
+#### 💉 Vectores de Cache Poisoning
 
 ````tabs
 tab: **Reflected XSS via Unkeyed Header**
@@ -67,7 +84,7 @@ tab: **Internal Header Injection**
 ![[Web Cache Poisoning - Vectores de Poisoning#^wcp-vector-internal]]
 ````
 
-### 🪞 Cache Deception
+#### 🪞 Cache Deception
 
 ````tabs
 tab: **Path Confusion (.css extension)**
@@ -83,23 +100,7 @@ tab: **Encoded Slashes y Variantes**
 ![[Web Cache Poisoning - Cache Deception#^wcp-deception-encoded]]
 ````
 
-### 🛠️ Tooling
-
-````tabs
-tab: **Param Miner (Burp)**
-![[Web Cache Poisoning - Tooling#^wcp-tool-param-miner]]
-
-tab: **HTTP Request Smuggler (Combo)**
-![[Web Cache Poisoning - Tooling#^wcp-tool-smuggler]]
-
-tab: **WCVS Scanner**
-![[Web Cache Poisoning - Tooling#^wcp-tool-wcvs]]
-
-tab: **Manual curl / Repeater**
-![[Web Cache Poisoning - Tooling#^wcp-tool-manual]]
-````
-
-### 🛡️ Bypasses Avanzados
+#### 🛡️ Bypasses Avanzados
 
 ````tabs
 tab: **Cache Key Normalization**
@@ -116,6 +117,24 @@ tab: **Fat GET / Fat POST**
 ````
 
 ---
+
+### 3. Tooling
+
+#### 🛠️ Tooling
+
+````tabs
+tab: **Param Miner (Burp)**
+![[Web Cache Poisoning - Tooling#^wcp-tool-param-miner]]
+
+tab: **HTTP Request Smuggler (Combo)**
+![[Web Cache Poisoning - Tooling#^wcp-tool-smuggler]]
+
+tab: **WCVS Scanner**
+![[Web Cache Poisoning - Tooling#^wcp-tool-wcvs]]
+
+tab: **Manual curl / Repeater**
+![[Web Cache Poisoning - Tooling#^wcp-tool-manual]]
+````
 
 ## Overview
 
@@ -187,20 +206,7 @@ Vector clase A — descubierto por James Kettle (PortSwigger, 2018-2020). CVEs m
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Capa de Caché**
-![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-layer]]
-
-tab: **Análisis del Cache Key**
-![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-cachekey]]
-
-tab: **Probes Hit/Miss**
-![[Web Cache Poisoning - Deteccion y Reconocimiento#^wcp-detect-hitmiss]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores de stack vulnerable
 

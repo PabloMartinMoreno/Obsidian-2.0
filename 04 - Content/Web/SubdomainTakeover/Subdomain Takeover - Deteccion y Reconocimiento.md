@@ -111,7 +111,7 @@ done
 
 ## Identificar Dangling Pointers
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Punto / Vector** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | CNAME a `bucketname.s3.amazonaws.com` que no existe | NXDOMAIN o "NoSuchBucket" | S3 takeover candidate. |
 | CNAME a `*.cloudfront.net` con NXDOMAIN | Distribution deleted | CloudFront takeover. |

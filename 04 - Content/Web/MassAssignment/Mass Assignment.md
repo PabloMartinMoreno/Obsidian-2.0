@@ -36,7 +36,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores Comunes
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Endpoints**
+![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-endpoints]]
+
+tab: **Descubrir Hidden Fields**
+![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-hidden]]
+
+tab: **Inferir Model via Response**
+![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-model]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores Comunes
 
 ````tabs
 tab: **Privilege Escalation**
@@ -55,7 +72,7 @@ tab: **Audit Fields (Backdating)**
 ![[Mass Assignment - Vectores Comunes#^ma-vector-audit]]
 ````
 
-### 🏛️ Frameworks Vulnerables
+#### 🏛️ Frameworks Vulnerables
 
 ````tabs
 tab: **Rails (strong_params)**
@@ -77,7 +94,7 @@ tab: **GraphQL Input Types**
 ![[Mass Assignment - Frameworks Vulnerables#^ma-fw-graphql]]
 ````
 
-### 🔓 Bypass de Whitelists
+#### 🔓 Bypass de Whitelists
 
 ````tabs
 tab: **Nested Object Injection**
@@ -96,7 +113,7 @@ tab: **Query String vs Body**
 ![[Mass Assignment - Bypass de Whitelists#^ma-bypass-query]]
 ````
 
-### 🔗 Chains con Otras Vulns
+#### 🔗 Chains con Otras Vulns
 
 ````tabs
 tab: **IDOR + Mass Assignment**
@@ -115,7 +132,9 @@ tab: **Prototype Pollution Combo**
 ![[Mass Assignment - Chains con Otras Vulns#^ma-chain-pp]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Param Miner (Burp)**
@@ -209,20 +228,7 @@ Si `request_body` incluye `{"name": "x", "is_admin": true}`, backend asigna `is_
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Endpoints**
-![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-endpoints]]
-
-tab: **Descubrir Hidden Fields**
-![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-hidden]]
-
-tab: **Inferir Model via Response**
-![[Mass Assignment - Deteccion y Reconocimiento#^ma-detect-model]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

@@ -35,7 +35,24 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Vectores Básicos
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Parámetros de Redirect**
+![[Open Redirect - Deteccion y Reconocimiento#^or-detect-params]]
+
+tab: **Endpoints Comunes**
+![[Open Redirect - Deteccion y Reconocimiento#^or-detect-endpoints]]
+
+tab: **Detectar 301/302 / JS-Based Redirects**
+![[Open Redirect - Deteccion y Reconocimiento#^or-detect-types]]
+````
+
+### 2. Explotación
+
+#### 🎯 Vectores Básicos
 
 ````tabs
 tab: **URL Absoluta Completa**
@@ -51,7 +68,7 @@ tab: **Backslash / Control Char Tricks**
 ![[Open Redirect - Vectores Basicos#^or-vector-control]]
 ````
 
-### 🔓 Bypass de Validación
+#### 🔓 Bypass de Validación
 
 ````tabs
 tab: **Whitelist Domain Match**
@@ -67,7 +84,7 @@ tab: **Encoding Tricks (URL / Unicode)**
 ![[Open Redirect - Bypass de Validacion#^or-bypass-encoding]]
 ````
 
-### 💉 Vectores Específicos
+#### 💉 Vectores Específicos
 
 ````tabs
 tab: **OAuth `redirect_uri` Injection**
@@ -86,7 +103,7 @@ tab: **JS-Based Client-Side Redirect**
 ![[Open Redirect - Vectores Especificos#^or-specific-js]]
 ````
 
-### 🔗 Chains con Otras Vulns
+#### 🔗 Chains con Otras Vulns
 
 ````tabs
 tab: **SSRF via Redirect Chain**
@@ -105,7 +122,9 @@ tab: **Cache Poisoning Combo**
 ![[Open Redirect - Chains con Otras Vulns#^or-chain-cache]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **OpenRedireX**
@@ -190,20 +209,7 @@ OWASP Top 10 históricamente — A10 en 2013, removed después por considerarse 
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Parámetros de Redirect**
-![[Open Redirect - Deteccion y Reconocimiento#^or-detect-params]]
-
-tab: **Endpoints Comunes**
-![[Open Redirect - Deteccion y Reconocimiento#^or-detect-endpoints]]
-
-tab: **Detectar 301/302 / JS-Based Redirects**
-![[Open Redirect - Deteccion y Reconocimiento#^or-detect-types]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

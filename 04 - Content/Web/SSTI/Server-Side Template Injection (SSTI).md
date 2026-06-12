@@ -36,7 +36,24 @@ linked:
 
 ## Cheatsheet
 
-### 💉 Ejecución por Engine
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Probes Polyglot**
+![[SSTI - Deteccion y Fingerprinting#^ssti-detect-polyglot]]
+
+tab: **Identificación por Delimitador**
+![[SSTI - Deteccion y Fingerprinting#^ssti-detect-delimiters]]
+
+tab: **Confirmación con Expresión Aritmética**
+![[SSTI - Deteccion y Fingerprinting#^ssti-detect-confirmacion]]
+````
+
+### 2. Explotación
+
+#### 💉 Ejecución por Engine
 
 twig 
 ```
@@ -78,7 +95,7 @@ tab: **Razor (.NET)**
 ![[SSTI - Ejecucion por Engine#^ssti-engine-razor]]
 ````
 
-### 🔓 Sandbox Escape
+#### 🔓 Sandbox Escape
 
 ````tabs
 tab: **Jinja2 Sandbox Bypass**
@@ -94,7 +111,7 @@ tab: **Filter Abuse para Escape**
 ![[SSTI - Sandbox Escape#^ssti-sandbox-filter-abuse]]
 ````
 
-### 🛡️ Bypasses y Filter Evasion
+#### 🛡️ Bypasses y Filter Evasion
 
 ````tabs
 tab: **Encoding (Unicode / Hex / Base64)**
@@ -110,7 +127,9 @@ tab: **Comment / Whitespace Tricks**
 ![[SSTI - Bypasses y Filter Evasion#^ssti-bypass-comment-whitespace]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **tplmap**
@@ -170,20 +189,7 @@ SSTI es subcase de code injection — pero específico al lenguaje del template 
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Probes Polyglot**
-![[SSTI - Deteccion y Fingerprinting#^ssti-detect-polyglot]]
-
-tab: **Identificación por Delimitador**
-![[SSTI - Deteccion y Fingerprinting#^ssti-detect-delimiters]]
-
-tab: **Confirmación con Expresión Aritmética**
-![[SSTI - Deteccion y Fingerprinting#^ssti-detect-confirmacion]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

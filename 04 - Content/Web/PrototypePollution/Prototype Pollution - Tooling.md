@@ -22,7 +22,7 @@ linked:
 
 ## Burp DOM Invader
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → DOM Invader → Enable + reload page | Setup + auto-detection sources/sinks | Burp Pro. |
 | DOM Invader UI → "Prototype Pollution" tab → click source | Auto-test con payload `{"polluted":"yes"}` | One-click testing. |

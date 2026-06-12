@@ -35,7 +35,21 @@ linked:
 
 ## Cheatsheet
 
-### 💉 Object Injection por Lenguaje
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificación de Formatos Serializados**
+![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-formats]]
+
+tab: **Fingerprint del Stack**
+![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-fingerprint]]
+````
+
+### 2. Explotación
+
+#### 💉 Object Injection por Lenguaje
 
 ````tabs
 tab: **PHP**
@@ -57,7 +71,7 @@ tab: **Node.js**
 ![[Insecure Deserialization - Object Injection#^deser-node]]
 ````
 
-### 📦 Ataques a Formatos Estructurados
+#### 📦 Ataques a Formatos Estructurados
 
 ````tabs
 tab: **JSON Polymorphic**
@@ -70,7 +84,27 @@ tab: **XML Deserialization**
 ![[Insecure Deserialization - Formatos Estructurados#^deser-fmt-xml]]
 ````
 
-### 🛠️ Tooling de Exploit
+#### 🛡️ Bypasses y Evasión
+
+````tabs
+tab: **Magic Bytes y Encoding**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-bytes]]
+
+tab: **Class Allowlist Bypass**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-allowlist]]
+
+tab: **Length / Type Confusion**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-types]]
+
+tab: **Deser Encadenada (multi-hop)**
+![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-chained]]
+````
+
+---
+
+### 3. Tooling
+
+#### 🛠️ Tooling de Exploit
 
 ````tabs
 tab: **phpggc (PHP)**
@@ -88,24 +122,6 @@ tab: **fickling (Python)**
 tab: **Otros tools**
 ![[Insecure Deserialization - Tooling#^deser-tool-others]]
 ````
-
-### 🛡️ Bypasses y Evasión
-
-````tabs
-tab: **Magic Bytes y Encoding**
-![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-bytes]]
-
-tab: **Class Allowlist Bypass**
-![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-allowlist]]
-
-tab: **Length / Type Confusion**
-![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-types]]
-
-tab: **Deser Encadenada (multi-hop)**
-![[Insecure Deserialization - Bypasses y Evasion#^deser-bypass-chained]]
-````
-
----
 
 ## Overview
 
@@ -154,17 +170,7 @@ Vector clase A — **OWASP Top 10** desde 2013. CVE históricos masivos: Jenkins
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificación de Formatos Serializados**
-![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-formats]]
-
-tab: **Fingerprint del Stack**
-![[Insecure Deserialization - Deteccion y Reconocimiento#^deser-detect-fingerprint]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

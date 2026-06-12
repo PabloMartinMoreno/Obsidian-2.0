@@ -20,7 +20,7 @@ linked:
 
 ## Identificar Puntos de Header Reflexion
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Punto / Vector** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `curl -sI "https://target/redirect?url=ABC123" \| grep -i location` | Confirma si `url` se refleja literal en `Location` | Vector primario CRLFi. |
 | `curl -sI "https://target/login?next=ABC123" \| grep -i location` | Reflejo en `next`/`return`/`continue` | Auth flow redirects. |

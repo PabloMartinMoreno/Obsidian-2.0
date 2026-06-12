@@ -157,7 +157,7 @@ Find-InterestingDomainAcl -ResolveGUIDs |
 
 ## Cross-Trust RBCD
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Escenario / Comando** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | RBCD intra-forest cross-domain | Funciona (no patches limitan intra-forest) | Standard. |
 | RBCD inter-forest | **Limitado** post-CVE-2019-1040 + KB4490425 | Audit. |

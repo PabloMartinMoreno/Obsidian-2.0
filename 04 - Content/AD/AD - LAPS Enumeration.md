@@ -34,7 +34,44 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 LAPS Discovery
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+USER="user"; PASS="pass"
+
+# 1. Schema check
+Get-ADObject -SearchBase "CN=Schema,CN=Configuration,$((Get-ADDomain).DistinguishedName)" `
+  -Filter "Name -like 'ms-Mcs-AdmPwd' -or Name -like 'msLAPS-*'" |
+  Select Name
+
+# 2. Bulk LAPS read
+nxc smb computers.txt -u $USER -p $PASS --laps
+
+# 3. Per-OU readers (LAPSv2 native)
+Find-LapsADExtendedRights -Identity "OU=Workstations,DC=dom,DC=local"
+
+# 4. BloodHound LAPS query
+# MATCH p=(u {owned:true})-[:ReadLAPSPassword|MemberOf*1..]->(c:Computer) RETURN p
+
+# 5. Critical misconfig: Authenticated Users with LAPS read
+Get-ADComputer -Filter * | ForEach-Object {
+  $acl = Get-Acl "AD:$($_.DistinguishedName)"
+  $authUsers = $acl.Access | Where {
+    $_.IdentityReference -eq "NT AUTHORITY\Authenticated Users" -and
+    ($_.ActiveDirectoryRights -match "GenericRead|GenericAll|ReadProperty")
+  }
+  if ($authUsers) { Write-Host "[!] $($_.Name)" -ForegroundColor Red }
+}
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 LAPS Discovery
 
 ````tabs
 tab: **Schema Detection**
@@ -56,7 +93,7 @@ tab: **Anonymous LAPS Discovery**
 ![[AD - LAPS Enumeration - LAPS Discovery#^ad-laps-anonymous]]
 ````
 
-### 📋 Legacy LAPSv1
+#### 📋 Legacy LAPSv1
 
 ````tabs
 tab: **LAPSv1 Architecture**
@@ -78,7 +115,7 @@ tab: **LAPSv1 Replacement (Migration)**
 ![[AD - LAPS Enumeration - Legacy LAPSv1#^ad-lapsv1-migration]]
 ````
 
-### 🆕 Windows LAPSv2 (Modern)
+#### 🆕 Windows LAPSv2 (Modern)
 
 ````tabs
 tab: **LAPSv2 Architecture**
@@ -103,7 +140,7 @@ tab: **LAPSv2 Misconfigurations**
 ![[AD - LAPS Enumeration - Windows LAPSv2#^ad-lapsv2-misconfig]]
 ````
 
-### 🔓 LAPS Permission Audit
+#### 🔓 LAPS Permission Audit
 
 ````tabs
 tab: **Required Permissions**
@@ -131,7 +168,7 @@ tab: **Audit Best Practices**
 ![[AD - LAPS Enumeration - LAPS Permission Audit#^ad-laps-perm-audit]]
 ````
 
-### 💉 LAPS Read & Decryption
+#### 💉 LAPS Read & Decryption
 
 ````tabs
 tab: **Bulk Read with netexec**
@@ -159,7 +196,7 @@ tab: **Common Read Errors**
 ![[AD - LAPS Enumeration - LAPS Read y Decryption#^ad-lapsread-errors]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -276,41 +313,6 @@ LAPSv1 (legacy) usa `ms-Mcs-AdmPwd` cleartext. LAPSv2 (modern, Server 2022+, Win
    - LAPS rotates default 30 days
    - Persistent access via Backdoor or stored creds
    - Detection: bulk LAPS reads
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-USER="user"; PASS="pass"
-
-# 1. Schema check
-Get-ADObject -SearchBase "CN=Schema,CN=Configuration,$((Get-ADDomain).DistinguishedName)" `
-  -Filter "Name -like 'ms-Mcs-AdmPwd' -or Name -like 'msLAPS-*'" |
-  Select Name
-
-# 2. Bulk LAPS read
-nxc smb computers.txt -u $USER -p $PASS --laps
-
-# 3. Per-OU readers (LAPSv2 native)
-Find-LapsADExtendedRights -Identity "OU=Workstations,DC=dom,DC=local"
-
-# 4. BloodHound LAPS query
-# MATCH p=(u {owned:true})-[:ReadLAPSPassword|MemberOf*1..]->(c:Computer) RETURN p
-
-# 5. Critical misconfig: Authenticated Users with LAPS read
-Get-ADComputer -Filter * | ForEach-Object {
-  $acl = Get-Acl "AD:$($_.DistinguishedName)"
-  $authUsers = $acl.Access | Where {
-    $_.IdentityReference -eq "NT AUTHORITY\Authenticated Users" -and
-    ($_.ActiveDirectoryRights -match "GenericRead|GenericAll|ReadProperty")
-  }
-  if ($authUsers) { Write-Host "[!] $($_.Name)" -ForegroundColor Red }
-}
 ```
 
 ---

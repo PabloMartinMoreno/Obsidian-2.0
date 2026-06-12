@@ -21,7 +21,7 @@ linked:
 
 ## Burp Param Miner
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
 | Right-click request → "Guess headers" | Auto-discover headers que afectan response | Detect XFH, X-Host, Forwarded. |

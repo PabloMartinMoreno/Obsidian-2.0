@@ -31,7 +31,24 @@ linked:
 
 ## Cheatsheet
 
-### 💀 Ejecución de Comandos (RCE)
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Identificar SSI Habilitado**
+![[SSI - Deteccion y Reconocimiento#^ssi-detect-enabled]]
+
+tab: **Probes Iniciales**
+![[SSI - Deteccion y Reconocimiento#^ssi-detect-probes]]
+
+tab: **Fingerprint del Server (Recon Profundo)**
+![[SSI - Deteccion y Reconocimiento#^ssi-detect-fingerprint]]
+````
+
+### 2. Explotación
+
+#### 💀 Ejecución de Comandos (RCE)
 
 ````tabs
 tab: **RCE Linux / Windows Básico**
@@ -47,7 +64,7 @@ tab: **Requisitos para exec**
 ![[SSI - Ejecucion de Comandos#^ssi-exec-requirements]]
 ````
 
-### 📁 Inclusión de Archivos
+#### 📁 Inclusión de Archivos
 
 ````tabs
 tab: **include virtual (URL-Relative)**
@@ -60,7 +77,7 @@ tab: **LFI Chain via SSI**
 ![[SSI - Inclusion de Archivos#^ssi-include-lfi-chain]]
 ````
 
-### 📋 Information Gathering
+#### 📋 Information Gathering
 
 ````tabs
 tab: **echo Environment Variables**
@@ -73,7 +90,7 @@ tab: **printenv y config**
 ![[SSI - Information Gathering#^ssi-info-printenv]]
 ````
 
-### 🔓 Evasión de Filtros
+#### 🔓 Evasión de Filtros
 
 ````tabs
 tab: **Whitespace Tricks**
@@ -89,7 +106,9 @@ tab: **Encoding y CGI Fallback**
 ![[SSI - Evasion de Filtros#^ssi-bypass-encoding-cgi]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Burp Intruder + Active Scan**
@@ -176,20 +195,7 @@ OWASP Testing Guide — OTG-INPVAL-009. Vector legacy pero aún encontrado en st
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Identificar SSI Habilitado**
-![[SSI - Deteccion y Reconocimiento#^ssi-detect-enabled]]
-
-tab: **Probes Iniciales**
-![[SSI - Deteccion y Reconocimiento#^ssi-detect-probes]]
-
-tab: **Fingerprint del Server (Recon Profundo)**
-![[SSI - Deteccion y Reconocimiento#^ssi-detect-fingerprint]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

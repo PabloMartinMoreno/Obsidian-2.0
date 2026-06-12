@@ -23,7 +23,7 @@ linked:
 
 ## Burp Clickbandit
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp Pro menu → "Burp Clickbandit" → "Copy Clickbandit to clipboard" | Generate JS Clickbandit payload | Pro feature. |
 | Browser DevTools console → paste Clickbandit payload + Enter | Inject Clickbandit into target page | Inject. |

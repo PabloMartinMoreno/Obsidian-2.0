@@ -19,7 +19,7 @@ linked:
 
 ## Identificar Endpoints Vulnerables
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Endpoint** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | `?page=home`, `?file=about` | Page selector via param | Most common. |
 | `?include=`, `?inc=` | Generic include | Direct. |

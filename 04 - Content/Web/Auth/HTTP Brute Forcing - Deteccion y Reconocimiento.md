@@ -61,7 +61,7 @@ curl -s https://target/static/js/main.js | \
 
 ## Response Differential Success/Fail
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | HTTP status code | 200 (success) vs 401/403 (fail) | Standard. |
 | `Content-Length` differs | Response length | Common diff. |
@@ -101,7 +101,7 @@ diff fail.html success.html
 
 ## Rate Limit Detection
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | 429 Too Many Requests | Spam 50 requests rápido | Standard. |
 | 403 tras N intentos | Lockout temporario | Common. |
@@ -141,7 +141,7 @@ done
 
 ## Lockout Policy Probing
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Account lockout permanente | Brute hasta block, espera horas | Email reset required. |
 | Account lockout temporario | 5 fails → 15 min lock | Slow brute viable. |
@@ -165,7 +165,7 @@ done
 
 ## User Enumeration via Errors
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Vector / Ubicación** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Login error specificity | "Invalid username" vs "Invalid password" | Direct enum. |
 | Response time differential | DB lookup user vs not — measurable | Timing attack. |

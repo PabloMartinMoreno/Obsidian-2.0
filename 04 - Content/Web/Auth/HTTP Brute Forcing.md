@@ -36,7 +36,30 @@ linked:
 
 ## Cheatsheet
 
-### 🎯 Targets de Ataque
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Login Form Discovery**
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-endpoints]]
+
+tab: **Response Differential Success/Fail**
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-responsediff]]
+
+tab: **Rate Limit Detection**
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-ratelimit]]
+
+tab: **Lockout Policy Probing**
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-lockout]]
+
+tab: **User Enumeration via Errors**
+![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-enum]]
+````
+
+### 2. Explotación
+
+#### 🎯 Targets de Ataque
 
 ````tabs
 tab: **Login Forms**
@@ -55,7 +78,7 @@ tab: **Session Cookie / JWT Secret**
 ![[HTTP Brute Forcing - Targets de Ataque#^bf-target-session]]
 ````
 
-### 📋 Wordlists y Payload Strategy
+#### 📋 Wordlists y Payload Strategy
 
 ````tabs
 tab: **Stuffing vs Spray**
@@ -74,7 +97,7 @@ tab: **Pattern-Based**
 ![[HTTP Brute Forcing - Wordlists y Strategy#^bf-strategy-patterns]]
 ````
 
-### 🔓 Bypass de Rate-Limit
+#### 🔓 Bypass de Rate-Limit
 
 ````tabs
 tab: **IP Rotation (Tor, Proxies, VPS)**
@@ -93,7 +116,7 @@ tab: **Endpoint / Account Rotation**
 ![[HTTP Brute Forcing - Bypass Rate-Limit#^bf-bypass-endpoints]]
 ````
 
-### 💉 Tipos Especiales
+#### 💉 Tipos Especiales
 
 ````tabs
 tab: **JWT Secret Crack**
@@ -112,7 +135,9 @@ tab: **App-Specific (WP, Joomla, etc.)**
 ![[HTTP Brute Forcing - Tipos Especiales#^bf-special-apps]]
 ````
 
-### 🛠️ Tooling
+### 3. Tooling
+
+#### 🛠️ Tooling
 
 ````tabs
 tab: **Hydra**
@@ -233,26 +258,7 @@ Brute force es **bug bounty bread-and-butter** — incluso con defensas modernas
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Login Form Discovery**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-endpoints]]
-
-tab: **Response Differential Success/Fail**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-responsediff]]
-
-tab: **Rate Limit Detection**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-ratelimit]]
-
-tab: **Lockout Policy Probing**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-lockout]]
-
-tab: **User Enumeration via Errors**
-![[HTTP Brute Forcing - Deteccion y Reconocimiento#^bf-detect-enum]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores en código backend
 

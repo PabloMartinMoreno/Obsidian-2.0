@@ -21,7 +21,7 @@ linked:
 
 ## Param Miner (Burp Extension)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → Extensions → BApp Store → "Param Miner" → Install | Setup extension | Primera vez. |
 | Right-click cacheable request → "Guess headers" | Auto-discover unkeyed headers | Single click. |
@@ -38,7 +38,7 @@ linked:
 
 ## HTTP Request Smuggler (Combo)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → BApp Store → "HTTP Request Smuggler" → Install | Setup extension | Pre-requisito HRS detection. |
 | Right-click request → "HTTP Request Smuggler" → "Detect" | Auto-detect HRS desync | Identify vector. |

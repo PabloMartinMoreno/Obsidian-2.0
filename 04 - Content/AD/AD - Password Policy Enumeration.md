@@ -33,7 +33,43 @@ linked:
 
 ## Cheatsheet
 
-### 🔍 Default Domain Password Policy
+### 1. Recon Rápido (Probes)
+
+#### Probes mínimos
+
+```bash
+DC="dc01.dom.local"
+
+# 1. Anonymous (test always)
+nxc smb $DC -u '' -p '' --pass-pol
+rpcclient -U "" $DC -N -c 'getdompwinfo'
+
+# 2. Authenticated baseline
+USER="user"; PASS="pass"
+nxc smb $DC -u $USER -p $PASS --pass-pol
+
+# 3. RSAT comprehensive (if Windows access)
+Get-ADDefaultDomainPasswordPolicy
+Get-ADFineGrainedPasswordPolicy -Filter *
+
+# 4. krbtgt age check
+$krbtgt = Get-ADUser krbtgt -Properties pwdLastSet
+$age = ((Get-Date) - [datetime]::FromFileTime($krbtgt.pwdLastSet)).Days
+Write-Host "krbtgt age: $age days"
+
+# 5. Reversible encryption check
+(Get-ADDefaultDomainPasswordPolicy).ReversibleEncryptionEnabled
+Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true}
+
+# 6. PingCastle audit (defender comprehensive)
+PingCastle.exe --healthcheck --server $DC
+```
+
+---
+
+### 2. Enumeración
+
+#### 🔍 Default Domain Password Policy
 
 ````tabs
 tab: **Native Windows Tools**
@@ -58,7 +94,7 @@ tab: **Multi-Domain Forest-Wide**
 ![[AD - Password Policy Enumeration - Default Domain Policy#^ad-pwdpol-multidomain]]
 ````
 
-### 🎯 Fine-Grained Password Policies (PSO)
+#### 🎯 Fine-Grained Password Policies (PSO)
 
 ````tabs
 tab: **PSO Overview**
@@ -83,7 +119,7 @@ tab: **Anonymous PSO Discovery**
 ![[AD - Password Policy Enumeration - Fine-Grained Password Policies#^ad-pso-anonymous]]
 ````
 
-### ⚙️ Lockout & Brute Force Implications
+#### ⚙️ Lockout & Brute Force Implications
 
 ````tabs
 tab: **Lockout Mechanics**
@@ -108,7 +144,7 @@ tab: **Per-User Lockout Variations**
 ![[AD - Password Policy Enumeration - Lockout y Brute Force Implications#^ad-lockout-peruser]]
 ````
 
-### 🔓 Anonymous Policy Discovery
+#### 🔓 Anonymous Policy Discovery
 
 ````tabs
 tab: **RPC Anonymous (rpcclient)**
@@ -133,7 +169,7 @@ tab: **Defender Hardening Indicators**
 ![[AD - Password Policy Enumeration - Anonymous Policy Discovery#^ad-anon-defender]]
 ````
 
-### 📊 Audit & Misconfiguraciones
+#### 📊 Audit & Misconfiguraciones
 
 ````tabs
 tab: **Weak Min Length / No Complexity**
@@ -158,7 +194,7 @@ tab: **PingCastle / Purple Knight**
 ![[AD - Password Policy Enumeration - Audit y Misconfiguraciones#^ad-audit-tools]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -273,40 +309,6 @@ Sin este enum, password spray es ciego: ¿cuántos intentos antes de lockout? ¿
    - PCI-DSS / NIST / HIPAA mapping
    - Identify gaps, recommend hardening
    - Periodic re-audit
-```
-
----
-
-## Detección rápida
-
-### Probes mínimos
-
-```bash
-DC="dc01.dom.local"
-
-# 1. Anonymous (test always)
-nxc smb $DC -u '' -p '' --pass-pol
-rpcclient -U "" $DC -N -c 'getdompwinfo'
-
-# 2. Authenticated baseline
-USER="user"; PASS="pass"
-nxc smb $DC -u $USER -p $PASS --pass-pol
-
-# 3. RSAT comprehensive (if Windows access)
-Get-ADDefaultDomainPasswordPolicy
-Get-ADFineGrainedPasswordPolicy -Filter *
-
-# 4. krbtgt age check
-$krbtgt = Get-ADUser krbtgt -Properties pwdLastSet
-$age = ((Get-Date) - [datetime]::FromFileTime($krbtgt.pwdLastSet)).Days
-Write-Host "krbtgt age: $age days"
-
-# 5. Reversible encryption check
-(Get-ADDefaultDomainPasswordPolicy).ReversibleEncryptionEnabled
-Get-ADUser -Filter {AllowReversiblePasswordEncryption -eq $true}
-
-# 6. PingCastle audit (defender comprehensive)
-PingCastle.exe --healthcheck --server $DC
 ```
 
 ---

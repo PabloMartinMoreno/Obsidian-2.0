@@ -22,7 +22,7 @@ linked:
 
 ## Burp Session Handling Rules
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Settings → Sessions → Cookie Jar → "Open cookie jar" | View Burp managed cookies | Inspect captured. |
 | Settings → Sessions → Session Handling Rules → "Add" → "Run a macro" | Macro re-auth on session expire | Long sessions. |

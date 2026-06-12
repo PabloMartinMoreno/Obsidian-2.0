@@ -36,7 +36,21 @@ linked:
 
 ## Cheatsheet
 
-### 📁 Lectura de Archivos Locales (LFI)
+### 1. Detección y Reconocimiento
+
+#### Recon activo
+
+````tabs
+tab: **Detección Básica**
+![[XSLT - Fingerprinting#^xslt-fp-detection]]
+
+tab: **Fingerprinting de Motores**
+![[XSLT - Fingerprinting#^xslt-fp-engines]]
+````
+
+### 2. Explotación
+
+#### 📁 Lectura de Archivos Locales (LFI)
 
 ````tabs
 tab: **Función document()**
@@ -49,7 +63,7 @@ tab: **Lectura de Directorios**
 ![[XSLT - Lectura de Archivos (document)#^xslt-lfi-dirs]]
 ````
 
-### 🌐 Server-Side Request Forgery (SSRF)
+#### 🌐 Server-Side Request Forgery (SSRF)
 
 ````tabs
 tab: **Escaneo de Puertos Internos**
@@ -59,7 +73,7 @@ tab: **Cloud Metadata e Internos**
 ![[XSLT - SSRF#^xslt-ssrf-cloud]]
 ````
 
-### 💀 Remote Code Execution (RCE)
+#### 💀 Remote Code Execution (RCE)
 
 ````tabs
 tab: **PHP / libxslt**
@@ -72,7 +86,7 @@ tab: **Microsoft / MSXML**
 ![[XSLT - Extension Functions (RCE)#^xslt-rce-msxml]]
 ````
 
-### 💥 Denegación de Servicio (DoS)
+#### 💥 Denegación de Servicio (DoS)
 
 ````tabs
 tab: **Billion Laughs**
@@ -82,7 +96,7 @@ tab: **Recursión Infinita / Loops**
 ![[XSLT - DoS#^xslt-dos-recursion]]
 ````
 
-### 📡 Exfiltración de Datos (OOB)
+#### 📡 Exfiltración de Datos (OOB)
 
 ````tabs
 tab: **HTTP via URLs**
@@ -92,7 +106,7 @@ tab: **DNS via Subdomain**
 ![[XSLT - Blind Exfil#^xslt-oob-dns]]
 ````
 
-### 🛡️ Bypasses y Evasión de Filtros
+#### 🛡️ Bypasses y Evasión de Filtros
 
 ````tabs
 tab: **Encoding (UTF-16/UTF-7)**
@@ -174,17 +188,7 @@ Si la app acepta XML pero las entidades externas están deshabilitadas → puede
 
 ---
 
-## Detección rápida
-
-### Recon activo
-
-````tabs
-tab: **Detección Básica**
-![[XSLT - Fingerprinting#^xslt-fp-detection]]
-
-tab: **Fingerprinting de Motores**
-![[XSLT - Fingerprinting#^xslt-fp-engines]]
-````
+## Indicadores en Código (defensa)
 
 ### Indicadores de stack XSLT
 

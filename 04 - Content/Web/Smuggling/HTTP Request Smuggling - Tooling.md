@@ -23,7 +23,7 @@ linked:
 
 ## HTTP Request Smuggler (Burp Extension)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → Extensions → BApp Store → "HTTP Request Smuggler" → Install | Setup extension (James Kettle / PortSwigger) | Primera vez. |
 | Right-click request → "HTTP Request Smuggler" → "Smuggle probe" | Auto-detect CL.TE/TE.CL/TE.TE/CL.CL/H2.* | Initial detection. |

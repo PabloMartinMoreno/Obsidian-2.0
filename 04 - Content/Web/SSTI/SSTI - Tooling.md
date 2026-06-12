@@ -40,7 +40,7 @@ linked:
 
 ## Burp Extensions
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp → BApp Store → "Backslash Powered Scanner" → Install | Active scanner heurístico para SSTI/SQLi/etc | Pasivo en historial. |
 | Burp → BApp Store → "Param Miner" → Right-click → "Guess JSON parameters" | Discover hidden inputs reflejados | Pre-attack discovery. |

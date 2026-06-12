@@ -33,7 +33,23 @@ linked:
 
 ## Cheatsheet
 
-### 1. Inyecciones Clásicas
+### 1. Detección y Reconocimiento
+
+````tabs
+tab: **Descubrimiento Automatizado**
+![[XSS - Discovery (Detección)#Descubrimiento Automatizado]]
+
+tab: **Descubrimiento Manual**
+![[XSS - Discovery (Detección)#Descubrimiento Manual]]
+
+tab: **Revisión de Código**
+![[XSS - Discovery (Detección)#Revisión de Código]]
+````
+---
+
+### 2. Explotación
+
+#### 1. Inyecciones Clásicas
 
 ````tabs
 tab: **Inyección Directa de HTML Básico**
@@ -44,7 +60,7 @@ tab: **Inyección de Etiquetas <script>**
 
 ````
 
-### 2. Manipulación de Contextos y Eventos
+#### 2. Manipulación de Contextos y Eventos
 
 ````tabs
 tab: **Inyección de Manejadores de Eventos HTML**
@@ -58,7 +74,7 @@ tab: **Inyección de Escape de Contexto en Atributos**
 
 ````
 
-### 3. Técnicas de Evasión
+#### 3. Técnicas de Evasión
 
 ````tabs
 tab: **Evasion de Filtros y WAF mediante Codificaciones Múltiples**
@@ -69,7 +85,7 @@ tab: **Inyección de Payloads Polyglot**
 
 ````
 
-### 4. Explotación del Lado del Cliente
+#### 4. Explotación del Lado del Cliente
 
 ````tabs
 tab: **Manipulación directa de _Sources_ y _Sinks_**
@@ -83,20 +99,6 @@ tab: **Explotación mediante mutaciones del navegador (mXSS)**
 
 ````
 
----
-
-## Descubrimiento (Detección)
-
-````tabs
-tab: **Descubrimiento Automatizado**
-![[XSS - Discovery (Detección)#Descubrimiento Automatizado]]
-
-tab: **Descubrimiento Manual**
-![[XSS - Discovery (Detección)#Descubrimiento Manual]]
-
-tab: **Revisión de Código**
-![[XSS - Discovery (Detección)#Revisión de Código]]
-````
 ---
 
 ## Overview

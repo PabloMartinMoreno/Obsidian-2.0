@@ -102,7 +102,7 @@ done
 
 ## DOM Invader (Burp DOM-side Tools)
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Herramienta / Acción** | **Qué obtenés** | **Cuándo** |
 |:---:|:---:|:---:|
 | Burp Pro → top-right → "DOM Invader" → Enable | Enable DOM Invader extension | Built-in. |
 | DOM Invader → Settings → "Inject canaries" enable | Auto-inject markers into all sources | Auto-probe. |
