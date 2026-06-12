@@ -10,7 +10,7 @@ secondary categories:
   - "[[Web]]"
 tertiary categories:
   - "[[Web Fundamentals]]"
-kind: Concept
+kind: SubCheatSheet
 linked:
   - "[[HTTP]]"
   - "[[HTTPS]]"
@@ -57,6 +57,8 @@ Estas cabeceras le dicen al navegador que active protecciones especiales:
 |`Content-Security-Policy` (CSP)|Indica de qué sitios se pueden cargar scripts (evita inyecciones de código).|
 |`X-Frame-Options`|Evita que tu web sea cargada dentro de un `iframe` en otro sitio (evita Clickjacking).|
 |`Access-Control-Allow-Origin`|Configura el **CORS** para permitir o denegar peticiones desde otros dominios.|
+
+^http-headers
 
 
 ---

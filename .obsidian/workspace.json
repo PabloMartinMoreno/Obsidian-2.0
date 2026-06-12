@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md",
+                "file": "04 - Content/Web/Fundamentals/HTTP.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Server-Side Request Forgery (SSRF)"
+              "title": "HTTP"
             }
           }
         ],
@@ -266,6 +266,11 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "02 - Secondary Categories/CWES.md",
+    "04 - Content/Web/Smuggling/HTTP Request Smuggling - HTTP2 Downgrade.md",
+    "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md",
+    "04 - Content/Web/Fundamentals/HTTP.md.tmp.257956.fd80470a53ff",
+    "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md.tmp.257956.a41cf8d708a5",
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md.tmp.257956.f0a55c66911c",
     "04 - Content/Web/Injection/NoSQL Injection.md.tmp.257956.7fb426c83f99",
     "04 - Content/Web/Injection/NoSQL Injection.md.tmp.257956.74227231da96",
@@ -276,11 +281,7 @@
     "04 - Content/Web/GraphQL/GraphQL - Inyecciones via Resolvers.md.tmp.4214.7913df28fec7",
     "04 - Content/Web/GraphQL/GraphQL - Introspection y Schema Discovery.md.tmp.4214.2d49a5b8effd",
     "04 - Content/Web/GraphQL/GraphQL - Introspection y Schema Discovery.md.tmp.4214.bf681ad1a271",
-    "04 - Content/Web/GraphQL/GraphQL - Inyecciones via Resolvers.md.tmp.4214.cb6872583ebd",
-    "04 - Content/Web/GraphQL/GraphQL - Introspection y Schema Discovery.md.tmp.4214.aee9643ef241",
-    "04 - Content/Web/GraphQL/GraphQL - Inyecciones via Resolvers.md.tmp.4214.bb08436fcadc",
     "000 - Global Index.md",
-    "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md",
     "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
     "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md",
@@ -301,7 +302,6 @@
     "04 - Content/Recon/OSINT/Google Dorking.md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",
     "05 - Writeups/OverTheWire/Bandit 05.md",
-    "04 - Content/Obsidian/CheatSheets.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

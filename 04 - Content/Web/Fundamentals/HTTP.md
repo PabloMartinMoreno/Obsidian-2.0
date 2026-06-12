@@ -27,6 +27,24 @@ El protocolo **HTTP** es el estándar de comunicación que permite la transferen
 
 ---
 
+## Referencia rápida
+
+````tabs
+tab: **Métodos**
+![[HTTP - Métodos#^http-metodos]]
+
+tab: **Códigos de Estado**
+![[HTTP - Códigos de Estado#^http-estado]]
+
+tab: **Headers de Seguridad**
+![[HTTP - Headers#^http-headers]]
+
+tab: **Cookies (Atributos)**
+![[HTTP - Cookies y Sesiones#^http-cookies]]
+````
+
+---
+
 ## El Modelo Cliente-Servidor
 
 HTTP se basa en un ciclo de **Solicitud (Request)** y **Respuesta (Response)**.
@@ -43,22 +61,18 @@ El ciclo completo request → response paso a paso: [[Flujo de Comunicación HTT
 
 ## Anatomía de una Petición (Request)
 
-- **Método:** la acción a realizar (ver abajo).
+- **Método:** la acción a realizar → [[HTTP - Métodos]] (tabla en Referencia rápida).
 - **Path:** la ubicación del recurso dentro del dominio (ej. `/blog/articulo-1`). Ver [[URL]].
 - **Headers:** metadatos (navegador, formatos aceptados, autenticación). Ver [[HTTP - Headers]].
 - **Body:** datos enviados al servidor (en `POST`/`PUT`).
-
-![[HTTP - Métodos#^http-metodos]]
 
 ---
 
 ## Anatomía de una Respuesta (Response)
 
-- **Código de Estado:** el resultado de la petición.
+- **Código de Estado:** el resultado de la petición → [[HTTP - Códigos de Estado]] (tabla en Referencia rápida).
 - **Headers:** información sobre el contenido devuelto. Ver [[HTTP - Headers]].
 - **Body:** el contenido solicitado (HTML, JSON, imágenes).
-
-![[HTTP - Códigos de Estado#^http-estado]]
 
 ---
 

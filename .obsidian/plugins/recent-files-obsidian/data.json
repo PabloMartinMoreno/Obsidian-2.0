@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "HTTP Request Smuggling - HTTP2 Downgrade",
+      "path": "04 - Content/Web/Smuggling/HTTP Request Smuggling - HTTP2 Downgrade.md"
+    },
+    {
       "basename": "Server-Side Request Forgery (SSRF)",
       "path": "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "Web Enumeración",
       "path": "03 - Tertiary Categories/Web Enumeración.md"
-    },
-    {
-      "basename": "Clickjacking",
-      "path": "04 - Content/Web/Clickjacking/Clickjacking.md"
-    },
-    {
-      "basename": "LDAP Injection",
-      "path": "04 - Content/Web/Injection/LDAP Injection.md"
-    },
-    {
-      "basename": "Subdomain Takeover",
-      "path": "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md"
     }
   ],
   "omittedPaths": [],

@@ -11,7 +11,7 @@ secondary categories:
   - "[[Web]]"
 tertiary categories:
   - "[[Web Fundamentals]]"
-kind: Concept
+kind: SubCheatSheet
 linked:
   - "[[HTTP]]"
   - "[[HTTP - Métodos]]"

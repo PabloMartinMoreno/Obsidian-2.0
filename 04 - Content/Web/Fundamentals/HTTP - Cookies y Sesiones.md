@@ -9,7 +9,7 @@ secondary categories:
   - "[[Web]]"
 tertiary categories:
   - "[[Web Fundamentals]]"
-kind: Concept
+kind: SubCheatSheet
 linked:
   - "[[HTTP]]"
   - "[[Cookie Fingerprinting]]"
@@ -26,7 +26,19 @@ Son pequeños fragmentos de texto que el servidor envía al navegador.
 
 - **Almacenamiento:** Se guardan en el disco local del usuario.
 - **Uso común:** Recordar preferencias, carritos de compra o rastreo publicitario.
-- **Seguridad:** Pueden marcarse como `HttpOnly` para que no sean accesibles vía JavaScript.
+
+### Atributos de Seguridad
+
+| **Atributo** | **Función** | **Relevancia ofensiva** |
+|:---|:---|:---|
+| `HttpOnly` | Cookie no accesible vía `document.cookie` (JS) | Sin él → robo de sesión vía XSS. |
+| `Secure` | Cookie solo viaja por HTTPS | Sin él → captura en MITM/HTTP plano. |
+| `SameSite=Strict/Lax/None` | Controla envío cross-site de la cookie | `None`/ausente → habilita CSRF. |
+| `Domain` | Alcance de dominio (`.target.com` = subdominios) | Scope amplio → abuso cross-subdomain. |
+| `Path` | Alcance de ruta (`/admin`) | Path-scoping como flag de privilegio. |
+| `Expires` / `Max-Age` | Vida de la cookie | Persistente → ventana de replay larga. |
+
+^http-cookies
 
 > [!tip] Recon
 > El nombre de la cookie de sesión delata el lenguaje/framework del backend → [[Cookie Fingerprinting]].

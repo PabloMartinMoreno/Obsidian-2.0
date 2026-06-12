@@ -28,6 +28,18 @@ linked:
 
 ---
 
+## Referencia rápida
+
+````tabs
+tab: **Cifrado (Sim. vs Asim.)**
+![[Criptografía Simétrica vs. Asimétrica#^cripto-comparativa]]
+
+tab: **Certificados SSL/TLS**
+![[Certificados SSL-TLS#^cert-contiene]]
+````
+
+---
+
 ## ¿Qué garantiza?
 
 1. **Cifrado:** nadie puede "escuchar" la conversación.
@@ -38,17 +50,13 @@ linked:
 
 ## Cifrado: asimétrico + simétrico
 
-El handshake usa cifrado **asimétrico** para acordar una clave de sesión; luego pasa a **simétrico** (más rápido) para los datos. Detalle en [[Criptografía Simétrica vs. Asimétrica]].
-
-![[Criptografía Simétrica vs. Asimétrica#^cripto-comparativa]]
+El handshake usa cifrado **asimétrico** para acordar una clave de sesión; luego pasa a **simétrico** (más rápido) para los datos. Detalle en [[Criptografía Simétrica vs. Asimétrica]] (tabla en Referencia rápida).
 
 ---
 
 ## Certificados
 
-El servidor prueba su identidad con un **[[Certificados SSL-TLS|certificado SSL/TLS]]** firmado por una **CA** (Let's Encrypt, DigiCert…). Si la cadena de confianza se rompe (expirado, self-signed), el navegador alerta.
-
-![[Certificados SSL-TLS#^cert-contiene]]
+El servidor prueba su identidad con un **[[Certificados SSL-TLS|certificado SSL/TLS]]** firmado por una **CA** (Let's Encrypt, DigiCert…). Si la cadena de confianza se rompe (expirado, self-signed), el navegador alerta (tabla en Referencia rápida).
 
 ---
 

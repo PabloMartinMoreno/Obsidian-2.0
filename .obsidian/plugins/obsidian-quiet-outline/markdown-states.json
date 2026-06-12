@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 0,
+    "scroll": 3.2203389830508473,
     "cursor": {
       "from": {
         "line": 15,
@@ -605,7 +605,7 @@
     ]
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 3.2782805429864252,
+    "scroll": 3.226244343891403,
     "cursor": {
       "from": {
         "line": 71,
@@ -2270,6 +2270,20 @@
       "to": {
         "line": 24,
         "ch": 85
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Smuggling/HTTP Request Smuggling - HTTP2 Downgrade.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
       }
     },
     "expandedKeys": []
