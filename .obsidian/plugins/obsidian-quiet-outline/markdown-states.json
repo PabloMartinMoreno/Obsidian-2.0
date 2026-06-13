@@ -605,7 +605,7 @@
     ]
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 20.085972850678733,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 56,
@@ -1043,7 +1043,7 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/curl.md": {
-    "scroll": 0,
+    "scroll": 30.27460234224786,
     "cursor": {
       "from": {
         "line": 26,
@@ -2009,7 +2009,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Voyager.md": {
-    "scroll": 21.624401913875598,
+    "scroll": 175.79464285714286,
     "cursor": {
       "from": {
         "line": 23,
@@ -2499,7 +2499,7 @@
     "expandedKeys": []
   },
   "04 - Content/Credentials/Golden/Golden Ticket.md": {
-    "scroll": 30.17241379310345,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 35,
@@ -2583,15 +2583,15 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Estructura.md": {
-    "scroll": 52.919642857142854,
+    "scroll": 8.229665071770334,
     "cursor": {
       "from": {
-        "line": 31,
-        "ch": 0
+        "line": 86,
+        "ch": 18
       },
       "to": {
-        "line": 31,
-        "ch": 0
+        "line": 86,
+        "ch": 18
       }
     },
     "expandedKeys": []
@@ -2611,7 +2611,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Fundamentals/Well-Known URIs.md": {
-    "scroll": 81.81141439205955,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 12,
@@ -2620,6 +2620,20 @@
       "to": {
         "line": 12,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/HackTheBox/Active.md": {
+    "scroll": 167.57217261904762,
+    "cursor": {
+      "from": {
+        "line": 193,
+        "ch": 34
+      },
+      "to": {
+        "line": 193,
+        "ch": 34
       }
     },
     "expandedKeys": []

@@ -29,7 +29,8 @@ query {
   }
 }
 ```
-"Quiero el usuario cuyo id es 1, y de ese usuario quiero su username y su email."
+>[!TIP] 
+>"Quiero el usuario cuyo id es 1, y de ese usuario quiero su username y su email."
 
 Aquí:
 * `query` → tipo de operación.
@@ -52,6 +53,8 @@ mutation {
   }
 }
 ```
+>[!TIP]
+>"Quiero cambiar la contraseña del usuario con ID 1 por 'NuevaPass123' y decirme si la operación fue exitosa."
 
 Normalmente encontrarás:
 * Login
@@ -74,6 +77,8 @@ subscription {
   }
 }
 ```
+>[!TIP]
+>"Quiero recibir automáticamente los mensajes nuevos y, cada vez que llegue uno, mostrar su contenido y quién lo envió."
 
 Es menos común en laboratorios de pentesting.
 

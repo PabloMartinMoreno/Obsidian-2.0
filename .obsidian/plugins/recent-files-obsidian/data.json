@@ -5,24 +5,36 @@
       "path": "04 - Content/Web/GraphQL/GraphQL Estructura.md"
     },
     {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
+      "basename": "Active",
+      "path": "05 - Writeups/HackTheBox/Active.md"
+    },
+    {
+      "basename": "Golden Ticket",
+      "path": "04 - Content/Credentials/Golden/Golden Ticket.md"
+    },
+    {
+      "basename": "GraphQL Voyager",
+      "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
     {
       "basename": "Well-Known URIs",
       "path": "04 - Content/Web/Fundamentals/Well-Known URIs.md"
     },
     {
-      "basename": "robots.txt",
-      "path": "04 - Content/Recon/WebTech/robots.txt.md"
-    },
-    {
       "basename": "curl",
       "path": "04 - Content/Tools/Recon/curl.md"
     },
     {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "robots.txt",
+      "path": "04 - Content/Recon/WebTech/robots.txt.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
@@ -37,10 +49,6 @@
       "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
-      "basename": "GraphQL Voyager",
-      "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
-    },
-    {
       "basename": "Golden Ticket - Forging Windows",
       "path": "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md"
     },
@@ -51,10 +59,6 @@
     {
       "basename": "Silver Ticket",
       "path": "04 - Content/Credentials/Silver/Silver Ticket.md"
-    },
-    {
-      "basename": "Golden Ticket",
-      "path": "04 - Content/Credentials/Golden/Golden Ticket.md"
     },
     {
       "basename": "AS-REP Roasting",
@@ -195,10 +199,6 @@
     {
       "basename": "OSINT Methods",
       "path": "04 - Content/Recon/OSINT Methods.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Recon/OSINT/Google Dorking.md"
     }
   ],
   "omittedPaths": [],
