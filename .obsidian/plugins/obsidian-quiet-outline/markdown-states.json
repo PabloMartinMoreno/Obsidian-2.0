@@ -3,12 +3,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 141,
-        "ch": 10
+        "line": 30,
+        "ch": 0
       },
       "to": {
-        "line": 141,
-        "ch": 10
+        "line": 30,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -364,14 +364,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Injection.md": {
-    "scroll": 41.826822916666664,
+    "scroll": 5.28755364806867,
     "cursor": {
       "from": {
-        "line": 139,
+        "line": 32,
         "ch": 0
       },
       "to": {
-        "line": 139,
+        "line": 32,
         "ch": 0
       }
     },
@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 3.2203389830508473,
+    "scroll": 16.830729166666668,
     "cursor": {
       "from": {
         "line": 15,
@@ -605,15 +605,15 @@
     ]
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 0,
+    "scroll": 20.085972850678733,
     "cursor": {
       "from": {
-        "line": 71,
-        "ch": 0
+        "line": 56,
+        "ch": 9
       },
       "to": {
-        "line": 71,
-        "ch": 0
+        "line": 56,
+        "ch": 9
       }
     },
     "expandedKeys": [
@@ -2009,15 +2009,15 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Voyager.md": {
-    "scroll": 0,
+    "scroll": 21.624401913875598,
     "cursor": {
       "from": {
-        "line": 76,
+        "line": 23,
         "ch": 0
       },
       "to": {
-        "line": 76,
-        "ch": 19
+        "line": 23,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -2513,15 +2513,15 @@
     "expandedKeys": []
   },
   "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md": {
-    "scroll": 123.11607142857143,
+    "scroll": 122.6235119047619,
     "cursor": {
       "from": {
-        "line": 135,
-        "ch": 3
+        "line": 136,
+        "ch": 0
       },
       "to": {
-        "line": 135,
-        "ch": 18
+        "line": 136,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -2535,6 +2535,90 @@
       },
       "to": {
         "line": 34,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Paso a Paso.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 27
+      },
+      "to": {
+        "line": 10,
+        "ch": 27
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Flujo Basico.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 29
+      },
+      "to": {
+        "line": 16,
+        "ch": 29
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Estructura.md": {
+    "scroll": 52.919642857142854,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/robots.txt.md": {
+    "scroll": 94.19642857142857,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Well-Known URIs.md": {
+    "scroll": 81.81141439205955,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
         "ch": 0
       }
     },

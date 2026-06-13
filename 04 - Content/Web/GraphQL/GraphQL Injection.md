@@ -28,6 +28,8 @@ linked:
   - "[[Server-Side Request Forgery (SSRF)]]"
   - "[[Cross-Site Request Forgery (CSRF)]]"
   - "[[BOLA - IDOR]]"
+  - "[[GraphQL Flujo Básico]]"
+  - "[[GraphQL Estructura]]"
 ---
 
 # GraphQL Injection
@@ -212,3 +214,5 @@ GraphQL no protege de SQLi. Engine solo enruta args al resolver — la responsab
 - [graphql-cop](https://github.com/dolevf/graphql-cop) — security audit.
 - [GraphQL Voyager](https://graphql-kit.com/graphql-voyager/) — schema visualizer.
 - [GraphQL spec](https://spec.graphql.org/) — oficial.
+
+---

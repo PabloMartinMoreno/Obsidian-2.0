@@ -1,6 +1,46 @@
 {
   "recentFiles": [
     {
+      "basename": "GraphQL Estructura",
+      "path": "04 - Content/Web/GraphQL/GraphQL Estructura.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "Well-Known URIs",
+      "path": "04 - Content/Web/Fundamentals/Well-Known URIs.md"
+    },
+    {
+      "basename": "robots.txt",
+      "path": "04 - Content/Recon/WebTech/robots.txt.md"
+    },
+    {
+      "basename": "curl",
+      "path": "04 - Content/Tools/Recon/curl.md"
+    },
+    {
+      "basename": "HTTP",
+      "path": "04 - Content/Web/Fundamentals/HTTP.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "GraphQL Flujo Básico",
+      "path": "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md"
+    },
+    {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
+    },
+    {
+      "basename": "GraphQL Voyager",
+      "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
+    },
+    {
       "basename": "Golden Ticket - Forging Windows",
       "path": "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md"
     },
@@ -77,24 +117,12 @@
       "path": "04 - Content/Web/HostHeader/Host Header Injection.md"
     },
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
       "basename": "Web",
       "path": "04 - Content/Web/Fundamentals/Web.md"
     },
     {
       "basename": "Red Team",
       "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "HTTP",
-      "path": "04 - Content/Web/Fundamentals/HTTP.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
     },
     {
       "basename": "HTTP Request Smuggling - HTTP2 Downgrade",
@@ -107,10 +135,6 @@
     {
       "basename": "SSRF - Básico",
       "path": "04 - Content/Web/SSRF/SSRF - Básico.md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "000 - Global Index",
@@ -175,30 +199,6 @@
     {
       "basename": "Google Dorking",
       "path": "04 - Content/Recon/OSINT/Google Dorking.md"
-    },
-    {
-      "basename": "Bandit 05",
-      "path": "05 - Writeups/OverTheWire/Bandit 05.md"
-    },
-    {
-      "basename": "Bandit 04",
-      "path": "05 - Writeups/OverTheWire/Bandit 04.md"
-    },
-    {
-      "basename": "find",
-      "path": "04 - Content/Tools/find.md"
-    },
-    {
-      "basename": "Bandit 03",
-      "path": "05 - Writeups/OverTheWire/Bandit 03.md"
-    },
-    {
-      "basename": "Bandit 02",
-      "path": "05 - Writeups/OverTheWire/Bandit 02.md"
-    },
-    {
-      "basename": "Bandit 01",
-      "path": "05 - Writeups/OverTheWire/Bandit 01.md"
     }
   ],
   "omittedPaths": [],
