@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "GraphQL Flujo Básico",
+      "path": "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md"
+    },
+    {
       "basename": "GraphQL Estructura",
       "path": "04 - Content/Web/GraphQL/GraphQL Estructura.md"
+    },
+    {
+      "basename": "GraphQL Injection",
+      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "Active",
@@ -39,14 +47,6 @@
     {
       "basename": "SQL Injection (SQLi)",
       "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "GraphQL Flujo Básico",
-      "path": "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md"
-    },
-    {
-      "basename": "GraphQL Injection",
-      "path": "04 - Content/Web/GraphQL/GraphQL Injection.md"
     },
     {
       "basename": "Golden Ticket - Forging Windows",

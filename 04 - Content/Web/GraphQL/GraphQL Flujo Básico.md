@@ -79,6 +79,8 @@ query {
   }
 }
 ```
+>[!TIP]
+>"Quiero el esquema de la API. De ese esquema quiero todos los tipos definidos. De cada tipo quiero su nombre."
 
 Si funciona, obtendrás una lista enorme de tipos.
 

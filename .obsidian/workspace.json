@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/GraphQL/GraphQL Estructura.md",
+                "file": "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "GraphQL Estructura"
+              "title": "GraphQL Flujo Básico"
             }
           }
         ],
@@ -266,8 +266,9 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
-    "05 - Writeups/HackTheBox/Active.md",
     "04 - Content/Web/GraphQL/GraphQL Estructura.md",
+    "04 - Content/Web/GraphQL/GraphQL Injection.md",
+    "05 - Writeups/HackTheBox/Active.md",
     "04 - Content/Credentials/Golden/Golden Ticket.md",
     "04 - Content/Web/GraphQL/GraphQL Voyager.md",
     "04 - Content/Web/Fundamentals/HTTP.md",
@@ -277,7 +278,6 @@
     "04 - Content/Recon/WebTech/robots.txt.md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",
     "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md",
-    "04 - Content/Web/GraphQL/GraphQL Injection.md",
     "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md",
     "04 - Content/AD/Mimikatz - Dump y PPL Bypass.md",
     "04 - Content/AD/Mimikatz - kerberos y token.md",

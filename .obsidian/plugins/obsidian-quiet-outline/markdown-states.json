@@ -367,11 +367,11 @@
     "scroll": 5.28755364806867,
     "cursor": {
       "from": {
-        "line": 32,
+        "line": 33,
         "ch": 0
       },
       "to": {
-        "line": 32,
+        "line": 33,
         "ch": 0
       }
     },
@@ -2569,21 +2569,21 @@
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md": {
-    "scroll": 0,
+    "scroll": 67.44244105409155,
     "cursor": {
       "from": {
-        "line": 16,
-        "ch": 29
+        "line": 83,
+        "ch": 0
       },
       "to": {
-        "line": 16,
-        "ch": 29
+        "line": 83,
+        "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Web/GraphQL/GraphQL Estructura.md": {
-    "scroll": 8.229665071770334,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 86,
