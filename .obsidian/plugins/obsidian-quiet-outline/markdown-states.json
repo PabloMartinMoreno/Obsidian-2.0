@@ -1,13 +1,13 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 41.031047209249444,
+    "scroll": 97.40885416666667,
     "cursor": {
       "from": {
-        "line": 123,
+        "line": 141,
         "ch": 10
       },
       "to": {
-        "line": 123,
+        "line": 141,
         "ch": 10
       }
     },
@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 55.477213541666664,
+    "scroll": 9.284974093264248,
     "cursor": {
       "from": {
         "line": 22,
@@ -605,7 +605,7 @@
     ]
   },
   "04 - Content/Web/Fundamentals/HTTP.md": {
-    "scroll": 3.226244343891403,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 71,

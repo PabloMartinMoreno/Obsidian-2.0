@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/Fundamentals/HTTP.md",
+                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "HTTP"
+              "title": "SQL Injection (SQLi)"
             }
           }
         ],
@@ -266,6 +266,13 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md.tmp.151802.daae1f607f2f",
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md.tmp.151802.134bfcf10d9b",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Web/Fundamentals/Web.md",
+    "02 - Secondary Categories/Explotación.md",
+    "01 - Primary Categories/Red Team.md",
+    "04 - Content/Web/Fundamentals/HTTP.md",
     "02 - Secondary Categories/CWES.md",
     "04 - Content/Web/Smuggling/HTTP Request Smuggling - HTTP2 Downgrade.md",
     "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md",
@@ -280,9 +287,7 @@
     "04 - Content/Web/GraphQL/GraphQL Injection.md.tmp.4214.d5534605cf4d",
     "04 - Content/Web/GraphQL/GraphQL - Inyecciones via Resolvers.md.tmp.4214.7913df28fec7",
     "04 - Content/Web/GraphQL/GraphQL - Introspection y Schema Discovery.md.tmp.4214.2d49a5b8effd",
-    "04 - Content/Web/GraphQL/GraphQL - Introspection y Schema Discovery.md.tmp.4214.bf681ad1a271",
     "000 - Global Index.md",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
     "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md",
     "04 - Content/Web/Auth/CSRF - Vectores de Ataque.md",
@@ -295,13 +300,8 @@
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md",
     "04 - Content/Process/Blind SQL injection with conditional responses tags.md",
-    "02 - Secondary Categories/Explotación.md",
-    "01 - Primary Categories/Red Team.md",
     "04 - Content/Recon/OSINT/OSINT.md",
     "04 - Content/Recon/OSINT Methods.md",
-    "04 - Content/Recon/OSINT/Google Dorking.md",
-    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
-    "05 - Writeups/OverTheWire/Bandit 05.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

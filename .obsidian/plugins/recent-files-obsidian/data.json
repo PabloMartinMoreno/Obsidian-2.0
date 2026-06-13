@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Web",
+      "path": "04 - Content/Web/Fundamentals/Web.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
       "basename": "HTTP",
       "path": "04 - Content/Web/Fundamentals/HTTP.md"
     },
@@ -27,10 +47,6 @@
     {
       "basename": "000 - Global Index",
       "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
       "basename": "Cross-Site Request Forgery (CSRF)",
@@ -81,14 +97,6 @@
       "path": "04 - Content/Process/Blind SQL injection with conditional responses tags.md"
     },
     {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
       "basename": "OSINT",
       "path": "04 - Content/Recon/OSINT/OSINT.md"
     },
@@ -99,10 +107,6 @@
     {
       "basename": "Google Dorking",
       "path": "04 - Content/Recon/OSINT/Google Dorking.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "Bandit 05",
@@ -195,10 +199,6 @@
     {
       "basename": "SSI - Ejecucion de Comandos",
       "path": "04 - Content/Web/SSI/SSI - Ejecucion de Comandos.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
     }
   ],
   "omittedPaths": [],
