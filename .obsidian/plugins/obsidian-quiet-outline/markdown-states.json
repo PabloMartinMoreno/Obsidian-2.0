@@ -112,7 +112,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Active Directory Explotación.md": {
-    "scroll": 18.38860103626943,
+    "scroll": 69.85436893203884,
     "cursor": {
       "from": {
         "line": 21,
@@ -2359,7 +2359,7 @@
     "expandedKeys": []
   },
   "04 - Content/Credentials/Kerberoasting/Kerberoasting.md": {
-    "scroll": 0,
+    "scroll": 46.545386904761905,
     "cursor": {
       "from": {
         "line": 35,
@@ -2452,6 +2452,48 @@
       "to": {
         "line": 16,
         "ch": 3
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/ACL Abuse.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/ASREP/AS-REP Roasting.md": {
+    "scroll": 113.8011465424579,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/Sapphire Ticket.md": {
+    "scroll": 2.9473684210526314,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
       }
     },
     "expandedKeys": []

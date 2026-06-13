@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "Sapphire Ticket",
+      "path": "04 - Content/AD/Sapphire Ticket.md"
+    },
+    {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "AS-REP Roasting",
+      "path": "04 - Content/Credentials/ASREP/AS-REP Roasting.md"
+    },
+    {
+      "basename": "Kerberoasting",
+      "path": "04 - Content/Credentials/Kerberoasting/Kerberoasting.md"
+    },
+    {
+      "basename": "ACL Abuse",
+      "path": "04 - Content/AD/ACL Abuse.md"
     },
     {
       "basename": "Active Directory Enumeración",
@@ -23,10 +39,6 @@
     {
       "basename": "Explotación",
       "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Kerberoasting",
-      "path": "04 - Content/Credentials/Kerberoasting/Kerberoasting.md"
     },
     {
       "basename": "Web Explotación",
@@ -187,14 +199,6 @@
     {
       "basename": "Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Fingerprinting.md"
-    },
-    {
-      "basename": "Web Technology Enumeration",
-      "path": "04 - Content/Recon/WebTech/Web Technology Enumeration.md"
-    },
-    {
-      "basename": "Web Fingerprinting",
-      "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
     }
   ],
   "omittedPaths": [],
