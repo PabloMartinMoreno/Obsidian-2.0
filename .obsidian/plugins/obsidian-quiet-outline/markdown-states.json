@@ -1,6 +1,6 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 97.40885416666667,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 141,
@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 9.284974093264248,
+    "scroll": 69.71623222748815,
     "cursor": {
       "from": {
         "line": 22,
@@ -1087,7 +1087,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md": {
-    "scroll": 28.040567951318458,
+    "scroll": 36.841886269070734,
     "cursor": {
       "from": {
         "line": 32,
@@ -2283,6 +2283,76 @@
       },
       "to": {
         "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/HostHeader/Host Header Injection.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Smuggling/HTTP Request Smuggling.md": {
+    "scroll": 52.29616602180795,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/CachePoisoning/Web Cache Poisoning.md": {
+    "scroll": 23.682403433476395,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/MassAssignment/Mass Assignment.md": {
+    "scroll": 65.34926240865006,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/OpenRedirect/Open Redirect.md": {
+    "scroll": 41.135303466345945,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
         "ch": 0
       }
     },

@@ -81,6 +81,18 @@ tab: **Otras Herramientas**
 
 ---
 
+## Overview
+
+**OS Command Injection** ocurre cuando una aplicación pasa input controlado por el atacante a una shell del sistema (`system()`, `exec()`, `popen()`, backticks…) sin sanitizar. El atacante encadena comandos propios usando metacaracteres de shell (`;`, `|`, `&&`, `$()`, `` ` ``) y obtiene **RCE directa** con los privilegios del proceso web.
+
+Vectores típicos: funciones que invocan binarios del sistema — `ping`/`nslookup` (herramientas de red expuestas en la UI), conversores de archivos (ImageMagick, ffmpeg), generadores de PDF, backups, o cualquier campo que termine en un argumento de comando.
+
+**Impacto:** ejecución de comandos arbitrarios → lectura de archivos, reverse shell, pivot a la red interna, exfiltración. Es de las vulns de mayor severidad (CWE-78) por dar control directo del host.
+
+> Detección: inyectar un separador + comando observable (`; id`, `| whoami`, `$(sleep 5)`) y observar output reflejado o delay. Si no hay output → OOB con `nslookup`/`curl` a un canary (ver Obfuscación y Herramientas Automáticas arriba).
+
+---
+
 ## Ejemplos 
 
 #### Payload 1: 

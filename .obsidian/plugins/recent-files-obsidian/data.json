@@ -1,12 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Open Redirect",
+      "path": "04 - Content/Web/OpenRedirect/Open Redirect.md"
+    },
+    {
+      "basename": "Subdomain Takeover",
+      "path": "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md"
+    },
+    {
+      "basename": "Mass Assignment",
+      "path": "04 - Content/Web/MassAssignment/Mass Assignment.md"
+    },
+    {
+      "basename": "Web Cache Poisoning",
+      "path": "04 - Content/Web/CachePoisoning/Web Cache Poisoning.md"
+    },
+    {
+      "basename": "HTTP Request Smuggling",
+      "path": "04 - Content/Web/Smuggling/HTTP Request Smuggling.md"
+    },
+    {
+      "basename": "Host Header Injection",
+      "path": "04 - Content/Web/HostHeader/Host Header Injection.md"
+    },
+    {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "Web",
@@ -175,30 +199,6 @@
     {
       "basename": "Cookie Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Cookie Fingerprinting.md"
-    },
-    {
-      "basename": "HTTP - Cookies y Sesiones",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md"
-    },
-    {
-      "basename": "whatweb",
-      "path": "04 - Content/Tools/Recon/whatweb.md"
-    },
-    {
-      "basename": "HTTP - Headers",
-      "path": "04 - Content/Web/Fundamentals/HTTP - Headers.md"
-    },
-    {
-      "basename": "CWES - Checklist",
-      "path": "04 - Content/Process/CWES - Checklist.md"
-    },
-    {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
-    },
-    {
-      "basename": "SSI - Ejecucion de Comandos",
-      "path": "04 - Content/Web/SSI/SSI - Ejecucion de Comandos.md"
     }
   ],
   "omittedPaths": [],

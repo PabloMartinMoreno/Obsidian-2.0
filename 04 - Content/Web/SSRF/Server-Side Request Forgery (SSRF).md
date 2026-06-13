@@ -98,7 +98,7 @@ El backend se convierte en **proxy no intencional** — el atacante hereda la pe
 
 ---
 
-## Detection workflow
+## Flujo de detección
 
 1. **Input mapping**: identificar todo campo que acepte URL o hostname.
 2. **Callback test**: apuntar URL al Burp Collaborator / interactsh.

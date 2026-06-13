@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/Injection/SQL Injection (SQLi).md",
+                "file": "03 - Tertiary Categories/Web Explotación.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SQL Injection (SQLi)"
+              "title": "Web Explotación"
             }
           }
         ],
@@ -266,9 +266,18 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "04 - Content/Web/Fundamentals/Web.md.tmp.151802.12b85c331533",
+    "04 - Content/Web/OpenRedirect/Open Redirect.md",
+    "03 - Tertiary Categories/Web Explotación.md",
+    "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md",
+    "04 - Content/Web/MassAssignment/Mass Assignment.md",
+    "04 - Content/Web/CommandInjection/OS Command Injection.md.tmp.151802.15d796f7dc0e",
+    "04 - Content/Web/CachePoisoning/Web Cache Poisoning.md",
+    "04 - Content/Web/Smuggling/HTTP Request Smuggling.md",
+    "04 - Content/Web/HostHeader/Host Header Injection.md",
+    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md.tmp.151802.daae1f607f2f",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md.tmp.151802.134bfcf10d9b",
-    "03 - Tertiary Categories/Web Explotación.md",
     "04 - Content/Web/Fundamentals/Web.md",
     "02 - Secondary Categories/Explotación.md",
     "01 - Primary Categories/Red Team.md",
@@ -285,8 +294,6 @@
     "04 - Content/Web/GraphQL/GraphQL Injection.md",
     "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md.tmp.4214.ef76e9a1aabe",
     "04 - Content/Web/GraphQL/GraphQL Injection.md.tmp.4214.d5534605cf4d",
-    "04 - Content/Web/GraphQL/GraphQL - Inyecciones via Resolvers.md.tmp.4214.7913df28fec7",
-    "04 - Content/Web/GraphQL/GraphQL - Introspection y Schema Discovery.md.tmp.4214.2d49a5b8effd",
     "000 - Global Index.md",
     "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
     "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md",
@@ -295,13 +302,6 @@
     "05 - Writeups/PortSwigger/SQLi/Blind - Conditional Responses.md",
     "02 - Secondary Categories/PortSwigger.md",
     "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md",
-    "05 - Writeups/PortSwigger/XSS/05 - DOM XSS jQuery anchor href.md",
-    "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md",
-    "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
-    "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md",
-    "04 - Content/Process/Blind SQL injection with conditional responses tags.md",
-    "04 - Content/Recon/OSINT/OSINT.md",
-    "04 - Content/Recon/OSINT Methods.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
