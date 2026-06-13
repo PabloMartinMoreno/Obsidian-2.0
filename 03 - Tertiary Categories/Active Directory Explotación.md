@@ -72,8 +72,8 @@ Ticket Kerberos forging para auth arbitraria post-credentials de service o KDC.
 
 - [[Golden Ticket]] (krbtgt hash → forge TGT para cualquier user en dominio — persistente.)
 - [[Silver Ticket]] (Service account hash → forge TGS para servicio específico — stealthier.)
-- [[Diamond Ticket]] (Patched real PAC — evade detection vs Golden/Silver clásicos.)
-- [[Sapphire Ticket]] (S4U2Self con PAC manipulation — forge avanzado evade SIDFiltering.)
+- [[Golden Ticket - Forging Windows#^gt-forge-diamond|Diamond Ticket]] (TGT legítimo con PAC modificado — evade detection vs Golden clásico. Variante de forja en [[Golden Ticket]].)
+- [[Golden Ticket - Forging Windows#^gt-forge-sapphire|Sapphire Ticket]] (S4U2Self+U2U con PAC real — forge avanzado, máximo stealth. Variante de forja en [[Golden Ticket]].)
 
 
 ## 🪤 Domain Persistence

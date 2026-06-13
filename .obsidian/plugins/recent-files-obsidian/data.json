@@ -1,12 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "Sapphire Ticket",
-      "path": "04 - Content/AD/Sapphire Ticket.md"
+      "basename": "Golden Ticket - Forging Windows",
+      "path": "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md"
     },
     {
       "basename": "Active Directory Explotación",
       "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "Silver Ticket",
+      "path": "04 - Content/Credentials/Silver/Silver Ticket.md"
+    },
+    {
+      "basename": "Golden Ticket",
+      "path": "04 - Content/Credentials/Golden/Golden Ticket.md"
     },
     {
       "basename": "AS-REP Roasting",
@@ -191,14 +199,6 @@
     {
       "basename": "Bandit 01",
       "path": "05 - Writeups/OverTheWire/Bandit 01.md"
-    },
-    {
-      "basename": "Bandit 00",
-      "path": "05 - Writeups/OverTheWire/Bandit 00.md"
-    },
-    {
-      "basename": "Fingerprinting",
-      "path": "04 - Content/Recon/WebTech/Fingerprinting.md"
     }
   ],
   "omittedPaths": [],

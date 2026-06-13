@@ -3,8 +3,6 @@ aliases:
   - "Certificados (PKINIT)"
   - "Cracking .PFX File"
   - "Reading .PFX File"
-  - "AdminSDHolder"
-  - "AdminSDHolder Abuse"
   - Active Directory Certificate Services Abuse
   - ADCS Abuse
   - Certipy

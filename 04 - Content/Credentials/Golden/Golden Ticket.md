@@ -1,9 +1,6 @@
 ---
 aliases:
   - "Golden Tickets"
-  - "Diamond Ticket"
-  - "Sapphire Ticket"
-  - "Golden Certificate"
   - Golden Ticket Attack
   - Golden TGT
   - Forged TGT

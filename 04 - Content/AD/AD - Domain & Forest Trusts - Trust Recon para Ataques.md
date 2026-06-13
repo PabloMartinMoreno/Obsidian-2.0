@@ -1,9 +1,5 @@
 ---
 aliases:
-  - "Intra-Forest Trust Abuse"
-  - "Inter-Forest Trust Abuse"
-  - "Trust Abuse"
-  - "AD Trust Abuse"
   - Trust Attack Recon
   - Cross-Forest Recon
   - Foreign Group Audit

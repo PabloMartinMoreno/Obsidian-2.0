@@ -112,15 +112,15 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Active Directory Explotación.md": {
-    "scroll": 69.85436893203884,
+    "scroll": 61.459715639810426,
     "cursor": {
       "from": {
-        "line": 21,
-        "ch": 0
+        "line": 72,
+        "ch": 36
       },
       "to": {
-        "line": 21,
-        "ch": 0
+        "line": 72,
+        "ch": 36
       }
     },
     "expandedKeys": []
@@ -2485,7 +2485,7 @@
     "expandedKeys": []
   },
   "04 - Content/AD/Sapphire Ticket.md": {
-    "scroll": 2.9473684210526314,
+    "scroll": 14.68421052631579,
     "cursor": {
       "from": {
         "line": 22,
@@ -2493,6 +2493,48 @@
       },
       "to": {
         "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Golden/Golden Ticket.md": {
+    "scroll": 30.17241379310345,
+    "cursor": {
+      "from": {
+        "line": 35,
+        "ch": 0
+      },
+      "to": {
+        "line": 35,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md": {
+    "scroll": 123.11607142857143,
+    "cursor": {
+      "from": {
+        "line": 135,
+        "ch": 3
+      },
+      "to": {
+        "line": 135,
+        "ch": 18
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Silver/Silver Ticket.md": {
+    "scroll": 22.275862068965516,
+    "cursor": {
+      "from": {
+        "line": 34,
+        "ch": 0
+      },
+      "to": {
+        "line": 34,
         "ch": 0
       }
     },
