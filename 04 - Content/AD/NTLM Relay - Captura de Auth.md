@@ -7,8 +7,11 @@ tags:
   - env/windows
   - cred/ntlm
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Active Directory]]"
 kind: SubCheatSheet
 linked:
   - "[[NTLM Relay]]"

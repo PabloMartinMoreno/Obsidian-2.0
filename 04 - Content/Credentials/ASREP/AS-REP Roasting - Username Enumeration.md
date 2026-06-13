@@ -7,8 +7,12 @@ tags:
   - technique/discovery
   - asset/active-directory
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Active Directory]]"
 tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[AS-REP Roasting]]"

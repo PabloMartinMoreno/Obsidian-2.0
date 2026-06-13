@@ -9,8 +9,12 @@ tags:
   - technique/privilege-escalation
   - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[OAuth 2.0 Misconfigurations]]"

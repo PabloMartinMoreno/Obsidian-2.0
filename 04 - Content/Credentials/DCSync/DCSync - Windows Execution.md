@@ -7,8 +7,11 @@ tags:
   - asset/active-directory
   - cred/ntlm
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Post-Explotación]]"
 tertiary categories:
+  - "[[Credential Harvesting]]"
 kind: SubCheatSheet
 linked:
   - "[[DCSync]]"

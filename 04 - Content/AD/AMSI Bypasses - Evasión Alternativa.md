@@ -7,7 +7,9 @@ tags:
   - technique/execution
   - env/windows
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Payload Engineering]]"
 tertiary categories:
 kind: SubCheatSheet
 linked:

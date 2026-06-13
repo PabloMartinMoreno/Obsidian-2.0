@@ -13,8 +13,12 @@ tags:
   - technique/privilege-escalation
   - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación|Explotación]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[GraphQL Injection]]"

@@ -9,8 +9,12 @@ tags:
   - env/linux
   - asset/active-directory
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Active Directory]]"
 tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Pass-the-Ticket]]"

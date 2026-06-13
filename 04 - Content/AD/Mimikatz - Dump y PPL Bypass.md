@@ -9,8 +9,11 @@ tags:
   - env/windows
   - tool/mimikatz
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Post-Explotación]]"
 tertiary categories:
+  - "[[Active Directory]]"
 kind: SubCheatSheet
 linked:
   - "[[Mimikatz Cheatsheet]]"

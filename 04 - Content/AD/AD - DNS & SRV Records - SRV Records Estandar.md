@@ -10,8 +10,12 @@ tags:
   - asset/active-directory
   - asset/dns
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Active Directory]]"
+  - "[[Information Gathering]]"
 tertiary categories:
+  - "[[Active Directory Enumeración]]"
 kind: SubCheatSheet
 linked:
   - "[[AD - DNS & SRV Records]]"

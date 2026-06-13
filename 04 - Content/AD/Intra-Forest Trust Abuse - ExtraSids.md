@@ -8,8 +8,11 @@ tags:
   - asset/active-directory
   - env/windows
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Active Directory]]"
 tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Intra-Forest Trust Abuse]]"

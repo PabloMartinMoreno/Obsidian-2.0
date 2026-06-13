@@ -8,8 +8,11 @@ tags:
   - env/windows
   - service/ad-cs
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Credential Access]]"
 tertiary categories:
+  - "[[Active Directory Certificate Services]]"
 kind: SubCheatSheet
 linked:
   - "[[Shadow Credentials]]"

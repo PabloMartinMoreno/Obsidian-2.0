@@ -10,8 +10,12 @@ tags:
   - cred/ntlm
   - cred/kerberos
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Active Directory]]"
 tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[LSASS Dumping]]"

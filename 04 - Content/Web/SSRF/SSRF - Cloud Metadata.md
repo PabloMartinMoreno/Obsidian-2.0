@@ -13,8 +13,12 @@ tags:
   - env/cloud-azure
   - env/cloud-gcp
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación|Explotación]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Server-Side Request Forgery (SSRF)]]"

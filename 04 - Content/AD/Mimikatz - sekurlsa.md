@@ -7,8 +7,11 @@ tags:
   - tool/mimikatz
   - cred/ntlm
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Post-Explotación]]"
 tertiary categories:
+  - "[[Active Directory]]"
 kind: SubCheatSheet
 linked:
   - "[[Mimikatz Cheatsheet]]"

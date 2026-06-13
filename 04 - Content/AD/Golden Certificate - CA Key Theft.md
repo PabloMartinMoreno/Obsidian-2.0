@@ -9,8 +9,11 @@ tags:
   - env/windows
   - service/ad-cs
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Active Directory]]"
 tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Golden Certificate]]"

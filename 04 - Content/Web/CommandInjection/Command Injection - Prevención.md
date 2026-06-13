@@ -4,8 +4,12 @@ tags:
   - vuln/command-injection
   - asset/web-app
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[OS Command Injection]]"

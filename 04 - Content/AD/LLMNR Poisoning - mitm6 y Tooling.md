@@ -8,8 +8,11 @@ tags:
   - asset/active-directory
   - env/windows
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Credential Harvesting]]"
 tertiary categories:
+  - "[[Active Directory]]"
 kind: SubCheatSheet
 linked:
   - "[[LLMNR & NBT-NS Poisoning]]"

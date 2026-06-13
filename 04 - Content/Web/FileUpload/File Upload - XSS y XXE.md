@@ -6,8 +6,11 @@ tags:
   - vuln/xss
   - vuln/xxe
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Post-Explotación]]"
 tertiary categories:
+  - "[[Operational Tasks]]"
 kind: SubCheatSheet
 linked:
 ---

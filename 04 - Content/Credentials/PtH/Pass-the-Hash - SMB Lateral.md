@@ -13,8 +13,12 @@ tags:
   - asset/active-directory
   - cred/ntlm
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
+  - "[[Active Directory]]"
 tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Pass-the-Hash]]"

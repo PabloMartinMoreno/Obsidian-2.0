@@ -8,8 +8,11 @@ tags:
   - asset/active-directory
   - env/windows
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Active Directory]]"
 kind: SubCheatSheet
 linked:
   - "[[Shadow Credentials]]"

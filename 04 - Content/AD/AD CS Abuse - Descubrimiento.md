@@ -8,8 +8,11 @@ tags:
   - env/windows
   - service/ad-cs
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Active Directory]]"
 kind: SubCheatSheet
 linked:
   - "[[AD CS Abuse]]"

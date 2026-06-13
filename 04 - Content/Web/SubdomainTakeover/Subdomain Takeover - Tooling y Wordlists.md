@@ -11,8 +11,12 @@ tags:
   - technique/discovery
   - asset/dns
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación|Explotación]]"
+  - "[[Web]]"
 tertiary categories:
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Subdomain Takeover]]"

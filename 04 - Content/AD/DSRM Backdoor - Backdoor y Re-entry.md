@@ -7,8 +7,11 @@ tags:
   - env/windows
   - cred/ntlm
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Active Directory]]"
 tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[DSRM Backdoor]]"

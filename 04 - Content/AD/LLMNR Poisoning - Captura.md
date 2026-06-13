@@ -8,8 +8,11 @@ tags:
   - env/windows
   - cred/ntlm
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Credential Harvesting]]"
 tertiary categories:
+  - "[[Active Directory]]"
 kind: SubCheatSheet
 linked:
   - "[[LLMNR & NBT-NS Poisoning]]"

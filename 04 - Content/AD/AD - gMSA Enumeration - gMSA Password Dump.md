@@ -7,8 +7,12 @@ tags:
   - technique/credential-access
   - asset/active-directory
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Active Directory]]"
+  - "[[Information Gathering]]"
 tertiary categories:
+  - "[[Active Directory Enumeración]]"
 kind: SubCheatSheet
 linked:
   - "[[AD - gMSA Enumeration]]"
