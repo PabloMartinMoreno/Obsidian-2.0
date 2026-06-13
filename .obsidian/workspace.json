@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md",
+                "file": "04 - Content/Web/GraphQL/GraphQL Voyager.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "GraphQL Flujo Básico"
+              "title": "GraphQL Voyager"
             }
           }
         ],
@@ -266,6 +266,7 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md",
     "04 - Content/Web/XSLT/XSLT - Bypasses y Evasion.md.tmp.37722.5f40cc37a21b",
     "04 - Content/Web/SSRF/SSRF - Reconocimiento.md.tmp.37722.de597d52b526",
     "04 - Content/Credentials/Silver/Silver Ticket - Tooling.md.tmp.37722.146bd7add247",
@@ -280,7 +281,6 @@
     "02 - Secondary Categories/CWES.md",
     "04 - Content/Recon/WebTech/robots.txt.md",
     "04 - Content/Web/Injection/SQL Injection (SQLi).md",
-    "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md",
     "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md",
     "04 - Content/AD/Mimikatz - Dump y PPL Bypass.md",
     "04 - Content/AD/Mimikatz - kerberos y token.md",
@@ -301,7 +301,6 @@
     "04 - Content/AD/LLMNR Poisoning - Captura.md",
     "04 - Content/AD/NTLM Relay - Relay Targets.md.tmp.71882.040ef809b934",
     "04 - Content/AD/AD CS Abuse - Tooling.md.tmp.71882.42d4d7fafd43",
-    "04 - Content/AD/AD CS Abuse - Mapping ESCs.md.tmp.71882.788f8777cfcb",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

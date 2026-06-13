@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "GraphQL Voyager",
+      "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
+    },
+    {
       "basename": "GraphQL Flujo Básico",
       "path": "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md"
     },
@@ -19,10 +23,6 @@
     {
       "basename": "Golden Ticket",
       "path": "04 - Content/Credentials/Golden/Golden Ticket.md"
-    },
-    {
-      "basename": "GraphQL Voyager",
-      "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
     },
     {
       "basename": "HTTP",
