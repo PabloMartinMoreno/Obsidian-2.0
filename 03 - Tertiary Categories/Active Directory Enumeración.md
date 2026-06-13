@@ -1,7 +1,7 @@
 ---
 aliases:
-  - "Active Directory Enumeration"
-  - "AD Enumeration"
+  - Active Directory Enumeration
+  - AD Enumeration
   - Enumeración de Active Directory
   - AD Enumeration
 tags:
@@ -13,6 +13,9 @@ secondary categories:
   - "[[Active Directory]]"
   - "[[Information Gathering]]"
 kind: Tertiary Category
+linked:
+  - "[[Active Directory Explotación]]"
+  - "[[Windows & Active Directory Movimiento Lateral]]"
 ---
 # Active Directory Enumeración
 

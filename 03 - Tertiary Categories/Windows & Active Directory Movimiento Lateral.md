@@ -8,6 +8,9 @@ secondary categories:
   - "[[Lateral Movement]]"
   - "[[Windows]]"
 kind: Tertiary Category
+linked:
+  - "[[Active Directory Enumeración]]"
+  - "[[Active Directory Explotación]]"
 ---
 # Movimiento Lateral de Windows y AD
 

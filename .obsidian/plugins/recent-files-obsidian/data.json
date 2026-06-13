@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Active Directory Explotación",
+      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
+    },
+    {
+      "basename": "Active Directory Enumeración",
+      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
+      "basename": "Windows & Active Directory Movimiento Lateral",
+      "path": "03 - Tertiary Categories/Windows & Active Directory Movimiento Lateral.md"
+    },
+    {
+      "basename": "Active Directory",
+      "path": "02 - Secondary Categories/Active Directory.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD/AD - Hosts Enumeration.md"
+    },
+    {
+      "basename": "Explotación",
+      "path": "02 - Secondary Categories/Explotación.md"
+    },
+    {
+      "basename": "Kerberoasting",
+      "path": "04 - Content/Credentials/Kerberoasting/Kerberoasting.md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
@@ -35,10 +63,6 @@
     {
       "basename": "Web",
       "path": "04 - Content/Web/Fundamentals/Web.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
     },
     {
       "basename": "Red Team",
@@ -171,34 +195,6 @@
     {
       "basename": "Web Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
-    },
-    {
-      "basename": "curl",
-      "path": "04 - Content/Tools/Recon/curl.md"
-    },
-    {
-      "basename": "File Inclusion",
-      "path": "04 - Content/Web/FileInclusion/File Inclusion.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
-    },
-    {
-      "basename": "GraphQL Voyager",
-      "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
-    },
-    {
-      "basename": "Bandit 07",
-      "path": "05 - Writeups/OverTheWire/Bandit 07.md"
-    },
-    {
-      "basename": "Bandit 06",
-      "path": "05 - Writeups/OverTheWire/Bandit 06.md"
-    },
-    {
-      "basename": "Cookie Fingerprinting",
-      "path": "04 - Content/Recon/WebTech/Cookie Fingerprinting.md"
     }
   ],
   "omittedPaths": [],

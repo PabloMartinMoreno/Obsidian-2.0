@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 69.71623222748815,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 22,
@@ -98,7 +98,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/Explotación.md": {
-    "scroll": 10.9140625,
+    "scroll": 6.111801242236025,
     "cursor": {
       "from": {
         "line": 9,
@@ -112,14 +112,14 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Active Directory Explotación.md": {
-    "scroll": 0,
+    "scroll": 18.38860103626943,
     "cursor": {
       "from": {
-        "line": 19,
+        "line": 21,
         "ch": 0
       },
       "to": {
-        "line": 19,
+        "line": 21,
         "ch": 0
       }
     },
@@ -2354,6 +2354,104 @@
       "to": {
         "line": 31,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Kerberoasting/Kerberoasting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 35,
+        "ch": 0
+      },
+      "to": {
+        "line": 35,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Timeroasting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Active Directory.md": {
+    "scroll": 6.565217391304348,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Active Directory Enumeración.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/AD - Hosts Enumeration.md": {
+    "scroll": 36.831516004220894,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Windows & Active Directory Lateral Movement.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Windows & Active Directory Movimiento Lateral.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 3
+      },
+      "to": {
+        "line": 16,
+        "ch": 3
       }
     },
     "expandedKeys": []

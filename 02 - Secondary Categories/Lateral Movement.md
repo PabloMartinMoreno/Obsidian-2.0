@@ -46,7 +46,7 @@ mindmap
 
 ---
 
-## [[Windows & Active Directory Lateral Movement]]
+## [[Windows & Active Directory Movimiento Lateral]]
 
 
 ---

@@ -1,9 +1,8 @@
 ---
 aliases:
-  - "Active Directory Exploitation"
-  - "AD Exploitation"
-  - Explotación de Active Directory
+  - Active Directory Exploitation
   - AD Exploitation
+  - Explotación de Active Directory
   - ADX
 tags:
   - asset/active-directory
@@ -16,6 +15,9 @@ secondary categories:
   - "[[Active Directory]]"
   - "[[Explotación]]"
 kind: Tertiary Category
+linked:
+  - "[[Active Directory Enumeración]]"
+  - "[[Windows & Active Directory Movimiento Lateral]]"
 ---
 # Active Directory Explotación
 
@@ -32,6 +34,7 @@ Ataques contra mecanismos de autenticación AD para obtener credentials offline-
 - [[Pass-the-Hash]] (NTLM hash reuse para auth sin password — wmiexec/smbexec/winrm/RDP.)
 - [[Pass-the-Ticket]] (Inyectar TGT/TGS robado en sesión Windows o Linux con Rubeus/ticketer.)
 - [[Overpass-the-Hash]] (NT hash → request TGT vía Rubeus asktgt — combo PtH + Kerberos.)
+- [[UnPAC-the-hash]] (Recuperar el NT hash desde el PAC de un TGT obtenido por certificado/PKINIT — puente cert → NTLM.)
 
 
 ## 📡 Coercion & Network Attacks
@@ -60,6 +63,8 @@ ACL abuse, replication rights, certificate template abuse para escalar a Domain 
 - [[AD CS Abuse]] (ESC1-ESC15 — vulnerable certificate templates, web enrollment relay, EDITF_ATTRIBUTESUBJECTALTNAME2.)
 - [[GPO Abuse]] (SharpGPOAbuse, immediate scheduled tasks/scripts/MSI install vía GPO write.)
 - [[SYSVOL y GPP cpassword]] (Legacy Group Policy Preferences en SYSVOL — cpassword AES con clave pública.)
+- [[noPac (sAMAccountName Spoofing)|noPac]] (CVE-2021-42278/42287 — sAMAccountName spoofing → DA directo desde usuario común.)
+- [[Certifried (CVE-2022-26923)|Certifried]] (CVE-2022-26923 — computer account + dNSHostName del DC → cert de DA vía AD CS.)
 
 
 ## 🪙 Forged Tickets
@@ -79,6 +84,7 @@ Mantener acceso post-DA con backdoors stealth y mecanismos de re-entry.
 - [[AdminSDHolder Abuse]] (Modify AdminSDHolder DACL → SDProp propaga permisos cada 60min a Tier 0.)
 - [[Custom SSP]] (Mimikatz misc::memssp — capture clear-text passwords from LSASS via custom Security Support Provider.)
 - [[Golden Certificate]] (CA private key extraction → forge certificates con cualquier identity arbitraria.)
+- [[DCShadow]] (Registrar un DC rogue temporal → inyectar cambios (SID History, ACLs) vía replicación sin logs.)
 
 
 ## 🌐 Trust Abuse
