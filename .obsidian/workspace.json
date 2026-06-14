@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "01 - Primary Categories/Blue Team.md",
+                "file": "05 - Writeups/OverTheWire/Bandit 07.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Blue Team"
+              "title": "Bandit 07"
             }
           }
         ],
@@ -266,6 +266,12 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "05 - Writeups/OverTheWire/Bandit 08.md",
+    "05 - Writeups/OverTheWire/Bandit 07.md",
+    "05 - Writeups/OverTheWire/Bandit 06.md",
+    "03 - Tertiary Categories/SOC Identificación.md",
+    "02 - Secondary Categories/Identificación.md",
+    "01 - Primary Categories/Blue Team.md",
     "02 - Secondary Categories/Respuesta.md.tmp.4283.ef680ba078ed",
     "02 - Secondary Categories/Digital Forensics.md.tmp.4283.5dca473b61a7",
     "03 - Tertiary Categories/Digital Forensics Respuesta.md",
@@ -281,7 +287,6 @@
     "02 - Secondary Categories/Incident Response.md.tmp.4283.7fc11cffa656",
     "03 - Tertiary Categories/IR Respuesta.md",
     "03 - Tertiary Categories/IR Respuesta.md.tmp.4283.5cc1aedef378",
-    "04 - Content/BlueTeam/IR/Análisis de la Brecha de Insight Nexus.md.tmp.4283.0eec476d40a9",
     "04 - Content/BlueTeam/IR/IR - Actividad Post-Incidente.md",
     "04 - Content/BlueTeam/IR/IR - Contención, Erradicación y Recuperación.md",
     "04 - Content/BlueTeam/IR/IR - Detección y Análisis.md",
@@ -293,15 +298,10 @@
     "04 - Content/BlueTeam/SIEM/Elastic Stack - KQL.md",
     "04 - Content/BlueTeam/SIEM/Fundamentos de SIEM.md",
     "02 - Secondary Categories/Detección.md",
-    "01 - Primary Categories/Blue Team.md",
     "02 - Secondary Categories/Protección.md",
-    "02 - Secondary Categories/Identificación.md",
     "02 - Secondary Categories/SOC.md",
     "03 - Tertiary Categories/SOC Respuesta.md",
     "03 - Tertiary Categories/SOC Detección.md",
-    "03 - Tertiary Categories/SOC Identificación.md",
-    "02 - Secondary Categories/Recuperación.md",
-    "02 - Secondary Categories/Respuesta.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

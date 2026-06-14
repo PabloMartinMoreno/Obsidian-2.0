@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "Bandit 07",
+      "path": "05 - Writeups/OverTheWire/Bandit 07.md"
+    },
+    {
+      "basename": "Bandit 08",
+      "path": "05 - Writeups/OverTheWire/Bandit 08.md"
+    },
+    {
+      "basename": "Bandit 06",
+      "path": "05 - Writeups/OverTheWire/Bandit 06.md"
+    },
+    {
+      "basename": "SOC Identificación",
+      "path": "03 - Tertiary Categories/SOC Identificación.md"
+    },
+    {
+      "basename": "Identificación",
+      "path": "02 - Secondary Categories/Identificación.md"
+    },
+    {
       "basename": "Blue Team",
       "path": "01 - Primary Categories/Blue Team.md"
     },
@@ -11,10 +31,6 @@
     {
       "basename": "Protección",
       "path": "02 - Secondary Categories/Protección.md"
-    },
-    {
-      "basename": "Identificación",
-      "path": "02 - Secondary Categories/Identificación.md"
     },
     {
       "basename": "SOC",
@@ -183,10 +199,6 @@
     {
       "basename": "AS-REP Roasting",
       "path": "04 - Content/Credentials/ASREP/AS-REP Roasting.md"
-    },
-    {
-      "basename": "Kerberoasting",
-      "path": "04 - Content/Credentials/Kerberoasting/Kerberoasting.md"
     }
   ],
   "omittedPaths": [],

@@ -2023,14 +2023,14 @@
     "expandedKeys": []
   },
   "05 - Writeups/OverTheWire/Bandit 07.md": {
-    "scroll": 0,
+    "scroll": 0.9430051813471503,
     "cursor": {
       "from": {
-        "line": 0,
+        "line": 13,
         "ch": 0
       },
       "to": {
-        "line": 0,
+        "line": 13,
         "ch": 0
       }
     },
@@ -2989,7 +2989,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/Identificación.md": {
-    "scroll": 0,
+    "scroll": 6.037267080745342,
     "cursor": {
       "from": {
         "line": 9,
@@ -3025,6 +3025,34 @@
       },
       "to": {
         "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/SOC Identificación.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 08.md": {
+    "scroll": 0.23575129533678757,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
         "ch": 0
       }
     },
