@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
-      "basename": "Bandit 07",
-      "path": "05 - Writeups/OverTheWire/Bandit 07.md"
+      "basename": "Bandit 12",
+      "path": "05 - Writeups/OverTheWire/Bandit 12.md"
+    },
+    {
+      "basename": "Bandit 11",
+      "path": "05 - Writeups/OverTheWire/Bandit 11.md"
+    },
+    {
+      "basename": "Bandit 10",
+      "path": "05 - Writeups/OverTheWire/Bandit 10.md"
+    },
+    {
+      "basename": "base64",
+      "path": "04 - Content/Tools/base64.md"
+    },
+    {
+      "basename": "Bandit 09",
+      "path": "05 - Writeups/OverTheWire/Bandit 09.md"
     },
     {
       "basename": "Bandit 08",
       "path": "05 - Writeups/OverTheWire/Bandit 08.md"
+    },
+    {
+      "basename": "Bandit 07",
+      "path": "05 - Writeups/OverTheWire/Bandit 07.md"
     },
     {
       "basename": "Bandit 06",
@@ -179,26 +199,6 @@
     {
       "basename": "robots.txt",
       "path": "04 - Content/Recon/WebTech/robots.txt.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "Golden Ticket - Forging Windows",
-      "path": "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md"
-    },
-    {
-      "basename": "Active Directory Explotación",
-      "path": "03 - Tertiary Categories/Active Directory Explotación.md"
-    },
-    {
-      "basename": "Silver Ticket",
-      "path": "04 - Content/Credentials/Silver/Silver Ticket.md"
-    },
-    {
-      "basename": "AS-REP Roasting",
-      "path": "04 - Content/Credentials/ASREP/AS-REP Roasting.md"
     }
   ],
   "omittedPaths": [],

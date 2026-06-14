@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Writeups/OverTheWire/Bandit 07.md",
+                "file": "05 - Writeups/OverTheWire/Bandit 12.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Bandit 07"
+              "title": "Bandit 12"
             }
           }
         ],
@@ -266,6 +266,10 @@
   },
   "active": "be6c70bf3c790eb5",
   "lastOpenFiles": [
+    "05 - Writeups/OverTheWire/Bandit 11.md",
+    "05 - Writeups/OverTheWire/Bandit 10.md",
+    "04 - Content/Tools/base64.md",
+    "05 - Writeups/OverTheWire/Bandit 09.md",
     "05 - Writeups/OverTheWire/Bandit 08.md",
     "05 - Writeups/OverTheWire/Bandit 07.md",
     "05 - Writeups/OverTheWire/Bandit 06.md",
@@ -298,10 +302,6 @@
     "04 - Content/BlueTeam/SIEM/Elastic Stack - KQL.md",
     "04 - Content/BlueTeam/SIEM/Fundamentos de SIEM.md",
     "02 - Secondary Categories/Detección.md",
-    "02 - Secondary Categories/Protección.md",
-    "02 - Secondary Categories/SOC.md",
-    "03 - Tertiary Categories/SOC Respuesta.md",
-    "03 - Tertiary Categories/SOC Detección.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
