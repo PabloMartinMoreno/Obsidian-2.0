@@ -9,12 +9,11 @@ kind: Secondary Category
 ---
 # Digital Forensics
 
-> Análisis forense digital: metodología, adquisición y análisis de evidencia.
+> Análisis forense digital. Dominio transversal; su contenido cae en la fase NIST de Respuesta (RS.AN — forensics).
 
 ---
 
-## Metodología
+## [[Digital Forensics Respuesta]]
 
-- [[Metodología Forense]]
 
 ---

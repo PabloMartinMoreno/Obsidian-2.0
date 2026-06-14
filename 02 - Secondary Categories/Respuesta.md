@@ -17,3 +17,13 @@ kind: Secondary Category
 
 
 ---
+
+## [[IR Respuesta]]
+
+
+---
+
+## [[Digital Forensics Respuesta]]
+
+
+---

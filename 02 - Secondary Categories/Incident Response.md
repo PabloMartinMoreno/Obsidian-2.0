@@ -9,28 +9,11 @@ kind: Secondary Category
 ---
 # Incident Response
 
-> Respuesta a incidentes según el ciclo NIST: preparación → detección y análisis → contención/erradicación/recuperación → actividad post-incidente.
+> Respuesta a incidentes según el ciclo NIST. Dominio transversal; su contenido cae en la fase NIST de Respuesta.
 
 ---
 
-## Proceso y Gestión
+## [[IR Respuesta]]
 
-- [[Gestión de Incidentes]]
-- [[Proceso de Gestión de Incidentes]]
-- [[Resumen del Proceso de Gestión de Incidentes]]
-- [[El Proceso de Triaje]]
-
-## Ciclo de Vida (NIST)
-
-- [[Etapa de Preparación (Parte 1)]]
-- [[Etapa de Preparación (Parte 2)]]
-- [[Etapa de Detección y Análisis (Parte 1)]]
-- [[Etapa de Detección y Análisis (Parte 2)]]
-- [[Etapa de Contención, Erradicación y Recuperación]]
-- [[Etapa de Actividad Post-Incidente]]
-
-## Casos
-
-- [[Análisis de la Brecha de Insight Nexus]]
 
 ---

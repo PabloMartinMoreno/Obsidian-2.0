@@ -1,12 +1,18 @@
 ---
 aliases:
 tags:
-  - estado/incompleto
+  - topic/incident-response
+  - asset/network
 primary categories:
+  - "[[Blue Team]]"
 secondary categories:
+  - "[[Incident Response]]"
+  - "[[Respuesta]]"
 tertiary categories:
+  - "[[IR Respuesta]]"
 kind: Concept
 linked:
+  - "[[Gestión de Incidentes]]"
 ---
 
 ### Análisis de la Brecha de Insight Nexus
