@@ -10,7 +10,7 @@ linked:
 ---
 
 [[Proceso de Gestión de Incidentes]]
-[[Cyber Kill Chain y MITRE ATT&CK]]
+[[Cyber Kill Chain]]
 [[Resumen del Proceso de Gestión de Incidentes]]
 [[Etapa de Preparación (Parte 1)]]
 [[Etapa de Preparación (Parte 2)]]

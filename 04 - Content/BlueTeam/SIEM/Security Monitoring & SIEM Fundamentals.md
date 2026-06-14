@@ -12,8 +12,8 @@ linked:
 
 [[Definición y Fundamentos de SIEM]]
 [[Introducción al Elastic Stack]]
-[[Definición y Fundamentos del SOC]]
-[[MITRE ATT&CK y Operaciones de Seguridad]]
+[[Fundamentos del SOC]]
+[[MITRE ATT&CK]]
 [[Desarrollo de Casos de Uso de SIEM]]
 [[El Proceso de Triaje]]
 

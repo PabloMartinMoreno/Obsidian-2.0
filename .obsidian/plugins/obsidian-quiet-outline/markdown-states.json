@@ -84,7 +84,7 @@
     "expandedKeys": []
   },
   "01 - Primary Categories/Red Team.md": {
-    "scroll": 10.455729166666666,
+    "scroll": 4.608695652173913,
     "cursor": {
       "from": {
         "line": 8,
@@ -448,7 +448,7 @@
     "expandedKeys": []
   },
   "000 - Global Index.md": {
-    "scroll": 9,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 52,
@@ -476,7 +476,7 @@
     "expandedKeys": []
   },
   "01 - Primary Categories/Blue Team.md": {
-    "scroll": 0,
+    "scroll": 14.13626907073509,
     "cursor": {
       "from": {
         "line": 7,
@@ -621,7 +621,7 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 23.7753120665742,
+    "scroll": 19.254980079681275,
     "cursor": {
       "from": {
         "line": 19,
@@ -931,7 +931,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/sherlocks.md": {
-    "scroll": 2.238341968911917,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 9,
@@ -1701,7 +1701,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md": {
-    "scroll": 2.0508474576271185,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 11,
@@ -2401,21 +2401,21 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Active Directory Enumeración.md": {
-    "scroll": 0,
+    "scroll": 30.876777251184834,
     "cursor": {
       "from": {
-        "line": 19,
-        "ch": 0
+        "line": 39,
+        "ch": 18
       },
       "to": {
-        "line": 19,
-        "ch": 0
+        "line": 39,
+        "ch": 18
       }
     },
     "expandedKeys": []
   },
   "04 - Content/AD/AD - Hosts Enumeration.md": {
-    "scroll": 36.831516004220894,
+    "scroll": 54.36331064134719,
     "cursor": {
       "from": {
         "line": 30,
@@ -2634,6 +2634,314 @@
       "to": {
         "line": 193,
         "ch": 34
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Resource Development.md": {
+    "scroll": 5.161490683229814,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/AD - DNS & SRV Records.md": {
+    "scroll": 29.786188579017264,
+    "cursor": {
+      "from": {
+        "line": 29,
+        "ch": 0
+      },
+      "to": {
+        "line": 29,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/AD - Password Policy Enumeration.md": {
+    "scroll": 39.947916666666664,
+    "cursor": {
+      "from": {
+        "line": 29,
+        "ch": 0
+      },
+      "to": {
+        "line": 29,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Host & Network Enumeration.md": {
+    "scroll": 23.841232227488153,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Services/FTP (21) - Enumeración.md": {
+    "scroll": 25.172330892798602,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Services/SMB (139, 445) - Enumeración.md": {
+    "scroll": 35.21012353463843,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Cloud Enumeration.md": {
+    "scroll": 18.149289099526065,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/CDSA.md": {
+    "scroll": 1.0263157894736843,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/IR/Gestión de Incidentes.md": {
+    "scroll": 4.5933014354066986,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 15
+      },
+      "to": {
+        "line": 14,
+        "ch": 15
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/IR/Proceso de Gestión de Incidentes.md": {
+    "scroll": 64.42122395833333,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/IR/Etapa de Detección y Análisis (Parte 1).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SIEM/Definición y Fundamentos de SIEM.md": {
+    "scroll": 72.68098958333333,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/Definición y Fundamentos del SOC.md": {
+    "scroll": 9.545454545454545,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 79
+      },
+      "to": {
+        "line": 17,
+        "ch": 79
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/sherlocks a hacer.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/Entrevistas CDSA.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/Forensics/Metodología Forense.md": {
+    "scroll": 13.247395833333334,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/SOC.md": {
+    "scroll": 8.531208499335989,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/SIEM.md": {
+    "scroll": 14.375866851595006,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Incident Response.md": {
+    "scroll": 15.509015256588071,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Digital Forensics.md": {
+    "scroll": 3.0745341614906834,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/Fundamentos del SOC.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md": {
+    "scroll": 2.6363636363636362,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
       }
     },
     "expandedKeys": []

@@ -1,6 +1,126 @@
 {
   "recentFiles": [
     {
+      "basename": "MITRE ATT&CK",
+      "path": "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md"
+    },
+    {
+      "basename": "SOC",
+      "path": "02 - Secondary Categories/SOC.md"
+    },
+    {
+      "basename": "Fundamentos del SOC",
+      "path": "04 - Content/BlueTeam/SOC/Fundamentos del SOC.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "Digital Forensics",
+      "path": "02 - Secondary Categories/Digital Forensics.md"
+    },
+    {
+      "basename": "Incident Response",
+      "path": "02 - Secondary Categories/Incident Response.md"
+    },
+    {
+      "basename": "SIEM",
+      "path": "02 - Secondary Categories/SIEM.md"
+    },
+    {
+      "basename": "Red Team",
+      "path": "01 - Primary Categories/Red Team.md"
+    },
+    {
+      "basename": "Metodología Forense",
+      "path": "04 - Content/BlueTeam/Forensics/Metodología Forense.md"
+    },
+    {
+      "basename": "CDSA - Entrevista",
+      "path": "04 - Content/BlueTeam/CDSA - Entrevista.md"
+    },
+    {
+      "basename": "CDSA - Sherlocks a hacer",
+      "path": "04 - Content/Process/CDSA - Sherlocks a hacer.md"
+    },
+    {
+      "basename": "sherlocks",
+      "path": "04 - Content/Process/sherlocks.md"
+    },
+    {
+      "basename": "Definición y Fundamentos de SIEM",
+      "path": "04 - Content/BlueTeam/SIEM/Definición y Fundamentos de SIEM.md"
+    },
+    {
+      "basename": "Gestión de Incidentes",
+      "path": "04 - Content/BlueTeam/IR/Gestión de Incidentes.md"
+    },
+    {
+      "basename": "Etapa de Detección y Análisis (Parte 1)",
+      "path": "04 - Content/BlueTeam/IR/Etapa de Detección y Análisis (Parte 1).md"
+    },
+    {
+      "basename": "Proceso de Gestión de Incidentes",
+      "path": "04 - Content/BlueTeam/IR/Proceso de Gestión de Incidentes.md"
+    },
+    {
+      "basename": "CDSA",
+      "path": "04 - Content/BlueTeam/CDSA.md"
+    },
+    {
+      "basename": "000 - Global Index",
+      "path": "000 - Global Index.md"
+    },
+    {
+      "basename": "Information Gathering",
+      "path": "02 - Secondary Categories/Information Gathering.md"
+    },
+    {
+      "basename": "Cloud Enumeration",
+      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
+    },
+    {
+      "basename": "Host & Network Enumeration",
+      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
+    },
+    {
+      "basename": "SMB (139, 445) - Enumeración",
+      "path": "04 - Content/Services/SMB (139, 445) - Enumeración.md"
+    },
+    {
+      "basename": "FTP (21) - Enumeración",
+      "path": "04 - Content/Services/FTP (21) - Enumeración.md"
+    },
+    {
+      "basename": "Passive Reconnaissance & OSINT",
+      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
+    },
+    {
+      "basename": "Active Directory Enumeración",
+      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
+    },
+    {
+      "basename": "AD - Password Policy Enumeration",
+      "path": "04 - Content/AD/AD - Password Policy Enumeration.md"
+    },
+    {
+      "basename": "AD - DNS & SRV Records",
+      "path": "04 - Content/AD/AD - DNS & SRV Records.md"
+    },
+    {
+      "basename": "AD - Hosts Enumeration",
+      "path": "04 - Content/AD/AD - Hosts Enumeration.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "Resource Development",
+      "path": "02 - Secondary Categories/Resource Development.md"
+    },
+    {
       "basename": "GraphQL Voyager",
       "path": "04 - Content/Web/GraphQL/GraphQL Voyager.md"
     },
@@ -73,132 +193,12 @@
       "path": "04 - Content/AD/ACL Abuse.md"
     },
     {
-      "basename": "Active Directory Enumeración",
-      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
-    },
-    {
       "basename": "Windows & Active Directory Movimiento Lateral",
       "path": "03 - Tertiary Categories/Windows & Active Directory Movimiento Lateral.md"
     },
     {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration",
-      "path": "04 - Content/AD/AD - Hosts Enumeration.md"
-    },
-    {
-      "basename": "Explotación",
-      "path": "02 - Secondary Categories/Explotación.md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
-      "basename": "Open Redirect",
-      "path": "04 - Content/Web/OpenRedirect/Open Redirect.md"
-    },
-    {
-      "basename": "Subdomain Takeover",
-      "path": "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md"
-    },
-    {
-      "basename": "Mass Assignment",
-      "path": "04 - Content/Web/MassAssignment/Mass Assignment.md"
-    },
-    {
-      "basename": "Web Cache Poisoning",
-      "path": "04 - Content/Web/CachePoisoning/Web Cache Poisoning.md"
-    },
-    {
-      "basename": "HTTP Request Smuggling",
-      "path": "04 - Content/Web/Smuggling/HTTP Request Smuggling.md"
-    },
-    {
-      "basename": "Host Header Injection",
-      "path": "04 - Content/Web/HostHeader/Host Header Injection.md"
-    },
-    {
-      "basename": "Web",
-      "path": "04 - Content/Web/Fundamentals/Web.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "HTTP Request Smuggling - HTTP2 Downgrade",
-      "path": "04 - Content/Web/Smuggling/HTTP Request Smuggling - HTTP2 Downgrade.md"
-    },
-    {
-      "basename": "Server-Side Request Forgery (SSRF)",
-      "path": "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md"
-    },
-    {
-      "basename": "SSRF - Básico",
-      "path": "04 - Content/Web/SSRF/SSRF - Básico.md"
-    },
-    {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
-      "basename": "CSRF - Bypass de SameSite y Referer",
-      "path": "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md"
-    },
-    {
-      "basename": "CSRF - Vectores de Ataque",
-      "path": "04 - Content/Web/Auth/CSRF - Vectores de Ataque.md"
-    },
-    {
-      "basename": "CSRF - Bypass de Token",
-      "path": "04 - Content/Web/Auth/CSRF - Bypass de Token.md"
-    },
-    {
-      "basename": "Blind - Conditional Responses",
-      "path": "05 - Writeups/PortSwigger/SQLi/Blind - Conditional Responses.md"
-    },
-    {
-      "basename": "PortSwigger",
-      "path": "02 - Secondary Categories/PortSwigger.md"
-    },
-    {
-      "basename": "06 - DOM XSS jQuery selector (hashchange)",
-      "path": "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md"
-    },
-    {
-      "basename": "05 - DOM XSS jQuery anchor href",
-      "path": "05 - Writeups/PortSwigger/XSS/05 - DOM XSS jQuery anchor href.md"
-    },
-    {
-      "basename": "04 - DOM XSS innerHTML (location.search)",
-      "path": "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "03 - DOM XSS document.write (location.search)",
-      "path": "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md"
-    },
-    {
-      "basename": "Blind SQL injection with conditional responses tags",
-      "path": "04 - Content/Process/Blind SQL injection with conditional responses tags.md"
-    },
-    {
-      "basename": "OSINT",
-      "path": "04 - Content/Recon/OSINT/OSINT.md"
-    },
-    {
-      "basename": "OSINT Methods",
-      "path": "04 - Content/Recon/OSINT Methods.md"
     }
   ],
   "omittedPaths": [],

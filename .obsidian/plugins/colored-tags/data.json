@@ -215,6 +215,8 @@
     "tool/xargs": 126,
     "topic/forensics": 1,
     "topic/network": 2,
+    "topic/soc": 4,
+    "topic/threat-intel": 3,
     "vuln/ad-enumeration": 38,
     "vuln/auth-bypass": 7,
     "vuln/brute-force": 37,
