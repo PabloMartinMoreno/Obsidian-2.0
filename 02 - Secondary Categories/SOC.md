@@ -8,17 +8,21 @@ kind: Secondary Category
 ---
 # SOC
 
-> Security Operations Center: fundamentos, roles y los marcos de comportamiento adversario (Cyber Kill Chain, MITRE ATT&CK).
+> Security Operations Center. Dominio transversal a las fases NIST CSF: las tertiary cruzan SOC con cada fase del ciclo defensivo.
 
 ---
 
-## Fundamentos
+## [[SOC Identificación]]
 
-- [[Fundamentos del SOC]] — qué es, roles, tiers, evolución
 
-## Marcos de Comportamiento Adversario
+---
 
-- [[Cyber Kill Chain]] — ciclo de vida del ataque (7 etapas)
-- [[MITRE ATT&CK]] — matriz de TTPs, Pyramid of Pain, casos de uso en SecOps
+## [[SOC Detección]]
+
+
+---
+
+## [[SOC Respuesta]]
+
 
 ---

@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
-      "basename": "MITRE ATT&CK",
-      "path": "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md"
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "Detección",
+      "path": "02 - Secondary Categories/Detección.md"
+    },
+    {
+      "basename": "Protección",
+      "path": "02 - Secondary Categories/Protección.md"
+    },
+    {
+      "basename": "Identificación",
+      "path": "02 - Secondary Categories/Identificación.md"
     },
     {
       "basename": "SOC",
@@ -13,8 +25,12 @@
       "path": "04 - Content/BlueTeam/SOC/Fundamentos del SOC.md"
     },
     {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
+      "basename": "SIEM",
+      "path": "02 - Secondary Categories/SIEM.md"
+    },
+    {
+      "basename": "MITRE ATT&CK",
+      "path": "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md"
     },
     {
       "basename": "Digital Forensics",
@@ -23,10 +39,6 @@
     {
       "basename": "Incident Response",
       "path": "02 - Secondary Categories/Incident Response.md"
-    },
-    {
-      "basename": "SIEM",
-      "path": "02 - Secondary Categories/SIEM.md"
     },
     {
       "basename": "Red Team",
@@ -47,10 +59,6 @@
     {
       "basename": "sherlocks",
       "path": "04 - Content/Process/sherlocks.md"
-    },
-    {
-      "basename": "Definición y Fundamentos de SIEM",
-      "path": "04 - Content/BlueTeam/SIEM/Definición y Fundamentos de SIEM.md"
     },
     {
       "basename": "Gestión de Incidentes",
@@ -187,18 +195,6 @@
     {
       "basename": "Kerberoasting",
       "path": "04 - Content/Credentials/Kerberoasting/Kerberoasting.md"
-    },
-    {
-      "basename": "ACL Abuse",
-      "path": "04 - Content/AD/ACL Abuse.md"
-    },
-    {
-      "basename": "Windows & Active Directory Movimiento Lateral",
-      "path": "03 - Tertiary Categories/Windows & Active Directory Movimiento Lateral.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
     }
   ],
   "omittedPaths": [],

@@ -476,7 +476,7 @@
     "expandedKeys": []
   },
   "01 - Primary Categories/Blue Team.md": {
-    "scroll": 14.13626907073509,
+    "scroll": 17.503255208333332,
     "cursor": {
       "from": {
         "line": 7,
@@ -2863,21 +2863,21 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/SOC.md": {
-    "scroll": 8.531208499335989,
+    "scroll": 3.801242236024845,
     "cursor": {
       "from": {
-        "line": 8,
+        "line": 25,
         "ch": 0
       },
       "to": {
-        "line": 8,
+        "line": 25,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "02 - Secondary Categories/SIEM.md": {
-    "scroll": 14.375866851595006,
+    "scroll": 3.329192546583851,
     "cursor": {
       "from": {
         "line": 8,
@@ -2919,21 +2919,21 @@
     "expandedKeys": []
   },
   "04 - Content/BlueTeam/SOC/Fundamentos del SOC.md": {
-    "scroll": 0,
+    "scroll": 3.416267942583732,
     "cursor": {
       "from": {
-        "line": 16,
+        "line": 17,
         "ch": 0
       },
       "to": {
-        "line": 16,
+        "line": 17,
         "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md": {
-    "scroll": 2.6363636363636362,
+    "scroll": 10.909090909090908,
     "cursor": {
       "from": {
         "line": 19,
@@ -2941,6 +2941,90 @@
       },
       "to": {
         "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Fundamentos de Operaciones de Seguridad.md": {
+    "scroll": 11.17098445595855,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Marcos de Comportamiento Adversario.md": {
+    "scroll": 13.637450199203187,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Operaciones del SOC.md": {
+    "scroll": 15.372395833333334,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Identificación.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Protección.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Detección.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
         "ch": 0
       }
     },

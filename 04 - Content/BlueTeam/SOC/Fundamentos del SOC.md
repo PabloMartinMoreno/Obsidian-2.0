@@ -8,7 +8,9 @@ primary categories:
   - "[[Blue Team]]"
 secondary categories:
   - "[[SOC]]"
+  - "[[Identificación]]"
 tertiary categories:
+  - "[[SOC Identificación]]"
 kind: Concept
 linked:
   - "[[MITRE ATT&CK]]"

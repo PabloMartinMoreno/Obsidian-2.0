@@ -9,7 +9,9 @@ primary categories:
   - "[[Blue Team]]"
 secondary categories:
   - "[[SOC]]"
+  - "[[Identificación]]"
 tertiary categories:
+  - "[[SOC Identificación]]"
 kind: CheatSheet
 linked:
   - "[[MITRE ATT&CK - Marco]]"

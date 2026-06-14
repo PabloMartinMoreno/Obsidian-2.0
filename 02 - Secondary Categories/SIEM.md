@@ -8,26 +8,11 @@ kind: Secondary Category
 ---
 # SIEM
 
-> Security Information and Event Management: fundamentos, casos de uso, el Elastic Stack y el análisis de logs de Windows.
+> Security Information and Event Management. Dominio transversal; su contenido cae en la fase NIST de Detección (monitoreo continuo y correlación de logs).
 
 ---
 
-## Fundamentos
+## [[SIEM Detección]]
 
-- [[Definición y Fundamentos de SIEM]]
-- [[Security Monitoring & SIEM Fundamentals]]
-
-## Casos de Uso y Detección
-
-- [[Desarrollo de Casos de Uso de SIEM]]
-
-## Plataformas
-
-- [[Introducción al Elastic Stack]]
-
-## Windows Event Logs
-
-- [[Registros de Eventos de Windows]]
-- [[Windows Event Logs & Finding Evil]]
 
 ---

@@ -8,26 +8,31 @@ kind: Primary Category
 # Blue Team
 
 > [!info]
-> Defensa, detección y respuesta. Contenido en [04 - Content/BlueTeam/](04%20-%20Content/BlueTeam/) — organizado por dominio en las categorías de abajo.
+> Defensa, detección y respuesta, organizada por el ciclo **NIST CSF**. Cada técnica/concepto cruza una **fase** (abajo) con un **dominio** (SOC · SIEM · IR · Forensics). Contenido en [04 - Content/BlueTeam/](04%20-%20Content/BlueTeam/).
 
 ---
 
-## 🛡️ [[SOC]]
-
-
----
-
-## 📊 [[SIEM]]
+## 🔵 [[Identificación]]
 
 
 ---
 
-## 🚨 [[Incident Response]]
+## 🟣 [[Protección]]
 
 
 ---
 
-## 🔬 [[Digital Forensics]]
+## 🟡 [[Detección]]
+
+
+---
+
+## 🔴 [[Respuesta]]
+
+
+---
+
+## 🟢 [[Recuperación]]
 
 
 ---
