@@ -5,11 +5,6 @@ tags:
 kind: Tool
 linked:
 ---
-# grep
-
-> [!info]
-> Búsqueda por regex en texto. En pentest: filtrar output, hunt credenciales en filesystem, parse logs, extraer patrones.
-
 # Comando `grep`
 
 ## Definición 

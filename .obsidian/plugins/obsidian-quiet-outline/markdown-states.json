@@ -2933,14 +2933,14 @@
     "expandedKeys": []
   },
   "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md": {
-    "scroll": 10.909090909090908,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 19,
+        "line": 21,
         "ch": 0
       },
       "to": {
-        "line": 19,
+        "line": 21,
         "ch": 0
       }
     },
@@ -3031,7 +3031,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/SOC Identificación.md": {
-    "scroll": 0,
+    "scroll": 21.455729166666668,
     "cursor": {
       "from": {
         "line": 16,
@@ -3440,11 +3440,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 247,
+        "line": 7,
         "ch": 0
       },
       "to": {
-        "line": 247,
+        "line": 7,
         "ch": 0
       }
     },
@@ -3571,6 +3571,398 @@
       },
       "to": {
         "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Network/ncat.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 117,
+        "ch": 2
+      },
+      "to": {
+        "line": 117,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 16.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/nmap.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 79,
+        "ch": 18
+      },
+      "to": {
+        "line": 79,
+        "ch": 18
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 17.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/diff.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 99,
+        "ch": 457
+      },
+      "to": {
+        "line": 99,
+        "ch": 457
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 18.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 19.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/SUID.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 128,
+        "ch": 58
+      },
+      "to": {
+        "line": 128,
+        "ch": 58
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 20.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 21.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/crontab.md": {
+    "scroll": 60.514218009478675,
+    "cursor": {
+      "from": {
+        "line": 87,
+        "ch": 80
+      },
+      "to": {
+        "line": 87,
+        "ch": 80
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 22.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/md5sum.md": {
+    "scroll": 143.64583333333334,
+    "cursor": {
+      "from": {
+        "line": 162,
+        "ch": 513
+      },
+      "to": {
+        "line": 162,
+        "ch": 513
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 23.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/chmod.md": {
+    "scroll": 49.522135416666664,
+    "cursor": {
+      "from": {
+        "line": 76,
+        "ch": 0
+      },
+      "to": {
+        "line": 76,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 24.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/echo.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 140,
+        "ch": 0
+      },
+      "to": {
+        "line": 140,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 25.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/more.md": {
+    "scroll": 46.826636904761905,
+    "cursor": {
+      "from": {
+        "line": 74,
+        "ch": 266
+      },
+      "to": {
+        "line": 74,
+        "ch": 266
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 26.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 27.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/git.md": {
+    "scroll": 266.3891369047619,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 28.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 29.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 30.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 31.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 32.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/Cyber Kill Chain.md": {
+    "scroll": 0.3014354066985646,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
         "ch": 0
       }
     },

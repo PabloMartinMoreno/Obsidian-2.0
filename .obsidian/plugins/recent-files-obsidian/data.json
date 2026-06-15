@@ -1,12 +1,144 @@
 {
   "recentFiles": [
     {
-      "basename": "SSL - TLS",
-      "path": "04 - Content/Crypto/SSL - TLS.md"
+      "basename": "SOC Identificación",
+      "path": "03 - Tertiary Categories/SOC Identificación.md"
+    },
+    {
+      "basename": "MITRE ATT&CK",
+      "path": "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md"
+    },
+    {
+      "basename": "Cyber Kill Chain",
+      "path": "04 - Content/BlueTeam/SOC/Cyber Kill Chain.md"
+    },
+    {
+      "basename": "Identificación",
+      "path": "02 - Secondary Categories/Identificación.md"
+    },
+    {
+      "basename": "Blue Team",
+      "path": "01 - Primary Categories/Blue Team.md"
+    },
+    {
+      "basename": "Bandit 32",
+      "path": "05 - Writeups/OverTheWire/Bandit 32.md"
+    },
+    {
+      "basename": "Bandit 31",
+      "path": "05 - Writeups/OverTheWire/Bandit 31.md"
+    },
+    {
+      "basename": "Bandit 30",
+      "path": "05 - Writeups/OverTheWire/Bandit 30.md"
+    },
+    {
+      "basename": "Bandit 29",
+      "path": "05 - Writeups/OverTheWire/Bandit 29.md"
+    },
+    {
+      "basename": "Bandit 28",
+      "path": "05 - Writeups/OverTheWire/Bandit 28.md"
+    },
+    {
+      "basename": "Bandit 27",
+      "path": "05 - Writeups/OverTheWire/Bandit 27.md"
+    },
+    {
+      "basename": "git",
+      "path": "04 - Content/Tools/Recon/git.md"
+    },
+    {
+      "basename": "Bandit 26",
+      "path": "05 - Writeups/OverTheWire/Bandit 26.md"
+    },
+    {
+      "basename": "SUID",
+      "path": "04 - Content/Process/SUID.md"
+    },
+    {
+      "basename": "Bandit 25",
+      "path": "05 - Writeups/OverTheWire/Bandit 25.md"
+    },
+    {
+      "basename": "more",
+      "path": "04 - Content/Process/more.md"
+    },
+    {
+      "basename": "Bandit 24",
+      "path": "05 - Writeups/OverTheWire/Bandit 24.md"
+    },
+    {
+      "basename": "echo",
+      "path": "04 - Content/Process/echo.md"
+    },
+    {
+      "basename": "grep",
+      "path": "04 - Content/Tools/grep.md"
+    },
+    {
+      "basename": "Bandit 23",
+      "path": "05 - Writeups/OverTheWire/Bandit 23.md"
+    },
+    {
+      "basename": "chmod",
+      "path": "04 - Content/Process/chmod.md"
+    },
+    {
+      "basename": "Bandit 22",
+      "path": "05 - Writeups/OverTheWire/Bandit 22.md"
+    },
+    {
+      "basename": "md5sum",
+      "path": "04 - Content/Process/md5sum.md"
+    },
+    {
+      "basename": "Bandit 21",
+      "path": "05 - Writeups/OverTheWire/Bandit 21.md"
+    },
+    {
+      "basename": "crontab",
+      "path": "04 - Content/Process/crontab.md"
+    },
+    {
+      "basename": "Bandit 20",
+      "path": "05 - Writeups/OverTheWire/Bandit 20.md"
+    },
+    {
+      "basename": "Bandit 19",
+      "path": "05 - Writeups/OverTheWire/Bandit 19.md"
+    },
+    {
+      "basename": "Bandit 18",
+      "path": "05 - Writeups/OverTheWire/Bandit 18.md"
+    },
+    {
+      "basename": "Bandit 17",
+      "path": "05 - Writeups/OverTheWire/Bandit 17.md"
+    },
+    {
+      "basename": "diff",
+      "path": "04 - Content/Process/diff.md"
+    },
+    {
+      "basename": "Bandit 16",
+      "path": "05 - Writeups/OverTheWire/Bandit 16.md"
+    },
+    {
+      "basename": "nmap",
+      "path": "04 - Content/Tools/Recon/nmap.md"
     },
     {
       "basename": "Bandit 15",
       "path": "05 - Writeups/OverTheWire/Bandit 15.md"
+    },
+    {
+      "basename": "ncat",
+      "path": "04 - Content/Tools/Network/ncat.md"
+    },
+    {
+      "basename": "SSL - TLS",
+      "path": "04 - Content/Crypto/SSL - TLS.md"
     },
     {
       "basename": "Bandit 14",
@@ -67,138 +199,6 @@
     {
       "basename": "Bandit 07",
       "path": "05 - Writeups/OverTheWire/Bandit 07.md"
-    },
-    {
-      "basename": "grep",
-      "path": "04 - Content/Tools/grep.md"
-    },
-    {
-      "basename": "Bandit 08",
-      "path": "05 - Writeups/OverTheWire/Bandit 08.md"
-    },
-    {
-      "basename": "sort",
-      "path": "04 - Content/Process/sort.md"
-    },
-    {
-      "basename": "uniq",
-      "path": "04 - Content/Process/uniq.md"
-    },
-    {
-      "basename": "Bandit 09",
-      "path": "05 - Writeups/OverTheWire/Bandit 09.md"
-    },
-    {
-      "basename": "tail",
-      "path": "04 - Content/Process/tail.md"
-    },
-    {
-      "basename": "strings",
-      "path": "04 - Content/Process/strings.md"
-    },
-    {
-      "basename": "awk",
-      "path": "04 - Content/Tools/awk.md"
-    },
-    {
-      "basename": "Bandit 10",
-      "path": "05 - Writeups/OverTheWire/Bandit 10.md"
-    },
-    {
-      "basename": "base64",
-      "path": "04 - Content/Tools/base64.md"
-    },
-    {
-      "basename": "Bandit 11",
-      "path": "05 - Writeups/OverTheWire/Bandit 11.md"
-    },
-    {
-      "basename": "tr",
-      "path": "04 - Content/Process/tr.md"
-    },
-    {
-      "basename": "xxd",
-      "path": "04 - Content/Process/xxd.md"
-    },
-    {
-      "basename": "Hex Dump",
-      "path": "04 - Content/Process/Hex Dump.md"
-    },
-    {
-      "basename": "Clases Mercedes",
-      "path": "04 - Content/Process/Clases Mercedes.md"
-    },
-    {
-      "basename": "OSINT - Frameworks de Automatización",
-      "path": "04 - Content/Process/OSINT - Frameworks de Automatización.md"
-    },
-    {
-      "basename": "OSINT - Nacionalización",
-      "path": "04 - Content/Process/OSINT - Nacionalización.md"
-    },
-    {
-      "basename": "OSINT - Dominios, Sitios Web e Infraestructura",
-      "path": "04 - Content/Process/OSINT - Dominios, Sitios Web e Infraestructura.md"
-    },
-    {
-      "basename": "OSINT - Metadatos e Imágenes",
-      "path": "04 - Content/Process/OSINT - Metadatos e Imágenes.md"
-    },
-    {
-      "basename": "OSINT - Reconocimiento Facial",
-      "path": "04 - Content/Process/OSINT - Reconocimiento Facial.md"
-    },
-    {
-      "basename": "OSINT - Correos Electronicos",
-      "path": "04 - Content/Process/OSINT - Correos Electronicos.md"
-    },
-    {
-      "basename": "OSINT - Busqueda de Usuarios",
-      "path": "04 - Content/Process/OSINT - Busqueda de Usuarios.md"
-    },
-    {
-      "basename": "OSINT - Google Dorking",
-      "path": "04 - Content/Process/OSINT - Google Dorking.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Recon/OSINT/Google Dorking.md"
-    },
-    {
-      "basename": "OSINT",
-      "path": "04 - Content/Recon/OSINT/OSINT.md"
-    },
-    {
-      "basename": "SOC Identificación",
-      "path": "03 - Tertiary Categories/SOC Identificación.md"
-    },
-    {
-      "basename": "Identificación",
-      "path": "02 - Secondary Categories/Identificación.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
-    },
-    {
-      "basename": "Detección",
-      "path": "02 - Secondary Categories/Detección.md"
-    },
-    {
-      "basename": "Protección",
-      "path": "02 - Secondary Categories/Protección.md"
-    },
-    {
-      "basename": "SOC",
-      "path": "02 - Secondary Categories/SOC.md"
-    },
-    {
-      "basename": "Fundamentos del SOC",
-      "path": "04 - Content/BlueTeam/SOC/Fundamentos del SOC.md"
-    },
-    {
-      "basename": "SIEM",
-      "path": "02 - Secondary Categories/SIEM.md"
     }
   ],
   "omittedPaths": [],
