@@ -9,7 +9,7 @@ linked:
   - "[[Pares de claves SSH]]"
   - "[[Bandit 12]]"
   - "[[Bandit 14]]"
-  - "[[SSH (22) - Enumeración|ssh]]"
+  - "[[ssh]]"
 ---
 # Datos
 

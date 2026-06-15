@@ -1,12 +1,23 @@
 ---
 aliases:
   - volatility
+  - Volatility 3
 tags:
+  - tool/volatility
+  - topic/forensics
+  - asset/endpoint
 primary categories:
+  - "[[Blue Team]]"
 secondary categories:
+  - "[[Digital Forensics]]"
+  - "[[Respuesta]]"
 tertiary categories:
-kind: Tool
+  - "[[Digital Forensics Respuesta]]"
+kind: CheatSheet
 linked:
+  - "[[Metodología Forense]]"
+  - "[[Forense - Análisis de Memoria]]"
+  - "[[YARA]]"
 ---
 # Framework - Volatility
 

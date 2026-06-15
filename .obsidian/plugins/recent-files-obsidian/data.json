@@ -1,52 +1,36 @@
 {
   "recentFiles": [
     {
-      "basename": "mercedes - busqueda usuarios",
-      "path": "04 - Content/Process/mercedes - busqueda usuarios.md"
+      "basename": "SSL - TLS",
+      "path": "04 - Content/Crypto/SSL - TLS.md"
     },
     {
-      "basename": "Clases Mercedes",
-      "path": "04 - Content/Process/Clases Mercedes.md"
+      "basename": "Bandit 15",
+      "path": "05 - Writeups/OverTheWire/Bandit 15.md"
     },
     {
-      "basename": "mercedes - metadatos e imagenes",
-      "path": "04 - Content/Process/mercedes - metadatos e imagenes.md"
+      "basename": "Bandit 14",
+      "path": "05 - Writeups/OverTheWire/Bandit 14.md"
     },
     {
-      "basename": "mercedes - google dorking",
-      "path": "04 - Content/Process/mercedes - google dorking.md"
+      "basename": "nc",
+      "path": "04 - Content/Tools/Network/nc.md"
     },
     {
-      "basename": "mercedes - osint",
-      "path": "04 - Content/Process/mercedes - osint.md"
+      "basename": "Bandit 13",
+      "path": "05 - Writeups/OverTheWire/Bandit 13.md"
     },
     {
-      "basename": "mercedes - frameworks de automatización",
-      "path": "04 - Content/Process/mercedes - frameworks de automatización.md"
+      "basename": "ssh",
+      "path": "04 - Content/Process/ssh.md"
     },
     {
-      "basename": "mercedes - geolocalizacion",
-      "path": "04 - Content/Process/mercedes - geolocalizacion.md"
+      "basename": "SSH (22) - Enumeración",
+      "path": "04 - Content/Services/SSH (22) - Enumeración.md"
     },
     {
-      "basename": "mercedes - dominios, sitios web e infraestructura",
-      "path": "04 - Content/Process/mercedes - dominios, sitios web e infraestructura.md"
-    },
-    {
-      "basename": "mercedes - reconocimiento facial",
-      "path": "04 - Content/Process/mercedes - reconocimiento facial.md"
-    },
-    {
-      "basename": "mercedes - correos electronicos",
-      "path": "04 - Content/Process/mercedes - correos electronicos.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Recon/OSINT/Google Dorking.md"
-    },
-    {
-      "basename": "OSINT",
-      "path": "04 - Content/Recon/OSINT/OSINT.md"
+      "basename": "Pares de claves SSH",
+      "path": "04 - Content/Credentials/Pares de claves SSH.md"
     },
     {
       "basename": "Bandit 12",
@@ -57,8 +41,64 @@
       "path": "04 - Content/Process/Descompresor (Bandit 12).md"
     },
     {
-      "basename": "Bandit 11",
-      "path": "05 - Writeups/OverTheWire/Bandit 11.md"
+      "basename": "Bandit 04",
+      "path": "05 - Writeups/OverTheWire/Bandit 04.md"
+    },
+    {
+      "basename": "file",
+      "path": "04 - Content/Process/file.md"
+    },
+    {
+      "basename": "Bandit 05",
+      "path": "05 - Writeups/OverTheWire/Bandit 05.md"
+    },
+    {
+      "basename": "Bandit 06",
+      "path": "05 - Writeups/OverTheWire/Bandit 06.md"
+    },
+    {
+      "basename": "find",
+      "path": "04 - Content/Tools/find.md"
+    },
+    {
+      "basename": "xargs",
+      "path": "04 - Content/Tools/xargs.md"
+    },
+    {
+      "basename": "Bandit 07",
+      "path": "05 - Writeups/OverTheWire/Bandit 07.md"
+    },
+    {
+      "basename": "grep",
+      "path": "04 - Content/Tools/grep.md"
+    },
+    {
+      "basename": "Bandit 08",
+      "path": "05 - Writeups/OverTheWire/Bandit 08.md"
+    },
+    {
+      "basename": "sort",
+      "path": "04 - Content/Process/sort.md"
+    },
+    {
+      "basename": "uniq",
+      "path": "04 - Content/Process/uniq.md"
+    },
+    {
+      "basename": "Bandit 09",
+      "path": "05 - Writeups/OverTheWire/Bandit 09.md"
+    },
+    {
+      "basename": "tail",
+      "path": "04 - Content/Process/tail.md"
+    },
+    {
+      "basename": "strings",
+      "path": "04 - Content/Process/strings.md"
+    },
+    {
+      "basename": "awk",
+      "path": "04 - Content/Tools/awk.md"
     },
     {
       "basename": "Bandit 10",
@@ -69,20 +109,64 @@
       "path": "04 - Content/Tools/base64.md"
     },
     {
-      "basename": "Bandit 09",
-      "path": "05 - Writeups/OverTheWire/Bandit 09.md"
+      "basename": "Bandit 11",
+      "path": "05 - Writeups/OverTheWire/Bandit 11.md"
     },
     {
-      "basename": "Bandit 08",
-      "path": "05 - Writeups/OverTheWire/Bandit 08.md"
+      "basename": "tr",
+      "path": "04 - Content/Process/tr.md"
     },
     {
-      "basename": "Bandit 07",
-      "path": "05 - Writeups/OverTheWire/Bandit 07.md"
+      "basename": "xxd",
+      "path": "04 - Content/Process/xxd.md"
     },
     {
-      "basename": "Bandit 06",
-      "path": "05 - Writeups/OverTheWire/Bandit 06.md"
+      "basename": "Hex Dump",
+      "path": "04 - Content/Process/Hex Dump.md"
+    },
+    {
+      "basename": "Clases Mercedes",
+      "path": "04 - Content/Process/Clases Mercedes.md"
+    },
+    {
+      "basename": "OSINT - Frameworks de Automatización",
+      "path": "04 - Content/Process/OSINT - Frameworks de Automatización.md"
+    },
+    {
+      "basename": "OSINT - Nacionalización",
+      "path": "04 - Content/Process/OSINT - Nacionalización.md"
+    },
+    {
+      "basename": "OSINT - Dominios, Sitios Web e Infraestructura",
+      "path": "04 - Content/Process/OSINT - Dominios, Sitios Web e Infraestructura.md"
+    },
+    {
+      "basename": "OSINT - Metadatos e Imágenes",
+      "path": "04 - Content/Process/OSINT - Metadatos e Imágenes.md"
+    },
+    {
+      "basename": "OSINT - Reconocimiento Facial",
+      "path": "04 - Content/Process/OSINT - Reconocimiento Facial.md"
+    },
+    {
+      "basename": "OSINT - Correos Electronicos",
+      "path": "04 - Content/Process/OSINT - Correos Electronicos.md"
+    },
+    {
+      "basename": "OSINT - Busqueda de Usuarios",
+      "path": "04 - Content/Process/OSINT - Busqueda de Usuarios.md"
+    },
+    {
+      "basename": "OSINT - Google Dorking",
+      "path": "04 - Content/Process/OSINT - Google Dorking.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Recon/OSINT/Google Dorking.md"
+    },
+    {
+      "basename": "OSINT",
+      "path": "04 - Content/Recon/OSINT/OSINT.md"
     },
     {
       "basename": "SOC Identificación",
@@ -115,90 +199,6 @@
     {
       "basename": "SIEM",
       "path": "02 - Secondary Categories/SIEM.md"
-    },
-    {
-      "basename": "MITRE ATT&CK",
-      "path": "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md"
-    },
-    {
-      "basename": "Digital Forensics",
-      "path": "02 - Secondary Categories/Digital Forensics.md"
-    },
-    {
-      "basename": "Incident Response",
-      "path": "02 - Secondary Categories/Incident Response.md"
-    },
-    {
-      "basename": "Red Team",
-      "path": "01 - Primary Categories/Red Team.md"
-    },
-    {
-      "basename": "Metodología Forense",
-      "path": "04 - Content/BlueTeam/Forensics/Metodología Forense.md"
-    },
-    {
-      "basename": "CDSA - Entrevista",
-      "path": "04 - Content/BlueTeam/CDSA - Entrevista.md"
-    },
-    {
-      "basename": "CDSA - Sherlocks a hacer",
-      "path": "04 - Content/Process/CDSA - Sherlocks a hacer.md"
-    },
-    {
-      "basename": "sherlocks",
-      "path": "04 - Content/Process/sherlocks.md"
-    },
-    {
-      "basename": "Gestión de Incidentes",
-      "path": "04 - Content/BlueTeam/IR/Gestión de Incidentes.md"
-    },
-    {
-      "basename": "CDSA",
-      "path": "04 - Content/BlueTeam/CDSA.md"
-    },
-    {
-      "basename": "000 - Global Index",
-      "path": "000 - Global Index.md"
-    },
-    {
-      "basename": "Information Gathering",
-      "path": "02 - Secondary Categories/Information Gathering.md"
-    },
-    {
-      "basename": "Cloud Enumeration",
-      "path": "03 - Tertiary Categories/Cloud Enumeration.md"
-    },
-    {
-      "basename": "Host & Network Enumeration",
-      "path": "03 - Tertiary Categories/Host & Network Enumeration.md"
-    },
-    {
-      "basename": "SMB (139, 445) - Enumeración",
-      "path": "04 - Content/Services/SMB (139, 445) - Enumeración.md"
-    },
-    {
-      "basename": "FTP (21) - Enumeración",
-      "path": "04 - Content/Services/FTP (21) - Enumeración.md"
-    },
-    {
-      "basename": "Passive Reconnaissance & OSINT",
-      "path": "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md"
-    },
-    {
-      "basename": "Active Directory Enumeración",
-      "path": "03 - Tertiary Categories/Active Directory Enumeración.md"
-    },
-    {
-      "basename": "AD - Password Policy Enumeration",
-      "path": "04 - Content/AD/AD - Password Policy Enumeration.md"
-    },
-    {
-      "basename": "AD - DNS & SRV Records",
-      "path": "04 - Content/AD/AD - DNS & SRV Records.md"
-    },
-    {
-      "basename": "AD - Hosts Enumeration",
-      "path": "04 - Content/AD/AD - Hosts Enumeration.md"
     }
   ],
   "omittedPaths": [],

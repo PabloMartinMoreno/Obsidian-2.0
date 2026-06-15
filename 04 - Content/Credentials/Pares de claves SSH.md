@@ -101,3 +101,71 @@ hashcat -m 22931 sshkey.hash rockyou.txt  # SSH ED25519
 - [[SSH (22) - Enumeración]]
 - [[Cracking Hashes]]
 - [[Linux Privilege Escalation]]
+
+
+---
+
+#  Pares de claves SSH
+
+### Definición 
+
+> [!INFO] Pares de claves SSH
+>Los pares de claves SSH son fundamentales para la autenticación segura en comunicaciones de red, especialmente en conexiones a servidores remotos. Aquí tienes una explicación detallada de cómo funcionan:
+^definicion
+
+### Pares de Claves SSH
+
+1. **Clave Privada**: Esta se mantiene en secreto y se guarda en el cliente (tu máquina). Se utiliza para autenticarse ante el servidor.
+2. **Clave Pública**: Esta se comparte con el servidor y se guarda en el archivo `~/.ssh/authorized_keys` del usuario en el servidor.
+
+### Generar el Par de Claves
+
+   ```sh
+   ssh-keygen -t rsa -b 4096 -C "tu_email@example.com"
+   ```
+   Esto generará dos archivos: `id_rsa` (clave privada) y `id_rsa.pub` (clave pública).
+
+### Procedimiento Manual
+
+1. **Copiar la Clave Pública al Servidor**:
+   - Abre la clave pública (`id_rsa.pub`).
+   - Conéctate al servidor y añade el contenido de `id_rsa.pub` al archivo `~/.ssh/authorized_keys` del usuario con el que te conectarás.
+
+   ```sh
+   cat id_rsa.pub >> authorized_keys
+   # o
+   cp id_rsa.pub authorized_keys
+   ```
+   *En ambos casos la ruta donde se copiar la clave publica es al authorized_keys del servidor, no el de mí pc*
+
+### Usando `ssh-copy-id`
+
+El comando `ssh-copy-id` facilita este proceso:
+
+1. **Ejecutar el Comando**:
+   ```bash
+   # Este comando busca automaticamente la clave publica que pasara a authorized_keys (el authorized_keys de la maquina el cual vamos a conectarnos, no de la maquina el cual ejecutamos el comando)
+   ssh-copy-id usuario@servidor 
+   ```
+```bash
+ # En caso de querer especificar la clave publica a la que quiero transformar en authorized_keys:
+   ssh-copy-id -i id_rsa.pub usuario@servidor
+```
+
+   El comando `ssh-copy-id` copia automáticamente el contenido de tu clave pública (`id_rsa.pub`) al archivo `~/.ssh/authorized_keys` en el servidor.
+
+### Diferencias Clave
+
+- **Manual**:
+  - Puedes editar directamente el archivo `authorized_keys` para agregar o eliminar claves.
+  - Necesitas tener acceso al servidor y permisos para modificar el archivo.
+
+- **`ssh-copy-id`**:
+  - Simplifica el proceso al automatizar la copia de la clave pública al servidor.
+  - No necesitas manualmente editar el archivo `authorized_keys`.
+
+### Aclaración Importante
+
+- **La clave privada nunca se comparte**: Debe permanecer segura y almacenada en tu máquina cliente.
+
+En resumen, la clave pública se almacena en el servidor, y la clave privada se guarda en tu máquina cliente. El comando `ssh-copy-id` simplemente facilita el proceso de copiar la clave pública al servidor.

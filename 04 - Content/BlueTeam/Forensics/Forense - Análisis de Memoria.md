@@ -17,10 +17,11 @@ tertiary categories:
 kind: SubCheatSheet
 linked:
   - "[[Metodología Forense]]"
+  - "[[vol]]"
 ---
 # Forense - Análisis de Memoria
 
-> Análisis post-mortem del dump de RAM con **Volatility 3**. Orden lógico para reconstruir la escena: perfil → procesos → red → comandos → inyección → archivos.
+> Análisis post-mortem del dump de RAM con **Volatility 3**. Orden lógico para reconstruir la escena: perfil → procesos → red → comandos → inyección → archivos. Referencia completa de plugins: [[vol|Volatility]].
 
 ---
 

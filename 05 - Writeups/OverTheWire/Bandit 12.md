@@ -8,7 +8,7 @@ autor:
 linked:
   - "[[Descompresor (Bandit 12)]]"
   - "[[xxd]]"
-  - "[[Hex dump]]"
+  - "[[Hex Dump]]"
   - "[[Bandit 11]]"
   - "[[Bandit 13]]"
 ---

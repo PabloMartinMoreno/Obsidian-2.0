@@ -4,10 +4,93 @@ tags:
   - tool/xargs
 kind: Tool
 ---
-# xargs
+# Comando `xargs`
 
-> [!info]
-> Construye y ejecuta comandos pasando stdin como argumentos. Esencial para chains: `find | xargs grep`, `cat list | xargs nmap`, etc.
+## Definición 
+
+> [!INFO] xargs (e**x**tended **arg**uments)
+>Se utiliza para construir y ejecutar comandos a partir de la entrada estándar. Toma la salida de un comando y la utiliza como argumentos para otro comando. Es especialmente útil cuando se necesita pasar una lista de elementos a un comando que no puede procesar la entrada estándar directamente.
+^definicion
+
+## Uso Básico de `xargs`
+
+La sintaxis básica es:
+```bash
+comando | xargs [opciones] comando
+```
+
+Por ejemplo, si tienes una lista de archivos generada por `find` y quieres eliminarlos:
+```bash
+find . -name "*.log" | xargs rm
+```
+Esto encontrará todos los archivos con extensión `.log` y los pasará a `rm` para eliminarlos.
+
+## Subcomandos y Opciones Más Usados
+
+1. **-I (Reemplazo de Cadena)**
+   Permite especificar una cadena de reemplazo que se reemplazará por cada entrada de la lista.
+   ```bash
+   echo "file1 file2 file3" | xargs -I {} mv {} /new_directory/
+   ```
+
+2. **-n (Número de Argumentos)**
+   Controla cuántos argumentos se pasan a cada invocación del comando.
+   ```bash
+   echo "file1 file2 file3 file4" | xargs -n 2 echo
+   ```
+   Salida:
+   ```
+   file1 file2
+   file3 file4
+   ```
+
+3. **-d (Delimitador)**
+   Especifica un delimitador personalizado en lugar del espacio en blanco predeterminado.
+   ```bash
+   echo "file1:file2:file3" | xargs -d: echo
+   ```
+
+4. **-0 (Null Terminator)**
+   Utiliza el carácter nulo (`\0`) como delimitador, útil cuando se trabaja con nombres de archivo que contienen espacios o saltos de línea.
+   ```bash
+   find . -name "*.log" -print0 | xargs -0 rm
+   ```
+
+5. **-P (Paralelismo)**
+   Permite ejecutar múltiples instancias del comando en paralelo.
+   ```bash
+   echo "url1 url2 url3 url4" | xargs -n 1 -P 4 curl -O
+   ```
+
+## Ejemplos
+
+1. **Eliminar Archivos Grandes:**
+   Encuentra archivos mayores de 100MB y los elimina.
+   ```bash
+   find /path/to/dir -type f -size +100M | xargs rm
+   ```
+
+2. **Copiar Archivos a Otro Directorio:**
+   Copia todos los archivos con extensión `.txt` a `/backup`.
+   ```bash
+   find . -name "*.txt" | xargs -I {} cp {} /backup/
+   ```
+
+3. **Buscar y Reemplazar Texto en Archivos:**
+   Reemplaza "foo" por "bar" en todos los archivos `.txt`.
+   ```bash
+   find . -name "*.txt" | xargs -I {} sed -i 's/foo/bar/g' {}
+   ```
+
+## Resumen de Subcomandos
+
+- `-I {}`: Permite el uso de un marcador de posición para los argumentos.
+- `-n`: Especifica el número de argumentos por línea de comando.
+- `-d`: Define un delimitador personalizado para la entrada.
+- `-0`: Usa el carácter nulo como delimitador.
+- `-P`: Ejecuta comandos en paralelo.
+
+Con `xargs`, se puede construir y ejecutar comandos de forma eficiente, especialmente cuando se manejan grandes cantidades de datos.
 
 ---
 

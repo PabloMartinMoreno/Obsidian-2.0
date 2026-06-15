@@ -26,10 +26,12 @@ linked:
 - [[Fundamentos de SIEM]] (Qué es, SIM+SEM, flujo de datos, casos de negocio, compliance.)
 
 
-## 🖥️ Plataforma
-  La solución SIEM concreta y su lenguaje de consulta.
+## 🖥️ Plataforma y Queries
+  Las soluciones SIEM concretas y sus lenguajes de consulta.
 
 - [[Elastic Stack]] (ELK: componentes, arquitectura, KQL, ECS.)
+- [[Elastic Stack - KQL]] (Kibana Query Language — queries de hunting.)
+- [[Splunk SPL]] (Search Processing Language — hunting en el SIEM más extendido.)
 
 
 ## 📋 Fuentes de Logs
@@ -42,6 +44,14 @@ linked:
   Diseñar y mantener las reglas de detección.
 
 - [[Casos de Uso de SIEM]] (Ciclo de vida del use case, ejemplos con mapeo MITRE.)
+- [[Sigma]] (Reglas de detección agnósticas → convertir a cualquier SIEM.)
+- [[YARA]] (Reglas para identificar malware en archivos, procesos y memoria.)
+
+
+## 🌐 Network Detection
+  Detección sobre tráfico de red.
+
+- [[Suricata]] (NIDS/NIPS: reglas de firma sobre tráfico vivo o PCAP.)
 
 
 ---

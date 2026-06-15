@@ -1,14 +1,23 @@
 ---
 aliases:
+  - Chainsaw
 tags:
   - tool/chainsaw
   - env/windows
-  - estado/incompleto
+  - topic/forensics
+  - topic/detection
 primary categories:
+  - "[[Blue Team]]"
 secondary categories:
+  - "[[Digital Forensics]]"
+  - "[[Respuesta]]"
 tertiary categories:
-kind: Tool
+  - "[[Digital Forensics Respuesta]]"
+kind: CheatSheet
 linked:
+  - "[[Sigma]]"
+  - "[[Windows Event Logs]]"
+  - "[[Metodología Forense]]"
 ---
 
 **Chainsaw** es una herramienta de línea de comandos potente y rápida, diseñada específicamente para el análisis forense y la **caza de amenazas (Threat Hunting)** en registros de eventos de Windows (`.evtx`).
