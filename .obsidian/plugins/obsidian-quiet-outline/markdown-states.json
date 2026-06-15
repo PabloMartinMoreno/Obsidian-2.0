@@ -3171,7 +3171,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/mercedes - osint.md": {
-    "scroll": 66.6015625,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 0,
@@ -3277,6 +3277,20 @@
       },
       "to": {
         "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - google dorking.md": {
+    "scroll": 48.753120665742024,
+    "cursor": {
+      "from": {
+        "line": 55,
+        "ch": 0
+      },
+      "to": {
+        "line": 55,
         "ch": 0
       }
     },
