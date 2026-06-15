@@ -5,3 +5,5 @@
 [[mercedes - reconocimiento facial]]
 [[mercedes - metadatos e imagenes]]
 [[mercedes - dominios, sitios web e infraestructura]]
+[[mercedes - geolocalizacion]]
+[[mercedes - frameworks de automatización]]

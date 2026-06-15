@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Clases Mercedes.md",
+                "file": "04 - Content/Process/mercedes - google dorking.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Clases Mercedes"
+              "title": "mercedes - google dorking"
             }
           }
         ],
@@ -266,11 +266,13 @@
   },
   "active": "a6998b8327f0072f",
   "lastOpenFiles": [
-    "04 - Content/Process/mercedes - dominios, sitios web e infraestructura.md",
     "04 - Content/Process/Clases Mercedes.md",
+    "04 - Content/Process/mercedes - frameworks de automatización.md",
+    "04 - Content/Process/mercedes - osint.md",
+    "04 - Content/Process/mercedes - geolocalizacion.md",
+    "04 - Content/Process/mercedes - dominios, sitios web e infraestructura.md",
     "04 - Content/Process/mercedes - metadatos e imagenes.md",
     "04 - Content/Process/mercedes - reconocimiento facial.md",
-    "04 - Content/Process/mercedes - osint.md",
     "04 - Content/Process/mercedes - google dorking.md",
     "04 - Content/Process/mercedes - correos electronicos.md",
     "04 - Content/Process/mercedes - busqueda usuarios.md",
@@ -295,9 +297,7 @@
     "04 - Content/BlueTeam/Forensics/Metodología Forense.md.tmp.4283.b5453d17e614",
     "04 - Content/BlueTeam/Forensics/Forense - Análisis de Disco.md",
     "04 - Content/BlueTeam/Forensics/Forense - Análisis de Disco.md.tmp.4283.b5d4be36a247",
-    "04 - Content/BlueTeam/Forensics/Forense - Análisis de Memoria.md",
     "04 - Content/BlueTeam/Forensics/Forense - Análisis de Memoria.md.tmp.4283.7bc7331b4893",
-    "04 - Content/BlueTeam/Forensics/Forense - Adquisición.md",
     "04 - Content/BlueTeam/Forensics/Forense - Adquisición.md.tmp.4283.8a0f241f4cd4",
     "02 - Secondary Categories/Respuesta.md.tmp.4283.869379ee8410",
     "02 - Secondary Categories/Incident Response.md.tmp.4283.7fc11cffa656",

@@ -1,8 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "mercedes - google dorking",
+      "path": "04 - Content/Process/mercedes - google dorking.md"
+    },
+    {
       "basename": "Clases Mercedes",
       "path": "04 - Content/Process/Clases Mercedes.md"
+    },
+    {
+      "basename": "mercedes - frameworks de automatización",
+      "path": "04 - Content/Process/mercedes - frameworks de automatización.md"
+    },
+    {
+      "basename": "mercedes - osint",
+      "path": "04 - Content/Process/mercedes - osint.md"
+    },
+    {
+      "basename": "mercedes - geolocalizacion",
+      "path": "04 - Content/Process/mercedes - geolocalizacion.md"
     },
     {
       "basename": "mercedes - dominios, sitios web e infraestructura",
@@ -15,14 +31,6 @@
     {
       "basename": "mercedes - reconocimiento facial",
       "path": "04 - Content/Process/mercedes - reconocimiento facial.md"
-    },
-    {
-      "basename": "mercedes - osint",
-      "path": "04 - Content/Process/mercedes - osint.md"
-    },
-    {
-      "basename": "mercedes - google dorking",
-      "path": "04 - Content/Process/mercedes - google dorking.md"
     },
     {
       "basename": "mercedes - correos electronicos",
@@ -191,14 +199,6 @@
     {
       "basename": "AD - Hosts Enumeration",
       "path": "04 - Content/AD/AD - Hosts Enumeration.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
-    },
-    {
-      "basename": "Resource Development",
-      "path": "02 - Secondary Categories/Resource Development.md"
     }
   ],
   "omittedPaths": [],
