@@ -3115,7 +3115,7 @@
     "expandedKeys": []
   },
   "05 - Writeups/OverTheWire/Bandit 12.md": {
-    "scroll": 14.233731739707835,
+    "scroll": 10.626943005181348,
     "cursor": {
       "from": {
         "line": 14,
@@ -3123,6 +3123,20 @@
       },
       "to": {
         "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Descompresor (Bandit 12).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
         "ch": 0
       }
     },

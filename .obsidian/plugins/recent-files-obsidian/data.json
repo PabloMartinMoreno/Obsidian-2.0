@@ -5,6 +5,10 @@
       "path": "05 - Writeups/OverTheWire/Bandit 12.md"
     },
     {
+      "basename": "Descompresor (Bandit 12)",
+      "path": "04 - Content/Process/Descompresor (Bandit 12).md"
+    },
+    {
       "basename": "Bandit 11",
       "path": "05 - Writeups/OverTheWire/Bandit 11.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "CWES",
       "path": "02 - Secondary Categories/CWES.md"
-    },
-    {
-      "basename": "robots.txt",
-      "path": "04 - Content/Recon/WebTech/robots.txt.md"
     }
   ],
   "omittedPaths": [],
