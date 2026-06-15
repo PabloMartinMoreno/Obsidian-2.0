@@ -1676,12 +1676,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 13,
-        "ch": 7
+        "line": 14,
+        "ch": 0
       },
       "to": {
-        "line": 13,
-        "ch": 7
+        "line": 14,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -1984,11 +1984,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 14,
+        "line": 23,
         "ch": 0
       },
       "to": {
-        "line": 14,
+        "line": 23,
         "ch": 0
       }
     },
@@ -3031,7 +3031,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/SOC Identificación.md": {
-    "scroll": 21.455729166666668,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 16,
