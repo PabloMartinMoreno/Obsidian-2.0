@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "28374dde2c71923d",
+        "id": "c23dd6ce32748b73",
         "type": "tabs",
         "children": [
           {
-            "id": "be6c70bf3c790eb5",
+            "id": "a6998b8327f0072f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Writeups/OverTheWire/Bandit 12.md",
+                "file": "04 - Content/Process/Clases Mercedes.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Bandit 12"
+              "title": "Clases Mercedes"
             }
           }
         ],
@@ -264,10 +264,20 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "be6c70bf3c790eb5",
+  "active": "a6998b8327f0072f",
   "lastOpenFiles": [
-    "04 - Content/Process/Descompresor (Bandit 12).md",
+    "04 - Content/Process/mercedes - dominios, sitios web e infraestructura.md",
+    "04 - Content/Process/Clases Mercedes.md",
+    "04 - Content/Process/mercedes - metadatos e imagenes.md",
+    "04 - Content/Process/mercedes - reconocimiento facial.md",
+    "04 - Content/Process/mercedes - osint.md",
+    "04 - Content/Process/mercedes - google dorking.md",
+    "04 - Content/Process/mercedes - correos electronicos.md",
+    "04 - Content/Process/mercedes - busqueda usuarios.md",
+    "04 - Content/Recon/OSINT/Google Dorking.md",
+    "04 - Content/Recon/OSINT/OSINT.md",
     "05 - Writeups/OverTheWire/Bandit 12.md",
+    "04 - Content/Process/Descompresor (Bandit 12).md",
     "05 - Writeups/OverTheWire/Bandit 11.md",
     "05 - Writeups/OverTheWire/Bandit 10.md",
     "04 - Content/Tools/base64.md",
@@ -291,17 +301,7 @@
     "04 - Content/BlueTeam/Forensics/Forense - Adquisición.md.tmp.4283.8a0f241f4cd4",
     "02 - Secondary Categories/Respuesta.md.tmp.4283.869379ee8410",
     "02 - Secondary Categories/Incident Response.md.tmp.4283.7fc11cffa656",
-    "03 - Tertiary Categories/IR Respuesta.md",
     "03 - Tertiary Categories/IR Respuesta.md.tmp.4283.5cc1aedef378",
-    "04 - Content/BlueTeam/IR/IR - Actividad Post-Incidente.md",
-    "04 - Content/BlueTeam/IR/IR - Contención, Erradicación y Recuperación.md",
-    "04 - Content/BlueTeam/IR/IR - Detección y Análisis.md",
-    "04 - Content/BlueTeam/IR/IR - Preparación.md",
-    "03 - Tertiary Categories/SIEM Detección.md",
-    "04 - Content/BlueTeam/SIEM/Casos de Uso de SIEM.md",
-    "04 - Content/BlueTeam/SIEM/Windows Event Logs.md",
-    "04 - Content/BlueTeam/SIEM/Elastic Stack.md",
-    "04 - Content/BlueTeam/SIEM/Elastic Stack - KQL.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

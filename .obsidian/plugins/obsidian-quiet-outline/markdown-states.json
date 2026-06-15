@@ -2093,21 +2093,21 @@
     "expandedKeys": []
   },
   "04 - Content/Recon/OSINT/Google Dorking.md": {
-    "scroll": 41.26733703190014,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 26,
-        "ch": 47
+        "line": 15,
+        "ch": 8
       },
       "to": {
-        "line": 26,
-        "ch": 47
+        "line": 15,
+        "ch": 2
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Recon/OSINT/OSINT.md": {
-    "scroll": 0,
+    "scroll": 90.67252604166667,
     "cursor": {
       "from": {
         "line": 19,
@@ -3129,6 +3129,118 @@
     "expandedKeys": []
   },
   "04 - Content/Process/Descompresor (Bandit 12).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Clases Mercedes.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes google dorking.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - osint.md": {
+    "scroll": 20.682464454976305,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - busqueda usuarios.md": {
+    "scroll": 58.778645833333336,
+    "cursor": {
+      "from": {
+        "line": 71,
+        "ch": 0
+      },
+      "to": {
+        "line": 71,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - correos electronicos.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 55,
+        "ch": 23
+      },
+      "to": {
+        "line": 55,
+        "ch": 23
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - reconocimiento facial.md": {
+    "scroll": 6.1328125,
+    "cursor": {
+      "from": {
+        "line": 4,
+        "ch": 0
+      },
+      "to": {
+        "line": 4,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - metadatos e imagenes.md": {
+    "scroll": 74.75595238095238,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - dominios, sitios web e infraestructura.md": {
     "scroll": 0,
     "cursor": {
       "from": {
