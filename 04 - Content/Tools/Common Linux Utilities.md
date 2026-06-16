@@ -20,6 +20,7 @@ aliases:
   - "/dev/null"
 tags:
   - tool/linux-utils
+  - env/linux
 primary categories:
   - "[[Red Team]]"
 secondary categories:

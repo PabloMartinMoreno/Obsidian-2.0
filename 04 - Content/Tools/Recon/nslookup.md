@@ -1,6 +1,9 @@
 ---
 aliases:
 tags:
+  - env/linux
+  - technique/recon/active
+  - asset/dns
 primary categories:
   - "[[Red Team]]"
 secondary categories:

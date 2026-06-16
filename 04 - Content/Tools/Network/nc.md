@@ -2,6 +2,8 @@
 aliases:
   - netcat
 tags:
+  - env/linux
+  - asset/network
   - tool/netcat
 primary categories:
   - "[[Red Team]]"

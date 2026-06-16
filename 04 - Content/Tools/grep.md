@@ -1,6 +1,8 @@
 ---
 aliases:
 tags:
+  - env/linux
+  - technique/discovery
   - tool/grep
 primary categories:
   - "[[Red Team]]"

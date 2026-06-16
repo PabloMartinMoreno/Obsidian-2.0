@@ -1,6 +1,9 @@
 ---
 aliases:
 tags:
+  - env/linux
+  - technique/recon/active
+  - asset/file-share
   - tool/smbmap
   - service/smb
 primary categories:

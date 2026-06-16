@@ -1,6 +1,8 @@
 ---
 aliases:
 tags:
+  - technique/lateral-movement
+  - asset/network
   - tool/chisel
 primary categories:
   - "[[Red Team]]"

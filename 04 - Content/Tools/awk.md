@@ -1,6 +1,7 @@
 ---
 aliases:
 tags:
+  - env/linux
   - tool/awk
 primary categories:
   - "[[Red Team]]"

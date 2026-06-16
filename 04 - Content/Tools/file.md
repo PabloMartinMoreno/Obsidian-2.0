@@ -4,6 +4,7 @@ aliases:
 tags:
   - tool/file
   - env/linux
+  - topic/forensics
 primary categories:
   - "[[Red Team]]"
 secondary categories:

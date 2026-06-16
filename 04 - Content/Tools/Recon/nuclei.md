@@ -1,6 +1,8 @@
 ---
 aliases:
 tags:
+  - technique/recon/active
+  - asset/web-app
   - tool/nuclei
 primary categories:
   - "[[Red Team]]"

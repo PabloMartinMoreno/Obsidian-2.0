@@ -2,6 +2,8 @@
 aliases:
 tags:
   - env/linux
+  - tool/fail2ban
+  - topic/detection
 kind: Concept
 linked:
 ---

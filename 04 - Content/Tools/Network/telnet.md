@@ -2,6 +2,8 @@
 aliases:
   - "Telnet Exploitation"
 tags:
+  - technique/recon/active
+  - asset/network
   - tool/telnet
   - service/telnet
 primary categories:

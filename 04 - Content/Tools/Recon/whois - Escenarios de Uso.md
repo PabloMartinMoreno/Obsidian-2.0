@@ -2,6 +2,8 @@
 aliases:
 tags:
   - technique/recon/passive
+  - asset/dns
+  - technique/recon/passive
 primary categories:
   - "[[Red Team]]"
 secondary categories:

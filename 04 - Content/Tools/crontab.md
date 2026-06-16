@@ -4,6 +4,7 @@ aliases:
 tags:
   - tool/crontab
   - env/linux
+  - technique/persistence
 primary categories:
   - "[[Red Team]]"
 secondary categories:

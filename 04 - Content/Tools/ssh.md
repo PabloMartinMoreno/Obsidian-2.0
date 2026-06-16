@@ -4,6 +4,7 @@ aliases:
 tags:
   - tool/ssh
   - env/linux
+  - asset/network
 primary categories:
   - "[[Red Team]]"
 secondary categories:

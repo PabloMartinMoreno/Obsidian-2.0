@@ -1,6 +1,7 @@
 ---
 aliases:
 tags:
+  - env/linux
   - tool/base64
 primary categories:
   - "[[Red Team]]"

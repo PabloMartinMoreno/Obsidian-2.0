@@ -1,7 +1,8 @@
 ---
 aliases:
 tags:
-  - estado/incompleto
+  - topic/reversing
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

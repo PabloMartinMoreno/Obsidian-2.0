@@ -3,6 +3,8 @@ aliases:
   - "Docker Escape"
   - "Docker Enumeration"
 tags:
+  - env/linux
+  - technique/privilege-escalation
   - tool/docker
   - service/docker
 primary categories:

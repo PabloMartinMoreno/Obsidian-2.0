@@ -4,6 +4,8 @@ aliases:
   - "ProFTPD 1.3.3c Exploit"
   - "vsftpd 2.3.4 Exploit"
 tags:
+  - technique/recon/active
+  - asset/network
   - tool/ftp
   - service/ftp
 primary categories:

@@ -1,6 +1,7 @@
 ---
 aliases:
 tags:
+  - env/linux
   - tool/xargs
 primary categories:
   - "[[Red Team]]"

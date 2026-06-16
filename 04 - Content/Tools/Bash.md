@@ -1,6 +1,8 @@
 ---
 aliases:
 tags:
+  - env/linux
+  - tool/bash
 primary categories:
   - "[[Red Team]]"
 secondary categories:

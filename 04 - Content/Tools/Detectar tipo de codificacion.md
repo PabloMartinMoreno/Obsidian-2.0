@@ -1,7 +1,8 @@
 ---
 aliases:
 tags:
-  - estado/incompleto
+  - tool/cyberchef
+  - topic/reversing
 primary categories:
   - "[[Red Team]]"
 secondary categories:

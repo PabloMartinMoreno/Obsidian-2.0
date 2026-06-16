@@ -1,6 +1,8 @@
 ---
 aliases:
 tags:
+  - env/linux
+  - technique/privilege-escalation
   - tool/pspy
 primary categories:
   - "[[Red Team]]"

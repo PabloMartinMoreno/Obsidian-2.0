@@ -4,6 +4,9 @@ aliases:
   - "Packet Capture for Credentials"
 tags:
   - tool/tcpdump
+  - env/linux
+  - asset/network
+  - technique/recon/active
 primary categories:
   - "[[Red Team]]"
 secondary categories:

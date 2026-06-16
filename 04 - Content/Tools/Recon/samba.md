@@ -5,6 +5,9 @@ aliases:
   - "Zerologon (SMB Vulnerability)"
   - Samba
 tags:
+  - env/linux
+  - technique/recon/active
+  - asset/file-share
   - tool/samba
   - service/smb
 primary categories:
