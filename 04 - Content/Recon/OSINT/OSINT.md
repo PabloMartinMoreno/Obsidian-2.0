@@ -16,6 +16,13 @@ linked:
   - "[[OSINT Methods]]"
   - "[[Google Dorking]]"
   - "[[GitHub Dorking]]"
+  - "[[OSINT - Username Enumeration]]"
+  - "[[OSINT - Email Intelligence]]"
+  - "[[OSINT - Reverse Image Search]]"
+  - "[[OSINT - Metadata (EXIF)]]"
+  - "[[OSINT - Domain & Infrastructure]]"
+  - "[[OSINT - Geolocalización]]"
+  - "[[OSINT - Automation Frameworks]]"
 ---
 # OSINT
 
@@ -81,29 +88,23 @@ El ciclo de OSINT (Inteligencia de Fuentes Abiertas) se compone de **6 pasos o f
 ---
 
 
-## Pasos para la reconstrucción de Perfiles e Identidad
+## Técnicas
 
-### Paso 1: Enumeración por Alias (El rastro del nombre de usuario)
+Cada técnica encadena con las demás: una semilla (alias, email, foto, dominio) abre puertas a las otras.
 
-**Objetivo:** Averiguar si el objetivo utiliza el mismo nombre de usuario (o variantes) para registrarse en foros, apps de nicho o redes alternativas.
-- **Herramienta recomendada:** **[Social Searcher](https://www.social-searcher.com/)** o el script clásico **[Sherlock (GitHub)](https://github.com/sherlock-project/sherlock)**.
-- **Qué hacer:** Pedile que tome un alias conocido del objetivo (por ejemplo, el que usa en Instagram o en su correo personal antes del @) y lo procese. El sistema listará en qué otras plataformas de Internet existe exactamente ese mismo usuario.
+### 🔍 Buscadores y Dorking
+- [[Google Dorking]] — operadores avanzados de Google para hallar lo oculto a simple vista.
+- [[GitHub Dorking]] — secretos y credenciales en repos públicos.
 
-### Paso 2: Búsqueda Inversa de Correo y Teléfono (La prueba reina)
+### 👤 Identidad y Personas
+- [[OSINT - Username Enumeration]] — rastrear un alias por todas las plataformas (Sherlock, Maigret).
+- [[OSINT - Email Intelligence]] — de un email a filtraciones, cuentas y dueño (HIBP, Holehe, Epieos).
+- [[OSINT - Reverse Image Search]] — fotos robadas / catfishing (Yandex, TinEye).
 
-**Objetivo:** Conocer en qué redes sociales y plataformas específicas (incluidas apps de citas o mensajería secundaria) está registrada la información de contacto real del objetivo.
-- **Herramienta profesional (Pago):** **[OSINT Industries](https://osint.industries/)**.
-- **Herramienta alternativa (Gratuita):** **[Epieos](https://epieos.com/)** (una opción excelente y muy limpia para arrancar en clases).
-- **Qué hacer:** Al colocar el correo o el teléfono en el buscador, estas herramientas consultan los registros de servidores en tiempo real. Le van a mostrar si ese correo está atado a perfiles ocultos, cuentas secundarias de Google (pudiendo ver a veces fotos de perfil antiguas o reseñas que haya dejado en Google Maps) y si está verificado en plataformas específicas.
+### 🖼️ Imágenes y Ubicación
+- [[OSINT - Metadata (EXIF)]] — GPS, autor y stack desde metadatos (ExifTool).
+- [[OSINT - Geolocalización]] — deducir el lugar por pistas visuales (Bellingcat, Overpass).
 
-### Paso 3: Biometría Facial y Reconocimiento de Imágenes
-
-**Objetivo:** Descubrir si el objetivo tiene perfiles usando fotos diferentes bajo otros nombres, o si está usando fotos de otra persona (catfishing).
-- **Herramienta recomendada:** **[PimEyes](https://pimeyes.com/)** o **[FaceCheck.id](https://facecheck.id/)**.
-- **Qué hacer:** Tu alumna debe subir una foto clara del rostro del objetivo. La inteligencia artificial analizará los rasgos faciales y buscará coincidencias en toda la web indexada. Si el hombre tiene perfiles en redes con alias falsos pero usó una foto suya, o si aparece en el fondo de fotos de eventos de otras personas, estas herramientas lo van a saltar.
-
-### Paso 4: Análisis Forense de Archivos (Metadatos)
-
-**Objetivo:** Verificar si la ubicación o la hora de una foto enviada por el objetivo coinciden con su relato (comprobar si una foto "en tiempo real" es vieja o fue tomada en otro lado).
-- **Herramienta recomendada:** **[Jimpl (Metadata Viewer)](https://jimpl.com/)** o de forma local con **[ExifTool](https://exiftool.org/)**.
-- **Qué hacer:** Pedile que suba una imagen original que el objetivo haya enviado (las imágenes pasadas por WhatsApp pierden metadata, pero las enviadas por mail, Telegram como archivo o links de nube la conservan). Herramientas como Jimpl extraen los datos EXIF para mostrar la fecha exacta de captura, el modelo del celular y, si la opción estaba activa, las coordenadas GPS exactas en el mapa.
+### 🌐 Infraestructura y Automatización
+- [[OSINT - Domain & Infrastructure]] — WHOIS, DNS, subdominios, hosting (crt.sh, Shodan).
+- [[OSINT - Automation Frameworks]] — recolección a escala (SpiderFoot, Maltego, recon-ng).

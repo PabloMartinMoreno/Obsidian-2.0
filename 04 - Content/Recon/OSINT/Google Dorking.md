@@ -1,5 +1,7 @@
 ---
 aliases:
+  - Google Hacking
+  - GHDB
 tags:
   - technique/recon/passive
   - asset/domain
@@ -12,6 +14,7 @@ tertiary categories:
   - "[[Passive Reconnaissance & OSINT]]"
 kind: CheatSheet
 linked:
+  - "[[OSINT]]"
 ---
 # Google Dorking
 
@@ -64,3 +67,33 @@ Esta técnica consiste en crear consultas precisas usando los operadores de Goog
 | `..` (rango)          | Busca resultados dentro de un rango numérico.                                  | `site:ecommerce.com "price" 100..500`               | Busca productos con precios entre 100 y 500 en un sitio de e-commerce.             |
 | `" "` (comillas)      | Busca frases exactas.                                                          | `"information security policy"`                     | Encuentra documentos que contengan la frase exacta “information security policy”.  |
 | `-` (signo menos)     | Excluye términos de los resultados.                                            | `site:news.com -inurl:sports`                       | Busca artículos en news.com excluyendo contenido deportivo.                        |
+| `AROUND(n)`           | Proximidad: las palabras a no más de *n* de distancia.                         | `Pérez AROUND(3) "Buenos Aires"`                    | Menciones donde ambos términos están cerca.                                        |
+| `before:` / `after:`  | Rango temporal.                                                                | `"Juan Pérez" after:2022-01-01 before:2023-01-01`   | Resultados dentro de un período.                                                   |
+
+> [!warning] Operadores deprecados (2024)
+> - **`cache:`** — Google lo **eliminó en 2024**. Para versiones guardadas/borradas usar **Wayback Machine** (`web.archive.org`), no Google.
+> - **`link:`** e **`info:`** — deprecados y poco fiables.
+> - **`+`** — ya no existe; para forzar una palabra, usar comillas.
+> Aparecen en tutoriales viejos y no funcionan.
+
+## Otros buscadores
+
+Los operadores cambian por motor — probar la misma consulta en varios:
+- **Bing** usa `contains:` para tipos de archivo.
+- **Yandex** suele indexar contenido que Google no.
+- **DuckDuckGo** respeta más los operadores literales.
+
+## Encadenamiento (la verdadera potencia)
+
+Un dork real apila operadores; cada uno recorta el universo de resultados:
+
+| **Objetivo** | **Dork** |
+|:---|:---|
+| Huella en una red | `site:linkedin.com "Juan Pérez" "Buenos Aires"` |
+| Documentos públicos con su nombre | `"Juan Pérez" filetype:pdf` |
+| Presencia en redes | `"juanperez" (site:instagram.com OR site:twitter.com OR site:github.com)` |
+| Config expuesta de una org | `site:ejemplo.com filetype:env` |
+| Directorios abiertos | `intitle:"index of" site:ejemplo.com` |
+| Paneles de login | `site:ejemplo.com inurl:login` |
+
+> La **Google Hacking Database (GHDB)** en Exploit-DB cataloga dorks por categoría (archivos sensibles, dispositivos, errores). Forma parte del [[OSINT|ciclo OSINT]]; encadena con [[OSINT - Email Intelligence]] y [[OSINT - Metadata (EXIF)]].
