@@ -3437,14 +3437,14 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/grep.md": {
-    "scroll": 0.6842105263157895,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 13,
+        "line": 15,
         "ch": 0
       },
       "to": {
-        "line": 13,
+        "line": 15,
         "ch": 0
       }
     },
