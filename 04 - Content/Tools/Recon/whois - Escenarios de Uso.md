@@ -2,6 +2,12 @@
 aliases:
 tags:
   - technique/recon/passive
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Passive Reconnaissance & OSINT]]"
 kind: Concept
 linked:
   - "[[whois]]"

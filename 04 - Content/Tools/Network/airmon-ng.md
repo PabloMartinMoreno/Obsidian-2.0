@@ -2,8 +2,11 @@
 aliases:
 tags:
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Information Gathering]]"
 tertiary categories:
+  - "[[Host & Network Enumeration]]"
 kind: Tool
 linked:
 ---

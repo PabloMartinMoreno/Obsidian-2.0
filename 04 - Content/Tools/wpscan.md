@@ -3,6 +3,12 @@ aliases:
 tags:
   - tool/wpscan
   - service/wordpress
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Web Enumeración]]"
 kind: Tool
 linked:
   - "[[WordPress Enumeration]]"

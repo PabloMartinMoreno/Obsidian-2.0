@@ -10,6 +10,12 @@ secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Passive Reconnaissance & OSINT]]"
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Passive Reconnaissance & OSINT]]"
 kind: Tool
 linked:
   - "[[whois - Escenarios de Uso]]"

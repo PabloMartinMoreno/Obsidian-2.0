@@ -5,6 +5,7 @@ primary categories:
   - "[[Vault Administration]]"
 secondary categories:
   - "[[Obsidian]]"
+  - "[[Obsidian]]"
 kind: Tool
 ---
 # [[Admonition]]

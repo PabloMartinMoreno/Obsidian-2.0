@@ -3,6 +3,12 @@ aliases:
   - netcat
 tags:
   - tool/netcat
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Post-Explotación]]"
+tertiary categories:
+  - "[[Shells]]"
 kind: Tool
 linked:
   - "[[ncat]]"

@@ -3,6 +3,12 @@ aliases:
 tags:
   - tool/smbclient
   - service/smb
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Host & Network Enumeration]]"
 kind: Tool
 linked:
   - "[[SMB (139, 445) - Enumeración]]"

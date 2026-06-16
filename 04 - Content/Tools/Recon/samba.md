@@ -7,6 +7,12 @@ aliases:
 tags:
   - tool/samba
   - service/smb
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Host & Network Enumeration]]"
 kind: Concept
 linked:
   - "[[smbclient]]"

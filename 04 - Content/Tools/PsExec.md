@@ -5,8 +5,11 @@ tags:
   - env/windows
   - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Lateral Movement]]"
 tertiary categories:
+  - "[[Windows & Active Directory Movimiento Lateral]]"
 kind: Tool
 linked:
 ---

@@ -2,6 +2,12 @@
 aliases:
 tags:
   - tool/nuclei
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Web Enumeración]]"
 kind: Tool
 linked:
 ---

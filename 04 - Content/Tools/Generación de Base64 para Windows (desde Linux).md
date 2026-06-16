@@ -1,6 +1,12 @@
 ---
 aliases:
 tags:
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Operational Tasks]]"
+tertiary categories:
+  - "[[Procedures & Methodologies]]"
 kind: Concept
 linked:
 ---

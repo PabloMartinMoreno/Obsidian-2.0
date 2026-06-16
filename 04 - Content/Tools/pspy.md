@@ -2,6 +2,12 @@
 aliases:
 tags:
   - tool/pspy
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Post-Explotación]]"
+tertiary categories:
+  - "[[Linux Post-Explotación]]"
 kind: Tool
 linked:
   - "[[Linux PrivEsc - Cron Jobs]]"

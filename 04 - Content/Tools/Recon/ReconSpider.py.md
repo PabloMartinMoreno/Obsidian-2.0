@@ -6,6 +6,12 @@ tags:
 primary categories:
 secondary categories:
 tertiary categories:
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Passive Reconnaissance & OSINT]]"
 kind: Tool
 linked:
 ---

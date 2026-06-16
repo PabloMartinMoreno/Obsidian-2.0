@@ -6,6 +6,12 @@ aliases:
 tags:
   - tool/ftp
   - service/ftp
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Explotación]]"
+tertiary categories:
+  - "[[Service Exploitation]]"
 kind: Tool
 linked:
   - "[[FTP (21) - Enumeración]]"

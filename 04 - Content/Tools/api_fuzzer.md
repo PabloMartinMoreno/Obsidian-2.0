@@ -5,8 +5,11 @@ tags:
   - technique/recon/active
   - estado/incompleto
 primary categories:
+  - "[[Red Team]]"
 secondary categories:
+  - "[[Explotación]]"
 tertiary categories:
+  - "[[Web Explotación]]"
 kind: Tool
 linked:
 ---

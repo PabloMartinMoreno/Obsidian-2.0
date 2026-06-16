@@ -4,6 +4,12 @@ aliases:
 tags:
   - tool/telnet
   - service/telnet
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Explotación]]"
+tertiary categories:
+  - "[[Service Exploitation]]"
 kind: Tool
 ---
 # telnet

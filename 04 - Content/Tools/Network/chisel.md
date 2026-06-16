@@ -2,6 +2,12 @@
 aliases:
 tags:
   - tool/chisel
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Lateral Movement]]"
+tertiary categories:
+  - "[[Windows & Active Directory Movimiento Lateral]]"
 kind: Tool
 linked:
   - "[[Pivoting & Port Forwarding]]"

@@ -5,6 +5,12 @@ aliases:
 tags:
   - tool/docker
   - service/docker
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Post-Explotación]]"
+tertiary categories:
+  - "[[Linux Post-Explotación]]"
 kind: Tool
 ---
 # docker

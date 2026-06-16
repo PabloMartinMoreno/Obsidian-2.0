@@ -3,6 +3,7 @@ aliases:
 tags:
 primary categories:
 secondary categories:
+  - "[[Obsidian]]"
 tertiary categories:
 kind: CheatSheet
 linked:
