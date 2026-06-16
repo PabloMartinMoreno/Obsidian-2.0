@@ -2,6 +2,12 @@
 aliases:
 tags:
   - tool/grep
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Operational Tasks]]"
+tertiary categories:
+  - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
 ---

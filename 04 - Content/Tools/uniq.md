@@ -1,3 +1,20 @@
+---
+aliases:
+  - uniq
+tags:
+  - tool/uniq
+  - env/linux
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Operational Tasks]]"
+tertiary categories:
+  - "[[Procedures & Methodologies]]"
+kind: Tool
+linked:
+  - "[[Common Linux Utilities]]"
+---
+
 # Comando `uniq`
 
 ### Definición 

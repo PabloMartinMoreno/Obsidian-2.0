@@ -1,3 +1,22 @@
+---
+aliases:
+  - strings
+tags:
+  - tool/strings
+  - topic/reversing
+  - topic/forensics
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Reverse Engineering]]"
+kind: Tool
+linked:
+  - "[[Hex Dump]]"
+  - "[[Common Linux Utilities]]"
+---
+
 # Comando `strings`
 ### Definición 
 

@@ -1,6 +1,26 @@
 {
   "recentFiles": [
     {
+      "basename": "grep",
+      "path": "04 - Content/Tools/grep.md"
+    },
+    {
+      "basename": "awk",
+      "path": "04 - Content/Tools/awk.md"
+    },
+    {
+      "basename": "OSINT",
+      "path": "04 - Content/Recon/OSINT/OSINT.md"
+    },
+    {
+      "basename": "Google Dorking",
+      "path": "04 - Content/Recon/OSINT/Google Dorking.md"
+    },
+    {
+      "basename": "git",
+      "path": "04 - Content/Tools/Recon/git.md"
+    },
+    {
       "basename": "Bandit 09",
       "path": "05 - Writeups/OverTheWire/Bandit 09.md"
     },
@@ -69,60 +89,28 @@
       "path": "05 - Writeups/OverTheWire/Bandit 27.md"
     },
     {
-      "basename": "git",
-      "path": "04 - Content/Tools/Recon/git.md"
-    },
-    {
       "basename": "Bandit 26",
       "path": "05 - Writeups/OverTheWire/Bandit 26.md"
-    },
-    {
-      "basename": "SUID",
-      "path": "04 - Content/Process/SUID.md"
     },
     {
       "basename": "Bandit 25",
       "path": "05 - Writeups/OverTheWire/Bandit 25.md"
     },
     {
-      "basename": "more",
-      "path": "04 - Content/Process/more.md"
-    },
-    {
       "basename": "Bandit 24",
       "path": "05 - Writeups/OverTheWire/Bandit 24.md"
-    },
-    {
-      "basename": "echo",
-      "path": "04 - Content/Process/echo.md"
-    },
-    {
-      "basename": "grep",
-      "path": "04 - Content/Tools/grep.md"
     },
     {
       "basename": "Bandit 23",
       "path": "05 - Writeups/OverTheWire/Bandit 23.md"
     },
     {
-      "basename": "chmod",
-      "path": "04 - Content/Process/chmod.md"
-    },
-    {
       "basename": "Bandit 22",
       "path": "05 - Writeups/OverTheWire/Bandit 22.md"
     },
     {
-      "basename": "md5sum",
-      "path": "04 - Content/Process/md5sum.md"
-    },
-    {
       "basename": "Bandit 21",
       "path": "05 - Writeups/OverTheWire/Bandit 21.md"
-    },
-    {
-      "basename": "crontab",
-      "path": "04 - Content/Process/crontab.md"
     },
     {
       "basename": "Bandit 20",
@@ -139,10 +127,6 @@
     {
       "basename": "Bandit 17",
       "path": "05 - Writeups/OverTheWire/Bandit 17.md"
-    },
-    {
-      "basename": "diff",
-      "path": "04 - Content/Process/diff.md"
     },
     {
       "basename": "Bandit 16",
@@ -177,28 +161,12 @@
       "path": "05 - Writeups/OverTheWire/Bandit 13.md"
     },
     {
-      "basename": "ssh",
-      "path": "04 - Content/Process/ssh.md"
-    },
-    {
       "basename": "SSH (22) - Enumeración",
       "path": "04 - Content/Services/SSH (22) - Enumeración.md"
     },
     {
       "basename": "Pares de claves SSH",
       "path": "04 - Content/Credentials/Pares de claves SSH.md"
-    },
-    {
-      "basename": "Bandit 12",
-      "path": "05 - Writeups/OverTheWire/Bandit 12.md"
-    },
-    {
-      "basename": "Descompresor (Bandit 12)",
-      "path": "04 - Content/Process/Descompresor (Bandit 12).md"
-    },
-    {
-      "basename": "file",
-      "path": "04 - Content/Process/file.md"
     }
   ],
   "omittedPaths": [],

@@ -1,9 +1,6 @@
 ---
 aliases:
-  - "tail"
   - "ROT13"
-  - "xxd"
-  - "Hex dump"
   - "7z"
   - "mktemp"
   - "watch"
@@ -16,16 +13,6 @@ aliases:
   - "readpst"
   - "mdb-tools"
   - cat
-  - sort
-  - uniq
-  - tr
-  - more
-  - diff
-  - chmod
-  - echo
-  - file
-  - strings
-  - md5sum
   - mkpasswd
   - getcap
   - dstat
@@ -33,12 +20,30 @@ aliases:
   - "/dev/null"
 tags:
   - tool/linux-utils
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Operational Tasks]]"
+tertiary categories:
+  - "[[Procedures & Methodologies]]"
 kind: CheatSheet
 linked:
   - "[[grep]]"
   - "[[find]]"
   - "[[awk]]"
   - "[[xargs]]"
+  - "[[chmod]]"
+  - "[[diff]]"
+  - "[[echo]]"
+  - "[[file]]"
+  - "[[md5sum]]"
+  - "[[more]]"
+  - "[[sort]]"
+  - "[[strings]]"
+  - "[[tail]]"
+  - "[[tr]]"
+  - "[[uniq]]"
+  - "[[Hex Dump]]"
 ---
 # Common Linux Utilities
 

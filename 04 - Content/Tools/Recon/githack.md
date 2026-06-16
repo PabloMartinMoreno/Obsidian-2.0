@@ -2,6 +2,12 @@
 aliases:
 tags:
   - tool/githack
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Information Gathering]]"
+tertiary categories:
+  - "[[Web Enumeración]]"
 kind: Tool
 linked:
   - "[[git-dumper]]"

@@ -1,3 +1,20 @@
+---
+aliases:
+  - file
+tags:
+  - tool/file
+  - env/linux
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Operational Tasks]]"
+tertiary categories:
+  - "[[Procedures & Methodologies]]"
+kind: Tool
+linked:
+  - "[[Common Linux Utilities]]"
+---
+
 # Comando `file`
 
 ### Definición 

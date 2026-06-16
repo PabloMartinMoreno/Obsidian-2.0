@@ -2096,25 +2096,25 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 15,
-        "ch": 8
+        "line": 28,
+        "ch": 0
       },
       "to": {
-        "line": 15,
-        "ch": 2
+        "line": 28,
+        "ch": 0
       }
     },
     "expandedKeys": []
   },
   "04 - Content/Recon/OSINT/OSINT.md": {
-    "scroll": 90.67252604166667,
+    "scroll": 2.9570815450643777,
     "cursor": {
       "from": {
-        "line": 19,
+        "line": 26,
         "ch": 0
       },
       "to": {
-        "line": 19,
+        "line": 26,
         "ch": 0
       }
     },
@@ -3059,7 +3059,7 @@
     "expandedKeys": []
   },
   "05 - Writeups/OverTheWire/Bandit 09.md": {
-    "scroll": 7.036269430051814,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 14,
@@ -3871,7 +3871,7 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/git.md": {
-    "scroll": 266.3891369047619,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 16,

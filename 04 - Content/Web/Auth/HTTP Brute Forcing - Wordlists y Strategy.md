@@ -82,6 +82,7 @@ ls SecLists/Passwords/  # Common-Credentials, Leaked-Databases, etc
 | `git clone https://github.com/urbanadventurer/username-anarchy && ./username-anarchy -i "John Doe" -d target.com` | Username permutations (first.last → flast → etc) | Pre-spray prep. |
 | `theHarvester -d target.com -b linkedin,google -f users.txt` | OSINT username harvest | Pre-brute discovery. |
 | `cat names.txt \| while read n; do echo "${n}@target.com"; done > emails.txt` | Generate email list from names | Email-based attack. |
+| `curl -s https://raw.githubusercontent.com/datasets/world-cities/main/data/world-cities.csv \| cut -d',' -f1 > cities.txt` | Wordlist de ciudades del mundo | Passwords/usernames geográficos. |
 | `for y in 2023 2024 2025; do for s in '!' '@' '#' '$'; do echo "Target${y}${s}"; done; done` | Pattern-based generation seasonal | Default org patterns. |
 ^bf-strategy-targeted
 

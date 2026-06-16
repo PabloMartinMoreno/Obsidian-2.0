@@ -1,3 +1,25 @@
+---
+aliases:
+  - Descompresión Recursiva
+tags:
+  - tool/bash
+  - meta/writeup
+  - env/linux
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Operational Tasks]]"
+tertiary categories:
+  - "[[Procedures & Methodologies]]"
+kind: Concept
+linked:
+  - "[[Bash]]"
+---
+# Descompresor Recursivo (OverTheWire Bandit 12)
+
+> [!info] Overview
+> Loop en Bash que descomprime capas anidadas de archivos comprimidos (gzip/bzip2/tar) hasta llegar al original. Patrón útil en CTF/forense cuando un archivo está comprimido N veces. Apoyado en el operador `-n` (cadena no vacía) como condición de corte.
+
 ```bash
 #!/bin/bash
 

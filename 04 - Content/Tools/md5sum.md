@@ -1,3 +1,20 @@
+---
+aliases:
+  - md5sum
+tags:
+  - tool/md5sum
+  - env/linux
+primary categories:
+  - "[[Red Team]]"
+secondary categories:
+  - "[[Operational Tasks]]"
+tertiary categories:
+  - "[[Procedures & Methodologies]]"
+kind: Tool
+linked:
+  - "[[Common Linux Utilities]]"
+---
+
 # md5sum
 
 ## Definición 

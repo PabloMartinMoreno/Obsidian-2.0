@@ -24,6 +24,9 @@ linked:
 ---
 # Linux PrivEsc - SUID y SGID
 
+> [!info] Overview
+> **SUID** (Set User ID): bit especial en ejecutables que los corre con los privilegios del **dueño** del archivo, no del usuario que lo ejecuta. Se ve como `s` en lugar de `x` en los permisos del owner: `-rwsr-xr-x`. Si el dueño es root, un binario SUID mal configurado o abusable = escalada a root. **SGID** es lo mismo con el grupo. Diseñado para tareas legítimas (`passwd` escribe `/etc/shadow`), pero explotable.
+
 ---
 
 ## Cheatsheet

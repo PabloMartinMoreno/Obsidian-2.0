@@ -1,11 +1,23 @@
 ---
 aliases:
+  - Recollection
 tags:
-  - estado/incompleto
+  - topic/forensics
+  - tool/volatility
+  - env/windows
+  - meta/writeup
+  - estado/completo
 primary categories:
+  - "[[Blue Team]]"
 secondary categories:
+  - "[[Digital Forensics]]"
+  - "[[Respuesta]]"
 tertiary categories:
+  - "[[Digital Forensics Respuesta]]"
+kind: Concept
 linked:
+  - "[[vol]]"
+  - "[[Metodología Forense]]"
 ---
 
 
