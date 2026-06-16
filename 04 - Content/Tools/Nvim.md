@@ -1,6 +1,7 @@
 ---
 aliases:
 tags:
+  - tool/obsidian
 primary categories:
 secondary categories:
   - "[[Obsidian]]"

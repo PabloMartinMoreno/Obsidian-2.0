@@ -3,7 +3,6 @@ aliases:
 tags:
 primary categories:
   - "[[Red Team]]"
-  - "[[Red Team]]"
   - "[[Development]]"
 secondary categories:
   - "[[PowerShell]]"

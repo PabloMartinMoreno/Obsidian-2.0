@@ -4,8 +4,6 @@ tags:
   - env/windows
   - technique/lateral-movement
   - asset/active-directory
-  - technique/lateral-movement
-  - env/windows
   - estado/incompleto
 primary categories:
   - "[[Red Team]]"

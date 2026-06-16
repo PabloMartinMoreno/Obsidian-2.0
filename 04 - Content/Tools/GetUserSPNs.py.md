@@ -2,15 +2,22 @@
 aliases:
   - impacket-GetUserSPNs
 tags:
+  - tool/impacket
+  - env/windows
+  - technique/kerberos
+  - technique/credential-access
+  - asset/active-directory
+  - cred/kerberos
 primary categories:
   - "[[Red Team]]"
-  - "[[Red Team]]"
 secondary categories:
-  - "[[Credential Harvesting]]"
-  - "[[Kerberoasting]]"
-  - "[[Post-Explotación]]"
+  - "[[Explotación]]"
   - "[[Active Directory]]"
+tertiary categories:
+  - "[[Active Directory Explotación]]"
 kind: Tool
+linked:
+  - "[[Kerberoasting]]"
 ---
 # [[GetUserSPNs.py]]
 

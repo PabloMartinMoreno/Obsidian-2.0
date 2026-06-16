@@ -1,10 +1,10 @@
 ---
 aliases:
 tags:
+  - tool/obsidian
 primary categories:
   - "[[Vault Administration]]"
 secondary categories:
-  - "[[Obsidian]]"
   - "[[Obsidian]]"
 kind: Tool
 ---

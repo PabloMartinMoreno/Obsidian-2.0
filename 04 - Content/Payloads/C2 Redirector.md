@@ -16,7 +16,6 @@ tags:
   - asset/infrastructure
 primary categories:
   - "[[Red Team]]"
-  - "[[Red Team]]"
 secondary categories:
   - "[[C2 Tradecraft & Profiles]]"
 kind: Concept

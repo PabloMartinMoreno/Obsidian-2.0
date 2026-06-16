@@ -1,17 +1,9 @@
 ---
 aliases:
 tags:
+  - tool/whois
   - technique/recon/passive
   - asset/dns
-  - technique/recon/passive
-  - asset/infrastructure
-  - tool/whois
-primary categories:
-  - "[[Red Team]]"
-secondary categories:
-  - "[[Information Gathering]]"
-tertiary categories:
-  - "[[Passive Reconnaissance & OSINT]]"
 primary categories:
   - "[[Red Team]]"
 secondary categories:

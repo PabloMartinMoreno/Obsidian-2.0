@@ -1,6 +1,10 @@
 ---
 aliases:
 tags:
+  - tool/curl
+  - technique/recon/active
+  - asset/web-app
+  - asset/api
 primary categories:
   - "[[Red Team]]"
 secondary categories:

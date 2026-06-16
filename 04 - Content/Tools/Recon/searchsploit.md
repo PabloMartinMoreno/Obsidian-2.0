@@ -13,7 +13,7 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Pre-Exploitation]]"
+  - "[[Explotación]]"
 tertiary categories:
   - "[[Payloads]]"
 kind: Tool

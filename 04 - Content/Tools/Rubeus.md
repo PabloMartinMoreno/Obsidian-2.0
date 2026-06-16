@@ -11,7 +11,7 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Credential Access]]"
+  - "[[Credential Harvesting]]"
 tertiary categories:
   - "[[Kerberos]]"
 kind: Tool

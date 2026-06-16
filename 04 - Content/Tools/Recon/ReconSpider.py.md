@@ -1,13 +1,9 @@
 ---
 aliases:
 tags:
-  - technique/recon/passive
-  - asset/web-app
+  - tool/reconspider
   - technique/recon/active
-  - estado/incompleto
-primary categories:
-secondary categories:
-tertiary categories:
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

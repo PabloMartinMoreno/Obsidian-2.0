@@ -5,7 +5,6 @@ aliases:
 tags:
 primary categories:
   - "[[Red Team]]"
-  - "[[Red Team]]"
 secondary categories:
   - "[[Post-Explotación]]"
   - "[[Domain Enumeration]]"

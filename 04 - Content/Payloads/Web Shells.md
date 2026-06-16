@@ -4,9 +4,9 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Pre-Exploitation]]"
+  - "[[Resource Development]]"
 tertiary categories:
-  - "[[Payloads]]"
+  - "[[Payload & Malware Engineering]]"
 kind: CheatSheet
 linked:
 ---

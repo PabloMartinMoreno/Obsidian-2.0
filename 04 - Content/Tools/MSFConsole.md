@@ -2,7 +2,6 @@
 aliases:
 tags:
   - technique/execution
-  - technique/execution
   - tool/msfconsole
   - estado/incompleto
 primary categories:

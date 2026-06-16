@@ -1,6 +1,8 @@
 ---
 aliases:
 tags:
+  - tool/seclists
+  - asset/web-app
 primary categories:
   - "[[Red Team]]"
 secondary categories:

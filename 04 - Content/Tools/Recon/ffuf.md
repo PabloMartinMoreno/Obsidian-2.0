@@ -15,7 +15,6 @@ tertiary categories:
   - "[[Web Fuzzing]]"
 kind: Tool
 linked:
-  - "[[Web Fuzzing]]"
   - "[[Crawling]]"
   - "[[Directory Fuzzing]]"
   - "[[Parameter Fuzzing]]"

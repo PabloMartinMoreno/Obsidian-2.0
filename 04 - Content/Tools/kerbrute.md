@@ -12,7 +12,7 @@ tags:
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Credential Access]]"
+  - "[[Credential Harvesting]]"
   - "[[Information Gathering]]"
 tertiary categories:
   - "[[Active Directory Enumeración]]"

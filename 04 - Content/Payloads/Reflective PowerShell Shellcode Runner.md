@@ -7,7 +7,6 @@ tags:
 primary categories:
   - "[[Development]]"
   - "[[Red Team]]"
-  - "[[Red Team]]"
 secondary categories:
   - "[[PowerShell]]"
   - "[[Weaponization]]"

@@ -14,7 +14,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Credential Access]]"
+  - "[[Credential Harvesting]]"
   - "[[Lateral Movement]]"
 kind: Tool
 linked:

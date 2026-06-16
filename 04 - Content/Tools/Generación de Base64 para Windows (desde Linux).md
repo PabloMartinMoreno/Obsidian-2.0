@@ -1,6 +1,8 @@
 ---
 aliases:
 tags:
+  - env/windows
+  - technique/defense-evasion
 primary categories:
   - "[[Red Team]]"
 secondary categories:

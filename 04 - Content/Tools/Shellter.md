@@ -1,12 +1,15 @@
 ---
 aliases:
 tags:
+  - tool/shellter
+  - env/windows
+  - technique/defense-evasion
 primary categories:
   - "[[Red Team]]"
 secondary categories:
-  - "[[Pre-Exploitation]]"
+  - "[[Weaponization]]"
 tertiary categories:
-  - "[[Payloads]]"
+  - "[[Payload & Malware Engineering]]"
 kind: CheatSheet
 linked:
 ---
