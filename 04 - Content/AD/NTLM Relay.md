@@ -15,7 +15,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: CheatSheet
 linked:
   - "[[NTLM Relay - Captura de Auth]]"

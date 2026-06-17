@@ -22,7 +22,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Lateral Movement]]"
+  - "[[Windows & Active Directory Movimiento Lateral]]"
 kind: CheatSheet
 linked:
   - "[[Active Directory Explotación]]"

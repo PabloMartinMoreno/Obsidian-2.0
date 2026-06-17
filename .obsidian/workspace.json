@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Tools/grep.md",
+                "file": "02 - Secondary Categories/Active Directory.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "grep"
+              "title": "Active Directory"
             }
           }
         ],
@@ -266,17 +266,18 @@
   },
   "active": "a6998b8327f0072f",
   "lastOpenFiles": [
-    "04 - Content/Tools/Recon/sed8i6vfM",
-    "04 - Content/Tools/sederU7Mg",
-    "04 - Content/Tools/GetUserSPNs.py.md.tmp.143209.2f784197fd5b",
-    "04 - Content/Tools/Recon/whois - Escenarios de Uso.md.tmp",
-    "04 - Content/Tools/PsExec.md.tmp",
-    "04 - Content/Tools/Recon/ReconSpider.py.md.tmp.143209.4683987b19e9",
-    "04 - Content/Tools/Recon/whois.md.tmp.143209.f0ac231adec4",
-    "04 - Content/Tools/Recon/whois.md.tmp",
-    "04 - Content/Tools/Recon/nikto.md.tmp",
-    "04 - Content/Tools/Recon/ffuf.md.tmp",
-    "04 - Content/Misc/PEN-200.md.tmp",
+    "04 - Content/Tools/Recon/searchsploit.md.tmp",
+    "04 - Content/Tools/john.md.tmp",
+    "04 - Content/Tools/Hydra.md.tmp",
+    "04 - Content/Tools/Msfvenom Encoders.md.tmp",
+    "04 - Content/Tools/MSFVenom.md.tmp",
+    "04 - Content/Credentials/Silver/Silver Ticket.md.tmp",
+    "04 - Content/Credentials/Golden/Golden Ticket.md.tmp",
+    "04 - Content/Tools/BloodHound/BloodHound Cypher Queries.md.tmp",
+    "04 - Content/Tools/Certipy.md.tmp",
+    "04 - Content/Tools/mimikatz.md.tmp",
+    "04 - Content/Tools/Impacket Toolkit.md.tmp",
+    "04 - Content/Tools/grep.md",
     "04 - Content/Tools/strings.md",
     "04 - Content/Tools/uniq.md",
     "04 - Content/Tools/tr.md",
@@ -301,7 +302,6 @@
     "04 - Content/Recon/OSINT/OSINT - Domain & Infrastructure.md",
     "04 - Content/Recon/OSINT/OSINT - Metadata (EXIF).md",
     "04 - Content/Recon/OSINT/OSINT - Reverse Image Search.md",
-    "04 - Content/Recon/OSINT/OSINT - Email Intelligence.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

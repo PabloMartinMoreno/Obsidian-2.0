@@ -17,10 +17,9 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: Technique
 linked:
-  - "[[Active Directory Explotación]]"
   - "[[DCSync]]"
   - "[[Pass-the-Ticket]]"
   - "[[Rubeus]]"

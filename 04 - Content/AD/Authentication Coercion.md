@@ -18,10 +18,9 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: Technique
 linked:
-  - "[[Active Directory Explotación]]"
   - "[[NTLM Relay]]"
   - "[[Responder]]"
   - "[[Impacket Toolkit]]"

@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[AD CS Abuse]]"

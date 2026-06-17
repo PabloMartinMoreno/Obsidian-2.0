@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[LLMNR & NBT-NS Poisoning]]"

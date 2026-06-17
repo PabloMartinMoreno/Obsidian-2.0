@@ -10,7 +10,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Operational Tasks]]"
+  - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
 ---

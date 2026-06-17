@@ -12,7 +12,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
-  - "[[Active Directory Certificate Services]]"
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Shadow Credentials]]"

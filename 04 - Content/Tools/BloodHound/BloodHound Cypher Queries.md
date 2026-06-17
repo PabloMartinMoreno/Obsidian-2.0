@@ -12,11 +12,10 @@ primary categories:
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: CheatSheet
 linked:
   - "[[BloodHound & SharpHound]]"
-  - "[[Active Directory Explotación]]"
 ---
 # BloodHound Cypher Queries
 

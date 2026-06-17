@@ -14,7 +14,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Operational Tasks]]"
+  - "[[Procedures & Methodologies]]"
 kind: Technique
 linked:
   - "[[Reverse Shell]]"

@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Information Gathering]]"
 tertiary categories:
-  - "[[Enumeration]]"
+  - "[[Host & Network Enumeration]]"
 kind: Concept
 linked:
   - "[[DNS (53) - Enumeración]]"

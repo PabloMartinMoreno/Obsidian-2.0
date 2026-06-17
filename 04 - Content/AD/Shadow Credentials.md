@@ -14,7 +14,7 @@ primary categories:
 secondary categories:
   - "[[Explotación]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: CheatSheet
 linked:
   - "[[Shadow Credentials - Discovery y Certipy]]"

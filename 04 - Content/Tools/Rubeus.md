@@ -13,7 +13,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
-  - "[[Kerberos]]"
+  - "[[Active Directory Explotación]]"
 kind: Tool
 linked:
   - "[[Kerberoasting]]"
@@ -23,7 +23,6 @@ linked:
   - "[[Silver Ticket]]"
   - "[[Shadow Credentials]]"
   - "[[AD CS Abuse]]"
-  - "[[Active Directory Explotación]]"
   - "[[Impacket Toolkit]]"
 ---
 # Rubeus

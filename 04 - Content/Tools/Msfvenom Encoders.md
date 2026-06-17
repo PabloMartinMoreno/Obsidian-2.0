@@ -9,7 +9,7 @@ primary categories:
 secondary categories:
   - "[[Payload Engineering]]"
 tertiary categories:
-  - "[[Payloads]]"
+  - "[[Payload & Malware Engineering]]"
 kind: SubCheatSheet
 linked:
 ---

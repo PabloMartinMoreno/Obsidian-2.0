@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Credential Harvesting]]"
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[DCSync]]"

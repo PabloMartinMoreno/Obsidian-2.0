@@ -14,11 +14,10 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Credential Harvesting]]"
-  - "[[Lateral Movement]]"
+  - "[[Active Directory Explotación]]"
+  - "[[Windows & Active Directory Movimiento Lateral]]"
 kind: Tool
 linked:
-  - "[[Active Directory Explotación]]"
   - "[[Pass-the-Hash]]"
   - "[[Kerberoasting]]"
   - "[[AS-REP Roasting]]"

@@ -13,7 +13,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Lateral Movement]]"
+  - "[[Windows & Active Directory Movimiento Lateral]]"
 kind: Tool
 linked:
   - "[[Pass-the-Hash]]"

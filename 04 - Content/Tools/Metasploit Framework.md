@@ -12,10 +12,9 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Exploitation Tools]]"
+  - "[[Common Exploitation Tools]]"
 kind: Tool
 linked:
-  - "[[Common Exploitation Tools]]"
   - "[[nmap]]"
   - "[[Windows Privilege Escalation]]"
   - "[[Linux Privilege Escalation]]"

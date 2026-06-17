@@ -21,7 +21,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: CheatSheet
 linked:
   - "[[LLMNR Poisoning - Captura]]"

@@ -11,7 +11,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
-  - "[[Password Cracking]]"
+  - "[[Credentials Cracking]]"
 kind: Tool
 linked:
   - "[[netexec]]"

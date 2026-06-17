@@ -14,7 +14,7 @@ primary categories:
 secondary categories:
   - "[[Post-Explotación]]"
 tertiary categories:
-  - "[[Active Directory]]"
+  - "[[Active Directory Explotación]]"
 kind: SubCheatSheet
 linked:
   - "[[Silver Ticket]]"

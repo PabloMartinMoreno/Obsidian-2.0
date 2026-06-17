@@ -17,8 +17,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
-  - "[[LSASS Dumping]]"
-  - "[[Kerberos]]"
+  - "[[Active Directory Explotación]]"
 kind: Tool
 linked:
   - "[[LSASS Dumping - Mimikatz Methods]]"

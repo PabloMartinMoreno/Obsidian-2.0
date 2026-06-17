@@ -13,7 +13,7 @@ primary categories:
 secondary categories:
   - "[[Credential Harvesting]]"
 tertiary categories:
-  - "[[Active Directory Certificate Services]]"
+  - "[[Active Directory Explotación]]"
 kind: Tool
 linked:
   - "[[AD CS Abuse]]"
@@ -23,7 +23,6 @@ linked:
   - "[[Pass-the-Ticket]]"
   - "[[Impacket Toolkit]]"
   - "[[Rubeus]]"
-  - "[[Active Directory Explotación]]"
 ---
 # Certipy
 
