@@ -1869,15 +1869,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Checklist.md": {
-    "scroll": 20.849933598937582,
+    "scroll": 50.6771327014218,
     "cursor": {
       "from": {
-        "line": 291,
-        "ch": 51
+        "line": 21,
+        "ch": 0
       },
       "to": {
-        "line": 291,
-        "ch": 51
+        "line": 21,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -1995,14 +1995,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md": {
-    "scroll": 7.095022624434389,
+    "scroll": 34.622395833333336,
     "cursor": {
       "from": {
-        "line": 32,
+        "line": 33,
         "ch": 0
       },
       "to": {
-        "line": 32,
+        "line": 33,
         "ch": 0
       }
     },

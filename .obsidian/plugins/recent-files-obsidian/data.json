@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Checklist",
+      "path": "04 - Content/Process/CWES - Checklist.md"
+    },
+    {
+      "basename": "Cross-Site Request Forgery (CSRF)",
+      "path": "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md"
+    },
+    {
       "basename": "Common Linux Utilities",
       "path": "04 - Content/Tools/Common Linux Utilities.md"
     },
