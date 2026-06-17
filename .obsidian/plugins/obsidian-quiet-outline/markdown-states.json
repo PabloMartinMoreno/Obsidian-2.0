@@ -3437,14 +3437,14 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/grep.md": {
-    "scroll": 20.427635569574186,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 26,
+        "line": 31,
         "ch": 0
       },
       "to": {
-        "line": 26,
+        "line": 31,
         "ch": 0
       }
     },
@@ -3977,6 +3977,20 @@
       },
       "to": {
         "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Common Linux Utilities.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 53,
+        "ch": 0
+      },
+      "to": {
+        "line": 53,
         "ch": 0
       }
     },

@@ -12,6 +12,8 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[less]]"
+  - "[[Linux PrivEsc - SUID y SGID]]"
   - "[[Common Linux Utilities]]"
 ---
 # Comando `more`

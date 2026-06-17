@@ -13,6 +13,7 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[strings]]"
   - "[[Common Linux Utilities]]"
   - "[[Hex Dump]]"
 ---

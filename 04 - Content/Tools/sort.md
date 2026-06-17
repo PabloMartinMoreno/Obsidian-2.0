@@ -12,6 +12,9 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[cut]]"
+  - "[[head]]"
+  - "[[awk]]"
   - "[[Common Linux Utilities]]"
   - "[[uniq]]"
 ---

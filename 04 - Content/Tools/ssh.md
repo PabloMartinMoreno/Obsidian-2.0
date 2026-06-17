@@ -13,13 +13,14 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[SSH (Protocolo)]]"
   - "[[Common Linux Utilities]]"
   - "[[Pivoting & Port Forwarding]]"
 ---
 # Comando `ssh`
 
 > [!info] ssh (**S**ecure **Sh**ell)
-> Acceso remoto a un servidor por un canal cifrado. Además de shell, hace **port forwarding / túneles** (`-L`, `-R`) — base del pivoting. Sintaxis: `ssh [opciones] usuario@servidor`. Ver [[03 - Conceptos/SSH|SSH (concepto)]].
+> Acceso remoto a un servidor por un canal cifrado. Además de shell, hace **port forwarding / túneles** (`-L`, `-R`) — base del pivoting. Sintaxis: `ssh [opciones] usuario@servidor`. Ver [[SSH (Protocolo)|SSH (concepto)]].
 ^Definicion
 
 ---

@@ -12,6 +12,8 @@ tertiary categories:
   - "[[Web Enumeración]]"
 kind: Tool
 linked:
+  - "[[GitLab Enumeration]]"
+  - "[[GitHub Dorking]]"
   - "[[git-dumper]]"
 ---
 # git

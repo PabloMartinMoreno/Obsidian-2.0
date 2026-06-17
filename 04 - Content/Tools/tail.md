@@ -12,6 +12,8 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[head]]"
+  - "[[grep]]"
   - "[[Common Linux Utilities]]"
 ---
 # Comando `tail`

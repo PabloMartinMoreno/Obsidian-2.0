@@ -29,6 +29,11 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: CheatSheet
 linked:
+  - "[[less]]"
+  - "[[wc]]"
+  - "[[head]]"
+  - "[[cut]]"
+  - "[[sed]]"
   - "[[grep]]"
   - "[[find]]"
   - "[[awk]]"

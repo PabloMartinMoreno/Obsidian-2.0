@@ -11,6 +11,9 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[cut]]"
+  - "[[sed]]"
+  - "[[Common Linux Utilities]]"
   - "[[grep]]"
   - "[[find]]"
 ---

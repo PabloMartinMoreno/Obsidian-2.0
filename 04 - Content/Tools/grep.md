@@ -12,6 +12,11 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[wc]]"
+  - "[[cut]]"
+  - "[[sed]]"
+  - "[[Common Linux Utilities]]"
+  - "[[awk]]"
   - "[[find]]"
   - "[[Expresiones regulares]]"
 ---

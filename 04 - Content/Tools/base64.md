@@ -11,6 +11,7 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[Common Linux Utilities]]"
   - "[[JWT Attacks]]"
   - "[[Command Injection - Obfuscacion Avanzada (Case, Reverse, Encoding)]]"
 ---

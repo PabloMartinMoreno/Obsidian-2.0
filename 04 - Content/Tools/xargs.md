@@ -11,6 +11,8 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[sed]]"
+  - "[[Common Linux Utilities]]"
   - "[[grep]]"
   - "[[find]]"
   - "[[awk]]"

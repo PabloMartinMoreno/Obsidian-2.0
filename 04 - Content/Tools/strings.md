@@ -13,6 +13,7 @@ tertiary categories:
   - "[[Reverse Engineering]]"
 kind: Tool
 linked:
+  - "[[file]]"
   - "[[Hex Dump]]"
   - "[[Common Linux Utilities]]"
 ---

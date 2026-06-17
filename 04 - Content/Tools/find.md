@@ -12,6 +12,10 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[Permisos]]"
+  - "[[Common Linux Utilities]]"
+  - "[[xargs]]"
+  - "[[grep]]"
   - "[[Linux PrivEsc - SUID y SGID]]"
 ---
 # Comando `find`

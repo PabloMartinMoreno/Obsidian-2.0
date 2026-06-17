@@ -12,6 +12,7 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[Permisos]]"
   - "[[Common Linux Utilities]]"
   - "[[Linux PrivEsc - SUID y SGID]]"
 ---

@@ -13,6 +13,8 @@ tertiary categories:
   - "[[Shells]]"
 kind: Tool
 linked:
+  - "[[Pivoting & Port Forwarding]]"
+  - "[[File Transfers]]"
   - "[[ncat]]"
   - "[[Reverse Shell]]"
 ---

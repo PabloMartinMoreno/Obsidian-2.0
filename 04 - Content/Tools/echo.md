@@ -12,6 +12,7 @@ tertiary categories:
   - "[[Procedures & Methodologies]]"
 kind: Tool
 linked:
+  - "[[Linux PrivEsc - PATH Hijacking]]"
   - "[[Common Linux Utilities]]"
 ---
 # Comando `echo`
