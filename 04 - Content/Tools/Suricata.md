@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Suricata
   - IDS Rules
 tags:
   - tool/suricata

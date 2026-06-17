@@ -1,6 +1,5 @@
 ---
 aliases:
-  - ACL Abuse
 tags:
   - asset/active-directory
   - technique/privilege-escalation

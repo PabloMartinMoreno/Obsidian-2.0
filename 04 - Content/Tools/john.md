@@ -2,7 +2,6 @@
 aliases:
   - John the Ripper
   - JtR
-  - john
 tags:
   - tool/john
   - technique/credential-access

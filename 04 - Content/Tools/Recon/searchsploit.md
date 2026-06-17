@@ -3,7 +3,6 @@ aliases:
   - "Exploitation Tools"
   - "Exploit-DB"
   - "Packet Storm Security"
-  - SearchSploit
   - Exploit-DB CLI
   - exploitdb
 tags:

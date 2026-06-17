@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Param Miner
   - param-miner
 tags:
   - tool/burpsuite

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Mass Assignment
   - Autobinding Vulnerability
   - Object Injection (Mass Assignment)
   - Unsafe Mass Assignment

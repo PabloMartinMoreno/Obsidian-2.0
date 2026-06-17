@@ -1,7 +1,6 @@
 ---
 aliases:
   - wfuzz
-  - Ffuf
   - Fuff
 tags:
   - tool/ffuf

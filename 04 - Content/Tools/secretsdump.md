@@ -1,6 +1,5 @@
 ---
 aliases:
-  - secretsdump
   - secretsdump.py
   - impacket-secretsdump
 tags:

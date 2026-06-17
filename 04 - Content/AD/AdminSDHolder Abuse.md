@@ -1,6 +1,5 @@
 ---
 aliases:
-  - AdminSDHolder Abuse
   - AdminSDHolder
   - SDProp Backdoor
 tags:

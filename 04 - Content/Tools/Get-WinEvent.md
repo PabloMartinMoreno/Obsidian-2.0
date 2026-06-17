@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Get-WinEvent
   - wevtutil
   - PowerShell DFIR
 tags:

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Credential Guard Bypass
   - CredGuard Bypass
   - Bypass de Credential Guard
 tags:

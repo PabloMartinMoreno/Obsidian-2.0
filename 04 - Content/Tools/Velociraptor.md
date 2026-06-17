@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Velociraptor
   - VQL
 tags:
   - tool/velociraptor

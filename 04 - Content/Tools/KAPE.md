@@ -1,6 +1,5 @@
 ---
 aliases:
-  - KAPE
   - Kroll Artifact Parser and Extractor
 tags:
   - tool/kape

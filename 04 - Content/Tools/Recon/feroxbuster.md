@@ -1,6 +1,5 @@
 ---
 aliases:
-  - FeroxBuster
   - ferox
 tags:
   - tool/feroxbuster

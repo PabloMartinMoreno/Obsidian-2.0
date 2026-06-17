@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Nmap
   - Network Mapper
 tags:
   - tool/nmap

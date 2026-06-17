@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Rubeus
 tags:
   - tool/rubeus
   - technique/credential-access

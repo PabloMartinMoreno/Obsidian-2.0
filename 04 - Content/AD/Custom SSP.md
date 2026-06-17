@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Custom SSP
   - Malicious SSP
   - memssp
 tags:

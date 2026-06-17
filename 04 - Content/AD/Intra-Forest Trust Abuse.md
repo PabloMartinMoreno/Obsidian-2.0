@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Intra-Forest Trust Abuse
   - Child to Parent Domain
 tags:
   - technique/privilege-escalation

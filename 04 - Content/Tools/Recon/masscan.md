@@ -1,7 +1,5 @@
 ---
 aliases:
-  - masscan
-  - MASSCAN
 tags:
   - tool/masscan
   - technique/recon/active

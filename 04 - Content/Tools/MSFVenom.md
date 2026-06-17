@@ -6,7 +6,6 @@ aliases:
   - "Web Shell Generation"
   - "Compiling Exploits from Source"
   - "Cross-Compilation Techniques"
-  - msfvenom
   - Metasploit Payload Generator
 tags:
   - technique/execution

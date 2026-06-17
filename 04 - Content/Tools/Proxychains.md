@@ -1,6 +1,5 @@
 ---
 aliases:
-  - proxychains
   - proxychains4
   - proxychains-ng
 tags:

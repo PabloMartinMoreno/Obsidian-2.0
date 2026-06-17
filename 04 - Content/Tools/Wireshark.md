@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Wireshark
   - tshark
   - PCAP Analysis
 tags:

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Chainsaw
 tags:
   - tool/chainsaw
   - env/windows

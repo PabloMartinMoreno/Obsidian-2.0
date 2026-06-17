@@ -1,7 +1,5 @@
 ---
 aliases:
-  - Kerbrute
-  - kerbrute
 tags:
   - tool/kerbrute
   - technique/credential-access

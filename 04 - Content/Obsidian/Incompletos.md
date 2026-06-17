@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Incompletos
 tags:
   - meta/index
 cssclasses:

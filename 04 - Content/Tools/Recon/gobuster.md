@@ -1,6 +1,5 @@
 ---
 aliases:
-  - GoBuster
 tags:
   - tool/gobuster
   - technique/enumeration

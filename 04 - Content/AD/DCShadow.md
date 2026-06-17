@@ -1,6 +1,5 @@
 ---
 aliases:
-  - DCShadow
   - DC Shadow Attack
 tags:
   - technique/persistence

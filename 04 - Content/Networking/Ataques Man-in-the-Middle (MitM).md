@@ -2,7 +2,6 @@
 aliases:
   - MitM
   - Man-in-the-Middle
-  - Ataques Man-in-the-Middle (MitM)
   - MITM
 tags:
   - technique/mitm

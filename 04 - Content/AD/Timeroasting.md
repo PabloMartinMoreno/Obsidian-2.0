@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Timeroasting
   - Trustroasting
   - NTP Roasting
 tags:

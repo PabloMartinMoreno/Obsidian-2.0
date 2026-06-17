@@ -1,7 +1,6 @@
 ---
 aliases:
   - YARA Rules
-  - yara
 tags:
   - tool/yara
   - topic/detection

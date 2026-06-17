@@ -3,7 +3,6 @@ aliases:
   - Shellshock
   - cgi-bin
   - Web Vulnerability Scanning
-  - Nikto
 tags:
   - tool/nikto
   - technique/recon/active

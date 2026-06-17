@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Hashcat
 tags:
   - technique/credential-access
   - tool/hashcat

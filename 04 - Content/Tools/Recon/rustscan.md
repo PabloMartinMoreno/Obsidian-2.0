@@ -1,6 +1,5 @@
 ---
 aliases:
-  - RustScan
 tags:
   - tool/rustscan
   - technique/recon/active

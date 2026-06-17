@@ -1,7 +1,5 @@
 ---
 aliases:
-  - evil-winrm
-  - Evil-WinRM
 tags:
   - tool/evil-winrm
   - technique/lateral-movement

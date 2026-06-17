@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Mimikatz
   - Mimikatz Cheatsheet
   - mimikatz.exe
   - kiwi

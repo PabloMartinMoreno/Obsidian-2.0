@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Inter-Forest Trust Abuse
   - Cross-Forest Trust Abuse
   - Forest Trust Attack
 tags:

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - PowerView
   - PowerView.ps1
   - PowerView-Dev
 tags:

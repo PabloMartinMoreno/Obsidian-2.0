@@ -1,6 +1,5 @@
 ---
 aliases:
-  - enum4linux-ng
   - enum4linux
   - e4lng
 tags:

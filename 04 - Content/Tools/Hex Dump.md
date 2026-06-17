@@ -2,7 +2,6 @@
 aliases:
   - hexdump
   - xxd
-  - hex dump
 tags:
   - tool/hexdump
   - tool/xxd

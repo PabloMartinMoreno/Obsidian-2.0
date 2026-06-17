@@ -1,6 +1,5 @@
 ---
 aliases:
-  - DSRM Backdoor
   - Directory Services Restore Mode
   - DSRM Abuse
 tags:

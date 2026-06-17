@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Recollection
 tags:
   - topic/forensics
   - tool/volatility

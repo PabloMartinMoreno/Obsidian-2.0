@@ -1,6 +1,5 @@
 ---
 aliases:
-  - WhatWeb
 tags:
   - tool/whatweb
   - technique/recon/active

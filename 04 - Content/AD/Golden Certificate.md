@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Golden Certificate
   - CA Key Theft
   - DPERSIST1
 tags:

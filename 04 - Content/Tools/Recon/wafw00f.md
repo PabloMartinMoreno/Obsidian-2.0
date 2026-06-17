@@ -1,6 +1,5 @@
 ---
 aliases:
-  - WAFW00F
 tags:
   - tool/wafw00f
   - technique/recon/active

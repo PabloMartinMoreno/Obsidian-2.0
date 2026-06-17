@@ -3,7 +3,6 @@ aliases:
   - "EternalBlue (SMB Vulnerability)"
   - "PrintNightmare (SMB Vulnerability)"
   - "Zerologon (SMB Vulnerability)"
-  - Samba
 tags:
   - env/linux
   - technique/recon/active

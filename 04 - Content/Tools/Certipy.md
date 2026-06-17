@@ -1,6 +1,5 @@
 ---
 aliases:
-  - certipy
   - Certipy-AD
 tags:
   - tool/certipy

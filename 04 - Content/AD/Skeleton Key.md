@@ -1,6 +1,5 @@
 ---
 aliases:
-  - Skeleton Key
 tags:
   - asset/active-directory
   - technique/persistence

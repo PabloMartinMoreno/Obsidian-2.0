@@ -1,6 +1,5 @@
 ---
 aliases:
-  - hydra
   - THC-Hydra
 tags:
   - tool/hydra

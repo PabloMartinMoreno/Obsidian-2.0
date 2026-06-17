@@ -1,6 +1,5 @@
 ---
 aliases:
-  - SQLmap
 tags:
   - technique/execution
   - vuln/sqli
