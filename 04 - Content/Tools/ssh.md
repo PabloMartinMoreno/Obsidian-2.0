@@ -26,7 +26,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué hace |
+| **Comando** | **Qué hace** |
 |---|---|
 | `ssh user@host` | Conexión básica (puerto 22) |
 | `ssh -p 2222 user@host` | Puerto no estándar |
@@ -40,7 +40,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-p puerto` | Puerto del servidor (default 22) |
 | `-i clave` | Archivo de clave privada |

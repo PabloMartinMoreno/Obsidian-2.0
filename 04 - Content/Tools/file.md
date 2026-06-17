@@ -26,7 +26,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué obtenés | Cuándo |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `file archivo` | Tipo del archivo (`ASCII text`, `PNG image data`...) | Identificación básica |
 | `file -b archivo` | Solo el tipo, sin el nombre | Para scripts/pipes |
@@ -39,7 +39,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-b` / `--brief` | Solo el tipo, sin el nombre del archivo |
 | `-i` / `--mime` | Muestra el tipo MIME |

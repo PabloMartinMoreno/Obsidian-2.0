@@ -27,7 +27,7 @@ linked:
 
 ## Navegación (dentro de more)
 
-| Tecla | Acción |
+| **Tecla** | **Acción** |
 |---|---|
 | `Espacio` | Avanza una página |
 | `Enter` | Avanza una línea |
@@ -42,7 +42,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-num` | Líneas por pantalla (ej. `more -10 file`) |
 | `-d` | Mensajes de error amigables |

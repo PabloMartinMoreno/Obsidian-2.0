@@ -25,7 +25,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué hace | Cuándo |
+| **Comando** | **Qué hace** | **Cuándo** |
 |---|---|---|
 | `chmod +x script.sh` | Hace ejecutable | Correr un script |
 | `chmod 600 id_rsa` | Solo dueño rw | Claves privadas SSH |
@@ -40,7 +40,7 @@ linked:
 
 ## Modo Simbólico
 
-| Componente | Valores |
+| **Componente** | **Valores** |
 |---|---|
 | **Destinatario** | `u` usuario/dueño · `g` grupo · `o` otros · `a` todos (=`ugo`) |
 | **Operador** | `+` agregar · `-` quitar · `=` establecer exacto |
@@ -59,7 +59,7 @@ chmod u+x,go-w archivo # combinar con coma
 
 `4` lectura · `2` escritura · `1` ejecución → se **suman** por cada terna (dueño / grupo / otros).
 
-| Octal | Permisos | Uso típico |
+| **Octal** | **Permisos** | **Uso típico** |
 |---|---|---|
 | `644` | `rw- r-- r--` | Archivos |
 | `755` | `rwx r-x r-x` | Directorios, binarios |

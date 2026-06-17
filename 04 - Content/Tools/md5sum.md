@@ -28,7 +28,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué hace |
+| **Comando** | **Qué hace** |
 |---|---|
 | `md5sum archivo` | Hash del archivo |
 | `md5sum a.bin b.bin c.bin` | Hash de varios → comparar para detectar **duplicados** |
@@ -42,7 +42,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-c` | Verifica hashes desde un archivo `.md5` |
 | `-b` | Trata la entrada como binaria |

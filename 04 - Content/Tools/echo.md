@@ -24,7 +24,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué hace |
+| **Comando** | **Qué hace** |
 |---|---|
 | `echo "Hola, $USER"` | Expande variables |
 | `echo -n "txt"` | Sin salto de línea final |
@@ -38,7 +38,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-n` | No imprime el salto de línea final |
 | `-e` | Habilita escapes (`\n` nueva línea, `\t` tab) |
@@ -48,7 +48,7 @@ linked:
 
 ## Variables de Entorno Útiles
 
-| Comando | Muestra |
+| **Comando** | **Muestra** |
 |---|---|
 | `echo $?` | Exit code del último comando (`0` = éxito) |
 | `echo $PATH` | Directorios donde el shell busca ejecutables (relevante para **PATH hijacking**) |

@@ -24,7 +24,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué obtenés | Cuándo |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `echo "hello" \| tr 'a-z' 'A-Z'` | Minúsculas → mayúsculas | Normalizar texto |
 | `tr -d '0-9' < file` | Elimina los dígitos | Limpiar |
@@ -38,7 +38,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-d` | **Elimina** los caracteres de `set1` |
 | `-s` | **Comprime** (squeeze) repeticiones de `set1` a un solo carácter |

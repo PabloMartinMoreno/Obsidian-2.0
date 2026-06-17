@@ -43,7 +43,7 @@ Cada campo: valor, rango (`9-18`), lista (`1,15`), paso (`*/15`) o `*` (cualquie
 
 ## Comandos
 
-| Comando | Qué hace |
+| **Comando** | **Qué hace** |
 |---|---|
 | `crontab -e` | Edita el crontab del usuario |
 | `crontab -l` | Lista las tareas programadas |
@@ -54,7 +54,7 @@ Cada campo: valor, rango (`9-18`), lista (`1,15`), paso (`*/15`) o `*` (cualquie
 
 ## Ejemplos de Schedule
 
-| Entrada | Cuándo |
+| **Entrada** | **Cuándo** |
 |---|---|
 | `30 2 * * * /script.sh` | Todos los días 2:30 AM |
 | `0 17 * * 1 /cmd` | Lunes 5:00 PM |

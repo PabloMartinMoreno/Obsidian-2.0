@@ -24,7 +24,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué obtenés | Cuándo |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `tail -f /var/log/apache2/access.log` | Sigue el log en tiempo real | Monitoreo en vivo |
 | `tail -n 50 file.log` | Últimas 50 líneas | Final de un archivo largo |
@@ -38,7 +38,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-n N` | Últimas N líneas (`-n +N` = desde la línea N) |
 | `-f` | Follow: sigue el crecimiento del archivo |

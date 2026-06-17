@@ -24,7 +24,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué obtenés | Cuándo |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `diff a.txt b.txt` | Líneas que difieren | Comparación rápida |
 | `diff -u a.txt b.txt` | Formato unificado (legible) | El más usado / parches |
@@ -38,7 +38,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-u` | Formato unificado (el estándar para patches) |
 | `-c` | Formato de contexto |

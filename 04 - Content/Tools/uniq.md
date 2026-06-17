@@ -28,7 +28,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué obtenés | Cuándo |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `sort file \| uniq` | Líneas únicas (deduplicado real) | Quitar duplicados |
 | `sort file \| uniq -c` | Cada línea con su nº de ocurrencias | Contar repeticiones |
@@ -41,7 +41,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-c` | Antepone el conteo de ocurrencias |
 | `-d` | Solo líneas duplicadas (consecutivas) |

@@ -25,7 +25,7 @@ linked:
 
 ## Cheatsheet
 
-| **Comando**                                             | **Qué obtenés**                             | **Cuándo**                         |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 | ------------------------------------------------------- | ------------------------------------------- | ---------------------------------- |
 | `grep -rIn 'password' /var/www /opt /home`              | Recursivo + ignora binarios + nº de línea   | Hunt de credenciales en filesystem |
 | `grep -rIn -E 'password\s*=\|api_key\|secret\|token' .` | Secrets por múltiples patrones              | Source code / config               |
@@ -43,7 +43,7 @@ linked:
 
 ## Flags de Referencia
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-i` | Case-insensitive |
 | `-v` | Invierte: líneas que **no** matchean |
@@ -87,7 +87,7 @@ grep -oE 'https?://[^"]+inlanefreight\.com[^"]*' | sort -u
 
 Detalle completo en [[Expresiones regulares]]. Lo grep-específico:
 
-| Patrón | Matchea | Nota |
+| **Patrón** | **Matchea** | **Nota** |
 |---|---|---|
 | `^inicio` / `final$` | Inicio / fin de línea | Anclas |
 | `^inicio.*final$` | Línea que abre y cierra con esos términos | `.*` = cualquier cosa en medio |

@@ -25,7 +25,7 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué obtenés | Cuándo |
+| **Comando** | **Qué obtenés** | **Cuándo** |
 |---|---|---|
 | `sort file` | Orden alfabético | Básico |
 | `sort -u file` | Ordenado + **sin duplicados** | Dedup rápido |
@@ -40,7 +40,7 @@ linked:
 
 ## Opciones
 
-| Flag | Qué hace |
+| **Flag** | **Qué hace** |
 |---|---|
 | `-n` | Orden numérico (no alfabético) |
 | `-r` | Orden inverso (descendente) |
