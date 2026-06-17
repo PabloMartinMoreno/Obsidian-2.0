@@ -1,9 +1,6 @@
 ---
 aliases:
-  - Permisos
-  - Sticky Bit
-  - Permisos Linux
-  - Permisos Especiales
+  - Permissions
 tags:
   - env/linux
   - topic/permissions

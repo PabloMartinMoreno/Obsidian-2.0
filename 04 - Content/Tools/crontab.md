@@ -1,6 +1,5 @@
 ---
 aliases:
-  - crontab
 tags:
   - tool/crontab
   - env/linux

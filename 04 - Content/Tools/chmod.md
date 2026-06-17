@@ -1,6 +1,5 @@
 ---
 aliases:
-  - chmod
 tags:
   - tool/chmod
   - env/linux
@@ -75,7 +74,7 @@ chmod u+x,go-w archivo # combinar con coma
 ## Permisos Especiales
 
 - [[Linux PrivEsc - SUID y SGID]]
-- [[Sticky Bit]]
+- [[Permisos|Sticky Bit]]
 
 ## Referencia
 

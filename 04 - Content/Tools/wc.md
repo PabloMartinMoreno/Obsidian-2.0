@@ -1,6 +1,5 @@
 ---
 aliases:
-  - wc
 tags:
   - tool/wc
   - env/linux

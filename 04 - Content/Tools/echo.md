@@ -1,6 +1,5 @@
 ---
 aliases:
-  - echo
 tags:
   - tool/echo
   - env/linux

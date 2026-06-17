@@ -1,6 +1,5 @@
 ---
 aliases:
-  - less
 tags:
   - tool/less
   - env/linux

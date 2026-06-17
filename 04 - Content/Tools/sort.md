@@ -1,6 +1,5 @@
 ---
 aliases:
-  - sort
 tags:
   - tool/sort
   - env/linux

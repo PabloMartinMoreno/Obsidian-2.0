@@ -1,6 +1,5 @@
 ---
 aliases:
-  - strings
 tags:
   - tool/strings
   - topic/reversing

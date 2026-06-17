@@ -1,6 +1,5 @@
 ---
 aliases:
-  - file
 tags:
   - tool/file
   - env/linux

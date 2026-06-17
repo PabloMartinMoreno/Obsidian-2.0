@@ -1,6 +1,5 @@
 ---
 aliases:
-  - tail
 tags:
   - tool/tail
   - env/linux

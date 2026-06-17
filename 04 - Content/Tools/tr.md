@@ -1,6 +1,5 @@
 ---
 aliases:
-  - tr
 tags:
   - tool/tr
   - env/linux

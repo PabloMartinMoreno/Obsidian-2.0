@@ -1,6 +1,5 @@
 ---
 aliases:
-  - md5sum
 tags:
   - tool/md5sum
   - env/linux

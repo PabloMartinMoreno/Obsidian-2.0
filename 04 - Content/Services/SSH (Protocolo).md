@@ -1,8 +1,6 @@
 ---
 aliases:
-  - SSH (concepto)
   - Secure Shell
-  - Protocolo SSH
 tags:
   - env/linux
   - asset/network

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - diff
 tags:
   - tool/diff
   - env/linux

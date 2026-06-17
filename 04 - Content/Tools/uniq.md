@@ -1,6 +1,5 @@
 ---
 aliases:
-  - uniq
 tags:
   - tool/uniq
   - env/linux

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - ssh
 tags:
   - tool/ssh
   - env/linux

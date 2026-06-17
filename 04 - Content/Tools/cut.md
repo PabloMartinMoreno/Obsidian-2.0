@@ -1,6 +1,5 @@
 ---
 aliases:
-  - cut
 tags:
   - tool/cut
   - env/linux

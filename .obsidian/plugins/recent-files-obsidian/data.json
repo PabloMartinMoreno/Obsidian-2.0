@@ -5,6 +5,10 @@
       "path": "04 - Content/Tools/Common Linux Utilities.md"
     },
     {
+      "basename": "less",
+      "path": "04 - Content/Tools/less.md"
+    },
+    {
       "basename": "grep",
       "path": "04 - Content/Tools/grep.md"
     },

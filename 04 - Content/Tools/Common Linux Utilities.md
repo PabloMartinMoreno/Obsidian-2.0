@@ -1,23 +1,5 @@
 ---
 aliases:
-  - "ROT13"
-  - "7z"
-  - "mktemp"
-  - "watch"
-  - "ls"
-  - "tar"
-  - "netstat"
-  - "ps"
-  - "shred"
-  - "alias"
-  - "readpst"
-  - "mdb-tools"
-  - cat
-  - mkpasswd
-  - getcap
-  - dstat
-  - dev null
-  - "/dev/null"
 tags:
   - tool/linux-utils
   - env/linux
@@ -60,21 +42,21 @@ linked:
 
 ## File / text
 
-| Util | Uso típico en pentest |
-|---|---|
-| `cat <file>` | Mostrar contenido. `cat /etc/passwd`, `cat ~/.ssh/id_rsa` |
-| `more` / `less <file>` | Paginar. `less +F log` (tail-like) |
-| `head -n N` / `tail -n N` | Primeras/últimas N líneas |
-| `tail -f log` | Watch en vivo (log poisoning) |
-| `wc -l` | Contar líneas |
-| `cut -d':' -f1` | Extract columna por delim. `cut -d: -f1 /etc/passwd` |
-| `sort` | Ordenar. `sort -u` (dedup), `sort -n` (numérico), `sort -k2` (col 2) |
-| `uniq -c` | Contar duplicados (requiere sort previo) |
-| `tr 'a-z' 'A-Z'` | Char replace. `tr -d '\n'` (strip newlines) |
-| `diff a b` | Comparar files. `diff -r dir1 dir2` |
-| `strings binary` | Print ASCII strings de binario. Hunt credentials |
-| `file unknown.bin` | Identify file type (ELF, PE, image, etc.) |
-| `xxd` / `hexdump -C` | Hex dump |
+| Util                      | Uso típico en pentest                                                |
+| ------------------------- | -------------------------------------------------------------------- |
+| `cat <file>`              | Mostrar contenido. `cat /etc/passwd`, `cat ~/.ssh/id_rsa`            |
+| `more` / `less <file>`    | Paginar. `less +F log` (tail-like)                                   |
+| `head -n N` / `tail -n N` | Primeras/últimas N líneas                                            |
+| `tail -f log`             | Watch en vivo (log poisoning)                                        |
+| `wc -l`                   | Contar líneas                                                        |
+| `cut -d':' -f1`           | Extract columna por delim. `cut -d: -f1 /etc/passwd`                 |
+| `sort`                    | Ordenar. `sort -u` (dedup), `sort -n` (numérico), `sort -k2` (col 2) |
+| `uniq -c`                 | Contar duplicados (requiere sort previo)                             |
+| `tr 'a-z' 'A-Z'`          | Char replace. `tr -d '\n'` (strip newlines)                          |
+| `diff a b`                | Comparar files. `diff -r dir1 dir2`                                  |
+| `strings binary`          | Print ASCII strings de binario. Hunt credentials                     |
+| `file unknown.bin`        | Identify file type (ELF, PE, image, etc.)                            |
+| `xxd` / `hexdump -C`      | Hex dump                                                             |
 
 ---
 

@@ -1,6 +1,5 @@
 ---
 aliases:
-  - sed
 tags:
   - tool/sed
   - env/linux

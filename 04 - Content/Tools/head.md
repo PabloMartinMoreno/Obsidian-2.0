@@ -1,6 +1,5 @@
 ---
 aliases:
-  - head
 tags:
   - tool/head
   - env/linux
