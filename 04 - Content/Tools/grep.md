@@ -25,17 +25,18 @@ linked:
 
 ## Cheatsheet
 
-| Comando | Qué obtenés | Cuándo |
-|---|---|---|
-| `grep -rIn 'password' /var/www /opt /home` | Recursivo + ignora binarios + nº de línea | Hunt de credenciales en filesystem |
-| `grep -rIn -E 'password\s*=\|api_key\|secret\|token' .` | Secrets por múltiples patrones | Source code / config |
-| `grep -i 'admin' file` | Case-insensitive | No sabés el casing |
-| `grep -v '#' file \| grep -v '^$'` | Excluye comentarios + líneas vacías | Limpiar config files |
-| `grep -A3 -B1 'error' log` | Contexto: 3 líneas after, 1 before | Análisis de logs |
-| `grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' file` | Solo el match (IPs) | Extraer IOCs/datos |
-| `grep -l 'pattern' *.md` | Solo nombres de archivo con match | Filtrar qué archivos tocar |
-| `grep -c 'pattern' file` | Cuenta de líneas que matchean | Stats rápidas |
-| `... \| grep -vE 'Wrong\|Please enter'` | Filtra ruido de un stream | Pipes (nc, curl) |
+| **Comando**                                             | **Qué obtenés**                             | **Cuándo**                         |
+| ------------------------------------------------------- | ------------------------------------------- | ---------------------------------- |
+| `grep -rIn 'password' /var/www /opt /home`              | Recursivo + ignora binarios + nº de línea   | Hunt de credenciales en filesystem |
+| `grep -rIn -E 'password\s*=\|api_key\|secret\|token' .` | Secrets por múltiples patrones              | Source code / config               |
+| `grep -i 'admin' file`                                  | Case-insensitive                            | No sabés el casing                 |
+| `grep -v '#' file \| grep -v '^$'`                      | Excluye comentarios + líneas vacías         | Limpiar config files               |
+| `grep -A3 -B1 'error' log`                              | Contexto: 3 líneas after, 1 before          | Análisis de logs                   |
+| `grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' file`       | Solo el match (IPs)                         | Extraer IOCs/datos                 |
+| `grep -l 'pattern' *.md`                                | Solo nombres de archivo con match           | Filtrar qué archivos tocar         |
+| `grep -c 'pattern' file`                                | Cuenta de líneas que matchean               | Stats rápidas                      |
+| `grep -vx 'pattern' file`                               | Líneas que **no** son exactamente el patrón | Invertir match de línea completa   |
+| `... \| grep -vE 'Wrong\|Please enter'`                 | Filtra ruido de un stream                   | Pipes (nc, curl)                   |
 ^grep-cheatsheet
 
 ---
@@ -91,6 +92,7 @@ Detalle completo en [[Expresiones regulares]]. Lo grep-específico:
 | `^inicio` / `final$` | Inicio / fin de línea | Anclas |
 | `^inicio.*final$` | Línea que abre y cierra con esos términos | `.*` = cualquier cosa en medio |
 | `[0-9]$` | Línea que termina en dígito | Clase de caracteres |
+| `[ \t]$` | Línea que termina en espacio o tab | Detectar trailing whitespace |
 | `\bword\b` | `word` como palabra completa | Requiere `-P` (PCRE); o usar `-w` |
 | `'.*?'` (lazy) | El match más **corto** entre comillas | Requiere `-P`; sin `?` es greedy (captura todo) |
 | `[0-9]{3}-[0-9]{3}-[0-9]{4}` | Cuantificadores `{n}` | Requiere `-E` o `-P` |

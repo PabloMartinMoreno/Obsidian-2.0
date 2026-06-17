@@ -13,85 +13,57 @@ tertiary categories:
 kind: Tool
 linked:
   - "[[Common Linux Utilities]]"
+  - "[[uniq]]"
 ---
-
 # Comando `sort`
 
-## Definición 
-
-> [!INFO] sort
->Se utiliza para ordenar líneas de texto en un archivo o datos de entrada proporcionados.
+> [!info] sort
+> Ordena líneas de texto de un archivo o de stdin. Por defecto ordena alfabéticamente. Sintaxis: `sort [opciones] [archivo]`.
 ^definicion
-## Uso Básico:
 
-1. **Ordenar un Archivo:**
-   ```bash
-   sort archivo.txt
-   ```
-   Esto ordenará las líneas del archivo `archivo.txt` alfabéticamente y mostrará el resultado en la salida estándar.
+---
 
-2. **Ordenar la Salida de otro Comando:**
-   ```bash
-   comando_generador | sort
-   ```
-   Puedes usar `sort` para ordenar la salida de otro comando.
+## Cheatsheet
 
-## Opciones Útiles:
+| Comando | Qué obtenés | Cuándo |
+|---|---|---|
+| `sort file` | Orden alfabético | Básico |
+| `sort -u file` | Ordenado + **sin duplicados** | Dedup rápido |
+| `sort -n file` | Orden numérico | Números (no lexicográfico) |
+| `sort -rn file` | Numérico descendente | Top-N (con `head`) |
+| `comando \| sort \| uniq -c \| sort -rn` | Frecuencia ordenada | Contar y rankear ([[uniq]]) |
+| `sort -t',' -k2,2n datos.csv` | Por la 2ª columna, numérico | CSV/TSV |
+| `sort -k2,2 file` | Por el 2º campo (sep. por espacios) | Columnas |
+^sort-cheatsheet
 
-- **Orden Numérico (`-n`):**
-  ```bash
-  sort -n archivo.txt
-  ```
-  Ordena las líneas numéricamente en lugar de alfabéticamente.
+---
 
-- **Orden Revertido (`-r`):**
-  ```bash
-  sort -r archivo.txt
-  ```
-  Ordena en orden descendente.
+## Opciones
 
-- **Ignorar Mayúsculas y Minúsculas (`-f`):**
-  ```bash
-  sort -f archivo.txt
-  ```
-  Realiza un ordenamiento ignorando las diferencias entre mayúsculas y minúsculas.
+| Flag | Qué hace |
+|---|---|
+| `-n` | Orden numérico (no alfabético) |
+| `-r` | Orden inverso (descendente) |
+| `-u` | Elimina líneas duplicadas (unique) |
+| `-f` | Ignora mayúsculas/minúsculas |
+| `-k N,N` | Ordena por el campo N |
+| `-t C` | Define el separador de campo (ej. `-t','`) |
+| `-o file` | Guarda la salida en un archivo (puede ser el mismo) |
+| `-h` | Orden numérico "humano" (`2K`, `1G`) |
 
-- **Ordenar por Campo (`-k`):**
-  ```bash
-  sort -k 2,2 archivo.txt
-  ```
-  Ordena por el segundo campo del archivo (por defecto, los campos están separados por espacios en blanco).
+---
 
-- **Ordenar un Archivo sin Modificar (`-o`):**
-  ```bash
-  sort archivo.txt -o archivo_ordenado.txt
-  ```
-  Guarda la salida ordenada en un nuevo archivo (`archivo_ordenado.txt`) sin modificar el original.
+## Ejemplos
 
-## Ejemplos:
+```bash
+# Números (no lexicográfico)
+echo -e "5\n2\n10\n1\n8" | sort -n        # → 1 2 5 8 10
 
-- **Ordenar y Mostrar Números:**
-  ```bash
-  echo -e "5\n2\n10\n1\n8" | sort -n
-  ```
-  Salida: 
-  ```
-  1
-  2
-  5
-  8
-  10
-  ```
+# Ordenar in-place / a archivo nuevo (sin modificar el original con redirección)
+sort -r archivo.txt -o archivo_ordenado.txt
 
-- **Ordenar un Archivo y Guardar la Salida:**
-  ```bash
-  sort -r archivo.txt -o archivo_ordenado.txt
-  ```
-  Esto ordena `archivo.txt` en orden descendente y guarda el resultado en `archivo_ordenado.txt`.
+# CSV: ordenar por la 2ª columna (edades) numéricamente
+sort -t',' -k2,2n datos.csv
+```
 
-- **Ordenar por Campo Específico:**
-  Supongamos que tienes un archivo CSV (`datos.csv`) con nombres en la primera columna y edades en la segunda:
-  ```bash
-  sort -t',' -k2,2n datos.csv
-  ```
-  Esto ordenará `datos.csv` por la segunda columna (edades) numéricamente.
+> `-o` permite sobrescribir el mismo archivo de forma segura (`sort file -o file`), cosa que `sort file > file` **rompe**.

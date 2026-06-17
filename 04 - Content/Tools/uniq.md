@@ -13,106 +13,52 @@ tertiary categories:
 kind: Tool
 linked:
   - "[[Common Linux Utilities]]"
+  - "[[sort]]"
 ---
-
 # Comando `uniq`
 
-### Definición 
+> [!info] uniq
+> Filtra o cuenta líneas únicas/duplicadas. Sintaxis: `uniq [opciones] [archivo]`.
 
-> [!INFO] uniq
->Se utiliza para filtrar o encontrar líneas únicas (o líneas duplicadas) en un archivo de texto.
+> [!warning] Solo colapsa duplicados **consecutivos**
+> `uniq` compara solo líneas adyacentes. Si los duplicados no están seguidos, **no** los detecta. Por eso casi siempre va con `sort` antes: `sort file | uniq`.
 ^definicion
 
-### Sintaxis básica:
-```
-uniq [opciones] [archivo]
-```
+---
 
-### Opciones comunes:
-- `-c`: Muestra el número de ocurrencias de cada línea junto con la línea.
-- `-d`: Muestra solo las líneas duplicadas, es decir, aquellas que aparecen más de una vez consecutivamente.
-- `-i`: Ignora las diferencias entre mayúsculas y minúsculas al comparar líneas.
-- `-u`: Muestra solo las líneas que no están duplicadas, es decir, aquellas que aparecen solo una vez.
+## Cheatsheet
 
-### Ejemplos de uso:
+| Comando | Qué obtenés | Cuándo |
+|---|---|---|
+| `sort file \| uniq` | Líneas únicas (deduplicado real) | Quitar duplicados |
+| `sort file \| uniq -c` | Cada línea con su nº de ocurrencias | Contar repeticiones |
+| `sort file \| uniq -c \| sort -rn` | Ranking por frecuencia | Top de IPs/usuarios/errores |
+| `sort file \| uniq -d` | Solo las que aparecen >1 vez | Hallar duplicados |
+| `sort file \| uniq -u` | Solo las que aparecen 1 vez | Líneas únicas reales |
+^uniq-cheatsheet
 
-1. **Mostrar líneas únicas en un archivo:**
-   ```
-   uniq archivo.txt
-   ```
+---
 
-2. **Mostrar líneas únicas y contar ocurrencias:**
-   ```
-   uniq -c archivo.txt
-   ```
+## Opciones
 
-3. **Mostrar solo líneas duplicadas:**
-   ```
-   uniq -d archivo.txt
-   ```
+| Flag | Qué hace |
+|---|---|
+| `-c` | Antepone el conteo de ocurrencias |
+| `-d` | Solo líneas duplicadas (consecutivas) |
+| `-u` | Solo líneas no duplicadas |
+| `-i` | Ignora mayúsculas/minúsculas |
 
-4. **Mostrar solo líneas únicas (sin duplicados):**
-   ```
-   uniq -u archivo.txt
-   ```
+---
 
-### Ejemplo detallado:
+## Por qué necesita `sort`
 
-Supongamos que tenemos un archivo llamado `frutas.txt` con el siguiente contenido:
-
+Archivo `frutas.txt`:
 ```
 manzana
 naranja
 manzana
 pera
-naranja
-pera
 ```
 
-- Para mostrar solo las líneas únicas:
-  ```
-  uniq frutas.txt
-  ```
-  Salida:
-  ```
-  manzana
-  naranja
-  manzana
-  pera
-  naranja
-  pera
-  ```
-
-- Para mostrar las líneas únicas y contar las ocurrencias:
-  ```
-  uniq -c frutas.txt
-  ```
-  Salida:
-  ```
-      1 manzana
-      1 naranja
-      2 manzana
-      1 pera
-      1 naranja
-      1 pera
-  ```
-
-- Para mostrar solo las líneas duplicadas:
-  ```
-  uniq -d frutas.txt
-  ```
-  Salida:
-  ```
-  manzana
-  naranja
-  ```
-
-- Para mostrar solo las líneas únicas (sin duplicados):
-  ```
-  uniq -u frutas.txt
-  ```
-  Salida:
-  ```
-  naranja
-  pera
-  ```
+- `uniq frutas.txt` → no colapsa nada (las "manzana" no están seguidas).
+- `sort frutas.txt | uniq -c` → `2 manzana`, `1 naranja`, `1 pera` (correcto).

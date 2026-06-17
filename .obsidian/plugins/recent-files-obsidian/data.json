@@ -5,6 +5,14 @@
       "path": "04 - Content/Tools/grep.md"
     },
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQLi - Out of Band",
+      "path": "04 - Content/Web/Injection/SQLi - Out of Band.md"
+    },
+    {
       "basename": "Active Directory",
       "path": "02 - Secondary Categories/Active Directory.md"
     },

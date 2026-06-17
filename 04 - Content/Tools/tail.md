@@ -14,129 +14,35 @@ kind: Tool
 linked:
   - "[[Common Linux Utilities]]"
 ---
+# Comando `tail`
 
-# tail
-
-## Definición 
-
-> [!INFO] tail
->Se utiliza para mostrar las últimas líneas de un archivo de texto. Es especialmente útil para monitorear archivos de log en tiempo real, verificar el final de archivos largos y realizar análisis rápidos sin necesidad de abrir el archivo completo.
+> [!info] tail
+> Muestra las últimas líneas de un archivo (por defecto **10**). Sin archivo, lee de stdin. Clave para **monitorear logs en tiempo real** (`-f`). Su opuesto es `head`.
 ^definicion
 
-## Uso básico
+---
 
-La sintaxis básica de `tail` es la siguiente:
+## Cheatsheet
 
-```bash
-tail [opciones] [archivo]
-```
+| Comando | Qué obtenés | Cuándo |
+|---|---|---|
+| `tail -f /var/log/apache2/access.log` | Sigue el log en tiempo real | Monitoreo en vivo |
+| `tail -n 50 file.log` | Últimas 50 líneas | Final de un archivo largo |
+| `tail -n 50 file.log \| grep ERROR` | Últimas 50 + filtro | Errores recientes ([[grep]]) |
+| `tail -f a.log b.log` | Sigue varios archivos a la vez | Multi-log |
+| `tail -c 200 file.bin` | Últimos 200 **bytes** | Binarios / final exacto |
+| `tail --retry -f file.log` | Espera a que el archivo aparezca | Log que aún no existe |
+^tail-cheatsheet
 
-Por defecto, `tail` muestra las últimas 10 líneas del archivo especificado. Si no se proporciona un archivo, `tail` leerá desde la entrada estándar.
+---
 
-## Opciones comunes
+## Opciones
 
-### -n, --lines
-
-Esta opción permite especificar el número de líneas que se desean mostrar. Por ejemplo:
-
-```bash
-tail -n 20 archivo.txt
-```
-
-Este comando muestra las últimas 20 líneas de `archivo.txt`.
-
-### -f, --follow
-
-La opción `-f` es utilizada para seguir el crecimiento de un archivo en tiempo real. Es ideal para monitorear archivos de log que se actualizan continuamente.
-
-```bash
-tail -f archivo.log
-```
-
-Con este comando, `tail` mostrará nuevas líneas a medida que se agreguen al final de `archivo.log`.
-
-### -c, --bytes
-
-Permite mostrar los últimos bytes de un archivo en lugar de las líneas. Por ejemplo:
-
-```bash
-tail -c 100 archivo.txt
-```
-
-Muestra los últimos 100 bytes de `archivo.txt`.
-
-### --retry
-
-Esta opción hace que `tail` intente acceder al archivo hasta que esté disponible, útil cuando se espera que el archivo aparezca eventualmente.
-
-```bash
-tail --retry -f archivo.log
-```
-
-### -q, --quiet, --silent
-
-Supprime los encabezados de los archivos cuando se está trabajando con múltiples archivos.
-
-```bash
-tail -q -n 5 archivo1.txt archivo2.txt
-```
-
-### -v, --verbose
-
-Muestra encabezados de archivos incluso cuando se trabaja con un solo archivo.
-
-```bash
-tail -v archivo.txt
-```
-
-## Ejemplos prácticos
-
-### Ver las últimas 15 líneas de un archivo
-
-```bash
-tail -n 15 /var/log/syslog
-```
-
-### Monitorear un archivo de log en tiempo real
-
-```bash
-tail -f /var/log/apache2/access.log
-```
-
-### Mostrar los últimos 200 bytes de un archivo
-
-```bash
-tail -c 200 archivo.bin
-```
-
-### Seguir múltiples archivos simultáneamente
-
-```bash
-tail -f archivo1.log archivo2.log
-```
-
-Este comando mostrará las actualizaciones en ambos archivos en tiempo real.
-
-## Casos de uso
-
-### Depuración de aplicaciones
-
-Al desarrollar o depurar aplicaciones, es común revisar los archivos de log para identificar errores o comportamientos inesperados. `tail -f` permite monitorear estos archivos en tiempo real mientras se ejecuta la aplicación.
-
-### Supervisión del sistema
-
-Los administradores de sistemas utilizan `tail` para supervisar logs del sistema, como los logs de seguridad, de red o de servicios específicos, facilitando la detección de problemas o actividades inusuales.
-
-### Análisis de datos
-
-En situaciones donde se generan grandes volúmenes de datos, `tail` permite acceder rápidamente a las últimas entradas sin cargar el archivo completo, optimizando el tiempo y recursos.
-
-## Combinación con otros comandos
-
-`tail` se puede combinar con otros comandos mediante tuberías para realizar operaciones más complejas. Por ejemplo, para buscar una palabra específica en las últimas 50 líneas de un archivo:
-
-```bash
-tail -n 50 archivo.log | grep "ERROR"
-```
-
-Este comando muestra las últimas 50 líneas de `archivo.log` y filtra aquellas que contienen la palabra "ERROR".
+| Flag | Qué hace |
+|---|---|
+| `-n N` | Últimas N líneas (`-n +N` = desde la línea N) |
+| `-f` | Follow: sigue el crecimiento del archivo |
+| `-c N` | Últimos N bytes (no líneas) |
+| `--retry` | Reintenta abrir el archivo hasta que exista (con `-f`) |
+| `-q` | Sin encabezados al usar varios archivos |
+| `-v` | Fuerza el encabezado incluso con un solo archivo |

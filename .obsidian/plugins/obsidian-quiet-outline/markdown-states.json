@@ -1,6 +1,6 @@
 {
   "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
-    "scroll": 0,
+    "scroll": 35.161458333333336,
     "cursor": {
       "from": {
         "line": 30,
@@ -3437,14 +3437,14 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/grep.md": {
-    "scroll": 0,
+    "scroll": 67.0014880952381,
     "cursor": {
       "from": {
-        "line": 17,
+        "line": 26,
         "ch": 0
       },
       "to": {
-        "line": 17,
+        "line": 26,
         "ch": 0
       }
     },
@@ -3963,6 +3963,20 @@
       },
       "to": {
         "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/SQLi - Out of Band.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
         "ch": 0
       }
     },
