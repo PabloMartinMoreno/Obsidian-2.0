@@ -4081,14 +4081,14 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 46,
+    "scroll": 47.5,
     "cursor": {
       "from": {
-        "line": 62,
+        "line": 64,
         "ch": 0
       },
       "to": {
-        "line": 62,
+        "line": 64,
         "ch": 0
       }
     },
@@ -4118,6 +4118,20 @@
       "to": {
         "line": 44,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/resultado wpscan www.md": {
+    "scroll": 75.5521327014218,
+    "cursor": {
+      "from": {
+        "line": 87,
+        "ch": 251
+      },
+      "to": {
+        "line": 87,
+        "ch": 251
       }
     },
     "expandedKeys": []

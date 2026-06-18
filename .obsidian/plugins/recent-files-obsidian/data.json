@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "resultado wpscan www",
+      "path": "04 - Content/Process/resultado wpscan www.md"
+    },
+    {
       "basename": "CWES - Examen",
       "path": "04 - Content/Process/CWES - Examen.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Bandit 18",
       "path": "05 - Writeups/OverTheWire/Bandit 18.md"
-    },
-    {
-      "basename": "Bandit 17",
-      "path": "05 - Writeups/OverTheWire/Bandit 17.md"
     }
   ],
   "omittedPaths": [],

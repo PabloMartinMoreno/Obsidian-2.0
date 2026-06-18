@@ -59,6 +59,8 @@ Dentro de las carpetas de Elementor, también se cargan los siguientes component
 wpscan encontró: 
 ```
 sudo wpscan --url http://www.trilocor.local/ --enumerate --api-token uaOXAeFwEMjXLL0daf2PKFC8TCmu9xHtQdBv2sfKb4c
-
-
+y
+sudo wpscan --url http://admin.trilocor.local/ --enumerate --api-token uaOXAeFwEMjXLL0daf2PKFC8TCmu9xHtQdBv2sfKb4c
 ```
+
+[[resultado wpscan www]]
