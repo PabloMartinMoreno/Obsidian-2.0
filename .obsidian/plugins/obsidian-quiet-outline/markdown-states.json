@@ -621,14 +621,14 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 21.080729166666668,
+    "scroll": 27.28436018957346,
     "cursor": {
       "from": {
-        "line": 19,
+        "line": 25,
         "ch": 0
       },
       "to": {
-        "line": 19,
+        "line": 25,
         "ch": 0
       }
     },
@@ -1459,7 +1459,7 @@
     "expandedKeys": []
   },
   "04 - Content/Recon/OSINT/Certificate Transparency Logs.md": {
-    "scroll": 0,
+    "scroll": 6.48871181938911,
     "cursor": {
       "from": {
         "line": 6,
@@ -1473,7 +1473,7 @@
     "expandedKeys": []
   },
   "04 - Content/Recon/Subdomain/Subdomains Passive Enumeration.md": {
-    "scroll": 0,
+    "scroll": 3.674641148325359,
     "cursor": {
       "from": {
         "line": 24,
@@ -1687,7 +1687,7 @@
     "expandedKeys": []
   },
   "04 - Content/Recon/WebTech/Web Fingerprinting.md": {
-    "scroll": 0,
+    "scroll": 32.227864583333336,
     "cursor": {
       "from": {
         "line": 30,
@@ -1869,7 +1869,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Checklist.md": {
-    "scroll": 53.96149289099526,
+    "scroll": 54.19820099255583,
     "cursor": {
       "from": {
         "line": 48,
@@ -4081,14 +4081,14 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 59.8251953125,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 72,
+        "line": 2,
         "ch": 14
       },
       "to": {
-        "line": 72,
+        "line": 2,
         "ch": 14
       }
     },
@@ -4137,7 +4137,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/resultado wpscan.md": {
-    "scroll": 77.63744075829383,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 86,

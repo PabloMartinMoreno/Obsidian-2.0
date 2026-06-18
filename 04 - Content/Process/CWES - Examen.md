@@ -1,4 +1,4 @@
-[[CWES]] [[Web Enumeración]] [[Web Explotación]]
+[[CWES]] [[Web Enumeración]] [[Web Explotación]] [[CWES - Checklist]]
 
 ### ip y hosts
 
