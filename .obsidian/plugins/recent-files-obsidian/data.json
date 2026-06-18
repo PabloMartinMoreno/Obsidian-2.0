@@ -1,6 +1,30 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Examen",
+      "path": "04 - Content/Process/CWES - Examen.md"
+    },
+    {
+      "basename": "CWES",
+      "path": "02 - Secondary Categories/CWES.md"
+    },
+    {
+      "basename": "CWES - Carta de Compromiso",
+      "path": "04 - Content/Process/CWES - Carta de Compromiso.md"
+    },
+    {
+      "basename": "Information Leakage",
+      "path": "04 - Content/Web/Fundamentals/Information Leakage.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "Web Fingerprinting",
+      "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
+    },
+    {
       "basename": "CWES - Checklist",
       "path": "04 - Content/Process/CWES - Checklist.md"
     },
@@ -175,22 +199,6 @@
     {
       "basename": "SSL - TLS",
       "path": "04 - Content/Crypto/SSL - TLS.md"
-    },
-    {
-      "basename": "Bandit 14",
-      "path": "05 - Writeups/OverTheWire/Bandit 14.md"
-    },
-    {
-      "basename": "nc",
-      "path": "04 - Content/Tools/Network/nc.md"
-    },
-    {
-      "basename": "Bandit 13",
-      "path": "05 - Writeups/OverTheWire/Bandit 13.md"
-    },
-    {
-      "basename": "SSH (22) - Enumeración",
-      "path": "04 - Content/Services/SSH (22) - Enumeración.md"
     }
   ],
   "omittedPaths": [],

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/CWES - Checklist.md",
+                "file": "02 - Secondary Categories/CWES.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "CWES - Checklist"
+              "title": "CWES"
             }
           }
         ],
@@ -266,9 +266,15 @@
   },
   "active": "a6998b8327f0072f",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES - Examen.md",
+    "02 - Secondary Categories/CWES.md",
+    "04 - Content/Process/CWES - Carta de Compromiso.md",
+    "04 - Content/Web/Fundamentals/Information Leakage.md",
+    "03 - Tertiary Categories/Web Enumeración.md",
+    "04 - Content/Recon/WebTech/Web Fingerprinting.md",
+    "04 - Content/Process/CWES - Checklist.md",
     "04 - Content/Process/CWES - Finding TEMPLATE.md",
     "04 - Content/Process/CWES - Exam Tracker.md",
-    "04 - Content/Process/CWES - Checklist.md",
     "04 - Content/Tools/grep.md",
     "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
     "04 - Content/Tools/Common Linux Utilities.md",
@@ -296,12 +302,6 @@
     "04 - Content/Tools/uniq.md",
     "04 - Content/Tools/tr.md",
     "04 - Content/Tools/tail.md",
-    "04 - Content/Tools/ssh.md",
-    "04 - Content/Tools/sort.md",
-    "04 - Content/Tools/more.md",
-    "04 - Content/Tools/md5sum.md",
-    "04 - Content/Tools/file.md",
-    "04 - Content/Tools/echo.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

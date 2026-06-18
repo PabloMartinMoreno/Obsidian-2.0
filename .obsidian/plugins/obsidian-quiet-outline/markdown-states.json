@@ -588,14 +588,14 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 16.830729166666668,
+    "scroll": 5.593220338983051,
     "cursor": {
       "from": {
-        "line": 15,
+        "line": 18,
         "ch": 0
       },
       "to": {
-        "line": 15,
+        "line": 18,
         "ch": 0
       }
     },
@@ -621,7 +621,7 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 19.254980079681275,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 19,
@@ -1869,7 +1869,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Checklist.md": {
-    "scroll": 20.46746347941567,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 28,
@@ -4034,6 +4034,62 @@
       "to": {
         "line": 6,
         "ch": 9
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Information Leakage.md": {
+    "scroll": 53.212898751733704,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES -.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Carta de Compromiso.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 9
+      },
+      "to": {
+        "line": 32,
+        "ch": 9
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Examen.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 2,
+        "ch": 0
+      },
+      "to": {
+        "line": 2,
+        "ch": 0
       }
     },
     "expandedKeys": []
