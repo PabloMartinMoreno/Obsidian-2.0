@@ -1799,15 +1799,15 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/JavaScript Deobfuscation.md": {
-    "scroll": 0,
+    "scroll": 26.529819694868237,
     "cursor": {
       "from": {
-        "line": 23,
-        "ch": 0
+        "line": 14,
+        "ch": 12
       },
       "to": {
-        "line": 23,
-        "ch": 0
+        "line": 14,
+        "ch": 2
       }
     },
     "expandedKeys": []
@@ -4084,11 +4084,11 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 4,
+        "line": 18,
         "ch": 12
       },
       "to": {
-        "line": 4,
+        "line": 18,
         "ch": 12
       }
     },
