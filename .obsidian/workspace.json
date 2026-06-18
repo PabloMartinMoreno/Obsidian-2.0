@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/resultado wpscan www.md",
+                "file": "04 - Content/Process/CWES - Examen.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "resultado wpscan www"
+              "title": "CWES - Examen"
             }
           }
         ],
@@ -266,8 +266,8 @@
   },
   "active": "a6998b8327f0072f",
   "lastOpenFiles": [
+    "04 - Content/Process/resultado wpscan.md",
     "04 - Content/Process/CWES - Examen.md",
-    "04 - Content/Process/resultado wpscan www.md",
     "04 - Content/Process/CWES - Checklist.md",
     "04 - Content/Tools/JavaScript Deobfuscation.md",
     "02 - Secondary Categories/CWES.md",

