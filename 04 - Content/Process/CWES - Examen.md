@@ -39,3 +39,26 @@ Allow: /wp-admin/admin-ajax.php
 Sitemap: http://admin.trilocor.local/wp-sitemap.xml
 ```
 
+Extraigo los plugins y temas: 
+```
+curl -s http://www.trilocor.local/ | grep plugin
+
+curl -s http://www.trilocor.local/ | grep themes
+```
+encuentro:
+- **Plugin:** Elementor Website Builder
+- **Versión detectada:** **3.7.7**
+    - _Nota:_ Esta versión se confirma tanto en los parámetros de los scripts (`?ver=3.7.7`) como en el objeto de configuración de Javascript (`"version":"3.7.7"`).
+Dentro de las carpetas de Elementor, también se cargan los siguientes componentes y librerías externas con sus respectivas versiones (controladas por el propio plugin o por WordPress):
+- **Elementor Icons (eicons):** Versión **5.16.0** (`?ver=5.16.0`)
+- **Font Awesome (Iconos):** Versión **5.15.3** (`?ver=5.15.3`)
+- **Waypoints (Librería de scroll):** Versión **4.0.2** (`?ver=4.0.2`)
+
+#todo podria hacer fuzzing de usuarios para registrar usuarios existentes en `http://admin.trilocor.local/wp-login.php`
+
+wpscan encontró: 
+```
+sudo wpscan --url http://www.trilocor.local/ --enumerate --api-token uaOXAeFwEMjXLL0daf2PKFC8TCmu9xHtQdBv2sfKb4c
+
+
+```
