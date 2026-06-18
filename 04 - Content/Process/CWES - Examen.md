@@ -1,5 +1,7 @@
 [[CWES]] [[Web Enumeración]] [[Web Explotación]]
 
+### ip y hosts
+
 IP: 
 ```
 10.129.4.195
@@ -19,6 +21,8 @@ y encontré: `admin` el cual agregué también al /etc/hosts:
 10.129.4.195    trilocor.local www.trilocor.local admin.trilocor.local
 ```
 
+### servidor
+
 El servidor es: 
 ```
 curl -Iv http://www.trilocor.local/
@@ -27,6 +31,8 @@ Apache/2.4.41 (Ubuntu)
 ```
 
 Me encuentro con un wordpress 6.0.2 y astra 3.9.2
+
+### robots.txt
 
 También encuentro esto en `robots.txt`: 
 ```
@@ -38,6 +44,8 @@ Allow: /wp-admin/admin-ajax.php
 
 Sitemap: http://admin.trilocor.local/wp-sitemap.xml
 ```
+
+### plugins y temas
 
 Extraigo los plugins y temas: 
 ```
@@ -54,8 +62,7 @@ Dentro de las carpetas de Elementor, también se cargan los siguientes component
 - **Font Awesome (Iconos):** Versión **5.15.3** (`?ver=5.15.3`)
 - **Waypoints (Librería de scroll):** Versión **4.0.2** (`?ver=4.0.2`)
 
-#todo podria hacer fuzzing de usuarios para registrar usuarios existentes en `http://admin.trilocor.local/wp-login.php`
-
+### wpscan
 wpscan encontró: 
 ```
 sudo wpscan --url http://www.trilocor.local/ --enumerate --api-token [REDACTED]
@@ -63,7 +70,10 @@ y
 sudo wpscan --url http://admin.trilocor.local/ --enumerate --api-token [REDACTED]
 ```
 
+#### resultado
 [[resultado wpscan]]
+
+#### usuarios
 
 Encuentro esta lista de usuarios: 
 ```
@@ -79,7 +89,10 @@ trilocor.Vagient
 trilocor.Fankle
 ```
 
+#### fuerza bruta
+
 Les hago fuerza bruta con wp-scan: 
 ```
 wpscan --password-attack xmlrpc -t 20 -U users-wp.txt -P /usr/share/wordlists/rockyou.txt --url http://admin.trilocor.local/ --api-token [REDACTED]
 ```
+
