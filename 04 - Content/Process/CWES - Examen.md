@@ -26,4 +26,16 @@ curl -Iv http://www.trilocor.local/
 Apache/2.4.41 (Ubuntu)
 ```
 
-Me encuentro con un wordpress
+Me encuentro con un wordpress 6.0.2 y astra 3.9.2
+
+También encuentro esto en `robots.txt`: 
+```
+http://admin.trilocor.local/robots.txt
+
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+Sitemap: http://admin.trilocor.local/wp-sitemap.xml
+```
+
