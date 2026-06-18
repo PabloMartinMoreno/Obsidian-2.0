@@ -4084,12 +4084,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 18,
-        "ch": 70
+        "line": 4,
+        "ch": 12
       },
       "to": {
-        "line": 18,
-        "ch": 70
+        "line": 4,
+        "ch": 12
       }
     },
     "expandedKeys": []
