@@ -32,11 +32,11 @@ https://github.com/Jackie0x17/CBBH-Checklist
 > [!tip] Técnica → [[Web Fingerprinting]]
 
 - **Identificación del Servidor Web:**
-    - [ ] ¿Qué tipo de Web Server es? (Apache, Nginx, IIS, etc.) → header `Server` con `curl -I http://<IP>`
-    - [ ] ¿Versión del servidor web? → `Server` header / `whatweb http://<IP>` / `nmap -sV -p80,443 <IP>`
+    - [x] ¿Qué tipo de Web Server es? (Apache, Nginx, IIS, etc.) → header `Server` con `curl -I http://<IP>`
+    - [x] ¿Versión del servidor web? → `Server` header / `whatweb http://<IP>` / `nmap -sV -p80,443 <IP>`
 - **Identificación Activa de Infraestructura:**
     - [ ] **Cabeceras HTTP:**
-        - [ ] `curl -I http://<IP>` o `curl -s -v http://<IP>`
+        - [x] `curl -I http://<IP>` o `curl -s -v http://<IP>`
         - [ ] `Server`: Identificar software y versión del servidor.
         - [ ] `X-Powered-By`: Identificar tecnologías (PHP, ASP.NET, JSP, etc.).
         - [ ] `X-AspNet-Version`, `X-AspNetMvc-Version`.

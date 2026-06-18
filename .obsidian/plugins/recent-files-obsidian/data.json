@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Checklist",
+      "path": "04 - Content/Process/CWES - Checklist.md"
+    },
+    {
       "basename": "CWES - Examen",
       "path": "04 - Content/Process/CWES - Examen.md"
     },
@@ -43,10 +47,6 @@
     {
       "basename": "Web Fingerprinting",
       "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
-    },
-    {
-      "basename": "CWES - Checklist",
-      "path": "04 - Content/Process/CWES - Checklist.md"
     },
     {
       "basename": "grep",

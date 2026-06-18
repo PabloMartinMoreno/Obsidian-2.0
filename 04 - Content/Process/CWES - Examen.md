@@ -16,5 +16,14 @@ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Ho
 ```
 y encontré: `admin` el cual agregué también al /etc/hosts: 
 ```
-10.129.4.195    trilocor.local www.trilocor.local admin.tricolor.local
+10.129.4.195    trilocor.local www.trilocor.local admin.trilocor.local
 ```
+
+El servidor es: 
+```
+curl -Iv http://www.trilocor.local/
+
+Apache/2.4.41 (Ubuntu)
+```
+
+Me encuentro con un wordpress
