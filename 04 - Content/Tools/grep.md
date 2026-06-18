@@ -30,7 +30,7 @@ linked:
 
 ## Cheatsheet
 
-| **Comando** | **Qué obtenés** | **Cuándo** |
+| **Comando**                                             | **Qué obtenés**                             | **Cuándo**                         |
 | ------------------------------------------------------- | ------------------------------------------- | ---------------------------------- |
 | `grep -rIn 'password' /var/www /opt /home`              | Recursivo + ignora binarios + nº de línea   | Hunt de credenciales en filesystem |
 | `grep -rIn -E 'password\s*=\|api_key\|secret\|token' .` | Secrets por múltiples patrones              | Source code / config               |

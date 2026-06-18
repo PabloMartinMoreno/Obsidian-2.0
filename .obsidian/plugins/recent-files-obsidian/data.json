@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "grep",
+      "path": "04 - Content/Tools/grep.md"
+    },
+    {
       "basename": "CWES - Checklist",
       "path": "04 - Content/Process/CWES - Checklist.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "less",
       "path": "04 - Content/Tools/less.md"
-    },
-    {
-      "basename": "grep",
-      "path": "04 - Content/Tools/grep.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
