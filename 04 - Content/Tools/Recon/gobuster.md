@@ -72,33 +72,26 @@ gobuster no recurse por defecto. Para recursión → [[feroxbuster]] o script ch
 
 Filtros (flags `-b length,length2`) son críticos — sin ellos, output trivial.
 
-## 3. Virtual host discovery
+## 3. Virtual Hosts y Subdominios
 
-```bash
-gobuster vhost -u http://target.com -w vhosts.txt --append-domain -t 200
-# --append-domain concatena: word.target.com
-```
-
-| Opción | Uso |
+| **Comando** | **Descripción** |
 | --- | --- |
-| `--append-domain` | `{word}.target.com` en vez de solo `{word}`. |
-| `--exclude-length 1234` | Filtrar respuestas de ese size (wildcard default). |
-| `--domain target.com` | Baseline domain explícito. |
+| `gobuster vhost -u http://target.com -w vhosts.txt --append-domain -t 200` | **VHost** discovery (Host header) → `{word}.target.com` |
+| `gobuster vhost -u http://target.com -w vhosts.txt --append-domain --exclude-length 1234` | VHost + filtrar respuestas wildcard por tamaño |
+| `gobuster vhost -u https://target.com -w vhosts.txt --append-domain -k` | VHost sobre HTTPS (ignora cert inválido) |
+| `gobuster dns -d target.com -w subs.txt --no-error -t 50` | **Subdomain** DNS brute-force |
+| `gobuster dns -d target.com -w subs.txt -i --wildcard` | DNS + mostrar IPs resueltas + permitir wildcard |
+| `gobuster dns -d target.com -w subs.txt -r 1.1.1.1:53` | DNS con resolver custom |
 ^gobuster-enum-vhost
 
-## 4. DNS subdomain enum
+### Opciones útiles
 
-```bash
-gobuster dns -d target.com -w subs.txt --no-error -t 50
-
-# Wildcard check + show IPs
-gobuster dns -d target.com -w subs.txt -i --wildcard
-```
-
-| Opción | Uso |
+| Flag | Uso |
 | --- | --- |
-| `-d` | Domain target. |
-| `-r` | Custom resolver DNS (`-r 1.1.1.1:53`). |
+| `--append-domain` | `{word}.target.com` en vez de solo `{word}` (vhost). |
+| `--exclude-length 1234` | Filtrar respuestas de ese size (wildcard default). |
+| `-d` / `--domain` | Domain target (dns) / baseline (vhost). |
+| `-r 1.1.1.1:53` | Resolver DNS custom. |
 | `-i` | Mostrar IPs resueltas. |
 | `--wildcard` | Permitir wildcards (default excluye). |
 | `--no-error` | Silenciar errores DNS. |

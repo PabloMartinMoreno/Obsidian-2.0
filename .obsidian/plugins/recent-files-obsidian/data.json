@@ -9,16 +9,32 @@
       "path": "02 - Secondary Categories/CWES.md"
     },
     {
+      "basename": "Subdomain & VHost Fuzzing",
+      "path": "04 - Content/Recon/Fuzzing/Subdomain & VHost Fuzzing.md"
+    },
+    {
+      "basename": "gobuster",
+      "path": "04 - Content/Tools/Recon/gobuster.md"
+    },
+    {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
+      "basename": "Directory Fuzzing",
+      "path": "04 - Content/Recon/Fuzzing/Directory Fuzzing.md"
+    },
+    {
+      "basename": "ffuf",
+      "path": "04 - Content/Tools/Recon/ffuf.md"
+    },
+    {
       "basename": "CWES - Carta de Compromiso",
       "path": "04 - Content/Process/CWES - Carta de Compromiso.md"
     },
     {
       "basename": "Information Leakage",
       "path": "04 - Content/Web/Fundamentals/Information Leakage.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
     {
       "basename": "Web Fingerprinting",
@@ -183,22 +199,6 @@
     {
       "basename": "Bandit 16",
       "path": "05 - Writeups/OverTheWire/Bandit 16.md"
-    },
-    {
-      "basename": "nmap",
-      "path": "04 - Content/Tools/Recon/nmap.md"
-    },
-    {
-      "basename": "Bandit 15",
-      "path": "05 - Writeups/OverTheWire/Bandit 15.md"
-    },
-    {
-      "basename": "ncat",
-      "path": "04 - Content/Tools/Network/ncat.md"
-    },
-    {
-      "basename": "SSL - TLS",
-      "path": "04 - Content/Crypto/SSL - TLS.md"
     }
   ],
   "omittedPaths": [],

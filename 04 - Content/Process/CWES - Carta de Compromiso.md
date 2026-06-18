@@ -58,13 +58,13 @@ Trilocor Robotics Ltd. (en adelante, **"Trilocor"**) le invita a una evaluación
 - `www.trilocor.local`, cualquier subdominio `*.trilocor.local` identificado, y cualquier puerto de servidor web abierto descubierto en la dirección IP del **"Punto de entrada"**, que se hará visible al presionar **"GENERAR INSTANCIA"** (Paso 2).
 - Existen cinco (5) aplicaciones diferentes, además de usuarios simulados (*simulated users*) en ciertas ubicaciones de la aplicación, que podés atacar.
 
-| URL | Descripción |
-| --- | --- |
-| `www.trilocor.local` | Sitio web principal de Trilocor |
+| URL                   | Descripción                      |
+| --------------------- | -------------------------------- |
+| `www.trilocor.local`  | Sitio web principal de Trilocor  |
 | *Descubrir el puerto* | Sitio web de relaciones públicas |
-| *Descubrir el puerto* | Portal de empleo |
-| *Descubrir el puerto* | Sitio web de RRHH |
-| *Descubrir el puerto* | Tienda online |
+| *Descubrir el puerto* | Portal de empleo                 |
+| *Descubrir el puerto* | Sitio web de RRHH                |
+| *Descubrir el puerto* | Tienda online                    |
 
 ---
 

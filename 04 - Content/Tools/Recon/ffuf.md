@@ -99,23 +99,14 @@ Workflow: 1) request baseline → 2) `-fs <size>` / `-fc 404` para descartar rui
 
 ## Fuzzing de directorios y archivos
 
-```bash
-# Directorios
-ffuf -c -w <wordlist> -u http://<IP>:<port>/FUZZ
-
-# Archivos con extensión específica
-ffuf -c -w <ext-wordlist> -u http://<IP>:<port>/indexFUZZ
-
-# Archivos de nombre variable con extensión fija
-ffuf -c -w <filename-wordlist> -u http://<IP>:<port>/FUZZ<extension>
-
-# Extensiones múltiples desde flag
-ffuf -c -w <wordlist> -u http://<IP>:<port>/FUZZ -e .php,.html,.bak,.txt
-
-# Recursivo
-ffuf -c -w <wordlist> -u http://<IP>:<port>/FUZZ \
-     -recursion -recursion-depth 3 -e .php,.html
-```
+| **Comando** | **Descripción** |
+| --- | --- |
+| `ffuf -c -w <wordlist> -u http://host/FUZZ` | Directorios — básico. |
+| `ffuf -c -w <ext-wordlist> -u http://host/indexFUZZ` | Nombre fijo, extensión variable. |
+| `ffuf -c -w <filenames> -u http://host/FUZZ<ext>` | Nombre variable, extensión fija. |
+| `ffuf -c -w <wordlist> -u http://host/FUZZ -e .php,.html,.bak,.txt` | Extensiones múltiples (`-e` csv). |
+| `ffuf -c -w <wordlist> -u http://host/FUZZ -recursion -recursion-depth 3 -e .php,.html` | Recursivo. |
+| `ffuf -c -w <wordlist> -u http://host/FUZZ -mc 200,301,403 -ic` | Match status + ignorar comentarios de la wordlist (`-ic`). |
 ^ffuf-fuzzing-directorios
 
 ### Consejos
@@ -133,25 +124,12 @@ ffuf -c -w <wordlist> -u http://<IP>:<port>/FUZZ \
 
 ## Fuzzing de parámetros
 
-```bash
-# GET params — filtrar por tamaño baseline
-ffuf -c -w <param-wordlist> \
-     -u 'http://<IP>:<port>/admin.php?FUZZ=<valid-value>' \
-     -fs <char-count>
-
-# POST params
-ffuf -c -w <param-wordlist> \
-     -u 'http://<IP>:<port>/admin.php' \
-     -X POST -d 'FUZZ=<valid-value>' \
-     -H 'Content-Type: application/x-www-form-urlencoded' \
-     -fs <char-count>
-
-# JSON body
-ffuf -c -w <param-wordlist> \
-     -u 'http://<IP>:<port>/api/x' \
-     -X POST -H 'Content-Type: application/json' \
-     -d '{"FUZZ":"test"}' -fc 404,500
-```
+| **Comando** | **Contexto** |
+| --- | --- |
+| `ffuf -c -w <params> -u 'http://host/admin.php?FUZZ=val' -fs <baseline>` | GET — nombre de parámetro (filtrar por tamaño baseline). |
+| `ffuf -c -w <params> -u 'http://host/admin.php' -X POST -d 'FUZZ=val' -H 'Content-Type: application/x-www-form-urlencoded' -fs <baseline>` | POST — body param (form-encoded). |
+| `ffuf -c -w <params> -u 'http://host/api/x' -X POST -H 'Content-Type: application/json' -d '{"FUZZ":"test"}' -fc 404,500` | JSON body. |
+| `ffuf -c -w sqli.txt -u 'http://host/x?id=FUZZ' -mr 'SQL syntax'` | Fuzz de **valores** (SQLi/LFI/XSS con `-mr`). |
 ^ffuf-fuzzing-parametros
 
 ### Wordlists
@@ -171,16 +149,10 @@ ffuf -c -w lfi-payloads.txt -u 'http://t/x?file=FUZZ' -mr 'root:'
 
 ## Subdominios y Virtual Hosts
 
-```bash
-# Vhost discovery (Host header)
-ffuf -c -w <wordlist> \
-     -u http://<IP>:<port>/ \
-     -H 'Host: FUZZ.<domain>' \
-     -fs <char-count>
-
-# Subdomain DNS brute (requiere DNS funcional)
-ffuf -c -w <wordlist> -u http://FUZZ.<domain>/
-```
+| **Comando** | **Descripción** |
+| --- | --- |
+| `ffuf -c -w <wordlist> -u http://host/ -H 'Host: FUZZ.<domain>' -fs <baseline>` | **Vhost** discovery (Host header) — filtrar por tamaño baseline. |
+| `ffuf -c -w <wordlist> -u http://FUZZ.<domain>/` | **Subdomain** DNS brute (requiere DNS funcional). |
 ^ffuf-enum-vhost
 
 ### Wordlists

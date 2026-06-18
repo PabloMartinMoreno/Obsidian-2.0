@@ -588,7 +588,7 @@
     "expandedKeys": []
   },
   "02 - Secondary Categories/CWES.md": {
-    "scroll": 5.593220338983051,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 18,
@@ -621,7 +621,7 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 0,
+    "scroll": 21.080729166666668,
     "cursor": {
       "from": {
         "line": 19,
@@ -1375,15 +1375,15 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/Recon/ffuf.md": {
-    "scroll": 0,
+    "scroll": 86.22591145833333,
     "cursor": {
       "from": {
-        "line": 24,
-        "ch": 6
+        "line": 26,
+        "ch": 1
       },
       "to": {
-        "line": 24,
-        "ch": 6
+        "line": 26,
+        "ch": 1
       }
     },
     "expandedKeys": []
@@ -4070,12 +4070,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 32,
-        "ch": 9
+        "line": 62,
+        "ch": 21
       },
       "to": {
-        "line": 32,
-        "ch": 9
+        "line": 62,
+        "ch": 7
       }
     },
     "expandedKeys": []
@@ -4084,11 +4084,39 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 2,
+        "line": 18,
+        "ch": 70
+      },
+      "to": {
+        "line": 18,
+        "ch": 70
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Directory Fuzzing.md": {
+    "scroll": 22.669856459330145,
+    "cursor": {
+      "from": {
+        "line": 23,
         "ch": 0
       },
       "to": {
-        "line": 2,
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Subdomain & VHost Fuzzing.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 44,
+        "ch": 0
+      },
+      "to": {
+        "line": 44,
         "ch": 0
       }
     },
