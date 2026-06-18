@@ -1872,11 +1872,11 @@
     "scroll": 20.46746347941567,
     "cursor": {
       "from": {
-        "line": 20,
+        "line": 28,
         "ch": 0
       },
       "to": {
-        "line": 20,
+        "line": 28,
         "ch": 0
       }
     },
@@ -3437,15 +3437,15 @@
     "expandedKeys": []
   },
   "04 - Content/Tools/grep.md": {
-    "scroll": 32.26869938065746,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 44,
-        "ch": 16
+        "line": 93,
+        "ch": 0
       },
       "to": {
-        "line": 44,
-        "ch": 16
+        "line": 93,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -4006,6 +4006,34 @@
       "to": {
         "line": 18,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Finding TEMPLATE.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Exam Tracker.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 13
+      },
+      "to": {
+        "line": 6,
+        "ch": 9
       }
     },
     "expandedKeys": []

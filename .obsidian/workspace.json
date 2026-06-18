@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Tools/grep.md",
+                "file": "04 - Content/Process/CWES - Checklist.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "grep"
+              "title": "CWES - Checklist"
             }
           }
         ],
@@ -266,7 +266,10 @@
   },
   "active": "a6998b8327f0072f",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES - Finding TEMPLATE.md",
+    "04 - Content/Process/CWES - Exam Tracker.md",
     "04 - Content/Process/CWES - Checklist.md",
+    "04 - Content/Tools/grep.md",
     "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md",
     "04 - Content/Tools/Common Linux Utilities.md",
     "04 - Content/Web/MassAssignment/Mass Assignment.md.tmp",
@@ -280,7 +283,6 @@
     "04 - Content/Tools/Recon/rustscan.md.tmp",
     "04 - Content/Tools/Recon/masscan.md.tmp",
     "04 - Content/Tools/less.md",
-    "04 - Content/Tools/grep.md",
     "04 - Content/Tools/wc.md",
     "04 - Content/Tools/head.md",
     "04 - Content/Tools/cut.md",
@@ -300,8 +302,6 @@
     "04 - Content/Tools/md5sum.md",
     "04 - Content/Tools/file.md",
     "04 - Content/Tools/echo.md",
-    "04 - Content/Tools/diff.md",
-    "04 - Content/Tools/crontab.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

@@ -1,12 +1,12 @@
 {
   "recentFiles": [
     {
-      "basename": "grep",
-      "path": "04 - Content/Tools/grep.md"
-    },
-    {
       "basename": "CWES - Checklist",
       "path": "04 - Content/Process/CWES - Checklist.md"
+    },
+    {
+      "basename": "grep",
+      "path": "04 - Content/Tools/grep.md"
     },
     {
       "basename": "Cross-Site Request Forgery (CSRF)",
@@ -191,10 +191,6 @@
     {
       "basename": "SSH (22) - Enumeración",
       "path": "04 - Content/Services/SSH (22) - Enumeración.md"
-    },
-    {
-      "basename": "Pares de claves SSH",
-      "path": "04 - Content/Credentials/Pares de claves SSH.md"
     }
   ],
   "omittedPaths": [],
