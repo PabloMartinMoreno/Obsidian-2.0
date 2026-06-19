@@ -38,7 +38,6 @@
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -281,8 +280,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "970a40476fd68d6e",
+  "active": "a6998b8327f0072f",
   "lastOpenFiles": [
+    "04 - Content/Process/resultado wpscan.md",
     "04 - Content/Process/CWES - Examen.md",
     "04 - Content/Process/CWES - Checklist.md",
     "03 - Tertiary Categories/Web Enumeración.md",
@@ -290,7 +290,6 @@
     "04 - Content/Web/Fundamentals/Well-Known URIs.md",
     "04 - Content/Recon/OSINT/Certificate Transparency Logs.md",
     "04 - Content/Recon/Subdomain/Subdomains Passive Enumeration.md",
-    "04 - Content/Process/resultado wpscan.md",
     "04 - Content/Tools/JavaScript Deobfuscation.md",
     "02 - Secondary Categories/CWES.md",
     "04 - Content/Recon/Fuzzing/Subdomain & VHost Fuzzing.md",

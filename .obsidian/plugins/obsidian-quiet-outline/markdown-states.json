@@ -1,0 +1,4158 @@
+{
+  "04 - Content/Web/Injection/SQL Injection (SQLi).md": {
+    "scroll": 35.161458333333336,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/SQLi - Error based.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/SQLi  - Union based.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Web Explotación.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/NoSQL Injection.md": {
+    "scroll": 54.97816095499553,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 0
+      },
+      "to": {
+        "line": 26,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "06 - Daily/2026-05-21.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "01 - Primary Categories/Red Team.md": {
+    "scroll": 4.608695652173913,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Explotación.md": {
+    "scroll": 6.111801242236025,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Active Directory Explotación.md": {
+    "scroll": 61.459715639810426,
+    "cursor": {
+      "from": {
+        "line": 72,
+        "ch": 36
+      },
+      "to": {
+        "line": 72,
+        "ch": 36
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Service Exploitation.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Obsidian/Drawbacks of Traditional Note-Taking Systems.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/HackTheBox/Access.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/SQLi - Union based.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/LDAP Injection.md": {
+    "scroll": 43.186340184145266,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/CommandInjection/OS Command Injection.md": {
+    "scroll": 8.061224489795919,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 14
+      },
+      "to": {
+        "line": 31,
+        "ch": 14
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
+    "scroll": 85.63644842380153,
+    "cursor": {
+      "from": {
+        "line": 41,
+        "ch": 11
+      },
+      "to": {
+        "line": 41,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 34
+      },
+      "to": {
+        "line": 32,
+        "ch": 34
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/CRLF/CRLF Injection.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/HPP/HTTP Parameter Pollution.md": {
+    "scroll": 68.04224567383325,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/XXE/XML External Entity (XXE).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 24,
+        "ch": 0
+      },
+      "to": {
+        "line": 24,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/XSLT/eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection.md": {
+    "scroll": 34.333333333333336,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/FileInclusion/File Inclusion.md": {
+    "scroll": 21.65665236051502,
+    "cursor": {
+      "from": {
+        "line": 29,
+        "ch": 0
+      },
+      "to": {
+        "line": 29,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/PathTraversal/Directory Traversal.md": {
+    "scroll": 1.4728506787330318,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md": {
+    "scroll": 45.682291666666664,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 12
+      },
+      "to": {
+        "line": 31,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/diferencias ataques de servidor.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 2,
+        "ch": 432
+      },
+      "to": {
+        "line": 2,
+        "ch": 432
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Wireshark.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 86,
+        "ch": 14
+      },
+      "to": {
+        "line": 86,
+        "ch": 14
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Injection.md": {
+    "scroll": 5.28755364806867,
+    "cursor": {
+      "from": {
+        "line": 33,
+        "ch": 0
+      },
+      "to": {
+        "line": 33,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Crypto/Certificados SSL-TLS.md": {
+    "scroll": 1.722488038277512,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md": {
+    "scroll": 43.81547832318166,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Server-Side Attacks.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/URL.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/Auth Bypass - Brute Force y Credential Stuffing.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "000 - Global Index.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 52,
+        "ch": 0
+      },
+      "to": {
+        "line": 52,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "01 - Primary Categories/Blue Team.md": {
+    "scroll": 17.503255208333332,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/PortSwigger.md": {
+    "scroll": 45.51163658991911,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/PortSwigger/XSS/03 - DOM XSS document.write (location.search).md": {
+    "scroll": 80.73502604166667,
+    "cursor": {
+      "from": {
+        "line": 27,
+        "ch": 0
+      },
+      "to": {
+        "line": 27,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Códigos de Estado HTTP.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 34,
+        "ch": 0
+      },
+      "to": {
+        "line": 34,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Métodos HTTP.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 41,
+        "ch": 0
+      },
+      "to": {
+        "line": 41,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Web Requests.md": {
+    "scroll": 25.205729166666668,
+    "cursor": {
+      "from": {
+        "line": 37,
+        "ch": 0
+      },
+      "to": {
+        "line": 37,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/GET.md": {
+    "scroll": 1.7583732057416268,
+    "cursor": {
+      "from": {
+        "line": 87,
+        "ch": 0
+      },
+      "to": {
+        "line": 87,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/CWES.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-1",
+      "item-1-0"
+    ]
+  },
+  "04 - Content/Web/Fundamentals/HTTP.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 56,
+        "ch": 9
+      },
+      "to": {
+        "line": 56,
+        "ch": 9
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "03 - Tertiary Categories/Web Enumeración.md": {
+    "scroll": 27.28436018957346,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 0
+      },
+      "to": {
+        "line": 25,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Web.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "04 - Content/Web/Fundamentals/HTTPS.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 89,
+        "ch": 0
+      },
+      "to": {
+        "line": 89,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/AD Enumeration.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 4,
+        "ch": 0
+      },
+      "to": {
+        "line": 4,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Abusing PHP Filters.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/AWS Enumeration.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Maquinas.md": {
+    "scroll": 0.01,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Checklists.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 19
+      },
+      "to": {
+        "line": 14,
+        "ch": 19
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Blockchain.md": {
+    "scroll": 29.5703125,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Broken autentication.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CheatSheets.md": {
+    "scroll": 0.5031055900621118,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Cheklist para el Examen CBBH.md": {
+    "scroll": 3.704663212435233,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/examen.md": {
+    "scroll": 46.199869791666664,
+    "cursor": {
+      "from": {
+        "line": 105,
+        "ch": 0
+      },
+      "to": {
+        "line": 105,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Honeytokens & Tracking Pixels.md": {
+    "scroll": 10.276228419654714,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/HTTP Brute Forcing.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Incompletos.md": {
+    "scroll": 16.020804438280166,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Mangobleed.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/objetivos.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/OverTheWire.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 4,
+        "ch": 0
+      },
+      "to": {
+        "line": 4,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Privilege Escalation.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 4,
+        "ch": 0
+      },
+      "to": {
+        "line": 4,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Protocolos de Red.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Recollection.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/sherlocks.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/HackTheBox/Crown Jewel 1.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/tags.md": {
+    "scroll": 7.833333333333333,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 0
+      },
+      "to": {
+        "line": 7,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Templates.md": {
+    "scroll": 2.238341968911917,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Todo Round-Up.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/User Privileges.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Vault Administration.md": {
+    "scroll": 165.94205729166666,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/VMDK, VHD and VHDX files.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/curl.md": {
+    "scroll": 30.27460234224786,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 13
+      },
+      "to": {
+        "line": 26,
+        "ch": 13
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "04 - Content/Web/Clickjacking/Clickjacking - Bypass de Anti-Framing.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/Default credentials.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SubdomainTakeover/Subdomain Takeover.md": {
+    "scroll": 36.841886269070734,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/http-flow.md": {
+    "scroll": 17.553398058252426,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 18
+      },
+      "to": {
+        "line": 21,
+        "ch": 18
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP-Flow.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 28
+      },
+      "to": {
+        "line": 11,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/API Security.md": {
+    "scroll": 30.601908453854183,
+    "cursor": {
+      "from": {
+        "line": 27,
+        "ch": 0
+      },
+      "to": {
+        "line": 27,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Cookies y Sesiones.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/DOM.md": {
+    "scroll": 13.5390625,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md": {
+    "scroll": 0.3444976076555024,
+    "cursor": {
+      "from": {
+        "line": 131,
+        "ch": 0
+      },
+      "to": {
+        "line": 131,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Curl - Fuzzing Parámetros y Valores.md": {
+    "scroll": 1.1180124223602483,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "04 - Content/Recon/Fuzzing/Curl - Enumeración Pasiva de Sub-Dominios.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "04 - Content/Recon/Fuzzing/Curl - Enumeración de Sub-Dominios y V.Host.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "04 - Content/Tools/Recon/Curl - Web.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 33,
+        "ch": 9
+      },
+      "to": {
+        "line": 33,
+        "ch": 9
+      }
+    },
+    "expandedKeys": [
+      "item-1-0"
+    ]
+  },
+  "04 - Content/Tools/Recon/Curl - APIs.md": {
+    "scroll": 0.8851674641148325,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 9
+      },
+      "to": {
+        "line": 23,
+        "ch": 9
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/Curl - Acronimos.md": {
+    "scroll": 16.786458333333332,
+    "cursor": {
+      "from": {
+        "line": 36,
+        "ch": 15
+      },
+      "to": {
+        "line": 36,
+        "ch": 15
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Information Gathering.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Fuzzing Directories & Pages.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 42,
+        "ch": 0
+      },
+      "to": {
+        "line": 42,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Fuzzing Parameters & Values.md": {
+    "scroll": 9.14354066985646,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Fuzzing Subdomains & Virtual Hosts.md": {
+    "scroll": 20,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Fingerprinting Web Technologies.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/gobuster.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 88,
+        "ch": 0
+      },
+      "to": {
+        "line": 88,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/feroxbuster.md": {
+    "scroll": 148.84580197727607,
+    "cursor": {
+      "from": {
+        "line": 60,
+        "ch": 0
+      },
+      "to": {
+        "line": 60,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/ffuf.md": {
+    "scroll": 86.22591145833333,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 1
+      },
+      "to": {
+        "line": 26,
+        "ch": 1
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/URL Encoding.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 7
+      },
+      "to": {
+        "line": 11,
+        "ch": 7
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/URL Encode - Characters.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 12
+      },
+      "to": {
+        "line": 17,
+        "ch": 12
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/HTMLInjection/HTML Injection.md": {
+    "scroll": 95.73126978543792,
+    "cursor": {
+      "from": {
+        "line": 55,
+        "ch": 0
+      },
+      "to": {
+        "line": 55,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Crypto/Criptografía Simétrica vs. Asimétrica.md": {
+    "scroll": 4.019138755980861,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Crypto/SSL - TLS.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 81,
+        "ch": 0
+      },
+      "to": {
+        "line": 81,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT/Certificate Transparency Logs.md": {
+    "scroll": 6.48871181938911,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Subdomain/Subdomains Passive Enumeration.md": {
+    "scroll": 3.674641148325359,
+    "cursor": {
+      "from": {
+        "line": 24,
+        "ch": 0
+      },
+      "to": {
+        "line": 24,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP Headers.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP - Métodos.md": {
+    "scroll": 1.2272727272727273,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP y HTTPS - Métodos.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Web Content Types.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Flujo de Comunicación HTTPS.md": {
+    "scroll": 0.023923444976076555,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 3
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/HTTP Basic Auth.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/POST.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 91,
+        "ch": 41
+      },
+      "to": {
+        "line": 91,
+        "ch": 41
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/POST.md": {
+    "scroll": 0.7535885167464115,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-1-0",
+      "item-3-3",
+      "item-2-2"
+    ]
+  },
+  "00 - Resources/Templates/Type/_sub-command.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "00 - Resources/Templates/Type/_payload.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "00 - Resources/Templates/Type/_cheatsheet.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 03.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 04.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 05.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Web Fingerprinting.md": {
+    "scroll": 32.227864583333336,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Passive Reconnaissance & OSINT.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Web Technology Enumeration.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/HTMLInjection/HTML Injection - Vectores Comunes.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Post-Explotación.md": {
+    "scroll": 0.2826086956521739,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Procedures & Methodologies.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Checklists - CWES.md": {
+    "scroll": 26.593732820230898,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 19
+      },
+      "to": {
+        "line": 19,
+        "ch": 9
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 39,
+        "ch": 0
+      },
+      "to": {
+        "line": 39,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/JavaScript Deobfuscation.md": {
+    "scroll": 26.529819694868237,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 12
+      },
+      "to": {
+        "line": 14,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Web Fundamentals.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Sin título.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/OSINT.md": {
+    "scroll": 36.742838541666664,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 60
+      },
+      "to": {
+        "line": 6,
+        "ch": 60
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Clickjacking/Clickjacking.md": {
+    "scroll": 46.03812171851183,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Checklist.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 48,
+        "ch": 100
+      },
+      "to": {
+        "line": 48,
+        "ch": 100
+      }
+    },
+    "expandedKeys": [
+      "item-1-0",
+      "item-2-1"
+    ]
+  },
+  "04 - Content/Process/GraphQL Voyager.md": {
+    "scroll": 46.848214285714285,
+    "cursor": {
+      "from": {
+        "line": 56,
+        "ch": 0
+      },
+      "to": {
+        "line": 56,
+        "ch": 67
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSI/SSI - Ejecucion de Comandos.md": {
+    "scroll": 6.181818181818182,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 26
+      },
+      "to": {
+        "line": 25,
+        "ch": 26
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP - Headers.md": {
+    "scroll": 5.863636363636363,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/whatweb.md": {
+    "scroll": 16.428229665071772,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Cookie Fingerprinting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/HTTP - Cookies y Sesiones.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 02.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 06.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md": {
+    "scroll": 34.622395833333336,
+    "cursor": {
+      "from": {
+        "line": 33,
+        "ch": 0
+      },
+      "to": {
+        "line": 33,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Voyager.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 07.md": {
+    "scroll": 4.44559585492228,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/Fingerprinting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 00.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 01.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/find.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 3
+      },
+      "to": {
+        "line": 18,
+        "ch": 3
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT/Google Dorking.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 28,
+        "ch": 0
+      },
+      "to": {
+        "line": 28,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT/OSINT.md": {
+    "scroll": 2.9570815450643777,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 0
+      },
+      "to": {
+        "line": 26,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/OSINT Methods.md": {
+    "scroll": 19.96820809248555,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 7
+      },
+      "to": {
+        "line": 21,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Blind SQL injection with conditional responses tags.md": {
+    "scroll": 14.5390625,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/PortSwigger/XSS/04 - DOM XSS innerHTML (location.search).md": {
+    "scroll": 19.328125,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/PortSwigger/XSS/05 - DOM XSS jQuery anchor href.md": {
+    "scroll": 37.167410714285715,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/PortSwigger/XSS/06 - DOM XSS jQuery selector (hashchange).md": {
+    "scroll": 151.47330729166666,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 36
+      },
+      "to": {
+        "line": 30,
+        "ch": 36
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/PortSwigger/SQLi/Blind - Conditional Responses.md": {
+    "scroll": 33.126953125,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/CSRF - Bypass de Token.md": {
+    "scroll": 95.53183257122758,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/CSRF - Vectores de Ataque.md": {
+    "scroll": 112.17410714285714,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Auth/CSRF - Bypass de SameSite y Referer.md": {
+    "scroll": 94.90848214285714,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSRF/Server-Side Request Forgery (SSRF).md": {
+    "scroll": 60.92077464788733,
+    "cursor": {
+      "from": {
+        "line": 26,
+        "ch": 0
+      },
+      "to": {
+        "line": 26,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/SSRF/SSRF - Básico.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 24,
+        "ch": 85
+      },
+      "to": {
+        "line": 24,
+        "ch": 85
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Smuggling/HTTP Request Smuggling - HTTP2 Downgrade.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/HostHeader/Host Header Injection.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Smuggling/HTTP Request Smuggling.md": {
+    "scroll": 52.29616602180795,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/CachePoisoning/Web Cache Poisoning.md": {
+    "scroll": 23.682403433476395,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/MassAssignment/Mass Assignment.md": {
+    "scroll": 65.34926240865006,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/OpenRedirect/Open Redirect.md": {
+    "scroll": 41.135303466345945,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Kerberoasting/Kerberoasting.md": {
+    "scroll": 46.545386904761905,
+    "cursor": {
+      "from": {
+        "line": 35,
+        "ch": 0
+      },
+      "to": {
+        "line": 35,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Timeroasting.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Active Directory.md": {
+    "scroll": 1.1521739130434783,
+    "cursor": {
+      "from": {
+        "line": 7,
+        "ch": 18
+      },
+      "to": {
+        "line": 7,
+        "ch": 18
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Active Directory Enumeración.md": {
+    "scroll": 30.876777251184834,
+    "cursor": {
+      "from": {
+        "line": 39,
+        "ch": 18
+      },
+      "to": {
+        "line": 39,
+        "ch": 18
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/AD - Hosts Enumeration.md": {
+    "scroll": 54.36331064134719,
+    "cursor": {
+      "from": {
+        "line": 30,
+        "ch": 0
+      },
+      "to": {
+        "line": 30,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Windows & Active Directory Lateral Movement.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Windows & Active Directory Movimiento Lateral.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 3
+      },
+      "to": {
+        "line": 16,
+        "ch": 3
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/ACL Abuse.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/ASREP/AS-REP Roasting.md": {
+    "scroll": 113.8011465424579,
+    "cursor": {
+      "from": {
+        "line": 32,
+        "ch": 0
+      },
+      "to": {
+        "line": 32,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/Sapphire Ticket.md": {
+    "scroll": 14.68421052631579,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Golden/Golden Ticket.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 35,
+        "ch": 0
+      },
+      "to": {
+        "line": 35,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Golden/Golden Ticket - Forging Windows.md": {
+    "scroll": 122.6235119047619,
+    "cursor": {
+      "from": {
+        "line": 136,
+        "ch": 0
+      },
+      "to": {
+        "line": 136,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Silver/Silver Ticket.md": {
+    "scroll": 22.275862068965516,
+    "cursor": {
+      "from": {
+        "line": 34,
+        "ch": 0
+      },
+      "to": {
+        "line": 34,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Paso a Paso.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 27
+      },
+      "to": {
+        "line": 10,
+        "ch": 27
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Flujo Basico.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Flujo Básico.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 71,
+        "ch": 7
+      },
+      "to": {
+        "line": 71,
+        "ch": 7
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/GraphQL/GraphQL Estructura.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 86,
+        "ch": 18
+      },
+      "to": {
+        "line": 86,
+        "ch": 18
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/WebTech/robots.txt.md": {
+    "scroll": 94.19642857142857,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Well-Known URIs.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/HackTheBox/Active.md": {
+    "scroll": 167.57217261904762,
+    "cursor": {
+      "from": {
+        "line": 193,
+        "ch": 34
+      },
+      "to": {
+        "line": 193,
+        "ch": 34
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Resource Development.md": {
+    "scroll": 5.161490683229814,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 0
+      },
+      "to": {
+        "line": 6,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/AD - DNS & SRV Records.md": {
+    "scroll": 29.786188579017264,
+    "cursor": {
+      "from": {
+        "line": 29,
+        "ch": 0
+      },
+      "to": {
+        "line": 29,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/AD/AD - Password Policy Enumeration.md": {
+    "scroll": 39.947916666666664,
+    "cursor": {
+      "from": {
+        "line": 29,
+        "ch": 0
+      },
+      "to": {
+        "line": 29,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Host & Network Enumeration.md": {
+    "scroll": 23.841232227488153,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Services/FTP (21) - Enumeración.md": {
+    "scroll": 25.172330892798602,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Services/SMB (139, 445) - Enumeración.md": {
+    "scroll": 35.21012353463843,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Cloud Enumeration.md": {
+    "scroll": 18.149289099526065,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/CDSA.md": {
+    "scroll": 1.0263157894736843,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/IR/Gestión de Incidentes.md": {
+    "scroll": 4.5933014354066986,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 15
+      },
+      "to": {
+        "line": 14,
+        "ch": 15
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/IR/Proceso de Gestión de Incidentes.md": {
+    "scroll": 64.42122395833333,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/IR/Etapa de Detección y Análisis (Parte 1).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SIEM/Definición y Fundamentos de SIEM.md": {
+    "scroll": 72.68098958333333,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/Definición y Fundamentos del SOC.md": {
+    "scroll": 9.545454545454545,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 79
+      },
+      "to": {
+        "line": 17,
+        "ch": 79
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/sherlocks a hacer.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/Entrevistas CDSA.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/Forensics/Metodología Forense.md": {
+    "scroll": 13.247395833333334,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/SOC.md": {
+    "scroll": 3.801242236024845,
+    "cursor": {
+      "from": {
+        "line": 25,
+        "ch": 0
+      },
+      "to": {
+        "line": 25,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/SIEM.md": {
+    "scroll": 3.329192546583851,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Incident Response.md": {
+    "scroll": 15.509015256588071,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Digital Forensics.md": {
+    "scroll": 3.0745341614906834,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/Fundamentos del SOC.md": {
+    "scroll": 3.416267942583732,
+    "cursor": {
+      "from": {
+        "line": 17,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Fundamentos de Operaciones de Seguridad.md": {
+    "scroll": 11.17098445595855,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Marcos de Comportamiento Adversario.md": {
+    "scroll": 13.637450199203187,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/Operaciones del SOC.md": {
+    "scroll": 15.372395833333334,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Identificación.md": {
+    "scroll": 6.037267080745342,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Protección.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "02 - Secondary Categories/Detección.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 9,
+        "ch": 0
+      },
+      "to": {
+        "line": 9,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "03 - Tertiary Categories/SOC Identificación.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 08.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 09.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 10.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/base64.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 270,
+        "ch": 0
+      },
+      "to": {
+        "line": 270,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 11.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 12.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 7
+      },
+      "to": {
+        "line": 14,
+        "ch": 7
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Descompresor (Bandit 12).md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 55,
+        "ch": 208
+      },
+      "to": {
+        "line": 55,
+        "ch": 208
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Clases Mercedes.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 8,
+        "ch": 0
+      },
+      "to": {
+        "line": 8,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes google dorking.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - osint.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - busqueda usuarios.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 3,
+        "ch": 0
+      },
+      "to": {
+        "line": 3,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - correos electronicos.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 55,
+        "ch": 23
+      },
+      "to": {
+        "line": 55,
+        "ch": 23
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - reconocimiento facial.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 4,
+        "ch": 0
+      },
+      "to": {
+        "line": 4,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - metadatos e imagenes.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - dominios, sitios web e infraestructura.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - geolocalizacion.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - frameworks de automatización.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 2,
+        "ch": 54
+      },
+      "to": {
+        "line": 2,
+        "ch": 54
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/mercedes - google dorking.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 55,
+        "ch": 0
+      },
+      "to": {
+        "line": 55,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/OSINT - Frameworks de Automatización.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 1,
+        "ch": 0
+      },
+      "to": {
+        "line": 1,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/OSINT - General.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Hex Dump.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 80,
+        "ch": 305
+      },
+      "to": {
+        "line": 80,
+        "ch": 305
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/xxd.md": {
+    "scroll": 0.24377856780091417,
+    "cursor": {
+      "from": {
+        "line": 96,
+        "ch": 359
+      },
+      "to": {
+        "line": 96,
+        "ch": 359
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/tr.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 103,
+        "ch": 210
+      },
+      "to": {
+        "line": 103,
+        "ch": 210
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/awk.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 142,
+        "ch": 0
+      },
+      "to": {
+        "line": 142,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/strings.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 1,
+        "ch": 15
+      },
+      "to": {
+        "line": 1,
+        "ch": 15
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/tail.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 125,
+        "ch": 0
+      },
+      "to": {
+        "line": 125,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/uniq.md": {
+    "scroll": 67.76822916666667,
+    "cursor": {
+      "from": {
+        "line": 101,
+        "ch": 0
+      },
+      "to": {
+        "line": 101,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/sort.md": {
+    "scroll": 48.58110119047619,
+    "cursor": {
+      "from": {
+        "line": 80,
+        "ch": 0
+      },
+      "to": {
+        "line": 80,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/grep.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 93,
+        "ch": 0
+      },
+      "to": {
+        "line": 93,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/xargs.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 84,
+        "ch": 1
+      },
+      "to": {
+        "line": 84,
+        "ch": 1
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/file.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 105,
+        "ch": 208
+      },
+      "to": {
+        "line": 105,
+        "ch": 208
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 13.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 7
+      },
+      "to": {
+        "line": 13,
+        "ch": 7
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Credentials/Pares de claves SSH.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 104,
+        "ch": 0
+      },
+      "to": {
+        "line": 104,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Services/SSH (22) - Enumeración.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 86,
+        "ch": 0
+      },
+      "to": {
+        "line": 86,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/ssh.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 55,
+        "ch": 3
+      },
+      "to": {
+        "line": 55,
+        "ch": 3
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 14.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Network/nc.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 11,
+        "ch": 0
+      },
+      "to": {
+        "line": 11,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 15.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Network/ncat.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 117,
+        "ch": 2
+      },
+      "to": {
+        "line": 117,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 16.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/nmap.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 79,
+        "ch": 18
+      },
+      "to": {
+        "line": 79,
+        "ch": 18
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 17.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/diff.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 99,
+        "ch": 457
+      },
+      "to": {
+        "line": 99,
+        "ch": 457
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 18.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 19.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/SUID.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 128,
+        "ch": 58
+      },
+      "to": {
+        "line": 128,
+        "ch": 58
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 20.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 21.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/crontab.md": {
+    "scroll": 60.514218009478675,
+    "cursor": {
+      "from": {
+        "line": 87,
+        "ch": 80
+      },
+      "to": {
+        "line": 87,
+        "ch": 80
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 22.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 13,
+        "ch": 0
+      },
+      "to": {
+        "line": 13,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/md5sum.md": {
+    "scroll": 143.64583333333334,
+    "cursor": {
+      "from": {
+        "line": 162,
+        "ch": 513
+      },
+      "to": {
+        "line": 162,
+        "ch": 513
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 23.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/chmod.md": {
+    "scroll": 49.522135416666664,
+    "cursor": {
+      "from": {
+        "line": 76,
+        "ch": 0
+      },
+      "to": {
+        "line": 76,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 24.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 14,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/echo.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 140,
+        "ch": 0
+      },
+      "to": {
+        "line": 140,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 25.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/more.md": {
+    "scroll": 46.826636904761905,
+    "cursor": {
+      "from": {
+        "line": 74,
+        "ch": 266
+      },
+      "to": {
+        "line": 74,
+        "ch": 266
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 26.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 27.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/git.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 16,
+        "ch": 0
+      },
+      "to": {
+        "line": 16,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 28.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 29.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 30.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 31.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 12,
+        "ch": 0
+      },
+      "to": {
+        "line": 12,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "05 - Writeups/OverTheWire/Bandit 32.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/BlueTeam/SOC/Cyber Kill Chain.md": {
+    "scroll": 0.3014354066985646,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Injection/SQLi - Out of Band.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Common Linux Utilities.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 58,
+        "ch": 2
+      },
+      "to": {
+        "line": 58,
+        "ch": 2
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/less.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Finding TEMPLATE.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 15,
+        "ch": 0
+      },
+      "to": {
+        "line": 15,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Exam Tracker.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 6,
+        "ch": 13
+      },
+      "to": {
+        "line": 6,
+        "ch": 9
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/Fundamentals/Information Leakage.md": {
+    "scroll": 53.212898751733704,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 18,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES -.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Carta de Compromiso.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 62,
+        "ch": 21
+      },
+      "to": {
+        "line": 62,
+        "ch": 7
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Examen.md": {
+    "scroll": 77.095703125,
+    "cursor": {
+      "from": {
+        "line": 92,
+        "ch": 15
+      },
+      "to": {
+        "line": 92,
+        "ch": 15
+      }
+    },
+    "expandedKeys": [
+      "item-2-2"
+    ]
+  },
+  "04 - Content/Recon/Fuzzing/Directory Fuzzing.md": {
+    "scroll": 22.669856459330145,
+    "cursor": {
+      "from": {
+        "line": 23,
+        "ch": 0
+      },
+      "to": {
+        "line": 23,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Recon/Fuzzing/Subdomain & VHost Fuzzing.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 44,
+        "ch": 0
+      },
+      "to": {
+        "line": 44,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/resultado wpscan www.md": {
+    "scroll": 61.40284360189573,
+    "cursor": {
+      "from": {
+        "line": 71,
+        "ch": 0
+      },
+      "to": {
+        "line": 71,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/resultado wpscan.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 74,
+        "ch": 12
+      },
+      "to": {
+        "line": 74,
+        "ch": 12
+      }
+    },
+    "expandedKeys": []
+  }
+}
