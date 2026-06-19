@@ -37,9 +37,9 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - **Identificación Activa de Infraestructura:**
     - [ ] **Cabeceras HTTP:**
         - [x] `curl -I http://<IP>` o `curl -s -v http://<IP>`
-        - [ ] `Server`: Identificar software y versión del servidor.
-        - [ ] `X-Powered-By`: Identificar tecnologías (PHP, ASP.NET, JSP, etc.).
-        - [ ] `X-AspNet-Version`, `X-AspNetMvc-Version`.
+        - [x] `Server`: Identificar software y versión del servidor.
+        - [x] `X-Powered-By`: Identificar tecnologías (PHP, ASP.NET, JSP, etc.).
+        - [x] `X-AspNet-Version`, `X-AspNetMvc-Version`.
     - [ ] **Cookies:**
         - [ ] Identificar cookies de sesión y tecnología subyacente:
             - [ ] .NET: `ASPSESSIONID<RANDOM>=<COOKIE_VALUE>`
@@ -61,12 +61,12 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] **Aquatone:**
         - [ ] `cat subdominios.txt | aquatone -ports large` (para escaneo de puertos y screenshots de subdominios).
 - **Identificación de CMS y Frameworks:**
-    - [ ] ¿Utiliza un CMS? (WordPress, Joomla, Drupal, etc.) → `whatweb` + probe `/wp-admin`,`/administrator`,`/CHANGELOG.txt` · [[Web Technology Enumeration]]
-        - [ ] Identificar rutas específicas del CMS (ej. `/wp-admin`, `/administrator`).
+    - [x] ¿Utiliza un CMS? (WordPress, Joomla, Drupal, etc.) → `whatweb` + probe `/wp-admin`,`/administrator`,`/CHANGELOG.txt` · [[Web Technology Enumeration]]
+        - [x] Identificar rutas específicas del CMS (ej. `/wp-admin`, `/administrator`).
     - [ ] ¿Tecnología de Backend? (PHP, Java, ASPX, Node.js, Python, Ruby) → header `X-Powered-By` / extensión de archivos / cookie de sesión
     - [ ] ¿Framework específico? (Laravel, Express, Django, Rails, Spring, etc.) → `whatweb` / páginas de error default / headers
 - **Identificación de APIs:**
-    - [ ] ¿Hay APIs expuestas? (REST, SOAP, GraphQL) → probe `/api`,`/graphql`,`/v1`,`?wsdl` · [[API Fuzzing]]
+    - [x] ¿Hay APIs expuestas? (REST, SOAP, GraphQL) → probe `/api`,`/graphql`,`/v1`,`?wsdl` · [[API Fuzzing]]
     - [ ] ¿Parámetros de consulta en URLs que sugieran APIs? (`/api/`, `?id=`)
     - [ ] (Para más detalles, ver sección específica de APIs).
 - **Proxy AJP:**
@@ -84,22 +84,22 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 > [!tip] Técnica → [[robots.txt]] · [[Well-Known URIs]]
 
-- [ ] **`robots.txt`:**
-    - [ ] Revisar `http://<dominio>/robots.txt`.
-    - [ ] Identificar directorios `Disallow`: ¿Rutas sensibles, paneles de administración, backups?
-    - [ ] Mapear estructura del sitio basada en `Disallow` y `Allow`.
+- [x] **`robots.txt`:**
+    - [x] Revisar `http://<dominio>/robots.txt`.
+    - [x] Identificar directorios `Disallow`: ¿Rutas sensibles, paneles de administración, backups?
+    - [x] Mapear estructura del sitio basada en `Disallow` y `Allow`.
     - [ ] Detectar posibles trampas para crawlers (honeypots).
-    - [ ] ¿Revela el tipo de CMS? (ej. `/wp-admin/` en `Disallow` para WordPress).
+    - [x] ¿Revela el tipo de CMS? (ej. `/wp-admin/` en `Disallow` para WordPress).
 - [ ] **URIs `.well-known` (RFC 8615):**
-    - [ ] Revisar `http://<dominio>/.well-known/`.
+    - [x] Revisar `http://<dominio>/.well-known/`.
     - [ ] `security.txt` (RFC 9116): `/.well-known/security.txt` o `/security.txt`. ¿Contiene información de contacto para reporte de vulnerabilidades?
     - [ ] `change-password`: `/.well-known/change-password`.
     - [ ] `openid-configuration`: `/.well-known/openid-configuration`.
     - [ ] `assetlinks.json` (Digital Asset Links).
     - [ ] `mta-sts.txt` (MTA Strict Transport Security, RFC 8461).
-- [ ] **`sitemap.xml`:**
-    - [ ] Revisar `http://<dominio>/sitemap.xml` (o variaciones).
-    - [ ] Identificar todas las URLs listadas para entender la estructura y contenido completo del sitio.
+- [x] **`sitemap.xml`:**
+    - [x] Revisar `http://<dominio>/sitemap.xml` (o variaciones).
+    - [x] Identificar todas las URLs listadas para entender la estructura y contenido completo del sitio.
 - [ ] **`humans.txt`:**
     - [ ] Revisar `http://<dominio>/humans.txt`. ¿Información sobre el equipo de desarrollo o tecnologías?
 - [ ] **`Security.txt`:** (Ya cubierto en `.well-known`, pero verificar ambas ubicaciones).
@@ -156,7 +156,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
 > [!tip] Técnica → [[Subdomains Passive Enumeration]] · [[Directory Fuzzing]] · [[Subdomain & VHost Fuzzing]] · [[Parameter Fuzzing]]
 
 - [ ] **WHOIS:**
-    - [ ] `whois <dominio>`: Información de registro, contactos, servidores DNS.
+    - [x] `whois <dominio>`: Información de registro, contactos, servidores DNS.
 - [ ] **Enumeración DNS:**
     - [ ] **Herramientas básicas:**
         - [ ] `dig <dominio> ANY +noall +answer` / `dig axfr <dominio> @<servidor_dns_autoritativo>` (para transferencia de zona).
