@@ -1869,18 +1869,21 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Checklist.md": {
-    "scroll": 31.915145693243677,
+    "scroll": 89.36475409036657,
     "cursor": {
       "from": {
-        "line": 34,
-        "ch": 0
+        "line": 48,
+        "ch": 100
       },
       "to": {
-        "line": 34,
-        "ch": 0
+        "line": 48,
+        "ch": 100
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-1-0",
+      "item-2-1"
+    ]
   },
   "04 - Content/Process/GraphQL Voyager.md": {
     "scroll": 46.848214285714285,
@@ -4081,18 +4084,20 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 0,
+    "scroll": 96.00341859425745,
     "cursor": {
       "from": {
-        "line": 105,
+        "line": 108,
         "ch": 0
       },
       "to": {
-        "line": 105,
+        "line": 108,
         "ch": 0
       }
     },
-    "expandedKeys": []
+    "expandedKeys": [
+      "item-2-2"
+    ]
   },
   "04 - Content/Recon/Fuzzing/Directory Fuzzing.md": {
     "scroll": 22.669856459330145,

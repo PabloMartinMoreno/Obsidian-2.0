@@ -13,6 +13,21 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "04 - Content/Process/CWES - Examen.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "CWES - Examen"
+            }
+          },
+          {
+            "id": "970a40476fd68d6e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "04 - Content/Process/CWES - Checklist.md",
                 "mode": "source",
                 "source": false,
@@ -23,6 +38,7 @@
             }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -125,7 +141,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 231.51103591918945
+    "width": 231.51103591918945,
+    "collapsed": true
   },
   "right": {
     "id": "802be9fb7af15fc2",
@@ -264,7 +281,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "a6998b8327f0072f",
+  "active": "970a40476fd68d6e",
   "lastOpenFiles": [
     "04 - Content/Process/CWES - Examen.md",
     "04 - Content/Process/CWES - Checklist.md",

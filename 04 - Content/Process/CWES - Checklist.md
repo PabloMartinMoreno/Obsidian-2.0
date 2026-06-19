@@ -40,16 +40,16 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [x] `Server`: Identificar software y versión del servidor.
         - [x] `X-Powered-By`: Identificar tecnologías (PHP, ASP.NET, JSP, etc.).
         - [x] `X-AspNet-Version`, `X-AspNetMvc-Version`.
-    - [ ] **Cookies:**
-        - [ ] Identificar cookies de sesión y tecnología subyacente:
-            - [ ] .NET: `ASPSESSIONID<RANDOM>=<COOKIE_VALUE>`
-            - [ ] PHP: `PHPSESSID=<COOKIE_VALUE>`
-            - [ ] JAVA: `JSESSIONID=<COOKIE_VALUE>` (o `JSESSION` según tu lista)
+    - [x] **Cookies:**
+        - [x] Identificar cookies de sesión y tecnología subyacente:
+            - [x] .NET: `ASPSESSIONID<RANDOM>=<COOKIE_VALUE>`
+            - [x] PHP: `PHPSESSID=<COOKIE_VALUE>`
+            - [x] JAVA: `JSESSIONID=<COOKIE_VALUE>` (o `JSESSION` según tu lista)
     - [ ] **Análisis de Errores:**
         - [ ] Provocar errores para revelar software/versión (URLs inválidas, parámetros incorrectos).
     - [ ] **Herramientas de Fingerprinting:**
-        - [ ] **Wappalyzer:** Identificar tecnologías (CMS, frameworks, librerías JS, etc.).
-        - [ ] **WhatWeb:** `whatweb http://<IP>` para una identificación detallada.
+        - [x] **Wappalyzer:** Identificar tecnologías (CMS, frameworks, librerías JS, etc.).
+        - [x] **WhatWeb:** `whatweb http://<IP>` para una identificación detallada.
         - [ ] **BuiltWith:** Usar la web o extensión para análisis tecnológico.
         - [ ] **Netcraft:** Consultar el informe del sitio para tecnología, proveedor de hosting y postura de seguridad.
         - [ ] **Nikto:** `nikto -h <dominio_o_IP> -Tuning x 1 2 3 b` (la `b` es para `Security Headers` y `Allowed Methods` según tu entrada). Revisar vulnerabilidades conocidas y archivos interesantes.
@@ -63,11 +63,11 @@ https://github.com/Jackie0x17/CBBH-Checklist
 - **Identificación de CMS y Frameworks:**
     - [x] ¿Utiliza un CMS? (WordPress, Joomla, Drupal, etc.) → `whatweb` + probe `/wp-admin`,`/administrator`,`/CHANGELOG.txt` · [[Web Technology Enumeration]]
         - [x] Identificar rutas específicas del CMS (ej. `/wp-admin`, `/administrator`).
-    - [ ] ¿Tecnología de Backend? (PHP, Java, ASPX, Node.js, Python, Ruby) → header `X-Powered-By` / extensión de archivos / cookie de sesión
-    - [ ] ¿Framework específico? (Laravel, Express, Django, Rails, Spring, etc.) → `whatweb` / páginas de error default / headers
+    - [x] ¿Tecnología de Backend? (PHP, Java, ASPX, Node.js, Python, Ruby) → header `X-Powered-By` / extensión de archivos / cookie de sesión
+    - [x] ¿Framework específico? (Laravel, Express, Django, Rails, Spring, etc.) → `whatweb` / páginas de error default / headers
 - **Identificación de APIs:**
     - [x] ¿Hay APIs expuestas? (REST, SOAP, GraphQL) → probe `/api`,`/graphql`,`/v1`,`?wsdl` · [[API Fuzzing]]
-    - [ ] ¿Parámetros de consulta en URLs que sugieran APIs? (`/api/`, `?id=`)
+    - [x] ¿Parámetros de consulta en URLs que sugieran APIs? (`/api/`, `?id=`)
     - [ ] (Para más detalles, ver sección específica de APIs).
 - **Proxy AJP:**
     - [ ] Realizar escaneo `nmap -sV -p 8009 <IP>` para el puerto `8009/tcp`. Si está abierto, revisar sección _AJP Proxy_ en **Ataques del Lado del Servidor**.

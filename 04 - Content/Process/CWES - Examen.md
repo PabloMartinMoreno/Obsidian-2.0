@@ -1,6 +1,6 @@
 [[CWES]] [[Web Enumeración]] [[Web Explotación]] [[CWES - Checklist]]
 
-### ip y hosts
+## ip y hosts
 
 IP: 
 ```
@@ -21,7 +21,7 @@ y encontré: `admin` el cual agregué también al /etc/hosts:
 10.129.4.195    trilocor.local www.trilocor.local admin.trilocor.local
 ```
 
-### servidor
+## servidor
 
 El servidor es: 
 ```
@@ -29,6 +29,8 @@ curl -Iv http://www.trilocor.local/
 
 Apache/2.4.41 (Ubuntu)
 ```
+
+## CMS 
 
 Me encuentro con un wordpress 6.0.2 y astra 3.9.2
 
@@ -73,10 +75,9 @@ y
 sudo wpscan --url http://admin.trilocor.local/ --enumerate --api-token [REDACTED]
 ```
 
-#### resultado
 [[resultado wpscan]]
 
-#### usuarios
+### usuarios
 
 Encuentro esta lista de usuarios: 
 ```
@@ -92,15 +93,16 @@ trilocor.Vagient
 trilocor.Fankle
 ```
 
-#### fuerza bruta
+### fuerza bruta
 
 Les hago fuerza bruta con wp-scan: 
 ```
 wpscan --password-attack xmlrpc -t 20 -U users-wp.txt -P /usr/share/wordlists/rockyou.txt --url http://admin.trilocor.local/ --api-token [REDACTED]
 ```
 
-#### api 
+### api 
 
 http://www.trilocor.local/index.php/wp-json/
 y
 http://www.trilocor.local/index.php/wp-json/wp/v2/
+
