@@ -42,6 +42,9 @@ User-agent: *
 Disallow: /wp-admin/
 Allow: /wp-admin/admin-ajax.php
 
+Sitemap: http://www.trilocor.local/wp-sitemap.xml
+
+# y para el caso del admin:
 Sitemap: http://admin.trilocor.local/wp-sitemap.xml
 ```
 
@@ -96,3 +99,8 @@ Les hago fuerza bruta con wp-scan:
 wpscan --password-attack xmlrpc -t 20 -U users-wp.txt -P /usr/share/wordlists/rockyou.txt --url http://admin.trilocor.local/ --api-token [REDACTED]
 ```
 
+#### api 
+
+http://www.trilocor.local/index.php/wp-json/
+y
+http://www.trilocor.local/index.php/wp-json/wp/v2/
