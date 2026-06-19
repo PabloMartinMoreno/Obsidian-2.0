@@ -120,7 +120,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] Directorios o archivos referenciados.
         - [ ] Información de usuarios.
     - [ ] **Análisis de Archivos JavaScript (`.js`):**
-        - [ ] ¿Archivos minificados (`.min.js`)? Usar "Beautifiers" (ej. `jsbeautifier.org`) para mejorar legibilidad.
+        - [x] ¿Archivos minificados (`.min.js`)? Usar "Beautifiers" (ej. `jsbeautifier.org`) para mejorar legibilidad.
         - [ ] ¿Ofuscación `p,a,c,k,e,d`? Usar "UnPacker" (ej. `matthewfl.com/unPacker.html`).
         - [ ] ¿Otros tipos de ofuscación?
         - [ ] Analizar código desofuscado:
