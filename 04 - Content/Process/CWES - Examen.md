@@ -4,21 +4,21 @@
 
 IP: 
 ```
-10.129.4.195
+10.129.247.239
 ```
 
 Agregue al /etc/hosts: 
 ```
-10.129.4.195    trilocor.local www.trilocor.local
+10.129.247.239    trilocor.local www.trilocor.local
 ```
 
 Hice un escaneo de hosts:
 ```
-ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.trilocor.local" -u http://10.129.4.185/ -fw 5194 -t 100
+ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.trilocor.local" -u http://10.129.247.239/ -fw 5194 -t 100
 ```
 y encontré: `admin` el cual agregué también al /etc/hosts: 
 ```
-10.129.4.195    trilocor.local www.trilocor.local admin.trilocor.local
+10.129.247.239    trilocor.local www.trilocor.local admin.trilocor.local
 ```
 
 ## servidor
