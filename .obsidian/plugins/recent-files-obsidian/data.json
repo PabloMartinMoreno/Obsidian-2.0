@@ -5,6 +5,14 @@
       "path": "04 - Content/Process/CWES - Examen.md"
     },
     {
+      "basename": "SQL Injection (SQLi)",
+      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
+    },
+    {
+      "basename": "SQLi - Union based",
+      "path": "04 - Content/Web/Injection/SQLi - Union based.md"
+    },
+    {
       "basename": "resultado wpscan",
       "path": "04 - Content/Process/resultado wpscan.md"
     },
@@ -79,10 +87,6 @@
     {
       "basename": "less",
       "path": "04 - Content/Tools/less.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
     },
     {
       "basename": "SQLi - Out of Band",
@@ -195,10 +199,6 @@
     {
       "basename": "Bandit 22",
       "path": "05 - Writeups/OverTheWire/Bandit 22.md"
-    },
-    {
-      "basename": "Bandit 21",
-      "path": "05 - Writeups/OverTheWire/Bandit 21.md"
     }
   ],
   "omittedPaths": [],
