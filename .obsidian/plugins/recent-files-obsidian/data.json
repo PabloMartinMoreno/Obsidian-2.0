@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "Web Enumeración",
+      "path": "03 - Tertiary Categories/Web Enumeración.md"
+    },
+    {
       "basename": "CWES - Examen",
       "path": "04 - Content/Process/CWES - Examen.md"
+    },
+    {
+      "basename": "Lista archivos php",
+      "path": "04 - Content/Web/FileInclusion/Lista archivos php.md"
     },
     {
       "basename": "SQL Injection (SQLi)",
@@ -19,10 +27,6 @@
     {
       "basename": "CWES - Checklist",
       "path": "04 - Content/Process/CWES - Checklist.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
     {
       "basename": "Web Fingerprinting",
@@ -195,10 +199,6 @@
     {
       "basename": "Bandit 23",
       "path": "05 - Writeups/OverTheWire/Bandit 23.md"
-    },
-    {
-      "basename": "Bandit 22",
-      "path": "05 - Writeups/OverTheWire/Bandit 22.md"
     }
   ],
   "omittedPaths": [],

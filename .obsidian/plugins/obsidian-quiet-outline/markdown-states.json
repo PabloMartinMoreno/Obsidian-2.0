@@ -621,7 +621,7 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 27.28436018957346,
+    "scroll": 23.464632454923716,
     "cursor": {
       "from": {
         "line": 25,
@@ -4084,7 +4084,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 270.4453125,
+    "scroll": 264.7545572916667,
     "cursor": {
       "from": {
         "line": 289,
@@ -4151,6 +4151,20 @@
       "to": {
         "line": 8,
         "ch": 72
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/FileInclusion/Lista archivos php.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 14,
+        "ch": 0
+      },
+      "to": {
+        "line": 35,
+        "ch": 4
       }
     },
     "expandedKeys": []
