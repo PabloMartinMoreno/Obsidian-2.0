@@ -32,24 +32,24 @@ https://github.com/Jackie0x17/CBBH-Checklist
 > [!tip] Técnica → [[Web Fingerprinting]]
 
 - **Identificación del Servidor Web:**
-    - [x] ¿Qué tipo de Web Server es? (Apache, Nginx, IIS, etc.) → header `Server` con `curl -I http://<IP>`
-    - [x] ¿Versión del servidor web? → `Server` header / `whatweb http://<IP>` / `nmap -sV -p80,443 <IP>`
+    - [ ] ¿Qué tipo de Web Server es? (Apache, Nginx, IIS, etc.) → header `Server` con `curl -I http://<IP>`
+    - [ ] ¿Versión del servidor web? → `Server` header / `whatweb http://<IP>` / `nmap -sV -p80,443 <IP>`
 - **Identificación Activa de Infraestructura:**
     - [ ] **Cabeceras HTTP:**
-        - [x] `curl -I http://<IP>` o `curl -s -v http://<IP>`
-        - [x] `Server`: Identificar software y versión del servidor.
-        - [x] `X-Powered-By`: Identificar tecnologías (PHP, ASP.NET, JSP, etc.).
-        - [x] `X-AspNet-Version`, `X-AspNetMvc-Version`.
-    - [x] **Cookies:**
-        - [x] Identificar cookies de sesión y tecnología subyacente:
-            - [x] .NET: `ASPSESSIONID<RANDOM>=<COOKIE_VALUE>`
-            - [x] PHP: `PHPSESSID=<COOKIE_VALUE>`
-            - [x] JAVA: `JSESSIONID=<COOKIE_VALUE>` (o `JSESSION` según tu lista)
+        - [ ] `curl -I http://<IP>` o `curl -s -v http://<IP>`
+        - [ ] `Server`: Identificar software y versión del servidor.
+        - [ ] `X-Powered-By`: Identificar tecnologías (PHP, ASP.NET, JSP, etc.).
+        - [ ] `X-AspNet-Version`, `X-AspNetMvc-Version`.
+    - [ ] **Cookies:**
+        - [ ] Identificar cookies de sesión y tecnología subyacente:
+            - [ ] .NET: `ASPSESSIONID<RANDOM>=<COOKIE_VALUE>`
+            - [ ] PHP: `PHPSESSID=<COOKIE_VALUE>`
+            - [ ] JAVA: `JSESSIONID=<COOKIE_VALUE>` (o `JSESSION` según tu lista)
     - [ ] **Análisis de Errores:**
         - [ ] Provocar errores para revelar software/versión (URLs inválidas, parámetros incorrectos).
     - [ ] **Herramientas de Fingerprinting:**
-        - [x] **Wappalyzer:** Identificar tecnologías (CMS, frameworks, librerías JS, etc.).
-        - [x] **WhatWeb:** `whatweb http://<IP>` para una identificación detallada.
+        - [ ] **Wappalyzer:** Identificar tecnologías (CMS, frameworks, librerías JS, etc.).
+        - [ ] **WhatWeb:** `whatweb http://<IP>` para una identificación detallada.
         - [ ] **BuiltWith:** Usar la web o extensión para análisis tecnológico.
         - [ ] **Netcraft:** Consultar el informe del sitio para tecnología, proveedor de hosting y postura de seguridad.
         - [ ] **Nikto:** `nikto -h <dominio_o_IP> -Tuning x 1 2 3 b` (la `b` es para `Security Headers` y `Allowed Methods` según tu entrada). Revisar vulnerabilidades conocidas y archivos interesantes.
@@ -61,13 +61,13 @@ https://github.com/Jackie0x17/CBBH-Checklist
     - [ ] **Aquatone:**
         - [ ] `cat subdominios.txt | aquatone -ports large` (para escaneo de puertos y screenshots de subdominios).
 - **Identificación de CMS y Frameworks:**
-    - [x] ¿Utiliza un CMS? (WordPress, Joomla, Drupal, etc.) → `whatweb` + probe `/wp-admin`,`/administrator`,`/CHANGELOG.txt` · [[Web Technology Enumeration]]
-        - [x] Identificar rutas específicas del CMS (ej. `/wp-admin`, `/administrator`).
-    - [x] ¿Tecnología de Backend? (PHP, Java, ASPX, Node.js, Python, Ruby) → header `X-Powered-By` / extensión de archivos / cookie de sesión
-    - [x] ¿Framework específico? (Laravel, Express, Django, Rails, Spring, etc.) → `whatweb` / páginas de error default / headers
+    - [ ] ¿Utiliza un CMS? (WordPress, Joomla, Drupal, etc.) → `whatweb` + probe `/wp-admin`,`/administrator`,`/CHANGELOG.txt` · [[Web Technology Enumeration]]
+        - [ ] Identificar rutas específicas del CMS (ej. `/wp-admin`, `/administrator`).
+    - [ ] ¿Tecnología de Backend? (PHP, Java, ASPX, Node.js, Python, Ruby) → header `X-Powered-By` / extensión de archivos / cookie de sesión
+    - [ ] ¿Framework específico? (Laravel, Express, Django, Rails, Spring, etc.) → `whatweb` / páginas de error default / headers
 - **Identificación de APIs:**
-    - [x] ¿Hay APIs expuestas? (REST, SOAP, GraphQL) → probe `/api`,`/graphql`,`/v1`,`?wsdl` · [[API Fuzzing]]
-    - [x] ¿Parámetros de consulta en URLs que sugieran APIs? (`/api/`, `?id=`)
+    - [ ] ¿Hay APIs expuestas? (REST, SOAP, GraphQL) → probe `/api`,`/graphql`,`/v1`,`?wsdl` · [[API Fuzzing]]
+    - [ ] ¿Parámetros de consulta en URLs que sugieran APIs? (`/api/`, `?id=`)
     - [ ] (Para más detalles, ver sección específica de APIs).
 - **Proxy AJP:**
     - [ ] Realizar escaneo `nmap -sV -p 8009 <IP>` para el puerto `8009/tcp`. Si está abierto, revisar sección _AJP Proxy_ en **Ataques del Lado del Servidor**.
@@ -84,22 +84,22 @@ https://github.com/Jackie0x17/CBBH-Checklist
 
 > [!tip] Técnica → [[robots.txt]] · [[Well-Known URIs]]
 
-- [x] **`robots.txt`:**
-    - [x] Revisar `http://<dominio>/robots.txt`.
-    - [x] Identificar directorios `Disallow`: ¿Rutas sensibles, paneles de administración, backups?
-    - [x] Mapear estructura del sitio basada en `Disallow` y `Allow`.
+- [ ] **`robots.txt`:**
+    - [ ] Revisar `http://<dominio>/robots.txt`.
+    - [ ] Identificar directorios `Disallow`: ¿Rutas sensibles, paneles de administración, backups?
+    - [ ] Mapear estructura del sitio basada en `Disallow` y `Allow`.
     - [ ] Detectar posibles trampas para crawlers (honeypots).
-    - [x] ¿Revela el tipo de CMS? (ej. `/wp-admin/` en `Disallow` para WordPress).
+    - [ ] ¿Revela el tipo de CMS? (ej. `/wp-admin/` en `Disallow` para WordPress).
 - [ ] **URIs `.well-known` (RFC 8615):**
-    - [x] Revisar `http://<dominio>/.well-known/`.
+    - [ ] Revisar `http://<dominio>/.well-known/`.
     - [ ] `security.txt` (RFC 9116): `/.well-known/security.txt` o `/security.txt`. ¿Contiene información de contacto para reporte de vulnerabilidades?
     - [ ] `change-password`: `/.well-known/change-password`.
     - [ ] `openid-configuration`: `/.well-known/openid-configuration`.
     - [ ] `assetlinks.json` (Digital Asset Links).
     - [ ] `mta-sts.txt` (MTA Strict Transport Security, RFC 8461).
-- [x] **`sitemap.xml`:**
-    - [x] Revisar `http://<dominio>/sitemap.xml` (o variaciones).
-    - [x] Identificar todas las URLs listadas para entender la estructura y contenido completo del sitio.
+- [ ] **`sitemap.xml`:**
+    - [ ] Revisar `http://<dominio>/sitemap.xml` (o variaciones).
+    - [ ] Identificar todas las URLs listadas para entender la estructura y contenido completo del sitio.
 - [ ] **`humans.txt`:**
     - [ ] Revisar `http://<dominio>/humans.txt`. ¿Información sobre el equipo de desarrollo o tecnologías?
 - [ ] **`Security.txt`:** (Ya cubierto en `.well-known`, pero verificar ambas ubicaciones).
@@ -120,7 +120,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
         - [ ] Directorios o archivos referenciados.
         - [ ] Información de usuarios.
     - [ ] **Análisis de Archivos JavaScript (`.js`):**
-        - [x] ¿Archivos minificados (`.min.js`)? Usar "Beautifiers" (ej. `jsbeautifier.org`) para mejorar legibilidad.
+        - [ ] ¿Archivos minificados (`.min.js`)? Usar "Beautifiers" (ej. `jsbeautifier.org`) para mejorar legibilidad.
         - [ ] ¿Ofuscación `p,a,c,k,e,d`? Usar "UnPacker" (ej. `matthewfl.com/unPacker.html`).
         - [ ] ¿Otros tipos de ofuscación?
         - [ ] Analizar código desofuscado:
@@ -156,7 +156,7 @@ https://github.com/Jackie0x17/CBBH-Checklist
 > [!tip] Técnica → [[Subdomains Passive Enumeration]] · [[Directory Fuzzing]] · [[Subdomain & VHost Fuzzing]] · [[Parameter Fuzzing]]
 
 - [ ] **WHOIS:**
-    - [x] `whois <dominio>`: Información de registro, contactos, servidores DNS.
+    - [ ] `whois <dominio>`: Información de registro, contactos, servidores DNS.
 - [ ] **Enumeración DNS:**
     - [ ] **Herramientas básicas:**
         - [ ] `dig <dominio> ANY +noall +answer` / `dig axfr <dominio> @<servidor_dns_autoritativo>` (para transferencia de zona).
