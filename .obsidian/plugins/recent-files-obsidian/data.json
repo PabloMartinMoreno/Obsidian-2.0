@@ -1,6 +1,34 @@
 {
   "recentFiles": [
     {
+      "basename": "Web Explotación",
+      "path": "03 - Tertiary Categories/Web Explotación.md"
+    },
+    {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
+    },
+    {
+      "basename": "Directory Traversal",
+      "path": "04 - Content/Web/PathTraversal/Directory Traversal.md"
+    },
+    {
+      "basename": "Directory Traversal - Payloads Basicos",
+      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Payloads Basicos.md"
+    },
+    {
+      "basename": "Directory Traversal - Vectores OS y Stack",
+      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Vectores OS y Stack.md"
+    },
+    {
+      "basename": "Directory Traversal - Bypass de Sanitizacion",
+      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Bypass de Sanitizacion.md"
+    },
+    {
+      "basename": "Directory Traversal - Deteccion y Reconocimiento",
+      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Deteccion y Reconocimiento.md"
+    },
+    {
       "basename": "Web Enumeración",
       "path": "03 - Tertiary Categories/Web Enumeración.md"
     },
@@ -171,34 +199,6 @@
     {
       "basename": "Bandit 30",
       "path": "05 - Writeups/OverTheWire/Bandit 30.md"
-    },
-    {
-      "basename": "Bandit 29",
-      "path": "05 - Writeups/OverTheWire/Bandit 29.md"
-    },
-    {
-      "basename": "Bandit 28",
-      "path": "05 - Writeups/OverTheWire/Bandit 28.md"
-    },
-    {
-      "basename": "Bandit 27",
-      "path": "05 - Writeups/OverTheWire/Bandit 27.md"
-    },
-    {
-      "basename": "Bandit 26",
-      "path": "05 - Writeups/OverTheWire/Bandit 26.md"
-    },
-    {
-      "basename": "Bandit 25",
-      "path": "05 - Writeups/OverTheWire/Bandit 25.md"
-    },
-    {
-      "basename": "Bandit 24",
-      "path": "05 - Writeups/OverTheWire/Bandit 24.md"
-    },
-    {
-      "basename": "Bandit 23",
-      "path": "05 - Writeups/OverTheWire/Bandit 23.md"
     }
   ],
   "omittedPaths": [],

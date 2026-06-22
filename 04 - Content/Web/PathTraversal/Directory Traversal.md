@@ -56,10 +56,10 @@ tab: **Detectar OS y Stack**
 #### 🎯 Payloads Básicos
 
 ````tabs
-tab: **Unix `../` Traversal**
+tab: **Unix ../ Traversal**
 ![[Directory Traversal - Payloads Basicos#^pt-payload-unix]]
 
-tab: **Windows `..\\` Traversal**
+tab: **Windows ..\\ Traversal**
 ![[Directory Traversal - Payloads Basicos#^pt-payload-windows]]
 
 tab: **Mixed Encoding**

@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 0,
+    "scroll": 22.536458333333332,
     "cursor": {
       "from": {
         "line": 22,
@@ -210,11 +210,11 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
-    "scroll": 85.63644842380153,
+    "scroll": 34.996004434868105,
     "cursor": {
       "from": {
         "line": 41,
-        "ch": 11
+        "ch": 0
       },
       "to": {
         "line": 41,
@@ -308,14 +308,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/PathTraversal/Directory Traversal.md": {
-    "scroll": 1.4728506787330318,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 31,
+        "line": 56,
         "ch": 0
       },
       "to": {
-        "line": 31,
+        "line": 56,
         "ch": 0
       }
     },
@@ -621,7 +621,7 @@
     ]
   },
   "03 - Tertiary Categories/Web Enumeración.md": {
-    "scroll": 23.464632454923716,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 25,
@@ -4165,6 +4165,62 @@
       "to": {
         "line": 35,
         "ch": 4
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/PathTraversal/Directory Traversal - Payloads Basicos.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 24,
+        "ch": 13
+      },
+      "to": {
+        "line": 24,
+        "ch": 13
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/PathTraversal/Directory Traversal - Deteccion y Reconocimiento.md": {
+    "scroll": 111.9140625,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/PathTraversal/Directory Traversal - Bypass de Sanitizacion.md": {
+    "scroll": 125.87425595238095,
+    "cursor": {
+      "from": {
+        "line": 20,
+        "ch": 0
+      },
+      "to": {
+        "line": 20,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/PathTraversal/Directory Traversal - Vectores OS y Stack.md": {
+    "scroll": 114.62825520833333,
+    "cursor": {
+      "from": {
+        "line": 21,
+        "ch": 0
+      },
+      "to": {
+        "line": 21,
+        "ch": 0
       }
     },
     "expandedKeys": []
