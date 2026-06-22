@@ -210,7 +210,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
-    "scroll": 42.85300122498979,
+    "scroll": 46.65041584961796,
     "cursor": {
       "from": {
         "line": 41,
@@ -322,7 +322,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md": {
-    "scroll": 45.682291666666664,
+    "scroll": 60.92084958101717,
     "cursor": {
       "from": {
         "line": 31,
@@ -4084,15 +4084,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 264.7545572916667,
+    "scroll": 153.64657738095238,
     "cursor": {
       "from": {
-        "line": 289,
-        "ch": 0
+        "line": 160,
+        "ch": 149
       },
       "to": {
-        "line": 289,
-        "ch": 0
+        "line": 160,
+        "ch": 149
       }
     },
     "expandedKeys": [

@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Examen",
+      "path": "04 - Content/Process/CWES - Examen.md"
+    },
+    {
+      "basename": "Cross-Site Scripting (XSS)",
+      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
+    },
+    {
       "basename": "Server-Side Template Injection (SSTI)",
       "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
     },
@@ -35,10 +43,6 @@
     {
       "basename": "Web Enumeración",
       "path": "03 - Tertiary Categories/Web Enumeración.md"
-    },
-    {
-      "basename": "CWES - Examen",
-      "path": "04 - Content/Process/CWES - Examen.md"
     },
     {
       "basename": "Lista archivos php",
@@ -195,10 +199,6 @@
     {
       "basename": "Bandit 32",
       "path": "05 - Writeups/OverTheWire/Bandit 32.md"
-    },
-    {
-      "basename": "Bandit 31",
-      "path": "05 - Writeups/OverTheWire/Bandit 31.md"
     }
   ],
   "omittedPaths": [],
