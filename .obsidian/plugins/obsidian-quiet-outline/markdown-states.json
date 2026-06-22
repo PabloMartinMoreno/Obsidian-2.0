@@ -4224,5 +4224,19 @@
       }
     },
     "expandedKeys": []
+  },
+  "04 - Content/Web/FileUpload/File Upload - Vulnerabilidades.md": {
+    "scroll": 55.938527994683504,
+    "cursor": {
+      "from": {
+        "line": 31,
+        "ch": 0
+      },
+      "to": {
+        "line": 31,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
   }
 }

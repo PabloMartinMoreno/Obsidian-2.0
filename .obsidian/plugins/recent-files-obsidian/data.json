@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "File Upload - Vulnerabilidades",
+      "path": "04 - Content/Web/FileUpload/File Upload - Vulnerabilidades.md"
+    },
+    {
       "basename": "CWES - Checklist",
       "path": "04 - Content/Process/CWES - Checklist.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Blue Team",
       "path": "01 - Primary Categories/Blue Team.md"
-    },
-    {
-      "basename": "Bandit 32",
-      "path": "05 - Writeups/OverTheWire/Bandit 32.md"
     }
   ],
   "omittedPaths": [],
