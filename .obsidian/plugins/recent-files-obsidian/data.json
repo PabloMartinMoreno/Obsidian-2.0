@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "Server-Side Template Injection (SSTI)",
+      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
+    },
+    {
       "basename": "Web Explotación",
       "path": "03 - Tertiary Categories/Web Explotación.md"
     },
     {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
+      "basename": "Server-Side Includes (SSI) Injection",
+      "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
     },
     {
       "basename": "Directory Traversal",
@@ -195,10 +199,6 @@
     {
       "basename": "Bandit 31",
       "path": "05 - Writeups/OverTheWire/Bandit 31.md"
-    },
-    {
-      "basename": "Bandit 30",
-      "path": "05 - Writeups/OverTheWire/Bandit 30.md"
     }
   ],
   "omittedPaths": [],

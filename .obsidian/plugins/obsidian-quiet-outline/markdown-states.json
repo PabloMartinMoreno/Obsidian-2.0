@@ -42,7 +42,7 @@
     "expandedKeys": []
   },
   "03 - Tertiary Categories/Web Explotación.md": {
-    "scroll": 22.536458333333332,
+    "scroll": 16.828685258964143,
     "cursor": {
       "from": {
         "line": 22,
@@ -210,7 +210,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
-    "scroll": 34.996004434868105,
+    "scroll": 42.85300122498979,
     "cursor": {
       "from": {
         "line": 41,
@@ -224,15 +224,15 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md": {
-    "scroll": 0,
+    "scroll": 27.339973439575033,
     "cursor": {
       "from": {
-        "line": 32,
-        "ch": 34
+        "line": 33,
+        "ch": 33
       },
       "to": {
-        "line": 32,
-        "ch": 34
+        "line": 33,
+        "ch": 33
       }
     },
     "expandedKeys": []
