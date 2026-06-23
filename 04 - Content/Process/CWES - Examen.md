@@ -5,12 +5,12 @@
 
 IP: 
 ```
-10.129.247.239
+10.129.248.61
 ```
 
 Agregue al /etc/hosts: 
 ```
-10.129.247.239    trilocor.local www.trilocor.local
+10.129.248.61    trilocor.local www.trilocor.local
 ```
 
 Hice un escaneo de hosts:
@@ -19,7 +19,7 @@ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Ho
 ```
 y encontré: `admin` el cual agregué también al /etc/hosts: 
 ```
-10.129.247.239    trilocor.local www.trilocor.local admin.trilocor.local
+10.129.248.61    trilocor.local www.trilocor.local admin.trilocor.local
 ```
 
 ## servidor
@@ -286,4 +286,5 @@ Compromiso total del servidor web. Un usuario con privilegios mínimos de edici�
 - Investigador original: Hồng Quân (2023-12-06)
 
 # Recursos Humanos
+
 

@@ -1,3 +1,4 @@
+[[CWES - Examen]]
 # Trilocor Robotic — HTB · Writeup completo (con payloads)
 
 > Walkthrough oficial reconstruido, **10 tareas** ordenadas. Entorno multi-contenedor. Reemplazá `LOCAL_IP` por la IP de tu interfaz de ataque (`tun0`) y los `PHPSESSID`/tokens por los de tu sesión. **Recordá URL-encodear cada payload** que lo requiera.
