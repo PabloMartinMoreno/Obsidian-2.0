@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/cwes - preguntas.md"
     },
     {
+      "basename": "CWES - Examen",
+      "path": "04 - Content/Process/CWES - Examen.md"
+    },
+    {
       "basename": "LFI - Básico",
       "path": "04 - Content/Web/FileInclusion/LFI - Básico.md"
     },
@@ -15,10 +19,6 @@
     {
       "basename": "LFI - Rutas Principales",
       "path": "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md"
-    },
-    {
-      "basename": "CWES - Examen",
-      "path": "04 - Content/Process/CWES - Examen.md"
     },
     {
       "basename": "File Upload - Vulnerabilidades",
