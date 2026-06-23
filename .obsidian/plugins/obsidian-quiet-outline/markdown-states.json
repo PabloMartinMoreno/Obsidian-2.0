@@ -4084,15 +4084,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 1092.4246277915634,
+    "scroll": 1091.2310426540284,
     "cursor": {
       "from": {
         "line": 1099,
-        "ch": 2
+        "ch": 43
       },
       "to": {
         "line": 1099,
-        "ch": 2
+        "ch": 43
       }
     },
     "expandedKeys": [
@@ -4240,14 +4240,14 @@
     "expandedKeys": []
   },
   "04 - Content/Process/cwes - preguntas.md": {
-    "scroll": 165.759765625,
+    "scroll": 47.228515625,
     "cursor": {
       "from": {
-        "line": 271,
+        "line": 20,
         "ch": 0
       },
       "to": {
-        "line": 271,
+        "line": 20,
         "ch": 0
       }
     },
@@ -4291,6 +4291,20 @@
       "to": {
         "line": 0,
         "ch": 190
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Reporte.md": {
+    "scroll": 486.4361979166667,
+    "cursor": {
+      "from": {
+        "line": 499,
+        "ch": 220
+      },
+      "to": {
+        "line": 499,
+        "ch": 220
       }
     },
     "expandedKeys": []
