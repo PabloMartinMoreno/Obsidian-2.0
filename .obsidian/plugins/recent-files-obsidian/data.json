@@ -9,6 +9,10 @@
       "path": "04 - Content/Process/CWES - Examen.md"
     },
     {
+      "basename": "sesion poisoning",
+      "path": "04 - Content/Process/sesion poisoning.md"
+    },
+    {
       "basename": "LFI - Básico",
       "path": "04 - Content/Web/FileInclusion/LFI - Básico.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Bandit 04",
       "path": "05 - Writeups/OverTheWire/Bandit 04.md"
-    },
-    {
-      "basename": "SOC Identificación",
-      "path": "03 - Tertiary Categories/SOC Identificación.md"
     }
   ],
   "omittedPaths": [],

@@ -1830,12 +1830,12 @@
     "scroll": 0,
     "cursor": {
       "from": {
-        "line": 286,
-        "ch": 63
+        "line": 0,
+        "ch": 19
       },
       "to": {
-        "line": 286,
-        "ch": 63
+        "line": 0,
+        "ch": 19
       }
     },
     "expandedKeys": []
@@ -4084,15 +4084,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 431.2369791666667,
+    "scroll": 660.4903273809524,
     "cursor": {
       "from": {
-        "line": 383,
-        "ch": 28
+        "line": 654,
+        "ch": 3
       },
       "to": {
-        "line": 383,
-        "ch": 11
+        "line": 654,
+        "ch": 3
       }
     },
     "expandedKeys": [
@@ -4240,15 +4240,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/cwes - preguntas.md": {
-    "scroll": 102.04206161137441,
+    "scroll": 127.35959715639811,
     "cursor": {
       "from": {
-        "line": 114,
-        "ch": 88
+        "line": 117,
+        "ch": 0
       },
       "to": {
-        "line": 114,
-        "ch": 88
+        "line": 117,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -4277,6 +4277,20 @@
       "to": {
         "line": 19,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/sesion poisoning.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 190
+      },
+      "to": {
+        "line": 0,
+        "ch": 190
       }
     },
     "expandedKeys": []
