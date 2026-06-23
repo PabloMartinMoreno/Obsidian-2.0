@@ -5,6 +5,18 @@
       "path": "04 - Content/Process/cwes - preguntas.md"
     },
     {
+      "basename": "LFI - Básico",
+      "path": "04 - Content/Web/FileInclusion/LFI - Básico.md"
+    },
+    {
+      "basename": "File Inclusion",
+      "path": "04 - Content/Web/FileInclusion/File Inclusion.md"
+    },
+    {
+      "basename": "LFI - Rutas Principales",
+      "path": "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md"
+    },
+    {
       "basename": "CWES - Examen",
       "path": "04 - Content/Process/CWES - Examen.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "SOC Identificación",
       "path": "03 - Tertiary Categories/SOC Identificación.md"
-    },
-    {
-      "basename": "MITRE ATT&CK",
-      "path": "04 - Content/BlueTeam/SOC/MITRE ATT&CK.md"
-    },
-    {
-      "basename": "Cyber Kill Chain",
-      "path": "04 - Content/BlueTeam/SOC/Cyber Kill Chain.md"
-    },
-    {
-      "basename": "Identificación",
-      "path": "02 - Secondary Categories/Identificación.md"
     }
   ],
   "omittedPaths": [],

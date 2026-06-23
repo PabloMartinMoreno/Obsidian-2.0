@@ -294,7 +294,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/FileInclusion/File Inclusion.md": {
-    "scroll": 21.65665236051502,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 29,
@@ -4240,7 +4240,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/cwes - preguntas.md": {
-    "scroll": 96.188263229308,
+    "scroll": 98.60872395833333,
     "cursor": {
       "from": {
         "line": 90,
@@ -4249,6 +4249,34 @@
       "to": {
         "line": 90,
         "ch": 3
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 10,
+        "ch": 0
+      },
+      "to": {
+        "line": 10,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Web/FileInclusion/LFI - Básico.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 19,
+        "ch": 0
+      },
+      "to": {
+        "line": 19,
+        "ch": 0
       }
     },
     "expandedKeys": []
