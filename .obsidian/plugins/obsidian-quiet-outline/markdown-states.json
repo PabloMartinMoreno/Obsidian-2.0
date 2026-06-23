@@ -4084,7 +4084,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 989.8415178571429,
+    "scroll": 987.984375,
     "cursor": {
       "from": {
         "line": 1005,
@@ -4240,15 +4240,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/cwes - preguntas.md": {
-    "scroll": 136.9535278154681,
+    "scroll": 151.10044642857142,
     "cursor": {
       "from": {
-        "line": 155,
-        "ch": 22
+        "line": 163,
+        "ch": 55
       },
       "to": {
-        "line": 155,
-        "ch": 62
+        "line": 163,
+        "ch": 55
       }
     },
     "expandedKeys": []

