@@ -11,10 +11,15 @@
             "id": "be77722f92026a4d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "04 - Content/Process/cwes - preguntas.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "Nueva pestaña"
+              "title": "cwes - preguntas"
             }
           }
         ],
@@ -66,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:xss",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -115,7 +120,8 @@
               "title": "Etiquetas"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -260,9 +266,10 @@
   },
   "active": "be77722f92026a4d",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES - Examen.md",
+    "04 - Content/Process/cwes - preguntas.md",
     "04 - Content/Web/FileUpload/File Upload - Vulnerabilidades.md",
     "04 - Content/Process/CWES - Checklist.md",
-    "04 - Content/Process/CWES - Examen.md",
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
     "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md",
     "03 - Tertiary Categories/Web Explotación.md",
@@ -287,7 +294,6 @@
     "04 - Content/Tools/Recon/ffuf.md.tmp.17285.c804980d9b0d",
     "04 - Content/Tools/Recon/ffuf.md.tmp.17285.96a0995cd682",
     "04 - Content/Tools/Recon/gobuster.md",
-    "04 - Content/Recon/Fuzzing/Directory Fuzzing.md",
     "04 - Content/Web/MassAssignment/Mass Assignment.md.tmp",
     "04 - Content/Tools/Recon/searchsploit.md.tmp",
     "04 - Content/Tools/Recon/nikto.md.tmp",

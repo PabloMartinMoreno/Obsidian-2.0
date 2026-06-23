@@ -1,16 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "cwes - preguntas",
+      "path": "04 - Content/Process/cwes - preguntas.md"
+    },
+    {
+      "basename": "CWES - Examen",
+      "path": "04 - Content/Process/CWES - Examen.md"
+    },
+    {
       "basename": "File Upload - Vulnerabilidades",
       "path": "04 - Content/Web/FileUpload/File Upload - Vulnerabilidades.md"
     },
     {
       "basename": "CWES - Checklist",
       "path": "04 - Content/Process/CWES - Checklist.md"
-    },
-    {
-      "basename": "CWES - Examen",
-      "path": "04 - Content/Process/CWES - Examen.md"
     },
     {
       "basename": "Cross-Site Scripting (XSS)",
@@ -195,10 +199,6 @@
     {
       "basename": "Identificación",
       "path": "02 - Secondary Categories/Identificación.md"
-    },
-    {
-      "basename": "Blue Team",
-      "path": "01 - Primary Categories/Blue Team.md"
     }
   ],
   "omittedPaths": [],
