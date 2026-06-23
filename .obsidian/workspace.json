@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "c23dd6ce32748b73",
+        "id": "b8bcbfd5cb8fefe4",
         "type": "tabs",
         "children": [
           {
-            "id": "a6998b8327f0072f",
+            "id": "be77722f92026a4d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "04 - Content/Web/FileUpload/File Upload - Vulnerabilidades.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "File Upload - Vulnerabilidades"
+              "title": "Nueva pestaña"
             }
           }
         ],
@@ -263,8 +258,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "a6998b8327f0072f",
+  "active": "be77722f92026a4d",
   "lastOpenFiles": [
+    "04 - Content/Web/FileUpload/File Upload - Vulnerabilidades.md",
     "04 - Content/Process/CWES - Checklist.md",
     "04 - Content/Process/CWES - Examen.md",
     "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md",
@@ -292,7 +288,6 @@
     "04 - Content/Tools/Recon/ffuf.md.tmp.17285.96a0995cd682",
     "04 - Content/Tools/Recon/gobuster.md",
     "04 - Content/Recon/Fuzzing/Directory Fuzzing.md",
-    "04 - Content/Tools/Recon/ffuf.md",
     "04 - Content/Web/MassAssignment/Mass Assignment.md.tmp",
     "04 - Content/Tools/Recon/searchsploit.md.tmp",
     "04 - Content/Tools/Recon/nikto.md.tmp",
