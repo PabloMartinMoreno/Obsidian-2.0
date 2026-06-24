@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/CWES - Reporte.md",
+                "file": "04 - Content/Process/cwes - preguntas.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "CWES - Reporte"
+              "title": "cwes - preguntas"
             }
           }
         ],
@@ -266,6 +266,7 @@
   },
   "active": "7f48794054291b11",
   "lastOpenFiles": [
+    "04 - Content/Process/Task 8.md",
     "04 - Content/Process/cwes - preguntas.md",
     "04 - Content/Process/CWES - Reporte.md",
     "04 - Content/Process/CWES - Examen.md",
@@ -291,7 +292,6 @@
     "04 - Content/Process/resultado wpscan.md",
     "04 - Content/Recon/WebTech/Web Fingerprinting.md",
     "04 - Content/Web/Fundamentals/Well-Known URIs.md",
-    "04 - Content/Recon/OSINT/Certificate Transparency Logs.md",
     "04 - Content/Tools/Recon/ffuf.md.tmp.17285.c804980d9b0d",
     "04 - Content/Tools/Recon/ffuf.md.tmp.17285.96a0995cd682",
     "04 - Content/Web/MassAssignment/Mass Assignment.md.tmp",
