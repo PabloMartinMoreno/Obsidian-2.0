@@ -5,16 +5,16 @@
       "path": "04 - Content/Process/cwes - preguntas.md"
     },
     {
-      "basename": "Task 8",
-      "path": "04 - Content/Process/Task 8.md"
-    },
-    {
       "basename": "CWES - Reporte",
       "path": "04 - Content/Process/CWES - Reporte.md"
     },
     {
       "basename": "CWES - Examen",
       "path": "04 - Content/Process/CWES - Examen.md"
+    },
+    {
+      "basename": "Task 8",
+      "path": "04 - Content/Process/Task 8.md"
     },
     {
       "basename": "sesion poisoning",

