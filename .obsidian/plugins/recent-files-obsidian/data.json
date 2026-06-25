@@ -5,12 +5,12 @@
       "path": "04 - Content/Process/cwes - preguntas.md"
     },
     {
-      "basename": "JavaScript Deobfuscation",
-      "path": "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md"
-    },
-    {
       "basename": "CWES - Reporte",
       "path": "04 - Content/Process/CWES - Reporte.md"
+    },
+    {
+      "basename": "JavaScript Deobfuscation",
+      "path": "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md"
     },
     {
       "basename": "CWES - Examen",

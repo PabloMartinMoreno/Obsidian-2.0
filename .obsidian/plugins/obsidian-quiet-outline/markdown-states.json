@@ -4240,7 +4240,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/cwes - preguntas.md": {
-    "scroll": 231.7938988095238,
+    "scroll": 170.8137720488467,
     "cursor": {
       "from": {
         "line": 250,
@@ -4296,15 +4296,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Reporte.md": {
-    "scroll": 568.4781553398059,
+    "scroll": 462.5751953125,
     "cursor": {
       "from": {
-        "line": 58,
-        "ch": 0
+        "line": 468,
+        "ch": 39
       },
       "to": {
-        "line": 58,
-        "ch": 0
+        "line": 468,
+        "ch": 9
       }
     },
     "expandedKeys": []

