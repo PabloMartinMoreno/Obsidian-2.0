@@ -5,6 +5,10 @@
       "path": "04 - Content/Process/cwes - preguntas.md"
     },
     {
+      "basename": "JavaScript Deobfuscation",
+      "path": "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md"
+    },
+    {
       "basename": "CWES - Reporte",
       "path": "04 - Content/Process/CWES - Reporte.md"
     },
@@ -195,10 +199,6 @@
     {
       "basename": "Bandit 07",
       "path": "05 - Writeups/OverTheWire/Bandit 07.md"
-    },
-    {
-      "basename": "Bandit 06",
-      "path": "05 - Writeups/OverTheWire/Bandit 06.md"
     }
   ],
   "omittedPaths": [],

