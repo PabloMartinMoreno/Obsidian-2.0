@@ -707,15 +707,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Maquinas.md": {
-    "scroll": 0.01,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 0,
-        "ch": 0
+        "line": 15,
+        "ch": 6
       },
       "to": {
-        "line": 0,
-        "ch": 0
+        "line": 15,
+        "ch": 6
       }
     },
     "expandedKeys": []
@@ -1831,11 +1831,11 @@
     "cursor": {
       "from": {
         "line": 0,
-        "ch": 19
+        "ch": 0
       },
       "to": {
         "line": 0,
-        "ch": 19
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -4084,7 +4084,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Examen.md": {
-    "scroll": 159.93033854166666,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 1097,
@@ -4240,15 +4240,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/cwes - preguntas.md": {
-    "scroll": 170.8137720488467,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 250,
-        "ch": 59
+        "line": 167,
+        "ch": 0
       },
       "to": {
-        "line": 250,
-        "ch": 88
+        "line": 167,
+        "ch": 0
       }
     },
     "expandedKeys": []
@@ -4296,7 +4296,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Reporte.md": {
-    "scroll": 462.5751953125,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 468,
@@ -4310,6 +4310,76 @@
     "expandedKeys": []
   },
   "04 - Content/Process/Task 8.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Swamp.md": {
+    "scroll": 322.2513020833333,
+    "cursor": {
+      "from": {
+        "line": 359,
+        "ch": 22
+      },
+      "to": {
+        "line": 359,
+        "ch": 22
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Express.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 276,
+        "ch": 86
+      },
+      "to": {
+        "line": 276,
+        "ch": 86
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Dig - Cuando usarlo.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 3,
+        "ch": 12
+      },
+      "to": {
+        "line": 3,
+        "ch": 6
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Tools/Recon/dig.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 22,
+        "ch": 0
+      },
+      "to": {
+        "line": 22,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/CWES - Task 8.md": {
     "scroll": 0,
     "cursor": {
       "from": {

@@ -1,31 +1,29 @@
 ---
 aliases:
-  - TODOs
-  - Pendientes
+  - Todo Round-Up
 tags:
   - meta/index
-kind: Concept
 cssclasses:
   - dashboard
+kind: Concept
 ---
 
 # Todo Round-Up
 
-Notas con callout `> [!todo]` activo. Útil para encontrar todo pendiente disperso, complementario a `[[Incompletos]]` (que filtra por tag).
+Agrega todos los checkboxes abiertos (`- [ ]`) de cualquier nota del vault. Complementa a [[Incompletos]] (que trackea notas con `estado/incompleto` enteras; esto trackea tareas sueltas dentro de notas).
 
 ---
 
-## Notas con `[!todo]`
+## Resumen
 
 ```dataview
 TABLE WITHOUT ID
-  file.link as "Nota",
-  file.folder as "Carpeta",
-  dateformat(file.mtime, "yyyy-MM-dd") as "Última edición"
+  length(rows) as "Tareas abiertas"
 FROM ""
 WHERE !contains(file.path, "00 - Resources/Templates")
-  AND regexmatch(">\\s*\\[!todo\\]", file.content)
-SORT file.mtime DESC
+FLATTEN file.tasks as t
+WHERE !t.completed
+GROUP BY true
 ```
 
 ---
@@ -34,19 +32,23 @@ SORT file.mtime DESC
 
 ```dataview
 TABLE WITHOUT ID
-  file.folder as "Carpeta",
-  length(rows) as "Notas con todo"
+  length(rows) as "Abiertas"
 FROM ""
 WHERE !contains(file.path, "00 - Resources/Templates")
-  AND regexmatch(">\\s*\\[!todo\\]", file.content)
-GROUP BY file.folder
+FLATTEN file.tasks as t
+WHERE !t.completed
+GROUP BY file.folder as "Carpeta"
 SORT length(rows) DESC
 ```
 
 ---
 
-## Notas
+## Tareas abiertas por nota
 
-- Dataview detecta `[!todo]` via `regexmatch` sobre `file.content`.
-- Para tracking más granular (checkboxes `- [ ]`), Dataview soporta nativo via `TASK FROM ""`.
-- Ver también: [[Incompletos]] — pendientes via tag `estado/incompleto`.
+```dataview
+TASK
+FROM ""
+WHERE !completed AND !fullyCompleted AND !contains(file.path, "00 - Resources/Templates")
+GROUP BY file.link
+SORT file.mtime DESC
+```

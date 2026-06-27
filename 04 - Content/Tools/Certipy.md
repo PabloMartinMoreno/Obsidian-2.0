@@ -5,8 +5,8 @@ tags:
   - tool/certipy
   - technique/credential-access
   - technique/privilege-escalation
-  - env/active-directory
   - service/ad-cs
+  - asset/active-directory
 primary categories:
   - "[[Red Team]]"
 secondary categories:

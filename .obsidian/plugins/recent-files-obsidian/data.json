@@ -1,204 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "cwes - preguntas",
-      "path": "04 - Content/Process/cwes - preguntas.md"
+      "basename": "dig",
+      "path": "04 - Content/Tools/Recon/dig.md"
     },
     {
-      "basename": "CWES - Reporte",
-      "path": "04 - Content/Process/CWES - Reporte.md"
+      "basename": "Dig - Cuando usarlo",
+      "path": "04 - Content/Process/Dig - Cuando usarlo.md"
     },
     {
-      "basename": "JavaScript Deobfuscation",
-      "path": "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md"
+      "basename": "CWES - Maquinas",
+      "path": "04 - Content/Process/CWES - Maquinas.md"
     },
     {
-      "basename": "CWES - Examen",
-      "path": "04 - Content/Process/CWES - Examen.md"
+      "basename": "Swamp",
+      "path": "04 - Content/Process/Swamp.md"
     },
     {
-      "basename": "Task 8",
-      "path": "04 - Content/Process/Task 8.md"
-    },
-    {
-      "basename": "sesion poisoning",
-      "path": "04 - Content/Process/sesion poisoning.md"
-    },
-    {
-      "basename": "LFI - Básico",
-      "path": "04 - Content/Web/FileInclusion/LFI - Básico.md"
-    },
-    {
-      "basename": "File Inclusion",
-      "path": "04 - Content/Web/FileInclusion/File Inclusion.md"
-    },
-    {
-      "basename": "LFI - Rutas Principales",
-      "path": "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md"
-    },
-    {
-      "basename": "File Upload - Vulnerabilidades",
-      "path": "04 - Content/Web/FileUpload/File Upload - Vulnerabilidades.md"
-    },
-    {
-      "basename": "CWES - Checklist",
-      "path": "04 - Content/Process/CWES - Checklist.md"
-    },
-    {
-      "basename": "Cross-Site Scripting (XSS)",
-      "path": "04 - Content/Web/XSS/Cross-Site Scripting (XSS).md"
-    },
-    {
-      "basename": "Server-Side Template Injection (SSTI)",
-      "path": "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md"
-    },
-    {
-      "basename": "Web Explotación",
-      "path": "03 - Tertiary Categories/Web Explotación.md"
-    },
-    {
-      "basename": "Server-Side Includes (SSI) Injection",
-      "path": "04 - Content/Web/SSI/Server-Side Includes (SSI) Injection.md"
-    },
-    {
-      "basename": "Directory Traversal",
-      "path": "04 - Content/Web/PathTraversal/Directory Traversal.md"
-    },
-    {
-      "basename": "Directory Traversal - Payloads Basicos",
-      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Payloads Basicos.md"
-    },
-    {
-      "basename": "Directory Traversal - Vectores OS y Stack",
-      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Vectores OS y Stack.md"
-    },
-    {
-      "basename": "Directory Traversal - Bypass de Sanitizacion",
-      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Bypass de Sanitizacion.md"
-    },
-    {
-      "basename": "Directory Traversal - Deteccion y Reconocimiento",
-      "path": "04 - Content/Web/PathTraversal/Directory Traversal - Deteccion y Reconocimiento.md"
-    },
-    {
-      "basename": "Web Enumeración",
-      "path": "03 - Tertiary Categories/Web Enumeración.md"
-    },
-    {
-      "basename": "Lista archivos php",
-      "path": "04 - Content/Web/FileInclusion/Lista archivos php.md"
-    },
-    {
-      "basename": "SQL Injection (SQLi)",
-      "path": "04 - Content/Web/Injection/SQL Injection (SQLi).md"
-    },
-    {
-      "basename": "SQLi - Union based",
-      "path": "04 - Content/Web/Injection/SQLi - Union based.md"
-    },
-    {
-      "basename": "resultado wpscan",
-      "path": "04 - Content/Process/resultado wpscan.md"
-    },
-    {
-      "basename": "Web Fingerprinting",
-      "path": "04 - Content/Recon/WebTech/Web Fingerprinting.md"
-    },
-    {
-      "basename": "Well-Known URIs",
-      "path": "04 - Content/Web/Fundamentals/Well-Known URIs.md"
-    },
-    {
-      "basename": "Certificate Transparency Logs",
-      "path": "04 - Content/Recon/OSINT/Certificate Transparency Logs.md"
-    },
-    {
-      "basename": "Subdomains Passive Enumeration",
-      "path": "04 - Content/Recon/Subdomain/Subdomains Passive Enumeration.md"
-    },
-    {
-      "basename": "JavaScript Deobfuscation",
-      "path": "04 - Content/Tools/JavaScript Deobfuscation.md"
-    },
-    {
-      "basename": "CWES",
-      "path": "02 - Secondary Categories/CWES.md"
-    },
-    {
-      "basename": "Subdomain & VHost Fuzzing",
-      "path": "04 - Content/Recon/Fuzzing/Subdomain & VHost Fuzzing.md"
-    },
-    {
-      "basename": "gobuster",
-      "path": "04 - Content/Tools/Recon/gobuster.md"
-    },
-    {
-      "basename": "Directory Fuzzing",
-      "path": "04 - Content/Recon/Fuzzing/Directory Fuzzing.md"
-    },
-    {
-      "basename": "ffuf",
-      "path": "04 - Content/Tools/Recon/ffuf.md"
-    },
-    {
-      "basename": "CWES - Carta de Compromiso",
-      "path": "04 - Content/Process/CWES - Carta de Compromiso.md"
-    },
-    {
-      "basename": "Information Leakage",
-      "path": "04 - Content/Web/Fundamentals/Information Leakage.md"
-    },
-    {
-      "basename": "grep",
-      "path": "04 - Content/Tools/grep.md"
-    },
-    {
-      "basename": "Cross-Site Request Forgery (CSRF)",
-      "path": "04 - Content/Web/Auth/Cross-Site Request Forgery (CSRF).md"
-    },
-    {
-      "basename": "Common Linux Utilities",
-      "path": "04 - Content/Tools/Common Linux Utilities.md"
-    },
-    {
-      "basename": "less",
-      "path": "04 - Content/Tools/less.md"
-    },
-    {
-      "basename": "SQLi - Out of Band",
-      "path": "04 - Content/Web/Injection/SQLi - Out of Band.md"
-    },
-    {
-      "basename": "Active Directory",
-      "path": "02 - Secondary Categories/Active Directory.md"
-    },
-    {
-      "basename": "awk",
-      "path": "04 - Content/Tools/awk.md"
-    },
-    {
-      "basename": "OSINT",
-      "path": "04 - Content/Recon/OSINT/OSINT.md"
-    },
-    {
-      "basename": "Google Dorking",
-      "path": "04 - Content/Recon/OSINT/Google Dorking.md"
-    },
-    {
-      "basename": "git",
-      "path": "04 - Content/Tools/Recon/git.md"
-    },
-    {
-      "basename": "Bandit 09",
-      "path": "05 - Writeups/OverTheWire/Bandit 09.md"
-    },
-    {
-      "basename": "Bandit 08",
-      "path": "05 - Writeups/OverTheWire/Bandit 08.md"
-    },
-    {
-      "basename": "Bandit 07",
-      "path": "05 - Writeups/OverTheWire/Bandit 07.md"
+      "basename": "Express",
+      "path": "04 - Content/Process/Express.md"
     }
   ],
   "omittedPaths": [],

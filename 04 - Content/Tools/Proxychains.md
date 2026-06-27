@@ -5,7 +5,7 @@ aliases:
 tags:
   - tool/proxychains
   - technique/lateral-movement
-  - technique/evasion
+  - technique/defense-evasion
 primary categories:
   - "[[Red Team]]"
 secondary categories:

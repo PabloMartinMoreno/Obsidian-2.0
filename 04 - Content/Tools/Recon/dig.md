@@ -19,6 +19,7 @@ linked:
   - "[[DNS]]"
   - "[[DNS - Herramientas]]"
   - "[[nslookup]]"
+  - "[[Dig - Cuando usarlo]]"
 ---
 # Dig - Domain Information Groper
 

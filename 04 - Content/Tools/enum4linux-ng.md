@@ -9,7 +9,7 @@ tags:
   - service/smb
   - service/rpc
   - env/windows
-  - env/active-directory
+  - asset/active-directory
 primary categories:
   - "[[Red Team]]"
 secondary categories:

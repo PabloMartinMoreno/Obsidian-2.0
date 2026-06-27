@@ -8,7 +8,7 @@ tags:
   - technique/lateral-movement
   - technique/recon/active
   - env/windows
-  - env/active-directory
+  - asset/active-directory
 primary categories:
   - "[[Red Team]]"
 secondary categories:

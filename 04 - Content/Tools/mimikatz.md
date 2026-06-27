@@ -8,9 +8,9 @@ tags:
   - technique/credential-access
   - technique/lateral-movement
   - env/windows
-  - env/active-directory
   - cred/ntlm
   - cred/kerberos
+  - asset/active-directory
 primary categories:
   - "[[Red Team]]"
 secondary categories:

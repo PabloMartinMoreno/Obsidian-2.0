@@ -5,8 +5,16 @@ aliases:
   - XSLT Encoding Tricks
 tags:
   - vuln/xslt-injection
-  - technique/evasion
   - asset/web-app
+  - x3c
+  - x22
+  - x3e
+  - "60"
+  - "34"
+  - "62"
+  - x73
+  - x
+  - technique/defense-evasion
 primary categories:
   - "[[Red Team]]"
 secondary categories:
@@ -16,7 +24,8 @@ tertiary categories:
   - "[[Web Explotación]]"
 kind: SubCheatSheet
 linked:
-  - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side Injection]]"
+  - "[[eXtensible Stylesheet Language Transformations (XSLT) Server-Side
+    Injection]]"
   - "[[XML External Entity (XXE)]]"
   - "[[Server-Side Request Forgery (SSRF)]]"
 ---

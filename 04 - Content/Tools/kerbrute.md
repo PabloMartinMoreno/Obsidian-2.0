@@ -4,9 +4,9 @@ tags:
   - tool/kerbrute
   - technique/credential-access
   - technique/recon/active
-  - env/active-directory
   - service/kerberos
   - cred/spray
+  - asset/active-directory
 primary categories:
   - "[[Red Team]]"
 secondary categories:

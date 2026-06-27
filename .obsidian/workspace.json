@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "b8bcbfd5cb8fefe4",
+        "id": "d96789e397c8d77f",
         "type": "tabs",
         "children": [
           {
-            "id": "7f48794054291b11",
+            "id": "1802392d48490d98",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "04 - Content/Process/cwes - preguntas.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "cwes - preguntas"
+              "title": "Nueva pestaña"
             }
           }
         ],
@@ -264,13 +259,22 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "7f48794054291b11",
+  "active": "1802392d48490d98",
   "lastOpenFiles": [
+    "04 - Content/Tools/Recon/dig.md",
+    "Private/CWES - Reporte.md",
+    "Private/CWES - Preguntas.md",
+    "Private/CWES - Task 8.md",
+    "Private",
+    "04 - Content/Process/Dig - Cuando usarlo.md",
     "04 - Content/Process/CWES - Reporte.md",
-    "04 - Content/Process/cwes - preguntas.md",
-    "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",
+    "04 - Content/Process/CWES - Preguntas.md",
+    "04 - Content/Process/CWES - Maquinas.md",
+    "04 - Content/Process/CWES - Task 8.md",
+    "04 - Content/Process/Swamp.md",
+    "04 - Content/Process/Express.md",
     "04 - Content/Process/CWES - Examen.md",
-    "04 - Content/Process/Task 8.md",
+    "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",
     "04 - Content/Process/sesion poisoning.md",
     "04 - Content/Web/FileInclusion/LFI - Básico.md",
     "04 - Content/Web/FileInclusion/File Inclusion.md",
@@ -284,14 +288,6 @@
     "04 - Content/Web/PathTraversal/Directory Traversal.md",
     "04 - Content/Web/PathTraversal/Directory Traversal - Payloads Basicos.md",
     "04 - Content/Web/PathTraversal/Directory Traversal - Vectores OS y Stack.md",
-    "04 - Content/Web/PathTraversal/Directory Traversal - Bypass de Sanitizacion.md",
-    "04 - Content/Web/PathTraversal/Directory Traversal - Deteccion y Reconocimiento.md",
-    "03 - Tertiary Categories/Web Enumeración.md",
-    "04 - Content/Web/FileInclusion/Lista archivos php.md",
-    "04 - Content/Web/Injection/SQL Injection (SQLi).md",
-    "04 - Content/Web/Injection/SQLi - Union based.md",
-    "04 - Content/Process/resultado wpscan.md",
-    "04 - Content/Recon/WebTech/Web Fingerprinting.md",
     "04 - Content/Tools/Recon/ffuf.md.tmp.17285.c804980d9b0d",
     "04 - Content/Tools/Recon/ffuf.md.tmp.17285.96a0995cd682",
     "04 - Content/Web/MassAssignment/Mass Assignment.md.tmp",
@@ -301,7 +297,6 @@
     "04 - Content/Tools/Recon/samba.md.tmp",
     "04 - Content/Tools/Recon/whatweb.md.tmp",
     "04 - Content/Tools/Recon/dnsrecon.md.tmp",
-    "04 - Content/Tools/Recon/feroxbuster.md.tmp",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",
