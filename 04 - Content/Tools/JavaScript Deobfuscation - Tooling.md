@@ -1,5 +1,6 @@
 ---
 aliases:
+  - JavaScript Deobfuscation (tooling)
 tags:
   - topic/reversing
   - asset/web-app

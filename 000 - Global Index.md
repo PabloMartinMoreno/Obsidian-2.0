@@ -61,7 +61,7 @@ CDSA · SOC · SIEM · Incident Response · Forensics
 
 ## Vault
 
-- **Dashboards** — [[Incompletos]] · [[Todo Round-Up]] · [[CheatSheets]]
+- **Dashboards** — [[Incompletos]] · [[Todo Round-Up]] · [[CheatSheets]] · [[Notas Faltantes]]
 - **Meta** — [[Vault Administration]] · [[tags]] · [[Obsidian]]
 
 ---

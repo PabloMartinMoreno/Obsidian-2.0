@@ -72,7 +72,7 @@ Mapa alineado **1:1 con los módulos del path HTB** del examen *Certified Web Ex
 > Módulo: *JavaScript Deobfuscation*. Revertir ofuscación de código client-side.
 
 - Concepto: [[ReverseEngineering/JavaScript Deobfuscation|JavaScript Deobfuscation]]
-- Tooling: [[Tools/JavaScript Deobfuscation|JavaScript Deobfuscation (tooling)]] · [[deobfuscation simple]] · [[Detectar tipo de codificacion]]
+- Tooling: [[JavaScript Deobfuscation - Tooling|JavaScript Deobfuscation (tooling)]] · [[deobfuscation simple]] · [[Detectar tipo de codificacion]]
 
 ### 7. 💥 Cross-Site Scripting (XSS)
 

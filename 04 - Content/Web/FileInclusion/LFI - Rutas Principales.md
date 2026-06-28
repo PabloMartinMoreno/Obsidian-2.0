@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Rutas principales en un LFI
 tags:
   - vuln/lfi
   - technique/execution

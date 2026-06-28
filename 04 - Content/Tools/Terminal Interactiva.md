@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Mejora de terminal interactiva
 tags:
   - env/linux
   - asset/network

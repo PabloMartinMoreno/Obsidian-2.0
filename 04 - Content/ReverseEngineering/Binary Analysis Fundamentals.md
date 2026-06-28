@@ -1,5 +1,6 @@
 ---
 aliases:
+  - Binary Analysis
 tags:
   - technique/discovery
 kind: Concept
