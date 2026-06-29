@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "Swamp",
+      "path": "04 - Content/Process/Swamp.md"
+    },
+    {
       "basename": "dig",
       "path": "04 - Content/Tools/Recon/dig.md"
     },
@@ -11,10 +15,6 @@
     {
       "basename": "CWES - Maquinas",
       "path": "04 - Content/Process/CWES - Maquinas.md"
-    },
-    {
-      "basename": "Swamp",
-      "path": "04 - Content/Process/Swamp.md"
     },
     {
       "basename": "Express",
