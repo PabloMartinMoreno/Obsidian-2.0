@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Swamp.md",
+                "file": "04 - Content/Process/Express.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Swamp"
+              "title": "Express"
             }
           }
         ],
@@ -266,6 +266,8 @@
   },
   "active": "1802392d48490d98",
   "lastOpenFiles": [
+    "04 - Content/Process/CWES - Maquinas.md",
+    "04 - Content/Process/Swamp.md",
     "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md.tmp.457470.7ae9eb6be632",
     "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md.tmp.457470.f8d861d545c8",
     "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md.tmp.457470.ce587f9c842c",
@@ -277,7 +279,6 @@
     "04 - Content/Web/Injection/SQL Injection (SQLi).md.tmp.457470.a82ee4fbacab",
     "03 - Tertiary Categories/Privilege Escalation.md",
     "04 - Content/Obsidian/Notas Faltantes.md.tmp.3483.84c9cc4c6a49",
-    "000 - Global Index.md.tmp.3483.30c552f927b6",
     "04 - Content/Obsidian/Notas Faltantes.md",
     "04 - Content/Tools/JavaScript Deobfuscation - Tooling.md",
     "04 - Content/Tools/Recon/dig.md",
@@ -287,9 +288,7 @@
     "04 - Content/Process/Dig - Cuando usarlo.md",
     "04 - Content/Process/CWES - Reporte.md",
     "04 - Content/Process/CWES - Preguntas.md",
-    "04 - Content/Process/CWES - Maquinas.md",
     "04 - Content/Process/CWES - Task 8.md",
-    "04 - Content/Process/Swamp.md",
     "04 - Content/Process/Express.md",
     "04 - Content/Process/CWES - Examen.md",
     "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",

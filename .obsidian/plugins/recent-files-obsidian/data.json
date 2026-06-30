@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "Express",
+      "path": "04 - Content/Process/Express.md"
+    },
+    {
+      "basename": "CWES - Maquinas",
+      "path": "04 - Content/Process/CWES - Maquinas.md"
+    },
+    {
       "basename": "Swamp",
       "path": "04 - Content/Process/Swamp.md"
     },
@@ -11,14 +19,6 @@
     {
       "basename": "Dig - Cuando usarlo",
       "path": "04 - Content/Process/Dig - Cuando usarlo.md"
-    },
-    {
-      "basename": "CWES - Maquinas",
-      "path": "04 - Content/Process/CWES - Maquinas.md"
-    },
-    {
-      "basename": "Express",
-      "path": "04 - Content/Process/Express.md"
     }
   ],
   "omittedPaths": [],
