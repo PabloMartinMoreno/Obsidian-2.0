@@ -130,6 +130,8 @@ Prefijos en uso:
 
 Ver [[Obsidian - Plugins]].
 
+![[Automatización.excalidraw]]
+
 ---
 
 ## Snippets CSS activos
@@ -147,7 +149,9 @@ Ver [[Obsidian - Plugins]].
 - [[000 - Global Index|Global Index]] — entrada principal
 - [[Hack the Box]] — HTB stats + máquinas
 - [[Incompletos]] — pendientes por dominio
-- [[Todo Round-Up]] — callouts `[!todo]` activos
+- [[Todo Round-Up]] — tareas `- [ ]` abiertas del vault
+- [[CheatSheets]] — índice de notas `kind: CheatSheet`
+- [[Notas Faltantes]] — backlog de links a notas inexistentes
 - [[Tools]] — MOC de herramientas
 
 ---

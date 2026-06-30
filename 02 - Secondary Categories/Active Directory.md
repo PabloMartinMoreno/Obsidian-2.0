@@ -9,6 +9,12 @@ kind: Secondary Category
 
 ---
 
+## Mindmap
+
+![[AD Escalidraw]]
+
+---
+
 ## [[Active Directory Enumeración]]
 
 

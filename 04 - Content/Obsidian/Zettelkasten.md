@@ -50,6 +50,8 @@ graph TB
     style D fill:#ccffcc
 ```
 
+![[Atomicidad.excalidraw]]
+
 ### Unique Identification
 
 Every note receives a persistent, unique identifier that enables reliable cross-referencing regardless of content changes or organizational restructuring. Luhmann used alphanumeric sequences (1, 1a, 1b, 1a1, etc.) that reflected branching relationships, while digital implementations often use timestamps, UUIDs, or descriptive titles as identifiers. In Obsidian, notes are assigned URLs that can be dynamically resolved with double brackets (e.g., `[[Zettelkasten]]`).

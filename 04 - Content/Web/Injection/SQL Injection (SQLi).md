@@ -96,6 +96,12 @@ Detección y fingerprinting del motor: romper la query con `'`, `"`, `)`, observ
 
 ---
 
+## Diagrama
+
+![[SQLI.excalidraw]]
+
+---
+
 ## Workflow de explotación (paso a paso)
 
 ### 1. Auth Bypass (Acceso Inicial)

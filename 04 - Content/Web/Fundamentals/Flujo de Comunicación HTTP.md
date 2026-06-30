@@ -31,7 +31,7 @@ linked:
 
 ## Overview
 
-El protocolo HTTP (Hypertext Transfer Protocol) es la base de la comunicación en la World Wide Web. Es un protocolo de la capa de aplicación que funciona sobre la suite [[TCP/IP]]. A diferencia de su contraparte segura, HTTP transmite toda la información (incluyendo credenciales y datos sensibles) en texto plano, lo que lo hace vulnerable a interceptaciones. Es un protocolo **sin estado** (_stateless_), lo que significa que cada transacción se ejecuta de forma independiente sin que el servidor retenga información de peticiones anteriores, obligando al uso de mecanismos como [[Cookies]] o [[Tokens JWT]] para gestionar sesiones.
+El protocolo HTTP (Hypertext Transfer Protocol) es la base de la comunicación en la World Wide Web. Es un protocolo de la capa de aplicación que funciona sobre la suite [[TCP|TCP/IP]]. A diferencia de su contraparte segura, HTTP transmite toda la información (incluyendo credenciales y datos sensibles) en texto plano, lo que lo hace vulnerable a interceptaciones. Es un protocolo **sin estado** (_stateless_), lo que significa que cada transacción se ejecuta de forma independiente sin que el servidor retenga información de peticiones anteriores, obligando al uso de mecanismos como [[HTTP - Cookies y Sesiones|Cookies]] o [[JWT Attacks|Tokens JWT]] para gestionar sesiones.
 
 ![[http-flow.png]]
 
@@ -42,7 +42,7 @@ El ciclo de vida de una petición HTTP estándar sigue un camino lineal desde el
 #### Resolución de Nombre (DNS)
 
 Antes de iniciar cualquier conexión HTTP, el cliente necesita saber a dónde dirigirse.
-- El navegador consulta a un [[Servidor DNS]] para traducir el nombre de dominio (por ejemplo, `ejemplo.com`) en una dirección IP ejecutable.
+- El navegador consulta a un servidor DNS para traducir el nombre de dominio (por ejemplo, `ejemplo.com`) en una dirección IP ejecutable.
 
 #### Establecimiento de la Conexión TCP
 
@@ -58,7 +58,7 @@ Con la conexión establecida, el cliente envía un mensaje estructurado en texto
 
 #### Procesamiento del Servidor
 
-El servidor web (ej. [[Nginx]], [[Apache]]) recibe el mensaje.
+El servidor web (ej. [[Nginx]], Apache) recibe el mensaje.
 - Enruta la petición al código de la aplicación correspondiente.
 - Consulta bases de datos, procesa lógica de negocio o lee archivos del sistema de archivos.
 
