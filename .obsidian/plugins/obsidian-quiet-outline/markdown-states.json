@@ -210,14 +210,14 @@
     "expandedKeys": []
   },
   "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md": {
-    "scroll": 46.65041584961796,
+    "scroll": 66.22766081989383,
     "cursor": {
       "from": {
-        "line": 41,
+        "line": 59,
         "ch": 0
       },
       "to": {
-        "line": 41,
+        "line": 59,
         "ch": 0
       }
     },
@@ -4338,15 +4338,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/Express.md": {
-    "scroll": 207.85193452380952,
+    "scroll": 243.14583333333334,
     "cursor": {
       "from": {
-        "line": 194,
-        "ch": 19
+        "line": 265,
+        "ch": 54
       },
       "to": {
-        "line": 194,
-        "ch": 19
+        "line": 265,
+        "ch": 54
       }
     },
     "expandedKeys": []

