@@ -13,7 +13,7 @@ linked:
 
 - [[Swamp]]
 - [[Express]]
-- Bola
+- [[Bola]]
 - JarJar
 - Gattaca
 - Future

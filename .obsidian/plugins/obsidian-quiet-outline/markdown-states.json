@@ -707,15 +707,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Maquinas.md": {
-    "scroll": 0,
+    "scroll": 3.989637305699482,
     "cursor": {
       "from": {
-        "line": 15,
-        "ch": 6
+        "line": 13,
+        "ch": 11
       },
       "to": {
-        "line": 15,
-        "ch": 6
+        "line": 13,
+        "ch": 11
       }
     },
     "expandedKeys": []
@@ -4389,6 +4389,20 @@
       "to": {
         "line": 0,
         "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Bola.md": {
+    "scroll": 61.795386904761905,
+    "cursor": {
+      "from": {
+        "line": 106,
+        "ch": 123
+      },
+      "to": {
+        "line": 106,
+        "ch": 123
       }
     },
     "expandedKeys": []

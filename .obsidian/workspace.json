@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Express.md",
+                "file": "04 - Content/Process/Bola.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Express"
+              "title": "Bola"
             }
           }
         ],
@@ -266,9 +266,10 @@
   },
   "active": "1802392d48490d98",
   "lastOpenFiles": [
-    "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md",
-    "04 - Content/Process/Express.md",
     "04 - Content/Process/CWES - Maquinas.md",
+    "04 - Content/Process/Bola.md",
+    "04 - Content/Process/Express.md",
+    "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md",
     "04 - Content/Process/Swamp.md",
     "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md.tmp.457470.7ae9eb6be632",
     "04 - Content/Web/Fundamentals/Flujo de Comunicación HTTP.md.tmp.457470.f8d861d545c8",
