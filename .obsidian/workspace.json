@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Process/Bola.md",
+                "file": "05 - Writeups/OverTheWire/Bandit 11.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Bola"
+              "title": "Bandit 11"
             }
           }
         ],
@@ -266,8 +266,8 @@
   },
   "active": "1802392d48490d98",
   "lastOpenFiles": [
-    "04 - Content/Process/CWES - Maquinas.md",
     "04 - Content/Process/Bola.md",
+    "04 - Content/Process/CWES - Maquinas.md",
     "04 - Content/Process/Express.md",
     "04 - Content/Web/SSTI/Server-Side Template Injection (SSTI).md",
     "04 - Content/Process/Swamp.md",
