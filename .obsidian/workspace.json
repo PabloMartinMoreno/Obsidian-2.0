@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Writeups/OverTheWire/Bandit 09.md",
+                "file": "04 - Content/Process/CWES - Maquinas.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Bandit 09"
+              "title": "CWES - Maquinas"
             }
           }
         ],
@@ -266,6 +266,7 @@
   },
   "active": "1802392d48490d98",
   "lastOpenFiles": [
+    "05 - Writeups/OverTheWire/Bandit 09.md",
     "05 - Writeups/OverTheWire/Bandit 08.md",
     "05 - Writeups/OverTheWire/Bandit 07.md",
     "05 - Writeups/OverTheWire/Bandit 06.md",
@@ -301,7 +302,6 @@
     "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",
     "04 - Content/Process/sesion poisoning.md",
     "04 - Content/Web/FileInclusion/LFI - Básico.md",
-    "04 - Content/Web/FileInclusion/File Inclusion.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

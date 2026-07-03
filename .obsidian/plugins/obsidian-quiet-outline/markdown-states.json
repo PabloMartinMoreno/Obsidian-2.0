@@ -710,12 +710,12 @@
     "scroll": 3.989637305699482,
     "cursor": {
       "from": {
-        "line": 13,
-        "ch": 11
+        "line": 18,
+        "ch": 2
       },
       "to": {
-        "line": 13,
-        "ch": 11
+        "line": 18,
+        "ch": 8
       }
     },
     "expandedKeys": []
@@ -3062,7 +3062,7 @@
     "expandedKeys": []
   },
   "05 - Writeups/OverTheWire/Bandit 09.md": {
-    "scroll": 13.16580310880829,
+    "scroll": 0,
     "cursor": {
       "from": {
         "line": 14,

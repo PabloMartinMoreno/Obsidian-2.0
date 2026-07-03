@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "CWES - Maquinas",
+      "path": "04 - Content/Process/CWES - Maquinas.md"
+    },
+    {
       "basename": "Bandit 09",
       "path": "05 - Writeups/OverTheWire/Bandit 09.md"
     },
@@ -27,10 +31,6 @@
     {
       "basename": "Bola",
       "path": "04 - Content/Process/Bola.md"
-    },
-    {
-      "basename": "CWES - Maquinas",
-      "path": "04 - Content/Process/CWES - Maquinas.md"
     },
     {
       "basename": "Express",
