@@ -1,8 +1,20 @@
 {
   "recentFiles": [
     {
+      "basename": "JarJar",
+      "path": "04 - Content/Process/JarJar.md"
+    },
+    {
       "basename": "CWES - Maquinas",
       "path": "04 - Content/Process/CWES - Maquinas.md"
+    },
+    {
+      "basename": "Bola",
+      "path": "04 - Content/Process/Bola.md"
+    },
+    {
+      "basename": "Gattaca",
+      "path": "04 - Content/Process/Gattaca.md"
     },
     {
       "basename": "Bandit 09",
@@ -27,10 +39,6 @@
     {
       "basename": "Bandit 11",
       "path": "05 - Writeups/OverTheWire/Bandit 11.md"
-    },
-    {
-      "basename": "Bola",
-      "path": "04 - Content/Process/Bola.md"
     },
     {
       "basename": "Express",

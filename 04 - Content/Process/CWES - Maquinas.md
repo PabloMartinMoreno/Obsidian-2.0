@@ -14,8 +14,8 @@ linked:
 - [[Swamp]]
 - [[Express]]
 - [[Bola]]
-- JarJar
-- Gattaca
-- Future
+- [[JarJar]]
+- [[Gattaca]]
+- [[Future]]
 - Jerry
 - Lost

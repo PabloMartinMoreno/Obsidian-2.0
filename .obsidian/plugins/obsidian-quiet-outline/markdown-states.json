@@ -707,15 +707,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/CWES - Maquinas.md": {
-    "scroll": 3.989637305699482,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 18,
-        "ch": 2
+        "line": 14,
+        "ch": 13
       },
       "to": {
-        "line": 18,
-        "ch": 8
+        "line": 14,
+        "ch": 13
       }
     },
     "expandedKeys": []
@@ -4394,7 +4394,7 @@
     "expandedKeys": []
   },
   "04 - Content/Process/Bola.md": {
-    "scroll": 83.91796875,
+    "scroll": 76.40907118055556,
     "cursor": {
       "from": {
         "line": 106,
@@ -4403,6 +4403,34 @@
       "to": {
         "line": 106,
         "ch": 123
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/JarJar.md": {
+    "scroll": 85.9951171875,
+    "cursor": {
+      "from": {
+        "line": 98,
+        "ch": 162
+      },
+      "to": {
+        "line": 98,
+        "ch": 162
+      }
+    },
+    "expandedKeys": []
+  },
+  "04 - Content/Process/Gattaca.md": {
+    "scroll": 12.56547619047619,
+    "cursor": {
+      "from": {
+        "line": 244,
+        "ch": 95
+      },
+      "to": {
+        "line": 244,
+        "ch": 95
       }
     },
     "expandedKeys": []
