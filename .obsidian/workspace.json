@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md",
+                "file": "04 - Content/Process/JarJar.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "LFI - Rutas Principales"
+              "title": "JarJar"
             }
           }
         ],
@@ -266,7 +266,9 @@
   },
   "active": "1802392d48490d98",
   "lastOpenFiles": [
+    "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md",
     "04 - Content/Process/JarJar.md",
+    "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md",
     "04 - Content/Process/CWES - Maquinas.md",
     "04 - Content/Process/Bola.md",
     "04 - Content/Process/Gattaca.md",
@@ -300,8 +302,6 @@
     "04 - Content/Process/CWES - Reporte.md",
     "04 - Content/Process/CWES - Preguntas.md",
     "04 - Content/Process/CWES - Task 8.md",
-    "04 - Content/Process/CWES - Examen.md",
-    "04 - Content/ReverseEngineering/JavaScript Deobfuscation.md",
     "00 - Resources/Images/Flujo HTTPS.png",
     "00 - Resources/Images/SSTI reconocimiento.png",
     "00 - Resources/Images/Transferencia de Zona DNS.png",

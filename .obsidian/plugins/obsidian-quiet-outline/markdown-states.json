@@ -392,15 +392,15 @@
     "expandedKeys": []
   },
   "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md": {
-    "scroll": 43.81547832318166,
+    "scroll": 46.89955357142857,
     "cursor": {
       "from": {
-        "line": 6,
-        "ch": 0
+        "line": 31,
+        "ch": 3
       },
       "to": {
-        "line": 6,
-        "ch": 0
+        "line": 31,
+        "ch": 3
       }
     },
     "expandedKeys": []
@@ -4254,7 +4254,7 @@
     "expandedKeys": []
   },
   "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md": {
-    "scroll": 30.904028436018958,
+    "scroll": 41.30983412322275,
     "cursor": {
       "from": {
         "line": 34,
@@ -4408,15 +4408,15 @@
     "expandedKeys": []
   },
   "04 - Content/Process/JarJar.md": {
-    "scroll": 124.93824404761905,
+    "scroll": 165.38392857142858,
     "cursor": {
       "from": {
-        "line": 98,
-        "ch": 162
+        "line": 178,
+        "ch": 244
       },
       "to": {
-        "line": 98,
-        "ch": 162
+        "line": 178,
+        "ch": 244
       }
     },
     "expandedKeys": []

@@ -1,12 +1,16 @@
 {
   "recentFiles": [
     {
-      "basename": "LFI - Rutas Principales",
-      "path": "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md"
-    },
-    {
       "basename": "JarJar",
       "path": "04 - Content/Process/JarJar.md"
+    },
+    {
+      "basename": "Escalada de Privilegios - Comandos Comunes",
+      "path": "04 - Content/PrivEsc/Escalada de Privilegios - Comandos Comunes.md"
+    },
+    {
+      "basename": "LFI - Rutas Principales",
+      "path": "04 - Content/Web/FileInclusion/LFI - Rutas Principales.md"
     },
     {
       "basename": "CWES - Maquinas",

